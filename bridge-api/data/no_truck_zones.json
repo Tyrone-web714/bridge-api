@@ -1,0 +1,12 @@
+[
+  {
+    "id": "zone1",
+    "name": "Downtown Main Street - No Trucks",
+    "polygon": [
+      { "lat": 29.761, "lng": -95.366 },
+      { "lat": 29.762, "lng": -95.362 },
+      { "lat": 29.758, "lng": -95.360 },
+      { "lat": 29.757, "lng": -95.364 }
+    ]
+  }
+]

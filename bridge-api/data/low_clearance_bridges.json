@@ -1,0 +1,16 @@
+[
+  {
+    "id": "bridge1",
+    "latitude": 29.761,
+    "longitude": -95.366,
+    "clearance_ft": 12.5,
+    "name": "Main St Bridge"
+  },
+  {
+    "id": "bridge2",
+    "latitude": 29.758,
+    "longitude": -95.364,
+    "clearance_ft": 11.8,
+    "name": "2nd Ave Bridge"
+  }
+]
