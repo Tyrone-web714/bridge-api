@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-router.post('/safe-route', async (req, res) => {
+// just echo back the request for now
+router.post('/safe-route', (req, res) => {
   const { origin, destination } = req.body;
-
-  // Just echo back the request for now
   res.json({
     message: "Routing API working",
     origin,
@@ -16,3 +15,4 @@ module.exports = router;
 
  
        
+
