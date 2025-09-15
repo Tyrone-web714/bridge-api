@@ -1,11 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-// just echo back the request for now
+// Log to prove this file loaded at runtime
+console.log('✅ routes/routing.js loaded');
+
 router.post('/safe-route', (req, res) => {
-  const { origin, destination } = req.body;
-  res.json({
-    message: "Routing API working",
+  const { origin, destination } = req.body || {};
+  return res.json({
+    message: 'Routing API working',
     origin,
     destination
   });
@@ -13,6 +15,8 @@ router.post('/safe-route', (req, res) => {
 
 module.exports = router;
 
+
  
        
+
 
