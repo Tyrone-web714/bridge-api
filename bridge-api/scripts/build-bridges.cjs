@@ -1,13 +1,46 @@
-// scripts/build-bridges.cjs (CommonJS; uses Node 18+ global fetch)
+// scripts/build-bridges.cjs
+// Build real low-clearance bridges JSON from FHWA NBI (<= 13 ft)
 
 const fs = require('fs');
 const path = require('path');
 const unzipper = require('unzipper');
 const { parse } = require('csv-parse');
 
-// If FHWA changes the link, set NBI_ZIP_URL in Render env to the new URL.
-const DEFAULT_ZIP = 'https://www.fhwa.dot.gov/bridge/nbi/2024/delimited/all_states_delimited.zip';
-const NBI_ZIP_URL = process.env.NBI_ZIP_URL || DEFAULT_ZIP;
+// ----------------- NBI download URL logic -----------------
+const YEAR = process.env.NBI_YEAR || '2025';
+
+// Candidates in order:
+// 1) Environment override (if you set NBI_ZIP_URL in Render)
+// 2) 2025 single-file delimited (all states in one CSV)
+// 3) 2025 individual-state files (all states, each state separate)
+const CANDIDATE_URLS = [
+  process.env.NBI_ZIP_URL,
+  `https://www.fhwa.dot.gov/bridge/nbi/${YEAR}hwybronefiledel.zip`,
+  `https://www.fhwa.dot.gov/bridge/nbi/${YEAR}del.zip`
+].filter(Boolean);
+
+async function downloadZipWithFallback(toPath) {
+  let lastErr;
+  for (const url of CANDIDATE_URLS) {
+    try {
+      console.log(`Trying NBI ZIP: ${url}`);
+      const resp = await fetch(url);
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      await new Promise((resolve, reject) => {
+        const f = fs.createWriteStream(toPath);
+        resp.body.pipe(f);
+        resp.body.on('error', reject);
+        f.on('finish', resolve);
+      });
+      console.log(`Downloaded ${url}`);
+      return;
+    } catch (e) {
+      console.warn(`Failed ${url}: ${e.message}`);
+      lastErr = e;
+    }
+  }
+  throw new Error(`All NBI ZIP candidates failed. Last error: ${lastErr && lastErr.message}`);
+}
 
 const OUT_JSON = path.join('data', 'low_clearance_bridges.json');
 const TMP_DIR = path.join('.tmp_nbi');
@@ -62,18 +95,6 @@ function bridgeId(row) {
   return `${st}-${row.OBJECTID || ''}`;
 }
 
-async function downloadZip(url, toPath) {
-  console.log(`Downloading NBI ZIP from ${url} …`);
-  const resp = await fetch(url);
-  if (!resp.ok) throw new Error(`Download failed: HTTP ${resp.status}`);
-  await new Promise((resolve, reject) => {
-    const f = fs.createWriteStream(toPath);
-    resp.body.pipe(f);
-    resp.body.on('error', reject);
-    f.on('finish', resolve);
-  });
-}
-
 async function extractZip(zipPath, outDir) {
   console.log('Extracting CSVs …');
   await fs.createReadStream(zipPath).pipe(unzipper.Extract({ path: outDir })).promise();
@@ -94,9 +115,10 @@ async function main() {
   if (!fs.existsSync(TMP_DIR)) fs.mkdirSync(TMP_DIR, { recursive: true });
   if (!fs.existsSync(CSV_DIR)) fs.mkdirSync(CSV_DIR, { recursive: true });
 
-  const zipPath = path.join(TMP_DIR, 'nbi_all_states.zip');
+  const zipPath = path.join(TMP_DIR, 'nbi.zip');
 
-  await downloadZip(NBI_ZIP_URL, zipPath);
+  // ✅ use the fallback downloader (do NOT call downloadZip or use NBI_ZIP_URL here)
+  await downloadZipWithFallback(zipPath);
   await extractZip(zipPath, CSV_DIR);
 
   const files = fs.readdirSync(CSV_DIR).filter(f => f.toLowerCase().endsWith('.csv'));
@@ -138,4 +160,3 @@ main().catch(err => {
   console.error('ETL failed:', err);
   process.exit(1);
 });
-
