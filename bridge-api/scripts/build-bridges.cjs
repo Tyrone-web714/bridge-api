@@ -121,8 +121,17 @@ async function main() {
   await downloadZipWithFallback(zipPath);
   await extractZip(zipPath, CSV_DIR);
 
-  const files = fs.readdirSync(CSV_DIR).filter(f => f.toLowerCase().endsWith('.csv'));
-  console.log(`Found ${files.length} CSV files.`);
+ // list everything we extracted (debug)
+const all = fs.readdirSync(CSV_DIR);
+console.log('Extracted files:', all);
+
+// accept .csv OR .txt (FHWA often ships the delimited file as .txt)
+const files = all.filter(f => {
+  const lower = f.toLowerCase();
+  return lower.endsWith('.csv') || lower.endsWith('.txt');
+});
+console.log(`Found ${files.length} delimited file(s):`, files);
+
 
   const out = [];
   for (const f of files) {
