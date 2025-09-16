@@ -18,7 +18,6 @@ const CANDIDATE_URLS = [
   `https://www.fhwa.dot.gov/bridge/nbi/${YEAR}hwybronefiledel.zip`,
   `https://www.fhwa.dot.gov/bridge/nbi/${YEAR}del.zip`
 ].filter(Boolean);
-
 async function downloadZipWithFallback(toPath) {
   let lastErr;
   for (const url of CANDIDATE_URLS) {
@@ -26,12 +25,11 @@ async function downloadZipWithFallback(toPath) {
       console.log(`Trying NBI ZIP: ${url}`);
       const resp = await fetch(url);
       if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-      await new Promise((resolve, reject) => {
-        const f = fs.createWriteStream(toPath);
-        resp.body.pipe(f);
-        resp.body.on('error', reject);
-        f.on('finish', resolve);
-      });
+
+      // Use Web Fetch API style in Node 22
+      const buf = Buffer.from(await resp.arrayBuffer());
+      await fs.promises.writeFile(toPath, buf);
+
       console.log(`Downloaded ${url}`);
       return;
     } catch (e) {
@@ -41,6 +39,8 @@ async function downloadZipWithFallback(toPath) {
   }
   throw new Error(`All NBI ZIP candidates failed. Last error: ${lastErr && lastErr.message}`);
 }
+
+
 
 const OUT_JSON = path.join('data', 'low_clearance_bridges.json');
 const TMP_DIR = path.join('.tmp_nbi');
