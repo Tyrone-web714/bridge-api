@@ -10,14 +10,15 @@ const { parse } = require('csv-parse');
 const YEAR = process.env.NBI_YEAR || '2025';
 
 // Candidates in order:
-// 1) Environment override (if you set NBI_ZIP_URL in Render)
-// 2) 2025 single-file delimited (all states in one CSV)
-// 3) 2025 individual-state files (all states, each state separate)
+// 1) Environment override (NBI_ZIP_URL)
+// 2) <YEAR> single-file delimited (all states in one CSV/TXT)
+// 3) <YEAR> individual-state files (all states, each state separate)
 const CANDIDATE_URLS = [
   process.env.NBI_ZIP_URL,
   `https://www.fhwa.dot.gov/bridge/nbi/${YEAR}hwybronefiledel.zip`,
-  `https://www.fhwa.dot.gov/bridge/nbi/${YEAR}del.zip`
+  `https://www.fhwa.dot.gov/bridge/nbi/${YEAR}del.zip`,
 ].filter(Boolean);
+
 async function downloadZipWithFallback(toPath) {
   let lastErr;
   for (const url of CANDIDATE_URLS) {
@@ -26,7 +27,7 @@ async function downloadZipWithFallback(toPath) {
       const resp = await fetch(url);
       if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
 
-      // Use Web Fetch API style in Node 22
+      // Node 22 global fetch -> Web Stream; buffer then write
       const buf = Buffer.from(await resp.arrayBuffer());
       await fs.promises.writeFile(toPath, buf);
 
@@ -39,8 +40,6 @@ async function downloadZipWithFallback(toPath) {
   }
   throw new Error(`All NBI ZIP candidates failed. Last error: ${lastErr && lastErr.message}`);
 }
-
-
 
 const OUT_JSON = path.join('data', 'low_clearance_bridges.json');
 const TMP_DIR = path.join('.tmp_nbi');
@@ -58,7 +57,7 @@ function toFeet(val) {
   return n <= 8 ? n * FEET_PER_METER : n;
 }
 
-/** Pick best available underclearance in feet (prefer 54B; else fallbacks) */
+/** Choose best available clearance (prefer underclearance if present) */
 function pickClearanceFeet(row) {
   const vUnd =
     row.VERT_CLR_UND_054B ?? row.MIN_VERT_UND_054B ?? row['54B'] ?? null;
@@ -77,16 +76,42 @@ function pickClearanceFeet(row) {
   return ft ?? null;
 }
 
+/** Normalize lat/lng: handle microdegrees and positive longitudes in US */
+function normalizeLat(n) {
+  if (!Number.isFinite(n)) return null;
+  if (Math.abs(n) > 90) n = n / 1e6; // microdegrees -> degrees
+  if (n < -90 || n > 90) return null;
+  return n;
+}
+function normalizeLng(n) {
+  if (!Number.isFinite(n)) return null;
+  if (Math.abs(n) > 180) n = n / 1e6; // microdegrees -> degrees
+  if (n < -180 || n > 180) return null;
+  // US longitudes are West (negative); if positive, flip
+  if (n > 0) n = -n;
+  return n;
+}
+
 function parseLat(row) {
-  const lat = row.LAT_016 ?? row.LAT ?? row['16'];
-  return lat ? Number(lat) : null;
+  const latRaw = row.LAT_016 ?? row.LAT ?? row['16'];
+  const n = Number(latRaw);
+  return normalizeLat(n);
 }
 function parseLng(row) {
-  const lng = row.LONG_017 ?? row.LON_017 ?? row.LONG ?? row['17'];
-  return lng ? Number(lng) : null;
+  const lngRaw = row.LONG_017 ?? row.LON_017 ?? row.LONG ?? row['17'];
+  const n = Number(lngRaw);
+  return normalizeLng(n);
 }
+
 function bridgeName(row) {
-  return row.FEATURES_DESC_006A ?? row.FEATURES_DESC ?? row['6A'] ?? row.LOCATION_009 ?? row['9'] ?? 'Bridge';
+  return (
+    row.FEATURES_DESC_006A ??
+    row.FEATURES_DESC ??
+    row['6A'] ??
+    row.LOCATION_009 ??
+    row['9'] ??
+    'Bridge'
+  );
 }
 function bridgeId(row) {
   const s = (row.STRUCTURE_NUMBER_008 || row['8'] || '').toString().trim();
@@ -97,16 +122,21 @@ function bridgeId(row) {
 
 async function extractZip(zipPath, outDir) {
   console.log('Extracting CSVs …');
-  await fs.createReadStream(zipPath).pipe(unzipper.Extract({ path: outDir })).promise();
+  await fs
+    .createReadStream(zipPath)
+    .pipe(unzipper.Extract({ path: outDir }))
+    .promise();
 }
 
-async function* parseCsv(filePath) {
-  const parser = fs.createReadStream(filePath).pipe(parse({
-    columns: true,
-    relax_quotes: true,
-    relax_column_count: true,
-    trim: true
-  }));
+async function* parseDelimited(filePath) {
+  const parser = fs.createReadStream(filePath).pipe(
+    parse({
+      columns: true,
+      relax_quotes: true,
+      relax_column_count: true,
+      trim: true,
+    })
+  );
   for await (const record of parser) yield record;
 }
 
@@ -117,28 +147,31 @@ async function main() {
 
   const zipPath = path.join(TMP_DIR, 'nbi.zip');
 
-  // ✅ use the fallback downloader (do NOT call downloadZip or use NBI_ZIP_URL here)
   await downloadZipWithFallback(zipPath);
   await extractZip(zipPath, CSV_DIR);
 
- // list everything we extracted (debug)
-const all = fs.readdirSync(CSV_DIR);
-console.log('Extracted files:', all);
+  // List files and accept .csv or .txt
+  const all = fs.readdirSync(CSV_DIR);
+  console.log('Extracted files:', all);
+  const files = all.filter((f) => {
+    const lower = f.toLowerCase();
+    return lower.endsWith('.csv') || lower.endsWith('.txt');
+  });
+  console.log(`Found ${files.length} delimited file(s):`, files);
 
-// accept .csv OR .txt (FHWA often ships the delimited file as .txt)
-const files = all.filter(f => {
-  const lower = f.toLowerCase();
-  return lower.endsWith('.csv') || lower.endsWith('.txt');
-});
-console.log(`Found ${files.length} delimited file(s):`, files);
-
+  if (files.length === 0) {
+    console.warn('No delimited files found. Writing empty result.');
+    fs.writeFileSync(OUT_JSON, JSON.stringify([], null, 2));
+    console.log(`✓ Wrote ${OUT_JSON}`);
+    return;
+  }
 
   const out = [];
   for (const f of files) {
     const full = path.join(CSV_DIR, f);
     console.log(`Parsing ${f} …`);
 
-    for await (const row of parseCsv(full)) {
+    for await (const row of parseDelimited(full)) {
       try {
         const lat = parseLat(row);
         const lng = parseLng(row);
@@ -151,7 +184,7 @@ console.log(`Found ${files.length} delimited file(s):`, files);
             latitude: lat,
             longitude: lng,
             clearance_ft: Math.round(clearance_ft * 10) / 10,
-            name: bridgeName(row)
+            name: bridgeName(row),
           });
         }
       } catch {
@@ -165,7 +198,8 @@ console.log(`Found ${files.length} delimited file(s):`, files);
   console.log(`✓ Wrote ${OUT_JSON}`);
 }
 
-main().catch(err => {
+main().catch((err) => {
   console.error('ETL failed:', err);
   process.exit(1);
 });
+
