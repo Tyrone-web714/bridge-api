@@ -115,8 +115,12 @@ function scoreRoute(points, { bridgeBufferMeters = 50 } = {}) {
   return { hazards, score };
 }
 
-// ------- route handler -------
+// ------- debug route (place ABOVE the POST handler) -------
+router.get('/ping', (req, res) => {
+  res.json({ ok: true, where: 'routes/routing.js' });
+});
 
+// ------- route handler -------
 router.post('/safe-route', async (req, res) => {
   try {
     const { origin, destination } = req.body || {};
@@ -179,8 +183,7 @@ router.post('/safe-route', async (req, res) => {
 
 module.exports = router;
 
- 
-       
+
 
 
 
