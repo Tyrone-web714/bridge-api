@@ -2,6 +2,8 @@ const express = require('express');
 const { Client } = require('@googlemaps/google-maps-services-js');
 const router = express.Router();
 
+console.log('✅ routes/routing.js loaded'); // <-- debug: proves this file is executing
+
 const client = new Client({});
 
 // DATA
@@ -122,6 +124,7 @@ router.get('/ping', (req, res) => {
 
 // ------- route handler -------
 router.post('/safe-route', async (req, res) => {
+  console.log('➡️  POST /api/routing/safe-route received', req.body); // <-- debug: proves the handler is hit
   try {
     const { origin, destination } = req.body || {};
     if (!origin || !destination) {
@@ -182,8 +185,3 @@ router.post('/safe-route', async (req, res) => {
 });
 
 module.exports = router;
-
-
-
-
-
