@@ -1,31 +1,18 @@
-// server.js
-require('dotenv').config();
-
 const express = require('express');
 const cors = require('cors');
+const dotenv = require('dotenv');
 const path = require('path');
 
+dotenv.config();
 const app = express();
 
-// --- Core middleware ---
 app.use(cors());
-app.use(express.json({ limit: '1mb' }));
+app.use(express.json());
 
-// --- Serve the front-end from /public (index.html, app.js, etc.) ---
-app.use(express.static(path.join(__dirname, 'public')));
-
-// --- Optional: disable browser caching for bridges API to avoid 304/empty bodies ---
-app.use((req, res, next) => {
-  if (req.path.startsWith('/api/bridges')) {
-    res.set('Cache-Control', 'no-store');
-  }
-  next();
-});
-
-// --- Routes ---
+// Import routes
 const bridgeRoutes = require('./routes/bridges');
-const driverRoutes = require('./routes/drivers');        // keep if present
-const supervisorRoutes = require('./routes/supervisors'); // keep if present
+const driverRoutes = require('./routes/drivers');
+const supervisorRoutes = require('./routes/supervisors');
 const routingRoutes = require('./routes/routing');
 
 app.use('/api/bridges', bridgeRoutes);
@@ -33,23 +20,22 @@ app.use('/api/drivers', driverRoutes);
 app.use('/api/supervisors', supervisorRoutes);
 app.use('/api/routing', routingRoutes);
 
-// --- Simple health endpoint ---
-app.get('/health', (req, res) => {
-  res.json({ ok: true, uptime: process.uptime() });
+// --- TEMP inline routing test (remove after we confirm) ---
+app.get('/api/routing/ping', (req, res) => {
+  console.log('✅ INLINE /api/routing/ping reached');
+  res.json({ ok: true, via: 'INLINE server.js' });
 });
 
-// --- 404 for unknown API routes (let front-end handle its own paths) ---
-app.use('/api', (req, res) => {
-  res.status(404).json({ error: 'Not found' });
+app.post('/api/routing/safe-route', (req, res) => {
+  console.log('✅ INLINE POST /api/routing/safe-route reached', req.body);
+  res.json({ ok: true, via: 'INLINE server.js' });
+});
+// --- END TEMP ---
+
+// Optional: handle root to avoid ENOENT error if public/index.html is missing
+app.get('/', (req, res) => {
+  res.send('<h1>Bridge API is running ✅</h1><p>Try /api/bridges or /api/routing/ping</p>');
 });
 
-// --- Fallback: serve index.html for any non-API path (SPA-friendly) ---
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
-// --- Start server ---
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-});
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
