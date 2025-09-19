@@ -5,7 +5,8 @@
   "type": "commonjs",
   "scripts": {
     "start": "node server.js",
-    "build:bridges": "node scripts/build-bridges.cjs"
+    "build:bridges": "node scripts/build-bridges.cjs",
+    "build:zones:sw": "node scripts/build-zones-regions.cjs"
   },
   "dependencies": {
     "@googlemaps/google-maps-services-js": "^3.3.37",
