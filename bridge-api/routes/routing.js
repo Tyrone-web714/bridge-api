@@ -2,7 +2,7 @@ const express = require('express');
 const { Client } = require('@googlemaps/google-maps-services-js');
 const router = express.Router();
 
-console.log('✅ routes/routing.js loaded'); // <-- debug: proves this file is executing
+console.log('✅ routes/routing.js loaded');
 
 const client = new Client({});
 
@@ -69,16 +69,16 @@ function decodePolyline(str) {
 }
 
 // Count hazards for a polyline (array of {lat,lng})
-function scoreRoute(points, { bridgeBufferMeters = 50 } = {}) {
+function scoreRoute(points, { bridgeBufferMeters = 50, maxHeightFt = 13 } = {}) {
   const hazards = {
     lowBridges: [],
     noTruckZones: [],
     residentialZones: []
   };
 
-  // 1) Bridges ≤ 13 ft within N meters of any point on the route
+  // 1) Bridges ≤ truck height within N meters of any point on the route
   for (const b of bridges) {
-    if (b.clearance_ft == null || b.clearance_ft > 13) continue;
+    if (b.clearance_ft == null || b.clearance_ft > maxHeightFt) continue;
     const bp = { lat: b.latitude, lng: b.longitude };
     for (const p of points) {
       if (haversineMeters(bp, p) <= bridgeBufferMeters) {
@@ -117,16 +117,20 @@ function scoreRoute(points, { bridgeBufferMeters = 50 } = {}) {
   return { hazards, score };
 }
 
-// ------- debug route (place ABOVE the POST handler) -------
+// ------- debug route (keep for now) -------
 router.get('/ping', (req, res) => {
   res.json({ ok: true, where: 'routes/routing.js' });
 });
 
 // ------- route handler -------
 router.post('/safe-route', async (req, res) => {
-  console.log('➡️  POST /api/routing/safe-route received', req.body); // <-- debug: proves the handler is hit
+  console.log('➡️  POST /api/routing/safe-route received', req.body);
+
   try {
-    const { origin, destination } = req.body || {};
+    const { origin, destination, truck = {}, tuning = {} } = req.body || {};
+    const { height_ft = 13 /* default */, width_ft, weight_lbs } = truck;
+    const { bridgeBufferMeters = 50 } = tuning;
+
     if (!origin || !destination) {
       return res.status(400).json({ error: 'origin and destination are required' });
     }
@@ -156,7 +160,10 @@ router.post('/safe-route', async (req, res) => {
     const evaluated = routes.map((r, idx) => {
       const enc = r.overview_polyline?.points;
       const pts = enc ? decodePolyline(enc) : [];
-      const { hazards, score } = scoreRoute(pts);
+      const { hazards, score } = scoreRoute(
+        pts,
+        { bridgeBufferMeters, maxHeightFt: height_ft }
+      );
       return { idx, route: r, hazards, score, pointsCount: pts.length };
     });
 
@@ -172,7 +179,9 @@ router.post('/safe-route', async (req, res) => {
         index: e.idx,
         score: e.score,
         hazards: e.hazards
-      }))
+      })),
+      usedTruckProfile: { height_ft, width_ft, weight_lbs },
+      usedTuning: { bridgeBufferMeters }
     });
 
   } catch (err) {
