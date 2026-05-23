@@ -409,6 +409,8 @@ async function searchNearbyBusinessCandidates(address, location, metadata = {}) 
 }
 
 async function enrichPlaceWithNearbyBusiness(req, place, address, metadata = {}) {
+  if (!hasBusinessSelectionContext(metadata)) return place;
+
   const shouldSearch =
     place?.location &&
     (!place.placePhotoUrl || !place.phoneNumber || isAddressLikePlace({ types: place.types }));
