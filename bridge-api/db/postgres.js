@@ -314,7 +314,7 @@ async function ensureSchema() {
 
 async function isPostgisEnabled() {
   if (!isDatabaseConfigured()) return false;
-  if (postgisReady !== null) return postgisReady;
+  if (postgisReady === true) return true;
 
   try {
     const result = await rawQuery(`
@@ -337,7 +337,6 @@ async function isPostgisEnabled() {
     postgisReady = Boolean(row.has_postgis && row.has_bridge_geom && row.has_zone_geom);
     return postgisReady;
   } catch {
-    postgisReady = false;
     return false;
   }
 }
