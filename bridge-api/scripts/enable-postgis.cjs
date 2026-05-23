@@ -141,6 +141,8 @@ async function main() {
     throw new Error('DATABASE_URL is required before enabling PostGIS.');
   }
 
+  console.log('[postgis:init] ensuring base database schema');
+  await postgres.ensureSchema();
   console.log('[postgis:init] enabling extension and spatial columns');
   await addPostgisSchema();
   console.log('[postgis:init] backfilling spatial geometries');
