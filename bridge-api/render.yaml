@@ -3,7 +3,7 @@ services:
     name: truck-safe-routing-api
     env: docker
     plan: starter
-    healthCheckPath: /ready
+    healthCheckPath: /health
     envVars:
       - key: NODE_ENV
         value: production

@@ -90,7 +90,7 @@ Expected response:
    - `PHOTO_STORAGE_SECRET_ACCESS_KEY`
    - `PHOTO_STORAGE_PUBLIC_BASE_URL`
 5. Confirm `/health` returns `ok: true`.
-6. Confirm `/ready` returns `ok: true`. Render also uses `/ready` as the service health check, so a deployment with missing database, PostGIS, durable photo storage, admin auth, driver auth, or Google Maps config will be marked unhealthy instead of silently serving broken app requests.
+6. Confirm `/ready` returns `ok: true`. Render uses `/health` as the platform health check so the container can start even while you are still correcting environment variables. Production readiness is still gated by `/ready` and `npm.cmd run check:deployed`.
 7. Set the mobile app's `EXPO_PUBLIC_API_BASE_URL` to the deployed API URL.
 
 After the hosted backend is live, verify it from your computer:
