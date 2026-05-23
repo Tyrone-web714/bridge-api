@@ -11,6 +11,8 @@ const RECENTS_FILE = path.join(__dirname, '..', 'data', 'recent_destinations.jso
 const MAX_RECENT_DESTINATIONS = 12;
 const BUSINESS_SEARCH_RADIUS_METERS = 120;
 const BUSINESS_SEARCH_MAX_CANDIDATES = 8;
+const BUSINESS_FALLBACK_MAX_DISTANCE_METERS = 75;
+const BUSINESS_LABEL_MATCH_MIN_SCORE = 55;
 const ADDRESS_LIKE_TYPES = new Set([
   'street_address',
   'route',
@@ -85,6 +87,62 @@ function cleanLongInput(value) {
 
 function cleanLargeInput(value) {
   return String(value || '').trim().slice(0, 2000);
+}
+
+function parseTypes(value) {
+  return String(value || '')
+    .split(',')
+    .map((type) => type.trim())
+    .filter(Boolean)
+    .slice(0, 20);
+}
+
+function normalizePlaceText(value) {
+  return String(value || '')
+    .toLowerCase()
+    .replace(/&/g, ' and ')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim();
+}
+
+function tokenSet(value) {
+  const ignored = new Set(['and', 'the', 'at', 'of', 'a', 'an', 'inc', 'llc', 'co', 'company']);
+  return new Set(
+    normalizePlaceText(value)
+      .split(' ')
+      .filter((token) => token.length > 1 && !ignored.has(token))
+  );
+}
+
+function placeTextMatchScore(expectedLabel, candidateName) {
+  const expected = normalizePlaceText(expectedLabel);
+  const candidate = normalizePlaceText(candidateName);
+  if (!expected || !candidate) return 0;
+  if (expected === candidate) return 100;
+  if (candidate.includes(expected) || expected.includes(candidate)) return 88;
+
+  const expectedTokens = tokenSet(expected);
+  const candidateTokens = tokenSet(candidate);
+  if (!expectedTokens.size || !candidateTokens.size) return 0;
+
+  let matches = 0;
+  for (const token of expectedTokens) {
+    if (candidateTokens.has(token)) matches += 1;
+  }
+
+  return Math.round((matches / Math.min(expectedTokens.size, candidateTokens.size)) * 80);
+}
+
+function looksLikeStreetAddress(value) {
+  return /^\d+\s+[a-z0-9]/i.test(String(value || '').trim());
+}
+
+function hasBusinessSelectionContext(metadata = {}) {
+  const types = metadata.selectedTypes || [];
+  if (types.some((type) => BUSINESS_LIKE_TYPES.has(type) || type === 'establishment' || type === 'point_of_interest')) {
+    return true;
+  }
+  return Boolean(metadata.selectedLabel && !looksLikeStreetAddress(metadata.selectedLabel));
 }
 
 function readRecentDestinations() {
@@ -193,7 +251,7 @@ function isRouteSafePlaceId(placeId) {
   return /^ChI/i.test(String(placeId || ''));
 }
 
-function scoreBusinessCandidate(candidate = {}, originLocation) {
+function scoreBusinessCandidate(candidate = {}, originLocation, metadata = {}) {
   if (!candidate.place_id) return -1000;
   if (isAddressLikePlace(candidate)) return -1000;
 
@@ -208,6 +266,15 @@ function scoreBusinessCandidate(candidate = {}, originLocation) {
   if (candidate.website) score += 16;
   if (candidate.business_status === 'OPERATIONAL') score += 14;
   if (candidate.rating) score += Math.min(10, Number(candidate.rating) || 0);
+
+  const labelScore = placeTextMatchScore(metadata.selectedLabel, candidate.name);
+  if (hasBusinessSelectionContext(metadata)) {
+    if (labelScore < BUSINESS_LABEL_MATCH_MIN_SCORE) return -1000;
+    score += labelScore * 3;
+  } else if (metadata.selectedLabel) {
+    score += labelScore;
+  }
+
   return score;
 }
 
@@ -282,7 +349,7 @@ async function fetchPlaceDetailsPayload(req, placeId, metadata = {}) {
   return buildPlacePayload(req, response.data.result || {}, placeId, metadata);
 }
 
-async function searchNearbyBusinessCandidates(address, location) {
+async function searchNearbyBusinessCandidates(address, location, metadata = {}) {
   const candidatesByPlaceId = new Map();
   const addCandidates = (records = [], source) => {
     for (const record of records.slice(0, BUSINESS_SEARCH_MAX_CANDIDATES)) {
@@ -309,10 +376,16 @@ async function searchNearbyBusinessCandidates(address, location) {
     addCandidates(nearbyResponse.data.results || [], 'nearby_search');
   }
 
-  if (address) {
+  const textQueries = [];
+  if (metadata.selectedLabel && metadata.selectedLabel !== address) {
+    textQueries.push(`${metadata.selectedLabel} ${address || ''}`.trim());
+  }
+  if (address) textQueries.push(address);
+
+  for (const query of [...new Set(textQueries)].slice(0, 2)) {
     const textResponse = await client.textSearch({
       params: {
-        query: address,
+        query,
         location,
         radius: BUSINESS_SEARCH_RADIUS_METERS,
         key: process.env.GOOGLE_MAPS_API_KEY,
@@ -328,13 +401,14 @@ async function searchNearbyBusinessCandidates(address, location) {
   return [...candidatesByPlaceId.values()]
     .map((candidate) => ({
       ...candidate,
-      businessScore: scoreBusinessCandidate(candidate, location)
+      labelScore: placeTextMatchScore(metadata.selectedLabel, candidate.name),
+      businessScore: scoreBusinessCandidate(candidate, location, metadata)
     }))
     .filter((candidate) => candidate.businessScore > 0)
     .sort((a, b) => b.businessScore - a.businessScore);
 }
 
-async function enrichPlaceWithNearbyBusiness(req, place, address) {
+async function enrichPlaceWithNearbyBusiness(req, place, address, metadata = {}) {
   const shouldSearch =
     place?.location &&
     (!place.placePhotoUrl || !place.phoneNumber || isAddressLikePlace({ types: place.types }));
@@ -342,9 +416,14 @@ async function enrichPlaceWithNearbyBusiness(req, place, address) {
   if (!shouldSearch) return place;
 
   try {
-    const candidates = await searchNearbyBusinessCandidates(address || place.formattedAddress, place.location);
+    const candidates = await searchNearbyBusinessCandidates(address || place.formattedAddress, place.location, metadata);
     const bestCandidate = candidates[0];
     if (!bestCandidate?.place_id || bestCandidate.place_id === place.placeId) return place;
+
+    const candidateDistance = distanceMeters(place.location, bestCandidate.geometry?.location);
+    if (!hasBusinessSelectionContext(metadata) && candidateDistance > BUSINESS_FALLBACK_MAX_DISTANCE_METERS) {
+      return place;
+    }
 
     const businessPlace = await fetchPlaceDetailsPayload(req, bestCandidate.place_id, {
       businessEnrichment: {
@@ -352,7 +431,9 @@ async function enrichPlaceWithNearbyBusiness(req, place, address) {
         originalPlaceId: place.placeId,
         originalName: place.name,
         originalAddress: place.formattedAddress,
-        distanceMeters: Math.round(distanceMeters(place.location, bestCandidate.geometry?.location)),
+        selectedLabel: metadata.selectedLabel || null,
+        labelScore: Math.round(bestCandidate.labelScore || 0),
+        distanceMeters: Math.round(candidateDistance),
         score: Math.round(bestCandidate.businessScore)
       }
     });
@@ -365,6 +446,14 @@ async function enrichPlaceWithNearbyBusiness(req, place, address) {
     });
 
     if (!isUsefulBusinessMatch) return place;
+
+    const originalNameLooksLikeAddress =
+      normalizePlaceText(place.name) === normalizePlaceText(place.formattedAddress) ||
+      normalizePlaceText(place.name) === normalizePlaceText(address);
+    const preferBusinessIdentity =
+      hasBusinessSelectionContext(metadata) ||
+      isAddressLikePlace({ types: place.types }) ||
+      originalNameLooksLikeAddress;
 
     const businessDetails = {
       placeId: businessPlace.placeId,
@@ -387,7 +476,7 @@ async function enrichPlaceWithNearbyBusiness(req, place, address) {
 
     return {
       ...place,
-      name: place.name || businessPlace.name,
+      name: preferBusinessIdentity ? businessPlace.name : place.name || businessPlace.name,
       phoneNumber: place.phoneNumber || businessPlace.phoneNumber,
       internationalPhoneNumber: place.internationalPhoneNumber || businessPlace.internationalPhoneNumber,
       website: place.website || businessPlace.website,
@@ -395,9 +484,13 @@ async function enrichPlaceWithNearbyBusiness(req, place, address) {
       businessStatus: place.businessStatus || businessPlace.businessStatus,
       rating: place.rating || businessPlace.rating,
       userRatingsTotal: place.userRatingsTotal || businessPlace.userRatingsTotal,
-      placePhotoUrl: place.placePhotoUrl || businessPlace.placePhotoUrl,
-      photoUrl: place.placePhotoUrl ? place.photoUrl : businessPlace.photoUrl || place.photoUrl,
-      photoSource: place.placePhotoUrl ? place.photoSource : businessPlace.photoSource || place.photoSource,
+      placePhotoUrl: preferBusinessIdentity ? businessPlace.placePhotoUrl || place.placePhotoUrl : place.placePhotoUrl || businessPlace.placePhotoUrl,
+      photoUrl: preferBusinessIdentity
+        ? businessPlace.photoUrl || place.photoUrl
+        : place.placePhotoUrl ? place.photoUrl : businessPlace.photoUrl || place.photoUrl,
+      photoSource: preferBusinessIdentity
+        ? businessPlace.photoSource || place.photoSource
+        : place.placePhotoUrl ? place.photoSource : businessPlace.photoSource || place.photoSource,
       businessEnrichment: businessPlace.businessEnrichment,
       businessDetails
     };
@@ -407,7 +500,7 @@ async function enrichPlaceWithNearbyBusiness(req, place, address) {
   }
 }
 
-async function geocodePlaceFromAddress(req, address, fallbackPlaceId = null) {
+async function geocodePlaceFromAddress(req, address, fallbackPlaceId = null, metadata = {}) {
   const response = await client.geocode({
     params: {
       address,
@@ -435,9 +528,10 @@ async function geocodePlaceFromAddress(req, address, fallbackPlaceId = null) {
       source: 'geocode',
       rejectedFallbackPlaceId: fallbackPlaceId,
       originalAddress: address
-    }
+    },
+    ...metadata
   });
-  return enrichPlaceWithNearbyBusiness(req, place, address);
+  return enrichPlaceWithNearbyBusiness(req, place, address, metadata);
 }
 
 router.get('/autocomplete', async (req, res) => {
@@ -496,6 +590,12 @@ router.get('/details', async (req, res) => {
   try {
     const placeId = cleanInput(req.query.placeId);
     const address = cleanLongInput(req.query.address);
+    const selectedLabel = cleanInput(req.query.label);
+    const selectedTypes = parseTypes(req.query.types);
+    const metadata = {
+      selectedLabel,
+      selectedTypes
+    };
 
     if (!placeId && !address) {
       return res.status(400).json({ error: 'placeId or address is required' });
@@ -506,19 +606,19 @@ router.get('/details', async (req, res) => {
     }
 
     if (!placeId) {
-      const place = await geocodePlaceFromAddress(req, address);
+      const place = await geocodePlaceFromAddress(req, address, null, metadata);
       return res.json({ place });
     }
 
     try {
       try {
-        const place = await fetchPlaceDetailsPayload(req, placeId);
-        const enrichedPlace = await enrichPlaceWithNearbyBusiness(req, place, address);
+        const place = await fetchPlaceDetailsPayload(req, placeId, metadata);
+        const enrichedPlace = await enrichPlaceWithNearbyBusiness(req, place, address, metadata);
         return res.json({ place: enrichedPlace });
       } catch (detailsError) {
         if (detailsError.googleStatus && detailsError.googleStatus !== 'OK') {
           if (address) {
-            const place = await geocodePlaceFromAddress(req, address, placeId);
+            const place = await geocodePlaceFromAddress(req, address, placeId, metadata);
             return res.json({ place });
           }
 
@@ -533,7 +633,7 @@ router.get('/details', async (req, res) => {
       }
     } catch (placeDetailsError) {
       if (address) {
-        const place = await geocodePlaceFromAddress(req, address, placeId);
+        const place = await geocodePlaceFromAddress(req, address, placeId, metadata);
         return res.json({ place });
       }
 
