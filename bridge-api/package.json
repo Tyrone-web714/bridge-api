@@ -3,19 +3,43 @@
   "version": "1.0.0",
   "main": "server.js",
   "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "start": "node server.js",
+    "admin:create": "node scripts/create-admin-user.cjs",
+    "healthcheck": "node -e \"fetch('http://127.0.0.1:' + (process.env.PORT || 5000) + '/health').then(r => r.ok ? process.exit(0) : process.exit(1)).catch(() => process.exit(1))\"",
+    "readinesscheck": "node -e \"fetch('http://127.0.0.1:' + (process.env.PORT || 5000) + '/ready').then(r => r.ok ? process.exit(0) : process.exit(1)).catch(() => process.exit(1))\"",
+    "check:runtime": "node scripts/check-runtime-health.cjs",
+    "check:deployed": "node scripts/check-deployed-backend.cjs",
+    "verify:production": "node scripts/verify-production-config.cjs",
+    "verify:secrets": "node scripts/audit-secrets.cjs",
+    "data:audit:coverage": "node scripts/audit-hazard-coverage.cjs",
+    "bridges:verification:export": "node scripts/export-low-bridge-verification-candidates.cjs",
+    "photos:verify-storage": "node scripts/verify-photo-storage.cjs",
+    "photos:migrate": "node scripts/migrate-local-photos-to-storage.cjs",
+    "db:migrate:json": "node scripts/migrate-json-to-postgres.cjs",
+    "db:postgis:init": "node scripts/enable-postgis.cjs",
+    "census:places:sync": "node scripts/sync-census-places.cjs",
+    "db:backfill:city-metadata": "node scripts/backfill-city-metadata-from-census.cjs",
+    "db:backfill:locations": "node scripts/backfill-static-hazard-locations.cjs",
+    "db:queue:locations": "node scripts/queue-location-backfill.cjs",
+    "db:process:locations": "node scripts/process-location-backfill-queue.cjs",
     "build:bridges": "node scripts/build-bridges.cjs",
     "build:zones:sw": "node scripts/build-zones-regions.cjs"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.1048.0",
     "@googlemaps/google-maps-services-js": "^3.3.37",
     "cors": "^2.8.5",
+    "csv-parse": "^5.5.6",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "csv-parse": "^5.5.6",
+    "pg": "^8.20.0",
     "unzipper": "^0.10.14"
+  },
+  "devDependencies": {
+    "localtunnel": "^2.0.2"
   }
 }
-
-

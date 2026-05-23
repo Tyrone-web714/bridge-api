@@ -1,0 +1,45 @@
+services:
+  - type: web
+    name: truck-safe-routing-api
+    env: docker
+    plan: starter
+    healthCheckPath: /ready
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: GOOGLE_MAPS_API_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: DATABASE_SSL
+        value: "true"
+      - key: ADMIN_DASHBOARD_PASSWORD
+        sync: false
+      - key: ADMIN_DASHBOARD_SECRET
+        sync: false
+      - key: ADMIN_DASHBOARD_ADMINS
+        value: "admin"
+      - key: ADMIN_DASHBOARD_ROLE
+        value: "supervisor"
+      - key: DRIVER_API_TOKEN
+        sync: false
+      - key: CORS_ORIGIN
+        sync: false
+      - key: BACKEND_PUBLIC_URL
+        sync: false
+      - key: PHOTO_STORAGE_PROVIDER
+        sync: false
+      - key: PHOTO_STORAGE_BUCKET
+        sync: false
+      - key: PHOTO_STORAGE_REGION
+        sync: false
+      - key: PHOTO_STORAGE_ENDPOINT
+        sync: false
+      - key: PHOTO_STORAGE_FORCE_PATH_STYLE
+        value: "true"
+      - key: PHOTO_STORAGE_ACCESS_KEY_ID
+        sync: false
+      - key: PHOTO_STORAGE_SECRET_ACCESS_KEY
+        sync: false
+      - key: PHOTO_STORAGE_PUBLIC_BASE_URL
+        sync: false

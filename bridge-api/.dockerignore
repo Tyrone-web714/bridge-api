@@ -1,0 +1,15 @@
+node_modules
+npm-debug.log
+.env
+.env.*
+.git
+.gitignore
+*.log
+*.zip
+coverage
+dist
+routes.zip
+scripts.zip
+data/delivery_note_photos
+data/census
+data/low_bridge_verification_candidates.csv
