@@ -829,14 +829,14 @@ router.get('/street-view-embed', async (req, res) => {
     const lat = Number(req.query.lat);
     const lng = Number(req.query.lng);
     const title = cleanInput(req.query.title) || 'Destination';
-    const embedKey = process.env.GOOGLE_MAPS_EMBED_API_KEY || process.env.GOOGLE_MAPS_API_KEY;
+    const embedKey = process.env.GOOGLE_MAPS_EMBED_API_KEY;
 
     if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
       return res.status(400).send('lat and lng are required');
     }
 
     if (!embedKey) {
-      return res.status(500).send('GOOGLE_MAPS_EMBED_API_KEY or GOOGLE_MAPS_API_KEY is required');
+      return res.status(500).send('GOOGLE_MAPS_EMBED_API_KEY is required for 360 Street View embeds');
     }
 
     const embedUrl = new URL('https://www.google.com/maps/embed/v1/streetview');
