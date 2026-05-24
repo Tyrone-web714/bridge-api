@@ -137,6 +137,50 @@ function looksLikeStreetAddress(value) {
   return /^\d+\s+[a-z0-9]/i.test(String(value || '').trim());
 }
 
+function normalizeStreetAddress(value) {
+  return normalizePlaceText(value)
+    .replace(/\b(east)\b/g, 'e')
+    .replace(/\b(west)\b/g, 'w')
+    .replace(/\b(north)\b/g, 'n')
+    .replace(/\b(south)\b/g, 's')
+    .replace(/\b(street)\b/g, 'st')
+    .replace(/\b(road)\b/g, 'rd')
+    .replace(/\b(avenue)\b/g, 'ave')
+    .replace(/\b(boulevard)\b/g, 'blvd')
+    .replace(/\b(drive)\b/g, 'dr')
+    .replace(/\b(lane)\b/g, 'ln')
+    .replace(/\b(parkway)\b/g, 'pkwy')
+    .replace(/\b(suite|ste|unit|building|bldg|floor|fl)\b.*$/g, '')
+    .replace(/\b(usa|united states)\b/g, '')
+    .trim();
+}
+
+function streetNumber(value) {
+  const match = normalizeStreetAddress(value).match(/^(\d+[a-z]?)(?:\s|$)/i);
+  return match?.[1] || '';
+}
+
+function isSameStreetAddress(candidateAddress, selectedAddress) {
+  const candidate = normalizeStreetAddress(candidateAddress);
+  const selected = normalizeStreetAddress(selectedAddress);
+  if (!candidate || !selected) return false;
+
+  const candidateNumber = streetNumber(candidate);
+  const selectedNumber = streetNumber(selected);
+  if (candidateNumber || selectedNumber) {
+    if (!candidateNumber || !selectedNumber || candidateNumber !== selectedNumber) return false;
+  }
+
+  const candidateTokens = tokenSet(candidate);
+  const selectedTokens = tokenSet(selected);
+  let sharedTokens = 0;
+  for (const token of selectedTokens) {
+    if (candidateTokens.has(token)) sharedTokens += 1;
+  }
+
+  return sharedTokens >= Math.min(3, selectedTokens.size);
+}
+
 function hasBusinessSelectionContext(metadata = {}) {
   const types = metadata.selectedTypes || [];
   if (types.some((type) => BUSINESS_LIKE_TYPES.has(type) || type === 'establishment' || type === 'point_of_interest')) {
@@ -530,12 +574,17 @@ async function attachBusinessCandidates(req, place, address) {
   if (!place?.location) return place;
 
   try {
-    const candidates = await searchNearbyBusinessCandidates(address || place.formattedAddress, place.location, {});
+    const selectedAddress = place.formattedAddress || address;
+    const candidates = await searchNearbyBusinessCandidates(address || selectedAddress, place.location, {});
     const businessCandidates = candidates
-      .filter((candidate) => candidate.place_id && candidate.place_id !== place.placeId)
-      .slice(0, 8)
       .map((candidate) => buildBusinessCandidatePayload(req, candidate, place.location))
-      .filter((candidate) => candidate.placeId && candidate.name);
+      .filter((candidate) => (
+        candidate.placeId &&
+        candidate.name &&
+        candidate.placeId !== place.placeId &&
+        isSameStreetAddress(candidate.formattedAddress, selectedAddress)
+      ))
+      .slice(0, 8);
 
     return {
       ...place,
