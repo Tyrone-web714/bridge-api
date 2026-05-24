@@ -586,9 +586,31 @@ async function attachBusinessCandidates(req, place, address) {
       ))
       .slice(0, 8);
 
+    if (businessCandidates.length === 1 && isAddressLikePlace({ types: place.types })) {
+      const onlyBusiness = await fetchPlaceDetailsPayload(req, businessCandidates[0].placeId, {
+        routingPlaceId: businessCandidates[0].placeId,
+        routingAddress: place.formattedAddress || selectedAddress,
+        routingLocation: place.location,
+        businessEnrichment: {
+          source: 'single_business_at_address',
+          originalPlaceId: place.placeId,
+          originalName: place.name,
+          originalAddress: place.formattedAddress,
+          selectedAddress
+        }
+      });
+
+      return {
+        ...onlyBusiness,
+        routingAddress: place.formattedAddress || onlyBusiness.routingAddress || selectedAddress,
+        routingLocation: place.location || onlyBusiness.routingLocation,
+        businessCandidates: []
+      };
+    }
+
     return {
       ...place,
-      businessCandidates
+      businessCandidates: businessCandidates.length > 1 ? businessCandidates : []
     };
   } catch (error) {
     console.warn('business-candidates warning:', error?.response?.data || error.message);
