@@ -1,18 +1,52 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
-const { Client } = require('@googlemaps/google-maps-services-js');
 const repositories = require('../db/repositories');
 
 const router = express.Router();
-const client = new Client({});
 const AUTOCOMPLETE_MIN_CHARS = 2;
 const RECENTS_FILE = path.join(__dirname, '..', 'data', 'recent_destinations.json');
 const MAX_RECENT_DESTINATIONS = 12;
 const BUSINESS_SEARCH_RADIUS_METERS = 120;
 const BUSINESS_SEARCH_MAX_CANDIDATES = 30;
+const PLACES_NEARBY_MAX_RESULTS = 20;
+const PLACES_TEXT_MAX_RESULTS = 20;
 const BUSINESS_FALLBACK_MAX_DISTANCE_METERS = 75;
 const BUSINESS_LABEL_MATCH_MIN_SCORE = 55;
+const PLACES_NEW_BASE_URL = 'https://places.googleapis.com/v1';
+const PLACE_DETAILS_FIELD_MASK = [
+  'id',
+  'displayName',
+  'formattedAddress',
+  'location',
+  'photos',
+  'types',
+  'googleMapsUri',
+  'websiteUri',
+  'nationalPhoneNumber',
+  'internationalPhoneNumber',
+  'businessStatus',
+  'rating',
+  'userRatingCount'
+].join(',');
+const PLACE_SEARCH_FIELD_MASK = [
+  'places.id',
+  'places.displayName',
+  'places.formattedAddress',
+  'places.location',
+  'places.photos',
+  'places.types',
+  'places.businessStatus',
+  'places.rating',
+  'places.userRatingCount'
+].join(',');
+const AUTOCOMPLETE_FIELD_MASK = [
+  'suggestions.placePrediction.placeId',
+  'suggestions.placePrediction.text.text',
+  'suggestions.placePrediction.structuredFormat.mainText.text',
+  'suggestions.placePrediction.structuredFormat.secondaryText.text',
+  'suggestions.placePrediction.types'
+].join(',');
 const ADDRESS_LIKE_TYPES = new Set([
   'street_address',
   'route',
@@ -258,6 +292,114 @@ function buildStreetViewUrl(req, location) {
   return `${baseUrl}/api/places/street-view?${query.toString()}`;
 }
 
+function requireGoogleMapsApiKey() {
+  const key = process.env.GOOGLE_MAPS_API_KEY;
+  if (!key) {
+    const error = new Error('GOOGLE_MAPS_API_KEY not set on server');
+    error.statusCode = 500;
+    throw error;
+  }
+  return key;
+}
+
+async function googlePlacesNewRequest(pathname, options = {}) {
+  const {
+    method = 'GET',
+    body,
+    fieldMask,
+    timeoutMs = 10000,
+    searchParams = {}
+  } = options;
+  const apiKey = requireGoogleMapsApiKey();
+  const url = new URL(`${PLACES_NEW_BASE_URL}${pathname}`);
+
+  for (const [key, value] of Object.entries(searchParams)) {
+    if (value !== undefined && value !== null && value !== '') {
+      url.searchParams.set(key, String(value));
+    }
+  }
+
+  const headers = {
+    'X-Goog-Api-Key': apiKey
+  };
+  if (fieldMask) headers['X-Goog-FieldMask'] = fieldMask;
+  if (body) headers['Content-Type'] = 'application/json';
+
+  const response = await fetch(url, {
+    method,
+    headers,
+    body: body ? JSON.stringify(body) : undefined,
+    signal: AbortSignal.timeout(timeoutMs)
+  });
+
+  const contentType = response.headers.get('content-type') || '';
+  const payload = contentType.includes('application/json')
+    ? await response.json()
+    : await response.text();
+
+  if (!response.ok) {
+    const error = new Error(payload?.error?.message || payload?.message || 'Places API (New) request failed');
+    error.statusCode = response.status;
+    error.googleStatus = payload?.error?.status || String(response.status);
+    error.googleDetail = payload?.error?.message || payload;
+    throw error;
+  }
+
+  return payload;
+}
+
+function normalizePlacesNewPlace(place = {}) {
+  const placeId = place.id || String(place.name || '').replace(/^places\//, '') || '';
+  const location = place.location
+    ? {
+        lat: Number(place.location.latitude),
+        lng: Number(place.location.longitude)
+      }
+    : null;
+
+  return {
+    place_id: placeId,
+    name: place.displayName?.text || '',
+    formatted_address: place.formattedAddress || '',
+    geometry: {
+      location: location && Number.isFinite(location.lat) && Number.isFinite(location.lng) ? location : null
+    },
+    photos: (place.photos || [])
+      .map((photo) => ({ photo_reference: String(photo.name || '').replace(/\/media$/i, '') }))
+      .filter((photo) => photo.photo_reference),
+    types: place.types || [],
+    url: place.googleMapsUri || null,
+    website: place.websiteUri || null,
+    formatted_phone_number: place.nationalPhoneNumber || place.internationalPhoneNumber || null,
+    international_phone_number: place.internationalPhoneNumber || null,
+    business_status: place.businessStatus || null,
+    rating: place.rating,
+    user_ratings_total: place.userRatingCount
+  };
+}
+
+function normalizeAutocompleteSuggestion(suggestion = {}) {
+  const prediction = suggestion.placePrediction || {};
+  const description = prediction.text?.text || '';
+  return {
+    placeId: prediction.placeId || '',
+    description,
+    mainText: prediction.structuredFormat?.mainText?.text || description,
+    secondaryText: prediction.structuredFormat?.secondaryText?.text || '',
+    matchedSubstrings: [],
+    types: prediction.types || []
+  };
+}
+
+function buildSearchCenter(location) {
+  const latLng = toLatLng(location);
+  if (!latLng) return null;
+  return {
+    latitude: latLng.lat,
+    longitude: latLng.lng
+  };
+}
+
 function toLatLng(location) {
   const lat = Number(location?.lat);
   const lng = Number(location?.lng);
@@ -391,39 +533,15 @@ function buildBusinessCandidatePayload(req, candidate = {}, originLocation) {
 }
 
 async function fetchPlaceDetailsPayload(req, placeId, metadata = {}) {
-  const response = await client.placeDetails({
-    params: {
-      place_id: placeId,
-      key: process.env.GOOGLE_MAPS_API_KEY,
-      language: 'en',
-      fields: [
-        'place_id',
-        'name',
-        'formatted_address',
-        'geometry',
-        'photos',
-        'types',
-        'url',
-        'website',
-        'formatted_phone_number',
-        'international_phone_number',
-        'business_status',
-        'rating',
-        'user_ratings_total'
-      ]
+  const response = await googlePlacesNewRequest(`/places/${encodeURIComponent(placeId)}`, {
+    fieldMask: PLACE_DETAILS_FIELD_MASK,
+    searchParams: {
+      languageCode: 'en'
     },
-    timeout: 10000
+    timeoutMs: 10000
   });
 
-  const status = response.data.status;
-  if (status !== 'OK') {
-    const error = new Error('Place details request failed');
-    error.googleStatus = status;
-    error.googleDetail = response.data.error_message || null;
-    throw error;
-  }
-
-  return buildPlacePayload(req, response.data.result || {}, placeId, metadata);
+  return buildPlacePayload(req, normalizePlacesNewPlace(response), placeId, metadata);
 }
 
 async function searchNearbyBusinessCandidates(address, location, metadata = {}) {
@@ -440,18 +558,25 @@ async function searchNearbyBusinessCandidates(address, location, metadata = {}) 
     }
   };
 
-  const nearbyResponse = await client.placesNearby({
-    params: {
-      location,
-      radius: BUSINESS_SEARCH_RADIUS_METERS,
-      key: process.env.GOOGLE_MAPS_API_KEY,
-      language: 'en'
-    },
-    timeout: 10000
+  const center = buildSearchCenter(location);
+  if (!center) return [];
+
+  const nearbyResponse = await googlePlacesNewRequest('/places:searchNearby', {
+    method: 'POST',
+    fieldMask: PLACE_SEARCH_FIELD_MASK,
+    timeoutMs: 10000,
+    body: {
+      maxResultCount: PLACES_NEARBY_MAX_RESULTS,
+      languageCode: 'en',
+      locationRestriction: {
+        circle: {
+          center,
+          radius: BUSINESS_SEARCH_RADIUS_METERS
+        }
+      }
+    }
   });
-  if (nearbyResponse.data.status === 'OK' || nearbyResponse.data.status === 'ZERO_RESULTS') {
-    addCandidates(nearbyResponse.data.results || [], 'nearby_search');
-  }
+  addCandidates((nearbyResponse.places || []).map(normalizePlacesNewPlace), 'nearby_search');
 
   const textQueries = [];
   if (metadata.selectedLabel && metadata.selectedLabel !== address) {
@@ -466,19 +591,23 @@ async function searchNearbyBusinessCandidates(address, location, metadata = {}) 
   }
 
   for (const query of [...new Set(textQueries)].slice(0, 4)) {
-    const textResponse = await client.textSearch({
-      params: {
-        query,
-        location,
-        radius: BUSINESS_SEARCH_RADIUS_METERS,
-        key: process.env.GOOGLE_MAPS_API_KEY,
-        language: 'en'
-      },
-      timeout: 10000
+    const textResponse = await googlePlacesNewRequest('/places:searchText', {
+      method: 'POST',
+      fieldMask: PLACE_SEARCH_FIELD_MASK,
+      timeoutMs: 10000,
+      body: {
+        textQuery: query,
+        pageSize: PLACES_TEXT_MAX_RESULTS,
+        languageCode: 'en',
+        locationBias: {
+          circle: {
+            center,
+            radius: BUSINESS_SEARCH_RADIUS_METERS
+          }
+        }
+      }
     });
-    if (textResponse.data.status === 'OK' || textResponse.data.status === 'ZERO_RESULTS') {
-      addCandidates(textResponse.data.results || [], 'text_search');
-    }
+    addCandidates((textResponse.places || []).map(normalizePlacesNewPlace), 'text_search');
   }
 
   return [...candidatesByPlaceId.values()]
@@ -634,25 +763,24 @@ async function attachBusinessCandidates(req, place, address) {
 }
 
 async function geocodePlaceFromAddress(req, address, fallbackPlaceId = null, metadata = {}) {
-  const response = await client.geocode({
-    params: {
-      address,
-      key: process.env.GOOGLE_MAPS_API_KEY,
-      region: 'us',
-      language: 'en'
-    },
-    timeout: 10000
-  });
+  const apiKey = requireGoogleMapsApiKey();
+  const url = new URL('https://maps.googleapis.com/maps/api/geocode/json');
+  url.searchParams.set('address', address);
+  url.searchParams.set('key', apiKey);
+  url.searchParams.set('region', 'us');
+  url.searchParams.set('language', 'en');
 
-  const status = response.data.status;
+  const response = await fetch(url, { signal: AbortSignal.timeout(10000) });
+  const data = await response.json();
+  const status = data.status;
   if (status !== 'OK') {
     const error = new Error('Geocoding request failed');
     error.googleStatus = status;
-    error.googleDetail = response.data.error_message || null;
+    error.googleDetail = data.error_message || null;
     throw error;
   }
 
-  const result = response.data.results?.[0] || {};
+  const result = data.results?.[0] || {};
   const place = buildPlacePayload(req, result, null, {
     routingPlaceId: isRouteSafePlaceId(result.place_id) ? result.place_id : null,
     routingAddress: result.formatted_address || address,
@@ -681,34 +809,21 @@ router.get('/autocomplete', async (req, res) => {
       return res.status(500).json({ error: 'GOOGLE_MAPS_API_KEY not set on server' });
     }
 
-    const response = await client.placeAutocomplete({
-      params: {
+    const response = await googlePlacesNewRequest('/places:autocomplete', {
+      method: 'POST',
+      fieldMask: AUTOCOMPLETE_FIELD_MASK,
+      timeoutMs: 10000,
+      body: {
         input,
-        key: process.env.GOOGLE_MAPS_API_KEY,
-        components: ['country:us'],
-        language: 'en',
-        ...(sessiontoken ? { sessiontoken } : {})
-      },
-      timeout: 10000
+        languageCode: 'en',
+        includedRegionCodes: ['us'],
+        ...(sessiontoken ? { sessionToken: sessiontoken } : {})
+      }
     });
 
-    const status = response.data.status;
-    if (status !== 'OK' && status !== 'ZERO_RESULTS') {
-      return res.status(502).json({
-        error: 'Places autocomplete request failed',
-        status,
-        detail: response.data.error_message || null
-      });
-    }
-
-    const predictions = (response.data.predictions || []).map((prediction) => ({
-      placeId: prediction.place_id,
-      description: prediction.description,
-      mainText: prediction.structured_formatting?.main_text || prediction.description,
-      secondaryText: prediction.structured_formatting?.secondary_text || '',
-      matchedSubstrings: prediction.matched_substrings || [],
-      types: prediction.types || []
-    }));
+    const predictions = (response.suggestions || [])
+      .map(normalizeAutocompleteSuggestion)
+      .filter((prediction) => prediction.placeId && prediction.description);
 
     return res.json({ predictions });
   } catch (err) {
@@ -901,23 +1016,37 @@ router.get('/photo', async (req, res) => {
       return res.status(400).json({ error: 'photo reference is required' });
     }
 
-    if (!process.env.GOOGLE_MAPS_API_KEY) {
-      return res.status(500).json({ error: 'GOOGLE_MAPS_API_KEY not set on server' });
+    const apiKey = requireGoogleMapsApiKey();
+    const normalizedPhotoReference = photoReference.replace(/\/media$/i, '');
+    if (!normalizedPhotoReference.startsWith('places/')) {
+      return res.status(400).json({
+        error: 'Unsupported photo reference',
+        detail: 'This backend now uses Places API (New) photo resource names.'
+      });
     }
 
-    const response = await client.placePhoto({
-      params: {
-        photoreference: photoReference,
-        maxwidth: maxWidth,
-        key: process.env.GOOGLE_MAPS_API_KEY
-      },
-      responseType: 'arraybuffer',
-      timeout: 10000
+    const url = new URL(`${PLACES_NEW_BASE_URL}/${normalizedPhotoReference}/media`);
+    url.searchParams.set('maxWidthPx', String(maxWidth));
+    url.searchParams.set('key', apiKey);
+
+    const response = await fetch(url, {
+      redirect: 'follow',
+      signal: AbortSignal.timeout(10000)
     });
 
-    res.set('Content-Type', response.headers['content-type'] || 'image/jpeg');
+    if (!response.ok) {
+      const detail = await response.text();
+      return res.status(502).json({
+        error: 'Place photo request failed',
+        status: response.status,
+        detail
+      });
+    }
+
+    const body = Buffer.from(await response.arrayBuffer());
+    res.set('Content-Type', response.headers.get('content-type') || 'image/jpeg');
     res.set('Cache-Control', 'public, max-age=86400');
-    return res.send(Buffer.from(response.data));
+    return res.send(body);
   } catch (err) {
     console.error('place-photo error:', err?.response?.data || err.message);
     return res.status(500).json({
