@@ -10,7 +10,7 @@ const AUTOCOMPLETE_MIN_CHARS = 2;
 const RECENTS_FILE = path.join(__dirname, '..', 'data', 'recent_destinations.json');
 const MAX_RECENT_DESTINATIONS = 12;
 const BUSINESS_SEARCH_RADIUS_METERS = 120;
-const BUSINESS_SEARCH_MAX_CANDIDATES = 8;
+const BUSINESS_SEARCH_MAX_CANDIDATES = 30;
 const BUSINESS_FALLBACK_MAX_DISTANCE_METERS = 75;
 const BUSINESS_LABEL_MATCH_MIN_SCORE = 55;
 const ADDRESS_LIKE_TYPES = new Set([
@@ -457,9 +457,15 @@ async function searchNearbyBusinessCandidates(address, location, metadata = {}) 
   if (metadata.selectedLabel && metadata.selectedLabel !== address) {
     textQueries.push(`${metadata.selectedLabel} ${address || ''}`.trim());
   }
-  if (address) textQueries.push(address);
+  if (address) {
+    textQueries.push(address);
+    if (!hasBusinessSelectionContext(metadata)) {
+      textQueries.push(`${address} businesses`);
+      textQueries.push(`${address} plaza`);
+    }
+  }
 
-  for (const query of [...new Set(textQueries)].slice(0, 2)) {
+  for (const query of [...new Set(textQueries)].slice(0, 4)) {
     const textResponse = await client.textSearch({
       params: {
         query,
