@@ -89,6 +89,15 @@ function cleanLargeInput(value) {
   return String(value || '').trim().slice(0, 2000);
 }
 
+function escapeHtml(value) {
+  return String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 function parseTypes(value) {
   return String(value || '')
     .split(',')
@@ -812,6 +821,68 @@ router.get('/street-view', async (req, res) => {
       error: 'Error fetching Street View destination image',
       detail: err?.response?.data || err.message
     });
+  }
+});
+
+router.get('/street-view-embed', async (req, res) => {
+  try {
+    const lat = Number(req.query.lat);
+    const lng = Number(req.query.lng);
+    const title = cleanInput(req.query.title) || 'Destination';
+    const embedKey = process.env.GOOGLE_MAPS_EMBED_API_KEY || process.env.GOOGLE_MAPS_API_KEY;
+
+    if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+      return res.status(400).send('lat and lng are required');
+    }
+
+    if (!embedKey) {
+      return res.status(500).send('GOOGLE_MAPS_EMBED_API_KEY or GOOGLE_MAPS_API_KEY is required');
+    }
+
+    const embedUrl = new URL('https://www.google.com/maps/embed/v1/streetview');
+    embedUrl.searchParams.set('key', embedKey);
+    embedUrl.searchParams.set('location', `${lat},${lng}`);
+    embedUrl.searchParams.set('fov', '80');
+    embedUrl.searchParams.set('pitch', '0');
+
+    res.set('Content-Type', 'text/html; charset=utf-8');
+    res.set('Cache-Control', 'public, max-age=3600');
+    return res.send(`<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>${escapeHtml(title)} Street View</title>
+    <style>
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background: #050b12;
+      }
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+        background: #050b12;
+      }
+    </style>
+  </head>
+  <body>
+    <iframe
+      title="${escapeHtml(title)} Street View"
+      src="${escapeHtml(embedUrl.toString())}"
+      allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </body>
+</html>`);
+  } catch (err) {
+    console.error('street-view-embed error:', err?.response?.data || err.message);
+    return res.status(500).send('Error loading Street View');
   }
 });
 
