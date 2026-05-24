@@ -309,7 +309,31 @@ function buildPlacePayload(req, result, fallbackPlaceId = null, metadata = {}) {
     photoUrl: placePhotoUrl || streetViewUrl,
     photoSource: placePhotoUrl ? 'place_photo' : streetViewUrl ? 'street_view' : null,
     businessEnrichment: metadata.businessEnrichment || null,
-    businessDetails: metadata.businessDetails || null
+    businessDetails: metadata.businessDetails || null,
+    businessCandidates: []
+  };
+}
+
+function buildBusinessCandidatePayload(req, candidate = {}, originLocation) {
+  const photoReference = candidate.photos?.[0]?.photo_reference || null;
+  const photoUrl = buildPhotoUrl(req, photoReference);
+  const location = candidate.geometry?.location || null;
+  const distance = distanceMeters(originLocation, location);
+
+  return {
+    placeId: candidate.place_id || null,
+    name: candidate.name || '',
+    formattedAddress: candidate.formatted_address || candidate.vicinity || '',
+    location,
+    types: candidate.types || [],
+    rating: Number.isFinite(Number(candidate.rating)) ? Number(candidate.rating) : null,
+    userRatingsTotal: Number.isFinite(Number(candidate.user_ratings_total)) ? Number(candidate.user_ratings_total) : null,
+    photoReference,
+    photoUrl,
+    photoSource: photoUrl ? 'place_photo' : null,
+    businessStatus: candidate.business_status || null,
+    distanceMeters: Number.isFinite(distance) ? Math.round(distance) : null,
+    searchSource: candidate.searchSource || null
   };
 }
 
@@ -502,6 +526,27 @@ async function enrichPlaceWithNearbyBusiness(req, place, address, metadata = {})
   }
 }
 
+async function attachBusinessCandidates(req, place, address) {
+  if (!place?.location) return place;
+
+  try {
+    const candidates = await searchNearbyBusinessCandidates(address || place.formattedAddress, place.location, {});
+    const businessCandidates = candidates
+      .filter((candidate) => candidate.place_id && candidate.place_id !== place.placeId)
+      .slice(0, 8)
+      .map((candidate) => buildBusinessCandidatePayload(req, candidate, place.location))
+      .filter((candidate) => candidate.placeId && candidate.name);
+
+    return {
+      ...place,
+      businessCandidates
+    };
+  } catch (error) {
+    console.warn('business-candidates warning:', error?.response?.data || error.message);
+    return place;
+  }
+}
+
 async function geocodePlaceFromAddress(req, address, fallbackPlaceId = null, metadata = {}) {
   const response = await client.geocode({
     params: {
@@ -533,7 +578,8 @@ async function geocodePlaceFromAddress(req, address, fallbackPlaceId = null, met
     },
     ...metadata
   });
-  return enrichPlaceWithNearbyBusiness(req, place, address, metadata);
+  const enrichedPlace = await enrichPlaceWithNearbyBusiness(req, place, address, metadata);
+  return attachBusinessCandidates(req, enrichedPlace, address);
 }
 
 router.get('/autocomplete', async (req, res) => {
@@ -616,7 +662,8 @@ router.get('/details', async (req, res) => {
       try {
         const place = await fetchPlaceDetailsPayload(req, placeId, metadata);
         const enrichedPlace = await enrichPlaceWithNearbyBusiness(req, place, address, metadata);
-        return res.json({ place: enrichedPlace });
+        const placeWithCandidates = await attachBusinessCandidates(req, enrichedPlace, address);
+        return res.json({ place: placeWithCandidates });
       } catch (detailsError) {
         if (detailsError.googleStatus && detailsError.googleStatus !== 'OK') {
           if (address) {
