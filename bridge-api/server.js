@@ -44,6 +44,7 @@ const routingRoutes = require('./routes/routing');
 const placesRoutes = require('./routes/places');
 const deliveryNotesRoutes = require('./routes/deliveryNotes');
 const routeManifestRoutes = require('./routes/routeManifests');
+const adminDashboardRoutes = require('./routes/adminDashboard');
 
 app.use('/api/bridges', bridgeRoutes);
 app.use('/api/drivers', driverRoutes);
@@ -52,6 +53,7 @@ app.use('/api/routing', routingRoutes);
 app.use('/api/places', placesRoutes);
 app.use('/api/delivery-notes', deliveryNotesRoutes);
 app.use('/api/route-manifests', routeManifestRoutes);
+app.use('/api/admin', adminDashboardRoutes);
 
 app.get('/health', async (req, res) => {
   res.json({

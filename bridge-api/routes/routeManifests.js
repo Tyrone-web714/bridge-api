@@ -27,7 +27,9 @@ const COLUMN_ALIASES = {
   driveMinutesToNext: ['drive_minutes_to_next', 'drive_to_next', 'travel_minutes_to_next', 'next_drive_minutes'],
   palletCount: ['pallet_count', 'pallets', 'skids', 'skid_count', 'total_pallets'],
   caseCount: ['case_count', 'cases', 'total_cases', 'case_qty', 'quantity_cases'],
-  itemSummary: ['item_summary', 'items', 'products', 'sku_summary']
+  itemSummary: ['item_summary', 'items', 'products', 'sku_summary'],
+  assignedDriverId: ['assigned_driver_id', 'driver_id', 'driver id', 'employee_id', 'employee id', 'route_driver_id'],
+  assignedDriverName: ['assigned_driver_name', 'driver_name', 'driver name', 'driver', 'employee_name', 'employee name']
 };
 
 function cleanText(value, maxLength = 500) {
@@ -128,6 +130,8 @@ function buildManifestImport(csvText, options = {}) {
 
     const routeKey = `${routeDate}:${routeNumber}`;
     if (!routeMap.has(routeKey)) {
+      const assignedDriverId = cleanText(readCell(row, 'assignedDriverId'), 120);
+      const assignedDriverName = cleanText(readCell(row, 'assignedDriverName'), 160);
       routeMap.set(routeKey, {
         id: `manifest_${stableId([routeDate, routeNumber])}`,
         routeDate,
@@ -138,10 +142,15 @@ function buildManifestImport(csvText, options = {}) {
         plannedEndAt: parseDateTime(routeDate, readCell(row, 'routeEnd')),
         sourceFileName: cleanText(options.fileName, 240) || null,
         importedBy: cleanText(options.importedBy, 120) || 'supervisor',
-        status: 'unassigned',
+        assignedDriverId: assignedDriverId || null,
+        assignedDriverName: assignedDriverName || assignedDriverId || null,
+        assignedAt: assignedDriverId ? new Date().toISOString() : null,
+        assignedBy: assignedDriverId ? cleanText(options.importedBy, 120) || 'csv_import' : null,
+        status: assignedDriverId ? 'assigned' : 'unassigned',
         raw: {
           source: 'csv_import',
-          fileName: cleanText(options.fileName, 240) || null
+          fileName: cleanText(options.fileName, 240) || null,
+          bulkAssigned: !!assignedDriverId
         },
         stops: []
       });
@@ -237,6 +246,8 @@ function renderRouteManifestAdminPage() {
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
     .message { min-height: 22px; color: #a6ffb8; font-weight: 800; }
     .muted { color: #a9bdc7; }
+    .danger { background: #c62828; }
+    .row-actions { display: flex; gap: 8px; flex-wrap: wrap; }
   </style>
 </head>
 <body>
@@ -255,7 +266,8 @@ function renderRouteManifestAdminPage() {
     </nav>
     <section class="panel">
       <h2>Import CSV</h2>
-      <p class="muted">Required columns: route number, stop sequence, address. Recommended: route date, route start, route end, account number, account name, pallets, cases.</p>
+      <p class="muted">Required columns: route number, stop sequence, address. Recommended: route date, route start, route end, account number, account name, pallets, cases, assigned_driver_id, assigned_driver_name.</p>
+      <p><button onclick="loadProductionTemplate()">Use Production Bulk Assignment Template</button></p>
       <div class="grid">
         <div><label>File name</label><input id="fileName" placeholder="DailyRoutes_2026-05-25.csv" /></div>
         <div><label>Imported by</label><input id="importedBy" placeholder="Supervisor name" /></div>
@@ -267,7 +279,16 @@ function renderRouteManifestAdminPage() {
     </section>
     <section class="panel">
       <h2>Imported Routes</h2>
-      <button onclick="loadRoutes()">Refresh</button>
+      <div class="grid">
+        <div><label>Filter/delete date</label><input id="routeDateFilter" placeholder="YYYY-MM-DD" /></div>
+        <div>
+          <label>&nbsp;</label>
+          <div class="row-actions">
+            <button onclick="loadRoutes()">Refresh</button>
+            <button class="danger" onclick="deleteRoutesByDate()">Delete Routes for Date</button>
+          </div>
+        </div>
+      </div>
       <div id="routes"></div>
     </section>
   </main>
@@ -301,6 +322,17 @@ function renderRouteManifestAdminPage() {
       if (response.ok) loadRoutes();
     }
 
+    function loadProductionTemplate() {
+      document.getElementById('fileName').value = 'daily-route-bulk-assignment-template.csv';
+      document.getElementById('csvText').value = [
+        'route_date,route_number,route_name,planned_route_start,planned_route_end,start_location,assigned_driver_id,assigned_driver_name,stop_sequence,account_number,account_name,address,city,state,zip,planned_arrival,planned_departure,planned_service_minutes,drive_minutes_to_next,pallet_count,case_count,item_summary',
+        '2026-05-25,RT-101,San Antonio North,7:00 AM,3:30 PM,San Antonio DC,driver_app,Truck-Safe Driver,1,100245,Alamo City Stripers,"4337 E Houston St, San Antonio, TX 78220",San Antonio,TX,78220,7:35 AM,7:55 AM,20,14,2,86,"CSD cases; cooler reset"',
+        '2026-05-25,RT-101,San Antonio North,7:00 AM,3:30 PM,San Antonio DC,driver_app,Truck-Safe Driver,2,100246,Eastside Market,"5030 Rigsby Ave, San Antonio, TX 78222",San Antonio,TX,78222,8:10 AM,8:28 AM,18,16,1,44,"Water; mini cans"',
+        '2026-05-25,RT-102,Leon Valley,6:45 AM,2:45 PM,San Antonio DC,driver_002,Driver Two,1,200100,Vape City,"5772 Evers Rd, Leon Valley, TX 78238",Leon Valley,TX,78238,7:20 AM,7:38 AM,18,12,1,52,"Core CSD"',
+        '2026-05-25,RT-102,Leon Valley,6:45 AM,2:45 PM,San Antonio DC,driver_002,Driver Two,2,200101,AutoZone,"5803 NW Loop 410, San Antonio, TX 78238",San Antonio,TX,78238,7:50 AM,8:15 AM,25,15,3,120,"Bulk pallets"'
+      ].join('\\n');
+    }
+
     async function assignRoute(id) {
       const driverId = prompt('Driver ID');
       if (!driverId) return;
@@ -317,8 +349,42 @@ function renderRouteManifestAdminPage() {
       loadRoutes();
     }
 
+    async function deleteRoute(id, routeNumber, routeDate) {
+      if (!confirm('Delete route ' + routeNumber + ' for ' + routeDate + '? This deletes the route and every stop connected to it.')) return;
+      const response = await fetch('/api/route-manifests/' + encodeURIComponent(id) + '?confirm=DELETE', { method: 'DELETE' });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        alert(data.error || 'Delete failed.');
+        return;
+      }
+      document.getElementById('message').textContent = 'Deleted route ' + routeNumber + ' and ' + data.deletedStops + ' stops.';
+      loadRoutes();
+    }
+
+    async function deleteRoutesByDate() {
+      const routeDate = document.getElementById('routeDateFilter').value.trim();
+      if (!/^\\d{4}-\\d{2}-\\d{2}$/.test(routeDate)) {
+        alert('Enter a route date as YYYY-MM-DD first.');
+        return;
+      }
+      const confirmation = prompt('Type DELETE ' + routeDate + ' to delete every route manifest and stop for this date.');
+      if (confirmation !== 'DELETE ' + routeDate) return;
+
+      const response = await fetch('/api/route-manifests/date/' + encodeURIComponent(routeDate) + '?confirm=DELETE', { method: 'DELETE' });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        alert(data.error || 'Date delete failed.');
+        return;
+      }
+      document.getElementById('message').textContent = 'Deleted ' + data.deletedRoutes + ' routes and ' + data.deletedStops + ' stops for ' + routeDate + '.';
+      loadRoutes();
+    }
+
     async function loadRoutes() {
-      const response = await fetch('/api/route-manifests?limit=200');
+      const routeDate = document.getElementById('routeDateFilter').value.trim();
+      const query = new URLSearchParams({ limit: '200' });
+      if (/^\\d{4}-\\d{2}-\\d{2}$/.test(routeDate)) query.set('routeDate', routeDate);
+      const response = await fetch('/api/route-manifests?' + query.toString());
       const data = await response.json();
       const routes = data.routes || [];
       document.getElementById('routes').innerHTML =
@@ -332,7 +398,10 @@ function renderRouteManifestAdminPage() {
           '<td>' + escapeHtml(route.totalCases) + '</td>' +
           '<td>' + escapeHtml(route.assignedDriverName || route.assignedDriverId || 'Unassigned') + '</td>' +
           '<td>' + escapeHtml(route.status) + '</td>' +
-          '<td><button onclick="assignRoute(\\'' + escapeHtml(route.id) + '\\')">Assign</button></td>' +
+          '<td><div class="row-actions">' +
+            '<button onclick="assignRoute(\\'' + escapeHtml(route.id) + '\\')">Assign</button>' +
+            '<button class="danger" onclick="deleteRoute(\\'' + escapeHtml(route.id) + '\\', \\'' + escapeHtml(route.routeNumber) + '\\', \\'' + escapeHtml(route.routeDate) + '\\')">Delete</button>' +
+          '</div></td>' +
         '</tr>').join('') +
         '</tbody></table>';
     }
@@ -435,6 +504,27 @@ router.put('/driver/stops/:stopId/status', driverAuth.requireDriverAuth, async (
   }
 });
 
+router.delete('/date/:routeDate', requireAdminSession, async (req, res) => {
+  try {
+    const confirmation = String(req.query.confirm || req.body?.confirm || '').trim();
+    if (confirmation !== 'DELETE') {
+      return res.status(400).json({
+        error: 'Delete confirmation is required.'
+      });
+    }
+
+    const result = await repositories.deleteDailyRouteManifestsByDate(req.params.routeDate);
+    return res.json({
+      ok: true,
+      ...result
+    });
+  } catch (error) {
+    return res.status(error.status || 500).json({
+      error: error.message || 'Unable to delete route manifests for this date.'
+    });
+  }
+});
+
 router.get('/:id', requireAdminSession, async (req, res) => {
   try {
     const route = await repositories.getDailyRouteManifest(req.params.id);
@@ -442,6 +532,29 @@ router.get('/:id', requireAdminSession, async (req, res) => {
     return res.json({ ok: true, route });
   } catch (error) {
     return res.status(500).json({ error: error.message || 'Unable to load route manifest.' });
+  }
+});
+
+router.delete('/:id', requireAdminSession, async (req, res) => {
+  try {
+    const confirmation = String(req.query.confirm || req.body?.confirm || '').trim();
+    if (confirmation !== 'DELETE') {
+      return res.status(400).json({
+        error: 'Delete confirmation is required.'
+      });
+    }
+
+    const result = await repositories.deleteDailyRouteManifest(req.params.id);
+    if (!result) return res.status(404).json({ error: 'Route manifest not found.' });
+    return res.json({
+      ok: true,
+      route: result.route,
+      deletedStops: result.deletedStops
+    });
+  } catch (error) {
+    return res.status(error.status || 500).json({
+      error: error.message || 'Unable to delete route manifest.'
+    });
   }
 });
 

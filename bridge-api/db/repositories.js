@@ -1755,6 +1755,11 @@ async function upsertDailyRouteManifest(manifest) {
       total_stops = EXCLUDED.total_stops,
       total_pallets = EXCLUDED.total_pallets,
       total_cases = EXCLUDED.total_cases,
+      assigned_driver_id = EXCLUDED.assigned_driver_id,
+      assigned_driver_name = EXCLUDED.assigned_driver_name,
+      assigned_at = EXCLUDED.assigned_at,
+      assigned_by = EXCLUDED.assigned_by,
+      status = EXCLUDED.status,
       source_file_name = EXCLUDED.source_file_name,
       imported_by = EXCLUDED.imported_by,
       imported_at = EXCLUDED.imported_at,
@@ -1908,6 +1913,80 @@ async function assignDailyRouteManifest(id, input = {}) {
   return result.rows[0] ? routeManifestFromRow(result.rows[0]) : null;
 }
 
+async function deleteDailyRouteManifest(id) {
+  const cleanedId = String(id || '').trim();
+  if (!cleanedId) {
+    const error = new Error('Route manifest id is required.');
+    error.status = 400;
+    throw error;
+  }
+
+  const result = await postgres.query(`
+    WITH selected AS (
+      SELECT id, route_date, route_number, assigned_driver_id
+      FROM daily_route_manifests
+      WHERE id = $1
+    ),
+    stop_count AS (
+      SELECT count(*)::int AS stops
+      FROM daily_route_stops
+      WHERE manifest_id = $1
+    ),
+    deleted AS (
+      DELETE FROM daily_route_manifests
+      WHERE id = $1
+      RETURNING *
+    )
+    SELECT
+      deleted.*,
+      COALESCE((SELECT stops FROM stop_count), 0) AS deleted_stops
+    FROM deleted
+  `, [cleanedId]);
+
+  const row = result.rows[0];
+  if (!row) return null;
+  return {
+    route: routeManifestFromRow(row),
+    deletedStops: Number(row.deleted_stops) || 0
+  };
+}
+
+async function deleteDailyRouteManifestsByDate(routeDate) {
+  const cleanedRouteDate = String(routeDate || '').trim();
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(cleanedRouteDate)) {
+    const error = new Error('A route date in YYYY-MM-DD format is required.');
+    error.status = 400;
+    throw error;
+  }
+
+  const result = await postgres.query(`
+    WITH selected AS (
+      SELECT id
+      FROM daily_route_manifests
+      WHERE route_date = $1
+    ),
+    stop_count AS (
+      SELECT count(*)::int AS stops
+      FROM daily_route_stops
+      WHERE manifest_id IN (SELECT id FROM selected)
+    ),
+    deleted AS (
+      DELETE FROM daily_route_manifests
+      WHERE id IN (SELECT id FROM selected)
+      RETURNING id
+    )
+    SELECT
+      (SELECT count(*)::int FROM deleted) AS routes,
+      COALESCE((SELECT stops FROM stop_count), 0) AS stops
+  `, [cleanedRouteDate]);
+
+  return {
+    routeDate: cleanedRouteDate,
+    deletedRoutes: Number(result.rows[0]?.routes) || 0,
+    deletedStops: Number(result.rows[0]?.stops) || 0
+  };
+}
+
 async function updateDailyRouteStopStatusForDriver(stopId, driverId, input = {}) {
   const cleanedStopId = String(stopId || '').trim();
   const cleanedDriverId = String(driverId || '').trim();
@@ -2006,6 +2085,8 @@ async function getAssignedDailyRouteForDriver(driverId, routeDate) {
 module.exports = {
   getAdminUser,
   assignDailyRouteManifest,
+  deleteDailyRouteManifest,
+  deleteDailyRouteManifestsByDate,
   deleteDeliveryNote,
   deleteManualHazard,
   deleteRouteSession,

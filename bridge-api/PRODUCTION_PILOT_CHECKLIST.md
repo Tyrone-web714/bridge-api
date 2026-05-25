@@ -96,7 +96,7 @@ Driver write actions now support a backend-validated request token:
 
 - `DRIVER_API_TOKEN` on the backend
 - `EXPO_PUBLIC_DRIVER_API_TOKEN` in the mobile app
-- Driver identity headers: `X-TSR-Driver-Id`, `X-TSR-Driver-Name`, `X-TSR-Device-Id`
+- Driver identity headers: `X-TSR-Driver-Id`, `X-TSR-Driver-Name`
 - Protected driver actions include safe-route requests, hazard reports, route replay events, and delivery-note edits
 - Admin dashboard sessions can still perform admin delivery-note edits without the driver token
 - Route sessions, route events, and driver hazard reports now capture driver identity when provided

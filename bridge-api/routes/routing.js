@@ -3726,7 +3726,7 @@ router.post('/manual-hazards/admin/login', express.urlencoded({ extended: false 
   }
 
   setAdminSessionCookie(req, res, result.username, result.role);
-  return res.redirect('/api/routing/manual-hazards/admin');
+  return res.redirect('/api/admin');
 });
 
 router.post('/manual-hazards/admin/logout', (req, res) => {

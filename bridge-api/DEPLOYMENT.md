@@ -124,9 +124,8 @@ The Android Maps SDK key is injected at native build time from the mobile app en
 ```env
 EXPO_PUBLIC_ANDROID_MAPS_API_KEY=restricted-android-maps-sdk-key
 EXPO_PUBLIC_DRIVER_API_TOKEN=same-value-as-backend-driver-token
-EXPO_PUBLIC_DRIVER_ID=driver-or-device-id
+EXPO_PUBLIC_DRIVER_ID=driver-id
 EXPO_PUBLIC_DRIVER_NAME=Driver Display Name
-EXPO_PUBLIC_DEVICE_ID=pilot-device-001
 EXPO_PUBLIC_API_BASE_URL=https://your-deployed-api.example
 ```
 
