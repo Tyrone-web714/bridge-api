@@ -536,6 +536,7 @@ function renderAdminUsersPage(session = {}) {
     <a class="tab" href="/api/routing/hazard-verification/admin">Static Hazard Verification</a>
     <a class="tab" href="/api/routing/route-sessions/admin">Route Replay</a>
     <a class="tab delivery" href="/api/delivery-notes/admin">Delivery Notes</a>
+    <a class="tab" href="/api/route-manifests/admin">Route Manifests</a>
     <a class="tab active" href="/api/routing/manual-hazards/admin-users/admin">Admin Users</a>
   </nav>
   <main>
@@ -721,6 +722,7 @@ function renderManualHazardAdminPage(session = {}) {
     <a class="tab" href="/api/routing/hazard-verification/admin">Static Hazard Verification</a>
     <a class="tab" href="/api/routing/route-sessions/admin">Route Replay</a>
     <a class="tab delivery" href="/api/delivery-notes/admin">Delivery Notes</a>
+    <a class="tab" href="/api/route-manifests/admin">Route Manifests</a>
     <a class="tab" href="/api/routing/manual-hazards/admin-users/admin">Admin Users</a>
   </nav>
   <main>
@@ -1043,6 +1045,7 @@ function renderHazardVerificationAdminPage(session = {}) {
     <a class="tab active" href="/api/routing/hazard-verification/admin">Static Hazard Verification</a>
     <a class="tab" href="/api/routing/route-sessions/admin">Route Replay</a>
     <a class="tab delivery" href="/api/delivery-notes/admin">Delivery Notes</a>
+    <a class="tab" href="/api/route-manifests/admin">Route Manifests</a>
     <a class="tab" href="/api/routing/manual-hazards/admin-users/admin">Admin Users</a>
   </nav>
   <main>
@@ -1749,6 +1752,7 @@ function renderRouteSessionsAdminPage(session = {}) {
     <a class="tab" href="/api/routing/hazard-verification/admin">Static Hazard Verification</a>
     <a class="tab active" href="/api/routing/route-sessions/admin">Route Replay</a>
     <a class="tab delivery" href="/api/delivery-notes/admin">Delivery Notes</a>
+    <a class="tab" href="/api/route-manifests/admin">Route Manifests</a>
     <a class="tab" href="/api/routing/manual-hazards/admin-users/admin">Admin Users</a>
   </nav>
   <main>

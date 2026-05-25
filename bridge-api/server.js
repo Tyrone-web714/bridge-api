@@ -43,6 +43,7 @@ const supervisorRoutes = require('./routes/supervisors');
 const routingRoutes = require('./routes/routing');
 const placesRoutes = require('./routes/places');
 const deliveryNotesRoutes = require('./routes/deliveryNotes');
+const routeManifestRoutes = require('./routes/routeManifests');
 
 app.use('/api/bridges', bridgeRoutes);
 app.use('/api/drivers', driverRoutes);
@@ -50,6 +51,7 @@ app.use('/api/supervisors', supervisorRoutes);
 app.use('/api/routing', routingRoutes);
 app.use('/api/places', placesRoutes);
 app.use('/api/delivery-notes', deliveryNotesRoutes);
+app.use('/api/route-manifests', routeManifestRoutes);
 
 app.get('/health', async (req, res) => {
   res.json({

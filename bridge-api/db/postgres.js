@@ -302,6 +302,75 @@ async function ensureSchema() {
 
     CREATE INDEX IF NOT EXISTS route_session_events_session_idx ON route_session_events(route_session_id, created_at DESC);
     CREATE INDEX IF NOT EXISTS route_session_events_type_idx ON route_session_events(event_type, created_at DESC);
+
+    CREATE TABLE IF NOT EXISTS daily_route_manifests (
+      id TEXT PRIMARY KEY,
+      route_date DATE NOT NULL,
+      route_number TEXT NOT NULL,
+      route_name TEXT,
+      start_location TEXT,
+      planned_start_at TIMESTAMPTZ,
+      planned_end_at TIMESTAMPTZ,
+      planned_duration_minutes INTEGER,
+      total_stops INTEGER NOT NULL DEFAULT 0,
+      total_pallets INTEGER NOT NULL DEFAULT 0,
+      total_cases INTEGER NOT NULL DEFAULT 0,
+      assigned_driver_id TEXT,
+      assigned_driver_name TEXT,
+      assigned_at TIMESTAMPTZ,
+      assigned_by TEXT,
+      status TEXT NOT NULL DEFAULT 'unassigned',
+      source_file_name TEXT,
+      imported_by TEXT,
+      imported_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      published_at TIMESTAMPTZ,
+      started_at TIMESTAMPTZ,
+      completed_at TIMESTAMPTZ,
+      raw JSONB NOT NULL DEFAULT '{}'::jsonb,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      UNIQUE (route_date, route_number)
+    );
+
+    CREATE INDEX IF NOT EXISTS daily_route_manifests_route_date_idx ON daily_route_manifests(route_date DESC);
+    CREATE INDEX IF NOT EXISTS daily_route_manifests_route_number_idx ON daily_route_manifests(route_number);
+    CREATE INDEX IF NOT EXISTS daily_route_manifests_assigned_driver_idx ON daily_route_manifests(assigned_driver_id, route_date DESC);
+    CREATE INDEX IF NOT EXISTS daily_route_manifests_status_idx ON daily_route_manifests(status);
+
+    CREATE TABLE IF NOT EXISTS daily_route_stops (
+      id TEXT PRIMARY KEY,
+      manifest_id TEXT NOT NULL REFERENCES daily_route_manifests(id) ON DELETE CASCADE,
+      stop_sequence INTEGER NOT NULL,
+      account_number TEXT,
+      account_name TEXT,
+      destination_address TEXT NOT NULL,
+      city TEXT,
+      state_code TEXT,
+      postal_code TEXT,
+      latitude DOUBLE PRECISION,
+      longitude DOUBLE PRECISION,
+      planned_arrival_at TIMESTAMPTZ,
+      planned_departure_at TIMESTAMPTZ,
+      planned_service_minutes INTEGER,
+      drive_minutes_to_next INTEGER,
+      pallet_count INTEGER NOT NULL DEFAULT 0,
+      case_count INTEGER NOT NULL DEFAULT 0,
+      item_summary JSONB NOT NULL DEFAULT '[]'::jsonb,
+      status TEXT NOT NULL DEFAULT 'pending',
+      actual_arrival_at TIMESTAMPTZ,
+      actual_service_started_at TIMESTAMPTZ,
+      actual_completed_at TIMESTAMPTZ,
+      actual_departure_at TIMESTAMPTZ,
+      driver_notes TEXT,
+      raw JSONB NOT NULL DEFAULT '{}'::jsonb,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      UNIQUE (manifest_id, stop_sequence)
+    );
+
+    CREATE INDEX IF NOT EXISTS daily_route_stops_manifest_idx ON daily_route_stops(manifest_id, stop_sequence);
+    CREATE INDEX IF NOT EXISTS daily_route_stops_account_number_idx ON daily_route_stops(account_number);
+    CREATE INDEX IF NOT EXISTS daily_route_stops_status_idx ON daily_route_stops(status);
   `);
 
   try {

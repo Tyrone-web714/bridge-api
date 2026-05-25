@@ -156,6 +156,71 @@ function routeSessionEventFromRow(row) {
   };
 }
 
+function routeManifestFromRow(row, stops = []) {
+  return {
+    id: row.id,
+    routeDate: row.route_date instanceof Date
+      ? row.route_date.toISOString().slice(0, 10)
+      : row.route_date ? String(row.route_date).slice(0, 10) : null,
+    routeNumber: row.route_number,
+    routeName: row.route_name || null,
+    startLocation: row.start_location || null,
+    plannedStartAt: toIsoString(row.planned_start_at),
+    plannedEndAt: toIsoString(row.planned_end_at),
+    plannedDurationMinutes: row.planned_duration_minutes ?? null,
+    totalStops: Number(row.total_stops) || 0,
+    totalPallets: Number(row.total_pallets) || 0,
+    totalCases: Number(row.total_cases) || 0,
+    assignedDriverId: row.assigned_driver_id || null,
+    assignedDriverName: row.assigned_driver_name || null,
+    assignedAt: toIsoString(row.assigned_at),
+    assignedBy: row.assigned_by || null,
+    status: row.status || 'unassigned',
+    sourceFileName: row.source_file_name || null,
+    importedBy: row.imported_by || null,
+    importedAt: toIsoString(row.imported_at),
+    publishedAt: toIsoString(row.published_at),
+    startedAt: toIsoString(row.started_at),
+    completedAt: toIsoString(row.completed_at),
+    raw: row.raw || {},
+    createdAt: toIsoString(row.created_at),
+    updatedAt: toIsoString(row.updated_at),
+    stops
+  };
+}
+
+function routeStopFromRow(row) {
+  return {
+    id: row.id,
+    manifestId: row.manifest_id,
+    stopSequence: Number(row.stop_sequence) || 0,
+    accountNumber: row.account_number || null,
+    accountName: row.account_name || null,
+    destinationAddress: row.destination_address || '',
+    city: row.city || null,
+    stateCode: row.state_code || null,
+    postalCode: row.postal_code || null,
+    latitude: row.latitude ?? null,
+    longitude: row.longitude ?? null,
+    plannedArrivalAt: toIsoString(row.planned_arrival_at),
+    plannedDepartureAt: toIsoString(row.planned_departure_at),
+    plannedServiceMinutes: row.planned_service_minutes ?? null,
+    driveMinutesToNext: row.drive_minutes_to_next ?? null,
+    palletCount: Number(row.pallet_count) || 0,
+    caseCount: Number(row.case_count) || 0,
+    itemSummary: asArray(row.item_summary),
+    status: row.status || 'pending',
+    actualArrivalAt: toIsoString(row.actual_arrival_at),
+    actualServiceStartedAt: toIsoString(row.actual_service_started_at),
+    actualCompletedAt: toIsoString(row.actual_completed_at),
+    actualDepartureAt: toIsoString(row.actual_departure_at),
+    driverNotes: row.driver_notes || null,
+    raw: row.raw || {},
+    createdAt: toIsoString(row.created_at),
+    updatedAt: toIsoString(row.updated_at)
+  };
+}
+
 function staticBridgeFromRow(row) {
   const inferredStateCode = inferServiceAreaStateCode(row.latitude, row.longitude);
   const stateCode = row.state_code || row.raw?.state_code || row.raw?.stateCode || inferredStateCode;
@@ -1662,8 +1727,285 @@ async function addRouteSessionEvent(event) {
   return result.rows[0];
 }
 
+async function upsertDailyRouteManifest(manifest) {
+  const result = await postgres.query(`
+    INSERT INTO daily_route_manifests (
+      id, route_date, route_number, route_name, start_location,
+      planned_start_at, planned_end_at, planned_duration_minutes,
+      total_stops, total_pallets, total_cases,
+      assigned_driver_id, assigned_driver_name, assigned_at, assigned_by,
+      status, source_file_name, imported_by, imported_at, published_at,
+      raw, updated_at
+    )
+    VALUES (
+      $1, $2, $3, $4, $5,
+      $6, $7, $8,
+      $9, $10, $11,
+      $12, $13, $14, $15,
+      $16, $17, $18, COALESCE($19::timestamptz, NOW()), $20,
+      $21::jsonb, NOW()
+    )
+    ON CONFLICT (route_date, route_number) DO UPDATE SET
+      id = EXCLUDED.id,
+      route_name = EXCLUDED.route_name,
+      start_location = EXCLUDED.start_location,
+      planned_start_at = EXCLUDED.planned_start_at,
+      planned_end_at = EXCLUDED.planned_end_at,
+      planned_duration_minutes = EXCLUDED.planned_duration_minutes,
+      total_stops = EXCLUDED.total_stops,
+      total_pallets = EXCLUDED.total_pallets,
+      total_cases = EXCLUDED.total_cases,
+      source_file_name = EXCLUDED.source_file_name,
+      imported_by = EXCLUDED.imported_by,
+      imported_at = EXCLUDED.imported_at,
+      raw = EXCLUDED.raw,
+      updated_at = NOW()
+    RETURNING *
+  `, [
+    manifest.id,
+    manifest.routeDate,
+    manifest.routeNumber,
+    manifest.routeName || null,
+    manifest.startLocation || null,
+    manifest.plannedStartAt || null,
+    manifest.plannedEndAt || null,
+    manifest.plannedDurationMinutes ?? null,
+    manifest.totalStops ?? 0,
+    manifest.totalPallets ?? 0,
+    manifest.totalCases ?? 0,
+    manifest.assignedDriverId || null,
+    manifest.assignedDriverName || null,
+    manifest.assignedAt || null,
+    manifest.assignedBy || null,
+    manifest.status || 'unassigned',
+    manifest.sourceFileName || null,
+    manifest.importedBy || null,
+    manifest.importedAt || null,
+    manifest.publishedAt || null,
+    JSON.stringify(manifest.raw || {})
+  ]);
+  return routeManifestFromRow(result.rows[0]);
+}
+
+async function replaceDailyRouteStops(manifestId, stops = []) {
+  await postgres.query('DELETE FROM daily_route_stops WHERE manifest_id = $1', [manifestId]);
+  const savedStops = [];
+
+  for (const stop of stops) {
+    const result = await postgres.query(`
+      INSERT INTO daily_route_stops (
+        id, manifest_id, stop_sequence, account_number, account_name,
+        destination_address, city, state_code, postal_code, latitude, longitude,
+        planned_arrival_at, planned_departure_at, planned_service_minutes,
+        drive_minutes_to_next, pallet_count, case_count, item_summary,
+        status, raw, updated_at
+      )
+      VALUES (
+        $1, $2, $3, $4, $5,
+        $6, $7, $8, $9, $10, $11,
+        $12, $13, $14,
+        $15, $16, $17, $18::jsonb,
+        $19, $20::jsonb, NOW()
+      )
+      RETURNING *
+    `, [
+      stop.id,
+      manifestId,
+      stop.stopSequence,
+      stop.accountNumber || null,
+      stop.accountName || null,
+      stop.destinationAddress,
+      stop.city || null,
+      stop.stateCode || null,
+      stop.postalCode || null,
+      stop.latitude ?? null,
+      stop.longitude ?? null,
+      stop.plannedArrivalAt || null,
+      stop.plannedDepartureAt || null,
+      stop.plannedServiceMinutes ?? null,
+      stop.driveMinutesToNext ?? null,
+      stop.palletCount ?? 0,
+      stop.caseCount ?? 0,
+      JSON.stringify(asArray(stop.itemSummary)),
+      stop.status || 'pending',
+      JSON.stringify(stop.raw || {})
+    ]);
+    savedStops.push(routeStopFromRow(result.rows[0]));
+  }
+
+  return savedStops;
+}
+
+async function getDailyRouteManifest(id, options = {}) {
+  const manifestResult = await postgres.query('SELECT * FROM daily_route_manifests WHERE id = $1', [id]);
+  const manifestRow = manifestResult.rows[0];
+  if (!manifestRow) return null;
+
+  if (options.includeStops === false) {
+    return routeManifestFromRow(manifestRow);
+  }
+
+  const stopsResult = await postgres.query(`
+    SELECT *
+    FROM daily_route_stops
+    WHERE manifest_id = $1
+    ORDER BY stop_sequence ASC
+  `, [id]);
+  return routeManifestFromRow(manifestRow, stopsResult.rows.map(routeStopFromRow));
+}
+
+async function listDailyRouteManifests(options = {}) {
+  const limit = normalizeLimit(options.limit, 100, 500);
+  const values = [];
+  const where = [];
+
+  if (options.routeDate) {
+    values.push(options.routeDate);
+    where.push(`route_date = $${values.length}`);
+  }
+  if (options.driverId) {
+    values.push(String(options.driverId).trim());
+    where.push(`assigned_driver_id = $${values.length}`);
+  }
+  if (options.status) {
+    values.push(String(options.status).trim().toLowerCase());
+    where.push(`status = $${values.length}`);
+  }
+
+  values.push(limit);
+  const result = await postgres.query(`
+    SELECT *
+    FROM daily_route_manifests
+    ${where.length ? `WHERE ${where.join(' AND ')}` : ''}
+    ORDER BY route_date DESC, route_number ASC
+    LIMIT $${values.length}
+  `, values);
+  return result.rows.map((row) => routeManifestFromRow(row));
+}
+
+async function assignDailyRouteManifest(id, input = {}) {
+  const driverId = String(input.driverId || input.driver_id || '').trim();
+  const driverName = String(input.driverName || input.driver_name || driverId).trim();
+  const assignedBy = String(input.assignedBy || input.assigned_by || 'supervisor').trim();
+  if (!driverId) {
+    const error = new Error('driverId is required to assign a route');
+    error.status = 400;
+    throw error;
+  }
+
+  const result = await postgres.query(`
+    UPDATE daily_route_manifests
+    SET
+      assigned_driver_id = $2,
+      assigned_driver_name = $3,
+      assigned_by = $4,
+      assigned_at = NOW(),
+      status = CASE WHEN status = 'completed' THEN status ELSE 'assigned' END,
+      updated_at = NOW()
+    WHERE id = $1
+    RETURNING *
+  `, [id, driverId, driverName || driverId, assignedBy || 'supervisor']);
+  return result.rows[0] ? routeManifestFromRow(result.rows[0]) : null;
+}
+
+async function updateDailyRouteStopStatusForDriver(stopId, driverId, input = {}) {
+  const cleanedStopId = String(stopId || '').trim();
+  const cleanedDriverId = String(driverId || '').trim();
+  const status = String(input.status || '').trim().toLowerCase();
+  const driverNotes = input.driverNotes == null ? null : String(input.driverNotes).trim().slice(0, 2000);
+  const allowedStatuses = new Set(['pending', 'en_route', 'arrived', 'service_started', 'completed', 'departed', 'skipped']);
+
+  if (!cleanedStopId || !cleanedDriverId) {
+    const error = new Error('stopId and driverId are required.');
+    error.status = 400;
+    throw error;
+  }
+  if (!allowedStatuses.has(status)) {
+    const error = new Error('Invalid stop status.');
+    error.status = 400;
+    throw error;
+  }
+
+  const result = await postgres.query(`
+    UPDATE daily_route_stops AS stop
+    SET
+      status = $3,
+      actual_arrival_at = CASE
+        WHEN $3 IN ('arrived', 'service_started', 'completed', 'departed') THEN COALESCE(stop.actual_arrival_at, NOW())
+        ELSE stop.actual_arrival_at
+      END,
+      actual_service_started_at = CASE
+        WHEN $3 IN ('service_started', 'completed', 'departed') THEN COALESCE(stop.actual_service_started_at, NOW())
+        ELSE stop.actual_service_started_at
+      END,
+      actual_completed_at = CASE
+        WHEN $3 IN ('completed', 'departed') THEN COALESCE(stop.actual_completed_at, NOW())
+        ELSE stop.actual_completed_at
+      END,
+      actual_departure_at = CASE
+        WHEN $3 = 'departed' THEN COALESCE(stop.actual_departure_at, NOW())
+        ELSE stop.actual_departure_at
+      END,
+      driver_notes = COALESCE(NULLIF($4, ''), stop.driver_notes),
+      updated_at = NOW()
+    FROM daily_route_manifests AS manifest
+    WHERE stop.manifest_id = manifest.id
+      AND stop.id = $1
+      AND manifest.assigned_driver_id = $2
+    RETURNING stop.*
+  `, [cleanedStopId, cleanedDriverId, status, driverNotes]);
+
+  const updatedStop = result.rows[0] ? routeStopFromRow(result.rows[0]) : null;
+  if (!updatedStop) return null;
+
+  await postgres.query(`
+    UPDATE daily_route_manifests
+    SET
+      status = CASE
+        WHEN NOT EXISTS (
+          SELECT 1
+          FROM daily_route_stops
+          WHERE manifest_id = $1
+            AND status NOT IN ('completed', 'departed', 'skipped')
+        ) THEN 'completed'
+        WHEN status IN ('assigned', 'unassigned') THEN 'active'
+        ELSE status
+      END,
+      started_at = COALESCE(started_at, NOW()),
+      completed_at = CASE
+        WHEN NOT EXISTS (
+          SELECT 1
+          FROM daily_route_stops
+          WHERE manifest_id = $1
+            AND status NOT IN ('completed', 'departed', 'skipped')
+        ) THEN COALESCE(completed_at, NOW())
+        ELSE completed_at
+      END,
+      updated_at = NOW()
+    WHERE id = $1
+  `, [updatedStop.manifestId]);
+
+  return updatedStop;
+}
+
+async function getAssignedDailyRouteForDriver(driverId, routeDate) {
+  const result = await postgres.query(`
+    SELECT *
+    FROM daily_route_manifests
+    WHERE assigned_driver_id = $1
+      AND route_date = $2
+      AND status NOT IN ('completed', 'cancelled')
+    ORDER BY assigned_at DESC NULLS LAST, route_number ASC
+    LIMIT 1
+  `, [driverId, routeDate]);
+  const manifest = result.rows[0] ? routeManifestFromRow(result.rows[0]) : null;
+  if (!manifest) return null;
+  return getDailyRouteManifest(manifest.id);
+}
+
 module.exports = {
   getAdminUser,
+  assignDailyRouteManifest,
   deleteDeliveryNote,
   deleteManualHazard,
   deleteRouteSession,
@@ -1673,11 +2015,14 @@ module.exports = {
   addRouteSessionEvent,
   enqueueStaticHazardLocationBackfill,
   getRouteSession,
+  getAssignedDailyRouteForDriver,
+  getDailyRouteManifest,
   getStaticHazardLocationBackfillStats,
   getRouteSessionAnalytics,
   isDatabaseEnabled,
   isPostgisEnabled,
   listAdminUsers,
+  listDailyRouteManifests,
   listRouteSessionEvents,
   listRouteSessions,
   listStaticHazardLocationBackfillQueue,
@@ -1695,9 +2040,12 @@ module.exports = {
   setAdminUserActive,
   updateRouteSessionReview,
   updateStaticHazardVerification,
+  updateDailyRouteStopStatusForDriver,
   upsertAdminUser,
+  upsertDailyRouteManifest,
   upsertDeliveryNote,
   upsertManualHazard,
   upsertStaticBridge,
-  upsertStaticZone
+  upsertStaticZone,
+  replaceDailyRouteStops
 };

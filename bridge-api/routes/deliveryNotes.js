@@ -391,6 +391,7 @@ function renderDeliveryNotesAdminPage(session = {}) {
   <nav class="admin-tabs">
     <a class="tab hazard" href="/api/routing/manual-hazards/admin">Hazard Review</a>
     <a class="tab active" href="/api/delivery-notes/admin">Delivery Notes</a>
+    <a class="tab" href="/api/route-manifests/admin">Route Manifests</a>
     <a class="tab" href="/api/routing/manual-hazards/admin-users/admin">Admin Users</a>
   </nav>
   <main>
