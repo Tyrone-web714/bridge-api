@@ -1990,9 +1990,10 @@ async function deleteDailyRouteManifestsByDate(routeDate) {
 async function updateDailyRouteStopStatusForDriver(stopId, driverId, input = {}) {
   const cleanedStopId = String(stopId || '').trim();
   const cleanedDriverId = String(driverId || '').trim();
-  const status = String(input.status || '').trim().toLowerCase();
+  const requestedStatus = String(input.status || '').trim().toLowerCase();
+  const status = requestedStatus === 'service_started' ? 'servicing' : requestedStatus;
   const driverNotes = input.driverNotes == null ? null : String(input.driverNotes).trim().slice(0, 2000);
-  const allowedStatuses = new Set(['pending', 'en_route', 'arrived', 'service_started', 'completed', 'departed', 'skipped']);
+  const allowedStatuses = new Set(['pending', 'en_route', 'arrived', 'servicing', 'service_started', 'completed', 'departed', 'skipped']);
 
   if (!cleanedStopId || !cleanedDriverId) {
     const error = new Error('stopId and driverId are required.');
@@ -2010,11 +2011,11 @@ async function updateDailyRouteStopStatusForDriver(stopId, driverId, input = {})
     SET
       status = $3,
       actual_arrival_at = CASE
-        WHEN $3 IN ('arrived', 'service_started', 'completed', 'departed') THEN COALESCE(stop.actual_arrival_at, NOW())
+        WHEN $3 IN ('arrived', 'servicing', 'completed', 'departed') THEN COALESCE(stop.actual_arrival_at, NOW())
         ELSE stop.actual_arrival_at
       END,
       actual_service_started_at = CASE
-        WHEN $3 IN ('service_started', 'completed', 'departed') THEN COALESCE(stop.actual_service_started_at, NOW())
+        WHEN $3 IN ('servicing', 'completed', 'departed') THEN COALESCE(stop.actual_service_started_at, NOW())
         ELSE stop.actual_service_started_at
       END,
       actual_completed_at = CASE
@@ -2047,10 +2048,13 @@ async function updateDailyRouteStopStatusForDriver(stopId, driverId, input = {})
           WHERE manifest_id = $1
             AND status NOT IN ('completed', 'departed', 'skipped')
         ) THEN 'completed'
-        WHEN status IN ('assigned', 'unassigned') THEN 'active'
+        WHEN $2 <> 'pending' AND status IN ('assigned', 'unassigned', 'active') THEN 'in_progress'
         ELSE status
       END,
-      started_at = COALESCE(started_at, NOW()),
+      started_at = CASE
+        WHEN $2 <> 'pending' THEN COALESCE(started_at, NOW())
+        ELSE started_at
+      END,
       completed_at = CASE
         WHEN NOT EXISTS (
           SELECT 1
@@ -2062,7 +2066,7 @@ async function updateDailyRouteStopStatusForDriver(stopId, driverId, input = {})
       END,
       updated_at = NOW()
     WHERE id = $1
-  `, [updatedStop.manifestId]);
+  `, [updatedStop.manifestId, status]);
 
   return updatedStop;
 }
