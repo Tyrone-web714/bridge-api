@@ -21,6 +21,12 @@ function renderAdminDashboard(session) {
       accent: '#19d3e6'
     },
     {
+      title: 'Driver Registry',
+      description: 'Maintain driver IDs, names, employee numbers, route teams, active status, and supervisor notes for route assignments.',
+      href: '/api/drivers/admin',
+      accent: '#7dffb0'
+    },
+    {
       title: 'Hazard Review',
       description: 'Review driver-submitted hazards and manually manage low bridges, no-truck restrictions, and residential restrictions.',
       href: '/api/routing/manual-hazards/admin',
@@ -235,6 +241,7 @@ function renderAdminDashboard(session) {
         <a class="pill" href="/health">Health</a>
         <a class="pill" href="/ready">Readiness</a>
         <a class="pill" href="/api/route-manifests/admin">Daily Routes</a>
+        <a class="pill" href="/api/drivers/admin">Drivers</a>
       </div>
       <form method="post" action="/api/routing/manual-hazards/admin/logout">
         <button class="logout" type="submit">Log Out</button>

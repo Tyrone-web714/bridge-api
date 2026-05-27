@@ -48,6 +48,23 @@ function adminUserFromRow(row) {
   };
 }
 
+function driverFromRow(row) {
+  return {
+    driverId: row.driver_id,
+    driverName: row.driver_name,
+    employeeNumber: row.employee_number || null,
+    phoneNumber: row.phone_number || null,
+    routeGroup: row.route_group || null,
+    territory: row.territory || null,
+    active: row.active !== false,
+    notes: row.notes || null,
+    createdBy: row.created_by || null,
+    updatedBy: row.updated_by || null,
+    createdAt: toIsoString(row.created_at),
+    updatedAt: toIsoString(row.updated_at)
+  };
+}
+
 function manualHazardFromRow(row) {
   return {
     id: row.id,
@@ -591,6 +608,113 @@ async function recordAdminUserLogin(username) {
   `, [normalizedUsername]);
 
   return result.rows[0] ? adminUserFromRow(result.rows[0]) : null;
+}
+
+async function getDriver(driverId) {
+  const cleanedDriverId = String(driverId || '').trim();
+  if (!cleanedDriverId) return null;
+
+  const result = await postgres.query('SELECT * FROM drivers WHERE driver_id = $1', [cleanedDriverId]);
+  return result.rows[0] ? driverFromRow(result.rows[0]) : null;
+}
+
+async function listDrivers(options = {}) {
+  const values = [];
+  const where = [];
+  const search = String(options.search || '').trim();
+  const active = options.active;
+
+  if (active === true || active === 'true') {
+    where.push('active = true');
+  } else if (active === false || active === 'false') {
+    where.push('active = false');
+  }
+
+  if (search) {
+    values.push(`%${search.toLowerCase()}%`);
+    where.push(`(
+      LOWER(driver_id) LIKE $${values.length}
+      OR LOWER(driver_name) LIKE $${values.length}
+      OR LOWER(COALESCE(employee_number, '')) LIKE $${values.length}
+      OR LOWER(COALESCE(route_group, '')) LIKE $${values.length}
+      OR LOWER(COALESCE(territory, '')) LIKE $${values.length}
+    )`);
+  }
+
+  const limit = Math.min(Math.max(Number.parseInt(options.limit, 10) || 250, 1), 1000);
+  values.push(limit);
+
+  const result = await postgres.query(`
+    SELECT *
+    FROM drivers
+    ${where.length ? `WHERE ${where.join(' AND ')}` : ''}
+    ORDER BY active DESC, route_group NULLS LAST, driver_name ASC, driver_id ASC
+    LIMIT $${values.length}
+  `, values);
+
+  return result.rows.map(driverFromRow);
+}
+
+async function upsertDriver(input = {}, actor = 'supervisor') {
+  const driverId = String(input.driverId || input.driver_id || '').trim();
+  const driverName = String(input.driverName || input.driver_name || '').trim();
+  const active = input.active === undefined ? true : input.active === true || input.active === 'true';
+
+  if (!driverId) {
+    const error = new Error('driverId is required');
+    error.status = 400;
+    throw error;
+  }
+  if (!driverName) {
+    const error = new Error('driverName is required');
+    error.status = 400;
+    throw error;
+  }
+
+  const result = await postgres.query(`
+    INSERT INTO drivers (
+      driver_id, driver_name, employee_number, phone_number, route_group,
+      territory, active, notes, created_by, updated_by, created_at, updated_at
+    )
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $9, NOW(), NOW())
+    ON CONFLICT (driver_id) DO UPDATE SET
+      driver_name = EXCLUDED.driver_name,
+      employee_number = EXCLUDED.employee_number,
+      phone_number = EXCLUDED.phone_number,
+      route_group = EXCLUDED.route_group,
+      territory = EXCLUDED.territory,
+      active = EXCLUDED.active,
+      notes = EXCLUDED.notes,
+      updated_by = EXCLUDED.updated_by,
+      updated_at = NOW()
+    RETURNING *
+  `, [
+    driverId,
+    driverName,
+    String(input.employeeNumber || input.employee_number || '').trim() || null,
+    String(input.phoneNumber || input.phone_number || '').trim() || null,
+    String(input.routeGroup || input.route_group || '').trim() || null,
+    String(input.territory || '').trim() || null,
+    active,
+    String(input.notes || '').trim() || null,
+    String(actor || 'supervisor').trim() || 'supervisor'
+  ]);
+
+  return driverFromRow(result.rows[0]);
+}
+
+async function setDriverActive(driverId, active, actor = 'supervisor') {
+  const cleanedDriverId = String(driverId || '').trim();
+  if (!cleanedDriverId) return null;
+
+  const result = await postgres.query(`
+    UPDATE drivers
+    SET active = $2, updated_by = $3, updated_at = NOW()
+    WHERE driver_id = $1
+    RETURNING *
+  `, [cleanedDriverId, active === true, String(actor || 'supervisor').trim() || 'supervisor']);
+
+  return result.rows[0] ? driverFromRow(result.rows[0]) : null;
 }
 
 async function upsertDeliveryNote(note) {
@@ -2102,12 +2226,14 @@ module.exports = {
   getRouteSession,
   getAssignedDailyRouteForDriver,
   getDailyRouteManifest,
+  getDriver,
   getStaticHazardLocationBackfillStats,
   getRouteSessionAnalytics,
   isDatabaseEnabled,
   isPostgisEnabled,
   listAdminUsers,
   listDailyRouteManifests,
+  listDrivers,
   listRouteSessionEvents,
   listRouteSessions,
   listStaticHazardLocationBackfillQueue,
@@ -2123,11 +2249,13 @@ module.exports = {
   saveRouteSession,
   recordAdminUserLogin,
   setAdminUserActive,
+  setDriverActive,
   updateRouteSessionReview,
   updateStaticHazardVerification,
   updateDailyRouteStopStatusForDriver,
   upsertAdminUser,
   upsertDailyRouteManifest,
+  upsertDriver,
   upsertDeliveryNote,
   upsertManualHazard,
   upsertStaticBridge,

@@ -262,6 +262,7 @@ function renderRouteManifestAdminPage() {
       <a class="tab" href="/api/routing/route-sessions/admin">Route Replay</a>
       <a class="tab" href="/api/delivery-notes/admin">Delivery Notes</a>
       <a class="tab active" href="/api/route-manifests/admin">Route Manifests</a>
+      <a class="tab" href="/api/drivers/admin">Driver Registry</a>
       <a class="tab" href="/api/routing/manual-hazards/admin-users/admin">Admin Users</a>
     </nav>
     <section class="panel">

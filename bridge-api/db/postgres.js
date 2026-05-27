@@ -119,6 +119,26 @@ async function ensureSchema() {
     CREATE INDEX IF NOT EXISTS admin_users_role_idx ON admin_users(role);
     CREATE INDEX IF NOT EXISTS admin_users_active_idx ON admin_users(active);
 
+    CREATE TABLE IF NOT EXISTS drivers (
+      driver_id TEXT PRIMARY KEY,
+      driver_name TEXT NOT NULL,
+      employee_number TEXT,
+      phone_number TEXT,
+      route_group TEXT,
+      territory TEXT,
+      active BOOLEAN NOT NULL DEFAULT true,
+      notes TEXT,
+      created_by TEXT,
+      updated_by TEXT,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+
+    CREATE INDEX IF NOT EXISTS drivers_active_idx ON drivers(active);
+    CREATE INDEX IF NOT EXISTS drivers_route_group_idx ON drivers(route_group);
+    CREATE INDEX IF NOT EXISTS drivers_territory_idx ON drivers(territory);
+    CREATE INDEX IF NOT EXISTS drivers_name_idx ON drivers(driver_name);
+
     CREATE TABLE IF NOT EXISTS delivery_notes (
       id TEXT PRIMARY KEY,
       place_id TEXT,
