@@ -626,8 +626,7 @@ router.put('/driver/stops/:stopId/status', driverAuth.requireDriverAuth, async (
       });
     }
 
-    const routeDate = normalizeDate(req.body?.routeDate || req.query.routeDate || req.query.date);
-    const route = await repositories.getAssignedDailyRouteForDriver(identity.driverId, routeDate);
+    const route = await repositories.getDailyRouteManifest(updatedStop.manifestId);
     return res.json({
       ok: true,
       driver: identity,
