@@ -14,6 +14,13 @@ function toIsoString(value) {
   return Number.isNaN(date.getTime()) ? null : date.toISOString();
 }
 
+function toDateOnly(value) {
+  if (!value) return null;
+  if (typeof value === 'string' && /^\d{4}-\d{2}-\d{2}/.test(value)) return value.slice(0, 10);
+  const iso = toIsoString(value);
+  return iso ? iso.slice(0, 10) : null;
+}
+
 function asArray(value) {
   return Array.isArray(value) ? value : [];
 }
@@ -235,6 +242,14 @@ function routeStopFromRow(row) {
     actualCompletedAt: toIsoString(row.actual_completed_at),
     actualDepartureAt: toIsoString(row.actual_departure_at),
     driverNotes: row.driver_notes || null,
+    nonDeliveryReason: row.non_delivery_reason || null,
+    nonDeliveryNotes: row.non_delivery_notes || null,
+    nonDeliveryReportedAt: toIsoString(row.non_delivery_reported_at),
+    redeliveryStatus: row.redelivery_status || 'none',
+    redeliveryDate: toDateOnly(row.redelivery_date),
+    redeliveryNotes: row.redelivery_notes || null,
+    redeliveryUpdatedBy: row.redelivery_updated_by || null,
+    redeliveryUpdatedAt: toIsoString(row.redelivery_updated_at),
     raw: row.raw || {},
     createdAt: toIsoString(row.created_at),
     updatedAt: toIsoString(row.updated_at)
@@ -2209,7 +2224,12 @@ async function updateDailyRouteStopStatusForDriver(stopId, driverId, input = {})
   const requestedStatus = String(input.status || '').trim().toLowerCase();
   const status = requestedStatus === 'service_started' ? 'servicing' : requestedStatus;
   const driverNotes = input.driverNotes == null ? null : String(input.driverNotes).trim().slice(0, 2000);
-  const allowedStatuses = new Set(['pending', 'en_route', 'arrived', 'servicing', 'service_started', 'completed', 'departed', 'skipped']);
+  const nonDeliveryReason = String(input.nonDeliveryReason || input.non_delivery_reason || '').trim().toLowerCase();
+  const nonDeliveryNotes = input.nonDeliveryNotes == null && input.non_delivery_notes == null
+    ? null
+    : String(input.nonDeliveryNotes ?? input.non_delivery_notes).trim().slice(0, 2000);
+  const allowedStatuses = new Set(['pending', 'en_route', 'arrived', 'servicing', 'service_started', 'completed', 'departed', 'skipped', 'undelivered']);
+  const allowedNonDeliveryReasons = new Set(['customer_refused', 'missed_time_window', 'business_closed', 'no_payment']);
 
   if (!cleanedStopId || !cleanedDriverId) {
     const error = new Error('stopId and driverId are required.');
@@ -2221,13 +2241,18 @@ async function updateDailyRouteStopStatusForDriver(stopId, driverId, input = {})
     error.status = 400;
     throw error;
   }
+  if (status === 'undelivered' && !allowedNonDeliveryReasons.has(nonDeliveryReason)) {
+    const error = new Error('A valid non-delivery reason is required.');
+    error.status = 400;
+    throw error;
+  }
 
   const result = await postgres.query(`
     UPDATE daily_route_stops AS stop
     SET
       status = $3,
       actual_arrival_at = CASE
-        WHEN $3 IN ('arrived', 'servicing', 'completed', 'departed') THEN COALESCE(stop.actual_arrival_at, NOW())
+        WHEN $3 IN ('arrived', 'servicing', 'completed', 'departed', 'undelivered') THEN COALESCE(stop.actual_arrival_at, NOW())
         ELSE stop.actual_arrival_at
       END,
       actual_service_started_at = CASE
@@ -2235,7 +2260,7 @@ async function updateDailyRouteStopStatusForDriver(stopId, driverId, input = {})
         ELSE stop.actual_service_started_at
       END,
       actual_completed_at = CASE
-        WHEN $3 IN ('completed', 'departed') THEN COALESCE(stop.actual_completed_at, NOW())
+        WHEN $3 IN ('completed', 'departed', 'undelivered') THEN COALESCE(stop.actual_completed_at, NOW())
         ELSE stop.actual_completed_at
       END,
       actual_departure_at = CASE
@@ -2243,13 +2268,17 @@ async function updateDailyRouteStopStatusForDriver(stopId, driverId, input = {})
         ELSE stop.actual_departure_at
       END,
       driver_notes = COALESCE(NULLIF($4, ''), stop.driver_notes),
+      non_delivery_reason = CASE WHEN $3 = 'undelivered' THEN $5 ELSE stop.non_delivery_reason END,
+      non_delivery_notes = CASE WHEN $3 = 'undelivered' THEN COALESCE(NULLIF($6, ''), stop.non_delivery_notes) ELSE stop.non_delivery_notes END,
+      non_delivery_reported_at = CASE WHEN $3 = 'undelivered' THEN COALESCE(stop.non_delivery_reported_at, NOW()) ELSE stop.non_delivery_reported_at END,
+      redelivery_status = CASE WHEN $3 = 'undelivered' THEN 'pending' ELSE stop.redelivery_status END,
       updated_at = NOW()
     FROM daily_route_manifests AS manifest
     WHERE stop.manifest_id = manifest.id
       AND stop.id = $1
       AND manifest.assigned_driver_id = $2
     RETURNING stop.*
-  `, [cleanedStopId, cleanedDriverId, status, driverNotes]);
+  `, [cleanedStopId, cleanedDriverId, status, driverNotes, nonDeliveryReason, nonDeliveryNotes]);
 
   const updatedStop = result.rows[0] ? routeStopFromRow(result.rows[0]) : null;
   if (!updatedStop) return null;
@@ -2262,8 +2291,16 @@ async function updateDailyRouteStopStatusForDriver(stopId, driverId, input = {})
           SELECT 1
           FROM daily_route_stops
           WHERE manifest_id = $1
-            AND status NOT IN ('completed', 'departed', 'skipped')
-        ) THEN 'completed'
+            AND status NOT IN ('completed', 'departed', 'skipped', 'undelivered')
+        ) THEN CASE
+          WHEN EXISTS (
+            SELECT 1
+            FROM daily_route_stops
+            WHERE manifest_id = $1
+              AND status = 'undelivered'
+          ) THEN 'completed_with_exceptions'
+          ELSE 'completed'
+        END
         WHEN $2 <> 'pending' AND status IN ('assigned', 'unassigned', 'active') THEN 'in_progress'
         ELSE status
       END,
@@ -2276,7 +2313,7 @@ async function updateDailyRouteStopStatusForDriver(stopId, driverId, input = {})
           SELECT 1
           FROM daily_route_stops
           WHERE manifest_id = $1
-            AND status NOT IN ('completed', 'departed', 'skipped')
+            AND status NOT IN ('completed', 'departed', 'skipped', 'undelivered')
         ) THEN COALESCE(completed_at, NOW())
         ELSE completed_at
       END,
@@ -2293,13 +2330,96 @@ async function getAssignedDailyRouteForDriver(driverId, routeDate) {
     FROM daily_route_manifests
     WHERE assigned_driver_id = $1
       AND route_date = $2
-      AND status NOT IN ('completed', 'cancelled')
+      AND status NOT IN ('completed', 'completed_with_exceptions', 'cancelled')
     ORDER BY assigned_at DESC NULLS LAST, route_number ASC
     LIMIT 1
   `, [driverId, routeDate]);
   const manifest = result.rows[0] ? routeManifestFromRow(result.rows[0]) : null;
   if (!manifest) return null;
   return getDailyRouteManifest(manifest.id);
+}
+
+async function listUndeliveredRouteStops(options = {}) {
+  const limit = normalizeLimit(options.limit, 100, 500);
+  const values = [];
+  const where = ["stop.status = 'undelivered'"];
+
+  if (options.routeDate) {
+    values.push(String(options.routeDate).trim());
+    where.push(`manifest.route_date = $${values.length}`);
+  }
+  if (options.redeliveryStatus) {
+    values.push(String(options.redeliveryStatus).trim().toLowerCase());
+    where.push(`stop.redelivery_status = $${values.length}`);
+  }
+
+  values.push(limit);
+  const result = await postgres.query(`
+    SELECT
+      stop.*,
+      manifest.route_date,
+      manifest.route_number,
+      manifest.route_name,
+      manifest.assigned_driver_id,
+      manifest.assigned_driver_name
+    FROM daily_route_stops AS stop
+    JOIN daily_route_manifests AS manifest ON manifest.id = stop.manifest_id
+    WHERE ${where.join(' AND ')}
+    ORDER BY manifest.route_date DESC, manifest.route_number ASC, stop.stop_sequence ASC
+    LIMIT $${values.length}
+  `, values);
+
+  return result.rows.map((row) => ({
+    ...routeStopFromRow(row),
+    routeDate: toDateOnly(row.route_date),
+    routeNumber: row.route_number || null,
+    routeName: row.route_name || null,
+    assignedDriverId: row.assigned_driver_id || null,
+    assignedDriverName: row.assigned_driver_name || null
+  }));
+}
+
+async function updateUndeliveredStopDisposition(stopId, input = {}) {
+  const cleanedStopId = String(stopId || '').trim();
+  const redeliveryStatus = String(input.redeliveryStatus || input.redelivery_status || '').trim().toLowerCase();
+  const redeliveryDate = String(input.redeliveryDate || input.redelivery_date || '').trim();
+  const redeliveryNotes = input.redeliveryNotes == null && input.redelivery_notes == null
+    ? null
+    : String(input.redeliveryNotes ?? input.redelivery_notes).trim().slice(0, 2000);
+  const updatedBy = String(input.updatedBy || input.updated_by || 'supervisor').trim().slice(0, 120);
+  const allowedStatuses = new Set(['pending', 'redelivery_scheduled', 'cancelled']);
+
+  if (!cleanedStopId) {
+    const error = new Error('stopId is required.');
+    error.status = 400;
+    throw error;
+  }
+  if (!allowedStatuses.has(redeliveryStatus)) {
+    const error = new Error('A valid redelivery status is required.');
+    error.status = 400;
+    throw error;
+  }
+  if (redeliveryStatus === 'redelivery_scheduled' && !/^\d{4}-\d{2}-\d{2}$/.test(redeliveryDate)) {
+    const error = new Error('A redelivery date in YYYY-MM-DD format is required.');
+    error.status = 400;
+    throw error;
+  }
+
+  const result = await postgres.query(`
+    UPDATE daily_route_stops
+    SET
+      redelivery_status = $2,
+      redelivery_date = CASE WHEN $2 = 'redelivery_scheduled' THEN $3::date ELSE NULL END,
+      redelivery_notes = COALESCE(NULLIF($4, ''), redelivery_notes),
+      redelivery_updated_by = $5,
+      redelivery_updated_at = NOW(),
+      updated_at = NOW()
+    WHERE id = $1
+      AND status = 'undelivered'
+    RETURNING *
+  `, [cleanedStopId, redeliveryStatus, redeliveryDate || null, redeliveryNotes, updatedBy || 'supervisor']);
+
+  return result.rows[0] ? routeStopFromRow(result.rows[0]) : null;
 }
 
 module.exports = {
@@ -2326,6 +2446,7 @@ module.exports = {
   listAdminUsers,
   listDailyRouteManifests,
   listDrivers,
+  listUndeliveredRouteStops,
   listRouteSessionEvents,
   listRouteSessions,
   listStaticHazardLocationBackfillQueue,
@@ -2346,6 +2467,7 @@ module.exports = {
   updateRouteSessionReview,
   updateStaticHazardVerification,
   updateDailyRouteStopStatusForDriver,
+  updateUndeliveredStopDisposition,
   upsertAdminUser,
   upsertDailyRouteManifest,
   upsertDriver,

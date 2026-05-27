@@ -391,6 +391,14 @@ async function ensureSchema() {
       actual_completed_at TIMESTAMPTZ,
       actual_departure_at TIMESTAMPTZ,
       driver_notes TEXT,
+      non_delivery_reason TEXT,
+      non_delivery_notes TEXT,
+      non_delivery_reported_at TIMESTAMPTZ,
+      redelivery_status TEXT NOT NULL DEFAULT 'none',
+      redelivery_date DATE,
+      redelivery_notes TEXT,
+      redelivery_updated_by TEXT,
+      redelivery_updated_at TIMESTAMPTZ,
       raw JSONB NOT NULL DEFAULT '{}'::jsonb,
       created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
       updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
@@ -400,6 +408,17 @@ async function ensureSchema() {
     CREATE INDEX IF NOT EXISTS daily_route_stops_manifest_idx ON daily_route_stops(manifest_id, stop_sequence);
     CREATE INDEX IF NOT EXISTS daily_route_stops_account_number_idx ON daily_route_stops(account_number);
     CREATE INDEX IF NOT EXISTS daily_route_stops_status_idx ON daily_route_stops(status);
+    ALTER TABLE daily_route_stops
+      ADD COLUMN IF NOT EXISTS non_delivery_reason TEXT,
+      ADD COLUMN IF NOT EXISTS non_delivery_notes TEXT,
+      ADD COLUMN IF NOT EXISTS non_delivery_reported_at TIMESTAMPTZ,
+      ADD COLUMN IF NOT EXISTS redelivery_status TEXT NOT NULL DEFAULT 'none',
+      ADD COLUMN IF NOT EXISTS redelivery_date DATE,
+      ADD COLUMN IF NOT EXISTS redelivery_notes TEXT,
+      ADD COLUMN IF NOT EXISTS redelivery_updated_by TEXT,
+      ADD COLUMN IF NOT EXISTS redelivery_updated_at TIMESTAMPTZ;
+    CREATE INDEX IF NOT EXISTS daily_route_stops_non_delivery_idx ON daily_route_stops(status, non_delivery_reason);
+    CREATE INDEX IF NOT EXISTS daily_route_stops_redelivery_status_idx ON daily_route_stops(redelivery_status);
   `);
 
   try {

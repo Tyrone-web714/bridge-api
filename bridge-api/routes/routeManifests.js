@@ -247,6 +247,8 @@ function renderRouteManifestAdminPage() {
     .message { min-height: 22px; color: #a6ffb8; font-weight: 800; }
     .muted { color: #a9bdc7; }
     .danger { background: #c62828; }
+    .warning { background: #f9a825; color: #1b1300; }
+    .status-pill { display: inline-block; border-radius: 999px; padding: 5px 9px; background: rgba(255,255,255,0.12); font-size: 12px; font-weight: 900; text-transform: uppercase; }
     .row-actions { display: flex; gap: 8px; flex-wrap: wrap; }
   </style>
 </head>
@@ -294,8 +296,36 @@ function renderRouteManifestAdminPage() {
       </div>
       <div id="routes"></div>
     </section>
+    <section class="panel">
+      <h2>Undelivered / Redelivery Queue</h2>
+      <p class="muted">Stops marked no-delivery by drivers appear here. Supervisors can cancel the delivery or schedule it for redelivery.</p>
+      <div class="grid">
+        <div><label>Queue date</label><input id="undeliveredDateFilter" placeholder="YYYY-MM-DD" /></div>
+        <div>
+          <label>Disposition filter</label>
+          <select id="undeliveredStatusFilter">
+            <option value="">All no-delivery stops</option>
+            <option value="pending">Pending supervisor decision</option>
+            <option value="redelivery_scheduled">Redelivery scheduled</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
+        </div>
+        <div>
+          <label>&nbsp;</label>
+          <button onclick="loadUndeliveredStops()">Refresh No-Delivery Queue</button>
+        </div>
+      </div>
+      <div id="undeliveredStops"></div>
+    </section>
   </main>
   <script>
+    const NON_DELIVERY_REASON_LABELS = {
+      customer_refused: 'Customer refused',
+      missed_time_window: 'Driver missed time window',
+      business_closed: 'Business closed',
+      no_payment: 'Customer did not have payment'
+    };
+
     const filePicker = document.getElementById('filePicker');
     filePicker.addEventListener('change', async () => {
       const file = filePicker.files && filePicker.files[0];
@@ -452,8 +482,67 @@ function renderRouteManifestAdminPage() {
         '</tr>').join('') +
         '</tbody></table>';
     }
+
+    async function updateUndeliveredDisposition(stopId, redeliveryStatus) {
+      const payload = { redeliveryStatus };
+      if (redeliveryStatus === 'redelivery_scheduled') {
+        const date = prompt('Enter redelivery date as YYYY-MM-DD.');
+        if (!/^\\d{4}-\\d{2}-\\d{2}$/.test(String(date || '').trim())) {
+          alert('Redelivery date must use YYYY-MM-DD.');
+          return;
+        }
+        payload.redeliveryDate = date.trim();
+        payload.redeliveryNotes = prompt('Optional redelivery notes for dispatch/supervisor:', '') || '';
+      } else if (redeliveryStatus === 'cancelled') {
+        if (!confirm('Cancel this delivery instead of scheduling redelivery?')) return;
+        payload.redeliveryNotes = prompt('Optional cancellation note:', '') || '';
+      }
+
+      const response = await fetch('/api/route-manifests/undelivered/' + encodeURIComponent(stopId) + '/disposition', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        alert(data.error || 'Unable to update no-delivery disposition.');
+        return;
+      }
+      document.getElementById('message').textContent = 'No-delivery disposition updated.';
+      loadUndeliveredStops();
+    }
+
+    async function loadUndeliveredStops() {
+      const routeDate = document.getElementById('undeliveredDateFilter').value.trim() || document.getElementById('routeDateFilter').value.trim();
+      const status = document.getElementById('undeliveredStatusFilter').value;
+      const query = new URLSearchParams({ limit: '200' });
+      if (/^\\d{4}-\\d{2}-\\d{2}$/.test(routeDate)) query.set('routeDate', routeDate);
+      if (status) query.set('redeliveryStatus', status);
+
+      const response = await fetch('/api/route-manifests/undelivered?' + query.toString());
+      const data = await response.json().catch(() => ({}));
+      const stops = data.stops || [];
+      document.getElementById('undeliveredStops').innerHTML = stops.length
+        ? '<table><thead><tr><th>Date</th><th>Route</th><th>Account</th><th>Address</th><th>Reason</th><th>Driver</th><th>Disposition</th><th></th></tr></thead><tbody>' +
+          stops.map(stop => '<tr>' +
+            '<td>' + escapeHtml(stop.routeDate || '') + '</td>' +
+            '<td><strong>' + escapeHtml(stop.routeNumber || '') + '</strong><br><span class="muted">Stop ' + escapeHtml(stop.stopSequence) + '</span></td>' +
+            '<td><strong>' + escapeHtml(stop.accountName || '') + '</strong><br><span class="muted">' + escapeHtml(stop.accountNumber || '') + '</span></td>' +
+            '<td>' + escapeHtml([stop.destinationAddress, stop.city, stop.stateCode, stop.postalCode].filter(Boolean).join(', ')) + '</td>' +
+            '<td>' + escapeHtml(NON_DELIVERY_REASON_LABELS[stop.nonDeliveryReason] || stop.nonDeliveryReason || '-') + (stop.nonDeliveryNotes ? '<br><span class="muted">' + escapeHtml(stop.nonDeliveryNotes) + '</span>' : '') + '</td>' +
+            '<td>' + escapeHtml(stop.assignedDriverName || stop.assignedDriverId || '') + '</td>' +
+            '<td><span class="status-pill">' + escapeHtml(stop.redeliveryStatus || 'pending') + '</span>' + (stop.redeliveryDate ? '<br><span class="muted">' + escapeHtml(stop.redeliveryDate) + '</span>' : '') + '</td>' +
+            '<td><div class="row-actions">' +
+              '<button class="warning" onclick="updateUndeliveredDisposition(decodeURIComponent(\\'' + encodeURIComponent(stop.id) + '\\'), \\'redelivery_scheduled\\')">Schedule Redelivery</button>' +
+              '<button class="danger" onclick="updateUndeliveredDisposition(decodeURIComponent(\\'' + encodeURIComponent(stop.id) + '\\'), \\'cancelled\\')">Cancel Delivery</button>' +
+            '</div></td>' +
+          '</tr>').join('') +
+          '</tbody></table>'
+        : '<p class="muted">No undelivered stops match this filter.</p>';
+    }
     loadDriversForAssignment();
     loadRoutes();
+    loadUndeliveredStops();
   </script>
 </body>
 </html>`;
@@ -586,6 +675,36 @@ router.post('/switch-assignments', requireAdminSession, async (req, res) => {
   } catch (error) {
     return res.status(error.status || 500).json({
       error: error.message || 'Unable to switch route assignments.'
+    });
+  }
+});
+
+router.get('/undelivered', requireAdminSession, async (req, res) => {
+  try {
+    const stops = await repositories.listUndeliveredRouteStops({
+      routeDate: req.query.routeDate,
+      redeliveryStatus: req.query.redeliveryStatus,
+      limit: req.query.limit
+    });
+    return res.json({ ok: true, stops });
+  } catch (error) {
+    return res.status(error.status || 500).json({
+      error: error.message || 'Unable to list undelivered route stops.'
+    });
+  }
+});
+
+router.put('/undelivered/:stopId/disposition', requireAdminSession, async (req, res) => {
+  try {
+    const stop = await repositories.updateUndeliveredStopDisposition(req.params.stopId, {
+      ...req.body,
+      updatedBy: req.adminSession?.username || req.body?.updatedBy
+    });
+    if (!stop) return res.status(404).json({ error: 'Undelivered stop not found.' });
+    return res.json({ ok: true, stop });
+  } catch (error) {
+    return res.status(error.status || 500).json({
+      error: error.message || 'Unable to update undelivered stop disposition.'
     });
   }
 });
