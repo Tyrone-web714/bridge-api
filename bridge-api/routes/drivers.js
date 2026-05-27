@@ -12,6 +12,9 @@ const DRIVER_COLUMN_ALIASES = {
   phoneNumber: ['phone_number', 'phone number', 'phone', 'mobile', 'assigned_phone'],
   routeGroup: ['route_group', 'route group', 'team', 'route_team', 'center', 'department'],
   territory: ['territory', 'area', 'service_area', 'service area'],
+  supervisorUsername: ['supervisor_username', 'supervisor username', 'supervisor_user', 'supervisor_login'],
+  supervisorName: ['supervisor_name', 'supervisor name', 'supervisor'],
+  teamName: ['team_name', 'team name', 'driver_team', 'driver team'],
   active: ['active', 'status', 'enabled'],
   notes: ['notes', 'comments']
 };
@@ -145,7 +148,7 @@ function renderDriverRegistryAdminPage(session) {
     <div class="toprow">
       <div>
         <h1>Driver Registry</h1>
-        <p>Maintain the driver IDs supervisors assign in daily route manifests. This keeps route assignment clean without changing the driver's assigned phone process.</p>
+      <p>Divide drivers by supervisor/team, then use those registered driver IDs when assigning and switching daily routes.</p>
       </div>
       <div class="role-badge">${adminUser} - ${adminRole}</div>
     </div>
@@ -167,6 +170,9 @@ function renderDriverRegistryAdminPage(session) {
         <div><label>Driver Name</label><input id="driverName" placeholder="Driver full name" /></div>
         <div><label>Employee Number</label><input id="employeeNumber" placeholder="Optional" /></div>
         <div><label>Phone Number</label><input id="phoneNumber" placeholder="Optional" /></div>
+        <div><label>Supervisor Username</label><input id="supervisorUsername" placeholder="supervisor login" /></div>
+        <div><label>Supervisor Name</label><input id="supervisorName" placeholder="Supervisor full name" /></div>
+        <div><label>Team Name</label><input id="teamName" placeholder="Route team name" /></div>
         <div><label>Route Group</label><input id="routeGroup" placeholder="San Antonio North" /></div>
         <div><label>Territory</label><input id="territory" placeholder="San Antonio" /></div>
         <div>
@@ -187,7 +193,7 @@ function renderDriverRegistryAdminPage(session) {
 
     <section class="panel">
       <h2>Bulk Import Drivers</h2>
-      <p class="muted">For 100 drivers, paste or upload a CSV. Columns accepted: driver_id, driver_name, employee_number, phone_number, route_group, territory, active, notes.</p>
+      <p class="muted">For 100 drivers, paste or upload a CSV. Columns accepted: driver_id, driver_name, employee_number, phone_number, supervisor_username, supervisor_name, team_name, route_group, territory, active, notes.</p>
       <p class="row-actions">
         <button class="secondary" onclick="loadDriverTemplate()">Use CSV Template</button>
       </p>
@@ -239,7 +245,7 @@ function renderDriverRegistryAdminPage(session) {
     }
 
     function clearForm() {
-      ['driverId','driverName','employeeNumber','phoneNumber','routeGroup','territory','notes'].forEach(id => setInputValue(id, ''));
+      ['driverId','driverName','employeeNumber','phoneNumber','supervisorUsername','supervisorName','teamName','routeGroup','territory','notes'].forEach(id => setInputValue(id, ''));
       document.getElementById('active').value = 'true';
     }
 
@@ -248,6 +254,9 @@ function renderDriverRegistryAdminPage(session) {
       setInputValue('driverName', driver.driverName);
       setInputValue('employeeNumber', driver.employeeNumber);
       setInputValue('phoneNumber', driver.phoneNumber);
+      setInputValue('supervisorUsername', driver.supervisorUsername);
+      setInputValue('supervisorName', driver.supervisorName);
+      setInputValue('teamName', driver.teamName);
       setInputValue('routeGroup', driver.routeGroup);
       setInputValue('territory', driver.territory);
       setInputValue('notes', driver.notes);
@@ -261,6 +270,9 @@ function renderDriverRegistryAdminPage(session) {
         driverName: inputValue('driverName'),
         employeeNumber: inputValue('employeeNumber'),
         phoneNumber: inputValue('phoneNumber'),
+        supervisorUsername: inputValue('supervisorUsername'),
+        supervisorName: inputValue('supervisorName'),
+        teamName: inputValue('teamName'),
         routeGroup: inputValue('routeGroup'),
         territory: inputValue('territory'),
         active: document.getElementById('active').value === 'true',
@@ -298,9 +310,9 @@ function renderDriverRegistryAdminPage(session) {
 
     function loadDriverTemplate() {
       document.getElementById('csvText').value = [
-        'driver_id,driver_name,employee_number,phone_number,route_group,territory,active,notes',
-        'driver_app,Truck-Safe Driver,100001,,San Antonio North,San Antonio,true,Pilot test driver',
-        'driver_002,Driver Two,100002,,Leon Valley,San Antonio,true,'
+        'driver_id,driver_name,employee_number,phone_number,supervisor_username,supervisor_name,team_name,route_group,territory,active,notes',
+        'driver_app,Truck-Safe Driver,100001,,supervisor_north,North Supervisor,San Antonio North,San Antonio North,San Antonio,true,Pilot test driver',
+        'driver_002,Driver Two,100002,,supervisor_lv,Leon Valley Supervisor,Leon Valley Team,Leon Valley,San Antonio,true,'
       ].join('\\n');
     }
 
@@ -328,9 +340,10 @@ function renderDriverRegistryAdminPage(session) {
       const drivers = data.drivers || [];
       window.__drivers = drivers;
       document.getElementById('drivers').innerHTML =
-        '<table><thead><tr><th>Driver</th><th>Employee</th><th>Phone</th><th>Route Group</th><th>Territory</th><th>Status</th><th>Notes</th><th></th></tr></thead><tbody>' +
+        '<table><thead><tr><th>Driver</th><th>Supervisor / Team</th><th>Employee</th><th>Phone</th><th>Route Group</th><th>Territory</th><th>Status</th><th>Notes</th><th></th></tr></thead><tbody>' +
         drivers.map((driver, index) => '<tr>' +
           '<td><strong>' + escapeHtml(driver.driverName) + '</strong><br><span class="muted">' + escapeHtml(driver.driverId) + '</span></td>' +
+          '<td><strong>' + escapeHtml(driver.supervisorName || driver.supervisorUsername || '-') + '</strong><br><span class="muted">' + escapeHtml(driver.teamName || '-') + '</span></td>' +
           '<td>' + escapeHtml(driver.employeeNumber || '-') + '</td>' +
           '<td>' + escapeHtml(driver.phoneNumber || '-') + '</td>' +
           '<td>' + escapeHtml(driver.routeGroup || '-') + '</td>' +
@@ -373,6 +386,8 @@ router.get('/', requireAdminSession, async (req, res) => {
     const drivers = await repositories.listDrivers({
       search: req.query.search,
       active: req.query.active,
+      supervisorUsername: req.query.supervisorUsername || req.query.supervisor_username,
+      teamName: req.query.teamName || req.query.team_name,
       limit: req.query.limit
     });
     return res.json({ ok: true, drivers });
@@ -425,6 +440,9 @@ router.post('/import', requireAdminSession, async (req, res) => {
         driverName,
         employeeNumber: cleanText(readCell(row, 'employeeNumber'), 120),
         phoneNumber: cleanText(readCell(row, 'phoneNumber'), 80),
+        supervisorUsername: cleanText(readCell(row, 'supervisorUsername'), 120),
+        supervisorName: cleanText(readCell(row, 'supervisorName'), 160),
+        teamName: cleanText(readCell(row, 'teamName'), 160),
         routeGroup: cleanText(readCell(row, 'routeGroup'), 120),
         territory: cleanText(readCell(row, 'territory'), 120),
         active: parseActive(readCell(row, 'active')),

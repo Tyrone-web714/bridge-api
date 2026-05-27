@@ -126,6 +126,9 @@ async function ensureSchema() {
       phone_number TEXT,
       route_group TEXT,
       territory TEXT,
+      supervisor_username TEXT,
+      supervisor_name TEXT,
+      team_name TEXT,
       active BOOLEAN NOT NULL DEFAULT true,
       notes TEXT,
       created_by TEXT,
@@ -134,9 +137,15 @@ async function ensureSchema() {
       updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
     );
 
+    ALTER TABLE drivers
+      ADD COLUMN IF NOT EXISTS supervisor_username TEXT,
+      ADD COLUMN IF NOT EXISTS supervisor_name TEXT,
+      ADD COLUMN IF NOT EXISTS team_name TEXT;
     CREATE INDEX IF NOT EXISTS drivers_active_idx ON drivers(active);
     CREATE INDEX IF NOT EXISTS drivers_route_group_idx ON drivers(route_group);
     CREATE INDEX IF NOT EXISTS drivers_territory_idx ON drivers(territory);
+    CREATE INDEX IF NOT EXISTS drivers_supervisor_idx ON drivers(supervisor_username);
+    CREATE INDEX IF NOT EXISTS drivers_team_name_idx ON drivers(team_name);
     CREATE INDEX IF NOT EXISTS drivers_name_idx ON drivers(driver_name);
 
     CREATE TABLE IF NOT EXISTS delivery_notes (

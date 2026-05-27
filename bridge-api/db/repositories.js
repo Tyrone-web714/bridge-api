@@ -56,6 +56,9 @@ function driverFromRow(row) {
     phoneNumber: row.phone_number || null,
     routeGroup: row.route_group || null,
     territory: row.territory || null,
+    supervisorUsername: row.supervisor_username || null,
+    supervisorName: row.supervisor_name || null,
+    teamName: row.team_name || null,
     active: row.active !== false,
     notes: row.notes || null,
     createdBy: row.created_by || null,
@@ -638,7 +641,18 @@ async function listDrivers(options = {}) {
       OR LOWER(COALESCE(employee_number, '')) LIKE $${values.length}
       OR LOWER(COALESCE(route_group, '')) LIKE $${values.length}
       OR LOWER(COALESCE(territory, '')) LIKE $${values.length}
+      OR LOWER(COALESCE(supervisor_username, '')) LIKE $${values.length}
+      OR LOWER(COALESCE(supervisor_name, '')) LIKE $${values.length}
+      OR LOWER(COALESCE(team_name, '')) LIKE $${values.length}
     )`);
+  }
+  if (options.supervisorUsername) {
+    values.push(String(options.supervisorUsername).trim().toLowerCase());
+    where.push(`LOWER(COALESCE(supervisor_username, '')) = $${values.length}`);
+  }
+  if (options.teamName) {
+    values.push(String(options.teamName).trim().toLowerCase());
+    where.push(`LOWER(COALESCE(team_name, '')) = $${values.length}`);
   }
 
   const limit = Math.min(Math.max(Number.parseInt(options.limit, 10) || 250, 1), 1000);
@@ -648,7 +662,7 @@ async function listDrivers(options = {}) {
     SELECT *
     FROM drivers
     ${where.length ? `WHERE ${where.join(' AND ')}` : ''}
-    ORDER BY active DESC, route_group NULLS LAST, driver_name ASC, driver_id ASC
+    ORDER BY active DESC, supervisor_username NULLS LAST, team_name NULLS LAST, route_group NULLS LAST, driver_name ASC, driver_id ASC
     LIMIT $${values.length}
   `, values);
 
@@ -674,15 +688,19 @@ async function upsertDriver(input = {}, actor = 'supervisor') {
   const result = await postgres.query(`
     INSERT INTO drivers (
       driver_id, driver_name, employee_number, phone_number, route_group,
-      territory, active, notes, created_by, updated_by, created_at, updated_at
+      territory, supervisor_username, supervisor_name, team_name,
+      active, notes, created_by, updated_by, created_at, updated_at
     )
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $9, NOW(), NOW())
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $11, NOW(), NOW())
     ON CONFLICT (driver_id) DO UPDATE SET
       driver_name = EXCLUDED.driver_name,
       employee_number = EXCLUDED.employee_number,
       phone_number = EXCLUDED.phone_number,
       route_group = EXCLUDED.route_group,
       territory = EXCLUDED.territory,
+      supervisor_username = EXCLUDED.supervisor_username,
+      supervisor_name = EXCLUDED.supervisor_name,
+      team_name = EXCLUDED.team_name,
       active = EXCLUDED.active,
       notes = EXCLUDED.notes,
       updated_by = EXCLUDED.updated_by,
@@ -695,6 +713,9 @@ async function upsertDriver(input = {}, actor = 'supervisor') {
     String(input.phoneNumber || input.phone_number || '').trim() || null,
     String(input.routeGroup || input.route_group || '').trim() || null,
     String(input.territory || '').trim() || null,
+    String(input.supervisorUsername || input.supervisor_username || '').trim().toLowerCase() || null,
+    String(input.supervisorName || input.supervisor_name || '').trim() || null,
+    String(input.teamName || input.team_name || '').trim() || null,
     active,
     String(input.notes || '').trim() || null,
     String(actor || 'supervisor').trim() || 'supervisor'
@@ -2037,6 +2058,77 @@ async function assignDailyRouteManifest(id, input = {}) {
   return result.rows[0] ? routeManifestFromRow(result.rows[0]) : null;
 }
 
+async function swapDailyRouteAssignments(leftRouteId, rightRouteId, input = {}) {
+  const leftId = String(leftRouteId || input.leftRouteId || input.left_route_id || '').trim();
+  const rightId = String(rightRouteId || input.rightRouteId || input.right_route_id || '').trim();
+  const assignedBy = String(input.assignedBy || input.assigned_by || 'supervisor').trim() || 'supervisor';
+
+  if (!leftId || !rightId || leftId === rightId) {
+    const error = new Error('Two different route ids are required to switch route assignments.');
+    error.status = 400;
+    throw error;
+  }
+
+  const result = await postgres.query(`
+    WITH selected AS (
+      SELECT *
+      FROM daily_route_manifests
+      WHERE id IN ($1, $2)
+    ),
+    left_route AS (
+      SELECT * FROM selected WHERE id = $1
+    ),
+    right_route AS (
+      SELECT * FROM selected WHERE id = $2
+    ),
+    updated_left AS (
+      UPDATE daily_route_manifests target
+      SET
+        assigned_driver_id = right_route.assigned_driver_id,
+        assigned_driver_name = right_route.assigned_driver_name,
+        assigned_by = $3,
+        assigned_at = CASE WHEN right_route.assigned_driver_id IS NULL THEN NULL ELSE NOW() END,
+        status = CASE
+          WHEN target.status = 'completed' THEN target.status
+          WHEN right_route.assigned_driver_id IS NULL THEN 'unassigned'
+          ELSE 'assigned'
+        END,
+        updated_at = NOW()
+      FROM right_route
+      WHERE target.id = $1
+      RETURNING target.*
+    ),
+    updated_right AS (
+      UPDATE daily_route_manifests target
+      SET
+        assigned_driver_id = left_route.assigned_driver_id,
+        assigned_driver_name = left_route.assigned_driver_name,
+        assigned_by = $3,
+        assigned_at = CASE WHEN left_route.assigned_driver_id IS NULL THEN NULL ELSE NOW() END,
+        status = CASE
+          WHEN target.status = 'completed' THEN target.status
+          WHEN left_route.assigned_driver_id IS NULL THEN 'unassigned'
+          ELSE 'assigned'
+        END,
+        updated_at = NOW()
+      FROM left_route
+      WHERE target.id = $2
+      RETURNING target.*
+    )
+    SELECT * FROM updated_left
+    UNION ALL
+    SELECT * FROM updated_right
+  `, [leftId, rightId, assignedBy]);
+
+  if (result.rows.length !== 2) {
+    const error = new Error('Both route manifests must exist before assignments can be switched.');
+    error.status = 404;
+    throw error;
+  }
+
+  return result.rows.map(routeManifestFromRow);
+}
+
 async function deleteDailyRouteManifest(id) {
   const cleanedId = String(id || '').trim();
   if (!cleanedId) {
@@ -2250,6 +2342,7 @@ module.exports = {
   recordAdminUserLogin,
   setAdminUserActive,
   setDriverActive,
+  swapDailyRouteAssignments,
   updateRouteSessionReview,
   updateStaticHazardVerification,
   updateDailyRouteStopStatusForDriver,

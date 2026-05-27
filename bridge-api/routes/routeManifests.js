@@ -238,7 +238,7 @@ function renderRouteManifestAdminPage() {
     .tab, button { border: 0; border-radius: 12px; padding: 10px 14px; color: #fff; background: #0d6efd; font-weight: 800; text-decoration: none; cursor: pointer; }
     .tab.active { background: #00a9b8; color: #05222a; }
     .panel { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16); border-radius: 18px; padding: 18px; }
-    textarea, input { width: 100%; box-sizing: border-box; border-radius: 12px; border: 1px solid #31596a; background: #06121b; color: #fff; padding: 12px; }
+    textarea, input, select { width: 100%; box-sizing: border-box; border-radius: 12px; border: 1px solid #31596a; background: #06121b; color: #fff; padding: 12px; }
     textarea { min-height: 220px; font-family: Consolas, monospace; }
     table { width: 100%; border-collapse: collapse; margin-top: 14px; }
     th, td { text-align: left; border-bottom: 1px solid rgba(255,255,255,0.14); padding: 10px; vertical-align: top; }
@@ -282,10 +282,12 @@ function renderRouteManifestAdminPage() {
       <h2>Imported Routes</h2>
       <div class="grid">
         <div><label>Filter/delete date</label><input id="routeDateFilter" placeholder="YYYY-MM-DD" /></div>
+        <div><label>Assign to registered driver</label><select id="driverSelect"><option value="">Loading drivers...</option></select></div>
         <div>
           <label>&nbsp;</label>
           <div class="row-actions">
             <button onclick="loadRoutes()">Refresh</button>
+            <button onclick="switchSelectedRoutes()">Switch Selected Route Assignments</button>
             <button class="danger" onclick="deleteRoutesByDate()">Delete Routes for Date</button>
           </div>
         </div>
@@ -304,6 +306,10 @@ function renderRouteManifestAdminPage() {
 
     function escapeHtml(value) {
       return String(value == null ? '' : value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;', "'":'&#39;'}[c]));
+    }
+
+    function encodeAttr(value) {
+      return encodeURIComponent(String(value == null ? '' : value));
     }
 
     async function importCsv() {
@@ -334,10 +340,28 @@ function renderRouteManifestAdminPage() {
       ].join('\\n');
     }
 
+    async function loadDriversForAssignment() {
+      const select = document.getElementById('driverSelect');
+      const response = await fetch('/api/drivers?active=true&limit=1000');
+      const data = await response.json().catch(() => ({}));
+      const drivers = data.drivers || [];
+      select.innerHTML = '<option value="">Choose active driver...</option>' + drivers.map(driver =>
+        '<option value="' + encodeAttr(driver.driverId) + '" data-name="' + encodeAttr(driver.driverName) + '">' +
+          escapeHtml(driver.driverName) + ' - ' + escapeHtml(driver.driverId) +
+          (driver.supervisorName || driver.teamName ? ' (' + escapeHtml([driver.supervisorName, driver.teamName].filter(Boolean).join(' / ')) + ')' : '') +
+        '</option>'
+      ).join('');
+    }
+
     async function assignRoute(id) {
-      const driverId = prompt('Driver ID');
-      if (!driverId) return;
-      const driverName = prompt('Driver name', driverId) || driverId;
+      const select = document.getElementById('driverSelect');
+      const selected = select.options[select.selectedIndex];
+      const driverId = selected ? decodeURIComponent(selected.value || '') : '';
+      const driverName = selected ? decodeURIComponent(selected.dataset.name || driverId) : '';
+      if (!driverId) {
+        alert('Choose an active registered driver first.');
+        return;
+      }
       const response = await fetch('/api/route-manifests/' + encodeURIComponent(id) + '/assign', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -347,6 +371,27 @@ function renderRouteManifestAdminPage() {
         const data = await response.json().catch(() => ({}));
         alert(data.error || 'Assignment failed.');
       }
+      loadRoutes();
+    }
+
+    async function switchSelectedRoutes() {
+      const checked = Array.from(document.querySelectorAll('input[name="routeSwitch"]:checked')).map(input => input.value);
+      if (checked.length !== 2) {
+        alert('Select exactly two routes to switch assignments.');
+        return;
+      }
+      if (!confirm('Switch the assigned drivers between the two selected routes?')) return;
+      const response = await fetch('/api/route-manifests/switch-assignments', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ leftRouteId: checked[0], rightRouteId: checked[1] })
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        alert(data.error || 'Unable to switch route assignments.');
+        return;
+      }
+      document.getElementById('message').textContent = 'Switched route assignments.';
       loadRoutes();
     }
 
@@ -389,8 +434,9 @@ function renderRouteManifestAdminPage() {
       const data = await response.json();
       const routes = data.routes || [];
       document.getElementById('routes').innerHTML =
-        '<table><thead><tr><th>Date</th><th>Route</th><th>Times</th><th>Stops</th><th>Pallets</th><th>Cases</th><th>Driver</th><th>Status</th><th></th></tr></thead><tbody>' +
+        '<table><thead><tr><th>Switch</th><th>Date</th><th>Route</th><th>Times</th><th>Stops</th><th>Pallets</th><th>Cases</th><th>Driver</th><th>Status</th><th></th></tr></thead><tbody>' +
         routes.map(route => '<tr>' +
+          '<td><input type="checkbox" name="routeSwitch" value="' + escapeHtml(route.id) + '" /></td>' +
           '<td>' + escapeHtml(route.routeDate) + '</td>' +
           '<td><strong>' + escapeHtml(route.routeNumber) + '</strong><br><span class="muted">' + escapeHtml(route.routeName || '') + '</span></td>' +
           '<td>' + escapeHtml(route.plannedStartAt || '-') + '<br>' + escapeHtml(route.plannedEndAt || '-') + '</td>' +
@@ -400,12 +446,13 @@ function renderRouteManifestAdminPage() {
           '<td>' + escapeHtml(route.assignedDriverName || route.assignedDriverId || 'Unassigned') + '</td>' +
           '<td>' + escapeHtml(route.status) + '</td>' +
           '<td><div class="row-actions">' +
-            '<button onclick="assignRoute(\\'' + escapeHtml(route.id) + '\\')">Assign</button>' +
-            '<button class="danger" onclick="deleteRoute(\\'' + escapeHtml(route.id) + '\\', \\'' + escapeHtml(route.routeNumber) + '\\', \\'' + escapeHtml(route.routeDate) + '\\')">Delete</button>' +
+            '<button onclick="assignRoute(decodeURIComponent(\\'' + encodeURIComponent(route.id) + '\\'))">Assign/Reassign</button>' +
+            '<button class="danger" onclick="deleteRoute(decodeURIComponent(\\'' + encodeURIComponent(route.id) + '\\'), decodeURIComponent(\\'' + encodeURIComponent(route.routeNumber) + '\\'), decodeURIComponent(\\'' + encodeURIComponent(route.routeDate) + '\\'))">Delete</button>' +
           '</div></td>' +
         '</tr>').join('') +
         '</tbody></table>';
     }
+    loadDriversForAssignment();
     loadRoutes();
   </script>
 </body>
@@ -522,6 +569,23 @@ router.delete('/date/:routeDate', requireAdminSession, async (req, res) => {
   } catch (error) {
     return res.status(error.status || 500).json({
       error: error.message || 'Unable to delete route manifests for this date.'
+    });
+  }
+});
+
+router.post('/switch-assignments', requireAdminSession, async (req, res) => {
+  try {
+    const routes = await repositories.swapDailyRouteAssignments(
+      req.body?.leftRouteId || req.body?.left_route_id,
+      req.body?.rightRouteId || req.body?.right_route_id,
+      {
+        assignedBy: req.adminSession?.username || req.body?.assignedBy
+      }
+    );
+    return res.json({ ok: true, routes });
+  } catch (error) {
+    return res.status(error.status || 500).json({
+      error: error.message || 'Unable to switch route assignments.'
     });
   }
 });
