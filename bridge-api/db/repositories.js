@@ -489,11 +489,13 @@ function stableRepositoryId(prefix, parts) {
 }
 
 function normalizeMoney(value, fallback = 0) {
+  if (value === null || value === undefined || String(value).trim() === '') return fallback;
   const parsed = Number(String(value ?? '').replace(/[$,]/g, ''));
   return Number.isFinite(parsed) ? Math.round(parsed * 100) / 100 : fallback;
 }
 
 function normalizeQuantity(value, fallback = 0) {
+  if (value === null || value === undefined || String(value).trim() === '') return fallback;
   const parsed = Number(String(value ?? '').replace(/,/g, ''));
   return Number.isFinite(parsed) ? Math.max(0, Math.round(parsed * 100) / 100) : fallback;
 }
