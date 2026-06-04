@@ -51,6 +51,12 @@ function renderAdminDashboard(session) {
       accent: '#ffbf3f'
     },
     {
+      title: 'AI Copilot Foundation',
+      description: 'Check AI provider status and run protected account intelligence summaries from source-of-truth order data.',
+      href: '/api/ai/status',
+      accent: '#a78bfa'
+    },
+    {
       title: 'Route Replay',
       description: 'Inspect route sessions, warning events, safety analytics, and driver behavior after completed trips.',
       href: '/api/routing/route-sessions/admin',

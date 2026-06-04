@@ -44,3 +44,7 @@ services:
         sync: false
       - key: PHOTO_STORAGE_PUBLIC_BASE_URL
         sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: "gpt-5.5"

@@ -352,6 +352,25 @@ function accountAiInsightFromRow(row) {
   };
 }
 
+function aiInteractionLogFromRow(row) {
+  return {
+    id: row.id,
+    endpoint: row.endpoint,
+    requesterType: row.requester_type || null,
+    requesterId: row.requester_id || null,
+    accountNumber: row.account_number || null,
+    routeManifestId: row.route_manifest_id || null,
+    routeStopId: row.route_stop_id || null,
+    model: row.model || null,
+    status: row.status,
+    inputSummary: row.input_summary || {},
+    outputSummary: row.output_summary || {},
+    errorMessage: row.error_message || null,
+    latencyMs: row.latency_ms ?? null,
+    createdAt: toIsoString(row.created_at)
+  };
+}
+
 function staticBridgeFromRow(row) {
   const inferredStateCode = inferServiceAreaStateCode(row.latitude, row.longitude);
   const stateCode = row.state_code || row.raw?.state_code || row.raw?.stateCode || inferredStateCode;
@@ -3224,6 +3243,37 @@ async function listAccountInsights(options = {}) {
   return result.rows.map(accountAiInsightFromRow);
 }
 
+async function saveAiInteractionLog(input = {}) {
+  const result = await postgres.query(`
+    INSERT INTO ai_interaction_logs (
+      id, endpoint, requester_type, requester_id, account_number,
+      route_manifest_id, route_stop_id, model, status, input_summary,
+      output_summary, error_message, latency_ms
+    )
+    VALUES (
+      $1, $2, $3, $4, $5,
+      $6, $7, $8, $9, $10::jsonb,
+      $11::jsonb, $12, $13
+    )
+    RETURNING *
+  `, [
+    cleanRepositoryText(input.id, 160) || generateRepositoryId('ai_log'),
+    cleanRepositoryText(input.endpoint, 160),
+    cleanRepositoryText(input.requesterType || input.requester_type, 80) || null,
+    cleanRepositoryText(input.requesterId || input.requester_id, 160) || null,
+    cleanRepositoryText(input.accountNumber || input.account_number, 120) || null,
+    cleanRepositoryText(input.routeManifestId || input.route_manifest_id, 160) || null,
+    cleanRepositoryText(input.routeStopId || input.route_stop_id, 160) || null,
+    cleanRepositoryText(input.model, 120) || null,
+    cleanRepositoryText(input.status, 80) || 'unknown',
+    JSON.stringify(input.inputSummary || input.input_summary || {}),
+    JSON.stringify(input.outputSummary || input.output_summary || {}),
+    cleanRepositoryText(input.errorMessage || input.error_message, 1000) || null,
+    Number.isFinite(Number(input.latencyMs ?? input.latency_ms)) ? Math.max(0, Math.round(Number(input.latencyMs ?? input.latency_ms))) : null
+  ]);
+  return aiInteractionLogFromRow(result.rows[0]);
+}
+
 module.exports = {
   getAdminUser,
   assignDailyRouteManifest,
@@ -3267,6 +3317,7 @@ module.exports = {
   listStaticBridgesNearRoute,
   listStaticZonesInBounds,
   listStaticZonesNearRoute,
+  saveAiInteractionLog,
   saveRecentDestination,
   saveRouteSession,
   recordDeliveryDeduction,

@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const postgres = require('./db/postgres');
 const photoStorage = require('./services/photoStorage');
 const driverAuth = require('./services/driverAuth');
+const aiProvider = require('./services/aiProvider');
 
 dotenv.config();
 
@@ -46,6 +47,7 @@ const deliveryNotesRoutes = require('./routes/deliveryNotes');
 const routeManifestRoutes = require('./routes/routeManifests');
 const adminDashboardRoutes = require('./routes/adminDashboard');
 const accountIntelligenceRoutes = require('./routes/accountIntelligence');
+const aiRoutes = require('./routes/ai');
 
 app.use('/api/bridges', bridgeRoutes);
 app.use('/api/drivers', driverRoutes);
@@ -56,6 +58,7 @@ app.use('/api/delivery-notes', deliveryNotesRoutes);
 app.use('/api/route-manifests', routeManifestRoutes);
 app.use('/api/admin', adminDashboardRoutes);
 app.use('/api/account-intelligence', accountIntelligenceRoutes);
+app.use('/api/ai', aiRoutes);
 
 app.get('/health', async (req, res) => {
   res.json({
@@ -64,6 +67,7 @@ app.get('/health', async (req, res) => {
     database: postgres.isDatabaseConfigured() ? 'postgres' : 'json-fallback',
     postgis: await postgres.isPostgisEnabled(),
     photoStorage: photoStorage.getStorageStatus(),
+    ai: aiProvider.getStatus(),
     driverAuth: driverAuth.isDriverAuthConfigured() ? 'configured' : 'not-configured',
     uptime_s: Math.round(process.uptime())
   });
@@ -104,6 +108,7 @@ app.get('/ready', async (req, res) => {
     ok,
     service: 'bridge-api',
     checks,
+    ai: aiProvider.getStatus(),
     ...(databaseError ? { databaseError } : {}),
     photoStorage: storageStatus,
     uptime_s: Math.round(process.uptime())

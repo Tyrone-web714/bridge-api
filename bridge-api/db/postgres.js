@@ -527,6 +527,28 @@ async function ensureSchema() {
     CREATE INDEX IF NOT EXISTS account_ai_insights_account_idx ON account_ai_insights(account_number, created_at DESC);
     CREATE INDEX IF NOT EXISTS account_ai_insights_type_idx ON account_ai_insights(insight_type);
     CREATE INDEX IF NOT EXISTS account_ai_insights_status_idx ON account_ai_insights(status);
+
+    CREATE TABLE IF NOT EXISTS ai_interaction_logs (
+      id TEXT PRIMARY KEY,
+      endpoint TEXT NOT NULL,
+      requester_type TEXT,
+      requester_id TEXT,
+      account_number TEXT,
+      route_manifest_id TEXT,
+      route_stop_id TEXT,
+      model TEXT,
+      status TEXT NOT NULL,
+      input_summary JSONB NOT NULL DEFAULT '{}'::jsonb,
+      output_summary JSONB NOT NULL DEFAULT '{}'::jsonb,
+      error_message TEXT,
+      latency_ms INTEGER,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+
+    CREATE INDEX IF NOT EXISTS ai_interaction_logs_endpoint_idx ON ai_interaction_logs(endpoint, created_at DESC);
+    CREATE INDEX IF NOT EXISTS ai_interaction_logs_requester_idx ON ai_interaction_logs(requester_type, requester_id, created_at DESC);
+    CREATE INDEX IF NOT EXISTS ai_interaction_logs_account_idx ON ai_interaction_logs(account_number, created_at DESC);
+    CREATE INDEX IF NOT EXISTS ai_interaction_logs_status_idx ON ai_interaction_logs(status);
   `);
 
   try {
