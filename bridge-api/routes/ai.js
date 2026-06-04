@@ -157,6 +157,18 @@ function compactAccountSummaryForAi(summary) {
       netAmount: order.netAmount,
       status: order.status,
       itemCount: Array.isArray(order.items) ? order.items.length : 0
+    })),
+    recentRouteStops: (summary.recentRouteStops || []).slice(0, 5).map((stop) => ({
+      routeDate: stop.routeDate,
+      routeNumber: stop.routeNumber,
+      routeName: stop.routeName,
+      stopSequence: stop.stopSequence,
+      accountName: stop.accountName,
+      destinationAddress: stop.destinationAddress,
+      caseCount: stop.caseCount,
+      palletCount: stop.palletCount,
+      status: stop.status,
+      assignedDriverId: stop.assignedDriverId
     }))
   };
 }
@@ -214,6 +226,7 @@ router.post('/account-summary', requireAiAccess, requireAiConfigured, async (req
         sourceSummary: {
           periodDays: sourceSummary.periodDays,
           orderCount: sourceSummary.orderCount,
+          recentRouteStopCount: Array.isArray(sourceSummary.recentRouteStops) ? sourceSummary.recentRouteStops.length : 0,
           subtotalAmount: sourceSummary.subtotalAmount,
           deductionAmount: sourceSummary.deductionAmount,
           netAmount: sourceSummary.netAmount
@@ -235,6 +248,7 @@ router.post('/account-summary', requireAiAccess, requireAiConfigured, async (req
         routeDate: requester.type === 'driver' ? routeDate : null,
         periodDays,
         orderCount: sourceSummary.orderCount,
+        recentRouteStopCount: Array.isArray(sourceSummary.recentRouteStops) ? sourceSummary.recentRouteStops.length : 0,
         topProductCount: sourceSummary.topProducts.length,
         deductionReasonCount: sourceSummary.deductionReasons.length
       },

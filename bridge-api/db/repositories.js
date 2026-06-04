@@ -502,6 +502,21 @@ function cleanRepositoryText(value, maxLength = 500) {
   return String(value ?? '').trim().slice(0, maxLength);
 }
 
+function readInputField(source, names = []) {
+  if (!source || typeof source !== 'object') return undefined;
+  for (const name of names) {
+    if (Object.prototype.hasOwnProperty.call(source, name)) return source[name];
+  }
+  const normalized = new Map(
+    Object.keys(source).map((key) => [String(key).replace(/[\s_-]+/g, '').toLowerCase(), source[key]])
+  );
+  for (const name of names) {
+    const key = String(name).replace(/[\s_-]+/g, '').toLowerCase();
+    if (normalized.has(key)) return normalized.get(key);
+  }
+  return undefined;
+}
+
 function normalizeStateCodes(value) {
   const raw = Array.isArray(value) ? value : String(value || '').split(',');
   return raw
@@ -2727,7 +2742,7 @@ async function listProducts(options = {}) {
 }
 
 async function createAccountOrder(input = {}) {
-  const accountNumber = cleanRepositoryText(input.accountNumber || input.account_number, 120);
+  const accountNumber = cleanRepositoryText(readInputField(input, ['accountNumber', 'account_number']), 120);
   if (!accountNumber) {
     const error = new Error('accountNumber is required.');
     error.status = 400;
@@ -2735,33 +2750,33 @@ async function createAccountOrder(input = {}) {
   }
 
   const items = asArray(input.items).map((item) => {
-    const quantity = normalizeQuantity(item.quantity ?? item.cases ?? item.units);
-    const unitPrice = normalizeMoney(item.unitPrice ?? item.unit_price);
-    const grossAmount = normalizeMoney(item.grossAmount ?? item.gross_amount, quantity * unitPrice);
-    const deductionQuantity = normalizeQuantity(item.deductionQuantity ?? item.deduction_quantity);
-    const deductionAmount = normalizeMoney(item.deductionAmount ?? item.deduction_amount);
+    const quantity = normalizeQuantity(readInputField(item, ['quantity', 'cases', 'units']));
+    const unitPrice = normalizeMoney(readInputField(item, ['unitPrice', 'unit_price', 'price', 'casePrice', 'case_price']));
+    const grossAmount = normalizeMoney(readInputField(item, ['grossAmount', 'gross_amount', 'lineTotal', 'line_total', 'extendedPrice', 'extended_price']), quantity * unitPrice);
+    const deductionQuantity = normalizeQuantity(readInputField(item, ['deductionQuantity', 'deduction_quantity']));
+    const deductionAmount = normalizeMoney(readInputField(item, ['deductionAmount', 'deduction_amount']));
     return {
-      id: cleanRepositoryText(item.id, 160) || generateRepositoryId('order_item'),
-      sku: cleanRepositoryText(item.sku || item.SKU, 120) || null,
-      productName: cleanRepositoryText(item.productName || item.product_name || item.name, 240),
-      brand: cleanRepositoryText(item.brand, 120) || null,
-      packageSize: cleanRepositoryText(item.packageSize || item.package_size, 120) || null,
-      category: cleanRepositoryText(item.category, 120) || null,
+      id: cleanRepositoryText(readInputField(item, ['id']), 160) || generateRepositoryId('order_item'),
+      sku: cleanRepositoryText(readInputField(item, ['sku', 'SKU', 'productCode', 'product_code', 'itemCode', 'item_code']), 120) || null,
+      productName: cleanRepositoryText(readInputField(item, ['productName', 'product_name', 'name', 'product', 'itemName', 'item_name']), 240),
+      brand: cleanRepositoryText(readInputField(item, ['brand']), 120) || null,
+      packageSize: cleanRepositoryText(readInputField(item, ['packageSize', 'package_size', 'packSize', 'pack_size']), 120) || null,
+      category: cleanRepositoryText(readInputField(item, ['category', 'productCategory', 'product_category']), 120) || null,
       quantity,
       unitPrice,
       grossAmount,
       deductionQuantity,
       deductionAmount,
-      netAmount: Math.max(0, normalizeMoney(item.netAmount ?? item.net_amount, grossAmount - deductionAmount)),
+      netAmount: Math.max(0, normalizeMoney(readInputField(item, ['netAmount', 'net_amount']), grossAmount - deductionAmount)),
       raw: item.raw || item
     };
   }).filter((item) => item.productName);
 
-  const invoiceNumber = cleanRepositoryText(input.invoiceNumber || input.invoice_number, 160) || null;
-  const subtotalAmount = normalizeMoney(input.subtotalAmount ?? input.subtotal_amount, items.reduce((sum, item) => sum + item.grossAmount, 0));
-  const deductionAmount = normalizeMoney(input.deductionAmount ?? input.deduction_amount, items.reduce((sum, item) => sum + item.deductionAmount, 0));
-  const netAmount = normalizeMoney(input.netAmount ?? input.net_amount, Math.max(0, subtotalAmount - deductionAmount));
-  const orderId = cleanRepositoryText(input.id, 160) || (invoiceNumber
+  const invoiceNumber = cleanRepositoryText(readInputField(input, ['invoiceNumber', 'invoice_number', 'invoice', 'orderNumber', 'order_number']), 160) || null;
+  const subtotalAmount = normalizeMoney(readInputField(input, ['subtotalAmount', 'subtotal_amount']), items.reduce((sum, item) => sum + item.grossAmount, 0));
+  const deductionAmount = normalizeMoney(readInputField(input, ['deductionAmount', 'deduction_amount']), items.reduce((sum, item) => sum + item.deductionAmount, 0));
+  const netAmount = normalizeMoney(readInputField(input, ['netAmount', 'net_amount']), Math.max(0, subtotalAmount - deductionAmount));
+  const orderId = cleanRepositoryText(readInputField(input, ['id']), 160) || (invoiceNumber
     ? stableRepositoryId('order', [accountNumber, invoiceNumber])
     : generateRepositoryId('order'));
 
@@ -2793,16 +2808,16 @@ async function createAccountOrder(input = {}) {
   `, [
     orderId,
     accountNumber,
-    cleanRepositoryText(input.accountName || input.account_name, 240) || null,
-    toDateOnly(input.orderDate || input.order_date) || null,
-    toDateOnly(input.deliveryDate || input.delivery_date) || null,
+    cleanRepositoryText(readInputField(input, ['accountName', 'account_name']), 240) || null,
+    toDateOnly(readInputField(input, ['orderDate', 'order_date'])) || null,
+    toDateOnly(readInputField(input, ['deliveryDate', 'delivery_date'])) || null,
     invoiceNumber,
-    cleanRepositoryText(input.routeManifestId || input.route_manifest_id, 160) || null,
-    cleanRepositoryText(input.routeStopId || input.route_stop_id, 160) || null,
+    cleanRepositoryText(readInputField(input, ['routeManifestId', 'route_manifest_id']), 160) || null,
+    cleanRepositoryText(readInputField(input, ['routeStopId', 'route_stop_id']), 160) || null,
     subtotalAmount,
     deductionAmount,
     netAmount,
-    cleanRepositoryText(input.status, 80) || 'open',
+    cleanRepositoryText(readInputField(input, ['status']), 80) || 'open',
     JSON.stringify(input.raw || {})
   ]);
 
@@ -3112,7 +3127,31 @@ async function getAccountProductSummary(accountNumber, options = {}) {
     LIMIT 10
   `, [cleanedAccountNumber, periodDays]);
 
+  const routeContextResult = await postgres.query(`
+    SELECT
+      stop.account_name,
+      stop.destination_address,
+      stop.city,
+      stop.state_code,
+      stop.postal_code,
+      stop.case_count,
+      stop.pallet_count,
+      stop.status,
+      stop.stop_sequence,
+      manifest.route_date,
+      manifest.route_number,
+      manifest.route_name,
+      manifest.assigned_driver_id,
+      manifest.assigned_driver_name
+    FROM daily_route_stops AS stop
+    JOIN daily_route_manifests AS manifest ON manifest.id = stop.manifest_id
+    WHERE stop.account_number = $1
+    ORDER BY manifest.route_date DESC, manifest.created_at DESC, stop.stop_sequence ASC
+    LIMIT 5
+  `, [cleanedAccountNumber]);
+
   const recentOrders = await listAccountOrders({ accountNumber: cleanedAccountNumber, limit: 10 });
+  const latestRouteContext = routeContextResult.rows[0] || null;
   const totals = totalsResult.rows[0] || {
     account_number: cleanedAccountNumber,
     account_name: null,
@@ -3126,7 +3165,7 @@ async function getAccountProductSummary(accountNumber, options = {}) {
 
   return {
     accountNumber: cleanedAccountNumber,
-    accountName: totals.account_name || null,
+    accountName: totals.account_name || latestRouteContext?.account_name || null,
     periodDays,
     orderCount: Number(totals.order_count) || 0,
     subtotalAmount: normalizeMoney(totals.subtotal_amount),
@@ -3150,7 +3189,23 @@ async function getAccountProductSummary(accountNumber, options = {}) {
       quantity: normalizeQuantity(row.quantity),
       amount: normalizeMoney(row.amount)
     })),
-    recentOrders
+    recentOrders,
+    recentRouteStops: routeContextResult.rows.map((row) => ({
+      routeDate: toDateOnly(row.route_date),
+      routeNumber: row.route_number || null,
+      routeName: row.route_name || null,
+      stopSequence: Number(row.stop_sequence) || null,
+      accountName: row.account_name || null,
+      destinationAddress: row.destination_address || null,
+      city: row.city || null,
+      stateCode: row.state_code || null,
+      postalCode: row.postal_code || null,
+      caseCount: Number(row.case_count) || 0,
+      palletCount: Number(row.pallet_count) || 0,
+      status: row.status || null,
+      assignedDriverId: row.assigned_driver_id || null,
+      assignedDriverName: row.assigned_driver_name || null
+    }))
   };
 }
 
