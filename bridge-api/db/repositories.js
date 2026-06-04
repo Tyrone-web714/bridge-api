@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 const postgres = require('./postgres');
 
 function isDatabaseEnabled() {
@@ -256,6 +257,101 @@ function routeStopFromRow(row) {
   };
 }
 
+function productFromRow(row) {
+  return {
+    sku: row.sku,
+    productName: row.product_name,
+    brand: row.brand || null,
+    packageSize: row.package_size || null,
+    category: row.category || null,
+    unitPrice: row.unit_price == null ? null : normalizeMoney(row.unit_price),
+    active: row.active !== false,
+    raw: row.raw || {},
+    createdAt: toIsoString(row.created_at),
+    updatedAt: toIsoString(row.updated_at)
+  };
+}
+
+function accountOrderItemFromRow(row) {
+  return {
+    id: row.id,
+    orderId: row.order_id,
+    sku: row.sku || null,
+    productName: row.product_name,
+    brand: row.brand || null,
+    packageSize: row.package_size || null,
+    category: row.category || null,
+    quantity: normalizeQuantity(row.quantity),
+    unitPrice: normalizeMoney(row.unit_price),
+    grossAmount: normalizeMoney(row.gross_amount),
+    deductionQuantity: normalizeQuantity(row.deduction_quantity),
+    deductionAmount: normalizeMoney(row.deduction_amount),
+    netAmount: normalizeMoney(row.net_amount),
+    raw: row.raw || {},
+    createdAt: toIsoString(row.created_at),
+    updatedAt: toIsoString(row.updated_at)
+  };
+}
+
+function deliveryDeductionFromRow(row) {
+  return {
+    id: row.id,
+    orderId: row.order_id || null,
+    orderItemId: row.order_item_id || null,
+    accountNumber: row.account_number,
+    routeStopId: row.route_stop_id || null,
+    sku: row.sku || null,
+    productName: row.product_name || null,
+    reason: row.reason,
+    quantity: normalizeQuantity(row.quantity),
+    amount: normalizeMoney(row.amount),
+    notes: row.notes || null,
+    createdBy: row.created_by || null,
+    createdAt: toIsoString(row.created_at),
+    raw: row.raw || {}
+  };
+}
+
+function accountOrderFromRow(row, items = [], deductions = []) {
+  return {
+    id: row.id,
+    accountNumber: row.account_number,
+    accountName: row.account_name || null,
+    orderDate: toDateOnly(row.order_date),
+    deliveryDate: toDateOnly(row.delivery_date),
+    invoiceNumber: row.invoice_number || null,
+    routeManifestId: row.route_manifest_id || null,
+    routeStopId: row.route_stop_id || null,
+    subtotalAmount: normalizeMoney(row.subtotal_amount),
+    deductionAmount: normalizeMoney(row.deduction_amount),
+    netAmount: normalizeMoney(row.net_amount),
+    status: row.status || 'open',
+    raw: row.raw || {},
+    createdAt: toIsoString(row.created_at),
+    updatedAt: toIsoString(row.updated_at),
+    items,
+    deductions
+  };
+}
+
+function accountAiInsightFromRow(row) {
+  return {
+    id: row.id,
+    accountNumber: row.account_number,
+    insightType: row.insight_type,
+    title: row.title,
+    summary: row.summary,
+    confidence: row.confidence || 'medium',
+    sourcePeriodStart: toDateOnly(row.source_period_start),
+    sourcePeriodEnd: toDateOnly(row.source_period_end),
+    generatedBy: row.generated_by || 'rules_engine_v1',
+    status: row.status || 'active',
+    raw: row.raw || {},
+    createdAt: toIsoString(row.created_at),
+    updatedAt: toIsoString(row.updated_at)
+  };
+}
+
 function staticBridgeFromRow(row) {
   const inferredStateCode = inferServiceAreaStateCode(row.latitude, row.longitude);
   const stateCode = row.state_code || row.raw?.state_code || row.raw?.stateCode || inferredStateCode;
@@ -363,6 +459,28 @@ function normalizeLimit(value, fallback = 100, max = 500) {
   const parsed = Number(value);
   if (!Number.isFinite(parsed)) return fallback;
   return Math.min(Math.max(Math.trunc(parsed), 1), max);
+}
+
+function generateRepositoryId(prefix) {
+  return `${prefix}_${crypto.randomUUID ? crypto.randomUUID() : crypto.randomBytes(16).toString('hex')}`;
+}
+
+function stableRepositoryId(prefix, parts) {
+  return `${prefix}_${crypto.createHash('sha1').update(parts.map((part) => String(part ?? '')).join('|')).digest('hex').slice(0, 24)}`;
+}
+
+function normalizeMoney(value, fallback = 0) {
+  const parsed = Number(String(value ?? '').replace(/[$,]/g, ''));
+  return Number.isFinite(parsed) ? Math.round(parsed * 100) / 100 : fallback;
+}
+
+function normalizeQuantity(value, fallback = 0) {
+  const parsed = Number(String(value ?? '').replace(/,/g, ''));
+  return Number.isFinite(parsed) ? Math.max(0, Math.round(parsed * 100) / 100) : fallback;
+}
+
+function cleanRepositoryText(value, maxLength = 500) {
+  return String(value ?? '').trim().slice(0, maxLength);
 }
 
 function normalizeStateCodes(value) {
@@ -2019,6 +2137,107 @@ async function getDailyRouteManifest(id, options = {}) {
   return routeManifestFromRow(manifestRow, stopsResult.rows.map(routeStopFromRow));
 }
 
+async function getDailyRouteManifestWithAccountIntelligence(id, options = {}) {
+  const route = await getDailyRouteManifest(id, options);
+  if (!route || !Array.isArray(route.stops) || !route.stops.length) {
+    return route;
+  }
+
+  const stopIds = route.stops.map((stop) => stop.id).filter(Boolean);
+  const accountNumbers = [...new Set(route.stops.map((stop) => stop.accountNumber).filter(Boolean))];
+
+  const orderRows = stopIds.length
+    ? (await postgres.query(`
+      SELECT *
+      FROM account_orders
+      WHERE route_stop_id = ANY($1::text[])
+      ORDER BY COALESCE(delivery_date, order_date) DESC, created_at DESC
+    `, [stopIds])).rows
+    : [];
+  const orderIds = orderRows.map((row) => row.id).filter(Boolean);
+
+  const itemRows = orderIds.length
+    ? (await postgres.query(`
+      SELECT *
+      FROM account_order_items
+      WHERE order_id = ANY($1::text[])
+      ORDER BY product_name ASC
+    `, [orderIds])).rows
+    : [];
+  const deductionRows = orderIds.length
+    ? (await postgres.query(`
+      SELECT *
+      FROM delivery_deductions
+      WHERE order_id = ANY($1::text[])
+      ORDER BY created_at DESC
+    `, [orderIds])).rows
+    : [];
+  const insightRows = accountNumbers.length
+    ? (await postgres.query(`
+      SELECT DISTINCT ON (account_number, insight_type) *
+      FROM account_ai_insights
+      WHERE account_number = ANY($1::text[])
+        AND status = 'active'
+      ORDER BY account_number, insight_type, created_at DESC
+    `, [accountNumbers])).rows
+    : [];
+
+  const itemsByOrderId = new Map();
+  for (const row of itemRows) {
+    const mapped = accountOrderItemFromRow(row);
+    if (!itemsByOrderId.has(mapped.orderId)) itemsByOrderId.set(mapped.orderId, []);
+    itemsByOrderId.get(mapped.orderId).push(mapped);
+  }
+
+  const deductionsByOrderId = new Map();
+  for (const row of deductionRows) {
+    const mapped = deliveryDeductionFromRow(row);
+    if (!deductionsByOrderId.has(mapped.orderId)) deductionsByOrderId.set(mapped.orderId, []);
+    deductionsByOrderId.get(mapped.orderId).push(mapped);
+  }
+
+  const ordersByStopId = new Map();
+  for (const row of orderRows) {
+    const mapped = accountOrderFromRow(
+      row,
+      itemsByOrderId.get(row.id) || [],
+      deductionsByOrderId.get(row.id) || []
+    );
+    if (!ordersByStopId.has(mapped.routeStopId)) ordersByStopId.set(mapped.routeStopId, []);
+    ordersByStopId.get(mapped.routeStopId).push(mapped);
+  }
+
+  const insightsByAccountNumber = new Map();
+  for (const row of insightRows) {
+    const mapped = accountAiInsightFromRow(row);
+    if (!insightsByAccountNumber.has(mapped.accountNumber)) insightsByAccountNumber.set(mapped.accountNumber, []);
+    insightsByAccountNumber.get(mapped.accountNumber).push(mapped);
+  }
+
+  return {
+    ...route,
+    stops: route.stops.map((stop) => {
+      const accountOrders = ordersByStopId.get(stop.id) || [];
+      const orderItems = accountOrders.flatMap((order) => order.items || []);
+      const accountProductTotals = {
+        orderCount: accountOrders.length,
+        itemCount: orderItems.length,
+        totalQuantity: normalizeQuantity(orderItems.reduce((sum, item) => sum + (Number(item.quantity) || 0), 0)),
+        subtotalAmount: normalizeMoney(accountOrders.reduce((sum, order) => sum + (Number(order.subtotalAmount) || 0), 0)),
+        deductionAmount: normalizeMoney(accountOrders.reduce((sum, order) => sum + (Number(order.deductionAmount) || 0), 0)),
+        netAmount: normalizeMoney(accountOrders.reduce((sum, order) => sum + (Number(order.netAmount) || 0), 0))
+      };
+
+      return {
+        ...stop,
+        accountOrders,
+        accountInsights: insightsByAccountNumber.get(stop.accountNumber) || [],
+        accountProductTotals
+      };
+    })
+  };
+}
+
 async function listDailyRouteManifests(options = {}) {
   const limit = normalizeLimit(options.limit, 100, 500);
   const values = [];
@@ -2336,7 +2555,7 @@ async function getAssignedDailyRouteForDriver(driverId, routeDate) {
   `, [driverId, routeDate]);
   const manifest = result.rows[0] ? routeManifestFromRow(result.rows[0]) : null;
   if (!manifest) return null;
-  return getDailyRouteManifest(manifest.id);
+  return getDailyRouteManifestWithAccountIntelligence(manifest.id);
 }
 
 async function listUndeliveredRouteStops(options = {}) {
@@ -2422,6 +2641,589 @@ async function updateUndeliveredStopDisposition(stopId, input = {}) {
   return result.rows[0] ? routeStopFromRow(result.rows[0]) : null;
 }
 
+async function upsertProduct(input = {}) {
+  const sku = cleanRepositoryText(input.sku || input.SKU, 120);
+  const productName = cleanRepositoryText(input.productName || input.product_name || input.name, 240);
+  if (!sku || !productName) {
+    const error = new Error('sku and productName are required.');
+    error.status = 400;
+    throw error;
+  }
+
+  const result = await postgres.query(`
+    INSERT INTO products (
+      sku, product_name, brand, package_size, category, unit_price, active, raw, updated_at
+    )
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8::jsonb, NOW())
+    ON CONFLICT (sku) DO UPDATE SET
+      product_name = EXCLUDED.product_name,
+      brand = EXCLUDED.brand,
+      package_size = EXCLUDED.package_size,
+      category = EXCLUDED.category,
+      unit_price = EXCLUDED.unit_price,
+      active = EXCLUDED.active,
+      raw = EXCLUDED.raw,
+      updated_at = NOW()
+    RETURNING *
+  `, [
+    sku,
+    productName,
+    cleanRepositoryText(input.brand, 120) || null,
+    cleanRepositoryText(input.packageSize || input.package_size, 120) || null,
+    cleanRepositoryText(input.category, 120) || null,
+    input.unitPrice == null && input.unit_price == null ? null : normalizeMoney(input.unitPrice ?? input.unit_price),
+    input.active !== false,
+    JSON.stringify(input.raw || {})
+  ]);
+  return productFromRow(result.rows[0]);
+}
+
+async function listProducts(options = {}) {
+  const limit = normalizeLimit(options.limit, 100, 500);
+  const values = [];
+  const where = [];
+
+  if (options.search) {
+    values.push(`%${cleanRepositoryText(options.search, 120)}%`);
+    where.push(`(sku ILIKE $${values.length} OR product_name ILIKE $${values.length} OR brand ILIKE $${values.length})`);
+  }
+  if (options.category) {
+    values.push(cleanRepositoryText(options.category, 120));
+    where.push(`category = $${values.length}`);
+  }
+  if (options.active !== undefined) {
+    values.push(options.active !== false && String(options.active).toLowerCase() !== 'false');
+    where.push(`active = $${values.length}`);
+  }
+
+  values.push(limit);
+  const result = await postgres.query(`
+    SELECT *
+    FROM products
+    ${where.length ? `WHERE ${where.join(' AND ')}` : ''}
+    ORDER BY product_name ASC
+    LIMIT $${values.length}
+  `, values);
+  return result.rows.map(productFromRow);
+}
+
+async function createAccountOrder(input = {}) {
+  const accountNumber = cleanRepositoryText(input.accountNumber || input.account_number, 120);
+  if (!accountNumber) {
+    const error = new Error('accountNumber is required.');
+    error.status = 400;
+    throw error;
+  }
+
+  const items = asArray(input.items).map((item) => {
+    const quantity = normalizeQuantity(item.quantity ?? item.cases ?? item.units);
+    const unitPrice = normalizeMoney(item.unitPrice ?? item.unit_price);
+    const grossAmount = normalizeMoney(item.grossAmount ?? item.gross_amount, quantity * unitPrice);
+    const deductionQuantity = normalizeQuantity(item.deductionQuantity ?? item.deduction_quantity);
+    const deductionAmount = normalizeMoney(item.deductionAmount ?? item.deduction_amount);
+    return {
+      id: cleanRepositoryText(item.id, 160) || generateRepositoryId('order_item'),
+      sku: cleanRepositoryText(item.sku || item.SKU, 120) || null,
+      productName: cleanRepositoryText(item.productName || item.product_name || item.name, 240),
+      brand: cleanRepositoryText(item.brand, 120) || null,
+      packageSize: cleanRepositoryText(item.packageSize || item.package_size, 120) || null,
+      category: cleanRepositoryText(item.category, 120) || null,
+      quantity,
+      unitPrice,
+      grossAmount,
+      deductionQuantity,
+      deductionAmount,
+      netAmount: Math.max(0, normalizeMoney(item.netAmount ?? item.net_amount, grossAmount - deductionAmount)),
+      raw: item.raw || item
+    };
+  }).filter((item) => item.productName);
+
+  const invoiceNumber = cleanRepositoryText(input.invoiceNumber || input.invoice_number, 160) || null;
+  const subtotalAmount = normalizeMoney(input.subtotalAmount ?? input.subtotal_amount, items.reduce((sum, item) => sum + item.grossAmount, 0));
+  const deductionAmount = normalizeMoney(input.deductionAmount ?? input.deduction_amount, items.reduce((sum, item) => sum + item.deductionAmount, 0));
+  const netAmount = normalizeMoney(input.netAmount ?? input.net_amount, Math.max(0, subtotalAmount - deductionAmount));
+  const orderId = cleanRepositoryText(input.id, 160) || (invoiceNumber
+    ? stableRepositoryId('order', [accountNumber, invoiceNumber])
+    : generateRepositoryId('order'));
+
+  const result = await postgres.query(`
+    INSERT INTO account_orders (
+      id, account_number, account_name, order_date, delivery_date, invoice_number,
+      route_manifest_id, route_stop_id, subtotal_amount, deduction_amount, net_amount,
+      status, raw, updated_at
+    )
+    VALUES (
+      $1, $2, $3, COALESCE($4::date, CURRENT_DATE), $5::date, $6,
+      $7, $8, $9, $10, $11, $12, $13::jsonb, NOW()
+    )
+    ON CONFLICT (id) DO UPDATE SET
+      account_number = EXCLUDED.account_number,
+      account_name = EXCLUDED.account_name,
+      order_date = EXCLUDED.order_date,
+      delivery_date = EXCLUDED.delivery_date,
+      invoice_number = EXCLUDED.invoice_number,
+      route_manifest_id = EXCLUDED.route_manifest_id,
+      route_stop_id = EXCLUDED.route_stop_id,
+      subtotal_amount = EXCLUDED.subtotal_amount,
+      deduction_amount = EXCLUDED.deduction_amount,
+      net_amount = EXCLUDED.net_amount,
+      status = EXCLUDED.status,
+      raw = EXCLUDED.raw,
+      updated_at = NOW()
+    RETURNING *
+  `, [
+    orderId,
+    accountNumber,
+    cleanRepositoryText(input.accountName || input.account_name, 240) || null,
+    toDateOnly(input.orderDate || input.order_date) || null,
+    toDateOnly(input.deliveryDate || input.delivery_date) || null,
+    invoiceNumber,
+    cleanRepositoryText(input.routeManifestId || input.route_manifest_id, 160) || null,
+    cleanRepositoryText(input.routeStopId || input.route_stop_id, 160) || null,
+    subtotalAmount,
+    deductionAmount,
+    netAmount,
+    cleanRepositoryText(input.status, 80) || 'open',
+    JSON.stringify(input.raw || {})
+  ]);
+
+  await postgres.query('DELETE FROM account_order_items WHERE order_id = $1', [orderId]);
+  for (const item of items) {
+    if (item.sku) {
+      await upsertProduct({
+        sku: item.sku,
+        productName: item.productName,
+        brand: item.brand,
+        packageSize: item.packageSize,
+        category: item.category,
+        unitPrice: item.unitPrice,
+        raw: item.raw
+      });
+    }
+    await postgres.query(`
+      INSERT INTO account_order_items (
+        id, order_id, sku, product_name, brand, package_size, category,
+        quantity, unit_price, gross_amount, deduction_quantity, deduction_amount,
+        net_amount, raw, updated_at
+      )
+      VALUES (
+        $1, $2, $3, $4, $5, $6, $7,
+        $8, $9, $10, $11, $12, $13, $14::jsonb, NOW()
+      )
+    `, [
+      item.id,
+      orderId,
+      item.sku,
+      item.productName,
+      item.brand,
+      item.packageSize,
+      item.category,
+      item.quantity,
+      item.unitPrice,
+      item.grossAmount,
+      item.deductionQuantity,
+      item.deductionAmount,
+      item.netAmount,
+      JSON.stringify(item.raw || {})
+    ]);
+  }
+
+  return getAccountOrder(result.rows[0].id);
+}
+
+async function getAccountOrder(id) {
+  const orderResult = await postgres.query('SELECT * FROM account_orders WHERE id = $1', [id]);
+  const row = orderResult.rows[0];
+  if (!row) return null;
+
+  const itemResult = await postgres.query(`
+    SELECT *
+    FROM account_order_items
+    WHERE order_id = $1
+    ORDER BY product_name ASC
+  `, [id]);
+  const deductionResult = await postgres.query(`
+    SELECT *
+    FROM delivery_deductions
+    WHERE order_id = $1
+    ORDER BY created_at DESC
+  `, [id]);
+
+  return accountOrderFromRow(
+    row,
+    itemResult.rows.map(accountOrderItemFromRow),
+    deductionResult.rows.map(deliveryDeductionFromRow)
+  );
+}
+
+async function listAccountOrders(options = {}) {
+  const limit = normalizeLimit(options.limit, 100, 500);
+  const values = [];
+  const where = [];
+
+  if (options.accountNumber) {
+    values.push(cleanRepositoryText(options.accountNumber, 120));
+    where.push(`account_number = $${values.length}`);
+  }
+  if (options.routeStopId) {
+    values.push(cleanRepositoryText(options.routeStopId, 160));
+    where.push(`route_stop_id = $${values.length}`);
+  }
+  if (options.status) {
+    values.push(cleanRepositoryText(options.status, 80));
+    where.push(`status = $${values.length}`);
+  }
+
+  values.push(limit);
+  const result = await postgres.query(`
+    SELECT *
+    FROM account_orders
+    ${where.length ? `WHERE ${where.join(' AND ')}` : ''}
+    ORDER BY COALESCE(delivery_date, order_date) DESC, created_at DESC
+    LIMIT $${values.length}
+  `, values);
+  return result.rows.map((row) => accountOrderFromRow(row));
+}
+
+async function recordDeliveryDeduction(input = {}) {
+  const accountNumber = cleanRepositoryText(input.accountNumber || input.account_number, 120);
+  const reason = cleanRepositoryText(input.reason, 120).toLowerCase().replace(/\s+/g, '_');
+  if (!accountNumber || !reason) {
+    const error = new Error('accountNumber and reason are required.');
+    error.status = 400;
+    throw error;
+  }
+
+  const id = cleanRepositoryText(input.id, 160) || generateRepositoryId('deduction');
+  const orderId = cleanRepositoryText(input.orderId || input.order_id, 160) || null;
+  const orderItemId = cleanRepositoryText(input.orderItemId || input.order_item_id, 160) || null;
+  const amount = normalizeMoney(input.amount);
+  const quantity = normalizeQuantity(input.quantity);
+
+  const result = await postgres.query(`
+    INSERT INTO delivery_deductions (
+      id, order_id, order_item_id, account_number, route_stop_id, sku, product_name,
+      reason, quantity, amount, notes, created_by, raw
+    )
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13::jsonb)
+    RETURNING *
+  `, [
+    id,
+    orderId,
+    orderItemId,
+    accountNumber,
+    cleanRepositoryText(input.routeStopId || input.route_stop_id, 160) || null,
+    cleanRepositoryText(input.sku || input.SKU, 120) || null,
+    cleanRepositoryText(input.productName || input.product_name, 240) || null,
+    reason,
+    quantity,
+    amount,
+    cleanRepositoryText(input.notes, 2000) || null,
+    cleanRepositoryText(input.createdBy || input.created_by, 120) || 'driver_app',
+    JSON.stringify(input.raw || {})
+  ]);
+
+  if (orderItemId) {
+    await postgres.query(`
+      UPDATE account_order_items
+      SET
+        deduction_quantity = deduction_quantity + $2,
+        deduction_amount = deduction_amount + $3,
+        net_amount = GREATEST(0, net_amount - $3),
+        updated_at = NOW()
+      WHERE id = $1
+    `, [orderItemId, quantity, amount]);
+  }
+
+  if (orderId) {
+    await postgres.query(`
+      UPDATE account_orders
+      SET
+        deduction_amount = COALESCE((SELECT SUM(amount) FROM delivery_deductions WHERE order_id = $1), 0),
+        net_amount = GREATEST(0, subtotal_amount - COALESCE((SELECT SUM(amount) FROM delivery_deductions WHERE order_id = $1), 0)),
+        updated_at = NOW()
+      WHERE id = $1
+    `, [orderId]);
+  }
+
+  return deliveryDeductionFromRow(result.rows[0]);
+}
+
+async function recordDeliveryDeductionForDriverStop(stopId, driverId, input = {}) {
+  const cleanedStopId = cleanRepositoryText(stopId, 160);
+  const cleanedDriverId = cleanRepositoryText(driverId, 120);
+  if (!cleanedStopId || !cleanedDriverId) {
+    const error = new Error('stopId and driverId are required.');
+    error.status = 400;
+    throw error;
+  }
+
+  const stopResult = await postgres.query(`
+    SELECT stop.*
+    FROM daily_route_stops AS stop
+    JOIN daily_route_manifests AS manifest ON manifest.id = stop.manifest_id
+    WHERE stop.id = $1
+      AND manifest.assigned_driver_id = $2
+    LIMIT 1
+  `, [cleanedStopId, cleanedDriverId]);
+  const stop = stopResult.rows[0] ? routeStopFromRow(stopResult.rows[0]) : null;
+  if (!stop) return null;
+
+  let orderId = cleanRepositoryText(input.orderId || input.order_id, 160) || null;
+  let orderItemId = cleanRepositoryText(input.orderItemId || input.order_item_id, 160) || null;
+  let sku = cleanRepositoryText(input.sku || input.SKU, 120) || null;
+  let productName = cleanRepositoryText(input.productName || input.product_name, 240) || null;
+
+  if (orderItemId) {
+    const itemResult = await postgres.query(`
+      SELECT item.*, ord.id AS verified_order_id
+      FROM account_order_items AS item
+      JOIN account_orders AS ord ON ord.id = item.order_id
+      WHERE item.id = $1
+        AND ord.route_stop_id = $2
+      LIMIT 1
+    `, [orderItemId, cleanedStopId]);
+    const itemRow = itemResult.rows[0];
+    if (!itemRow) {
+      const error = new Error('Order item does not belong to this assigned stop.');
+      error.status = 400;
+      throw error;
+    }
+    orderId = itemRow.verified_order_id;
+    sku = sku || itemRow.sku || null;
+    productName = productName || itemRow.product_name || null;
+  } else if (orderId) {
+    const orderResult = await postgres.query(`
+      SELECT id
+      FROM account_orders
+      WHERE id = $1
+        AND route_stop_id = $2
+      LIMIT 1
+    `, [orderId, cleanedStopId]);
+    if (!orderResult.rows[0]) {
+      const error = new Error('Order does not belong to this assigned stop.');
+      error.status = 400;
+      throw error;
+    }
+  } else {
+    const orderResult = await postgres.query(`
+      SELECT id
+      FROM account_orders
+      WHERE route_stop_id = $1
+      ORDER BY COALESCE(delivery_date, order_date) DESC, created_at DESC
+      LIMIT 1
+    `, [cleanedStopId]);
+    orderId = orderResult.rows[0]?.id || null;
+  }
+
+  return recordDeliveryDeduction({
+    ...input,
+    accountNumber: stop.accountNumber,
+    routeStopId: stop.id,
+    orderId,
+    orderItemId,
+    sku,
+    productName,
+    createdBy: cleanedDriverId,
+    raw: {
+      ...(input.raw || {}),
+      source: 'driver_stop_deduction',
+      driverId: cleanedDriverId,
+      stopId: stop.id,
+      manifestId: stop.manifestId
+    }
+  });
+}
+
+async function getAccountProductSummary(accountNumber, options = {}) {
+  const cleanedAccountNumber = cleanRepositoryText(accountNumber, 120);
+  if (!cleanedAccountNumber) {
+    const error = new Error('accountNumber is required.');
+    error.status = 400;
+    throw error;
+  }
+
+  const periodDays = normalizeLimit(options.periodDays, 180, 1095);
+  const totalsResult = await postgres.query(`
+    SELECT
+      account_number,
+      MAX(account_name) AS account_name,
+      COUNT(*)::int AS order_count,
+      COALESCE(SUM(subtotal_amount), 0) AS subtotal_amount,
+      COALESCE(SUM(deduction_amount), 0) AS deduction_amount,
+      COALESCE(SUM(net_amount), 0) AS net_amount,
+      MIN(COALESCE(delivery_date, order_date)) AS first_order_date,
+      MAX(COALESCE(delivery_date, order_date)) AS last_order_date
+    FROM account_orders
+    WHERE account_number = $1
+      AND COALESCE(delivery_date, order_date, CURRENT_DATE) >= CURRENT_DATE - ($2::int * INTERVAL '1 day')
+    GROUP BY account_number
+  `, [cleanedAccountNumber, periodDays]);
+
+  const topProductsResult = await postgres.query(`
+    SELECT
+      item.sku,
+      item.product_name,
+      MAX(item.brand) AS brand,
+      MAX(item.category) AS category,
+      COALESCE(SUM(item.quantity), 0) AS quantity,
+      COALESCE(SUM(item.gross_amount), 0) AS gross_amount,
+      COALESCE(SUM(item.deduction_amount), 0) AS deduction_amount,
+      COALESCE(SUM(item.net_amount), 0) AS net_amount
+    FROM account_order_items AS item
+    JOIN account_orders AS ord ON ord.id = item.order_id
+    WHERE ord.account_number = $1
+      AND COALESCE(ord.delivery_date, ord.order_date, CURRENT_DATE) >= CURRENT_DATE - ($2::int * INTERVAL '1 day')
+    GROUP BY item.sku, item.product_name
+    ORDER BY net_amount DESC, quantity DESC
+    LIMIT 10
+  `, [cleanedAccountNumber, periodDays]);
+
+  const deductionReasonsResult = await postgres.query(`
+    SELECT
+      reason,
+      COUNT(*)::int AS count,
+      COALESCE(SUM(quantity), 0) AS quantity,
+      COALESCE(SUM(amount), 0) AS amount
+    FROM delivery_deductions
+    WHERE account_number = $1
+      AND created_at >= NOW() - ($2::int * INTERVAL '1 day')
+    GROUP BY reason
+    ORDER BY amount DESC, count DESC
+    LIMIT 10
+  `, [cleanedAccountNumber, periodDays]);
+
+  const recentOrders = await listAccountOrders({ accountNumber: cleanedAccountNumber, limit: 10 });
+  const totals = totalsResult.rows[0] || {
+    account_number: cleanedAccountNumber,
+    account_name: null,
+    order_count: 0,
+    subtotal_amount: 0,
+    deduction_amount: 0,
+    net_amount: 0,
+    first_order_date: null,
+    last_order_date: null
+  };
+
+  return {
+    accountNumber: cleanedAccountNumber,
+    accountName: totals.account_name || null,
+    periodDays,
+    orderCount: Number(totals.order_count) || 0,
+    subtotalAmount: normalizeMoney(totals.subtotal_amount),
+    deductionAmount: normalizeMoney(totals.deduction_amount),
+    netAmount: normalizeMoney(totals.net_amount),
+    firstOrderDate: toDateOnly(totals.first_order_date),
+    lastOrderDate: toDateOnly(totals.last_order_date),
+    topProducts: topProductsResult.rows.map((row) => ({
+      sku: row.sku || null,
+      productName: row.product_name,
+      brand: row.brand || null,
+      category: row.category || null,
+      quantity: normalizeQuantity(row.quantity),
+      grossAmount: normalizeMoney(row.gross_amount),
+      deductionAmount: normalizeMoney(row.deduction_amount),
+      netAmount: normalizeMoney(row.net_amount)
+    })),
+    deductionReasons: deductionReasonsResult.rows.map((row) => ({
+      reason: row.reason,
+      count: Number(row.count) || 0,
+      quantity: normalizeQuantity(row.quantity),
+      amount: normalizeMoney(row.amount)
+    })),
+    recentOrders
+  };
+}
+
+async function generateAccountInsight(accountNumber, options = {}) {
+  const summary = await getAccountProductSummary(accountNumber, options);
+  const topProduct = summary.topProducts[0] || null;
+  const deductionRate = summary.subtotalAmount > 0 ? summary.deductionAmount / summary.subtotalAmount : 0;
+  const title = summary.orderCount
+    ? `${summary.accountName || summary.accountNumber} account purchase summary`
+    : `${summary.accountNumber} has no recorded order history`;
+  const parts = [];
+
+  if (summary.orderCount) {
+    parts.push(`Recorded ${summary.orderCount} order${summary.orderCount === 1 ? '' : 's'} over the last ${summary.periodDays} days.`);
+    parts.push(`Net account spend is $${summary.netAmount.toFixed(2)} after $${summary.deductionAmount.toFixed(2)} in deductions.`);
+  } else {
+    parts.push('No product-level purchase history has been recorded for this account yet.');
+  }
+  if (topProduct) {
+    parts.push(`Highest-value product is ${topProduct.productName} with $${topProduct.netAmount.toFixed(2)} in net spend.`);
+  }
+  if (deductionRate >= 0.05) {
+    parts.push(`Deduction rate is ${(deductionRate * 100).toFixed(1)}%, which should be reviewed before the next delivery.`);
+  }
+
+  const insight = {
+    id: generateRepositoryId('insight'),
+    accountNumber: summary.accountNumber,
+    insightType: 'account_product_summary',
+    title,
+    summary: parts.join(' '),
+    confidence: summary.orderCount >= 5 ? 'high' : summary.orderCount > 0 ? 'medium' : 'low',
+    sourcePeriodStart: null,
+    sourcePeriodEnd: summary.lastOrderDate || null,
+    generatedBy: cleanRepositoryText(options.generatedBy || options.generated_by, 120) || 'rules_engine_v1',
+    raw: { summary }
+  };
+
+  const result = await postgres.query(`
+    INSERT INTO account_ai_insights (
+      id, account_number, insight_type, title, summary, confidence,
+      source_period_start, source_period_end, generated_by, status, raw, updated_at
+    )
+    VALUES ($1, $2, $3, $4, $5, $6, $7::date, $8::date, $9, 'active', $10::jsonb, NOW())
+    RETURNING *
+  `, [
+    insight.id,
+    insight.accountNumber,
+    insight.insightType,
+    insight.title,
+    insight.summary,
+    insight.confidence,
+    insight.sourcePeriodStart,
+    insight.sourcePeriodEnd,
+    insight.generatedBy,
+    JSON.stringify(insight.raw)
+  ]);
+
+  return accountAiInsightFromRow(result.rows[0]);
+}
+
+async function listAccountInsights(options = {}) {
+  const limit = normalizeLimit(options.limit, 50, 200);
+  const values = [];
+  const where = [];
+
+  if (options.accountNumber) {
+    values.push(cleanRepositoryText(options.accountNumber, 120));
+    where.push(`account_number = $${values.length}`);
+  }
+  if (options.insightType) {
+    values.push(cleanRepositoryText(options.insightType, 120));
+    where.push(`insight_type = $${values.length}`);
+  }
+  if (options.status) {
+    values.push(cleanRepositoryText(options.status, 80));
+    where.push(`status = $${values.length}`);
+  } else {
+    where.push("status = 'active'");
+  }
+
+  values.push(limit);
+  const result = await postgres.query(`
+    SELECT *
+    FROM account_ai_insights
+    ${where.length ? `WHERE ${where.join(' AND ')}` : ''}
+    ORDER BY created_at DESC
+    LIMIT $${values.length}
+  `, values);
+  return result.rows.map(accountAiInsightFromRow);
+}
+
 module.exports = {
   getAdminUser,
   assignDailyRouteManifest,
@@ -2437,15 +3239,22 @@ module.exports = {
   enqueueStaticHazardLocationBackfill,
   getRouteSession,
   getAssignedDailyRouteForDriver,
+  getAccountOrder,
+  getAccountProductSummary,
   getDailyRouteManifest,
+  getDailyRouteManifestWithAccountIntelligence,
   getDriver,
   getStaticHazardLocationBackfillStats,
   getRouteSessionAnalytics,
   isDatabaseEnabled,
   isPostgisEnabled,
+  generateAccountInsight,
+  listAccountInsights,
+  listAccountOrders,
   listAdminUsers,
   listDailyRouteManifests,
   listDrivers,
+  listProducts,
   listUndeliveredRouteStops,
   listRouteSessionEvents,
   listRouteSessions,
@@ -2460,6 +3269,8 @@ module.exports = {
   listStaticZonesNearRoute,
   saveRecentDestination,
   saveRouteSession,
+  recordDeliveryDeduction,
+  recordDeliveryDeductionForDriverStop,
   recordAdminUserLogin,
   setAdminUserActive,
   setDriverActive,
@@ -2468,7 +3279,9 @@ module.exports = {
   updateStaticHazardVerification,
   updateDailyRouteStopStatusForDriver,
   updateUndeliveredStopDisposition,
+  upsertProduct,
   upsertAdminUser,
+  createAccountOrder,
   upsertDailyRouteManifest,
   upsertDriver,
   upsertDeliveryNote,

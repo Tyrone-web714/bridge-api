@@ -419,6 +419,114 @@ async function ensureSchema() {
       ADD COLUMN IF NOT EXISTS redelivery_updated_at TIMESTAMPTZ;
     CREATE INDEX IF NOT EXISTS daily_route_stops_non_delivery_idx ON daily_route_stops(status, non_delivery_reason);
     CREATE INDEX IF NOT EXISTS daily_route_stops_redelivery_status_idx ON daily_route_stops(redelivery_status);
+
+    CREATE TABLE IF NOT EXISTS products (
+      sku TEXT PRIMARY KEY,
+      product_name TEXT NOT NULL,
+      brand TEXT,
+      package_size TEXT,
+      category TEXT,
+      unit_price NUMERIC(12,2),
+      active BOOLEAN NOT NULL DEFAULT true,
+      raw JSONB NOT NULL DEFAULT '{}'::jsonb,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+
+    CREATE INDEX IF NOT EXISTS products_name_idx ON products(product_name);
+    CREATE INDEX IF NOT EXISTS products_brand_idx ON products(brand);
+    CREATE INDEX IF NOT EXISTS products_category_idx ON products(category);
+    CREATE INDEX IF NOT EXISTS products_active_idx ON products(active);
+
+    CREATE TABLE IF NOT EXISTS account_orders (
+      id TEXT PRIMARY KEY,
+      account_number TEXT NOT NULL,
+      account_name TEXT,
+      order_date DATE,
+      delivery_date DATE,
+      invoice_number TEXT,
+      route_manifest_id TEXT REFERENCES daily_route_manifests(id) ON DELETE SET NULL,
+      route_stop_id TEXT REFERENCES daily_route_stops(id) ON DELETE SET NULL,
+      subtotal_amount NUMERIC(12,2) NOT NULL DEFAULT 0,
+      deduction_amount NUMERIC(12,2) NOT NULL DEFAULT 0,
+      net_amount NUMERIC(12,2) NOT NULL DEFAULT 0,
+      status TEXT NOT NULL DEFAULT 'open',
+      raw JSONB NOT NULL DEFAULT '{}'::jsonb,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+
+    CREATE UNIQUE INDEX IF NOT EXISTS account_orders_invoice_number_idx
+      ON account_orders(invoice_number)
+      WHERE invoice_number IS NOT NULL AND invoice_number <> '';
+    CREATE INDEX IF NOT EXISTS account_orders_account_idx ON account_orders(account_number, delivery_date DESC);
+    CREATE INDEX IF NOT EXISTS account_orders_route_stop_idx ON account_orders(route_stop_id);
+    CREATE INDEX IF NOT EXISTS account_orders_status_idx ON account_orders(status);
+
+    CREATE TABLE IF NOT EXISTS account_order_items (
+      id TEXT PRIMARY KEY,
+      order_id TEXT NOT NULL REFERENCES account_orders(id) ON DELETE CASCADE,
+      sku TEXT,
+      product_name TEXT NOT NULL,
+      brand TEXT,
+      package_size TEXT,
+      category TEXT,
+      quantity NUMERIC(12,2) NOT NULL DEFAULT 0,
+      unit_price NUMERIC(12,2) NOT NULL DEFAULT 0,
+      gross_amount NUMERIC(12,2) NOT NULL DEFAULT 0,
+      deduction_quantity NUMERIC(12,2) NOT NULL DEFAULT 0,
+      deduction_amount NUMERIC(12,2) NOT NULL DEFAULT 0,
+      net_amount NUMERIC(12,2) NOT NULL DEFAULT 0,
+      raw JSONB NOT NULL DEFAULT '{}'::jsonb,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+
+    CREATE INDEX IF NOT EXISTS account_order_items_order_idx ON account_order_items(order_id);
+    CREATE INDEX IF NOT EXISTS account_order_items_sku_idx ON account_order_items(sku);
+    CREATE INDEX IF NOT EXISTS account_order_items_product_name_idx ON account_order_items(product_name);
+
+    CREATE TABLE IF NOT EXISTS delivery_deductions (
+      id TEXT PRIMARY KEY,
+      order_id TEXT REFERENCES account_orders(id) ON DELETE CASCADE,
+      order_item_id TEXT REFERENCES account_order_items(id) ON DELETE SET NULL,
+      account_number TEXT NOT NULL,
+      route_stop_id TEXT REFERENCES daily_route_stops(id) ON DELETE SET NULL,
+      sku TEXT,
+      product_name TEXT,
+      reason TEXT NOT NULL,
+      quantity NUMERIC(12,2) NOT NULL DEFAULT 0,
+      amount NUMERIC(12,2) NOT NULL DEFAULT 0,
+      notes TEXT,
+      created_by TEXT,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      raw JSONB NOT NULL DEFAULT '{}'::jsonb
+    );
+
+    CREATE INDEX IF NOT EXISTS delivery_deductions_account_idx ON delivery_deductions(account_number, created_at DESC);
+    CREATE INDEX IF NOT EXISTS delivery_deductions_order_idx ON delivery_deductions(order_id);
+    CREATE INDEX IF NOT EXISTS delivery_deductions_route_stop_idx ON delivery_deductions(route_stop_id);
+    CREATE INDEX IF NOT EXISTS delivery_deductions_reason_idx ON delivery_deductions(reason);
+
+    CREATE TABLE IF NOT EXISTS account_ai_insights (
+      id TEXT PRIMARY KEY,
+      account_number TEXT NOT NULL,
+      insight_type TEXT NOT NULL,
+      title TEXT NOT NULL,
+      summary TEXT NOT NULL,
+      confidence TEXT NOT NULL DEFAULT 'medium',
+      source_period_start DATE,
+      source_period_end DATE,
+      generated_by TEXT NOT NULL DEFAULT 'rules_engine_v1',
+      status TEXT NOT NULL DEFAULT 'active',
+      raw JSONB NOT NULL DEFAULT '{}'::jsonb,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+
+    CREATE INDEX IF NOT EXISTS account_ai_insights_account_idx ON account_ai_insights(account_number, created_at DESC);
+    CREATE INDEX IF NOT EXISTS account_ai_insights_type_idx ON account_ai_insights(insight_type);
+    CREATE INDEX IF NOT EXISTS account_ai_insights_status_idx ON account_ai_insights(status);
   `);
 
   try {

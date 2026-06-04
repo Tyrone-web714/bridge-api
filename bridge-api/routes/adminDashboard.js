@@ -45,6 +45,12 @@ function renderAdminDashboard(session) {
       accent: '#7dffb0'
     },
     {
+      title: 'Account Intelligence',
+      description: 'Track SKU-level purchases, deductions, account spending, and AI-ready account insights.',
+      href: '/api/account-intelligence/admin',
+      accent: '#ffbf3f'
+    },
+    {
       title: 'Route Replay',
       description: 'Inspect route sessions, warning events, safety analytics, and driver behavior after completed trips.',
       href: '/api/routing/route-sessions/admin',

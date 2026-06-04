@@ -28,6 +28,15 @@ const COLUMN_ALIASES = {
   palletCount: ['pallet_count', 'pallets', 'skids', 'skid_count', 'total_pallets'],
   caseCount: ['case_count', 'cases', 'total_cases', 'case_qty', 'quantity_cases'],
   itemSummary: ['item_summary', 'items', 'products', 'sku_summary'],
+  invoiceNumber: ['invoice_number', 'invoice', 'invoice_no', 'invoice #', 'order_number', 'order_no', 'order #'],
+  sku: ['sku', 'item_sku', 'product_sku', 'product_code', 'item_code'],
+  productName: ['product_name', 'product', 'item_name', 'item', 'product_description', 'item_description'],
+  brand: ['brand'],
+  packageSize: ['package_size', 'package', 'pack_size', 'size'],
+  productCategory: ['category', 'product_category'],
+  productQuantity: ['product_quantity', 'sku_quantity', 'item_quantity', 'quantity', 'units', 'ordered_quantity'],
+  unitPrice: ['unit_price', 'price', 'case_price'],
+  grossAmount: ['gross_amount', 'line_total', 'extended_price', 'amount'],
   assignedDriverId: ['assigned_driver_id', 'driver_id', 'driver id', 'employee_id', 'employee id', 'route_driver_id'],
   assignedDriverName: ['assigned_driver_name', 'driver_name', 'driver name', 'driver', 'employee_name', 'employee name']
 };
@@ -55,6 +64,13 @@ function parseInteger(value) {
   const cleaned = cleanText(value, 40).replace(/,/g, '');
   if (!cleaned) return 0;
   const parsed = Number.parseInt(cleaned, 10);
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : 0;
+}
+
+function parseNumber(value) {
+  const cleaned = cleanText(value, 40).replace(/[$,]/g, '');
+  if (!cleaned) return 0;
+  const parsed = Number(cleaned);
   return Number.isFinite(parsed) && parsed > 0 ? parsed : 0;
 }
 
@@ -97,6 +113,28 @@ function parseDateTime(routeDate, value) {
 
 function stableId(parts) {
   return crypto.createHash('sha1').update(parts.map((part) => String(part ?? '')).join('|')).digest('hex').slice(0, 24);
+}
+
+function buildOrderItemFromRow(row) {
+  const sku = cleanText(readCell(row, 'sku'), 120);
+  const productName = cleanText(readCell(row, 'productName'), 240);
+  if (!sku && !productName) return null;
+
+  const quantity = parseNumber(readCell(row, 'productQuantity')) || parseNumber(readCell(row, 'caseCount'));
+  const unitPrice = parseNumber(readCell(row, 'unitPrice'));
+  const grossAmount = parseNumber(readCell(row, 'grossAmount')) || (quantity && unitPrice ? quantity * unitPrice : 0);
+
+  return {
+    sku: sku || null,
+    productName: productName || sku,
+    brand: cleanText(readCell(row, 'brand'), 120) || null,
+    packageSize: cleanText(readCell(row, 'packageSize'), 120) || null,
+    category: cleanText(readCell(row, 'productCategory'), 120) || null,
+    quantity,
+    unitPrice,
+    grossAmount,
+    raw: row
+  };
 }
 
 function normalizeCsvRows(csvText) {
@@ -152,37 +190,80 @@ function buildManifestImport(csvText, options = {}) {
           fileName: cleanText(options.fileName, 240) || null,
           bulkAssigned: !!assignedDriverId
         },
-        stops: []
+        stops: [],
+        stopMap: new Map()
       });
     }
 
     const manifest = routeMap.get(routeKey);
     const palletCount = parseInteger(readCell(row, 'palletCount'));
     const caseCount = parseInteger(readCell(row, 'caseCount'));
-    manifest.stops.push({
-      id: `stop_${stableId([routeDate, routeNumber, stopSequence, readCell(row, 'accountNumber'), address])}`,
-      stopSequence,
-      accountNumber: cleanText(readCell(row, 'accountNumber'), 120) || null,
-      accountName: cleanText(readCell(row, 'accountName'), 200) || null,
-      destinationAddress: address,
-      city: cleanText(readCell(row, 'city'), 120) || null,
-      stateCode: cleanText(readCell(row, 'stateCode'), 2).toUpperCase() || null,
-      postalCode: cleanText(readCell(row, 'postalCode'), 20) || null,
-      plannedArrivalAt: parseDateTime(routeDate, readCell(row, 'plannedArrival')),
-      plannedDepartureAt: parseDateTime(routeDate, readCell(row, 'plannedDeparture')),
-      plannedServiceMinutes: parseMinutes(readCell(row, 'plannedServiceMinutes')),
-      driveMinutesToNext: parseMinutes(readCell(row, 'driveMinutesToNext')),
-      palletCount,
-      caseCount,
-      itemSummary: cleanText(readCell(row, 'itemSummary'), 2000)
-        ? [{ summary: cleanText(readCell(row, 'itemSummary'), 2000) }]
-        : [],
-      status: 'pending',
-      raw: row
-    });
+    const accountNumber = cleanText(readCell(row, 'accountNumber'), 120) || null;
+    const accountName = cleanText(readCell(row, 'accountName'), 200) || null;
+    const invoiceNumber = cleanText(readCell(row, 'invoiceNumber'), 160) || null;
+    const orderItem = buildOrderItemFromRow(row);
+    const stopKey = stableId([routeDate, routeNumber, stopSequence, accountNumber, address]);
+    let stop = manifest.stopMap.get(stopKey);
+
+    if (!stop) {
+      stop = {
+        id: `stop_${stopKey}`,
+        stopSequence,
+        accountNumber,
+        accountName,
+        destinationAddress: address,
+        city: cleanText(readCell(row, 'city'), 120) || null,
+        stateCode: cleanText(readCell(row, 'stateCode'), 2).toUpperCase() || null,
+        postalCode: cleanText(readCell(row, 'postalCode'), 20) || null,
+        plannedArrivalAt: parseDateTime(routeDate, readCell(row, 'plannedArrival')),
+        plannedDepartureAt: parseDateTime(routeDate, readCell(row, 'plannedDeparture')),
+        plannedServiceMinutes: parseMinutes(readCell(row, 'plannedServiceMinutes')),
+        driveMinutesToNext: parseMinutes(readCell(row, 'driveMinutesToNext')),
+        palletCount,
+        caseCount: orderItem ? Math.round(orderItem.quantity || caseCount || 0) : caseCount,
+        itemSummary: [],
+        status: 'pending',
+        raw: row,
+        order: {
+          invoiceNumber,
+          orderDate: routeDate,
+          deliveryDate: routeDate,
+          items: []
+        }
+      };
+      manifest.stopMap.set(stopKey, stop);
+      manifest.stops.push(stop);
+    } else {
+      stop.palletCount = Math.max(Number(stop.palletCount) || 0, palletCount);
+      stop.caseCount += orderItem ? Math.round(orderItem.quantity || 0) : 0;
+      if (!stop.accountName && accountName) stop.accountName = accountName;
+      if (!stop.order.invoiceNumber && invoiceNumber) stop.order.invoiceNumber = invoiceNumber;
+    }
+
+    const itemSummary = cleanText(readCell(row, 'itemSummary'), 2000);
+    if (orderItem) {
+      stop.order.items.push(orderItem);
+      stop.itemSummary.push({
+        sku: orderItem.sku,
+        productName: orderItem.productName,
+        quantity: orderItem.quantity,
+        unitPrice: orderItem.unitPrice,
+        grossAmount: orderItem.grossAmount
+      });
+    } else if (itemSummary) {
+      stop.itemSummary.push({ summary: itemSummary });
+    }
+
+    stop.raw = {
+      ...stop.raw,
+      account_order: stop.order,
+      source_rows: [...(stop.raw?.source_rows || []), row]
+    };
+
   });
 
   const manifests = [...routeMap.values()].map((manifest) => {
+    const { stopMap, ...cleanManifest } = manifest;
     const stops = manifest.stops.sort((left, right) => left.stopSequence - right.stopSequence);
     const plannedStart = manifest.plannedStartAt ? new Date(manifest.plannedStartAt) : null;
     const plannedEnd = manifest.plannedEndAt ? new Date(manifest.plannedEndAt) : null;
@@ -192,7 +273,7 @@ function buildManifestImport(csvText, options = {}) {
         : null;
 
     return {
-      ...manifest,
+      ...cleanManifest,
       plannedDurationMinutes,
       totalStops: stops.length,
       totalPallets: stops.reduce((sum, stop) => sum + stop.palletCount, 0),
@@ -263,13 +344,14 @@ function renderRouteManifestAdminPage() {
       <a class="tab" href="/api/routing/hazard-verification/admin">Static Hazard Verification</a>
       <a class="tab" href="/api/routing/route-sessions/admin">Route Replay</a>
       <a class="tab" href="/api/delivery-notes/admin">Delivery Notes</a>
+      <a class="tab" href="/api/account-intelligence/admin">Account Intelligence</a>
       <a class="tab active" href="/api/route-manifests/admin">Route Manifests</a>
       <a class="tab" href="/api/drivers/admin">Driver Registry</a>
       <a class="tab" href="/api/routing/manual-hazards/admin-users/admin">Admin Users</a>
     </nav>
     <section class="panel">
       <h2>Import CSV</h2>
-      <p class="muted">Required columns: route number, stop sequence, address. Recommended: route date, route start, route end, account number, account name, pallets, cases, assigned_driver_id, assigned_driver_name.</p>
+      <p class="muted">Required columns: route number, stop sequence, address. Recommended: route date, route start, route end, account number, account name, pallets, cases, invoice number, SKU, product name, quantity, unit price, assigned_driver_id, assigned_driver_name.</p>
       <p><button onclick="loadProductionTemplate()">Use Production Bulk Assignment Template</button></p>
       <div class="grid">
         <div><label>File name</label><input id="fileName" placeholder="DailyRoutes_2026-05-25.csv" /></div>
@@ -354,7 +436,7 @@ function renderRouteManifestAdminPage() {
       });
       const data = await response.json();
       document.getElementById('message').textContent = response.ok
-        ? 'Imported ' + data.summary.routes + ' routes, ' + data.summary.stops + ' stops, ' + data.summary.pallets + ' pallets, ' + data.summary.cases + ' cases.'
+        ? 'Imported ' + data.summary.routes + ' routes, ' + data.summary.stops + ' stops, ' + data.summary.pallets + ' pallets, ' + data.summary.cases + ' cases, ' + (data.summary.orders || 0) + ' orders, and ' + (data.summary.orderItems || 0) + ' SKU lines.'
         : data.error || 'Import failed.';
       if (response.ok) loadRoutes();
     }
@@ -362,11 +444,12 @@ function renderRouteManifestAdminPage() {
     function loadProductionTemplate() {
       document.getElementById('fileName').value = 'daily-route-bulk-assignment-template.csv';
       document.getElementById('csvText').value = [
-        'route_date,route_number,route_name,planned_route_start,planned_route_end,start_location,assigned_driver_id,assigned_driver_name,stop_sequence,account_number,account_name,address,city,state,zip,planned_arrival,planned_departure,planned_service_minutes,drive_minutes_to_next,pallet_count,case_count,item_summary',
-        '2026-05-25,RT-101,San Antonio North,7:00 AM,3:30 PM,San Antonio DC,driver_app,Truck-Safe Driver,1,100245,Alamo City Stripers,"4337 E Houston St, San Antonio, TX 78220",San Antonio,TX,78220,7:35 AM,7:55 AM,20,14,2,86,"CSD cases; cooler reset"',
-        '2026-05-25,RT-101,San Antonio North,7:00 AM,3:30 PM,San Antonio DC,driver_app,Truck-Safe Driver,2,100246,Eastside Market,"5030 Rigsby Ave, San Antonio, TX 78222",San Antonio,TX,78222,8:10 AM,8:28 AM,18,16,1,44,"Water; mini cans"',
-        '2026-05-25,RT-102,Leon Valley,6:45 AM,2:45 PM,San Antonio DC,driver_002,Driver Two,1,200100,Vape City,"5772 Evers Rd, Leon Valley, TX 78238",Leon Valley,TX,78238,7:20 AM,7:38 AM,18,12,1,52,"Core CSD"',
-        '2026-05-25,RT-102,Leon Valley,6:45 AM,2:45 PM,San Antonio DC,driver_002,Driver Two,2,200101,AutoZone,"5803 NW Loop 410, San Antonio, TX 78238",San Antonio,TX,78238,7:50 AM,8:15 AM,25,15,3,120,"Bulk pallets"'
+        'route_date,route_number,route_name,planned_route_start,planned_route_end,start_location,assigned_driver_id,assigned_driver_name,stop_sequence,account_number,account_name,address,city,state,zip,planned_arrival,planned_departure,planned_service_minutes,drive_minutes_to_next,pallet_count,case_count,invoice_number,sku,product_name,brand,package_size,category,product_quantity,unit_price,gross_amount,item_summary',
+        '2026-05-25,RT-101,San Antonio North,7:00 AM,3:30 PM,San Antonio DC,driver_app,Truck-Safe Driver,1,100245,Alamo City Stripers,"4337 E Houston St, San Antonio, TX 78220",San Antonio,TX,78220,7:35 AM,7:55 AM,20,14,2,48,INV-100245-1,COKE-12PK,Coca-Cola 12 Pack,Coca-Cola,12 Pack,CSD,48,9.99,479.52,"Front gate delivery"',
+        '2026-05-25,RT-101,San Antonio North,7:00 AM,3:30 PM,San Antonio DC,driver_app,Truck-Safe Driver,1,100245,Alamo City Stripers,"4337 E Houston St, San Antonio, TX 78220",San Antonio,TX,78220,7:35 AM,7:55 AM,20,14,2,38,INV-100245-1,SPRITE-12PK,Sprite 12 Pack,Sprite,12 Pack,CSD,38,9.49,360.62,"Front gate delivery"',
+        '2026-05-25,RT-101,San Antonio North,7:00 AM,3:30 PM,San Antonio DC,driver_app,Truck-Safe Driver,2,100246,Eastside Market,"5030 Rigsby Ave, San Antonio, TX 78222",San Antonio,TX,78222,8:10 AM,8:28 AM,18,16,1,44,INV-100246-1,DASANI-24PK,Dasani 24 Pack,Dasani,24 Pack,Water,44,6.75,297.00,"Water; mini cans"',
+        '2026-05-25,RT-102,Leon Valley,6:45 AM,2:45 PM,San Antonio DC,driver_002,Driver Two,1,200100,Vape City,"5772 Evers Rd, Leon Valley, TX 78238",Leon Valley,TX,78238,7:20 AM,7:38 AM,18,12,1,52,INV-200100-1,COKE-ZERO-12PK,Coca-Cola Zero Sugar 12 Pack,Coca-Cola,12 Pack,CSD,52,9.99,519.48,"Core CSD"',
+        '2026-05-25,RT-102,Leon Valley,6:45 AM,2:45 PM,San Antonio DC,driver_002,Driver Two,2,200101,AutoZone,"5803 NW Loop 410, San Antonio, TX 78238",San Antonio,TX,78238,7:50 AM,8:15 AM,25,15,3,120,INV-200101-1,POWERADE-MIX,Powerade Mixed Case,Powerade,Case,Sports Drink,120,11.25,1350.00,"Bulk pallets"'
       ].join('\\n');
     }
 
@@ -567,16 +650,50 @@ router.post('/import', requireAdminSession, async (req, res) => {
     });
 
     const savedRoutes = [];
+    const savedOrders = [];
     for (const manifest of importResult.manifests) {
       const savedManifest = await repositories.upsertDailyRouteManifest(manifest);
       const savedStops = await repositories.replaceDailyRouteStops(savedManifest.id, manifest.stops);
+      const savedStopsById = new Map(savedStops.map((stop) => [stop.id, stop]));
+
+      for (const stop of manifest.stops) {
+        const order = stop.order || {};
+        if (!stop.accountNumber || (!order.invoiceNumber && !order.items?.length)) continue;
+
+        const savedStop = savedStopsById.get(stop.id);
+        const savedOrder = await repositories.createAccountOrder({
+          id: order.invoiceNumber ? `order_${stableId([stop.accountNumber, order.invoiceNumber])}` : undefined,
+          accountNumber: stop.accountNumber,
+          accountName: stop.accountName,
+          invoiceNumber: order.invoiceNumber || null,
+          orderDate: order.orderDate || manifest.routeDate,
+          deliveryDate: order.deliveryDate || manifest.routeDate,
+          routeManifestId: savedManifest.id,
+          routeStopId: savedStop?.id || stop.id,
+          status: 'planned',
+          items: order.items || [],
+          raw: {
+            source: 'route_manifest_import',
+            routeDate: manifest.routeDate,
+            routeNumber: manifest.routeNumber,
+            stopSequence: stop.stopSequence
+          }
+        });
+        savedOrders.push(savedOrder);
+      }
+
       savedRoutes.push({ ...savedManifest, stops: savedStops });
     }
 
     return res.json({
       ok: true,
-      summary: importResult.summary,
+      summary: {
+        ...importResult.summary,
+        orders: savedOrders.length,
+        orderItems: savedOrders.reduce((sum, order) => sum + (order.items?.length || 0), 0)
+      },
       warnings: importResult.warnings,
+      orders: savedOrders,
       routes: savedRoutes
     });
   } catch (error) {
@@ -636,6 +753,33 @@ router.put('/driver/stops/:stopId/status', driverAuth.requireDriverAuth, async (
   } catch (error) {
     return res.status(error.status || 500).json({
       error: error.message || 'Unable to update route stop status.'
+    });
+  }
+});
+
+router.post('/driver/stops/:stopId/deductions', driverAuth.requireDriverAuth, async (req, res) => {
+  try {
+    const identity = driverAuth.getDriverIdentity(req);
+    const deduction = await repositories.recordDeliveryDeductionForDriverStop(
+      req.params.stopId,
+      identity.driverId,
+      req.body || {}
+    );
+
+    if (!deduction) {
+      return res.status(404).json({
+        error: 'Assigned route stop not found for this driver.'
+      });
+    }
+
+    return res.status(201).json({
+      ok: true,
+      driver: identity,
+      deduction
+    });
+  } catch (error) {
+    return res.status(error.status || 500).json({
+      error: error.message || 'Unable to record delivery deduction.'
     });
   }
 });
