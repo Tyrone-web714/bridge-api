@@ -103,6 +103,18 @@ function renderAccountIntelligenceAdminPage(session) {
       color: #d8f8ff;
     }
     label { display: grid; gap: 7px; color: var(--muted); font-weight: 800; }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,0.22);
+      font-weight: 900;
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--red); }
+    .dot.on { background: #7dffb0; box-shadow: 0 0 16px rgba(125,255,176,0.8); }
   </style>
 </head>
 <body>
@@ -117,6 +129,9 @@ function renderAccountIntelligenceAdminPage(session) {
   <main>
     <section class="panel">
       <h2>Account Summary</h2>
+      <div class="topbar" style="margin-bottom:14px">
+        <span class="status"><span id="aiStatusDot" class="dot"></span><span id="aiStatusText">Checking AI...</span></span>
+      </div>
       <div class="grid">
         <label>Account Number<input id="accountNumber" placeholder="Example: ACCT-4337" /></label>
         <label>Lookback Days<input id="periodDays" value="180" /></label>
@@ -124,6 +139,7 @@ function renderAccountIntelligenceAdminPage(session) {
       <div class="actions" style="margin-top:14px">
         <button class="primary" onclick="loadSummary()">Load Summary</button>
         <button class="gold" onclick="generateInsight()">Generate Insight</button>
+        <button onclick="runAiSummary()">Run AI Summary</button>
       </div>
     </section>
 
@@ -181,6 +197,19 @@ function renderAccountIntelligenceAdminPage(session) {
       if (!response.ok) throw new Error(data.error || response.statusText);
       return data;
     }
+    async function loadAiStatus() {
+      try {
+        const data = await requestJson('/api/ai/status');
+        const dot = document.getElementById('aiStatusDot');
+        const text = document.getElementById('aiStatusText');
+        dot.classList.toggle('on', Boolean(data.ai && data.ai.configured));
+        text.textContent = data.ai && data.ai.configured
+          ? 'AI ready - ' + data.ai.model
+          : 'AI not configured - add OPENAI_API_KEY';
+      } catch (error) {
+        document.getElementById('aiStatusText').textContent = 'AI status unavailable';
+      }
+    }
     async function loadSummary() {
       try {
         const accountNumber = encodeURIComponent(document.getElementById('accountNumber').value.trim());
@@ -195,6 +224,16 @@ function renderAccountIntelligenceAdminPage(session) {
         show(await requestJson('/api/account-intelligence/accounts/' + accountNumber + '/insights/generate', {
           method: 'POST',
           body: JSON.stringify({ periodDays })
+        }));
+      } catch (error) { show(error.message); }
+    }
+    async function runAiSummary() {
+      try {
+        const accountNumber = document.getElementById('accountNumber').value.trim();
+        const periodDays = Number(document.getElementById('periodDays').value.trim() || '180');
+        show(await requestJson('/api/ai/account-summary', {
+          method: 'POST',
+          body: JSON.stringify({ accountNumber, periodDays })
         }));
       } catch (error) { show(error.message); }
     }
@@ -219,6 +258,7 @@ function renderAccountIntelligenceAdminPage(session) {
         }));
       } catch (error) { show(error.message); }
     }
+    loadAiStatus();
   </script>
 </body>
 </html>`;

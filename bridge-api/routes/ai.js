@@ -195,6 +195,32 @@ router.post('/account-summary', requireAiAccess, requireAiConfigured, async (req
       schema: accountSummarySchema
     });
 
+    const savedInsight = await repositories.saveAccountInsight({
+      accountNumber,
+      insightType: 'openai_account_summary',
+      title: aiResult.parsed.title,
+      summary: aiResult.parsed.summary,
+      confidence: aiResult.parsed.confidence,
+      sourcePeriodStart: sourceSummary.firstOrderDate || null,
+      sourcePeriodEnd: sourceSummary.lastOrderDate || null,
+      generatedBy: `openai:${aiResult.model}`,
+      raw: {
+        accountHealth: aiResult.parsed.accountHealth,
+        keyFindings: aiResult.parsed.keyFindings,
+        spendingSignals: aiResult.parsed.spendingSignals,
+        deductionSignals: aiResult.parsed.deductionSignals,
+        recommendedActions: aiResult.parsed.recommendedActions,
+        missingData: aiResult.parsed.missingData,
+        sourceSummary: {
+          periodDays: sourceSummary.periodDays,
+          orderCount: sourceSummary.orderCount,
+          subtotalAmount: sourceSummary.subtotalAmount,
+          deductionAmount: sourceSummary.deductionAmount,
+          netAmount: sourceSummary.netAmount
+        }
+      }
+    });
+
     await repositories.saveAiInteractionLog({
       endpoint: 'account-summary',
       requesterType: requester.type,
@@ -227,6 +253,7 @@ router.post('/account-summary', requireAiAccess, requireAiConfigured, async (req
         provider: 'openai',
         model: aiResult.model,
         store: false,
+        savedInsight,
         ...aiResult.parsed
       }
     });

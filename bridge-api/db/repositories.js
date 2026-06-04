@@ -3212,6 +3212,40 @@ async function generateAccountInsight(accountNumber, options = {}) {
   return accountAiInsightFromRow(result.rows[0]);
 }
 
+async function saveAccountInsight(input = {}) {
+  const accountNumber = cleanRepositoryText(input.accountNumber || input.account_number, 120);
+  const title = cleanRepositoryText(input.title, 240);
+  const summary = cleanRepositoryText(input.summary, 4000);
+  if (!accountNumber || !title || !summary) {
+    const error = new Error('accountNumber, title, and summary are required.');
+    error.status = 400;
+    throw error;
+  }
+
+  const result = await postgres.query(`
+    INSERT INTO account_ai_insights (
+      id, account_number, insight_type, title, summary, confidence,
+      source_period_start, source_period_end, generated_by, status, raw, updated_at
+    )
+    VALUES ($1, $2, $3, $4, $5, $6, $7::date, $8::date, $9, $10, $11::jsonb, NOW())
+    RETURNING *
+  `, [
+    cleanRepositoryText(input.id, 160) || generateRepositoryId('insight'),
+    accountNumber,
+    cleanRepositoryText(input.insightType || input.insight_type, 120) || 'account_summary',
+    title,
+    summary,
+    cleanRepositoryText(input.confidence, 40) || 'medium',
+    toDateOnly(input.sourcePeriodStart || input.source_period_start) || null,
+    toDateOnly(input.sourcePeriodEnd || input.source_period_end) || null,
+    cleanRepositoryText(input.generatedBy || input.generated_by, 120) || 'system',
+    cleanRepositoryText(input.status, 80) || 'active',
+    JSON.stringify(input.raw || {})
+  ]);
+
+  return accountAiInsightFromRow(result.rows[0]);
+}
+
 async function listAccountInsights(options = {}) {
   const limit = normalizeLimit(options.limit, 50, 200);
   const values = [];
@@ -3318,6 +3352,7 @@ module.exports = {
   listStaticZonesInBounds,
   listStaticZonesNearRoute,
   saveAiInteractionLog,
+  saveAccountInsight,
   saveRecentDestination,
   saveRouteSession,
   recordDeliveryDeduction,
