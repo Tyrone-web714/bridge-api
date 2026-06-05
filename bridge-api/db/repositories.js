@@ -2509,6 +2509,13 @@ async function updateDailyRouteStopStatusForDriver(stopId, driverId, input = {})
   const nonDeliveryNotes = input.nonDeliveryNotes == null && input.non_delivery_notes == null
     ? null
     : String(input.nonDeliveryNotes ?? input.non_delivery_notes).trim().slice(0, 2000);
+  const requestedEventAt = new Date(input.clientUpdatedAt || input.client_updated_at || '');
+  const nowMs = Date.now();
+  const eventAt = Number.isFinite(requestedEventAt.getTime())
+    && requestedEventAt.getTime() >= nowMs - (7 * 24 * 60 * 60 * 1000)
+    && requestedEventAt.getTime() <= nowMs + (5 * 60 * 1000)
+    ? requestedEventAt.toISOString()
+    : null;
   const allowedStatuses = new Set(['pending', 'en_route', 'arrived', 'servicing', 'service_started', 'completed', 'departed', 'skipped', 'undelivered']);
   const allowedNonDeliveryReasons = new Set(['customer_refused', 'missed_time_window', 'business_closed', 'no_payment']);
 
@@ -2533,19 +2540,19 @@ async function updateDailyRouteStopStatusForDriver(stopId, driverId, input = {})
     SET
       status = $3,
       actual_arrival_at = CASE
-        WHEN $3 IN ('arrived', 'servicing', 'completed', 'departed', 'undelivered') THEN COALESCE(stop.actual_arrival_at, NOW())
+        WHEN $3 IN ('arrived', 'servicing', 'completed', 'departed', 'undelivered') THEN COALESCE(stop.actual_arrival_at, $7::timestamptz, NOW())
         ELSE stop.actual_arrival_at
       END,
       actual_service_started_at = CASE
-        WHEN $3 IN ('servicing', 'completed', 'departed') THEN COALESCE(stop.actual_service_started_at, NOW())
+        WHEN $3 IN ('servicing', 'completed', 'departed') THEN COALESCE(stop.actual_service_started_at, $7::timestamptz, NOW())
         ELSE stop.actual_service_started_at
       END,
       actual_completed_at = CASE
-        WHEN $3 IN ('completed', 'departed', 'undelivered') THEN COALESCE(stop.actual_completed_at, NOW())
+        WHEN $3 IN ('completed', 'departed', 'undelivered') THEN COALESCE(stop.actual_completed_at, $7::timestamptz, NOW())
         ELSE stop.actual_completed_at
       END,
       actual_departure_at = CASE
-        WHEN $3 = 'departed' THEN COALESCE(stop.actual_departure_at, NOW())
+        WHEN $3 = 'departed' THEN COALESCE(stop.actual_departure_at, $7::timestamptz, NOW())
         ELSE stop.actual_departure_at
       END,
       driver_notes = COALESCE(NULLIF($4, ''), stop.driver_notes),
@@ -2559,7 +2566,7 @@ async function updateDailyRouteStopStatusForDriver(stopId, driverId, input = {})
       AND stop.id = $1
       AND manifest.assigned_driver_id = $2
     RETURNING stop.*
-  `, [cleanedStopId, cleanedDriverId, status, driverNotes, nonDeliveryReason, nonDeliveryNotes]);
+  `, [cleanedStopId, cleanedDriverId, status, driverNotes, nonDeliveryReason, nonDeliveryNotes, eventAt]);
 
   const updatedStop = result.rows[0] ? routeStopFromRow(result.rows[0]) : null;
   if (!updatedStop) return null;
