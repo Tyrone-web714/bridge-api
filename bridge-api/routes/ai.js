@@ -143,6 +143,18 @@ function buildDeliveryNotesSummaryPrompt() {
   ].join('\n');
 }
 
+function buildAccountGuidancePrompt() {
+  return [
+    'You are generating an account guidance card for Truck-Safe Routing.',
+    'Use only source-of-truth account order history, delivery notes, route-stop context, deductions, and saved account insights supplied by the backend.',
+    'The output must help a driver or supervisor understand what matters before arriving at the account.',
+    'Do not invent access instructions, customer preferences, parking details, product needs, phone numbers, hazards, or business rules.',
+    'If the data is missing or weak, explicitly say what is missing.',
+    'Keep the guidance concise, operational, and suitable for a driver preparing for a delivery stop.',
+    'AI recommends only. The database, route manifest, delivery notes, and supervisor decisions remain the source of truth.'
+  ].join('\n');
+}
+
 function normalizeRouteDate(value) {
   const raw = cleanText(value, 40);
   if (/^\d{4}-\d{2}-\d{2}$/.test(raw)) return raw;
@@ -553,6 +565,63 @@ const deliveryNotesSummarySchema = {
   ]
 };
 
+const accountGuidanceSchema = {
+  type: 'object',
+  additionalProperties: false,
+  properties: {
+    title: { type: 'string' },
+    overview: { type: 'string' },
+    confidence: { type: 'string', enum: ['low', 'medium', 'high'] },
+    preArrivalChecklist: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 6
+    },
+    deliveryInstructions: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 6
+    },
+    productFocus: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 6
+    },
+    deductionWatchouts: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 6
+    },
+    customerRisk: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 6
+    },
+    supervisorFollowUp: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 6
+    },
+    missingData: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    }
+  },
+  required: [
+    'title',
+    'overview',
+    'confidence',
+    'preArrivalChecklist',
+    'deliveryInstructions',
+    'productFocus',
+    'deductionWatchouts',
+    'customerRisk',
+    'supervisorFollowUp',
+    'missingData'
+  ]
+};
+
 function compactAccountSummaryForAi(summary) {
   return {
     accountNumber: summary.accountNumber,
@@ -680,6 +749,41 @@ async function buildDeliveryNotesContext({ accountNumber, destination, routeDate
     .filter((note) => deliveryNoteMatchesContext(note, searchContext))
     .slice(0, 25)
     .map(compactDeliveryNoteForAi);
+
+  return context;
+}
+
+async function buildAccountGuidanceContext({ accountNumber, routeDate, requester }) {
+  const context = {
+    accountNumber,
+    routeDate,
+    accountSummary: null,
+    accountInsights: [],
+    routeAccess: null,
+    deliveryNotes: null
+  };
+
+  if (requester?.type === 'driver') {
+    context.routeAccess = await ensureDriverCanAccessAccount(requester, accountNumber, routeDate);
+  }
+
+  const summary = await repositories.getAccountProductSummary(accountNumber, { periodDays: 365 });
+  context.accountSummary = compactAccountSummaryForAi(summary);
+  context.accountInsights = (await repositories.listAccountInsights({
+    accountNumber,
+    limit: 8
+  })).map((insight) => ({
+    title: insight.title,
+    summary: insight.summary,
+    confidence: insight.confidence,
+    insightType: insight.insightType,
+    createdAt: insight.createdAt
+  }));
+  context.deliveryNotes = await buildDeliveryNotesContext({
+    accountNumber,
+    destination: context.accountSummary.recentRouteStops?.[0]?.destinationAddress || '',
+    routeDate
+  });
 
   return context;
 }
@@ -1234,6 +1338,109 @@ router.post('/delivery-notes-summary', requireAdminAiAccess, requireAiConfigured
     return res.status(error.status || 500).json({
       ok: false,
       error: error.status ? error.message : 'AI delivery notes summary failed.'
+    });
+  }
+});
+
+router.post('/account-guidance', requireAiAccess, requireAiConfigured, async (req, res) => {
+  const startedAt = Date.now();
+  const requester = getRequester(req);
+  const accountNumber = cleanText(req.body?.accountNumber || req.body?.account_number, 120);
+  const routeDate = normalizeRouteDate(req.body?.routeDate || req.body?.route_date);
+  let aiResult = null;
+  let sourceContext = null;
+
+  if (!accountNumber) {
+    return res.status(400).json({
+      ok: false,
+      error: 'accountNumber is required.'
+    });
+  }
+
+  try {
+    sourceContext = await buildAccountGuidanceContext({ accountNumber, routeDate, requester });
+    aiResult = await aiProvider.createStructuredResponse({
+      endpoint: 'account-guidance',
+      instructions: buildAccountGuidancePrompt(),
+      input: sourceContext,
+      schemaName: 'truck_safe_account_guidance',
+      schema: accountGuidanceSchema
+    });
+
+    const savedInsight = await repositories.saveAccountInsight({
+      accountNumber,
+      insightType: 'openai_account_guidance',
+      title: aiResult.parsed.title,
+      summary: aiResult.parsed.overview,
+      confidence: aiResult.parsed.confidence,
+      sourcePeriodStart: sourceContext.accountSummary?.firstOrderDate || null,
+      sourcePeriodEnd: sourceContext.accountSummary?.lastOrderDate || null,
+      generatedBy: `openai:${aiResult.model}`,
+      raw: {
+        preArrivalChecklist: aiResult.parsed.preArrivalChecklist,
+        deliveryInstructions: aiResult.parsed.deliveryInstructions,
+        productFocus: aiResult.parsed.productFocus,
+        deductionWatchouts: aiResult.parsed.deductionWatchouts,
+        customerRisk: aiResult.parsed.customerRisk,
+        supervisorFollowUp: aiResult.parsed.supervisorFollowUp,
+        missingData: aiResult.parsed.missingData,
+        noteCount: sourceContext.deliveryNotes?.notes?.length || 0
+      }
+    });
+
+    await repositories.saveAiInteractionLog({
+      endpoint: 'account-guidance',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber,
+      routeManifestId: sourceContext.routeAccess?.routeManifestId || null,
+      routeStopId: sourceContext.routeAccess?.routeStopId || null,
+      model: aiResult.model,
+      status: 'success',
+      inputSummary: {
+        accountNumber,
+        routeDate,
+        noteCount: sourceContext.deliveryNotes?.notes?.length || 0,
+        insightCount: sourceContext.accountInsights.length,
+        orderCount: sourceContext.accountSummary?.orderCount || 0
+      },
+      outputSummary: aiResult.parsed,
+      latencyMs: Date.now() - startedAt
+    });
+
+    return res.json({
+      ok: true,
+      requester,
+      accountNumber,
+      routeDate: requester.type === 'driver' ? routeDate : null,
+      sourceContext,
+      ai: {
+        provider: 'openai',
+        model: aiResult.model,
+        store: false,
+        savedInsight,
+        ...aiResult.parsed
+      }
+    });
+  } catch (error) {
+    await repositories.saveAiInteractionLog({
+      endpoint: 'account-guidance',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber,
+      routeManifestId: sourceContext?.routeAccess?.routeManifestId || null,
+      routeStopId: sourceContext?.routeAccess?.routeStopId || null,
+      model: aiResult?.model || aiProvider.getModel(),
+      status: 'error',
+      inputSummary: { accountNumber, routeDate },
+      outputSummary: {},
+      errorMessage: error.message,
+      latencyMs: Date.now() - startedAt
+    }).catch(() => {});
+
+    return res.status(error.status || 500).json({
+      ok: false,
+      error: error.status ? error.message : 'AI account guidance failed.'
     });
   }
 });

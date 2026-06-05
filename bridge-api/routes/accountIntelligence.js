@@ -212,6 +212,7 @@ function renderAccountIntelligenceAdminPage(session) {
         <button class="gold" onclick="generateInsight()">Generate Insight</button>
         <button onclick="runAiSummary()">Run AI Summary</button>
         <button onclick="runAccountForecast()">Account Forecast</button>
+        <button onclick="runAccountGuidance()">Account Guidance Card</button>
       </div>
     </section>
 
@@ -489,6 +490,27 @@ function renderAccountIntelligenceAdminPage(session) {
         '</div>' +
         renderDebug(data);
     }
+    function renderAccountGuidance(data) {
+      const ai = data.ai || {};
+      result.innerHTML =
+        '<div class="summary-hero">' +
+          '<span class="badge">AI Account Guidance Card</span>' +
+          '<div class="summary-title">' + escapeHtml(ai.title || data.accountNumber || 'Account Guidance') + '</div>' +
+          '<div class="summary-subtitle">Account: ' + escapeHtml(data.accountNumber || '') +
+            ' - Confidence: ' + escapeHtml(ai.confidence || 'unknown') + '</div>' +
+        '</div>' +
+        '<div class="ai-summary">' + escapeHtml(ai.overview || 'No account guidance returned.') + '</div>' +
+        '<div class="grid">' +
+          '<div class="content-card"><h3>Pre-Arrival Checklist</h3>' + listItems(ai.preArrivalChecklist) + '</div>' +
+          '<div class="content-card"><h3>Delivery Instructions</h3>' + listItems(ai.deliveryInstructions) + '</div>' +
+          '<div class="content-card"><h3>Product Focus</h3>' + listItems(ai.productFocus) + '</div>' +
+          '<div class="content-card"><h3>Deduction Watchouts</h3>' + listItems(ai.deductionWatchouts) + '</div>' +
+          '<div class="content-card"><h3>Customer Risk</h3>' + listItems(ai.customerRisk) + '</div>' +
+          '<div class="content-card"><h3>Supervisor Follow-Up</h3>' + listItems(ai.supervisorFollowUp) + '</div>' +
+          '<div class="content-card"><h3>Missing Data</h3>' + listItems(ai.missingData) + '</div>' +
+        '</div>' +
+        renderDebug(data);
+    }
     function renderSaved(value, label) {
       result.innerHTML = '<div class="summary-hero"><div class="summary-title">' + escapeHtml(label) + '</div>' +
         '<div class="summary-subtitle">Saved successfully.</div></div>' + renderDebug(value);
@@ -552,6 +574,18 @@ function renderAccountIntelligenceAdminPage(session) {
             accountNumber,
             routeDate: document.getElementById('aiRouteDate')?.value || '',
             periodDays
+          })
+        }));
+      } catch (error) { setError(error); }
+    }
+    async function runAccountGuidance() {
+      try {
+        const accountNumber = document.getElementById('accountNumber').value.trim();
+        renderAccountGuidance(await requestJson('/api/ai/account-guidance', {
+          method: 'POST',
+          body: JSON.stringify({
+            accountNumber,
+            routeDate: document.getElementById('aiRouteDate')?.value || ''
           })
         }));
       } catch (error) { setError(error); }
