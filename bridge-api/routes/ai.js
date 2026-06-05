@@ -96,6 +96,17 @@ function buildAccountForecastPrompt() {
   ].join('\n');
 }
 
+function buildProductDemandForecastPrompt() {
+  return [
+    'You are the AI product demand forecasting analyst for Truck-Safe Routing.',
+    'Use only source-of-truth product, account order, deduction, and route context supplied by the backend.',
+    'Forecast conservatively from recorded SKU demand, account count, order count, quantities, and deduction signals.',
+    'Do not invent future orders, customer commitments, inventory levels, warehouse stock, pricing, promotions, events, or weather.',
+    'If demand history is thin or missing, say that clearly and list what data is missing.',
+    'AI recommends only. Database records, supervisor decisions, and warehouse systems remain the source of truth.'
+  ].join('\n');
+}
+
 function buildRedeliveryPlanPrompt() {
   return [
     'You are the AI redelivery recovery planner for Truck-Safe Routing.',
@@ -383,6 +394,65 @@ const accountForecastSchema = {
     'deductionRisks',
     'deliveryRisks',
     'recommendedActions',
+    'missingData'
+  ]
+};
+
+const productDemandForecastSchema = {
+  type: 'object',
+  additionalProperties: false,
+  properties: {
+    title: { type: 'string' },
+    summary: { type: 'string' },
+    demandConfidence: { type: 'string', enum: ['low', 'medium', 'high'] },
+    demandOutlook: { type: 'string', enum: ['unknown', 'stable', 'increasing', 'decreasing', 'volatile'] },
+    productsToWatch: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 10
+    },
+    categorySignals: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    },
+    reorderSignals: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    },
+    demandRisks: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    },
+    routeLoadSignals: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    },
+    supervisorActions: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    },
+    missingData: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    }
+  },
+  required: [
+    'title',
+    'summary',
+    'demandConfidence',
+    'demandOutlook',
+    'productsToWatch',
+    'categorySignals',
+    'reorderSignals',
+    'demandRisks',
+    'routeLoadSignals',
+    'supervisorActions',
     'missingData'
   ]
 };
@@ -1187,6 +1257,26 @@ async function buildSupervisorContext({ accountNumber, routeDate, periodDays }) 
   return context;
 }
 
+async function buildProductDemandForecastContext({ accountNumber, routeDate, periodDays }) {
+  const supervisorContext = await buildSupervisorContext({ accountNumber, routeDate, periodDays });
+  const productSignals = await repositories.listProductDemandSignals({
+    accountNumber: accountNumber || undefined,
+    routeDate,
+    periodDays,
+    limit: 40
+  });
+
+  return {
+    routeDate,
+    periodDays,
+    accountNumber: accountNumber || null,
+    account: supervisorContext.account,
+    recentRoutes: supervisorContext.recentRoutes,
+    undeliveredStops: supervisorContext.undeliveredStops,
+    productSignals
+  };
+}
+
 router.get('/status', (req, res) => {
   res.json({
     ok: true,
@@ -1957,6 +2047,103 @@ router.post('/account-forecast', requireAdminAiAccess, requireAiConfigured, asyn
     return res.status(error.status || 500).json({
       ok: false,
       error: error.status ? error.message : 'AI account forecast failed.'
+    });
+  }
+});
+
+router.post('/product-demand-forecast', requireAdminAiAccess, requireAiConfigured, async (req, res) => {
+  const startedAt = Date.now();
+  const requester = getRequester(req);
+  const accountNumber = cleanText(req.body?.accountNumber || req.body?.account_number, 120);
+  const periodDays = Number.parseInt(req.body?.periodDays || req.body?.period_days, 10) || 180;
+  const routeDate = normalizeRouteDate(req.body?.routeDate || req.body?.route_date);
+  let aiResult = null;
+
+  try {
+    const sourceContext = await buildProductDemandForecastContext({
+      accountNumber,
+      routeDate,
+      periodDays
+    });
+    aiResult = await aiProvider.createStructuredResponse({
+      endpoint: 'product-demand-forecast',
+      instructions: buildProductDemandForecastPrompt(),
+      input: sourceContext,
+      schemaName: 'truck_safe_product_demand_forecast',
+      schema: productDemandForecastSchema
+    });
+
+    if (accountNumber) {
+      await repositories.saveAccountInsight({
+        accountNumber,
+        insightType: 'openai_product_demand_forecast',
+        title: aiResult.parsed.title,
+        summary: aiResult.parsed.summary,
+        confidence: aiResult.parsed.demandConfidence,
+        sourcePeriodStart: sourceContext.account?.firstOrderDate || null,
+        sourcePeriodEnd: sourceContext.account?.lastOrderDate || null,
+        generatedBy: `openai:${aiResult.model}`,
+        raw: {
+          demandOutlook: aiResult.parsed.demandOutlook,
+          productsToWatch: aiResult.parsed.productsToWatch,
+          categorySignals: aiResult.parsed.categorySignals,
+          reorderSignals: aiResult.parsed.reorderSignals,
+          demandRisks: aiResult.parsed.demandRisks,
+          routeLoadSignals: aiResult.parsed.routeLoadSignals,
+          supervisorActions: aiResult.parsed.supervisorActions,
+          missingData: aiResult.parsed.missingData
+        }
+      });
+    }
+
+    await repositories.saveAiInteractionLog({
+      endpoint: 'product-demand-forecast',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber: accountNumber || null,
+      model: aiResult.model,
+      status: 'success',
+      inputSummary: {
+        accountNumber: accountNumber || null,
+        routeDate,
+        periodDays,
+        productSignalCount: sourceContext.productSignals.length,
+        routeCount: sourceContext.recentRoutes.length
+      },
+      outputSummary: aiResult.parsed,
+      latencyMs: Date.now() - startedAt
+    });
+
+    return res.json({
+      ok: true,
+      requester,
+      accountNumber: accountNumber || null,
+      routeDate,
+      sourceContext,
+      ai: {
+        provider: 'openai',
+        model: aiResult.model,
+        store: false,
+        ...aiResult.parsed
+      }
+    });
+  } catch (error) {
+    await repositories.saveAiInteractionLog({
+      endpoint: 'product-demand-forecast',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber: accountNumber || null,
+      model: aiResult?.model || aiProvider.getModel(),
+      status: 'error',
+      inputSummary: { accountNumber, routeDate, periodDays },
+      outputSummary: {},
+      errorMessage: error.message,
+      latencyMs: Date.now() - startedAt
+    }).catch(() => {});
+
+    return res.status(error.status || 500).json({
+      ok: false,
+      error: error.status ? error.message : 'AI product demand forecast failed.'
     });
   }
 });

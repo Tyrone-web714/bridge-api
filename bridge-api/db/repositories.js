@@ -3211,6 +3211,63 @@ async function getAccountProductSummary(accountNumber, options = {}) {
   };
 }
 
+async function listProductDemandSignals(options = {}) {
+  const periodDays = normalizeLimit(options.periodDays, 180, 1095);
+  const limit = normalizeLimit(options.limit, 25, 100);
+  const values = [periodDays];
+  const where = [
+    `COALESCE(ord.delivery_date, ord.order_date, CURRENT_DATE) >= CURRENT_DATE - ($1::int * INTERVAL '1 day')`
+  ];
+
+  if (options.accountNumber) {
+    values.push(cleanRepositoryText(options.accountNumber, 120));
+    where.push(`ord.account_number = $${values.length}`);
+  }
+
+  if (options.routeDate) {
+    values.push(toDateOnly(options.routeDate));
+    where.push(`COALESCE(ord.delivery_date, ord.order_date, CURRENT_DATE) <= $${values.length}::date`);
+  }
+
+  values.push(limit);
+  const result = await postgres.query(`
+    SELECT
+      item.sku,
+      item.product_name,
+      MAX(item.brand) AS brand,
+      MAX(item.category) AS category,
+      COUNT(DISTINCT ord.id)::int AS order_count,
+      COUNT(DISTINCT ord.account_number)::int AS account_count,
+      COALESCE(SUM(item.quantity), 0) AS quantity,
+      COALESCE(SUM(item.gross_amount), 0) AS gross_amount,
+      COALESCE(SUM(item.deduction_amount), 0) AS deduction_amount,
+      COALESCE(SUM(item.net_amount), 0) AS net_amount,
+      MIN(COALESCE(ord.delivery_date, ord.order_date)) AS first_order_date,
+      MAX(COALESCE(ord.delivery_date, ord.order_date)) AS last_order_date
+    FROM account_order_items AS item
+    JOIN account_orders AS ord ON ord.id = item.order_id
+    WHERE ${where.join(' AND ')}
+    GROUP BY item.sku, item.product_name
+    ORDER BY quantity DESC, net_amount DESC
+    LIMIT $${values.length}
+  `, values);
+
+  return result.rows.map((row) => ({
+    sku: row.sku || null,
+    productName: row.product_name,
+    brand: row.brand || null,
+    category: row.category || null,
+    orderCount: Number(row.order_count) || 0,
+    accountCount: Number(row.account_count) || 0,
+    quantity: normalizeQuantity(row.quantity),
+    grossAmount: normalizeMoney(row.gross_amount),
+    deductionAmount: normalizeMoney(row.deduction_amount),
+    netAmount: normalizeMoney(row.net_amount),
+    firstOrderDate: toDateOnly(row.first_order_date),
+    lastOrderDate: toDateOnly(row.last_order_date)
+  }));
+}
+
 async function generateAccountInsight(accountNumber, options = {}) {
   const summary = await getAccountProductSummary(accountNumber, options);
   const topProduct = summary.topProducts[0] || null;
@@ -3404,6 +3461,7 @@ module.exports = {
   listDeliveryNotes,
   listManualHazards,
   listRecentDestinations,
+  listProductDemandSignals,
   listStaticBridgesInBounds,
   listStaticBridgesNearRoute,
   listStaticZonesInBounds,

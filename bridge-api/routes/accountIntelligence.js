@@ -270,6 +270,7 @@ function renderAccountIntelligenceAdminPage(session) {
         <button onclick="summarizeDeliveryNotes()">Delivery Notes Summary</button>
         <button onclick="predictDeliveryFailure()">Delivery Failure Risk</button>
         <button onclick="predictDeductionRisk()">Deduction Risk</button>
+        <button onclick="forecastProductDemand()">Product Demand Forecast</button>
       </div>
     </section>
 
@@ -539,6 +540,29 @@ function renderAccountIntelligenceAdminPage(session) {
         '</div>' +
         renderDebug(data);
     }
+    function renderProductDemandForecast(data) {
+      const ai = data.ai || {};
+      const context = data.sourceContext || {};
+      result.innerHTML =
+        '<div class="summary-hero">' +
+          '<span class="badge">AI Product Demand Forecast</span>' +
+          '<div class="summary-title">' + escapeHtml(ai.title || 'Product Demand Forecast') + '</div>' +
+          '<div class="summary-subtitle">Demand outlook: ' + escapeHtml(ai.demandOutlook || 'unknown') +
+            ' - Confidence: ' + escapeHtml(ai.demandConfidence || 'unknown') +
+            ' - Product signals: ' + escapeHtml((context.productSignals || []).length || 0) + '</div>' +
+        '</div>' +
+        '<div class="ai-summary">' + escapeHtml(ai.summary || 'No product-demand forecast returned.') + '</div>' +
+        '<div class="grid">' +
+          '<div class="content-card"><h3>Products to Watch</h3>' + listItems(ai.productsToWatch) + '</div>' +
+          '<div class="content-card"><h3>Category Signals</h3>' + listItems(ai.categorySignals) + '</div>' +
+          '<div class="content-card"><h3>Reorder Signals</h3>' + listItems(ai.reorderSignals) + '</div>' +
+          '<div class="content-card"><h3>Demand Risks</h3>' + listItems(ai.demandRisks) + '</div>' +
+          '<div class="content-card"><h3>Route Load Signals</h3>' + listItems(ai.routeLoadSignals) + '</div>' +
+          '<div class="content-card"><h3>Supervisor Actions</h3>' + listItems(ai.supervisorActions) + '</div>' +
+          '<div class="content-card"><h3>Missing Data</h3>' + listItems(ai.missingData) + '</div>' +
+        '</div>' +
+        renderDebug(data);
+    }
     function renderAccountGuidance(data) {
       const ai = data.ai || {};
       result.innerHTML =
@@ -622,6 +646,21 @@ function renderAccountIntelligenceAdminPage(session) {
           body: JSON.stringify({
             accountNumber,
             routeDate: document.getElementById('aiRouteDate')?.value || '',
+            periodDays
+          })
+        }));
+      } catch (error) { setError(error); }
+    }
+    async function forecastProductDemand() {
+      try {
+        const fallbackAccountNumber = document.getElementById('accountNumber').value.trim();
+        const accountNumber = document.getElementById('aiAccountNumber').value.trim() || fallbackAccountNumber;
+        const periodDays = Number(document.getElementById('periodDays').value.trim() || '180');
+        renderProductDemandForecast(await requestJson('/api/ai/product-demand-forecast', {
+          method: 'POST',
+          body: JSON.stringify({
+            accountNumber,
+            routeDate: document.getElementById('aiRouteDate').value,
             periodDays
           })
         }));
