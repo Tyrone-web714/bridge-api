@@ -519,6 +519,9 @@ async function ensureSchema() {
       source_period_end DATE,
       generated_by TEXT NOT NULL DEFAULT 'rules_engine_v1',
       status TEXT NOT NULL DEFAULT 'active',
+      reviewed_by TEXT,
+      reviewed_at TIMESTAMPTZ,
+      review_notes TEXT,
       raw JSONB NOT NULL DEFAULT '{}'::jsonb,
       created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
       updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
@@ -527,6 +530,10 @@ async function ensureSchema() {
     CREATE INDEX IF NOT EXISTS account_ai_insights_account_idx ON account_ai_insights(account_number, created_at DESC);
     CREATE INDEX IF NOT EXISTS account_ai_insights_type_idx ON account_ai_insights(insight_type);
     CREATE INDEX IF NOT EXISTS account_ai_insights_status_idx ON account_ai_insights(status);
+
+    ALTER TABLE account_ai_insights ADD COLUMN IF NOT EXISTS reviewed_by TEXT;
+    ALTER TABLE account_ai_insights ADD COLUMN IF NOT EXISTS reviewed_at TIMESTAMPTZ;
+    ALTER TABLE account_ai_insights ADD COLUMN IF NOT EXISTS review_notes TEXT;
 
     CREATE TABLE IF NOT EXISTS ai_interaction_logs (
       id TEXT PRIMARY KEY,
@@ -542,6 +549,11 @@ async function ensureSchema() {
       output_summary JSONB NOT NULL DEFAULT '{}'::jsonb,
       error_message TEXT,
       latency_ms INTEGER,
+      provider_request_id TEXT,
+      input_tokens INTEGER,
+      output_tokens INTEGER,
+      total_tokens INTEGER,
+      estimated_cost_usd NUMERIC(12,6),
       created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
     );
 
@@ -549,6 +561,12 @@ async function ensureSchema() {
     CREATE INDEX IF NOT EXISTS ai_interaction_logs_requester_idx ON ai_interaction_logs(requester_type, requester_id, created_at DESC);
     CREATE INDEX IF NOT EXISTS ai_interaction_logs_account_idx ON ai_interaction_logs(account_number, created_at DESC);
     CREATE INDEX IF NOT EXISTS ai_interaction_logs_status_idx ON ai_interaction_logs(status);
+
+    ALTER TABLE ai_interaction_logs ADD COLUMN IF NOT EXISTS provider_request_id TEXT;
+    ALTER TABLE ai_interaction_logs ADD COLUMN IF NOT EXISTS input_tokens INTEGER;
+    ALTER TABLE ai_interaction_logs ADD COLUMN IF NOT EXISTS output_tokens INTEGER;
+    ALTER TABLE ai_interaction_logs ADD COLUMN IF NOT EXISTS total_tokens INTEGER;
+    ALTER TABLE ai_interaction_logs ADD COLUMN IF NOT EXISTS estimated_cost_usd NUMERIC(12,6);
   `);
 
   try {

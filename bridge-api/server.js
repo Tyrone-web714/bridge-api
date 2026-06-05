@@ -48,6 +48,7 @@ const routeManifestRoutes = require('./routes/routeManifests');
 const adminDashboardRoutes = require('./routes/adminDashboard');
 const accountIntelligenceRoutes = require('./routes/accountIntelligence');
 const aiRoutes = require('./routes/ai');
+const operationalHeatmapRoutes = require('./routes/operationalHeatmaps');
 
 app.use('/api/bridges', bridgeRoutes);
 app.use('/api/drivers', driverRoutes);
@@ -59,6 +60,7 @@ app.use('/api/route-manifests', routeManifestRoutes);
 app.use('/api/admin', adminDashboardRoutes);
 app.use('/api/account-intelligence', accountIntelligenceRoutes);
 app.use('/api/ai', aiRoutes);
+app.use('/api/operational-heatmaps', operationalHeatmapRoutes);
 
 app.get('/health', async (req, res) => {
   res.json({

@@ -4,6 +4,7 @@ const path = require('path');
 
 const aiProvider = require('../services/aiProvider');
 const aiRouter = require('../routes/ai');
+const accountIntelligenceRouter = require('../routes/accountIntelligence');
 
 const expectedRoutes = [
   'GET /status',
@@ -62,6 +63,21 @@ function assertProviderClassification() {
   assert.strictEqual(authentication.status, 503);
 }
 
+function assertCostEstimation() {
+  const previousInputRate = process.env.OPENAI_INPUT_COST_PER_MILLION_USD;
+  const previousOutputRate = process.env.OPENAI_OUTPUT_COST_PER_MILLION_USD;
+  process.env.OPENAI_INPUT_COST_PER_MILLION_USD = '2';
+  process.env.OPENAI_OUTPUT_COST_PER_MILLION_USD = '8';
+  assert.strictEqual(aiProvider.estimateUsageCost({
+    input_tokens: 1000,
+    output_tokens: 500
+  }), 0.006);
+  if (previousInputRate === undefined) delete process.env.OPENAI_INPUT_COST_PER_MILLION_USD;
+  else process.env.OPENAI_INPUT_COST_PER_MILLION_USD = previousInputRate;
+  if (previousOutputRate === undefined) delete process.env.OPENAI_OUTPUT_COST_PER_MILLION_USD;
+  else process.env.OPENAI_OUTPUT_COST_PER_MILLION_USD = previousOutputRate;
+}
+
 function assertSupervisorPageContracts() {
   const pagePath = path.join(__dirname, '..', 'routes', 'accountIntelligence.js');
   const pageSource = fs.readFileSync(pagePath, 'utf8');
@@ -93,11 +109,24 @@ function run() {
   assert(status.timeoutMs >= 5000 && status.timeoutMs <= 120000);
 
   assertProviderClassification();
+  assertCostEstimation();
   assertSupervisorPageContracts();
+
+  const accountContracts = new Set(listRouterContracts(accountIntelligenceRouter));
+  assert(
+    accountContracts.has('GET /insights/review-queue'),
+    'Missing AI recommendation review queue.'
+  );
+  assert(
+    accountContracts.has('PUT /insights/:id/review'),
+    'Missing AI recommendation review action.'
+  );
 
   console.log(`[test:ai] ${expectedRoutes.length} AI route contracts verified.`);
   console.log('[test:ai] provider timeout and failure classification verified.');
+  console.log('[test:ai] configurable token-cost estimation verified.');
   console.log('[test:ai] supervisor interface endpoint coverage verified.');
+  console.log('[test:ai] supervisor recommendation review contracts verified.');
 }
 
 run();

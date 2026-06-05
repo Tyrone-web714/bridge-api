@@ -16,17 +16,51 @@ function getTimeoutMs() {
   return Math.min(Math.max(configured, 5000), 120000);
 }
 
+function getCostRate(name) {
+  const value = Number.parseFloat(process.env[name]);
+  return Number.isFinite(value) && value >= 0 ? value : null;
+}
+
+function getCostConfig() {
+  return {
+    inputPerMillionUsd: getCostRate('OPENAI_INPUT_COST_PER_MILLION_USD'),
+    outputPerMillionUsd: getCostRate('OPENAI_OUTPUT_COST_PER_MILLION_USD')
+  };
+}
+
+function estimateUsageCost(usage) {
+  const rates = getCostConfig();
+  const inputTokens = Number(usage?.input_tokens);
+  const outputTokens = Number(usage?.output_tokens);
+  if (
+    rates.inputPerMillionUsd === null
+    || rates.outputPerMillionUsd === null
+    || !Number.isFinite(inputTokens)
+    || !Number.isFinite(outputTokens)
+  ) {
+    return null;
+  }
+  const estimated = (
+    (inputTokens * rates.inputPerMillionUsd)
+    + (outputTokens * rates.outputPerMillionUsd)
+  ) / 1_000_000;
+  return Math.round(estimated * 1_000_000) / 1_000_000;
+}
+
 function isConfigured() {
   return Boolean(getApiKey());
 }
 
 function getStatus() {
+  const costConfig = getCostConfig();
   return {
     provider: 'openai',
     configured: isConfigured(),
     model: getModel(),
     store: false,
-    timeoutMs: getTimeoutMs()
+    timeoutMs: getTimeoutMs(),
+    costTrackingConfigured: costConfig.inputPerMillionUsd !== null
+      && costConfig.outputPerMillionUsd !== null
   };
 }
 
@@ -171,12 +205,28 @@ async function createStructuredResponse({ endpoint, instructions, input, schemaN
     }
 
     try {
+      const parsed = JSON.parse(outputText);
+      const usage = body?.usage || null;
+      const estimatedCostUsd = estimateUsageCost(usage);
+      if (parsed && typeof parsed === 'object') {
+        Object.defineProperty(parsed, '__aiMetadata', {
+          configurable: false,
+          enumerable: false,
+          writable: false,
+          value: {
+            requestId,
+            usage,
+            estimatedCostUsd
+          }
+        });
+      }
       return {
         model,
-        parsed: JSON.parse(outputText),
+        parsed,
         rawText: outputText,
         requestId,
-        usage: body?.usage || null,
+        usage,
+        estimatedCostUsd,
         latencyMs: Date.now() - startedAt
       };
     } catch (parseError) {
@@ -214,6 +264,8 @@ async function createStructuredResponse({ endpoint, instructions, input, schemaN
 module.exports = {
   classifyProviderFailure,
   createStructuredResponse,
+  estimateUsageCost,
+  getCostConfig,
   getModel,
   getStatus,
   getTimeoutMs,

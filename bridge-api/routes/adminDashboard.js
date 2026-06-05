@@ -51,6 +51,12 @@ function renderAdminDashboard(session) {
       accent: '#ffbf3f'
     },
     {
+      title: 'Operational Heatmaps',
+      description: 'Map recurring delivery delays, failed stops, deductions, hazard events, route events, and recorded revenue concentration.',
+      href: '/api/operational-heatmaps/admin',
+      accent: '#ff7a18'
+    },
+    {
       title: 'AI Copilot Foundation',
       description: 'Check AI provider status and run protected account intelligence summaries from source-of-truth order data.',
       href: '/api/ai/status',

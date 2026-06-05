@@ -346,6 +346,9 @@ function accountAiInsightFromRow(row) {
     sourcePeriodEnd: toDateOnly(row.source_period_end),
     generatedBy: row.generated_by || 'rules_engine_v1',
     status: row.status || 'active',
+    reviewedBy: row.reviewed_by || null,
+    reviewedAt: toIsoString(row.reviewed_at),
+    reviewNotes: row.review_notes || null,
     raw: row.raw || {},
     createdAt: toIsoString(row.created_at),
     updatedAt: toIsoString(row.updated_at)
@@ -367,6 +370,13 @@ function aiInteractionLogFromRow(row) {
     outputSummary: row.output_summary || {},
     errorMessage: row.error_message || null,
     latencyMs: row.latency_ms ?? null,
+    providerRequestId: row.provider_request_id || null,
+    inputTokens: row.input_tokens ?? null,
+    outputTokens: row.output_tokens ?? null,
+    totalTokens: row.total_tokens ?? null,
+    estimatedCostUsd: row.estimated_cost_usd === null || row.estimated_cost_usd === undefined
+      ? null
+      : Number(row.estimated_cost_usd),
     createdAt: toIsoString(row.created_at)
   };
 }
@@ -3446,7 +3456,11 @@ async function listOperationalHeatmapSignals(options = {}) {
       UNION ALL
 
       SELECT
-        'route_event'::text AS category,
+        CASE
+          WHEN LOWER(COALESCE(event.event_type, '')) ~ '(hazard|bridge|clearance|no[_ -]?truck|residential)'
+            THEN 'hazard'::text
+          ELSE 'route_event'::text
+        END AS category,
         event.event_type::text AS signal_type,
         CASE LOWER(COALESCE(event.severity, ''))
           WHEN 'critical' THEN 10.0
@@ -3469,6 +3483,34 @@ async function listOperationalHeatmapSignals(options = {}) {
         AND event.longitude IS NOT NULL
         AND event.created_at >= NOW() - ($1::int * INTERVAL '1 day')
         AND ($2::date IS NULL OR event.created_at::date = $2::date)
+
+      UNION ALL
+
+      SELECT
+        'revenue'::text AS category,
+        'recorded_net_revenue'::text AS signal_type,
+        LEAST(10.0, GREATEST(1.0, order_record.net_amount / 250.0)) AS weight,
+        stop.latitude,
+        stop.longitude,
+        COALESCE(order_record.delivery_date, order_record.order_date)::timestamptz AS occurred_at,
+        manifest.route_number,
+        order_record.account_number,
+        COALESCE(order_record.account_name, stop.account_name) AS account_name,
+        stop.destination_address,
+        jsonb_build_object(
+          'invoiceNumber', order_record.invoice_number,
+          'subtotalAmount', order_record.subtotal_amount,
+          'deductionAmount', order_record.deduction_amount,
+          'netAmount', order_record.net_amount
+        ) AS details
+      FROM account_orders AS order_record
+      JOIN daily_route_stops AS stop ON stop.id = order_record.route_stop_id
+      LEFT JOIN daily_route_manifests AS manifest ON manifest.id = stop.manifest_id
+      WHERE stop.latitude IS NOT NULL
+        AND stop.longitude IS NOT NULL
+        AND COALESCE(order_record.delivery_date, order_record.order_date, CURRENT_DATE)
+          >= CURRENT_DATE - ($1::int * INTERVAL '1 day')
+        AND ($2::date IS NULL OR COALESCE(order_record.delivery_date, order_record.order_date) = $2::date)
     )
     SELECT *
     FROM signals
@@ -3670,6 +3712,8 @@ async function saveAccountInsight(input = {}) {
     throw error;
   }
 
+  const generatedBy = cleanRepositoryText(input.generatedBy || input.generated_by, 120) || 'system';
+  const defaultStatus = generatedBy.startsWith('openai:') ? 'pending_review' : 'active';
   const result = await postgres.query(`
     INSERT INTO account_ai_insights (
       id, account_number, insight_type, title, summary, confidence,
@@ -3686,11 +3730,43 @@ async function saveAccountInsight(input = {}) {
     cleanRepositoryText(input.confidence, 40) || 'medium',
     toDateOnly(input.sourcePeriodStart || input.source_period_start) || null,
     toDateOnly(input.sourcePeriodEnd || input.source_period_end) || null,
-    cleanRepositoryText(input.generatedBy || input.generated_by, 120) || 'system',
-    cleanRepositoryText(input.status, 80) || 'active',
+    generatedBy,
+    cleanRepositoryText(input.status, 80) || defaultStatus,
     JSON.stringify(input.raw || {})
   ]);
 
+  return accountAiInsightFromRow(result.rows[0]);
+}
+
+async function reviewAccountInsight(insightId, input = {}) {
+  const id = cleanRepositoryText(insightId, 160);
+  const status = cleanRepositoryText(input.status, 80);
+  if (!id || !['pending_review', 'approved', 'rejected'].includes(status)) {
+    const error = new Error('A valid insight ID and review status are required.');
+    error.status = 400;
+    throw error;
+  }
+  const result = await postgres.query(`
+    UPDATE account_ai_insights
+    SET
+      status = $2,
+      reviewed_by = $3,
+      reviewed_at = NOW(),
+      review_notes = $4,
+      updated_at = NOW()
+    WHERE id = $1
+    RETURNING *
+  `, [
+    id,
+    status,
+    cleanRepositoryText(input.reviewedBy || input.reviewed_by, 160) || 'supervisor',
+    cleanRepositoryText(input.reviewNotes || input.review_notes, 2000) || null
+  ]);
+  if (!result.rows[0]) {
+    const error = new Error('AI recommendation not found.');
+    error.status = 404;
+    throw error;
+  }
   return accountAiInsightFromRow(result.rows[0]);
 }
 
@@ -3711,7 +3787,7 @@ async function listAccountInsights(options = {}) {
     values.push(cleanRepositoryText(options.status, 80));
     where.push(`status = $${values.length}`);
   } else {
-    where.push("status = 'active'");
+    where.push("status IN ('active', 'approved')");
   }
 
   values.push(limit);
@@ -3939,16 +4015,25 @@ async function getKnowledgeGraphSnapshot(options = {}) {
 }
 
 async function saveAiInteractionLog(input = {}) {
+  const outputSummary = input.outputSummary || input.output_summary || {};
+  const metadata = outputSummary?.__aiMetadata || {};
+  const usage = input.usage || metadata.usage || {};
+  const inputTokens = Number(usage.input_tokens);
+  const outputTokens = Number(usage.output_tokens);
+  const totalTokens = Number(usage.total_tokens);
+  const estimatedCostUsd = Number(input.estimatedCostUsd ?? input.estimated_cost_usd ?? metadata.estimatedCostUsd);
   const result = await postgres.query(`
     INSERT INTO ai_interaction_logs (
       id, endpoint, requester_type, requester_id, account_number,
       route_manifest_id, route_stop_id, model, status, input_summary,
-      output_summary, error_message, latency_ms
+      output_summary, error_message, latency_ms, provider_request_id,
+      input_tokens, output_tokens, total_tokens, estimated_cost_usd
     )
     VALUES (
       $1, $2, $3, $4, $5,
       $6, $7, $8, $9, $10::jsonb,
-      $11::jsonb, $12, $13
+      $11::jsonb, $12, $13, $14,
+      $15, $16, $17, $18
     )
     RETURNING *
   `, [
@@ -3962,9 +4047,14 @@ async function saveAiInteractionLog(input = {}) {
     cleanRepositoryText(input.model, 120) || null,
     cleanRepositoryText(input.status, 80) || 'unknown',
     JSON.stringify(input.inputSummary || input.input_summary || {}),
-    JSON.stringify(input.outputSummary || input.output_summary || {}),
+    JSON.stringify(outputSummary),
     cleanRepositoryText(input.errorMessage || input.error_message, 1000) || null,
-    Number.isFinite(Number(input.latencyMs ?? input.latency_ms)) ? Math.max(0, Math.round(Number(input.latencyMs ?? input.latency_ms))) : null
+    Number.isFinite(Number(input.latencyMs ?? input.latency_ms)) ? Math.max(0, Math.round(Number(input.latencyMs ?? input.latency_ms))) : null,
+    cleanRepositoryText(input.providerRequestId || input.provider_request_id || metadata.requestId, 200) || null,
+    Number.isFinite(inputTokens) ? Math.max(0, Math.round(inputTokens)) : null,
+    Number.isFinite(outputTokens) ? Math.max(0, Math.round(outputTokens)) : null,
+    Number.isFinite(totalTokens) ? Math.max(0, Math.round(totalTokens)) : null,
+    Number.isFinite(estimatedCostUsd) ? Math.max(0, estimatedCostUsd) : null
   ]);
   return aiInteractionLogFromRow(result.rows[0]);
 }
@@ -3985,6 +4075,10 @@ async function getAiOperationsMetrics(options = {}) {
           percentile_cont(0.95) WITHIN GROUP (ORDER BY latency_ms)
           FILTER (WHERE latency_ms IS NOT NULL)
         )::numeric)::integer AS p95_latency_ms,
+        COALESCE(SUM(input_tokens), 0)::bigint AS input_tokens,
+        COALESCE(SUM(output_tokens), 0)::bigint AS output_tokens,
+        COALESCE(SUM(total_tokens), 0)::bigint AS total_tokens,
+        SUM(estimated_cost_usd) AS estimated_cost_usd,
         MAX(created_at) AS last_request_at
       FROM ai_interaction_logs
       WHERE created_at >= NOW() - ($1::integer * INTERVAL '1 day')
@@ -4000,6 +4094,8 @@ async function getAiOperationsMetrics(options = {}) {
           percentile_cont(0.95) WITHIN GROUP (ORDER BY latency_ms)
           FILTER (WHERE latency_ms IS NOT NULL)
         )::numeric)::integer AS p95_latency_ms,
+        COALESCE(SUM(total_tokens), 0)::bigint AS total_tokens,
+        SUM(estimated_cost_usd) AS estimated_cost_usd,
         MAX(created_at) AS last_request_at
       FROM ai_interaction_logs
       WHERE created_at >= NOW() - ($1::integer * INTERVAL '1 day')
@@ -4034,6 +4130,12 @@ async function getAiOperationsMetrics(options = {}) {
         : null,
       averageLatencyMs: overallRow.average_latency_ms ?? null,
       p95LatencyMs: overallRow.p95_latency_ms ?? null,
+      inputTokens: Number(overallRow.input_tokens) || 0,
+      outputTokens: Number(overallRow.output_tokens) || 0,
+      totalTokens: Number(overallRow.total_tokens) || 0,
+      estimatedCostUsd: overallRow.estimated_cost_usd === null
+        ? null
+        : Number(overallRow.estimated_cost_usd),
       lastRequestAt: toIsoString(overallRow.last_request_at)
     },
     endpoints: endpointResult.rows.map((row) => {
@@ -4049,6 +4151,10 @@ async function getAiOperationsMetrics(options = {}) {
           : null,
         averageLatencyMs: row.average_latency_ms ?? null,
         p95LatencyMs: row.p95_latency_ms ?? null,
+        totalTokens: Number(row.total_tokens) || 0,
+        estimatedCostUsd: row.estimated_cost_usd === null
+          ? null
+          : Number(row.estimated_cost_usd),
         lastRequestAt: toIsoString(row.last_request_at)
       };
     }),
@@ -4107,6 +4213,7 @@ module.exports = {
   listStaticZonesNearRoute,
   saveAiInteractionLog,
   saveAccountInsight,
+  reviewAccountInsight,
   saveRecentDestination,
   saveRouteSession,
   recordDeliveryDeduction,
