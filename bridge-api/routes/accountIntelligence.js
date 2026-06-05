@@ -269,6 +269,7 @@ function renderAccountIntelligenceAdminPage(session) {
         <button onclick="explainRouteRisk()">Route Risk</button>
         <button onclick="summarizeDeliveryNotes()">Delivery Notes Summary</button>
         <button onclick="predictDeliveryFailure()">Delivery Failure Risk</button>
+        <button onclick="predictDeductionRisk()">Deduction Risk</button>
       </div>
     </section>
 
@@ -494,6 +495,29 @@ function renderAccountIntelligenceAdminPage(session) {
         '</div>' +
         renderDebug(data);
     }
+    function renderDeductionRisk(data) {
+      const ai = data.ai || {};
+      const context = data.sourceContext || {};
+      result.innerHTML =
+        '<div class="summary-hero">' +
+          '<span class="badge">AI Deduction Risk Prediction</span>' +
+          '<div class="summary-title">' + escapeHtml(ai.title || 'Deduction Risk') + '</div>' +
+          '<div class="summary-subtitle">Route date: ' + escapeHtml(data.routeDate || 'today') +
+            ' - Overall deduction risk: ' + escapeHtml(ai.overallDeductionRisk || 'unknown') +
+            ' - Confidence: ' + escapeHtml(ai.confidence || 'unknown') +
+            ' - Orders in context: ' + escapeHtml((context.recentOrders || []).length || 0) + '</div>' +
+        '</div>' +
+        '<div class="ai-summary">' + escapeHtml(ai.summary || 'No deduction-risk summary returned.') + '</div>' +
+        '<div class="grid">' +
+          '<div class="content-card"><h3>Highest-Risk Products</h3>' + listItems(ai.highestRiskProducts) + '</div>' +
+          '<div class="content-card"><h3>Account Risk Signals</h3>' + listItems(ai.accountRiskSignals) + '</div>' +
+          '<div class="content-card"><h3>Deduction Patterns</h3>' + listItems(ai.deductionPatterns) + '</div>' +
+          '<div class="content-card"><h3>Driver Checkpoints</h3>' + listItems(ai.driverCheckpoints) + '</div>' +
+          '<div class="content-card"><h3>Supervisor Actions</h3>' + listItems(ai.supervisorActions) + '</div>' +
+          '<div class="content-card"><h3>Missing Data</h3>' + listItems(ai.missingData) + '</div>' +
+        '</div>' +
+        renderDebug(data);
+    }
     function renderAccountForecast(data) {
       const ai = data.ai || {};
       result.innerHTML =
@@ -685,6 +709,21 @@ function renderAccountIntelligenceAdminPage(session) {
         const accountNumber = document.getElementById('aiAccountNumber').value.trim() || fallbackAccountNumber;
         const periodDays = Number(document.getElementById('periodDays').value.trim() || '180');
         renderDeliveryFailureRisk(await requestJson('/api/ai/delivery-failure-risk', {
+          method: 'POST',
+          body: JSON.stringify({
+            accountNumber,
+            routeDate: document.getElementById('aiRouteDate').value,
+            periodDays
+          })
+        }));
+      } catch (error) { setError(error); }
+    }
+    async function predictDeductionRisk() {
+      try {
+        const fallbackAccountNumber = document.getElementById('accountNumber').value.trim();
+        const accountNumber = document.getElementById('aiAccountNumber').value.trim() || fallbackAccountNumber;
+        const periodDays = Number(document.getElementById('periodDays').value.trim() || '180');
+        renderDeductionRisk(await requestJson('/api/ai/deduction-risk', {
           method: 'POST',
           body: JSON.stringify({
             accountNumber,

@@ -167,6 +167,18 @@ function buildDeliveryFailureRiskPrompt() {
   ].join('\n');
 }
 
+function buildDeductionRiskPrompt() {
+  return [
+    'You are the deduction-risk analyst for Truck-Safe Routing.',
+    'Use only account order history, item-level product data, recorded deductions, delivery notes, route context, and missed-delivery context supplied by the backend.',
+    'Identify where deductions, shorts, returns, refusals, payment issues, or product disputes are most likely.',
+    'Do not invent customer behavior, product condition, payment status, prices, or deduction reasons.',
+    'Use backend-calculated money totals as source of truth and do not recalculate them differently.',
+    'If there are no deductions or insufficient history, say that clearly and list missing data.',
+    'AI predicts and recommends only. Supervisors and source-of-truth records control final decisions.'
+  ].join('\n');
+}
+
 function normalizeRouteDate(value) {
   const raw = cleanText(value, 40);
   if (/^\d{4}-\d{2}-\d{2}$/.test(raw)) return raw;
@@ -693,6 +705,59 @@ const deliveryFailureRiskSchema = {
   ]
 };
 
+const deductionRiskSchema = {
+  type: 'object',
+  additionalProperties: false,
+  properties: {
+    title: { type: 'string' },
+    summary: { type: 'string' },
+    overallDeductionRisk: { type: 'string', enum: ['unknown', 'low', 'medium', 'high', 'critical'] },
+    confidence: { type: 'string', enum: ['low', 'medium', 'high'] },
+    highestRiskProducts: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    },
+    accountRiskSignals: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    },
+    deductionPatterns: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    },
+    driverCheckpoints: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    },
+    supervisorActions: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    },
+    missingData: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    }
+  },
+  required: [
+    'title',
+    'summary',
+    'overallDeductionRisk',
+    'confidence',
+    'highestRiskProducts',
+    'accountRiskSignals',
+    'deductionPatterns',
+    'driverCheckpoints',
+    'supervisorActions',
+    'missingData'
+  ]
+};
+
 function compactAccountSummaryForAi(summary) {
   return {
     accountNumber: summary.accountNumber,
@@ -870,6 +935,25 @@ async function buildDeliveryFailureRiskContext({ accountNumber, routeDate, perio
     recentOrders: supervisorContext.recentOrders,
     account: supervisorContext.account,
     accountInsights: supervisorContext.accountInsights
+  };
+}
+
+async function buildDeductionRiskContext({ accountNumber, routeDate, periodDays }) {
+  const context = await buildSupervisorContext({ accountNumber, routeDate, periodDays });
+  let deliveryNotes = null;
+  if (accountNumber) {
+    deliveryNotes = await buildDeliveryNotesContext({ accountNumber, destination: '', routeDate });
+  }
+  return {
+    routeDate,
+    periodDays,
+    accountNumber: accountNumber || null,
+    account: context.account,
+    accountInsights: context.accountInsights,
+    recentOrders: context.recentOrders,
+    undeliveredStops: context.undeliveredStops,
+    recentRoutes: context.recentRoutes,
+    deliveryNotes
   };
 }
 
@@ -1597,6 +1681,98 @@ router.post('/delivery-failure-risk', requireAdminAiAccess, requireAiConfigured,
     return res.status(error.status || 500).json({
       ok: false,
       error: error.status ? error.message : 'AI delivery failure risk failed.'
+    });
+  }
+});
+
+router.post('/deduction-risk', requireAdminAiAccess, requireAiConfigured, async (req, res) => {
+  const startedAt = Date.now();
+  const requester = getRequester(req);
+  const accountNumber = cleanText(req.body?.accountNumber || req.body?.account_number, 120);
+  const routeDate = normalizeRouteDate(req.body?.routeDate || req.body?.route_date);
+  const periodDays = Number.parseInt(req.body?.periodDays || req.body?.period_days, 10) || 180;
+  let aiResult = null;
+
+  try {
+    const sourceContext = await buildDeductionRiskContext({ accountNumber, routeDate, periodDays });
+    aiResult = await aiProvider.createStructuredResponse({
+      endpoint: 'deduction-risk',
+      instructions: buildDeductionRiskPrompt(),
+      input: sourceContext,
+      schemaName: 'truck_safe_deduction_risk',
+      schema: deductionRiskSchema
+    });
+
+    if (accountNumber) {
+      await repositories.saveAccountInsight({
+        accountNumber,
+        insightType: 'openai_deduction_risk',
+        title: aiResult.parsed.title,
+        summary: aiResult.parsed.summary,
+        confidence: aiResult.parsed.confidence,
+        sourcePeriodStart: sourceContext.account?.firstOrderDate || null,
+        sourcePeriodEnd: sourceContext.account?.lastOrderDate || null,
+        generatedBy: `openai:${aiResult.model}`,
+        raw: {
+          overallDeductionRisk: aiResult.parsed.overallDeductionRisk,
+          highestRiskProducts: aiResult.parsed.highestRiskProducts,
+          accountRiskSignals: aiResult.parsed.accountRiskSignals,
+          deductionPatterns: aiResult.parsed.deductionPatterns,
+          driverCheckpoints: aiResult.parsed.driverCheckpoints,
+          supervisorActions: aiResult.parsed.supervisorActions,
+          missingData: aiResult.parsed.missingData
+        }
+      });
+    }
+
+    await repositories.saveAiInteractionLog({
+      endpoint: 'deduction-risk',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber: accountNumber || null,
+      model: aiResult.model,
+      status: 'success',
+      inputSummary: {
+        accountNumber: accountNumber || null,
+        routeDate,
+        periodDays,
+        orderCount: sourceContext.recentOrders.length,
+        undeliveredStopCount: sourceContext.undeliveredStops.length
+      },
+      outputSummary: aiResult.parsed,
+      latencyMs: Date.now() - startedAt
+    });
+
+    return res.json({
+      ok: true,
+      requester,
+      accountNumber: accountNumber || null,
+      routeDate,
+      sourceContext,
+      ai: {
+        provider: 'openai',
+        model: aiResult.model,
+        store: false,
+        ...aiResult.parsed
+      }
+    });
+  } catch (error) {
+    await repositories.saveAiInteractionLog({
+      endpoint: 'deduction-risk',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber: accountNumber || null,
+      model: aiResult?.model || aiProvider.getModel(),
+      status: 'error',
+      inputSummary: { accountNumber, routeDate, periodDays },
+      outputSummary: {},
+      errorMessage: error.message,
+      latencyMs: Date.now() - startedAt
+    }).catch(() => {});
+
+    return res.status(error.status || 500).json({
+      ok: false,
+      error: error.status ? error.message : 'AI deduction risk failed.'
     });
   }
 });
