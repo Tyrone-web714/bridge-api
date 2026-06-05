@@ -34,6 +34,14 @@ function requireAiAccess(req, res, next) {
   return driverAuth.requireDriverAuth(req, res, next);
 }
 
+function requireAdminAiAccess(req, res, next) {
+  if (adminAuth.getAdminSession(req)) return next();
+  return res.status(401).json({
+    ok: false,
+    error: 'Supervisor admin login required.'
+  });
+}
+
 function requireAiConfigured(req, res, next) {
   if (aiProvider.isConfigured()) return next();
   return res.status(503).json({
@@ -51,6 +59,29 @@ function buildAccountSummaryPrompt() {
     'Return concise, supervisor-useful and driver-useful analysis.',
     'If data is thin or missing, say what is missing.',
     'AI recommends only. Backend rules, database records, and driver/supervisor decisions remain the source of truth.'
+  ].join('\n');
+}
+
+function buildSupervisorQuestionPrompt() {
+  return [
+    'You are the supervisor AI analyst for Truck-Safe Routing.',
+    'Answer only from the source-of-truth operational data supplied by the backend.',
+    'Do not invent customer facts, product history, route problems, prices, or driver behavior.',
+    'If the available data cannot answer the question, say exactly what data is missing.',
+    'Separate facts from recommendations.',
+    'Use concise supervisor-ready language.',
+    'AI recommends only. Backend rules, database records, and supervisor decisions remain the source of truth.'
+  ].join('\n');
+}
+
+function buildSupervisorBriefPrompt() {
+  return [
+    'You are generating a supervisor morning logistics brief for Truck-Safe Routing.',
+    'Use only the route, stop, account, order, deduction, and undelivered-stop data supplied by the backend.',
+    'Identify route risk, delivery risk, account/product signals, and actions supervisors should consider.',
+    'Do not invent weather, traffic, customer behavior, or missing operational records.',
+    'If data is thin, state that clearly.',
+    'Keep the brief practical and operational.'
   ].join('\n');
 }
 
@@ -125,6 +156,88 @@ const accountSummarySchema = {
   ]
 };
 
+const supervisorQuestionSchema = {
+  type: 'object',
+  additionalProperties: false,
+  properties: {
+    title: { type: 'string' },
+    answer: { type: 'string' },
+    confidence: { type: 'string', enum: ['low', 'medium', 'high'] },
+    factsUsed: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    },
+    recommendations: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 6
+    },
+    missingData: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    },
+    followUpQuestions: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 4
+    }
+  },
+  required: [
+    'title',
+    'answer',
+    'confidence',
+    'factsUsed',
+    'recommendations',
+    'missingData',
+    'followUpQuestions'
+  ]
+};
+
+const supervisorBriefSchema = {
+  type: 'object',
+  additionalProperties: false,
+  properties: {
+    title: { type: 'string' },
+    summary: { type: 'string' },
+    routeRisks: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 6
+    },
+    accountRisks: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 6
+    },
+    productSignals: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 6
+    },
+    recommendedActions: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    },
+    missingData: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    }
+  },
+  required: [
+    'title',
+    'summary',
+    'routeRisks',
+    'accountRisks',
+    'productSignals',
+    'recommendedActions',
+    'missingData'
+  ]
+};
+
 function compactAccountSummaryForAi(summary) {
   return {
     accountNumber: summary.accountNumber,
@@ -171,6 +284,86 @@ function compactAccountSummaryForAi(summary) {
       assignedDriverId: stop.assignedDriverId
     }))
   };
+}
+
+async function buildSupervisorContext({ accountNumber, routeDate, periodDays }) {
+  const context = {
+    routeDate: routeDate || null,
+    periodDays,
+    account: null,
+    accountInsights: [],
+    recentRoutes: [],
+    undeliveredStops: [],
+    recentOrders: []
+  };
+
+  if (accountNumber) {
+    const summary = await repositories.getAccountProductSummary(accountNumber, { periodDays });
+    context.account = compactAccountSummaryForAi(summary);
+    context.accountInsights = (await repositories.listAccountInsights({
+      accountNumber,
+      limit: 5
+    })).map((insight) => ({
+      title: insight.title,
+      summary: insight.summary,
+      confidence: insight.confidence,
+      insightType: insight.insightType,
+      createdAt: insight.createdAt
+    }));
+  }
+
+  context.recentRoutes = (await repositories.listDailyRouteManifests({
+    routeDate,
+    limit: 20
+  })).map((route) => ({
+    id: route.id,
+    routeDate: route.routeDate,
+    routeNumber: route.routeNumber,
+    routeName: route.routeName,
+    totalStops: route.totalStops,
+    totalPallets: route.totalPallets,
+    totalCases: route.totalCases,
+    assignedDriverId: route.assignedDriverId,
+    assignedDriverName: route.assignedDriverName,
+    status: route.status,
+    plannedStartAt: route.plannedStartAt,
+    plannedEndAt: route.plannedEndAt
+  }));
+
+  context.undeliveredStops = (await repositories.listUndeliveredRouteStops({
+    routeDate,
+    limit: 25
+  })).map((stop) => ({
+    routeDate: stop.routeDate,
+    routeNumber: stop.routeNumber,
+    stopSequence: stop.stopSequence,
+    accountNumber: stop.accountNumber,
+    accountName: stop.accountName,
+    destinationAddress: stop.destinationAddress,
+    assignedDriverId: stop.assignedDriverId,
+    assignedDriverName: stop.assignedDriverName,
+    nonDeliveryReason: stop.nonDeliveryReason,
+    redeliveryStatus: stop.redeliveryStatus,
+    redeliveryDate: stop.redeliveryDate
+  }));
+
+  context.recentOrders = (await repositories.listAccountOrders({
+    accountNumber: accountNumber || undefined,
+    limit: accountNumber ? 10 : 25
+  })).map((order) => ({
+    accountNumber: order.accountNumber,
+    accountName: order.accountName,
+    invoiceNumber: order.invoiceNumber,
+    orderDate: order.orderDate,
+    deliveryDate: order.deliveryDate,
+    subtotalAmount: order.subtotalAmount,
+    deductionAmount: order.deductionAmount,
+    netAmount: order.netAmount,
+    status: order.status,
+    itemCount: Array.isArray(order.items) ? order.items.length : 0
+  }));
+
+  return context;
 }
 
 router.get('/status', (req, res) => {
@@ -288,6 +481,158 @@ router.post('/account-summary', requireAiAccess, requireAiConfigured, async (req
     return res.status(error.status || 500).json({
       ok: false,
       error: error.status ? error.message : 'AI account summary failed.'
+    });
+  }
+});
+
+router.post('/supervisor-question', requireAdminAiAccess, requireAiConfigured, async (req, res) => {
+  const startedAt = Date.now();
+  const requester = getRequester(req);
+  const question = cleanText(req.body?.question, 2000);
+  const accountNumber = cleanText(req.body?.accountNumber || req.body?.account_number, 120);
+  const periodDays = Number.parseInt(req.body?.periodDays || req.body?.period_days, 10) || 180;
+  const routeDate = normalizeRouteDate(req.body?.routeDate || req.body?.route_date);
+  let aiResult = null;
+
+  if (!question) {
+    return res.status(400).json({
+      ok: false,
+      error: 'question is required.'
+    });
+  }
+
+  try {
+    const sourceContext = await buildSupervisorContext({ accountNumber, routeDate, periodDays });
+    aiResult = await aiProvider.createStructuredResponse({
+      endpoint: 'supervisor-question',
+      instructions: buildSupervisorQuestionPrompt(),
+      input: {
+        question,
+        sourceContext
+      },
+      schemaName: 'truck_safe_supervisor_question',
+      schema: supervisorQuestionSchema
+    });
+
+    await repositories.saveAiInteractionLog({
+      endpoint: 'supervisor-question',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber: accountNumber || null,
+      model: aiResult.model,
+      status: 'success',
+      inputSummary: {
+        question,
+        routeDate,
+        periodDays,
+        accountNumber: accountNumber || null,
+        routeCount: sourceContext.recentRoutes.length,
+        undeliveredStopCount: sourceContext.undeliveredStops.length,
+        orderCount: sourceContext.recentOrders.length
+      },
+      outputSummary: aiResult.parsed,
+      latencyMs: Date.now() - startedAt
+    });
+
+    return res.json({
+      ok: true,
+      requester,
+      question,
+      accountNumber: accountNumber || null,
+      routeDate,
+      sourceContext,
+      ai: {
+        provider: 'openai',
+        model: aiResult.model,
+        store: false,
+        ...aiResult.parsed
+      }
+    });
+  } catch (error) {
+    await repositories.saveAiInteractionLog({
+      endpoint: 'supervisor-question',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber: accountNumber || null,
+      model: aiResult?.model || aiProvider.getModel(),
+      status: 'error',
+      inputSummary: { question, accountNumber, routeDate, periodDays },
+      outputSummary: {},
+      errorMessage: error.message,
+      latencyMs: Date.now() - startedAt
+    }).catch(() => {});
+
+    return res.status(error.status || 500).json({
+      ok: false,
+      error: error.status ? error.message : 'AI supervisor question failed.'
+    });
+  }
+});
+
+router.post('/supervisor-brief', requireAdminAiAccess, requireAiConfigured, async (req, res) => {
+  const startedAt = Date.now();
+  const requester = getRequester(req);
+  const routeDate = normalizeRouteDate(req.body?.routeDate || req.body?.route_date);
+  const periodDays = Number.parseInt(req.body?.periodDays || req.body?.period_days, 10) || 180;
+  let aiResult = null;
+
+  try {
+    const sourceContext = await buildSupervisorContext({ routeDate, periodDays });
+    aiResult = await aiProvider.createStructuredResponse({
+      endpoint: 'supervisor-brief',
+      instructions: buildSupervisorBriefPrompt(),
+      input: sourceContext,
+      schemaName: 'truck_safe_supervisor_brief',
+      schema: supervisorBriefSchema
+    });
+
+    await repositories.saveAiInteractionLog({
+      endpoint: 'supervisor-brief',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber: null,
+      model: aiResult.model,
+      status: 'success',
+      inputSummary: {
+        routeDate,
+        periodDays,
+        routeCount: sourceContext.recentRoutes.length,
+        undeliveredStopCount: sourceContext.undeliveredStops.length,
+        orderCount: sourceContext.recentOrders.length
+      },
+      outputSummary: aiResult.parsed,
+      latencyMs: Date.now() - startedAt
+    });
+
+    return res.json({
+      ok: true,
+      requester,
+      routeDate,
+      sourceContext,
+      ai: {
+        provider: 'openai',
+        model: aiResult.model,
+        store: false,
+        ...aiResult.parsed
+      }
+    });
+  } catch (error) {
+    await repositories.saveAiInteractionLog({
+      endpoint: 'supervisor-brief',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber: null,
+      model: aiResult?.model || aiProvider.getModel(),
+      status: 'error',
+      inputSummary: { routeDate, periodDays },
+      outputSummary: {},
+      errorMessage: error.message,
+      latencyMs: Date.now() - startedAt
+    }).catch(() => {});
+
+    return res.status(error.status || 500).json({
+      ok: false,
+      error: error.status ? error.message : 'AI supervisor brief failed.'
     });
   }
 });

@@ -158,6 +158,11 @@ function renderAccountIntelligenceAdminPage(session) {
       font-weight: 900;
       color: var(--text);
     }
+    .question-box {
+      min-height: 96px;
+      font-family: Arial, sans-serif;
+      line-height: 1.4;
+    }
     .debug-details summary { cursor: pointer; color: var(--muted); font-weight: 900; }
     .debug-details pre {
       white-space: pre-wrap;
@@ -241,6 +246,22 @@ function renderAccountIntelligenceAdminPage(session) {
       </div>
       <div class="actions" style="margin-top:14px">
         <button class="primary" onclick="saveOrder()">Save Product Order</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Ask AI</h2>
+      <p>Ask a supervisor question about account spending, products, deductions, route risk, missed deliveries, or operational patterns. AI answers only from backend data available to this system.</p>
+      <div class="grid">
+        <label>Route Date<input id="aiRouteDate" type="date" /></label>
+        <label>Optional Account Number<input id="aiAccountNumber" placeholder="ACCT-1001" /></label>
+      </div>
+      <label style="margin-top:14px">Supervisor Question
+        <textarea id="aiQuestion" class="question-box" placeholder="Example: What products are driving spending for ACCT-1001, and are there any deduction risks?"></textarea>
+      </label>
+      <div class="actions" style="margin-top:14px">
+        <button class="primary" onclick="askSupervisorAi()">Ask AI</button>
+        <button class="gold" onclick="generateSupervisorBrief()">Generate Morning Brief</button>
       </div>
     </section>
 
@@ -334,6 +355,41 @@ function renderAccountIntelligenceAdminPage(session) {
         '</div>' +
         renderDebug(data);
     }
+    function renderSupervisorAnswer(data) {
+      const ai = data.ai || {};
+      result.innerHTML =
+        '<div class="summary-hero">' +
+          '<span class="badge">Supervisor AI</span>' +
+          '<div class="summary-title">' + escapeHtml(ai.title || 'AI Answer') + '</div>' +
+          '<div class="summary-subtitle">Confidence: ' + escapeHtml(ai.confidence || 'unknown') + '</div>' +
+        '</div>' +
+        '<div class="ai-summary">' + escapeHtml(ai.answer || 'No AI answer returned.') + '</div>' +
+        '<div class="grid">' +
+          '<div class="content-card"><h3>Facts Used</h3>' + listItems(ai.factsUsed) + '</div>' +
+          '<div class="content-card"><h3>Recommendations</h3>' + listItems(ai.recommendations) + '</div>' +
+          '<div class="content-card"><h3>Missing Data</h3>' + listItems(ai.missingData) + '</div>' +
+          '<div class="content-card"><h3>Follow-Up Questions</h3>' + listItems(ai.followUpQuestions) + '</div>' +
+        '</div>' +
+        renderDebug(data);
+    }
+    function renderSupervisorBrief(data) {
+      const ai = data.ai || {};
+      result.innerHTML =
+        '<div class="summary-hero">' +
+          '<span class="badge">Supervisor Morning Brief</span>' +
+          '<div class="summary-title">' + escapeHtml(ai.title || 'Daily Route Brief') + '</div>' +
+          '<div class="summary-subtitle">Route date: ' + escapeHtml(data.routeDate || 'today') + '</div>' +
+        '</div>' +
+        '<div class="ai-summary">' + escapeHtml(ai.summary || 'No AI brief returned.') + '</div>' +
+        '<div class="grid">' +
+          '<div class="content-card"><h3>Route Risks</h3>' + listItems(ai.routeRisks) + '</div>' +
+          '<div class="content-card"><h3>Account Risks</h3>' + listItems(ai.accountRisks) + '</div>' +
+          '<div class="content-card"><h3>Product Signals</h3>' + listItems(ai.productSignals) + '</div>' +
+          '<div class="content-card"><h3>Recommended Actions</h3>' + listItems(ai.recommendedActions) + '</div>' +
+          '<div class="content-card"><h3>Missing Data</h3>' + listItems(ai.missingData) + '</div>' +
+        '</div>' +
+        renderDebug(data);
+    }
     function renderSaved(value, label) {
       result.innerHTML = '<div class="summary-hero"><div class="summary-title">' + escapeHtml(label) + '</div>' +
         '<div class="summary-subtitle">Saved successfully.</div></div>' + renderDebug(value);
@@ -384,6 +440,34 @@ function renderAccountIntelligenceAdminPage(session) {
         renderAiSummary(await requestJson('/api/ai/account-summary', {
           method: 'POST',
           body: JSON.stringify({ accountNumber, periodDays })
+        }));
+      } catch (error) { setError(error); }
+    }
+    async function askSupervisorAi() {
+      try {
+        const fallbackAccountNumber = document.getElementById('accountNumber').value.trim();
+        const accountNumber = document.getElementById('aiAccountNumber').value.trim() || fallbackAccountNumber;
+        const periodDays = Number(document.getElementById('periodDays').value.trim() || '180');
+        renderSupervisorAnswer(await requestJson('/api/ai/supervisor-question', {
+          method: 'POST',
+          body: JSON.stringify({
+            question: document.getElementById('aiQuestion').value,
+            accountNumber,
+            routeDate: document.getElementById('aiRouteDate').value,
+            periodDays
+          })
+        }));
+      } catch (error) { setError(error); }
+    }
+    async function generateSupervisorBrief() {
+      try {
+        const periodDays = Number(document.getElementById('periodDays').value.trim() || '180');
+        renderSupervisorBrief(await requestJson('/api/ai/supervisor-brief', {
+          method: 'POST',
+          body: JSON.stringify({
+            routeDate: document.getElementById('aiRouteDate').value,
+            periodDays
+          })
         }));
       } catch (error) { setError(error); }
     }
