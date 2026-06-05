@@ -97,25 +97,27 @@ function buildSummary(signals) {
   };
 }
 
-function buildFilterOptions(signals, regionalAccess, filters = {}) {
-  const recordedStateCodes = uniqueSorted(signals.map((signal) => signal.stateCode));
-  const byState = filterSignals(signals, { stateCode: filters.stateCode });
-  const byCity = filterSignals(byState, { city: filters.city });
-  const byTerritory = filterSignals(byCity, { territory: filters.territory });
-  const byRouteGroup = filterSignals(byTerritory, { routeGroup: filters.routeGroup });
+function buildFilterOptions(geography, filters = {}) {
+  const cities = Array.isArray(geography?.cities) ? geography.cities : [];
   return {
-    states: regionalAccess
-      ? SERVICE_AREA_STATES
-      : SERVICE_AREA_STATES.filter((state) => recordedStateCodes.includes(state.code)),
-    cities: uniqueSorted(byState.map((signal) => signal.city)),
-    territories: uniqueSorted(byCity.map((signal) => signal.territory)),
-    routeGroups: uniqueSorted(byTerritory.map((signal) => signal.routeGroup)),
-    distributionCenters: uniqueSorted(byRouteGroup.map((signal) => signal.distributionCenter))
+    states: SERVICE_AREA_STATES,
+    cities: filters.stateCode
+      ? cities.filter((city) => city.stateCode === filters.stateCode)
+      : cities,
+    territories: Array.isArray(geography?.territories) ? geography.territories : [],
+    routeGroups: Array.isArray(geography?.routeGroups) ? geography.routeGroups : [],
+    distributionCenters: Array.isArray(geography?.distributionCenters)
+      ? geography.distributionCenters
+      : [],
+    censusPlacesAvailable: Boolean(geography?.censusPlacesAvailable)
   };
 }
 
-function buildAccess(session, signals) {
+function buildAccess(session, signals, geography = {}) {
   const regionalAccess = isRegionalAdministrator(session);
+  const geographyStateCodes = Array.isArray(geography.cities)
+    ? geography.cities.map((city) => city.stateCode)
+    : [];
   const coordinates = signals
     .filter((signal) => Number.isFinite(signal.latitude) && Number.isFinite(signal.longitude))
     .map((signal) => [signal.latitude, signal.longitude]);
@@ -126,8 +128,14 @@ function buildAccess(session, signals) {
     regionalAccess,
     permittedStates: regionalAccess
       ? SERVICE_AREA_STATES.map((state) => state.code)
-      : uniqueSorted(signals.map((signal) => signal.stateCode)),
-    teamNames: uniqueSorted(signals.map((signal) => signal.teamName)),
+      : uniqueSorted([
+        ...geographyStateCodes,
+        ...signals.map((signal) => signal.stateCode)
+      ]),
+    teamNames: uniqueSorted([
+      ...(Array.isArray(geography.teamNames) ? geography.teamNames : []),
+      ...signals.map((signal) => signal.teamName)
+    ]),
     defaultBounds: coordinates.length ? coordinates : null
   };
 }
@@ -355,7 +363,7 @@ function renderHeatmapPage(session) {
         }).join('') + '</div>';
     }
 
-    function populateSelect(id, options, placeholder, valueKey, labelKey) {
+    function populateSelect(id, options, placeholder, valueKey, labelKey, emptyLabel) {
       const select = document.getElementById(id);
       const previous = select.value;
       const items = Array.isArray(options) ? options : [];
@@ -364,7 +372,10 @@ function renderHeatmapPage(session) {
           const value = typeof item === 'string' ? item : item[valueKey || 'value'];
           const label = typeof item === 'string' ? item : item[labelKey || 'label'];
           return '<option value="' + escapeHtml(value) + '">' + escapeHtml(label) + '</option>';
-        }).join('');
+        }).join('') +
+        (!items.length && emptyLabel
+          ? '<option value="" disabled>' + escapeHtml(emptyLabel) + '</option>'
+          : '');
       if ([...select.options].some(function (option) { return option.value === previous; })) {
         select.value = previous;
       }
@@ -528,11 +539,47 @@ function renderHeatmapPage(session) {
         if (!response.ok) throw new Error(data.error || 'Heatmap request failed.');
         signals = Array.isArray(data.signals) ? data.signals : [];
         renderAccess(data.access);
-        populateSelect('stateCode', data.filterOptions && data.filterOptions.states, 'All permitted states', 'code', 'name');
-        populateSelect('city', data.filterOptions && data.filterOptions.cities, 'All cities');
-        populateSelect('territory', data.filterOptions && data.filterOptions.territories, 'All territories');
-        populateSelect('routeGroup', data.filterOptions && data.filterOptions.routeGroups, 'All route groups');
-        populateSelect('distributionCenter', data.filterOptions && data.filterOptions.distributionCenters, 'All distribution centers');
+        populateSelect(
+          'stateCode',
+          data.filterOptions && data.filterOptions.states,
+          'All four service states',
+          'code',
+          'name'
+        );
+        populateSelect(
+          'city',
+          data.filterOptions && data.filterOptions.cities,
+          'All cities',
+          'value',
+          'label',
+          document.getElementById('stateCode').value
+            ? 'No Census or route cities available for this state'
+            : 'Select a state to load its cities'
+        );
+        populateSelect(
+          'territory',
+          data.filterOptions && data.filterOptions.territories,
+          'All territories',
+          null,
+          null,
+          'No territories configured in Driver Registry'
+        );
+        populateSelect(
+          'routeGroup',
+          data.filterOptions && data.filterOptions.routeGroups,
+          'All route groups',
+          null,
+          null,
+          'No route groups configured in Driver Registry'
+        );
+        populateSelect(
+          'distributionCenter',
+          data.filterOptions && data.filterOptions.distributionCenters,
+          'All distribution centers',
+          null,
+          null,
+          'No distribution centers recorded in route manifests'
+        );
         buildLayerControls(data.summary || { categories: {} });
         renderGeographicSummary(data.summary || {}, data.access || {});
         document.getElementById('selectedSignal').textContent =
@@ -595,14 +642,20 @@ router.get('/data', requireAdminSession, async (req, res) => {
       )
     };
 
-    const authorizedSignals = await repositories.listOperationalHeatmapSignals({
-      routeDate,
-      periodDays,
-      supervisorUsername,
-      limit: 5000
-    });
-    const access = buildAccess(req.adminSession, authorizedSignals);
-    const filterOptions = buildFilterOptions(authorizedSignals, regionalAccess, filters);
+    const [authorizedSignals, geography] = await Promise.all([
+      repositories.listOperationalHeatmapSignals({
+        routeDate,
+        periodDays,
+        supervisorUsername,
+        limit: 5000
+      }),
+      repositories.listOperationalHeatmapGeography({
+        supervisorUsername,
+        stateCode: filters.stateCode
+      })
+    ]);
+    const access = buildAccess(req.adminSession, authorizedSignals, geography);
+    const filterOptions = buildFilterOptions(geography, filters);
     const signals = filterSignals(authorizedSignals, filters);
 
     return res.json({

@@ -3635,6 +3635,97 @@ async function listOperationalHeatmapSignals(options = {}) {
     ));
 }
 
+async function listOperationalHeatmapGeography(options = {}) {
+  const supervisorUsername = cleanRepositoryText(options.supervisorUsername, 120) || null;
+  const stateCode = cleanRepositoryText(options.stateCode, 8).toUpperCase();
+  const stateFilter = SERVICE_AREA_STATE_CODES.includes(stateCode) ? stateCode : null;
+
+  const [routeCityResult, driverDimensionResult, distributionCenterResult, censusTableResult] =
+    await Promise.all([
+      postgres.query(`
+        SELECT DISTINCT
+          UPPER(stop.state_code) AS state_code,
+          BTRIM(stop.city) AS city
+        FROM daily_route_stops AS stop
+        JOIN daily_route_manifests AS manifest ON manifest.id = stop.manifest_id
+        LEFT JOIN drivers AS driver ON driver.driver_id = manifest.assigned_driver_id
+        WHERE NULLIF(BTRIM(stop.city), '') IS NOT NULL
+          AND UPPER(COALESCE(stop.state_code, '')) = ANY($1::text[])
+          AND ($2::text IS NULL OR UPPER(stop.state_code) = $2::text)
+          AND ($3::text IS NULL OR LOWER(COALESCE(driver.supervisor_username, '')) = LOWER($3::text))
+        ORDER BY state_code, city
+      `, [SERVICE_AREA_STATE_CODES, stateFilter, supervisorUsername]),
+      postgres.query(`
+        SELECT DISTINCT
+          NULLIF(BTRIM(territory), '') AS territory,
+          NULLIF(BTRIM(route_group), '') AS route_group,
+          NULLIF(BTRIM(team_name), '') AS team_name
+        FROM drivers
+        WHERE active = true
+          AND ($1::text IS NULL OR LOWER(COALESCE(supervisor_username, '')) = LOWER($1::text))
+        ORDER BY territory, route_group, team_name
+      `, [supervisorUsername]),
+      postgres.query(`
+        SELECT DISTINCT NULLIF(BTRIM(manifest.start_location), '') AS distribution_center
+        FROM daily_route_manifests AS manifest
+        LEFT JOIN drivers AS driver ON driver.driver_id = manifest.assigned_driver_id
+        WHERE NULLIF(BTRIM(manifest.start_location), '') IS NOT NULL
+          AND ($1::text IS NULL OR LOWER(COALESCE(driver.supervisor_username, '')) = LOWER($1::text))
+        ORDER BY distribution_center
+      `, [supervisorUsername]),
+      postgres.query(`SELECT TO_REGCLASS('public.census_places') IS NOT NULL AS exists`)
+    ]);
+
+  let censusCities = [];
+  if (stateFilter && censusTableResult.rows[0]?.exists) {
+    const censusResult = await postgres.query(`
+      SELECT DISTINCT
+        state_code,
+        place_name AS city
+      FROM census_places
+      WHERE state_code = $1
+        AND NULLIF(BTRIM(place_name), '') IS NOT NULL
+      ORDER BY city
+      LIMIT 5000
+    `, [stateFilter]);
+    censusCities = censusResult.rows;
+  }
+
+  const cityMap = new Map();
+  for (const row of [...routeCityResult.rows, ...censusCities]) {
+    const city = cleanRepositoryText(row.city, 160);
+    const cityStateCode = cleanRepositoryText(row.state_code, 8).toUpperCase();
+    if (!city || !SERVICE_AREA_STATE_CODES.includes(cityStateCode)) continue;
+    cityMap.set(`${cityStateCode}|${city.toLowerCase()}`, {
+      value: city,
+      label: `${city}, ${cityStateCode}`,
+      stateCode: cityStateCode
+    });
+  }
+
+  return {
+    cities: [...cityMap.values()]
+      .sort((left, right) => left.label.localeCompare(right.label)),
+    territories: [...new Set(driverDimensionResult.rows
+      .map((row) => cleanRepositoryText(row.territory, 160))
+      .filter(Boolean))]
+      .sort((left, right) => left.localeCompare(right)),
+    routeGroups: [...new Set(driverDimensionResult.rows
+      .map((row) => cleanRepositoryText(row.route_group, 160))
+      .filter(Boolean))]
+      .sort((left, right) => left.localeCompare(right)),
+    teamNames: [...new Set(driverDimensionResult.rows
+      .map((row) => cleanRepositoryText(row.team_name, 160))
+      .filter(Boolean))]
+      .sort((left, right) => left.localeCompare(right)),
+    distributionCenters: [...new Set(distributionCenterResult.rows
+      .map((row) => cleanRepositoryText(row.distribution_center, 200))
+      .filter(Boolean))]
+      .sort((left, right) => left.localeCompare(right)),
+    censusPlacesAvailable: Boolean(censusTableResult.rows[0]?.exists)
+  };
+}
+
 async function listDriverCoachingSignals(options = {}) {
   const periodDays = normalizeLimit(options.periodDays, 30, 365);
   const routeDate = toDateOnly(options.routeDate) || null;
@@ -4305,6 +4396,7 @@ module.exports = {
   listDeliveryNotes,
   listDriverCoachingSignals,
   listManualHazards,
+  listOperationalHeatmapGeography,
   listOperationalHeatmapSignals,
   listRecentDestinations,
   listProductDemandSignals,

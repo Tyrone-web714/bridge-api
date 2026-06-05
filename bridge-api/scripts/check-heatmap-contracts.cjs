@@ -54,6 +54,28 @@ function run() {
   assert(source.includes('byState'), 'Heatmap response must include state summaries.');
   assert(source.includes('byTerritory'), 'Heatmap response must include territory summaries.');
   assert(source.includes('frameOperatingArea'), 'Map must automatically frame the selected operating area.');
+  assert(source.includes('All four service states'), 'State filter must expose the four-state service area.');
+  assert(source.includes('Select a state to load its cities'), 'City filter must explain its state dependency.');
+  assert(source.includes('No territories configured in Driver Registry'), 'Territory filter must explain missing registry data.');
+  assert(source.includes('No route groups configured in Driver Registry'), 'Route group filter must explain missing registry data.');
+  assert(source.includes('No distribution centers recorded in route manifests'), 'Distribution-center filter must explain missing manifest data.');
+  assert(
+    source.includes('listOperationalHeatmapGeography'),
+    'Heatmap filter metadata must be independent from recorded signal rows.'
+  );
+
+  const repositorySource = fs.readFileSync(
+    path.join(__dirname, '..', 'db', 'repositories.js'),
+    'utf8'
+  );
+  assert(
+    repositorySource.includes("TO_REGCLASS('public.census_places')"),
+    'City options must detect the authoritative Census places table.'
+  );
+  assert(
+    repositorySource.includes('FROM census_places'),
+    'City options must use Census place geography when a state is selected.'
+  );
 
   const serverSource = fs.readFileSync(path.join(__dirname, '..', 'server.js'), 'utf8');
   assert(
