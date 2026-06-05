@@ -49,6 +49,15 @@ function run() {
   assert(source.includes('map.flyToBounds(stateViews[stateCode].bounds'), 'State selection must frame the full state.');
   assert(source.includes('map.flyTo([Number(cityOption.latitude)'), 'City selection must center on city coordinates.');
   assert(source.includes('Signed in:'), 'Signed-in username must not appear as a second supervisor tab.');
+  assert(source.includes('Analyze Current View'), 'Heatmap must expose filtered supervisor analysis.');
+  assert(
+    source.includes("fetch('/api/ai/operational-heatmap'"),
+    'Heatmap analysis must use the protected AI hotspot endpoint.'
+  );
+  assert(
+    source.includes('categories: [...activeCategories]'),
+    'Heatmap analysis must respect the currently visible signal layers.'
+  );
   assert(source.includes('Signal Category'), 'Signal point details must label the signal category.');
   assert(source.includes('Account / Destination'), 'Signal point details must show account or destination.');
   assert(source.includes('Route Number'), 'Signal point details must show route number.');
@@ -95,6 +104,24 @@ function run() {
   assert(
     repositorySource.includes('census_service_area_places.json'),
     'Cloud deployments must have a bundled Census city fallback.'
+  );
+
+  const aiSource = fs.readFileSync(path.join(__dirname, '..', 'routes', 'ai.js'), 'utf8');
+  assert(
+    aiSource.includes('normalizeOperationalHeatmapFilters'),
+    'AI hotspot analysis must normalize visual heatmap filters.'
+  );
+  assert(
+    aiSource.includes('supervisorUsername'),
+    'AI hotspot analysis must preserve supervisor-team authorization scope.'
+  );
+  assert(
+    aiSource.includes('filters.categories.includes(signal.category)'),
+    'AI hotspot analysis must use only selected signal layers.'
+  );
+  assert(
+    aiSource.includes('No recorded operational signals match the selected map view.'),
+    'AI hotspot analysis must not consume quota for an empty map selection.'
   );
   for (const table of [
     'operational_distribution_centers',

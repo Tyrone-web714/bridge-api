@@ -224,6 +224,16 @@ function renderHeatmapPage(session) {
     .point-row { display: grid; gap: 2px; }
     .point-row span { color: var(--cyan); font-size: 10px; font-weight: 900; text-transform: uppercase; }
     .point-row strong { overflow-wrap: anywhere; font-size: 13px; }
+    .analysis-grid { display: grid; gap: 10px; margin-top: 10px; }
+    .analysis-block {
+      padding: 11px; border: 1px solid rgba(255,255,255,0.1); border-radius: 10px;
+      background: rgba(255,255,255,0.045);
+    }
+    .analysis-block h3 { margin: 0 0 7px; color: var(--cyan); font-size: 12px; text-transform: uppercase; }
+    .analysis-block ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 12px; line-height: 1.45; }
+    .analysis-block li + li { margin-top: 5px; }
+    .analysis-summary { color: var(--text); font-size: 13px; line-height: 1.5; }
+    .analysis-meta { margin-bottom: 9px; color: var(--muted); font-size: 11px; font-weight: 800; text-transform: uppercase; }
     #map { min-height: calc(100vh - 104px); background: #102536; }
     .status { margin-top: 14px; color: var(--muted); font-size: 13px; }
     .leaflet-popup-content-wrapper, .leaflet-popup-tip { color: var(--text); background: #102536; }
@@ -285,6 +295,13 @@ function renderHeatmapPage(session) {
       <div class="control-group" style="margin-top:22px">
         <strong class="section-title">Area Summary</strong>
         <div id="geographicSummary" class="details-card">No summary loaded.</div>
+      </div>
+      <div class="control-group">
+        <strong class="section-title">Supervisor Intelligence</strong>
+        <button class="primary" id="analyzeButton" type="button">Analyze Current View</button>
+        <div id="analysisResult" class="details-card">
+          Select the desired area and signal layers, then request an AI analysis of this exact view.
+        </div>
       </div>
       <div class="control-group">
         <strong class="section-title">Selected Map Point</strong>
@@ -364,6 +381,37 @@ function renderHeatmapPage(session) {
           return '<div class="popup-row"><span>' + escapeHtml(row[0]) + '</span><strong>' +
             escapeHtml(row[1]) + '</strong></div>';
         }).join('') + '</div>';
+    }
+
+    function renderAnalysisList(title, items) {
+      const rows = Array.isArray(items) ? items.filter(Boolean) : [];
+      return '<div class="analysis-block"><h3>' + escapeHtml(title) + '</h3>' +
+        (rows.length
+          ? '<ul>' + rows.map(function (item) {
+              return '<li>' + escapeHtml(item) + '</li>';
+            }).join('') + '</ul>'
+          : '<div class="status">No findings recorded.</div>') +
+        '</div>';
+    }
+
+    function renderAnalysis(data) {
+      const ai = data.ai || {};
+      const source = data.sourceSummary || {};
+      const result = document.getElementById('analysisResult');
+      result.innerHTML =
+        '<div class="analysis-meta">Severity: ' + escapeHtml(ai.hotspotSeverity || 'unknown') +
+          ' | Confidence: ' + escapeHtml(ai.confidence || 'unknown') +
+          ' | Signals analyzed: ' + escapeHtml(source.signalCount || 0) + '</div>' +
+        '<div class="analysis-summary"><strong>' +
+          escapeHtml(ai.title || 'Operational Hotspot Analysis') + '</strong><br />' +
+          escapeHtml(ai.summary || 'No analysis summary returned.') + '</div>' +
+        '<div class="analysis-grid">' +
+          renderAnalysisList('High-Priority Areas', ai.highPriorityAreas) +
+          renderAnalysisList('Category Patterns', ai.categoryPatterns) +
+          renderAnalysisList('Recurring Signals', ai.recurringSignals) +
+          renderAnalysisList('Recommended Supervisor Actions', ai.supervisorActions) +
+          renderAnalysisList('Missing Data', ai.missingData) +
+        '</div>';
     }
 
     function populateSelect(id, options, placeholder, valueKey, labelKey, emptyLabel) {
@@ -557,6 +605,45 @@ function renderHeatmapPage(session) {
       return params;
     }
 
+    function currentAnalysisPayload() {
+      const payload = {
+        periodDays: Number(document.getElementById('periodDays').value || 30),
+        categories: [...activeCategories]
+      };
+      for (const id of ['stateCode', 'city', 'territory', 'routeGroup', 'distributionCenter']) {
+        const value = document.getElementById(id).value;
+        if (value) payload[id] = value;
+      }
+      const routeDate = document.getElementById('routeDate').value;
+      if (routeDate) payload.routeDate = routeDate;
+      return payload;
+    }
+
+    async function analyzeCurrentView() {
+      const button = document.getElementById('analyzeButton');
+      const result = document.getElementById('analysisResult');
+      if (!activeCategories.size) {
+        result.textContent = 'Select at least one signal layer before requesting analysis.';
+        return;
+      }
+      button.disabled = true;
+      result.textContent = 'Analyzing the currently selected area and visible signal layers...';
+      try {
+        const response = await fetch('/api/ai/operational-heatmap', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(currentAnalysisPayload())
+        });
+        const data = await response.json().catch(function () { return {}; });
+        if (!response.ok) throw new Error(data.error || 'Operational analysis request failed.');
+        renderAnalysis(data);
+      } catch (error) {
+        result.textContent = error.message || 'Operational analysis request failed.';
+      } finally {
+        button.disabled = false;
+      }
+    }
+
     async function loadSignals() {
       const button = document.getElementById('refreshButton');
       const status = document.getElementById('status');
@@ -627,6 +714,7 @@ function renderHeatmapPage(session) {
     }
 
     document.getElementById('refreshButton').addEventListener('click', loadSignals);
+    document.getElementById('analyzeButton').addEventListener('click', analyzeCurrentView);
     const geographicHierarchy = [
       'stateCode',
       'city',

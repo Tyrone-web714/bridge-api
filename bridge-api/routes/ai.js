@@ -10,6 +10,42 @@ function cleanText(value, maxLength = 500) {
   return String(value ?? '').trim().slice(0, maxLength);
 }
 
+const OPERATIONAL_HEATMAP_CATEGORIES = new Set([
+  'delay',
+  'delivery_failure',
+  'deduction',
+  'hazard',
+  'route_event',
+  'revenue'
+]);
+
+function isRegionalAdministrator(session) {
+  return ['admin', 'regional_admin', 'regional'].includes(
+    cleanText(session?.role || '', 40).toLowerCase()
+  );
+}
+
+function normalizeOperationalHeatmapFilters(body = {}) {
+  const requestedCategories = Array.isArray(body.categories)
+    ? body.categories
+    : cleanText(body.categories, 500).split(',');
+  return {
+    stateCode: cleanText(body.stateCode || body.state_code, 8).toUpperCase(),
+    city: cleanText(body.city, 160),
+    territory: cleanText(body.territory, 160),
+    routeGroup: cleanText(body.routeGroup || body.route_group, 160),
+    distributionCenter: cleanText(
+      body.distributionCenter || body.distribution_center,
+      200
+    ),
+    categories: [...new Set(
+      requestedCategories
+        .map((category) => cleanText(category, 40).toLowerCase())
+        .filter((category) => OPERATIONAL_HEATMAP_CATEGORIES.has(category))
+    )]
+  };
+}
+
 function getRequester(req) {
   const adminSession = adminAuth.getAdminSession(req);
   if (adminSession) {
@@ -1810,12 +1846,26 @@ function clusterOperationalHeatmapSignals(signals) {
     .slice(0, 75);
 }
 
-async function buildOperationalHeatmapContext({ routeDate, periodDays }) {
-  const signals = await repositories.listOperationalHeatmapSignals({
+async function buildOperationalHeatmapContext({
+  routeDate,
+  periodDays,
+  supervisorUsername,
+  filters = {}
+}) {
+  const authorizedSignals = await repositories.listOperationalHeatmapSignals({
     routeDate,
     periodDays,
-    limit: 1500
+    supervisorUsername,
+    stateCode: filters.stateCode,
+    city: filters.city,
+    territory: filters.territory,
+    routeGroup: filters.routeGroup,
+    distributionCenter: filters.distributionCenter,
+    limit: 5000
   });
+  const signals = filters.categories?.length
+    ? authorizedSignals.filter((signal) => filters.categories.includes(signal.category))
+    : authorizedSignals;
   const categoryCounts = signals.reduce((counts, signal) => {
     counts[signal.category] = (counts[signal.category] || 0) + 1;
     return counts;
@@ -1825,6 +1875,7 @@ async function buildOperationalHeatmapContext({ routeDate, periodDays }) {
   return {
     routeDate,
     periodDays,
+    filters,
     signalCount: signals.length,
     categoryCounts,
     clusters,
@@ -2915,16 +2966,33 @@ router.post('/route-completion-prediction', requireAdminAiAccess, requireAiConfi
 router.post('/operational-heatmap', requireAdminAiAccess, requireAiConfigured, async (req, res) => {
   const startedAt = Date.now();
   const requester = getRequester(req);
+  const adminSession = adminAuth.getAdminSession(req);
   const routeDateInput = cleanText(req.body?.routeDate || req.body?.route_date, 40);
   const routeDate = routeDateInput ? normalizeRouteDate(routeDateInput) : null;
   const periodDays = Number.parseInt(req.body?.periodDays || req.body?.period_days, 10) || 30;
+  const filters = normalizeOperationalHeatmapFilters(req.body);
+  const supervisorUsername = isRegionalAdministrator(adminSession)
+    ? null
+    : cleanText(adminSession?.username, 120).toLowerCase();
   let aiResult = null;
 
   try {
-    const context = await buildOperationalHeatmapContext({ routeDate, periodDays });
+    const context = await buildOperationalHeatmapContext({
+      routeDate,
+      periodDays,
+      supervisorUsername,
+      filters
+    });
+    if (!context.signalCount) {
+      return res.status(422).json({
+        ok: false,
+        error: 'No recorded operational signals match the selected map view.'
+      });
+    }
     const aiInput = {
       routeDate,
       periodDays,
+      filters,
       signalCount: context.signalCount,
       categoryCounts: context.categoryCounts,
       clusters: context.clusters
@@ -2947,6 +3015,7 @@ router.post('/operational-heatmap', requireAdminAiAccess, requireAiConfigured, a
       inputSummary: {
         routeDate,
         periodDays,
+        filters,
         signalCount: context.signalCount,
         clusterCount: context.clusters.length,
         categoryCounts: context.categoryCounts
@@ -2960,6 +3029,7 @@ router.post('/operational-heatmap', requireAdminAiAccess, requireAiConfigured, a
       requester,
       routeDate,
       periodDays,
+      filters,
       sourceSummary: {
         signalCount: context.signalCount,
         categoryCounts: context.categoryCounts,
@@ -3001,7 +3071,7 @@ router.post('/operational-heatmap', requireAdminAiAccess, requireAiConfigured, a
       accountNumber: null,
       model: aiResult?.model || aiProvider.getModel(),
       status: 'error',
-      inputSummary: { routeDate, periodDays },
+      inputSummary: { routeDate, periodDays, filters },
       outputSummary: {},
       errorMessage: error.message,
       latencyMs: Date.now() - startedAt
