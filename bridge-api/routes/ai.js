@@ -107,6 +107,18 @@ function buildRedeliveryPlanPrompt() {
   ].join('\n');
 }
 
+function buildRouteRiskExplanationPrompt() {
+  return [
+    'You are the AI route-risk analyst for Truck-Safe Routing.',
+    'Use only the saved route session, chosen route, truck profile, route options, and hazard data supplied by the backend.',
+    'Explain why the selected truck route is safe, risky, or requires supervisor attention.',
+    'Compare the chosen route against available alternatives only when route option summaries are present.',
+    'Do not invent roads, hazards, traffic, bridge clearances, restrictions, or route details.',
+    'Separate verified facts from recommendations.',
+    'AI explains and recommends only. Backend hazard rules, route scoring, and supervisor decisions remain the source of truth.'
+  ].join('\n');
+}
+
 function normalizeRouteDate(value) {
   const raw = cleanText(value, 40);
   if (/^\d{4}-\d{2}-\d{2}$/.test(raw)) return raw;
@@ -364,6 +376,63 @@ const redeliveryPlanSchema = {
   ]
 };
 
+const routeRiskExplanationSchema = {
+  type: 'object',
+  additionalProperties: false,
+  properties: {
+    title: { type: 'string' },
+    summary: { type: 'string' },
+    safetyRating: { type: 'string', enum: ['unknown', 'low', 'medium', 'high', 'critical'] },
+    safeRouteReasons: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 6
+    },
+    primaryRisks: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    },
+    hazardConcerns: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    },
+    truckProfileConcerns: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 6
+    },
+    routeComparison: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 6
+    },
+    recommendedActions: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    },
+    missingData: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    }
+  },
+  required: [
+    'title',
+    'summary',
+    'safetyRating',
+    'safeRouteReasons',
+    'primaryRisks',
+    'hazardConcerns',
+    'truckProfileConcerns',
+    'routeComparison',
+    'recommendedActions',
+    'missingData'
+  ]
+};
+
 function compactAccountSummaryForAi(summary) {
   return {
     accountNumber: summary.accountNumber,
@@ -409,6 +478,60 @@ function compactAccountSummaryForAi(summary) {
       status: stop.status,
       assignedDriverId: stop.assignedDriverId
     }))
+  };
+}
+
+function compactHazardsForAi(hazards = {}) {
+  return {
+    lowBridges: (hazards.lowBridges || []).slice(0, 10).map((hazard) => ({
+      name: hazard.name || hazard.bridge_name || null,
+      clearanceFt: hazard.clearance_ft ?? hazard.clearanceFt ?? null,
+      latitude: hazard.latitude ?? hazard.lat ?? null,
+      longitude: hazard.longitude ?? hazard.lng ?? null,
+      distanceM: hazard.distance_m ?? hazard.distanceM ?? null,
+      source: hazard.source || hazard.dataSource || null,
+      verificationStatus: hazard.verification_status || hazard.verificationStatus || null
+    })),
+    noTruckZones: (hazards.noTruckZones || []).slice(0, 10).map((hazard) => ({
+      name: hazard.name || null,
+      restriction: hazard.restriction || null,
+      distanceM: hazard.distance_m ?? hazard.distanceM ?? null,
+      source: hazard.source || hazard.dataSource || null,
+      verificationStatus: hazard.verification_status || hazard.verificationStatus || null
+    })),
+    residentialZones: (hazards.residentialZones || []).slice(0, 10).map((hazard) => ({
+      name: hazard.name || null,
+      restriction: hazard.restriction || null,
+      distanceM: hazard.distance_m ?? hazard.distanceM ?? null,
+      source: hazard.source || hazard.dataSource || null,
+      verificationStatus: hazard.verification_status || hazard.verificationStatus || null
+    }))
+  };
+}
+
+function compactRouteSessionForAi(session) {
+  return {
+    id: session.id,
+    createdAt: session.createdAt,
+    originLabel: session.originLabel,
+    destinationLabel: session.destinationLabel,
+    chosenRouteIndex: session.chosenRouteIndex,
+    routeCount: session.routeCount,
+    hazardSummary: session.hazardSummary || {},
+    chosenRouteHazards: compactHazardsForAi(session.chosenRouteHazards || {}),
+    usedTruckProfile: session.usedTruckProfile || {},
+    usedTuning: session.usedTuning || {},
+    routeOptions: (session.routeOptions || []).slice(0, 5).map((route) => ({
+      index: route.index,
+      summary: route.summary || '',
+      distanceM: route.distance_m ?? route.distanceM ?? null,
+      durationS: route.duration_s ?? route.durationS ?? null,
+      score: route.score ?? null,
+      hazardSummary: route.hazardSummary || {},
+      stepCount: route.stepCount ?? null
+    })),
+    reviewStatus: session.reviewStatus,
+    supervisorNotes: session.supervisorNotes || null
   };
 }
 
@@ -859,6 +982,91 @@ router.post('/redelivery-plan', requireAdminAiAccess, requireAiConfigured, async
     return res.status(error.status || 500).json({
       ok: false,
       error: error.status ? error.message : 'AI redelivery plan failed.'
+    });
+  }
+});
+
+router.post('/route-risk-explanation', requireAdminAiAccess, requireAiConfigured, async (req, res) => {
+  const startedAt = Date.now();
+  const requester = getRequester(req);
+  const routeSessionId = cleanText(req.body?.routeSessionId || req.body?.route_session_id, 160);
+  let aiResult = null;
+  let routeSession = null;
+
+  try {
+    if (routeSessionId) {
+      routeSession = await repositories.getRouteSession(routeSessionId);
+    } else {
+      const sessions = await repositories.listRouteSessions({ limit: 1 });
+      routeSession = sessions[0] || null;
+    }
+
+    if (!routeSession) {
+      return res.status(404).json({
+        ok: false,
+        error: routeSessionId ? 'Route session not found.' : 'No saved route sessions found.'
+      });
+    }
+
+    const sourceContext = {
+      routeSession: compactRouteSessionForAi(routeSession)
+    };
+
+    aiResult = await aiProvider.createStructuredResponse({
+      endpoint: 'route-risk-explanation',
+      instructions: buildRouteRiskExplanationPrompt(),
+      input: sourceContext,
+      schemaName: 'truck_safe_route_risk_explanation',
+      schema: routeRiskExplanationSchema
+    });
+
+    await repositories.saveAiInteractionLog({
+      endpoint: 'route-risk-explanation',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber: null,
+      model: aiResult.model,
+      status: 'success',
+      inputSummary: {
+        routeSessionId: routeSession.id,
+        chosenRouteIndex: routeSession.chosenRouteIndex,
+        routeCount: routeSession.routeCount,
+        destinationLabel: routeSession.destinationLabel,
+        hazardSummary: routeSession.hazardSummary || {}
+      },
+      outputSummary: aiResult.parsed,
+      latencyMs: Date.now() - startedAt
+    });
+
+    return res.json({
+      ok: true,
+      requester,
+      routeSessionId: routeSession.id,
+      sourceContext,
+      ai: {
+        provider: 'openai',
+        model: aiResult.model,
+        store: false,
+        ...aiResult.parsed
+      }
+    });
+  } catch (error) {
+    await repositories.saveAiInteractionLog({
+      endpoint: 'route-risk-explanation',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber: null,
+      model: aiResult?.model || aiProvider.getModel(),
+      status: 'error',
+      inputSummary: { routeSessionId },
+      outputSummary: {},
+      errorMessage: error.message,
+      latencyMs: Date.now() - startedAt
+    }).catch(() => {});
+
+    return res.status(error.status || 500).json({
+      ok: false,
+      error: error.status ? error.message : 'AI route risk explanation failed.'
     });
   }
 });

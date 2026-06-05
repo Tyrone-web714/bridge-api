@@ -256,6 +256,7 @@ function renderAccountIntelligenceAdminPage(session) {
       <div class="grid">
         <label>Route Date<input id="aiRouteDate" type="date" /></label>
         <label>Optional Account Number<input id="aiAccountNumber" /></label>
+        <label>Optional Route Session ID<input id="aiRouteSessionId" /></label>
       </div>
       <label style="margin-top:14px">Supervisor Question
         <textarea id="aiQuestion" class="question-box" placeholder="Example: What products are driving spending for ACCT-1001, and are there any deduction risks?"></textarea>
@@ -264,6 +265,7 @@ function renderAccountIntelligenceAdminPage(session) {
         <button class="primary" onclick="askSupervisorAi()">Ask AI</button>
         <button class="gold" onclick="generateSupervisorBrief()">Generate Morning Brief</button>
         <button onclick="generateRedeliveryPlan()">Redelivery Plan</button>
+        <button onclick="explainRouteRisk()">Route Risk</button>
       </div>
     </section>
 
@@ -413,6 +415,34 @@ function renderAccountIntelligenceAdminPage(session) {
         '</div>' +
         renderDebug(data);
     }
+    function renderRouteRiskExplanation(data) {
+      const ai = data.ai || {};
+      const route = (data.sourceContext && data.sourceContext.routeSession) || {};
+      result.innerHTML =
+        '<div class="summary-hero">' +
+          '<span class="badge">AI Route Risk Explanation</span>' +
+          '<div class="summary-title">' + escapeHtml(ai.title || 'Route Risk') + '</div>' +
+          '<div class="summary-subtitle">' + escapeHtml(route.originLabel || 'Origin') + ' to ' +
+            escapeHtml(route.destinationLabel || 'Destination') +
+            ' - Safety rating: ' + escapeHtml(ai.safetyRating || 'unknown') + '</div>' +
+        '</div>' +
+        '<div class="ai-summary">' + escapeHtml(ai.summary || 'No route-risk explanation returned.') + '</div>' +
+        '<div class="metric-row">' +
+          '<div class="metric"><div class="metric-label">Route Session</div><div class="metric-value">' + escapeHtml(route.id || data.routeSessionId || '--') + '</div></div>' +
+          '<div class="metric"><div class="metric-label">Chosen Route</div><div class="metric-value">' + escapeHtml(route.chosenRouteIndex ?? '--') + '</div></div>' +
+          '<div class="metric"><div class="metric-label">Options</div><div class="metric-value">' + escapeHtml(route.routeCount || 0) + '</div></div>' +
+        '</div>' +
+        '<div class="grid">' +
+          '<div class="content-card"><h3>Why This Route Is Acceptable</h3>' + listItems(ai.safeRouteReasons) + '</div>' +
+          '<div class="content-card"><h3>Primary Risks</h3>' + listItems(ai.primaryRisks) + '</div>' +
+          '<div class="content-card"><h3>Hazard Concerns</h3>' + listItems(ai.hazardConcerns) + '</div>' +
+          '<div class="content-card"><h3>Truck Profile Concerns</h3>' + listItems(ai.truckProfileConcerns) + '</div>' +
+          '<div class="content-card"><h3>Route Comparison</h3>' + listItems(ai.routeComparison) + '</div>' +
+          '<div class="content-card"><h3>Recommended Actions</h3>' + listItems(ai.recommendedActions) + '</div>' +
+          '<div class="content-card"><h3>Missing Data</h3>' + listItems(ai.missingData) + '</div>' +
+        '</div>' +
+        renderDebug(data);
+    }
     function renderAccountForecast(data) {
       const ai = data.ai || {};
       result.innerHTML =
@@ -537,6 +567,16 @@ function renderAccountIntelligenceAdminPage(session) {
           body: JSON.stringify({
             routeDate: document.getElementById('aiRouteDate').value,
             periodDays
+          })
+        }));
+      } catch (error) { setError(error); }
+    }
+    async function explainRouteRisk() {
+      try {
+        renderRouteRiskExplanation(await requestJson('/api/ai/route-risk-explanation', {
+          method: 'POST',
+          body: JSON.stringify({
+            routeSessionId: document.getElementById('aiRouteSessionId').value.trim()
           })
         }));
       } catch (error) { setError(error); }
