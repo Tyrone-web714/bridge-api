@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const heatmapRouter = require('../routes/operationalHeatmaps');
+const geographyRouter = require('../routes/operationalGeography');
 
 function listRouterContracts(router) {
   return router.stack
@@ -16,6 +17,18 @@ function run() {
   const routes = new Set(listRouterContracts(heatmapRouter));
   assert(routes.has('GET /admin'), 'Missing operational heatmap admin page.');
   assert(routes.has('GET /data'), 'Missing operational heatmap data endpoint.');
+
+  const geographyRoutes = new Set(listRouterContracts(geographyRouter));
+  for (const contract of [
+    'GET /admin',
+    'GET /data',
+    'POST /distribution-centers',
+    'POST /territories',
+    'POST /route-groups',
+    'PUT /:entityType/:code/active'
+  ]) {
+    assert(geographyRoutes.has(contract), `Missing operational geography route ${contract}.`);
+  }
 
   const source = fs.readFileSync(
     path.join(__dirname, '..', 'routes', 'operationalHeatmaps.js'),
@@ -80,11 +93,32 @@ function run() {
     repositorySource.includes('census_service_area_places.json'),
     'Cloud deployments must have a bundled Census city fallback.'
   );
+  for (const table of [
+    'operational_distribution_centers',
+    'operational_territories',
+    'operational_route_groups'
+  ]) {
+    assert(repositorySource.includes(table), `Missing configured geography source ${table}.`);
+  }
 
   const serverSource = fs.readFileSync(path.join(__dirname, '..', 'server.js'), 'utf8');
   assert(
     serverSource.includes("app.use('/api/operational-heatmaps', operationalHeatmapRoutes)"),
     'Operational heatmap router is not mounted.'
+  );
+  assert(
+    serverSource.includes("app.use('/api/operational-geography', operationalGeographyRoutes)"),
+    'Operational geography router is not mounted.'
+  );
+
+  const driverSource = fs.readFileSync(path.join(__dirname, '..', 'routes', 'drivers.js'), 'utf8');
+  assert(
+    driverSource.includes("fetch('/api/operational-geography/data')"),
+    'Driver Registry must load configured operational geography.'
+  );
+  assert(
+    driverSource.includes('routeGroupOptions') && driverSource.includes('territoryOptions'),
+    'Driver Registry must expose configured route group and territory choices.'
   );
 
   console.log('[test:heatmaps] visibility, geographic scope, authorization, summary, and map contracts verified.');

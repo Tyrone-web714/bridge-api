@@ -515,6 +515,21 @@ function cleanRepositoryText(value, maxLength = 500) {
   return String(value ?? '').trim().slice(0, maxLength);
 }
 
+function normalizeOperationalCode(value, maxLength = 80) {
+  return cleanRepositoryText(value, maxLength)
+    .toUpperCase()
+    .replace(/[^A-Z0-9]+/g, '_')
+    .replace(/^_+|_+$/g, '');
+}
+
+function normalizeTextList(value, maxItems = 500, itemLength = 160) {
+  const values = Array.isArray(value) ? value : String(value || '').split(',');
+  return [...new Set(values
+    .map((item) => cleanRepositoryText(item, itemLength))
+    .filter(Boolean))]
+    .slice(0, maxItems);
+}
+
 function readInputField(source, names = []) {
   if (!source || typeof source !== 'object') return undefined;
   for (const name of names) {
@@ -3636,12 +3651,267 @@ async function listOperationalHeatmapSignals(options = {}) {
     ));
 }
 
+async function listOperationalGeographyConfiguration(options = {}) {
+  const includeInactive = options.includeInactive === true || options.includeInactive === 'true';
+  const activeClause = includeInactive ? '' : 'WHERE active = true';
+  const [centerResult, territoryResult, routeGroupResult] = await Promise.all([
+    postgres.query(`
+      SELECT *
+      FROM operational_distribution_centers
+      ${activeClause}
+      ORDER BY active DESC, name, code
+    `),
+    postgres.query(`
+      SELECT *
+      FROM operational_territories
+      ${activeClause}
+      ORDER BY active DESC, name, code
+    `),
+    postgres.query(`
+      SELECT *
+      FROM operational_route_groups
+      ${activeClause}
+      ORDER BY active DESC, name, code
+    `)
+  ]);
+
+  return {
+    distributionCenters: centerResult.rows.map((row) => ({
+      code: row.code,
+      name: row.name,
+      address: row.address || null,
+      city: row.city || null,
+      stateCode: row.state_code || null,
+      latitude: row.latitude == null ? null : Number(row.latitude),
+      longitude: row.longitude == null ? null : Number(row.longitude),
+      active: row.active === true,
+      createdAt: toIsoString(row.created_at),
+      updatedAt: toIsoString(row.updated_at)
+    })),
+    territories: territoryResult.rows.map((row) => ({
+      code: row.code,
+      name: row.name,
+      distributionCenterCode: row.distribution_center_code || null,
+      stateCodes: asArray(row.state_codes),
+      cities: asArray(row.cities),
+      active: row.active === true,
+      createdAt: toIsoString(row.created_at),
+      updatedAt: toIsoString(row.updated_at)
+    })),
+    routeGroups: routeGroupResult.rows.map((row) => ({
+      code: row.code,
+      name: row.name,
+      territoryCode: row.territory_code || null,
+      distributionCenterCode: row.distribution_center_code || null,
+      active: row.active === true,
+      createdAt: toIsoString(row.created_at),
+      updatedAt: toIsoString(row.updated_at)
+    }))
+  };
+}
+
+async function upsertOperationalDistributionCenter(input = {}, actor = 'admin') {
+  const code = normalizeOperationalCode(input.code || input.name);
+  const name = cleanRepositoryText(input.name, 160);
+  const stateCode = cleanRepositoryText(input.stateCode || input.state_code, 8).toUpperCase();
+  if (!code || !name) {
+    const error = new Error('Distribution center code and name are required.');
+    error.status = 400;
+    throw error;
+  }
+  if (stateCode && !SERVICE_AREA_STATE_CODES.includes(stateCode)) {
+    const error = new Error('Distribution center state must be TX, OK, NM, or AR.');
+    error.status = 400;
+    throw error;
+  }
+  const latitude = input.latitude === '' || input.latitude == null ? null : Number(input.latitude);
+  const longitude = input.longitude === '' || input.longitude == null ? null : Number(input.longitude);
+  if ((latitude != null && !Number.isFinite(latitude)) || (longitude != null && !Number.isFinite(longitude))) {
+    const error = new Error('Distribution center latitude and longitude must be valid numbers.');
+    error.status = 400;
+    throw error;
+  }
+  const result = await postgres.query(`
+    INSERT INTO operational_distribution_centers (
+      code, name, address, city, state_code, latitude, longitude,
+      active, created_by, updated_by, created_at, updated_at
+    )
+    VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$9,NOW(),NOW())
+    ON CONFLICT (code) DO UPDATE SET
+      name = EXCLUDED.name,
+      address = EXCLUDED.address,
+      city = EXCLUDED.city,
+      state_code = EXCLUDED.state_code,
+      latitude = EXCLUDED.latitude,
+      longitude = EXCLUDED.longitude,
+      active = EXCLUDED.active,
+      updated_by = EXCLUDED.updated_by,
+      updated_at = NOW()
+    RETURNING *
+  `, [
+    code,
+    name,
+    cleanRepositoryText(input.address, 300) || null,
+    cleanRepositoryText(input.city, 160) || null,
+    stateCode || null,
+    latitude,
+    longitude,
+    input.active !== false && input.active !== 'false',
+    cleanRepositoryText(actor, 120) || 'admin'
+  ]);
+  return (await listOperationalGeographyConfiguration({ includeInactive: true }))
+    .distributionCenters.find((item) => item.code === result.rows[0].code);
+}
+
+async function upsertOperationalTerritory(input = {}, actor = 'admin') {
+  const code = normalizeOperationalCode(input.code || input.name);
+  const name = cleanRepositoryText(input.name, 160);
+  if (!code || !name) {
+    const error = new Error('Territory code and name are required.');
+    error.status = 400;
+    throw error;
+  }
+  const stateCodes = normalizeTextList(input.stateCodes || input.state_codes, 4, 8)
+    .map((item) => item.toUpperCase())
+    .filter((item) => SERVICE_AREA_STATE_CODES.includes(item));
+  const cities = normalizeTextList(input.cities, 1000, 160);
+  const distributionCenterCode =
+    normalizeOperationalCode(input.distributionCenterCode || input.distribution_center_code) || null;
+  if (distributionCenterCode) {
+    const centerResult = await postgres.query(
+      'SELECT 1 FROM operational_distribution_centers WHERE code = $1 AND active = true',
+      [distributionCenterCode]
+    );
+    if (!centerResult.rowCount) {
+      const error = new Error('Selected distribution center is not active or does not exist.');
+      error.status = 400;
+      throw error;
+    }
+  }
+  const result = await postgres.query(`
+    INSERT INTO operational_territories (
+      code, name, distribution_center_code, state_codes, cities,
+      active, created_by, updated_by, created_at, updated_at
+    )
+    VALUES ($1,$2,$3,$4::jsonb,$5::jsonb,$6,$7,$7,NOW(),NOW())
+    ON CONFLICT (code) DO UPDATE SET
+      name = EXCLUDED.name,
+      distribution_center_code = EXCLUDED.distribution_center_code,
+      state_codes = EXCLUDED.state_codes,
+      cities = EXCLUDED.cities,
+      active = EXCLUDED.active,
+      updated_by = EXCLUDED.updated_by,
+      updated_at = NOW()
+    RETURNING code
+  `, [
+    code,
+    name,
+    distributionCenterCode,
+    JSON.stringify(stateCodes),
+    JSON.stringify(cities),
+    input.active !== false && input.active !== 'false',
+    cleanRepositoryText(actor, 120) || 'admin'
+  ]);
+  return (await listOperationalGeographyConfiguration({ includeInactive: true }))
+    .territories.find((item) => item.code === result.rows[0].code);
+}
+
+async function upsertOperationalRouteGroup(input = {}, actor = 'admin') {
+  const code = normalizeOperationalCode(input.code || input.name);
+  const name = cleanRepositoryText(input.name, 160);
+  if (!code || !name) {
+    const error = new Error('Route group code and name are required.');
+    error.status = 400;
+    throw error;
+  }
+  const territoryCode = normalizeOperationalCode(input.territoryCode || input.territory_code) || null;
+  let distributionCenterCode =
+    normalizeOperationalCode(input.distributionCenterCode || input.distribution_center_code) || null;
+  if (territoryCode) {
+    const territoryResult = await postgres.query(
+      `SELECT distribution_center_code
+       FROM operational_territories
+       WHERE code = $1 AND active = true`,
+      [territoryCode]
+    );
+    if (!territoryResult.rowCount) {
+      const error = new Error('Selected territory is not active or does not exist.');
+      error.status = 400;
+      throw error;
+    }
+    const territoryCenterCode = territoryResult.rows[0].distribution_center_code || null;
+    if (territoryCenterCode && distributionCenterCode && territoryCenterCode !== distributionCenterCode) {
+      const error = new Error('Route group distribution center must match the selected territory.');
+      error.status = 400;
+      throw error;
+    }
+    distributionCenterCode = distributionCenterCode || territoryCenterCode;
+  }
+  if (distributionCenterCode) {
+    const centerResult = await postgres.query(
+      'SELECT 1 FROM operational_distribution_centers WHERE code = $1 AND active = true',
+      [distributionCenterCode]
+    );
+    if (!centerResult.rowCount) {
+      const error = new Error('Selected distribution center is not active or does not exist.');
+      error.status = 400;
+      throw error;
+    }
+  }
+  const result = await postgres.query(`
+    INSERT INTO operational_route_groups (
+      code, name, territory_code, distribution_center_code,
+      active, created_by, updated_by, created_at, updated_at
+    )
+    VALUES ($1,$2,$3,$4,$5,$6,$6,NOW(),NOW())
+    ON CONFLICT (code) DO UPDATE SET
+      name = EXCLUDED.name,
+      territory_code = EXCLUDED.territory_code,
+      distribution_center_code = EXCLUDED.distribution_center_code,
+      active = EXCLUDED.active,
+      updated_by = EXCLUDED.updated_by,
+      updated_at = NOW()
+    RETURNING code
+  `, [
+    code,
+    name,
+    territoryCode,
+    distributionCenterCode,
+    input.active !== false && input.active !== 'false',
+    cleanRepositoryText(actor, 120) || 'admin'
+  ]);
+  return (await listOperationalGeographyConfiguration({ includeInactive: true }))
+    .routeGroups.find((item) => item.code === result.rows[0].code);
+}
+
+async function setOperationalGeographyActive(entityType, codeInput, active, actor = 'admin') {
+  const code = normalizeOperationalCode(codeInput);
+  const tables = {
+    distribution_center: 'operational_distribution_centers',
+    territory: 'operational_territories',
+    route_group: 'operational_route_groups'
+  };
+  const table = tables[cleanRepositoryText(entityType, 40).toLowerCase()];
+  if (!table || !code) {
+    const error = new Error('Valid geography entity type and code are required.');
+    error.status = 400;
+    throw error;
+  }
+  const result = await postgres.query(`
+    UPDATE ${table}
+    SET active = $2, updated_by = $3, updated_at = NOW()
+    WHERE code = $1
+    RETURNING code
+  `, [code, active === true, cleanRepositoryText(actor, 120) || 'admin']);
+  return result.rows[0] || null;
+}
+
 async function listOperationalHeatmapGeography(options = {}) {
   const supervisorUsername = cleanRepositoryText(options.supervisorUsername, 120) || null;
   const stateCode = cleanRepositoryText(options.stateCode, 8).toUpperCase();
   const stateFilter = SERVICE_AREA_STATE_CODES.includes(stateCode) ? stateCode : null;
 
-  const [routeCityResult, driverDimensionResult, distributionCenterResult, censusTableResult] =
+  const [routeCityResult, driverDimensionResult, distributionCenterResult, censusTableResult, configuredGeography] =
     await Promise.all([
       postgres.query(`
         SELECT DISTINCT
@@ -3674,7 +3944,8 @@ async function listOperationalHeatmapGeography(options = {}) {
           AND ($1::text IS NULL OR LOWER(COALESCE(driver.supervisor_username, '')) = LOWER($1::text))
         ORDER BY distribution_center
       `, [supervisorUsername]),
-      postgres.query(`SELECT TO_REGCLASS('public.census_places') IS NOT NULL AS exists`)
+      postgres.query(`SELECT TO_REGCLASS('public.census_places') IS NOT NULL AS exists`),
+      listOperationalGeographyConfiguration()
     ]);
 
   let censusCities = [];
@@ -3714,21 +3985,24 @@ async function listOperationalHeatmapGeography(options = {}) {
   return {
     cities: [...cityMap.values()]
       .sort((left, right) => left.label.localeCompare(right.label)),
-    territories: [...new Set(driverDimensionResult.rows
-      .map((row) => cleanRepositoryText(row.territory, 160))
-      .filter(Boolean))]
+    territories: [...new Set([
+      ...driverDimensionResult.rows.map((row) => cleanRepositoryText(row.territory, 160)),
+      ...configuredGeography.territories.map((item) => cleanRepositoryText(item.name, 160))
+    ].filter(Boolean))]
       .sort((left, right) => left.localeCompare(right)),
-    routeGroups: [...new Set(driverDimensionResult.rows
-      .map((row) => cleanRepositoryText(row.route_group, 160))
-      .filter(Boolean))]
+    routeGroups: [...new Set([
+      ...driverDimensionResult.rows.map((row) => cleanRepositoryText(row.route_group, 160)),
+      ...configuredGeography.routeGroups.map((item) => cleanRepositoryText(item.name, 160))
+    ].filter(Boolean))]
       .sort((left, right) => left.localeCompare(right)),
     teamNames: [...new Set(driverDimensionResult.rows
       .map((row) => cleanRepositoryText(row.team_name, 160))
       .filter(Boolean))]
       .sort((left, right) => left.localeCompare(right)),
-    distributionCenters: [...new Set(distributionCenterResult.rows
-      .map((row) => cleanRepositoryText(row.distribution_center, 200))
-      .filter(Boolean))]
+    distributionCenters: [...new Set([
+      ...distributionCenterResult.rows.map((row) => cleanRepositoryText(row.distribution_center, 200)),
+      ...configuredGeography.distributionCenters.map((item) => cleanRepositoryText(item.name, 200))
+    ].filter(Boolean))]
       .sort((left, right) => left.localeCompare(right)),
     censusPlacesAvailable: Boolean(
       censusTableResult.rows[0]?.exists || asArray(censusServiceAreaPlaces.places).length
@@ -4407,6 +4681,7 @@ module.exports = {
   listDeliveryNotes,
   listDriverCoachingSignals,
   listManualHazards,
+  listOperationalGeographyConfiguration,
   listOperationalHeatmapGeography,
   listOperationalHeatmapSignals,
   listRecentDestinations,
@@ -4426,6 +4701,10 @@ module.exports = {
   recordAdminUserLogin,
   setAdminUserActive,
   setDriverActive,
+  setOperationalGeographyActive,
+  upsertOperationalDistributionCenter,
+  upsertOperationalRouteGroup,
+  upsertOperationalTerritory,
   swapDailyRouteAssignments,
   updateRouteSessionReview,
   updateStaticHazardVerification,

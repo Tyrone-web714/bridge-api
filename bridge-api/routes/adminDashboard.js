@@ -57,6 +57,12 @@ function renderAdminDashboard(session) {
       accent: '#ff7a18'
     },
     {
+      title: 'Operational Geography',
+      description: 'Define distribution centers, territories, route groups, and the hierarchy used by heatmaps and route operations.',
+      href: '/api/operational-geography/admin',
+      accent: '#48cae4'
+    },
+    {
       title: 'AI Copilot Foundation',
       description: 'Check AI provider status and run protected account intelligence summaries from source-of-truth order data.',
       href: '/api/ai/status',

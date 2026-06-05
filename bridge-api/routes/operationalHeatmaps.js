@@ -245,6 +245,7 @@ function renderHeatmapPage(session) {
       <div><a class="pill" href="/api/admin">Supervisor Dashboard</a> <span class="pill">${username}</span></div>
       <h1>Operational Heatmaps</h1>
       <p>Recorded operational signals only. Geographic access is derived from administrator role or supervisor driver-team assignments.</p>
+      <p><a class="pill" href="/api/operational-geography/admin">Configure Operational Geography</a></p>
     </div>
   </header>
   <main class="workspace">

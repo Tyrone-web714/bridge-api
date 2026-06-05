@@ -158,6 +158,7 @@ function renderDriverRegistryAdminPage(session) {
       <a class="tab" href="/api/admin">Dashboard</a>
       <a class="tab" href="/api/route-manifests/admin">Route Manifests</a>
       <a class="tab active" href="/api/drivers/admin">Driver Registry</a>
+      <a class="tab" href="/api/operational-geography/admin">Operational Geography</a>
       <a class="tab" href="/api/delivery-notes/admin">Delivery Notes</a>
       <a class="tab" href="/api/routing/manual-hazards/admin">Hazard Review</a>
       <a class="tab" href="/api/routing/manual-hazards/admin-users/admin">Admin Users</a>
@@ -173,8 +174,10 @@ function renderDriverRegistryAdminPage(session) {
         <div><label>Supervisor Username</label><input id="supervisorUsername" placeholder="supervisor login" /></div>
         <div><label>Supervisor Name</label><input id="supervisorName" placeholder="Supervisor full name" /></div>
         <div><label>Team Name</label><input id="teamName" placeholder="Route team name" /></div>
-        <div><label>Route Group</label><input id="routeGroup" placeholder="San Antonio North" /></div>
-        <div><label>Territory</label><input id="territory" placeholder="San Antonio" /></div>
+        <div><label>Route Group</label><input id="routeGroup" list="routeGroupOptions" placeholder="San Antonio North" /></div>
+        <div><label>Territory</label><input id="territory" list="territoryOptions" placeholder="San Antonio" /></div>
+        <datalist id="routeGroupOptions"></datalist>
+        <datalist id="territoryOptions"></datalist>
         <div>
           <label>Status</label>
           <select id="active">
@@ -360,6 +363,22 @@ function renderDriverRegistryAdminPage(session) {
         '</tbody></table>';
     }
 
+    async function loadGeographyOptions() {
+      const response = await fetch('/api/operational-geography/data');
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) return;
+      const geography = data.geography || {};
+      document.getElementById('territoryOptions').innerHTML =
+        (geography.territories || []).map(item =>
+          '<option value="' + escapeHtml(item.name) + '"></option>'
+        ).join('');
+      document.getElementById('routeGroupOptions').innerHTML =
+        (geography.routeGroups || []).map(item =>
+          '<option value="' + escapeHtml(item.name) + '"></option>'
+        ).join('');
+    }
+
+    loadGeographyOptions();
     loadDrivers();
   </script>
 </body>

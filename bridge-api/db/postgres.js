@@ -148,6 +148,57 @@ async function ensureSchema() {
     CREATE INDEX IF NOT EXISTS drivers_team_name_idx ON drivers(team_name);
     CREATE INDEX IF NOT EXISTS drivers_name_idx ON drivers(driver_name);
 
+    CREATE TABLE IF NOT EXISTS operational_distribution_centers (
+      code TEXT PRIMARY KEY,
+      name TEXT NOT NULL,
+      address TEXT,
+      city TEXT,
+      state_code TEXT,
+      latitude DOUBLE PRECISION,
+      longitude DOUBLE PRECISION,
+      active BOOLEAN NOT NULL DEFAULT true,
+      created_by TEXT,
+      updated_by TEXT,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+
+    CREATE INDEX IF NOT EXISTS operational_distribution_centers_state_idx
+      ON operational_distribution_centers(state_code, active);
+
+    CREATE TABLE IF NOT EXISTS operational_territories (
+      code TEXT PRIMARY KEY,
+      name TEXT NOT NULL,
+      distribution_center_code TEXT,
+      state_codes JSONB NOT NULL DEFAULT '[]'::jsonb,
+      cities JSONB NOT NULL DEFAULT '[]'::jsonb,
+      active BOOLEAN NOT NULL DEFAULT true,
+      created_by TEXT,
+      updated_by TEXT,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+
+    CREATE INDEX IF NOT EXISTS operational_territories_center_idx
+      ON operational_territories(distribution_center_code, active);
+
+    CREATE TABLE IF NOT EXISTS operational_route_groups (
+      code TEXT PRIMARY KEY,
+      name TEXT NOT NULL,
+      territory_code TEXT,
+      distribution_center_code TEXT,
+      active BOOLEAN NOT NULL DEFAULT true,
+      created_by TEXT,
+      updated_by TEXT,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+
+    CREATE INDEX IF NOT EXISTS operational_route_groups_territory_idx
+      ON operational_route_groups(territory_code, active);
+    CREATE INDEX IF NOT EXISTS operational_route_groups_center_idx
+      ON operational_route_groups(distribution_center_code, active);
+
     CREATE TABLE IF NOT EXISTS delivery_notes (
       id TEXT PRIMARY KEY,
       place_id TEXT,
