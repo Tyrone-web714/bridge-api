@@ -1,5 +1,6 @@
 const crypto = require('crypto');
 const postgres = require('./postgres');
+const censusServiceAreaPlaces = require('../data/census_service_area_places.json');
 
 function isDatabaseEnabled() {
   return postgres.isDatabaseConfigured();
@@ -3689,6 +3690,13 @@ async function listOperationalHeatmapGeography(options = {}) {
       LIMIT 5000
     `, [stateFilter]);
     censusCities = censusResult.rows;
+  } else if (stateFilter) {
+    censusCities = asArray(censusServiceAreaPlaces.places)
+      .filter((place) => cleanRepositoryText(place.stateCode, 8).toUpperCase() === stateFilter)
+      .map((place) => ({
+        state_code: stateFilter,
+        city: cleanRepositoryText(place.name, 160)
+      }));
   }
 
   const cityMap = new Map();
@@ -3722,7 +3730,10 @@ async function listOperationalHeatmapGeography(options = {}) {
       .map((row) => cleanRepositoryText(row.distribution_center, 200))
       .filter(Boolean))]
       .sort((left, right) => left.localeCompare(right)),
-    censusPlacesAvailable: Boolean(censusTableResult.rows[0]?.exists)
+    censusPlacesAvailable: Boolean(
+      censusTableResult.rows[0]?.exists || asArray(censusServiceAreaPlaces.places).length
+    ),
+    censusPlacesSource: censusTableResult.rows[0]?.exists ? 'postgres' : 'bundled_fallback'
   };
 }
 

@@ -76,6 +76,10 @@ function run() {
     repositorySource.includes('FROM census_places'),
     'City options must use Census place geography when a state is selected.'
   );
+  assert(
+    repositorySource.includes('census_service_area_places.json'),
+    'Cloud deployments must have a bundled Census city fallback.'
+  );
 
   const serverSource = fs.readFileSync(path.join(__dirname, '..', 'server.js'), 'utf8');
   assert(
