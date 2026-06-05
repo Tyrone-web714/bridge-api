@@ -1964,6 +1964,23 @@ router.get('/status', (req, res) => {
   });
 });
 
+router.get('/operations', requireAdminAiAccess, async (req, res) => {
+  try {
+    const periodDays = Number.parseInt(req.query?.periodDays || req.query?.period_days, 10) || 30;
+    const metrics = await repositories.getAiOperationsMetrics({ periodDays });
+    return res.json({
+      ok: true,
+      ai: aiProvider.getStatus(),
+      metrics
+    });
+  } catch (error) {
+    return res.status(error.status || 500).json({
+      ok: false,
+      error: error.status ? error.message : 'AI operations metrics request failed.'
+    });
+  }
+});
+
 router.post('/account-summary', requireAiAccess, requireAiConfigured, async (req, res) => {
   const startedAt = Date.now();
   const requester = getRequester(req);

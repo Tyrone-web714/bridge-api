@@ -265,6 +265,7 @@ function renderAccountIntelligenceAdminPage(session) {
       </label>
       <div class="actions" style="margin-top:14px">
         <button class="gold" onclick="generateUnifiedDashboard()">Unified Intelligence Dashboard</button>
+        <button onclick="loadAiOperations()">AI Operations</button>
         <button class="primary" onclick="askSupervisorAi()">Ask AI</button>
         <button class="gold" onclick="generateSupervisorBrief()">Generate Morning Brief</button>
         <button onclick="generateRedeliveryPlan()">Redelivery Plan</button>
@@ -769,6 +770,44 @@ function renderAccountIntelligenceAdminPage(session) {
         '</div>' +
         renderDebug(data);
     }
+    function renderAiOperations(data) {
+      const ai = data.ai || {};
+      const metrics = data.metrics || {};
+      const overall = metrics.overall || {};
+      const endpointItems = (metrics.endpoints || []).map(function (endpoint) {
+        return endpoint.endpoint + ' - ' + endpoint.requestCount + ' requests, ' +
+          (endpoint.successRate == null ? '--' : endpoint.successRate + '%') + ' successful, ' +
+          'average ' + (endpoint.averageLatencyMs == null ? '--' : endpoint.averageLatencyMs + ' ms') +
+          ', p95 ' + (endpoint.p95LatencyMs == null ? '--' : endpoint.p95LatencyMs + ' ms');
+      });
+      const errorItems = (metrics.recentErrors || []).map(function (entry) {
+        return (entry.createdAt || 'Unknown time') + ' - ' + (entry.endpoint || 'unknown endpoint') +
+          ': ' + (entry.errorMessage || 'Unspecified error');
+      });
+      result.innerHTML =
+        '<div class="summary-hero">' +
+          '<span class="badge">AI Operations</span>' +
+          '<div class="summary-title">AI Reliability and Performance</div>' +
+          '<div class="summary-subtitle">Provider: ' + escapeHtml(ai.provider || 'unknown') +
+            ' - Model: ' + escapeHtml(ai.model || 'unknown') +
+            ' - Timeout: ' + escapeHtml(ai.timeoutMs || '--') + ' ms' +
+            ' - Lookback: ' + escapeHtml(metrics.periodDays || 30) + ' days</div>' +
+        '</div>' +
+        '<div class="metric-row">' +
+          '<div class="metric"><div class="metric-label">Requests</div><div class="metric-value">' + escapeHtml(overall.requestCount || 0) + '</div></div>' +
+          '<div class="metric"><div class="metric-label">Success Rate</div><div class="metric-value">' +
+            escapeHtml(overall.successRate == null ? '--' : overall.successRate + '%') + '</div></div>' +
+          '<div class="metric"><div class="metric-label">Average Latency</div><div class="metric-value">' +
+            escapeHtml(overall.averageLatencyMs == null ? '--' : overall.averageLatencyMs + ' ms') + '</div></div>' +
+          '<div class="metric"><div class="metric-label">P95 Latency</div><div class="metric-value">' +
+            escapeHtml(overall.p95LatencyMs == null ? '--' : overall.p95LatencyMs + ' ms') + '</div></div>' +
+        '</div>' +
+        '<div class="grid">' +
+          '<div class="content-card"><h3>Endpoint Performance</h3>' + listItems(endpointItems) + '</div>' +
+          '<div class="content-card"><h3>Recent Errors</h3>' + listItems(errorItems) + '</div>' +
+        '</div>' +
+        renderDebug(data);
+    }
     function renderAccountGuidance(data) {
       const ai = data.ai || {};
       result.innerHTML =
@@ -815,6 +854,12 @@ function renderAccountIntelligenceAdminPage(session) {
       } catch (error) {
         document.getElementById('aiStatusText').textContent = 'AI status unavailable';
       }
+    }
+    async function loadAiOperations() {
+      try {
+        const periodDays = Number(document.getElementById('periodDays').value.trim() || '30');
+        renderAiOperations(await requestJson('/api/ai/operations?periodDays=' + encodeURIComponent(periodDays)));
+      } catch (error) { setError(error); }
     }
     async function loadSummary() {
       try {

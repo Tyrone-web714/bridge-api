@@ -3969,6 +3969,93 @@ async function saveAiInteractionLog(input = {}) {
   return aiInteractionLogFromRow(result.rows[0]);
 }
 
+async function getAiOperationsMetrics(options = {}) {
+  const periodDays = normalizeLimit(options.periodDays, 30, 365);
+  const endpointLimit = normalizeLimit(options.endpointLimit, 100, 250);
+  const errorLimit = normalizeLimit(options.errorLimit, 25, 100);
+
+  const [overallResult, endpointResult, errorResult] = await Promise.all([
+    postgres.query(`
+      SELECT
+        COUNT(*)::integer AS request_count,
+        COUNT(*) FILTER (WHERE status = 'success')::integer AS success_count,
+        COUNT(*) FILTER (WHERE status <> 'success')::integer AS error_count,
+        ROUND(AVG(latency_ms))::integer AS average_latency_ms,
+        ROUND((
+          percentile_cont(0.95) WITHIN GROUP (ORDER BY latency_ms)
+          FILTER (WHERE latency_ms IS NOT NULL)
+        )::numeric)::integer AS p95_latency_ms,
+        MAX(created_at) AS last_request_at
+      FROM ai_interaction_logs
+      WHERE created_at >= NOW() - ($1::integer * INTERVAL '1 day')
+    `, [periodDays]),
+    postgres.query(`
+      SELECT
+        endpoint,
+        COUNT(*)::integer AS request_count,
+        COUNT(*) FILTER (WHERE status = 'success')::integer AS success_count,
+        COUNT(*) FILTER (WHERE status <> 'success')::integer AS error_count,
+        ROUND(AVG(latency_ms))::integer AS average_latency_ms,
+        ROUND((
+          percentile_cont(0.95) WITHIN GROUP (ORDER BY latency_ms)
+          FILTER (WHERE latency_ms IS NOT NULL)
+        )::numeric)::integer AS p95_latency_ms,
+        MAX(created_at) AS last_request_at
+      FROM ai_interaction_logs
+      WHERE created_at >= NOW() - ($1::integer * INTERVAL '1 day')
+      GROUP BY endpoint
+      ORDER BY request_count DESC, endpoint ASC
+      LIMIT $2
+    `, [periodDays, endpointLimit]),
+    postgres.query(`
+      SELECT *
+      FROM ai_interaction_logs
+      WHERE created_at >= NOW() - ($1::integer * INTERVAL '1 day')
+        AND status <> 'success'
+      ORDER BY created_at DESC
+      LIMIT $2
+    `, [periodDays, errorLimit])
+  ]);
+
+  const overallRow = overallResult.rows[0] || {};
+  const requestCount = Number(overallRow.request_count) || 0;
+  const successCount = Number(overallRow.success_count) || 0;
+  const errorCount = Number(overallRow.error_count) || 0;
+
+  return {
+    generatedAt: new Date().toISOString(),
+    periodDays,
+    overall: {
+      requestCount,
+      successCount,
+      errorCount,
+      successRate: requestCount > 0
+        ? Math.round((successCount / requestCount) * 1000) / 10
+        : null,
+      averageLatencyMs: overallRow.average_latency_ms ?? null,
+      p95LatencyMs: overallRow.p95_latency_ms ?? null,
+      lastRequestAt: toIsoString(overallRow.last_request_at)
+    },
+    endpoints: endpointResult.rows.map((row) => {
+      const endpointRequestCount = Number(row.request_count) || 0;
+      const endpointSuccessCount = Number(row.success_count) || 0;
+      return {
+        endpoint: row.endpoint,
+        requestCount: endpointRequestCount,
+        successCount: endpointSuccessCount,
+        errorCount: Number(row.error_count) || 0,
+        successRate: endpointRequestCount > 0
+          ? Math.round((endpointSuccessCount / endpointRequestCount) * 1000) / 10
+          : null,
+        averageLatencyMs: row.average_latency_ms ?? null,
+        p95LatencyMs: row.p95_latency_ms ?? null,
+        lastRequestAt: toIsoString(row.last_request_at)
+      };
+    }),
+    recentErrors: errorResult.rows.map(aiInteractionLogFromRow)
+  };
+}
+
 module.exports = {
   getAdminUser,
   assignDailyRouteManifest,
@@ -3989,6 +4076,7 @@ module.exports = {
   getDailyRouteManifest,
   getDailyRouteManifestWithAccountIntelligence,
   getDriver,
+  getAiOperationsMetrics,
   getKnowledgeGraphSnapshot,
   getStaticHazardLocationBackfillStats,
   getRouteSessionAnalytics,
