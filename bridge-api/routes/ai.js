@@ -85,6 +85,17 @@ function buildSupervisorBriefPrompt() {
   ].join('\n');
 }
 
+function buildAccountForecastPrompt() {
+  return [
+    'You are the AI account forecasting analyst for Truck-Safe Routing.',
+    'Use only the source-of-truth account, route, order, deduction, and product data supplied by the backend.',
+    'Forecast conservatively. Do not invent missing purchase history, customer promises, pricing, weather, events, or inventory levels.',
+    'Explain what is known, what is likely, and what data is missing.',
+    'Money totals are already calculated by the backend; do not recalculate them differently.',
+    'AI recommends only. Backend rules, database records, and supervisor decisions remain the source of truth.'
+  ].join('\n');
+}
+
 function normalizeRouteDate(value) {
   const raw = cleanText(value, 40);
   if (/^\d{4}-\d{2}-\d{2}$/.test(raw)) return raw;
@@ -233,6 +244,61 @@ const supervisorBriefSchema = {
     'routeRisks',
     'accountRisks',
     'productSignals',
+    'recommendedActions',
+    'missingData'
+  ]
+};
+
+const accountForecastSchema = {
+  type: 'object',
+  additionalProperties: false,
+  properties: {
+    title: { type: 'string' },
+    summary: { type: 'string' },
+    forecastConfidence: { type: 'string', enum: ['low', 'medium', 'high'] },
+    reorderLikelihood: { type: 'string', enum: ['unknown', 'low', 'medium', 'high'] },
+    accountRisk: { type: 'string', enum: ['unknown', 'low', 'medium', 'high'] },
+    productOpportunities: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 6
+    },
+    reorderSignals: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 6
+    },
+    deductionRisks: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 6
+    },
+    deliveryRisks: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 6
+    },
+    recommendedActions: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    },
+    missingData: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    }
+  },
+  required: [
+    'title',
+    'summary',
+    'forecastConfidence',
+    'reorderLikelihood',
+    'accountRisk',
+    'productOpportunities',
+    'reorderSignals',
+    'deductionRisks',
+    'deliveryRisks',
     'recommendedActions',
     'missingData'
   ]
@@ -565,6 +631,106 @@ router.post('/supervisor-question', requireAdminAiAccess, requireAiConfigured, a
     return res.status(error.status || 500).json({
       ok: false,
       error: error.status ? error.message : 'AI supervisor question failed.'
+    });
+  }
+});
+
+router.post('/account-forecast', requireAdminAiAccess, requireAiConfigured, async (req, res) => {
+  const startedAt = Date.now();
+  const requester = getRequester(req);
+  const accountNumber = cleanText(req.body?.accountNumber || req.body?.account_number, 120);
+  const periodDays = Number.parseInt(req.body?.periodDays || req.body?.period_days, 10) || 180;
+  const routeDate = normalizeRouteDate(req.body?.routeDate || req.body?.route_date);
+  let aiResult = null;
+
+  if (!accountNumber) {
+    return res.status(400).json({
+      ok: false,
+      error: 'accountNumber is required.'
+    });
+  }
+
+  try {
+    const sourceContext = await buildSupervisorContext({ accountNumber, routeDate, periodDays });
+    aiResult = await aiProvider.createStructuredResponse({
+      endpoint: 'account-forecast',
+      instructions: buildAccountForecastPrompt(),
+      input: sourceContext,
+      schemaName: 'truck_safe_account_forecast',
+      schema: accountForecastSchema
+    });
+
+    const savedInsight = await repositories.saveAccountInsight({
+      accountNumber,
+      insightType: 'openai_account_forecast',
+      title: aiResult.parsed.title,
+      summary: aiResult.parsed.summary,
+      confidence: aiResult.parsed.forecastConfidence,
+      sourcePeriodStart: sourceContext.account?.firstOrderDate || null,
+      sourcePeriodEnd: sourceContext.account?.lastOrderDate || null,
+      generatedBy: `openai:${aiResult.model}`,
+      raw: {
+        reorderLikelihood: aiResult.parsed.reorderLikelihood,
+        accountRisk: aiResult.parsed.accountRisk,
+        productOpportunities: aiResult.parsed.productOpportunities,
+        reorderSignals: aiResult.parsed.reorderSignals,
+        deductionRisks: aiResult.parsed.deductionRisks,
+        deliveryRisks: aiResult.parsed.deliveryRisks,
+        recommendedActions: aiResult.parsed.recommendedActions,
+        missingData: aiResult.parsed.missingData
+      }
+    });
+
+    await repositories.saveAiInteractionLog({
+      endpoint: 'account-forecast',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber,
+      model: aiResult.model,
+      status: 'success',
+      inputSummary: {
+        accountNumber,
+        routeDate,
+        periodDays,
+        orderCount: sourceContext.account?.orderCount || 0,
+        topProductCount: sourceContext.account?.topProducts?.length || 0,
+        recentRouteStopCount: sourceContext.account?.recentRouteStops?.length || 0
+      },
+      outputSummary: aiResult.parsed,
+      latencyMs: Date.now() - startedAt
+    });
+
+    return res.json({
+      ok: true,
+      requester,
+      accountNumber,
+      routeDate,
+      sourceContext,
+      ai: {
+        provider: 'openai',
+        model: aiResult.model,
+        store: false,
+        savedInsight,
+        ...aiResult.parsed
+      }
+    });
+  } catch (error) {
+    await repositories.saveAiInteractionLog({
+      endpoint: 'account-forecast',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber,
+      model: aiResult?.model || aiProvider.getModel(),
+      status: 'error',
+      inputSummary: { accountNumber, routeDate, periodDays },
+      outputSummary: {},
+      errorMessage: error.message,
+      latencyMs: Date.now() - startedAt
+    }).catch(() => {});
+
+    return res.status(error.status || 500).json({
+      ok: false,
+      error: error.status ? error.message : 'AI account forecast failed.'
     });
   }
 });

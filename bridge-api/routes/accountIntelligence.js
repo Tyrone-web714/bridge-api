@@ -211,6 +211,7 @@ function renderAccountIntelligenceAdminPage(session) {
         <button class="primary" onclick="loadSummary()">Load Summary</button>
         <button class="gold" onclick="generateInsight()">Generate Insight</button>
         <button onclick="runAiSummary()">Run AI Summary</button>
+        <button onclick="runAccountForecast()">Account Forecast</button>
       </div>
     </section>
 
@@ -390,6 +391,27 @@ function renderAccountIntelligenceAdminPage(session) {
         '</div>' +
         renderDebug(data);
     }
+    function renderAccountForecast(data) {
+      const ai = data.ai || {};
+      result.innerHTML =
+        '<div class="summary-hero">' +
+          '<span class="badge">AI Account Forecast</span>' +
+          '<div class="summary-title">' + escapeHtml(ai.title || data.accountNumber || 'Account Forecast') + '</div>' +
+          '<div class="summary-subtitle">Reorder likelihood: ' + escapeHtml(ai.reorderLikelihood || 'unknown') +
+            ' - Account risk: ' + escapeHtml(ai.accountRisk || 'unknown') +
+            ' - Confidence: ' + escapeHtml(ai.forecastConfidence || 'unknown') + '</div>' +
+        '</div>' +
+        '<div class="ai-summary">' + escapeHtml(ai.summary || 'No forecast returned.') + '</div>' +
+        '<div class="grid">' +
+          '<div class="content-card"><h3>Product Opportunities</h3>' + listItems(ai.productOpportunities) + '</div>' +
+          '<div class="content-card"><h3>Reorder Signals</h3>' + listItems(ai.reorderSignals) + '</div>' +
+          '<div class="content-card"><h3>Deduction Risks</h3>' + listItems(ai.deductionRisks) + '</div>' +
+          '<div class="content-card"><h3>Delivery Risks</h3>' + listItems(ai.deliveryRisks) + '</div>' +
+          '<div class="content-card"><h3>Recommended Actions</h3>' + listItems(ai.recommendedActions) + '</div>' +
+          '<div class="content-card"><h3>Missing Data</h3>' + listItems(ai.missingData) + '</div>' +
+        '</div>' +
+        renderDebug(data);
+    }
     function renderSaved(value, label) {
       result.innerHTML = '<div class="summary-hero"><div class="summary-title">' + escapeHtml(label) + '</div>' +
         '<div class="summary-subtitle">Saved successfully.</div></div>' + renderDebug(value);
@@ -440,6 +462,20 @@ function renderAccountIntelligenceAdminPage(session) {
         renderAiSummary(await requestJson('/api/ai/account-summary', {
           method: 'POST',
           body: JSON.stringify({ accountNumber, periodDays })
+        }));
+      } catch (error) { setError(error); }
+    }
+    async function runAccountForecast() {
+      try {
+        const accountNumber = document.getElementById('accountNumber').value.trim();
+        const periodDays = Number(document.getElementById('periodDays').value.trim() || '180');
+        renderAccountForecast(await requestJson('/api/ai/account-forecast', {
+          method: 'POST',
+          body: JSON.stringify({
+            accountNumber,
+            routeDate: document.getElementById('aiRouteDate')?.value || '',
+            periodDays
+          })
         }));
       } catch (error) { setError(error); }
     }
