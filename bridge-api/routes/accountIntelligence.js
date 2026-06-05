@@ -277,6 +277,7 @@ function renderAccountIntelligenceAdminPage(session) {
         <button onclick="analyzeDriverCoaching()">Driver Coaching</button>
         <button onclick="reconstructIncident()">Incident Reconstruction</button>
         <button onclick="runWhatIfSimulation()">What-If Simulation</button>
+        <button onclick="analyzeKnowledgeGraph()">Knowledge Graph</button>
       </div>
     </section>
 
@@ -705,6 +706,36 @@ function renderAccountIntelligenceAdminPage(session) {
         '</div>' +
         renderDebug(data);
     }
+    function renderKnowledgeGraph(data) {
+      const ai = data.ai || {};
+      const graph = data.graph || {};
+      const nodeCounts = Object.entries(graph.nodeTypeCounts || {}).map(function (entry) {
+        return entry[0] + ': ' + entry[1];
+      });
+      const edgeCounts = Object.entries(graph.edgeTypeCounts || {}).map(function (entry) {
+        return entry[0] + ': ' + entry[1];
+      });
+      result.innerHTML =
+        '<div class="summary-hero">' +
+          '<span class="badge">AI Knowledge Graph Foundation</span>' +
+          '<div class="summary-title">' + escapeHtml(ai.title || 'Logistics Knowledge Graph') + '</div>' +
+          '<div class="summary-subtitle">Nodes: ' + escapeHtml(graph.nodeCount || 0) +
+            ' - Relationships: ' + escapeHtml(graph.edgeCount || 0) +
+            ' - Confidence: ' + escapeHtml(ai.confidence || 'unknown') + '</div>' +
+        '</div>' +
+        '<div class="ai-summary">' + escapeHtml(ai.summary || 'No knowledge-graph analysis returned.') + '</div>' +
+        '<div class="grid">' +
+          '<div class="content-card"><h3>Entity Counts</h3>' + listItems(nodeCounts) + '</div>' +
+          '<div class="content-card"><h3>Relationship Counts</h3>' + listItems(edgeCounts) + '</div>' +
+          '<div class="content-card"><h3>Important Relationships</h3>' + listItems(ai.importantRelationships) + '</div>' +
+          '<div class="content-card"><h3>Operational Patterns</h3>' + listItems(ai.operationalPatterns) + '</div>' +
+          '<div class="content-card"><h3>Account-Product Connections</h3>' + listItems(ai.accountProductConnections) + '</div>' +
+          '<div class="content-card"><h3>Route-Driver Connections</h3>' + listItems(ai.routeDriverConnections) + '</div>' +
+          '<div class="content-card"><h3>Data Gaps</h3>' + listItems(ai.dataGaps) + '</div>' +
+          '<div class="content-card"><h3>Recommended Connections</h3>' + listItems(ai.recommendedConnections) + '</div>' +
+        '</div>' +
+        renderDebug(data);
+    }
     function renderAccountGuidance(data) {
       const ai = data.ai || {};
       result.innerHTML =
@@ -863,6 +894,18 @@ function renderAccountIntelligenceAdminPage(session) {
           body: JSON.stringify({
             scenario: document.getElementById('aiQuestion').value.trim(),
             accountNumber,
+            routeDate: document.getElementById('aiRouteDate').value,
+            periodDays
+          })
+        }));
+      } catch (error) { setError(error); }
+    }
+    async function analyzeKnowledgeGraph() {
+      try {
+        const periodDays = Number(document.getElementById('periodDays').value.trim() || '180');
+        renderKnowledgeGraph(await requestJson('/api/ai/knowledge-graph-insights', {
+          method: 'POST',
+          body: JSON.stringify({
             routeDate: document.getElementById('aiRouteDate').value,
             periodDays
           })

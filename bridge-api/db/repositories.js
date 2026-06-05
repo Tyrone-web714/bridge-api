@@ -3725,6 +3725,219 @@ async function listAccountInsights(options = {}) {
   return result.rows.map(accountAiInsightFromRow);
 }
 
+async function getKnowledgeGraphSnapshot(options = {}) {
+  const periodDays = normalizeLimit(options.periodDays, 180, 730);
+  const routeDate = toDateOnly(options.routeDate) || null;
+  const limit = normalizeLimit(options.limit, 500, 2000);
+  const [driverResult, routeResult, stopResult, orderResult, itemResult, deductionResult] = await Promise.all([
+    postgres.query(`
+      SELECT *
+      FROM drivers
+      WHERE active = true
+      ORDER BY driver_id
+      LIMIT $1
+    `, [limit]),
+    postgres.query(`
+      SELECT *
+      FROM daily_route_manifests
+      WHERE (
+        $2::date IS NOT NULL AND route_date = $2::date
+      ) OR (
+        $2::date IS NULL AND route_date >= CURRENT_DATE - ($1::int - 1)
+      )
+      ORDER BY route_date DESC, route_number
+      LIMIT $3
+    `, [periodDays, routeDate, limit]),
+    postgres.query(`
+      SELECT
+        stop.*,
+        manifest.route_date,
+        manifest.route_number,
+        manifest.assigned_driver_id
+      FROM daily_route_stops AS stop
+      JOIN daily_route_manifests AS manifest ON manifest.id = stop.manifest_id
+      WHERE (
+        $2::date IS NOT NULL AND manifest.route_date = $2::date
+      ) OR (
+        $2::date IS NULL AND manifest.route_date >= CURRENT_DATE - ($1::int - 1)
+      )
+      ORDER BY manifest.route_date DESC, manifest.route_number, stop.stop_sequence
+      LIMIT $3
+    `, [periodDays, routeDate, limit]),
+    postgres.query(`
+      SELECT *
+      FROM account_orders
+      WHERE COALESCE(delivery_date, order_date, created_at::date) >= CURRENT_DATE - ($1::int - 1)
+      ORDER BY COALESCE(delivery_date, order_date) DESC, created_at DESC
+      LIMIT $2
+    `, [periodDays, limit]),
+    postgres.query(`
+      SELECT item.*
+      FROM account_order_items AS item
+      JOIN account_orders AS account_order ON account_order.id = item.order_id
+      WHERE COALESCE(account_order.delivery_date, account_order.order_date, account_order.created_at::date)
+        >= CURRENT_DATE - ($1::int - 1)
+      ORDER BY account_order.created_at DESC, item.id
+      LIMIT $2
+    `, [periodDays, limit]),
+    postgres.query(`
+      SELECT *
+      FROM delivery_deductions
+      WHERE created_at::date >= CURRENT_DATE - ($1::int - 1)
+      ORDER BY created_at DESC
+      LIMIT $2
+    `, [periodDays, limit])
+  ]);
+
+  const nodes = new Map();
+  const edges = [];
+  const addNode = (id, type, label, properties = {}) => {
+    if (!id || nodes.has(id)) return;
+    nodes.set(id, { id, type, label: label || id, properties });
+  };
+  const addEdge = (from, to, type, properties = {}) => {
+    if (!from || !to) return;
+    edges.push({ from, to, type, properties });
+  };
+
+  for (const row of driverResult.rows) {
+    const driver = driverFromRow(row);
+    const driverNodeId = `driver:${driver.driverId}`;
+    addNode(driverNodeId, 'driver', driver.driverName || driver.driverId, {
+      driverId: driver.driverId,
+      teamName: driver.teamName,
+      routeGroup: driver.routeGroup,
+      territory: driver.territory
+    });
+    if (driver.supervisorUsername) {
+      const supervisorNodeId = `supervisor:${driver.supervisorUsername}`;
+      addNode(supervisorNodeId, 'supervisor', driver.supervisorName || driver.supervisorUsername, {
+        username: driver.supervisorUsername
+      });
+      addEdge(supervisorNodeId, driverNodeId, 'supervises');
+    }
+  }
+
+  for (const row of routeResult.rows) {
+    const route = routeManifestFromRow(row);
+    const routeNodeId = `route:${route.id}`;
+    addNode(routeNodeId, 'route', route.routeName || route.routeNumber || route.id, {
+      routeDate: route.routeDate,
+      routeNumber: route.routeNumber,
+      status: route.status,
+      totalStops: route.totalStops,
+      totalPallets: route.totalPallets,
+      totalCases: route.totalCases
+    });
+    if (route.assignedDriverId) {
+      const driverNodeId = `driver:${route.assignedDriverId}`;
+      addNode(driverNodeId, 'driver', route.assignedDriverName || route.assignedDriverId, {
+        driverId: route.assignedDriverId
+      });
+      addEdge(driverNodeId, routeNodeId, 'assigned_to');
+    }
+  }
+
+  for (const row of stopResult.rows) {
+    const stop = routeStopFromRow(row);
+    if (!stop.accountNumber) continue;
+    const routeNodeId = `route:${stop.manifestId}`;
+    const accountNodeId = `account:${stop.accountNumber}`;
+    addNode(accountNodeId, 'account', stop.accountName || stop.accountNumber, {
+      accountNumber: stop.accountNumber,
+      address: stop.destinationAddress,
+      city: stop.city,
+      stateCode: stop.stateCode
+    });
+    addEdge(routeNodeId, accountNodeId, 'serves_account', {
+      stopId: stop.id,
+      stopSequence: stop.stopSequence,
+      status: stop.status,
+      plannedArrivalAt: stop.plannedArrivalAt,
+      actualArrivalAt: stop.actualArrivalAt,
+      palletCount: stop.palletCount,
+      caseCount: stop.caseCount
+    });
+  }
+
+  for (const row of orderResult.rows) {
+    const order = accountOrderFromRow(row);
+    const accountNodeId = `account:${order.accountNumber}`;
+    const orderNodeId = `order:${order.id}`;
+    addNode(accountNodeId, 'account', order.accountName || order.accountNumber, {
+      accountNumber: order.accountNumber
+    });
+    addNode(orderNodeId, 'order', order.invoiceNumber || order.id, {
+      orderDate: order.orderDate,
+      deliveryDate: order.deliveryDate,
+      subtotalAmount: order.subtotalAmount,
+      deductionAmount: order.deductionAmount,
+      netAmount: order.netAmount,
+      status: order.status
+    });
+    addEdge(accountNodeId, orderNodeId, 'placed_order');
+    if (order.routeManifestId) {
+      addEdge(orderNodeId, `route:${order.routeManifestId}`, 'scheduled_on_route');
+    }
+  }
+
+  for (const row of itemResult.rows) {
+    const item = accountOrderItemFromRow(row);
+    const productId = item.sku || item.productName;
+    if (!productId) continue;
+    const productNodeId = `product:${productId}`;
+    addNode(productNodeId, 'product', item.productName || item.sku, {
+      sku: item.sku,
+      brand: item.brand,
+      category: item.category,
+      packageSize: item.packageSize
+    });
+    addEdge(`order:${item.orderId}`, productNodeId, 'contains_product', {
+      quantity: item.quantity,
+      grossAmount: item.grossAmount,
+      deductionAmount: item.deductionAmount,
+      netAmount: item.netAmount
+    });
+  }
+
+  for (const row of deductionResult.rows) {
+    const deduction = deliveryDeductionFromRow(row);
+    const deductionNodeId = `deduction:${deduction.id}`;
+    addNode(deductionNodeId, 'deduction', deduction.reason || deduction.id, {
+      reason: deduction.reason,
+      quantity: deduction.quantity,
+      amount: deduction.amount,
+      productName: deduction.productName,
+      createdAt: deduction.createdAt
+    });
+    addEdge(`account:${deduction.accountNumber}`, deductionNodeId, 'has_deduction');
+    if (deduction.orderId) addEdge(`order:${deduction.orderId}`, deductionNodeId, 'includes_deduction');
+    if (deduction.sku) addEdge(deductionNodeId, `product:${deduction.sku}`, 'applies_to_product');
+  }
+
+  const nodeList = [...nodes.values()];
+  const nodeTypeCounts = nodeList.reduce((counts, node) => {
+    counts[node.type] = (counts[node.type] || 0) + 1;
+    return counts;
+  }, {});
+  const edgeTypeCounts = edges.reduce((counts, edge) => {
+    counts[edge.type] = (counts[edge.type] || 0) + 1;
+    return counts;
+  }, {});
+
+  return {
+    generatedAt: new Date().toISOString(),
+    routeDate,
+    periodDays,
+    nodeCount: nodeList.length,
+    edgeCount: edges.length,
+    nodeTypeCounts,
+    edgeTypeCounts,
+    nodes: nodeList,
+    edges
+  };
+}
+
 async function saveAiInteractionLog(input = {}) {
   const result = await postgres.query(`
     INSERT INTO ai_interaction_logs (
@@ -3776,6 +3989,7 @@ module.exports = {
   getDailyRouteManifest,
   getDailyRouteManifestWithAccountIntelligence,
   getDriver,
+  getKnowledgeGraphSnapshot,
   getStaticHazardLocationBackfillStats,
   getRouteSessionAnalytics,
   isDatabaseEnabled,

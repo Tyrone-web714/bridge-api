@@ -168,6 +168,17 @@ function buildWhatIfSimulationPrompt() {
   ].join('\n');
 }
 
+function buildKnowledgeGraphPrompt() {
+  return [
+    'You are the AI knowledge-graph analyst for Truck-Safe Routing.',
+    'Use only the deterministic node counts, edge counts, and relationship samples supplied by the backend.',
+    'Identify operational relationships among supervisors, drivers, routes, accounts, orders, products, and deductions.',
+    'Do not invent entities, relationships, causal explanations, customer behavior, driver behavior, or product demand.',
+    'Distinguish graph-observed relationships from recommendations for collecting or connecting more data.',
+    'AI analyzes the graph only. PostgreSQL records and backend-generated graph edges remain the source of truth.'
+  ].join('\n');
+}
+
 function buildRedeliveryPlanPrompt() {
   return [
     'You are the AI redelivery recovery planner for Truck-Safe Routing.',
@@ -784,6 +795,57 @@ const whatIfSimulationSchema = {
     'risks',
     'recommendedTests',
     'missingData'
+  ]
+};
+
+const knowledgeGraphSchema = {
+  type: 'object',
+  additionalProperties: false,
+  properties: {
+    title: { type: 'string' },
+    summary: { type: 'string' },
+    confidence: { type: 'string', enum: ['low', 'medium', 'high'] },
+    importantRelationships: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 15
+    },
+    operationalPatterns: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 15
+    },
+    accountProductConnections: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 12
+    },
+    routeDriverConnections: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 12
+    },
+    dataGaps: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 15
+    },
+    recommendedConnections: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 12
+    }
+  },
+  required: [
+    'title',
+    'summary',
+    'confidence',
+    'importantRelationships',
+    'operationalPatterns',
+    'accountProductConnections',
+    'routeDriverConnections',
+    'dataGaps',
+    'recommendedConnections'
   ]
 };
 
@@ -1738,6 +1800,28 @@ async function buildWhatIfSimulationContext({ scenario, accountNumber, routeDate
     supervisorContext,
     routeCompletionSignals: routeCompletionContext.routeSignals,
     productDemandSignals: productDemandContext.productSignals
+  };
+}
+
+async function buildKnowledgeGraphContext({ routeDate, periodDays }) {
+  const graph = await repositories.getKnowledgeGraphSnapshot({
+    routeDate,
+    periodDays,
+    limit: 1000
+  });
+  return {
+    graph,
+    aiInput: {
+      generatedAt: graph.generatedAt,
+      routeDate: graph.routeDate,
+      periodDays: graph.periodDays,
+      nodeCount: graph.nodeCount,
+      edgeCount: graph.edgeCount,
+      nodeTypeCounts: graph.nodeTypeCounts,
+      edgeTypeCounts: graph.edgeTypeCounts,
+      nodeSamples: graph.nodes.slice(0, 120),
+      relationshipSamples: graph.edges.slice(0, 250)
+    }
   };
 }
 
@@ -3011,6 +3095,77 @@ router.post('/what-if-simulation', requireAdminAiAccess, requireAiConfigured, as
     return res.status(error.status || 500).json({
       ok: false,
       error: error.status ? error.message : 'AI what-if simulation failed.'
+    });
+  }
+});
+
+router.post('/knowledge-graph-insights', requireAdminAiAccess, requireAiConfigured, async (req, res) => {
+  const startedAt = Date.now();
+  const requester = getRequester(req);
+  const routeDateInput = cleanText(req.body?.routeDate || req.body?.route_date, 40);
+  const routeDate = routeDateInput ? normalizeRouteDate(routeDateInput) : null;
+  const periodDays = Number.parseInt(req.body?.periodDays || req.body?.period_days, 10) || 180;
+  let aiResult = null;
+
+  try {
+    const context = await buildKnowledgeGraphContext({ routeDate, periodDays });
+    aiResult = await aiProvider.createStructuredResponse({
+      endpoint: 'knowledge-graph-insights',
+      instructions: buildKnowledgeGraphPrompt(),
+      input: context.aiInput,
+      schemaName: 'truck_safe_knowledge_graph_insights',
+      schema: knowledgeGraphSchema
+    });
+
+    await repositories.saveAiInteractionLog({
+      endpoint: 'knowledge-graph-insights',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber: null,
+      model: aiResult.model,
+      status: 'success',
+      inputSummary: {
+        routeDate,
+        periodDays,
+        nodeCount: context.graph.nodeCount,
+        edgeCount: context.graph.edgeCount,
+        nodeTypeCounts: context.graph.nodeTypeCounts,
+        edgeTypeCounts: context.graph.edgeTypeCounts
+      },
+      outputSummary: aiResult.parsed,
+      latencyMs: Date.now() - startedAt
+    });
+
+    return res.json({
+      ok: true,
+      requester,
+      routeDate,
+      periodDays,
+      graph: context.graph,
+      ai: {
+        provider: 'openai',
+        model: aiResult.model,
+        store: false,
+        ...aiResult.parsed
+      }
+    });
+  } catch (error) {
+    await repositories.saveAiInteractionLog({
+      endpoint: 'knowledge-graph-insights',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber: null,
+      model: aiResult?.model || aiProvider.getModel(),
+      status: 'error',
+      inputSummary: { routeDate, periodDays },
+      outputSummary: {},
+      errorMessage: error.message,
+      latencyMs: Date.now() - startedAt
+    }).catch(() => {});
+
+    return res.status(error.status || 500).json({
+      ok: false,
+      error: error.status ? error.message : 'AI knowledge graph analysis failed.'
     });
   }
 });
