@@ -264,6 +264,7 @@ function renderAccountIntelligenceAdminPage(session) {
         <textarea id="aiQuestion" class="question-box" placeholder="Example: What products are driving spending for ACCT-1001, and are there any deduction risks?"></textarea>
       </label>
       <div class="actions" style="margin-top:14px">
+        <button class="gold" onclick="generateUnifiedDashboard()">Unified Intelligence Dashboard</button>
         <button class="primary" onclick="askSupervisorAi()">Ask AI</button>
         <button class="gold" onclick="generateSupervisorBrief()">Generate Morning Brief</button>
         <button onclick="generateRedeliveryPlan()">Redelivery Plan</button>
@@ -736,6 +737,38 @@ function renderAccountIntelligenceAdminPage(session) {
         '</div>' +
         renderDebug(data);
     }
+    function renderUnifiedDashboard(data) {
+      const ai = data.ai || {};
+      const source = data.sourceSummary || {};
+      result.innerHTML =
+        '<div class="summary-hero">' +
+          '<span class="badge">Unified Supervisor Intelligence</span>' +
+          '<div class="summary-title">' + escapeHtml(ai.title || 'Supervisor Intelligence Dashboard') + '</div>' +
+          '<div class="summary-subtitle">Overall status: ' + escapeHtml(ai.overallStatus || 'unknown') +
+            ' - Confidence: ' + escapeHtml(ai.confidence || 'unknown') +
+            ' - Routes: ' + escapeHtml(source.routeCount || 0) +
+            ' - Drivers: ' + escapeHtml(source.driverCount || 0) +
+            ' - Hotspot signals: ' + escapeHtml(source.hotspotSignalCount || 0) + '</div>' +
+        '</div>' +
+        '<div class="metric-row">' +
+          '<div class="metric"><div class="metric-label">Undelivered Stops</div><div class="metric-value">' + escapeHtml(source.undeliveredStopCount || 0) + '</div></div>' +
+          '<div class="metric"><div class="metric-label">Product Signals</div><div class="metric-value">' + escapeHtml(source.productSignalCount || 0) + '</div></div>' +
+          '<div class="metric"><div class="metric-label">Graph Links</div><div class="metric-value">' + escapeHtml(source.graphEdgeCount || 0) + '</div></div>' +
+        '</div>' +
+        '<div class="ai-summary">' + escapeHtml(ai.executiveSummary || 'No executive summary returned.') + '</div>' +
+        '<div class="grid">' +
+          '<div class="content-card"><h3>Critical Alerts</h3>' + listItems(ai.criticalAlerts) + '</div>' +
+          '<div class="content-card"><h3>Route Priorities</h3>' + listItems(ai.routePriorities) + '</div>' +
+          '<div class="content-card"><h3>Account Priorities</h3>' + listItems(ai.accountPriorities) + '</div>' +
+          '<div class="content-card"><h3>Product Priorities</h3>' + listItems(ai.productPriorities) + '</div>' +
+          '<div class="content-card"><h3>Driver Support Priorities</h3>' + listItems(ai.driverSupportPriorities) + '</div>' +
+          '<div class="content-card"><h3>Hotspot Priorities</h3>' + listItems(ai.hotspotPriorities) + '</div>' +
+          '<div class="content-card"><h3>Strategic Opportunities</h3>' + listItems(ai.strategicOpportunities) + '</div>' +
+          '<div class="content-card"><h3>Next Actions</h3>' + listItems(ai.nextActions) + '</div>' +
+          '<div class="content-card"><h3>Missing Data</h3>' + listItems(ai.missingData) + '</div>' +
+        '</div>' +
+        renderDebug(data);
+    }
     function renderAccountGuidance(data) {
       const ai = data.ai || {};
       result.innerHTML =
@@ -906,6 +939,21 @@ function renderAccountIntelligenceAdminPage(session) {
         renderKnowledgeGraph(await requestJson('/api/ai/knowledge-graph-insights', {
           method: 'POST',
           body: JSON.stringify({
+            routeDate: document.getElementById('aiRouteDate').value,
+            periodDays
+          })
+        }));
+      } catch (error) { setError(error); }
+    }
+    async function generateUnifiedDashboard() {
+      try {
+        const fallbackAccountNumber = document.getElementById('accountNumber').value.trim();
+        const accountNumber = document.getElementById('aiAccountNumber').value.trim() || fallbackAccountNumber;
+        const periodDays = Number(document.getElementById('periodDays').value.trim() || '30');
+        renderUnifiedDashboard(await requestJson('/api/ai/unified-intelligence-dashboard', {
+          method: 'POST',
+          body: JSON.stringify({
+            accountNumber,
             routeDate: document.getElementById('aiRouteDate').value,
             periodDays
           })

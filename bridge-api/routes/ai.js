@@ -179,6 +179,18 @@ function buildKnowledgeGraphPrompt() {
   ].join('\n');
 }
 
+function buildUnifiedIntelligenceDashboardPrompt() {
+  return [
+    'You are the executive logistics intelligence analyst for Truck-Safe Routing.',
+    'Create one prioritized supervisor dashboard from the backend-calculated route, stop, account, order, product, hotspot, driver, and graph summaries supplied.',
+    'Use only supplied facts. Do not invent traffic, weather, inventory, labor availability, customer behavior, driver behavior, or financial outcomes.',
+    'Prioritize urgent operational attention separately from longer-term opportunities.',
+    'Do not make disciplinary or employment recommendations.',
+    'When evidence is thin, lower confidence and list missing data.',
+    'AI prioritizes and recommends only. Backend records and supervisors remain the source of truth.'
+  ].join('\n');
+}
+
 function buildRedeliveryPlanPrompt() {
   return [
     'You are the AI redelivery recovery planner for Truck-Safe Routing.',
@@ -846,6 +858,77 @@ const knowledgeGraphSchema = {
     'routeDriverConnections',
     'dataGaps',
     'recommendedConnections'
+  ]
+};
+
+const unifiedIntelligenceDashboardSchema = {
+  type: 'object',
+  additionalProperties: false,
+  properties: {
+    title: { type: 'string' },
+    executiveSummary: { type: 'string' },
+    confidence: { type: 'string', enum: ['low', 'medium', 'high'] },
+    overallStatus: { type: 'string', enum: ['unknown', 'stable', 'watch', 'high_risk', 'critical'] },
+    criticalAlerts: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 12
+    },
+    routePriorities: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 12
+    },
+    accountPriorities: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 12
+    },
+    productPriorities: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 12
+    },
+    driverSupportPriorities: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 12
+    },
+    hotspotPriorities: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 12
+    },
+    strategicOpportunities: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 12
+    },
+    nextActions: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 15
+    },
+    missingData: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 15
+    }
+  },
+  required: [
+    'title',
+    'executiveSummary',
+    'confidence',
+    'overallStatus',
+    'criticalAlerts',
+    'routePriorities',
+    'accountPriorities',
+    'productPriorities',
+    'driverSupportPriorities',
+    'hotspotPriorities',
+    'strategicOpportunities',
+    'nextActions',
+    'missingData'
   ]
 };
 
@@ -1821,6 +1904,55 @@ async function buildKnowledgeGraphContext({ routeDate, periodDays }) {
       edgeTypeCounts: graph.edgeTypeCounts,
       nodeSamples: graph.nodes.slice(0, 120),
       relationshipSamples: graph.edges.slice(0, 250)
+    }
+  };
+}
+
+async function buildUnifiedIntelligenceDashboardContext({ accountNumber, routeDate, periodDays }) {
+  const [
+    supervisorContext,
+    routeCompletionContext,
+    heatmapContext,
+    driverCoachingContext,
+    productSignals,
+    graph
+  ] = await Promise.all([
+    buildSupervisorContext({ accountNumber, routeDate, periodDays }),
+    buildRouteCompletionPredictionContext({ routeDate }),
+    buildOperationalHeatmapContext({ routeDate, periodDays }),
+    buildDriverCoachingContext({ driverId: null, routeDate, periodDays }),
+    repositories.listProductDemandSignals({
+      accountNumber: accountNumber || undefined,
+      routeDate,
+      periodDays,
+      limit: 40
+    }),
+    repositories.getKnowledgeGraphSnapshot({
+      routeDate,
+      periodDays,
+      limit: 1000
+    })
+  ]);
+
+  return {
+    generatedAt: new Date().toISOString(),
+    routeDate,
+    periodDays,
+    accountNumber: accountNumber || null,
+    supervisorContext,
+    routeCompletionSignals: routeCompletionContext.routeSignals,
+    hotspotSummary: {
+      signalCount: heatmapContext.signalCount,
+      categoryCounts: heatmapContext.categoryCounts,
+      clusters: heatmapContext.clusters
+    },
+    driverSignals: driverCoachingContext.driverSignals,
+    productSignals,
+    knowledgeGraphSummary: {
+      nodeCount: graph.nodeCount,
+      edgeCount: graph.edgeCount,
+      nodeTypeCounts: graph.nodeTypeCounts,
+      edgeTypeCounts: graph.edgeTypeCounts
     }
   };
 }
@@ -3166,6 +3298,98 @@ router.post('/knowledge-graph-insights', requireAdminAiAccess, requireAiConfigur
     return res.status(error.status || 500).json({
       ok: false,
       error: error.status ? error.message : 'AI knowledge graph analysis failed.'
+    });
+  }
+});
+
+router.post('/unified-intelligence-dashboard', requireAdminAiAccess, requireAiConfigured, async (req, res) => {
+  const startedAt = Date.now();
+  const requester = getRequester(req);
+  const accountNumber = cleanText(req.body?.accountNumber || req.body?.account_number, 120);
+  const routeDate = normalizeRouteDate(req.body?.routeDate || req.body?.route_date);
+  const periodDays = Number.parseInt(req.body?.periodDays || req.body?.period_days, 10) || 30;
+  let aiResult = null;
+
+  try {
+    const sourceContext = await buildUnifiedIntelligenceDashboardContext({
+      accountNumber,
+      routeDate,
+      periodDays
+    });
+    aiResult = await aiProvider.createStructuredResponse({
+      endpoint: 'unified-intelligence-dashboard',
+      instructions: buildUnifiedIntelligenceDashboardPrompt(),
+      input: sourceContext,
+      schemaName: 'truck_safe_unified_intelligence_dashboard',
+      schema: unifiedIntelligenceDashboardSchema
+    });
+
+    await repositories.saveAiInteractionLog({
+      endpoint: 'unified-intelligence-dashboard',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber: accountNumber || null,
+      model: aiResult.model,
+      status: 'success',
+      inputSummary: {
+        routeDate,
+        periodDays,
+        accountNumber: accountNumber || null,
+        routeCount: sourceContext.supervisorContext.recentRoutes.length,
+        completionSignalCount: sourceContext.routeCompletionSignals.length,
+        hotspotSignalCount: sourceContext.hotspotSummary.signalCount,
+        driverCount: sourceContext.driverSignals.length,
+        productSignalCount: sourceContext.productSignals.length,
+        graphNodeCount: sourceContext.knowledgeGraphSummary.nodeCount,
+        graphEdgeCount: sourceContext.knowledgeGraphSummary.edgeCount
+      },
+      outputSummary: aiResult.parsed,
+      latencyMs: Date.now() - startedAt
+    });
+
+    return res.json({
+      ok: true,
+      requester,
+      accountNumber: accountNumber || null,
+      routeDate,
+      periodDays,
+      sourceSummary: {
+        routeCount: sourceContext.supervisorContext.recentRoutes.length,
+        undeliveredStopCount: sourceContext.supervisorContext.undeliveredStops.length,
+        orderCount: sourceContext.supervisorContext.recentOrders.length,
+        completionSignalCount: sourceContext.routeCompletionSignals.length,
+        hotspotSignalCount: sourceContext.hotspotSummary.signalCount,
+        hotspotClusterCount: sourceContext.hotspotSummary.clusters.length,
+        driverCount: sourceContext.driverSignals.length,
+        productSignalCount: sourceContext.productSignals.length,
+        graphNodeCount: sourceContext.knowledgeGraphSummary.nodeCount,
+        graphEdgeCount: sourceContext.knowledgeGraphSummary.edgeCount
+      },
+      sourceContext,
+      ai: {
+        provider: 'openai',
+        model: aiResult.model,
+        store: false,
+        ...aiResult.parsed
+      }
+    });
+  } catch (error) {
+    await repositories.saveAiInteractionLog({
+      endpoint: 'unified-intelligence-dashboard',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber: accountNumber || null,
+      model: aiResult?.model || aiProvider.getModel(),
+      status: 'error',
+      inputSummary: { accountNumber: accountNumber || null, routeDate, periodDays },
+      outputSummary: {},
+      errorMessage: error.message,
+      latencyMs: Date.now() - startedAt
+    }).catch(() => {});
+
+    return res.status(error.status || 500).json({
+      ok: false,
+      error: error.status ? error.message : 'AI unified intelligence dashboard failed.'
     });
   }
 });
