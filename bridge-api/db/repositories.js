@@ -4271,8 +4271,11 @@ async function listAccountInsights(options = {}) {
     where.push(`insight_type = $${values.length}`);
   }
   if (options.status) {
-    values.push(cleanRepositoryText(options.status, 80));
-    where.push(`status = $${values.length}`);
+    const status = cleanRepositoryText(options.status, 80);
+    if (status !== 'all') {
+      values.push(status);
+      where.push(`status = $${values.length}`);
+    }
   } else {
     where.push("status IN ('active', 'approved')");
   }

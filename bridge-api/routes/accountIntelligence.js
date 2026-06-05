@@ -14,7 +14,7 @@ function requireAdminSession(req, res, next) {
     req.adminSession = session;
     return next();
   }
-  if (req.accepts('html') && req.path === '/admin') {
+  if (req.accepts('html') && req.path.endsWith('/admin')) {
     return res.redirect('/api/routing/manual-hazards/admin/login');
   }
   return res.status(401).json({ error: 'Supervisor admin login required.' });
@@ -24,6 +24,289 @@ function handleRouteError(res, error) {
   return res.status(error.status || 500).json({
     error: error.status ? error.message : 'Account intelligence request failed.'
   });
+}
+
+function insightPriority(insight = {}) {
+  const raw = insight.raw || {};
+  const riskValues = [
+    raw.overallDeductionRisk,
+    raw.accountRisk,
+    raw.overallRisk,
+    raw.deliveryFailureRisk,
+    raw.riskLevel
+  ].map((value) => cleanText(value, 40).toLowerCase());
+  if (riskValues.some((value) => ['critical', 'very_high', 'very high'].includes(value))) return 'critical';
+  if (riskValues.some((value) => ['high', 'elevated'].includes(value))) return 'high';
+  if (insight.confidence === 'high' && riskValues.some((value) => value === 'medium')) return 'high';
+  if (riskValues.some((value) => ['medium', 'moderate'].includes(value))) return 'medium';
+  if (insight.confidence === 'high') return 'medium';
+  return 'normal';
+}
+
+function insightWithPriority(insight) {
+  return {
+    ...insight,
+    priority: insightPriority(insight)
+  };
+}
+
+function renderSupervisorIntelligenceQueue(session) {
+  const username = cleanText(session?.username || 'supervisor', 80);
+  return `<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Supervisor Intelligence Queue</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg:#061019; --panel:#102536; --line:rgba(255,255,255,.16);
+      --text:#f3fbff; --muted:#a9bdc7; --cyan:#19d3e6; --red:#ff5964;
+      --gold:#ffbf3f; --green:#55e08a; --purple:#c084fc;
+    }
+    * { box-sizing:border-box; }
+    body {
+      margin:0; min-height:100vh; font-family:Arial,sans-serif; color:var(--text);
+      background:
+        radial-gradient(circle at 12% 8%,rgba(192,132,252,.18),transparent 28%),
+        radial-gradient(circle at 88% 8%,rgba(25,211,230,.15),transparent 28%),
+        linear-gradient(155deg,#061019,#0b2231 58%,#140b1b);
+    }
+    header {
+      padding:28px clamp(18px,4vw,48px); border-bottom:1px solid var(--line);
+      background:rgba(0,0,0,.24);
+    }
+    .topline { display:flex; justify-content:space-between; gap:18px; align-items:center; flex-wrap:wrap; }
+    h1 { margin:12px 0 0; font-size:clamp(30px,4vw,48px); }
+    p { color:var(--muted); line-height:1.45; }
+    .pill,button {
+      border:1px solid var(--line); border-radius:999px; padding:10px 14px;
+      color:var(--text); background:rgba(255,255,255,.09); text-decoration:none;
+      font:inherit; font-weight:900; cursor:pointer;
+    }
+    button.primary { border:0; color:#03151c; background:var(--cyan); }
+    button.reject { border-color:rgba(255,89,100,.5); background:rgba(255,89,100,.18); }
+    button:disabled { cursor:wait; opacity:.6; }
+    main { padding:22px clamp(18px,4vw,48px) 50px; }
+    .filters {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px;
+      padding:16px; border:1px solid var(--line); border-radius:16px;
+      background:rgba(16,37,54,.88);
+    }
+    label { display:grid; gap:6px; color:var(--muted); font-size:12px; font-weight:900; }
+    input,select,textarea {
+      width:100%; border:1px solid var(--line); border-radius:10px; padding:11px;
+      color:var(--text); background:#071722; font:inherit;
+    }
+    select option { color:var(--text); background:#071722; }
+    .metrics { display:grid; grid-template-columns:repeat(4,minmax(120px,1fr)); gap:10px; margin:16px 0; }
+    .metric { padding:14px; border:1px solid var(--line); border-radius:14px; background:rgba(255,255,255,.055); }
+    .metric span { display:block; color:var(--muted); font-size:10px; font-weight:900; text-transform:uppercase; }
+    .metric strong { display:block; margin-top:5px; font-size:24px; }
+    .queue { display:grid; gap:14px; }
+    .card {
+      border:1px solid var(--line); border-left:6px solid var(--priority);
+      border-radius:16px; padding:17px; background:rgba(16,37,54,.9);
+      box-shadow:0 16px 36px rgba(0,0,0,.2);
+    }
+    .card-head { display:flex; justify-content:space-between; gap:14px; align-items:flex-start; flex-wrap:wrap; }
+    .card h2 { margin:0; font-size:20px; }
+    .badges { display:flex; gap:7px; flex-wrap:wrap; margin:9px 0; }
+    .badge {
+      border-radius:999px; padding:5px 9px; background:rgba(255,255,255,.09);
+      color:var(--muted); font-size:10px; font-weight:900; text-transform:uppercase;
+    }
+    .badge.priority { color:#061019; background:var(--priority); }
+    .summary { margin:10px 0; color:#e8f6fb; line-height:1.5; }
+    .meta { color:var(--muted); font-size:12px; line-height:1.5; }
+    .details { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:9px; margin-top:12px; }
+    .detail { padding:10px; border-radius:10px; background:rgba(0,0,0,.18); color:var(--muted); font-size:12px; }
+    .detail strong { display:block; margin-bottom:4px; color:var(--cyan); font-size:10px; text-transform:uppercase; }
+    .review { display:grid; grid-template-columns:1fr auto auto; gap:9px; align-items:end; margin-top:14px; }
+    .empty { padding:22px; border:1px dashed var(--line); border-radius:16px; color:var(--muted); text-align:center; }
+    .status { margin-top:12px; color:var(--muted); font-size:12px; }
+    @media(max-width:720px) {
+      .metrics { grid-template-columns:1fr 1fr; }
+      .review { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topline">
+      <div>
+        <a class="pill" href="/api/admin">Supervisor Dashboard</a>
+        <h1>Supervisor Intelligence Queue</h1>
+        <p>Review AI-generated recommendations before they influence operational decisions. AI remains advisory; supervisors approve or reject each finding.</p>
+      </div>
+      <div class="badge">Signed in: ${username}</div>
+    </div>
+  </header>
+  <main>
+    <section class="filters">
+      <label>Review Status
+        <select id="statusFilter">
+          <option value="pending_review">Pending review</option>
+          <option value="approved">Approved</option>
+          <option value="rejected">Rejected</option>
+          <option value="all">All statuses</option>
+        </select>
+      </label>
+      <label>Priority
+        <select id="priorityFilter">
+          <option value="">All priorities</option>
+          <option value="critical">Critical</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="normal">Normal</option>
+        </select>
+      </label>
+      <label>Confidence
+        <select id="confidenceFilter">
+          <option value="">All confidence levels</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+      </label>
+      <label>Account Number<input id="accountFilter" placeholder="Search account" /></label>
+      <label>Insight Type<input id="typeFilter" placeholder="Example: deduction risk" /></label>
+      <button class="primary" id="refreshButton" type="button">Refresh Queue</button>
+    </section>
+    <section class="metrics">
+      <div class="metric"><span>Visible</span><strong id="visibleCount">0</strong></div>
+      <div class="metric"><span>Critical / High</span><strong id="priorityCount">0</strong></div>
+      <div class="metric"><span>Pending</span><strong id="pendingCount">0</strong></div>
+      <div class="metric"><span>High Confidence</span><strong id="confidenceCount">0</strong></div>
+    </section>
+    <section id="queue" class="queue"><div class="empty">Loading supervisor recommendations...</div></section>
+    <div id="status" class="status"></div>
+  </main>
+  <script>
+    let insights = [];
+    const priorityColors = {
+      critical:'#ff5964', high:'#ff8a4c', medium:'#ffbf3f', normal:'#55e08a'
+    };
+    function escapeHtml(value) {
+      return String(value ?? '').replace(/[&<>"']/g,function(char){
+        return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[char];
+      });
+    }
+    function formatDate(value) {
+      if (!value) return 'Not recorded';
+      const date = new Date(value);
+      return Number.isNaN(date.getTime()) ? String(value) : date.toLocaleString();
+    }
+    function humanize(value) {
+      return String(value || 'General recommendation').replace(/^openai_/,'').replace(/_/g,' ');
+    }
+    function rawList(raw, keys) {
+      for (const key of keys) {
+        if (Array.isArray(raw && raw[key]) && raw[key].length) return raw[key].slice(0,4);
+      }
+      return [];
+    }
+    function render() {
+      const priority = document.getElementById('priorityFilter').value;
+      const confidence = document.getElementById('confidenceFilter').value;
+      const account = document.getElementById('accountFilter').value.trim().toLowerCase();
+      const type = document.getElementById('typeFilter').value.trim().toLowerCase();
+      const visible = insights.filter(function(insight) {
+        return (!priority || insight.priority === priority) &&
+          (!confidence || insight.confidence === confidence) &&
+          (!account || String(insight.accountNumber || '').toLowerCase().includes(account)) &&
+          (!type || humanize(insight.insightType).toLowerCase().includes(type));
+      });
+      document.getElementById('visibleCount').textContent = visible.length;
+      document.getElementById('priorityCount').textContent =
+        visible.filter(function(item){ return ['critical','high'].includes(item.priority); }).length;
+      document.getElementById('pendingCount').textContent =
+        visible.filter(function(item){ return item.status === 'pending_review'; }).length;
+      document.getElementById('confidenceCount').textContent =
+        visible.filter(function(item){ return item.confidence === 'high'; }).length;
+      const queue = document.getElementById('queue');
+      if (!visible.length) {
+        queue.innerHTML = '<div class="empty">No recommendations match the selected filters.</div>';
+        return;
+      }
+      queue.innerHTML = visible.map(function(insight) {
+        const raw = insight.raw || {};
+        const actions = rawList(raw,['recommendedActions','supervisorActions','supervisorFollowUp']);
+        const risks = rawList(raw,['deductionPatterns','accountRiskSignals','deliveryRisks','customerRisk']);
+        const color = priorityColors[insight.priority] || priorityColors.normal;
+        return '<article class="card" style="--priority:'+color+'">' +
+          '<div class="card-head"><div><h2>'+escapeHtml(insight.title)+'</h2>' +
+          '<div class="badges"><span class="badge priority">'+escapeHtml(insight.priority)+'</span>' +
+          '<span class="badge">'+escapeHtml(humanize(insight.insightType))+'</span>' +
+          '<span class="badge">'+escapeHtml(insight.status)+'</span></div></div>' +
+          '<div class="meta">Created '+escapeHtml(formatDate(insight.createdAt))+'</div></div>' +
+          '<div class="summary">'+escapeHtml(insight.summary)+'</div>' +
+          '<div class="details">' +
+            '<div class="detail"><strong>Account</strong>'+escapeHtml(insight.accountNumber || 'Not linked')+'</div>' +
+            '<div class="detail"><strong>Confidence</strong>'+escapeHtml(insight.confidence || 'unknown')+'</div>' +
+            '<div class="detail"><strong>Source period</strong>'+escapeHtml(insight.sourcePeriodStart || 'Not recorded')+
+              ' through '+escapeHtml(insight.sourcePeriodEnd || 'Not recorded')+'</div>' +
+            '<div class="detail"><strong>Generated by</strong>'+escapeHtml(insight.generatedBy || 'system')+'</div>' +
+            (risks.length ? '<div class="detail"><strong>Risk signals</strong>'+risks.map(escapeHtml).join('<br>')+'</div>' : '') +
+            (actions.length ? '<div class="detail"><strong>Recommended actions</strong>'+actions.map(escapeHtml).join('<br>')+'</div>' : '') +
+            (insight.reviewedBy ? '<div class="detail"><strong>Reviewed</strong>'+escapeHtml(insight.reviewedBy)+
+              ' at '+escapeHtml(formatDate(insight.reviewedAt))+
+              (insight.reviewNotes ? '<br>'+escapeHtml(insight.reviewNotes) : '')+'</div>' : '') +
+          '</div>' +
+          (insight.status === 'pending_review'
+            ? '<div class="review"><label>Supervisor Review Notes<textarea id="notes-'+escapeHtml(insight.id)+
+              '" rows="2" placeholder="Reason for approving or rejecting"></textarea></label>' +
+              '<button class="primary" onclick="reviewInsight(\\''+escapeHtml(insight.id)+'\\',\\'approved\\')">Approve</button>' +
+              '<button class="reject" onclick="reviewInsight(\\''+escapeHtml(insight.id)+'\\',\\'rejected\\')">Reject</button></div>'
+            : '') +
+        '</article>';
+      }).join('');
+    }
+    async function loadQueue() {
+      const button = document.getElementById('refreshButton');
+      const status = document.getElementById('statusFilter').value;
+      button.disabled = true;
+      document.getElementById('status').textContent = 'Loading recommendations...';
+      try {
+        const response = await fetch('/api/account-intelligence/insights?status='+encodeURIComponent(status)+'&limit=200');
+        const data = await response.json().catch(function(){ return {}; });
+        if (!response.ok) throw new Error(data.error || 'Recommendation queue request failed.');
+        insights = Array.isArray(data.insights) ? data.insights : [];
+        render();
+        document.getElementById('status').textContent =
+          'Loaded '+insights.length+' recommendation'+(insights.length === 1 ? '' : 's')+'.';
+      } catch (error) {
+        document.getElementById('queue').innerHTML = '<div class="empty">'+escapeHtml(error.message)+'</div>';
+        document.getElementById('status').textContent = '';
+      } finally {
+        button.disabled = false;
+      }
+    }
+    async function reviewInsight(id, reviewStatus) {
+      const notes = document.getElementById('notes-'+id);
+      try {
+        const response = await fetch('/api/account-intelligence/insights/'+encodeURIComponent(id)+'/review',{
+          method:'PUT',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({status:reviewStatus,reviewNotes:notes ? notes.value.trim() : ''})
+        });
+        const data = await response.json().catch(function(){ return {}; });
+        if (!response.ok) throw new Error(data.error || 'Review action failed.');
+        await loadQueue();
+      } catch (error) {
+        document.getElementById('status').textContent = error.message || 'Review action failed.';
+      }
+    }
+    ['priorityFilter','confidenceFilter','accountFilter','typeFilter'].forEach(function(id){
+      document.getElementById(id).addEventListener(id.includes('Filter') && ['accountFilter','typeFilter'].includes(id) ? 'input' : 'change',render);
+    });
+    document.getElementById('statusFilter').addEventListener('change',loadQueue);
+    document.getElementById('refreshButton').addEventListener('click',loadQueue);
+    loadQueue();
+  </script>
+</body>
+</html>`;
 }
 
 function renderAccountIntelligenceAdminPage(session) {
@@ -1293,6 +1576,25 @@ router.get('/insights/review-queue', requireAdminSession, async (req, res) => {
       limit: req.query?.limit || 100
     });
     return res.json({ insights });
+  } catch (error) {
+    return handleRouteError(res, error);
+  }
+});
+
+router.get('/insights/admin', requireAdminSession, (req, res) => {
+  res.set('Content-Type', 'text/html; charset=utf-8');
+  return res.send(renderSupervisorIntelligenceQueue(req.adminSession));
+});
+
+router.get('/insights', requireAdminSession, async (req, res) => {
+  try {
+    const insights = await repositories.listAccountInsights({
+      accountNumber: cleanText(req.query?.accountNumber || req.query?.account_number, 120) || undefined,
+      insightType: cleanText(req.query?.insightType || req.query?.insight_type, 120) || undefined,
+      status: cleanText(req.query?.status, 80) || 'pending_review',
+      limit: req.query?.limit || 200
+    });
+    return res.json({ insights: insights.map(insightWithPriority) });
   } catch (error) {
     return handleRouteError(res, error);
   }

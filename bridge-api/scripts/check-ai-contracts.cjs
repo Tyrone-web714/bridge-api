@@ -118,8 +118,38 @@ function run() {
     'Missing AI recommendation review queue.'
   );
   assert(
+    accountContracts.has('GET /insights/admin'),
+    'Missing supervisor intelligence queue page.'
+  );
+  assert(
+    accountContracts.has('GET /insights'),
+    'Missing filterable supervisor intelligence queue endpoint.'
+  );
+  assert(
     accountContracts.has('PUT /insights/:id/review'),
     'Missing AI recommendation review action.'
+  );
+
+  const accountPageSource = fs.readFileSync(
+    path.join(__dirname, '..', 'routes', 'accountIntelligence.js'),
+    'utf8'
+  );
+  assert(
+    accountPageSource.includes('Supervisor Intelligence Queue'),
+    'Supervisor intelligence queue must have a dedicated readable page.'
+  );
+  assert(
+    accountPageSource.includes('reviewNotes'),
+    'Supervisor intelligence review must preserve review notes.'
+  );
+
+  const dashboardSource = fs.readFileSync(
+    path.join(__dirname, '..', 'routes', 'adminDashboard.js'),
+    'utf8'
+  );
+  assert(
+    dashboardSource.includes('/api/account-intelligence/insights/admin'),
+    'Unified supervisor dashboard must link to the intelligence queue.'
   );
 
   console.log(`[test:ai] ${expectedRoutes.length} AI route contracts verified.`);

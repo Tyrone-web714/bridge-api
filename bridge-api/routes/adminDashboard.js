@@ -51,6 +51,12 @@ function renderAdminDashboard(session) {
       accent: '#ffbf3f'
     },
     {
+      title: 'Supervisor Intelligence Queue',
+      description: 'Prioritize, inspect, approve, reject, and document AI-generated operational recommendations before action.',
+      href: '/api/account-intelligence/insights/admin',
+      accent: '#c084fc'
+    },
+    {
       title: 'Operational Heatmaps',
       description: 'Map recurring delivery delays, failed stops, deductions, hazard events, route events, and recorded revenue concentration.',
       href: '/api/operational-heatmaps/admin',
@@ -63,9 +69,9 @@ function renderAdminDashboard(session) {
       accent: '#48cae4'
     },
     {
-      title: 'AI Copilot Foundation',
-      description: 'Check AI provider status and run protected account intelligence summaries from source-of-truth order data.',
-      href: '/api/ai/status',
+      title: 'AI Operations Status',
+      description: 'Inspect AI provider configuration, request reliability, latency, token usage, and recent failures.',
+      href: '/api/account-intelligence/admin',
       accent: '#a78bfa'
     },
     {
