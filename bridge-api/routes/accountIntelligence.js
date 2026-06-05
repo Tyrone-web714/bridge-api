@@ -266,6 +266,7 @@ function renderAccountIntelligenceAdminPage(session) {
         <button class="gold" onclick="generateSupervisorBrief()">Generate Morning Brief</button>
         <button onclick="generateRedeliveryPlan()">Redelivery Plan</button>
         <button onclick="explainRouteRisk()">Route Risk</button>
+        <button onclick="summarizeDeliveryNotes()">Delivery Notes Summary</button>
       </div>
     </section>
 
@@ -443,6 +444,30 @@ function renderAccountIntelligenceAdminPage(session) {
         '</div>' +
         renderDebug(data);
     }
+    function renderDeliveryNotesSummary(data) {
+      const ai = data.ai || {};
+      const context = data.sourceContext || {};
+      result.innerHTML =
+        '<div class="summary-hero">' +
+          '<span class="badge">AI Delivery Notes Summary</span>' +
+          '<div class="summary-title">' + escapeHtml(ai.title || 'Delivery Notes Summary') + '</div>' +
+          '<div class="summary-subtitle">Notes found: ' + escapeHtml((context.notes || []).length || 0) +
+            (data.accountNumber ? ' - Account: ' + escapeHtml(data.accountNumber) : '') +
+            (data.destination ? ' - Destination: ' + escapeHtml(data.destination) : '') +
+            ' - Confidence: ' + escapeHtml(ai.confidence || 'unknown') + '</div>' +
+        '</div>' +
+        '<div class="ai-summary">' + escapeHtml(ai.summary || 'No delivery-notes summary returned.') + '</div>' +
+        '<div class="grid">' +
+          '<div class="content-card"><h3>Account Guidance</h3>' + listItems(ai.accountGuidance) + '</div>' +
+          '<div class="content-card"><h3>Access Instructions</h3>' + listItems(ai.accessInstructions) + '</div>' +
+          '<div class="content-card"><h3>Delivery Risks</h3>' + listItems(ai.deliveryRisks) + '</div>' +
+          '<div class="content-card"><h3>Useful Driver Tips</h3>' + listItems(ai.usefulDriverTips) + '</div>' +
+          '<div class="content-card"><h3>Photo Signals</h3>' + listItems(ai.photoSignals) + '</div>' +
+          '<div class="content-card"><h3>Recommended Actions</h3>' + listItems(ai.recommendedActions) + '</div>' +
+          '<div class="content-card"><h3>Missing Data</h3>' + listItems(ai.missingData) + '</div>' +
+        '</div>' +
+        renderDebug(data);
+    }
     function renderAccountForecast(data) {
       const ai = data.ai || {};
       result.innerHTML =
@@ -577,6 +602,20 @@ function renderAccountIntelligenceAdminPage(session) {
           method: 'POST',
           body: JSON.stringify({
             routeSessionId: document.getElementById('aiRouteSessionId').value.trim()
+          })
+        }));
+      } catch (error) { setError(error); }
+    }
+    async function summarizeDeliveryNotes() {
+      try {
+        const fallbackAccountNumber = document.getElementById('accountNumber').value.trim();
+        const accountNumber = document.getElementById('aiAccountNumber').value.trim() || fallbackAccountNumber;
+        renderDeliveryNotesSummary(await requestJson('/api/ai/delivery-notes-summary', {
+          method: 'POST',
+          body: JSON.stringify({
+            accountNumber,
+            destination: document.getElementById('aiQuestion').value.trim(),
+            routeDate: document.getElementById('aiRouteDate').value
           })
         }));
       } catch (error) { setError(error); }
