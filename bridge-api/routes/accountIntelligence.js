@@ -93,7 +93,73 @@ function renderAccountIntelligenceAdminPage(session) {
       font: inherit;
     }
     textarea { min-height: 180px; font-family: Consolas, monospace; }
-    pre {
+    .result-shell { display: grid; gap: 14px; }
+    .empty-result {
+      border: 1px dashed rgba(255,255,255,0.2);
+      border-radius: 18px;
+      padding: 18px;
+      color: var(--muted);
+      background: rgba(0,0,0,0.18);
+    }
+    .summary-hero {
+      display: grid;
+      gap: 8px;
+      border-radius: 22px;
+      padding: 20px;
+      background: linear-gradient(135deg, rgba(25,211,230,0.24), rgba(217,33,46,0.16));
+      border: 1px solid rgba(25,211,230,0.28);
+    }
+    .summary-title { font-size: clamp(24px, 3vw, 38px); font-weight: 900; line-height: 1.05; }
+    .summary-subtitle { color: var(--muted); font-weight: 800; }
+    .metric-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+    .metric {
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(0,0,0,0.22);
+    }
+    .metric-label { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; font-weight: 900; }
+    .metric-value { margin-top: 6px; font-size: 28px; font-weight: 900; }
+    .content-card {
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(0,0,0,0.18);
+    }
+    .content-card h3 { margin: 0 0 10px; font-size: 20px; }
+    .product-list, .bullet-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+    .product-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 10px;
+    }
+    .product-name { font-weight: 900; }
+    .product-meta { color: var(--muted); font-size: 13px; margin-top: 3px; }
+    .money { color: #7dffb0; font-weight: 900; }
+    .ai-summary {
+      border-left: 5px solid var(--cyan);
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(25,211,230,0.12);
+      color: #e9fcff;
+      font-size: 17px;
+      line-height: 1.45;
+    }
+    .badge {
+      display: inline-flex;
+      width: fit-content;
+      border-radius: 999px;
+      padding: 6px 10px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.16);
+      font-weight: 900;
+      color: var(--text);
+    }
+    .debug-details summary { cursor: pointer; color: var(--muted); font-weight: 900; }
+    .debug-details pre {
       white-space: pre-wrap;
       overflow-wrap: anywhere;
       border: 1px solid rgba(255,255,255,0.14);
@@ -181,13 +247,99 @@ function renderAccountIntelligenceAdminPage(session) {
     </section>
 
     <section class="panel">
-      <h2>Result</h2>
-      <pre id="result">Ready.</pre>
+      <h2>Supervisor Summary</h2>
+      <div id="result" class="result-shell">
+        <div class="empty-result">Enter an account number, then load the account summary or run the AI summary.</div>
+      </div>
     </section>
   </main>
   <script>
     const result = document.getElementById('result');
-    function show(value) { result.textContent = typeof value === 'string' ? value : JSON.stringify(value, null, 2); }
+    const money = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+    function escapeHtml(value) {
+      return String(value ?? '').replace(/[&<>"']/g, function (char) {
+        return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char];
+      });
+    }
+    function formatMoney(value) {
+      return money.format(Number(value) || 0);
+    }
+    function listItems(items) {
+      const rows = Array.isArray(items) ? items.filter(Boolean) : [];
+      if (!rows.length) return '<div class="empty-result">No items available.</div>';
+      return '<ul class="bullet-list">' + rows.map(function (item) {
+        return '<li>' + escapeHtml(item) + '</li>';
+      }).join('') + '</ul>';
+    }
+    function setError(error) {
+      result.innerHTML = '<div class="empty-result">' + escapeHtml(error.message || error || 'Request failed.') + '</div>';
+    }
+    function renderDebug(data) {
+      return '<details class="debug-details"><summary>View raw technical payload</summary><pre>' +
+        escapeHtml(JSON.stringify(data, null, 2)) +
+        '</pre></details>';
+    }
+    function renderSourceSummary(data) {
+      const summary = data.summary || data.sourceSummary || {};
+      const products = Array.isArray(summary.topProducts) ? summary.topProducts : [];
+      const routeStop = Array.isArray(summary.recentRouteStops) ? summary.recentRouteStops[0] : null;
+      result.innerHTML =
+        '<div class="summary-hero">' +
+          '<div class="summary-title">' + escapeHtml(summary.accountName || summary.accountNumber || 'Account') + '</div>' +
+          '<div class="summary-subtitle">' + escapeHtml(summary.accountNumber || '') +
+            (routeStop && routeStop.destinationAddress ? ' - ' + escapeHtml(routeStop.destinationAddress) : '') +
+          '</div>' +
+        '</div>' +
+        '<div class="metric-row">' +
+          '<div class="metric"><div class="metric-label">Orders</div><div class="metric-value">' + escapeHtml(summary.orderCount || 0) + '</div></div>' +
+          '<div class="metric"><div class="metric-label">Net Spend</div><div class="metric-value">' + formatMoney(summary.netAmount) + '</div></div>' +
+          '<div class="metric"><div class="metric-label">Deductions</div><div class="metric-value">' + formatMoney(summary.deductionAmount) + '</div></div>' +
+          '<div class="metric"><div class="metric-label">Lookback</div><div class="metric-value">' + escapeHtml(summary.periodDays || 0) + ' days</div></div>' +
+        '</div>' +
+        '<div class="content-card"><h3>Top Products</h3>' +
+          (products.length ? '<div class="product-list">' + products.map(function (product) {
+            return '<div class="product-item">' +
+              '<div><div class="product-name">' + escapeHtml(product.productName || product.sku || 'Product') + '</div>' +
+              '<div class="product-meta">' + escapeHtml(product.brand || 'Unknown brand') + ' - Qty ' + escapeHtml(product.quantity || 0) + '</div></div>' +
+              '<div class="money">' + formatMoney(product.netAmount) + '</div>' +
+            '</div>';
+          }).join('') + '</div>' : '<div class="empty-result">No product activity recorded for this period.</div>') +
+        '</div>' +
+        '<div class="content-card"><h3>Recent Route Context</h3>' +
+          (routeStop ? '<div><strong>' + escapeHtml(routeStop.routeName || routeStop.routeNumber || 'Route') + '</strong><p>' +
+            'Stop ' + escapeHtml(routeStop.stopSequence || '') + ' - ' +
+            escapeHtml(routeStop.caseCount || 0) + ' cases, ' + escapeHtml(routeStop.palletCount || 0) + ' pallets. Status: ' +
+            escapeHtml(routeStop.status || 'unknown') + '.</p></div>' : '<div class="empty-result">No recent route context found.</div>') +
+        '</div>' +
+        renderDebug(data);
+    }
+    function renderAiSummary(data) {
+      const ai = data.ai || {};
+      const source = data.sourceSummary || {};
+      result.innerHTML =
+        '<div class="summary-hero">' +
+          '<span class="badge">AI Account Intelligence</span>' +
+          '<div class="summary-title">' + escapeHtml(ai.title || source.accountName || data.accountNumber || 'Account Summary') + '</div>' +
+          '<div class="summary-subtitle">' + escapeHtml(data.accountNumber || '') + ' - Confidence: ' + escapeHtml(ai.confidence || 'unknown') + '</div>' +
+        '</div>' +
+        '<div class="ai-summary">' + escapeHtml(ai.summary || 'No AI summary returned.') + '</div>' +
+        '<div class="metric-row">' +
+          '<div class="metric"><div class="metric-label">Account Health</div><div class="metric-value">' + escapeHtml(ai.accountHealth || 'unknown') + '</div></div>' +
+          '<div class="metric"><div class="metric-label">Orders</div><div class="metric-value">' + escapeHtml(source.orderCount || 0) + '</div></div>' +
+          '<div class="metric"><div class="metric-label">Net Spend</div><div class="metric-value">' + formatMoney(source.netAmount) + '</div></div>' +
+        '</div>' +
+        '<div class="grid">' +
+          '<div class="content-card"><h3>Key Findings</h3>' + listItems(ai.keyFindings) + '</div>' +
+          '<div class="content-card"><h3>Spending Signals</h3>' + listItems(ai.spendingSignals) + '</div>' +
+          '<div class="content-card"><h3>Deduction Signals</h3>' + listItems(ai.deductionSignals) + '</div>' +
+          '<div class="content-card"><h3>Recommended Actions</h3>' + listItems(ai.recommendedActions) + '</div>' +
+        '</div>' +
+        renderDebug(data);
+    }
+    function renderSaved(value, label) {
+      result.innerHTML = '<div class="summary-hero"><div class="summary-title">' + escapeHtml(label) + '</div>' +
+        '<div class="summary-subtitle">Saved successfully.</div></div>' + renderDebug(value);
+    }
     async function requestJson(url, options = {}) {
       const response = await fetch(url, {
         ...options,
@@ -214,32 +366,32 @@ function renderAccountIntelligenceAdminPage(session) {
       try {
         const accountNumber = encodeURIComponent(document.getElementById('accountNumber').value.trim());
         const periodDays = encodeURIComponent(document.getElementById('periodDays').value.trim() || '180');
-        show(await requestJson('/api/account-intelligence/accounts/' + accountNumber + '/summary?periodDays=' + periodDays));
-      } catch (error) { show(error.message); }
+        renderSourceSummary(await requestJson('/api/account-intelligence/accounts/' + accountNumber + '/summary?periodDays=' + periodDays));
+      } catch (error) { setError(error); }
     }
     async function generateInsight() {
       try {
         const accountNumber = encodeURIComponent(document.getElementById('accountNumber').value.trim());
         const periodDays = Number(document.getElementById('periodDays').value.trim() || '180');
-        show(await requestJson('/api/account-intelligence/accounts/' + accountNumber + '/insights/generate', {
+        renderSaved(await requestJson('/api/account-intelligence/accounts/' + accountNumber + '/insights/generate', {
           method: 'POST',
           body: JSON.stringify({ periodDays })
-        }));
-      } catch (error) { show(error.message); }
+        }), 'Rules-Based Insight');
+      } catch (error) { setError(error); }
     }
     async function runAiSummary() {
       try {
         const accountNumber = document.getElementById('accountNumber').value.trim();
         const periodDays = Number(document.getElementById('periodDays').value.trim() || '180');
-        show(await requestJson('/api/ai/account-summary', {
+        renderAiSummary(await requestJson('/api/ai/account-summary', {
           method: 'POST',
           body: JSON.stringify({ accountNumber, periodDays })
         }));
-      } catch (error) { show(error.message); }
+      } catch (error) { setError(error); }
     }
     async function saveProduct() {
       try {
-        show(await requestJson('/api/account-intelligence/products', {
+        renderSaved(await requestJson('/api/account-intelligence/products', {
           method: 'POST',
           body: JSON.stringify({
             sku: document.getElementById('sku').value,
@@ -247,16 +399,16 @@ function renderAccountIntelligenceAdminPage(session) {
             brand: document.getElementById('brand').value,
             unitPrice: document.getElementById('unitPrice').value
           })
-        }));
-      } catch (error) { show(error.message); }
+        }), 'Product');
+      } catch (error) { setError(error); }
     }
     async function saveOrder() {
       try {
-        show(await requestJson('/api/account-intelligence/orders', {
+        renderSaved(await requestJson('/api/account-intelligence/orders', {
           method: 'POST',
           body: document.getElementById('orderJson').value
-        }));
-      } catch (error) { show(error.message); }
+        }), 'Order');
+      } catch (error) { setError(error); }
     }
     loadAiStatus();
   </script>
