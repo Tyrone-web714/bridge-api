@@ -272,6 +272,7 @@ function renderAccountIntelligenceAdminPage(session) {
         <button onclick="predictDeductionRisk()">Deduction Risk</button>
         <button onclick="forecastProductDemand()">Product Demand Forecast</button>
         <button onclick="predictRouteCompletion()">Route Completion Prediction</button>
+        <button onclick="analyzeOperationalHeatmap()">Operational Hotspots</button>
       </div>
     </section>
 
@@ -587,6 +588,35 @@ function renderAccountIntelligenceAdminPage(session) {
         '</div>' +
         renderDebug(data);
     }
+    function renderOperationalHeatmap(data) {
+      const ai = data.ai || {};
+      const source = data.sourceSummary || {};
+      const clusterItems = (source.clusters || []).slice(0, 12).map(function (cluster) {
+        const address = (cluster.destinationAddresses || [])[0];
+        const location = address || (cluster.latitude + ', ' + cluster.longitude);
+        return cluster.category + ' - ' + location + ' - ' + cluster.signalCount +
+          ' signal(s), weight ' + cluster.totalWeight;
+      });
+      result.innerHTML =
+        '<div class="summary-hero">' +
+          '<span class="badge">AI Operational Heatmap Intelligence</span>' +
+          '<div class="summary-title">' + escapeHtml(ai.title || 'Operational Hotspots') + '</div>' +
+          '<div class="summary-subtitle">Hotspot severity: ' + escapeHtml(ai.hotspotSeverity || 'unknown') +
+            ' - Confidence: ' + escapeHtml(ai.confidence || 'unknown') +
+            ' - Signals: ' + escapeHtml(source.signalCount || 0) +
+            ' - Clusters: ' + escapeHtml((source.clusters || []).length || 0) + '</div>' +
+        '</div>' +
+        '<div class="ai-summary">' + escapeHtml(ai.summary || 'No hotspot analysis returned.') + '</div>' +
+        '<div class="grid">' +
+          '<div class="content-card"><h3>Highest-Weight Clusters</h3>' + listItems(clusterItems) + '</div>' +
+          '<div class="content-card"><h3>High-Priority Areas</h3>' + listItems(ai.highPriorityAreas) + '</div>' +
+          '<div class="content-card"><h3>Category Patterns</h3>' + listItems(ai.categoryPatterns) + '</div>' +
+          '<div class="content-card"><h3>Recurring Signals</h3>' + listItems(ai.recurringSignals) + '</div>' +
+          '<div class="content-card"><h3>Supervisor Actions</h3>' + listItems(ai.supervisorActions) + '</div>' +
+          '<div class="content-card"><h3>Missing Data</h3>' + listItems(ai.missingData) + '</div>' +
+        '</div>' +
+        renderDebug(data);
+    }
     function renderAccountGuidance(data) {
       const ai = data.ai || {};
       result.innerHTML =
@@ -696,6 +726,18 @@ function renderAccountIntelligenceAdminPage(session) {
           method: 'POST',
           body: JSON.stringify({
             routeDate: document.getElementById('aiRouteDate').value
+          })
+        }));
+      } catch (error) { setError(error); }
+    }
+    async function analyzeOperationalHeatmap() {
+      try {
+        const periodDays = Number(document.getElementById('periodDays').value.trim() || '30');
+        renderOperationalHeatmap(await requestJson('/api/ai/operational-heatmap', {
+          method: 'POST',
+          body: JSON.stringify({
+            routeDate: document.getElementById('aiRouteDate').value,
+            periodDays
           })
         }));
       } catch (error) { setError(error); }

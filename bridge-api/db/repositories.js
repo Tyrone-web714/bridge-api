@@ -3358,6 +3358,139 @@ async function listRouteCompletionSignals(options = {}) {
   }));
 }
 
+async function listOperationalHeatmapSignals(options = {}) {
+  const periodDays = normalizeLimit(options.periodDays, 30, 365);
+  const routeDate = toDateOnly(options.routeDate) || null;
+  const limit = normalizeLimit(options.limit, 500, 2000);
+  const result = await postgres.query(`
+    WITH signals AS (
+      SELECT
+        'delay'::text AS category,
+        'late_stop'::text AS signal_type,
+        LEAST(10.0, GREATEST(
+          1.0,
+          EXTRACT(EPOCH FROM (stop.actual_arrival_at - stop.planned_arrival_at)) / 900.0
+        )) AS weight,
+        stop.latitude,
+        stop.longitude,
+        stop.actual_arrival_at AS occurred_at,
+        manifest.route_number,
+        stop.account_number,
+        stop.account_name,
+        stop.destination_address,
+        jsonb_build_object(
+          'plannedArrivalAt', stop.planned_arrival_at,
+          'actualArrivalAt', stop.actual_arrival_at,
+          'delayMinutes', ROUND(EXTRACT(EPOCH FROM (stop.actual_arrival_at - stop.planned_arrival_at)) / 60.0)
+        ) AS details
+      FROM daily_route_stops AS stop
+      JOIN daily_route_manifests AS manifest ON manifest.id = stop.manifest_id
+      WHERE stop.latitude IS NOT NULL
+        AND stop.longitude IS NOT NULL
+        AND stop.actual_arrival_at > stop.planned_arrival_at + INTERVAL '10 minutes'
+        AND manifest.route_date >= CURRENT_DATE - ($1::int * INTERVAL '1 day')
+        AND ($2::date IS NULL OR manifest.route_date = $2::date)
+
+      UNION ALL
+
+      SELECT
+        'delivery_failure'::text AS category,
+        COALESCE(NULLIF(stop.non_delivery_reason, ''), 'undelivered')::text AS signal_type,
+        6.0 AS weight,
+        stop.latitude,
+        stop.longitude,
+        COALESCE(stop.non_delivery_reported_at, stop.updated_at) AS occurred_at,
+        manifest.route_number,
+        stop.account_number,
+        stop.account_name,
+        stop.destination_address,
+        jsonb_build_object(
+          'reason', stop.non_delivery_reason,
+          'redeliveryStatus', stop.redelivery_status
+        ) AS details
+      FROM daily_route_stops AS stop
+      JOIN daily_route_manifests AS manifest ON manifest.id = stop.manifest_id
+      WHERE stop.status = 'undelivered'
+        AND stop.latitude IS NOT NULL
+        AND stop.longitude IS NOT NULL
+        AND manifest.route_date >= CURRENT_DATE - ($1::int * INTERVAL '1 day')
+        AND ($2::date IS NULL OR manifest.route_date = $2::date)
+
+      UNION ALL
+
+      SELECT
+        'deduction'::text AS category,
+        deduction.reason::text AS signal_type,
+        LEAST(10.0, GREATEST(2.0, deduction.amount / 25.0)) AS weight,
+        stop.latitude,
+        stop.longitude,
+        deduction.created_at AS occurred_at,
+        manifest.route_number,
+        deduction.account_number,
+        stop.account_name,
+        stop.destination_address,
+        jsonb_build_object(
+          'sku', deduction.sku,
+          'productName', deduction.product_name,
+          'quantity', deduction.quantity,
+          'amount', deduction.amount
+        ) AS details
+      FROM delivery_deductions AS deduction
+      JOIN daily_route_stops AS stop ON stop.id = deduction.route_stop_id
+      JOIN daily_route_manifests AS manifest ON manifest.id = stop.manifest_id
+      WHERE stop.latitude IS NOT NULL
+        AND stop.longitude IS NOT NULL
+        AND deduction.created_at >= NOW() - ($1::int * INTERVAL '1 day')
+        AND ($2::date IS NULL OR manifest.route_date = $2::date)
+
+      UNION ALL
+
+      SELECT
+        'route_event'::text AS category,
+        event.event_type::text AS signal_type,
+        CASE LOWER(COALESCE(event.severity, ''))
+          WHEN 'critical' THEN 10.0
+          WHEN 'high' THEN 8.0
+          WHEN 'warning' THEN 6.0
+          WHEN 'medium' THEN 5.0
+          ELSE 3.0
+        END AS weight,
+        event.latitude,
+        event.longitude,
+        event.created_at AS occurred_at,
+        NULL::text AS route_number,
+        NULL::text AS account_number,
+        NULL::text AS account_name,
+        session.destination_label AS destination_address,
+        event.payload AS details
+      FROM route_session_events AS event
+      LEFT JOIN route_sessions AS session ON session.id = event.route_session_id
+      WHERE event.latitude IS NOT NULL
+        AND event.longitude IS NOT NULL
+        AND event.created_at >= NOW() - ($1::int * INTERVAL '1 day')
+        AND ($2::date IS NULL OR event.created_at::date = $2::date)
+    )
+    SELECT *
+    FROM signals
+    ORDER BY occurred_at DESC
+    LIMIT $3
+  `, [periodDays, routeDate, limit]);
+
+  return result.rows.map((row) => ({
+    category: row.category,
+    signalType: row.signal_type,
+    weight: Number(row.weight) || 0,
+    latitude: Number(row.latitude),
+    longitude: Number(row.longitude),
+    occurredAt: toIsoString(row.occurred_at),
+    routeNumber: row.route_number || null,
+    accountNumber: row.account_number || null,
+    accountName: row.account_name || null,
+    destinationAddress: row.destination_address || null,
+    details: row.details || {}
+  }));
+}
+
 async function generateAccountInsight(accountNumber, options = {}) {
   const summary = await getAccountProductSummary(accountNumber, options);
   const topProduct = summary.topProducts[0] || null;
@@ -3550,6 +3683,7 @@ module.exports = {
   listStaticHazardsForVerification,
   listDeliveryNotes,
   listManualHazards,
+  listOperationalHeatmapSignals,
   listRecentDestinations,
   listProductDemandSignals,
   listRouteCompletionSignals,

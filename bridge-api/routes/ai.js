@@ -119,6 +119,18 @@ function buildRouteCompletionPredictionPrompt() {
   ].join('\n');
 }
 
+function buildOperationalHeatmapPrompt() {
+  return [
+    'You are the AI operational hotspot analyst for Truck-Safe Routing.',
+    'Use only the geospatial clusters and source counts supplied by the backend.',
+    'Identify recurring delay, delivery-failure, deduction, and route-event hotspots.',
+    'Do not invent addresses, causes, traffic, customer behavior, driver behavior, or hazard facts.',
+    'Clearly separate observed hotspot patterns from recommended supervisor actions.',
+    'Coordinates and weights are backend-calculated source data.',
+    'AI summarizes and recommends only. The geographic records remain the source of truth.'
+  ].join('\n');
+}
+
 function buildRedeliveryPlanPrompt() {
   return [
     'You are the AI redelivery recovery planner for Truck-Safe Routing.',
@@ -517,6 +529,53 @@ const routeCompletionPredictionSchema = {
     'atRiskRoutes',
     'likelyLateRoutes',
     'routeBlockers',
+    'supervisorActions',
+    'missingData'
+  ]
+};
+
+const operationalHeatmapSchema = {
+  type: 'object',
+  additionalProperties: false,
+  properties: {
+    title: { type: 'string' },
+    summary: { type: 'string' },
+    confidence: { type: 'string', enum: ['low', 'medium', 'high'] },
+    hotspotSeverity: { type: 'string', enum: ['unknown', 'low', 'medium', 'high', 'critical'] },
+    highPriorityAreas: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 12
+    },
+    categoryPatterns: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 10
+    },
+    recurringSignals: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 10
+    },
+    supervisorActions: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 10
+    },
+    missingData: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 10
+    }
+  },
+  required: [
+    'title',
+    'summary',
+    'confidence',
+    'hotspotSeverity',
+    'highPriorityAreas',
+    'categoryPatterns',
+    'recurringSignals',
     'supervisorActions',
     'missingData'
   ]
@@ -1352,6 +1411,73 @@ async function buildRouteCompletionPredictionContext({ routeDate }) {
     routeDate,
     generatedAt: new Date().toISOString(),
     routeSignals
+  };
+}
+
+function clusterOperationalHeatmapSignals(signals) {
+  const clusters = new Map();
+  for (const signal of signals) {
+    const latitude = Number(signal.latitude);
+    const longitude = Number(signal.longitude);
+    if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) continue;
+    const roundedLatitude = Number(latitude.toFixed(3));
+    const roundedLongitude = Number(longitude.toFixed(3));
+    const key = `${signal.category}:${roundedLatitude}:${roundedLongitude}`;
+    const current = clusters.get(key) || {
+      category: signal.category,
+      latitude: roundedLatitude,
+      longitude: roundedLongitude,
+      signalCount: 0,
+      totalWeight: 0,
+      signalTypes: new Set(),
+      routeNumbers: new Set(),
+      accountNumbers: new Set(),
+      destinationAddresses: new Set()
+    };
+    current.signalCount += 1;
+    current.totalWeight += Number(signal.weight) || 0;
+    if (signal.signalType) current.signalTypes.add(signal.signalType);
+    if (signal.routeNumber) current.routeNumbers.add(signal.routeNumber);
+    if (signal.accountNumber) current.accountNumbers.add(signal.accountNumber);
+    if (signal.destinationAddress) current.destinationAddresses.add(signal.destinationAddress);
+    clusters.set(key, current);
+  }
+
+  return [...clusters.values()]
+    .map((cluster) => ({
+      category: cluster.category,
+      latitude: cluster.latitude,
+      longitude: cluster.longitude,
+      signalCount: cluster.signalCount,
+      totalWeight: Math.round(cluster.totalWeight * 10) / 10,
+      signalTypes: [...cluster.signalTypes].slice(0, 8),
+      routeNumbers: [...cluster.routeNumbers].slice(0, 8),
+      accountNumbers: [...cluster.accountNumbers].slice(0, 8),
+      destinationAddresses: [...cluster.destinationAddresses].slice(0, 5)
+    }))
+    .sort((left, right) => right.totalWeight - left.totalWeight)
+    .slice(0, 75);
+}
+
+async function buildOperationalHeatmapContext({ routeDate, periodDays }) {
+  const signals = await repositories.listOperationalHeatmapSignals({
+    routeDate,
+    periodDays,
+    limit: 1500
+  });
+  const categoryCounts = signals.reduce((counts, signal) => {
+    counts[signal.category] = (counts[signal.category] || 0) + 1;
+    return counts;
+  }, {});
+  const clusters = clusterOperationalHeatmapSignals(signals);
+
+  return {
+    routeDate,
+    periodDays,
+    signalCount: signals.length,
+    categoryCounts,
+    clusters,
+    signals
   };
 }
 
@@ -2289,6 +2415,108 @@ router.post('/route-completion-prediction', requireAdminAiAccess, requireAiConfi
     return res.status(error.status || 500).json({
       ok: false,
       error: error.status ? error.message : 'AI route completion prediction failed.'
+    });
+  }
+});
+
+router.post('/operational-heatmap', requireAdminAiAccess, requireAiConfigured, async (req, res) => {
+  const startedAt = Date.now();
+  const requester = getRequester(req);
+  const routeDateInput = cleanText(req.body?.routeDate || req.body?.route_date, 40);
+  const routeDate = routeDateInput ? normalizeRouteDate(routeDateInput) : null;
+  const periodDays = Number.parseInt(req.body?.periodDays || req.body?.period_days, 10) || 30;
+  let aiResult = null;
+
+  try {
+    const context = await buildOperationalHeatmapContext({ routeDate, periodDays });
+    const aiInput = {
+      routeDate,
+      periodDays,
+      signalCount: context.signalCount,
+      categoryCounts: context.categoryCounts,
+      clusters: context.clusters
+    };
+    aiResult = await aiProvider.createStructuredResponse({
+      endpoint: 'operational-heatmap',
+      instructions: buildOperationalHeatmapPrompt(),
+      input: aiInput,
+      schemaName: 'truck_safe_operational_heatmap',
+      schema: operationalHeatmapSchema
+    });
+
+    await repositories.saveAiInteractionLog({
+      endpoint: 'operational-heatmap',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber: null,
+      model: aiResult.model,
+      status: 'success',
+      inputSummary: {
+        routeDate,
+        periodDays,
+        signalCount: context.signalCount,
+        clusterCount: context.clusters.length,
+        categoryCounts: context.categoryCounts
+      },
+      outputSummary: aiResult.parsed,
+      latencyMs: Date.now() - startedAt
+    });
+
+    return res.json({
+      ok: true,
+      requester,
+      routeDate,
+      periodDays,
+      sourceSummary: {
+        signalCount: context.signalCount,
+        categoryCounts: context.categoryCounts,
+        clusters: context.clusters
+      },
+      geojson: {
+        type: 'FeatureCollection',
+        features: context.signals.map((signal) => ({
+          type: 'Feature',
+          geometry: {
+            type: 'Point',
+            coordinates: [signal.longitude, signal.latitude]
+          },
+          properties: {
+            category: signal.category,
+            signalType: signal.signalType,
+            weight: signal.weight,
+            occurredAt: signal.occurredAt,
+            routeNumber: signal.routeNumber,
+            accountNumber: signal.accountNumber,
+            accountName: signal.accountName,
+            destinationAddress: signal.destinationAddress,
+            details: signal.details
+          }
+        }))
+      },
+      ai: {
+        provider: 'openai',
+        model: aiResult.model,
+        store: false,
+        ...aiResult.parsed
+      }
+    });
+  } catch (error) {
+    await repositories.saveAiInteractionLog({
+      endpoint: 'operational-heatmap',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber: null,
+      model: aiResult?.model || aiProvider.getModel(),
+      status: 'error',
+      inputSummary: { routeDate, periodDays },
+      outputSummary: {},
+      errorMessage: error.message,
+      latencyMs: Date.now() - startedAt
+    }).catch(() => {});
+
+    return res.status(error.status || 500).json({
+      ok: false,
+      error: error.status ? error.message : 'AI operational heatmap analysis failed.'
     });
   }
 });
