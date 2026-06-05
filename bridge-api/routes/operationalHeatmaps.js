@@ -186,6 +186,7 @@ function renderHeatmapPage(session) {
       border: 1px solid var(--line); border-radius: 999px; padding: 10px 14px;
       color: var(--text); background: rgba(255,255,255,0.09); text-decoration: none; font-weight: 900; cursor: pointer;
     }
+    .signed-in { margin-left: 10px; color: var(--muted); font-size: 12px; font-weight: 800; }
     button.primary { color: #03151c; background: var(--cyan); border: 0; }
     button:disabled { cursor: wait; opacity: 0.65; }
     .workspace { min-height: calc(100vh - 104px); display: grid; grid-template-columns: minmax(300px, 370px) 1fr; }
@@ -242,7 +243,7 @@ function renderHeatmapPage(session) {
 <body>
   <header>
     <div>
-      <div><a class="pill" href="/api/admin">Supervisor Dashboard</a> <span class="pill">${username}</span></div>
+      <div><a class="pill" href="/api/admin">Supervisor Dashboard</a> <span class="signed-in">Signed in: ${username}</span></div>
       <h1>Operational Heatmaps</h1>
       <p>Recorded operational signals only. Geographic access is derived from administrator role or supervisor driver-team assignments.</p>
       <p><a class="pill" href="/api/operational-geography/admin">Configure Operational Geography</a></p>
@@ -299,10 +300,10 @@ function renderHeatmapPage(session) {
     const categoryConfig = ${categoryJson};
     const activeCategories = new Set(Object.keys(categoryConfig));
     const stateViews = {
-      TX: { center: [31.2, -99.2], zoom: 6 },
-      OK: { center: [35.5, -97.5], zoom: 7 },
-      NM: { center: [34.5, -106.0], zoom: 6 },
-      AR: { center: [34.8, -92.3], zoom: 7 }
+      TX: { bounds: [[25.84, -106.65], [36.50, -93.51]] },
+      OK: { bounds: [[33.62, -103.00], [37.00, -94.43]] },
+      NM: { bounds: [[31.33, -109.05], [37.00, -103.00]] },
+      AR: { bounds: [[33.00, -94.62], [36.50, -89.64]] }
     };
     const fourStateBounds = [[25.8, -109.1], [37.1, -89.6]];
     const map = L.map('map', { zoomControl: true }).fitBounds(fourStateBounds, { padding: [24, 24] });
@@ -319,6 +320,7 @@ function renderHeatmapPage(session) {
     let signals = [];
     let renderedLayers = [];
     let latestAccess = null;
+    let latestFilterOptions = {};
 
     function escapeHtml(value) {
       return String(value ?? '').replace(/[&<>"']/g, function (character) {
@@ -436,17 +438,43 @@ function renderHeatmapPage(session) {
 
     function frameOperatingArea(bounds, fitMap) {
       if (!fitMap) return;
+      const stateCode = document.getElementById('stateCode').value;
+      const city = document.getElementById('city').value;
+      if (city) {
+        const cityOption = (latestFilterOptions.cities || []).find(function (item) {
+          return item.value === city && (!stateCode || item.stateCode === stateCode);
+        });
+        if (cityOption && Number.isFinite(Number(cityOption.latitude)) &&
+            Number.isFinite(Number(cityOption.longitude))) {
+          map.flyTo([Number(cityOption.latitude), Number(cityOption.longitude)], 12, {
+            animate: true,
+            duration: 0.7
+          });
+          return;
+        }
+        if (bounds.length === 1) {
+          map.flyTo(bounds[0], 13, { animate: true, duration: 0.7 });
+          return;
+        }
+        if (bounds.length > 1) {
+          map.flyToBounds(bounds, { padding: [42, 42], maxZoom: 13, duration: 0.7 });
+          return;
+        }
+      }
+      if (stateCode && stateViews[stateCode]) {
+        map.flyToBounds(stateViews[stateCode].bounds, {
+          padding: [18, 18],
+          maxZoom: 8,
+          duration: 0.8
+        });
+        return;
+      }
       if (bounds.length === 1) {
-        map.setView(bounds[0], 13);
+        map.flyTo(bounds[0], 13, { animate: true, duration: 0.7 });
         return;
       }
       if (bounds.length > 1) {
-        map.fitBounds(bounds, { padding: [34, 34], maxZoom: 14 });
-        return;
-      }
-      const stateCode = document.getElementById('stateCode').value;
-      if (stateCode && stateViews[stateCode]) {
-        map.setView(stateViews[stateCode].center, stateViews[stateCode].zoom);
+        map.flyToBounds(bounds, { padding: [34, 34], maxZoom: 14, duration: 0.7 });
         return;
       }
       if (latestAccess && !latestAccess.regionalAccess && Array.isArray(latestAccess.defaultBounds) &&
@@ -539,6 +567,7 @@ function renderHeatmapPage(session) {
         const data = await response.json().catch(function () { return {}; });
         if (!response.ok) throw new Error(data.error || 'Heatmap request failed.');
         signals = Array.isArray(data.signals) ? data.signals : [];
+        latestFilterOptions = data.filterOptions || {};
         renderAccess(data.access);
         populateSelect(
           'stateCode',

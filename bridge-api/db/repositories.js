@@ -3916,7 +3916,9 @@ async function listOperationalHeatmapGeography(options = {}) {
       postgres.query(`
         SELECT DISTINCT
           UPPER(stop.state_code) AS state_code,
-          BTRIM(stop.city) AS city
+          BTRIM(stop.city) AS city,
+          AVG(stop.latitude) FILTER (WHERE stop.latitude IS NOT NULL) AS latitude,
+          AVG(stop.longitude) FILTER (WHERE stop.longitude IS NOT NULL) AS longitude
         FROM daily_route_stops AS stop
         JOIN daily_route_manifests AS manifest ON manifest.id = stop.manifest_id
         LEFT JOIN drivers AS driver ON driver.driver_id = manifest.assigned_driver_id
@@ -3924,6 +3926,7 @@ async function listOperationalHeatmapGeography(options = {}) {
           AND UPPER(COALESCE(stop.state_code, '')) = ANY($1::text[])
           AND ($2::text IS NULL OR UPPER(stop.state_code) = $2::text)
           AND ($3::text IS NULL OR LOWER(COALESCE(driver.supervisor_username, '')) = LOWER($3::text))
+        GROUP BY UPPER(stop.state_code), BTRIM(stop.city)
         ORDER BY state_code, city
       `, [SERVICE_AREA_STATE_CODES, stateFilter, supervisorUsername]),
       postgres.query(`
@@ -3953,7 +3956,9 @@ async function listOperationalHeatmapGeography(options = {}) {
     const censusResult = await postgres.query(`
       SELECT DISTINCT
         state_code,
-        place_name AS city
+        place_name AS city,
+        intptlat AS latitude,
+        intptlng AS longitude
       FROM census_places
       WHERE state_code = $1
         AND NULLIF(BTRIM(place_name), '') IS NOT NULL
@@ -3966,7 +3971,9 @@ async function listOperationalHeatmapGeography(options = {}) {
       .filter((place) => cleanRepositoryText(place.stateCode, 8).toUpperCase() === stateFilter)
       .map((place) => ({
         state_code: stateFilter,
-        city: cleanRepositoryText(place.name, 160)
+        city: cleanRepositoryText(place.name, 160),
+        latitude: Number.isFinite(Number(place.latitude)) ? Number(place.latitude) : null,
+        longitude: Number.isFinite(Number(place.longitude)) ? Number(place.longitude) : null
       }));
   }
 
@@ -3978,7 +3985,9 @@ async function listOperationalHeatmapGeography(options = {}) {
     cityMap.set(`${cityStateCode}|${city.toLowerCase()}`, {
       value: city,
       label: `${city}, ${cityStateCode}`,
-      stateCode: cityStateCode
+      stateCode: cityStateCode,
+      latitude: Number.isFinite(Number(row.latitude)) ? Number(row.latitude) : null,
+      longitude: Number.isFinite(Number(row.longitude)) ? Number(row.longitude) : null
     });
   }
 

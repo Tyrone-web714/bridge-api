@@ -46,6 +46,9 @@ function run() {
   }
   assert(source.includes('L.heatLayer'), 'Heatmap page must render weighted heat layers.');
   assert(source.includes('L.circleMarker'), 'Heatmap page must render inspectable signal points.');
+  assert(source.includes('map.flyToBounds(stateViews[stateCode].bounds'), 'State selection must frame the full state.');
+  assert(source.includes('map.flyTo([Number(cityOption.latitude)'), 'City selection must center on city coordinates.');
+  assert(source.includes('Signed in:'), 'Signed-in username must not appear as a second supervisor tab.');
   assert(source.includes('Signal Category'), 'Signal point details must label the signal category.');
   assert(source.includes('Account / Destination'), 'Signal point details must show account or destination.');
   assert(source.includes('Route Number'), 'Signal point details must show route number.');
