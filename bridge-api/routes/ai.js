@@ -155,6 +155,18 @@ function buildAccountGuidancePrompt() {
   ].join('\n');
 }
 
+function buildDeliveryFailureRiskPrompt() {
+  return [
+    'You are the predictive delivery-failure analyst for Truck-Safe Routing.',
+    'Use only the route manifests, undelivered stops, account summaries, order history, deductions, and route context supplied by the backend.',
+    'Estimate which deliveries are most likely to fail, run late, be refused, miss a time window, or require supervisor attention.',
+    'Do not invent weather, traffic, customer behavior, road conditions, driver behavior, payment status, or account facts.',
+    'Separate known facts from risk signals and recommendations.',
+    'If the data is not enough to predict confidently, mark confidence low and list the missing data.',
+    'AI predicts and recommends only. Dispatch, supervisors, route rules, and database records remain the source of truth.'
+  ].join('\n');
+}
+
 function normalizeRouteDate(value) {
   const raw = cleanText(value, 40);
   if (/^\d{4}-\d{2}-\d{2}$/.test(raw)) return raw;
@@ -622,6 +634,65 @@ const accountGuidanceSchema = {
   ]
 };
 
+const deliveryFailureRiskSchema = {
+  type: 'object',
+  additionalProperties: false,
+  properties: {
+    title: { type: 'string' },
+    summary: { type: 'string' },
+    overallRisk: { type: 'string', enum: ['unknown', 'low', 'medium', 'high', 'critical'] },
+    confidence: { type: 'string', enum: ['low', 'medium', 'high'] },
+    highRiskStops: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    },
+    riskFactors: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    },
+    timeWindowConcerns: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 6
+    },
+    deductionConcerns: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 6
+    },
+    redeliveryConcerns: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 6
+    },
+    recommendedActions: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    },
+    missingData: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    }
+  },
+  required: [
+    'title',
+    'summary',
+    'overallRisk',
+    'confidence',
+    'highRiskStops',
+    'riskFactors',
+    'timeWindowConcerns',
+    'deductionConcerns',
+    'redeliveryConcerns',
+    'recommendedActions',
+    'missingData'
+  ]
+};
+
 function compactAccountSummaryForAi(summary) {
   return {
     accountNumber: summary.accountNumber,
@@ -786,6 +857,20 @@ async function buildAccountGuidanceContext({ accountNumber, routeDate, requester
   });
 
   return context;
+}
+
+async function buildDeliveryFailureRiskContext({ accountNumber, routeDate, periodDays }) {
+  const supervisorContext = await buildSupervisorContext({ accountNumber, routeDate, periodDays });
+  return {
+    routeDate,
+    periodDays,
+    accountNumber: accountNumber || null,
+    recentRoutes: supervisorContext.recentRoutes,
+    undeliveredStops: supervisorContext.undeliveredStops,
+    recentOrders: supervisorContext.recentOrders,
+    account: supervisorContext.account,
+    accountInsights: supervisorContext.accountInsights
+  };
 }
 
 function compactHazardsForAi(hazards = {}) {
@@ -1441,6 +1526,77 @@ router.post('/account-guidance', requireAiAccess, requireAiConfigured, async (re
     return res.status(error.status || 500).json({
       ok: false,
       error: error.status ? error.message : 'AI account guidance failed.'
+    });
+  }
+});
+
+router.post('/delivery-failure-risk', requireAdminAiAccess, requireAiConfigured, async (req, res) => {
+  const startedAt = Date.now();
+  const requester = getRequester(req);
+  const accountNumber = cleanText(req.body?.accountNumber || req.body?.account_number, 120);
+  const routeDate = normalizeRouteDate(req.body?.routeDate || req.body?.route_date);
+  const periodDays = Number.parseInt(req.body?.periodDays || req.body?.period_days, 10) || 180;
+  let aiResult = null;
+
+  try {
+    const sourceContext = await buildDeliveryFailureRiskContext({ accountNumber, routeDate, periodDays });
+    aiResult = await aiProvider.createStructuredResponse({
+      endpoint: 'delivery-failure-risk',
+      instructions: buildDeliveryFailureRiskPrompt(),
+      input: sourceContext,
+      schemaName: 'truck_safe_delivery_failure_risk',
+      schema: deliveryFailureRiskSchema
+    });
+
+    await repositories.saveAiInteractionLog({
+      endpoint: 'delivery-failure-risk',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber: accountNumber || null,
+      model: aiResult.model,
+      status: 'success',
+      inputSummary: {
+        accountNumber: accountNumber || null,
+        routeDate,
+        periodDays,
+        routeCount: sourceContext.recentRoutes.length,
+        undeliveredStopCount: sourceContext.undeliveredStops.length,
+        orderCount: sourceContext.recentOrders.length
+      },
+      outputSummary: aiResult.parsed,
+      latencyMs: Date.now() - startedAt
+    });
+
+    return res.json({
+      ok: true,
+      requester,
+      accountNumber: accountNumber || null,
+      routeDate,
+      sourceContext,
+      ai: {
+        provider: 'openai',
+        model: aiResult.model,
+        store: false,
+        ...aiResult.parsed
+      }
+    });
+  } catch (error) {
+    await repositories.saveAiInteractionLog({
+      endpoint: 'delivery-failure-risk',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber: accountNumber || null,
+      model: aiResult?.model || aiProvider.getModel(),
+      status: 'error',
+      inputSummary: { accountNumber, routeDate, periodDays },
+      outputSummary: {},
+      errorMessage: error.message,
+      latencyMs: Date.now() - startedAt
+    }).catch(() => {});
+
+    return res.status(error.status || 500).json({
+      ok: false,
+      error: error.status ? error.message : 'AI delivery failure risk failed.'
     });
   }
 });

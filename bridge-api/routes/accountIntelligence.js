@@ -268,6 +268,7 @@ function renderAccountIntelligenceAdminPage(session) {
         <button onclick="generateRedeliveryPlan()">Redelivery Plan</button>
         <button onclick="explainRouteRisk()">Route Risk</button>
         <button onclick="summarizeDeliveryNotes()">Delivery Notes Summary</button>
+        <button onclick="predictDeliveryFailure()">Delivery Failure Risk</button>
       </div>
     </section>
 
@@ -469,6 +470,30 @@ function renderAccountIntelligenceAdminPage(session) {
         '</div>' +
         renderDebug(data);
     }
+    function renderDeliveryFailureRisk(data) {
+      const ai = data.ai || {};
+      const context = data.sourceContext || {};
+      result.innerHTML =
+        '<div class="summary-hero">' +
+          '<span class="badge">AI Delivery Failure Risk</span>' +
+          '<div class="summary-title">' + escapeHtml(ai.title || 'Delivery Failure Risk') + '</div>' +
+          '<div class="summary-subtitle">Route date: ' + escapeHtml(data.routeDate || 'today') +
+            ' - Overall risk: ' + escapeHtml(ai.overallRisk || 'unknown') +
+            ' - Confidence: ' + escapeHtml(ai.confidence || 'unknown') +
+            ' - Missed stops in context: ' + escapeHtml((context.undeliveredStops || []).length || 0) + '</div>' +
+        '</div>' +
+        '<div class="ai-summary">' + escapeHtml(ai.summary || 'No failure-risk summary returned.') + '</div>' +
+        '<div class="grid">' +
+          '<div class="content-card"><h3>High-Risk Stops</h3>' + listItems(ai.highRiskStops) + '</div>' +
+          '<div class="content-card"><h3>Risk Factors</h3>' + listItems(ai.riskFactors) + '</div>' +
+          '<div class="content-card"><h3>Time Window Concerns</h3>' + listItems(ai.timeWindowConcerns) + '</div>' +
+          '<div class="content-card"><h3>Deduction Concerns</h3>' + listItems(ai.deductionConcerns) + '</div>' +
+          '<div class="content-card"><h3>Redelivery Concerns</h3>' + listItems(ai.redeliveryConcerns) + '</div>' +
+          '<div class="content-card"><h3>Recommended Actions</h3>' + listItems(ai.recommendedActions) + '</div>' +
+          '<div class="content-card"><h3>Missing Data</h3>' + listItems(ai.missingData) + '</div>' +
+        '</div>' +
+        renderDebug(data);
+    }
     function renderAccountForecast(data) {
       const ai = data.ai || {};
       result.innerHTML =
@@ -650,6 +675,21 @@ function renderAccountIntelligenceAdminPage(session) {
             accountNumber,
             destination: document.getElementById('aiQuestion').value.trim(),
             routeDate: document.getElementById('aiRouteDate').value
+          })
+        }));
+      } catch (error) { setError(error); }
+    }
+    async function predictDeliveryFailure() {
+      try {
+        const fallbackAccountNumber = document.getElementById('accountNumber').value.trim();
+        const accountNumber = document.getElementById('aiAccountNumber').value.trim() || fallbackAccountNumber;
+        const periodDays = Number(document.getElementById('periodDays').value.trim() || '180');
+        renderDeliveryFailureRisk(await requestJson('/api/ai/delivery-failure-risk', {
+          method: 'POST',
+          body: JSON.stringify({
+            accountNumber,
+            routeDate: document.getElementById('aiRouteDate').value,
+            periodDays
           })
         }));
       } catch (error) { setError(error); }
