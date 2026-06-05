@@ -96,6 +96,17 @@ function buildAccountForecastPrompt() {
   ].join('\n');
 }
 
+function buildRedeliveryPlanPrompt() {
+  return [
+    'You are the AI redelivery recovery planner for Truck-Safe Routing.',
+    'Use only the undelivered stop, route, account, product, and order data supplied by the backend.',
+    'Group missed deliveries into practical supervisor actions: redeliver, call customer, cancel review, or route planning review.',
+    'Do not invent customer promises, driver behavior, inventory, weather, traffic, or account facts.',
+    'If the backend does not provide enough context, list the missing data instead of guessing.',
+    'AI recommends only. Supervisors make final redelivery and cancellation decisions.'
+  ].join('\n');
+}
+
 function normalizeRouteDate(value) {
   const raw = cleanText(value, 40);
   if (/^\d{4}-\d{2}-\d{2}$/.test(raw)) return raw;
@@ -299,6 +310,55 @@ const accountForecastSchema = {
     'reorderSignals',
     'deductionRisks',
     'deliveryRisks',
+    'recommendedActions',
+    'missingData'
+  ]
+};
+
+const redeliveryPlanSchema = {
+  type: 'object',
+  additionalProperties: false,
+  properties: {
+    title: { type: 'string' },
+    summary: { type: 'string' },
+    redeliveryCandidates: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    },
+    customerContactNeeded: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    },
+    cancelReviewCandidates: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    },
+    routePlanningIssues: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    },
+    recommendedActions: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    },
+    missingData: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 8
+    }
+  },
+  required: [
+    'title',
+    'summary',
+    'redeliveryCandidates',
+    'customerContactNeeded',
+    'cancelReviewCandidates',
+    'routePlanningIssues',
     'recommendedActions',
     'missingData'
   ]
@@ -731,6 +791,74 @@ router.post('/account-forecast', requireAdminAiAccess, requireAiConfigured, asyn
     return res.status(error.status || 500).json({
       ok: false,
       error: error.status ? error.message : 'AI account forecast failed.'
+    });
+  }
+});
+
+router.post('/redelivery-plan', requireAdminAiAccess, requireAiConfigured, async (req, res) => {
+  const startedAt = Date.now();
+  const requester = getRequester(req);
+  const routeDate = normalizeRouteDate(req.body?.routeDate || req.body?.route_date);
+  const periodDays = Number.parseInt(req.body?.periodDays || req.body?.period_days, 10) || 180;
+  let aiResult = null;
+
+  try {
+    const sourceContext = await buildSupervisorContext({ routeDate, periodDays });
+    aiResult = await aiProvider.createStructuredResponse({
+      endpoint: 'redelivery-plan',
+      instructions: buildRedeliveryPlanPrompt(),
+      input: sourceContext,
+      schemaName: 'truck_safe_redelivery_plan',
+      schema: redeliveryPlanSchema
+    });
+
+    await repositories.saveAiInteractionLog({
+      endpoint: 'redelivery-plan',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber: null,
+      model: aiResult.model,
+      status: 'success',
+      inputSummary: {
+        routeDate,
+        periodDays,
+        routeCount: sourceContext.recentRoutes.length,
+        undeliveredStopCount: sourceContext.undeliveredStops.length,
+        orderCount: sourceContext.recentOrders.length
+      },
+      outputSummary: aiResult.parsed,
+      latencyMs: Date.now() - startedAt
+    });
+
+    return res.json({
+      ok: true,
+      requester,
+      routeDate,
+      sourceContext,
+      ai: {
+        provider: 'openai',
+        model: aiResult.model,
+        store: false,
+        ...aiResult.parsed
+      }
+    });
+  } catch (error) {
+    await repositories.saveAiInteractionLog({
+      endpoint: 'redelivery-plan',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber: null,
+      model: aiResult?.model || aiProvider.getModel(),
+      status: 'error',
+      inputSummary: { routeDate, periodDays },
+      outputSummary: {},
+      errorMessage: error.message,
+      latencyMs: Date.now() - startedAt
+    }).catch(() => {});
+
+    return res.status(error.status || 500).json({
+      ok: false,
+      error: error.status ? error.message : 'AI redelivery plan failed.'
     });
   }
 });

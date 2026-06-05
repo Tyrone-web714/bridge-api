@@ -263,6 +263,7 @@ function renderAccountIntelligenceAdminPage(session) {
       <div class="actions" style="margin-top:14px">
         <button class="primary" onclick="askSupervisorAi()">Ask AI</button>
         <button class="gold" onclick="generateSupervisorBrief()">Generate Morning Brief</button>
+        <button onclick="generateRedeliveryPlan()">Redelivery Plan</button>
       </div>
     </section>
 
@@ -391,6 +392,27 @@ function renderAccountIntelligenceAdminPage(session) {
         '</div>' +
         renderDebug(data);
     }
+    function renderRedeliveryPlan(data) {
+      const ai = data.ai || {};
+      const source = data.sourceContext || {};
+      result.innerHTML =
+        '<div class="summary-hero">' +
+          '<span class="badge">AI Redelivery Recovery</span>' +
+          '<div class="summary-title">' + escapeHtml(ai.title || 'Redelivery Plan') + '</div>' +
+          '<div class="summary-subtitle">Route date: ' + escapeHtml(data.routeDate || 'today') +
+            ' - Missed stops: ' + escapeHtml((source.undeliveredStops || []).length || 0) + '</div>' +
+        '</div>' +
+        '<div class="ai-summary">' + escapeHtml(ai.summary || 'No redelivery plan returned.') + '</div>' +
+        '<div class="grid">' +
+          '<div class="content-card"><h3>Redelivery Candidates</h3>' + listItems(ai.redeliveryCandidates) + '</div>' +
+          '<div class="content-card"><h3>Customer Contact Needed</h3>' + listItems(ai.customerContactNeeded) + '</div>' +
+          '<div class="content-card"><h3>Cancel Review Candidates</h3>' + listItems(ai.cancelReviewCandidates) + '</div>' +
+          '<div class="content-card"><h3>Route Planning Issues</h3>' + listItems(ai.routePlanningIssues) + '</div>' +
+          '<div class="content-card"><h3>Recommended Actions</h3>' + listItems(ai.recommendedActions) + '</div>' +
+          '<div class="content-card"><h3>Missing Data</h3>' + listItems(ai.missingData) + '</div>' +
+        '</div>' +
+        renderDebug(data);
+    }
     function renderAccountForecast(data) {
       const ai = data.ai || {};
       result.innerHTML =
@@ -499,6 +521,18 @@ function renderAccountIntelligenceAdminPage(session) {
       try {
         const periodDays = Number(document.getElementById('periodDays').value.trim() || '180');
         renderSupervisorBrief(await requestJson('/api/ai/supervisor-brief', {
+          method: 'POST',
+          body: JSON.stringify({
+            routeDate: document.getElementById('aiRouteDate').value,
+            periodDays
+          })
+        }));
+      } catch (error) { setError(error); }
+    }
+    async function generateRedeliveryPlan() {
+      try {
+        const periodDays = Number(document.getElementById('periodDays').value.trim() || '180');
+        renderRedeliveryPlan(await requestJson('/api/ai/redelivery-plan', {
           method: 'POST',
           body: JSON.stringify({
             routeDate: document.getElementById('aiRouteDate').value,
