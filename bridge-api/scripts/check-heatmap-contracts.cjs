@@ -33,6 +33,27 @@ function run() {
   }
   assert(source.includes('L.heatLayer'), 'Heatmap page must render weighted heat layers.');
   assert(source.includes('L.circleMarker'), 'Heatmap page must render inspectable signal points.');
+  assert(source.includes('Signal Category'), 'Signal point details must label the signal category.');
+  assert(source.includes('Account / Destination'), 'Signal point details must show account or destination.');
+  assert(source.includes('Route Number'), 'Signal point details must show route number.');
+  assert(source.includes('Event Weight'), 'Signal point details must show event weight.');
+  assert(source.includes('Date and Time'), 'Signal point details must show date and time.');
+  assert(source.includes('select option'), 'Lookback options must have explicit readable colors.');
+  for (const filterId of [
+    'stateCode',
+    'city',
+    'territory',
+    'routeGroup',
+    'distributionCenter'
+  ]) {
+    assert(source.includes(`id="${filterId}"`), `Missing geographic filter ${filterId}.`);
+  }
+  assert(source.includes('supervisorUsername'), 'Heatmap data must enforce supervisor-team scoping.');
+  assert(source.includes('regionalAccess'), 'Heatmap must distinguish regional and supervisor access.');
+  assert(source.includes('fourStateBounds'), 'Regional map must support the four-state overview.');
+  assert(source.includes('byState'), 'Heatmap response must include state summaries.');
+  assert(source.includes('byTerritory'), 'Heatmap response must include territory summaries.');
+  assert(source.includes('frameOperatingArea'), 'Map must automatically frame the selected operating area.');
 
   const serverSource = fs.readFileSync(path.join(__dirname, '..', 'server.js'), 'utf8');
   assert(
@@ -40,7 +61,7 @@ function run() {
     'Operational heatmap router is not mounted.'
   );
 
-  console.log('[test:heatmaps] admin, data, category, and map-rendering contracts verified.');
+  console.log('[test:heatmaps] visibility, geographic scope, authorization, summary, and map contracts verified.');
 }
 
 run();

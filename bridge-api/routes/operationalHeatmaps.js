@@ -13,6 +13,13 @@ const CATEGORY_CONFIG = {
   revenue: { label: 'Recorded Revenue', color: '#55e08a' }
 };
 
+const SERVICE_AREA_STATES = [
+  { code: 'TX', name: 'Texas' },
+  { code: 'OK', name: 'Oklahoma' },
+  { code: 'NM', name: 'New Mexico' },
+  { code: 'AR', name: 'Arkansas' }
+];
+
 function requireAdminSession(req, res, next) {
   const session = adminAuth.getAdminSession(req);
   if (!session) {
@@ -38,6 +45,35 @@ function normalizeRouteDate(value) {
   return /^\d{4}-\d{2}-\d{2}$/.test(cleaned) ? cleaned : null;
 }
 
+function isRegionalAdministrator(session) {
+  return ['admin', 'regional_admin', 'regional'].includes(
+    cleanText(session?.role || '', 40).toLowerCase()
+  );
+}
+
+function uniqueSorted(values) {
+  return [...new Set(values.map((value) => cleanText(value, 200)).filter(Boolean))]
+    .sort((left, right) => left.localeCompare(right));
+}
+
+function summarizeDimension(signals, key) {
+  const summary = {};
+  for (const signal of signals) {
+    const label = cleanText(signal[key] || 'Unspecified', 200) || 'Unspecified';
+    const current = summary[label] || { count: 0, totalWeight: 0 };
+    current.count += 1;
+    current.totalWeight += Number(signal.weight) || 0;
+    summary[label] = current;
+  }
+  return Object.entries(summary)
+    .map(([label, values]) => ({
+      label,
+      count: values.count,
+      totalWeight: Math.round(values.totalWeight * 10) / 10
+    }))
+    .sort((left, right) => right.totalWeight - left.totalWeight || left.label.localeCompare(right.label));
+}
+
 function buildSummary(signals) {
   const categories = {};
   let totalWeight = 0;
@@ -55,8 +91,57 @@ function buildSummary(signals) {
   return {
     signalCount: signals.length,
     totalWeight: Math.round(totalWeight * 10) / 10,
-    categories
+    categories,
+    byState: summarizeDimension(signals, 'stateCode'),
+    byTerritory: summarizeDimension(signals, 'territory')
   };
+}
+
+function buildFilterOptions(signals, regionalAccess, filters = {}) {
+  const recordedStateCodes = uniqueSorted(signals.map((signal) => signal.stateCode));
+  const byState = filterSignals(signals, { stateCode: filters.stateCode });
+  const byCity = filterSignals(byState, { city: filters.city });
+  const byTerritory = filterSignals(byCity, { territory: filters.territory });
+  const byRouteGroup = filterSignals(byTerritory, { routeGroup: filters.routeGroup });
+  return {
+    states: regionalAccess
+      ? SERVICE_AREA_STATES
+      : SERVICE_AREA_STATES.filter((state) => recordedStateCodes.includes(state.code)),
+    cities: uniqueSorted(byState.map((signal) => signal.city)),
+    territories: uniqueSorted(byCity.map((signal) => signal.territory)),
+    routeGroups: uniqueSorted(byTerritory.map((signal) => signal.routeGroup)),
+    distributionCenters: uniqueSorted(byRouteGroup.map((signal) => signal.distributionCenter))
+  };
+}
+
+function buildAccess(session, signals) {
+  const regionalAccess = isRegionalAdministrator(session);
+  const coordinates = signals
+    .filter((signal) => Number.isFinite(signal.latitude) && Number.isFinite(signal.longitude))
+    .map((signal) => [signal.latitude, signal.longitude]);
+  return {
+    mode: regionalAccess ? 'regional' : 'supervisor_team',
+    role: cleanText(session?.role || 'supervisor', 40),
+    username: cleanText(session?.username || 'supervisor', 80),
+    regionalAccess,
+    permittedStates: regionalAccess
+      ? SERVICE_AREA_STATES.map((state) => state.code)
+      : uniqueSorted(signals.map((signal) => signal.stateCode)),
+    teamNames: uniqueSorted(signals.map((signal) => signal.teamName)),
+    defaultBounds: coordinates.length ? coordinates : null
+  };
+}
+
+function filterSignals(signals, filters) {
+  const matches = (actual, expected) => !expected ||
+    cleanText(actual, 200).toLowerCase() === cleanText(expected, 200).toLowerCase();
+  return signals.filter((signal) => (
+    matches(signal.stateCode, filters.stateCode) &&
+    matches(signal.city, filters.city) &&
+    matches(signal.territory, filters.territory) &&
+    matches(signal.routeGroup, filters.routeGroup) &&
+    matches(signal.distributionCenter, filters.distributionCenter)
+  ));
 }
 
 function renderHeatmapPage(session) {
@@ -73,7 +158,7 @@ function renderHeatmapPage(session) {
     :root {
       color-scheme: dark;
       --bg: #061019;
-      --panel: rgba(7, 20, 30, 0.9);
+      --panel: rgba(7, 20, 30, 0.94);
       --line: rgba(255,255,255,0.16);
       --text: #f3fbff;
       --muted: #a9bdc7;
@@ -94,13 +179,21 @@ function renderHeatmapPage(session) {
       color: var(--text); background: rgba(255,255,255,0.09); text-decoration: none; font-weight: 900; cursor: pointer;
     }
     button.primary { color: #03151c; background: var(--cyan); border: 0; }
-    .workspace { min-height: calc(100vh - 104px); display: grid; grid-template-columns: minmax(270px, 340px) 1fr; }
+    button:disabled { cursor: wait; opacity: 0.65; }
+    .workspace { min-height: calc(100vh - 104px); display: grid; grid-template-columns: minmax(300px, 370px) 1fr; }
     aside { padding: 20px; border-right: 1px solid var(--line); background: var(--panel); overflow-y: auto; }
     .control-group { display: grid; gap: 10px; margin-bottom: 22px; }
+    .section-title { margin: 0; font-size: 15px; }
     label { display: grid; gap: 6px; color: var(--muted); font-size: 13px; font-weight: 800; }
     input, select {
       width: 100%; border: 1px solid var(--line); border-radius: 10px; padding: 11px;
-      color: var(--text); background: rgba(255,255,255,0.07); font: inherit;
+      color: var(--text); background: #102536; font: inherit;
+    }
+    select { color-scheme: dark; }
+    select option { color: #f3fbff; background: #102536; }
+    .scope {
+      padding: 12px; border-left: 4px solid var(--cyan); border-radius: 8px;
+      color: #d9f9ff; background: rgba(25,211,230,0.1); font-size: 13px; line-height: 1.45;
     }
     .layer-option {
       display: grid; grid-template-columns: 22px 14px 1fr auto; align-items: center; gap: 9px;
@@ -110,14 +203,27 @@ function renderHeatmapPage(session) {
     .swatch { width: 12px; height: 12px; border-radius: 3px; }
     .layer-count { color: var(--muted); font-size: 12px; font-weight: 900; }
     .metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .metric { padding: 12px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,255,255,0.06); }
+    .metric, .details-card {
+      padding: 12px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,255,255,0.06);
+    }
     .metric span { display: block; color: var(--muted); font-size: 11px; font-weight: 900; text-transform: uppercase; }
     .metric strong { display: block; margin-top: 5px; font-size: 22px; }
+    .summary-list { display: grid; gap: 7px; margin-top: 8px; }
+    .summary-row { display: grid; grid-template-columns: 1fr auto; gap: 8px; color: var(--muted); font-size: 12px; }
+    .summary-row strong { color: var(--text); }
+    .point-grid { display: grid; gap: 8px; margin-top: 10px; }
+    .point-row { display: grid; gap: 2px; }
+    .point-row span { color: var(--cyan); font-size: 10px; font-weight: 900; text-transform: uppercase; }
+    .point-row strong { overflow-wrap: anywhere; font-size: 13px; }
     #map { min-height: calc(100vh - 104px); background: #102536; }
     .status { margin-top: 14px; color: var(--muted); font-size: 13px; }
     .leaflet-popup-content-wrapper, .leaflet-popup-tip { color: var(--text); background: #102536; }
-    .popup-title { font-weight: 900; margin-bottom: 5px; }
-    .popup-meta { color: #bdd0d9; font-size: 12px; line-height: 1.4; }
+    .leaflet-popup-content { min-width: 250px; margin: 14px 16px; }
+    .popup-title { color: var(--cyan); font-weight: 900; margin-bottom: 9px; }
+    .popup-grid { display: grid; gap: 7px; }
+    .popup-row { display: grid; gap: 1px; }
+    .popup-row span { color: #82dfea; font-size: 10px; font-weight: 900; text-transform: uppercase; }
+    .popup-row strong { color: #f3fbff; overflow-wrap: anywhere; font-size: 12px; }
     @media (max-width: 820px) {
       .workspace { grid-template-columns: 1fr; }
       aside { border-right: 0; border-bottom: 1px solid var(--line); }
@@ -130,12 +236,22 @@ function renderHeatmapPage(session) {
     <div>
       <div><a class="pill" href="/api/admin">Supervisor Dashboard</a> <span class="pill">${username}</span></div>
       <h1>Operational Heatmaps</h1>
-      <p>Recorded operational signals only. Toggle layers to isolate recurring delay, failure, deduction, hazard, route-event, and revenue concentration.</p>
+      <p>Recorded operational signals only. Geographic access is derived from administrator role or supervisor driver-team assignments.</p>
     </div>
   </header>
   <main class="workspace">
     <aside>
+      <div id="accessScope" class="scope">Loading permitted operating area...</div>
+      <div class="control-group" style="margin-top:18px">
+        <strong class="section-title">Geographic Refinement</strong>
+        <label>State / Area<select id="stateCode"><option value="">All permitted states</option></select></label>
+        <label>City<select id="city"><option value="">All cities</option></select></label>
+        <label>Territory<select id="territory"><option value="">All territories</option></select></label>
+        <label>Route Group<select id="routeGroup"><option value="">All route groups</option></select></label>
+        <label>Distribution Center<select id="distributionCenter"><option value="">All distribution centers</option></select></label>
+      </div>
       <div class="control-group">
+        <strong class="section-title">Time Range</strong>
         <label>Specific Route Date (optional)<input id="routeDate" type="date" /></label>
         <label>Historical Lookback
           <select id="periodDays">
@@ -149,12 +265,20 @@ function renderHeatmapPage(session) {
         <button class="primary" id="refreshButton" type="button">Refresh Map</button>
       </div>
       <div class="control-group">
-        <strong>Signal Layers</strong>
+        <strong class="section-title">Signal Layers</strong>
         <div id="layerControls"></div>
       </div>
       <div class="metrics">
         <div class="metric"><span>Visible Signals</span><strong id="signalCount">0</strong></div>
         <div class="metric"><span>Total Weight</span><strong id="totalWeight">0</strong></div>
+      </div>
+      <div class="control-group" style="margin-top:22px">
+        <strong class="section-title">Area Summary</strong>
+        <div id="geographicSummary" class="details-card">No summary loaded.</div>
+      </div>
+      <div class="control-group">
+        <strong class="section-title">Selected Map Point</strong>
+        <div id="selectedSignal" class="details-card">Select a colored point on the map to inspect its recorded details.</div>
       </div>
       <div id="status" class="status">Loading operational signals...</div>
     </aside>
@@ -165,7 +289,19 @@ function renderHeatmapPage(session) {
   <script>
     const categoryConfig = ${categoryJson};
     const activeCategories = new Set(Object.keys(categoryConfig));
-    const map = L.map('map', { zoomControl: true }).setView([29.4241, -98.4936], 10);
+    const stateViews = {
+      TX: { center: [31.2, -99.2], zoom: 6 },
+      OK: { center: [35.5, -97.5], zoom: 7 },
+      NM: { center: [34.5, -106.0], zoom: 6 },
+      AR: { center: [34.8, -92.3], zoom: 7 }
+    };
+    const fourStateBounds = [[25.8, -109.1], [37.1, -89.6]];
+    const map = L.map('map', { zoomControl: true }).fitBounds(fourStateBounds, { padding: [24, 24] });
+    map.createPane('heatPane');
+    map.getPane('heatPane').style.zIndex = 350;
+    map.getPane('heatPane').style.pointerEvents = 'none';
+    map.createPane('signalPane');
+    map.getPane('signalPane').style.zIndex = 650;
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '&copy; OpenStreetMap contributors'
@@ -173,6 +309,7 @@ function renderHeatmapPage(session) {
 
     let signals = [];
     let renderedLayers = [];
+    let latestAccess = null;
 
     function escapeHtml(value) {
       return String(value ?? '').replace(/[&<>"']/g, function (character) {
@@ -180,14 +317,68 @@ function renderHeatmapPage(session) {
       });
     }
 
+    function displayValue(value, fallback) {
+      const cleaned = String(value ?? '').trim();
+      return cleaned || fallback || 'Not recorded';
+    }
+
+    function formatDateTime(value) {
+      if (!value) return 'Not recorded';
+      const parsed = new Date(value);
+      return Number.isNaN(parsed.getTime()) ? String(value) : parsed.toLocaleString();
+    }
+
+    function pointRows(signal, config) {
+      return [
+        ['Signal Category', config.label],
+        ['Signal Type', displayValue(signal.signalType)],
+        ['Account / Destination', displayValue(signal.accountName || signal.accountNumber || signal.destinationAddress)],
+        ['Address', displayValue(signal.destinationAddress)],
+        ['Route Number', displayValue(signal.routeNumber)],
+        ['Event Weight', Number(signal.weight || 0).toFixed(1)],
+        ['Date and Time', formatDateTime(signal.occurredAt)]
+      ];
+    }
+
+    function renderPointDetails(signal, config) {
+      return '<div class="point-grid">' + pointRows(signal, config).map(function (row) {
+        return '<div class="point-row"><span>' + escapeHtml(row[0]) + '</span><strong>' +
+          escapeHtml(row[1]) + '</strong></div>';
+      }).join('') + '</div>';
+    }
+
+    function renderPopup(signal, config) {
+      return '<div class="popup-title">Recorded Operational Signal</div><div class="popup-grid">' +
+        pointRows(signal, config).map(function (row) {
+          return '<div class="popup-row"><span>' + escapeHtml(row[0]) + '</span><strong>' +
+            escapeHtml(row[1]) + '</strong></div>';
+        }).join('') + '</div>';
+    }
+
+    function populateSelect(id, options, placeholder, valueKey, labelKey) {
+      const select = document.getElementById(id);
+      const previous = select.value;
+      const items = Array.isArray(options) ? options : [];
+      select.innerHTML = '<option value="">' + escapeHtml(placeholder) + '</option>' +
+        items.map(function (item) {
+          const value = typeof item === 'string' ? item : item[valueKey || 'value'];
+          const label = typeof item === 'string' ? item : item[labelKey || 'label'];
+          return '<option value="' + escapeHtml(value) + '">' + escapeHtml(label) + '</option>';
+        }).join('');
+      if ([...select.options].some(function (option) { return option.value === previous; })) {
+        select.value = previous;
+      }
+    }
+
     function buildLayerControls(summary) {
       const container = document.getElementById('layerControls');
       container.innerHTML = Object.entries(categoryConfig).map(function (entry) {
         const category = entry[0];
         const config = entry[1];
-        const count = summary.categories?.[category]?.count || 0;
+        const count = summary.categories && summary.categories[category] ? summary.categories[category].count : 0;
         return '<label class="layer-option">' +
-          '<input type="checkbox" data-category="' + category + '" checked />' +
+          '<input type="checkbox" data-category="' + category + '"' +
+            (activeCategories.has(category) ? ' checked' : '') + ' />' +
           '<span class="swatch" style="background:' + config.color + '"></span>' +
           '<span>' + escapeHtml(config.label) + '</span>' +
           '<span class="layer-count">' + count + '</span>' +
@@ -202,9 +393,56 @@ function renderHeatmapPage(session) {
       });
     }
 
+    function renderGeographicSummary(summary, access) {
+      const primary = access && access.regionalAccess ? summary.byState : summary.byTerritory;
+      const title = access && access.regionalAccess ? 'State overview' : 'Territory overview';
+      const rows = Array.isArray(primary) ? primary : [];
+      document.getElementById('geographicSummary').innerHTML =
+        '<strong>' + escapeHtml(title) + '</strong>' +
+        '<div class="summary-list">' +
+          (rows.length ? rows.map(function (entry) {
+            return '<div class="summary-row"><span>' + escapeHtml(entry.label) + '</span>' +
+              '<strong>' + entry.count + ' signals / ' + Number(entry.totalWeight || 0).toFixed(1) + '</strong></div>';
+          }).join('') : '<span class="status">No recorded signals for this selection.</span>') +
+        '</div>';
+    }
+
+    function renderAccess(access) {
+      latestAccess = access || {};
+      const states = (latestAccess.permittedStates || []).join(', ') || 'No recorded state';
+      const teams = (latestAccess.teamNames || []).join(', ');
+      document.getElementById('accessScope').textContent = latestAccess.regionalAccess
+        ? 'Regional administrator view: Texas, Oklahoma, New Mexico, and Arkansas.'
+        : 'Supervisor team view for ' + displayValue(latestAccess.username, 'current supervisor') +
+          '. Permitted states: ' + states + (teams ? '. Teams: ' + teams : '.');
+    }
+
     function clearRenderedLayers() {
       for (const layer of renderedLayers) map.removeLayer(layer);
       renderedLayers = [];
+    }
+
+    function frameOperatingArea(bounds, fitMap) {
+      if (!fitMap) return;
+      if (bounds.length === 1) {
+        map.setView(bounds[0], 13);
+        return;
+      }
+      if (bounds.length > 1) {
+        map.fitBounds(bounds, { padding: [34, 34], maxZoom: 14 });
+        return;
+      }
+      const stateCode = document.getElementById('stateCode').value;
+      if (stateCode && stateViews[stateCode]) {
+        map.setView(stateViews[stateCode].center, stateViews[stateCode].zoom);
+        return;
+      }
+      if (latestAccess && !latestAccess.regionalAccess && Array.isArray(latestAccess.defaultBounds) &&
+          latestAccess.defaultBounds.length) {
+        map.fitBounds(latestAccess.defaultBounds, { padding: [34, 34], maxZoom: 12 });
+        return;
+      }
+      map.fitBounds(fourStateBounds, { padding: [24, 24] });
     }
 
     function renderSignals(fitMap) {
@@ -225,6 +463,7 @@ function renderHeatmapPage(session) {
           return [signal.latitude, signal.longitude, Math.min(1, Math.max(0.15, Number(signal.weight || 1) / 10))];
         });
         const heat = L.heatLayer(heatPoints, {
+          pane: 'heatPane',
           radius: 28,
           blur: 22,
           minOpacity: 0.34,
@@ -235,21 +474,25 @@ function renderHeatmapPage(session) {
 
         for (const signal of categorySignals) {
           const marker = L.circleMarker([signal.latitude, signal.longitude], {
-            radius: Math.min(10, 4 + Number(signal.weight || 1) / 2),
-            color: config.color,
+            pane: 'signalPane',
+            radius: Math.min(12, 6 + Number(signal.weight || 1) / 2),
+            color: '#ffffff',
             weight: 2,
             fillColor: config.color,
-            fillOpacity: 0.68
-          }).bindPopup(
-            '<div class="popup-title">' + escapeHtml(config.label) + '</div>' +
-            '<div class="popup-meta">' +
-              escapeHtml(signal.accountName || signal.destinationAddress || signal.signalType || 'Recorded signal') + '<br>' +
-              (signal.destinationAddress ? escapeHtml(signal.destinationAddress) + '<br>' : '') +
-              (signal.routeNumber ? 'Route ' + escapeHtml(signal.routeNumber) + '<br>' : '') +
-              'Weight: ' + escapeHtml(signal.weight) + '<br>' +
-              escapeHtml(signal.occurredAt || '') +
-            '</div>'
-          ).addTo(map);
+            fillOpacity: 0.92,
+            interactive: true,
+            bubblingMouseEvents: false
+          })
+            .bindPopup(renderPopup(signal, config), { maxWidth: 330 })
+            .bindTooltip(config.label + ': ' +
+              displayValue(signal.accountName || signal.destinationAddress || signal.signalType), {
+                direction: 'top',
+                opacity: 0.95
+              })
+            .on('click', function () {
+              document.getElementById('selectedSignal').innerHTML = renderPointDetails(signal, config);
+            })
+            .addTo(map);
           renderedLayers.push(marker);
         }
       }
@@ -258,29 +501,46 @@ function renderHeatmapPage(session) {
       document.getElementById('totalWeight').textContent = visible
         .reduce(function (sum, signal) { return sum + Number(signal.weight || 0); }, 0)
         .toFixed(1);
-      if (fitMap && bounds.length) map.fitBounds(bounds, { padding: [34, 34], maxZoom: 14 });
+      frameOperatingArea(bounds, fitMap);
+    }
+
+    function currentParams() {
+      const params = new URLSearchParams({
+        periodDays: document.getElementById('periodDays').value
+      });
+      for (const id of ['stateCode', 'city', 'territory', 'routeGroup', 'distributionCenter']) {
+        const value = document.getElementById(id).value;
+        if (value) params.set(id, value);
+      }
+      const routeDate = document.getElementById('routeDate').value;
+      if (routeDate) params.set('routeDate', routeDate);
+      return params;
     }
 
     async function loadSignals() {
       const button = document.getElementById('refreshButton');
       const status = document.getElementById('status');
       button.disabled = true;
-      status.textContent = 'Loading operational signals...';
-      const params = new URLSearchParams({
-        periodDays: document.getElementById('periodDays').value
-      });
-      const routeDate = document.getElementById('routeDate').value;
-      if (routeDate) params.set('routeDate', routeDate);
+      status.textContent = 'Loading authorized operational signals...';
       try {
-        const response = await fetch('/api/operational-heatmaps/data?' + params.toString());
+        const response = await fetch('/api/operational-heatmaps/data?' + currentParams().toString());
         const data = await response.json().catch(function () { return {}; });
         if (!response.ok) throw new Error(data.error || 'Heatmap request failed.');
         signals = Array.isArray(data.signals) ? data.signals : [];
+        renderAccess(data.access);
+        populateSelect('stateCode', data.filterOptions && data.filterOptions.states, 'All permitted states', 'code', 'name');
+        populateSelect('city', data.filterOptions && data.filterOptions.cities, 'All cities');
+        populateSelect('territory', data.filterOptions && data.filterOptions.territories, 'All territories');
+        populateSelect('routeGroup', data.filterOptions && data.filterOptions.routeGroups, 'All route groups');
+        populateSelect('distributionCenter', data.filterOptions && data.filterOptions.distributionCenters, 'All distribution centers');
         buildLayerControls(data.summary || { categories: {} });
+        renderGeographicSummary(data.summary || {}, data.access || {});
+        document.getElementById('selectedSignal').textContent =
+          'Select a colored point on the map to inspect its recorded details.';
         renderSignals(true);
         status.textContent = signals.length
-          ? 'Showing source-of-truth signals from the selected period.'
-          : 'No geocoded operational signals were recorded for this period.';
+          ? 'Showing authorized source-of-truth signals. Select any colored point for full details.'
+          : 'No geocoded operational signals were recorded for this selection.';
       } catch (error) {
         clearRenderedLayers();
         status.textContent = error.message || 'Heatmap request failed.';
@@ -290,6 +550,23 @@ function renderHeatmapPage(session) {
     }
 
     document.getElementById('refreshButton').addEventListener('click', loadSignals);
+    const geographicHierarchy = [
+      'stateCode',
+      'city',
+      'territory',
+      'routeGroup',
+      'distributionCenter'
+    ];
+    geographicHierarchy.forEach(function (id, index) {
+      document.getElementById(id).addEventListener('change', function () {
+        geographicHierarchy.slice(index + 1).forEach(function (downstreamId) {
+          document.getElementById(downstreamId).value = '';
+        });
+        loadSignals();
+      });
+    });
+    document.getElementById('routeDate').addEventListener('change', loadSignals);
+    document.getElementById('periodDays').addEventListener('change', loadSignals);
     loadSignals();
   </script>
 </body>
@@ -305,15 +582,36 @@ router.get('/data', requireAdminSession, async (req, res) => {
   try {
     const routeDate = normalizeRouteDate(req.query?.routeDate || req.query?.route_date);
     const periodDays = normalizePeriodDays(req.query?.periodDays || req.query?.period_days);
-    const signals = await repositories.listOperationalHeatmapSignals({
+    const regionalAccess = isRegionalAdministrator(req.adminSession);
+    const supervisorUsername = regionalAccess ? null : cleanText(req.adminSession.username, 120).toLowerCase();
+    const filters = {
+      stateCode: cleanText(req.query?.stateCode || req.query?.state_code, 8).toUpperCase(),
+      city: cleanText(req.query?.city, 160),
+      territory: cleanText(req.query?.territory, 160),
+      routeGroup: cleanText(req.query?.routeGroup || req.query?.route_group, 160),
+      distributionCenter: cleanText(
+        req.query?.distributionCenter || req.query?.distribution_center,
+        200
+      )
+    };
+
+    const authorizedSignals = await repositories.listOperationalHeatmapSignals({
       routeDate,
       periodDays,
-      limit: 2000
+      supervisorUsername,
+      limit: 5000
     });
+    const access = buildAccess(req.adminSession, authorizedSignals);
+    const filterOptions = buildFilterOptions(authorizedSignals, regionalAccess, filters);
+    const signals = filterSignals(authorizedSignals, filters);
+
     return res.json({
       ok: true,
       routeDate,
       periodDays,
+      filters,
+      access,
+      filterOptions,
       generatedAt: new Date().toISOString(),
       categories: CATEGORY_CONFIG,
       summary: buildSummary(signals),

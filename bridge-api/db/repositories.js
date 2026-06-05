@@ -3371,7 +3371,8 @@ async function listRouteCompletionSignals(options = {}) {
 async function listOperationalHeatmapSignals(options = {}) {
   const periodDays = normalizeLimit(options.periodDays, 30, 365);
   const routeDate = toDateOnly(options.routeDate) || null;
-  const limit = normalizeLimit(options.limit, 500, 2000);
+  const supervisorUsername = cleanRepositoryText(options.supervisorUsername, 120) || null;
+  const limit = normalizeLimit(options.limit, 1000, 5000);
   const result = await postgres.query(`
     WITH signals AS (
       SELECT
@@ -3388,6 +3389,14 @@ async function listOperationalHeatmapSignals(options = {}) {
         stop.account_number,
         stop.account_name,
         stop.destination_address,
+        stop.city,
+        stop.state_code,
+        manifest.start_location AS distribution_center,
+        driver.territory,
+        driver.route_group,
+        driver.supervisor_username,
+        driver.team_name,
+        driver.driver_id,
         jsonb_build_object(
           'plannedArrivalAt', stop.planned_arrival_at,
           'actualArrivalAt', stop.actual_arrival_at,
@@ -3395,11 +3404,13 @@ async function listOperationalHeatmapSignals(options = {}) {
         ) AS details
       FROM daily_route_stops AS stop
       JOIN daily_route_manifests AS manifest ON manifest.id = stop.manifest_id
+      LEFT JOIN drivers AS driver ON driver.driver_id = manifest.assigned_driver_id
       WHERE stop.latitude IS NOT NULL
         AND stop.longitude IS NOT NULL
         AND stop.actual_arrival_at > stop.planned_arrival_at + INTERVAL '10 minutes'
         AND manifest.route_date >= CURRENT_DATE - ($1::int * INTERVAL '1 day')
         AND ($2::date IS NULL OR manifest.route_date = $2::date)
+        AND ($3::text IS NULL OR LOWER(COALESCE(driver.supervisor_username, '')) = LOWER($3::text))
 
       UNION ALL
 
@@ -3414,17 +3425,27 @@ async function listOperationalHeatmapSignals(options = {}) {
         stop.account_number,
         stop.account_name,
         stop.destination_address,
+        stop.city,
+        stop.state_code,
+        manifest.start_location AS distribution_center,
+        driver.territory,
+        driver.route_group,
+        driver.supervisor_username,
+        driver.team_name,
+        driver.driver_id,
         jsonb_build_object(
           'reason', stop.non_delivery_reason,
           'redeliveryStatus', stop.redelivery_status
         ) AS details
       FROM daily_route_stops AS stop
       JOIN daily_route_manifests AS manifest ON manifest.id = stop.manifest_id
+      LEFT JOIN drivers AS driver ON driver.driver_id = manifest.assigned_driver_id
       WHERE stop.status = 'undelivered'
         AND stop.latitude IS NOT NULL
         AND stop.longitude IS NOT NULL
         AND manifest.route_date >= CURRENT_DATE - ($1::int * INTERVAL '1 day')
         AND ($2::date IS NULL OR manifest.route_date = $2::date)
+        AND ($3::text IS NULL OR LOWER(COALESCE(driver.supervisor_username, '')) = LOWER($3::text))
 
       UNION ALL
 
@@ -3439,6 +3460,14 @@ async function listOperationalHeatmapSignals(options = {}) {
         deduction.account_number,
         stop.account_name,
         stop.destination_address,
+        stop.city,
+        stop.state_code,
+        manifest.start_location AS distribution_center,
+        driver.territory,
+        driver.route_group,
+        driver.supervisor_username,
+        driver.team_name,
+        driver.driver_id,
         jsonb_build_object(
           'sku', deduction.sku,
           'productName', deduction.product_name,
@@ -3448,10 +3477,12 @@ async function listOperationalHeatmapSignals(options = {}) {
       FROM delivery_deductions AS deduction
       JOIN daily_route_stops AS stop ON stop.id = deduction.route_stop_id
       JOIN daily_route_manifests AS manifest ON manifest.id = stop.manifest_id
+      LEFT JOIN drivers AS driver ON driver.driver_id = manifest.assigned_driver_id
       WHERE stop.latitude IS NOT NULL
         AND stop.longitude IS NOT NULL
         AND deduction.created_at >= NOW() - ($1::int * INTERVAL '1 day')
         AND ($2::date IS NULL OR manifest.route_date = $2::date)
+        AND ($3::text IS NULL OR LOWER(COALESCE(driver.supervisor_username, '')) = LOWER($3::text))
 
       UNION ALL
 
@@ -3472,17 +3503,49 @@ async function listOperationalHeatmapSignals(options = {}) {
         event.latitude,
         event.longitude,
         event.created_at AS occurred_at,
-        NULL::text AS route_number,
-        NULL::text AS account_number,
-        NULL::text AS account_name,
-        session.destination_label AS destination_address,
+        COALESCE(event.payload->>'routeNumber', event.payload->>'route_number') AS route_number,
+        COALESCE(event.payload->>'accountNumber', event.payload->>'account_number') AS account_number,
+        COALESCE(event.payload->>'accountName', event.payload->>'account_name') AS account_name,
+        COALESCE(
+          event.payload->>'destinationAddress',
+          event.payload->>'destination_address',
+          session.destination_label
+        ) AS destination_address,
+        COALESCE(
+          event.payload->>'city',
+          event.payload #>> '{destination,city}',
+          event.payload #>> '{hazard,location_city}'
+        ) AS city,
+        UPPER(COALESCE(
+          event.payload->>'stateCode',
+          event.payload->>'state_code',
+          event.payload #>> '{destination,stateCode}',
+          event.payload #>> '{hazard,state_code}',
+          event.payload #>> '{hazard,state}'
+        )) AS state_code,
+        COALESCE(
+          event.payload->>'distributionCenter',
+          event.payload->>'distribution_center',
+          event.payload->>'startLocation'
+        ) AS distribution_center,
+        driver.territory,
+        driver.route_group,
+        driver.supervisor_username,
+        driver.team_name,
+        driver.driver_id,
         event.payload AS details
       FROM route_session_events AS event
       LEFT JOIN route_sessions AS session ON session.id = event.route_session_id
+      LEFT JOIN drivers AS driver ON driver.driver_id = COALESCE(
+        event.payload #>> '{driver,driverId}',
+        event.payload->>'driverId',
+        event.payload->>'driver_id'
+      )
       WHERE event.latitude IS NOT NULL
         AND event.longitude IS NOT NULL
         AND event.created_at >= NOW() - ($1::int * INTERVAL '1 day')
         AND ($2::date IS NULL OR event.created_at::date = $2::date)
+        AND ($3::text IS NULL OR LOWER(COALESCE(driver.supervisor_username, '')) = LOWER($3::text))
 
       UNION ALL
 
@@ -3497,6 +3560,14 @@ async function listOperationalHeatmapSignals(options = {}) {
         order_record.account_number,
         COALESCE(order_record.account_name, stop.account_name) AS account_name,
         stop.destination_address,
+        stop.city,
+        stop.state_code,
+        manifest.start_location AS distribution_center,
+        driver.territory,
+        driver.route_group,
+        driver.supervisor_username,
+        driver.team_name,
+        driver.driver_id,
         jsonb_build_object(
           'invoiceNumber', order_record.invoice_number,
           'subtotalAmount', order_record.subtotal_amount,
@@ -3506,31 +3577,62 @@ async function listOperationalHeatmapSignals(options = {}) {
       FROM account_orders AS order_record
       JOIN daily_route_stops AS stop ON stop.id = order_record.route_stop_id
       LEFT JOIN daily_route_manifests AS manifest ON manifest.id = stop.manifest_id
+      LEFT JOIN drivers AS driver ON driver.driver_id = manifest.assigned_driver_id
       WHERE stop.latitude IS NOT NULL
         AND stop.longitude IS NOT NULL
         AND COALESCE(order_record.delivery_date, order_record.order_date, CURRENT_DATE)
           >= CURRENT_DATE - ($1::int * INTERVAL '1 day')
         AND ($2::date IS NULL OR COALESCE(order_record.delivery_date, order_record.order_date) = $2::date)
+        AND ($3::text IS NULL OR LOWER(COALESCE(driver.supervisor_username, '')) = LOWER($3::text))
     )
     SELECT *
     FROM signals
     ORDER BY occurred_at DESC
-    LIMIT $3
-  `, [periodDays, routeDate, limit]);
+    LIMIT $4
+  `, [periodDays, routeDate, supervisorUsername, limit]);
 
-  return result.rows.map((row) => ({
-    category: row.category,
-    signalType: row.signal_type,
-    weight: Number(row.weight) || 0,
-    latitude: Number(row.latitude),
-    longitude: Number(row.longitude),
-    occurredAt: toIsoString(row.occurred_at),
-    routeNumber: row.route_number || null,
-    accountNumber: row.account_number || null,
-    accountName: row.account_name || null,
-    destinationAddress: row.destination_address || null,
-    details: row.details || {}
-  }));
+  const filters = {
+    stateCode: cleanRepositoryText(options.stateCode, 8).toUpperCase(),
+    city: cleanRepositoryText(options.city, 160).toLowerCase(),
+    territory: cleanRepositoryText(options.territory, 160).toLowerCase(),
+    routeGroup: cleanRepositoryText(options.routeGroup, 160).toLowerCase(),
+    distributionCenter: cleanRepositoryText(options.distributionCenter, 200).toLowerCase()
+  };
+
+  return result.rows
+    .map((row) => {
+      const latitude = Number(row.latitude);
+      const longitude = Number(row.longitude);
+      return {
+        category: row.category,
+        signalType: row.signal_type,
+        weight: Number(row.weight) || 0,
+        latitude,
+        longitude,
+        occurredAt: toIsoString(row.occurred_at),
+        routeNumber: row.route_number || null,
+        accountNumber: row.account_number || null,
+        accountName: row.account_name || null,
+        destinationAddress: row.destination_address || null,
+        city: row.city || null,
+        stateCode: String(row.state_code || inferServiceAreaStateCode(latitude, longitude) || '').toUpperCase() || null,
+        distributionCenter: row.distribution_center || null,
+        territory: row.territory || null,
+        routeGroup: row.route_group || null,
+        supervisorUsername: row.supervisor_username || null,
+        teamName: row.team_name || null,
+        driverId: row.driver_id || null,
+        details: row.details || {}
+      };
+    })
+    .filter((signal) => (
+      (!filters.stateCode || signal.stateCode === filters.stateCode) &&
+      (!filters.city || String(signal.city || '').toLowerCase() === filters.city) &&
+      (!filters.territory || String(signal.territory || '').toLowerCase() === filters.territory) &&
+      (!filters.routeGroup || String(signal.routeGroup || '').toLowerCase() === filters.routeGroup) &&
+      (!filters.distributionCenter ||
+        String(signal.distributionCenter || '').toLowerCase() === filters.distributionCenter)
+    ));
 }
 
 async function listDriverCoachingSignals(options = {}) {
