@@ -204,7 +204,7 @@ function renderAccountIntelligenceAdminPage(session) {
         <span class="status"><span id="aiStatusDot" class="dot"></span><span id="aiStatusText">Checking AI...</span></span>
       </div>
       <div class="grid">
-        <label>Account Number<input id="accountNumber" placeholder="Example: ACCT-4337" /></label>
+        <label>Account Number<input id="accountNumber" /></label>
         <label>Lookback Days<input id="periodDays" value="180" /></label>
       </div>
       <div class="actions" style="margin-top:14px">
@@ -217,10 +217,10 @@ function renderAccountIntelligenceAdminPage(session) {
     <section class="panel">
       <h2>Create Product</h2>
       <div class="grid">
-        <label>SKU<input id="sku" placeholder="SKU-12PK-COKE" /></label>
-        <label>Product Name<input id="productName" placeholder="Coca-Cola 12 Pack" /></label>
-        <label>Brand<input id="brand" placeholder="Coca-Cola" /></label>
-        <label>Unit Price<input id="unitPrice" placeholder="9.99" /></label>
+        <label>SKU<input id="sku" /></label>
+        <label>Product Name<input id="productName" /></label>
+        <label>Brand<input id="brand" /></label>
+        <label>Unit Price<input id="unitPrice" /></label>
       </div>
       <div class="actions" style="margin-top:14px">
         <button class="primary" onclick="saveProduct()">Save Product</button>
@@ -231,18 +231,18 @@ function renderAccountIntelligenceAdminPage(session) {
       <h2>Record Product Order</h2>
       <p>Use this form to add product-level purchase history for one account. Bulk route/order imports will use the same backend record format automatically.</p>
       <div class="grid">
-        <label>Account Number<input id="orderAccountNumber" placeholder="ACCT-1001" /></label>
-        <label>Account Name<input id="orderAccountName" placeholder="EControls" /></label>
-        <label>Invoice Number<input id="invoiceNumber" placeholder="INV-EC-0604" /></label>
+        <label>Account Number<input id="orderAccountNumber" /></label>
+        <label>Account Name<input id="orderAccountName" /></label>
+        <label>Invoice Number<input id="invoiceNumber" /></label>
         <label>Order Date<input id="orderDate" type="date" /></label>
         <label>Delivery Date<input id="deliveryDate" type="date" /></label>
-        <label>Product SKU<input id="orderSku" placeholder="COKE-12PK-12OZ" /></label>
-        <label>Product Name<input id="orderProductName" placeholder="Coca-Cola 12 oz 12 Pack" /></label>
-        <label>Brand<input id="orderBrand" placeholder="Coca-Cola" /></label>
-        <label>Category<input id="orderCategory" placeholder="Sparkling" /></label>
-        <label>Quantity<input id="orderQuantity" type="number" min="0" step="1" placeholder="36" /></label>
-        <label>Unit Price<input id="orderUnitPrice" type="number" min="0" step="0.01" placeholder="8.75" /></label>
-        <label>Deduction Amount<input id="orderDeductionAmount" type="number" min="0" step="0.01" placeholder="0.00" /></label>
+        <label>Product SKU<input id="orderSku" /></label>
+        <label>Product Name<input id="orderProductName" /></label>
+        <label>Brand<input id="orderBrand" /></label>
+        <label>Category<input id="orderCategory" /></label>
+        <label>Quantity<input id="orderQuantity" type="number" min="0" step="1" /></label>
+        <label>Unit Price<input id="orderUnitPrice" type="number" min="0" step="0.01" /></label>
+        <label>Deduction Amount<input id="orderDeductionAmount" type="number" min="0" step="0.01" /></label>
       </div>
       <div class="actions" style="margin-top:14px">
         <button class="primary" onclick="saveOrder()">Save Product Order</button>
@@ -254,7 +254,7 @@ function renderAccountIntelligenceAdminPage(session) {
       <p>Ask a supervisor question about account spending, products, deductions, route risk, missed deliveries, or operational patterns. AI answers only from backend data available to this system.</p>
       <div class="grid">
         <label>Route Date<input id="aiRouteDate" type="date" /></label>
-        <label>Optional Account Number<input id="aiAccountNumber" placeholder="ACCT-1001" /></label>
+        <label>Optional Account Number<input id="aiAccountNumber" /></label>
       </div>
       <label style="margin-top:14px">Supervisor Question
         <textarea id="aiQuestion" class="question-box" placeholder="Example: What products are driving spending for ACCT-1001, and are there any deduction risks?"></textarea>
