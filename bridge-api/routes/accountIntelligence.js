@@ -223,26 +223,24 @@ function renderAccountIntelligenceAdminPage(session) {
     </section>
 
     <section class="panel">
-      <h2>Create Order JSON</h2>
-      <p>Paste a product-level order. This is the structure the future route/import pipeline will generate automatically.</p>
-      <textarea id="orderJson">{
-  "accountNumber": "ACCT-4337",
-  "accountName": "Example Account",
-  "invoiceNumber": "INV-1001",
-  "orderDate": "2026-06-04",
-  "deliveryDate": "2026-06-04",
-  "items": [
-    {
-      "sku": "SKU-12PK-COKE",
-      "productName": "Coca-Cola 12 Pack",
-      "brand": "Coca-Cola",
-      "quantity": 10,
-      "unitPrice": 9.99
-    }
-  ]
-}</textarea>
+      <h2>Record Product Order</h2>
+      <p>Use this form to add product-level purchase history for one account. Bulk route/order imports will use the same backend record format automatically.</p>
+      <div class="grid">
+        <label>Account Number<input id="orderAccountNumber" placeholder="ACCT-1001" /></label>
+        <label>Account Name<input id="orderAccountName" placeholder="EControls" /></label>
+        <label>Invoice Number<input id="invoiceNumber" placeholder="INV-EC-0604" /></label>
+        <label>Order Date<input id="orderDate" type="date" /></label>
+        <label>Delivery Date<input id="deliveryDate" type="date" /></label>
+        <label>Product SKU<input id="orderSku" placeholder="COKE-12PK-12OZ" /></label>
+        <label>Product Name<input id="orderProductName" placeholder="Coca-Cola 12 oz 12 Pack" /></label>
+        <label>Brand<input id="orderBrand" placeholder="Coca-Cola" /></label>
+        <label>Category<input id="orderCategory" placeholder="Sparkling" /></label>
+        <label>Quantity<input id="orderQuantity" type="number" min="0" step="1" placeholder="36" /></label>
+        <label>Unit Price<input id="orderUnitPrice" type="number" min="0" step="0.01" placeholder="8.75" /></label>
+        <label>Deduction Amount<input id="orderDeductionAmount" type="number" min="0" step="0.01" placeholder="0.00" /></label>
+      </div>
       <div class="actions" style="margin-top:14px">
-        <button class="primary" onclick="saveOrder()">Save Order</button>
+        <button class="primary" onclick="saveOrder()">Save Product Order</button>
       </div>
     </section>
 
@@ -404,9 +402,29 @@ function renderAccountIntelligenceAdminPage(session) {
     }
     async function saveOrder() {
       try {
+        const quantity = Number(document.getElementById('orderQuantity').value || 0);
+        const unitPrice = Number(document.getElementById('orderUnitPrice').value || 0);
+        const deductionAmount = Number(document.getElementById('orderDeductionAmount').value || 0);
         renderSaved(await requestJson('/api/account-intelligence/orders', {
           method: 'POST',
-          body: document.getElementById('orderJson').value
+          body: JSON.stringify({
+            accountNumber: document.getElementById('orderAccountNumber').value,
+            accountName: document.getElementById('orderAccountName').value,
+            invoiceNumber: document.getElementById('invoiceNumber').value,
+            orderDate: document.getElementById('orderDate').value,
+            deliveryDate: document.getElementById('deliveryDate').value,
+            deductionAmount,
+            items: [{
+              sku: document.getElementById('orderSku').value,
+              productName: document.getElementById('orderProductName').value,
+              brand: document.getElementById('orderBrand').value,
+              category: document.getElementById('orderCategory').value,
+              quantity,
+              unitPrice,
+              grossAmount: quantity * unitPrice,
+              deductionAmount
+            }]
+          })
         }), 'Order');
       } catch (error) { setError(error); }
     }
