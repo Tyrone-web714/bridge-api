@@ -471,6 +471,30 @@ async function ensureSchema() {
     CREATE INDEX IF NOT EXISTS daily_route_stops_non_delivery_idx ON daily_route_stops(status, non_delivery_reason);
     CREATE INDEX IF NOT EXISTS daily_route_stops_redelivery_status_idx ON daily_route_stops(redelivery_status);
 
+    CREATE TABLE IF NOT EXISTS customer_accounts (
+      account_number TEXT PRIMARY KEY,
+      account_name TEXT NOT NULL,
+      address TEXT,
+      city TEXT,
+      state_code TEXT,
+      postal_code TEXT,
+      phone TEXT,
+      territory TEXT,
+      route_group TEXT,
+      distribution_center TEXT,
+      active BOOLEAN NOT NULL DEFAULT true,
+      raw JSONB NOT NULL DEFAULT '{}'::jsonb,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+
+    CREATE INDEX IF NOT EXISTS customer_accounts_name_idx ON customer_accounts(account_name);
+    CREATE INDEX IF NOT EXISTS customer_accounts_location_idx ON customer_accounts(state_code, city);
+    CREATE INDEX IF NOT EXISTS customer_accounts_territory_idx ON customer_accounts(territory);
+    CREATE INDEX IF NOT EXISTS customer_accounts_route_group_idx ON customer_accounts(route_group);
+    CREATE INDEX IF NOT EXISTS customer_accounts_distribution_center_idx ON customer_accounts(distribution_center);
+    CREATE INDEX IF NOT EXISTS customer_accounts_active_idx ON customer_accounts(active);
+
     CREATE TABLE IF NOT EXISTS products (
       sku TEXT PRIMARY KEY,
       product_name TEXT NOT NULL,
@@ -581,6 +605,22 @@ async function ensureSchema() {
     CREATE INDEX IF NOT EXISTS account_ai_insights_account_idx ON account_ai_insights(account_number, created_at DESC);
     CREATE INDEX IF NOT EXISTS account_ai_insights_type_idx ON account_ai_insights(insight_type);
     CREATE INDEX IF NOT EXISTS account_ai_insights_status_idx ON account_ai_insights(status);
+
+    CREATE TABLE IF NOT EXISTS data_import_batches (
+      id TEXT PRIMARY KEY,
+      import_type TEXT NOT NULL,
+      source_file_name TEXT,
+      status TEXT NOT NULL DEFAULT 'completed',
+      row_count INTEGER NOT NULL DEFAULT 0,
+      imported_count INTEGER NOT NULL DEFAULT 0,
+      warning_count INTEGER NOT NULL DEFAULT 0,
+      summary JSONB NOT NULL DEFAULT '{}'::jsonb,
+      imported_by TEXT,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+
+    CREATE INDEX IF NOT EXISTS data_import_batches_type_idx
+      ON data_import_batches(import_type, created_at DESC);
 
     ALTER TABLE account_ai_insights ADD COLUMN IF NOT EXISTS reviewed_by TEXT;
     ALTER TABLE account_ai_insights ADD COLUMN IF NOT EXISTS reviewed_at TIMESTAMPTZ;

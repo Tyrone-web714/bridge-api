@@ -273,6 +273,42 @@ function productFromRow(row) {
   };
 }
 
+function customerAccountFromRow(row) {
+  if (!row) return null;
+  return {
+    accountNumber: row.account_number,
+    accountName: row.account_name,
+    address: row.address || null,
+    city: row.city || null,
+    stateCode: row.state_code || null,
+    postalCode: row.postal_code || null,
+    phone: row.phone || null,
+    territory: row.territory || null,
+    routeGroup: row.route_group || null,
+    distributionCenter: row.distribution_center || null,
+    active: row.active !== false,
+    raw: row.raw || {},
+    createdAt: toIsoString(row.created_at),
+    updatedAt: toIsoString(row.updated_at),
+  };
+}
+
+function dataImportBatchFromRow(row) {
+  if (!row) return null;
+  return {
+    id: row.id,
+    importType: row.import_type,
+    sourceFileName: row.source_file_name || null,
+    status: row.status,
+    rowCount: Number(row.row_count) || 0,
+    importedCount: Number(row.imported_count) || 0,
+    warningCount: Number(row.warning_count) || 0,
+    summary: row.summary || {},
+    importedBy: row.imported_by || null,
+    createdAt: toIsoString(row.created_at),
+  };
+}
+
 function accountOrderItemFromRow(row) {
   return {
     id: row.id,
@@ -2710,6 +2746,134 @@ async function updateUndeliveredStopDisposition(stopId, input = {}) {
   return result.rows[0] ? routeStopFromRow(result.rows[0]) : null;
 }
 
+async function upsertCustomerAccount(input = {}) {
+  const accountNumber = cleanRepositoryText(
+    readInputField(input, ['accountNumber', 'account_number', 'customerNumber', 'customer_number']),
+    120
+  );
+  const accountName = cleanRepositoryText(
+    readInputField(input, ['accountName', 'account_name', 'customerName', 'customer_name', 'name']),
+    240
+  );
+  if (!accountNumber || !accountName) {
+    const error = new Error('accountNumber and accountName are required.');
+    error.status = 400;
+    throw error;
+  }
+
+  const result = await postgres.query(`
+    INSERT INTO customer_accounts (
+      account_number, account_name, address, city, state_code, postal_code,
+      phone, territory, route_group, distribution_center, active, raw, updated_at
+    )
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12::jsonb, NOW())
+    ON CONFLICT (account_number) DO UPDATE SET
+      account_name = EXCLUDED.account_name,
+      address = EXCLUDED.address,
+      city = EXCLUDED.city,
+      state_code = EXCLUDED.state_code,
+      postal_code = EXCLUDED.postal_code,
+      phone = EXCLUDED.phone,
+      territory = EXCLUDED.territory,
+      route_group = EXCLUDED.route_group,
+      distribution_center = EXCLUDED.distribution_center,
+      active = EXCLUDED.active,
+      raw = EXCLUDED.raw,
+      updated_at = NOW()
+    RETURNING *
+  `, [
+    accountNumber,
+    accountName,
+    cleanRepositoryText(readInputField(input, ['address', 'streetAddress', 'street_address']), 500) || null,
+    cleanRepositoryText(readInputField(input, ['city']), 120) || null,
+    cleanRepositoryText(readInputField(input, ['stateCode', 'state_code', 'state']), 2).toUpperCase() || null,
+    cleanRepositoryText(readInputField(input, ['postalCode', 'postal_code', 'zip', 'zipcode']), 20) || null,
+    cleanRepositoryText(readInputField(input, ['phone', 'phoneNumber', 'phone_number']), 40) || null,
+    cleanRepositoryText(readInputField(input, ['territory']), 160) || null,
+    cleanRepositoryText(readInputField(input, ['routeGroup', 'route_group']), 160) || null,
+    cleanRepositoryText(readInputField(input, ['distributionCenter', 'distribution_center', 'warehouse']), 160) || null,
+    input.active !== false && String(input.active).toLowerCase() !== 'false',
+    JSON.stringify(input.raw || {}),
+  ]);
+  return customerAccountFromRow(result.rows[0]);
+}
+
+async function listCustomerAccounts(options = {}) {
+  const limit = normalizeLimit(options.limit, 100, 1000);
+  const values = [];
+  const where = [];
+
+  if (options.search) {
+    values.push(`%${cleanRepositoryText(options.search, 160)}%`);
+    where.push(`(
+      account_number ILIKE $${values.length}
+      OR account_name ILIKE $${values.length}
+      OR address ILIKE $${values.length}
+      OR city ILIKE $${values.length}
+    )`);
+  }
+  if (options.stateCode || options.state) {
+    values.push(cleanRepositoryText(options.stateCode || options.state, 2).toUpperCase());
+    where.push(`state_code = $${values.length}`);
+  }
+  if (options.active !== undefined) {
+    values.push(options.active !== false && String(options.active).toLowerCase() !== 'false');
+    where.push(`active = $${values.length}`);
+  }
+
+  values.push(limit);
+  const result = await postgres.query(`
+    SELECT *
+    FROM customer_accounts
+    ${where.length ? `WHERE ${where.join(' AND ')}` : ''}
+    ORDER BY account_name ASC
+    LIMIT $${values.length}
+  `, values);
+  return result.rows.map(customerAccountFromRow);
+}
+
+async function saveDataImportBatch(input = {}) {
+  const id = cleanRepositoryText(input.id, 160) || generateRepositoryId('data_import');
+  const result = await postgres.query(`
+    INSERT INTO data_import_batches (
+      id, import_type, source_file_name, status, row_count, imported_count,
+      warning_count, summary, imported_by
+    )
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8::jsonb, $9)
+    RETURNING *
+  `, [
+    id,
+    cleanRepositoryText(input.importType, 80),
+    cleanRepositoryText(input.sourceFileName, 240) || null,
+    cleanRepositoryText(input.status, 40) || 'completed',
+    Number(input.rowCount) || 0,
+    Number(input.importedCount) || 0,
+    Number(input.warningCount) || 0,
+    JSON.stringify(input.summary || {}),
+    cleanRepositoryText(input.importedBy, 120) || null,
+  ]);
+  return dataImportBatchFromRow(result.rows[0]);
+}
+
+async function listDataImportBatches(options = {}) {
+  const limit = normalizeLimit(options.limit, 50, 250);
+  const values = [];
+  const where = [];
+  if (options.importType) {
+    values.push(cleanRepositoryText(options.importType, 80));
+    where.push(`import_type = $${values.length}`);
+  }
+  values.push(limit);
+  const result = await postgres.query(`
+    SELECT *
+    FROM data_import_batches
+    ${where.length ? `WHERE ${where.join(' AND ')}` : ''}
+    ORDER BY created_at DESC
+    LIMIT $${values.length}
+  `, values);
+  return result.rows.map(dataImportBatchFromRow);
+}
+
 async function upsertProduct(input = {}) {
   const sku = cleanRepositoryText(input.sku || input.SKU, 120);
   const productName = cleanRepositoryText(input.productName || input.product_name || input.name, 240);
@@ -4689,7 +4853,9 @@ module.exports = {
   listAccountInsights,
   listAccountOrders,
   listAdminUsers,
+  listCustomerAccounts,
   listDailyRouteManifests,
+  listDataImportBatches,
   listDrivers,
   listProducts,
   listUndeliveredRouteStops,
@@ -4712,6 +4878,7 @@ module.exports = {
   listStaticZonesNearRoute,
   saveAiInteractionLog,
   saveAccountInsight,
+  saveDataImportBatch,
   reviewAccountInsight,
   saveRecentDestination,
   saveRouteSession,
@@ -4729,6 +4896,7 @@ module.exports = {
   updateStaticHazardVerification,
   updateDailyRouteStopStatusForDriver,
   updateUndeliveredStopDisposition,
+  upsertCustomerAccount,
   upsertProduct,
   upsertAdminUser,
   createAccountOrder,

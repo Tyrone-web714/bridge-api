@@ -50,6 +50,7 @@ const accountIntelligenceRoutes = require('./routes/accountIntelligence');
 const aiRoutes = require('./routes/ai');
 const operationalHeatmapRoutes = require('./routes/operationalHeatmaps');
 const operationalGeographyRoutes = require('./routes/operationalGeography');
+const dataImportRoutes = require('./routes/dataImports');
 
 app.use('/api/bridges', bridgeRoutes);
 app.use('/api/drivers', driverRoutes);
@@ -63,6 +64,7 @@ app.use('/api/account-intelligence', accountIntelligenceRoutes);
 app.use('/api/ai', aiRoutes);
 app.use('/api/operational-heatmaps', operationalHeatmapRoutes);
 app.use('/api/operational-geography', operationalGeographyRoutes);
+app.use('/api/data-imports', dataImportRoutes);
 
 app.get('/health', async (req, res) => {
   res.json({

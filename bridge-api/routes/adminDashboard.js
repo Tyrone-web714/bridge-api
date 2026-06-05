@@ -15,6 +15,12 @@ function renderAdminDashboard(session) {
   const role = session?.role || 'supervisor';
   const cards = [
     {
+      title: 'Production Data Imports',
+      description: 'Preview and import customer masters, product catalogs, invoices, and sales-line history into PostgreSQL.',
+      href: '/api/data-imports/admin',
+      accent: '#65e69a'
+    },
+    {
       title: 'Daily Routes',
       description: 'Upload full route CSVs, bulk assign drivers, review totals, delete test routes, and manage daily route manifests.',
       href: '/api/route-manifests/admin',

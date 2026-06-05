@@ -1,0 +1,45 @@
+const assert = require('assert');
+const bulkImport = require('../services/bulkImport');
+
+const customerPreview = bulkImport.normalizeImport('customers', [
+  'account_number,account_name,address,city,state,zip,active',
+  'ACCT-1,Test Customer,100 Main St,San Antonio,TX,78205,true',
+  ',Missing Number,200 Main St,San Antonio,TX,78205,true',
+].join('\n'));
+assert.strictEqual(customerPreview.rowCount, 2);
+assert.strictEqual(customerPreview.validCount, 1);
+assert.strictEqual(customerPreview.warningCount, 1);
+assert.strictEqual(customerPreview.records[0].stateCode, 'TX');
+
+const productPreview = bulkImport.normalizeImport('products', [
+  'sku,product_name,brand,unit_price',
+  'SKU-1,Coca-Cola 12 Pack,Coca-Cola,$9.99',
+].join('\n'));
+assert.strictEqual(productPreview.validCount, 1);
+assert.strictEqual(productPreview.records[0].unitPrice, 9.99);
+
+const orderPreview = bulkImport.normalizeImport('orders', [
+  'account_number,account_name,invoice_number,order_date,sku,product_name,quantity,unit_price',
+  'ACCT-1,Test Customer,INV-1,2026-06-05,SKU-1,Coca-Cola 12 Pack,10,9.99',
+  'ACCT-1,Test Customer,INV-1,2026-06-05,SKU-2,DASANI 24 Pack,5,12.50',
+].join('\n'));
+assert.strictEqual(orderPreview.rowCount, 2);
+assert.strictEqual(orderPreview.validCount, 1);
+assert.strictEqual(orderPreview.records[0].items.length, 2);
+assert.strictEqual(orderPreview.records[0].items[0].grossAmount, 99.9);
+assert.strictEqual(orderPreview.records[0].items[1].grossAmount, 62.5);
+assert.strictEqual(
+  orderPreview.records[0].items.reduce((sum, item) => sum + item.netAmount, 0),
+  162.4
+);
+
+assert.throws(
+  () => bulkImport.normalizeImport('unknown', 'a,b\n1,2'),
+  /Import type must be/
+);
+assert.throws(
+  () => bulkImport.normalizeImport('customers', 'account_number,account_name\n'),
+  /contains no data rows/
+);
+
+console.log('[test:imports] validation, grouping, totals, and empty-file contracts verified.');
