@@ -119,6 +119,18 @@ function buildRouteRiskExplanationPrompt() {
   ].join('\n');
 }
 
+function buildDriverCopilotPrompt() {
+  return [
+    'You are the driver AI copilot for Truck-Safe Routing.',
+    'Answer only from the assigned route, selected stop, account order history, account insights, and delivery context supplied by the backend.',
+    'Keep responses short, direct, and useful while the driver is working.',
+    'Do not invent parking instructions, delivery rules, product facts, customer preferences, road permissions, or hazards.',
+    'If the driver asks whether a road is legal or safe and the provided context does not answer it, say that the app must rely on verified route/hazard data.',
+    'Do not tell the driver to violate company policy, road restrictions, truck restrictions, or safety rules.',
+    'AI recommends only. Backend rules, verified hazards, route guidance, and driver judgment remain the source of truth.'
+  ].join('\n');
+}
+
 function normalizeRouteDate(value) {
   const raw = cleanText(value, 40);
   if (/^\d{4}-\d{2}-\d{2}$/.test(raw)) return raw;
@@ -433,6 +445,45 @@ const routeRiskExplanationSchema = {
   ]
 };
 
+const driverCopilotSchema = {
+  type: 'object',
+  additionalProperties: false,
+  properties: {
+    title: { type: 'string' },
+    answer: { type: 'string' },
+    confidence: { type: 'string', enum: ['low', 'medium', 'high'] },
+    factsUsed: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 6
+    },
+    driverActions: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 5
+    },
+    safetyNotes: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 5
+    },
+    missingData: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 6
+    }
+  },
+  required: [
+    'title',
+    'answer',
+    'confidence',
+    'factsUsed',
+    'driverActions',
+    'safetyNotes',
+    'missingData'
+  ]
+};
+
 function compactAccountSummaryForAi(summary) {
   return {
     accountNumber: summary.accountNumber,
@@ -532,6 +583,102 @@ function compactRouteSessionForAi(session) {
     })),
     reviewStatus: session.reviewStatus,
     supervisorNotes: session.supervisorNotes || null
+  };
+}
+
+function isFinishedStop(stop) {
+  return ['completed', 'departed', 'skipped', 'undelivered'].includes(String(stop?.status || '').toLowerCase());
+}
+
+function compactStopForDriverCopilot(stop) {
+  if (!stop) return null;
+  return {
+    id: stop.id,
+    stopSequence: stop.stopSequence,
+    accountNumber: stop.accountNumber,
+    accountName: stop.accountName,
+    destinationAddress: stop.destinationAddress,
+    city: stop.city,
+    stateCode: stop.stateCode,
+    postalCode: stop.postalCode,
+    plannedArrivalAt: stop.plannedArrivalAt,
+    plannedDepartureAt: stop.plannedDepartureAt,
+    plannedServiceMinutes: stop.plannedServiceMinutes,
+    driveMinutesToNext: stop.driveMinutesToNext,
+    palletCount: stop.palletCount,
+    caseCount: stop.caseCount,
+    itemSummary: (stop.itemSummary || []).slice(0, 20),
+    status: stop.status,
+    nonDeliveryReason: stop.nonDeliveryReason,
+    accountProductTotals: stop.accountProductTotals || null,
+    accountInsights: (stop.accountInsights || []).slice(0, 5).map((insight) => ({
+      title: insight.title,
+      summary: insight.summary,
+      confidence: insight.confidence,
+      insightType: insight.insightType
+    })),
+    accountOrders: (stop.accountOrders || []).slice(0, 3).map((order) => ({
+      invoiceNumber: order.invoiceNumber,
+      orderDate: order.orderDate,
+      deliveryDate: order.deliveryDate,
+      subtotalAmount: order.subtotalAmount,
+      deductionAmount: order.deductionAmount,
+      netAmount: order.netAmount,
+      status: order.status,
+      items: (order.items || []).slice(0, 12).map((item) => ({
+        sku: item.sku,
+        productName: item.productName,
+        brand: item.brand,
+        category: item.category,
+        quantity: item.quantity,
+        netAmount: item.netAmount
+      })),
+      deductions: (order.deductions || []).slice(0, 5).map((deduction) => ({
+        reason: deduction.reason,
+        amount: deduction.amount,
+        notes: deduction.notes
+      }))
+    }))
+  };
+}
+
+function compactAssignedRouteForDriverCopilot(route, currentStopId) {
+  const stops = Array.isArray(route?.stops) ? route.stops : [];
+  const selectedStop = currentStopId
+    ? stops.find((stop) => String(stop.id) === String(currentStopId))
+    : stops.find((stop) => !isFinishedStop(stop)) || stops[0] || null;
+
+  return {
+    id: route.id,
+    routeDate: route.routeDate,
+    routeNumber: route.routeNumber,
+    routeName: route.routeName,
+    startLocation: route.startLocation,
+    plannedStartAt: route.plannedStartAt,
+    plannedEndAt: route.plannedEndAt,
+    totalStops: route.totalStops,
+    totalPallets: route.totalPallets,
+    totalCases: route.totalCases,
+    assignedDriverId: route.assignedDriverId,
+    assignedDriverName: route.assignedDriverName,
+    status: route.status,
+    completedStops: stops.filter(isFinishedStop).length,
+    selectedStop: compactStopForDriverCopilot(selectedStop),
+    upcomingStops: stops
+      .filter((stop) => !isFinishedStop(stop))
+      .slice(0, 5)
+      .map((stop) => ({
+        id: stop.id,
+        stopSequence: stop.stopSequence,
+        accountNumber: stop.accountNumber,
+        accountName: stop.accountName,
+        destinationAddress: stop.destinationAddress,
+        plannedArrivalAt: stop.plannedArrivalAt,
+        plannedServiceMinutes: stop.plannedServiceMinutes,
+        palletCount: stop.palletCount,
+        caseCount: stop.caseCount,
+        status: stop.status
+      }))
   };
 }
 
@@ -730,6 +877,110 @@ router.post('/account-summary', requireAiAccess, requireAiConfigured, async (req
     return res.status(error.status || 500).json({
       ok: false,
       error: error.status ? error.message : 'AI account summary failed.'
+    });
+  }
+});
+
+router.post('/driver-copilot', requireAiAccess, requireAiConfigured, async (req, res) => {
+  const startedAt = Date.now();
+  const requester = getRequester(req);
+  const question = cleanText(req.body?.question, 1500);
+  const routeDate = normalizeRouteDate(req.body?.routeDate || req.body?.route_date);
+  const currentStopId = cleanText(req.body?.currentStopId || req.body?.current_stop_id, 160);
+  const driverId = requester.type === 'admin'
+    ? cleanText(req.body?.driverId || req.body?.driver_id, 160)
+    : requester.id;
+  let aiResult = null;
+  let routeContext = null;
+
+  if (!question) {
+    return res.status(400).json({
+      ok: false,
+      error: 'question is required.'
+    });
+  }
+
+  if (!driverId) {
+    return res.status(400).json({
+      ok: false,
+      error: 'driverId is required.'
+    });
+  }
+
+  try {
+    const route = await repositories.getAssignedDailyRouteForDriver(driverId, routeDate);
+    if (!route) {
+      return res.status(404).json({
+        ok: false,
+        error: 'No assigned route found for this driver and route date.'
+      });
+    }
+
+    routeContext = compactAssignedRouteForDriverCopilot(route, currentStopId);
+    aiResult = await aiProvider.createStructuredResponse({
+      endpoint: 'driver-copilot',
+      instructions: buildDriverCopilotPrompt(),
+      input: {
+        question,
+        routeContext
+      },
+      schemaName: 'truck_safe_driver_copilot',
+      schema: driverCopilotSchema
+    });
+
+    await repositories.saveAiInteractionLog({
+      endpoint: 'driver-copilot',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber: routeContext.selectedStop?.accountNumber || null,
+      routeManifestId: route.id,
+      routeStopId: routeContext.selectedStop?.id || null,
+      model: aiResult.model,
+      status: 'success',
+      inputSummary: {
+        question,
+        routeDate,
+        driverId,
+        routeManifestId: route.id,
+        currentStopId: routeContext.selectedStop?.id || null,
+        accountNumber: routeContext.selectedStop?.accountNumber || null
+      },
+      outputSummary: aiResult.parsed,
+      latencyMs: Date.now() - startedAt
+    });
+
+    return res.json({
+      ok: true,
+      requester,
+      driverId,
+      routeDate,
+      routeContext,
+      ai: {
+        provider: 'openai',
+        model: aiResult.model,
+        store: false,
+        ...aiResult.parsed
+      }
+    });
+  } catch (error) {
+    await repositories.saveAiInteractionLog({
+      endpoint: 'driver-copilot',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber: routeContext?.selectedStop?.accountNumber || null,
+      routeManifestId: routeContext?.id || null,
+      routeStopId: routeContext?.selectedStop?.id || null,
+      model: aiResult?.model || aiProvider.getModel(),
+      status: 'error',
+      inputSummary: { question, routeDate, driverId, currentStopId },
+      outputSummary: {},
+      errorMessage: error.message,
+      latencyMs: Date.now() - startedAt
+    }).catch(() => {});
+
+    return res.status(error.status || 500).json({
+      ok: false,
+      error: error.status ? error.message : 'AI driver copilot failed.'
     });
   }
 });
