@@ -144,6 +144,18 @@ function buildDriverCoachingPrompt() {
   ].join('\n');
 }
 
+function buildIncidentReconstructionPrompt() {
+  return [
+    'You are the AI incident reconstruction analyst for Truck-Safe Routing.',
+    'Use only the saved route session and its chronological event records supplied by the backend.',
+    'Reconstruct what is confirmed to have happened and identify unresolved questions.',
+    'Do not infer fault, intent, negligence, causation, driver behavior, customer behavior, or road conditions unless explicitly recorded.',
+    'Preserve timestamps, event types, severities, locations, and recorded payload facts accurately.',
+    'Separate confirmed facts, unresolved questions, operational impact, and recommended follow-up.',
+    'AI summarizes evidence only. Supervisors review source records and make final incident decisions.'
+  ].join('\n');
+}
+
 function buildRedeliveryPlanPrompt() {
   return [
     'You are the AI redelivery recovery planner for Truck-Safe Routing.',
@@ -643,6 +655,57 @@ const driverCoachingSchema = {
     'safetyObservations',
     'scheduleObservations',
     'recommendedCoaching',
+    'missingData'
+  ]
+};
+
+const incidentReconstructionSchema = {
+  type: 'object',
+  additionalProperties: false,
+  properties: {
+    title: { type: 'string' },
+    summary: { type: 'string' },
+    confidence: { type: 'string', enum: ['low', 'medium', 'high'] },
+    timeline: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 30
+    },
+    confirmedFacts: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 20
+    },
+    unresolvedQuestions: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 15
+    },
+    operationalImpact: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 12
+    },
+    recommendedFollowUp: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 12
+    },
+    missingData: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 15
+    }
+  },
+  required: [
+    'title',
+    'summary',
+    'confidence',
+    'timeline',
+    'confirmedFacts',
+    'unresolvedQuestions',
+    'operationalImpact',
+    'recommendedFollowUp',
     'missingData'
   ]
 };
@@ -1558,6 +1621,29 @@ async function buildDriverCoachingContext({ driverId, routeDate, periodDays }) {
     routeDate,
     periodDays,
     driverSignals
+  };
+}
+
+async function buildIncidentReconstructionContext(routeSessionId) {
+  const routeSession = await repositories.getRouteSession(routeSessionId);
+  if (!routeSession) {
+    const error = new Error('Route session not found.');
+    error.status = 404;
+    throw error;
+  }
+  const events = await repositories.listRouteSessionEvents(routeSessionId, { limit: 1000 });
+  return {
+    routeSession: compactRouteSessionForAi(routeSession),
+    eventCount: events.length,
+    events: events.map((event) => ({
+      id: event.id,
+      eventType: event.eventType,
+      severity: event.severity,
+      latitude: event.latitude,
+      longitude: event.longitude,
+      createdAt: event.createdAt,
+      payload: event.payload || {}
+    }))
   };
 }
 
@@ -2672,6 +2758,77 @@ router.post('/driver-coaching', requireAdminAiAccess, requireAiConfigured, async
     return res.status(error.status || 500).json({
       ok: false,
       error: error.status ? error.message : 'AI driver coaching analysis failed.'
+    });
+  }
+});
+
+router.post('/incident-reconstruction', requireAdminAiAccess, requireAiConfigured, async (req, res) => {
+  const startedAt = Date.now();
+  const requester = getRequester(req);
+  const routeSessionId = cleanText(req.body?.routeSessionId || req.body?.route_session_id, 160);
+  let aiResult = null;
+
+  if (!routeSessionId) {
+    return res.status(400).json({
+      ok: false,
+      error: 'routeSessionId is required for incident reconstruction.'
+    });
+  }
+
+  try {
+    const sourceContext = await buildIncidentReconstructionContext(routeSessionId);
+    aiResult = await aiProvider.createStructuredResponse({
+      endpoint: 'incident-reconstruction',
+      instructions: buildIncidentReconstructionPrompt(),
+      input: sourceContext,
+      schemaName: 'truck_safe_incident_reconstruction',
+      schema: incidentReconstructionSchema
+    });
+
+    await repositories.saveAiInteractionLog({
+      endpoint: 'incident-reconstruction',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber: null,
+      model: aiResult.model,
+      status: 'success',
+      inputSummary: {
+        routeSessionId,
+        eventCount: sourceContext.eventCount
+      },
+      outputSummary: aiResult.parsed,
+      latencyMs: Date.now() - startedAt
+    });
+
+    return res.json({
+      ok: true,
+      requester,
+      routeSessionId,
+      sourceContext,
+      ai: {
+        provider: 'openai',
+        model: aiResult.model,
+        store: false,
+        ...aiResult.parsed
+      }
+    });
+  } catch (error) {
+    await repositories.saveAiInteractionLog({
+      endpoint: 'incident-reconstruction',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber: null,
+      model: aiResult?.model || aiProvider.getModel(),
+      status: 'error',
+      inputSummary: { routeSessionId },
+      outputSummary: {},
+      errorMessage: error.message,
+      latencyMs: Date.now() - startedAt
+    }).catch(() => {});
+
+    return res.status(error.status || 500).json({
+      ok: false,
+      error: error.status ? error.message : 'AI incident reconstruction failed.'
     });
   }
 });

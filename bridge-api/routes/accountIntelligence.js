@@ -275,6 +275,7 @@ function renderAccountIntelligenceAdminPage(session) {
         <button onclick="predictRouteCompletion()">Route Completion Prediction</button>
         <button onclick="analyzeOperationalHeatmap()">Operational Hotspots</button>
         <button onclick="analyzeDriverCoaching()">Driver Coaching</button>
+        <button onclick="reconstructIncident()">Incident Reconstruction</button>
       </div>
     </section>
 
@@ -650,6 +651,36 @@ function renderAccountIntelligenceAdminPage(session) {
         '</div>' +
         renderDebug(data);
     }
+    function renderIncidentReconstruction(data) {
+      const ai = data.ai || {};
+      const context = data.sourceContext || {};
+      const eventItems = (context.events || []).slice(0, 30).map(function (event) {
+        const location = event.latitude != null && event.longitude != null
+          ? ' at ' + event.latitude + ', ' + event.longitude
+          : '';
+        return (event.createdAt || 'Unknown time') + ' - ' + (event.eventType || 'event') +
+          (event.severity ? ' [' + event.severity + ']' : '') + location;
+      });
+      result.innerHTML =
+        '<div class="summary-hero">' +
+          '<span class="badge">AI Incident Reconstruction</span>' +
+          '<div class="summary-title">' + escapeHtml(ai.title || 'Incident Reconstruction') + '</div>' +
+          '<div class="summary-subtitle">Route session: ' + escapeHtml(data.routeSessionId || '') +
+            ' - Recorded events: ' + escapeHtml(context.eventCount || 0) +
+            ' - Confidence: ' + escapeHtml(ai.confidence || 'unknown') + '</div>' +
+        '</div>' +
+        '<div class="ai-summary">' + escapeHtml(ai.summary || 'No incident reconstruction returned.') + '</div>' +
+        '<div class="grid">' +
+          '<div class="content-card"><h3>Recorded Event Log</h3>' + listItems(eventItems) + '</div>' +
+          '<div class="content-card"><h3>Reconstructed Timeline</h3>' + listItems(ai.timeline) + '</div>' +
+          '<div class="content-card"><h3>Confirmed Facts</h3>' + listItems(ai.confirmedFacts) + '</div>' +
+          '<div class="content-card"><h3>Unresolved Questions</h3>' + listItems(ai.unresolvedQuestions) + '</div>' +
+          '<div class="content-card"><h3>Operational Impact</h3>' + listItems(ai.operationalImpact) + '</div>' +
+          '<div class="content-card"><h3>Recommended Follow-Up</h3>' + listItems(ai.recommendedFollowUp) + '</div>' +
+          '<div class="content-card"><h3>Missing Data</h3>' + listItems(ai.missingData) + '</div>' +
+        '</div>' +
+        renderDebug(data);
+    }
     function renderAccountGuidance(data) {
       const ai = data.ai || {};
       result.innerHTML =
@@ -784,6 +815,16 @@ function renderAccountIntelligenceAdminPage(session) {
             driverId: document.getElementById('aiDriverId').value.trim(),
             routeDate: document.getElementById('aiRouteDate').value,
             periodDays
+          })
+        }));
+      } catch (error) { setError(error); }
+    }
+    async function reconstructIncident() {
+      try {
+        renderIncidentReconstruction(await requestJson('/api/ai/incident-reconstruction', {
+          method: 'POST',
+          body: JSON.stringify({
+            routeSessionId: document.getElementById('aiRouteSessionId').value.trim()
           })
         }));
       } catch (error) { setError(error); }
