@@ -131,6 +131,19 @@ function buildOperationalHeatmapPrompt() {
   ].join('\n');
 }
 
+function buildDriverCoachingPrompt() {
+  return [
+    'You are the AI driver coaching analyst for Truck-Safe Routing.',
+    'Use only the route, stop, timing, undelivered-stop, and recorded event metrics supplied by the backend.',
+    'Identify constructive coaching opportunities and operational strengths.',
+    'Do not invent hard braking, speeding, unsafe driving, customer behavior, intent, or performance causes.',
+    'Do not make disciplinary, employment, compensation, or termination recommendations.',
+    'Do not rank drivers unless the supplied data is sufficiently comparable; otherwise state that comparison is not valid.',
+    'Separate observed metrics from coaching recommendations and list missing data.',
+    'AI recommends coaching only. Supervisors review source records and make final decisions.'
+  ].join('\n');
+}
+
 function buildRedeliveryPlanPrompt() {
   return [
     'You are the AI redelivery recovery planner for Truck-Safe Routing.',
@@ -577,6 +590,59 @@ const operationalHeatmapSchema = {
     'categoryPatterns',
     'recurringSignals',
     'supervisorActions',
+    'missingData'
+  ]
+};
+
+const driverCoachingSchema = {
+  type: 'object',
+  additionalProperties: false,
+  properties: {
+    title: { type: 'string' },
+    summary: { type: 'string' },
+    confidence: { type: 'string', enum: ['low', 'medium', 'high'] },
+    coachingPriority: { type: 'string', enum: ['unknown', 'low', 'medium', 'high'] },
+    observedStrengths: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 10
+    },
+    efficiencyOpportunities: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 10
+    },
+    safetyObservations: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 10
+    },
+    scheduleObservations: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 10
+    },
+    recommendedCoaching: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 10
+    },
+    missingData: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 10
+    }
+  },
+  required: [
+    'title',
+    'summary',
+    'confidence',
+    'coachingPriority',
+    'observedStrengths',
+    'efficiencyOpportunities',
+    'safetyObservations',
+    'scheduleObservations',
+    'recommendedCoaching',
     'missingData'
   ]
 };
@@ -1478,6 +1544,20 @@ async function buildOperationalHeatmapContext({ routeDate, periodDays }) {
     categoryCounts,
     clusters,
     signals
+  };
+}
+
+async function buildDriverCoachingContext({ driverId, routeDate, periodDays }) {
+  const driverSignals = await repositories.listDriverCoachingSignals({
+    driverId: driverId || undefined,
+    routeDate,
+    periodDays
+  });
+  return {
+    driverId: driverId || null,
+    routeDate,
+    periodDays,
+    driverSignals
   };
 }
 
@@ -2517,6 +2597,81 @@ router.post('/operational-heatmap', requireAdminAiAccess, requireAiConfigured, a
     return res.status(error.status || 500).json({
       ok: false,
       error: error.status ? error.message : 'AI operational heatmap analysis failed.'
+    });
+  }
+});
+
+router.post('/driver-coaching', requireAdminAiAccess, requireAiConfigured, async (req, res) => {
+  const startedAt = Date.now();
+  const requester = getRequester(req);
+  const driverId = cleanText(req.body?.driverId || req.body?.driver_id, 120);
+  const routeDateInput = cleanText(req.body?.routeDate || req.body?.route_date, 40);
+  const routeDate = routeDateInput ? normalizeRouteDate(routeDateInput) : null;
+  const periodDays = Number.parseInt(req.body?.periodDays || req.body?.period_days, 10) || 30;
+  let aiResult = null;
+
+  try {
+    const sourceContext = await buildDriverCoachingContext({
+      driverId,
+      routeDate,
+      periodDays
+    });
+    aiResult = await aiProvider.createStructuredResponse({
+      endpoint: 'driver-coaching',
+      instructions: buildDriverCoachingPrompt(),
+      input: sourceContext,
+      schemaName: 'truck_safe_driver_coaching',
+      schema: driverCoachingSchema
+    });
+
+    await repositories.saveAiInteractionLog({
+      endpoint: 'driver-coaching',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber: null,
+      model: aiResult.model,
+      status: 'success',
+      inputSummary: {
+        driverId: driverId || null,
+        routeDate,
+        periodDays,
+        driverCount: sourceContext.driverSignals.length
+      },
+      outputSummary: aiResult.parsed,
+      latencyMs: Date.now() - startedAt
+    });
+
+    return res.json({
+      ok: true,
+      requester,
+      driverId: driverId || null,
+      routeDate,
+      periodDays,
+      sourceContext,
+      ai: {
+        provider: 'openai',
+        model: aiResult.model,
+        store: false,
+        ...aiResult.parsed
+      }
+    });
+  } catch (error) {
+    await repositories.saveAiInteractionLog({
+      endpoint: 'driver-coaching',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber: null,
+      model: aiResult?.model || aiProvider.getModel(),
+      status: 'error',
+      inputSummary: { driverId: driverId || null, routeDate, periodDays },
+      outputSummary: {},
+      errorMessage: error.message,
+      latencyMs: Date.now() - startedAt
+    }).catch(() => {});
+
+    return res.status(error.status || 500).json({
+      ok: false,
+      error: error.status ? error.message : 'AI driver coaching analysis failed.'
     });
   }
 });

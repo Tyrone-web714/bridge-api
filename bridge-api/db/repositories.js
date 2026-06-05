@@ -3491,6 +3491,117 @@ async function listOperationalHeatmapSignals(options = {}) {
   }));
 }
 
+async function listDriverCoachingSignals(options = {}) {
+  const periodDays = normalizeLimit(options.periodDays, 30, 365);
+  const routeDate = toDateOnly(options.routeDate) || null;
+  const driverId = cleanRepositoryText(options.driverId, 120) || null;
+  const supervisorUsername = cleanRepositoryText(options.supervisorUsername, 120) || null;
+  const routeResult = await postgres.query(`
+    SELECT
+      driver.driver_id,
+      driver.driver_name,
+      driver.route_group,
+      driver.territory,
+      driver.supervisor_username,
+      driver.supervisor_name,
+      driver.team_name,
+      COUNT(DISTINCT manifest.id)::int AS route_count,
+      COUNT(DISTINCT manifest.id) FILTER (
+        WHERE manifest.status IN ('completed', 'completed_with_exceptions')
+      )::int AS completed_route_count,
+      COUNT(DISTINCT stop.id)::int AS stop_count,
+      COUNT(DISTINCT stop.id) FILTER (
+        WHERE stop.status IN ('completed', 'departed', 'skipped', 'undelivered')
+      )::int AS finished_stop_count,
+      COUNT(DISTINCT stop.id) FILTER (WHERE stop.status = 'undelivered')::int AS undelivered_stop_count,
+      COUNT(DISTINCT stop.id) FILTER (
+        WHERE stop.actual_arrival_at > stop.planned_arrival_at + INTERVAL '10 minutes'
+      )::int AS late_arrival_count,
+      AVG(
+        EXTRACT(EPOCH FROM (stop.actual_arrival_at - stop.planned_arrival_at)) / 60.0
+      ) FILTER (
+        WHERE stop.actual_arrival_at IS NOT NULL
+          AND stop.planned_arrival_at IS NOT NULL
+      ) AS average_arrival_variance_minutes,
+      AVG(
+        EXTRACT(EPOCH FROM (stop.actual_completed_at - stop.actual_service_started_at)) / 60.0
+          - COALESCE(stop.planned_service_minutes, 0)
+      ) FILTER (
+        WHERE stop.actual_completed_at IS NOT NULL
+          AND stop.actual_service_started_at IS NOT NULL
+      ) AS average_service_variance_minutes
+    FROM drivers AS driver
+    LEFT JOIN daily_route_manifests AS manifest
+      ON manifest.assigned_driver_id = driver.driver_id
+      AND manifest.route_date >= CURRENT_DATE - ($1::int * INTERVAL '1 day')
+      AND ($2::date IS NULL OR manifest.route_date = $2::date)
+    LEFT JOIN daily_route_stops AS stop ON stop.manifest_id = manifest.id
+    WHERE driver.active = true
+      AND ($3::text IS NULL OR driver.driver_id = $3::text)
+      AND ($4::text IS NULL OR driver.supervisor_username = $4::text)
+    GROUP BY
+      driver.driver_id,
+      driver.driver_name,
+      driver.route_group,
+      driver.territory,
+      driver.supervisor_username,
+      driver.supervisor_name,
+      driver.team_name
+    ORDER BY driver.driver_name ASC
+  `, [periodDays, routeDate, driverId, supervisorUsername]);
+
+  const eventResult = await postgres.query(`
+    SELECT
+      payload #>> '{driver,driverId}' AS driver_id,
+      event_type,
+      severity,
+      COUNT(*)::int AS event_count
+    FROM route_session_events
+    WHERE created_at >= NOW() - ($1::int * INTERVAL '1 day')
+      AND ($2::date IS NULL OR created_at::date = $2::date)
+      AND payload #>> '{driver,driverId}' IS NOT NULL
+      AND ($3::text IS NULL OR payload #>> '{driver,driverId}' = $3::text)
+    GROUP BY payload #>> '{driver,driverId}', event_type, severity
+  `, [periodDays, routeDate, driverId]);
+
+  const eventsByDriver = new Map();
+  for (const row of eventResult.rows) {
+    if (!eventsByDriver.has(row.driver_id)) eventsByDriver.set(row.driver_id, []);
+    eventsByDriver.get(row.driver_id).push({
+      eventType: row.event_type,
+      severity: row.severity || null,
+      count: Number(row.event_count) || 0
+    });
+  }
+
+  return routeResult.rows.map((row) => {
+    const events = eventsByDriver.get(row.driver_id) || [];
+    return {
+      driverId: row.driver_id,
+      driverName: row.driver_name,
+      routeGroup: row.route_group || null,
+      territory: row.territory || null,
+      supervisorUsername: row.supervisor_username || null,
+      supervisorName: row.supervisor_name || null,
+      teamName: row.team_name || null,
+      routeCount: Number(row.route_count) || 0,
+      completedRouteCount: Number(row.completed_route_count) || 0,
+      stopCount: Number(row.stop_count) || 0,
+      finishedStopCount: Number(row.finished_stop_count) || 0,
+      undeliveredStopCount: Number(row.undelivered_stop_count) || 0,
+      lateArrivalCount: Number(row.late_arrival_count) || 0,
+      averageArrivalVarianceMinutes: row.average_arrival_variance_minutes == null
+        ? null
+        : Math.round(Number(row.average_arrival_variance_minutes)),
+      averageServiceVarianceMinutes: row.average_service_variance_minutes == null
+        ? null
+        : Math.round(Number(row.average_service_variance_minutes)),
+      recordedEvents: events,
+      recordedEventCount: events.reduce((total, event) => total + event.count, 0)
+    };
+  });
+}
+
 async function generateAccountInsight(accountNumber, options = {}) {
   const summary = await getAccountProductSummary(accountNumber, options);
   const topProduct = summary.topProducts[0] || null;
@@ -3682,6 +3793,7 @@ module.exports = {
   listStaticHazardLocationBackfillQueue,
   listStaticHazardsForVerification,
   listDeliveryNotes,
+  listDriverCoachingSignals,
   listManualHazards,
   listOperationalHeatmapSignals,
   listRecentDestinations,

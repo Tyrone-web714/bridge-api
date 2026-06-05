@@ -258,6 +258,7 @@ function renderAccountIntelligenceAdminPage(session) {
         <label>Route Date<input id="aiRouteDate" type="date" /></label>
         <label>Optional Account Number<input id="aiAccountNumber" /></label>
         <label>Optional Route Session ID<input id="aiRouteSessionId" /></label>
+        <label>Optional Driver ID<input id="aiDriverId" /></label>
       </div>
       <label style="margin-top:14px">Supervisor Question
         <textarea id="aiQuestion" class="question-box" placeholder="Example: What products are driving spending for ACCT-1001, and are there any deduction risks?"></textarea>
@@ -273,6 +274,7 @@ function renderAccountIntelligenceAdminPage(session) {
         <button onclick="forecastProductDemand()">Product Demand Forecast</button>
         <button onclick="predictRouteCompletion()">Route Completion Prediction</button>
         <button onclick="analyzeOperationalHeatmap()">Operational Hotspots</button>
+        <button onclick="analyzeDriverCoaching()">Driver Coaching</button>
       </div>
     </section>
 
@@ -617,6 +619,37 @@ function renderAccountIntelligenceAdminPage(session) {
         '</div>' +
         renderDebug(data);
     }
+    function renderDriverCoaching(data) {
+      const ai = data.ai || {};
+      const context = data.sourceContext || {};
+      const metrics = (context.driverSignals || []).slice(0, 20).map(function (driver) {
+        return (driver.driverName || driver.driverId || 'Unknown driver') +
+          ' - routes ' + (driver.routeCount || 0) +
+          ', completed stops ' + (driver.finishedStopCount || 0) + '/' + (driver.stopCount || 0) +
+          ', late arrivals ' + (driver.lateArrivalCount || 0) +
+          ', undelivered ' + (driver.undeliveredStopCount || 0);
+      });
+      result.innerHTML =
+        '<div class="summary-hero">' +
+          '<span class="badge">AI Driver Coaching Intelligence</span>' +
+          '<div class="summary-title">' + escapeHtml(ai.title || 'Driver Coaching') + '</div>' +
+          '<div class="summary-subtitle">Driver: ' + escapeHtml(data.driverId || 'all drivers') +
+            ' - Coaching priority: ' + escapeHtml(ai.coachingPriority || 'unknown') +
+            ' - Confidence: ' + escapeHtml(ai.confidence || 'unknown') +
+            ' - Drivers analyzed: ' + escapeHtml((context.driverSignals || []).length || 0) + '</div>' +
+        '</div>' +
+        '<div class="ai-summary">' + escapeHtml(ai.summary || 'No driver coaching analysis returned.') + '</div>' +
+        '<div class="grid">' +
+          '<div class="content-card"><h3>Recorded Metrics</h3>' + listItems(metrics) + '</div>' +
+          '<div class="content-card"><h3>Observed Strengths</h3>' + listItems(ai.observedStrengths) + '</div>' +
+          '<div class="content-card"><h3>Efficiency Opportunities</h3>' + listItems(ai.efficiencyOpportunities) + '</div>' +
+          '<div class="content-card"><h3>Safety Observations</h3>' + listItems(ai.safetyObservations) + '</div>' +
+          '<div class="content-card"><h3>Schedule Observations</h3>' + listItems(ai.scheduleObservations) + '</div>' +
+          '<div class="content-card"><h3>Recommended Coaching</h3>' + listItems(ai.recommendedCoaching) + '</div>' +
+          '<div class="content-card"><h3>Missing Data</h3>' + listItems(ai.missingData) + '</div>' +
+        '</div>' +
+        renderDebug(data);
+    }
     function renderAccountGuidance(data) {
       const ai = data.ai || {};
       result.innerHTML =
@@ -736,6 +769,19 @@ function renderAccountIntelligenceAdminPage(session) {
         renderOperationalHeatmap(await requestJson('/api/ai/operational-heatmap', {
           method: 'POST',
           body: JSON.stringify({
+            routeDate: document.getElementById('aiRouteDate').value,
+            periodDays
+          })
+        }));
+      } catch (error) { setError(error); }
+    }
+    async function analyzeDriverCoaching() {
+      try {
+        const periodDays = Number(document.getElementById('periodDays').value.trim() || '30');
+        renderDriverCoaching(await requestJson('/api/ai/driver-coaching', {
+          method: 'POST',
+          body: JSON.stringify({
+            driverId: document.getElementById('aiDriverId').value.trim(),
             routeDate: document.getElementById('aiRouteDate').value,
             periodDays
           })
