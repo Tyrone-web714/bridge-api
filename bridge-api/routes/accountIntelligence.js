@@ -276,6 +276,7 @@ function renderAccountIntelligenceAdminPage(session) {
         <button onclick="analyzeOperationalHeatmap()">Operational Hotspots</button>
         <button onclick="analyzeDriverCoaching()">Driver Coaching</button>
         <button onclick="reconstructIncident()">Incident Reconstruction</button>
+        <button onclick="runWhatIfSimulation()">What-If Simulation</button>
       </div>
     </section>
 
@@ -681,6 +682,29 @@ function renderAccountIntelligenceAdminPage(session) {
         '</div>' +
         renderDebug(data);
     }
+    function renderWhatIfSimulation(data) {
+      const ai = data.ai || {};
+      result.innerHTML =
+        '<div class="summary-hero">' +
+          '<span class="badge">AI What-If Simulation</span>' +
+          '<div class="summary-title">' + escapeHtml(ai.title || 'What-If Simulation') + '</div>' +
+          '<div class="summary-subtitle">Hypothetical only - no operational changes applied - Confidence: ' +
+            escapeHtml(ai.confidence || 'unknown') + '</div>' +
+        '</div>' +
+        '<div class="ai-summary"><strong>Scenario:</strong> ' + escapeHtml(ai.scenario || data.scenario || '') +
+          '<br><br>' + escapeHtml(ai.summary || 'No simulation summary returned.') + '</div>' +
+        '<div class="grid">' +
+          '<div class="content-card"><h3>Assumptions</h3>' + listItems(ai.assumptions) + '</div>' +
+          '<div class="content-card"><h3>Expected Operational Effects</h3>' + listItems(ai.expectedOperationalEffects) + '</div>' +
+          '<div class="content-card"><h3>Route Effects</h3>' + listItems(ai.routeEffects) + '</div>' +
+          '<div class="content-card"><h3>Customer Effects</h3>' + listItems(ai.customerEffects) + '</div>' +
+          '<div class="content-card"><h3>Product Effects</h3>' + listItems(ai.productEffects) + '</div>' +
+          '<div class="content-card"><h3>Risks</h3>' + listItems(ai.risks) + '</div>' +
+          '<div class="content-card"><h3>Recommended Tests</h3>' + listItems(ai.recommendedTests) + '</div>' +
+          '<div class="content-card"><h3>Missing Data</h3>' + listItems(ai.missingData) + '</div>' +
+        '</div>' +
+        renderDebug(data);
+    }
     function renderAccountGuidance(data) {
       const ai = data.ai || {};
       result.innerHTML =
@@ -825,6 +849,22 @@ function renderAccountIntelligenceAdminPage(session) {
           method: 'POST',
           body: JSON.stringify({
             routeSessionId: document.getElementById('aiRouteSessionId').value.trim()
+          })
+        }));
+      } catch (error) { setError(error); }
+    }
+    async function runWhatIfSimulation() {
+      try {
+        const fallbackAccountNumber = document.getElementById('accountNumber').value.trim();
+        const accountNumber = document.getElementById('aiAccountNumber').value.trim() || fallbackAccountNumber;
+        const periodDays = Number(document.getElementById('periodDays').value.trim() || '180');
+        renderWhatIfSimulation(await requestJson('/api/ai/what-if-simulation', {
+          method: 'POST',
+          body: JSON.stringify({
+            scenario: document.getElementById('aiQuestion').value.trim(),
+            accountNumber,
+            routeDate: document.getElementById('aiRouteDate').value,
+            periodDays
           })
         }));
       } catch (error) { setError(error); }

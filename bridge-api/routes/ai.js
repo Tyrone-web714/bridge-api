@@ -156,6 +156,18 @@ function buildIncidentReconstructionPrompt() {
   ].join('\n');
 }
 
+function buildWhatIfSimulationPrompt() {
+  return [
+    'You are the AI what-if simulation analyst for Truck-Safe Routing.',
+    'Evaluate the hypothetical scenario against the source-of-truth route, stop, account, order, product, and completion data supplied by the backend.',
+    'The scenario is hypothetical. Do not claim that any route, assignment, schedule, order, or customer record was changed.',
+    'State assumptions explicitly and distinguish observed facts from directional estimates.',
+    'Do not invent traffic, weather, inventory, labor availability, customer behavior, costs, or capacity that are not supplied.',
+    'Recommend small operational tests before any production change.',
+    'AI simulates and recommends only. Supervisors and backend workflows control all actual changes.'
+  ].join('\n');
+}
+
 function buildRedeliveryPlanPrompt() {
   return [
     'You are the AI redelivery recovery planner for Truck-Safe Routing.',
@@ -706,6 +718,71 @@ const incidentReconstructionSchema = {
     'unresolvedQuestions',
     'operationalImpact',
     'recommendedFollowUp',
+    'missingData'
+  ]
+};
+
+const whatIfSimulationSchema = {
+  type: 'object',
+  additionalProperties: false,
+  properties: {
+    title: { type: 'string' },
+    scenario: { type: 'string' },
+    summary: { type: 'string' },
+    confidence: { type: 'string', enum: ['low', 'medium', 'high'] },
+    assumptions: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 15
+    },
+    expectedOperationalEffects: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 15
+    },
+    routeEffects: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 12
+    },
+    customerEffects: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 12
+    },
+    productEffects: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 12
+    },
+    risks: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 12
+    },
+    recommendedTests: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 10
+    },
+    missingData: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 15
+    }
+  },
+  required: [
+    'title',
+    'scenario',
+    'summary',
+    'confidence',
+    'assumptions',
+    'expectedOperationalEffects',
+    'routeEffects',
+    'customerEffects',
+    'productEffects',
+    'risks',
+    'recommendedTests',
     'missingData'
   ]
 };
@@ -1644,6 +1721,23 @@ async function buildIncidentReconstructionContext(routeSessionId) {
       createdAt: event.createdAt,
       payload: event.payload || {}
     }))
+  };
+}
+
+async function buildWhatIfSimulationContext({ scenario, accountNumber, routeDate, periodDays }) {
+  const [supervisorContext, routeCompletionContext, productDemandContext] = await Promise.all([
+    buildSupervisorContext({ accountNumber, routeDate, periodDays }),
+    buildRouteCompletionPredictionContext({ routeDate }),
+    buildProductDemandForecastContext({ accountNumber, routeDate, periodDays })
+  ]);
+
+  return {
+    scenario,
+    generatedAt: new Date().toISOString(),
+    noChangesApplied: true,
+    supervisorContext,
+    routeCompletionSignals: routeCompletionContext.routeSignals,
+    productDemandSignals: productDemandContext.productSignals
   };
 }
 
@@ -2829,6 +2923,94 @@ router.post('/incident-reconstruction', requireAdminAiAccess, requireAiConfigure
     return res.status(error.status || 500).json({
       ok: false,
       error: error.status ? error.message : 'AI incident reconstruction failed.'
+    });
+  }
+});
+
+router.post('/what-if-simulation', requireAdminAiAccess, requireAiConfigured, async (req, res) => {
+  const startedAt = Date.now();
+  const requester = getRequester(req);
+  const scenario = cleanText(req.body?.scenario || req.body?.question, 2000);
+  const accountNumber = cleanText(req.body?.accountNumber || req.body?.account_number, 120);
+  const routeDate = normalizeRouteDate(req.body?.routeDate || req.body?.route_date);
+  const periodDays = Number.parseInt(req.body?.periodDays || req.body?.period_days, 10) || 180;
+  let aiResult = null;
+
+  if (!scenario) {
+    return res.status(400).json({
+      ok: false,
+      error: 'A what-if scenario is required.'
+    });
+  }
+
+  try {
+    const sourceContext = await buildWhatIfSimulationContext({
+      scenario,
+      accountNumber,
+      routeDate,
+      periodDays
+    });
+    aiResult = await aiProvider.createStructuredResponse({
+      endpoint: 'what-if-simulation',
+      instructions: buildWhatIfSimulationPrompt(),
+      input: sourceContext,
+      schemaName: 'truck_safe_what_if_simulation',
+      schema: whatIfSimulationSchema
+    });
+
+    await repositories.saveAiInteractionLog({
+      endpoint: 'what-if-simulation',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber: accountNumber || null,
+      model: aiResult.model,
+      status: 'success',
+      inputSummary: {
+        scenario,
+        accountNumber: accountNumber || null,
+        routeDate,
+        periodDays,
+        routeCount: sourceContext.supervisorContext.recentRoutes.length,
+        completionSignalCount: sourceContext.routeCompletionSignals.length,
+        productSignalCount: sourceContext.productDemandSignals.length
+      },
+      outputSummary: aiResult.parsed,
+      latencyMs: Date.now() - startedAt
+    });
+
+    return res.json({
+      ok: true,
+      requester,
+      scenario,
+      accountNumber: accountNumber || null,
+      routeDate,
+      periodDays,
+      noChangesApplied: true,
+      sourceContext,
+      ai: {
+        provider: 'openai',
+        model: aiResult.model,
+        store: false,
+        ...aiResult.parsed
+      }
+    });
+  } catch (error) {
+    await repositories.saveAiInteractionLog({
+      endpoint: 'what-if-simulation',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber: accountNumber || null,
+      model: aiResult?.model || aiProvider.getModel(),
+      status: 'error',
+      inputSummary: { scenario, accountNumber: accountNumber || null, routeDate, periodDays },
+      outputSummary: {},
+      errorMessage: error.message,
+      latencyMs: Date.now() - startedAt
+    }).catch(() => {});
+
+    return res.status(error.status || 500).json({
+      ok: false,
+      error: error.status ? error.message : 'AI what-if simulation failed.'
     });
   }
 });
