@@ -107,6 +107,18 @@ function buildProductDemandForecastPrompt() {
   ].join('\n');
 }
 
+function buildRouteCompletionPredictionPrompt() {
+  return [
+    'You are the AI route completion analyst for Truck-Safe Routing.',
+    'Use only source-of-truth route schedules, stop status, actual timestamps, remaining planned work, load totals, and undelivered-stop data supplied by the backend.',
+    'Identify routes that are on pace, at risk, or likely to finish late.',
+    'Do not invent traffic, weather, driver behavior, customer delays, or completion times not supported by the supplied records.',
+    'Treat schedule variance and remaining planned minutes as backend-calculated facts.',
+    'If actual activity timestamps or planned windows are missing, lower confidence and list the missing data.',
+    'AI predicts and recommends only. Dispatch and supervisors make final operational decisions.'
+  ].join('\n');
+}
+
 function buildRedeliveryPlanPrompt() {
   return [
     'You are the AI redelivery recovery planner for Truck-Safe Routing.',
@@ -452,6 +464,59 @@ const productDemandForecastSchema = {
     'reorderSignals',
     'demandRisks',
     'routeLoadSignals',
+    'supervisorActions',
+    'missingData'
+  ]
+};
+
+const routeCompletionPredictionSchema = {
+  type: 'object',
+  additionalProperties: false,
+  properties: {
+    title: { type: 'string' },
+    summary: { type: 'string' },
+    confidence: { type: 'string', enum: ['low', 'medium', 'high'] },
+    overallCompletionRisk: { type: 'string', enum: ['unknown', 'low', 'medium', 'high', 'critical'] },
+    onTimeRoutes: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 12
+    },
+    atRiskRoutes: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 12
+    },
+    likelyLateRoutes: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 12
+    },
+    routeBlockers: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 10
+    },
+    supervisorActions: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 10
+    },
+    missingData: {
+      type: 'array',
+      items: { type: 'string' },
+      maxItems: 10
+    }
+  },
+  required: [
+    'title',
+    'summary',
+    'confidence',
+    'overallCompletionRisk',
+    'onTimeRoutes',
+    'atRiskRoutes',
+    'likelyLateRoutes',
+    'routeBlockers',
     'supervisorActions',
     'missingData'
   ]
@@ -1274,6 +1339,19 @@ async function buildProductDemandForecastContext({ accountNumber, routeDate, per
     recentRoutes: supervisorContext.recentRoutes,
     undeliveredStops: supervisorContext.undeliveredStops,
     productSignals
+  };
+}
+
+async function buildRouteCompletionPredictionContext({ routeDate }) {
+  const routeSignals = await repositories.listRouteCompletionSignals({
+    routeDate,
+    limit: 200
+  });
+
+  return {
+    routeDate,
+    generatedAt: new Date().toISOString(),
+    routeSignals
   };
 }
 
@@ -2144,6 +2222,73 @@ router.post('/product-demand-forecast', requireAdminAiAccess, requireAiConfigure
     return res.status(error.status || 500).json({
       ok: false,
       error: error.status ? error.message : 'AI product demand forecast failed.'
+    });
+  }
+});
+
+router.post('/route-completion-prediction', requireAdminAiAccess, requireAiConfigured, async (req, res) => {
+  const startedAt = Date.now();
+  const requester = getRequester(req);
+  const routeDate = normalizeRouteDate(req.body?.routeDate || req.body?.route_date);
+  let aiResult = null;
+
+  try {
+    const sourceContext = await buildRouteCompletionPredictionContext({ routeDate });
+    aiResult = await aiProvider.createStructuredResponse({
+      endpoint: 'route-completion-prediction',
+      instructions: buildRouteCompletionPredictionPrompt(),
+      input: sourceContext,
+      schemaName: 'truck_safe_route_completion_prediction',
+      schema: routeCompletionPredictionSchema
+    });
+
+    await repositories.saveAiInteractionLog({
+      endpoint: 'route-completion-prediction',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber: null,
+      model: aiResult.model,
+      status: 'success',
+      inputSummary: {
+        routeDate,
+        routeCount: sourceContext.routeSignals.length,
+        inProgressRouteCount: sourceContext.routeSignals.filter((route) => (
+          ['active', 'in_progress'].includes(String(route.status || '').toLowerCase())
+        )).length
+      },
+      outputSummary: aiResult.parsed,
+      latencyMs: Date.now() - startedAt
+    });
+
+    return res.json({
+      ok: true,
+      requester,
+      routeDate,
+      sourceContext,
+      ai: {
+        provider: 'openai',
+        model: aiResult.model,
+        store: false,
+        ...aiResult.parsed
+      }
+    });
+  } catch (error) {
+    await repositories.saveAiInteractionLog({
+      endpoint: 'route-completion-prediction',
+      requesterType: requester.type,
+      requesterId: requester.id,
+      accountNumber: null,
+      model: aiResult?.model || aiProvider.getModel(),
+      status: 'error',
+      inputSummary: { routeDate },
+      outputSummary: {},
+      errorMessage: error.message,
+      latencyMs: Date.now() - startedAt
+    }).catch(() => {});
+
+    return res.status(error.status || 500).json({
+      ok: false,
+      error: error.status ? error.message : 'AI route completion prediction failed.'
     });
   }
 });

@@ -271,6 +271,7 @@ function renderAccountIntelligenceAdminPage(session) {
         <button onclick="predictDeliveryFailure()">Delivery Failure Risk</button>
         <button onclick="predictDeductionRisk()">Deduction Risk</button>
         <button onclick="forecastProductDemand()">Product Demand Forecast</button>
+        <button onclick="predictRouteCompletion()">Route Completion Prediction</button>
       </div>
     </section>
 
@@ -563,6 +564,29 @@ function renderAccountIntelligenceAdminPage(session) {
         '</div>' +
         renderDebug(data);
     }
+    function renderRouteCompletionPrediction(data) {
+      const ai = data.ai || {};
+      const context = data.sourceContext || {};
+      result.innerHTML =
+        '<div class="summary-hero">' +
+          '<span class="badge">AI Route Completion Prediction</span>' +
+          '<div class="summary-title">' + escapeHtml(ai.title || 'Route Completion Prediction') + '</div>' +
+          '<div class="summary-subtitle">Route date: ' + escapeHtml(data.routeDate || 'today') +
+            ' - Overall risk: ' + escapeHtml(ai.overallCompletionRisk || 'unknown') +
+            ' - Confidence: ' + escapeHtml(ai.confidence || 'unknown') +
+            ' - Routes analyzed: ' + escapeHtml((context.routeSignals || []).length || 0) + '</div>' +
+        '</div>' +
+        '<div class="ai-summary">' + escapeHtml(ai.summary || 'No route-completion prediction returned.') + '</div>' +
+        '<div class="grid">' +
+          '<div class="content-card"><h3>On-Time Routes</h3>' + listItems(ai.onTimeRoutes) + '</div>' +
+          '<div class="content-card"><h3>At-Risk Routes</h3>' + listItems(ai.atRiskRoutes) + '</div>' +
+          '<div class="content-card"><h3>Likely Late Routes</h3>' + listItems(ai.likelyLateRoutes) + '</div>' +
+          '<div class="content-card"><h3>Route Blockers</h3>' + listItems(ai.routeBlockers) + '</div>' +
+          '<div class="content-card"><h3>Supervisor Actions</h3>' + listItems(ai.supervisorActions) + '</div>' +
+          '<div class="content-card"><h3>Missing Data</h3>' + listItems(ai.missingData) + '</div>' +
+        '</div>' +
+        renderDebug(data);
+    }
     function renderAccountGuidance(data) {
       const ai = data.ai || {};
       result.innerHTML =
@@ -662,6 +686,16 @@ function renderAccountIntelligenceAdminPage(session) {
             accountNumber,
             routeDate: document.getElementById('aiRouteDate').value,
             periodDays
+          })
+        }));
+      } catch (error) { setError(error); }
+    }
+    async function predictRouteCompletion() {
+      try {
+        renderRouteCompletionPrediction(await requestJson('/api/ai/route-completion-prediction', {
+          method: 'POST',
+          body: JSON.stringify({
+            routeDate: document.getElementById('aiRouteDate').value
           })
         }));
       } catch (error) { setError(error); }

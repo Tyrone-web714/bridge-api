@@ -3268,6 +3268,96 @@ async function listProductDemandSignals(options = {}) {
   }));
 }
 
+async function listRouteCompletionSignals(options = {}) {
+  const routeDate = toDateOnly(options.routeDate) || new Date().toISOString().slice(0, 10);
+  const limit = normalizeLimit(options.limit, 100, 300);
+  const result = await postgres.query(`
+    SELECT
+      manifest.id,
+      manifest.route_date,
+      manifest.route_number,
+      manifest.route_name,
+      manifest.assigned_driver_id,
+      manifest.assigned_driver_name,
+      manifest.status,
+      manifest.planned_start_at,
+      manifest.planned_end_at,
+      manifest.started_at,
+      manifest.completed_at,
+      manifest.total_stops,
+      manifest.total_pallets,
+      manifest.total_cases,
+      COUNT(stop.id)::int AS recorded_stop_count,
+      COUNT(stop.id) FILTER (
+        WHERE stop.status IN ('completed', 'departed', 'skipped', 'undelivered')
+      )::int AS finished_stop_count,
+      COUNT(stop.id) FILTER (WHERE stop.status = 'undelivered')::int AS undelivered_stop_count,
+      COUNT(stop.id) FILTER (
+        WHERE stop.status NOT IN ('completed', 'departed', 'skipped', 'undelivered')
+      )::int AS remaining_stop_count,
+      COALESCE(SUM(
+        CASE
+          WHEN stop.status NOT IN ('completed', 'departed', 'skipped', 'undelivered')
+            THEN COALESCE(stop.planned_service_minutes, 0) + COALESCE(stop.drive_minutes_to_next, 0)
+          ELSE 0
+        END
+      ), 0)::int AS remaining_planned_minutes,
+      MAX(COALESCE(
+        stop.actual_departure_at,
+        stop.actual_completed_at,
+        stop.actual_service_started_at,
+        stop.actual_arrival_at
+      )) AS latest_actual_activity_at,
+      MAX(stop.planned_departure_at) FILTER (
+        WHERE stop.status IN ('completed', 'departed', 'skipped', 'undelivered')
+      ) AS latest_finished_planned_departure_at,
+      EXTRACT(EPOCH FROM (
+        MAX(COALESCE(
+          stop.actual_departure_at,
+          stop.actual_completed_at,
+          stop.actual_service_started_at,
+          stop.actual_arrival_at
+        )) -
+        MAX(stop.planned_departure_at) FILTER (
+          WHERE stop.status IN ('completed', 'departed', 'skipped', 'undelivered')
+        )
+      )) / 60.0 AS schedule_variance_minutes
+    FROM daily_route_manifests AS manifest
+    LEFT JOIN daily_route_stops AS stop ON stop.manifest_id = manifest.id
+    WHERE manifest.route_date = $1::date
+    GROUP BY manifest.id
+    ORDER BY manifest.route_number ASC
+    LIMIT $2
+  `, [routeDate, limit]);
+
+  return result.rows.map((row) => ({
+    id: row.id,
+    routeDate: toDateOnly(row.route_date),
+    routeNumber: row.route_number,
+    routeName: row.route_name || null,
+    assignedDriverId: row.assigned_driver_id || null,
+    assignedDriverName: row.assigned_driver_name || null,
+    status: row.status || null,
+    plannedStartAt: toIsoString(row.planned_start_at),
+    plannedEndAt: toIsoString(row.planned_end_at),
+    startedAt: toIsoString(row.started_at),
+    completedAt: toIsoString(row.completed_at),
+    totalStops: Number(row.total_stops) || 0,
+    totalPallets: Number(row.total_pallets) || 0,
+    totalCases: Number(row.total_cases) || 0,
+    recordedStopCount: Number(row.recorded_stop_count) || 0,
+    finishedStopCount: Number(row.finished_stop_count) || 0,
+    undeliveredStopCount: Number(row.undelivered_stop_count) || 0,
+    remainingStopCount: Number(row.remaining_stop_count) || 0,
+    remainingPlannedMinutes: Number(row.remaining_planned_minutes) || 0,
+    latestActualActivityAt: toIsoString(row.latest_actual_activity_at),
+    latestFinishedPlannedDepartureAt: toIsoString(row.latest_finished_planned_departure_at),
+    scheduleVarianceMinutes: row.schedule_variance_minutes == null
+      ? null
+      : Math.round(Number(row.schedule_variance_minutes))
+  }));
+}
+
 async function generateAccountInsight(accountNumber, options = {}) {
   const summary = await getAccountProductSummary(accountNumber, options);
   const topProduct = summary.topProducts[0] || null;
@@ -3462,6 +3552,7 @@ module.exports = {
   listManualHazards,
   listRecentDestinations,
   listProductDemandSignals,
+  listRouteCompletionSignals,
   listStaticBridgesInBounds,
   listStaticBridgesNearRoute,
   listStaticZonesInBounds,
