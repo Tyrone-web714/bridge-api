@@ -3408,22 +3408,314 @@ async function getAccountProductSummary(accountNumber, options = {}) {
   };
 }
 
+async function getAccountForecastSignals(accountNumber, options = {}) {
+  const cleanedAccountNumber = cleanRepositoryText(accountNumber, 120);
+  if (!cleanedAccountNumber) {
+    const error = new Error('accountNumber is required.');
+    error.status = 400;
+    throw error;
+  }
+
+  const periodDays = normalizeLimit(options.periodDays, 90, 365);
+  const asOfDate = toDateOnly(options.routeDate || options.asOfDate) || new Date().toISOString().slice(0, 10);
+  const [orderResult, productResult, stopResult, reasonResult] = await Promise.all([
+    postgres.query(`
+      WITH dated_orders AS (
+        SELECT
+          *,
+          COALESCE(delivery_date, order_date) AS activity_date
+        FROM account_orders
+        WHERE account_number = $1
+          AND COALESCE(delivery_date, order_date) BETWEEN
+            $3::date - (($2::int * 2 - 1) * INTERVAL '1 day')
+            AND $3::date
+      ),
+      ordered_activity AS (
+        SELECT
+          activity_date,
+          activity_date - LAG(activity_date) OVER (ORDER BY activity_date, created_at) AS order_gap
+        FROM dated_orders
+        WHERE activity_date IS NOT NULL
+      )
+      SELECT
+        COUNT(*) FILTER (
+          WHERE activity_date >= $3::date - (($2::int - 1) * INTERVAL '1 day')
+        )::int AS current_order_count,
+        COUNT(*) FILTER (
+          WHERE activity_date < $3::date - (($2::int - 1) * INTERVAL '1 day')
+        )::int AS previous_order_count,
+        COALESCE(SUM(subtotal_amount) FILTER (
+          WHERE activity_date >= $3::date - (($2::int - 1) * INTERVAL '1 day')
+        ), 0) AS current_subtotal_amount,
+        COALESCE(SUM(deduction_amount) FILTER (
+          WHERE activity_date >= $3::date - (($2::int - 1) * INTERVAL '1 day')
+        ), 0) AS current_deduction_amount,
+        COALESCE(SUM(net_amount) FILTER (
+          WHERE activity_date >= $3::date - (($2::int - 1) * INTERVAL '1 day')
+        ), 0) AS current_net_amount,
+        COALESCE(SUM(subtotal_amount) FILTER (
+          WHERE activity_date < $3::date - (($2::int - 1) * INTERVAL '1 day')
+        ), 0) AS previous_subtotal_amount,
+        COALESCE(SUM(deduction_amount) FILTER (
+          WHERE activity_date < $3::date - (($2::int - 1) * INTERVAL '1 day')
+        ), 0) AS previous_deduction_amount,
+        COALESCE(SUM(net_amount) FILTER (
+          WHERE activity_date < $3::date - (($2::int - 1) * INTERVAL '1 day')
+        ), 0) AS previous_net_amount,
+        MIN(activity_date) FILTER (
+          WHERE activity_date >= $3::date - (($2::int - 1) * INTERVAL '1 day')
+        ) AS current_first_order_date,
+        MAX(activity_date) FILTER (
+          WHERE activity_date >= $3::date - (($2::int - 1) * INTERVAL '1 day')
+        ) AS current_last_order_date,
+        MIN(activity_date) FILTER (
+          WHERE activity_date < $3::date - (($2::int - 1) * INTERVAL '1 day')
+        ) AS previous_first_order_date,
+        MAX(activity_date) FILTER (
+          WHERE activity_date < $3::date - (($2::int - 1) * INTERVAL '1 day')
+        ) AS previous_last_order_date,
+        (
+          SELECT AVG(order_gap::numeric)
+          FROM ordered_activity
+          WHERE order_gap IS NOT NULL
+        ) AS average_order_interval_days
+      FROM dated_orders
+    `, [cleanedAccountNumber, periodDays, asOfDate]),
+    postgres.query(`
+      SELECT
+        item.sku,
+        item.product_name,
+        MAX(item.brand) AS brand,
+        MAX(item.category) AS category,
+        COALESCE(SUM(item.quantity) FILTER (
+          WHERE COALESCE(ord.delivery_date, ord.order_date) >=
+            $3::date - (($2::int - 1) * INTERVAL '1 day')
+        ), 0) AS current_quantity,
+        COALESCE(SUM(item.net_amount) FILTER (
+          WHERE COALESCE(ord.delivery_date, ord.order_date) >=
+            $3::date - (($2::int - 1) * INTERVAL '1 day')
+        ), 0) AS current_net_amount,
+        COALESCE(SUM(item.quantity) FILTER (
+          WHERE COALESCE(ord.delivery_date, ord.order_date) <
+            $3::date - (($2::int - 1) * INTERVAL '1 day')
+        ), 0) AS previous_quantity,
+        COALESCE(SUM(item.net_amount) FILTER (
+          WHERE COALESCE(ord.delivery_date, ord.order_date) <
+            $3::date - (($2::int - 1) * INTERVAL '1 day')
+        ), 0) AS previous_net_amount
+      FROM account_order_items AS item
+      JOIN account_orders AS ord ON ord.id = item.order_id
+      WHERE ord.account_number = $1
+        AND COALESCE(ord.delivery_date, ord.order_date) BETWEEN
+          $3::date - (($2::int * 2 - 1) * INTERVAL '1 day')
+          AND $3::date
+      GROUP BY item.sku, item.product_name
+      ORDER BY current_quantity DESC, current_net_amount DESC
+      LIMIT 20
+    `, [cleanedAccountNumber, periodDays, asOfDate]),
+    postgres.query(`
+      SELECT
+        COUNT(stop.id) FILTER (
+          WHERE manifest.route_date >= $3::date - (($2::int - 1) * INTERVAL '1 day')
+        )::int AS current_route_stop_count,
+        COUNT(stop.id) FILTER (
+          WHERE manifest.route_date >= $3::date - (($2::int - 1) * INTERVAL '1 day')
+            AND stop.status IN ('completed', 'departed', 'skipped', 'undelivered')
+        )::int AS current_finished_stop_count,
+        COUNT(stop.id) FILTER (
+          WHERE manifest.route_date >= $3::date - (($2::int - 1) * INTERVAL '1 day')
+            AND stop.status = 'undelivered'
+        )::int AS current_undelivered_stop_count,
+        COUNT(stop.id) FILTER (
+          WHERE manifest.route_date < $3::date - (($2::int - 1) * INTERVAL '1 day')
+        )::int AS previous_route_stop_count,
+        COUNT(stop.id) FILTER (
+          WHERE manifest.route_date < $3::date - (($2::int - 1) * INTERVAL '1 day')
+            AND stop.status IN ('completed', 'departed', 'skipped', 'undelivered')
+        )::int AS previous_finished_stop_count,
+        COUNT(stop.id) FILTER (
+          WHERE manifest.route_date < $3::date - (($2::int - 1) * INTERVAL '1 day')
+            AND stop.status = 'undelivered'
+        )::int AS previous_undelivered_stop_count
+      FROM daily_route_stops AS stop
+      JOIN daily_route_manifests AS manifest ON manifest.id = stop.manifest_id
+      WHERE stop.account_number = $1
+        AND manifest.route_date BETWEEN
+          $3::date - (($2::int * 2 - 1) * INTERVAL '1 day')
+          AND $3::date
+    `, [cleanedAccountNumber, periodDays, asOfDate]),
+    postgres.query(`
+      SELECT
+        COALESCE(NULLIF(stop.non_delivery_reason, ''), 'unspecified') AS reason,
+        COUNT(*)::int AS count
+      FROM daily_route_stops AS stop
+      JOIN daily_route_manifests AS manifest ON manifest.id = stop.manifest_id
+      WHERE stop.account_number = $1
+        AND stop.status = 'undelivered'
+        AND manifest.route_date >= $3::date - (($2::int - 1) * INTERVAL '1 day')
+        AND manifest.route_date <= $3::date
+      GROUP BY COALESCE(NULLIF(stop.non_delivery_reason, ''), 'unspecified')
+      ORDER BY count DESC
+    `, [cleanedAccountNumber, periodDays, asOfDate])
+  ]);
+
+  const order = orderResult.rows[0] || {};
+  const stop = stopResult.rows[0] || {};
+  const currentItemQuantity = productResult.rows.reduce(
+    (sum, row) => sum + normalizeQuantity(row.current_quantity),
+    0
+  );
+  const previousItemQuantity = productResult.rows.reduce(
+    (sum, row) => sum + normalizeQuantity(row.previous_quantity),
+    0
+  );
+  const currentPeriodStart = new Date(`${asOfDate}T00:00:00.000Z`);
+  currentPeriodStart.setUTCDate(currentPeriodStart.getUTCDate() - (periodDays - 1));
+  const previousPeriodEnd = new Date(currentPeriodStart);
+  previousPeriodEnd.setUTCDate(previousPeriodEnd.getUTCDate() - 1);
+  const previousPeriodStart = new Date(previousPeriodEnd);
+  previousPeriodStart.setUTCDate(previousPeriodStart.getUTCDate() - (periodDays - 1));
+
+  return {
+    accountNumber: cleanedAccountNumber,
+    asOfDate,
+    periodDays,
+    averageOrderIntervalDays: order.average_order_interval_days == null
+      ? null
+      : Number(order.average_order_interval_days),
+    currentPeriod: {
+      periodStart: currentPeriodStart.toISOString().slice(0, 10),
+      periodEnd: asOfDate,
+      orderCount: Number(order.current_order_count) || 0,
+      subtotalAmount: normalizeMoney(order.current_subtotal_amount),
+      deductionAmount: normalizeMoney(order.current_deduction_amount),
+      netAmount: normalizeMoney(order.current_net_amount),
+      itemQuantity: normalizeQuantity(currentItemQuantity),
+      firstOrderDate: toDateOnly(order.current_first_order_date),
+      lastOrderDate: toDateOnly(order.current_last_order_date),
+      routeStopCount: Number(stop.current_route_stop_count) || 0,
+      finishedStopCount: Number(stop.current_finished_stop_count) || 0,
+      undeliveredStopCount: Number(stop.current_undelivered_stop_count) || 0
+    },
+    previousPeriod: {
+      periodStart: previousPeriodStart.toISOString().slice(0, 10),
+      periodEnd: previousPeriodEnd.toISOString().slice(0, 10),
+      orderCount: Number(order.previous_order_count) || 0,
+      subtotalAmount: normalizeMoney(order.previous_subtotal_amount),
+      deductionAmount: normalizeMoney(order.previous_deduction_amount),
+      netAmount: normalizeMoney(order.previous_net_amount),
+      itemQuantity: normalizeQuantity(previousItemQuantity),
+      firstOrderDate: toDateOnly(order.previous_first_order_date),
+      lastOrderDate: toDateOnly(order.previous_last_order_date),
+      routeStopCount: Number(stop.previous_route_stop_count) || 0,
+      finishedStopCount: Number(stop.previous_finished_stop_count) || 0,
+      undeliveredStopCount: Number(stop.previous_undelivered_stop_count) || 0
+    },
+    products: productResult.rows.map((row) => ({
+      sku: row.sku || null,
+      productName: row.product_name,
+      brand: row.brand || null,
+      category: row.category || null,
+      currentQuantity: normalizeQuantity(row.current_quantity),
+      currentNetAmount: normalizeMoney(row.current_net_amount),
+      previousQuantity: normalizeQuantity(row.previous_quantity),
+      previousNetAmount: normalizeMoney(row.previous_net_amount)
+    })),
+    failureReasons: reasonResult.rows.map((row) => ({
+      reason: row.reason,
+      count: Number(row.count) || 0
+    }))
+  };
+}
+
+async function getDeliveryFailureSignals(options = {}) {
+  const periodDays = normalizeLimit(options.periodDays, 90, 365);
+  const asOfDate = toDateOnly(options.routeDate || options.asOfDate) || new Date().toISOString().slice(0, 10);
+  const accountNumber = cleanRepositoryText(options.accountNumber, 120) || null;
+  const result = await postgres.query(`
+    SELECT
+      COUNT(stop.id) FILTER (
+        WHERE manifest.route_date >= $2::date - (($1::int - 1) * INTERVAL '1 day')
+          AND stop.status IN ('completed', 'departed', 'skipped', 'undelivered')
+      )::int AS current_finished_stop_count,
+      COUNT(stop.id) FILTER (
+        WHERE manifest.route_date >= $2::date - (($1::int - 1) * INTERVAL '1 day')
+          AND stop.status = 'undelivered'
+      )::int AS current_undelivered_stop_count,
+      COUNT(stop.id) FILTER (
+        WHERE manifest.route_date < $2::date - (($1::int - 1) * INTERVAL '1 day')
+          AND stop.status IN ('completed', 'departed', 'skipped', 'undelivered')
+      )::int AS previous_finished_stop_count,
+      COUNT(stop.id) FILTER (
+        WHERE manifest.route_date < $2::date - (($1::int - 1) * INTERVAL '1 day')
+          AND stop.status = 'undelivered'
+      )::int AS previous_undelivered_stop_count
+    FROM daily_route_stops AS stop
+    JOIN daily_route_manifests AS manifest ON manifest.id = stop.manifest_id
+    WHERE manifest.route_date BETWEEN
+      $2::date - (($1::int * 2 - 1) * INTERVAL '1 day')
+      AND $2::date
+      AND ($3::text IS NULL OR stop.account_number = $3)
+  `, [periodDays, asOfDate, accountNumber]);
+  const reasonResult = await postgres.query(`
+    SELECT
+      COALESCE(NULLIF(stop.non_delivery_reason, ''), 'unspecified') AS reason,
+      COUNT(*)::int AS count
+    FROM daily_route_stops AS stop
+    JOIN daily_route_manifests AS manifest ON manifest.id = stop.manifest_id
+    WHERE stop.status = 'undelivered'
+      AND manifest.route_date >= $2::date - (($1::int - 1) * INTERVAL '1 day')
+      AND manifest.route_date <= $2::date
+      AND ($3::text IS NULL OR stop.account_number = $3)
+    GROUP BY COALESCE(NULLIF(stop.non_delivery_reason, ''), 'unspecified')
+    ORDER BY count DESC
+  `, [periodDays, asOfDate, accountNumber]);
+
+  const row = result.rows[0] || {};
+  const currentPeriodStart = new Date(`${asOfDate}T00:00:00.000Z`);
+  currentPeriodStart.setUTCDate(currentPeriodStart.getUTCDate() - (periodDays - 1));
+  const previousPeriodEnd = new Date(currentPeriodStart);
+  previousPeriodEnd.setUTCDate(previousPeriodEnd.getUTCDate() - 1);
+  const previousPeriodStart = new Date(previousPeriodEnd);
+  previousPeriodStart.setUTCDate(previousPeriodStart.getUTCDate() - (periodDays - 1));
+
+  return {
+    accountNumber,
+    asOfDate,
+    periodDays,
+    currentPeriod: {
+      periodStart: currentPeriodStart.toISOString().slice(0, 10),
+      periodEnd: asOfDate,
+      finishedStopCount: Number(row.current_finished_stop_count) || 0,
+      undeliveredStopCount: Number(row.current_undelivered_stop_count) || 0
+    },
+    previousPeriod: {
+      periodStart: previousPeriodStart.toISOString().slice(0, 10),
+      periodEnd: previousPeriodEnd.toISOString().slice(0, 10),
+      finishedStopCount: Number(row.previous_finished_stop_count) || 0,
+      undeliveredStopCount: Number(row.previous_undelivered_stop_count) || 0
+    },
+    failureReasons: reasonResult.rows.map((reason) => ({
+      reason: reason.reason,
+      count: Number(reason.count) || 0
+    }))
+  };
+}
+
 async function listProductDemandSignals(options = {}) {
   const periodDays = normalizeLimit(options.periodDays, 180, 1095);
   const limit = normalizeLimit(options.limit, 25, 100);
-  const values = [periodDays];
+  const asOfDate = toDateOnly(options.routeDate) || new Date().toISOString().slice(0, 10);
+  const values = [periodDays, asOfDate];
   const where = [
-    `COALESCE(ord.delivery_date, ord.order_date, CURRENT_DATE) >= CURRENT_DATE - ($1::int * INTERVAL '1 day')`
+    `COALESCE(ord.delivery_date, ord.order_date) BETWEEN
+      $2::date - (($1::int * 2 - 1) * INTERVAL '1 day')
+      AND $2::date`
   ];
 
   if (options.accountNumber) {
     values.push(cleanRepositoryText(options.accountNumber, 120));
     where.push(`ord.account_number = $${values.length}`);
-  }
-
-  if (options.routeDate) {
-    values.push(toDateOnly(options.routeDate));
-    where.push(`COALESCE(ord.delivery_date, ord.order_date, CURRENT_DATE) <= $${values.length}::date`);
   }
 
   values.push(limit);
@@ -3433,19 +3725,49 @@ async function listProductDemandSignals(options = {}) {
       item.product_name,
       MAX(item.brand) AS brand,
       MAX(item.category) AS category,
-      COUNT(DISTINCT ord.id)::int AS order_count,
-      COUNT(DISTINCT ord.account_number)::int AS account_count,
-      COALESCE(SUM(item.quantity), 0) AS quantity,
-      COALESCE(SUM(item.gross_amount), 0) AS gross_amount,
-      COALESCE(SUM(item.deduction_amount), 0) AS deduction_amount,
-      COALESCE(SUM(item.net_amount), 0) AS net_amount,
+      COUNT(DISTINCT ord.id) FILTER (
+        WHERE COALESCE(ord.delivery_date, ord.order_date) >=
+          $2::date - (($1::int - 1) * INTERVAL '1 day')
+      )::int AS current_order_count,
+      COUNT(DISTINCT ord.id) FILTER (
+        WHERE COALESCE(ord.delivery_date, ord.order_date) <
+          $2::date - (($1::int - 1) * INTERVAL '1 day')
+      )::int AS previous_order_count,
+      COUNT(DISTINCT ord.account_number) FILTER (
+        WHERE COALESCE(ord.delivery_date, ord.order_date) >=
+          $2::date - (($1::int - 1) * INTERVAL '1 day')
+      )::int AS current_account_count,
+      COALESCE(SUM(item.quantity) FILTER (
+        WHERE COALESCE(ord.delivery_date, ord.order_date) >=
+          $2::date - (($1::int - 1) * INTERVAL '1 day')
+      ), 0) AS current_quantity,
+      COALESCE(SUM(item.quantity) FILTER (
+        WHERE COALESCE(ord.delivery_date, ord.order_date) <
+          $2::date - (($1::int - 1) * INTERVAL '1 day')
+      ), 0) AS previous_quantity,
+      COALESCE(SUM(item.gross_amount) FILTER (
+        WHERE COALESCE(ord.delivery_date, ord.order_date) >=
+          $2::date - (($1::int - 1) * INTERVAL '1 day')
+      ), 0) AS current_gross_amount,
+      COALESCE(SUM(item.deduction_amount) FILTER (
+        WHERE COALESCE(ord.delivery_date, ord.order_date) >=
+          $2::date - (($1::int - 1) * INTERVAL '1 day')
+      ), 0) AS current_deduction_amount,
+      COALESCE(SUM(item.net_amount) FILTER (
+        WHERE COALESCE(ord.delivery_date, ord.order_date) >=
+          $2::date - (($1::int - 1) * INTERVAL '1 day')
+      ), 0) AS current_net_amount,
+      COALESCE(SUM(item.net_amount) FILTER (
+        WHERE COALESCE(ord.delivery_date, ord.order_date) <
+          $2::date - (($1::int - 1) * INTERVAL '1 day')
+      ), 0) AS previous_net_amount,
       MIN(COALESCE(ord.delivery_date, ord.order_date)) AS first_order_date,
       MAX(COALESCE(ord.delivery_date, ord.order_date)) AS last_order_date
     FROM account_order_items AS item
     JOIN account_orders AS ord ON ord.id = item.order_id
     WHERE ${where.join(' AND ')}
     GROUP BY item.sku, item.product_name
-    ORDER BY quantity DESC, net_amount DESC
+    ORDER BY current_quantity DESC, current_net_amount DESC
     LIMIT $${values.length}
   `, values);
 
@@ -3454,12 +3776,18 @@ async function listProductDemandSignals(options = {}) {
     productName: row.product_name,
     brand: row.brand || null,
     category: row.category || null,
-    orderCount: Number(row.order_count) || 0,
-    accountCount: Number(row.account_count) || 0,
-    quantity: normalizeQuantity(row.quantity),
-    grossAmount: normalizeMoney(row.gross_amount),
-    deductionAmount: normalizeMoney(row.deduction_amount),
-    netAmount: normalizeMoney(row.net_amount),
+    orderCount: Number(row.current_order_count) || 0,
+    currentOrderCount: Number(row.current_order_count) || 0,
+    previousOrderCount: Number(row.previous_order_count) || 0,
+    accountCount: Number(row.current_account_count) || 0,
+    quantity: normalizeQuantity(row.current_quantity),
+    currentQuantity: normalizeQuantity(row.current_quantity),
+    previousQuantity: normalizeQuantity(row.previous_quantity),
+    grossAmount: normalizeMoney(row.current_gross_amount),
+    deductionAmount: normalizeMoney(row.current_deduction_amount),
+    netAmount: normalizeMoney(row.current_net_amount),
+    currentNetAmount: normalizeMoney(row.current_net_amount),
+    previousNetAmount: normalizeMoney(row.previous_net_amount),
     firstOrderDate: toDateOnly(row.first_order_date),
     lastOrderDate: toDateOnly(row.last_order_date)
   }));
@@ -4396,6 +4724,110 @@ async function saveAccountInsight(input = {}) {
   return accountAiInsightFromRow(result.rows[0]);
 }
 
+async function savePredictionRun(input = {}) {
+  const predictionType = cleanRepositoryText(input.predictionType || input.prediction_type, 120);
+  const entityType = cleanRepositoryText(input.entityType || input.entity_type, 120);
+  const engineVersion = cleanRepositoryText(input.engineVersion || input.engine_version, 120);
+  if (!predictionType || !entityType || !engineVersion) {
+    const error = new Error('predictionType, entityType, and engineVersion are required.');
+    error.status = 400;
+    throw error;
+  }
+
+  const result = await postgres.query(`
+    INSERT INTO prediction_runs (
+      id, prediction_type, entity_type, entity_id, route_date,
+      source_period_start, source_period_end, sample_count, confidence,
+      engine_version, features, prediction, created_by
+    )
+    VALUES (
+      $1, $2, $3, $4, $5::date,
+      $6::date, $7::date, $8, $9,
+      $10, $11::jsonb, $12::jsonb, $13
+    )
+    RETURNING *
+  `, [
+    cleanRepositoryText(input.id, 160) || generateRepositoryId('prediction'),
+    predictionType,
+    entityType,
+    cleanRepositoryText(input.entityId || input.entity_id, 200) || null,
+    toDateOnly(input.routeDate || input.route_date) || null,
+    toDateOnly(input.sourcePeriodStart || input.source_period_start) || null,
+    toDateOnly(input.sourcePeriodEnd || input.source_period_end) || null,
+    Number(input.sampleCount || input.sample_count) || 0,
+    cleanRepositoryText(input.confidence, 40) || 'low',
+    engineVersion,
+    JSON.stringify(input.features || {}),
+    JSON.stringify(input.prediction || {}),
+    cleanRepositoryText(input.createdBy || input.created_by, 160) || null
+  ]);
+
+  const row = result.rows[0];
+  return {
+    id: row.id,
+    predictionType: row.prediction_type,
+    entityType: row.entity_type,
+    entityId: row.entity_id || null,
+    routeDate: toDateOnly(row.route_date),
+    sourcePeriodStart: toDateOnly(row.source_period_start),
+    sourcePeriodEnd: toDateOnly(row.source_period_end),
+    sampleCount: Number(row.sample_count) || 0,
+    confidence: row.confidence,
+    engineVersion: row.engine_version,
+    features: row.features || {},
+    prediction: row.prediction || {},
+    createdBy: row.created_by || null,
+    createdAt: toIsoString(row.created_at)
+  };
+}
+
+async function listPredictionRuns(options = {}) {
+  const limit = normalizeLimit(options.limit, 50, 200);
+  const values = [];
+  const where = [];
+  if (options.predictionType) {
+    values.push(cleanRepositoryText(options.predictionType, 120));
+    where.push(`prediction_type = $${values.length}`);
+  }
+  if (options.entityType) {
+    values.push(cleanRepositoryText(options.entityType, 120));
+    where.push(`entity_type = $${values.length}`);
+  }
+  if (options.entityId) {
+    values.push(cleanRepositoryText(options.entityId, 200));
+    where.push(`entity_id = $${values.length}`);
+  }
+  if (options.routeDate) {
+    values.push(toDateOnly(options.routeDate));
+    where.push(`route_date = $${values.length}::date`);
+  }
+  values.push(limit);
+  const result = await postgres.query(`
+    SELECT *
+    FROM prediction_runs
+    ${where.length ? `WHERE ${where.join(' AND ')}` : ''}
+    ORDER BY created_at DESC
+    LIMIT $${values.length}
+  `, values);
+
+  return result.rows.map((row) => ({
+    id: row.id,
+    predictionType: row.prediction_type,
+    entityType: row.entity_type,
+    entityId: row.entity_id || null,
+    routeDate: toDateOnly(row.route_date),
+    sourcePeriodStart: toDateOnly(row.source_period_start),
+    sourcePeriodEnd: toDateOnly(row.source_period_end),
+    sampleCount: Number(row.sample_count) || 0,
+    confidence: row.confidence,
+    engineVersion: row.engine_version,
+    features: row.features || {},
+    prediction: row.prediction || {},
+    createdBy: row.created_by || null,
+    createdAt: toIsoString(row.created_at)
+  }));
+}
+
 async function reviewAccountInsight(insightId, input = {}) {
   const id = cleanRepositoryText(insightId, 160);
   const status = cleanRepositoryText(input.status, 80);
@@ -4839,7 +5271,9 @@ module.exports = {
   getRouteSession,
   getAssignedDailyRouteForDriver,
   getAccountOrder,
+  getAccountForecastSignals,
   getAccountProductSummary,
+  getDeliveryFailureSignals,
   getDailyRouteManifest,
   getDailyRouteManifestWithAccountIntelligence,
   getDriver,
@@ -4858,6 +5292,7 @@ module.exports = {
   listDataImportBatches,
   listDrivers,
   listProducts,
+  listPredictionRuns,
   listUndeliveredRouteStops,
   listRouteSessionEvents,
   listRouteSessions,
@@ -4878,6 +5313,7 @@ module.exports = {
   listStaticZonesNearRoute,
   saveAiInteractionLog,
   saveAccountInsight,
+  savePredictionRun,
   saveDataImportBatch,
   reviewAccountInsight,
   saveRecentDestination,

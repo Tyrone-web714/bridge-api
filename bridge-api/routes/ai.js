@@ -2,6 +2,7 @@ const express = require('express');
 const adminAuth = require('../services/adminAuth');
 const driverAuth = require('../services/driverAuth');
 const aiProvider = require('../services/aiProvider');
+const predictionEngine = require('../services/predictionEngine');
 const repositories = require('../db/repositories');
 
 const router = express.Router();
@@ -125,6 +126,7 @@ function buildAccountForecastPrompt() {
   return [
     'You are the AI account forecasting analyst for Truck-Safe Routing.',
     'Use only the source-of-truth account, route, order, deduction, and product data supplied by the backend.',
+    'Treat deterministicPrediction metrics, confidence, and source coverage as calculated facts. Explain them; do not replace them with different calculations.',
     'Forecast conservatively. Do not invent missing purchase history, customer promises, pricing, weather, events, or inventory levels.',
     'Explain what is known, what is likely, and what data is missing.',
     'Money totals are already calculated by the backend; do not recalculate them differently.',
@@ -137,6 +139,7 @@ function buildProductDemandForecastPrompt() {
     'You are the AI product demand forecasting analyst for Truck-Safe Routing.',
     'Use only source-of-truth product, account order, deduction, and route context supplied by the backend.',
     'Forecast conservatively from recorded SKU demand, account count, order count, quantities, and deduction signals.',
+    'Treat deterministicPrediction period comparisons, direction, confidence, and source coverage as calculated facts.',
     'Do not invent future orders, customer commitments, inventory levels, warehouse stock, pricing, promotions, events, or weather.',
     'If demand history is thin or missing, say that clearly and list what data is missing.',
     'AI recommends only. Database records, supervisor decisions, and warehouse systems remain the source of truth.'
@@ -150,6 +153,7 @@ function buildRouteCompletionPredictionPrompt() {
     'Identify routes that are on pace, at risk, or likely to finish late.',
     'Do not invent traffic, weather, driver behavior, customer delays, or completion times not supported by the supplied records.',
     'Treat schedule variance and remaining planned minutes as backend-calculated facts.',
+    'Treat deterministicPrediction completion times, pace status, confidence, and source coverage as calculated facts.',
     'If actual activity timestamps or planned windows are missing, lower confidence and list the missing data.',
     'AI predicts and recommends only. Dispatch and supervisors make final operational decisions.'
   ].join('\n');
@@ -291,6 +295,7 @@ function buildDeliveryFailureRiskPrompt() {
     'You are the predictive delivery-failure analyst for Truck-Safe Routing.',
     'Use only the route manifests, undelivered stops, account summaries, order history, deductions, and route context supplied by the backend.',
     'Estimate which deliveries are most likely to fail, run late, be refused, miss a time window, or require supervisor attention.',
+    'Treat deterministicPrediction failure rates, period comparison, confidence, and source coverage as calculated facts.',
     'Do not invent weather, traffic, customer behavior, road conditions, driver behavior, payment status, or account facts.',
     'Separate known facts from risk signals and recommendations.',
     'If the data is not enough to predict confidently, mark confidence low and list the missing data.',
@@ -1506,7 +1511,10 @@ async function buildAccountGuidanceContext({ accountNumber, routeDate, requester
 }
 
 async function buildDeliveryFailureRiskContext({ accountNumber, routeDate, periodDays }) {
-  const supervisorContext = await buildSupervisorContext({ accountNumber, routeDate, periodDays });
+  const [supervisorContext, historicalSignals] = await Promise.all([
+    buildSupervisorContext({ accountNumber, routeDate, periodDays }),
+    repositories.getDeliveryFailureSignals({ accountNumber, routeDate, periodDays })
+  ]);
   return {
     routeDate,
     periodDays,
@@ -1515,7 +1523,8 @@ async function buildDeliveryFailureRiskContext({ accountNumber, routeDate, perio
     undeliveredStops: supervisorContext.undeliveredStops,
     recentOrders: supervisorContext.recentOrders,
     account: supervisorContext.account,
-    accountInsights: supervisorContext.accountInsights
+    accountInsights: supervisorContext.accountInsights,
+    deterministicPrediction: predictionEngine.buildDeliveryFailurePrediction(historicalSignals)
   };
 }
 
@@ -1784,7 +1793,12 @@ async function buildProductDemandForecastContext({ accountNumber, routeDate, per
     account: supervisorContext.account,
     recentRoutes: supervisorContext.recentRoutes,
     undeliveredStops: supervisorContext.undeliveredStops,
-    productSignals
+    productSignals,
+    deterministicPrediction: predictionEngine.buildProductDemandForecast(productSignals, {
+      accountNumber: accountNumber || null,
+      sourcePeriodStart: supervisorContext.account?.firstOrderDate || null,
+      sourcePeriodEnd: supervisorContext.account?.lastOrderDate || routeDate
+    })
   };
 }
 
@@ -1797,8 +1811,47 @@ async function buildRouteCompletionPredictionContext({ routeDate }) {
   return {
     routeDate,
     generatedAt: new Date().toISOString(),
-    routeSignals
+    routeSignals,
+    deterministicPrediction: predictionEngine.buildRouteCompletionPredictions(routeSignals, {
+      routeDate
+    })
   };
+}
+
+async function buildAccountForecastContext({ accountNumber, routeDate, periodDays }) {
+  const [supervisorContext, historicalSignals] = await Promise.all([
+    buildSupervisorContext({ accountNumber, routeDate, periodDays }),
+    repositories.getAccountForecastSignals(accountNumber, { routeDate, periodDays })
+  ]);
+  return {
+    ...supervisorContext,
+    deterministicPrediction: predictionEngine.buildAccountForecast(historicalSignals)
+  };
+}
+
+async function saveDeterministicPrediction({
+  predictionType,
+  prediction,
+  requester,
+  routeDate,
+  features
+}) {
+  if (!prediction) return null;
+  const coverage = prediction.sourceCoverage || {};
+  return repositories.savePredictionRun({
+    predictionType,
+    entityType: prediction.entityType,
+    entityId: prediction.entityId,
+    routeDate,
+    sourcePeriodStart: coverage.sourcePeriodStart,
+    sourcePeriodEnd: coverage.sourcePeriodEnd,
+    sampleCount: coverage.sampleCount,
+    confidence: prediction.confidence,
+    engineVersion: prediction.engineVersion,
+    features: features || {},
+    prediction,
+    createdBy: requester?.id || null
+  });
 }
 
 function clusterOperationalHeatmapSignals(signals) {
@@ -2028,6 +2081,24 @@ router.get('/operations', requireAdminAiAccess, async (req, res) => {
     return res.status(error.status || 500).json({
       ok: false,
       error: error.status ? error.message : 'AI operations metrics request failed.'
+    });
+  }
+});
+
+router.get('/predictions', requireAdminAiAccess, async (req, res) => {
+  try {
+    const predictions = await repositories.listPredictionRuns({
+      predictionType: cleanText(req.query.predictionType || req.query.prediction_type, 120),
+      entityType: cleanText(req.query.entityType || req.query.entity_type, 120),
+      entityId: cleanText(req.query.entityId || req.query.entity_id, 200),
+      routeDate: cleanText(req.query.routeDate || req.query.route_date, 40) || undefined,
+      limit: Number.parseInt(req.query.limit, 10) || 50
+    });
+    return res.json({ ok: true, predictions });
+  } catch (error) {
+    return res.status(error.status || 500).json({
+      ok: false,
+      error: error.status ? error.message : 'Unable to list prediction runs.'
     });
   }
 });
@@ -2462,6 +2533,16 @@ router.post('/delivery-failure-risk', requireAdminAiAccess, requireAiConfigured,
 
   try {
     const sourceContext = await buildDeliveryFailureRiskContext({ accountNumber, routeDate, periodDays });
+    const predictionRun = await saveDeterministicPrediction({
+      predictionType: 'delivery_failure_risk',
+      prediction: sourceContext.deterministicPrediction,
+      requester,
+      routeDate,
+      features: {
+        accountNumber: accountNumber || null,
+        periodDays
+      }
+    });
     aiResult = await aiProvider.createStructuredResponse({
       endpoint: 'delivery-failure-risk',
       instructions: buildDeliveryFailureRiskPrompt(),
@@ -2495,6 +2576,7 @@ router.post('/delivery-failure-risk', requireAdminAiAccess, requireAiConfigured,
       accountNumber: accountNumber || null,
       routeDate,
       sourceContext,
+      predictionRun,
       ai: {
         provider: 'openai',
         model: aiResult.model,
@@ -2715,7 +2797,17 @@ router.post('/account-forecast', requireAdminAiAccess, requireAiConfigured, asyn
   }
 
   try {
-    const sourceContext = await buildSupervisorContext({ accountNumber, routeDate, periodDays });
+    const sourceContext = await buildAccountForecastContext({ accountNumber, routeDate, periodDays });
+    const predictionRun = await saveDeterministicPrediction({
+      predictionType: 'account_forecast',
+      prediction: sourceContext.deterministicPrediction,
+      requester,
+      routeDate,
+      features: {
+        accountNumber,
+        periodDays
+      }
+    });
     aiResult = await aiProvider.createStructuredResponse({
       endpoint: 'account-forecast',
       instructions: buildAccountForecastPrompt(),
@@ -2770,6 +2862,7 @@ router.post('/account-forecast', requireAdminAiAccess, requireAiConfigured, asyn
       accountNumber,
       routeDate,
       sourceContext,
+      predictionRun,
       ai: {
         provider: 'openai',
         model: aiResult.model,
@@ -2812,6 +2905,16 @@ router.post('/product-demand-forecast', requireAdminAiAccess, requireAiConfigure
       accountNumber,
       routeDate,
       periodDays
+    });
+    const predictionRun = await saveDeterministicPrediction({
+      predictionType: 'product_demand_forecast',
+      prediction: sourceContext.deterministicPrediction,
+      requester,
+      routeDate,
+      features: {
+        accountNumber: accountNumber || null,
+        periodDays
+      }
     });
     aiResult = await aiProvider.createStructuredResponse({
       endpoint: 'product-demand-forecast',
@@ -2868,6 +2971,7 @@ router.post('/product-demand-forecast', requireAdminAiAccess, requireAiConfigure
       accountNumber: accountNumber || null,
       routeDate,
       sourceContext,
+      predictionRun,
       ai: {
         provider: 'openai',
         model: aiResult.model,
@@ -2904,6 +3008,15 @@ router.post('/route-completion-prediction', requireAdminAiAccess, requireAiConfi
 
   try {
     const sourceContext = await buildRouteCompletionPredictionContext({ routeDate });
+    const predictionRun = await saveDeterministicPrediction({
+      predictionType: 'route_completion_prediction',
+      prediction: sourceContext.deterministicPrediction,
+      requester,
+      routeDate,
+      features: {
+        routeCount: sourceContext.routeSignals.length
+      }
+    });
     aiResult = await aiProvider.createStructuredResponse({
       endpoint: 'route-completion-prediction',
       instructions: buildRouteCompletionPredictionPrompt(),
@@ -2935,6 +3048,7 @@ router.post('/route-completion-prediction', requireAdminAiAccess, requireAiConfi
       requester,
       routeDate,
       sourceContext,
+      predictionRun,
       ai: {
         provider: 'openai',
         model: aiResult.model,

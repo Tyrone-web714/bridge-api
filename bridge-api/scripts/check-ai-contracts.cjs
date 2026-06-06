@@ -9,6 +9,7 @@ const accountIntelligenceRouter = require('../routes/accountIntelligence');
 const expectedRoutes = [
   'GET /status',
   'GET /operations',
+  'GET /predictions',
   'POST /account-summary',
   'POST /driver-copilot',
   'POST /delivery-notes-summary',

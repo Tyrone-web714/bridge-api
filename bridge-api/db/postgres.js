@@ -658,6 +658,30 @@ async function ensureSchema() {
     ALTER TABLE ai_interaction_logs ADD COLUMN IF NOT EXISTS output_tokens INTEGER;
     ALTER TABLE ai_interaction_logs ADD COLUMN IF NOT EXISTS total_tokens INTEGER;
     ALTER TABLE ai_interaction_logs ADD COLUMN IF NOT EXISTS estimated_cost_usd NUMERIC(12,6);
+
+    CREATE TABLE IF NOT EXISTS prediction_runs (
+      id TEXT PRIMARY KEY,
+      prediction_type TEXT NOT NULL,
+      entity_type TEXT NOT NULL,
+      entity_id TEXT,
+      route_date DATE,
+      source_period_start DATE,
+      source_period_end DATE,
+      sample_count INTEGER NOT NULL DEFAULT 0,
+      confidence TEXT NOT NULL DEFAULT 'low',
+      engine_version TEXT NOT NULL,
+      features JSONB NOT NULL DEFAULT '{}'::jsonb,
+      prediction JSONB NOT NULL DEFAULT '{}'::jsonb,
+      created_by TEXT,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+
+    CREATE INDEX IF NOT EXISTS prediction_runs_type_idx
+      ON prediction_runs(prediction_type, created_at DESC);
+    CREATE INDEX IF NOT EXISTS prediction_runs_entity_idx
+      ON prediction_runs(entity_type, entity_id, created_at DESC);
+    CREATE INDEX IF NOT EXISTS prediction_runs_route_date_idx
+      ON prediction_runs(route_date DESC, prediction_type);
   `);
 
   try {
