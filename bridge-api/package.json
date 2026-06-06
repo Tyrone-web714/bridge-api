@@ -7,9 +7,10 @@
     "node": ">=18"
   },
   "scripts": {
-    "test": "npm run test:ai && npm run test:predictions && npm run test:heatmaps && npm run test:imports",
+    "test": "npm run test:ai && npm run test:predictions && npm run test:supervisor-intelligence && npm run test:heatmaps && npm run test:imports",
     "test:ai": "node scripts/check-ai-contracts.cjs",
     "test:predictions": "node scripts/check-prediction-engine.cjs",
+    "test:supervisor-intelligence": "node scripts/check-supervisor-intelligence-contracts.cjs",
     "test:heatmaps": "node scripts/check-heatmap-contracts.cjs",
     "test:imports": "node scripts/check-bulk-import-contracts.cjs",
     "start": "node server.js",

@@ -682,6 +682,76 @@ async function ensureSchema() {
       ON prediction_runs(entity_type, entity_id, created_at DESC);
     CREATE INDEX IF NOT EXISTS prediction_runs_route_date_idx
       ON prediction_runs(route_date DESC, prediction_type);
+
+    CREATE TABLE IF NOT EXISTS supervisor_alerts (
+      id TEXT PRIMARY KEY,
+      alert_key TEXT NOT NULL UNIQUE,
+      supervisor_username TEXT,
+      alert_type TEXT NOT NULL,
+      severity TEXT NOT NULL DEFAULT 'medium',
+      title TEXT NOT NULL,
+      message TEXT NOT NULL,
+      entity_type TEXT,
+      entity_id TEXT,
+      route_date DATE,
+      status TEXT NOT NULL DEFAULT 'open',
+      source TEXT NOT NULL DEFAULT 'rules_engine',
+      source_payload JSONB NOT NULL DEFAULT '{}'::jsonb,
+      first_detected_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      last_detected_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      acknowledged_by TEXT,
+      acknowledged_at TIMESTAMPTZ,
+      resolved_by TEXT,
+      resolved_at TIMESTAMPTZ,
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+
+    CREATE INDEX IF NOT EXISTS supervisor_alerts_status_idx
+      ON supervisor_alerts(status, severity, last_detected_at DESC);
+    CREATE INDEX IF NOT EXISTS supervisor_alerts_supervisor_idx
+      ON supervisor_alerts(supervisor_username, status, last_detected_at DESC);
+    CREATE INDEX IF NOT EXISTS supervisor_alerts_route_date_idx
+      ON supervisor_alerts(route_date DESC, alert_type);
+
+    CREATE TABLE IF NOT EXISTS scheduled_report_schedules (
+      id TEXT PRIMARY KEY,
+      name TEXT NOT NULL,
+      report_type TEXT NOT NULL DEFAULT 'supervisor_daily_brief',
+      supervisor_username TEXT,
+      cadence TEXT NOT NULL DEFAULT 'daily',
+      local_hour INTEGER NOT NULL DEFAULT 6,
+      timezone TEXT NOT NULL DEFAULT 'America/Chicago',
+      enabled BOOLEAN NOT NULL DEFAULT TRUE,
+      next_run_at TIMESTAMPTZ NOT NULL,
+      last_run_at TIMESTAMPTZ,
+      config JSONB NOT NULL DEFAULT '{}'::jsonb,
+      created_by TEXT,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+
+    CREATE INDEX IF NOT EXISTS scheduled_report_schedules_due_idx
+      ON scheduled_report_schedules(enabled, next_run_at);
+
+    CREATE TABLE IF NOT EXISTS scheduled_reports (
+      id TEXT PRIMARY KEY,
+      schedule_id TEXT REFERENCES scheduled_report_schedules(id) ON DELETE SET NULL,
+      report_type TEXT NOT NULL,
+      supervisor_username TEXT,
+      route_date DATE,
+      status TEXT NOT NULL DEFAULT 'completed',
+      title TEXT NOT NULL,
+      summary TEXT NOT NULL,
+      content JSONB NOT NULL DEFAULT '{}'::jsonb,
+      generated_by TEXT NOT NULL DEFAULT 'rules_engine',
+      error_message TEXT,
+      generated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+
+    CREATE INDEX IF NOT EXISTS scheduled_reports_supervisor_idx
+      ON scheduled_reports(supervisor_username, generated_at DESC);
+    CREATE INDEX IF NOT EXISTS scheduled_reports_schedule_idx
+      ON scheduled_reports(schedule_id, generated_at DESC);
   `);
 
   try {

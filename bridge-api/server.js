@@ -5,6 +5,7 @@ const postgres = require('./db/postgres');
 const photoStorage = require('./services/photoStorage');
 const driverAuth = require('./services/driverAuth');
 const aiProvider = require('./services/aiProvider');
+const supervisorIntelligence = require('./services/supervisorIntelligence');
 
 dotenv.config();
 
@@ -51,6 +52,7 @@ const aiRoutes = require('./routes/ai');
 const operationalHeatmapRoutes = require('./routes/operationalHeatmaps');
 const operationalGeographyRoutes = require('./routes/operationalGeography');
 const dataImportRoutes = require('./routes/dataImports');
+const supervisorIntelligenceRoutes = require('./routes/supervisorIntelligence');
 
 app.use('/api/bridges', bridgeRoutes);
 app.use('/api/drivers', driverRoutes);
@@ -65,6 +67,7 @@ app.use('/api/ai', aiRoutes);
 app.use('/api/operational-heatmaps', operationalHeatmapRoutes);
 app.use('/api/operational-geography', operationalGeographyRoutes);
 app.use('/api/data-imports', dataImportRoutes);
+app.use('/api/supervisor-intelligence', supervisorIntelligenceRoutes);
 
 app.get('/health', async (req, res) => {
   res.json({
@@ -148,6 +151,7 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+  supervisorIntelligence.start();
 });
 server.keepAliveTimeout = Number.parseInt(process.env.SERVER_KEEP_ALIVE_TIMEOUT_MS, 10) || 65000;
 server.headersTimeout = Number.parseInt(process.env.SERVER_HEADERS_TIMEOUT_MS, 10) || 66000;
@@ -166,6 +170,7 @@ server.on('error', (error) => {
 
 function shutdown(signal) {
   console.log(`${signal} received. Closing bridge-api cleanly...`);
+  supervisorIntelligence.stop();
   server.close(async (error) => {
     if (error) {
       console.error('Error while closing HTTP server:', error);

@@ -63,6 +63,12 @@ function renderAdminDashboard(session) {
       accent: '#c084fc'
     },
     {
+      title: 'Supervisor Alerts and Reports',
+      description: 'Review operational alerts, acknowledge or resolve exceptions, and inspect scheduled daily intelligence briefs.',
+      href: '/api/supervisor-intelligence/admin',
+      accent: '#ff5964'
+    },
+    {
       title: 'Operational Heatmaps',
       description: 'Map recurring delivery delays, failed stops, deductions, hazard events, route events, and recorded revenue concentration.',
       href: '/api/operational-heatmaps/admin',

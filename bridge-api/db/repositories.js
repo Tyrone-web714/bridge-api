@@ -4828,6 +4828,353 @@ async function listPredictionRuns(options = {}) {
   }));
 }
 
+function supervisorAlertFromRow(row) {
+  return {
+    id: row.id,
+    alertKey: row.alert_key,
+    supervisorUsername: row.supervisor_username || null,
+    alertType: row.alert_type,
+    severity: row.severity,
+    title: row.title,
+    message: row.message,
+    entityType: row.entity_type || null,
+    entityId: row.entity_id || null,
+    routeDate: toDateOnly(row.route_date),
+    status: row.status,
+    source: row.source,
+    sourcePayload: row.source_payload || {},
+    firstDetectedAt: toIsoString(row.first_detected_at),
+    lastDetectedAt: toIsoString(row.last_detected_at),
+    acknowledgedBy: row.acknowledged_by || null,
+    acknowledgedAt: toIsoString(row.acknowledged_at),
+    resolvedBy: row.resolved_by || null,
+    resolvedAt: toIsoString(row.resolved_at),
+    updatedAt: toIsoString(row.updated_at)
+  };
+}
+
+function scheduledReportScheduleFromRow(row) {
+  return {
+    id: row.id,
+    name: row.name,
+    reportType: row.report_type,
+    supervisorUsername: row.supervisor_username || null,
+    cadence: row.cadence,
+    localHour: Number(row.local_hour) || 0,
+    timezone: row.timezone,
+    enabled: row.enabled !== false,
+    nextRunAt: toIsoString(row.next_run_at),
+    lastRunAt: toIsoString(row.last_run_at),
+    config: row.config || {},
+    createdBy: row.created_by || null,
+    createdAt: toIsoString(row.created_at),
+    updatedAt: toIsoString(row.updated_at)
+  };
+}
+
+function scheduledReportFromRow(row) {
+  return {
+    id: row.id,
+    scheduleId: row.schedule_id || null,
+    reportType: row.report_type,
+    supervisorUsername: row.supervisor_username || null,
+    routeDate: toDateOnly(row.route_date),
+    status: row.status,
+    title: row.title,
+    summary: row.summary,
+    content: row.content || {},
+    generatedBy: row.generated_by,
+    errorMessage: row.error_message || null,
+    generatedAt: toIsoString(row.generated_at)
+  };
+}
+
+async function upsertSupervisorAlert(input = {}) {
+  const alertKey = cleanRepositoryText(input.alertKey || input.alert_key, 240);
+  const alertType = cleanRepositoryText(input.alertType || input.alert_type, 120);
+  const title = cleanRepositoryText(input.title, 240);
+  const message = cleanRepositoryText(input.message, 4000);
+  if (!alertKey || !alertType || !title || !message) {
+    const error = new Error('alertKey, alertType, title, and message are required.');
+    error.status = 400;
+    throw error;
+  }
+
+  const result = await postgres.query(`
+    INSERT INTO supervisor_alerts (
+      id, alert_key, supervisor_username, alert_type, severity, title, message,
+      entity_type, entity_id, route_date, status, source, source_payload
+    )
+    VALUES (
+      $1, $2, $3, $4, $5, $6, $7,
+      $8, $9, $10::date, 'open', $11, $12::jsonb
+    )
+    ON CONFLICT (alert_key) DO UPDATE SET
+      supervisor_username = EXCLUDED.supervisor_username,
+      severity = EXCLUDED.severity,
+      title = EXCLUDED.title,
+      message = EXCLUDED.message,
+      entity_type = EXCLUDED.entity_type,
+      entity_id = EXCLUDED.entity_id,
+      route_date = EXCLUDED.route_date,
+      status = CASE
+        WHEN supervisor_alerts.status = 'resolved' THEN 'open'
+        ELSE supervisor_alerts.status
+      END,
+      source = EXCLUDED.source,
+      source_payload = EXCLUDED.source_payload,
+      last_detected_at = NOW(),
+      updated_at = NOW()
+    RETURNING *
+  `, [
+    cleanRepositoryText(input.id, 160) || generateRepositoryId('alert'),
+    alertKey,
+    cleanRepositoryText(input.supervisorUsername || input.supervisor_username, 120) || null,
+    alertType,
+    cleanRepositoryText(input.severity, 40) || 'medium',
+    title,
+    message,
+    cleanRepositoryText(input.entityType || input.entity_type, 120) || null,
+    cleanRepositoryText(input.entityId || input.entity_id, 200) || null,
+    toDateOnly(input.routeDate || input.route_date) || null,
+    cleanRepositoryText(input.source, 120) || 'rules_engine',
+    JSON.stringify(input.sourcePayload || input.source_payload || {})
+  ]);
+  return supervisorAlertFromRow(result.rows[0]);
+}
+
+async function listSupervisorAlerts(options = {}) {
+  const limit = normalizeLimit(options.limit, 100, 500);
+  const values = [];
+  const where = [];
+  if (options.status) {
+    values.push(cleanRepositoryText(options.status, 40));
+    where.push(`status = $${values.length}`);
+  }
+  if (options.severity) {
+    values.push(cleanRepositoryText(options.severity, 40));
+    where.push(`severity = $${values.length}`);
+  }
+  if (options.supervisorUsername) {
+    values.push(cleanRepositoryText(options.supervisorUsername, 120).toLowerCase());
+    where.push(`LOWER(COALESCE(supervisor_username, '')) IN ('', $${values.length})`);
+  }
+  values.push(limit);
+  const result = await postgres.query(`
+    SELECT *
+    FROM supervisor_alerts
+    ${where.length ? `WHERE ${where.join(' AND ')}` : ''}
+    ORDER BY
+      CASE severity WHEN 'critical' THEN 1 WHEN 'high' THEN 2 WHEN 'medium' THEN 3 ELSE 4 END,
+      last_detected_at DESC
+    LIMIT $${values.length}
+  `, values);
+  return result.rows.map(supervisorAlertFromRow);
+}
+
+async function updateSupervisorAlertStatus(alertId, input = {}) {
+  const id = cleanRepositoryText(alertId, 160);
+  const status = cleanRepositoryText(input.status, 40);
+  if (!id || !['open', 'acknowledged', 'resolved'].includes(status)) {
+    const error = new Error('A valid alert ID and status are required.');
+    error.status = 400;
+    throw error;
+  }
+  const actor = cleanRepositoryText(input.actor, 120) || 'supervisor';
+  const result = await postgres.query(`
+    UPDATE supervisor_alerts
+    SET
+      status = $2,
+      acknowledged_by = CASE WHEN $2 = 'acknowledged' THEN $3 ELSE acknowledged_by END,
+      acknowledged_at = CASE WHEN $2 = 'acknowledged' THEN NOW() ELSE acknowledged_at END,
+      resolved_by = CASE WHEN $2 = 'resolved' THEN $3 ELSE resolved_by END,
+      resolved_at = CASE WHEN $2 = 'resolved' THEN NOW() ELSE resolved_at END,
+      updated_at = NOW()
+    WHERE id = $1
+    RETURNING *
+  `, [id, status, actor]);
+  if (!result.rows[0]) {
+    const error = new Error('Supervisor alert not found.');
+    error.status = 404;
+    throw error;
+  }
+  return supervisorAlertFromRow(result.rows[0]);
+}
+
+async function upsertScheduledReportSchedule(input = {}) {
+  const name = cleanRepositoryText(input.name, 200);
+  const reportType = cleanRepositoryText(input.reportType || input.report_type, 120)
+    || 'supervisor_daily_brief';
+  const timezone = cleanRepositoryText(input.timezone, 120) || 'America/Chicago';
+  const localHour = Math.min(Math.max(Number.parseInt(input.localHour ?? input.local_hour, 10) || 6, 0), 23);
+  if (!name) {
+    const error = new Error('Schedule name is required.');
+    error.status = 400;
+    throw error;
+  }
+  const id = cleanRepositoryText(input.id, 160) || generateRepositoryId('report_schedule');
+  const result = await postgres.query(`
+    INSERT INTO scheduled_report_schedules (
+      id, name, report_type, supervisor_username, cadence, local_hour,
+      timezone, enabled, next_run_at, config, created_by
+    )
+    VALUES (
+      $1, $2, $3, $4, 'daily', $5,
+      $6, $7,
+      CASE
+        WHEN (((NOW() AT TIME ZONE $6)::date + make_interval(hours => $5)) AT TIME ZONE $6) > NOW()
+          THEN (((NOW() AT TIME ZONE $6)::date + make_interval(hours => $5)) AT TIME ZONE $6)
+        ELSE ((((NOW() AT TIME ZONE $6)::date + 1) + make_interval(hours => $5)) AT TIME ZONE $6)
+      END,
+      $8::jsonb, $9
+    )
+    ON CONFLICT (id) DO UPDATE SET
+      name = EXCLUDED.name,
+      report_type = EXCLUDED.report_type,
+      supervisor_username = EXCLUDED.supervisor_username,
+      local_hour = EXCLUDED.local_hour,
+      timezone = EXCLUDED.timezone,
+      enabled = EXCLUDED.enabled,
+      config = EXCLUDED.config,
+      updated_at = NOW()
+    RETURNING *
+  `, [
+    id,
+    name,
+    reportType,
+    cleanRepositoryText(input.supervisorUsername || input.supervisor_username, 120).toLowerCase() || null,
+    localHour,
+    timezone,
+    input.enabled !== false,
+    JSON.stringify(input.config || {}),
+    cleanRepositoryText(input.createdBy || input.created_by, 120) || null
+  ]);
+  return scheduledReportScheduleFromRow(result.rows[0]);
+}
+
+async function listScheduledReportSchedules(options = {}) {
+  const values = [];
+  const where = [];
+  if (options.supervisorUsername) {
+    values.push(cleanRepositoryText(options.supervisorUsername, 120).toLowerCase());
+    where.push(`LOWER(COALESCE(supervisor_username, '')) IN ('', $${values.length})`);
+  }
+  const result = await postgres.query(`
+    SELECT *
+    FROM scheduled_report_schedules
+    ${where.length ? `WHERE ${where.join(' AND ')}` : ''}
+    ORDER BY enabled DESC, next_run_at ASC, name ASC
+  `, values);
+  return result.rows.map(scheduledReportScheduleFromRow);
+}
+
+async function setScheduledReportScheduleEnabled(scheduleId, enabled) {
+  const result = await postgres.query(`
+    UPDATE scheduled_report_schedules
+    SET enabled = $2, updated_at = NOW()
+    WHERE id = $1
+    RETURNING *
+  `, [cleanRepositoryText(scheduleId, 160), enabled === true]);
+  if (!result.rows[0]) {
+    const error = new Error('Scheduled report definition not found.');
+    error.status = 404;
+    throw error;
+  }
+  return scheduledReportScheduleFromRow(result.rows[0]);
+}
+
+async function queueScheduledReportNow(scheduleId) {
+  const result = await postgres.query(`
+    UPDATE scheduled_report_schedules
+    SET enabled = TRUE, next_run_at = NOW(), updated_at = NOW()
+    WHERE id = $1
+    RETURNING *
+  `, [cleanRepositoryText(scheduleId, 160)]);
+  if (!result.rows[0]) {
+    const error = new Error('Scheduled report definition not found.');
+    error.status = 404;
+    throw error;
+  }
+  return scheduledReportScheduleFromRow(result.rows[0]);
+}
+
+async function claimDueScheduledReports(limit = 5) {
+  const normalizedLimit = normalizeLimit(limit, 5, 20);
+  const result = await postgres.query(`
+    WITH due AS (
+      SELECT id
+      FROM scheduled_report_schedules
+      WHERE enabled = TRUE AND next_run_at <= NOW()
+      ORDER BY next_run_at ASC
+      FOR UPDATE SKIP LOCKED
+      LIMIT $1
+    )
+    UPDATE scheduled_report_schedules AS schedule
+    SET
+      last_run_at = NOW(),
+      next_run_at = (
+        (((NOW() AT TIME ZONE schedule.timezone)::date + 1)
+          + make_interval(hours => schedule.local_hour))
+        AT TIME ZONE schedule.timezone
+      ),
+      updated_at = NOW()
+    FROM due
+    WHERE schedule.id = due.id
+    RETURNING schedule.*
+  `, [normalizedLimit]);
+  return result.rows.map(scheduledReportScheduleFromRow);
+}
+
+async function saveScheduledReport(input = {}) {
+  const title = cleanRepositoryText(input.title, 240);
+  const summary = cleanRepositoryText(input.summary, 4000);
+  if (!title || !summary) {
+    const error = new Error('Scheduled report title and summary are required.');
+    error.status = 400;
+    throw error;
+  }
+  const result = await postgres.query(`
+    INSERT INTO scheduled_reports (
+      id, schedule_id, report_type, supervisor_username, route_date,
+      status, title, summary, content, generated_by, error_message
+    )
+    VALUES ($1, $2, $3, $4, $5::date, $6, $7, $8, $9::jsonb, $10, $11)
+    RETURNING *
+  `, [
+    cleanRepositoryText(input.id, 160) || generateRepositoryId('scheduled_report'),
+    cleanRepositoryText(input.scheduleId || input.schedule_id, 160) || null,
+    cleanRepositoryText(input.reportType || input.report_type, 120) || 'supervisor_daily_brief',
+    cleanRepositoryText(input.supervisorUsername || input.supervisor_username, 120).toLowerCase() || null,
+    toDateOnly(input.routeDate || input.route_date) || null,
+    cleanRepositoryText(input.status, 40) || 'completed',
+    title,
+    summary,
+    JSON.stringify(input.content || {}),
+    cleanRepositoryText(input.generatedBy || input.generated_by, 120) || 'rules_engine',
+    cleanRepositoryText(input.errorMessage || input.error_message, 2000) || null
+  ]);
+  return scheduledReportFromRow(result.rows[0]);
+}
+
+async function listScheduledReports(options = {}) {
+  const limit = normalizeLimit(options.limit, 50, 200);
+  const values = [];
+  const where = [];
+  if (options.supervisorUsername) {
+    values.push(cleanRepositoryText(options.supervisorUsername, 120).toLowerCase());
+    where.push(`LOWER(COALESCE(supervisor_username, '')) IN ('', $${values.length})`);
+  }
+  values.push(limit);
+  const result = await postgres.query(`
+    SELECT *
+    FROM scheduled_reports
+    ${where.length ? `WHERE ${where.join(' AND ')}` : ''}
+    ORDER BY generated_at DESC
+    LIMIT $${values.length}
+  `, values);
+  return result.rows.map(scheduledReportFromRow);
+}
+
 async function reviewAccountInsight(insightId, input = {}) {
   const id = cleanRepositoryText(insightId, 160);
   const status = cleanRepositoryText(input.status, 80);
@@ -5293,6 +5640,9 @@ module.exports = {
   listDrivers,
   listProducts,
   listPredictionRuns,
+  listScheduledReports,
+  listScheduledReportSchedules,
+  listSupervisorAlerts,
   listUndeliveredRouteStops,
   listRouteSessionEvents,
   listRouteSessions,
@@ -5314,6 +5664,7 @@ module.exports = {
   saveAiInteractionLog,
   saveAccountInsight,
   savePredictionRun,
+  saveScheduledReport,
   saveDataImportBatch,
   reviewAccountInsight,
   saveRecentDestination,
@@ -5323,6 +5674,7 @@ module.exports = {
   recordAdminUserLogin,
   setAdminUserActive,
   setDriverActive,
+  setScheduledReportScheduleEnabled,
   setOperationalGeographyActive,
   upsertOperationalDistributionCenter,
   upsertOperationalRouteGroup,
@@ -5333,6 +5685,8 @@ module.exports = {
   updateDailyRouteStopStatusForDriver,
   updateUndeliveredStopDisposition,
   upsertCustomerAccount,
+  upsertScheduledReportSchedule,
+  upsertSupervisorAlert,
   upsertProduct,
   upsertAdminUser,
   createAccountOrder,
@@ -5342,5 +5696,8 @@ module.exports = {
   upsertManualHazard,
   upsertStaticBridge,
   upsertStaticZone,
-  replaceDailyRouteStops
+  replaceDailyRouteStops,
+  claimDueScheduledReports,
+  queueScheduledReportNow,
+  updateSupervisorAlertStatus
 };
