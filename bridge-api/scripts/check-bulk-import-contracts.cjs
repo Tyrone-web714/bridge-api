@@ -57,6 +57,14 @@ assert(
   'Route manifest assignment must use an editable active-driver field.'
 );
 assert(
+  routeManifestSource.includes('const activeDriversByName = new Map();'),
+  'Route manifest assignment must resolve active drivers by registered name.'
+);
+assert(
+  routeManifestSource.includes('Type or choose an active driver name...'),
+  'Route manifest assignment must prompt for a registered driver name.'
+);
+assert(
   routeManifestSource.includes('driverSelectStatus'),
   'Route manifest assignment must display driver-registry loading status.'
 );

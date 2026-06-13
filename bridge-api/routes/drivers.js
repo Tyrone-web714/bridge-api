@@ -167,7 +167,7 @@ function renderDriverRegistryAdminPage(session) {
     <section class="panel">
       <h2>Add or Update Driver</h2>
       <div class="grid">
-        <div><label>Driver ID</label><input id="driverId" placeholder="driver_app" /></div>
+        <div><label>Driver ID</label><input id="driverId" placeholder="Unique employee or driver ID" /></div>
         <div><label>Driver Name</label><input id="driverName" placeholder="Driver full name" /></div>
         <div><label>Employee Number</label><input id="employeeNumber" placeholder="Optional" /></div>
         <div><label>Phone Number</label><input id="phoneNumber" placeholder="Optional" /></div>
@@ -314,8 +314,8 @@ function renderDriverRegistryAdminPage(session) {
     function loadDriverTemplate() {
       document.getElementById('csvText').value = [
         'driver_id,driver_name,employee_number,phone_number,supervisor_username,supervisor_name,team_name,route_group,territory,active,notes',
-        'driver_app,Truck-Safe Driver,100001,,supervisor_north,North Supervisor,San Antonio North,San Antonio North,San Antonio,true,Pilot test driver',
-        'driver_002,Driver Two,100002,,supervisor_lv,Leon Valley Supervisor,Leon Valley Team,Leon Valley,San Antonio,true,'
+        'DRV-1001,Jordan Lee,100001,,supervisor_north,North Supervisor,San Antonio North,San Antonio North,San Antonio,true,Pilot test driver',
+        'DRV-1002,Casey Morgan,100002,,supervisor_lv,Leon Valley Supervisor,Leon Valley Team,Leon Valley,San Antonio,true,'
       ].join('\\n');
     }
 

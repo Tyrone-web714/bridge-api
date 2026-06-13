@@ -367,7 +367,7 @@ function renderRouteManifestAdminPage() {
       <div class="grid">
         <div><label>Filter/delete date</label><input id="routeDateFilter" placeholder="YYYY-MM-DD" /></div>
         <div>
-          <label>Assign to registered driver</label>
+          <label>Assign to registered driver by name</label>
           <input id="driverSelect" list="activeDriverOptions" placeholder="Loading active drivers..." autocomplete="off" />
           <datalist id="activeDriverOptions"></datalist>
           <div id="driverSelectStatus" class="muted">Loading active driver registry...</div>
@@ -454,15 +454,16 @@ function renderRouteManifestAdminPage() {
       document.getElementById('fileName').value = 'daily-route-bulk-assignment-template.csv';
       document.getElementById('csvText').value = [
         'route_date,route_number,route_name,planned_route_start,planned_route_end,start_location,assigned_driver_id,assigned_driver_name,stop_sequence,account_number,account_name,address,city,state,zip,planned_arrival,planned_departure,planned_service_minutes,drive_minutes_to_next,pallet_count,case_count,invoice_number,sku,product_name,brand,package_size,category,product_quantity,unit_price,gross_amount,item_summary',
-        '2026-05-25,RT-101,San Antonio North,7:00 AM,3:30 PM,San Antonio DC,driver_app,Truck-Safe Driver,1,100245,Alamo City Stripers,"4337 E Houston St, San Antonio, TX 78220",San Antonio,TX,78220,7:35 AM,7:55 AM,20,14,2,48,INV-100245-1,COKE-12PK,Coca-Cola 12 Pack,Coca-Cola,12 Pack,CSD,48,9.99,479.52,"Front gate delivery"',
-        '2026-05-25,RT-101,San Antonio North,7:00 AM,3:30 PM,San Antonio DC,driver_app,Truck-Safe Driver,1,100245,Alamo City Stripers,"4337 E Houston St, San Antonio, TX 78220",San Antonio,TX,78220,7:35 AM,7:55 AM,20,14,2,38,INV-100245-1,SPRITE-12PK,Sprite 12 Pack,Sprite,12 Pack,CSD,38,9.49,360.62,"Front gate delivery"',
-        '2026-05-25,RT-101,San Antonio North,7:00 AM,3:30 PM,San Antonio DC,driver_app,Truck-Safe Driver,2,100246,Eastside Market,"5030 Rigsby Ave, San Antonio, TX 78222",San Antonio,TX,78222,8:10 AM,8:28 AM,18,16,1,44,INV-100246-1,DASANI-24PK,Dasani 24 Pack,Dasani,24 Pack,Water,44,6.75,297.00,"Water; mini cans"',
-        '2026-05-25,RT-102,Leon Valley,6:45 AM,2:45 PM,San Antonio DC,driver_002,Driver Two,1,200100,Vape City,"5772 Evers Rd, Leon Valley, TX 78238",Leon Valley,TX,78238,7:20 AM,7:38 AM,18,12,1,52,INV-200100-1,COKE-ZERO-12PK,Coca-Cola Zero Sugar 12 Pack,Coca-Cola,12 Pack,CSD,52,9.99,519.48,"Core CSD"',
-        '2026-05-25,RT-102,Leon Valley,6:45 AM,2:45 PM,San Antonio DC,driver_002,Driver Two,2,200101,AutoZone,"5803 NW Loop 410, San Antonio, TX 78238",San Antonio,TX,78238,7:50 AM,8:15 AM,25,15,3,120,INV-200101-1,POWERADE-MIX,Powerade Mixed Case,Powerade,Case,Sports Drink,120,11.25,1350.00,"Bulk pallets"'
+        '2026-05-25,RT-101,San Antonio North,7:00 AM,3:30 PM,San Antonio DC,DRV-1001,Jordan Lee,1,100245,Alamo City Stripers,"4337 E Houston St, San Antonio, TX 78220",San Antonio,TX,78220,7:35 AM,7:55 AM,20,14,2,48,INV-100245-1,COKE-12PK,Coca-Cola 12 Pack,Coca-Cola,12 Pack,CSD,48,9.99,479.52,"Front gate delivery"',
+        '2026-05-25,RT-101,San Antonio North,7:00 AM,3:30 PM,San Antonio DC,DRV-1001,Jordan Lee,1,100245,Alamo City Stripers,"4337 E Houston St, San Antonio, TX 78220",San Antonio,TX,78220,7:35 AM,7:55 AM,20,14,2,38,INV-100245-1,SPRITE-12PK,Sprite 12 Pack,Sprite,12 Pack,CSD,38,9.49,360.62,"Front gate delivery"',
+        '2026-05-25,RT-101,San Antonio North,7:00 AM,3:30 PM,San Antonio DC,DRV-1001,Jordan Lee,2,100246,Eastside Market,"5030 Rigsby Ave, San Antonio, TX 78222",San Antonio,TX,78222,8:10 AM,8:28 AM,18,16,1,44,INV-100246-1,DASANI-24PK,Dasani 24 Pack,Dasani,24 Pack,Water,44,6.75,297.00,"Water; mini cans"',
+        '2026-05-25,RT-102,Leon Valley,6:45 AM,2:45 PM,San Antonio DC,DRV-1002,Casey Morgan,1,200100,Vape City,"5772 Evers Rd, Leon Valley, TX 78238",Leon Valley,TX,78238,7:20 AM,7:38 AM,18,12,1,52,INV-200100-1,COKE-ZERO-12PK,Coca-Cola Zero Sugar 12 Pack,Coca-Cola,12 Pack,CSD,52,9.99,519.48,"Core CSD"',
+        '2026-05-25,RT-102,Leon Valley,6:45 AM,2:45 PM,San Antonio DC,DRV-1002,Casey Morgan,2,200101,AutoZone,"5803 NW Loop 410, San Antonio, TX 78238",San Antonio,TX,78238,7:50 AM,8:15 AM,25,15,3,120,INV-200101-1,POWERADE-MIX,Powerade Mixed Case,Powerade,Case,Sports Drink,120,11.25,1350.00,"Bulk pallets"'
       ].join('\\n');
     }
 
     const activeDriversById = new Map();
+    const activeDriversByName = new Map();
 
     async function loadDriversForAssignment() {
       const input = document.getElementById('driverSelect');
@@ -481,12 +482,16 @@ function renderRouteManifestAdminPage() {
 
         const drivers = Array.isArray(data.drivers) ? data.drivers : [];
         activeDriversById.clear();
+        activeDriversByName.clear();
         drivers.forEach(driver => {
           activeDriversById.set(String(driver.driverId || '').trim().toLowerCase(), driver);
+          const normalizedName = String(driver.driverName || '').trim().toLowerCase();
+          if (!activeDriversByName.has(normalizedName)) activeDriversByName.set(normalizedName, []);
+          activeDriversByName.get(normalizedName).push(driver);
         });
         options.innerHTML = drivers.map(driver =>
-          '<option value="' + escapeHtml(driver.driverId) + '">' +
-            escapeHtml(driver.driverName) +
+          '<option value="' + escapeHtml(driver.driverName) + '">' +
+            escapeHtml(driver.driverId) +
             (driver.supervisorName || driver.teamName
               ? ' - ' + escapeHtml([driver.supervisorName, driver.teamName].filter(Boolean).join(' / '))
               : '') +
@@ -494,13 +499,14 @@ function renderRouteManifestAdminPage() {
         ).join('');
 
         input.placeholder = drivers.length
-          ? 'Type or choose an active driver ID...'
+          ? 'Type or choose an active driver name...'
           : 'No active drivers registered';
         status.textContent = drivers.length
-          ? drivers.length + ' active driver' + (drivers.length === 1 ? '' : 's') + ' available. Type a driver ID or choose a suggestion.'
+          ? drivers.length + ' active driver' + (drivers.length === 1 ? '' : 's') + ' available. Type a registered name or choose a suggestion.'
           : 'No active drivers are registered. Open Driver Registry and add or reactivate a driver.';
       } catch (error) {
         activeDriversById.clear();
+        activeDriversByName.clear();
         options.innerHTML = '';
         input.placeholder = 'Driver registry unavailable';
         status.textContent = error.message || 'Unable to load active drivers.';
@@ -511,18 +517,28 @@ function renderRouteManifestAdminPage() {
 
     async function assignRoute(id) {
       const input = document.getElementById('driverSelect');
-      const driverId = String(input.value || '').trim();
-      const registeredDriver = activeDriversById.get(driverId.toLowerCase());
-      if (!driverId) {
-        alert('Type or choose an active registered driver ID first.');
+      const driverLookup = String(input.value || '').trim();
+      if (!driverLookup) {
+        alert('Type or choose an active registered driver name first.');
+        input.focus();
+        return;
+      }
+
+      const normalizedLookup = driverLookup.toLowerCase();
+      const matchingNames = activeDriversByName.get(normalizedLookup) || [];
+      const registeredDriver = activeDriversById.get(normalizedLookup)
+        || (matchingNames.length === 1 ? matchingNames[0] : null);
+      if (matchingNames.length > 1 && !activeDriversById.has(normalizedLookup)) {
+        alert('More than one active driver has that name. Enter the driver ID shown in Driver Registry to choose the correct person.');
         input.focus();
         return;
       }
       if (!registeredDriver) {
-        alert('That driver is not in the active driver list. Refresh Drivers or add/reactivate the driver in Driver Registry.');
+        alert('That name is not in the active driver registry. Add the driver in Driver Registry, then return here and press Refresh Drivers.');
         input.focus();
         return;
       }
+      const driverId = registeredDriver.driverId;
       const driverName = registeredDriver.driverName || driverId;
       const response = await fetch('/api/route-manifests/' + encodeURIComponent(id) + '/assign', {
         method: 'PUT',
