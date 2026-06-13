@@ -331,6 +331,8 @@ function renderRouteManifestAdminPage() {
     .warning { background: #f9a825; color: #1b1300; }
     .status-pill { display: inline-block; border-radius: 999px; padding: 5px 9px; background: rgba(255,255,255,0.12); font-size: 12px; font-weight: 900; text-transform: uppercase; }
     .row-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    #routes { overflow-x: auto; }
+    .route-actions { min-width: 150px; }
   </style>
 </head>
 <body>
@@ -612,9 +614,13 @@ function renderRouteManifestAdminPage() {
       const data = await response.json();
       const routes = data.routes || [];
       document.getElementById('routes').innerHTML =
-        '<table><thead><tr><th>Switch</th><th>Date</th><th>Route</th><th>Times</th><th>Stops</th><th>Pallets</th><th>Cases</th><th>Driver</th><th>Status</th><th></th></tr></thead><tbody>' +
+        '<table><thead><tr><th>Switch</th><th>Actions</th><th>Date</th><th>Route</th><th>Times</th><th>Stops</th><th>Pallets</th><th>Cases</th><th>Driver</th><th>Status</th></tr></thead><tbody>' +
         routes.map(route => '<tr>' +
           '<td><input type="checkbox" name="routeSwitch" value="' + escapeHtml(route.id) + '" /></td>' +
+          '<td class="route-actions"><div class="row-actions">' +
+            '<button onclick="assignRoute(decodeURIComponent(\\'' + encodeURIComponent(route.id) + '\\'))">Assign/Reassign</button>' +
+            '<button class="danger" onclick="deleteRoute(decodeURIComponent(\\'' + encodeURIComponent(route.id) + '\\'), decodeURIComponent(\\'' + encodeURIComponent(route.routeNumber) + '\\'), decodeURIComponent(\\'' + encodeURIComponent(route.routeDate) + '\\'))">Delete</button>' +
+          '</div></td>' +
           '<td>' + escapeHtml(route.routeDate) + '</td>' +
           '<td><strong>' + escapeHtml(route.routeNumber) + '</strong><br><span class="muted">' + escapeHtml(route.routeName || '') + '</span></td>' +
           '<td>' + escapeHtml(route.plannedStartAt || '-') + '<br>' + escapeHtml(route.plannedEndAt || '-') + '</td>' +
@@ -623,10 +629,6 @@ function renderRouteManifestAdminPage() {
           '<td>' + escapeHtml(route.totalCases) + '</td>' +
           '<td>' + escapeHtml(route.assignedDriverName || route.assignedDriverId || 'Unassigned') + '</td>' +
           '<td>' + escapeHtml(route.status) + '</td>' +
-          '<td><div class="row-actions">' +
-            '<button onclick="assignRoute(decodeURIComponent(\\'' + encodeURIComponent(route.id) + '\\'))">Assign/Reassign</button>' +
-            '<button class="danger" onclick="deleteRoute(decodeURIComponent(\\'' + encodeURIComponent(route.id) + '\\'), decodeURIComponent(\\'' + encodeURIComponent(route.routeNumber) + '\\'), decodeURIComponent(\\'' + encodeURIComponent(route.routeDate) + '\\'))">Delete</button>' +
-          '</div></td>' +
         '</tr>').join('') +
         '</tbody></table>';
     }

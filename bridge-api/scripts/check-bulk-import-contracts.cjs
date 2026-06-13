@@ -69,6 +69,10 @@ assert(
   'Route manifest assignment must display driver-registry loading status.'
 );
 assert(
+  routeManifestSource.includes('<th>Switch</th><th>Actions</th><th>Date</th>'),
+  'Route assignment actions must remain at the visible front of each route row.'
+);
+assert(
   routeManifestSource.includes('The selected driver is not registered as active.'),
   'Route assignment must reject unknown or inactive drivers.'
 );
