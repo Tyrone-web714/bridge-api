@@ -327,7 +327,9 @@ function renderRouteManifestAdminPage() {
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
     .message { min-height: 22px; color: #a6ffb8; font-weight: 800; }
     .muted { color: #a9bdc7; }
+    .secondary { background: #31596a; }
     .danger { background: #c62828; }
+    .error { color: #ffb4b4; font-weight: 800; }
     .warning { background: #f9a825; color: #1b1300; }
     .status-pill { display: inline-block; border-radius: 999px; padding: 5px 9px; background: rgba(255,255,255,0.12); font-size: 12px; font-weight: 900; text-transform: uppercase; }
     .row-actions { display: flex; gap: 8px; flex-wrap: wrap; }
@@ -381,12 +383,14 @@ function renderRouteManifestAdminPage() {
         <div>
           <label>&nbsp;</label>
           <div class="row-actions">
-            <button onclick="loadRoutes()">Refresh</button>
+            <button onclick="loadRoutes()">Refresh Routes</button>
+            <button class="secondary" onclick="showAllRoutes()">Show All Routes</button>
             <button onclick="switchSelectedRoutes()">Switch Selected Route Assignments</button>
             <button class="danger" onclick="deleteRoutesByDate()">Delete Routes for Date</button>
           </div>
         </div>
       </div>
+      <p id="routesStatus" class="muted">Loading persisted routes...</p>
       <div id="routes"></div>
     </section>
     <section class="panel">
@@ -610,10 +614,26 @@ function renderRouteManifestAdminPage() {
       const routeDate = document.getElementById('routeDateFilter').value.trim();
       const query = new URLSearchParams({ limit: '200' });
       if (/^\\d{4}-\\d{2}-\\d{2}$/.test(routeDate)) query.set('routeDate', routeDate);
-      const response = await fetch('/api/route-manifests?' + query.toString());
-      const data = await response.json();
-      const routes = data.routes || [];
-      document.getElementById('routes').innerHTML =
+      const routesStatus = document.getElementById('routesStatus');
+      const routesContainer = document.getElementById('routes');
+      routesStatus.textContent = 'Loading persisted routes from the backend...';
+
+      try {
+        const response = await fetch('/api/route-manifests?' + query.toString());
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) {
+          throw new Error(data.error || 'Unable to load persisted routes.');
+        }
+
+        const routes = Array.isArray(data.routes) ? data.routes : [];
+        routesStatus.textContent = routes.length
+          ? routes.length + ' persisted route' + (routes.length === 1 ? '' : 's') + ' loaded' +
+            (query.has('routeDate') ? ' for ' + routeDate + '.' : '.')
+          : query.has('routeDate')
+            ? 'No routes match ' + routeDate + '. Press Show All Routes to clear the filter.'
+            : 'No route manifests are currently stored in the backend.';
+        routesContainer.innerHTML = routes.length
+          ?
         '<table><thead><tr><th>Switch</th><th>Actions</th><th>Date</th><th>Route</th><th>Times</th><th>Stops</th><th>Pallets</th><th>Cases</th><th>Driver</th><th>Status</th></tr></thead><tbody>' +
         routes.map(route => '<tr>' +
           '<td><input type="checkbox" name="routeSwitch" value="' + escapeHtml(route.id) + '" /></td>' +
@@ -630,7 +650,17 @@ function renderRouteManifestAdminPage() {
           '<td>' + escapeHtml(route.assignedDriverName || route.assignedDriverId || 'Unassigned') + '</td>' +
           '<td>' + escapeHtml(route.status) + '</td>' +
         '</tr>').join('') +
-        '</tbody></table>';
+        '</tbody></table>'
+          : '';
+      } catch (error) {
+        routesStatus.textContent = 'Route list failed to reload: ' + (error.message || 'Unknown backend error.');
+        routesContainer.innerHTML = '<p class="error">The routes were not deleted. The page could not reload them from the backend. Press Refresh Routes to try again.</p>';
+      }
+    }
+
+    function showAllRoutes() {
+      document.getElementById('routeDateFilter').value = '';
+      loadRoutes();
     }
 
     async function updateUndeliveredDisposition(stopId, redeliveryStatus) {
