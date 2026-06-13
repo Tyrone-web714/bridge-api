@@ -922,7 +922,7 @@ async function upsertDriver(input = {}, actor = 'supervisor') {
       territory, supervisor_username, supervisor_name, team_name,
       active, notes, created_by, updated_by, created_at, updated_at
     )
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $11, NOW(), NOW())
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $12, NOW(), NOW())
     ON CONFLICT (driver_id) DO UPDATE SET
       driver_name = EXCLUDED.driver_name,
       employee_number = EXCLUDED.employee_number,

@@ -48,6 +48,10 @@ const routeManifestSource = fs.readFileSync(
   path.join(__dirname, '..', 'routes', 'routeManifests.js'),
   'utf8'
 );
+const repositorySource = fs.readFileSync(
+  path.join(__dirname, '..', 'db', 'repositories.js'),
+  'utf8'
+);
 assert(
   routeManifestSource.includes('list="activeDriverOptions"'),
   'Route manifest assignment must use an editable active-driver field.'
@@ -59,6 +63,12 @@ assert(
 assert(
   routeManifestSource.includes('The selected driver is not registered as active.'),
   'Route assignment must reject unknown or inactive drivers.'
+);
+assert(
+  repositorySource.includes(
+    'VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $12, NOW(), NOW())'
+  ),
+  'Driver creation must provide values for every drivers-table insert column.'
 );
 
 console.log('[test:imports] validation, grouping, totals, and empty-file contracts verified.');
