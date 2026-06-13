@@ -366,7 +366,16 @@ function renderRouteManifestAdminPage() {
       <h2>Imported Routes</h2>
       <div class="grid">
         <div><label>Filter/delete date</label><input id="routeDateFilter" placeholder="YYYY-MM-DD" /></div>
-        <div><label>Assign to registered driver</label><select id="driverSelect"><option value="">Loading drivers...</option></select></div>
+        <div>
+          <label>Assign to registered driver</label>
+          <input id="driverSelect" list="activeDriverOptions" placeholder="Loading active drivers..." autocomplete="off" />
+          <datalist id="activeDriverOptions"></datalist>
+          <div id="driverSelectStatus" class="muted">Loading active driver registry...</div>
+          <div class="row-actions" style="margin-top:8px">
+            <button type="button" onclick="loadDriversForAssignment()">Refresh Drivers</button>
+            <a class="tab" href="/api/drivers/admin">Open Driver Registry</a>
+          </div>
+        </div>
         <div>
           <label>&nbsp;</label>
           <div class="row-actions">
@@ -453,28 +462,68 @@ function renderRouteManifestAdminPage() {
       ].join('\\n');
     }
 
+    const activeDriversById = new Map();
+
     async function loadDriversForAssignment() {
-      const select = document.getElementById('driverSelect');
-      const response = await fetch('/api/drivers?active=true&limit=1000');
-      const data = await response.json().catch(() => ({}));
-      const drivers = data.drivers || [];
-      select.innerHTML = '<option value="">Choose active driver...</option>' + drivers.map(driver =>
-        '<option value="' + encodeAttr(driver.driverId) + '" data-name="' + encodeAttr(driver.driverName) + '">' +
-          escapeHtml(driver.driverName) + ' - ' + escapeHtml(driver.driverId) +
-          (driver.supervisorName || driver.teamName ? ' (' + escapeHtml([driver.supervisorName, driver.teamName].filter(Boolean).join(' / ')) + ')' : '') +
-        '</option>'
-      ).join('');
+      const input = document.getElementById('driverSelect');
+      const options = document.getElementById('activeDriverOptions');
+      const status = document.getElementById('driverSelectStatus');
+      input.disabled = true;
+      input.placeholder = 'Loading active drivers...';
+      status.textContent = 'Loading active driver registry...';
+
+      try {
+        const response = await fetch('/api/drivers?active=true&limit=1000');
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) {
+          throw new Error(data.error || 'Unable to load active drivers.');
+        }
+
+        const drivers = Array.isArray(data.drivers) ? data.drivers : [];
+        activeDriversById.clear();
+        drivers.forEach(driver => {
+          activeDriversById.set(String(driver.driverId || '').trim().toLowerCase(), driver);
+        });
+        options.innerHTML = drivers.map(driver =>
+          '<option value="' + escapeHtml(driver.driverId) + '">' +
+            escapeHtml(driver.driverName) +
+            (driver.supervisorName || driver.teamName
+              ? ' - ' + escapeHtml([driver.supervisorName, driver.teamName].filter(Boolean).join(' / '))
+              : '') +
+          '</option>'
+        ).join('');
+
+        input.placeholder = drivers.length
+          ? 'Type or choose an active driver ID...'
+          : 'No active drivers registered';
+        status.textContent = drivers.length
+          ? drivers.length + ' active driver' + (drivers.length === 1 ? '' : 's') + ' available. Type a driver ID or choose a suggestion.'
+          : 'No active drivers are registered. Open Driver Registry and add or reactivate a driver.';
+      } catch (error) {
+        activeDriversById.clear();
+        options.innerHTML = '';
+        input.placeholder = 'Driver registry unavailable';
+        status.textContent = error.message || 'Unable to load active drivers.';
+      } finally {
+        input.disabled = false;
+      }
     }
 
     async function assignRoute(id) {
-      const select = document.getElementById('driverSelect');
-      const selected = select.options[select.selectedIndex];
-      const driverId = selected ? decodeURIComponent(selected.value || '') : '';
-      const driverName = selected ? decodeURIComponent(selected.dataset.name || driverId) : '';
+      const input = document.getElementById('driverSelect');
+      const driverId = String(input.value || '').trim();
+      const registeredDriver = activeDriversById.get(driverId.toLowerCase());
       if (!driverId) {
-        alert('Choose an active registered driver first.');
+        alert('Type or choose an active registered driver ID first.');
+        input.focus();
         return;
       }
+      if (!registeredDriver) {
+        alert('That driver is not in the active driver list. Refresh Drivers or add/reactivate the driver in Driver Registry.');
+        input.focus();
+        return;
+      }
+      const driverName = registeredDriver.driverName || driverId;
       const response = await fetch('/api/route-manifests/' + encodeURIComponent(id) + '/assign', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -887,8 +936,18 @@ router.delete('/:id', requireAdminSession, async (req, res) => {
 
 router.put('/:id/assign', requireAdminSession, async (req, res) => {
   try {
+    const driverId = String(req.body?.driverId || req.body?.driver_id || '').trim();
+    const driver = await repositories.getDriver(driverId);
+    if (!driver || driver.active !== true) {
+      return res.status(400).json({
+        error: 'The selected driver is not registered as active. Add or reactivate the driver in Driver Registry first.'
+      });
+    }
+
     const route = await repositories.assignDailyRouteManifest(req.params.id, {
       ...req.body,
+      driverId: driver.driverId,
+      driverName: driver.driverName,
       assignedBy: req.adminSession?.username || req.body?.assignedBy
     });
     if (!route) return res.status(404).json({ error: 'Route manifest not found.' });

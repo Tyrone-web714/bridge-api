@@ -1,4 +1,6 @@
 const assert = require('assert');
+const fs = require('fs');
+const path = require('path');
 const bulkImport = require('../services/bulkImport');
 
 const customerPreview = bulkImport.normalizeImport('customers', [
@@ -40,6 +42,23 @@ assert.throws(
 assert.throws(
   () => bulkImport.normalizeImport('customers', 'account_number,account_name\n'),
   /contains no data rows/
+);
+
+const routeManifestSource = fs.readFileSync(
+  path.join(__dirname, '..', 'routes', 'routeManifests.js'),
+  'utf8'
+);
+assert(
+  routeManifestSource.includes('list="activeDriverOptions"'),
+  'Route manifest assignment must use an editable active-driver field.'
+);
+assert(
+  routeManifestSource.includes('driverSelectStatus'),
+  'Route manifest assignment must display driver-registry loading status.'
+);
+assert(
+  routeManifestSource.includes('The selected driver is not registered as active.'),
+  'Route assignment must reject unknown or inactive drivers.'
 );
 
 console.log('[test:imports] validation, grouping, totals, and empty-file contracts verified.');
