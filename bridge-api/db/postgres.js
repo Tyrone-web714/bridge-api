@@ -59,6 +59,29 @@ async function rawQuery(text, params = []) {
   return activePool.query(text, params);
 }
 
+async function withTransaction(callback) {
+  const activePool = getPool();
+  if (!activePool) {
+    const error = new Error('DATABASE_URL is not configured');
+    error.code = 'DATABASE_NOT_CONFIGURED';
+    throw error;
+  }
+
+  await ensureSchema();
+  const client = await activePool.connect();
+  try {
+    await client.query('BEGIN');
+    const result = await callback(client);
+    await client.query('COMMIT');
+    return result;
+  } catch (error) {
+    await client.query('ROLLBACK');
+    throw error;
+  } finally {
+    client.release();
+  }
+}
+
 async function ensureSchema() {
   if (schemaReady || !isDatabaseConfigured()) return;
   if (schemaPromise) return schemaPromise;
@@ -583,6 +606,70 @@ async function ensureSchema() {
     CREATE INDEX IF NOT EXISTS delivery_deductions_route_stop_idx ON delivery_deductions(route_stop_id);
     CREATE INDEX IF NOT EXISTS delivery_deductions_reason_idx ON delivery_deductions(reason);
 
+    CREATE TABLE IF NOT EXISTS delivery_settlements (
+      id TEXT PRIMARY KEY,
+      route_stop_id TEXT NOT NULL UNIQUE REFERENCES daily_route_stops(id) ON DELETE CASCADE,
+      order_id TEXT REFERENCES account_orders(id) ON DELETE SET NULL,
+      driver_id TEXT NOT NULL,
+      status TEXT NOT NULL DEFAULT 'draft',
+      completion_status TEXT,
+      non_delivery_reason TEXT,
+      planned_quantity NUMERIC(12,2) NOT NULL DEFAULT 0,
+      delivered_quantity NUMERIC(12,2) NOT NULL DEFAULT 0,
+      rejected_quantity NUMERIC(12,2) NOT NULL DEFAULT 0,
+      damaged_quantity NUMERIC(12,2) NOT NULL DEFAULT 0,
+      missing_quantity NUMERIC(12,2) NOT NULL DEFAULT 0,
+      returned_quantity NUMERIC(12,2) NOT NULL DEFAULT 0,
+      added_quantity NUMERIC(12,2) NOT NULL DEFAULT 0,
+      planned_amount NUMERIC(12,2) NOT NULL DEFAULT 0,
+      final_amount NUMERIC(12,2) NOT NULL DEFAULT 0,
+      supervisor_review_required BOOLEAN NOT NULL DEFAULT false,
+      notes TEXT,
+      completed_at TIMESTAMPTZ,
+      raw JSONB NOT NULL DEFAULT '{}'::jsonb,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+
+    CREATE INDEX IF NOT EXISTS delivery_settlements_driver_idx
+      ON delivery_settlements(driver_id, created_at DESC);
+    CREATE INDEX IF NOT EXISTS delivery_settlements_status_idx
+      ON delivery_settlements(status, created_at DESC);
+    CREATE INDEX IF NOT EXISTS delivery_settlements_order_idx
+      ON delivery_settlements(order_id);
+
+    CREATE TABLE IF NOT EXISTS delivery_settlement_items (
+      id TEXT PRIMARY KEY,
+      settlement_id TEXT NOT NULL REFERENCES delivery_settlements(id) ON DELETE CASCADE,
+      order_item_id TEXT REFERENCES account_order_items(id) ON DELETE SET NULL,
+      sku TEXT,
+      product_name TEXT NOT NULL,
+      brand TEXT,
+      package_size TEXT,
+      category TEXT,
+      planned_quantity NUMERIC(12,2) NOT NULL DEFAULT 0,
+      delivered_quantity NUMERIC(12,2) NOT NULL DEFAULT 0,
+      rejected_quantity NUMERIC(12,2) NOT NULL DEFAULT 0,
+      damaged_quantity NUMERIC(12,2) NOT NULL DEFAULT 0,
+      missing_quantity NUMERIC(12,2) NOT NULL DEFAULT 0,
+      returned_quantity NUMERIC(12,2) NOT NULL DEFAULT 0,
+      added_quantity NUMERIC(12,2) NOT NULL DEFAULT 0,
+      unit_price NUMERIC(12,2) NOT NULL DEFAULT 0,
+      final_amount NUMERIC(12,2) NOT NULL DEFAULT 0,
+      adjustment_reason TEXT,
+      notes TEXT,
+      raw JSONB NOT NULL DEFAULT '{}'::jsonb,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+
+    CREATE INDEX IF NOT EXISTS delivery_settlement_items_settlement_idx
+      ON delivery_settlement_items(settlement_id);
+    CREATE INDEX IF NOT EXISTS delivery_settlement_items_order_item_idx
+      ON delivery_settlement_items(order_item_id);
+    CREATE INDEX IF NOT EXISTS delivery_settlement_items_sku_idx
+      ON delivery_settlement_items(sku);
+
     CREATE TABLE IF NOT EXISTS account_ai_insights (
       id TEXT PRIMARY KEY,
       account_number TEXT NOT NULL,
@@ -807,5 +894,6 @@ module.exports = {
   isDatabaseConfigured,
   isPostgisEnabled,
   query,
-  rawQuery
+  rawQuery,
+  withTransaction
 };

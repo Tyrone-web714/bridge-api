@@ -349,6 +349,62 @@ function deliveryDeductionFromRow(row) {
   };
 }
 
+function deliverySettlementItemFromRow(row) {
+  return {
+    id: row.id,
+    settlementId: row.settlement_id,
+    orderItemId: row.order_item_id || null,
+    sku: row.sku || null,
+    productName: row.product_name,
+    brand: row.brand || null,
+    packageSize: row.package_size || null,
+    category: row.category || null,
+    plannedQuantity: normalizeQuantity(row.planned_quantity),
+    deliveredQuantity: normalizeQuantity(row.delivered_quantity),
+    rejectedQuantity: normalizeQuantity(row.rejected_quantity),
+    damagedQuantity: normalizeQuantity(row.damaged_quantity),
+    missingQuantity: normalizeQuantity(row.missing_quantity),
+    returnedQuantity: normalizeQuantity(row.returned_quantity),
+    addedQuantity: normalizeQuantity(row.added_quantity),
+    unitPrice: normalizeMoney(row.unit_price),
+    finalAmount: normalizeMoney(row.final_amount),
+    adjustmentReason: row.adjustment_reason || null,
+    notes: row.notes || null,
+    raw: row.raw || {},
+    createdAt: toIsoString(row.created_at),
+    updatedAt: toIsoString(row.updated_at)
+  };
+}
+
+function deliverySettlementFromRow(row, items = []) {
+  if (!row) return null;
+  return {
+    id: row.id,
+    routeStopId: row.route_stop_id,
+    orderId: row.order_id || null,
+    driverId: row.driver_id,
+    status: row.status || 'draft',
+    completionStatus: row.completion_status || null,
+    nonDeliveryReason: row.non_delivery_reason || null,
+    plannedQuantity: normalizeQuantity(row.planned_quantity),
+    deliveredQuantity: normalizeQuantity(row.delivered_quantity),
+    rejectedQuantity: normalizeQuantity(row.rejected_quantity),
+    damagedQuantity: normalizeQuantity(row.damaged_quantity),
+    missingQuantity: normalizeQuantity(row.missing_quantity),
+    returnedQuantity: normalizeQuantity(row.returned_quantity),
+    addedQuantity: normalizeQuantity(row.added_quantity),
+    plannedAmount: normalizeMoney(row.planned_amount),
+    finalAmount: normalizeMoney(row.final_amount),
+    supervisorReviewRequired: row.supervisor_review_required === true,
+    notes: row.notes || null,
+    completedAt: toIsoString(row.completed_at),
+    raw: row.raw || {},
+    createdAt: toIsoString(row.created_at),
+    updatedAt: toIsoString(row.updated_at),
+    items
+  };
+}
+
 function accountOrderFromRow(row, items = [], deductions = []) {
   return {
     id: row.id,
@@ -2279,6 +2335,14 @@ async function getDailyRouteManifestWithAccountIntelligence(id, options = {}) {
       ORDER BY account_number, insight_type, created_at DESC
     `, [accountNumbers])).rows
     : [];
+  const settlementRows = stopIds.length
+    ? (await postgres.query(`
+      SELECT *
+      FROM delivery_settlements
+      WHERE route_stop_id = ANY($1::text[])
+      ORDER BY created_at ASC
+    `, [stopIds])).rows
+    : [];
 
   const itemsByOrderId = new Map();
   for (const row of itemRows) {
@@ -2312,8 +2376,50 @@ async function getDailyRouteManifestWithAccountIntelligence(id, options = {}) {
     insightsByAccountNumber.get(mapped.accountNumber).push(mapped);
   }
 
+  const settlementsByStopId = new Map(
+    settlementRows.map((row) => [row.route_stop_id, deliverySettlementFromRow(row)])
+  );
+  const inventoryReconciliation = settlementRows.reduce((summary, row) => ({
+    plannedQuantity: summary.plannedQuantity + normalizeQuantity(row.planned_quantity),
+    deliveredQuantity: summary.deliveredQuantity + normalizeQuantity(row.delivered_quantity),
+    rejectedQuantity: summary.rejectedQuantity + normalizeQuantity(row.rejected_quantity),
+    damagedQuantity: summary.damagedQuantity + normalizeQuantity(row.damaged_quantity),
+    missingQuantity: summary.missingQuantity + normalizeQuantity(row.missing_quantity),
+    returnedQuantity: summary.returnedQuantity + normalizeQuantity(row.returned_quantity),
+    addedQuantity: summary.addedQuantity + normalizeQuantity(row.added_quantity),
+    plannedAmount: summary.plannedAmount + normalizeMoney(row.planned_amount),
+    finalAmount: summary.finalAmount + normalizeMoney(row.final_amount),
+    completedSettlements: summary.completedSettlements + (row.status === 'completed' ? 1 : 0),
+    supervisorReviewRequired: summary.supervisorReviewRequired || row.supervisor_review_required === true
+  }), {
+    plannedQuantity: 0,
+    deliveredQuantity: 0,
+    rejectedQuantity: 0,
+    damagedQuantity: 0,
+    missingQuantity: 0,
+    returnedQuantity: 0,
+    addedQuantity: 0,
+    plannedAmount: 0,
+    finalAmount: 0,
+    completedSettlements: 0,
+    supervisorReviewRequired: false
+  });
+
   return {
     ...route,
+    inventoryReconciliation: {
+      ...inventoryReconciliation,
+      totalStops: route.stops.length,
+      unaccountedQuantity: normalizeQuantity(Math.max(
+        0,
+        inventoryReconciliation.plannedQuantity
+          - inventoryReconciliation.deliveredQuantity
+          - inventoryReconciliation.rejectedQuantity
+          - inventoryReconciliation.damagedQuantity
+          - inventoryReconciliation.missingQuantity
+          - inventoryReconciliation.returnedQuantity
+      ))
+    },
     stops: route.stops.map((stop) => {
       const accountOrders = ordersByStopId.get(stop.id) || [];
       const orderItems = accountOrders.flatMap((order) => order.items || []);
@@ -2329,6 +2435,7 @@ async function getDailyRouteManifestWithAccountIntelligence(id, options = {}) {
       return {
         ...stop,
         accountOrders,
+        deliverySettlement: settlementsByStopId.get(stop.id) || null,
         accountInsights: insightsByAccountNumber.get(stop.accountNumber) || [],
         accountProductTotals
       };
@@ -2569,6 +2676,22 @@ async function updateDailyRouteStopStatusForDriver(stopId, driverId, input = {})
     const error = new Error('A valid non-delivery reason is required.');
     error.status = 400;
     throw error;
+  }
+  if (['completed', 'departed', 'undelivered'].includes(status)) {
+    const settlementResult = await postgres.query(`
+      SELECT status, completion_status
+      FROM delivery_settlements
+      WHERE route_stop_id = $1
+        AND driver_id = $2
+      LIMIT 1
+    `, [cleanedStopId, cleanedDriverId]);
+    const settlement = settlementResult.rows[0];
+    const expectedCompletionStatus = status === 'undelivered' ? 'undelivered' : 'completed';
+    if (!settlement || settlement.status !== 'completed' || settlement.completion_status !== expectedCompletionStatus) {
+      const error = new Error('Complete the item-level delivery settlement before closing this stop.');
+      error.status = 409;
+      throw error;
+    }
   }
 
   const result = await postgres.query(`
@@ -3268,6 +3391,533 @@ async function recordDeliveryDeductionForDriverStop(stopId, driverId, input = {}
   });
 }
 
+async function getDriverStopDeliverySettlement(stopId, driverId) {
+  const cleanedStopId = cleanRepositoryText(stopId, 160);
+  const cleanedDriverId = cleanRepositoryText(driverId, 120);
+  if (!cleanedStopId || !cleanedDriverId) {
+    const error = new Error('stopId and driverId are required.');
+    error.status = 400;
+    throw error;
+  }
+
+  const stopResult = await postgres.query(`
+    SELECT
+      stop.*,
+      manifest.route_date,
+      manifest.route_number,
+      manifest.route_name,
+      manifest.assigned_driver_id,
+      manifest.assigned_driver_name
+    FROM daily_route_stops AS stop
+    JOIN daily_route_manifests AS manifest ON manifest.id = stop.manifest_id
+    WHERE stop.id = $1
+      AND manifest.assigned_driver_id = $2
+    LIMIT 1
+  `, [cleanedStopId, cleanedDriverId]);
+  const stopRow = stopResult.rows[0];
+  if (!stopRow) return null;
+
+  const orderResult = await postgres.query(`
+    SELECT *
+    FROM account_orders
+    WHERE route_stop_id = $1
+    ORDER BY COALESCE(delivery_date, order_date) DESC, created_at DESC
+    LIMIT 1
+  `, [cleanedStopId]);
+  const orderRow = orderResult.rows[0] || null;
+
+  const orderItemsResult = orderRow
+    ? await postgres.query(`
+        SELECT *
+        FROM account_order_items
+        WHERE order_id = $1
+          AND COALESCE(raw->>'settlementAdditional', 'false') <> 'true'
+        ORDER BY product_name ASC
+      `, [orderRow.id])
+    : { rows: [] };
+
+  const settlementResult = await postgres.query(`
+    SELECT *
+    FROM delivery_settlements
+    WHERE route_stop_id = $1
+    LIMIT 1
+  `, [cleanedStopId]);
+  const settlementRow = settlementResult.rows[0] || null;
+  const settlementItemsResult = settlementRow
+    ? await postgres.query(`
+        SELECT *
+        FROM delivery_settlement_items
+        WHERE settlement_id = $1
+        ORDER BY CASE WHEN order_item_id IS NULL THEN 1 ELSE 0 END, product_name ASC
+      `, [settlementRow.id])
+    : { rows: [] };
+
+  const stop = {
+    ...routeStopFromRow(stopRow),
+    routeDate: toDateOnly(stopRow.route_date),
+    routeNumber: stopRow.route_number || null,
+    routeName: stopRow.route_name || null,
+    assignedDriverId: stopRow.assigned_driver_id,
+    assignedDriverName: stopRow.assigned_driver_name || null
+  };
+  const orderItems = orderItemsResult.rows.map(accountOrderItemFromRow);
+  const defaultItems = orderItems.length
+    ? orderItems.map((item) => ({
+        id: `draft_${item.id}`,
+        settlementId: null,
+        orderItemId: item.id,
+        sku: item.sku,
+        productName: item.productName,
+        brand: item.brand,
+        packageSize: item.packageSize,
+        category: item.category,
+        plannedQuantity: item.quantity,
+        deliveredQuantity: item.quantity,
+        rejectedQuantity: 0,
+        damagedQuantity: 0,
+        missingQuantity: 0,
+        returnedQuantity: 0,
+        addedQuantity: 0,
+        unitPrice: item.unitPrice,
+        finalAmount: normalizeMoney(item.quantity * item.unitPrice),
+        adjustmentReason: null,
+        notes: null,
+        raw: {}
+      }))
+    : asArray(stop.itemSummary).map((item, index) => {
+        const quantity = normalizeQuantity(readInputField(item, ['quantity', 'cases', 'units']));
+        const unitPrice = normalizeMoney(readInputField(item, ['unitPrice', 'unit_price', 'price']));
+        return {
+          id: `draft_summary_${index}`,
+          settlementId: null,
+          orderItemId: null,
+          sku: cleanRepositoryText(readInputField(item, ['sku', 'SKU']), 120) || null,
+          productName: cleanRepositoryText(readInputField(item, ['productName', 'product_name', 'name']), 240) || `Item ${index + 1}`,
+          brand: cleanRepositoryText(readInputField(item, ['brand']), 120) || null,
+          packageSize: cleanRepositoryText(readInputField(item, ['packageSize', 'package_size']), 120) || null,
+          category: cleanRepositoryText(readInputField(item, ['category']), 120) || null,
+          plannedQuantity: quantity,
+          deliveredQuantity: quantity,
+          rejectedQuantity: 0,
+          damagedQuantity: 0,
+          missingQuantity: 0,
+          returnedQuantity: 0,
+          addedQuantity: 0,
+          unitPrice,
+          finalAmount: normalizeMoney(quantity * unitPrice),
+          adjustmentReason: null,
+          notes: null,
+          raw: { source: 'route_item_summary' }
+        };
+      });
+
+  const settlement = settlementRow
+    ? deliverySettlementFromRow(
+        settlementRow,
+        settlementItemsResult.rows.map(deliverySettlementItemFromRow)
+      )
+    : {
+        id: null,
+        routeStopId: cleanedStopId,
+        orderId: orderRow?.id || null,
+        driverId: cleanedDriverId,
+        status: 'draft',
+        completionStatus: null,
+        nonDeliveryReason: null,
+        plannedQuantity: defaultItems.reduce((sum, item) => sum + item.plannedQuantity, 0),
+        deliveredQuantity: defaultItems.reduce((sum, item) => sum + item.deliveredQuantity, 0),
+        rejectedQuantity: 0,
+        damagedQuantity: 0,
+        missingQuantity: 0,
+        returnedQuantity: 0,
+        addedQuantity: 0,
+        plannedAmount: normalizeMoney(defaultItems.reduce((sum, item) => sum + (item.plannedQuantity * item.unitPrice), 0)),
+        finalAmount: normalizeMoney(defaultItems.reduce((sum, item) => sum + item.finalAmount, 0)),
+        supervisorReviewRequired: false,
+        notes: null,
+        completedAt: null,
+        items: defaultItems
+      };
+
+  return {
+    stop,
+    order: orderRow ? accountOrderFromRow(orderRow, orderItems) : null,
+    settlement
+  };
+}
+
+async function saveDriverStopDeliverySettlement(stopId, driverId, input = {}) {
+  const cleanedStopId = cleanRepositoryText(stopId, 160);
+  const cleanedDriverId = cleanRepositoryText(driverId, 120);
+  const requestedStatus = cleanRepositoryText(input.status, 40).toLowerCase() || 'draft';
+  const completionStatus = cleanRepositoryText(input.completionStatus || input.completion_status, 40).toLowerCase()
+    || (requestedStatus === 'completed' ? 'completed' : null);
+  const nonDeliveryReason = cleanRepositoryText(input.nonDeliveryReason || input.non_delivery_reason, 120).toLowerCase() || null;
+  const notes = cleanRepositoryText(input.notes, 2000) || null;
+  const allowedStatuses = new Set(['draft', 'completed']);
+  const allowedCompletionStatuses = new Set(['completed', 'undelivered']);
+  const allowedNonDeliveryReasons = new Set(['customer_refused', 'missed_time_window', 'business_closed', 'no_payment']);
+
+  if (!cleanedStopId || !cleanedDriverId) {
+    const error = new Error('stopId and driverId are required.');
+    error.status = 400;
+    throw error;
+  }
+  if (!allowedStatuses.has(requestedStatus)) {
+    const error = new Error('Settlement status must be draft or completed.');
+    error.status = 400;
+    throw error;
+  }
+  if (requestedStatus === 'completed' && !allowedCompletionStatuses.has(completionStatus)) {
+    const error = new Error('A valid completion status is required.');
+    error.status = 400;
+    throw error;
+  }
+  if (completionStatus === 'undelivered' && !allowedNonDeliveryReasons.has(nonDeliveryReason)) {
+    const error = new Error('A valid non-delivery reason is required.');
+    error.status = 400;
+    throw error;
+  }
+
+  const saved = await postgres.withTransaction(async (client) => {
+    const stopResult = await client.query(`
+      SELECT stop.*, manifest.assigned_driver_id
+      FROM daily_route_stops AS stop
+      JOIN daily_route_manifests AS manifest ON manifest.id = stop.manifest_id
+      WHERE stop.id = $1
+        AND manifest.assigned_driver_id = $2
+      FOR UPDATE OF stop
+    `, [cleanedStopId, cleanedDriverId]);
+    const stopRow = stopResult.rows[0];
+    if (!stopRow) return null;
+
+    const orderResult = await client.query(`
+      SELECT *
+      FROM account_orders
+      WHERE route_stop_id = $1
+      ORDER BY COALESCE(delivery_date, order_date) DESC, created_at DESC
+      LIMIT 1
+      FOR UPDATE
+    `, [cleanedStopId]);
+    const orderRow = orderResult.rows[0] || null;
+    const orderItemsResult = orderRow
+      ? await client.query(`
+          SELECT *
+          FROM account_order_items
+          WHERE order_id = $1
+            AND COALESCE(raw->>'settlementAdditional', 'false') <> 'true'
+          ORDER BY product_name ASC
+          FOR UPDATE
+        `, [orderRow.id])
+      : { rows: [] };
+    const plannedItems = orderItemsResult.rows;
+    const plannedById = new Map(plannedItems.map((row) => [row.id, row]));
+    const suppliedItems = asArray(input.items);
+    const normalizedItems = suppliedItems.map((item, index) => {
+      const orderItemId = cleanRepositoryText(item.orderItemId || item.order_item_id, 160) || null;
+      const plannedRow = orderItemId ? plannedById.get(orderItemId) : null;
+      if (orderItemId && !plannedRow) {
+        const error = new Error('A settlement item does not belong to this stop.');
+        error.status = 400;
+        throw error;
+      }
+
+      const plannedQuantity = plannedRow
+        ? normalizeQuantity(plannedRow.quantity)
+        : normalizeQuantity(item.plannedQuantity || item.planned_quantity);
+      const deliveredQuantity = normalizeQuantity(item.deliveredQuantity || item.delivered_quantity);
+      const rejectedQuantity = normalizeQuantity(item.rejectedQuantity || item.rejected_quantity);
+      const damagedQuantity = normalizeQuantity(item.damagedQuantity || item.damaged_quantity);
+      const missingQuantity = normalizeQuantity(item.missingQuantity || item.missing_quantity);
+      const returnedQuantity = normalizeQuantity(item.returnedQuantity || item.returned_quantity);
+      const addedQuantity = normalizeQuantity(item.addedQuantity || item.added_quantity);
+      const accountedQuantity = deliveredQuantity + rejectedQuantity + damagedQuantity + missingQuantity + returnedQuantity;
+      const adjustmentReason = cleanRepositoryText(item.adjustmentReason || item.adjustment_reason, 240) || null;
+      const itemNotes = cleanRepositoryText(item.notes, 1000) || null;
+      const unitPrice = plannedRow
+        ? normalizeMoney(plannedRow.unit_price)
+        : normalizeMoney(item.unitPrice || item.unit_price);
+      const productName = plannedRow?.product_name
+        || cleanRepositoryText(item.productName || item.product_name, 240);
+
+      if (!productName) {
+        const error = new Error(`Product name is required for settlement item ${index + 1}.`);
+        error.status = 400;
+        throw error;
+      }
+      if (plannedRow && Math.abs(accountedQuantity - plannedQuantity) > 0.001 && requestedStatus === 'completed') {
+        const error = new Error(`${productName} has ${normalizeQuantity(plannedQuantity - accountedQuantity)} unaccounted unit(s).`);
+        error.status = 400;
+        throw error;
+      }
+      if (!plannedRow && plannedQuantity > 0) {
+        const error = new Error('Additional products cannot change the warehouse-planned quantity.');
+        error.status = 400;
+        throw error;
+      }
+      if (!plannedRow && addedQuantity <= 0) {
+        const error = new Error('An added product must have an added quantity greater than zero.');
+        error.status = 400;
+        throw error;
+      }
+      if ((rejectedQuantity + damagedQuantity + missingQuantity + returnedQuantity + addedQuantity) > 0 && !adjustmentReason) {
+        const error = new Error(`An adjustment reason is required for ${productName}.`);
+        error.status = 400;
+        throw error;
+      }
+
+      return {
+        id: stableRepositoryId('settlement_item', [
+          cleanedStopId,
+          orderItemId || cleanRepositoryText(item.sku, 120) || productName,
+          index
+        ]),
+        orderItemId,
+        sku: plannedRow?.sku || cleanRepositoryText(item.sku || item.SKU, 120) || null,
+        productName,
+        brand: plannedRow?.brand || cleanRepositoryText(item.brand, 120) || null,
+        packageSize: plannedRow?.package_size || cleanRepositoryText(item.packageSize || item.package_size, 120) || null,
+        category: plannedRow?.category || cleanRepositoryText(item.category, 120) || null,
+        plannedQuantity,
+        deliveredQuantity,
+        rejectedQuantity,
+        damagedQuantity,
+        missingQuantity,
+        returnedQuantity,
+        addedQuantity,
+        unitPrice,
+        finalAmount: normalizeMoney((deliveredQuantity + addedQuantity) * unitPrice),
+        adjustmentReason,
+        notes: itemNotes,
+        raw: item.raw || {}
+      };
+    });
+
+    if (plannedItems.length) {
+      const suppliedPlannedIds = new Set(normalizedItems.map((item) => item.orderItemId).filter(Boolean));
+      const missingPlannedItem = plannedItems.find((item) => !suppliedPlannedIds.has(item.id));
+      if (missingPlannedItem) {
+        const error = new Error(`${missingPlannedItem.product_name} is missing from the delivery settlement.`);
+        error.status = 400;
+        throw error;
+      }
+    }
+
+    const totals = normalizedItems.reduce((summary, item) => ({
+      plannedQuantity: summary.plannedQuantity + item.plannedQuantity,
+      deliveredQuantity: summary.deliveredQuantity + item.deliveredQuantity,
+      rejectedQuantity: summary.rejectedQuantity + item.rejectedQuantity,
+      damagedQuantity: summary.damagedQuantity + item.damagedQuantity,
+      missingQuantity: summary.missingQuantity + item.missingQuantity,
+      returnedQuantity: summary.returnedQuantity + item.returnedQuantity,
+      addedQuantity: summary.addedQuantity + item.addedQuantity,
+      plannedAmount: summary.plannedAmount + (item.plannedQuantity * item.unitPrice),
+      finalAmount: summary.finalAmount + item.finalAmount
+    }), {
+      plannedQuantity: 0,
+      deliveredQuantity: 0,
+      rejectedQuantity: 0,
+      damagedQuantity: 0,
+      missingQuantity: 0,
+      returnedQuantity: 0,
+      addedQuantity: 0,
+      plannedAmount: 0,
+      finalAmount: 0
+    });
+    const supervisorReviewRequired = normalizedItems.some((item) =>
+      item.damagedQuantity > 0 || item.missingQuantity > 0 || item.addedQuantity > 0
+    );
+    const settlementId = stableRepositoryId('settlement', [cleanedStopId]);
+
+    const settlementResult = await client.query(`
+      INSERT INTO delivery_settlements (
+        id, route_stop_id, order_id, driver_id, status, completion_status,
+        non_delivery_reason, planned_quantity, delivered_quantity, rejected_quantity,
+        damaged_quantity, missing_quantity, returned_quantity, added_quantity,
+        planned_amount, final_amount, supervisor_review_required, notes,
+        completed_at, raw, updated_at
+      )
+      VALUES (
+        $1, $2, $3, $4, $5, $6,
+        $7, $8, $9, $10,
+        $11, $12, $13, $14,
+        $15, $16, $17, $18,
+        CASE WHEN $5 = 'completed' THEN NOW() ELSE NULL END,
+        $19::jsonb, NOW()
+      )
+      ON CONFLICT (route_stop_id) DO UPDATE SET
+        order_id = EXCLUDED.order_id,
+        driver_id = EXCLUDED.driver_id,
+        status = EXCLUDED.status,
+        completion_status = EXCLUDED.completion_status,
+        non_delivery_reason = EXCLUDED.non_delivery_reason,
+        planned_quantity = EXCLUDED.planned_quantity,
+        delivered_quantity = EXCLUDED.delivered_quantity,
+        rejected_quantity = EXCLUDED.rejected_quantity,
+        damaged_quantity = EXCLUDED.damaged_quantity,
+        missing_quantity = EXCLUDED.missing_quantity,
+        returned_quantity = EXCLUDED.returned_quantity,
+        added_quantity = EXCLUDED.added_quantity,
+        planned_amount = EXCLUDED.planned_amount,
+        final_amount = EXCLUDED.final_amount,
+        supervisor_review_required = EXCLUDED.supervisor_review_required,
+        notes = EXCLUDED.notes,
+        completed_at = CASE WHEN EXCLUDED.status = 'completed' THEN COALESCE(delivery_settlements.completed_at, NOW()) ELSE NULL END,
+        raw = EXCLUDED.raw,
+        updated_at = NOW()
+      RETURNING *
+    `, [
+      settlementId,
+      cleanedStopId,
+      orderRow?.id || null,
+      cleanedDriverId,
+      requestedStatus,
+      requestedStatus === 'completed' ? completionStatus : null,
+      nonDeliveryReason,
+      totals.plannedQuantity,
+      totals.deliveredQuantity,
+      totals.rejectedQuantity,
+      totals.damagedQuantity,
+      totals.missingQuantity,
+      totals.returnedQuantity,
+      totals.addedQuantity,
+      normalizeMoney(totals.plannedAmount),
+      normalizeMoney(totals.finalAmount),
+      supervisorReviewRequired,
+      notes,
+      JSON.stringify({
+        source: 'driver_delivery_settlement',
+        clientUpdatedAt: input.clientUpdatedAt || null
+      })
+    ]);
+
+    await client.query('DELETE FROM delivery_settlement_items WHERE settlement_id = $1', [settlementId]);
+    for (const item of normalizedItems) {
+      await client.query(`
+        INSERT INTO delivery_settlement_items (
+          id, settlement_id, order_item_id, sku, product_name, brand,
+          package_size, category, planned_quantity, delivered_quantity,
+          rejected_quantity, damaged_quantity, missing_quantity, returned_quantity,
+          added_quantity, unit_price, final_amount, adjustment_reason, notes, raw, updated_at
+        )
+        VALUES (
+          $1, $2, $3, $4, $5, $6,
+          $7, $8, $9, $10,
+          $11, $12, $13, $14,
+          $15, $16, $17, $18, $19, $20::jsonb, NOW()
+        )
+      `, [
+        item.id,
+        settlementId,
+        item.orderItemId,
+        item.sku,
+        item.productName,
+        item.brand,
+        item.packageSize,
+        item.category,
+        item.plannedQuantity,
+        item.deliveredQuantity,
+        item.rejectedQuantity,
+        item.damagedQuantity,
+        item.missingQuantity,
+        item.returnedQuantity,
+        item.addedQuantity,
+        item.unitPrice,
+        item.finalAmount,
+        item.adjustmentReason,
+        item.notes,
+        JSON.stringify(item.raw || {})
+      ]);
+    }
+
+    if (orderRow && requestedStatus === 'completed') {
+      await client.query(`
+        DELETE FROM account_order_items
+        WHERE order_id = $1
+          AND raw->>'settlementId' = $2
+          AND raw->>'settlementAdditional' = 'true'
+      `, [orderRow.id, settlementId]);
+
+      for (const item of normalizedItems) {
+        if (item.orderItemId) {
+          const nonDeliveredQuantity = item.rejectedQuantity + item.damagedQuantity + item.missingQuantity + item.returnedQuantity;
+          await client.query(`
+            UPDATE account_order_items
+            SET
+              deduction_quantity = $2,
+              deduction_amount = $3,
+              net_amount = $4,
+              updated_at = NOW()
+            WHERE id = $1
+          `, [
+            item.orderItemId,
+            nonDeliveredQuantity,
+            normalizeMoney(nonDeliveredQuantity * item.unitPrice),
+            normalizeMoney(item.deliveredQuantity * item.unitPrice)
+          ]);
+        } else if (item.addedQuantity > 0) {
+          await client.query(`
+            INSERT INTO account_order_items (
+              id, order_id, sku, product_name, brand, package_size, category,
+              quantity, unit_price, gross_amount, deduction_quantity,
+              deduction_amount, net_amount, raw, updated_at
+            )
+            VALUES (
+              $1, $2, $3, $4, $5, $6, $7,
+              $8, $9, $10, 0,
+              0, $10, $11::jsonb, NOW()
+            )
+          `, [
+            stableRepositoryId('order_item_addition', [settlementId, item.id]),
+            orderRow.id,
+            item.sku,
+            item.productName,
+            item.brand,
+            item.packageSize,
+            item.category,
+            item.addedQuantity,
+            item.unitPrice,
+            item.finalAmount,
+            JSON.stringify({
+              settlementId,
+              settlementAdditional: true,
+              adjustmentReason: item.adjustmentReason
+            })
+          ]);
+        }
+      }
+
+      await client.query(`
+        UPDATE account_orders
+        SET
+          subtotal_amount = $2,
+          deduction_amount = $3,
+          net_amount = $4,
+          status = CASE WHEN $5 = 'completed' THEN 'delivered' ELSE status END,
+          raw = COALESCE(raw, '{}'::jsonb) || $6::jsonb,
+          updated_at = NOW()
+        WHERE id = $1
+      `, [
+        orderRow.id,
+        normalizeMoney(totals.plannedAmount + normalizedItems.reduce((sum, item) => sum + (item.addedQuantity * item.unitPrice), 0)),
+        normalizeMoney(normalizedItems.reduce((sum, item) =>
+          sum + ((item.rejectedQuantity + item.damagedQuantity + item.missingQuantity + item.returnedQuantity) * item.unitPrice), 0)),
+        normalizeMoney(totals.finalAmount),
+        requestedStatus,
+        JSON.stringify({
+          deliverySettlementId: settlementId,
+          deliverySettlementStatus: requestedStatus
+        })
+      ]);
+    }
+
+    return deliverySettlementFromRow(settlementResult.rows[0], normalizedItems);
+  });
+
+  if (!saved) return null;
+  return getDriverStopDeliverySettlement(cleanedStopId, cleanedDriverId);
+}
+
 async function getAccountProductSummary(accountNumber, options = {}) {
   const cleanedAccountNumber = cleanRepositoryText(accountNumber, 120);
   if (!cleanedAccountNumber) {
@@ -3912,6 +4562,12 @@ async function listOperationalHeatmapSignals(options = {}) {
         driver.supervisor_username,
         driver.team_name,
         driver.driver_id,
+        'route_stop'::text AS source_type,
+        stop.id::text AS source_id,
+        manifest.id::text AS manifest_id,
+        stop.id::text AS stop_id,
+        NULL::text AS route_session_id,
+        NULL::text AS account_order_id,
         jsonb_build_object(
           'plannedArrivalAt', stop.planned_arrival_at,
           'actualArrivalAt', stop.actual_arrival_at,
@@ -3948,6 +4604,12 @@ async function listOperationalHeatmapSignals(options = {}) {
         driver.supervisor_username,
         driver.team_name,
         driver.driver_id,
+        'route_stop'::text AS source_type,
+        stop.id::text AS source_id,
+        manifest.id::text AS manifest_id,
+        stop.id::text AS stop_id,
+        NULL::text AS route_session_id,
+        NULL::text AS account_order_id,
         jsonb_build_object(
           'reason', stop.non_delivery_reason,
           'redeliveryStatus', stop.redelivery_status
@@ -3983,6 +4645,12 @@ async function listOperationalHeatmapSignals(options = {}) {
         driver.supervisor_username,
         driver.team_name,
         driver.driver_id,
+        'delivery_deduction'::text AS source_type,
+        deduction.id::text AS source_id,
+        manifest.id::text AS manifest_id,
+        stop.id::text AS stop_id,
+        NULL::text AS route_session_id,
+        deduction.order_id::text AS account_order_id,
         jsonb_build_object(
           'sku', deduction.sku,
           'productName', deduction.product_name,
@@ -4048,6 +4716,12 @@ async function listOperationalHeatmapSignals(options = {}) {
         driver.supervisor_username,
         driver.team_name,
         driver.driver_id,
+        'route_event'::text AS source_type,
+        event.id::text AS source_id,
+        NULL::text AS manifest_id,
+        NULL::text AS stop_id,
+        event.route_session_id::text AS route_session_id,
+        NULL::text AS account_order_id,
         event.payload AS details
       FROM route_session_events AS event
       LEFT JOIN route_sessions AS session ON session.id = event.route_session_id
@@ -4083,6 +4757,12 @@ async function listOperationalHeatmapSignals(options = {}) {
         driver.supervisor_username,
         driver.team_name,
         driver.driver_id,
+        'account_order'::text AS source_type,
+        order_record.id::text AS source_id,
+        manifest.id::text AS manifest_id,
+        stop.id::text AS stop_id,
+        NULL::text AS route_session_id,
+        order_record.id::text AS account_order_id,
         jsonb_build_object(
           'invoiceNumber', order_record.invoice_number,
           'subtotalAmount', order_record.subtotal_amount,
@@ -4137,6 +4817,12 @@ async function listOperationalHeatmapSignals(options = {}) {
         supervisorUsername: row.supervisor_username || null,
         teamName: row.team_name || null,
         driverId: row.driver_id || null,
+        sourceType: row.source_type || null,
+        sourceId: row.source_id || null,
+        manifestId: row.manifest_id || null,
+        stopId: row.stop_id || null,
+        routeSessionId: row.route_session_id || null,
+        accountOrderId: row.account_order_id || null,
         details: row.details || {}
       };
     })
@@ -5621,6 +6307,7 @@ module.exports = {
   getAccountForecastSignals,
   getAccountProductSummary,
   getDeliveryFailureSignals,
+  getDriverStopDeliverySettlement,
   getDailyRouteManifest,
   getDailyRouteManifestWithAccountIntelligence,
   getDriver,
@@ -5671,6 +6358,7 @@ module.exports = {
   saveRouteSession,
   recordDeliveryDeduction,
   recordDeliveryDeductionForDriverStop,
+  saveDriverStopDeliverySettlement,
   recordAdminUserLogin,
   setAdminUserActive,
   setDriverActive,

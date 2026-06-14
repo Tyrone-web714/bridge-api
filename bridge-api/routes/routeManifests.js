@@ -893,6 +893,83 @@ router.post('/driver/stops/:stopId/deductions', driverAuth.requireDriverAuth, as
   }
 });
 
+router.get('/driver/stops/:stopId/delivery', driverAuth.requireDriverAuth, async (req, res) => {
+  try {
+    const identity = driverAuth.getDriverIdentity(req);
+    const delivery = await repositories.getDriverStopDeliverySettlement(
+      req.params.stopId,
+      identity.driverId
+    );
+
+    if (!delivery) {
+      return res.status(404).json({
+        error: 'Assigned route stop not found for this driver.'
+      });
+    }
+
+    return res.json({
+      ok: true,
+      driver: identity,
+      ...delivery
+    });
+  } catch (error) {
+    return res.status(error.status || 500).json({
+      error: error.message || 'Unable to load the delivery settlement.'
+    });
+  }
+});
+
+router.put('/driver/stops/:stopId/delivery', driverAuth.requireDriverAuth, async (req, res) => {
+  try {
+    const identity = driverAuth.getDriverIdentity(req);
+    const delivery = await repositories.saveDriverStopDeliverySettlement(
+      req.params.stopId,
+      identity.driverId,
+      req.body || {}
+    );
+
+    if (!delivery) {
+      return res.status(404).json({
+        error: 'Assigned route stop not found for this driver.'
+      });
+    }
+
+    let updatedStop = delivery.stop;
+    let route = null;
+    if (delivery.settlement?.status === 'completed') {
+      const completionStatus = delivery.settlement.completionStatus === 'undelivered'
+        ? 'undelivered'
+        : 'completed';
+      updatedStop = await repositories.updateDailyRouteStopStatusForDriver(
+        req.params.stopId,
+        identity.driverId,
+        {
+          status: completionStatus,
+          nonDeliveryReason: delivery.settlement.nonDeliveryReason,
+          driverNotes: delivery.settlement.notes,
+          clientUpdatedAt: req.body?.clientUpdatedAt
+        }
+      );
+      route = updatedStop
+        ? await repositories.getDailyRouteManifestWithAccountIntelligence(updatedStop.manifestId)
+        : null;
+    }
+
+    return res.json({
+      ok: true,
+      driver: identity,
+      stop: updatedStop,
+      order: delivery.order,
+      settlement: delivery.settlement,
+      route
+    });
+  } catch (error) {
+    return res.status(error.status || 500).json({
+      error: error.message || 'Unable to save the delivery settlement.'
+    });
+  }
+});
+
 router.delete('/date/:routeDate', requireAdminSession, async (req, res) => {
   try {
     const confirmation = String(req.query.confirm || req.body?.confirm || '').trim();
