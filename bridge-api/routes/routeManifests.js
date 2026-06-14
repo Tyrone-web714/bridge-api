@@ -81,14 +81,26 @@ function parseMinutes(value) {
   return Number.isFinite(parsed) && parsed >= 0 ? parsed : null;
 }
 
+function currentOperationalDate() {
+  const timeZone = process.env.ROUTE_OPERATING_TIMEZONE || 'America/Chicago';
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).formatToParts(new Date());
+  const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return `${values.year}-${values.month}-${values.day}`;
+}
+
 function normalizeDate(value) {
   const cleaned = cleanText(value, 80);
-  if (!cleaned) return new Date().toISOString().slice(0, 10);
+  if (!cleaned) return currentOperationalDate();
   const parsed = new Date(cleaned);
   if (!Number.isNaN(parsed.getTime())) return parsed.toISOString().slice(0, 10);
 
   const match = cleaned.match(/^(\d{1,2})[/-](\d{1,2})[/-](\d{2,4})$/);
-  if (!match) return new Date().toISOString().slice(0, 10);
+  if (!match) return currentOperationalDate();
   const year = match[3].length === 2 ? `20${match[3]}` : match[3];
   return `${year}-${match[1].padStart(2, '0')}-${match[2].padStart(2, '0')}`;
 }
