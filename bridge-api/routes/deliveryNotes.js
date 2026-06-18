@@ -323,6 +323,9 @@ router.get('/export', requireAdminAuth, async (req, res) => {
 function renderDeliveryNotesAdminPage(session = {}) {
   const adminRole = cleanText(session.role || 'supervisor', 40);
   const adminUser = cleanText(session.username || 'supervisor', 80);
+  const adminBadge = adminUser.toLowerCase() === adminRole.toLowerCase()
+    ? adminUser
+    : `${adminUser} - ${adminRole}`;
   return `<!doctype html>
 <html>
 <head>
@@ -392,7 +395,7 @@ function renderDeliveryNotesAdminPage(session = {}) {
       <p class="header-subtitle">Review account instructions, customer photos, and driver handoff notes.</p>
     </div>
     <div class="header-actions">
-      <div class="role-badge">${adminUser} - ${adminRole}</div>
+      <div class="role-badge">${adminBadge}</div>
       <form method="post" action="/api/routing/manual-hazards/admin/logout"><button class="logout" type="submit">Log Out</button></form>
     </div>
   </header>
@@ -401,7 +404,7 @@ function renderDeliveryNotesAdminPage(session = {}) {
     <a class="tab active" href="/api/delivery-notes/admin">Delivery Notes</a>
     <a class="tab" href="/api/route-manifests/admin">Route Manifests</a>
     <a class="tab" href="/api/drivers/admin">Driver Registry</a>
-    <a class="tab" href="/api/routing/manual-hazards/admin-users/admin">Admin Users</a>
+    <a class="tab" href="/api/admin">Supervisor Dashboard</a>
   </nav>
   <main>
     <div class="hero-strip">

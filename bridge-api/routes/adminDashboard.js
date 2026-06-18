@@ -99,9 +99,11 @@ function renderAdminDashboard(session) {
       title: 'Admin Users',
       description: 'Create supervisor/admin users, update passwords, deactivate accounts, and control access.',
       href: '/api/routing/manual-hazards/admin-users/admin',
-      accent: '#c89cff'
+      accent: '#c89cff',
+      adminOnly: true
     }
   ];
+  const visibleCards = cards.filter((card) => !card.adminOnly || role === 'admin');
 
   return `<!doctype html>
 <html>
@@ -282,7 +284,7 @@ function renderAdminDashboard(session) {
       </form>
     </div>
     <section class="grid">
-      ${cards.map((card) => `
+      ${visibleCards.map((card) => `
         <a class="card" href="${card.href}" style="--accent:${card.accent}">
           <div>
             <h2>${card.title}</h2>

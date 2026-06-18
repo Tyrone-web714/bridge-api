@@ -164,7 +164,7 @@ function renderDriverRegistryAdminPage(session) {
       <a class="tab" href="/api/operational-geography/admin">Operational Geography</a>
       <a class="tab" href="/api/delivery-notes/admin">Delivery Notes</a>
       <a class="tab" href="/api/routing/manual-hazards/admin">Hazard Review</a>
-      <a class="tab" href="/api/routing/manual-hazards/admin-users/admin">Admin Users</a>
+      <a class="tab" href="/api/admin">Supervisor Dashboard</a>
     </nav>
 
     <section class="panel">
