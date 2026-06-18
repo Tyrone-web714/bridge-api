@@ -13,6 +13,9 @@ function requireAdminDashboard(req, res, next) {
 function renderAdminDashboard(session) {
   const username = session?.username || 'supervisor';
   const role = session?.role || 'supervisor';
+  const sessionRole = String(username).toLowerCase() === String(role).toLowerCase()
+    ? ''
+    : role;
   const cards = [
     {
       title: 'Production Data Imports',
@@ -170,15 +173,10 @@ function renderAdminDashboard(session) {
     .quickbar {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-end;
       gap: 14px;
       flex-wrap: wrap;
       margin-bottom: 22px;
-    }
-    .quicklinks {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
     }
     a, button {
       font: inherit;
@@ -273,18 +271,12 @@ function renderAdminDashboard(session) {
       </div>
       <div class="session">
         <strong>${username}</strong>
-        <span>${role}</span>
+        ${sessionRole ? `<span>${sessionRole}</span>` : ''}
       </div>
     </div>
   </header>
   <main>
     <div class="quickbar">
-      <div class="quicklinks">
-        <a class="pill" href="/health">Health</a>
-        <a class="pill" href="/ready">Readiness</a>
-        <a class="pill" href="/api/route-manifests/admin">Daily Routes</a>
-        <a class="pill" href="/api/drivers/admin">Drivers</a>
-      </div>
       <form method="post" action="/api/routing/manual-hazards/admin/logout">
         <button class="logout" type="submit">Log Out</button>
       </form>
