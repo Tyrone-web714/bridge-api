@@ -45,6 +45,57 @@ function cleanText(value, maxLength = 500) {
   return String(value ?? '').trim().slice(0, maxLength);
 }
 
+function buildDeliveryDocumentPayload(delivery, identity, documentType) {
+  const stop = delivery?.stop || {};
+  const order = delivery?.order || {};
+  const settlement = delivery?.settlement || {};
+  const items = documentType === 'receipt'
+    ? (settlement.items || [])
+    : (settlement.items || []).map((item) => ({
+        ...item,
+        deliveredQuantity: item.plannedQuantity,
+        rejectedQuantity: 0,
+        damagedQuantity: 0,
+        returnedQuantity: 0,
+        missingQuantity: 0,
+        addedQuantity: 0,
+        finalAmount: Number(item.plannedQuantity || 0) * Number(item.unitPrice || 0)
+      }));
+  const finalAmount = documentType === 'receipt'
+    ? Number(settlement.finalAmount || 0)
+    : Number(settlement.plannedAmount || order.subtotalAmount || 0);
+  const taxAmount = documentType === 'receipt' ? Number(settlement.taxAmount || 0) : 0;
+
+  return {
+    brand: 'Arca Continental Coca-Cola Southwest Beverages',
+    documentType,
+    driver: {
+      id: identity.driverId,
+      name: identity.driverName || stop.assignedDriverName || identity.driverId
+    },
+    customer: {
+      accountNumber: stop.accountNumber || order.accountNumber || null,
+      accountName: stop.accountName || order.accountName || null,
+      address: [stop.destinationAddress, stop.city, stop.stateCode, stop.postalCode].filter(Boolean).join(', ')
+    },
+    invoiceNumber: order.invoiceNumber || null,
+    routeNumber: stop.routeNumber || null,
+    routeDate: stop.routeDate || null,
+    items,
+    subtotalAmount: finalAmount,
+    taxAmount,
+    totalAmount: Number((finalAmount + taxAmount).toFixed(2)),
+    paymentMethod: settlement.paymentMethod || null,
+    amountPaid: Number(settlement.amountPaid || 0),
+    unpaidBalance: Number(settlement.unpaidBalance || 0),
+    customerSignature: settlement.customerSignature || null,
+    driverSignature: settlement.driverSignature || null,
+    customerSignatureCaptured: Boolean(settlement.customerSignature),
+    driverSignatureCaptured: Boolean(settlement.driverSignature),
+    generatedAt: new Date().toISOString()
+  };
+}
+
 function normalizeHeader(value) {
   return cleanText(value, 120).toLowerCase().replace(/[\s.-]+/g, '_');
 }
@@ -65,6 +116,87 @@ function parseInteger(value) {
   if (!cleaned) return 0;
   const parsed = Number.parseInt(cleaned, 10);
   return Number.isFinite(parsed) && parsed > 0 ? parsed : 0;
+}
+
+function buildRouteCloseoutPayload(route, identity) {
+  const stops = Array.isArray(route?.stops) ? route.stops : [];
+  const stopTransactions = stops.map((stop) => {
+    const settlement = stop.deliverySettlement || {};
+    const order = Array.isArray(stop.accountOrders) ? stop.accountOrders[0] : null;
+    return {
+      stopId: stop.id,
+      stopSequence: stop.stopSequence,
+      accountNumber: stop.accountNumber || null,
+      accountName: stop.accountName || null,
+      invoiceNumber: order?.invoiceNumber || null,
+      completionStatus: settlement.completionStatus || stop.status,
+      paymentMethod: settlement.paymentMethod || null,
+      subtotalAmount: Number(settlement.finalAmount || 0),
+      taxAmount: Number(settlement.taxAmount || 0),
+      totalAmount: Number(settlement.totalAmount || 0),
+      amountPaid: Number(settlement.amountPaid || 0),
+      unpaidBalance: Number(settlement.unpaidBalance || 0),
+      plannedQuantity: Number(settlement.plannedQuantity || 0),
+      deliveredQuantity: Number(settlement.deliveredQuantity || 0),
+      rejectedQuantity: Number(settlement.rejectedQuantity || 0),
+      damagedQuantity: Number(settlement.damagedQuantity || 0),
+      missingQuantity: Number(settlement.missingQuantity || 0),
+      returnedQuantity: Number(settlement.returnedQuantity || 0),
+      addedQuantity: Number(settlement.addedQuantity || 0),
+      completedAt: settlement.completedAt || stop.actualCompletedAt || null
+    };
+  });
+  const reconciliation = route?.inventoryReconciliation || {};
+  return {
+    brand: 'Arca Continental Coca-Cola Southwest Beverages',
+    documentType: 'route_closeout',
+    driver: {
+      id: identity.driverId,
+      name: identity.driverName || route?.assignedDriverName || identity.driverId
+    },
+    routeManifestId: route?.id,
+    routeNumber: route?.routeNumber || null,
+    routeDate: route?.routeDate || null,
+    routeName: route?.routeName || null,
+    startLocation: route?.startLocation || null,
+    routeStatus: route?.status || null,
+    totalStops: stops.length,
+    completedStops: stops.filter((stop) => (
+      ['completed', 'departed', 'skipped', 'undelivered'].includes(String(stop.status || '').toLowerCase())
+    )).length,
+    transactions: stopTransactions,
+    totals: {
+      subtotalAmount: Number(reconciliation.finalAmount || 0),
+      taxAmount: Number(reconciliation.taxAmount || 0),
+      totalAmount: Number(reconciliation.totalAmount || 0),
+      amountPaid: Number(reconciliation.amountPaid || 0),
+      unpaidBalance: Number(reconciliation.unpaidBalance || 0),
+      cashAmount: Number(reconciliation.cashAmount || 0),
+      checkAmount: Number(reconciliation.checkAmount || 0),
+      cardAmount: Number(reconciliation.cardAmount || 0),
+      creditAccountAmount: Number(reconciliation.creditAccountAmount || 0),
+      partialPaymentAmount: Number(reconciliation.partialPaymentAmount || 0)
+    },
+    inventory: {
+      plannedQuantity: Number(reconciliation.plannedQuantity || 0),
+      deliveredQuantity: Number(reconciliation.deliveredQuantity || 0),
+      rejectedQuantity: Number(reconciliation.rejectedQuantity || 0),
+      damagedQuantity: Number(reconciliation.damagedQuantity || 0),
+      missingQuantity: Number(reconciliation.missingQuantity || 0),
+      returnedQuantity: Number(reconciliation.returnedQuantity || 0),
+      addedQuantity: Number(reconciliation.addedQuantity || 0),
+      unaccountedQuantity: Number(reconciliation.unaccountedQuantity || 0)
+    },
+    generatedAt: new Date().toISOString()
+  };
+}
+
+function routeIsFinished(route) {
+  return Array.isArray(route?.stops)
+    && route.stops.length > 0
+    && route.stops.every((stop) => (
+      ['completed', 'departed', 'skipped', 'undelivered'].includes(String(stop.status || '').toLowerCase())
+    ));
 }
 
 function parseNumber(value) {
@@ -426,6 +558,14 @@ function renderRouteManifestAdminPage() {
       </div>
       <div id="undeliveredStops"></div>
     </section>
+    <section class="panel">
+      <h2>Delivery Orders and Receipts</h2>
+      <p class="muted">Delivery documents remain available for 14 days. Open a document to review or print another copy.</p>
+      <div class="row-actions">
+        <button onclick="loadDeliveryDocuments()">Refresh Documents</button>
+      </div>
+      <div id="deliveryDocuments"></div>
+    </section>
   </main>
   <script>
     const NON_DELIVERY_REASON_LABELS = {
@@ -603,6 +743,22 @@ function renderRouteManifestAdminPage() {
       loadRoutes();
     }
 
+    async function unassignRoute(id, routeNumber, driverName) {
+      if (!confirm('Remove ' + (driverName || 'the assigned driver') + ' from route ' + routeNumber + '? The driver will remain in Driver Registry.')) return;
+      const response = await fetch('/api/route-manifests/' + encodeURIComponent(id) + '/unassign', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({})
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        alert(data.error || 'Unable to remove route assignment.');
+        return;
+      }
+      document.getElementById('message').textContent = 'Removed assigned driver from route ' + routeNumber + '.';
+      loadRoutes();
+    }
+
     async function deleteRoutesByDate() {
       const routeDate = document.getElementById('routeDateFilter').value.trim();
       if (!/^\\d{4}-\\d{2}-\\d{2}$/.test(routeDate)) {
@@ -651,6 +807,9 @@ function renderRouteManifestAdminPage() {
           '<td><input type="checkbox" name="routeSwitch" value="' + escapeHtml(route.id) + '" /></td>' +
           '<td class="route-actions"><div class="row-actions">' +
             '<button onclick="assignRoute(decodeURIComponent(\\'' + encodeURIComponent(route.id) + '\\'))">Assign/Reassign</button>' +
+            (route.assignedDriverId && !['completed', 'completed_with_exceptions', 'cancelled'].includes(String(route.status || '').toLowerCase())
+              ? '<button class="secondary" onclick="unassignRoute(decodeURIComponent(\\'' + encodeURIComponent(route.id) + '\\'), decodeURIComponent(\\'' + encodeURIComponent(route.routeNumber) + '\\'), decodeURIComponent(\\'' + encodeURIComponent(route.assignedDriverName || route.assignedDriverId || '') + '\\'))">Remove Driver</button>'
+              : '') +
             '<button class="danger" onclick="deleteRoute(decodeURIComponent(\\'' + encodeURIComponent(route.id) + '\\'), decodeURIComponent(\\'' + encodeURIComponent(route.routeNumber) + '\\'), decodeURIComponent(\\'' + encodeURIComponent(route.routeDate) + '\\'))">Delete</button>' +
           '</div></td>' +
           '<td>' + escapeHtml(route.routeDate) + '</td>' +
@@ -732,9 +891,67 @@ function renderRouteManifestAdminPage() {
           '</tbody></table>'
         : '<p class="muted">No undelivered stops match this filter.</p>';
     }
+
+    async function loadDeliveryDocuments() {
+      const routeDate = document.getElementById('routeDateFilter').value.trim();
+      const query = new URLSearchParams({ limit: '300' });
+      if (/^\\d{4}-\\d{2}-\\d{2}$/.test(routeDate)) query.set('routeDate', routeDate);
+      const response = await fetch('/api/route-manifests/documents?' + query.toString());
+      const data = await response.json().catch(() => ({}));
+      const documents = data.documents || [];
+      document.getElementById('deliveryDocuments').innerHTML = documents.length
+        ? '<table><thead><tr><th>Date</th><th>Route</th><th>Account</th><th>Type</th><th>Driver</th><th>Expires</th><th></th></tr></thead><tbody>' +
+          documents.map(item => '<tr>' +
+            '<td>' + escapeHtml(item.routeDate || '') + '</td>' +
+            '<td>' + escapeHtml(item.routeNumber || '') + '</td>' +
+            '<td><strong>' + escapeHtml(item.accountName || '') + '</strong><br><span class="muted">' + escapeHtml(item.accountNumber || '') + '</span></td>' +
+            '<td>' + escapeHtml(item.documentType || '') + '<br><span class="muted">' + escapeHtml(item.documentNumber || '') + '</span></td>' +
+            '<td>' + escapeHtml(item.driverName || item.driverId || '') + '</td>' +
+            '<td>' + escapeHtml(item.expiresAt ? new Date(item.expiresAt).toLocaleString() : '') + '</td>' +
+            '<td><button onclick="printDeliveryDocument(decodeURIComponent(\\'' + encodeURIComponent(JSON.stringify(item)) + '\\'))">Open / Print</button></td>' +
+          '</tr>').join('') +
+          '</tbody></table>'
+        : '<p class="muted">No active delivery documents match this date.</p>';
+    }
+
+    function printDeliveryDocument(serialized) {
+      const item = JSON.parse(serialized);
+      const payload = item.payload || {};
+      if (item.documentType === 'route_closeout') {
+        const transactions = Array.isArray(payload.transactions) ? payload.transactions : [];
+        const totals = payload.totals || {};
+        const inventory = payload.inventory || {};
+        const report = window.open('', '_blank');
+        report.document.write('<!doctype html><html><head><title>' + escapeHtml(item.documentNumber || 'Route Turn-In Receipt') + '</title><style>body{font-family:Arial,sans-serif;max-width:850px;margin:25px auto;color:#111}h1,h2{text-align:center;margin:4px}.meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:20px 0}.box{border:1px solid #bbb;padding:10px}table{width:100%;border-collapse:collapse;margin-top:16px}th,td{padding:8px;border-bottom:1px solid #ddd;text-align:left}.right{text-align:right}.totals{margin-left:auto;max-width:420px}.total{font-size:18px;font-weight:800}</style></head><body>');
+        report.document.write('<h1>Arca Continental</h1><h2>Coca-Cola Southwest Beverages</h2><h2>Route Turn-In Receipt</h2>');
+        report.document.write('<div class="meta"><div class="box"><strong>Driver:</strong> ' + escapeHtml(payload.driver?.name || '') + '<br><strong>Driver ID:</strong> ' + escapeHtml(payload.driver?.id || '') + '</div><div class="box"><strong>Route:</strong> ' + escapeHtml(payload.routeNumber || '') + '<br><strong>Date:</strong> ' + escapeHtml(payload.routeDate || '') + '<br><strong>Document:</strong> ' + escapeHtml(item.documentNumber || '') + '</div></div>');
+        report.document.write('<table><thead><tr><th>Stop</th><th>Account</th><th>Payment</th><th class="right">Total</th><th class="right">Paid</th><th class="right">Balance</th></tr></thead><tbody>');
+        transactions.forEach(transaction => report.document.write('<tr><td>' + escapeHtml(transaction.stopSequence || '') + '</td><td><strong>' + escapeHtml(transaction.accountName || '') + '</strong><br>' + escapeHtml(transaction.accountNumber || '') + '</td><td>' + escapeHtml(String(transaction.paymentMethod || 'Not recorded').replace(/_/g, ' ')) + '</td><td class="right">$' + escapeHtml(Number(transaction.totalAmount || 0).toFixed(2)) + '</td><td class="right">$' + escapeHtml(Number(transaction.amountPaid || 0).toFixed(2)) + '</td><td class="right">$' + escapeHtml(Number(transaction.unpaidBalance || 0).toFixed(2)) + '</td></tr>'));
+        report.document.write('</tbody></table><div class="totals"><p>Sales subtotal: $' + escapeHtml(Number(totals.subtotalAmount || 0).toFixed(2)) + '<br>Tax: $' + escapeHtml(Number(totals.taxAmount || 0).toFixed(2)) + '<br><span class="total">Route sales total: $' + escapeHtml(Number(totals.totalAmount || 0).toFixed(2)) + '</span><br>Cash: $' + escapeHtml(Number(totals.cashAmount || 0).toFixed(2)) + '<br>Checks: $' + escapeHtml(Number(totals.checkAmount || 0).toFixed(2)) + '<br>Cards: $' + escapeHtml(Number(totals.cardAmount || 0).toFixed(2)) + '<br>Partial payments: $' + escapeHtml(Number(totals.partialPaymentAmount || 0).toFixed(2)) + '<br>Credit accounts: $' + escapeHtml(Number(totals.creditAccountAmount || 0).toFixed(2)) + '<br><strong>Total collected: $' + escapeHtml(Number(totals.amountPaid || 0).toFixed(2)) + '</strong><br>Unpaid balance: $' + escapeHtml(Number(totals.unpaidBalance || 0).toFixed(2)) + '</p></div>');
+        report.document.write('<div class="box"><strong>Inventory:</strong> Loaded ' + escapeHtml(inventory.plannedQuantity || 0) + ' | Sold ' + escapeHtml(inventory.deliveredQuantity || 0) + ' | Rejected ' + escapeHtml(inventory.rejectedQuantity || 0) + ' | Returned ' + escapeHtml(inventory.returnedQuantity || 0) + ' | Damaged ' + escapeHtml(inventory.damagedQuantity || 0) + ' | Missing ' + escapeHtml(inventory.missingQuantity || 0) + ' | Added ' + escapeHtml(inventory.addedQuantity || 0) + ' | Unaccounted ' + escapeHtml(inventory.unaccountedQuantity || 0) + '</div></body></html>');
+        report.document.close();
+        report.focus();
+        report.print();
+        return;
+      }
+      const lines = Array.isArray(payload.items) ? payload.items : [];
+      const report = window.open('', '_blank');
+      report.document.write('<!doctype html><html><head><title>' + escapeHtml(item.documentNumber || 'Delivery Document') + '</title><style>body{font-family:Arial,sans-serif;max-width:760px;margin:25px auto;color:#111}h1,h2{text-align:center;margin:4px}.meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:20px 0}.box{border:1px solid #bbb;padding:10px}table{width:100%;border-collapse:collapse}th,td{padding:8px;border-bottom:1px solid #ddd;text-align:left}.right{text-align:right}.total{font-size:18px;font-weight:800}</style></head><body>');
+      report.document.write('<h1>Arca Continental</h1><h2>Coca-Cola Southwest Beverages</h2>');
+      report.document.write('<div class="meta"><div class="box"><strong>Driver:</strong> ' + escapeHtml(payload.driver?.name || '') + '<br><strong>Driver ID:</strong> ' + escapeHtml(payload.driver?.id || '') + '</div><div class="box"><strong>' + escapeHtml(item.documentType === 'receipt' ? 'Final Receipt' : 'Delivery Order') + '</strong><br>' + escapeHtml(item.documentNumber || '') + '</div></div>');
+      report.document.write('<div class="box"><strong>Customer:</strong> ' + escapeHtml(payload.customer?.accountName || '') + '<br><strong>Account:</strong> ' + escapeHtml(payload.customer?.accountNumber || '') + '<br>' + escapeHtml(payload.customer?.address || '') + '<br><strong>Invoice:</strong> ' + escapeHtml(payload.invoiceNumber || '') + '</div>');
+      report.document.write('<table><thead><tr><th>Product</th><th>Delivered</th><th>Added</th><th>Rejected</th><th>Damaged</th><th>Returned</th><th>Missing</th><th class="right">Price</th></tr></thead><tbody>');
+      lines.forEach(line => report.document.write('<tr><td>' + escapeHtml(line.productName || line.sku || '') + '</td><td>' + escapeHtml(line.deliveredQuantity || line.plannedQuantity || 0) + '</td><td>' + escapeHtml(line.addedQuantity || 0) + '</td><td>' + escapeHtml(line.rejectedQuantity || 0) + '</td><td>' + escapeHtml(line.damagedQuantity || 0) + '</td><td>' + escapeHtml(line.returnedQuantity || 0) + '</td><td>' + escapeHtml(line.missingQuantity || 0) + '</td><td class="right">$' + escapeHtml(Number(line.unitPrice || 0).toFixed(2)) + '</td></tr>'));
+      report.document.write('</tbody></table><p class="right">Subtotal: $' + escapeHtml(Number(payload.subtotalAmount || 0).toFixed(2)) + '<br>Tax: $' + escapeHtml(Number(payload.taxAmount || 0).toFixed(2)) + '<br><span class="total">Total: $' + escapeHtml(Number(payload.totalAmount || 0).toFixed(2)) + '</span><br>Payment: ' + escapeHtml(String(payload.paymentMethod || 'Not recorded').replace(/_/g, ' ')) + '<br>Amount paid: $' + escapeHtml(Number(payload.amountPaid || 0).toFixed(2)) + '<br>Unpaid balance: $' + escapeHtml(Number(payload.unpaidBalance || 0).toFixed(2)) + '</p>');
+      report.document.write('<p>Customer signature: ' + (payload.customerSignatureCaptured ? 'Captured' : 'Not captured') + '<br>Driver signature: ' + (payload.driverSignatureCaptured ? 'Captured' : 'Not captured') + '</p></body></html>');
+      report.document.close();
+      report.focus();
+      report.print();
+    }
     loadDriversForAssignment();
     loadRoutes();
     loadUndeliveredStops();
+    loadDeliveryDocuments();
   </script>
 </body>
 </html>`;
@@ -919,6 +1136,91 @@ router.get('/driver/stops/:stopId/delivery', driverAuth.requireDriverAuth, async
   }
 });
 
+router.get('/driver/stops/:stopId/documents', driverAuth.requireDriverAuth, async (req, res) => {
+  try {
+    const identity = driverAuth.getDriverIdentity(req);
+    const documents = await repositories.listDeliveryDocumentsForDriverStop(
+      req.params.stopId,
+      identity.driverId
+    );
+    return res.json({ ok: true, driver: identity, documents });
+  } catch (error) {
+    return res.status(error.status || 500).json({
+      error: error.message || 'Unable to load delivery documents.'
+    });
+  }
+});
+
+router.get('/driver/routes/:manifestId/closeout', driverAuth.requireDriverAuth, async (req, res) => {
+  try {
+    const identity = driverAuth.getDriverIdentity(req);
+    const document = await repositories.getRouteCloseoutDocumentForDriver(
+      req.params.manifestId,
+      identity.driverId
+    );
+    if (!document) {
+      return res.status(404).json({ error: 'Route closeout receipt is not available.' });
+    }
+    return res.json({ ok: true, driver: identity, document });
+  } catch (error) {
+    return res.status(error.status || 500).json({
+      error: error.message || 'Unable to load the route closeout receipt.'
+    });
+  }
+});
+
+router.post('/driver/stops/:stopId/documents', driverAuth.requireDriverAuth, async (req, res) => {
+  try {
+    const identity = driverAuth.getDriverIdentity(req);
+    const documentType = cleanText(req.body?.documentType, 40).toLowerCase();
+    if (!['delivery_order', 'receipt'].includes(documentType)) {
+      return res.status(400).json({ error: 'documentType must be delivery_order or receipt.' });
+    }
+
+    const delivery = await repositories.getDriverStopDeliverySettlement(
+      req.params.stopId,
+      identity.driverId
+    );
+    if (!delivery) {
+      return res.status(404).json({ error: 'Assigned route stop not found for this driver.' });
+    }
+    if (documentType === 'receipt' && delivery.settlement?.status !== 'completed') {
+      return res.status(409).json({ error: 'Complete the delivery before creating a final receipt.' });
+    }
+    if (documentType === 'receipt') {
+      const completedAt = new Date(
+        delivery.settlement?.completedAt || delivery.stop?.actualCompletedAt || ''
+      ).getTime();
+      const receiptWindowMs = 24 * 60 * 60 * 1000;
+      if (!Number.isFinite(completedAt) || Date.now() - completedAt > receiptWindowMs) {
+        return res.status(403).json({
+          error: 'Driver receipt reprinting is limited to 24 hours after delivery completion. Contact a supervisor for a retained copy.'
+        });
+      }
+    }
+
+    const prefix = documentType === 'receipt' ? 'RCPT' : 'ORDER';
+    const documentNumber = cleanText(req.body?.documentNumber, 160)
+      || `${prefix}-${delivery.stop?.routeDate || currentOperationalDate()}-${delivery.stop?.routeNumber || 'ROUTE'}-${delivery.stop?.stopSequence || 'STOP'}`;
+    const document = await repositories.saveDeliveryDocument({
+      routeStopId: req.params.stopId,
+      orderId: delivery.order?.id || null,
+      settlementId: delivery.settlement?.id || null,
+      accountNumber: delivery.stop?.accountNumber || delivery.order?.accountNumber || null,
+      documentType,
+      documentNumber,
+      driverId: identity.driverId,
+      driverName: identity.driverName,
+      payload: buildDeliveryDocumentPayload(delivery, identity, documentType)
+    });
+    return res.status(201).json({ ok: true, driver: identity, document });
+  } catch (error) {
+    return res.status(error.status || 500).json({
+      error: error.message || 'Unable to create the delivery document.'
+    });
+  }
+});
+
 router.put('/driver/stops/:stopId/delivery', driverAuth.requireDriverAuth, async (req, res) => {
   try {
     const identity = driverAuth.getDriverIdentity(req);
@@ -936,6 +1238,7 @@ router.put('/driver/stops/:stopId/delivery', driverAuth.requireDriverAuth, async
 
     let updatedStop = delivery.stop;
     let route = null;
+    let routeCloseout = null;
     if (delivery.settlement?.status === 'completed') {
       const completionStatus = delivery.settlement.completionStatus === 'undelivered'
         ? 'undelivered'
@@ -953,6 +1256,27 @@ router.put('/driver/stops/:stopId/delivery', driverAuth.requireDriverAuth, async
       route = updatedStop
         ? await repositories.getDailyRouteManifestWithAccountIntelligence(updatedStop.manifestId)
         : null;
+      const documentNumber = `RCPT-${delivery.stop?.routeDate || currentOperationalDate()}-${delivery.stop?.routeNumber || 'ROUTE'}-${delivery.stop?.stopSequence || 'STOP'}`;
+      await repositories.saveDeliveryDocument({
+        routeStopId: req.params.stopId,
+        orderId: delivery.order?.id || null,
+        settlementId: delivery.settlement?.id || null,
+        accountNumber: delivery.stop?.accountNumber || delivery.order?.accountNumber || null,
+        documentType: 'receipt',
+        documentNumber,
+        driverId: identity.driverId,
+        driverName: identity.driverName,
+        payload: buildDeliveryDocumentPayload(delivery, identity, 'receipt')
+      });
+      if (routeIsFinished(route)) {
+        routeCloseout = await repositories.saveRouteCloseoutDocument({
+          manifestId: route.id,
+          documentNumber: `TURNIN-${route.routeDate || currentOperationalDate()}-${route.routeNumber || route.id}`,
+          driverId: identity.driverId,
+          driverName: identity.driverName,
+          payload: buildRouteCloseoutPayload(route, identity)
+        });
+      }
     }
 
     return res.json({
@@ -961,11 +1285,35 @@ router.put('/driver/stops/:stopId/delivery', driverAuth.requireDriverAuth, async
       stop: updatedStop,
       order: delivery.order,
       settlement: delivery.settlement,
-      route
+      route,
+      routeCloseout
     });
   } catch (error) {
     return res.status(error.status || 500).json({
       error: error.message || 'Unable to save the delivery settlement.'
+    });
+  }
+});
+
+router.get('/documents', requireAdminSession, async (req, res) => {
+  try {
+    const [deliveryDocuments, closeoutDocuments] = await Promise.all([
+      repositories.listDeliveryDocumentsForAdmin({
+        routeDate: req.query.routeDate,
+        accountNumber: req.query.accountNumber,
+        limit: req.query.limit
+      }),
+      repositories.listRouteCloseoutDocumentsForAdmin({
+        routeDate: req.query.routeDate,
+        limit: req.query.limit
+      })
+    ]);
+    const documents = [...deliveryDocuments, ...closeoutDocuments]
+      .sort((left, right) => String(right.createdAt || '').localeCompare(String(left.createdAt || '')));
+    return res.json({ ok: true, documents });
+  } catch (error) {
+    return res.status(error.status || 500).json({
+      error: error.message || 'Unable to load delivery documents.'
     });
   }
 });
@@ -1092,6 +1440,20 @@ router.put('/:id/assign', requireAdminSession, async (req, res) => {
   } catch (error) {
     return res.status(error.status || 500).json({
       error: error.message || 'Unable to assign route manifest.'
+    });
+  }
+});
+
+router.put('/:id/unassign', requireAdminSession, async (req, res) => {
+  try {
+    const route = await repositories.unassignDailyRouteManifest(req.params.id, {
+      assignedBy: req.adminSession?.username || req.body?.assignedBy
+    });
+    if (!route) return res.status(404).json({ error: 'Route manifest not found, completed, or cancelled.' });
+    return res.json({ ok: true, route });
+  } catch (error) {
+    return res.status(error.status || 500).json({
+      error: error.message || 'Unable to remove route assignment.'
     });
   }
 });

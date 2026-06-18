@@ -224,6 +224,9 @@ function renderHeatmapPage(session) {
     .point-row { display: grid; gap: 2px; }
     .point-row span { color: var(--cyan); font-size: 10px; font-weight: 900; text-transform: uppercase; }
     .point-row strong { overflow-wrap: anywhere; font-size: 13px; }
+    .source-record { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); }
+    .source-record h3 { margin: 0 0 8px; color: var(--cyan); font-size: 13px; }
+    .source-link { display: inline-block; margin-top: 10px; color: #03151c; background: var(--cyan); }
     .analysis-grid { display: grid; gap: 10px; margin-top: 10px; }
     .analysis-block {
       padding: 11px; border: 1px solid rgba(255,255,255,0.1); border-radius: 10px;
@@ -372,7 +375,11 @@ function renderHeatmapPage(session) {
       return '<div class="point-grid">' + pointRows(signal, config).map(function (row) {
         return '<div class="point-row"><span>' + escapeHtml(row[0]) + '</span><strong>' +
           escapeHtml(row[1]) + '</strong></div>';
-      }).join('') + '</div>';
+      }).join('') + '</div>' +
+        (signal.sourceType && signal.sourceId
+          ? '<button class="primary" id="openSourceRecord" type="button" style="margin-top:12px">Open Source Record</button>' +
+            '<div id="sourceRecord" class="source-record"></div>'
+          : '');
     }
 
     function renderPopup(signal, config) {
@@ -381,6 +388,83 @@ function renderHeatmapPage(session) {
           return '<div class="popup-row"><span>' + escapeHtml(row[0]) + '</span><strong>' +
             escapeHtml(row[1]) + '</strong></div>';
         }).join('') + '</div>';
+    }
+
+    function recordRows(rows) {
+      return '<div class="point-grid">' + rows.filter(function (row) {
+        return row[1] !== null && row[1] !== undefined && row[1] !== '';
+      }).map(function (row) {
+        return '<div class="point-row"><span>' + escapeHtml(row[0]) + '</span><strong>' +
+          escapeHtml(row[1]) + '</strong></div>';
+      }).join('') + '</div>';
+    }
+
+    function renderSourceRecord(data) {
+      const signal = data.signal || {};
+      const linked = data.linkedRecord || {};
+      if (signal.sourceType === 'route_stop') {
+        const stop = linked.stop || {};
+        const route = linked.route || {};
+        return '<h3>Route Stop Record</h3>' + recordRows([
+          ['Route', route.routeNumber],
+          ['Driver', route.assignedDriverName || route.assignedDriverId],
+          ['Stop Sequence', stop.stopSequence],
+          ['Account', stop.accountName || stop.accountNumber],
+          ['Status', stop.status],
+          ['Planned Arrival', formatDateTime(stop.plannedArrivalAt)],
+          ['Actual Arrival', formatDateTime(stop.actualArrivalAt)],
+          ['Completed', formatDateTime(stop.actualCompletedAt)],
+          ['Non-Delivery Reason', stop.nonDeliveryReason]
+        ]) + '<a class="pill source-link" href="/api/route-manifests/admin">Open Daily Routes</a>';
+      }
+      if (signal.sourceType === 'account_order' || signal.sourceType === 'delivery_deduction') {
+        const order = linked.order || {};
+        const deduction = linked.deduction || {};
+        return '<h3>' + (signal.sourceType === 'delivery_deduction' ? 'Deduction Record' : 'Account Order Record') + '</h3>' +
+          recordRows([
+            ['Account', order.accountName || order.accountNumber],
+            ['Invoice', order.invoiceNumber],
+            ['Order Date', order.orderDate],
+            ['Delivery Date', order.deliveryDate],
+            ['Subtotal', order.subtotalAmount == null ? null : '$' + Number(order.subtotalAmount).toFixed(2)],
+            ['Deductions', order.deductionAmount == null ? null : '$' + Number(order.deductionAmount).toFixed(2)],
+            ['Net Amount', order.netAmount == null ? null : '$' + Number(order.netAmount).toFixed(2)],
+            ['Deduction Reason', deduction.reason],
+            ['Deduction Product', deduction.productName || deduction.sku],
+            ['Deduction Amount', deduction.amount == null ? null : '$' + Number(deduction.amount).toFixed(2)]
+          ]) + '<a class="pill source-link" href="/api/account-intelligence/admin">Open Account Intelligence</a>';
+      }
+      if (signal.sourceType === 'route_event') {
+        const session = linked.routeSession || {};
+        const event = linked.event || {};
+        return '<h3>Route Event Record</h3>' + recordRows([
+          ['Event Type', event.eventType],
+          ['Severity', event.severity],
+          ['Recorded At', formatDateTime(event.createdAt)],
+          ['Origin', session.originLabel],
+          ['Destination', session.destinationLabel],
+          ['Review Status', session.reviewStatus],
+          ['Reviewed By', session.reviewedBy]
+        ]) + '<a class="pill source-link" href="/api/routing/route-sessions/admin">Open Route Replay</a>';
+      }
+      return '<h3>Source Record</h3><div class="status">No linked record renderer is available.</div>';
+    }
+
+    async function loadSourceRecord(signal) {
+      const target = document.getElementById('sourceRecord');
+      if (!target) return;
+      target.innerHTML = '<div class="status">Loading authorized source record...</div>';
+      try {
+        const response = await fetch(
+          '/api/operational-heatmaps/signals/' +
+          encodeURIComponent(signal.sourceType) + '/' + encodeURIComponent(signal.sourceId)
+        );
+        const data = await response.json().catch(function () { return {}; });
+        if (!response.ok) throw new Error(data.error || 'Source record request failed.');
+        target.innerHTML = renderSourceRecord(data);
+      } catch (error) {
+        target.innerHTML = '<div class="status">' + escapeHtml(error.message || 'Source record request failed.') + '</div>';
+      }
     }
 
     function renderAnalysisList(title, items) {
@@ -579,6 +663,8 @@ function renderHeatmapPage(session) {
               })
             .on('click', function () {
               document.getElementById('selectedSignal').innerHTML = renderPointDetails(signal, config);
+              const button = document.getElementById('openSourceRecord');
+              if (button) button.addEventListener('click', function () { loadSourceRecord(signal); });
             })
             .addTo(map);
           renderedLayers.push(marker);
@@ -792,6 +878,67 @@ router.get('/data', requireAdminSession, async (req, res) => {
     return res.status(error.status || 500).json({
       ok: false,
       error: error.status ? error.message : 'Operational heatmap request failed.'
+    });
+  }
+});
+
+router.get('/signals/:sourceType/:sourceId', requireAdminSession, async (req, res) => {
+  try {
+    const sourceType = cleanText(req.params.sourceType, 80);
+    const sourceId = cleanText(req.params.sourceId, 200);
+    const supervisorUsername = isRegionalAdministrator(req.adminSession)
+      ? null
+      : cleanText(req.adminSession.username, 120).toLowerCase();
+    const authorizedSignals = await repositories.listOperationalHeatmapSignals({
+      periodDays: 365,
+      supervisorUsername,
+      limit: 5000
+    });
+    const signal = authorizedSignals.find((candidate) => (
+      candidate.sourceType === sourceType && candidate.sourceId === sourceId
+    ));
+    if (!signal) {
+      return res.status(404).json({
+        ok: false,
+        error: 'Source record was not found within your permitted operational scope.'
+      });
+    }
+
+    let linkedRecord = {};
+    if (sourceType === 'route_stop' && signal.manifestId) {
+      const route = await repositories.getDailyRouteManifest(signal.manifestId);
+      linkedRecord = {
+        route: route ? { ...route, stops: undefined } : null,
+        stop: route?.stops?.find((stop) => stop.id === signal.stopId) || null
+      };
+    } else if (sourceType === 'account_order' && signal.accountOrderId) {
+      linkedRecord = {
+        order: await repositories.getAccountOrder(signal.accountOrderId)
+      };
+    } else if (sourceType === 'delivery_deduction') {
+      const order = signal.accountOrderId
+        ? await repositories.getAccountOrder(signal.accountOrderId)
+        : null;
+      linkedRecord = {
+        order,
+        deduction: order?.deductions?.find((deduction) => deduction.id === sourceId) || null
+      };
+    } else if (sourceType === 'route_event' && signal.routeSessionId) {
+      const [routeSession, events] = await Promise.all([
+        repositories.getRouteSession(signal.routeSessionId),
+        repositories.listRouteSessionEvents(signal.routeSessionId)
+      ]);
+      linkedRecord = {
+        routeSession,
+        event: events.find((event) => event.id === sourceId) || null
+      };
+    }
+
+    return res.json({ ok: true, signal, linkedRecord });
+  } catch (error) {
+    return res.status(error.status || 500).json({
+      ok: false,
+      error: error.status ? error.message : 'Heatmap source record request failed.'
     });
   }
 });

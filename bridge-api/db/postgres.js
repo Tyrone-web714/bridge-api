@@ -224,6 +224,7 @@ async function ensureSchema() {
 
     CREATE TABLE IF NOT EXISTS delivery_notes (
       id TEXT PRIMARY KEY,
+      account_number TEXT,
       place_id TEXT,
       destination TEXT,
       address TEXT,
@@ -238,7 +239,10 @@ async function ensureSchema() {
       raw JSONB NOT NULL DEFAULT '{}'::jsonb
     );
 
+    ALTER TABLE delivery_notes
+      ADD COLUMN IF NOT EXISTS account_number TEXT;
     CREATE INDEX IF NOT EXISTS delivery_notes_place_id_idx ON delivery_notes(place_id);
+    CREATE INDEX IF NOT EXISTS delivery_notes_account_number_idx ON delivery_notes(account_number);
     CREATE INDEX IF NOT EXISTS delivery_notes_destination_idx ON delivery_notes(destination);
     CREATE INDEX IF NOT EXISTS delivery_notes_updated_at_idx ON delivery_notes(updated_at DESC);
 
@@ -623,6 +627,13 @@ async function ensureSchema() {
       added_quantity NUMERIC(12,2) NOT NULL DEFAULT 0,
       planned_amount NUMERIC(12,2) NOT NULL DEFAULT 0,
       final_amount NUMERIC(12,2) NOT NULL DEFAULT 0,
+      tax_amount NUMERIC(12,2) NOT NULL DEFAULT 0,
+      total_amount NUMERIC(12,2) NOT NULL DEFAULT 0,
+      payment_method TEXT,
+      amount_paid NUMERIC(12,2) NOT NULL DEFAULT 0,
+      unpaid_balance NUMERIC(12,2) NOT NULL DEFAULT 0,
+      customer_signature TEXT,
+      driver_signature TEXT,
       supervisor_review_required BOOLEAN NOT NULL DEFAULT false,
       notes TEXT,
       completed_at TIMESTAMPTZ,
@@ -637,6 +648,14 @@ async function ensureSchema() {
       ON delivery_settlements(status, created_at DESC);
     CREATE INDEX IF NOT EXISTS delivery_settlements_order_idx
       ON delivery_settlements(order_id);
+    ALTER TABLE delivery_settlements
+      ADD COLUMN IF NOT EXISTS tax_amount NUMERIC(12,2) NOT NULL DEFAULT 0,
+      ADD COLUMN IF NOT EXISTS total_amount NUMERIC(12,2) NOT NULL DEFAULT 0,
+      ADD COLUMN IF NOT EXISTS payment_method TEXT,
+      ADD COLUMN IF NOT EXISTS amount_paid NUMERIC(12,2) NOT NULL DEFAULT 0,
+      ADD COLUMN IF NOT EXISTS unpaid_balance NUMERIC(12,2) NOT NULL DEFAULT 0,
+      ADD COLUMN IF NOT EXISTS customer_signature TEXT,
+      ADD COLUMN IF NOT EXISTS driver_signature TEXT;
 
     CREATE TABLE IF NOT EXISTS delivery_settlement_items (
       id TEXT PRIMARY KEY,
@@ -669,6 +688,50 @@ async function ensureSchema() {
       ON delivery_settlement_items(order_item_id);
     CREATE INDEX IF NOT EXISTS delivery_settlement_items_sku_idx
       ON delivery_settlement_items(sku);
+
+    CREATE TABLE IF NOT EXISTS delivery_documents (
+      id TEXT PRIMARY KEY,
+      route_stop_id TEXT NOT NULL REFERENCES daily_route_stops(id) ON DELETE CASCADE,
+      order_id TEXT REFERENCES account_orders(id) ON DELETE SET NULL,
+      settlement_id TEXT REFERENCES delivery_settlements(id) ON DELETE SET NULL,
+      account_number TEXT,
+      document_type TEXT NOT NULL,
+      document_number TEXT NOT NULL,
+      driver_id TEXT NOT NULL,
+      driver_name TEXT,
+      payload JSONB NOT NULL DEFAULT '{}'::jsonb,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      expires_at TIMESTAMPTZ NOT NULL DEFAULT (NOW() + INTERVAL '14 days')
+    );
+
+    CREATE UNIQUE INDEX IF NOT EXISTS delivery_documents_number_idx
+      ON delivery_documents(document_number);
+    CREATE INDEX IF NOT EXISTS delivery_documents_stop_idx
+      ON delivery_documents(route_stop_id, created_at DESC);
+    CREATE INDEX IF NOT EXISTS delivery_documents_account_idx
+      ON delivery_documents(account_number, created_at DESC);
+    CREATE INDEX IF NOT EXISTS delivery_documents_expires_idx
+      ON delivery_documents(expires_at);
+
+    CREATE TABLE IF NOT EXISTS route_closeout_documents (
+      id TEXT PRIMARY KEY,
+      manifest_id TEXT NOT NULL REFERENCES daily_route_manifests(id) ON DELETE CASCADE,
+      document_number TEXT NOT NULL,
+      driver_id TEXT NOT NULL,
+      driver_name TEXT,
+      payload JSONB NOT NULL DEFAULT '{}'::jsonb,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      expires_at TIMESTAMPTZ NOT NULL DEFAULT (NOW() + INTERVAL '14 days')
+    );
+
+    CREATE UNIQUE INDEX IF NOT EXISTS route_closeout_documents_manifest_idx
+      ON route_closeout_documents(manifest_id);
+    CREATE UNIQUE INDEX IF NOT EXISTS route_closeout_documents_number_idx
+      ON route_closeout_documents(document_number);
+    CREATE INDEX IF NOT EXISTS route_closeout_documents_driver_idx
+      ON route_closeout_documents(driver_id, created_at DESC);
+    CREATE INDEX IF NOT EXISTS route_closeout_documents_expires_idx
+      ON route_closeout_documents(expires_at);
 
     CREATE TABLE IF NOT EXISTS account_ai_insights (
       id TEXT PRIMARY KEY,

@@ -60,6 +60,9 @@ function requireAdminSession(req, res, next) {
 function renderDriverRegistryAdminPage(session) {
   const adminUser = cleanText(session?.username || 'supervisor', 80);
   const adminRole = cleanText(session?.role || 'supervisor', 40);
+  const roleBadge = adminUser.toLowerCase() === adminRole.toLowerCase()
+    ? adminUser
+    : `${adminUser} - ${adminRole}`;
 
   return `<!doctype html>
 <html>
@@ -150,7 +153,7 @@ function renderDriverRegistryAdminPage(session) {
         <h1>Driver Registry</h1>
       <p>Divide drivers by supervisor/team, then use those registered driver IDs when assigning and switching daily routes.</p>
       </div>
-      <div class="role-badge">${adminUser} - ${adminRole}</div>
+      <div class="role-badge">${roleBadge}</div>
     </div>
   </header>
   <main>
@@ -311,6 +314,66 @@ function renderDriverRegistryAdminPage(session) {
       loadDrivers();
     }
 
+    async function deleteDriver(driverId, driverName) {
+      const label = driverName ? driverName + ' (' + driverId + ')' : driverId;
+      if (!confirm('Delete registered driver ' + label + '? Historical routes, receipts, and delivery records will remain.')) return;
+      const response = await fetch('/api/drivers/' + encodeURIComponent(driverId), {
+        method: 'DELETE'
+      });
+      const data = await response.json().catch(() => ({}));
+      document.getElementById('message').textContent = response.ok
+        ? 'Deleted driver ' + (data.driver?.driverId || driverId) + '.'
+        : data.error || 'Unable to delete driver.';
+      if (response.ok) {
+        clearForm();
+        loadDrivers();
+      }
+    }
+
+    async function removeAssignedRoute(driverId, driverName) {
+      const response = await fetch('/api/route-manifests?' + new URLSearchParams({
+        driverId,
+        limit: '50'
+      }).toString());
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        alert(data.error || 'Unable to load assigned routes for this driver.');
+        return;
+      }
+
+      const routes = (Array.isArray(data.routes) ? data.routes : []).filter(route =>
+        route.assignedDriverId === driverId
+        && !['completed', 'completed_with_exceptions', 'cancelled'].includes(String(route.status || '').toLowerCase())
+      );
+      if (!routes.length) {
+        alert((driverName || driverId) + ' has no active assigned route to remove.');
+        return;
+      }
+
+      let selectedRoute = routes[0];
+      if (routes.length > 1) {
+        const routeList = routes.map((route, index) =>
+          (index + 1) + '. ' + route.routeDate + ' - Route ' + route.routeNumber + ' (' + route.status + ')'
+        ).join('\\n');
+        const answer = prompt('Choose which assigned route to remove from ' + (driverName || driverId) + ':\\n\\n' + routeList, '1');
+        const selectedIndex = Number.parseInt(answer, 10) - 1;
+        if (!Number.isInteger(selectedIndex) || selectedIndex < 0 || selectedIndex >= routes.length) return;
+        selectedRoute = routes[selectedIndex];
+      }
+
+      if (!confirm('Remove ' + (driverName || driverId) + ' from route ' + selectedRoute.routeNumber + ' for ' + selectedRoute.routeDate + '? The driver stays in the registry.')) return;
+      const unassignResponse = await fetch('/api/route-manifests/' + encodeURIComponent(selectedRoute.id) + '/unassign', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({})
+      });
+      const unassignData = await unassignResponse.json().catch(() => ({}));
+      document.getElementById('message').textContent = unassignResponse.ok
+        ? 'Removed route assignment for ' + (driverName || driverId) + '.'
+        : unassignData.error || 'Unable to remove assigned route.';
+      if (unassignResponse.ok) loadDrivers();
+    }
+
     function loadDriverTemplate() {
       document.getElementById('csvText').value = [
         'driver_id,driver_name,employee_number,phone_number,supervisor_username,supervisor_name,team_name,route_group,territory,active,notes',
@@ -355,9 +418,11 @@ function renderDriverRegistryAdminPage(session) {
           '<td>' + escapeHtml(driver.notes || '') + '</td>' +
           '<td><div class="row-actions">' +
             '<button class="secondary" onclick="editDriver(window.__drivers[' + index + '])">Edit</button>' +
+            '<button class="secondary" onclick="removeAssignedRoute(decodeURIComponent(\\'' + encodeURIComponent(driver.driverId) + '\\'), decodeURIComponent(\\'' + encodeURIComponent(driver.driverName || '') + '\\'))">Remove Route</button>' +
             (driver.active
               ? '<button class="danger" onclick="setDriverActive(decodeURIComponent(\\'' + encodeURIComponent(driver.driverId) + '\\'), false)">Deactivate</button>'
               : '<button class="green" onclick="setDriverActive(decodeURIComponent(\\'' + encodeURIComponent(driver.driverId) + '\\'), true)">Reactivate</button>') +
+            '<button class="danger" onclick="deleteDriver(decodeURIComponent(\\'' + encodeURIComponent(driver.driverId) + '\\'), decodeURIComponent(\\'' + encodeURIComponent(driver.driverName || '') + '\\'))">Delete Registry</button>' +
           '</div></td>' +
         '</tr>').join('') +
         '</tbody></table>';
@@ -508,6 +573,16 @@ router.put('/:driverId/active', requireAdminSession, async (req, res) => {
     return res.json({ ok: true, driver });
   } catch (error) {
     return res.status(500).json({ error: error.message || 'Unable to update driver status.' });
+  }
+});
+
+router.delete('/:driverId', requireAdminSession, async (req, res) => {
+  try {
+    const driver = await repositories.deleteDriver(req.params.driverId);
+    if (!driver) return res.status(404).json({ error: 'Driver not found.' });
+    return res.json({ ok: true, driver });
+  } catch (error) {
+    return res.status(500).json({ error: error.message || 'Unable to delete driver.' });
   }
 });
 

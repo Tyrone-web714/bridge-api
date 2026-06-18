@@ -194,6 +194,7 @@ async function buildNoteFromInput(input, req, existing = null) {
 
   return {
     id: noteId,
+    accountNumber: cleanText(input?.accountNumber ?? input?.account_number ?? existing?.accountNumber, 120) || null,
     placeId: cleanText(input?.placeId ?? existing?.placeId, 160) || null,
     destination: destination || 'Unspecified destination',
     address: cleanText(input?.address ?? existing?.address, 240) || destination || null,
@@ -209,12 +210,14 @@ async function buildNoteFromInput(input, req, existing = null) {
 }
 
 function filterNotes(records, query) {
+  const accountNumber = cleanText(query.accountNumber || query.account_number, 120).toLowerCase();
   const placeId = cleanText(query.placeId, 160);
   const destination = cleanText(query.destination, 240).toLowerCase();
 
-  if (!placeId && !destination) return records;
+  if (!accountNumber && !placeId && !destination) return records;
 
   return records.filter((record) => {
+    if (accountNumber && String(record.accountNumber || '').toLowerCase() === accountNumber) return true;
     if (placeId && record.placeId && record.placeId === placeId) return true;
     if (!destination) return false;
 
@@ -229,7 +232,7 @@ function filterNotes(records, query) {
   });
 }
 
-router.get('/', async (req, res) => {
+router.get('/', driverAuth.requireDriverAuth, async (req, res) => {
   const notes = filterNotes(await listStoredNotes(), req.query)
     .sort((a, b) => Date.parse(b.createdAt || 0) - Date.parse(a.createdAt || 0));
 
@@ -241,7 +244,12 @@ router.get('/', async (req, res) => {
 
 router.post('/', driverAuth.requireDriverAuth, async (req, res) => {
   try {
-    const note = await buildNoteFromInput(req.body || {}, req);
+    const identity = driverAuth.getDriverIdentity(req);
+    const note = await buildNoteFromInput({
+      ...(req.body || {}),
+      driverName: req.body?.driverName || identity.driverName,
+      driverId: identity.driverId
+    }, req);
     await saveStoredNote(note);
 
     return res.status(201).json({ note });

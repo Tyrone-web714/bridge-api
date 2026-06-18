@@ -11,6 +11,7 @@ const routeSource = read('routes/routeManifests.js');
 const requiredSchemaFragments = [
   'CREATE TABLE IF NOT EXISTS delivery_settlements',
   'CREATE TABLE IF NOT EXISTS delivery_settlement_items',
+  'CREATE TABLE IF NOT EXISTS route_closeout_documents',
   'supervisor_review_required BOOLEAN',
   'missing_quantity NUMERIC',
   'returned_quantity NUMERIC',
@@ -22,12 +23,16 @@ const requiredRepositoryFragments = [
   'Complete the item-level delivery settlement before closing this stop.',
   'plannedQuantity - accountedQuantity',
   'settlementAdditional',
+  'saveRouteCloseoutDocument',
+  'getRouteCloseoutDocumentForDriver',
 ];
 
 const requiredRouteFragments = [
   "router.get('/driver/stops/:stopId/delivery'",
   "router.put('/driver/stops/:stopId/delivery'",
   'getDailyRouteManifestWithAccountIntelligence',
+  "router.get('/driver/routes/:manifestId/closeout'",
+  'buildRouteCloseoutPayload',
 ];
 
 for (const fragment of requiredSchemaFragments) {
@@ -46,4 +51,4 @@ for (const fragment of requiredRouteFragments) {
   }
 }
 
-console.log('[test:delivery-settlement] schema, accounting, completion guard, and driver endpoint contracts verified.');
+console.log('[test:delivery-settlement] schema, accounting, route closeout, completion guard, and driver endpoint contracts verified.');

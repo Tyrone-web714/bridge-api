@@ -30,6 +30,7 @@ function asArray(value) {
 function deliveryNoteFromRow(row) {
   return {
     id: row.id,
+    accountNumber: row.account_number || null,
     placeId: row.place_id || null,
     destination: row.destination || '',
     address: row.address || null,
@@ -395,6 +396,13 @@ function deliverySettlementFromRow(row, items = []) {
     addedQuantity: normalizeQuantity(row.added_quantity),
     plannedAmount: normalizeMoney(row.planned_amount),
     finalAmount: normalizeMoney(row.final_amount),
+    taxAmount: normalizeMoney(row.tax_amount),
+    totalAmount: normalizeMoney(row.total_amount),
+    paymentMethod: row.payment_method || null,
+    amountPaid: normalizeMoney(row.amount_paid),
+    unpaidBalance: normalizeMoney(row.unpaid_balance),
+    customerSignature: row.customer_signature || null,
+    driverSignature: row.driver_signature || null,
     supervisorReviewRequired: row.supervisor_review_required === true,
     notes: row.notes || null,
     completedAt: toIsoString(row.completed_at),
@@ -1025,14 +1033,28 @@ async function setDriverActive(driverId, active, actor = 'supervisor') {
   return result.rows[0] ? driverFromRow(result.rows[0]) : null;
 }
 
+async function deleteDriver(driverId) {
+  const cleanedDriverId = String(driverId || '').trim();
+  if (!cleanedDriverId) return null;
+
+  const result = await postgres.query(`
+    DELETE FROM drivers
+    WHERE driver_id = $1
+    RETURNING *
+  `, [cleanedDriverId]);
+
+  return result.rows[0] ? driverFromRow(result.rows[0]) : null;
+}
+
 async function upsertDeliveryNote(note) {
   await postgres.query(`
     INSERT INTO delivery_notes (
-      id, place_id, destination, address, account_name, customer_name,
+      id, account_number, place_id, destination, address, account_name, customer_name,
       instructions, driver_name, route_context, photos, created_at, updated_at, raw
     )
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10::jsonb, $11, $12, $13::jsonb)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11::jsonb, $12, $13, $14::jsonb)
     ON CONFLICT (id) DO UPDATE SET
+      account_number = EXCLUDED.account_number,
       place_id = EXCLUDED.place_id,
       destination = EXCLUDED.destination,
       address = EXCLUDED.address,
@@ -1047,6 +1069,7 @@ async function upsertDeliveryNote(note) {
       raw = EXCLUDED.raw
   `, [
     note.id,
+    note.accountNumber || null,
     note.placeId || null,
     note.destination || null,
     note.address || null,
@@ -2291,6 +2314,230 @@ async function getDailyRouteManifest(id, options = {}) {
   return routeManifestFromRow(manifestRow, stopsResult.rows.map(routeStopFromRow));
 }
 
+function deliveryDocumentFromRow(row) {
+  return {
+    id: row.id,
+    routeStopId: row.route_stop_id,
+    orderId: row.order_id || null,
+    settlementId: row.settlement_id || null,
+    accountNumber: row.account_number || null,
+    documentType: row.document_type,
+    documentNumber: row.document_number,
+    driverId: row.driver_id,
+    driverName: row.driver_name || null,
+    payload: row.payload || {},
+    createdAt: toIsoString(row.created_at),
+    expiresAt: toIsoString(row.expires_at)
+  };
+}
+
+async function purgeExpiredDeliveryDocuments() {
+  await postgres.query('DELETE FROM delivery_documents WHERE expires_at <= NOW()');
+}
+
+async function saveDeliveryDocument(input = {}) {
+  await purgeExpiredDeliveryDocuments();
+  const routeStopId = cleanRepositoryText(input.routeStopId, 160);
+  const documentType = cleanRepositoryText(input.documentType, 40).toLowerCase();
+  const driverId = cleanRepositoryText(input.driverId, 120);
+  if (!routeStopId || !driverId || !['delivery_order', 'receipt'].includes(documentType)) {
+    const error = new Error('routeStopId, driverId, and a valid documentType are required.');
+    error.status = 400;
+    throw error;
+  }
+
+  const documentNumber = cleanRepositoryText(input.documentNumber, 160)
+    || `${documentType === 'receipt' ? 'RCPT' : 'ORDER'}-${Date.now()}`;
+  const id = cleanRepositoryText(input.id, 160)
+    || stableRepositoryId('delivery_document', [routeStopId, documentType, documentNumber]);
+  const result = await postgres.query(`
+    INSERT INTO delivery_documents (
+      id, route_stop_id, order_id, settlement_id, account_number,
+      document_type, document_number, driver_id, driver_name, payload,
+      created_at, expires_at
+    )
+    VALUES (
+      $1, $2, $3, $4, $5,
+      $6, $7, $8, $9, $10::jsonb,
+      NOW(), NOW() + INTERVAL '14 days'
+    )
+    ON CONFLICT (document_number) DO UPDATE SET
+      settlement_id = EXCLUDED.settlement_id,
+      driver_id = EXCLUDED.driver_id,
+      driver_name = EXCLUDED.driver_name,
+      payload = EXCLUDED.payload,
+      expires_at = NOW() + INTERVAL '14 days'
+    RETURNING *
+  `, [
+    id,
+    routeStopId,
+    input.orderId || null,
+    input.settlementId || null,
+    input.accountNumber || null,
+    documentType,
+    documentNumber,
+    driverId,
+    input.driverName || null,
+    JSON.stringify(input.payload || {})
+  ]);
+  return deliveryDocumentFromRow(result.rows[0]);
+}
+
+async function listDeliveryDocumentsForDriverStop(stopId, driverId) {
+  await purgeExpiredDeliveryDocuments();
+  const result = await postgres.query(`
+    SELECT document.*
+    FROM delivery_documents AS document
+    JOIN daily_route_stops AS stop ON stop.id = document.route_stop_id
+    JOIN daily_route_manifests AS manifest ON manifest.id = stop.manifest_id
+    WHERE document.route_stop_id = $1
+      AND manifest.assigned_driver_id = $2
+      AND document.expires_at > NOW()
+      AND (
+        document.document_type <> 'receipt'
+        OR document.created_at > NOW() - INTERVAL '24 hours'
+      )
+    ORDER BY document.created_at DESC
+  `, [cleanRepositoryText(stopId, 160), cleanRepositoryText(driverId, 120)]);
+  return result.rows.map(deliveryDocumentFromRow);
+}
+
+async function listDeliveryDocumentsForAdmin(options = {}) {
+  await purgeExpiredDeliveryDocuments();
+  const values = [];
+  const where = ['document.expires_at > NOW()'];
+  const routeDate = toDateOnly(options.routeDate);
+  const accountNumber = cleanRepositoryText(options.accountNumber, 120);
+  if (routeDate) {
+    values.push(routeDate);
+    where.push(`manifest.route_date = $${values.length}`);
+  }
+  if (accountNumber) {
+    values.push(accountNumber);
+    where.push(`document.account_number = $${values.length}`);
+  }
+  values.push(Math.min(Math.max(Number(options.limit) || 200, 1), 1000));
+  const result = await postgres.query(`
+    SELECT
+      document.*,
+      stop.account_name,
+      stop.destination_address,
+      manifest.route_date,
+      manifest.route_number
+    FROM delivery_documents AS document
+    JOIN daily_route_stops AS stop ON stop.id = document.route_stop_id
+    JOIN daily_route_manifests AS manifest ON manifest.id = stop.manifest_id
+    WHERE ${where.join(' AND ')}
+    ORDER BY document.created_at DESC
+    LIMIT $${values.length}
+  `, values);
+  return result.rows.map((row) => ({
+    ...deliveryDocumentFromRow(row),
+    accountName: row.account_name || null,
+    destinationAddress: row.destination_address || null,
+    routeDate: toDateOnly(row.route_date),
+    routeNumber: row.route_number || null
+  }));
+}
+
+function routeCloseoutDocumentFromRow(row) {
+  if (!row) return null;
+  return {
+    id: row.id,
+    manifestId: row.manifest_id,
+    documentType: 'route_closeout',
+    documentNumber: row.document_number,
+    driverId: row.driver_id,
+    driverName: row.driver_name || null,
+    payload: row.payload || {},
+    routeDate: toDateOnly(row.route_date || row.payload?.routeDate),
+    routeNumber: row.route_number || row.payload?.routeNumber || null,
+    createdAt: toIsoString(row.created_at),
+    expiresAt: toIsoString(row.expires_at)
+  };
+}
+
+async function purgeExpiredRouteCloseoutDocuments() {
+  await postgres.query('DELETE FROM route_closeout_documents WHERE expires_at <= NOW()');
+}
+
+async function saveRouteCloseoutDocument(input = {}) {
+  await purgeExpiredRouteCloseoutDocuments();
+  const manifestId = cleanRepositoryText(input.manifestId, 160);
+  const driverId = cleanRepositoryText(input.driverId, 120);
+  if (!manifestId || !driverId) {
+    const error = new Error('manifestId and driverId are required for a route closeout document.');
+    error.status = 400;
+    throw error;
+  }
+
+  const documentNumber = cleanRepositoryText(input.documentNumber, 160)
+    || `TURNIN-${Date.now()}`;
+  const id = cleanRepositoryText(input.id, 160)
+    || stableRepositoryId('route_closeout_document', [manifestId]);
+  const result = await postgres.query(`
+    INSERT INTO route_closeout_documents (
+      id, manifest_id, document_number, driver_id, driver_name, payload,
+      created_at, expires_at
+    )
+    VALUES ($1, $2, $3, $4, $5, $6::jsonb, NOW(), NOW() + INTERVAL '14 days')
+    ON CONFLICT (manifest_id) DO UPDATE SET
+      document_number = EXCLUDED.document_number,
+      driver_id = EXCLUDED.driver_id,
+      driver_name = EXCLUDED.driver_name,
+      payload = EXCLUDED.payload,
+      expires_at = NOW() + INTERVAL '14 days'
+    RETURNING *
+  `, [
+    id,
+    manifestId,
+    documentNumber,
+    driverId,
+    input.driverName || null,
+    JSON.stringify(input.payload || {})
+  ]);
+  return routeCloseoutDocumentFromRow(result.rows[0]);
+}
+
+async function getRouteCloseoutDocumentForDriver(manifestId, driverId) {
+  await purgeExpiredRouteCloseoutDocuments();
+  const result = await postgres.query(`
+    SELECT document.*, manifest.route_date, manifest.route_number
+    FROM route_closeout_documents AS document
+    JOIN daily_route_manifests AS manifest ON manifest.id = document.manifest_id
+    WHERE document.manifest_id = $1
+      AND manifest.assigned_driver_id = $2
+      AND document.expires_at > NOW()
+      AND document.created_at > NOW() - INTERVAL '24 hours'
+    LIMIT 1
+  `, [
+    cleanRepositoryText(manifestId, 160),
+    cleanRepositoryText(driverId, 120)
+  ]);
+  return routeCloseoutDocumentFromRow(result.rows[0]);
+}
+
+async function listRouteCloseoutDocumentsForAdmin(options = {}) {
+  await purgeExpiredRouteCloseoutDocuments();
+  const values = [];
+  const where = ['document.expires_at > NOW()'];
+  const routeDate = toDateOnly(options.routeDate);
+  if (routeDate) {
+    values.push(routeDate);
+    where.push(`manifest.route_date = $${values.length}`);
+  }
+  values.push(Math.min(Math.max(Number(options.limit) || 200, 1), 1000));
+  const result = await postgres.query(`
+    SELECT document.*, manifest.route_date, manifest.route_number
+    FROM route_closeout_documents AS document
+    JOIN daily_route_manifests AS manifest ON manifest.id = document.manifest_id
+    WHERE ${where.join(' AND ')}
+    ORDER BY document.created_at DESC
+    LIMIT $${values.length}
+  `, values);
+  return result.rows.map(routeCloseoutDocumentFromRow);
+}
+
 async function getDailyRouteManifestWithAccountIntelligence(id, options = {}) {
   const route = await getDailyRouteManifest(id, options);
   if (!route || !Array.isArray(route.stops) || !route.stops.length) {
@@ -2389,6 +2636,15 @@ async function getDailyRouteManifestWithAccountIntelligence(id, options = {}) {
     addedQuantity: summary.addedQuantity + normalizeQuantity(row.added_quantity),
     plannedAmount: summary.plannedAmount + normalizeMoney(row.planned_amount),
     finalAmount: summary.finalAmount + normalizeMoney(row.final_amount),
+    taxAmount: summary.taxAmount + normalizeMoney(row.tax_amount),
+    totalAmount: summary.totalAmount + normalizeMoney(row.total_amount),
+    amountPaid: summary.amountPaid + normalizeMoney(row.amount_paid),
+    unpaidBalance: summary.unpaidBalance + normalizeMoney(row.unpaid_balance),
+    cashAmount: summary.cashAmount + (row.payment_method === 'cash' ? normalizeMoney(row.amount_paid) : 0),
+    checkAmount: summary.checkAmount + (row.payment_method === 'check' ? normalizeMoney(row.amount_paid) : 0),
+    cardAmount: summary.cardAmount + (row.payment_method === 'card' ? normalizeMoney(row.amount_paid) : 0),
+    creditAccountAmount: summary.creditAccountAmount + (row.payment_method === 'credit_account' ? normalizeMoney(row.total_amount) : 0),
+    partialPaymentAmount: summary.partialPaymentAmount + (row.payment_method === 'partial_payment' ? normalizeMoney(row.amount_paid) : 0),
     completedSettlements: summary.completedSettlements + (row.status === 'completed' ? 1 : 0),
     supervisorReviewRequired: summary.supervisorReviewRequired || row.supervisor_review_required === true
   }), {
@@ -2401,6 +2657,15 @@ async function getDailyRouteManifestWithAccountIntelligence(id, options = {}) {
     addedQuantity: 0,
     plannedAmount: 0,
     finalAmount: 0,
+    taxAmount: 0,
+    totalAmount: 0,
+    amountPaid: 0,
+    unpaidBalance: 0,
+    cashAmount: 0,
+    checkAmount: 0,
+    cardAmount: 0,
+    creditAccountAmount: 0,
+    partialPaymentAmount: 0,
     completedSettlements: 0,
     supervisorReviewRequired: false
   });
@@ -2494,6 +2759,35 @@ async function assignDailyRouteManifest(id, input = {}) {
     WHERE id = $1
     RETURNING *
   `, [id, driverId, driverName || driverId, assignedBy || 'supervisor']);
+  return result.rows[0] ? routeManifestFromRow(result.rows[0]) : null;
+}
+
+async function unassignDailyRouteManifest(id, input = {}) {
+  const cleanedId = String(id || '').trim();
+  const assignedBy = String(input.assignedBy || input.assigned_by || 'supervisor').trim() || 'supervisor';
+  if (!cleanedId) {
+    const error = new Error('Route manifest id is required.');
+    error.status = 400;
+    throw error;
+  }
+
+  const result = await postgres.query(`
+    UPDATE daily_route_manifests
+    SET
+      assigned_driver_id = NULL,
+      assigned_driver_name = NULL,
+      assigned_by = $2,
+      assigned_at = NULL,
+      status = CASE
+        WHEN status IN ('completed', 'completed_with_exceptions', 'cancelled') THEN status
+        ELSE 'unassigned'
+      END,
+      updated_at = NOW()
+    WHERE id = $1
+      AND status NOT IN ('completed', 'completed_with_exceptions', 'cancelled')
+    RETURNING *
+  `, [cleanedId, assignedBy]);
+
   return result.rows[0] ? routeManifestFromRow(result.rows[0]) : null;
 }
 
@@ -2777,7 +3071,7 @@ async function getAssignedDailyRouteForDriver(driverId, routeDate) {
     FROM daily_route_manifests
     WHERE assigned_driver_id = $1
       AND route_date = $2
-      AND status NOT IN ('completed', 'completed_with_exceptions', 'cancelled')
+      AND status <> 'cancelled'
     ORDER BY assigned_at DESC NULLS LAST, route_number ASC
     LIMIT 1
   `, [driverId, routeDate]);
@@ -3533,6 +3827,13 @@ async function getDriverStopDeliverySettlement(stopId, driverId) {
         addedQuantity: 0,
         plannedAmount: normalizeMoney(defaultItems.reduce((sum, item) => sum + (item.plannedQuantity * item.unitPrice), 0)),
         finalAmount: normalizeMoney(defaultItems.reduce((sum, item) => sum + item.finalAmount, 0)),
+        taxAmount: 0,
+        totalAmount: normalizeMoney(defaultItems.reduce((sum, item) => sum + item.finalAmount, 0)),
+        paymentMethod: null,
+        amountPaid: 0,
+        unpaidBalance: normalizeMoney(defaultItems.reduce((sum, item) => sum + item.finalAmount, 0)),
+        customerSignature: null,
+        driverSignature: null,
         supervisorReviewRequired: false,
         notes: null,
         completedAt: null,
@@ -3554,9 +3855,15 @@ async function saveDriverStopDeliverySettlement(stopId, driverId, input = {}) {
     || (requestedStatus === 'completed' ? 'completed' : null);
   const nonDeliveryReason = cleanRepositoryText(input.nonDeliveryReason || input.non_delivery_reason, 120).toLowerCase() || null;
   const notes = cleanRepositoryText(input.notes, 2000) || null;
+  const taxAmount = normalizeMoney(input.taxAmount || input.tax_amount);
+  const paymentMethod = cleanRepositoryText(input.paymentMethod || input.payment_method, 40).toLowerCase() || null;
+  const amountPaid = normalizeMoney(input.amountPaid || input.amount_paid);
+  const customerSignature = cleanRepositoryText(input.customerSignature || input.customer_signature, 350000) || null;
+  const driverSignature = cleanRepositoryText(input.driverSignature || input.driver_signature, 350000) || null;
   const allowedStatuses = new Set(['draft', 'completed']);
   const allowedCompletionStatuses = new Set(['completed', 'undelivered']);
   const allowedNonDeliveryReasons = new Set(['customer_refused', 'missed_time_window', 'business_closed', 'no_payment']);
+  const allowedPaymentMethods = new Set(['cash', 'check', 'card', 'credit_account', 'partial_payment', 'unpaid']);
 
   if (!cleanedStopId || !cleanedDriverId) {
     const error = new Error('stopId and driverId are required.');
@@ -3575,6 +3882,11 @@ async function saveDriverStopDeliverySettlement(stopId, driverId, input = {}) {
   }
   if (completionStatus === 'undelivered' && !allowedNonDeliveryReasons.has(nonDeliveryReason)) {
     const error = new Error('A valid non-delivery reason is required.');
+    error.status = 400;
+    throw error;
+  }
+  if (paymentMethod && !allowedPaymentMethods.has(paymentMethod)) {
+    const error = new Error('A valid payment method is required.');
     error.status = 400;
     throw error;
   }
@@ -3727,6 +4039,36 @@ async function saveDriverStopDeliverySettlement(stopId, driverId, input = {}) {
     const supervisorReviewRequired = normalizedItems.some((item) =>
       item.damagedQuantity > 0 || item.missingQuantity > 0 || item.addedQuantity > 0
     );
+    const totalAmount = normalizeMoney(totals.finalAmount + taxAmount);
+    if (requestedStatus === 'completed' && !paymentMethod) {
+      const error = new Error('A payment method or unpaid balance status is required.');
+      error.status = 400;
+      throw error;
+    }
+    if (
+      requestedStatus === 'completed'
+      && ['cash', 'check', 'card'].includes(paymentMethod)
+      && Math.abs(amountPaid - totalAmount) > 0.01
+    ) {
+      const error = new Error('Cash, check, and card payments must equal the final total. Use partial payment when a balance remains.');
+      error.status = 400;
+      throw error;
+    }
+    if (
+      requestedStatus === 'completed'
+      && paymentMethod === 'partial_payment'
+      && (amountPaid <= 0 || amountPaid >= totalAmount)
+    ) {
+      const error = new Error('A partial payment must be greater than zero and less than the final total.');
+      error.status = 400;
+      throw error;
+    }
+    const effectiveAmountPaid = paymentMethod === 'credit_account'
+      ? 0
+      : Math.min(amountPaid, totalAmount);
+    const unpaidBalance = paymentMethod === 'credit_account'
+      ? 0
+      : normalizeMoney(Math.max(0, totalAmount - effectiveAmountPaid));
     const settlementId = stableRepositoryId('settlement', [cleanedStopId]);
 
     const settlementResult = await client.query(`
@@ -3734,16 +4076,20 @@ async function saveDriverStopDeliverySettlement(stopId, driverId, input = {}) {
         id, route_stop_id, order_id, driver_id, status, completion_status,
         non_delivery_reason, planned_quantity, delivered_quantity, rejected_quantity,
         damaged_quantity, missing_quantity, returned_quantity, added_quantity,
-        planned_amount, final_amount, supervisor_review_required, notes,
+        planned_amount, final_amount, tax_amount, total_amount, payment_method,
+        amount_paid, unpaid_balance, customer_signature, driver_signature,
+        supervisor_review_required, notes,
         completed_at, raw, updated_at
       )
       VALUES (
         $1, $2, $3, $4, $5, $6,
         $7, $8, $9, $10,
         $11, $12, $13, $14,
-        $15, $16, $17, $18,
+        $15, $16, $17, $18, $19,
+        $20, $21, $22, $23,
+        $24, $25,
         CASE WHEN $5 = 'completed' THEN NOW() ELSE NULL END,
-        $19::jsonb, NOW()
+        $26::jsonb, NOW()
       )
       ON CONFLICT (route_stop_id) DO UPDATE SET
         order_id = EXCLUDED.order_id,
@@ -3760,6 +4106,13 @@ async function saveDriverStopDeliverySettlement(stopId, driverId, input = {}) {
         added_quantity = EXCLUDED.added_quantity,
         planned_amount = EXCLUDED.planned_amount,
         final_amount = EXCLUDED.final_amount,
+        tax_amount = EXCLUDED.tax_amount,
+        total_amount = EXCLUDED.total_amount,
+        payment_method = EXCLUDED.payment_method,
+        amount_paid = EXCLUDED.amount_paid,
+        unpaid_balance = EXCLUDED.unpaid_balance,
+        customer_signature = EXCLUDED.customer_signature,
+        driver_signature = EXCLUDED.driver_signature,
         supervisor_review_required = EXCLUDED.supervisor_review_required,
         notes = EXCLUDED.notes,
         completed_at = CASE WHEN EXCLUDED.status = 'completed' THEN COALESCE(delivery_settlements.completed_at, NOW()) ELSE NULL END,
@@ -3783,6 +4136,13 @@ async function saveDriverStopDeliverySettlement(stopId, driverId, input = {}) {
       totals.addedQuantity,
       normalizeMoney(totals.plannedAmount),
       normalizeMoney(totals.finalAmount),
+      taxAmount,
+      totalAmount,
+      paymentMethod,
+      effectiveAmountPaid,
+      unpaidBalance,
+      customerSignature,
+      driverSignature,
       supervisorReviewRequired,
       notes,
       JSON.stringify({
@@ -6291,6 +6651,7 @@ async function getAiOperationsMetrics(options = {}) {
 module.exports = {
   getAdminUser,
   assignDailyRouteManifest,
+  deleteDriver,
   deleteDailyRouteManifest,
   deleteDailyRouteManifestsByDate,
   deleteDeliveryNote,
@@ -6336,6 +6697,10 @@ module.exports = {
   listStaticHazardLocationBackfillQueue,
   listStaticHazardsForVerification,
   listDeliveryNotes,
+  listDeliveryDocumentsForDriverStop,
+  listDeliveryDocumentsForAdmin,
+  getRouteCloseoutDocumentForDriver,
+  listRouteCloseoutDocumentsForAdmin,
   listDriverCoachingSignals,
   listManualHazards,
   listOperationalGeographyConfiguration,
@@ -6359,11 +6724,14 @@ module.exports = {
   recordDeliveryDeduction,
   recordDeliveryDeductionForDriverStop,
   saveDriverStopDeliverySettlement,
+  saveDeliveryDocument,
+  saveRouteCloseoutDocument,
   recordAdminUserLogin,
   setAdminUserActive,
   setDriverActive,
   setScheduledReportScheduleEnabled,
   setOperationalGeographyActive,
+  unassignDailyRouteManifest,
   upsertOperationalDistributionCenter,
   upsertOperationalRouteGroup,
   upsertOperationalTerritory,
