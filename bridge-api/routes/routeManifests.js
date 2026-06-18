@@ -495,7 +495,7 @@ function renderRouteManifestAdminPage() {
       <a class="tab" href="/api/account-intelligence/admin">Account Intelligence</a>
       <a class="tab active" href="/api/route-manifests/admin">Route Manifests</a>
       <a class="tab" href="/api/drivers/admin">Driver Registry</a>
-      <a class="tab" href="/api/routing/manual-hazards/admin-users/admin">Admin Users</a>
+      <a class="tab" href="/api/admin">Supervisor Dashboard</a>
     </nav>
     <section class="panel">
       <h2>Import CSV</h2>
