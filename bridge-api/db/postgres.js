@@ -171,6 +171,19 @@ async function ensureSchema() {
     CREATE INDEX IF NOT EXISTS drivers_team_name_idx ON drivers(team_name);
     CREATE INDEX IF NOT EXISTS drivers_name_idx ON drivers(driver_name);
 
+    CREATE TABLE IF NOT EXISTS warehouse_employees (
+      employee_id TEXT PRIMARY KEY,
+      employee_name TEXT NOT NULL,
+      pin_hash TEXT NOT NULL,
+      active BOOLEAN NOT NULL DEFAULT true,
+      created_by TEXT,
+      updated_by TEXT,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+
+    CREATE INDEX IF NOT EXISTS warehouse_employees_active_idx ON warehouse_employees(active);
+
     CREATE TABLE IF NOT EXISTS operational_distribution_centers (
       code TEXT PRIMARY KEY,
       name TEXT NOT NULL,
@@ -540,6 +553,67 @@ async function ensureSchema() {
     CREATE INDEX IF NOT EXISTS products_category_idx ON products(category);
     CREATE INDEX IF NOT EXISTS products_active_idx ON products(active);
 
+    CREATE TABLE IF NOT EXISTS product_barcodes (
+      barcode TEXT PRIMARY KEY,
+      sku TEXT NOT NULL REFERENCES products(sku) ON DELETE CASCADE,
+      package_size TEXT,
+      configuration TEXT,
+      active BOOLEAN NOT NULL DEFAULT true,
+      raw JSONB NOT NULL DEFAULT '{}'::jsonb,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+
+    CREATE INDEX IF NOT EXISTS product_barcodes_sku_idx ON product_barcodes(sku);
+    CREATE INDEX IF NOT EXISTS product_barcodes_active_idx ON product_barcodes(active);
+
+    CREATE TABLE IF NOT EXISTS route_truck_inventory_additions (
+      id TEXT PRIMARY KEY,
+      manifest_id TEXT NOT NULL REFERENCES daily_route_manifests(id) ON DELETE CASCADE,
+      driver_id TEXT NOT NULL,
+      sku TEXT NOT NULL REFERENCES products(sku),
+      scanned_barcode TEXT NOT NULL,
+      quantity NUMERIC(12,2) NOT NULL CHECK (quantity > 0),
+      reason TEXT NOT NULL,
+      client_operation_id TEXT NOT NULL UNIQUE,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+
+    CREATE INDEX IF NOT EXISTS route_truck_inventory_additions_route_idx
+      ON route_truck_inventory_additions(manifest_id, driver_id, sku);
+
+    CREATE TABLE IF NOT EXISTS route_truck_inventory_allocations (
+      id TEXT PRIMARY KEY,
+      manifest_id TEXT NOT NULL REFERENCES daily_route_manifests(id) ON DELETE CASCADE,
+      route_stop_id TEXT NOT NULL REFERENCES daily_route_stops(id) ON DELETE CASCADE,
+      driver_id TEXT NOT NULL,
+      sku TEXT NOT NULL REFERENCES products(sku),
+      scanned_barcode TEXT NOT NULL,
+      quantity NUMERIC(12,2) NOT NULL CHECK (quantity > 0),
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      UNIQUE(route_stop_id, sku)
+    );
+
+    CREATE INDEX IF NOT EXISTS route_truck_inventory_allocations_route_idx
+      ON route_truck_inventory_allocations(manifest_id, driver_id, sku);
+
+    CREATE TABLE IF NOT EXISTS route_departure_inventory_confirmations (
+      manifest_id TEXT PRIMARY KEY REFERENCES daily_route_manifests(id) ON DELETE CASCADE,
+      driver_id TEXT NOT NULL,
+      warehouse_employee_id TEXT NOT NULL REFERENCES warehouse_employees(employee_id),
+      warehouse_employee_name TEXT NOT NULL,
+      status TEXT NOT NULL DEFAULT 'confirmed',
+      inventory JSONB NOT NULL DEFAULT '[]'::jsonb,
+      print_confirmation_token TEXT,
+      confirmed_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      print_requested_at TIMESTAMPTZ,
+      printed_at TIMESTAMPTZ,
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+
+    CREATE INDEX IF NOT EXISTS route_departure_inventory_printed_idx
+      ON route_departure_inventory_confirmations(printed_at);
+
     CREATE TABLE IF NOT EXISTS account_orders (
       id TEXT PRIMARY KEY,
       account_number TEXT NOT NULL,
@@ -732,6 +806,43 @@ async function ensureSchema() {
       ON route_closeout_documents(driver_id, created_at DESC);
     CREATE INDEX IF NOT EXISTS route_closeout_documents_expires_idx
       ON route_closeout_documents(expires_at);
+
+    CREATE TABLE IF NOT EXISTS route_inventory_closeouts (
+      id TEXT PRIMARY KEY,
+      manifest_id TEXT NOT NULL UNIQUE REFERENCES daily_route_manifests(id) ON DELETE CASCADE,
+      document_number TEXT NOT NULL UNIQUE,
+      driver_id TEXT NOT NULL,
+      driver_name TEXT,
+      status TEXT NOT NULL DEFAULT 'draft',
+      supervisor_status TEXT NOT NULL DEFAULT 'pending_review',
+      loaded_quantity NUMERIC(12,2) NOT NULL DEFAULT 0,
+      delivered_quantity NUMERIC(12,2) NOT NULL DEFAULT 0,
+      sellable_quantity NUMERIC(12,2) NOT NULL DEFAULT 0,
+      returned_quantity NUMERIC(12,2) NOT NULL DEFAULT 0,
+      damaged_quantity NUMERIC(12,2) NOT NULL DEFAULT 0,
+      missing_quantity NUMERIC(12,2) NOT NULL DEFAULT 0,
+      added_quantity NUMERIC(12,2) NOT NULL DEFAULT 0,
+      rejected_quantity NUMERIC(12,2) NOT NULL DEFAULT 0,
+      unaccounted_quantity NUMERIC(12,2) NOT NULL DEFAULT 0,
+      items JSONB NOT NULL DEFAULT '[]'::jsonb,
+      notes TEXT,
+      payload JSONB NOT NULL DEFAULT '{}'::jsonb,
+      print_confirmation_token TEXT,
+      print_requested_at TIMESTAMPTZ,
+      printed_at TIMESTAMPTZ,
+      actual_duration_minutes INTEGER,
+      reviewed_by TEXT,
+      reviewed_at TIMESTAMPTZ,
+      review_notes TEXT,
+      archived_by TEXT,
+      archived_at TIMESTAMPTZ,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+    CREATE INDEX IF NOT EXISTS route_inventory_closeouts_driver_idx
+      ON route_inventory_closeouts(driver_id, created_at DESC);
+    CREATE INDEX IF NOT EXISTS route_inventory_closeouts_status_idx
+      ON route_inventory_closeouts(status, supervisor_status, created_at DESC);
 
     CREATE TABLE IF NOT EXISTS account_ai_insights (
       id TEXT PRIMARY KEY,

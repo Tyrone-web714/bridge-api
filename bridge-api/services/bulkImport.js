@@ -21,6 +21,7 @@ const ALIASES = {
   distributionCenter: ['distribution_center', 'warehouse', 'depot'],
   active: ['active', 'is_active', 'status'],
   sku: ['sku', 'product_sku', 'item_code', 'product_code'],
+  barcodes: ['barcodes', 'barcode', 'upc', 'upc_codes', 'gtin'],
   productName: ['product_name', 'product', 'item_name', 'description'],
   brand: ['brand'],
   packageSize: ['package_size', 'pack_size', 'package', 'size'],
@@ -138,6 +139,10 @@ function normalizeProducts(rows) {
     }
     records.push({
       sku,
+      barcodes: cleanText(readCell(row, 'barcodes'), 2000)
+        .split(/[|;]+/)
+        .map((value) => cleanText(value, 160))
+        .filter(Boolean),
       productName,
       brand: cleanText(readCell(row, 'brand'), 120) || null,
       packageSize: cleanText(readCell(row, 'packageSize'), 120) || null,

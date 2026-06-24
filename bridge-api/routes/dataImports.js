@@ -18,8 +18,8 @@ const TEMPLATES = {
     'ACCT-1001,EControls,5757 Farinon Dr,San Antonio,TX,78249,,San Antonio North,North Routes,San Antonio DC,true',
   ].join('\r\n'),
   products: [
-    'sku,product_name,brand,package_size,category,unit_price,active',
-    'COKE-12PK-12OZ,Coca-Cola 12 oz 12 Pack,Coca-Cola,12 Pack,Sparkling,8.75,true',
+    'sku,barcodes,product_name,brand,package_size,category,unit_price,active',
+    'COKE-12PK-12OZ,049000028911|049000042016,Coca-Cola 12 oz 12 Pack,Coca-Cola,12 Pack,Sparkling,8.75,true',
   ].join('\r\n'),
   orders: [
     'account_number,account_name,invoice_number,order_date,delivery_date,sku,product_name,brand,package_size,category,quantity,unit_price,gross_amount,deduction_quantity,deduction_amount,status',

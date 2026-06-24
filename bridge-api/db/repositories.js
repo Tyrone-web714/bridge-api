@@ -23,6 +23,10 @@ function toDateOnly(value) {
   return iso ? iso.slice(0, 10) : null;
 }
 
+function assignedDriverIdMatchesSql(columnSql, parameterSql) {
+  return `LOWER(TRIM(${columnSql})) = LOWER(TRIM(${parameterSql}))`;
+}
+
 function asArray(value) {
   return Array.isArray(value) ? value : [];
 }
@@ -268,6 +272,7 @@ function productFromRow(row) {
     category: row.category || null,
     unitPrice: row.unit_price == null ? null : normalizeMoney(row.unit_price),
     active: row.active !== false,
+    barcodes: asArray(row.barcodes).map((value) => String(value || '').trim()).filter(Boolean),
     raw: row.raw || {},
     createdAt: toIsoString(row.created_at),
     updatedAt: toIsoString(row.updated_at)
@@ -2391,7 +2396,7 @@ async function listDeliveryDocumentsForDriverStop(stopId, driverId) {
     JOIN daily_route_stops AS stop ON stop.id = document.route_stop_id
     JOIN daily_route_manifests AS manifest ON manifest.id = stop.manifest_id
     WHERE document.route_stop_id = $1
-      AND manifest.assigned_driver_id = $2
+      AND ${assignedDriverIdMatchesSql('manifest.assigned_driver_id', '$2')}
       AND document.expires_at > NOW()
       AND (
         document.document_type <> 'receipt'
@@ -2506,7 +2511,7 @@ async function getRouteCloseoutDocumentForDriver(manifestId, driverId) {
     FROM route_closeout_documents AS document
     JOIN daily_route_manifests AS manifest ON manifest.id = document.manifest_id
     WHERE document.manifest_id = $1
-      AND manifest.assigned_driver_id = $2
+      AND ${assignedDriverIdMatchesSql('manifest.assigned_driver_id', '$2')}
       AND document.expires_at > NOW()
       AND document.created_at > NOW() - INTERVAL '24 hours'
     LIMIT 1
@@ -2536,6 +2541,309 @@ async function listRouteCloseoutDocumentsForAdmin(options = {}) {
     LIMIT $${values.length}
   `, values);
   return result.rows.map(routeCloseoutDocumentFromRow);
+}
+
+function routeInventoryCloseoutFromRow(row) {
+  if (!row) return null;
+  return {
+    id: row.id,
+    manifestId: row.manifest_id,
+    documentType: 'final_inventory_closeout',
+    documentNumber: row.document_number,
+    driverId: row.driver_id,
+    driverName: row.driver_name || null,
+    status: row.status,
+    supervisorStatus: row.supervisor_status,
+    loadedQuantity: normalizeQuantity(row.loaded_quantity),
+    deliveredQuantity: normalizeQuantity(row.delivered_quantity),
+    sellableQuantity: normalizeQuantity(row.sellable_quantity),
+    returnedQuantity: normalizeQuantity(row.returned_quantity),
+    damagedQuantity: normalizeQuantity(row.damaged_quantity),
+    missingQuantity: normalizeQuantity(row.missing_quantity),
+    addedQuantity: normalizeQuantity(row.added_quantity),
+    rejectedQuantity: normalizeQuantity(row.rejected_quantity),
+    unaccountedQuantity: normalizeQuantity(row.unaccounted_quantity),
+    items: asArray(row.items),
+    notes: row.notes || null,
+    payload: row.payload || {},
+    printConfirmationToken: row.print_confirmation_token || null,
+    printRequestedAt: toIsoString(row.print_requested_at),
+    printedAt: toIsoString(row.printed_at),
+    actualDurationMinutes: row.actual_duration_minutes == null ? null : Number(row.actual_duration_minutes),
+    reviewedBy: row.reviewed_by || null,
+    reviewedAt: toIsoString(row.reviewed_at),
+    reviewNotes: row.review_notes || null,
+    archivedBy: row.archived_by || null,
+    archivedAt: toIsoString(row.archived_at),
+    routeDate: toDateOnly(row.route_date || row.payload?.routeDate),
+    routeNumber: row.route_number || row.payload?.routeNumber || null,
+    createdAt: toIsoString(row.created_at),
+    updatedAt: toIsoString(row.updated_at)
+  };
+}
+
+async function prepareRouteInventoryCloseoutForDriver(manifestId, driverId, input = {}) {
+  const cleanedManifestId = cleanRepositoryText(manifestId, 160);
+  const cleanedDriverId = cleanRepositoryText(driverId, 120);
+  if (!cleanedManifestId || !cleanedDriverId) {
+    const error = new Error('manifestId and driverId are required to prepare final inventory closeout.');
+    error.status = 400;
+    throw error;
+  }
+
+  const routeResult = await postgres.query(`
+    SELECT manifest.*
+    FROM daily_route_manifests AS manifest
+    JOIN drivers AS driver
+      ON ${assignedDriverIdMatchesSql('driver.driver_id', 'manifest.assigned_driver_id')}
+      AND driver.active = true
+    WHERE manifest.id = $1
+      AND ${assignedDriverIdMatchesSql('manifest.assigned_driver_id', '$2')}
+      AND manifest.status IN ('completed', 'completed_with_exceptions')
+      AND NOT EXISTS (
+        SELECT 1
+        FROM daily_route_stops AS stop
+        WHERE stop.manifest_id = manifest.id
+          AND stop.status NOT IN ('completed', 'departed', 'skipped', 'undelivered')
+      )
+    LIMIT 1
+  `, [cleanedManifestId, cleanedDriverId]);
+  const routeRow = routeResult.rows[0];
+  if (!routeRow) return null;
+
+  const existingResult = await postgres.query(
+    'SELECT * FROM route_inventory_closeouts WHERE manifest_id = $1 LIMIT 1',
+    [cleanedManifestId]
+  );
+  if (existingResult.rows[0]?.printed_at) {
+    const error = new Error('Final inventory closeout has already been printed and completed.');
+    error.status = 409;
+    throw error;
+  }
+
+  const authoritativeTotalsResult = await postgres.query(`
+    SELECT
+      COALESCE((SELECT SUM(planned_quantity) FROM delivery_settlements AS settlement
+        JOIN daily_route_stops AS stop ON stop.id = settlement.route_stop_id
+        WHERE stop.manifest_id = $1), 0) AS loaded_quantity,
+      COALESCE((SELECT SUM(delivered_quantity + added_quantity) FROM delivery_settlements AS settlement
+        JOIN daily_route_stops AS stop ON stop.id = settlement.route_stop_id
+        WHERE stop.manifest_id = $1), 0) AS delivered_quantity,
+      COALESCE((SELECT SUM(quantity) FROM route_truck_inventory_additions
+        WHERE manifest_id = $1 AND ${assignedDriverIdMatchesSql('driver_id', '$2')}), 0) AS added_quantity
+  `, [cleanedManifestId, cleanedDriverId]);
+  const authoritativeTotals = authoritativeTotalsResult.rows[0] || {};
+  const loadedQuantity = normalizeQuantity(authoritativeTotals.loaded_quantity);
+  const deliveredQuantity = normalizeQuantity(authoritativeTotals.delivered_quantity);
+  const sellableQuantity = normalizeQuantity(input.sellableQuantity || input.sellable_quantity);
+  const returnedQuantity = normalizeQuantity(input.returnedQuantity || input.returned_quantity);
+  const damagedQuantity = normalizeQuantity(input.damagedQuantity || input.damaged_quantity);
+  const missingQuantity = normalizeQuantity(input.missingQuantity || input.missing_quantity);
+  const addedQuantity = normalizeQuantity(authoritativeTotals.added_quantity);
+  const rejectedQuantity = normalizeQuantity(input.rejectedQuantity || input.rejected_quantity);
+  const accountedQuantity = deliveredQuantity + sellableQuantity + returnedQuantity
+    + damagedQuantity + missingQuantity + rejectedQuantity;
+  const availableQuantity = loadedQuantity + addedQuantity;
+  if (accountedQuantity > availableQuantity + 0.001) {
+    const error = new Error('Final inventory counts exceed warehouse-loaded plus scanned truck inventory.');
+    error.status = 409;
+    throw error;
+  }
+  const unaccountedQuantity = normalizeQuantity(availableQuantity - accountedQuantity);
+  const notes = cleanRepositoryText(input.notes, 2000) || null;
+  const items = asArray(input.items).map((item) => ({
+    sku: cleanRepositoryText(item.sku, 120) || null,
+    productName: cleanRepositoryText(item.productName || item.product_name, 240) || null,
+    sellableQuantity: normalizeQuantity(item.sellableQuantity || item.sellable_quantity),
+    returnedQuantity: normalizeQuantity(item.returnedQuantity || item.returned_quantity),
+    damagedQuantity: normalizeQuantity(item.damagedQuantity || item.damaged_quantity),
+    missingQuantity: normalizeQuantity(item.missingQuantity || item.missing_quantity),
+    addedQuantity: normalizeQuantity(item.addedQuantity || item.added_quantity),
+    rejectedQuantity: normalizeQuantity(item.rejectedQuantity || item.rejected_quantity),
+    notes: cleanRepositoryText(item.notes, 500) || null
+  }));
+  const printRequestedAt = new Date().toISOString();
+  const printConfirmationToken = crypto.randomUUID
+    ? crypto.randomUUID()
+    : crypto.randomBytes(24).toString('hex');
+  const documentNumber = `INV-CLOSEOUT-${toDateOnly(routeRow.route_date)}-${routeRow.route_number}`;
+  const payload = {
+    brand: 'Arca Continental Coca-Cola Southwest Beverages',
+    documentType: 'final_inventory_closeout',
+    driver: {
+      id: cleanedDriverId,
+      name: routeRow.assigned_driver_name || cleanedDriverId
+    },
+    routeManifestId: cleanedManifestId,
+    routeNumber: routeRow.route_number,
+    routeDate: toDateOnly(routeRow.route_date),
+    routeName: routeRow.route_name || null,
+    plannedStartAt: toIsoString(routeRow.planned_start_at),
+    plannedEndAt: toIsoString(routeRow.planned_end_at),
+    printRequestedAt,
+    inventory: {
+      loadedQuantity,
+      deliveredQuantity,
+      sellableQuantity,
+      returnedQuantity,
+      damagedQuantity,
+      missingQuantity,
+      addedQuantity,
+      rejectedQuantity,
+      unaccountedQuantity
+    },
+    items,
+    notes
+  };
+
+  const result = await postgres.query(`
+    INSERT INTO route_inventory_closeouts (
+      id, manifest_id, document_number, driver_id, driver_name,
+      status, supervisor_status, loaded_quantity, delivered_quantity,
+      sellable_quantity, returned_quantity, damaged_quantity, missing_quantity,
+      added_quantity, rejected_quantity, unaccounted_quantity, items, notes,
+      payload, print_confirmation_token, print_requested_at, updated_at
+    )
+    VALUES (
+      $1, $2, $3, $4, $5,
+      'prepared', 'pending_review', $6, $7,
+      $8, $9, $10, $11,
+      $12, $13, $14, $15::jsonb, $16,
+      $17::jsonb, $18, $19, NOW()
+    )
+    ON CONFLICT (manifest_id) DO UPDATE SET
+      driver_id = EXCLUDED.driver_id,
+      driver_name = EXCLUDED.driver_name,
+      status = 'prepared',
+      loaded_quantity = EXCLUDED.loaded_quantity,
+      delivered_quantity = EXCLUDED.delivered_quantity,
+      sellable_quantity = EXCLUDED.sellable_quantity,
+      returned_quantity = EXCLUDED.returned_quantity,
+      damaged_quantity = EXCLUDED.damaged_quantity,
+      missing_quantity = EXCLUDED.missing_quantity,
+      added_quantity = EXCLUDED.added_quantity,
+      rejected_quantity = EXCLUDED.rejected_quantity,
+      unaccounted_quantity = EXCLUDED.unaccounted_quantity,
+      items = EXCLUDED.items,
+      notes = EXCLUDED.notes,
+      payload = EXCLUDED.payload,
+      print_confirmation_token = EXCLUDED.print_confirmation_token,
+      print_requested_at = EXCLUDED.print_requested_at,
+      updated_at = NOW()
+    RETURNING *
+  `, [
+    stableRepositoryId('route_inventory_closeout', [cleanedManifestId]),
+    cleanedManifestId,
+    documentNumber,
+    cleanedDriverId,
+    routeRow.assigned_driver_name || cleanedDriverId,
+    loadedQuantity,
+    deliveredQuantity,
+    sellableQuantity,
+    returnedQuantity,
+    damagedQuantity,
+    missingQuantity,
+    addedQuantity,
+    rejectedQuantity,
+    unaccountedQuantity,
+    JSON.stringify(items),
+    notes,
+    JSON.stringify(payload),
+    printConfirmationToken,
+    printRequestedAt
+  ]);
+  return routeInventoryCloseoutFromRow({
+    ...result.rows[0],
+    route_date: routeRow.route_date,
+    route_number: routeRow.route_number
+  });
+}
+
+async function confirmRouteInventoryCloseoutPrintForDriver(manifestId, driverId, confirmationToken) {
+  const cleanedManifestId = cleanRepositoryText(manifestId, 160);
+  const cleanedDriverId = cleanRepositoryText(driverId, 120);
+  const cleanedToken = cleanRepositoryText(confirmationToken, 160);
+  if (!cleanedManifestId || !cleanedDriverId || !cleanedToken) {
+    const error = new Error('manifestId, driverId, and print confirmation token are required.');
+    error.status = 400;
+    throw error;
+  }
+
+  const result = await postgres.query(`
+    UPDATE route_inventory_closeouts AS closeout
+    SET
+      status = 'printed',
+      printed_at = COALESCE(closeout.printed_at, closeout.print_requested_at, NOW()),
+      actual_duration_minutes = GREATEST(0, ROUND(EXTRACT(EPOCH FROM (
+        COALESCE(closeout.printed_at, closeout.print_requested_at, NOW()) - manifest.planned_start_at
+      )) / 60.0))::int,
+      payload = closeout.payload || jsonb_build_object(
+        'printedAt', COALESCE(closeout.printed_at, closeout.print_requested_at, NOW())
+      ),
+      print_confirmation_token = NULL,
+      updated_at = NOW()
+    FROM daily_route_manifests AS manifest
+    JOIN drivers AS driver
+      ON ${assignedDriverIdMatchesSql('driver.driver_id', 'manifest.assigned_driver_id')}
+      AND driver.active = true
+    WHERE closeout.manifest_id = manifest.id
+      AND closeout.manifest_id = $1
+      AND ${assignedDriverIdMatchesSql('manifest.assigned_driver_id', '$2')}
+      AND closeout.print_confirmation_token = $3
+      AND closeout.status = 'prepared'
+    RETURNING closeout.*, manifest.route_date, manifest.route_number
+  `, [cleanedManifestId, cleanedDriverId, cleanedToken]);
+  return routeInventoryCloseoutFromRow(result.rows[0]);
+}
+
+async function listRouteInventoryCloseoutsForAdmin(options = {}) {
+  const values = [];
+  const where = [];
+  const routeDate = toDateOnly(options.routeDate);
+  if (routeDate) {
+    values.push(routeDate);
+    where.push(`manifest.route_date = $${values.length}`);
+  }
+  values.push(Math.min(Math.max(Number(options.limit) || 200, 1), 1000));
+  const result = await postgres.query(`
+    SELECT closeout.*, manifest.route_date, manifest.route_number
+    FROM route_inventory_closeouts AS closeout
+    JOIN daily_route_manifests AS manifest ON manifest.id = closeout.manifest_id
+    ${where.length ? `WHERE ${where.join(' AND ')}` : ''}
+    ORDER BY closeout.created_at DESC
+    LIMIT $${values.length}
+  `, values);
+  return result.rows.map(routeInventoryCloseoutFromRow);
+}
+
+async function reviewRouteInventoryCloseout(manifestId, input = {}, actor = 'supervisor') {
+  const cleanedManifestId = cleanRepositoryText(manifestId, 160);
+  const supervisorStatus = cleanRepositoryText(input.status || input.supervisorStatus, 40).toLowerCase();
+  if (!['approved', 'archived'].includes(supervisorStatus)) {
+    const error = new Error('Final inventory closeout status must be approved or archived.');
+    error.status = 400;
+    throw error;
+  }
+  const result = await postgres.query(`
+    UPDATE route_inventory_closeouts
+    SET
+      supervisor_status = $2,
+      reviewed_by = CASE WHEN $2 = 'approved' THEN $3 ELSE reviewed_by END,
+      reviewed_at = CASE WHEN $2 = 'approved' THEN NOW() ELSE reviewed_at END,
+      review_notes = COALESCE(NULLIF($4, ''), review_notes),
+      archived_by = CASE WHEN $2 = 'archived' THEN $3 ELSE archived_by END,
+      archived_at = CASE WHEN $2 = 'archived' THEN NOW() ELSE archived_at END,
+      updated_at = NOW()
+    WHERE manifest_id = $1
+      AND status = 'printed'
+    RETURNING *
+  `, [
+    cleanedManifestId,
+    supervisorStatus,
+    cleanRepositoryText(actor, 120) || 'supervisor',
+    cleanRepositoryText(input.notes || input.reviewNotes, 2000)
+  ]);
+  return routeInventoryCloseoutFromRow(result.rows[0]);
 }
 
 async function getDailyRouteManifestWithAccountIntelligence(id, options = {}) {
@@ -2715,15 +3023,15 @@ async function listDailyRouteManifests(options = {}) {
 
   if (options.routeDate) {
     values.push(options.routeDate);
-    where.push(`route_date = $${values.length}`);
+    where.push(`daily_route_manifests.route_date = $${values.length}`);
   }
   if (options.driverId) {
     values.push(String(options.driverId).trim());
-    where.push(`assigned_driver_id = $${values.length}`);
+    where.push(assignedDriverIdMatchesSql('daily_route_manifests.assigned_driver_id', `$${values.length}`));
   }
   if (options.status) {
     values.push(String(options.status).trim().toLowerCase());
-    where.push(`status = $${values.length}`);
+    where.push(`daily_route_manifests.status = $${values.length}`);
   }
 
   values.push(limit);
@@ -2731,7 +3039,7 @@ async function listDailyRouteManifests(options = {}) {
     SELECT *
     FROM daily_route_manifests
     ${where.length ? `WHERE ${where.join(' AND ')}` : ''}
-    ORDER BY route_date DESC, route_number ASC
+    ORDER BY daily_route_manifests.route_date DESC, daily_route_manifests.route_number ASC
     LIMIT $${values.length}
   `, values);
   return result.rows.map((row) => routeManifestFromRow(row));
@@ -2971,6 +3279,21 @@ async function updateDailyRouteStopStatusForDriver(stopId, driverId, input = {})
     error.status = 400;
     throw error;
   }
+  if (status !== 'pending') {
+    const departureResult = await postgres.query(`
+      SELECT confirmation.printed_at
+      FROM daily_route_stops AS stop
+      JOIN daily_route_manifests AS manifest ON manifest.id = stop.manifest_id
+      LEFT JOIN route_departure_inventory_confirmations AS confirmation ON confirmation.manifest_id = manifest.id
+      WHERE stop.id = $1 AND ${assignedDriverIdMatchesSql('manifest.assigned_driver_id', '$2')}
+      LIMIT 1
+    `, [cleanedStopId, cleanedDriverId]);
+    if (!departureResult.rows[0]?.printed_at) {
+      const error = new Error('Warehouse inventory confirmation and successful pre-departure print are required before route execution.');
+      error.status = 409;
+      throw error;
+    }
+  }
   if (['completed', 'departed', 'undelivered'].includes(status)) {
     const settlementResult = await postgres.query(`
       SELECT status, completion_status
@@ -3017,7 +3340,7 @@ async function updateDailyRouteStopStatusForDriver(stopId, driverId, input = {})
     FROM daily_route_manifests AS manifest
     WHERE stop.manifest_id = manifest.id
       AND stop.id = $1
-      AND manifest.assigned_driver_id = $2
+      AND ${assignedDriverIdMatchesSql('manifest.assigned_driver_id', '$2')}
     RETURNING stop.*
   `, [cleanedStopId, cleanedDriverId, status, driverNotes, nonDeliveryReason, nonDeliveryNotes, eventAt]);
 
@@ -3067,12 +3390,21 @@ async function updateDailyRouteStopStatusForDriver(stopId, driverId, input = {})
 
 async function getAssignedDailyRouteForDriver(driverId, routeDate) {
   const result = await postgres.query(`
-    SELECT *
-    FROM daily_route_manifests
-    WHERE assigned_driver_id = $1
-      AND route_date = $2
-      AND status <> 'cancelled'
-    ORDER BY assigned_at DESC NULLS LAST, route_number ASC
+    SELECT manifest.*
+    FROM daily_route_manifests AS manifest
+    JOIN drivers AS driver
+      ON ${assignedDriverIdMatchesSql('driver.driver_id', 'manifest.assigned_driver_id')}
+      AND driver.active = true
+    LEFT JOIN route_inventory_closeouts AS inventory_closeout
+      ON inventory_closeout.manifest_id = manifest.id
+    WHERE ${assignedDriverIdMatchesSql('manifest.assigned_driver_id', '$1')}
+      AND manifest.route_date = $2
+      AND manifest.status <> 'cancelled'
+      AND (
+        manifest.status NOT IN ('completed', 'completed_with_exceptions')
+        OR inventory_closeout.printed_at IS NULL
+      )
+    ORDER BY manifest.assigned_at DESC NULLS LAST, manifest.route_number ASC
     LIMIT 1
   `, [driverId, routeDate]);
   const manifest = result.rows[0] ? routeManifestFromRow(result.rows[0]) : null;
@@ -3300,7 +3632,12 @@ async function upsertProduct(input = {}) {
     throw error;
   }
 
-  const result = await postgres.query(`
+  const barcodes = [...new Set(asArray(input.barcodes || input.barcodeValues)
+    .flatMap((value) => String(value || '').split(/[|;]+/))
+    .map((value) => cleanRepositoryText(value, 160))
+    .filter(Boolean))];
+  const result = await postgres.withTransaction(async (client) => {
+    const productResult = await client.query(`
     INSERT INTO products (
       sku, product_name, brand, package_size, category, unit_price, active, raw, updated_at
     )
@@ -3315,7 +3652,7 @@ async function upsertProduct(input = {}) {
       raw = EXCLUDED.raw,
       updated_at = NOW()
     RETURNING *
-  `, [
+    `, [
     sku,
     productName,
     cleanRepositoryText(input.brand, 120) || null,
@@ -3324,7 +3661,32 @@ async function upsertProduct(input = {}) {
     input.unitPrice == null && input.unit_price == null ? null : normalizeMoney(input.unitPrice ?? input.unit_price),
     input.active !== false,
     JSON.stringify(input.raw || {})
-  ]);
+    ]);
+    if (input.barcodes !== undefined || input.barcodeValues !== undefined) {
+      await client.query('DELETE FROM product_barcodes WHERE sku = $1', [sku]);
+      for (const barcode of barcodes) {
+        await client.query(`
+          INSERT INTO product_barcodes (barcode, sku, package_size, configuration, active, raw, updated_at)
+          VALUES ($1, $2, $3, $4, true, $5::jsonb, NOW())
+          ON CONFLICT (barcode) DO UPDATE SET
+            sku = EXCLUDED.sku,
+            package_size = EXCLUDED.package_size,
+            configuration = EXCLUDED.configuration,
+            active = true,
+            raw = EXCLUDED.raw,
+            updated_at = NOW()
+        `, [
+          barcode,
+          sku,
+          cleanRepositoryText(input.packageSize || input.package_size, 120) || null,
+          cleanRepositoryText(input.configuration, 160) || null,
+          JSON.stringify({ source: 'product_catalog', sku })
+        ]);
+      }
+    }
+    productResult.rows[0].barcodes = barcodes;
+    return productResult;
+  });
   return productFromRow(result.rows[0]);
 }
 
@@ -3348,13 +3710,250 @@ async function listProducts(options = {}) {
 
   values.push(limit);
   const result = await postgres.query(`
-    SELECT *
+    SELECT products.*,
+      ARRAY(SELECT barcode FROM product_barcodes WHERE product_barcodes.sku = products.sku AND product_barcodes.active ORDER BY barcode) AS barcodes
     FROM products
     ${where.length ? `WHERE ${where.join(' AND ')}` : ''}
     ORDER BY product_name ASC
     LIMIT $${values.length}
   `, values);
   return result.rows.map(productFromRow);
+}
+
+async function lookupProductByBarcodeOrSku(value, queryable = postgres) {
+  const identity = cleanRepositoryText(value, 160);
+  if (!identity) return null;
+  const barcodeResult = await queryable.query(`
+    SELECT product.*, barcode.barcode AS matched_barcode,
+      ARRAY(SELECT barcode_value.barcode FROM product_barcodes AS barcode_value WHERE barcode_value.sku = product.sku AND barcode_value.active ORDER BY barcode_value.barcode) AS barcodes
+    FROM product_barcodes AS barcode
+    JOIN products AS product ON product.sku = barcode.sku
+    WHERE barcode.barcode = $1 AND barcode.active AND product.active
+    LIMIT 1
+  `, [identity]);
+  if (barcodeResult.rows[0]) {
+    return { ...productFromRow(barcodeResult.rows[0]), matchedBarcode: identity, lookupType: 'barcode' };
+  }
+  const skuResult = await queryable.query(`
+    SELECT product.*,
+      ARRAY(SELECT barcode FROM product_barcodes WHERE product_barcodes.sku = product.sku AND product_barcodes.active ORDER BY barcode) AS barcodes
+    FROM products AS product
+    WHERE product.sku = $1 AND product.active
+    LIMIT 1
+  `, [identity]);
+  return skuResult.rows[0]
+    ? { ...productFromRow(skuResult.rows[0]), matchedBarcode: identity, lookupType: 'sku_fallback' }
+    : null;
+}
+
+async function addRouteTruckInventoryForDriver(manifestId, driverId, input = {}) {
+  const cleanedManifestId = cleanRepositoryText(manifestId, 160);
+  const cleanedDriverId = cleanRepositoryText(driverId, 120);
+  const scannedBarcode = cleanRepositoryText(input.barcode || input.scannedBarcode, 160);
+  const quantity = normalizeQuantity(input.quantity);
+  const reason = cleanRepositoryText(input.reason, 240);
+  const clientOperationId = cleanRepositoryText(input.clientOperationId || input.client_operation_id, 200);
+  if (!cleanedManifestId || !cleanedDriverId || !scannedBarcode || quantity <= 0 || !reason || !clientOperationId) {
+    const error = new Error('manifestId, driverId, scanned barcode, quantity, reason, and clientOperationId are required.');
+    error.status = 400;
+    throw error;
+  }
+  return postgres.withTransaction(async (client) => {
+    const existing = await client.query('SELECT * FROM route_truck_inventory_additions WHERE client_operation_id = $1', [clientOperationId]);
+    if (existing.rows[0]) return existing.rows[0];
+    const routeResult = await client.query(`
+      SELECT manifest.id
+      FROM daily_route_manifests AS manifest
+      JOIN drivers AS driver ON ${assignedDriverIdMatchesSql('driver.driver_id', 'manifest.assigned_driver_id')} AND driver.active
+      WHERE manifest.id = $1 AND ${assignedDriverIdMatchesSql('manifest.assigned_driver_id', '$2')}
+      FOR UPDATE OF manifest
+    `, [cleanedManifestId, cleanedDriverId]);
+    if (!routeResult.rows[0]) return null;
+    const product = await lookupProductByBarcodeOrSku(scannedBarcode, client);
+    if (!product) {
+      const error = new Error('Scanned barcode was not found in the active product catalog.');
+      error.status = 404;
+      throw error;
+    }
+    const id = stableRepositoryId('truck_inventory_addition', [cleanedManifestId, clientOperationId]);
+    const inserted = await client.query(`
+      INSERT INTO route_truck_inventory_additions
+        (id, manifest_id, driver_id, sku, scanned_barcode, quantity, reason, client_operation_id)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+      RETURNING *
+    `, [id, cleanedManifestId, cleanedDriverId, product.sku, scannedBarcode, quantity, reason, clientOperationId]);
+    return { ...inserted.rows[0], product };
+  });
+}
+
+async function getRouteTruckInventoryForDriver(manifestId, driverId) {
+  const cleanedManifestId = cleanRepositoryText(manifestId, 160);
+  const cleanedDriverId = cleanRepositoryText(driverId, 120);
+  const result = await postgres.query(`
+    WITH planned AS (
+      SELECT item.sku, SUM(item.quantity) AS quantity
+      FROM account_order_items AS item
+      JOIN account_orders AS ord ON ord.id = item.order_id
+      LEFT JOIN daily_route_stops AS stop ON stop.id = ord.route_stop_id
+      WHERE COALESCE(ord.route_manifest_id, stop.manifest_id) = $1
+        AND item.sku IS NOT NULL
+        AND COALESCE(item.raw->>'settlementAdditional', 'false') <> 'true'
+      GROUP BY item.sku
+    ), additions AS (
+      SELECT sku, SUM(quantity) AS quantity FROM route_truck_inventory_additions
+      WHERE manifest_id = $1 AND ${assignedDriverIdMatchesSql('driver_id', '$2')} GROUP BY sku
+    ), allocations AS (
+      SELECT sku, SUM(quantity) AS quantity FROM route_truck_inventory_allocations
+      WHERE manifest_id = $1 AND ${assignedDriverIdMatchesSql('driver_id', '$2')} GROUP BY sku
+    ), settled AS (
+      SELECT item.sku,
+        SUM(item.delivered_quantity + item.added_quantity) AS sold_quantity,
+        SUM(item.returned_quantity) AS returned_quantity,
+        SUM(item.damaged_quantity) AS damaged_quantity,
+        SUM(item.missing_quantity) AS missing_quantity,
+        SUM(item.rejected_quantity) AS rejected_quantity
+      FROM delivery_settlement_items AS item
+      JOIN delivery_settlements AS settlement ON settlement.id = item.settlement_id
+      JOIN daily_route_stops AS stop ON stop.id = settlement.route_stop_id
+      WHERE stop.manifest_id = $1 AND item.sku IS NOT NULL
+      GROUP BY item.sku
+    ), sku_set AS (
+      SELECT sku FROM planned UNION SELECT sku FROM additions UNION SELECT sku FROM settled
+    )
+    SELECT product.*,
+      ARRAY(SELECT barcode FROM product_barcodes WHERE product_barcodes.sku = product.sku AND product_barcodes.active ORDER BY barcode) AS barcodes,
+      COALESCE(planned.quantity, 0) AS planned_quantity,
+      COALESCE(additions.quantity, 0) AS added_quantity,
+      COALESCE(allocations.quantity, 0) AS allocated_quantity,
+      COALESCE(settled.sold_quantity, 0) AS sold_quantity,
+      COALESCE(settled.returned_quantity, 0) AS returned_quantity,
+      COALESCE(settled.damaged_quantity, 0) AS damaged_quantity,
+      COALESCE(settled.missing_quantity, 0) AS missing_quantity,
+      COALESCE(settled.rejected_quantity, 0) AS rejected_quantity
+    FROM sku_set
+    JOIN products AS product ON product.sku = sku_set.sku
+    LEFT JOIN planned ON planned.sku = sku_set.sku
+    LEFT JOIN additions ON additions.sku = sku_set.sku
+    LEFT JOIN allocations ON allocations.sku = sku_set.sku
+    LEFT JOIN settled ON settled.sku = sku_set.sku
+    ORDER BY product.product_name
+  `, [cleanedManifestId, cleanedDriverId]);
+  return result.rows.map((row) => ({
+    ...productFromRow(row),
+    plannedQuantity: normalizeQuantity(row.planned_quantity),
+    addedQuantity: normalizeQuantity(row.added_quantity),
+    allocatedQuantity: normalizeQuantity(row.allocated_quantity),
+    availableQuantity: normalizeQuantity(normalizeQuantity(row.added_quantity) - normalizeQuantity(row.allocated_quantity)),
+    soldQuantity: normalizeQuantity(row.sold_quantity),
+    returnedQuantity: normalizeQuantity(row.returned_quantity),
+    damagedQuantity: normalizeQuantity(row.damaged_quantity),
+    missingQuantity: normalizeQuantity(row.missing_quantity),
+    rejectedQuantity: normalizeQuantity(row.rejected_quantity),
+    expectedOnTruckQuantity: normalizeQuantity(
+      normalizeQuantity(row.planned_quantity)
+      + normalizeQuantity(row.added_quantity)
+      - normalizeQuantity(row.sold_quantity)
+      - normalizeQuantity(row.missing_quantity)
+    )
+  }));
+}
+
+async function upsertWarehouseEmployee(input = {}) {
+  const employeeId = cleanRepositoryText(input.employeeId || input.employee_id, 120);
+  const employeeName = cleanRepositoryText(input.employeeName || input.employee_name, 200);
+  const pinHash = cleanRepositoryText(input.pinHash || input.pin_hash, 500);
+  if (!employeeId || !employeeName || !pinHash) {
+    const error = new Error('employeeId, employeeName, and pinHash are required.');
+    error.status = 400;
+    throw error;
+  }
+  const result = await postgres.query(`
+    INSERT INTO warehouse_employees (employee_id, employee_name, pin_hash, active, created_by, updated_by, updated_at)
+    VALUES ($1, $2, $3, $4, $5, $5, NOW())
+    ON CONFLICT (employee_id) DO UPDATE SET
+      employee_name = EXCLUDED.employee_name,
+      pin_hash = EXCLUDED.pin_hash,
+      active = EXCLUDED.active,
+      updated_by = EXCLUDED.updated_by,
+      updated_at = NOW()
+    RETURNING employee_id, employee_name, active, created_at, updated_at
+  `, [employeeId, employeeName, pinHash, input.active !== false, cleanRepositoryText(input.updatedBy || input.createdBy, 120) || 'supervisor']);
+  return result.rows[0];
+}
+
+async function listWarehouseEmployees() {
+  const result = await postgres.query(`
+    SELECT employee_id, employee_name, active, created_at, updated_at
+    FROM warehouse_employees ORDER BY employee_name, employee_id
+  `);
+  return result.rows;
+}
+
+async function getWarehouseEmployeeWithPin(employeeId) {
+  const result = await postgres.query('SELECT * FROM warehouse_employees WHERE employee_id = $1 LIMIT 1', [cleanRepositoryText(employeeId, 120)]);
+  return result.rows[0] || null;
+}
+
+async function prepareDepartureInventoryConfirmation(manifestId, driverId, warehouseEmployee) {
+  const cleanedManifestId = cleanRepositoryText(manifestId, 160);
+  const cleanedDriverId = cleanRepositoryText(driverId, 120);
+  const routeResult = await postgres.query(`
+    SELECT manifest.* FROM daily_route_manifests AS manifest
+    JOIN drivers AS driver ON ${assignedDriverIdMatchesSql('driver.driver_id', 'manifest.assigned_driver_id')} AND driver.active
+    WHERE manifest.id = $1 AND ${assignedDriverIdMatchesSql('manifest.assigned_driver_id', '$2')}
+      AND manifest.status IN ('assigned', 'active')
+    LIMIT 1
+  `, [cleanedManifestId, cleanedDriverId]);
+  const route = routeResult.rows[0];
+  if (!route) return null;
+  const inventory = await getRouteTruckInventoryForDriver(cleanedManifestId, cleanedDriverId);
+  if (!inventory.length) {
+    const error = new Error('This route has no product inventory to confirm.');
+    error.status = 409;
+    throw error;
+  }
+  const token = crypto.randomUUID ? crypto.randomUUID() : crypto.randomBytes(24).toString('hex');
+  const result = await postgres.query(`
+    INSERT INTO route_departure_inventory_confirmations
+      (manifest_id, driver_id, warehouse_employee_id, warehouse_employee_name, status, inventory,
+       print_confirmation_token, confirmed_at, print_requested_at, printed_at, updated_at)
+    VALUES ($1, $2, $3, $4, 'confirmed', $5::jsonb, $6, NOW(), NOW(), NULL, NOW())
+    ON CONFLICT (manifest_id) DO UPDATE SET
+      driver_id = EXCLUDED.driver_id,
+      warehouse_employee_id = EXCLUDED.warehouse_employee_id,
+      warehouse_employee_name = EXCLUDED.warehouse_employee_name,
+      status = 'confirmed', inventory = EXCLUDED.inventory,
+      print_confirmation_token = EXCLUDED.print_confirmation_token,
+      confirmed_at = NOW(), print_requested_at = NOW(), printed_at = NULL, updated_at = NOW()
+    RETURNING *
+  `, [cleanedManifestId, cleanedDriverId, warehouseEmployee.employee_id, warehouseEmployee.employee_name, JSON.stringify(inventory), token]);
+  return {
+    ...result.rows[0],
+    routeNumber: route.route_number,
+    routeDate: toDateOnly(route.route_date),
+    routeName: route.route_name,
+    driverName: route.assigned_driver_name,
+    inventory
+  };
+}
+
+async function confirmDepartureInventoryPrint(manifestId, driverId, token) {
+  const result = await postgres.query(`
+    UPDATE route_departure_inventory_confirmations
+    SET status = 'printed', printed_at = NOW(), print_confirmation_token = NULL, updated_at = NOW()
+    WHERE manifest_id = $1 AND ${assignedDriverIdMatchesSql('driver_id', '$2')}
+      AND print_confirmation_token = $3 AND printed_at IS NULL
+    RETURNING *
+  `, [cleanRepositoryText(manifestId, 160), cleanRepositoryText(driverId, 120), cleanRepositoryText(token, 160)]);
+  return result.rows[0] || null;
+}
+
+async function getDepartureInventoryConfirmation(manifestId, driverId) {
+  const result = await postgres.query(`
+    SELECT * FROM route_departure_inventory_confirmations
+    WHERE manifest_id = $1 AND ${assignedDriverIdMatchesSql('driver_id', '$2')} LIMIT 1
+  `, [cleanRepositoryText(manifestId, 160), cleanRepositoryText(driverId, 120)]);
+  return result.rows[0] || null;
 }
 
 async function createAccountOrder(input = {}) {
@@ -3613,7 +4212,7 @@ async function recordDeliveryDeductionForDriverStop(stopId, driverId, input = {}
     FROM daily_route_stops AS stop
     JOIN daily_route_manifests AS manifest ON manifest.id = stop.manifest_id
     WHERE stop.id = $1
-      AND manifest.assigned_driver_id = $2
+      AND ${assignedDriverIdMatchesSql('manifest.assigned_driver_id', '$2')}
     LIMIT 1
   `, [cleanedStopId, cleanedDriverId]);
   const stop = stopResult.rows[0] ? routeStopFromRow(stopResult.rows[0]) : null;
@@ -3705,7 +4304,7 @@ async function getDriverStopDeliverySettlement(stopId, driverId) {
     FROM daily_route_stops AS stop
     JOIN daily_route_manifests AS manifest ON manifest.id = stop.manifest_id
     WHERE stop.id = $1
-      AND manifest.assigned_driver_id = $2
+      AND ${assignedDriverIdMatchesSql('manifest.assigned_driver_id', '$2')}
     LIMIT 1
   `, [cleanedStopId, cleanedDriverId]);
   const stopRow = stopResult.rows[0];
@@ -3897,7 +4496,7 @@ async function saveDriverStopDeliverySettlement(stopId, driverId, input = {}) {
       FROM daily_route_stops AS stop
       JOIN daily_route_manifests AS manifest ON manifest.id = stop.manifest_id
       WHERE stop.id = $1
-        AND manifest.assigned_driver_id = $2
+        AND ${assignedDriverIdMatchesSql('manifest.assigned_driver_id', '$2')}
       FOR UPDATE OF stop
     `, [cleanedStopId, cleanedDriverId]);
     const stopRow = stopResult.rows[0];
@@ -3943,6 +4542,10 @@ async function saveDriverStopDeliverySettlement(stopId, driverId, input = {}) {
       const missingQuantity = normalizeQuantity(item.missingQuantity || item.missing_quantity);
       const returnedQuantity = normalizeQuantity(item.returnedQuantity || item.returned_quantity);
       const addedQuantity = normalizeQuantity(item.addedQuantity || item.added_quantity);
+      const scannedBarcode = cleanRepositoryText(
+        item.scannedBarcode || item.scanned_barcode || item.barcode || item.raw?.scannedBarcode,
+        160
+      ) || null;
       const accountedQuantity = deliveredQuantity + rejectedQuantity + damagedQuantity + missingQuantity + returnedQuantity;
       const adjustmentReason = cleanRepositoryText(item.adjustmentReason || item.adjustment_reason, 240) || null;
       const itemNotes = cleanRepositoryText(item.notes, 1000) || null;
@@ -3997,11 +4600,15 @@ async function saveDriverStopDeliverySettlement(stopId, driverId, input = {}) {
         missingQuantity,
         returnedQuantity,
         addedQuantity,
+        scannedBarcode,
         unitPrice,
         finalAmount: normalizeMoney((deliveredQuantity + addedQuantity) * unitPrice),
         adjustmentReason,
         notes: itemNotes,
-        raw: item.raw || {}
+        raw: {
+          ...(item.raw || {}),
+          ...(scannedBarcode ? { scannedBarcode } : {})
+        }
       };
     });
 
@@ -4011,6 +4618,45 @@ async function saveDriverStopDeliverySettlement(stopId, driverId, input = {}) {
       if (missingPlannedItem) {
         const error = new Error(`${missingPlannedItem.product_name} is missing from the delivery settlement.`);
         error.status = 400;
+        throw error;
+      }
+    }
+
+    const addedBySku = new Map();
+    for (const item of normalizedItems.filter((entry) => entry.addedQuantity > 0)) {
+      if (!item.sku || !item.scannedBarcode) {
+        const error = new Error(`${item.productName} must be added by scanning its barcode.`);
+        error.status = 400;
+        throw error;
+      }
+      const catalogProduct = await lookupProductByBarcodeOrSku(item.scannedBarcode, client);
+      if (!catalogProduct || catalogProduct.sku !== item.sku) {
+        const error = new Error(`The scanned barcode does not match ${item.productName}.`);
+        error.status = 400;
+        throw error;
+      }
+      const current = addedBySku.get(item.sku) || { quantity: 0, barcode: item.scannedBarcode, productName: item.productName };
+      current.quantity += item.addedQuantity;
+      addedBySku.set(item.sku, current);
+    }
+    for (const [sku, requested] of addedBySku) {
+      const additionRows = await client.query(`
+        SELECT quantity FROM route_truck_inventory_additions
+        WHERE manifest_id = $1 AND ${assignedDriverIdMatchesSql('driver_id', '$2')} AND sku = $3
+        FOR UPDATE
+      `, [stopRow.manifest_id, cleanedDriverId, sku]);
+      const allocationRows = await client.query(`
+        SELECT route_stop_id, quantity FROM route_truck_inventory_allocations
+        WHERE manifest_id = $1 AND ${assignedDriverIdMatchesSql('driver_id', '$2')} AND sku = $3
+        FOR UPDATE
+      `, [stopRow.manifest_id, cleanedDriverId, sku]);
+      const truckAdded = additionRows.rows.reduce((sum, row) => sum + normalizeQuantity(row.quantity), 0);
+      const allocatedElsewhere = allocationRows.rows
+        .filter((row) => row.route_stop_id !== cleanedStopId)
+        .reduce((sum, row) => sum + normalizeQuantity(row.quantity), 0);
+      if (requested.quantity > truckAdded - allocatedElsewhere + 0.001) {
+        const error = new Error(`${requested.productName} exceeds available scanned truck inventory.`);
+        error.status = 409;
         throw error;
       }
     }
@@ -4187,6 +4833,23 @@ async function saveDriverStopDeliverySettlement(stopId, driverId, input = {}) {
         item.adjustmentReason,
         item.notes,
         JSON.stringify(item.raw || {})
+      ]);
+    }
+
+    await client.query('DELETE FROM route_truck_inventory_allocations WHERE route_stop_id = $1', [cleanedStopId]);
+    for (const [sku, allocation] of addedBySku) {
+      await client.query(`
+        INSERT INTO route_truck_inventory_allocations
+          (id, manifest_id, route_stop_id, driver_id, sku, scanned_barcode, quantity, updated_at)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, NOW())
+      `, [
+        stableRepositoryId('truck_inventory_allocation', [cleanedStopId, sku]),
+        stopRow.manifest_id,
+        cleanedStopId,
+        cleanedDriverId,
+        sku,
+        allocation.barcode,
+        allocation.quantity
       ]);
     }
 
@@ -4877,6 +5540,9 @@ async function listRouteCompletionSignals(options = {}) {
     plannedEndAt: toIsoString(row.planned_end_at),
     startedAt: toIsoString(row.started_at),
     completedAt: toIsoString(row.completed_at),
+    finalInventoryPrintedAt: toIsoString(row.final_inventory_printed_at),
+    actualDurationMinutes: row.actual_duration_minutes == null ? null : Number(row.actual_duration_minutes),
+    finalInventorySupervisorStatus: row.final_inventory_supervisor_status || null,
     totalStops: Number(row.total_stops) || 0,
     totalPallets: Number(row.total_pallets) || 0,
     totalCases: Number(row.total_cases) || 0,
@@ -6300,8 +6966,14 @@ async function getKnowledgeGraphSnapshot(options = {}) {
       LIMIT $1
     `, [limit]),
     postgres.query(`
-      SELECT *
-      FROM daily_route_manifests
+    SELECT
+      daily_route_manifests.*,
+      inventory_closeout.printed_at AS final_inventory_printed_at,
+      inventory_closeout.actual_duration_minutes,
+      inventory_closeout.supervisor_status AS final_inventory_supervisor_status
+    FROM daily_route_manifests
+    LEFT JOIN route_inventory_closeouts AS inventory_closeout
+      ON inventory_closeout.manifest_id = daily_route_manifests.id
       WHERE (
         $2::date IS NOT NULL AND route_date = $2::date
       ) OR (
@@ -6687,6 +7359,15 @@ module.exports = {
   listDataImportBatches,
   listDrivers,
   listProducts,
+  lookupProductByBarcodeOrSku,
+  addRouteTruckInventoryForDriver,
+  getRouteTruckInventoryForDriver,
+  upsertWarehouseEmployee,
+  listWarehouseEmployees,
+  getWarehouseEmployeeWithPin,
+  prepareDepartureInventoryConfirmation,
+  confirmDepartureInventoryPrint,
+  getDepartureInventoryConfirmation,
   listPredictionRuns,
   listScheduledReports,
   listScheduledReportSchedules,
@@ -6701,6 +7382,10 @@ module.exports = {
   listDeliveryDocumentsForAdmin,
   getRouteCloseoutDocumentForDriver,
   listRouteCloseoutDocumentsForAdmin,
+  prepareRouteInventoryCloseoutForDriver,
+  confirmRouteInventoryCloseoutPrintForDriver,
+  listRouteInventoryCloseoutsForAdmin,
+  reviewRouteInventoryCloseout,
   listDriverCoachingSignals,
   listManualHazards,
   listOperationalGeographyConfiguration,

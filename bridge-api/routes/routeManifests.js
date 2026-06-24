@@ -240,8 +240,11 @@ function normalizeDate(value) {
 function parseDateTime(routeDate, value) {
   const cleaned = cleanText(value, 80);
   if (!cleaned) return null;
-  const direct = new Date(cleaned);
-  if (!Number.isNaN(direct.getTime())) return direct.toISOString();
+
+  if (/([zZ]|[+-]\d{2}:?\d{2})$/.test(cleaned)) {
+    const direct = new Date(cleaned);
+    if (!Number.isNaN(direct.getTime())) return direct.toISOString();
+  }
 
   const timeMatch = cleaned.match(/^(\d{1,2})(?::(\d{2}))?\s*(am|pm)?$/i);
   if (!timeMatch) return null;
@@ -250,9 +253,36 @@ function parseDateTime(routeDate, value) {
   const meridiem = String(timeMatch[3] || '').toLowerCase();
   if (meridiem === 'pm' && hour < 12) hour += 12;
   if (meridiem === 'am' && hour === 12) hour = 0;
+  const [year, month, day] = routeDate.split('-').map(Number);
+  const desiredWallClockMs = Date.UTC(year, month - 1, day, hour, minute, 0);
+  let utcMs = desiredWallClockMs;
+  const timeZone = process.env.ROUTE_OPERATING_TIMEZONE || 'America/Chicago';
 
-  const parsed = new Date(`${routeDate}T${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}:00`);
-  return Number.isNaN(parsed.getTime()) ? null : parsed.toISOString();
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    const parts = new Intl.DateTimeFormat('en-US', {
+      timeZone,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hourCycle: 'h23'
+    }).formatToParts(new Date(utcMs));
+    const displayed = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+    const displayedWallClockMs = Date.UTC(
+      Number(displayed.year),
+      Number(displayed.month) - 1,
+      Number(displayed.day),
+      Number(displayed.hour),
+      Number(displayed.minute),
+      Number(displayed.second)
+    );
+    const adjustment = desiredWallClockMs - displayedWallClockMs;
+    utcMs += adjustment;
+    if (adjustment === 0) break;
+  }
+  return new Date(utcMs).toISOString();
 }
 
 function stableId(parts) {
@@ -499,8 +529,8 @@ function renderRouteManifestAdminPage() {
     </nav>
     <section class="panel">
       <h2>Import CSV</h2>
-      <p class="muted">Required columns: route number, stop sequence, address. Recommended: route date, route start, route end, account number, account name, pallets, cases, invoice number, SKU, product name, quantity, unit price, assigned_driver_id, assigned_driver_name.</p>
-      <p><button onclick="loadProductionTemplate()">Use Production Bulk Assignment Template</button></p>
+      <p class="muted">Required columns: route number, stop sequence, address. Recommended: route date, route start, route end, account number, account name, pallets, cases, invoice number, SKU, product name, quantity, and unit price. Production imports are unassigned; assign each imported route to an active registered driver afterward.</p>
+      <p><button onclick="loadProductionTemplate()">Use Unassigned Route Template</button></p>
       <div class="grid">
         <div><label>File name</label><input id="fileName" placeholder="DailyRoutes_2026-05-25.csv" /></div>
         <div><label>Imported by</label><input id="importedBy" placeholder="Supervisor name" /></div>
@@ -536,6 +566,19 @@ function renderRouteManifestAdminPage() {
       </div>
       <p id="routesStatus" class="muted">Loading persisted routes...</p>
       <div id="routes"></div>
+    </section>
+    <section class="panel">
+      <h2>Warehouse Employee Access</h2>
+      <p class="muted">Create employee ID/PIN access for warehouse staff who confirm and print a driver's route inventory before departure.</p>
+      <div class="grid">
+        <div><label>Company employee ID</label><input id="warehouseEmployeeId" autocomplete="off" /></div>
+        <div><label>Employee name</label><input id="warehouseEmployeeName" autocomplete="off" /></div>
+        <div><label>PIN</label><input id="warehouseEmployeePin" type="password" inputmode="numeric" autocomplete="new-password" /></div>
+        <div><label>Access status</label><select id="warehouseEmployeeActive"><option value="true">Active</option><option value="false">Inactive</option></select></div>
+      </div>
+      <p class="row-actions"><button onclick="saveWarehouseEmployee()">Save Employee Access</button><button class="secondary" onclick="loadWarehouseEmployees()">Refresh Employees</button></p>
+      <div id="warehouseEmployeeMessage" class="message"></div>
+      <div id="warehouseEmployees"></div>
     </section>
     <section class="panel">
       <h2>Undelivered / Redelivery Queue</h2>
@@ -609,15 +652,46 @@ function renderRouteManifestAdminPage() {
     }
 
     function loadProductionTemplate() {
-      document.getElementById('fileName').value = 'daily-route-bulk-assignment-template.csv';
+      document.getElementById('fileName').value = 'daily-route-unassigned-template.csv';
       document.getElementById('csvText').value = [
-        'route_date,route_number,route_name,planned_route_start,planned_route_end,start_location,assigned_driver_id,assigned_driver_name,stop_sequence,account_number,account_name,address,city,state,zip,planned_arrival,planned_departure,planned_service_minutes,drive_minutes_to_next,pallet_count,case_count,invoice_number,sku,product_name,brand,package_size,category,product_quantity,unit_price,gross_amount,item_summary',
-        '2026-05-25,RT-101,San Antonio North,7:00 AM,3:30 PM,San Antonio DC,DRV-1001,Jordan Lee,1,100245,Alamo City Stripers,"4337 E Houston St, San Antonio, TX 78220",San Antonio,TX,78220,7:35 AM,7:55 AM,20,14,2,48,INV-100245-1,COKE-12PK,Coca-Cola 12 Pack,Coca-Cola,12 Pack,CSD,48,9.99,479.52,"Front gate delivery"',
-        '2026-05-25,RT-101,San Antonio North,7:00 AM,3:30 PM,San Antonio DC,DRV-1001,Jordan Lee,1,100245,Alamo City Stripers,"4337 E Houston St, San Antonio, TX 78220",San Antonio,TX,78220,7:35 AM,7:55 AM,20,14,2,38,INV-100245-1,SPRITE-12PK,Sprite 12 Pack,Sprite,12 Pack,CSD,38,9.49,360.62,"Front gate delivery"',
-        '2026-05-25,RT-101,San Antonio North,7:00 AM,3:30 PM,San Antonio DC,DRV-1001,Jordan Lee,2,100246,Eastside Market,"5030 Rigsby Ave, San Antonio, TX 78222",San Antonio,TX,78222,8:10 AM,8:28 AM,18,16,1,44,INV-100246-1,DASANI-24PK,Dasani 24 Pack,Dasani,24 Pack,Water,44,6.75,297.00,"Water; mini cans"',
-        '2026-05-25,RT-102,Leon Valley,6:45 AM,2:45 PM,San Antonio DC,DRV-1002,Casey Morgan,1,200100,Vape City,"5772 Evers Rd, Leon Valley, TX 78238",Leon Valley,TX,78238,7:20 AM,7:38 AM,18,12,1,52,INV-200100-1,COKE-ZERO-12PK,Coca-Cola Zero Sugar 12 Pack,Coca-Cola,12 Pack,CSD,52,9.99,519.48,"Core CSD"',
-        '2026-05-25,RT-102,Leon Valley,6:45 AM,2:45 PM,San Antonio DC,DRV-1002,Casey Morgan,2,200101,AutoZone,"5803 NW Loop 410, San Antonio, TX 78238",San Antonio,TX,78238,7:50 AM,8:15 AM,25,15,3,120,INV-200101-1,POWERADE-MIX,Powerade Mixed Case,Powerade,Case,Sports Drink,120,11.25,1350.00,"Bulk pallets"'
+        'route_date,route_number,route_name,planned_route_start,planned_route_end,start_location,stop_sequence,account_number,account_name,address,city,state,zip,planned_arrival,planned_departure,planned_service_minutes,drive_minutes_to_next,pallet_count,case_count,invoice_number,sku,product_name,brand,package_size,category,product_quantity,unit_price,gross_amount,item_summary',
+        '2026-06-20,RT-101,San Antonio North,7:00 AM,3:30 PM,San Antonio DC,1,100245,Alamo City Stripers,"4337 E Houston St, San Antonio, TX 78220",San Antonio,TX,78220,7:35 AM,7:55 AM,20,14,2,48,INV-100245-1,COKE-12PK,Coca-Cola 12 Pack,Coca-Cola,12 Pack,CSD,48,9.99,479.52,"Front gate delivery"',
+        '2026-06-20,RT-101,San Antonio North,7:00 AM,3:30 PM,San Antonio DC,1,100245,Alamo City Stripers,"4337 E Houston St, San Antonio, TX 78220",San Antonio,TX,78220,7:35 AM,7:55 AM,20,14,2,38,INV-100245-1,SPRITE-12PK,Sprite 12 Pack,Sprite,12 Pack,CSD,38,9.49,360.62,"Front gate delivery"',
+        '2026-06-20,RT-101,San Antonio North,7:00 AM,3:30 PM,San Antonio DC,2,100246,Eastside Market,"5030 Rigsby Ave, San Antonio, TX 78222",San Antonio,TX,78222,8:10 AM,8:28 AM,18,16,1,44,INV-100246-1,DASANI-24PK,Dasani 24 Pack,Dasani,24 Pack,Water,44,6.75,297.00,"Water; mini cans"'
       ].join('\\n');
+    }
+
+    async function loadWarehouseEmployees() {
+      const target = document.getElementById('warehouseEmployees');
+      const response = await fetch('/api/route-manifests/warehouse-employees');
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        target.innerHTML = '<p class="error">' + escapeHtml(data.error || 'Unable to load warehouse employees.') + '</p>';
+        return;
+      }
+      const employees = Array.isArray(data.employees) ? data.employees : [];
+      target.innerHTML = employees.length ? '<table><thead><tr><th>Employee ID</th><th>Name</th><th>Status</th><th>Updated</th></tr></thead><tbody>' + employees.map(employee =>
+        '<tr><td>' + escapeHtml(employee.employeeId) + '</td><td>' + escapeHtml(employee.employeeName) + '</td><td>' + (employee.active ? 'Active' : 'Inactive') + '</td><td>' + escapeHtml(employee.updatedAt ? new Date(employee.updatedAt).toLocaleString() : '') + '</td></tr>'
+      ).join('') + '</tbody></table>' : '<p class="muted">No warehouse employee access records.</p>';
+    }
+
+    async function saveWarehouseEmployee() {
+      const payload = {
+        employeeId: document.getElementById('warehouseEmployeeId').value.trim(),
+        employeeName: document.getElementById('warehouseEmployeeName').value.trim(),
+        pin: document.getElementById('warehouseEmployeePin').value,
+        active: document.getElementById('warehouseEmployeeActive').value === 'true'
+      };
+      const message = document.getElementById('warehouseEmployeeMessage');
+      const response = await fetch('/api/route-manifests/warehouse-employees', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
+      });
+      const data = await response.json().catch(() => ({}));
+      message.textContent = response.ok ? 'Warehouse employee access saved.' : (data.error || 'Unable to save warehouse employee access.');
+      if (response.ok) {
+        document.getElementById('warehouseEmployeePin').value = '';
+        loadWarehouseEmployees();
+      }
     }
 
     const activeDriversById = new Map();
@@ -802,7 +876,7 @@ function renderRouteManifestAdminPage() {
             : 'No route manifests are currently stored in the backend.';
         routesContainer.innerHTML = routes.length
           ?
-        '<table><thead><tr><th>Switch</th><th>Actions</th><th>Date</th><th>Route</th><th>Times</th><th>Stops</th><th>Pallets</th><th>Cases</th><th>Driver</th><th>Status</th></tr></thead><tbody>' +
+        '<table><thead><tr><th>Switch</th><th>Actions</th><th>Date</th><th>Route</th><th>Planned</th><th>Actual / Variance</th><th>Stops</th><th>Pallets</th><th>Cases</th><th>Driver</th><th>Status</th></tr></thead><tbody>' +
         routes.map(route => '<tr>' +
           '<td><input type="checkbox" name="routeSwitch" value="' + escapeHtml(route.id) + '" /></td>' +
           '<td class="route-actions"><div class="row-actions">' +
@@ -814,7 +888,8 @@ function renderRouteManifestAdminPage() {
           '</div></td>' +
           '<td>' + escapeHtml(route.routeDate) + '</td>' +
           '<td><strong>' + escapeHtml(route.routeNumber) + '</strong><br><span class="muted">' + escapeHtml(route.routeName || '') + '</span></td>' +
-          '<td>' + escapeHtml(route.plannedStartAt || '-') + '<br>' + escapeHtml(route.plannedEndAt || '-') + '</td>' +
+          '<td>' + escapeHtml(route.plannedStartAt ? new Date(route.plannedStartAt).toLocaleString() : '-') + '<br>' + escapeHtml(route.plannedEndAt ? new Date(route.plannedEndAt).toLocaleString() : '-') + '<br><span class="muted">' + escapeHtml(route.plannedDurationMinutes == null ? '' : route.plannedDurationMinutes + ' min planned') + '</span></td>' +
+          '<td>' + escapeHtml(route.finalInventoryPrintedAt ? new Date(route.finalInventoryPrintedAt).toLocaleString() : 'Pending final inventory') + '<br><span class="muted">' + escapeHtml(route.actualDurationMinutes == null ? '' : route.actualDurationMinutes + ' min actual') + '</span><br><strong>' + escapeHtml(route.actualDurationMinutes == null || route.plannedDurationMinutes == null ? '' : (route.actualDurationMinutes - route.plannedDurationMinutes) + ' min variance') + '</strong></td>' +
           '<td>' + escapeHtml(route.totalStops) + '</td>' +
           '<td>' + escapeHtml(route.totalPallets) + '</td>' +
           '<td>' + escapeHtml(route.totalCases) + '</td>' +
@@ -900,15 +975,22 @@ function renderRouteManifestAdminPage() {
       const data = await response.json().catch(() => ({}));
       const documents = data.documents || [];
       document.getElementById('deliveryDocuments').innerHTML = documents.length
-        ? '<table><thead><tr><th>Date</th><th>Route</th><th>Account</th><th>Type</th><th>Driver</th><th>Expires</th><th></th></tr></thead><tbody>' +
+        ? '<table><thead><tr><th>Date</th><th>Route</th><th>Account</th><th>Type</th><th>Driver</th><th>Status / Expires</th><th></th></tr></thead><tbody>' +
           documents.map(item => '<tr>' +
             '<td>' + escapeHtml(item.routeDate || '') + '</td>' +
             '<td>' + escapeHtml(item.routeNumber || '') + '</td>' +
             '<td><strong>' + escapeHtml(item.accountName || '') + '</strong><br><span class="muted">' + escapeHtml(item.accountNumber || '') + '</span></td>' +
             '<td>' + escapeHtml(item.documentType || '') + '<br><span class="muted">' + escapeHtml(item.documentNumber || '') + '</span></td>' +
             '<td>' + escapeHtml(item.driverName || item.driverId || '') + '</td>' +
-            '<td>' + escapeHtml(item.expiresAt ? new Date(item.expiresAt).toLocaleString() : '') + '</td>' +
-            '<td><button onclick="printDeliveryDocument(decodeURIComponent(\\'' + encodeURIComponent(JSON.stringify(item)) + '\\'))">Open / Print</button></td>' +
+            '<td>' + escapeHtml(item.supervisorStatus || item.status || (item.expiresAt ? new Date(item.expiresAt).toLocaleString() : '')) + '</td>' +
+            '<td><div class="row-actions"><button onclick="printDeliveryDocument(decodeURIComponent(\\'' + encodeURIComponent(JSON.stringify(item)) + '\\'))">Open / Print</button>' +
+              (item.documentType === 'final_inventory_closeout' && item.supervisorStatus === 'pending_review'
+                ? '<button onclick="reviewInventoryCloseout(decodeURIComponent(\\'' + encodeURIComponent(item.manifestId) + '\\'), \\'approved\\')">Approve</button>'
+                : '') +
+              (item.documentType === 'final_inventory_closeout' && item.supervisorStatus === 'approved'
+                ? '<button class="secondary" onclick="reviewInventoryCloseout(decodeURIComponent(\\'' + encodeURIComponent(item.manifestId) + '\\'), \\'archived\\')">Archive</button>'
+                : '') +
+            '</div></td>' +
           '</tr>').join('') +
           '</tbody></table>'
         : '<p class="muted">No active delivery documents match this date.</p>';
@@ -917,6 +999,16 @@ function renderRouteManifestAdminPage() {
     function printDeliveryDocument(serialized) {
       const item = JSON.parse(serialized);
       const payload = item.payload || {};
+      if (item.documentType === 'final_inventory_closeout') {
+        const inventory = payload.inventory || {};
+        const report = window.open('', '_blank');
+        report.document.write('<!doctype html><html><head><title>' + escapeHtml(item.documentNumber || 'Final Inventory Closeout') + '</title><style>body{font-family:Arial,sans-serif;max-width:760px;margin:25px auto;color:#111}h1,h2{text-align:center;margin:4px}.box{border:1px solid #bbb;padding:12px;margin-top:14px}table{width:100%;border-collapse:collapse;margin-top:16px}th,td{padding:8px;border-bottom:1px solid #ddd;text-align:left}</style></head><body>');
+        report.document.write('<h1>Arca Continental</h1><h2>Final Inventory Inspection Closeout</h2>');
+        report.document.write('<div class="box"><strong>Route:</strong> ' + escapeHtml(payload.routeNumber || '') + '<br><strong>Date:</strong> ' + escapeHtml(payload.routeDate || '') + '<br><strong>Driver:</strong> ' + escapeHtml(payload.driver?.name || '') + ' (' + escapeHtml(payload.driver?.id || '') + ')<br><strong>Printed:</strong> ' + escapeHtml(item.printedAt ? new Date(item.printedAt).toLocaleString() : 'Pending Zebra confirmation') + '</div>');
+        report.document.write('<table><tbody><tr><th>Loaded</th><td>' + escapeHtml(inventory.loadedQuantity || 0) + '</td></tr><tr><th>Delivered</th><td>' + escapeHtml(inventory.deliveredQuantity || 0) + '</td></tr><tr><th>Remaining sellable</th><td>' + escapeHtml(inventory.sellableQuantity || 0) + '</td></tr><tr><th>Customer returns</th><td>' + escapeHtml(inventory.returnedQuantity || 0) + '</td></tr><tr><th>Damaged</th><td>' + escapeHtml(inventory.damagedQuantity || 0) + '</td></tr><tr><th>Missing / unaccounted</th><td>' + escapeHtml(inventory.missingQuantity || inventory.unaccountedQuantity || 0) + '</td></tr><tr><th>Added</th><td>' + escapeHtml(inventory.addedQuantity || 0) + '</td></tr><tr><th>Rejected</th><td>' + escapeHtml(inventory.rejectedQuantity || 0) + '</td></tr></tbody></table>');
+        report.document.write('<div class="box"><strong>Supervisor status:</strong> ' + escapeHtml(item.supervisorStatus || '') + '<br><strong>Actual route duration:</strong> ' + escapeHtml(item.actualDurationMinutes == null ? 'Pending' : item.actualDurationMinutes + ' minutes') + '<br><strong>Notes:</strong> ' + escapeHtml(payload.notes || '') + '</div></body></html>');
+        report.document.close(); report.focus(); report.print(); return;
+      }
       if (item.documentType === 'route_closeout') {
         const transactions = Array.isArray(payload.transactions) ? payload.transactions : [];
         const totals = payload.totals || {};
@@ -948,7 +1040,23 @@ function renderRouteManifestAdminPage() {
       report.focus();
       report.print();
     }
+
+    async function reviewInventoryCloseout(manifestId, status) {
+      const notes = prompt(status === 'approved' ? 'Optional approval notes:' : 'Optional archive notes:', '') || '';
+      const response = await fetch('/api/route-manifests/inventory-closeouts/' + encodeURIComponent(manifestId) + '/review', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status, notes })
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        alert(data.error || 'Unable to update final inventory closeout.');
+        return;
+      }
+      loadDeliveryDocuments();
+    }
     loadDriversForAssignment();
+    loadWarehouseEmployees();
     loadRoutes();
     loadUndeliveredStops();
     loadDeliveryDocuments();
@@ -957,12 +1065,76 @@ function renderRouteManifestAdminPage() {
 </html>`;
 }
 
+function warehouseEmployeeResponse(row) {
+  if (!row) return null;
+  return {
+    employeeId: row.employee_id,
+    employeeName: row.employee_name,
+    active: row.active === true,
+    createdAt: row.created_at || null,
+    updatedAt: row.updated_at || null
+  };
+}
+
+function departureInventoryConfirmationResponse(row) {
+  if (!row) return null;
+  return {
+    manifestId: row.manifest_id,
+    driverId: row.driver_id,
+    driverName: row.driverName || null,
+    routeNumber: row.routeNumber || null,
+    routeDate: row.routeDate || null,
+    routeName: row.routeName || null,
+    warehouseEmployeeId: row.warehouse_employee_id,
+    warehouseEmployeeName: row.warehouse_employee_name,
+    status: row.status,
+    inventory: Array.isArray(row.inventory) ? row.inventory : [],
+    printConfirmationToken: row.print_confirmation_token || null,
+    confirmedAt: row.confirmed_at || null,
+    printRequestedAt: row.print_requested_at || null,
+    printedAt: row.printed_at || null
+  };
+}
+
 router.get('/admin', (req, res) => {
   if (!adminAuth.getAdminSession(req)) {
     return res.redirect('/api/routing/manual-hazards/admin/login');
   }
   res.set('Content-Type', 'text/html; charset=utf-8');
   return res.send(renderRouteManifestAdminPage());
+});
+
+router.get('/warehouse-employees', requireAdminSession, async (req, res) => {
+  try {
+    const employees = await repositories.listWarehouseEmployees();
+    return res.json({ ok: true, employees: employees.map(warehouseEmployeeResponse) });
+  } catch (error) {
+    return res.status(error.status || 500).json({ error: error.message || 'Unable to load warehouse employees.' });
+  }
+});
+
+router.post('/warehouse-employees', requireAdminSession, async (req, res) => {
+  try {
+    const employeeId = cleanText(req.body?.employeeId || req.body?.employee_id, 120);
+    const employeeName = cleanText(req.body?.employeeName || req.body?.employee_name, 200);
+    const pin = String(req.body?.pin || '');
+    if (!employeeId || !employeeName) {
+      return res.status(400).json({ error: 'Company employee ID and employee name are required.' });
+    }
+    if (pin.length < 4 || pin.length > 32) {
+      return res.status(400).json({ error: 'PIN must be between 4 and 32 characters.' });
+    }
+    const employee = await repositories.upsertWarehouseEmployee({
+      employeeId,
+      employeeName,
+      pinHash: adminAuth.hashPassword(pin),
+      active: req.body?.active !== false,
+      updatedBy: req.adminSession?.username
+    });
+    return res.status(201).json({ ok: true, employee: warehouseEmployeeResponse(employee) });
+  } catch (error) {
+    return res.status(error.status || 500).json({ error: error.message || 'Unable to save warehouse employee access.' });
+  }
 });
 
 router.post('/import', requireAdminSession, async (req, res) => {
@@ -1110,6 +1282,100 @@ router.post('/driver/stops/:stopId/deductions', driverAuth.requireDriverAuth, as
   }
 });
 
+router.get('/driver/products/lookup', driverAuth.requireDriverAuth, async (req, res) => {
+  try {
+    const identity = cleanText(req.query?.barcode || req.query?.sku, 160);
+    if (!identity) return res.status(400).json({ error: 'barcode or sku is required.' });
+    const product = await repositories.lookupProductByBarcodeOrSku(identity);
+    if (!product) return res.status(404).json({ error: 'Product was not found in the active catalog.' });
+    return res.json({ ok: true, product });
+  } catch (error) {
+    return res.status(error.status || 500).json({ error: error.message || 'Unable to look up product.' });
+  }
+});
+
+router.get('/driver/routes/:manifestId/truck-inventory', driverAuth.requireDriverAuth, async (req, res) => {
+  try {
+    const identity = driverAuth.getDriverIdentity(req);
+    const items = await repositories.getRouteTruckInventoryForDriver(req.params.manifestId, identity.driverId);
+    const confirmation = await repositories.getDepartureInventoryConfirmation(req.params.manifestId, identity.driverId);
+    return res.json({
+      ok: true,
+      driver: identity,
+      items,
+      confirmation: departureInventoryConfirmationResponse(confirmation)
+    });
+  } catch (error) {
+    return res.status(error.status || 500).json({ error: error.message || 'Unable to load truck inventory.' });
+  }
+});
+
+router.post('/driver/routes/:manifestId/departure-inventory/confirm', driverAuth.requireDriverAuth, async (req, res) => {
+  try {
+    const identity = driverAuth.getDriverIdentity(req);
+    const employeeId = cleanText(req.body?.employeeId || req.body?.employee_id, 120);
+    const pin = String(req.body?.pin || '');
+    if (!employeeId || !pin) {
+      return res.status(400).json({ error: 'Warehouse employee ID and PIN are required.' });
+    }
+    const employee = await repositories.getWarehouseEmployeeWithPin(employeeId);
+    if (!employee || employee.active !== true || !adminAuth.verifyPassword(pin, employee.pin_hash)) {
+      return res.status(401).json({ error: 'Warehouse employee ID or PIN is invalid, or the employee is inactive.' });
+    }
+    const confirmation = await repositories.prepareDepartureInventoryConfirmation(
+      req.params.manifestId,
+      identity.driverId,
+      employee
+    );
+    if (!confirmation) {
+      return res.status(404).json({ error: 'Active assigned route was not found for this driver ID.' });
+    }
+    const document = {
+      documentType: 'departure_inventory',
+      generatedAt: new Date().toISOString(),
+      ...departureInventoryConfirmationResponse(confirmation)
+    };
+    return res.json({ ok: true, driver: identity, confirmation: document, document });
+  } catch (error) {
+    return res.status(error.status || 500).json({ error: error.message || 'Unable to confirm departure inventory.' });
+  }
+});
+
+router.put('/driver/routes/:manifestId/departure-inventory/confirm-print', driverAuth.requireDriverAuth, async (req, res) => {
+  try {
+    const identity = driverAuth.getDriverIdentity(req);
+    const token = cleanText(req.body?.printConfirmationToken || req.body?.print_confirmation_token, 160);
+    if (!token) return res.status(400).json({ error: 'printConfirmationToken is required.' });
+    const confirmation = await repositories.confirmDepartureInventoryPrint(
+      req.params.manifestId,
+      identity.driverId,
+      token
+    );
+    if (!confirmation) {
+      return res.status(409).json({ error: 'Departure inventory print confirmation is invalid or already completed.' });
+    }
+    return res.json({ ok: true, driver: identity, confirmation: departureInventoryConfirmationResponse(confirmation) });
+  } catch (error) {
+    return res.status(error.status || 500).json({ error: error.message || 'Unable to confirm departure inventory print.' });
+  }
+});
+
+router.post('/driver/routes/:manifestId/truck-inventory/additions', driverAuth.requireDriverAuth, async (req, res) => {
+  try {
+    const identity = driverAuth.getDriverIdentity(req);
+    const addition = await repositories.addRouteTruckInventoryForDriver(
+      req.params.manifestId,
+      identity.driverId,
+      req.body || {}
+    );
+    if (!addition) return res.status(404).json({ error: 'Active assigned route was not found for this driver.' });
+    const items = await repositories.getRouteTruckInventoryForDriver(req.params.manifestId, identity.driverId);
+    return res.status(201).json({ ok: true, driver: identity, addition, items });
+  } catch (error) {
+    return res.status(error.status || 500).json({ error: error.message || 'Unable to add truck inventory.' });
+  }
+});
+
 router.get('/driver/stops/:stopId/delivery', driverAuth.requireDriverAuth, async (req, res) => {
   try {
     const identity = driverAuth.getDriverIdentity(req);
@@ -1165,6 +1431,44 @@ router.get('/driver/routes/:manifestId/closeout', driverAuth.requireDriverAuth, 
   } catch (error) {
     return res.status(error.status || 500).json({
       error: error.message || 'Unable to load the route closeout receipt.'
+    });
+  }
+});
+
+router.put('/driver/routes/:manifestId/inventory-closeout', driverAuth.requireDriverAuth, async (req, res) => {
+  try {
+    const identity = driverAuth.getDriverIdentity(req);
+    const document = await repositories.prepareRouteInventoryCloseoutForDriver(
+      req.params.manifestId,
+      identity.driverId,
+      req.body || {}
+    );
+    if (!document) {
+      return res.status(404).json({ error: 'Completed route is not available for final inventory closeout by this active driver.' });
+    }
+    return res.json({ ok: true, driver: identity, document });
+  } catch (error) {
+    return res.status(error.status || 500).json({
+      error: error.message || 'Unable to prepare final inventory closeout.'
+    });
+  }
+});
+
+router.put('/driver/routes/:manifestId/inventory-closeout/confirm-print', driverAuth.requireDriverAuth, async (req, res) => {
+  try {
+    const identity = driverAuth.getDriverIdentity(req);
+    const document = await repositories.confirmRouteInventoryCloseoutPrintForDriver(
+      req.params.manifestId,
+      identity.driverId,
+      req.body?.printConfirmationToken || req.body?.print_confirmation_token
+    );
+    if (!document) {
+      return res.status(409).json({ error: 'Zebra print confirmation is invalid or final inventory closeout is already complete.' });
+    }
+    return res.json({ ok: true, driver: identity, document });
+  } catch (error) {
+    return res.status(error.status || 500).json({
+      error: error.message || 'Unable to confirm the final inventory closeout print.'
     });
   }
 });
@@ -1297,7 +1601,7 @@ router.put('/driver/stops/:stopId/delivery', driverAuth.requireDriverAuth, async
 
 router.get('/documents', requireAdminSession, async (req, res) => {
   try {
-    const [deliveryDocuments, closeoutDocuments] = await Promise.all([
+    const [deliveryDocuments, closeoutDocuments, inventoryCloseouts] = await Promise.all([
       repositories.listDeliveryDocumentsForAdmin({
         routeDate: req.query.routeDate,
         accountNumber: req.query.accountNumber,
@@ -1306,14 +1610,36 @@ router.get('/documents', requireAdminSession, async (req, res) => {
       repositories.listRouteCloseoutDocumentsForAdmin({
         routeDate: req.query.routeDate,
         limit: req.query.limit
+      }),
+      repositories.listRouteInventoryCloseoutsForAdmin({
+        routeDate: req.query.routeDate,
+        limit: req.query.limit
       })
     ]);
-    const documents = [...deliveryDocuments, ...closeoutDocuments]
+    const documents = [...deliveryDocuments, ...closeoutDocuments, ...inventoryCloseouts]
       .sort((left, right) => String(right.createdAt || '').localeCompare(String(left.createdAt || '')));
     return res.json({ ok: true, documents });
   } catch (error) {
     return res.status(error.status || 500).json({
       error: error.message || 'Unable to load delivery documents.'
+    });
+  }
+});
+
+router.put('/inventory-closeouts/:manifestId/review', requireAdminSession, async (req, res) => {
+  try {
+    const document = await repositories.reviewRouteInventoryCloseout(
+      req.params.manifestId,
+      req.body || {},
+      req.adminSession?.username || 'supervisor'
+    );
+    if (!document) {
+      return res.status(404).json({ error: 'Printed final inventory closeout was not found.' });
+    }
+    return res.json({ ok: true, document });
+  } catch (error) {
+    return res.status(error.status || 500).json({
+      error: error.message || 'Unable to review final inventory closeout.'
     });
   }
 });

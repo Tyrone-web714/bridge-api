@@ -14,11 +14,12 @@ assert.strictEqual(customerPreview.warningCount, 1);
 assert.strictEqual(customerPreview.records[0].stateCode, 'TX');
 
 const productPreview = bulkImport.normalizeImport('products', [
-  'sku,product_name,brand,unit_price',
-  'SKU-1,Coca-Cola 12 Pack,Coca-Cola,$9.99',
+  'sku,barcodes,product_name,brand,unit_price',
+  'SKU-1,049000028911|049000042016,Coca-Cola 12 Pack,Coca-Cola,$9.99',
 ].join('\n'));
 assert.strictEqual(productPreview.validCount, 1);
 assert.strictEqual(productPreview.records[0].unitPrice, 9.99);
+assert.deepStrictEqual(productPreview.records[0].barcodes, ['049000028911', '049000042016']);
 
 const orderPreview = bulkImport.normalizeImport('orders', [
   'account_number,account_name,invoice_number,order_date,sku,product_name,quantity,unit_price',
