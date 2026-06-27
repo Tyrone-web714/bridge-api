@@ -15,15 +15,15 @@ function requireAdminSession(req, res, next) {
 const TEMPLATES = {
   customers: [
     'account_number,account_name,address,city,state,zip,phone,territory,route_group,distribution_center,active',
-    'ACCT-1001,EControls,5757 Farinon Dr,San Antonio,TX,78249,,San Antonio North,North Routes,San Antonio DC,true',
+    'ACCT-1001,Northside Market,100 Demo Market Way,San Antonio,TX,78249,,San Antonio North,North Routes,San Antonio DC,true',
   ].join('\r\n'),
   products: [
     'sku,barcodes,product_name,brand,package_size,category,unit_price,active',
-    'COKE-12PK-12OZ,049000028911|049000042016,Coca-Cola 12 oz 12 Pack,Coca-Cola,12 Pack,Sparkling,8.75,true',
+    'COLA-12PK-12OZ,000000000101|000000000102,Cola 12 oz 12 Pack,Demo Beverage,12 Pack,Sparkling,8.75,true',
   ].join('\r\n'),
   orders: [
     'account_number,account_name,invoice_number,order_date,delivery_date,sku,product_name,brand,package_size,category,quantity,unit_price,gross_amount,deduction_quantity,deduction_amount,status',
-    'ACCT-1001,EControls,INV-1001,2026-06-05,2026-06-06,COKE-12PK-12OZ,Coca-Cola 12 oz 12 Pack,Coca-Cola,12 Pack,Sparkling,36,8.75,315,0,0,planned',
+    'ACCT-1001,Northside Market,INV-1001,2026-06-05,2026-06-06,COLA-12PK-12OZ,Cola 12 oz 12 Pack,Demo Beverage,12 Pack,Sparkling,36,8.75,315,0,0,planned',
   ].join('\r\n'),
 };
 

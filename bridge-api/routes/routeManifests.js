@@ -2,6 +2,7 @@ const crypto = require('crypto');
 const express = require('express');
 const { parse } = require('csv-parse/sync');
 const adminAuth = require('../services/adminAuth');
+const branding = require('../services/branding');
 const driverAuth = require('../services/driverAuth');
 const repositories = require('../db/repositories');
 
@@ -67,7 +68,7 @@ function buildDeliveryDocumentPayload(delivery, identity, documentType) {
   const taxAmount = documentType === 'receipt' ? Number(settlement.taxAmount || 0) : 0;
 
   return {
-    brand: 'Arca Continental Coca-Cola Southwest Beverages',
+    brand: branding.organizationName,
     documentType,
     driver: {
       id: identity.driverId,
@@ -148,7 +149,7 @@ function buildRouteCloseoutPayload(route, identity) {
   });
   const reconciliation = route?.inventoryReconciliation || {};
   return {
-    brand: 'Arca Continental Coca-Cola Southwest Beverages',
+    brand: branding.organizationName,
     documentType: 'route_closeout',
     driver: {
       id: identity.driverId,
@@ -655,9 +656,9 @@ function renderRouteManifestAdminPage() {
       document.getElementById('fileName').value = 'daily-route-unassigned-template.csv';
       document.getElementById('csvText').value = [
         'route_date,route_number,route_name,planned_route_start,planned_route_end,start_location,stop_sequence,account_number,account_name,address,city,state,zip,planned_arrival,planned_departure,planned_service_minutes,drive_minutes_to_next,pallet_count,case_count,invoice_number,sku,product_name,brand,package_size,category,product_quantity,unit_price,gross_amount,item_summary',
-        '2026-06-20,RT-101,San Antonio North,7:00 AM,3:30 PM,San Antonio DC,1,100245,Alamo City Stripers,"4337 E Houston St, San Antonio, TX 78220",San Antonio,TX,78220,7:35 AM,7:55 AM,20,14,2,48,INV-100245-1,COKE-12PK,Coca-Cola 12 Pack,Coca-Cola,12 Pack,CSD,48,9.99,479.52,"Front gate delivery"',
-        '2026-06-20,RT-101,San Antonio North,7:00 AM,3:30 PM,San Antonio DC,1,100245,Alamo City Stripers,"4337 E Houston St, San Antonio, TX 78220",San Antonio,TX,78220,7:35 AM,7:55 AM,20,14,2,38,INV-100245-1,SPRITE-12PK,Sprite 12 Pack,Sprite,12 Pack,CSD,38,9.49,360.62,"Front gate delivery"',
-        '2026-06-20,RT-101,San Antonio North,7:00 AM,3:30 PM,San Antonio DC,2,100246,Eastside Market,"5030 Rigsby Ave, San Antonio, TX 78222",San Antonio,TX,78222,8:10 AM,8:28 AM,18,16,1,44,INV-100246-1,DASANI-24PK,Dasani 24 Pack,Dasani,24 Pack,Water,44,6.75,297.00,"Water; mini cans"'
+        '2026-06-20,RT-101,San Antonio North,7:00 AM,3:30 PM,San Antonio DC,1,100245,Alamo Demo Market,"100 Demo Market Way, San Antonio, TX 78220",San Antonio,TX,78220,7:35 AM,7:55 AM,20,14,2,48,INV-100245-1,COLA-12PK,Cola 12 Pack,Demo Beverage,12 Pack,CSD,48,9.99,479.52,"Front gate delivery"',
+        '2026-06-20,RT-101,San Antonio North,7:00 AM,3:30 PM,San Antonio DC,1,100245,Alamo Demo Market,"100 Demo Market Way, San Antonio, TX 78220",San Antonio,TX,78220,7:35 AM,7:55 AM,20,14,2,38,INV-100245-1,LEMON-LIME-12PK,Lemon-Lime 12 Pack,Demo Beverage,12 Pack,CSD,38,9.49,360.62,"Front gate delivery"',
+        '2026-06-20,RT-101,San Antonio North,7:00 AM,3:30 PM,San Antonio DC,2,100246,Eastside Demo Grocery,"200 Demo Grocery Ave, San Antonio, TX 78222",San Antonio,TX,78222,8:10 AM,8:28 AM,18,16,1,44,INV-100246-1,WATER-24PK,Bottled Water 24 Pack,Demo Beverage,24 Pack,Water,44,6.75,297.00,"Water; mini cans"'
       ].join('\\n');
     }
 
@@ -1003,7 +1004,7 @@ function renderRouteManifestAdminPage() {
         const inventory = payload.inventory || {};
         const report = window.open('', '_blank');
         report.document.write('<!doctype html><html><head><title>' + escapeHtml(item.documentNumber || 'Final Inventory Closeout') + '</title><style>body{font-family:Arial,sans-serif;max-width:760px;margin:25px auto;color:#111}h1,h2{text-align:center;margin:4px}.box{border:1px solid #bbb;padding:12px;margin-top:14px}table{width:100%;border-collapse:collapse;margin-top:16px}th,td{padding:8px;border-bottom:1px solid #ddd;text-align:left}</style></head><body>');
-        report.document.write('<h1>Arca Continental</h1><h2>Final Inventory Inspection Closeout</h2>');
+        report.document.write('<h1>' + escapeHtml(payload.brand || 'TruckSafe Routing') + '</h1><h2>Final Inventory Inspection Closeout</h2>');
         report.document.write('<div class="box"><strong>Route:</strong> ' + escapeHtml(payload.routeNumber || '') + '<br><strong>Date:</strong> ' + escapeHtml(payload.routeDate || '') + '<br><strong>Driver:</strong> ' + escapeHtml(payload.driver?.name || '') + ' (' + escapeHtml(payload.driver?.id || '') + ')<br><strong>Printed:</strong> ' + escapeHtml(item.printedAt ? new Date(item.printedAt).toLocaleString() : 'Pending Zebra confirmation') + '</div>');
         report.document.write('<table><tbody><tr><th>Loaded</th><td>' + escapeHtml(inventory.loadedQuantity || 0) + '</td></tr><tr><th>Delivered</th><td>' + escapeHtml(inventory.deliveredQuantity || 0) + '</td></tr><tr><th>Remaining sellable</th><td>' + escapeHtml(inventory.sellableQuantity || 0) + '</td></tr><tr><th>Customer returns</th><td>' + escapeHtml(inventory.returnedQuantity || 0) + '</td></tr><tr><th>Damaged</th><td>' + escapeHtml(inventory.damagedQuantity || 0) + '</td></tr><tr><th>Missing / unaccounted</th><td>' + escapeHtml(inventory.missingQuantity || inventory.unaccountedQuantity || 0) + '</td></tr><tr><th>Added</th><td>' + escapeHtml(inventory.addedQuantity || 0) + '</td></tr><tr><th>Rejected</th><td>' + escapeHtml(inventory.rejectedQuantity || 0) + '</td></tr></tbody></table>');
         report.document.write('<div class="box"><strong>Supervisor status:</strong> ' + escapeHtml(item.supervisorStatus || '') + '<br><strong>Actual route duration:</strong> ' + escapeHtml(item.actualDurationMinutes == null ? 'Pending' : item.actualDurationMinutes + ' minutes') + '<br><strong>Notes:</strong> ' + escapeHtml(payload.notes || '') + '</div></body></html>');
@@ -1015,7 +1016,7 @@ function renderRouteManifestAdminPage() {
         const inventory = payload.inventory || {};
         const report = window.open('', '_blank');
         report.document.write('<!doctype html><html><head><title>' + escapeHtml(item.documentNumber || 'Route Turn-In Receipt') + '</title><style>body{font-family:Arial,sans-serif;max-width:850px;margin:25px auto;color:#111}h1,h2{text-align:center;margin:4px}.meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:20px 0}.box{border:1px solid #bbb;padding:10px}table{width:100%;border-collapse:collapse;margin-top:16px}th,td{padding:8px;border-bottom:1px solid #ddd;text-align:left}.right{text-align:right}.totals{margin-left:auto;max-width:420px}.total{font-size:18px;font-weight:800}</style></head><body>');
-        report.document.write('<h1>Arca Continental</h1><h2>Coca-Cola Southwest Beverages</h2><h2>Route Turn-In Receipt</h2>');
+        report.document.write('<h1>' + escapeHtml(payload.brand || 'TruckSafe Routing') + '</h1><h2>Route Turn-In Receipt</h2>');
         report.document.write('<div class="meta"><div class="box"><strong>Driver:</strong> ' + escapeHtml(payload.driver?.name || '') + '<br><strong>Driver ID:</strong> ' + escapeHtml(payload.driver?.id || '') + '</div><div class="box"><strong>Route:</strong> ' + escapeHtml(payload.routeNumber || '') + '<br><strong>Date:</strong> ' + escapeHtml(payload.routeDate || '') + '<br><strong>Document:</strong> ' + escapeHtml(item.documentNumber || '') + '</div></div>');
         report.document.write('<table><thead><tr><th>Stop</th><th>Account</th><th>Payment</th><th class="right">Total</th><th class="right">Paid</th><th class="right">Balance</th></tr></thead><tbody>');
         transactions.forEach(transaction => report.document.write('<tr><td>' + escapeHtml(transaction.stopSequence || '') + '</td><td><strong>' + escapeHtml(transaction.accountName || '') + '</strong><br>' + escapeHtml(transaction.accountNumber || '') + '</td><td>' + escapeHtml(String(transaction.paymentMethod || 'Not recorded').replace(/_/g, ' ')) + '</td><td class="right">$' + escapeHtml(Number(transaction.totalAmount || 0).toFixed(2)) + '</td><td class="right">$' + escapeHtml(Number(transaction.amountPaid || 0).toFixed(2)) + '</td><td class="right">$' + escapeHtml(Number(transaction.unpaidBalance || 0).toFixed(2)) + '</td></tr>'));
@@ -1029,7 +1030,7 @@ function renderRouteManifestAdminPage() {
       const lines = Array.isArray(payload.items) ? payload.items : [];
       const report = window.open('', '_blank');
       report.document.write('<!doctype html><html><head><title>' + escapeHtml(item.documentNumber || 'Delivery Document') + '</title><style>body{font-family:Arial,sans-serif;max-width:760px;margin:25px auto;color:#111}h1,h2{text-align:center;margin:4px}.meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:20px 0}.box{border:1px solid #bbb;padding:10px}table{width:100%;border-collapse:collapse}th,td{padding:8px;border-bottom:1px solid #ddd;text-align:left}.right{text-align:right}.total{font-size:18px;font-weight:800}</style></head><body>');
-      report.document.write('<h1>Arca Continental</h1><h2>Coca-Cola Southwest Beverages</h2>');
+      report.document.write('<h1>' + escapeHtml(payload.brand || 'TruckSafe Routing') + '</h1>');
       report.document.write('<div class="meta"><div class="box"><strong>Driver:</strong> ' + escapeHtml(payload.driver?.name || '') + '<br><strong>Driver ID:</strong> ' + escapeHtml(payload.driver?.id || '') + '</div><div class="box"><strong>' + escapeHtml(item.documentType === 'receipt' ? 'Final Receipt' : 'Delivery Order') + '</strong><br>' + escapeHtml(item.documentNumber || '') + '</div></div>');
       report.document.write('<div class="box"><strong>Customer:</strong> ' + escapeHtml(payload.customer?.accountName || '') + '<br><strong>Account:</strong> ' + escapeHtml(payload.customer?.accountNumber || '') + '<br>' + escapeHtml(payload.customer?.address || '') + '<br><strong>Invoice:</strong> ' + escapeHtml(payload.invoiceNumber || '') + '</div>');
       report.document.write('<table><thead><tr><th>Product</th><th>Delivered</th><th>Added</th><th>Rejected</th><th>Damaged</th><th>Returned</th><th>Missing</th><th class="right">Price</th></tr></thead><tbody>');

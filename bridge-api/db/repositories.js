@@ -1,5 +1,6 @@
 const crypto = require('crypto');
 const postgres = require('./postgres');
+const branding = require('../services/branding');
 const censusServiceAreaPlaces = require('../data/census_service_area_places.json');
 
 function isDatabaseEnabled() {
@@ -122,15 +123,9 @@ function recentDestinationFromRow(row) {
   return {
     placeId: row.place_id || '',
     description: row.description || '',
-    mainText: row.main_text || '',
-    secondaryText: row.secondary_text || '',
-    photoUrl: row.photo_url || '',
-    placePhotoUrl: row.place_photo_url || '',
-    streetViewUrl: row.street_view_url || '',
-    photoSource: row.photo_source || '',
-    phoneNumber: row.phone_number || '',
-    internationalPhoneNumber: row.international_phone_number || '',
-    name: row.name || '',
+    mainText: row.description || '',
+    secondaryText: '',
+    name: '',
     savedAt: toIsoString(row.saved_at)
   };
 }
@@ -1448,6 +1443,11 @@ async function listRecentDestinations() {
 
 async function saveRecentDestination(destination, maxRecords = 12) {
   const key = destination.placeId || String(destination.description || '').toLowerCase();
+  const persistedRecord = {
+    placeId: destination.placeId || null,
+    description: destination.description,
+    savedAt: destination.savedAt || new Date().toISOString()
+  };
 
   await postgres.query(`
     INSERT INTO recent_destinations (
@@ -1459,32 +1459,32 @@ async function saveRecentDestination(destination, maxRecords = 12) {
     ON CONFLICT (record_key) DO UPDATE SET
       place_id = EXCLUDED.place_id,
       description = EXCLUDED.description,
-      main_text = EXCLUDED.main_text,
-      secondary_text = EXCLUDED.secondary_text,
-      photo_url = EXCLUDED.photo_url,
-      place_photo_url = EXCLUDED.place_photo_url,
-      street_view_url = EXCLUDED.street_view_url,
-      photo_source = EXCLUDED.photo_source,
-      phone_number = EXCLUDED.phone_number,
-      international_phone_number = EXCLUDED.international_phone_number,
-      name = EXCLUDED.name,
+      main_text = NULL,
+      secondary_text = NULL,
+      photo_url = NULL,
+      place_photo_url = NULL,
+      street_view_url = NULL,
+      photo_source = NULL,
+      phone_number = NULL,
+      international_phone_number = NULL,
+      name = NULL,
       saved_at = EXCLUDED.saved_at,
       raw = EXCLUDED.raw
   `, [
     key,
     destination.placeId || null,
     destination.description,
-    destination.mainText || null,
-    destination.secondaryText || null,
-    destination.photoUrl || null,
-    destination.placePhotoUrl || null,
-    destination.streetViewUrl || null,
-    destination.photoSource || null,
-    destination.phoneNumber || null,
-    destination.internationalPhoneNumber || null,
-    destination.name || null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
     destination.savedAt || new Date().toISOString(),
-    JSON.stringify(destination)
+    JSON.stringify(persistedRecord)
   ]);
 
   await postgres.query(`
@@ -1953,13 +1953,13 @@ async function saveRouteSession(session) {
     session.destinationLabel || null,
     JSON.stringify(session.origin || {}),
     JSON.stringify(session.destination || {}),
-    session.chosenRouteIndex ?? null,
-    session.routeCount ?? null,
-    JSON.stringify(session.hazardSummary || {}),
-    JSON.stringify(session.chosenRouteHazards || {}),
+    null,
+    null,
+    JSON.stringify({}),
+    JSON.stringify({}),
     JSON.stringify(session.usedTruckProfile || {}),
     JSON.stringify(session.usedTuning || {}),
-    JSON.stringify(asArray(session.routeOptions)),
+    JSON.stringify([]),
     JSON.stringify(session.request || {}),
     session.createdAt || new Date().toISOString()
   ]);
@@ -2157,7 +2157,7 @@ async function archiveRouteSessions(options = {}, input = {}) {
 }
 
 async function listRouteSessionEvents(routeSessionId, options = {}) {
-  const limit = normalizeLimit(options.limit, 250, 1000);
+  const limit = normalizeLimit(options.limit, 2500, 5000);
   const result = await postgres.query(`
     SELECT *
     FROM route_session_events
@@ -2668,7 +2668,7 @@ async function prepareRouteInventoryCloseoutForDriver(manifestId, driverId, inpu
     : crypto.randomBytes(24).toString('hex');
   const documentNumber = `INV-CLOSEOUT-${toDateOnly(routeRow.route_date)}-${routeRow.route_number}`;
   const payload = {
-    brand: 'Arca Continental Coca-Cola Southwest Beverages',
+    brand: branding.organizationName,
     documentType: 'final_inventory_closeout',
     driver: {
       id: cleanedDriverId,

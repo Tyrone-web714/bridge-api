@@ -1995,20 +1995,9 @@ function renderRouteSessionsAdminPage(session = {}) {
       ].join('<br>');
     }
     function renderRouteOptions(session) {
-      return (session.routeOptions || []).map(function (route) {
-        const chosen = route.index === session.chosenRouteIndex;
-        const summary = route.hazardSummary || {};
-        return '<div class="route-option ' + (chosen ? 'chosen' : '') + '">' +
-          '<div class="route-score">' + (chosen ? 'Chosen' : 'Alt ' + escapeHtml(route.index)) + '<br>Score ' + escapeHtml(route.score ?? '--') + '</div>' +
-          '<div>' +
-          '<strong>' + escapeHtml(route.summary || 'Route option') + '</strong><br>' +
-          formatMiles(route.distance_m) + ' | ' + formatMinutes(route.duration_s) + ' | source: ' + escapeHtml(route.hazardDataSource || '--') + '<br>' +
-          'Hazards: ' + escapeHtml(summary.total || 0) +
-          ' | Low bridges: ' + escapeHtml(summary.lowBridgeCount || 0) +
-          ' | No-truck: ' + escapeHtml(summary.noTruckZoneCount || 0) +
-          ' | Residential: ' + escapeHtml(summary.residentialZoneCount || 0) +
-          '</div></div>';
-      }).join('') || '<div class="event">No route options recorded.</div>';
+      const trace = getGpsTrail(session.events || []);
+      return '<div class="event"><strong>Replay source: driver device GPS</strong><br>' +
+        escapeHtml(trace.length) + ' GPS trail points recorded. Google route geometry is not retained.</div>';
     }
     function buildDashboardQuery(limit) {
       const params = new URLSearchParams();
@@ -2065,24 +2054,60 @@ function renderRouteSessionsAdminPage(session = {}) {
           .addTo(replayLayer);
       });
     }
+    function getGpsTrail(events) {
+      return (events || []).filter(function (event) {
+        const lat = Number(event.latitude);
+        const lng = Number(event.longitude);
+        return String(event.eventType || '').toLowerCase() === 'gps_trace' &&
+          Number.isFinite(lat) &&
+          Number.isFinite(lng);
+      });
+    }
+    function trailDistanceMeters(events) {
+      const points = getGpsTrail(events);
+      const toRadians = function (degrees) { return degrees * Math.PI / 180; };
+      let total = 0;
+      for (let index = 1; index < points.length; index += 1) {
+        const previous = points[index - 1];
+        const current = points[index];
+        const lat1 = toRadians(Number(previous.latitude));
+        const lat2 = toRadians(Number(current.latitude));
+        const dLat = lat2 - lat1;
+        const dLng = toRadians(Number(current.longitude) - Number(previous.longitude));
+        const haversine = Math.sin(dLat / 2) ** 2 +
+          Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLng / 2) ** 2;
+        total += 6371000 * 2 * Math.asin(Math.sqrt(haversine));
+      }
+      return total;
+    }
+    function trailDurationSeconds(events) {
+      const points = getGpsTrail(events);
+      if (points.length < 2) return null;
+      const first = Date.parse(points[0].payload?.clientRecordedAt || points[0].createdAt);
+      const last = Date.parse(points[points.length - 1].payload?.clientRecordedAt || points[points.length - 1].createdAt);
+      return Number.isFinite(first) && Number.isFinite(last)
+        ? Math.max(0, Math.round((last - first) / 1000))
+        : null;
+    }
     function renderSessionMap(session) {
       if (!replayMap || !replayLayer) return;
       replayLayer.clearLayers();
-      const selectedRoute = (session.routeOptions || []).find(function (route) {
-        return route.index === session.chosenRouteIndex;
-      }) || (session.routeOptions || [])[0];
-      const coordinates = decodePolyline(selectedRoute && selectedRoute.encoded);
+      const trail = getGpsTrail(session.events || []);
+      const coordinates = trail.map(function (event) {
+        return [Number(event.latitude), Number(event.longitude)];
+      });
       if (coordinates.length) {
         L.polyline(coordinates, { color: '#05c7ff', weight: 8, opacity: 0.92 }).addTo(replayLayer);
         L.polyline(coordinates, { color: '#003cff', weight: 3, opacity: 0.95 }).addTo(replayLayer);
-        L.marker(coordinates[0], { icon: markerIcon('origin', 'O') }).bindPopup('Origin').addTo(replayLayer);
-        L.marker(coordinates[coordinates.length - 1], { icon: markerIcon('destination', 'D') }).bindPopup('Destination').addTo(replayLayer);
+        L.marker(coordinates[0], { icon: markerIcon('origin', 'S') }).bindPopup('Recorded start').addTo(replayLayer);
+        L.marker(coordinates[coordinates.length - 1], { icon: markerIcon('destination', 'E') }).bindPopup('Recorded end').addTo(replayLayer);
       }
       const hazards = session.chosenRouteHazards || {};
       addHazardMarkers(hazards.lowBridges, 'low_bridge', 'LB');
       addHazardMarkers(hazards.noTruckZones, 'no_truck', 'NT');
       addHazardMarkers(hazards.residentialZones, 'residential', 'R');
       (session.events || []).forEach(function (event) {
+        if (String(event.eventType || '').toLowerCase() === 'gps_trace') return;
         const lat = Number(event.latitude);
         const lng = Number(event.longitude);
         if (!Number.isFinite(lat) || !Number.isFinite(lng)) return;
@@ -2249,9 +2274,8 @@ function renderRouteSessionsAdminPage(session = {}) {
       }
       const summary = selectedSession.hazardSummary || {};
       const events = selectedSession.events || [];
-      const selectedRoute = (selectedSession.routeOptions || []).find(function (route) {
-        return route.index === selectedSession.chosenRouteIndex;
-      }) || (selectedSession.routeOptions || [])[0] || {};
+      const actualDistanceMeters = trailDistanceMeters(events);
+      const actualDurationSeconds = trailDurationSeconds(events);
       const report = window.open('', '_blank');
       if (!report) {
         document.getElementById('message').textContent = 'Popup blocked. Allow popups to print the selected route report.';
@@ -2260,7 +2284,7 @@ function renderRouteSessionsAdminPage(session = {}) {
       report.document.write('<!doctype html><html><head><title>Truck-Safe Route Report</title><style>body{font-family:Arial,sans-serif;margin:28px;color:#102033}h1{color:#0d47a1}.box{border:1px solid #c8dceb;border-radius:12px;padding:12px;margin:12px 0}.event{border-left:5px solid #1565c0;padding:8px 10px;margin:8px 0;background:#f7fcff}.hot{border-left-color:#d62828;background:#fff4f4}</style></head><body>');
       report.document.write('<h1>Truck-Safe Route Replay Report</h1>');
       report.document.write('<div class="box"><strong>Session:</strong> ' + escapeHtml(selectedSession.id) + '<br><strong>Created:</strong> ' + escapeHtml(formatLocalDateTime(selectedSession.createdAt)) + '<br><strong>Origin:</strong> ' + escapeHtml(selectedSession.originLabel || '') + '<br><strong>Destination:</strong> ' + escapeHtml(selectedSession.destinationLabel || '') + '</div>');
-      report.document.write('<div class="box"><strong>Chosen Route:</strong> ' + escapeHtml(selectedSession.chosenRouteIndex ?? '--') + ' of ' + escapeHtml(selectedSession.routeCount || 0) + '<br><strong>Distance:</strong> ' + escapeHtml(formatMiles(selectedRoute.distance_m)) + '<br><strong>Duration:</strong> ' + escapeHtml(formatMinutes(selectedRoute.duration_s)) + '<br><strong>Total hazards:</strong> ' + escapeHtml(summary.total || 0) + '</div>');
+      report.document.write('<div class="box"><strong>Replay source:</strong> Driver device GPS<br><strong>Actual recorded distance:</strong> ' + escapeHtml(formatMiles(actualDistanceMeters)) + '<br><strong>Actual recorded duration:</strong> ' + escapeHtml(formatMinutes(actualDurationSeconds)) + '<br><strong>Operational events:</strong> ' + escapeHtml(events.length) + '</div>');
       report.document.write('<div class="box"><strong>Review status:</strong> ' + escapeHtml(selectedSession.reviewStatus || 'unreviewed') + '<br><strong>Reviewed by:</strong> ' + escapeHtml(selectedSession.reviewedBy || '') + '<br><strong>Supervisor notes:</strong><br>' + escapeHtml(selectedSession.supervisorNotes || '') + '</div>');
       report.document.write('<h2>Driver Event Timeline</h2>');
       events.forEach(function (event, index) {
@@ -2274,9 +2298,9 @@ function renderRouteSessionsAdminPage(session = {}) {
     }
     function renderSessionDetail(session) {
       const summary = session.hazardSummary || {};
-      const selectedRoute = (session.routeOptions || []).find(function (route) {
-        return route.index === session.chosenRouteIndex;
-      }) || (session.routeOptions || [])[0] || {};
+      const events = session.events || [];
+      const actualDistanceMeters = trailDistanceMeters(events);
+      const actualDurationSeconds = trailDurationSeconds(events);
       document.getElementById('statRoute').textContent = String(session.chosenRouteIndex ?? '--');
       document.getElementById('statLowBridge').textContent = String(summary.lowBridgeCount || 0);
       document.getElementById('statNoTruck').textContent = String(summary.noTruckZoneCount || 0);
@@ -2289,9 +2313,9 @@ function renderRouteSessionsAdminPage(session = {}) {
         '<strong>' + escapeHtml(session.originLabel || 'Unknown origin') + '</strong>',
         'to',
         '<strong>' + escapeHtml(session.destinationLabel || 'Unknown destination') + '</strong>',
-        'Chosen route: ' + escapeHtml(session.chosenRouteIndex ?? '--') + ' of ' + escapeHtml(session.routeCount || 0),
-        'Distance: ' + formatMiles(selectedRoute.distance_m),
-        'Duration: ' + formatMinutes(selectedRoute.duration_s)
+        'Replay source: Driver device GPS',
+        'Actual recorded distance: ' + formatMiles(actualDistanceMeters),
+        'Actual recorded duration: ' + formatMinutes(actualDurationSeconds)
       ].join('<br>');
       document.getElementById('truckProfileDetails').innerHTML = renderTruckProfile(session.usedTruckProfile);
       document.getElementById('safetyResultDetails').innerHTML = renderSafetyResult(summary);
@@ -3263,7 +3287,7 @@ function getPointHazardRouteDistanceMeters(hazard, points) {
 // Count hazards for a polyline (array of {lat,lng})
 function scoreRoute(points, opts) {
   const {
-    truckHeightFt = 13.6,            // Coca-Cola typical box trailers can be near 13'6"
+    truckHeightFt = 13.6,            // Standard beverage trailers can be near 13'6"
     safetyMarginFt = 0.3,            // ~3.6 inches margin
     minCutoffFt = 13.0,              // never allow below 13 even if truck shorter
     bridgeBufferMeters = 120,        // more generous buffer to catch near-path bridges
@@ -3650,22 +3674,21 @@ function buildRouteSessionPayload({
     destinationLabel: buildRouteEndpointLabel(destinationEndpoint),
     origin: originEndpoint,
     destination: destinationEndpoint,
-    chosenRouteIndex: responseBody.chosenRouteIndex,
-    routeCount: evaluated.length,
-    hazardSummary: responseBody.chosenRouteHazardSummary || {},
-    chosenRouteHazards: responseBody.chosenRouteHazards || {},
+    chosenRouteIndex: null,
+    routeCount: null,
+    hazardSummary: {},
+    chosenRouteHazards: {},
     usedTruckProfile: truckProfile,
     usedTuning: responseBody.usedTuning || {
       bridgeBufferMeters: Number(tuning?.bridgeBufferMeters) || 120,
       restrictedRoadBufferMeters: Number(tuning?.restrictedRoadBufferMeters) || 45
     },
-    routeOptions: evaluated.map(summarizeRouteOptionForSession),
+    routeOptions: [],
     request: {
-      origin: originEndpoint,
-      destination: destinationEndpoint,
       driver: driver || null,
       truck: body?.truck || null,
-      tuning: body?.tuning || null
+      tuning: body?.tuning || null,
+      replaySource: 'driver_device_gps'
     }
   };
 }
@@ -3932,7 +3955,7 @@ router.get('/route-sessions/:id', requireAdminAuth, async (req, res) => {
     if (!session) {
       return res.status(404).json({ error: `route session not found: ${req.params.id}` });
     }
-    session.events = await repositories.listRouteSessionEvents(sessionId, { limit: 500 });
+    session.events = await repositories.listRouteSessionEvents(sessionId, { limit: 2500 });
     return res.json({ session });
   } catch (error) {
     return res.status(500).json({
@@ -3956,7 +3979,7 @@ router.put('/route-sessions/:id/review', requireAdminAuth, async (req, res) => {
     if (!updated) {
       return res.status(404).json({ error: `route session not found: ${sessionId}` });
     }
-    updated.events = await repositories.listRouteSessionEvents(sessionId, { limit: 500 });
+    updated.events = await repositories.listRouteSessionEvents(sessionId, { limit: 2500 });
     return res.json({ session: updated });
   } catch (error) {
     return res.status(error.status || 500).json({
@@ -3979,7 +4002,7 @@ router.put('/route-sessions/:id/archive', requireAdminAuth, async (req, res) => 
     if (!archived) {
       return res.status(404).json({ error: `route session not found: ${sessionId}` });
     }
-    archived.events = await repositories.listRouteSessionEvents(sessionId, { limit: 500 });
+    archived.events = await repositories.listRouteSessionEvents(sessionId, { limit: 2500 });
     return res.json({ session: archived });
   } catch (error) {
     return res.status(500).json({

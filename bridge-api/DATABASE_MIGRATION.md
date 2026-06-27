@@ -130,7 +130,7 @@ inspect point/line/polygon geometry, and mark records as verified, needs review,
 incorrect. Supervisors can also add a driver-friendly physical address or landmark description to
 records that were imported with only latitude/longitude coordinates.
 
-The page defaults to the Coca-Cola Southwest service area: Texas, Oklahoma, New Mexico, and
+The page defaults to the pilot Southwest service area: Texas, Oklahoma, New Mexico, and
 Arkansas. Static hazard records also support `location_city`, `location_state`, and `state_code`.
 
 To backfill real city/state/address values from Google reverse geocoding, run a controlled batch:

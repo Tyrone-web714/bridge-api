@@ -31,8 +31,8 @@ const account = predictionEngine.buildAccountForecast({
     undeliveredStopCount: 0
   },
   products: [{
-    sku: 'COKE-12',
-    productName: 'Coca-Cola 12 Pack',
+    sku: 'COLA-12',
+    productName: 'Cola 12 Pack',
     currentQuantity: 120,
     currentNetAmount: 600,
     previousQuantity: 80,
@@ -70,8 +70,8 @@ assert.strictEqual(failure.failureRateChangePercentagePoints, 10);
 assert.strictEqual(failure.confidence, 'high');
 
 const demand = predictionEngine.buildProductDemandForecast([{
-  sku: 'DASANI-24',
-  productName: 'DASANI 24 Pack',
+  sku: 'WATER-24',
+  productName: 'Bottled Water 24 Pack',
   currentOrderCount: 8,
   previousOrderCount: 6,
   currentQuantity: 150,

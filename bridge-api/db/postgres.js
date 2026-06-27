@@ -278,6 +278,42 @@ async function ensureSchema() {
 
     CREATE INDEX IF NOT EXISTS recent_destinations_saved_at_idx ON recent_destinations(saved_at DESC);
 
+    UPDATE recent_destinations
+    SET
+      main_text = NULL,
+      secondary_text = NULL,
+      photo_url = NULL,
+      place_photo_url = NULL,
+      street_view_url = NULL,
+      photo_source = NULL,
+      phone_number = NULL,
+      international_phone_number = NULL,
+      name = NULL,
+      raw = jsonb_build_object(
+        'placeId', place_id,
+        'description', description,
+        'savedAt', saved_at
+      )
+    WHERE
+      main_text IS NOT NULL
+      OR secondary_text IS NOT NULL
+      OR photo_url IS NOT NULL
+      OR place_photo_url IS NOT NULL
+      OR street_view_url IS NOT NULL
+      OR photo_source IS NOT NULL
+      OR phone_number IS NOT NULL
+      OR international_phone_number IS NOT NULL
+      OR name IS NOT NULL
+      OR raw ?| ARRAY[
+        'photoUrl',
+        'placePhotoUrl',
+        'streetViewUrl',
+        'photoSource',
+        'phoneNumber',
+        'internationalPhoneNumber',
+        'name'
+      ];
+
     CREATE TABLE IF NOT EXISTS low_clearance_bridges (
       id TEXT PRIMARY KEY,
       latitude DOUBLE PRECISION,
@@ -408,6 +444,28 @@ async function ensureSchema() {
     CREATE INDEX IF NOT EXISTS route_sessions_destination_label_idx ON route_sessions(destination_label);
     CREATE INDEX IF NOT EXISTS route_sessions_review_status_idx ON route_sessions(review_status);
     CREATE INDEX IF NOT EXISTS route_sessions_archived_at_idx ON route_sessions(archived_at);
+
+    UPDATE route_sessions
+    SET
+      origin = origin - 'coordinate',
+      destination = destination - 'coordinate',
+      chosen_route_index = NULL,
+      route_count = NULL,
+      hazard_summary = '{}'::jsonb,
+      chosen_route_hazards = '{}'::jsonb,
+      route_options = '[]'::jsonb,
+      request = jsonb_build_object(
+        'replaySource', 'driver_device_gps',
+        'legacyGoogleRoutePurged', true
+      )
+    WHERE
+      route_options <> '[]'::jsonb
+      OR chosen_route_index IS NOT NULL
+      OR route_count IS NOT NULL
+      OR hazard_summary <> '{}'::jsonb
+      OR chosen_route_hazards <> '{}'::jsonb
+      OR origin ? 'coordinate'
+      OR destination ? 'coordinate';
 
     CREATE TABLE IF NOT EXISTS route_session_events (
       id BIGSERIAL PRIMARY KEY,

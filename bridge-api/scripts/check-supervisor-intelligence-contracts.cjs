@@ -57,7 +57,7 @@ const report = supervisorIntelligence.deterministicReport({
   failurePrediction: { riskLevel: 'high' },
   demandPrediction: {
     confidence: 'medium',
-    products: [{ productName: 'Coca-Cola 12 Pack', direction: 'increasing' }]
+    products: [{ productName: 'Cola 12 Pack', direction: 'increasing' }]
   },
   undeliveredStops: [{
     routeNumber: 'R-1',

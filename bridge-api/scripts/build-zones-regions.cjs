@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Build truck-restricted roads and residential polygons for the four-state
- * Coca-Cola Southwest Beverages service area:
+ * Configured beverage service area:
  *   Texas, Oklahoma, New Mexico, Arkansas
  *
  * Source: OpenStreetMap via Overpass API.

@@ -18,3 +18,4 @@ data/*.bak-*
 data/delivery_notes.json
 data/manual_hazards.json
 data/recent_destinations.json
+data/route-manifest-*.csv

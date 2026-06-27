@@ -123,6 +123,18 @@ function cleanLargeInput(value) {
   return String(value || '').trim().slice(0, 2000);
 }
 
+function sanitizeRecentDestination(record = {}) {
+  const description = cleanLongInput(record.description);
+  return {
+    placeId: cleanInput(record.placeId),
+    description,
+    mainText: description,
+    secondaryText: '',
+    name: '',
+    savedAt: record.savedAt || new Date().toISOString()
+  };
+}
+
 function escapeHtml(value) {
   return String(value || '')
     .replace(/&/g, '&amp;')
@@ -236,7 +248,10 @@ function readRecentDestinations() {
   try {
     if (!fs.existsSync(RECENTS_FILE)) return [];
     const parsed = JSON.parse(fs.readFileSync(RECENTS_FILE, 'utf8'));
-    return Array.isArray(parsed) ? parsed : [];
+    if (!Array.isArray(parsed)) return [];
+    const sanitized = parsed.map(sanitizeRecentDestination).filter((record) => record.description);
+    writeRecentDestinations(sanitized);
+    return sanitized;
   } catch (error) {
     console.error('recent-destinations read error:', error.message);
     return [];
@@ -256,14 +271,15 @@ async function listRecentDestinations() {
 }
 
 async function saveRecentDestination(destination) {
+  const sanitizedDestination = sanitizeRecentDestination(destination);
   if (repositories.isDatabaseEnabled()) {
-    return repositories.saveRecentDestination(destination, MAX_RECENT_DESTINATIONS);
+    return repositories.saveRecentDestination(sanitizedDestination, MAX_RECENT_DESTINATIONS);
   }
 
-  const key = destination.placeId || destination.description.toLowerCase();
+  const key = sanitizedDestination.placeId || sanitizedDestination.description.toLowerCase();
   const existing = readRecentDestinations()
     .filter((record) => (record.placeId || record.description?.toLowerCase()) !== key);
-  const nextRecords = [destination, ...existing].slice(0, MAX_RECENT_DESTINATIONS);
+  const nextRecords = [sanitizedDestination, ...existing].slice(0, MAX_RECENT_DESTINATIONS);
   writeRecentDestinations(nextRecords);
   return nextRecords;
 }
@@ -365,7 +381,14 @@ function normalizePlacesNewPlace(place = {}) {
       location: location && Number.isFinite(location.lat) && Number.isFinite(location.lng) ? location : null
     },
     photos: (place.photos || [])
-      .map((photo) => ({ photo_reference: String(photo.name || '').replace(/\/media$/i, '') }))
+      .map((photo) => ({
+        photo_reference: String(photo.name || '').replace(/\/media$/i, ''),
+        author_attributions: (photo.authorAttributions || []).map((attribution) => ({
+          displayName: cleanInput(attribution.displayName),
+          uri: cleanLargeInput(attribution.uri),
+          photoUri: cleanLargeInput(attribution.photoUri)
+        })).filter((attribution) => attribution.displayName || attribution.uri)
+      }))
       .filter((photo) => photo.photo_reference),
     types: place.types || [],
     url: place.googleMapsUri || null,
@@ -499,6 +522,7 @@ function buildPlacePayload(req, result, fallbackPlaceId = null, metadata = {}) {
     phoneNumber: result.formatted_phone_number || result.international_phone_number || null,
     internationalPhoneNumber: result.international_phone_number || null,
     photoReference: firstPhoto?.photo_reference || null,
+    photoAttributions: firstPhoto?.author_attributions || [],
     placePhotoUrl,
     streetViewUrl,
     photoUrl: placePhotoUrl || streetViewUrl,
@@ -525,6 +549,7 @@ function buildBusinessCandidatePayload(req, candidate = {}, originLocation) {
     userRatingsTotal: Number.isFinite(Number(candidate.user_ratings_total)) ? Number(candidate.user_ratings_total) : null,
     photoReference,
     photoUrl,
+    photoAttributions: candidate.photos?.[0]?.author_attributions || [],
     photoSource: photoUrl ? 'place_photo' : null,
     businessStatus: candidate.business_status || null,
     distanceMeters: Number.isFinite(distance) ? Math.round(distance) : null,
@@ -934,7 +959,7 @@ router.get('/street-view', async (req, res) => {
 
     const body = Buffer.from(await response.arrayBuffer());
     res.set('Content-Type', contentType);
-    res.set('Cache-Control', 'public, max-age=86400');
+    res.set('Cache-Control', 'private, no-store, max-age=0');
     return res.send(body);
   } catch (err) {
     console.error('street-view error:', err?.response?.data || err.message);
@@ -967,7 +992,7 @@ router.get('/street-view-embed', async (req, res) => {
     embedUrl.searchParams.set('pitch', '0');
 
     res.set('Content-Type', 'text/html; charset=utf-8');
-    res.set('Cache-Control', 'public, max-age=3600');
+    res.set('Cache-Control', 'private, no-store, max-age=0');
     return res.send(`<!doctype html>
 <html>
   <head>
@@ -1045,7 +1070,7 @@ router.get('/photo', async (req, res) => {
 
     const body = Buffer.from(await response.arrayBuffer());
     res.set('Content-Type', response.headers.get('content-type') || 'image/jpeg');
-    res.set('Cache-Control', 'public, max-age=86400');
+    res.set('Cache-Control', 'private, no-store, max-age=0');
     return res.send(body);
   } catch (err) {
     console.error('place-photo error:', err?.response?.data || err.message);
@@ -1064,15 +1089,6 @@ router.post('/recent-destinations', express.json(), async (req, res) => {
   const destination = {
     placeId: cleanInput(req.body?.placeId),
     description: cleanLongInput(req.body?.description),
-    mainText: cleanInput(req.body?.mainText),
-    secondaryText: cleanLongInput(req.body?.secondaryText),
-    photoUrl: cleanLargeInput(req.body?.photoUrl),
-    placePhotoUrl: cleanLargeInput(req.body?.placePhotoUrl),
-    streetViewUrl: cleanLargeInput(req.body?.streetViewUrl),
-    photoSource: cleanInput(req.body?.photoSource),
-    phoneNumber: cleanInput(req.body?.phoneNumber),
-    internationalPhoneNumber: cleanInput(req.body?.internationalPhoneNumber),
-    name: cleanInput(req.body?.name),
     savedAt: new Date().toISOString()
   };
 
