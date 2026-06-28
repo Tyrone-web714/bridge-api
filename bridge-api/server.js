@@ -6,11 +6,16 @@ const photoStorage = require('./services/photoStorage');
 const driverAuth = require('./services/driverAuth');
 const aiProvider = require('./services/aiProvider');
 const supervisorIntelligence = require('./services/supervisorIntelligence');
+const auditLog = require('./services/auditLog');
+const { createRateLimiter, positiveInteger } = require('./middleware/securityControls');
 
 dotenv.config();
 
 const app = express();
-const REQUEST_BODY_LIMIT = process.env.REQUEST_BODY_LIMIT || '60mb';
+const REQUEST_BODY_LIMIT = process.env.REQUEST_BODY_LIMIT || '1mb';
+const DELIVERY_BODY_LIMIT = process.env.DELIVERY_BODY_LIMIT || '30mb';
+const MANIFEST_BODY_LIMIT = process.env.MANIFEST_BODY_LIMIT || '12mb';
+const IMPORT_BODY_LIMIT = process.env.IMPORT_BODY_LIMIT || '15mb';
 const SLOW_REQUEST_MS = Number.parseInt(process.env.SLOW_REQUEST_MS, 10) || 2000;
 const READINESS_TIMEOUT_MS = Number.parseInt(process.env.READINESS_TIMEOUT_MS, 10) || 2500;
 const allowedOrigins = (process.env.CORS_ORIGIN || '*')
@@ -18,6 +23,7 @@ const allowedOrigins = (process.env.CORS_ORIGIN || '*')
   .map((origin) => origin.trim())
   .filter(Boolean);
 
+app.set('trust proxy', 1);
 app.use(cors({
   origin: allowedOrigins.includes('*') ? '*' : allowedOrigins
 }));
@@ -36,7 +42,48 @@ app.use((req, res, next) => {
 
   next();
 });
+app.use(createRateLimiter({
+  name: 'global',
+  windowMs: positiveInteger(process.env.RATE_LIMIT_WINDOW_MS, 15 * 60 * 1000),
+  max: positiveInteger(process.env.RATE_LIMIT_GLOBAL_MAX, 1200)
+}));
+app.use('/api/routing/manual-hazards/admin/login', createRateLimiter({
+  name: 'admin-login',
+  max: positiveInteger(process.env.RATE_LIMIT_AUTH_MAX, 12)
+}));
+app.use('/api/places', createRateLimiter({
+  name: 'places',
+  max: positiveInteger(process.env.RATE_LIMIT_PLACES_MAX, 240)
+}));
+app.use('/api/routing', createRateLimiter({
+  name: 'driver-routing',
+  max: positiveInteger(process.env.RATE_LIMIT_DRIVER_MAX, 600)
+}));
+app.use('/api/route-manifests/driver', createRateLimiter({
+  name: 'driver-manifests',
+  max: positiveInteger(process.env.RATE_LIMIT_DRIVER_MAX, 600)
+}));
+app.use('/api/ai', createRateLimiter({
+  name: 'ai',
+  max: positiveInteger(process.env.RATE_LIMIT_AI_MAX, 60)
+}));
+app.use('/api/delivery-notes', createRateLimiter({
+  name: 'delivery-notes',
+  max: positiveInteger(process.env.RATE_LIMIT_UPLOAD_MAX, 120)
+}));
+app.use('/api/data-imports', createRateLimiter({
+  name: 'data-imports',
+  max: positiveInteger(process.env.RATE_LIMIT_UPLOAD_MAX, 120)
+}));
+app.use('/api/route-manifests/import', createRateLimiter({
+  name: 'manifest-import',
+  max: positiveInteger(process.env.RATE_LIMIT_UPLOAD_MAX, 120)
+}));
+app.use('/api/delivery-notes', express.json({ limit: DELIVERY_BODY_LIMIT }));
+app.use('/api/route-manifests', express.json({ limit: MANIFEST_BODY_LIMIT }));
+app.use('/api/data-imports', express.json({ limit: IMPORT_BODY_LIMIT }));
 app.use(express.json({ limit: REQUEST_BODY_LIMIT }));
+app.use(auditLog.mutationAuditMiddleware);
 
 // Import routes
 const bridgeRoutes = require('./routes/bridges');
@@ -138,7 +185,7 @@ app.use((req, res) => {
 app.use((err, req, res, next) => {
   if (err?.type === 'entity.too.large') {
     return res.status(413).json({
-      error: 'Uploaded delivery note photos are too large. Attach fewer photos or smaller photos.'
+      error: 'Request payload is too large for this endpoint.'
     });
   }
 

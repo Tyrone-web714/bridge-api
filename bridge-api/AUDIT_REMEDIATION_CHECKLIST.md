@@ -1,6 +1,6 @@
 # Truck-Safe Routing Audit Remediation Checklist
 
-Date: 2026-06-24
+Date: 2026-06-28
 
 ## Critical - Blocks Sale/Pilot
 
@@ -21,36 +21,36 @@ Date: 2026-06-24
 - [x] Remove unused backend `localtunnel` dev dependency or replace/patch its vulnerable dependency chain.
 - [x] Update backend dependency chain for `express`, `qs`, `form-data`, `path-to-regexp`, `minimatch`, and related advisories.
 - [x] Triage mobile Expo/React Native audit advisories; critical/high transitive packages are overridden, while remaining toolchain advisories require a compatible Expo/React Native release.
-- [ ] Add backend rate limiting for auth, driver APIs, Places proxy, uploads, and AI endpoints.
-- [ ] Limit production request body size by endpoint.
+- [x] Add backend rate limiting for auth, driver APIs, Places proxy, uploads, and AI endpoints.
+- [x] Limit production request body size by endpoint.
 - [x] Disable or restrict mobile cleartext network security in production.
-- [ ] Add photo upload content validation and abuse controls.
-- [ ] Create privacy and retention policy for driver location, photos, signatures, receipts, AI logs, and customer/account/order data.
-- [ ] Create customer/pilot data-processing agreement requirements.
-- [ ] Document source/license/attribution for OSM/Overpass-generated zone datasets.
-- [ ] Document source/license/attribution for low-clearance bridge dataset.
+- [x] Add photo upload content validation and abuse controls.
+- [x] Create privacy and retention policy for driver location, photos, signatures, receipts, AI logs, and customer/account/order data.
+- [x] Create customer/pilot data-processing agreement requirements. Signed customer/counsel approval remains external.
+- [x] Document source/license/attribution for OSM/Overpass-generated zone datasets.
+- [x] Document source/license/attribution for low-clearance bridge dataset.
 
 ## Medium - Fix Before Production
 
-- [ ] Add application `LICENSE` or proprietary/internal-use notice.
-- [ ] Generate a full SBOM for backend and mobile from lockfiles.
-- [ ] Expand `THIRD_PARTY_NOTICES.md` using a repeatable license generation process.
-- [ ] Review `node-forge@1.4.0` dual license and backend `buffers@0.1.1` unknown license metadata.
-- [ ] Replace generated/uploaded truck art with original neutral assets.
-- [ ] Add data deletion/export procedure.
-- [ ] Add backup/restore documentation.
-- [ ] Add migration/versioning discipline beyond startup schema creation.
-- [ ] Add audit logging for supervisor/admin changes.
-- [ ] Review per-driver/per-device authentication model beyond shared driver API token.
-- [ ] Review AI prompt/result logging for confidential customer data.
+- [x] Add application `LICENSE` or proprietary/internal-use notice.
+- [x] Generate a full SBOM for backend and mobile from lockfiles.
+- [x] Expand third-party notices using a repeatable license generation process.
+- [x] Review `node-forge@1.4.0` under BSD-3-Clause and remove backend `buffers@0.1.1` by updating its dependency chain.
+- [~] Runtime truck art is neutral; external commercial use remains blocked until creator/source rights are recorded in `ASSET_PROVENANCE.md`.
+- [x] Add data deletion/export procedure.
+- [x] Add backup/restore documentation.
+- [x] Add numbered migration/versioning discipline beyond startup schema creation.
+- [x] Add persistent audit logging for successful supervisor/admin mutations.
+- [x] Review per-driver/per-device authentication model beyond shared driver API token; short-lived per-device credentials remain a post-pilot architecture change.
+- [x] Review AI prompt/result logging for confidential customer data.
 
 ## Low - Document/Monitor
 
-- [ ] Keep `.env` and secret scanning in CI.
-- [ ] Keep Google keys out of committed source.
-- [ ] Keep Render/EAS environment variables documented without values.
-- [ ] Update dependency notices on each release.
-- [ ] Preserve Git history, build logs, AI prompt history, and release artifacts for diligence.
+- [x] Keep `.env` and secret scanning in CI.
+- [x] Keep Google keys out of committed source.
+- [x] Keep Render/EAS environment variables documented without values.
+- [x] Update dependency notices on each release.
+- [x] Preserve Git history, build logs, AI configuration records, and release artifacts for diligence.
 
 ## Verification Steps
 

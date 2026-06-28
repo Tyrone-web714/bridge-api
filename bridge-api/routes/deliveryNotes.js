@@ -25,6 +25,26 @@ function isSupportedImageMimeType(mimeType) {
   return ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'].includes(cleanText(mimeType, 40).toLowerCase());
 }
 
+function detectImageMimeType(buffer) {
+  if (buffer.length >= 3 && buffer[0] === 0xff && buffer[1] === 0xd8 && buffer[2] === 0xff) {
+    return 'image/jpeg';
+  }
+  if (
+    buffer.length >= 8 &&
+    buffer.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]))
+  ) {
+    return 'image/png';
+  }
+  if (
+    buffer.length >= 12 &&
+    buffer.subarray(0, 4).toString('ascii') === 'RIFF' &&
+    buffer.subarray(8, 12).toString('ascii') === 'WEBP'
+  ) {
+    return 'image/webp';
+  }
+  return null;
+}
+
 function readNotes() {
   try {
     if (!fs.existsSync(NOTES_FILE)) return [];
@@ -102,7 +122,7 @@ async function normalizeBase64Photo(photo, noteId, index, req) {
   const dataUri = String(photo?.dataUri || photo?.uri || '').trim();
   const match = dataUri.match(/^data:(image\/(?:jpeg|jpg|png|webp));base64,(.+)$/i);
   const mimeType = cleanText(photo?.mimeType || photo?.type || match?.[1] || 'image/jpeg', 40).toLowerCase();
-  const base64 = match?.[2] || rawData;
+  const base64 = (match?.[2] || rawData).replace(/\s+/g, '');
 
   if (!base64 || !isSupportedImageMimeType(mimeType)) {
     return null;
@@ -114,17 +134,30 @@ async function normalizeBase64Photo(photo, noteId, index, req) {
     throw error;
   }
 
+  if (!/^[A-Za-z0-9+/]+={0,2}$/.test(base64) || base64.length % 4 !== 0) {
+    const error = new Error(`photo ${index} is not valid base64`);
+    error.status = 415;
+    throw error;
+  }
+
   const buffer = Buffer.from(base64, 'base64');
   if (buffer.length > MAX_PHOTO_BYTES) {
     const error = new Error(`photo ${index} exceeds ${MAX_PHOTO_BYTES} bytes`);
     error.status = 413;
     throw error;
   }
+  const detectedMimeType = detectImageMimeType(buffer);
+  const normalizedMimeType = mimeType === 'image/jpg' ? 'image/jpeg' : mimeType;
+  if (!detectedMimeType || detectedMimeType !== normalizedMimeType) {
+    const error = new Error(`photo ${index} content does not match ${mimeType}`);
+    error.status = 415;
+    throw error;
+  }
 
   return photoStorage.saveDeliveryNotePhoto({
     req,
     buffer,
-    mimeType,
+    mimeType: detectedMimeType,
     noteId,
     index,
     originalName: photo?.fileName || photo?.filename || photo?.name

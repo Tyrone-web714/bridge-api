@@ -7,7 +7,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "test": "npm run test:ai && npm run test:predictions && npm run test:supervisor-intelligence && npm run test:heatmaps && npm run test:imports && npm run test:delivery-settlement && npm run test:google-maps-compliance",
+    "test": "npm run test:ai && npm run test:predictions && npm run test:supervisor-intelligence && npm run test:heatmaps && npm run test:imports && npm run test:delivery-settlement && npm run test:google-maps-compliance && npm run test:security",
     "test:ai": "node scripts/check-ai-contracts.cjs",
     "test:predictions": "node scripts/check-prediction-engine.cjs",
     "test:supervisor-intelligence": "node scripts/check-supervisor-intelligence-contracts.cjs",
@@ -15,7 +15,8 @@
     "test:imports": "node scripts/check-bulk-import-contracts.cjs",
     "test:delivery-settlement": "node scripts/check-delivery-settlement-contracts.cjs",
     "test:google-maps-compliance": "node scripts/check-google-maps-compliance.cjs",
-    "start": "node server.js",
+    "test:security": "node scripts/check-security-controls.cjs",
+    "start": "node scripts/run-migrations.cjs && node server.js",
     "admin:create": "node scripts/create-admin-user.cjs",
     "healthcheck": "node -e \"fetch('http://127.0.0.1:' + (process.env.PORT || 5000) + '/health').then(r => r.ok ? process.exit(0) : process.exit(1)).catch(() => process.exit(1))\"",
     "readinesscheck": "node -e \"fetch('http://127.0.0.1:' + (process.env.PORT || 5000) + '/ready').then(r => r.ok ? process.exit(0) : process.exit(1)).catch(() => process.exit(1))\"",
@@ -29,6 +30,8 @@
     "photos:migrate": "node scripts/migrate-local-photos-to-storage.cjs",
     "db:migrate:json": "node scripts/migrate-json-to-postgres.cjs",
     "db:postgis:init": "node scripts/enable-postgis.cjs",
+    "db:migrate": "node scripts/run-migrations.cjs",
+    "compliance:generate": "node scripts/generate-compliance-artifacts.cjs",
     "census:places:sync": "node scripts/sync-census-places.cjs",
     "db:backfill:city-metadata": "node scripts/backfill-city-metadata-from-census.cjs",
     "db:backfill:locations": "node scripts/backfill-static-hazard-locations.cjs",
@@ -45,6 +48,6 @@
     "dotenv": "^16.3.1",
     "express": "^4.22.2",
     "pg": "^8.20.0",
-    "unzipper": "^0.10.14"
+    "unzipper": "^0.12.5"
   }
 }

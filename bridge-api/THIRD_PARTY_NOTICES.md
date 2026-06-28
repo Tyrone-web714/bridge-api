@@ -24,7 +24,7 @@ Permissive packages such as MIT, BSD, ISC, Apache-2.0, 0BSD, Unlicense, BlueOak-
 | `dotenv` | 16.6.1 | BSD-2-Clause | Include BSD-2-Clause notice/license. |
 | `express` | 4.22.2 | MIT | Include MIT notice/license. |
 | `pg` | 8.20.0 | MIT | Include MIT notice/license. |
-| `unzipper` | 0.10.14 | MIT | Include MIT notice/license. |
+| `unzipper` | 0.12.5 | MIT | Include MIT notice/license. |
 
 Backend transitive license summary from lockfile:
 
@@ -36,7 +36,7 @@ Backend transitive license summary from lockfile:
 - MIT/X11: 2 packages
 - 0BSD: 1 package
 - Unlicense: 1 package
-- Unknown metadata: `buffers@0.1.1`
+- `buffers@0.1.1` was removed by upgrading `unzipper`; it is no longer distributed.
 
 ## Mobile Direct Dependencies
 
@@ -79,13 +79,13 @@ Mobile transitive license summary from lockfile:
 - CC-BY-4.0: 1 package
 - `(MIT OR CC0-1.0)`: 3 packages
 - `(MIT OR Apache-2.0)`: 1 package
-- `(BSD-3-Clause OR GPL-2.0)`: `node-forge@1.4.0`
+- `(BSD-3-Clause OR GPL-2.0)`: `node-forge@1.4.0`; this project elects the BSD-3-Clause option.
 
 ## Required Follow-Up
 
 - Generate full backend and mobile SBOMs before any sale/license package.
 - Include full upstream license texts and copyright notices.
-- Review `buffers@0.1.1` unknown license metadata.
-- Review `node-forge@1.4.0` dual license and document BSD-3-Clause use path if acceptable.
+- `buffers@0.1.1` is excluded from current backend dependencies.
+- `node-forge@1.4.0` is used under BSD-3-Clause; preserve its license text in distributed notices.
 - Review MPL-2.0 transitive packages and confirm no modified MPL source files are distributed without obligations met.
 - Review Google Maps Platform, Expo/EAS, Render, AWS/Cloudflare R2, and OpenAI service terms separately from open-source package licenses.
