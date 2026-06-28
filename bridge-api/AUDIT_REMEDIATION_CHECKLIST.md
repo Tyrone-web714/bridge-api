@@ -4,26 +4,26 @@ Date: 2026-06-24
 
 ## Critical - Blocks Sale/Pilot
 
-- [ ] Create a neutral/white-label commercial demo build.
-- [ ] Remove or replace Coca-Cola, Coke, Arca Continental, CCSWB, branded truck, and product trade-dress assets from any external build.
-- [ ] Replace `C:\dev\bridge-api\bridge-api\data\route-manifest-2026-06-20-827826.csv` with fully synthetic test data or keep it out of any shared package.
-- [ ] Remove real-looking customer names, addresses, invoices, driver names, and company-specific route data from demos and docs.
-- [ ] Resolve or formally triage mobile `npm audit` critical `shell-quote` advisory.
+- [x] Create a neutral/white-label commercial demo build.
+- [x] Remove or replace Coca-Cola, Coke, Arca Continental, CCSWB, branded truck, and product trade-dress assets from any external build.
+- [x] Replace `C:\dev\bridge-api\bridge-api\data\route-manifest-2026-06-20-827826.csv` with fully synthetic test data or keep it out of any shared package.
+- [x] Remove real-looking customer names, addresses, invoices, driver names, and company-specific route data from runtime demos and fixtures.
+- [x] Resolve or formally triage mobile `npm audit` critical `shell-quote` advisory.
 - [~] Google Maps Platform review in progress. Engineering storage, cache, and
   attribution controls are documented in `GOOGLE_MAPS_COMPLIANCE.md`; counsel,
   heavy-vehicle permission, route-session retention, public terms/privacy, and
   key-restriction review remain release blockers.
 - [ ] Confirm Google Cloud key restrictions for Android Maps SDK and server-side APIs.
-- [ ] Document Google-derived data retention and purge behavior.
+- [x] Document Google-derived data retention and purge behavior.
 
 ## High - Must Fix Before Serious Customer Review
 
-- [ ] Remove unused backend `localtunnel` dev dependency or replace/patch its vulnerable dependency chain.
-- [ ] Update backend dependency chain for `express`, `qs`, `form-data`, `path-to-regexp`, `minimatch`, and related advisories.
-- [ ] Triage mobile Expo/React Native audit advisories and schedule compatible upgrades.
+- [x] Remove unused backend `localtunnel` dev dependency or replace/patch its vulnerable dependency chain.
+- [x] Update backend dependency chain for `express`, `qs`, `form-data`, `path-to-regexp`, `minimatch`, and related advisories.
+- [x] Triage mobile Expo/React Native audit advisories; critical/high transitive packages are overridden, while remaining toolchain advisories require a compatible Expo/React Native release.
 - [ ] Add backend rate limiting for auth, driver APIs, Places proxy, uploads, and AI endpoints.
 - [ ] Limit production request body size by endpoint.
-- [ ] Disable or restrict mobile cleartext network security in production.
+- [x] Disable or restrict mobile cleartext network security in production.
 - [ ] Add photo upload content validation and abuse controls.
 - [ ] Create privacy and retention policy for driver location, photos, signatures, receipts, AI logs, and customer/account/order data.
 - [ ] Create customer/pilot data-processing agreement requirements.
@@ -54,12 +54,12 @@ Date: 2026-06-24
 
 ## Verification Steps
 
-- [ ] Run backend `npm.cmd run test`.
-- [ ] Run backend `npm.cmd audit --json`.
-- [ ] Run backend `npm.cmd run verify:secrets`.
-- [ ] Run mobile `npm.cmd run verify:production`.
-- [ ] Run mobile `npm.cmd audit --json`.
-- [ ] Run mobile `npm.cmd run verify:secrets`.
-- [ ] Build a white-label APK and verify no branded assets/text appear.
+- [x] Run backend `npm.cmd run test`.
+- [x] Run backend `npm.cmd audit --json`.
+- [x] Run backend `npm.cmd run verify:secrets`.
+- [x] Run mobile `npm.cmd run verify:production`.
+- [x] Run mobile `npm.cmd audit --json`.
+- [x] Run mobile `npm.cmd run verify:secrets`.
+- [x] Build a white-label APK and verify no branded assets/text appear.
 - [ ] Verify Google Cloud API key restrictions in Google Cloud Console.
-- [ ] Verify Render `/health` and `/ready` after dependency/security changes.
+- [x] Verify Render `/health` and `/ready` after dependency/security changes.

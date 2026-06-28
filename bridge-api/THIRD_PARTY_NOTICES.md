@@ -22,10 +22,9 @@ Permissive packages such as MIT, BSD, ISC, Apache-2.0, 0BSD, Unlicense, BlueOak-
 | `cors` | 2.8.6 | MIT | Include MIT notice/license. |
 | `csv-parse` | 5.6.0 | MIT | Include MIT notice/license. |
 | `dotenv` | 16.6.1 | BSD-2-Clause | Include BSD-2-Clause notice/license. |
-| `express` | 4.22.1 | MIT | Include MIT notice/license. |
+| `express` | 4.22.2 | MIT | Include MIT notice/license. |
 | `pg` | 8.20.0 | MIT | Include MIT notice/license. |
 | `unzipper` | 0.10.14 | MIT | Include MIT notice/license. |
-| `localtunnel` | 2.0.2 | MIT | Dev dependency; include MIT notice if distributed, otherwise remove before commercial release if unused. |
 
 Backend transitive license summary from lockfile:
 
@@ -90,4 +89,3 @@ Mobile transitive license summary from lockfile:
 - Review `node-forge@1.4.0` dual license and document BSD-3-Clause use path if acceptable.
 - Review MPL-2.0 transitive packages and confirm no modified MPL source files are distributed without obligations met.
 - Review Google Maps Platform, Expo/EAS, Render, AWS/Cloudflare R2, and OpenAI service terms separately from open-source package licenses.
-
