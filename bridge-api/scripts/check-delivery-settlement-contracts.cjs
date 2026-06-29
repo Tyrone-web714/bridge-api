@@ -50,6 +50,9 @@ const requiredRepositoryFragments = [
 ];
 
 const requiredRouteFragments = [
+  "router.get('/driver/today'",
+  'DRIVER_NOT_REGISTERED',
+  'DRIVER_INACTIVE',
   "router.get('/driver/stops/:stopId/delivery'",
   "router.put('/driver/stops/:stopId/delivery'",
   'getDailyRouteManifestWithAccountIntelligence',

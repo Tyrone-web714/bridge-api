@@ -1220,6 +1220,19 @@ router.get('/driver/today', driverAuth.requireDriverAuth, async (req, res) => {
   try {
     const identity = driverAuth.getDriverIdentity(req);
     const routeDate = normalizeDate(req.query.routeDate || req.query.date);
+    const driver = await repositories.getDriver(identity.driverId);
+    if (!driver) {
+      return res.status(404).json({
+        error: 'Driver ID is not registered.',
+        code: 'DRIVER_NOT_REGISTERED'
+      });
+    }
+    if (!driver.active) {
+      return res.status(403).json({
+        error: 'Driver ID is inactive. A supervisor must activate the driver before routes are available.',
+        code: 'DRIVER_INACTIVE'
+      });
+    }
     const route = await repositories.getAssignedDailyRouteForDriver(identity.driverId, routeDate);
     return res.json({ ok: true, routeDate, driver: identity, route });
   } catch (error) {
