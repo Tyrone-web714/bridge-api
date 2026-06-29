@@ -56,7 +56,7 @@ function renderAdminDashboard(session) {
     {
       title: 'Account Intelligence',
       description: 'Track SKU-level purchases, deductions, account spending, and AI-ready account insights.',
-      href: '/api/account-intelligence/admin',
+      href: '/api/account-intelligence/admin#ai-operations',
       accent: '#ffbf3f'
     },
     {

@@ -534,7 +534,7 @@ function renderAccountIntelligenceAdminPage(session) {
       </div>
     </section>
 
-    <section class="panel">
+    <section class="panel" id="ai-operations">
       <h2>Ask AI</h2>
       <p>Ask a supervisor question about account spending, products, deductions, route risk, missed deliveries, or operational patterns. AI answers only from backend data available to this system.</p>
       <div class="grid">
@@ -1483,6 +1483,9 @@ function renderAccountIntelligenceAdminPage(session) {
       } catch (error) { setError(error); }
     }
     loadAiStatus();
+    if (window.location.hash === '#ai-operations') {
+      loadAiOperations();
+    }
   </script>
 </body>
 </html>`;

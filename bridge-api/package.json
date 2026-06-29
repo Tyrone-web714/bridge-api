@@ -7,7 +7,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "test": "npm run test:ai && npm run test:predictions && npm run test:supervisor-intelligence && npm run test:heatmaps && npm run test:imports && npm run test:delivery-settlement && npm run test:google-maps-compliance && npm run test:security",
+    "test": "npm run test:ai && npm run test:predictions && npm run test:supervisor-intelligence && npm run test:heatmaps && npm run test:imports && npm run test:delivery-settlement && npm run test:google-maps-compliance && npm run test:security && npm run test:dashboard",
     "test:ai": "node scripts/check-ai-contracts.cjs",
     "test:predictions": "node scripts/check-prediction-engine.cjs",
     "test:supervisor-intelligence": "node scripts/check-supervisor-intelligence-contracts.cjs",
@@ -16,6 +16,7 @@
     "test:delivery-settlement": "node scripts/check-delivery-settlement-contracts.cjs",
     "test:google-maps-compliance": "node scripts/check-google-maps-compliance.cjs",
     "test:security": "node scripts/check-security-controls.cjs",
+    "test:dashboard": "node scripts/check-supervisor-dashboard-contracts.cjs",
     "start": "node scripts/run-migrations.cjs && node server.js",
     "admin:create": "node scripts/create-admin-user.cjs",
     "healthcheck": "node -e \"fetch('http://127.0.0.1:' + (process.env.PORT || 5000) + '/health').then(r => r.ok ? process.exit(0) : process.exit(1)).catch(() => process.exit(1))\"",

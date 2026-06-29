@@ -62,8 +62,8 @@ assert(
   'Route manifest assignment must resolve active drivers by registered name.'
 );
 assert(
-  routeManifestSource.includes('Type or choose an active driver name...'),
-  'Route manifest assignment must prompt for a registered driver name.'
+  routeManifestSource.includes('Enter or choose an active company driver ID...'),
+  'Route manifest assignment must prompt for the company driver ID.'
 );
 assert(
   routeManifestSource.includes('driverSelectStatus'),

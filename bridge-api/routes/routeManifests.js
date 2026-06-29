@@ -546,7 +546,7 @@ function renderRouteManifestAdminPage() {
       <div class="grid">
         <div><label>Filter/delete date</label><input id="routeDateFilter" placeholder="YYYY-MM-DD" /></div>
         <div>
-          <label>Assign to registered driver by name</label>
+          <label>Assign by company driver ID</label>
           <input id="driverSelect" list="activeDriverOptions" placeholder="Loading active drivers..." autocomplete="off" />
           <datalist id="activeDriverOptions"></datalist>
           <div id="driverSelectStatus" class="muted">Loading active driver registry...</div>
@@ -723,8 +723,8 @@ function renderRouteManifestAdminPage() {
           activeDriversByName.get(normalizedName).push(driver);
         });
         options.innerHTML = drivers.map(driver =>
-          '<option value="' + escapeHtml(driver.driverName) + '">' +
-            escapeHtml(driver.driverId) +
+          '<option value="' + escapeHtml(driver.driverId) + '">' +
+            escapeHtml(driver.driverName) +
             (driver.supervisorName || driver.teamName
               ? ' - ' + escapeHtml([driver.supervisorName, driver.teamName].filter(Boolean).join(' / '))
               : '') +
@@ -732,10 +732,10 @@ function renderRouteManifestAdminPage() {
         ).join('');
 
         input.placeholder = drivers.length
-          ? 'Type or choose an active driver name...'
+          ? 'Enter or choose an active company driver ID...'
           : 'No active drivers registered';
         status.textContent = drivers.length
-          ? drivers.length + ' active driver' + (drivers.length === 1 ? '' : 's') + ' available. Type a registered name or choose a suggestion.'
+          ? drivers.length + ' active driver' + (drivers.length === 1 ? '' : 's') + ' available. Assignment is saved by company driver ID.'
           : 'No active drivers are registered. Open Driver Registry and add or reactivate a driver.';
       } catch (error) {
         activeDriversById.clear();
@@ -752,7 +752,7 @@ function renderRouteManifestAdminPage() {
       const input = document.getElementById('driverSelect');
       const driverLookup = String(input.value || '').trim();
       if (!driverLookup) {
-        alert('Type or choose an active registered driver name first.');
+        alert('Enter or choose an active registered company driver ID first.');
         input.focus();
         return;
       }
@@ -767,7 +767,7 @@ function renderRouteManifestAdminPage() {
         return;
       }
       if (!registeredDriver) {
-        alert('That name is not in the active driver registry. Add the driver in Driver Registry, then return here and press Refresh Drivers.');
+        alert('That driver ID or name is not in the active driver registry. Add the driver in Driver Registry, then return here and press Refresh Drivers.');
         input.focus();
         return;
       }
