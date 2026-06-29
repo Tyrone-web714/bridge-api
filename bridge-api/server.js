@@ -16,6 +16,7 @@ const REQUEST_BODY_LIMIT = process.env.REQUEST_BODY_LIMIT || '1mb';
 const DELIVERY_BODY_LIMIT = process.env.DELIVERY_BODY_LIMIT || '30mb';
 const MANIFEST_BODY_LIMIT = process.env.MANIFEST_BODY_LIMIT || '12mb';
 const IMPORT_BODY_LIMIT = process.env.IMPORT_BODY_LIMIT || '15mb';
+const HAZARD_REPORT_BODY_LIMIT = process.env.HAZARD_REPORT_BODY_LIMIT || '24mb';
 const SLOW_REQUEST_MS = Number.parseInt(process.env.SLOW_REQUEST_MS, 10) || 2000;
 const READINESS_TIMEOUT_MS = Number.parseInt(process.env.READINESS_TIMEOUT_MS, 10) || 2500;
 const allowedOrigins = (process.env.CORS_ORIGIN || '*')
@@ -108,6 +109,7 @@ app.use('/api/route-manifests/import', createRateLimiter({
   max: positiveInteger(process.env.RATE_LIMIT_UPLOAD_MAX, 120)
 }));
 app.use('/api/delivery-notes', express.json({ limit: DELIVERY_BODY_LIMIT }));
+app.use('/api/routing/manual-hazards/report', express.json({ limit: HAZARD_REPORT_BODY_LIMIT }));
 app.use('/api/route-manifests', express.json({ limit: MANIFEST_BODY_LIMIT }));
 app.use('/api/data-imports', express.json({ limit: IMPORT_BODY_LIMIT }));
 app.use(express.json({ limit: REQUEST_BODY_LIMIT }));

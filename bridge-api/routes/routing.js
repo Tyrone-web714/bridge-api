@@ -7,6 +7,7 @@ const { Client } = require('@googlemaps/google-maps-services-js');
 const repositories = require('../db/repositories');
 const adminAuth = require('../services/adminAuth');
 const driverAuth = require('../services/driverAuth');
+const photoStorage = require('../services/photoStorage');
 const router = express.Router();
 
 const client = new Client({});
@@ -17,6 +18,9 @@ let noTruckZones = [];
 let residentialZones = [];
 const MANUAL_HAZARDS_FILE = path.join(__dirname, '..', 'data', 'manual_hazards.json');
 let manualHazardsDbCache = null;
+const MAX_HAZARD_REPORT_PHOTOS = 4;
+const MAX_HAZARD_PHOTO_BYTES = 4_000_000;
+const MAX_HAZARD_BASE64_CHARS = Math.ceil(MAX_HAZARD_PHOTO_BYTES * 1.38);
 
 // Safe fallbacks if files not present
 try { noTruckZones = require('../data/no_truck_zones.json'); } catch {}
@@ -185,6 +189,76 @@ function cleanNullableText(value, maxLength = 180) {
 function numberOrNull(value) {
   const parsed = Number(value);
   return Number.isFinite(parsed) ? parsed : null;
+}
+
+function detectHazardPhotoMimeType(buffer) {
+  if (buffer.length >= 3 && buffer[0] === 0xff && buffer[1] === 0xd8 && buffer[2] === 0xff) return 'image/jpeg';
+  if (
+    buffer.length >= 8
+    && buffer.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]))
+  ) return 'image/png';
+  if (
+    buffer.length >= 12
+    && buffer.subarray(0, 4).toString('ascii') === 'RIFF'
+    && buffer.subarray(8, 12).toString('ascii') === 'WEBP'
+  ) return 'image/webp';
+  return null;
+}
+
+async function saveHazardReportPhotos(photos, hazardId, req) {
+  const submitted = Array.isArray(photos) ? photos.slice(0, MAX_HAZARD_REPORT_PHOTOS) : [];
+  const saved = [];
+  for (const [index, photo] of submitted.entries()) {
+    const base64 = String(photo?.base64 || '').replace(/\s+/g, '');
+    if (!base64) continue;
+    if (
+      base64.length > MAX_HAZARD_BASE64_CHARS
+      || base64.length % 4 !== 0
+      || !/^[A-Za-z0-9+/]+={0,2}$/.test(base64)
+    ) {
+      const error = new Error(`hazard photo ${index + 1} is invalid or too large`);
+      error.status = 413;
+      throw error;
+    }
+    const buffer = Buffer.from(base64, 'base64');
+    const detectedMimeType = detectHazardPhotoMimeType(buffer);
+    if (!detectedMimeType || buffer.length > MAX_HAZARD_PHOTO_BYTES) {
+      const error = new Error(`hazard photo ${index + 1} must be a JPEG, PNG, or WebP image under 4 MB`);
+      error.status = detectedMimeType ? 413 : 415;
+      throw error;
+    }
+    saved.push(await photoStorage.saveHazardReportPhoto({
+      req,
+      buffer,
+      mimeType: detectedMimeType,
+      noteId: hazardId,
+      index: index + 1,
+      originalName: photo?.fileName || photo?.filename || null
+    }));
+  }
+  return saved;
+}
+
+async function saveDriverReportForStaticVerification(hazard, photos = []) {
+  const raw = {
+    ...hazard,
+    manual_hazard_id: hazard.id,
+    report_source: 'driver_report',
+    verification_status: 'needs_review',
+    photos
+  };
+  if (hazard.category === 'low_bridge') {
+    await repositories.upsertStaticBridge(raw);
+  } else {
+    await repositories.upsertStaticZone(raw, hazard.category);
+  }
+  return repositories.updateStaticHazardVerification(hazard.category, hazard.id, {
+    verification_status: 'needs_review',
+    verification_notes: hazard.notes || 'Driver-submitted hazard awaiting supervisor verification.',
+    location_address: hazard.nearby_address || null,
+    location_description: hazard.notes || hazard.name || null,
+    active: false
+  });
 }
 
 function normalizeManualCategory(value) {
@@ -998,6 +1072,8 @@ function renderHazardVerificationAdminPage(session = {}) {
     .record-title { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-weight: 900; }
     .record-id { font-size: 12px; color: #4d6478; word-break: break-word; }
     .record-detail { margin-top: 8px; color: #4d6478; font-size: 13px; line-height: 1.35; }
+    .report-photos { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 9px; }
+    .report-photos img { width: 92px; height: 72px; object-fit: cover; border-radius: 8px; border: 2px solid #8fc2df; }
     button { border: 0; border-radius: 10px; padding: 10px 12px; font-weight: 900; cursor: pointer; }
     .primary { background: #d62828; color: #fff; }
     .blue { background: #1565c0; color: #fff; }
@@ -1036,7 +1112,7 @@ function renderHazardVerificationAdminPage(session = {}) {
     <div>
       <p class="eyebrow">Supervisor Console</p>
       <h1>Static Hazard Verification</h1>
-      <p class="subtitle">Verify imported bridges and restricted zones without deleting source records.</p>
+      <p class="subtitle">Verify imported records and driver-reported missing hazards before they affect routing.</p>
     </div>
     <div class="header-actions">
       <div class="role-badge">${adminBadge}</div>
@@ -1121,7 +1197,7 @@ function renderHazardVerificationAdminPage(session = {}) {
             <button class="gray" onclick="clearPickedPoint()">Clear Point</button>
           </div>
         </section>
-        <h2>Imported Hazard Records</h2>
+        <h2>Hazard Verification Records</h2>
         <div id="hazards" class="record-list"></div>
       </section>
     </div>
@@ -1151,6 +1227,14 @@ function renderHazardVerificationAdminPage(session = {}) {
       });
     }
     function display(value, fallback) { return escapeHtml(value ?? fallback ?? ''); }
+    function hazardPhotosHtml(hazard) {
+      const photos = Array.isArray(hazard && hazard.photos) ? hazard.photos : [];
+      if (!photos.length) return '';
+      return '<div class="report-photos">' + photos.map(function (photo) {
+        const url = escapeHtml(photo && photo.url);
+        return url ? '<a href="' + url + '" target="_blank" rel="noopener"><img src="' + url + '" alt="Driver hazard report photo" /></a>' : '';
+      }).join('') + '</div>';
+    }
     function setMessage(text) { document.getElementById('message').textContent = text || ''; }
     function formatHazardLocation(hazard) {
       const coordinates = [hazard.latitude, hazard.longitude]
@@ -1429,7 +1513,7 @@ function renderHazardVerificationAdminPage(session = {}) {
       ].filter(Boolean).join('<br>');
       const category = escapeHtml(hazard.category);
       const id = escapeHtml(hazard.id);
-      return '<div>' + details + '<div class="row-actions" style="margin-top:10px; min-width:0">' +
+      return '<div>' + details + hazardPhotosHtml(hazard) + '<div class="row-actions" style="margin-top:10px; min-width:0">' +
         '<button class="green" onclick="setStatus(&quot;' + category + '&quot;,&quot;' + id + '&quot;,&quot;verified&quot;)">Verified</button>' +
         '<button class="gold" onclick="setStatus(&quot;' + category + '&quot;,&quot;' + id + '&quot;,&quot;needs_review&quot;)">Review</button>' +
         '<button class="danger" onclick="setStatus(&quot;' + category + '&quot;,&quot;' + id + '&quot;,&quot;incorrect&quot;)">Incorrect</button>' +
@@ -1501,7 +1585,7 @@ function renderHazardVerificationAdminPage(session = {}) {
         return '<div class="record-card ' + display(h.category) + '" data-id="' + display(h.id) + '" onclick="selectHazard(&quot;' + escapeHtml(h.id) + '&quot;, true)">' +
           '<div class="record-title"><span>' + display(h.category) + '</span><span class="pill ' + status + '">' + display(status) + '</span></div>' +
           '<div class="record-id">' + display(h.id) + '</div>' +
-          '<div class="record-detail"><strong>' + display(h.name || 'Imported hazard') + '</strong><br>' + location + '<br>' + (details || 'No extra details') + '</div>' +
+          '<div class="record-detail"><strong>' + display(h.name || 'Imported hazard') + '</strong><br>' + location + '<br>' + (details || 'No extra details') + hazardPhotosHtml(h) + '</div>' +
           '<div class="row-actions" style="margin-top:10px; min-width:0" onclick="event.stopPropagation()">' +
           '<button class="green" onclick="setStatus(&quot;' + escapeHtml(h.category) + '&quot;,&quot;' + escapeHtml(h.id) + '&quot;,&quot;verified&quot;)">Verified</button>' +
           '<button class="gold" onclick="setStatus(&quot;' + escapeHtml(h.category) + '&quot;,&quot;' + escapeHtml(h.id) + '&quot;,&quot;needs_review&quot;)">Needs Review</button>' +
@@ -4131,13 +4215,17 @@ router.post('/manual-hazards/report', driverAuth.requireDriverAuth, async (req, 
     const driver = req.driverAuth || driverAuth.getDriverIdentity(req);
     const hazard = normalizeDriverHazardReport({
       ...(req.body || {}),
-      reported_by: req.body?.reported_by || driver.driverId,
-      driver_id: req.body?.driver_id || driver.driverId,
-      driver_name: req.body?.driver_name || driver.driverName
+      reported_by: driver.driverId,
+      driver_id: driver.driverId,
+      driver_name: driver.driverName
     });
+    const photos = await saveHazardReportPhotos(req.body?.photos, hazard.id, req);
+    hazard.photos = photos;
     await saveManualHazardRecord(hazard);
+    const verificationRecord = await saveDriverReportForStaticVerification(hazard, photos);
     return res.status(201).json({
       hazard,
+      verificationRecord,
       message: 'Hazard report saved as pending. It will not affect routing until confirmed.'
     });
   } catch (error) {
@@ -4193,7 +4281,9 @@ router.get('/hazard-verification', requireAdminAuth, async (req, res) => {
     }
 
     const status = cleanManualText(req.query.status, 40).toLowerCase().replace(/[\s-]+/g, '_');
-    const includeInactive = String(req.query.includeInactive || '').toLowerCase() === 'true';
+    const includeInactive =
+      String(req.query.includeInactive || '').toLowerCase() === 'true'
+      || status === 'needs_review';
     const serviceAreaOnly = String(req.query.serviceAreaOnly || '').toLowerCase() === 'true';
     const state = cleanManualText(req.query.state || req.query.stateCode, 40).toUpperCase();
     const quality = cleanManualText(req.query.quality || req.query.dataQuality, 40).toLowerCase().replace(/[\s-]+/g, '_');
@@ -4258,6 +4348,27 @@ router.put('/hazard-verification/:category/:id', requireAdminAuth, async (req, r
 
     if (!updated) {
       return res.status(404).json({ error: `static hazard not found: ${req.params.id}` });
+    }
+
+    const manualHazardId = updated.manual_hazard_id || updated.manualHazardId;
+    if (manualHazardId) {
+      const existingRecords = await readAllManualHazardsAsync();
+      const existing = existingRecords.find((record) => record.id === manualHazardId);
+      if (existing) {
+        const verificationStatus = updated.verification_status;
+        const manualStatus = verificationStatus === 'verified'
+          ? 'confirmed'
+          : ['incorrect', 'inactive'].includes(verificationStatus)
+            ? 'rejected'
+            : 'pending';
+        await saveManualHazardRecord(normalizeManualHazardInput({
+          ...existing,
+          status: manualStatus,
+          enabled: manualStatus === 'confirmed',
+          reviewed_by: req.adminSession?.username,
+          review_notes: req.body?.verification_notes ?? req.body?.notes
+        }, existing));
+      }
     }
 
     return res.json({ hazard: updated });

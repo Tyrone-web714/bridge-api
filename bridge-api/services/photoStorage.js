@@ -73,10 +73,11 @@ function getExtension(mimeType) {
   return 'jpg';
 }
 
-function buildObjectKey({ noteId, index, extension }) {
+function buildObjectKey({ noteId, index, extension, folder = 'delivery-notes' }) {
   const safeNoteId = cleanText(noteId, 80).replace(/[^a-z0-9_-]+/gi, '-').replace(/^-+|-+$/g, '') || 'delivery-note';
+  const safeFolder = cleanText(folder, 80).replace(/[^a-z0-9_-]+/gi, '-').replace(/^-+|-+$/g, '') || 'delivery-notes';
   const suffix = crypto.randomBytes(6).toString('hex');
-  return `delivery-notes/${safeNoteId}/${Date.now()}-${index}-${suffix}.${extension}`;
+  return `${safeFolder}/${safeNoteId}/${Date.now()}-${index}-${suffix}.${extension}`;
 }
 
 function getS3Client() {
@@ -114,10 +115,10 @@ function getS3Config() {
   return { bucket, publicBaseUrl };
 }
 
-async function saveLocalPhoto({ req, buffer, mimeType, noteId, index, originalName }) {
+async function saveLocalPhoto({ req, buffer, mimeType, noteId, index, originalName, folder }) {
   const extension = getExtension(mimeType);
-  const key = buildObjectKey({ noteId, index, extension });
-  const filename = key.replace(/^delivery-notes\//, '').replace(/[\\/]+/g, '__');
+  const key = buildObjectKey({ noteId, index, extension, folder });
+  const filename = key.replace(/[\\/]+/g, '__');
   const fullPath = path.join(LOCAL_PHOTO_DIR, filename);
 
   fs.mkdirSync(LOCAL_PHOTO_DIR, { recursive: true });
@@ -136,10 +137,10 @@ async function saveLocalPhoto({ req, buffer, mimeType, noteId, index, originalNa
   };
 }
 
-async function saveS3Photo({ buffer, mimeType, noteId, index, originalName }) {
+async function saveS3Photo({ buffer, mimeType, noteId, index, originalName, folder }) {
   const { bucket, publicBaseUrl } = getS3Config();
   const extension = getExtension(mimeType);
-  const key = buildObjectKey({ noteId, index, extension });
+  const key = buildObjectKey({ noteId, index, extension, folder });
 
   await getS3Client().send(new PutObjectCommand({
     Bucket: bucket,
@@ -172,6 +173,13 @@ async function saveDeliveryNotePhoto(input) {
   if (provider === 'local') return saveLocalPhoto(input);
   if (provider === 's3') return saveS3Photo(input);
   throw new Error(`Unsupported PHOTO_STORAGE_PROVIDER: ${provider}`);
+}
+
+async function saveHazardReportPhoto(input) {
+  return saveDeliveryNotePhoto({
+    ...input,
+    folder: 'hazard-reports'
+  });
 }
 
 async function deleteLocalPhoto(photo) {
@@ -246,6 +254,7 @@ module.exports = {
   getProvider,
   getStorageStatus,
   normalizeExistingPhotoUrl,
+  saveHazardReportPhoto,
   saveDeliveryNotePhoto,
   validateStorageConfig
 };

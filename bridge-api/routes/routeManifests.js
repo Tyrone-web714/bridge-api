@@ -544,7 +544,7 @@ function renderRouteManifestAdminPage() {
     <section class="panel">
       <h2>Imported Routes</h2>
       <div class="grid">
-        <div><label>Filter/delete date</label><input id="routeDateFilter" placeholder="YYYY-MM-DD" /></div>
+        <div><label>Filter/delete date</label><input id="routeDateFilter" placeholder="YYYY-MM-DD" autocomplete="off" /></div>
         <div>
           <label>Assign by company driver ID</label>
           <input id="driverSelect" list="activeDriverOptions" placeholder="Loading active drivers..." autocomplete="off" />
@@ -862,7 +862,7 @@ function renderRouteManifestAdminPage() {
       routesStatus.textContent = 'Loading persisted routes from the backend...';
 
       try {
-        const response = await fetch('/api/route-manifests?' + query.toString());
+        const response = await fetch('/api/route-manifests?' + query.toString(), { cache: 'no-store' });
         const data = await response.json().catch(() => ({}));
         if (!response.ok) {
           throw new Error(data.error || 'Unable to load persisted routes.');
@@ -1056,6 +1056,7 @@ function renderRouteManifestAdminPage() {
       }
       loadDeliveryDocuments();
     }
+    document.getElementById('routeDateFilter').value = '';
     loadDriversForAssignment();
     loadWarehouseEmployees();
     loadRoutes();
@@ -1688,6 +1689,7 @@ router.post('/switch-assignments', requireAdminSession, async (req, res) => {
         assignedBy: req.adminSession?.username || req.body?.assignedBy
       }
     );
+    res.set('Cache-Control', 'no-store');
     return res.json({ ok: true, routes });
   } catch (error) {
     return res.status(error.status || 500).json({
