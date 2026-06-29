@@ -1211,6 +1211,7 @@ router.get('/', requireAdminSession, async (req, res) => {
       status: req.query.status,
       limit: req.query.limit
     });
+    res.set('Cache-Control', 'no-store');
     return res.json({ ok: true, routes });
   } catch (error) {
     return res.status(500).json({ error: error.message || 'Unable to list route manifests.' });
@@ -1689,7 +1690,6 @@ router.post('/switch-assignments', requireAdminSession, async (req, res) => {
         assignedBy: req.adminSession?.username || req.body?.assignedBy
       }
     );
-    res.set('Cache-Control', 'no-store');
     return res.json({ ok: true, routes });
   } catch (error) {
     return res.status(error.status || 500).json({
