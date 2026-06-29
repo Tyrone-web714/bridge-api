@@ -22,17 +22,34 @@ const allowedOrigins = (process.env.CORS_ORIGIN || '*')
   .split(',')
   .map((origin) => origin.trim())
   .filter(Boolean);
+const allowWildcardCors = allowedOrigins.includes('*') && process.env.NODE_ENV !== 'production';
 
 app.set('trust proxy', 1);
+app.disable('x-powered-by');
 app.use(cors({
-  origin: allowedOrigins.includes('*') ? '*' : allowedOrigins
+  origin(origin, callback) {
+    if (!origin || allowWildcardCors || allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    return callback(null, false);
+  }
 }));
 app.use((req, res, next) => {
-  const requestId = req.headers['x-request-id'] || `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
+  const presentedRequestId = String(req.headers['x-request-id'] || '')
+    .replace(/[^a-zA-Z0-9._-]/g, '')
+    .slice(0, 120);
+  const requestId = presentedRequestId || `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
   const startedAt = Date.now();
 
   req.requestId = requestId;
   res.setHeader('X-Request-Id', requestId);
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+  res.setHeader('Referrer-Policy', 'no-referrer');
+  res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+  if (req.secure || String(req.headers['x-forwarded-proto'] || '').includes('https')) {
+    res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+  }
   res.on('finish', () => {
     const elapsedMs = Date.now() - startedAt;
     if (elapsedMs >= SLOW_REQUEST_MS || res.statusCode >= 500) {
@@ -50,6 +67,17 @@ app.use(createRateLimiter({
 app.use('/api/routing/manual-hazards/admin/login', createRateLimiter({
   name: 'admin-login',
   max: positiveInteger(process.env.RATE_LIMIT_AUTH_MAX, 12)
+}));
+app.use('/api/driver-auth/login', express.json({ limit: '16kb' }), createRateLimiter({
+  name: 'driver-login',
+  max: positiveInteger(process.env.RATE_LIMIT_AUTH_MAX, 12),
+  keyGenerator: (req) => {
+    const driverId = String(req.body?.driverId || req.body?.driver_id || '')
+      .trim()
+      .toLowerCase()
+      .slice(0, 120);
+    return `${req.ip || 'unknown'}:${driverId || 'missing-driver'}`;
+  }
 }));
 app.use('/api/places', createRateLimiter({
   name: 'places',
@@ -100,6 +128,7 @@ const operationalHeatmapRoutes = require('./routes/operationalHeatmaps');
 const operationalGeographyRoutes = require('./routes/operationalGeography');
 const dataImportRoutes = require('./routes/dataImports');
 const supervisorIntelligenceRoutes = require('./routes/supervisorIntelligence');
+const driverSessionRoutes = require('./routes/driverSessions');
 
 app.use('/api/bridges', bridgeRoutes);
 app.use('/api/drivers', driverRoutes);
@@ -115,14 +144,20 @@ app.use('/api/operational-heatmaps', operationalHeatmapRoutes);
 app.use('/api/operational-geography', operationalGeographyRoutes);
 app.use('/api/data-imports', dataImportRoutes);
 app.use('/api/supervisor-intelligence', supervisorIntelligenceRoutes);
+app.use('/api/driver-auth', driverSessionRoutes);
 
 app.get('/health', async (req, res) => {
+  const storageStatus = photoStorage.getStorageStatus();
   res.json({
     ok: true,
     service: 'bridge-api',
     database: postgres.isDatabaseConfigured() ? 'postgres' : 'json-fallback',
     postgis: await postgres.isPostgisEnabled(),
-    photoStorage: photoStorage.getStorageStatus(),
+    photoStorage: {
+      provider: storageStatus.provider,
+      configured: storageStatus.configured,
+      durable: storageStatus.durable
+    },
     ai: aiProvider.getStatus(),
     driverAuth: driverAuth.isDriverAuthConfigured() ? 'configured' : 'not-configured',
     uptime_s: Math.round(process.uptime())
@@ -165,8 +200,12 @@ app.get('/ready', async (req, res) => {
     service: 'bridge-api',
     checks,
     ai: aiProvider.getStatus(),
-    ...(databaseError ? { databaseError } : {}),
-    photoStorage: storageStatus,
+    ...(databaseError ? { databaseError: 'Database readiness check failed.' } : {}),
+    photoStorage: {
+      provider: storageStatus.provider,
+      configured: storageStatus.configured,
+      durable: storageStatus.durable
+    },
     uptime_s: Math.round(process.uptime())
   });
 });

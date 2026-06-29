@@ -178,13 +178,30 @@ async function ensureSchema() {
     ALTER TABLE drivers
       ADD COLUMN IF NOT EXISTS supervisor_username TEXT,
       ADD COLUMN IF NOT EXISTS supervisor_name TEXT,
-      ADD COLUMN IF NOT EXISTS team_name TEXT;
+      ADD COLUMN IF NOT EXISTS team_name TEXT,
+      ADD COLUMN IF NOT EXISTS pin_hash TEXT;
     CREATE INDEX IF NOT EXISTS drivers_active_idx ON drivers(active);
     CREATE INDEX IF NOT EXISTS drivers_route_group_idx ON drivers(route_group);
     CREATE INDEX IF NOT EXISTS drivers_territory_idx ON drivers(territory);
     CREATE INDEX IF NOT EXISTS drivers_supervisor_idx ON drivers(supervisor_username);
     CREATE INDEX IF NOT EXISTS drivers_team_name_idx ON drivers(team_name);
     CREATE INDEX IF NOT EXISTS drivers_name_idx ON drivers(driver_name);
+
+    CREATE TABLE IF NOT EXISTS driver_sessions (
+      id TEXT PRIMARY KEY,
+      driver_id TEXT NOT NULL REFERENCES drivers(driver_id) ON DELETE CASCADE,
+      device_id TEXT NOT NULL,
+      token_hash TEXT NOT NULL UNIQUE,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      expires_at TIMESTAMPTZ NOT NULL,
+      last_used_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      revoked_at TIMESTAMPTZ
+    );
+
+    CREATE INDEX IF NOT EXISTS driver_sessions_driver_idx
+      ON driver_sessions(driver_id, expires_at DESC);
+    CREATE INDEX IF NOT EXISTS driver_sessions_token_idx
+      ON driver_sessions(token_hash);
 
     CREATE TABLE IF NOT EXISTS warehouse_employees (
       employee_id TEXT PRIMARY KEY,

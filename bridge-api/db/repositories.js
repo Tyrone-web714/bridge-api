@@ -67,6 +67,7 @@ function driverFromRow(row) {
   return {
     driverId: row.driver_id,
     driverName: row.driver_name,
+    pinConfigured: Boolean(row.pin_hash),
     employeeNumber: row.employee_number || null,
     phoneNumber: row.phone_number || null,
     routeGroup: row.route_group || null,
@@ -916,6 +917,96 @@ async function getDriver(driverId) {
   return result.rows[0] ? driverFromRow(result.rows[0]) : null;
 }
 
+async function getDriverAuthRecord(driverId) {
+  const cleanedDriverId = String(driverId || '').trim();
+  if (!cleanedDriverId) return null;
+
+  const result = await postgres.query(`
+    SELECT driver_id, driver_name, active, pin_hash
+    FROM drivers
+    WHERE driver_id = $1
+  `, [cleanedDriverId]);
+  return result.rows[0] || null;
+}
+
+async function setDriverPinHash(driverId, pinHash, actor = 'supervisor') {
+  const cleanedDriverId = String(driverId || '').trim();
+  if (!cleanedDriverId || !pinHash) return null;
+
+  const result = await postgres.query(`
+    UPDATE drivers
+    SET pin_hash = $2, updated_by = $3, updated_at = NOW()
+    WHERE driver_id = $1
+    RETURNING *
+  `, [cleanedDriverId, pinHash, String(actor || 'supervisor').trim() || 'supervisor']);
+  await postgres.query(`
+    UPDATE driver_sessions
+    SET revoked_at = NOW()
+    WHERE driver_id = $1 AND revoked_at IS NULL
+  `, [cleanedDriverId]);
+  return result.rows[0] ? driverFromRow(result.rows[0]) : null;
+}
+
+async function createDriverSession(session) {
+  await postgres.query(`
+    UPDATE driver_sessions
+    SET revoked_at = NOW()
+    WHERE driver_id = $1 AND device_id = $2 AND revoked_at IS NULL
+  `, [session.driverId, session.deviceId]);
+
+  const result = await postgres.query(`
+    INSERT INTO driver_sessions (
+      id, driver_id, device_id, token_hash, created_at, expires_at, last_used_at
+    )
+    VALUES ($1, $2, $3, $4, NOW(), $5, NOW())
+    RETURNING *
+  `, [
+    session.id,
+    session.driverId,
+    session.deviceId,
+    session.tokenHash,
+    session.expiresAt
+  ]);
+  return result.rows[0] || null;
+}
+
+async function getActiveDriverSession(tokenHash) {
+  const result = await postgres.query(`
+    SELECT
+      session.id,
+      session.driver_id,
+      session.device_id,
+      session.expires_at,
+      driver.driver_name,
+      driver.active
+    FROM driver_sessions session
+    JOIN drivers driver ON driver.driver_id = session.driver_id
+    WHERE session.token_hash = $1
+      AND session.revoked_at IS NULL
+      AND session.expires_at > NOW()
+      AND driver.active = true
+    LIMIT 1
+  `, [String(tokenHash || '')]);
+  const session = result.rows[0] || null;
+  if (session) {
+    await postgres.query(
+      'UPDATE driver_sessions SET last_used_at = NOW() WHERE id = $1',
+      [session.id]
+    );
+  }
+  return session;
+}
+
+async function revokeDriverSession(tokenHash) {
+  const result = await postgres.query(`
+    UPDATE driver_sessions
+    SET revoked_at = NOW()
+    WHERE token_hash = $1 AND revoked_at IS NULL
+    RETURNING id
+  `, [String(tokenHash || '')]);
+  return Boolean(result.rows[0]);
+}
+
 async function listDrivers(options = {}) {
   const values = [];
   const where = [];
@@ -1029,6 +1120,14 @@ async function setDriverActive(driverId, active, actor = 'supervisor') {
     WHERE driver_id = $1
     RETURNING *
   `, [cleanedDriverId, active === true, String(actor || 'supervisor').trim() || 'supervisor']);
+
+  if (active !== true) {
+    await postgres.query(`
+      UPDATE driver_sessions
+      SET revoked_at = NOW()
+      WHERE driver_id = $1 AND revoked_at IS NULL
+    `, [cleanedDriverId]);
+  }
 
   return result.rows[0] ? driverFromRow(result.rows[0]) : null;
 }
@@ -7322,6 +7421,7 @@ async function getAiOperationsMetrics(options = {}) {
 
 module.exports = {
   getAdminUser,
+  createDriverSession,
   assignDailyRouteManifest,
   deleteDriver,
   deleteDailyRouteManifest,
@@ -7344,6 +7444,8 @@ module.exports = {
   getDailyRouteManifest,
   getDailyRouteManifestWithAccountIntelligence,
   getDriver,
+  getDriverAuthRecord,
+  getActiveDriverSession,
   getAiOperationsMetrics,
   getKnowledgeGraphSnapshot,
   getStaticHazardLocationBackfillStats,
@@ -7412,8 +7514,10 @@ module.exports = {
   saveDeliveryDocument,
   saveRouteCloseoutDocument,
   recordAdminUserLogin,
+  revokeDriverSession,
   setAdminUserActive,
   setDriverActive,
+  setDriverPinHash,
   setScheduledReportScheduleEnabled,
   setOperationalGeographyActive,
   unassignDailyRouteManifest,

@@ -172,6 +172,7 @@ function renderDriverRegistryAdminPage(session) {
       <div class="grid">
         <div><label>Driver ID</label><input id="driverId" placeholder="Unique employee or driver ID" /></div>
         <div><label>Driver Name</label><input id="driverName" placeholder="Driver full name" /></div>
+        <div><label>Driver PIN</label><input id="driverPin" inputmode="numeric" maxlength="12" type="password" placeholder="6 to 12 digits; blank keeps current PIN" /></div>
         <div><label>Employee Number</label><input id="employeeNumber" placeholder="Optional" /></div>
         <div><label>Phone Number</label><input id="phoneNumber" placeholder="Optional" /></div>
         <div><label>Supervisor Username</label><input id="supervisorUsername" placeholder="supervisor login" /></div>
@@ -251,13 +252,14 @@ function renderDriverRegistryAdminPage(session) {
     }
 
     function clearForm() {
-      ['driverId','driverName','employeeNumber','phoneNumber','supervisorUsername','supervisorName','teamName','routeGroup','territory','notes'].forEach(id => setInputValue(id, ''));
+      ['driverId','driverName','driverPin','employeeNumber','phoneNumber','supervisorUsername','supervisorName','teamName','routeGroup','territory','notes'].forEach(id => setInputValue(id, ''));
       document.getElementById('active').value = 'true';
     }
 
     function editDriver(driver) {
       setInputValue('driverId', driver.driverId);
       setInputValue('driverName', driver.driverName);
+      setInputValue('driverPin', '');
       setInputValue('employeeNumber', driver.employeeNumber);
       setInputValue('phoneNumber', driver.phoneNumber);
       setInputValue('supervisorUsername', driver.supervisorUsername);
@@ -294,6 +296,19 @@ function renderDriverRegistryAdminPage(session) {
         ? 'Saved driver ' + data.driver.driverId + '.'
         : data.error || 'Unable to save driver.';
       if (response.ok) {
+        const pin = inputValue('driverPin');
+        if (pin) {
+          const pinResponse = await fetch('/api/drivers/' + encodeURIComponent(data.driver.driverId) + '/pin', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ pin })
+          });
+          const pinData = await pinResponse.json().catch(() => ({}));
+          if (!pinResponse.ok) {
+            document.getElementById('message').textContent = pinData.error || 'Driver saved, but PIN setup failed.';
+            return;
+          }
+        }
         clearForm();
         loadDrivers();
       }
@@ -406,7 +421,7 @@ function renderDriverRegistryAdminPage(session) {
       const drivers = data.drivers || [];
       window.__drivers = drivers;
       document.getElementById('drivers').innerHTML =
-        '<table><thead><tr><th>Driver</th><th>Supervisor / Team</th><th>Employee</th><th>Phone</th><th>Route Group</th><th>Territory</th><th>Status</th><th>Notes</th><th></th></tr></thead><tbody>' +
+        '<table><thead><tr><th>Driver</th><th>Supervisor / Team</th><th>Employee</th><th>Phone</th><th>Route Group</th><th>Territory</th><th>Login</th><th>Status</th><th>Notes</th><th></th></tr></thead><tbody>' +
         drivers.map((driver, index) => '<tr>' +
           '<td><strong>' + escapeHtml(driver.driverName) + '</strong><br><span class="muted">' + escapeHtml(driver.driverId) + '</span></td>' +
           '<td><strong>' + escapeHtml(driver.supervisorName || driver.supervisorUsername || '-') + '</strong><br><span class="muted">' + escapeHtml(driver.teamName || '-') + '</span></td>' +
@@ -414,6 +429,7 @@ function renderDriverRegistryAdminPage(session) {
           '<td>' + escapeHtml(driver.phoneNumber || '-') + '</td>' +
           '<td>' + escapeHtml(driver.routeGroup || '-') + '</td>' +
           '<td>' + escapeHtml(driver.territory || '-') + '</td>' +
+          '<td class="' + (driver.pinConfigured ? 'status-active' : 'status-inactive') + '">' + (driver.pinConfigured ? 'PIN set' : 'PIN required') + '</td>' +
           '<td class="' + (driver.active ? 'status-active' : 'status-inactive') + '">' + (driver.active ? 'Active' : 'Inactive') + '</td>' +
           '<td>' + escapeHtml(driver.notes || '') + '</td>' +
           '<td><div class="row-actions">' +
@@ -573,6 +589,24 @@ router.put('/:driverId/active', requireAdminSession, async (req, res) => {
     return res.json({ ok: true, driver });
   } catch (error) {
     return res.status(500).json({ error: error.message || 'Unable to update driver status.' });
+  }
+});
+
+router.put('/:driverId/pin', requireAdminSession, async (req, res) => {
+  try {
+    const pin = String(req.body?.pin || '');
+    if (!/^\d{6,12}$/.test(pin)) {
+      return res.status(400).json({ error: 'Driver PIN must contain 6 to 12 digits.' });
+    }
+    const driver = await repositories.setDriverPinHash(
+      req.params.driverId,
+      adminAuth.hashPassword(pin),
+      req.adminSession?.username || 'supervisor'
+    );
+    if (!driver) return res.status(404).json({ error: 'Driver not found.' });
+    return res.json({ ok: true, driver });
+  } catch (error) {
+    return res.status(500).json({ error: error.message || 'Unable to set driver PIN.' });
   }
 });
 

@@ -10,7 +10,6 @@ const REQUIRED_ENV = [
   'DATABASE_URL',
   'ADMIN_DASHBOARD_PASSWORD',
   'ADMIN_DASHBOARD_SECRET',
-  'DRIVER_API_TOKEN',
   'CORS_ORIGIN',
   'PHOTO_STORAGE_PROVIDER'
 ];
@@ -45,6 +44,9 @@ function checkRequiredEnv() {
 
   if (driverAuth.getDriverApiToken() && driverAuth.getDriverApiToken().length < 32) {
     failures.push('DRIVER_API_TOKEN should be at least 32 characters');
+  }
+  if (String(process.env.ALLOW_LEGACY_DRIVER_API_TOKEN || '').toLowerCase() === 'true') {
+    failures.push('ALLOW_LEGACY_DRIVER_API_TOKEN must be disabled for production');
   }
 
   const storage = photoStorage.getStorageStatus();
