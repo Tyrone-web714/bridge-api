@@ -1371,14 +1371,21 @@ router.post('/driver/routes/:manifestId/departure-inventory/confirm', driverAuth
 router.post('/warehouse/departure-inventory/access', async (req, res) => {
   try {
     const employee = await authenticateWarehouseEmployee(req.body?.employeeId || req.body?.employee_id);
-    const driverId = cleanText(req.body?.driverId || req.body?.driver_id, 120);
+    const routeNumber = cleanText(req.body?.routeNumber || req.body?.route_number, 120);
     const routeDate = normalizeDate(req.body?.routeDate || req.body?.route_date);
-    if (!driverId || !routeDate) {
-      return res.status(400).json({ error: 'Company driver ID and route date are required.' });
+    if (!routeNumber || !routeDate) {
+      return res.status(400).json({ error: 'Route number and route date are required.' });
     }
-    const route = await repositories.getAssignedDailyRouteForDriver(driverId, routeDate);
-    if (!route) {
-      return res.status(404).json({ error: 'Active assigned route was not found for this company driver ID and date.' });
+    const routes = await repositories.listDailyRouteManifests({ routeDate, limit: 500 });
+    const selectedRoute = routes.find((item) => (
+      String(item.routeNumber || '').trim().toLowerCase() === routeNumber.toLowerCase()
+    ));
+    const driverId = cleanText(selectedRoute?.assignedDriverId, 120);
+    const route = driverId
+      ? await repositories.getAssignedDailyRouteForDriver(driverId, routeDate)
+      : null;
+    if (!route || route.id !== selectedRoute?.id) {
+      return res.status(404).json({ error: 'Active assigned route was not found for this route number and date.' });
     }
     const items = await repositories.getRouteTruckInventoryForDriver(route.id, driverId);
     const confirmation = await repositories.getDepartureInventoryConfirmation(route.id, driverId);
