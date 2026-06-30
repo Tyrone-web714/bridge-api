@@ -4047,6 +4047,25 @@ async function confirmDepartureInventoryPrint(manifestId, driverId, token) {
   return result.rows[0] || null;
 }
 
+async function confirmDepartureInventoryPrintForWarehouse(manifestId, driverId, warehouseEmployeeId, token) {
+  const result = await postgres.query(`
+    UPDATE route_departure_inventory_confirmations
+    SET status = 'printed', printed_at = NOW(), print_confirmation_token = NULL, updated_at = NOW()
+    WHERE manifest_id = $1
+      AND ${assignedDriverIdMatchesSql('driver_id', '$2')}
+      AND warehouse_employee_id = $3
+      AND print_confirmation_token = $4
+      AND printed_at IS NULL
+    RETURNING *
+  `, [
+    cleanRepositoryText(manifestId, 160),
+    cleanRepositoryText(driverId, 120),
+    cleanRepositoryText(warehouseEmployeeId, 120),
+    cleanRepositoryText(token, 160)
+  ]);
+  return result.rows[0] || null;
+}
+
 async function getDepartureInventoryConfirmation(manifestId, driverId) {
   const result = await postgres.query(`
     SELECT * FROM route_departure_inventory_confirmations
@@ -7469,6 +7488,7 @@ module.exports = {
   getWarehouseEmployeeWithPin,
   prepareDepartureInventoryConfirmation,
   confirmDepartureInventoryPrint,
+  confirmDepartureInventoryPrintForWarehouse,
   getDepartureInventoryConfirmation,
   listPredictionRuns,
   listScheduledReports,

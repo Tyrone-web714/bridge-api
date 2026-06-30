@@ -67,6 +67,9 @@ const requiredRouteFragments = [
   "router.post('/warehouse-employees'",
   "router.post('/driver/routes/:manifestId/departure-inventory/confirm'",
   "router.put('/driver/routes/:manifestId/departure-inventory/confirm-print'",
+  "router.post('/warehouse/departure-inventory/access'",
+  "router.post('/warehouse/departure-inventory/confirm'",
+  "router.put('/warehouse/departure-inventory/confirm-print'",
   'adminAuth.verifyPassword(pin, employee.pin_hash)',
   'buildRouteCloseoutPayload',
 ];

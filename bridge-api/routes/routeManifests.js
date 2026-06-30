@@ -46,6 +46,23 @@ function cleanText(value, maxLength = 500) {
   return String(value ?? '').trim().slice(0, maxLength);
 }
 
+async function authenticateWarehouseEmployee(employeeIdValue, pinValue) {
+  const employeeId = cleanText(employeeIdValue, 120);
+  const pin = String(pinValue || '');
+  if (!employeeId || !pin) {
+    const error = new Error('Warehouse employee ID and PIN are required.');
+    error.status = 400;
+    throw error;
+  }
+  const employee = await repositories.getWarehouseEmployeeWithPin(employeeId);
+  if (!employee || employee.active !== true || !adminAuth.verifyPassword(pin, employee.pin_hash)) {
+    const error = new Error('Warehouse employee ID or PIN is invalid, or the employee is inactive.');
+    error.status = 401;
+    throw error;
+  }
+  return employee;
+}
+
 function buildDeliveryDocumentPayload(delivery, identity, documentType) {
   const stop = delivery?.stop || {};
   const order = delivery?.order || {};
@@ -1339,15 +1356,10 @@ router.get('/driver/routes/:manifestId/truck-inventory', driverAuth.requireDrive
 router.post('/driver/routes/:manifestId/departure-inventory/confirm', driverAuth.requireDriverAuth, async (req, res) => {
   try {
     const identity = driverAuth.getDriverIdentity(req);
-    const employeeId = cleanText(req.body?.employeeId || req.body?.employee_id, 120);
-    const pin = String(req.body?.pin || '');
-    if (!employeeId || !pin) {
-      return res.status(400).json({ error: 'Warehouse employee ID and PIN are required.' });
-    }
-    const employee = await repositories.getWarehouseEmployeeWithPin(employeeId);
-    if (!employee || employee.active !== true || !adminAuth.verifyPassword(pin, employee.pin_hash)) {
-      return res.status(401).json({ error: 'Warehouse employee ID or PIN is invalid, or the employee is inactive.' });
-    }
+    const employee = await authenticateWarehouseEmployee(
+      req.body?.employeeId || req.body?.employee_id,
+      req.body?.pin
+    );
     const confirmation = await repositories.prepareDepartureInventoryConfirmation(
       req.params.manifestId,
       identity.driverId,
@@ -1364,6 +1376,99 @@ router.post('/driver/routes/:manifestId/departure-inventory/confirm', driverAuth
     return res.json({ ok: true, driver: identity, confirmation: document, document });
   } catch (error) {
     return res.status(error.status || 500).json({ error: error.message || 'Unable to confirm departure inventory.' });
+  }
+});
+
+router.post('/warehouse/departure-inventory/access', async (req, res) => {
+  try {
+    const employee = await authenticateWarehouseEmployee(
+      req.body?.employeeId || req.body?.employee_id,
+      req.body?.pin
+    );
+    const driverId = cleanText(req.body?.driverId || req.body?.driver_id, 120);
+    const routeDate = normalizeDate(req.body?.routeDate || req.body?.route_date);
+    if (!driverId || !routeDate) {
+      return res.status(400).json({ error: 'Company driver ID and route date are required.' });
+    }
+    const route = await repositories.getAssignedDailyRouteForDriver(driverId, routeDate);
+    if (!route) {
+      return res.status(404).json({ error: 'Active assigned route was not found for this company driver ID and date.' });
+    }
+    const items = await repositories.getRouteTruckInventoryForDriver(route.id, driverId);
+    const confirmation = await repositories.getDepartureInventoryConfirmation(route.id, driverId);
+    return res.json({
+      ok: true,
+      employee: warehouseEmployeeResponse(employee),
+      route: {
+        id: route.id,
+        routeNumber: route.routeNumber,
+        routeName: route.routeName,
+        routeDate: route.routeDate,
+        driverId,
+        driverName: route.assignedDriverName || driverId
+      },
+      items,
+      confirmation: departureInventoryConfirmationResponse(confirmation)
+    });
+  } catch (error) {
+    return res.status(error.status || 500).json({ error: error.message || 'Unable to access departure inventory.' });
+  }
+});
+
+router.post('/warehouse/departure-inventory/confirm', async (req, res) => {
+  try {
+    const employee = await authenticateWarehouseEmployee(
+      req.body?.employeeId || req.body?.employee_id,
+      req.body?.pin
+    );
+    const driverId = cleanText(req.body?.driverId || req.body?.driver_id, 120);
+    const manifestId = cleanText(req.body?.manifestId || req.body?.manifest_id, 160);
+    if (!driverId || !manifestId) {
+      return res.status(400).json({ error: 'Company driver ID and manifest ID are required.' });
+    }
+    const confirmation = await repositories.prepareDepartureInventoryConfirmation(manifestId, driverId, employee);
+    if (!confirmation) {
+      return res.status(404).json({ error: 'Active assigned route was not found for this company driver ID.' });
+    }
+    const document = {
+      documentType: 'departure_inventory',
+      generatedAt: new Date().toISOString(),
+      ...departureInventoryConfirmationResponse(confirmation)
+    };
+    return res.json({ ok: true, employee: warehouseEmployeeResponse(employee), confirmation: document, document });
+  } catch (error) {
+    return res.status(error.status || 500).json({ error: error.message || 'Unable to confirm departure inventory.' });
+  }
+});
+
+router.put('/warehouse/departure-inventory/confirm-print', async (req, res) => {
+  try {
+    const employee = await authenticateWarehouseEmployee(
+      req.body?.employeeId || req.body?.employee_id,
+      req.body?.pin
+    );
+    const driverId = cleanText(req.body?.driverId || req.body?.driver_id, 120);
+    const manifestId = cleanText(req.body?.manifestId || req.body?.manifest_id, 160);
+    const token = cleanText(req.body?.printConfirmationToken || req.body?.print_confirmation_token, 160);
+    if (!driverId || !manifestId || !token) {
+      return res.status(400).json({ error: 'Company driver ID, manifest ID, and print confirmation token are required.' });
+    }
+    const confirmation = await repositories.confirmDepartureInventoryPrintForWarehouse(
+      manifestId,
+      driverId,
+      employee.employee_id,
+      token
+    );
+    if (!confirmation) {
+      return res.status(409).json({ error: 'Departure inventory print confirmation is invalid or already completed.' });
+    }
+    return res.json({
+      ok: true,
+      employee: warehouseEmployeeResponse(employee),
+      confirmation: departureInventoryConfirmationResponse(confirmation)
+    });
+  } catch (error) {
+    return res.status(error.status || 500).json({ error: error.message || 'Unable to confirm departure inventory print.' });
   }
 });
 

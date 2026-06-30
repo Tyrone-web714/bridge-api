@@ -92,6 +92,17 @@ app.use('/api/route-manifests/driver', createRateLimiter({
   name: 'driver-manifests',
   max: positiveInteger(process.env.RATE_LIMIT_DRIVER_MAX, 600)
 }));
+app.use('/api/route-manifests/warehouse/departure-inventory', express.json({ limit: '16kb' }), createRateLimiter({
+  name: 'warehouse-inventory-auth',
+  max: positiveInteger(process.env.RATE_LIMIT_AUTH_MAX, 12),
+  keyGenerator: (req) => {
+    const employeeId = String(req.body?.employeeId || req.body?.employee_id || '')
+      .trim()
+      .toLowerCase()
+      .slice(0, 120);
+    return `${req.ip || 'unknown'}:${employeeId || 'missing-employee'}`;
+  }
+}));
 app.use('/api/ai', createRateLimiter({
   name: 'ai',
   max: positiveInteger(process.env.RATE_LIMIT_AI_MAX, 60)
