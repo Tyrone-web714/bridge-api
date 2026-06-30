@@ -32,6 +32,9 @@ if (!manifests.includes('Assign by company driver ID')) {
 if (!manifests.includes("cache: 'no-store'") || !manifests.includes("routeDateFilter').value = ''")) {
   throw new Error('Route manifest page must reload all persisted routes without a restored stale date filter.');
 }
+if (!manifests.includes("window.addEventListener('pageshow'") || !manifests.includes('must-revalidate')) {
+  throw new Error('Route manifest page must refresh after browser history restoration and disable page caching.');
+}
 if (!intelligence.includes("window.location.hash === '#ai-operations'")) {
   throw new Error('AI Operations deep link must load operational metrics.');
 }

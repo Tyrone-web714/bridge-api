@@ -1056,6 +1056,13 @@ function renderRouteManifestAdminPage() {
       }
       loadDeliveryDocuments();
     }
+    window.addEventListener('pageshow', function () {
+      document.getElementById('routeDateFilter').value = '';
+      loadRoutes();
+    });
+    window.addEventListener('focus', function () {
+      loadRoutes();
+    });
     document.getElementById('routeDateFilter').value = '';
     loadDriversForAssignment();
     loadWarehouseEmployees();
@@ -1103,6 +1110,9 @@ router.get('/admin', (req, res) => {
     return res.redirect('/api/routing/manual-hazards/admin/login');
   }
   res.set('Content-Type', 'text/html; charset=utf-8');
+  res.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+  res.set('Pragma', 'no-cache');
+  res.set('Expires', '0');
   return res.send(renderRouteManifestAdminPage());
 });
 
