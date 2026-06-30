@@ -92,7 +92,7 @@ app.use('/api/route-manifests/driver', createRateLimiter({
   name: 'driver-manifests',
   max: positiveInteger(process.env.RATE_LIMIT_DRIVER_MAX, 600)
 }));
-app.use('/api/route-manifests/warehouse/departure-inventory', express.json({ limit: '16kb' }), createRateLimiter({
+app.use('/api/route-manifests/warehouse', express.json({ limit: '16kb' }), createRateLimiter({
   name: 'warehouse-inventory-auth',
   max: positiveInteger(process.env.RATE_LIMIT_AUTH_MAX, 12),
   keyGenerator: (req) => {

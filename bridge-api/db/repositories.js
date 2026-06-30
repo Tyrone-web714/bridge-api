@@ -2681,6 +2681,57 @@ function routeInventoryCloseoutFromRow(row) {
   };
 }
 
+async function getRouteReturnInventorySummary(manifestId, driverId) {
+  const cleanedManifestId = cleanRepositoryText(manifestId, 160);
+  const cleanedDriverId = cleanRepositoryText(driverId, 120);
+  const result = await postgres.query(`
+    SELECT
+      confirmation.inventory AS departure_inventory,
+      confirmation.printed_at AS departure_printed_at,
+      COALESCE((
+        SELECT SUM(settlement.delivered_quantity + settlement.added_quantity)
+        FROM delivery_settlements AS settlement
+        JOIN daily_route_stops AS stop ON stop.id = settlement.route_stop_id
+        WHERE stop.manifest_id = $1
+      ), 0) AS delivered_quantity,
+      COALESCE((
+        SELECT SUM(addition.quantity)
+        FROM route_truck_inventory_additions AS addition
+        WHERE addition.manifest_id = $1
+          AND ${assignedDriverIdMatchesSql('addition.driver_id', '$2')}
+          AND confirmation.printed_at IS NOT NULL
+          AND addition.created_at > confirmation.printed_at
+      ), 0) AS added_after_departure_quantity
+    FROM daily_route_manifests AS manifest
+    LEFT JOIN route_departure_inventory_confirmations AS confirmation
+      ON confirmation.manifest_id = manifest.id
+      AND ${assignedDriverIdMatchesSql('confirmation.driver_id', '$2')}
+    WHERE manifest.id = $1
+      AND ${assignedDriverIdMatchesSql('manifest.assigned_driver_id', '$2')}
+    LIMIT 1
+  `, [cleanedManifestId, cleanedDriverId]);
+  const row = result.rows[0] || {};
+  const departureInventory = asArray(row.departure_inventory);
+  const departureQuantity = normalizeQuantity(departureInventory.reduce((total, item) => (
+    total + normalizeQuantity(
+      item.expectedOnTruckQuantity,
+      normalizeQuantity(item.plannedQuantity) + normalizeQuantity(item.addedQuantity)
+    )
+  ), 0));
+  const deliveredQuantity = normalizeQuantity(row.delivered_quantity);
+  const addedAfterDepartureQuantity = normalizeQuantity(row.added_after_departure_quantity);
+  return {
+    departureInventory,
+    departurePrintedAt: toIsoString(row.departure_printed_at),
+    departureQuantity,
+    deliveredQuantity,
+    addedAfterDepartureQuantity,
+    expectedReturnQuantity: normalizeQuantity(
+      departureQuantity + addedAfterDepartureQuantity - deliveredQuantity
+    )
+  };
+}
+
 async function prepareRouteInventoryCloseoutForDriver(manifestId, driverId, input = {}) {
   const cleanedManifestId = cleanRepositoryText(manifestId, 160);
   const cleanedDriverId = cleanRepositoryText(driverId, 120);
@@ -2720,35 +2771,28 @@ async function prepareRouteInventoryCloseoutForDriver(manifestId, driverId, inpu
     throw error;
   }
 
-  const authoritativeTotalsResult = await postgres.query(`
-    SELECT
-      COALESCE((SELECT SUM(planned_quantity) FROM delivery_settlements AS settlement
-        JOIN daily_route_stops AS stop ON stop.id = settlement.route_stop_id
-        WHERE stop.manifest_id = $1), 0) AS loaded_quantity,
-      COALESCE((SELECT SUM(delivered_quantity + added_quantity) FROM delivery_settlements AS settlement
-        JOIN daily_route_stops AS stop ON stop.id = settlement.route_stop_id
-        WHERE stop.manifest_id = $1), 0) AS delivered_quantity,
-      COALESCE((SELECT SUM(quantity) FROM route_truck_inventory_additions
-        WHERE manifest_id = $1 AND ${assignedDriverIdMatchesSql('driver_id', '$2')}), 0) AS added_quantity
-  `, [cleanedManifestId, cleanedDriverId]);
-  const authoritativeTotals = authoritativeTotalsResult.rows[0] || {};
-  const loadedQuantity = normalizeQuantity(authoritativeTotals.loaded_quantity);
-  const deliveredQuantity = normalizeQuantity(authoritativeTotals.delivered_quantity);
+  const returnSummary = await getRouteReturnInventorySummary(cleanedManifestId, cleanedDriverId);
+  if (!returnSummary.departurePrintedAt) {
+    const error = new Error('A confirmed and printed departure inventory is required before the return inspection.');
+    error.status = 409;
+    throw error;
+  }
+  const loadedQuantity = returnSummary.departureQuantity;
+  const deliveredQuantity = returnSummary.deliveredQuantity;
+  const addedQuantity = returnSummary.addedAfterDepartureQuantity;
   const sellableQuantity = normalizeQuantity(input.sellableQuantity || input.sellable_quantity);
   const returnedQuantity = normalizeQuantity(input.returnedQuantity || input.returned_quantity);
   const damagedQuantity = normalizeQuantity(input.damagedQuantity || input.damaged_quantity);
   const missingQuantity = normalizeQuantity(input.missingQuantity || input.missing_quantity);
-  const addedQuantity = normalizeQuantity(authoritativeTotals.added_quantity);
   const rejectedQuantity = normalizeQuantity(input.rejectedQuantity || input.rejected_quantity);
   const accountedQuantity = deliveredQuantity + sellableQuantity + returnedQuantity
     + damagedQuantity + missingQuantity + rejectedQuantity;
   const availableQuantity = loadedQuantity + addedQuantity;
-  if (accountedQuantity > availableQuantity + 0.001) {
-    const error = new Error('Final inventory counts exceed warehouse-loaded plus scanned truck inventory.');
-    error.status = 409;
-    throw error;
-  }
-  const unaccountedQuantity = normalizeQuantity(availableQuantity - accountedQuantity);
+  const discrepancyQuantity = Math.round((availableQuantity - accountedQuantity) * 100) / 100;
+  const unaccountedQuantity = Math.abs(discrepancyQuantity);
+  const discrepancyStatus = Math.abs(discrepancyQuantity) < 0.001
+    ? 'balanced'
+    : (discrepancyQuantity > 0 ? 'shortage' : 'overage');
   const notes = cleanRepositoryText(input.notes, 2000) || null;
   const items = asArray(input.items).map((item) => ({
     sku: cleanRepositoryText(item.sku, 120) || null,
@@ -2786,14 +2830,18 @@ async function prepareRouteInventoryCloseoutForDriver(manifestId, driverId, inpu
     printRequestedAt,
     inventory: {
       loadedQuantity,
+      departureQuantity: loadedQuantity,
       deliveredQuantity,
       sellableQuantity,
       returnedQuantity,
       damagedQuantity,
       missingQuantity,
       addedQuantity,
+      addedAfterDepartureQuantity: addedQuantity,
       rejectedQuantity,
-      unaccountedQuantity
+      unaccountedQuantity,
+      discrepancyQuantity,
+      discrepancyStatus
     },
     items,
     notes
@@ -2896,6 +2944,46 @@ async function confirmRouteInventoryCloseoutPrintForDriver(manifestId, driverId,
       AND closeout.status = 'prepared'
     RETURNING closeout.*, manifest.route_date, manifest.route_number
   `, [cleanedManifestId, cleanedDriverId, cleanedToken]);
+  return routeInventoryCloseoutFromRow(result.rows[0]);
+}
+
+async function confirmRouteInventoryCloseoutPrintForWarehouse(
+  manifestId,
+  driverId,
+  warehouseEmployeeId,
+  confirmationToken
+) {
+  const cleanedManifestId = cleanRepositoryText(manifestId, 160);
+  const cleanedDriverId = cleanRepositoryText(driverId, 120);
+  const cleanedEmployeeId = cleanRepositoryText(warehouseEmployeeId, 120);
+  const cleanedToken = cleanRepositoryText(confirmationToken, 160);
+  if (!cleanedManifestId || !cleanedDriverId || !cleanedEmployeeId || !cleanedToken) {
+    const error = new Error('Manifest, driver, warehouse employee, and print confirmation token are required.');
+    error.status = 400;
+    throw error;
+  }
+  const result = await postgres.query(`
+    UPDATE route_inventory_closeouts AS closeout
+    SET
+      status = 'printed',
+      printed_at = COALESCE(closeout.printed_at, closeout.print_requested_at, NOW()),
+      actual_duration_minutes = GREATEST(0, ROUND(EXTRACT(EPOCH FROM (
+        COALESCE(closeout.printed_at, closeout.print_requested_at, NOW()) - manifest.planned_start_at
+      )) / 60.0))::int,
+      payload = closeout.payload || jsonb_build_object(
+        'printedAt', COALESCE(closeout.printed_at, closeout.print_requested_at, NOW())
+      ),
+      print_confirmation_token = NULL,
+      updated_at = NOW()
+    FROM daily_route_manifests AS manifest
+    WHERE closeout.manifest_id = manifest.id
+      AND closeout.manifest_id = $1
+      AND ${assignedDriverIdMatchesSql('manifest.assigned_driver_id', '$2')}
+      AND closeout.payload #>> '{warehouseEmployee,id}' = $3
+      AND closeout.print_confirmation_token = $4
+      AND closeout.status = 'prepared'
+    RETURNING closeout.*, manifest.route_date, manifest.route_number
+  `, [cleanedManifestId, cleanedDriverId, cleanedEmployeeId, cleanedToken]);
   return routeInventoryCloseoutFromRow(result.rows[0]);
 }
 
@@ -7458,6 +7546,7 @@ module.exports = {
   addRouteSessionEvent,
   enqueueStaticHazardLocationBackfill,
   getRouteSession,
+  getRouteReturnInventorySummary,
   getAssignedDailyRouteForDriver,
   getAccountOrder,
   getAccountForecastSignals,
@@ -7510,6 +7599,7 @@ module.exports = {
   listRouteCloseoutDocumentsForAdmin,
   prepareRouteInventoryCloseoutForDriver,
   confirmRouteInventoryCloseoutPrintForDriver,
+  confirmRouteInventoryCloseoutPrintForWarehouse,
   listRouteInventoryCloseoutsForAdmin,
   reviewRouteInventoryCloseout,
   listDriverCoachingSignals,

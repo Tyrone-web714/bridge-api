@@ -1389,6 +1389,7 @@ router.post('/warehouse/departure-inventory/access', async (req, res) => {
     }
     const items = await repositories.getRouteTruckInventoryForDriver(route.id, driverId);
     const confirmation = await repositories.getDepartureInventoryConfirmation(route.id, driverId);
+    const returnSummary = await repositories.getRouteReturnInventorySummary(route.id, driverId);
     return res.json({
       ok: true,
       employee: warehouseEmployeeResponse(employee),
@@ -1397,11 +1398,13 @@ router.post('/warehouse/departure-inventory/access', async (req, res) => {
         routeNumber: route.routeNumber,
         routeName: route.routeName,
         routeDate: route.routeDate,
+        status: route.status,
         driverId,
         driverName: route.assignedDriverName || driverId
       },
       items,
-      confirmation: departureInventoryConfirmationResponse(confirmation)
+      confirmation: departureInventoryConfirmationResponse(confirmation),
+      returnSummary
     });
   } catch (error) {
     return res.status(error.status || 500).json({ error: error.message || 'Unable to access departure inventory.' });
@@ -1456,6 +1459,55 @@ router.put('/warehouse/departure-inventory/confirm-print', async (req, res) => {
     });
   } catch (error) {
     return res.status(error.status || 500).json({ error: error.message || 'Unable to confirm departure inventory print.' });
+  }
+});
+
+router.post('/warehouse/return-inventory/prepare', async (req, res) => {
+  try {
+    const employee = await authenticateWarehouseEmployee(req.body?.employeeId || req.body?.employee_id);
+    const driverId = cleanText(req.body?.driverId || req.body?.driver_id, 120);
+    const manifestId = cleanText(req.body?.manifestId || req.body?.manifest_id, 160);
+    if (!driverId || !manifestId) {
+      return res.status(400).json({ error: 'Driver assignment and manifest are required.' });
+    }
+    const document = await repositories.prepareRouteInventoryCloseoutForDriver(
+      manifestId,
+      driverId,
+      {
+        ...(req.body || {}),
+        warehouseEmployee: {
+          employeeId: employee.employee_id,
+          employeeName: employee.employee_name
+        }
+      }
+    );
+    if (!document) {
+      return res.status(404).json({ error: 'Completed route is not available for return inventory inspection.' });
+    }
+    return res.json({ ok: true, employee: warehouseEmployeeResponse(employee), document });
+  } catch (error) {
+    return res.status(error.status || 500).json({ error: error.message || 'Unable to prepare return inventory inspection.' });
+  }
+});
+
+router.put('/warehouse/return-inventory/confirm-print', async (req, res) => {
+  try {
+    const employee = await authenticateWarehouseEmployee(req.body?.employeeId || req.body?.employee_id);
+    const driverId = cleanText(req.body?.driverId || req.body?.driver_id, 120);
+    const manifestId = cleanText(req.body?.manifestId || req.body?.manifest_id, 160);
+    const token = cleanText(req.body?.printConfirmationToken || req.body?.print_confirmation_token, 160);
+    const document = await repositories.confirmRouteInventoryCloseoutPrintForWarehouse(
+      manifestId,
+      driverId,
+      employee.employee_id,
+      token
+    );
+    if (!document) {
+      return res.status(409).json({ error: 'Return inventory print confirmation is invalid or already completed.' });
+    }
+    return res.json({ ok: true, employee: warehouseEmployeeResponse(employee), document });
+  } catch (error) {
+    return res.status(error.status || 500).json({ error: error.message || 'Unable to confirm return inventory print.' });
   }
 });
 
