@@ -2773,6 +2773,10 @@ async function prepareRouteInventoryCloseoutForDriver(manifestId, driverId, inpu
       id: cleanedDriverId,
       name: routeRow.assigned_driver_name || cleanedDriverId
     },
+    warehouseEmployee: {
+      id: cleanRepositoryText(input.warehouseEmployee?.employeeId, 120),
+      name: cleanRepositoryText(input.warehouseEmployee?.employeeName, 200)
+    },
     routeManifestId: cleanedManifestId,
     routeNumber: routeRow.route_number,
     routeDate: toDateOnly(routeRow.route_date),

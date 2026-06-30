@@ -70,7 +70,7 @@ const requiredRouteFragments = [
   "router.post('/warehouse/departure-inventory/access'",
   "router.post('/warehouse/departure-inventory/confirm'",
   "router.put('/warehouse/departure-inventory/confirm-print'",
-  'adminAuth.verifyPassword(pin, employee.pin_hash)',
+  'warehouseEmployee: {',
   'buildRouteCloseoutPayload',
 ];
 
