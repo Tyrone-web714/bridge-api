@@ -6,10 +6,12 @@ const read = (relativePath) => fs.readFileSync(path.join(root, relativePath), 'u
 const dashboard = read('routes/adminDashboard.js');
 const manifests = read('routes/routeManifests.js');
 const intelligence = read('routes/accountIntelligence.js');
+const drivers = read('routes/drivers.js');
 
 for (const fragment of [
   '/api/route-manifests/admin',
   '/api/drivers/admin',
+  '/api/drivers/teams/admin',
   '/api/routing/manual-hazards/admin',
   '/api/routing/hazard-verification/admin',
   '/api/delivery-notes/admin',
@@ -38,5 +40,18 @@ if (!manifests.includes("window.addEventListener('pageshow'") || !manifests.incl
 if (!intelligence.includes("window.location.hash === '#ai-operations'")) {
   throw new Error('AI Operations deep link must load operational metrics.');
 }
+for (const fragment of [
+  "router.get('/teams/admin'",
+  "router.get('/team-roster'",
+  "router.post('/team-roster/swap'",
+  "router.put('/:driverId/team'",
+  'Supervisors may only view drivers assigned to their team.',
+  'updateDriverTeamAssignment',
+  'swapDriverTeamAssignments',
+]) {
+  if (!drivers.includes(fragment)) {
+    throw new Error(`Missing supervisor team roster contract: ${fragment}`);
+  }
+}
 
-console.log('[test:dashboard] supervisor destinations, driver-ID assignment, and AI operations deep link verified.');
+console.log('[test:dashboard] supervisor destinations, driver-ID assignment, team rosters, and AI operations deep link verified.');

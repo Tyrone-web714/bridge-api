@@ -57,6 +57,20 @@ function requireAdminSession(req, res, next) {
   return res.status(401).json({ error: 'Supervisor admin login required.' });
 }
 
+function isRegionalAdmin(session) {
+  return String(session?.role || '').trim().toLowerCase() === 'admin';
+}
+
+function sessionUsername(session) {
+  return cleanText(session?.username, 120).toLowerCase();
+}
+
+function canManageDriver(session, driver) {
+  if (isRegionalAdmin(session)) return true;
+  const owner = cleanText(driver?.supervisorUsername, 120).toLowerCase();
+  return Boolean(owner && owner === sessionUsername(session));
+}
+
 function renderDriverRegistryAdminPage(session) {
   const adminUser = cleanText(session?.username || 'supervisor', 80);
   const adminRole = cleanText(session?.role || 'supervisor', 40);
@@ -161,6 +175,7 @@ function renderDriverRegistryAdminPage(session) {
       <a class="tab" href="/api/admin">Dashboard</a>
       <a class="tab" href="/api/route-manifests/admin">Route Manifests</a>
       <a class="tab active" href="/api/drivers/admin">Driver Registry</a>
+      <a class="tab" href="/api/drivers/teams/admin">Team Rosters</a>
       <a class="tab" href="/api/operational-geography/admin">Operational Geography</a>
       <a class="tab" href="/api/delivery-notes/admin">Delivery Notes</a>
       <a class="tab" href="/api/routing/manual-hazards/admin">Hazard Review</a>
@@ -466,6 +481,169 @@ function renderDriverRegistryAdminPage(session) {
 </html>`;
 }
 
+function renderDriverTeamsAdminPage(session) {
+  const username = sessionUsername(session);
+  const admin = isRegionalAdmin(session);
+  return `<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Truck-Safe Team Rosters</title>
+  <style>
+    :root { color-scheme: dark; --bg:#07131d; --panel:#10222d; --line:#31505f; --text:#f3fbff; --muted:#a9bdc7; --cyan:#67d9e8; --green:#48c78e; --red:#d94855; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; font-family:Arial,sans-serif; color:var(--text); background:var(--bg); }
+    header { padding:22px 28px; border-bottom:1px solid var(--line); }
+    h1,h2 { margin:0; }
+    p { color:var(--muted); line-height:1.45; }
+    main { padding:20px 28px 44px; }
+    nav,.actions { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+    nav { margin-bottom:18px; }
+    a,button { border:0; border-radius:6px; padding:10px 13px; color:#fff; background:#0d6efd; font-weight:800; text-decoration:none; cursor:pointer; }
+    a.active { background:var(--cyan); color:#06151c; }
+    button.secondary { background:#334b58; }
+    button.danger { background:var(--red); }
+    section { padding:18px 0; border-top:1px solid var(--line); }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:12px; margin-top:12px; }
+    label { display:block; margin-bottom:6px; color:var(--cyan); font-size:12px; font-weight:800; text-transform:uppercase; }
+    input,select { width:100%; min-height:44px; padding:10px; color:#fff; background:#081820; border:1px solid var(--line); border-radius:6px; }
+    table { width:100%; border-collapse:collapse; margin-top:12px; }
+    th,td { padding:10px; text-align:left; border-bottom:1px solid var(--line); vertical-align:top; }
+    th { color:var(--cyan); font-size:12px; text-transform:uppercase; }
+    .muted { color:var(--muted); }
+    .message { min-height:24px; color:var(--green); font-weight:800; margin-top:12px; }
+    .team-heading { margin-top:22px; color:#fff; }
+    @media (max-width:700px) { header,main { padding-left:14px; padding-right:14px; } table { display:block; overflow-x:auto; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>${admin ? 'Driver Team Rosters' : 'My Driver Team'}</h1>
+    <p>${admin ? 'Review and manage every supervisor roster.' : `Signed in as ${username}. Only your assigned drivers are shown.`}</p>
+  </header>
+  <main>
+    <nav>
+      <a href="/api/admin">Dashboard</a>
+      <a href="/api/drivers/admin">Driver Registry</a>
+      <a class="active" href="/api/drivers/teams/admin">Team Rosters</a>
+      <a href="/api/route-manifests/admin">Route Manifests</a>
+    </nav>
+
+    <section>
+      <div class="actions">
+        ${admin ? '<input id="supervisorFilter" placeholder="Filter supervisor username" style="max-width:280px" />' : ''}
+        <input id="teamFilter" placeholder="Filter team name" style="max-width:260px" />
+        <button onclick="loadRoster()">Refresh Roster</button>
+      </div>
+      <div id="roster"></div>
+    </section>
+
+    <section>
+      <h2>Add or Transfer Driver</h2>
+      <p>Enter an existing company driver ID and the team assignment. Route assignments remain tied to driver ID.</p>
+      <div class="grid">
+        <div><label>Driver ID</label><input id="assignDriverId" /></div>
+        <div><label>Supervisor Username</label><input id="targetSupervisorUsername" value="${username}" ${admin ? '' : 'readonly'} /></div>
+        <div><label>Supervisor Name</label><input id="targetSupervisorName" /></div>
+        <div><label>Team Name</label><input id="targetTeamName" /></div>
+      </div>
+      <div class="actions" style="margin-top:12px">
+        <button onclick="assignDriver()">Add / Transfer</button>
+        <button class="danger" onclick="removeDriver()">Remove From Team</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Swap Team Assignments</h2>
+      <p>${admin ? 'Swap the complete supervisor/team assignments of two registered drivers.' : 'Swap two drivers between teams that you supervise.'}</p>
+      <div class="grid">
+        <div><label>First Driver ID</label><input id="leftDriverId" /></div>
+        <div><label>Second Driver ID</label><input id="rightDriverId" /></div>
+      </div>
+      <button style="margin-top:12px" onclick="swapDrivers()">Swap Drivers</button>
+    </section>
+    <div id="message" class="message"></div>
+  </main>
+  <script>
+    const isAdmin = ${admin ? 'true' : 'false'};
+    const signedInUsername = ${JSON.stringify(username)};
+    function value(id) { return document.getElementById(id)?.value.trim() || ''; }
+    function escapeHtml(value) { return String(value == null ? '' : value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;', "'":'&#39;'}[c])); }
+    function setMessage(text, error) {
+      const target = document.getElementById('message');
+      target.textContent = text || '';
+      target.style.color = error ? '#ff8b95' : '#48c78e';
+    }
+    async function loadRoster() {
+      const query = new URLSearchParams({ limit:'1000' });
+      if (isAdmin && value('supervisorFilter')) query.set('supervisorUsername', value('supervisorFilter'));
+      if (value('teamFilter')) query.set('teamName', value('teamFilter'));
+      const response = await fetch('/api/drivers/team-roster?' + query.toString());
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) { setMessage(data.error || 'Unable to load team roster.', true); return; }
+      const groups = data.groups || [];
+      document.getElementById('roster').innerHTML = groups.length
+        ? groups.map(group =>
+          '<h2 class="team-heading">' + escapeHtml(group.supervisorName || group.supervisorUsername || 'Unassigned') +
+          ' / ' + escapeHtml(group.teamName || 'No team') + ' (' + group.drivers.length + ')</h2>' +
+          '<table><thead><tr><th>Driver</th><th>Employee</th><th>Status</th><th>Route Group</th><th>Territory</th><th></th></tr></thead><tbody>' +
+          group.drivers.map(driver =>
+            '<tr><td><strong>' + escapeHtml(driver.driverName) + '</strong><br><span class="muted">' + escapeHtml(driver.driverId) + '</span></td>' +
+            '<td>' + escapeHtml(driver.employeeNumber || '-') + '</td>' +
+            '<td>' + (driver.active ? 'Active' : 'Inactive') + '</td>' +
+            '<td>' + escapeHtml(driver.routeGroup || '-') + '</td>' +
+            '<td>' + escapeHtml(driver.territory || '-') + '</td>' +
+            '<td><button class="secondary" onclick="selectDriver(' +
+              'decodeURIComponent(\\'' + encodeURIComponent(String(driver.driverId || '')) + '\\'),' +
+              'decodeURIComponent(\\'' + encodeURIComponent(String(group.supervisorUsername || '')) + '\\'),' +
+              'decodeURIComponent(\\'' + encodeURIComponent(String(group.supervisorName || '')) + '\\'),' +
+              'decodeURIComponent(\\'' + encodeURIComponent(String(group.teamName || '')) + '\\'))">Manage</button></td></tr>'
+          ).join('') + '</tbody></table>'
+        ).join('')
+        : '<p class="muted">No drivers match this roster.</p>';
+    }
+    function selectDriver(driverId, supervisorUsername, supervisorName, teamName) {
+      document.getElementById('assignDriverId').value = driverId;
+      if (isAdmin) document.getElementById('targetSupervisorUsername').value = supervisorUsername;
+      document.getElementById('targetSupervisorName').value = supervisorName;
+      document.getElementById('targetTeamName').value = teamName;
+      window.scrollTo({ top: document.body.scrollHeight / 2, behavior:'smooth' });
+    }
+    async function updateAssignment(remove) {
+      const driverId = value('assignDriverId');
+      if (!driverId) { setMessage('Driver ID is required.', true); return; }
+      const payload = remove ? {} : {
+        supervisorUsername: isAdmin ? value('targetSupervisorUsername') : signedInUsername,
+        supervisorName: value('targetSupervisorName'),
+        teamName: value('targetTeamName')
+      };
+      const response = await fetch('/api/drivers/' + encodeURIComponent(driverId) + '/team', {
+        method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)
+      });
+      const data = await response.json().catch(() => ({}));
+      setMessage(response.ok ? (remove ? 'Driver removed from team.' : 'Driver team assignment saved.') : (data.error || 'Unable to update team.'), !response.ok);
+      if (response.ok) loadRoster();
+    }
+    function assignDriver() { updateAssignment(false); }
+    function removeDriver() {
+      if (confirm('Remove this driver from the supervisor team? The driver remains registered.')) updateAssignment(true);
+    }
+    async function swapDrivers() {
+      const response = await fetch('/api/drivers/team-roster/swap', {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({ leftDriverId:value('leftDriverId'), rightDriverId:value('rightDriverId') })
+      });
+      const data = await response.json().catch(() => ({}));
+      setMessage(response.ok ? 'Driver team assignments swapped.' : (data.error || 'Unable to swap drivers.'), !response.ok);
+      if (response.ok) loadRoster();
+    }
+    loadRoster();
+  </script>
+</body>
+</html>`;
+}
+
 function normalizeDriverCsv(csvText) {
   const rows = parse(csvText, {
     columns: (headers) => headers.map(normalizeHeader),
@@ -481,12 +659,76 @@ router.get('/admin', requireAdminSession, (req, res) => {
   return res.send(renderDriverRegistryAdminPage(req.adminSession));
 });
 
+router.get('/teams/admin', requireAdminSession, (req, res) => {
+  res.set('Content-Type', 'text/html; charset=utf-8');
+  res.set('Cache-Control', 'no-store');
+  return res.send(renderDriverTeamsAdminPage(req.adminSession));
+});
+
+router.get('/team-roster', requireAdminSession, async (req, res) => {
+  try {
+    const supervisorUsername = isRegionalAdmin(req.adminSession)
+      ? cleanText(req.query.supervisorUsername || req.query.supervisor_username, 120)
+      : sessionUsername(req.adminSession);
+    const drivers = await repositories.listDrivers({
+      active: req.query.active,
+      supervisorUsername: supervisorUsername || undefined,
+      teamName: req.query.teamName || req.query.team_name,
+      limit: req.query.limit || 1000
+    });
+    const groupsByKey = new Map();
+    drivers.forEach((driver) => {
+      const key = `${driver.supervisorUsername || ''}\u0000${driver.teamName || ''}`;
+      if (!groupsByKey.has(key)) {
+        groupsByKey.set(key, {
+          supervisorUsername: driver.supervisorUsername,
+          supervisorName: driver.supervisorName,
+          teamName: driver.teamName,
+          drivers: []
+        });
+      }
+      groupsByKey.get(key).drivers.push(driver);
+    });
+    return res.json({
+      ok: true,
+      scope: isRegionalAdmin(req.adminSession) ? 'regional_admin' : 'supervisor_team',
+      supervisorUsername: supervisorUsername || null,
+      groups: [...groupsByKey.values()],
+      drivers
+    });
+  } catch (error) {
+    return res.status(error.status || 500).json({ error: error.message || 'Unable to load team roster.' });
+  }
+});
+
+router.post('/team-roster/swap', requireAdminSession, async (req, res) => {
+  try {
+    const left = await repositories.getDriver(req.body?.leftDriverId || req.body?.left_driver_id);
+    const right = await repositories.getDriver(req.body?.rightDriverId || req.body?.right_driver_id);
+    if (!left || !right) return res.status(404).json({ error: 'Both registered drivers are required.' });
+    if (!isRegionalAdmin(req.adminSession) && (!canManageDriver(req.adminSession, left) || !canManageDriver(req.adminSession, right))) {
+      return res.status(403).json({ error: 'Supervisors may only swap drivers within teams they supervise.' });
+    }
+    const result = await repositories.swapDriverTeamAssignments(
+      left.driverId,
+      right.driverId,
+      req.adminSession.username
+    );
+    return res.json({ ok: true, ...result });
+  } catch (error) {
+    return res.status(error.status || 500).json({ error: error.message || 'Unable to swap driver team assignments.' });
+  }
+});
+
 router.get('/', requireAdminSession, async (req, res) => {
   try {
+    const supervisorUsername = isRegionalAdmin(req.adminSession)
+      ? (req.query.supervisorUsername || req.query.supervisor_username)
+      : sessionUsername(req.adminSession);
     const drivers = await repositories.listDrivers({
       search: req.query.search,
       active: req.query.active,
-      supervisorUsername: req.query.supervisorUsername || req.query.supervisor_username,
+      supervisorUsername,
       teamName: req.query.teamName || req.query.team_name,
       limit: req.query.limit
     });
@@ -500,6 +742,9 @@ router.get('/:driverId', requireAdminSession, async (req, res) => {
   try {
     const driver = await repositories.getDriver(req.params.driverId);
     if (!driver) return res.status(404).json({ error: 'Driver not found.' });
+    if (!canManageDriver(req.adminSession, driver)) {
+      return res.status(403).json({ error: 'Supervisors may only view drivers assigned to their team.' });
+    }
     return res.json({ ok: true, driver });
   } catch (error) {
     return res.status(500).json({ error: error.message || 'Unable to load driver.' });
@@ -508,7 +753,18 @@ router.get('/:driverId', requireAdminSession, async (req, res) => {
 
 router.post('/', requireAdminSession, async (req, res) => {
   try {
-    const driver = await repositories.upsertDriver(req.body || {}, req.adminSession?.username || 'supervisor');
+    const existing = await repositories.getDriver(req.body?.driverId || req.body?.driver_id);
+    if (existing && !isRegionalAdmin(req.adminSession) && !canManageDriver(req.adminSession, existing)) {
+      return res.status(403).json({ error: 'Supervisors may only update drivers assigned to their team.' });
+    }
+    const payload = isRegionalAdmin(req.adminSession)
+      ? (req.body || {})
+      : {
+          ...(req.body || {}),
+          supervisorUsername: sessionUsername(req.adminSession),
+          supervisorName: req.body?.supervisorName || existing?.supervisorName || req.adminSession.username
+        };
+    const driver = await repositories.upsertDriver(payload, req.adminSession?.username || 'supervisor');
     return res.json({ ok: true, driver });
   } catch (error) {
     return res.status(error.status || 500).json({ error: error.message || 'Unable to save driver.' });
@@ -540,8 +796,12 @@ router.post('/import', requireAdminSession, async (req, res) => {
         driverName,
         employeeNumber: cleanText(readCell(row, 'employeeNumber'), 120),
         phoneNumber: cleanText(readCell(row, 'phoneNumber'), 80),
-        supervisorUsername: cleanText(readCell(row, 'supervisorUsername'), 120),
-        supervisorName: cleanText(readCell(row, 'supervisorName'), 160),
+        supervisorUsername: isRegionalAdmin(req.adminSession)
+          ? cleanText(readCell(row, 'supervisorUsername'), 120)
+          : sessionUsername(req.adminSession),
+        supervisorName: isRegionalAdmin(req.adminSession)
+          ? cleanText(readCell(row, 'supervisorName'), 160)
+          : req.adminSession.username,
         teamName: cleanText(readCell(row, 'teamName'), 160),
         routeGroup: cleanText(readCell(row, 'routeGroup'), 120),
         territory: cleanText(readCell(row, 'territory'), 120),
@@ -568,8 +828,19 @@ router.post('/import', requireAdminSession, async (req, res) => {
 
 router.put('/:driverId', requireAdminSession, async (req, res) => {
   try {
+    const existing = await repositories.getDriver(req.params.driverId);
+    if (existing && !canManageDriver(req.adminSession, existing)) {
+      return res.status(403).json({ error: 'Supervisors may only update drivers assigned to their team.' });
+    }
+    const payload = isRegionalAdmin(req.adminSession)
+      ? req.body
+      : {
+          ...req.body,
+          supervisorUsername: sessionUsername(req.adminSession),
+          supervisorName: req.body?.supervisorName || existing?.supervisorName || req.adminSession.username
+        };
     const driver = await repositories.upsertDriver({
-      ...req.body,
+      ...payload,
       driverId: req.params.driverId
     }, req.adminSession?.username || 'supervisor');
     return res.json({ ok: true, driver });
@@ -578,8 +849,46 @@ router.put('/:driverId', requireAdminSession, async (req, res) => {
   }
 });
 
+router.put('/:driverId/team', requireAdminSession, async (req, res) => {
+  try {
+    const existing = await repositories.getDriver(req.params.driverId);
+    if (!existing) return res.status(404).json({ error: 'Driver not found.' });
+    const targetUsername = cleanText(req.body?.supervisorUsername || req.body?.supervisor_username, 120).toLowerCase();
+    if (!isRegionalAdmin(req.adminSession)) {
+      const currentOwner = cleanText(existing.supervisorUsername, 120).toLowerCase();
+      const signedIn = sessionUsername(req.adminSession);
+      if (currentOwner && currentOwner !== signedIn) {
+        return res.status(403).json({ error: 'This driver belongs to another supervisor.' });
+      }
+      if (targetUsername && targetUsername !== signedIn) {
+        return res.status(403).json({ error: 'Supervisors cannot transfer drivers to another supervisor.' });
+      }
+    }
+    const assignment = targetUsername
+      ? {
+          supervisorUsername: isRegionalAdmin(req.adminSession) ? targetUsername : sessionUsername(req.adminSession),
+          supervisorName: req.body?.supervisorName || req.body?.supervisor_name || req.adminSession.username,
+          teamName: req.body?.teamName || req.body?.team_name
+        }
+      : {};
+    const driver = await repositories.updateDriverTeamAssignment(
+      req.params.driverId,
+      assignment,
+      req.adminSession.username
+    );
+    return res.json({ ok: true, driver });
+  } catch (error) {
+    return res.status(error.status || 500).json({ error: error.message || 'Unable to update driver team assignment.' });
+  }
+});
+
 router.put('/:driverId/active', requireAdminSession, async (req, res) => {
   try {
+    const existing = await repositories.getDriver(req.params.driverId);
+    if (!existing) return res.status(404).json({ error: 'Driver not found.' });
+    if (!canManageDriver(req.adminSession, existing)) {
+      return res.status(403).json({ error: 'Supervisors may only update drivers assigned to their team.' });
+    }
     const driver = await repositories.setDriverActive(
       req.params.driverId,
       req.body?.active === true,
@@ -594,6 +903,11 @@ router.put('/:driverId/active', requireAdminSession, async (req, res) => {
 
 router.put('/:driverId/pin', requireAdminSession, async (req, res) => {
   try {
+    const existing = await repositories.getDriver(req.params.driverId);
+    if (!existing) return res.status(404).json({ error: 'Driver not found.' });
+    if (!canManageDriver(req.adminSession, existing)) {
+      return res.status(403).json({ error: 'Supervisors may only update drivers assigned to their team.' });
+    }
     const pin = String(req.body?.pin || '');
     if (!/^\d{6,12}$/.test(pin)) {
       return res.status(400).json({ error: 'Driver PIN must contain 6 to 12 digits.' });
@@ -612,6 +926,11 @@ router.put('/:driverId/pin', requireAdminSession, async (req, res) => {
 
 router.delete('/:driverId', requireAdminSession, async (req, res) => {
   try {
+    const existing = await repositories.getDriver(req.params.driverId);
+    if (!existing) return res.status(404).json({ error: 'Driver not found.' });
+    if (!canManageDriver(req.adminSession, existing)) {
+      return res.status(403).json({ error: 'Supervisors may only delete drivers assigned to their team.' });
+    }
     const driver = await repositories.deleteDriver(req.params.driverId);
     if (!driver) return res.status(404).json({ error: 'Driver not found.' });
     return res.json({ ok: true, driver });

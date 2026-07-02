@@ -36,6 +36,12 @@ function renderAdminDashboard(session) {
       accent: '#7dffb0'
     },
     {
+      title: 'Driver Team Rosters',
+      description: 'Review supervisor rosters and add, remove, transfer, or swap registered drivers between teams.',
+      href: '/api/drivers/teams/admin',
+      accent: '#67d9e8'
+    },
+    {
       title: 'Hazard Review',
       description: 'Review driver-submitted hazards and manually manage low bridges, no-truck restrictions, and residential restrictions.',
       href: '/api/routing/manual-hazards/admin',

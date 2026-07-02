@@ -1132,6 +1132,74 @@ async function setDriverActive(driverId, active, actor = 'supervisor') {
   return result.rows[0] ? driverFromRow(result.rows[0]) : null;
 }
 
+async function updateDriverTeamAssignment(driverId, assignment = {}, actor = 'supervisor') {
+  const cleanedDriverId = cleanRepositoryText(driverId, 120);
+  if (!cleanedDriverId) {
+    const error = new Error('driverId is required.');
+    error.status = 400;
+    throw error;
+  }
+  const result = await postgres.query(`
+    UPDATE drivers
+    SET
+      supervisor_username = $2,
+      supervisor_name = $3,
+      team_name = $4,
+      updated_by = $5,
+      updated_at = NOW()
+    WHERE driver_id = $1
+    RETURNING *
+  `, [
+    cleanedDriverId,
+    cleanRepositoryText(assignment.supervisorUsername || assignment.supervisor_username, 120).toLowerCase() || null,
+    cleanRepositoryText(assignment.supervisorName || assignment.supervisor_name, 160) || null,
+    cleanRepositoryText(assignment.teamName || assignment.team_name, 160) || null,
+    cleanRepositoryText(actor, 120) || 'supervisor'
+  ]);
+  return result.rows[0] ? driverFromRow(result.rows[0]) : null;
+}
+
+async function swapDriverTeamAssignments(leftDriverId, rightDriverId, actor = 'supervisor') {
+  const leftId = cleanRepositoryText(leftDriverId, 120);
+  const rightId = cleanRepositoryText(rightDriverId, 120);
+  if (!leftId || !rightId || leftId === rightId) {
+    const error = new Error('Two different driver IDs are required to swap team assignments.');
+    error.status = 400;
+    throw error;
+  }
+  return postgres.withTransaction(async (client) => {
+    const selected = await client.query(`
+      SELECT *
+      FROM drivers
+      WHERE driver_id IN ($1, $2)
+      ORDER BY driver_id
+      FOR UPDATE
+    `, [leftId, rightId]);
+    const left = selected.rows.find((row) => row.driver_id === leftId);
+    const right = selected.rows.find((row) => row.driver_id === rightId);
+    if (!left || !right) return null;
+    const updatedBy = cleanRepositoryText(actor, 120) || 'supervisor';
+    const leftResult = await client.query(`
+      UPDATE drivers
+      SET supervisor_username = $2, supervisor_name = $3, team_name = $4,
+          updated_by = $5, updated_at = NOW()
+      WHERE driver_id = $1
+      RETURNING *
+    `, [leftId, right.supervisor_username, right.supervisor_name, right.team_name, updatedBy]);
+    const rightResult = await client.query(`
+      UPDATE drivers
+      SET supervisor_username = $2, supervisor_name = $3, team_name = $4,
+          updated_by = $5, updated_at = NOW()
+      WHERE driver_id = $1
+      RETURNING *
+    `, [rightId, left.supervisor_username, left.supervisor_name, left.team_name, updatedBy]);
+    return {
+      left: driverFromRow(leftResult.rows[0]),
+      right: driverFromRow(rightResult.rows[0])
+    };
+  });
+}
+
 async function deleteDriver(driverId) {
   const cleanedDriverId = String(driverId || '').trim();
   if (!cleanedDriverId) return null;
@@ -7742,6 +7810,8 @@ module.exports = {
   revokeDriverSession,
   setAdminUserActive,
   setDriverActive,
+  updateDriverTeamAssignment,
+  swapDriverTeamAssignments,
   setDriverPinHash,
   setScheduledReportScheduleEnabled,
   setOperationalGeographyActive,
