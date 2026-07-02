@@ -620,8 +620,8 @@ function renderAdminUsersPage(session = {}) {
       <h2>Create or Update Account</h2>
       <div id="message" class="message"></div>
       <div class="grid">
-        <div><label>Username</label><input id="username" placeholder="supervisor.name" /></div>
-        <div><label>Display name</label><input id="displayName" placeholder="Supervisor Name" /></div>
+        <div><label>Username</label><input id="username" /></div>
+        <div><label>Display name</label><input id="displayName" /></div>
         <div><label>Role</label><select id="role"><option value="supervisor">Supervisor</option><option value="admin">Admin</option></select></div>
         <div><label>New or Reset Password</label><input id="password" type="password" placeholder="12+ characters" /></div>
       </div>
