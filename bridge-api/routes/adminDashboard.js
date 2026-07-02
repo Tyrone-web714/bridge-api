@@ -102,8 +102,8 @@ function renderAdminDashboard(session) {
       accent: '#8cb4ff'
     },
     {
-      title: 'Admin Users',
-      description: 'Create supervisor/admin users, update passwords, deactivate accounts, and control access.',
+      title: 'Supervisor Accounts',
+      description: 'Create supervisor and administrator accounts, reset passwords, deactivate access, and review assigned teams.',
       href: '/api/routing/manual-hazards/admin-users/admin',
       accent: '#c89cff',
       adminOnly: true

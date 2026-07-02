@@ -57,6 +57,9 @@ function adminUserFromRow(row) {
     role: row.role || 'supervisor',
     displayName: row.display_name || null,
     active: row.active !== false,
+    sessionVersion: Number(row.session_version) || 1,
+    driverCount: Number(row.driver_count) || 0,
+    teamCount: Number(row.team_count) || 0,
     createdAt: toIsoString(row.created_at),
     updatedAt: toIsoString(row.updated_at),
     lastLoginAt: toIsoString(row.last_login_at)
@@ -838,9 +841,20 @@ async function getAdminUser(username) {
 
 async function listAdminUsers() {
   const result = await postgres.query(`
-    SELECT *
+    SELECT
+      admin_users.*,
+      (
+        SELECT COUNT(*)
+        FROM drivers
+        WHERE LOWER(TRIM(COALESCE(drivers.supervisor_username, ''))) = admin_users.username
+      ) AS driver_count,
+      (
+        SELECT COUNT(DISTINCT NULLIF(TRIM(drivers.team_name), ''))
+        FROM drivers
+        WHERE LOWER(TRIM(COALESCE(drivers.supervisor_username, ''))) = admin_users.username
+      ) AS team_count
     FROM admin_users
-    ORDER BY role, username
+    ORDER BY admin_users.role, admin_users.username
   `);
   return result.rows.map(adminUserFromRow);
 }
@@ -868,6 +882,7 @@ async function upsertAdminUser(user) {
       role = EXCLUDED.role,
       display_name = EXCLUDED.display_name,
       active = EXCLUDED.active,
+      session_version = admin_users.session_version + 1,
       updated_at = NOW()
     RETURNING *
   `, [
@@ -887,7 +902,7 @@ async function setAdminUserActive(username, active) {
 
   const result = await postgres.query(`
     UPDATE admin_users
-    SET active = $2, updated_at = NOW()
+    SET active = $2, session_version = session_version + 1, updated_at = NOW()
     WHERE username = $1
     RETURNING *
   `, [normalizedUsername, active === true]);

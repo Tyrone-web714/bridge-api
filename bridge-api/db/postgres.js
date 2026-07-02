@@ -134,10 +134,14 @@ async function ensureSchema() {
       role TEXT NOT NULL DEFAULT 'supervisor',
       display_name TEXT,
       active BOOLEAN NOT NULL DEFAULT true,
+      session_version INTEGER NOT NULL DEFAULT 1,
       created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
       updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
       last_login_at TIMESTAMPTZ
     );
+
+    ALTER TABLE admin_users
+      ADD COLUMN IF NOT EXISTS session_version INTEGER NOT NULL DEFAULT 1;
 
     CREATE INDEX IF NOT EXISTS admin_users_role_idx ON admin_users(role);
     CREATE INDEX IF NOT EXISTS admin_users_active_idx ON admin_users(active);

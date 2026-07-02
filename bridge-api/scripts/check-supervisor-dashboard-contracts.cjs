@@ -22,10 +22,14 @@ for (const fragment of [
   '/api/operational-geography/admin',
   '/api/account-intelligence/admin#ai-operations',
   '/api/routing/route-sessions/admin',
+  '/api/routing/manual-hazards/admin-users/admin',
 ]) {
   if (!dashboard.includes(fragment)) {
     throw new Error(`Missing supervisor dashboard destination: ${fragment}`);
   }
+}
+if (!dashboard.includes('Supervisor Accounts') || !dashboard.includes('adminOnly: true')) {
+  throw new Error('Supervisor account management must be visible only to administrators.');
 }
 
 if (!manifests.includes('Assign by company driver ID')) {

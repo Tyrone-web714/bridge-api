@@ -10,6 +10,7 @@ const schema = fs.readFileSync(path.join(root, 'db', 'postgres.js'), 'utf8');
 const driverAuth = fs.readFileSync(path.join(root, 'services', 'driverAuth.js'), 'utf8');
 const driverSessions = fs.readFileSync(path.join(root, 'routes', 'driverSessions.js'), 'utf8');
 const driverSessionMigration = fs.readFileSync(path.join(root, 'migrations', '002_driver_sessions.sql'), 'utf8');
+const adminAuth = fs.readFileSync(path.join(root, 'services', 'adminAuth.js'), 'utf8');
 
 assert.match(server, /REQUEST_BODY_LIMIT.*1mb/);
 assert.match(server, /DELIVERY_BODY_LIMIT.*30mb/);
@@ -31,5 +32,9 @@ assert.match(driverAuth, /ALLOW_LEGACY_DRIVER_API_TOKEN/);
 assert.match(driverSessions, /verifyPassword/);
 assert.match(driverSessions, /randomBytes\(32\)/);
 assert.match(driverSessionMigration, /token_hash TEXT NOT NULL UNIQUE/);
+assert.match(schema, /session_version INTEGER NOT NULL DEFAULT 1/);
+assert.match(adminAuth, /validateAdminSession/);
+assert.match(adminAuth, /sessionVersion/);
+assert.match(server, /app\.use\('\/api', adminAuth\.validateAdminSession\)/);
 
 console.log('[test:security] authentication, headers, CORS, limits, photo validation, and audit logging verified.');

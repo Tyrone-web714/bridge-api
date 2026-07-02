@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const postgres = require('./db/postgres');
 const photoStorage = require('./services/photoStorage');
 const driverAuth = require('./services/driverAuth');
+const adminAuth = require('./services/adminAuth');
 const aiProvider = require('./services/aiProvider');
 const supervisorIntelligence = require('./services/supervisorIntelligence');
 const auditLog = require('./services/auditLog');
@@ -124,6 +125,7 @@ app.use('/api/routing/manual-hazards/report', express.json({ limit: HAZARD_REPOR
 app.use('/api/route-manifests', express.json({ limit: MANIFEST_BODY_LIMIT }));
 app.use('/api/data-imports', express.json({ limit: IMPORT_BODY_LIMIT }));
 app.use(express.json({ limit: REQUEST_BODY_LIMIT }));
+app.use('/api', adminAuth.validateAdminSession);
 app.use(auditLog.mutationAuditMiddleware);
 
 // Import routes

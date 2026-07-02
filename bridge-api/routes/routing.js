@@ -130,8 +130,8 @@ function getAdminSession(req) {
   return adminAuth.getAdminSession(req);
 }
 
-function setAdminSessionCookie(req, res, username, role) {
-  adminAuth.setAdminSessionCookie(req, res, username, role);
+function setAdminSessionCookie(req, res, username, role, sessionVersion) {
+  adminAuth.setAdminSessionCookie(req, res, username, role, sessionVersion);
 }
 
 function clearAdminSessionCookie(res) {
@@ -556,7 +556,7 @@ function renderAdminUsersPage(session = {}) {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Truck-Safe Admin Users</title>
+  <title>Truck-Safe Supervisor Accounts</title>
   <style>
     body { margin: 0; font-family: Arial, sans-serif; background: linear-gradient(145deg, #8fc2df 0%, #eef7ff 42%, #fff0f3 100%); color: #102033; }
     header { background: linear-gradient(135deg, #8f0d14 0%, #d62828 50%, #0d47a1 100%); color: #fff; padding: 18px 22px; display: flex; align-items: center; justify-content: space-between; gap: 16px; box-shadow: 0 14px 34px rgba(12,38,64,0.22); }
@@ -596,9 +596,9 @@ function renderAdminUsersPage(session = {}) {
 <body>
   <header>
     <div>
-      <p class="eyebrow">Admin Console</p>
-      <h1>Truck-Safe Users & Roles</h1>
-      <p class="header-subtitle">Create named supervisor accounts and control admin permissions.</p>
+      <p class="eyebrow">Administrative Access</p>
+      <h1>Supervisor Accounts</h1>
+      <p class="header-subtitle">Create named accounts, assign roles, and control dashboard access.</p>
     </div>
     <div class="header-actions">
       <div class="role-badge">${adminBadge}</div>
@@ -612,29 +612,29 @@ function renderAdminUsersPage(session = {}) {
     <a class="tab delivery" href="/api/delivery-notes/admin">Delivery Notes</a>
     <a class="tab" href="/api/route-manifests/admin">Route Manifests</a>
     <a class="tab" href="/api/drivers/admin">Driver Registry</a>
-    <a class="tab active" href="/api/routing/manual-hazards/admin-users/admin">Admin Users</a>
+    <a class="tab active" href="/api/routing/manual-hazards/admin-users/admin">Supervisor Accounts</a>
     <a class="tab" href="/api/admin">Supervisor Dashboard</a>
   </nav>
   <main>
     <section>
-      <h2>Create or Update User</h2>
+      <h2>Create or Update Account</h2>
       <div id="message" class="message"></div>
       <div class="grid">
         <div><label>Username</label><input id="username" placeholder="supervisor.name" /></div>
         <div><label>Display name</label><input id="displayName" placeholder="Supervisor Name" /></div>
         <div><label>Role</label><select id="role"><option value="supervisor">Supervisor</option><option value="admin">Admin</option></select></div>
-        <div><label>Password</label><input id="password" type="password" placeholder="12+ characters" /></div>
+        <div><label>New or Reset Password</label><input id="password" type="password" placeholder="12+ characters" /></div>
       </div>
       <div class="actions">
-        <button class="primary" onclick="saveUser()">Save User</button>
+        <button class="primary" onclick="saveUser()">Save Account</button>
         <button class="gray" onclick="clearForm()">Clear</button>
       </div>
-      <p class="small">Admin role can delete route sessions and manage users. Supervisor role can review hazards, route sessions, and delivery notes.</p>
+      <p class="small">The same account signs into the supervisor dashboard. Leave the password blank while editing to retain the current password.</p>
     </section>
     <section>
-      <h2>Current Users</h2>
+      <h2>Current Accounts</h2>
       <table>
-        <thead><tr><th>User</th><th>Role</th><th>Status</th><th>Last Login</th><th>Actions</th></tr></thead>
+        <thead><tr><th>Account</th><th>Role</th><th>Assigned Team</th><th>Status</th><th>Last Login</th><th>Actions</th></tr></thead>
         <tbody id="users"></tbody>
       </table>
     </section>
@@ -674,12 +674,13 @@ function renderAdminUsersPage(session = {}) {
         '<tr>' +
           '<td><strong>' + escapeHtml(user.username) + '</strong><br><span class="small">' + escapeHtml(user.displayName || '') + '</span></td>' +
           '<td>' + escapeHtml(user.role || 'supervisor') + '</td>' +
+          '<td><strong>' + escapeHtml(user.driverCount || 0) + ' drivers</strong><br><span class="small">' + escapeHtml(user.teamCount || 0) + ' teams</span></td>' +
           '<td><span class="pill ' + (user.active ? 'active-pill' : 'inactive-pill') + '">' + (user.active ? 'active' : 'inactive') + '</span></td>' +
           '<td>' + escapeHtml(user.lastLoginAt || 'No login recorded') + '</td>' +
           '<td><div class="actions"><button class="blue" onclick="editUser(' + JSON.stringify(user.username).replace(/"/g, '&quot;') + ')">Edit</button>' +
           '<button class="' + (user.active ? 'danger' : 'blue') + '" onclick="setActive(' + JSON.stringify(user.username).replace(/"/g, '&quot;') + ', ' + (!user.active) + ')">' + (user.active ? 'Deactivate' : 'Activate') + '</button></div></td>' +
         '</tr>'
-      )).join('') || '<tr><td colspan="5">No admin users found.</td></tr>';
+      )).join('') || '<tr><td colspan="6">No supervisor accounts found.</td></tr>';
     }
     async function saveUser() {
       const payload = {
@@ -3837,7 +3838,7 @@ router.post('/manual-hazards/admin/login', express.urlencoded({ extended: false 
     }));
   }
 
-  setAdminSessionCookie(req, res, result.username, result.role);
+  setAdminSessionCookie(req, res, result.username, result.role, result.sessionVersion);
   return res.redirect('/api/admin');
 });
 
@@ -3874,7 +3875,9 @@ function publicAdminUser(user) {
     active: user.active,
     createdAt: user.createdAt,
     updatedAt: user.updatedAt,
-    lastLoginAt: user.lastLoginAt
+    lastLoginAt: user.lastLoginAt,
+    driverCount: user.driverCount,
+    teamCount: user.teamCount
   };
 }
 
@@ -3911,6 +3914,13 @@ router.post('/manual-hazards/admin-users', requireAdminRole, async (req, res) =>
     if (!existing && password.length < 12) {
       return res.status(400).json({ error: 'new admin users require a password of at least 12 characters' });
     }
+    if (existing?.active && existing.role === 'admin' && role !== 'admin') {
+      const users = await repositories.listAdminUsers();
+      const activeAdminCount = users.filter((user) => user.active && user.role === 'admin').length;
+      if (activeAdminCount <= 1) {
+        return res.status(409).json({ error: 'Create another active administrator before changing the final administrator role.' });
+      }
+    }
 
     const user = await repositories.upsertAdminUser({
       username,
@@ -3933,11 +3943,28 @@ router.put('/manual-hazards/admin-users/:username/active', requireAdminRole, asy
     }
 
     const username = adminAuth.normalizeUsername(req.params.username);
-    if (username === adminAuth.normalizeUsername(req.adminSession?.username) && req.body?.active === false) {
+    const requestedActive = req.body?.active === true;
+    if (username === adminAuth.normalizeUsername(req.adminSession?.username) && !requestedActive) {
       return res.status(400).json({ error: 'You cannot deactivate your own active admin session.' });
     }
+    if (!requestedActive) {
+      const existing = await repositories.getAdminUser(username);
+      if (existing?.active && existing.role === 'admin') {
+        const users = await repositories.listAdminUsers();
+        const activeAdminCount = users.filter((user) => user.active && user.role === 'admin').length;
+        if (activeAdminCount <= 1) {
+          return res.status(409).json({ error: 'Create another active administrator before deactivating the final administrator.' });
+        }
+      }
+      const assignedDrivers = await repositories.listDrivers({ supervisorUsername: username, limit: 1 });
+      if (assignedDrivers.length) {
+        return res.status(409).json({
+          error: 'Transfer or remove this supervisor assigned drivers before deactivating the account.'
+        });
+      }
+    }
 
-    const user = await repositories.setAdminUserActive(username, req.body?.active === true);
+    const user = await repositories.setAdminUserActive(username, requestedActive);
     if (!user) return res.status(404).json({ error: `admin user not found: ${username}` });
     return res.json({ user: publicAdminUser(user) });
   } catch (error) {

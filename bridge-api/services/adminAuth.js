@@ -71,9 +71,9 @@ function signAdminPayload(payload) {
   return crypto.createHmac('sha256', secret).update(payload).digest('base64url');
 }
 
-function createAdminSessionToken(username, role = 'supervisor') {
+function createAdminSessionToken(username, role = 'supervisor', sessionVersion = null) {
   const expiresAt = Date.now() + ADMIN_SESSION_MS;
-  const payload = Buffer.from(JSON.stringify({ username, role, expiresAt })).toString('base64url');
+  const payload = Buffer.from(JSON.stringify({ username, role, sessionVersion, expiresAt })).toString('base64url');
   const signature = signAdminPayload(payload);
   return `${payload}.${signature}`;
 }
@@ -97,11 +97,14 @@ function verifyAdminSessionToken(token) {
 }
 
 function getAdminSession(req) {
+  if (Object.prototype.hasOwnProperty.call(req, 'adminSession')) {
+    return req.adminSession;
+  }
   return verifyAdminSessionToken(getCookieValue(req, ADMIN_COOKIE_NAME));
 }
 
-function setAdminSessionCookie(req, res, username, role) {
-  const token = createAdminSessionToken(username, role || getAdminRoleForUsername(username));
+function setAdminSessionCookie(req, res, username, role, sessionVersion = null) {
+  const token = createAdminSessionToken(username, role || getAdminRoleForUsername(username), sessionVersion);
   const secure = req.secure || String(req.headers['x-forwarded-proto'] || '').includes('https');
   const cookieParts = [
     `${ADMIN_COOKIE_NAME}=${encodeURIComponent(token)}`,
@@ -130,7 +133,12 @@ async function authenticateAdminUser(usernameInput, password) {
       if (!user.active) return { ok: false, reason: 'This admin user is inactive.' };
       if (!verifyPassword(password, user.passwordHash)) return { ok: false, reason: 'Incorrect supervisor username or password.' };
       await repositories.recordAdminUserLogin(username);
-      return { ok: true, username: user.username, role: user.role || 'supervisor' };
+      return {
+        ok: true,
+        username: user.username,
+        role: user.role || 'supervisor',
+        sessionVersion: user.sessionVersion
+      };
     }
   }
 
@@ -138,11 +146,58 @@ async function authenticateAdminUser(usernameInput, password) {
   if (!configuredPassword) {
     return { ok: false, setupRequired: true, reason: 'Admin dashboard password is not configured.' };
   }
+  if (getAdminRoleForUsername(username) !== 'admin') {
+    return { ok: false, reason: 'Supervisor account not found. Ask an administrator to create the account.' };
+  }
   if (!timingSafeStringEqual(password, configuredPassword)) {
     return { ok: false, reason: 'Incorrect supervisor username or password.' };
   }
 
   return { ok: true, username, role: getAdminRoleForUsername(username), usedLegacySharedPassword: true };
+}
+
+async function validateAdminSession(req, res, next) {
+  const session = verifyAdminSessionToken(getCookieValue(req, ADMIN_COOKIE_NAME));
+  req.adminSession = null;
+  if (!session) return next();
+
+  try {
+    if (!repositories.isDatabaseEnabled()) {
+      req.adminSession = session;
+      return next();
+    }
+
+    const user = await repositories.getAdminUser(session.username);
+    if (user) {
+      const validVersion = Number.isInteger(session.sessionVersion)
+        && session.sessionVersion === user.sessionVersion;
+      if (!user.active || !validVersion || session.role !== user.role) {
+        clearAdminSessionCookie(res);
+        return next();
+      }
+      req.adminSession = {
+        username: user.username,
+        displayName: user.displayName,
+        role: user.role,
+        sessionVersion: user.sessionVersion,
+        expiresAt: session.expiresAt
+      };
+      return next();
+    }
+
+    const isBootstrapAdmin = session.sessionVersion === null
+      && getAdminRoleForUsername(session.username) === 'admin';
+    if (isBootstrapAdmin) {
+      req.adminSession = session;
+    } else {
+      clearAdminSessionCookie(res);
+    }
+    return next();
+  } catch (error) {
+    console.error('Admin session validation error:', error.message);
+    clearAdminSessionCookie(res);
+    return next();
+  }
 }
 
 module.exports = {
@@ -158,5 +213,6 @@ module.exports = {
   normalizeUsername,
   setAdminSessionCookie,
   timingSafeStringEqual,
+  validateAdminSession,
   verifyPassword
 };
