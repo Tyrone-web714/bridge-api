@@ -2684,24 +2684,10 @@ function routeInventoryCloseoutFromRow(row) {
 async function getRouteReturnInventorySummary(manifestId, driverId) {
   const cleanedManifestId = cleanRepositoryText(manifestId, 160);
   const cleanedDriverId = cleanRepositoryText(driverId, 120);
-  const result = await postgres.query(`
+  const confirmationResult = await postgres.query(`
     SELECT
       confirmation.inventory AS departure_inventory,
-      confirmation.printed_at AS departure_printed_at,
-      COALESCE((
-        SELECT SUM(settlement.delivered_quantity + settlement.added_quantity)
-        FROM delivery_settlements AS settlement
-        JOIN daily_route_stops AS stop ON stop.id = settlement.route_stop_id
-        WHERE stop.manifest_id = $1
-      ), 0) AS delivered_quantity,
-      COALESCE((
-        SELECT SUM(addition.quantity)
-        FROM route_truck_inventory_additions AS addition
-        WHERE addition.manifest_id = $1
-          AND ${assignedDriverIdMatchesSql('addition.driver_id', '$2')}
-          AND confirmation.printed_at IS NOT NULL
-          AND addition.created_at > confirmation.printed_at
-      ), 0) AS added_after_departure_quantity
+      confirmation.printed_at AS departure_printed_at
     FROM daily_route_manifests AS manifest
     LEFT JOIN route_departure_inventory_confirmations AS confirmation
       ON confirmation.manifest_id = manifest.id
@@ -2710,25 +2696,107 @@ async function getRouteReturnInventorySummary(manifestId, driverId) {
       AND ${assignedDriverIdMatchesSql('manifest.assigned_driver_id', '$2')}
     LIMIT 1
   `, [cleanedManifestId, cleanedDriverId]);
-  const row = result.rows[0] || {};
+  const row = confirmationResult.rows[0] || {};
   const departureInventory = asArray(row.departure_inventory);
-  const departureQuantity = normalizeQuantity(departureInventory.reduce((total, item) => (
-    total + normalizeQuantity(
-      item.expectedOnTruckQuantity,
-      normalizeQuantity(item.plannedQuantity) + normalizeQuantity(item.addedQuantity)
-    )
-  ), 0));
-  const deliveredQuantity = normalizeQuantity(row.delivered_quantity);
-  const addedAfterDepartureQuantity = normalizeQuantity(row.added_after_departure_quantity);
+  const departurePrintedAt = toIsoString(row.departure_printed_at);
+  const deliveredResult = await postgres.query(`
+    SELECT
+      item.sku,
+      MAX(item.product_name) AS product_name,
+      MAX(item.package_size) AS package_size,
+      SUM(item.delivered_quantity + item.added_quantity) AS delivered_quantity
+    FROM delivery_settlement_items AS item
+    JOIN delivery_settlements AS settlement ON settlement.id = item.settlement_id
+    JOIN daily_route_stops AS stop ON stop.id = settlement.route_stop_id
+    WHERE stop.manifest_id = $1
+      AND item.sku IS NOT NULL
+      AND item.sku <> ''
+    GROUP BY item.sku
+  `, [cleanedManifestId]);
+  const additionsResult = departurePrintedAt
+    ? await postgres.query(`
+        SELECT
+          addition.sku,
+          MAX(product.product_name) AS product_name,
+          MAX(product.package_size) AS package_size,
+          SUM(addition.quantity) AS added_quantity
+        FROM route_truck_inventory_additions AS addition
+        LEFT JOIN products AS product ON product.sku = addition.sku
+        WHERE addition.manifest_id = $1
+          AND ${assignedDriverIdMatchesSql('addition.driver_id', '$2')}
+          AND addition.created_at > $3
+        GROUP BY addition.sku
+      `, [cleanedManifestId, cleanedDriverId, departurePrintedAt])
+    : { rows: [] };
+  const itemMap = new Map();
+  departureInventory.forEach((item) => {
+    const sku = cleanRepositoryText(item.sku, 120);
+    if (!sku) return;
+    itemMap.set(sku, {
+      sku,
+      productName: cleanRepositoryText(item.productName, 240) || sku,
+      packageSize: cleanRepositoryText(item.packageSize, 120) || null,
+      barcodes: asArray(item.barcodes),
+      departureQuantity: normalizeQuantity(
+        item.expectedOnTruckQuantity,
+        normalizeQuantity(item.plannedQuantity) + normalizeQuantity(item.addedQuantity)
+      ),
+      deliveredQuantity: 0,
+      addedAfterDepartureQuantity: 0
+    });
+  });
+  deliveredResult.rows.forEach((item) => {
+    const sku = cleanRepositoryText(item.sku, 120);
+    const current = itemMap.get(sku) || {
+      sku,
+      productName: item.product_name || sku,
+      packageSize: item.package_size || null,
+      barcodes: [],
+      departureQuantity: 0,
+      deliveredQuantity: 0,
+      addedAfterDepartureQuantity: 0
+    };
+    current.deliveredQuantity = normalizeQuantity(item.delivered_quantity);
+    itemMap.set(sku, current);
+  });
+  additionsResult.rows.forEach((item) => {
+    const sku = cleanRepositoryText(item.sku, 120);
+    const current = itemMap.get(sku) || {
+      sku,
+      productName: item.product_name || sku,
+      packageSize: item.package_size || null,
+      barcodes: [],
+      departureQuantity: 0,
+      deliveredQuantity: 0,
+      addedAfterDepartureQuantity: 0
+    };
+    current.addedAfterDepartureQuantity = normalizeQuantity(item.added_quantity);
+    itemMap.set(sku, current);
+  });
+  const items = [...itemMap.values()]
+    .map((item) => ({
+      ...item,
+      expectedReturnQuantity: normalizeQuantity(
+        item.departureQuantity + item.addedAfterDepartureQuantity - item.deliveredQuantity
+      )
+    }))
+    .sort((left, right) => left.productName.localeCompare(right.productName));
+  const departureQuantity = normalizeQuantity(items.reduce((total, item) => total + item.departureQuantity, 0));
+  const deliveredQuantity = normalizeQuantity(items.reduce((total, item) => total + item.deliveredQuantity, 0));
+  const addedAfterDepartureQuantity = normalizeQuantity(items.reduce(
+    (total, item) => total + item.addedAfterDepartureQuantity,
+    0
+  ));
   return {
     departureInventory,
-    departurePrintedAt: toIsoString(row.departure_printed_at),
+    departurePrintedAt,
     departureQuantity,
     deliveredQuantity,
     addedAfterDepartureQuantity,
     expectedReturnQuantity: normalizeQuantity(
       departureQuantity + addedAfterDepartureQuantity - deliveredQuantity
-    )
+    ),
+    items
   };
 }
 
@@ -2780,31 +2848,73 @@ async function prepareRouteInventoryCloseoutForDriver(manifestId, driverId, inpu
   const loadedQuantity = returnSummary.departureQuantity;
   const deliveredQuantity = returnSummary.deliveredQuantity;
   const addedQuantity = returnSummary.addedAfterDepartureQuantity;
-  const sellableQuantity = normalizeQuantity(input.sellableQuantity || input.sellable_quantity);
-  const returnedQuantity = normalizeQuantity(input.returnedQuantity || input.returned_quantity);
-  const damagedQuantity = normalizeQuantity(input.damagedQuantity || input.damaged_quantity);
-  const missingQuantity = normalizeQuantity(input.missingQuantity || input.missing_quantity);
-  const rejectedQuantity = normalizeQuantity(input.rejectedQuantity || input.rejected_quantity);
-  const accountedQuantity = deliveredQuantity + sellableQuantity + returnedQuantity
-    + damagedQuantity + missingQuantity + rejectedQuantity;
-  const availableQuantity = loadedQuantity + addedQuantity;
-  const discrepancyQuantity = Math.round((availableQuantity - accountedQuantity) * 100) / 100;
-  const unaccountedQuantity = Math.abs(discrepancyQuantity);
-  const discrepancyStatus = Math.abs(discrepancyQuantity) < 0.001
+  const submittedItems = asArray(input.items);
+  if (returnSummary.items.length && !submittedItems.length) {
+    const error = new Error('Item-level return quantities are required for every product on the truck.');
+    error.status = 400;
+    throw error;
+  }
+  const authoritativeSkus = new Set(returnSummary.items.map((item) => item.sku));
+  const unknownSku = submittedItems
+    .map((item) => cleanRepositoryText(item.sku, 120))
+    .find((sku) => sku && !authoritativeSkus.has(sku));
+  if (unknownSku) {
+    const error = new Error(`Return inspection includes an unknown truck inventory SKU: ${unknownSku}.`);
+    error.status = 400;
+    throw error;
+  }
+  const submittedBySku = new Map(submittedItems.map((item) => [
+    cleanRepositoryText(item.sku, 120),
+    item
+  ]));
+  const items = returnSummary.items.map((authoritativeItem) => {
+    const submitted = submittedBySku.get(authoritativeItem.sku) || {};
+    const sellableQuantity = normalizeQuantity(submitted.sellableQuantity || submitted.sellable_quantity);
+    const returnedQuantity = normalizeQuantity(submitted.returnedQuantity || submitted.returned_quantity);
+    const damagedQuantity = normalizeQuantity(submitted.damagedQuantity || submitted.damaged_quantity);
+    const rejectedQuantity = normalizeQuantity(submitted.rejectedQuantity || submitted.rejected_quantity);
+    const physicalAccountedQuantity = sellableQuantity + returnedQuantity + damagedQuantity + rejectedQuantity;
+    const discrepancyQuantity = Math.round((
+      authoritativeItem.expectedReturnQuantity - physicalAccountedQuantity
+    ) * 100) / 100;
+    return {
+      ...authoritativeItem,
+      sellableQuantity,
+      returnedQuantity,
+      damagedQuantity,
+      rejectedQuantity,
+      missingQuantity: discrepancyQuantity > 0 ? discrepancyQuantity : 0,
+      discrepancyQuantity,
+      discrepancyStatus: Math.abs(discrepancyQuantity) < 0.001
+        ? 'balanced'
+        : (discrepancyQuantity > 0 ? 'shortage' : 'overage'),
+      notes: cleanRepositoryText(submitted.notes, 500) || null
+    };
+  });
+  const sumItems = (field) => normalizeQuantity(items.reduce(
+    (total, item) => total + normalizeQuantity(item[field]),
+    0
+  ));
+  const sellableQuantity = sumItems('sellableQuantity');
+  const returnedQuantity = sumItems('returnedQuantity');
+  const damagedQuantity = sumItems('damagedQuantity');
+  const missingQuantity = sumItems('missingQuantity');
+  const rejectedQuantity = sumItems('rejectedQuantity');
+  const discrepancyQuantity = Math.round(items.reduce(
+    (total, item) => total + Number(item.discrepancyQuantity || 0),
+    0
+  ) * 100) / 100;
+  const discrepancyItemCount = items.filter(
+    (item) => Math.abs(item.discrepancyQuantity) >= 0.001
+  ).length;
+  const unaccountedQuantity = normalizeQuantity(items.reduce(
+    (total, item) => total + Math.abs(item.discrepancyQuantity || 0),
+    0
+  ));
+  const discrepancyStatus = discrepancyItemCount === 0
     ? 'balanced'
-    : (discrepancyQuantity > 0 ? 'shortage' : 'overage');
+    : (discrepancyQuantity > 0 ? 'shortage' : (discrepancyQuantity < 0 ? 'overage' : 'mixed'));
   const notes = cleanRepositoryText(input.notes, 2000) || null;
-  const items = asArray(input.items).map((item) => ({
-    sku: cleanRepositoryText(item.sku, 120) || null,
-    productName: cleanRepositoryText(item.productName || item.product_name, 240) || null,
-    sellableQuantity: normalizeQuantity(item.sellableQuantity || item.sellable_quantity),
-    returnedQuantity: normalizeQuantity(item.returnedQuantity || item.returned_quantity),
-    damagedQuantity: normalizeQuantity(item.damagedQuantity || item.damaged_quantity),
-    missingQuantity: normalizeQuantity(item.missingQuantity || item.missing_quantity),
-    addedQuantity: normalizeQuantity(item.addedQuantity || item.added_quantity),
-    rejectedQuantity: normalizeQuantity(item.rejectedQuantity || item.rejected_quantity),
-    notes: cleanRepositoryText(item.notes, 500) || null
-  }));
   const printRequestedAt = new Date().toISOString();
   const printConfirmationToken = crypto.randomUUID
     ? crypto.randomUUID()
@@ -2841,7 +2951,8 @@ async function prepareRouteInventoryCloseoutForDriver(manifestId, driverId, inpu
       rejectedQuantity,
       unaccountedQuantity,
       discrepancyQuantity,
-      discrepancyStatus
+      discrepancyStatus,
+      discrepancyItemCount
     },
     items,
     notes
