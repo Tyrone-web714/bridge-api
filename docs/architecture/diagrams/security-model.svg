@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="750">
+<style>text{font-family:Arial,sans-serif;font-size:20px}.title{font-size:28px;font-weight:bold}.box{fill:#f8f9fa;stroke:#333;stroke-width:2}.arrow{stroke:#333;stroke-width:2;marker-end:url(#arrow)}</style>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#333"/></marker></defs>
+<text x="40" y="40" class="title">Security Model</text>
+<rect x="260" y="80" width="580" height="50" rx="8" class="box"/>
+<text x="550" y="112" text-anchor="middle">User Request</text>
+<line x1="550" y1="130" x2="550" y2="165" class="arrow"/>
+<rect x="260" y="170" width="580" height="50" rx="8" class="box"/>
+<text x="550" y="202" text-anchor="middle">Authentication</text>
+<line x1="550" y1="220" x2="550" y2="255" class="arrow"/>
+<rect x="260" y="260" width="580" height="50" rx="8" class="box"/>
+<text x="550" y="292" text-anchor="middle">Claims Validation</text>
+<line x1="550" y1="310" x2="550" y2="345" class="arrow"/>
+<rect x="260" y="350" width="580" height="50" rx="8" class="box"/>
+<text x="550" y="382" text-anchor="middle">RBAC / Permissions</text>
+<line x1="550" y1="400" x2="550" y2="435" class="arrow"/>
+<rect x="260" y="440" width="580" height="50" rx="8" class="box"/>
+<text x="550" y="472" text-anchor="middle">Organization Validation</text>
+<line x1="550" y1="490" x2="550" y2="525" class="arrow"/>
+<rect x="260" y="530" width="580" height="50" rx="8" class="box"/>
+<text x="550" y="562" text-anchor="middle">API Action</text>
+<line x1="550" y1="580" x2="550" y2="615" class="arrow"/>
+<rect x="260" y="620" width="580" height="50" rx="8" class="box"/>
+<text x="550" y="652" text-anchor="middle">Organization-Scoped Query</text>
+</svg>

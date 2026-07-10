@@ -1,0 +1,12 @@
+erDiagram
+    ORGANIZATION ||--o{ USER : owns
+    ORGANIZATION ||--o{ DRIVER : owns
+    ORGANIZATION ||--o{ VEHICLE : owns
+    ORGANIZATION ||--o{ CUSTOMER : owns
+    ORGANIZATION ||--o{ ROUTE : owns
+    ROUTE ||--o{ STOP : contains
+    CUSTOMER ||--o{ STOP : receives
+    ORGANIZATION ||--o{ KPI : defines
+    ORGANIZATION ||--o{ DASHBOARD : configures
+    ORGANIZATION ||--o{ AUDIT_LOG : records
+    SHARED_SAFETY_HAZARD ||--o{ SAFETY_SUBMISSION : sourced_from

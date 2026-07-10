@@ -1,0 +1,12 @@
+flowchart TD
+    Mobile[Driver Mobile App] --> API[API Layer]
+    Web[Supervisor / Executive Web Portal] --> API
+    API --> Auth[Auth & RBAC]
+    API --> Org[Organization Service]
+    API --> Routing[Routing Service]
+    API --> Safety[Shared Safety Service]
+    API --> KPI[KPI / BI Service]
+    API --> AI[AI Decision Service]
+    API --> DB[(Operational Database)]
+    API --> Files[(Object Storage)]
+    API --> Queue[Background Jobs / Queue]

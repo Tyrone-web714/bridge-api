@@ -1,0 +1,7 @@
+flowchart TD
+    User[User Request] --> Auth[Authentication]
+    Auth --> Claims[Claims Validation]
+    Claims --> RBAC[RBAC / Permission Engine]
+    RBAC --> OrgCheck[Organization Validation]
+    OrgCheck --> API[Authorized API Action]
+    API --> DB[(Organization-Scoped Database Query)]

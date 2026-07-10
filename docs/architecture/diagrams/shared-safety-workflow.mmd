@@ -1,0 +1,7 @@
+flowchart TD
+    Driver[Driver Reports Hazard] --> OrgReview[Organization Review]
+    OrgReview --> PlatformReview[Platform Admin Review]
+    PlatformReview --> Approve[Approve & Sanitize]
+    PlatformReview --> Reject[Reject]
+    PlatformReview --> Merge[Merge Duplicate]
+    Approve --> Global[Global Shared Safety Layer]
