@@ -73,16 +73,34 @@ assert(!rbac.hasPermission({ approvedRole: rbac.ROLES.DRIVER }, rbac.PERMISSIONS
 }
 
 assertContains(migrationSql, 'CREATE TABLE IF NOT EXISTS role_permissions', 'RBAC migration');
+assertContains(migrationSql, 'role_permissions_role_check', 'RBAC role constraint');
+assertContains(migrationSql, "('DRIVER', 'delivery.operate')", 'Driver permission mapping');
+assertContains(migrationSql, "('WAREHOUSE_EMPLOYEE', 'warehouse.confirm')", 'Warehouse permission mapping');
 assertContains(migrationSql, 'CREATE TABLE IF NOT EXISTS warehouse_employee_sessions', 'Warehouse session migration');
 assertContains(migrationSql, 'ADD COLUMN IF NOT EXISTS approved_role TEXT', 'Admin approved role migration');
 assertContains(migrationSql, 'ADD COLUMN IF NOT EXISTS organization_id TEXT', 'Audit organization migration');
 assertContains(migrationSql, 'revoked_reason', 'Session revocation migration');
+assertContains(
+  fs.readFileSync(path.join(repoRoot, 'middleware', 'authorization.js'), 'utf8'),
+  'req.authContext = buildAuthContext(req);',
+  'Authorization checks must refresh context after route-level auth'
+);
 
 assertContains(adminAuthSource, 'approvedRole', 'Admin auth claims');
 assertContains(adminAuthSource, 'permissionsForRole', 'Admin permissions');
 assertContains(driverAuthSource, 'organizationId: session.organization_id', 'Driver organization claim');
 assertContains(driverAuthSource, 'internalDriverId: session.internal_driver_id', 'Driver internal identity claim');
 assertContains(driverAuthSource, 'companyDriverNumber', 'Driver company number compatibility');
+assertContains(
+  fs.readFileSync(path.join(repoRoot, 'routes', 'driverSessions.js'), 'utf8'),
+  'organizationRealm',
+  'Driver login supports an Organization realm without raw UUID input'
+);
+assertContains(
+  fs.readFileSync(path.join(repoRoot, 'db', 'repositories.js'), 'utf8'),
+  'organizationId: session.organizationId',
+  'Driver session creation must preserve Organization scope'
+);
 assertContains(warehouseAuthSource, 'Warehouse employee ID and PIN are required.', 'Warehouse two-factor requirement');
 assertContains(warehouseAuthSource, 'requireWarehouseAuth', 'Warehouse session middleware');
 assertContains(routeManifestSource, 'warehouseAuth.authenticateWarehouseEmployee', 'Route manifest warehouse auth service');

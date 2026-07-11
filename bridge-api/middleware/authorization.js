@@ -63,7 +63,7 @@ function attachAuthContext(req, res, next) {
 }
 
 function requireAuthentication(req, res, next) {
-  if (!req.authContext) req.authContext = buildAuthContext(req);
+  req.authContext = buildAuthContext(req);
   if (!req.authContext.authenticated) {
     return res.status(401).json({ error: 'Authentication required.' });
   }
@@ -71,7 +71,7 @@ function requireAuthentication(req, res, next) {
 }
 
 function requireOrganizationContext(req, res, next) {
-  if (!req.authContext) req.authContext = buildAuthContext(req);
+  req.authContext = buildAuthContext(req);
   if (!req.authContext.organizationId) {
     return res.status(403).json({ error: 'Organization context is required for this action.' });
   }
@@ -81,7 +81,7 @@ function requireOrganizationContext(req, res, next) {
 function requireRole(...roles) {
   const approvedRoles = roles.map((role) => rbac.assertApprovedRole(role));
   return (req, res, next) => {
-    if (!req.authContext) req.authContext = buildAuthContext(req);
+    req.authContext = buildAuthContext(req);
     if (!req.authContext.authenticated) {
       return res.status(401).json({ error: 'Authentication required.' });
     }
@@ -94,7 +94,7 @@ function requireRole(...roles) {
 
 function requirePermission(permission) {
   return (req, res, next) => {
-    if (!req.authContext) req.authContext = buildAuthContext(req);
+    req.authContext = buildAuthContext(req);
     if (!req.authContext.authenticated) {
       return res.status(401).json({ error: 'Authentication required.' });
     }
@@ -110,7 +110,7 @@ function requirePlatformAdmin(req, res, next) {
 }
 
 function assertRequestOrganization(req, organizationId) {
-  if (!req.authContext) req.authContext = buildAuthContext(req);
+  req.authContext = buildAuthContext(req);
   return assertSameOrganization(req.authContext.organizationId, organizationId);
 }
 

@@ -1106,7 +1106,10 @@ async function setDriverPinHash(driverId, pinHash, actor = 'supervisor') {
 }
 
 async function createDriverSession(session) {
-  const driver = await getDriver(session.driverId, { allowDevelopmentFallback: true });
+  const driver = await getDriver(session.internalDriverId || session.driverId, {
+    organizationId: session.organizationId || session.organization_id,
+    allowDevelopmentFallback: true
+  });
   await postgres.query(`
     UPDATE driver_sessions
     SET revoked_at = NOW()

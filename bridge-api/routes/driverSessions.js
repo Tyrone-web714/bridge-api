@@ -23,11 +23,19 @@ router.post('/login', async (req, res) => {
     const driverId = cleanText(req.body?.driverId || req.body?.driver_id, 120);
     const pin = String(req.body?.pin || '');
     const deviceId = cleanText(req.body?.deviceId || req.body?.device_id, 160);
+    const organizationRealm = cleanText(
+      req.body?.organizationSlug || req.body?.organization_slug || req.body?.organizationCode || req.body?.organization_code,
+      160
+    );
     if (!driverId || !pin || !deviceId) {
       return res.status(400).json({ error: 'Driver ID, PIN, and device ID are required.' });
     }
 
-    const driver = await repositories.getDriverAuthRecord(driverId);
+    const organization = organizationRealm ? await repositories.getOrganization(organizationRealm) : null;
+    if (organizationRealm && !organization) {
+      return res.status(401).json({ error: 'Driver ID or PIN is invalid.' });
+    }
+    const driver = await repositories.getDriverAuthRecord(driverId, organization ? { organizationId: organization.id } : {});
     if (!driver || !driver.pin_hash || !adminAuth.verifyPassword(pin, driver.pin_hash)) {
       return res.status(401).json({ error: 'Driver ID or PIN is invalid.' });
     }
@@ -44,6 +52,8 @@ router.post('/login', async (req, res) => {
     await repositories.createDriverSession({
       id: crypto.randomUUID(),
       driverId,
+      organizationId: driver.organization_id,
+      internalDriverId: driver.internal_driver_id,
       deviceId,
       tokenHash,
       expiresAt

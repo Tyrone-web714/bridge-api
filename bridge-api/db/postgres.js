@@ -1,10 +1,17 @@
 const { Pool } = require('pg');
 const { BOOTSTRAP_ORGANIZATION } = require('../services/tenantContext');
+const { DEFAULT_ROLE_PERMISSIONS } = require('../services/rbac');
 
 let pool = null;
 let schemaReady = false;
 let schemaPromise = null;
 let postgisReady = null;
+
+function rolePermissionValuesSql() {
+  return Object.entries(DEFAULT_ROLE_PERMISSIONS)
+    .flatMap(([role, permissions]) => permissions.map((permission) => `('${role}', '${permission}')`))
+    .join(',\n      ');
+}
 
 function readIntegerEnv(name, fallback) {
   const parsed = Number.parseInt(process.env[name], 10);
@@ -201,6 +208,27 @@ async function ensureSchema() {
       created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
       PRIMARY KEY (role, permission)
     );
+    DO $$
+    BEGIN
+      IF NOT EXISTS (
+        SELECT 1 FROM pg_constraint WHERE conname = 'admin_users_approved_role_check'
+      ) THEN
+        ALTER TABLE admin_users
+          ADD CONSTRAINT admin_users_approved_role_check
+          CHECK (approved_role IN ('PLATFORM_ADMIN', 'ORGANIZATION_ADMIN', 'SUPERVISOR', 'DRIVER', 'WAREHOUSE_EMPLOYEE'));
+      END IF;
+      IF NOT EXISTS (
+        SELECT 1 FROM pg_constraint WHERE conname = 'role_permissions_role_check'
+      ) THEN
+        ALTER TABLE role_permissions
+          ADD CONSTRAINT role_permissions_role_check
+          CHECK (role IN ('PLATFORM_ADMIN', 'ORGANIZATION_ADMIN', 'SUPERVISOR', 'DRIVER', 'WAREHOUSE_EMPLOYEE'));
+      END IF;
+    END $$;
+    INSERT INTO role_permissions (role, permission)
+    VALUES
+      ${rolePermissionValuesSql()}
+    ON CONFLICT (role, permission) DO NOTHING;
 
     CREATE TABLE IF NOT EXISTS audit_events (
       id BIGSERIAL PRIMARY KEY,
