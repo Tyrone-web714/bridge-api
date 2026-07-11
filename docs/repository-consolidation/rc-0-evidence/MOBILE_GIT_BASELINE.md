@@ -1,0 +1,59 @@
+﻿# Mobile Git Baseline
+
+| Item | Value |
+| --- | --- |
+| Repository root | `C:\dev\tsr-mobile` |
+| Branch | `master` |
+| HEAD commit | `cf61cbc72eab4b1e61d25d20e2acb8fd3006ae68` |
+| Remotes | None configured |
+| Tracked file count | 13 |
+| Untracked file count | 129 |
+| Ignored status entries | 18 |
+| Git bundle | `C:\dev\truck-safe-routing-rc0-backups\20260710-205740\bundles\tsr-mobile-all.bundle` |
+| Git bundle size | 571290 bytes |
+| Git bundle scope | Committed branches and tags only; does not include modified or untracked files. |
+
+## Status Short
+
+```text
+ M .gitignore
+ M App.js
+ M app.json
+ M assets/android-icon-background.png
+ M assets/android-icon-foreground.png
+ M assets/android-icon-monochrome.png
+ M assets/icon.png
+ A eas.json
+ M package-lock.json
+ M package.json
+?? .env.example
+?? .github/
+?? LICENSE
+?? PROJECT_STATUS.md
+?? ROAD_TEST_CHECKLIST.md
+?? THIRD_PARTY_NOTICES.md
+?? app.config.js
+?? assets/landing-truck-hero.png
+?? assets/truck-marker-3d.png
+?? compliance/
+?? plugins/
+?? scripts/
+?? src/
+?? truck-marker-current-preview.png
+?? truck-safe-routing-assigned-route-fix-apk-qr.png
+?? truck-safe-routing-black-icon-apk-qr.png
+?? truck-safe-routing-dashboard-camera-apk-qr.png
+?? truck-safe-routing-driver-session-apk-qr.png
+?? truck-safe-routing-employee-id-inventory-apk-qr.png
+?? truck-safe-routing-final-audit-apk-qr.png
+?? truck-safe-routing-global-settings-apk-qr.png
+?? truck-safe-routing-hazard-report-apk-qr.png
+?? truck-safe-routing-inventory-staff-apk-qr.png
+?? truck-safe-routing-itemized-return-apk-qr.png
+?? truck-safe-routing-latest-apk-qr.png
+?? truck-safe-routing-preview-apk-qr.png
+?? truck-safe-routing-unified-inventory-apk-qr.png
+?? truck-sprite-contact-sheet.png
+```
+
+Raw evidence is stored under `raw/`.

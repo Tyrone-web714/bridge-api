@@ -1,0 +1,62 @@
+{
+  "name": "tsr-mobile",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "expo start",
+    "start:dev-client": "expo start --dev-client --host lan --port 8081",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "build:android:development": "eas build --profile development --platform android --clear-cache",
+    "build:android:preview": "npm run verify:production && eas build --profile preview --platform android --clear-cache",
+    "build:android:production": "npm run verify:production && eas build --profile production --platform android --clear-cache",
+    "export:android:preview": "npm run verify:production && expo export --platform android --output-dir .expo-export-preview-check",
+    "verify:production": "node scripts/verify-production-config.cjs",
+    "verify:secrets": "node scripts/audit-secrets.cjs",
+    "compliance:generate": "node scripts/generate-compliance-artifacts.cjs",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "@react-navigation/native": "^7.2.1",
+    "@react-navigation/native-stack": "^7.14.9",
+    "expo": "~55.0.27",
+    "expo-camera": "~55.0.20",
+    "expo-dev-client": "~55.0.36",
+    "expo-file-system": "~55.0.23",
+    "expo-image-picker": "~55.0.21",
+    "expo-location": "~55.1.11",
+    "expo-secure-store": "~55.0.15",
+    "expo-speech": "~55.0.15",
+    "expo-status-bar": "~55.0.6",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "react-native": "0.83.6",
+    "react-native-bluetooth-classic": "^1.73.0-rc.17",
+    "react-native-maps": "1.27.2",
+    "react-native-safe-area-context": "~5.6.2",
+    "react-native-screens": "~4.23.0",
+    "react-native-signature-canvas": "^5.0.2",
+    "react-native-web": "^0.21.0",
+    "react-native-webview": "13.16.0"
+  },
+  "private": true,
+  "overrides": {
+    "shell-quote": "1.9.0",
+    "react-native": {
+      "ws": "7.5.11"
+    },
+    "metro": {
+      "ws": "7.5.11"
+    }
+  },
+  "expo": {
+    "doctor": {
+      "reactNativeDirectoryCheck": {
+        "exclude": [
+          "react-native-bluetooth-classic"
+        ]
+      }
+    }
+  }
+}
