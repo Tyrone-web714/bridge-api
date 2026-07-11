@@ -36,7 +36,7 @@ async function readJson(response) {
 }
 
 export async function fetchRecentDestinations() {
-  const response = await fetchWithTimeout(`${API_BASE_URL}/api/places/recent-destinations`);
+  const response = await fetchWithTimeout(`${API_BASE_URL}/api/places/recent-destinations`, { headers: jsonApiHeaders() });
   const data = await readJson(response);
   if (!response.ok) {
     throw new Error(data?.error || `Recent destinations failed. HTTP ${response.status}`);
@@ -60,7 +60,7 @@ export async function fetchDestinationDetails({ placeId, address, label, types }
   if (label) query.set('label', label);
   if (Array.isArray(types) && types.length) query.set('types', types.join(','));
 
-  const response = await fetchWithTimeout(`${API_BASE_URL}/api/places/details?${query.toString()}`);
+  const response = await fetchWithTimeout(`${API_BASE_URL}/api/places/details?${query.toString()}`, { headers: jsonApiHeaders() });
   const data = await readJson(response);
   if (!response.ok) {
     throw new Error(data?.error || 'Destination details unavailable');
@@ -93,7 +93,7 @@ export async function fetchAddressPredictions({ input, sessionToken, maxResults 
 
   const response = await fetchWithTimeout(
     `${API_BASE_URL}/api/places/autocomplete?${query.toString()}`,
-    {},
+    { headers: jsonApiHeaders() },
     AUTOCOMPLETE_REQUEST_TIMEOUT_MS
   );
   const data = await readJson(response);
@@ -111,7 +111,7 @@ export async function saveRecentDestinationRecord(payload) {
     `${API_BASE_URL}/api/places/recent-destinations`,
     {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: jsonApiHeaders(),
       body: JSON.stringify(payload),
     }
   );
