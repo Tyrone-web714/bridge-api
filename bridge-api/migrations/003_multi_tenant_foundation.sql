@@ -154,8 +154,31 @@ WHERE organization_id IS NULL OR company_employee_id IS NULL;
 UPDATE delivery_notes SET organization_id = '00000000-0000-4000-8000-000000000001' WHERE organization_id IS NULL;
 UPDATE recent_destinations SET organization_id = '00000000-0000-4000-8000-000000000001' WHERE organization_id IS NULL;
 UPDATE route_sessions SET organization_id = '00000000-0000-4000-8000-000000000001' WHERE organization_id IS NULL;
-UPDATE route_session_events SET organization_id = '00000000-0000-4000-8000-000000000001' WHERE organization_id IS NULL;
+INSERT INTO tenant_backfill_exceptions (table_name, record_identifier, reason)
+SELECT 'route_session_events', event.id::text, 'route_session_id does not resolve to a route_sessions record'
+FROM route_session_events AS event
+WHERE event.organization_id IS NULL
+  AND event.route_session_id IS NOT NULL
+  AND NOT EXISTS (
+    SELECT 1 FROM route_sessions AS session WHERE session.id = event.route_session_id
+  );
+UPDATE route_session_events AS event
+SET organization_id = session.organization_id
+FROM route_sessions AS session
+WHERE event.route_session_id = session.id
+  AND event.organization_id IS NULL;
+UPDATE route_session_events
+SET organization_id = '00000000-0000-4000-8000-000000000001'
+WHERE organization_id IS NULL
+  AND route_session_id IS NULL;
 UPDATE daily_route_manifests SET organization_id = '00000000-0000-4000-8000-000000000001' WHERE organization_id IS NULL;
+INSERT INTO tenant_backfill_exceptions (table_name, record_identifier, reason)
+SELECT 'daily_route_stops', stop.id, 'manifest_id does not resolve to a daily_route_manifests record'
+FROM daily_route_stops AS stop
+WHERE stop.organization_id IS NULL
+  AND NOT EXISTS (
+    SELECT 1 FROM daily_route_manifests AS manifest WHERE manifest.id = stop.manifest_id
+  );
 UPDATE daily_route_stops AS stop SET organization_id = manifest.organization_id FROM daily_route_manifests AS manifest WHERE stop.manifest_id = manifest.id AND stop.organization_id IS NULL;
 UPDATE customer_accounts SET organization_id = '00000000-0000-4000-8000-000000000001' WHERE organization_id IS NULL;
 UPDATE products SET organization_id = '00000000-0000-4000-8000-000000000001' WHERE organization_id IS NULL;
@@ -164,9 +187,23 @@ UPDATE route_truck_inventory_additions SET organization_id = '00000000-0000-4000
 UPDATE route_truck_inventory_allocations SET organization_id = '00000000-0000-4000-8000-000000000001' WHERE organization_id IS NULL;
 UPDATE route_departure_inventory_confirmations SET organization_id = '00000000-0000-4000-8000-000000000001' WHERE organization_id IS NULL;
 UPDATE account_orders SET organization_id = '00000000-0000-4000-8000-000000000001' WHERE organization_id IS NULL;
+INSERT INTO tenant_backfill_exceptions (table_name, record_identifier, reason)
+SELECT 'account_order_items', item.id, 'order_id does not resolve to an account_orders record'
+FROM account_order_items AS item
+WHERE item.organization_id IS NULL
+  AND NOT EXISTS (
+    SELECT 1 FROM account_orders AS orders WHERE orders.id = item.order_id
+  );
 UPDATE account_order_items AS item SET organization_id = orders.organization_id FROM account_orders AS orders WHERE item.order_id = orders.id AND item.organization_id IS NULL;
 UPDATE delivery_deductions SET organization_id = '00000000-0000-4000-8000-000000000001' WHERE organization_id IS NULL;
 UPDATE delivery_settlements SET organization_id = '00000000-0000-4000-8000-000000000001' WHERE organization_id IS NULL;
+INSERT INTO tenant_backfill_exceptions (table_name, record_identifier, reason)
+SELECT 'delivery_settlement_items', item.id, 'settlement_id does not resolve to a delivery_settlements record'
+FROM delivery_settlement_items AS item
+WHERE item.organization_id IS NULL
+  AND NOT EXISTS (
+    SELECT 1 FROM delivery_settlements AS settlement WHERE settlement.id = item.settlement_id
+  );
 UPDATE delivery_settlement_items AS item SET organization_id = settlement.organization_id FROM delivery_settlements AS settlement WHERE item.settlement_id = settlement.id AND item.organization_id IS NULL;
 UPDATE delivery_documents SET organization_id = '00000000-0000-4000-8000-000000000001' WHERE organization_id IS NULL;
 UPDATE route_closeout_documents SET organization_id = '00000000-0000-4000-8000-000000000001' WHERE organization_id IS NULL;

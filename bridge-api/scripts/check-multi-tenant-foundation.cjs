@@ -76,6 +76,7 @@ assert.strictEqual(
 assertContains(migrationSql, 'CREATE TABLE IF NOT EXISTS organizations', 'Organization migration');
 assertContains(migrationSql, 'Truck-Safe Routing Development', 'Bootstrap Organization migration');
 assertContains(migrationSql, 'CREATE TABLE IF NOT EXISTS tenant_backfill_exceptions', 'Backfill exception migration');
+assertContains(migrationSql, 'INSERT INTO tenant_backfill_exceptions', 'Unknown ownership exception reporting');
 assertContains(migrationSql, 'ADD COLUMN IF NOT EXISTS organization_id TEXT REFERENCES organizations(id)', 'Tenant ownership migration');
 assertContains(migrationSql, 'ADD COLUMN IF NOT EXISTS internal_driver_id TEXT', 'Driver internal ID migration');
 assertContains(migrationSql, 'ADD COLUMN IF NOT EXISTS company_driver_number TEXT', 'Company driver number migration');

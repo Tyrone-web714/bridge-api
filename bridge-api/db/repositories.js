@@ -3732,8 +3732,8 @@ async function swapDailyRouteAssignments(leftRouteId, rightRouteId, input = {}) 
   return result.rows.map(routeManifestFromRow);
 }
 
-async function deleteDailyRouteManifest(id) {
-  const tenantContext = tenantContextFromOptions({ allowDevelopmentFallback: true });
+async function deleteDailyRouteManifest(id, options = {}) {
+  const tenantContext = tenantContextFromOptions({ ...options, allowDevelopmentFallback: true });
   const cleanedId = String(id || '').trim();
   if (!cleanedId) {
     const error = new Error('Route manifest id is required.');
@@ -3774,8 +3774,8 @@ async function deleteDailyRouteManifest(id) {
   };
 }
 
-async function deleteDailyRouteManifestsByDate(routeDate) {
-  const tenantContext = tenantContextFromOptions({ allowDevelopmentFallback: true });
+async function deleteDailyRouteManifestsByDate(routeDate, options = {}) {
+  const tenantContext = tenantContextFromOptions({ ...options, allowDevelopmentFallback: true });
   const cleanedRouteDate = String(routeDate || '').trim();
   if (!/^\d{4}-\d{2}-\d{2}$/.test(cleanedRouteDate)) {
     const error = new Error('A route date in YYYY-MM-DD format is required.');
