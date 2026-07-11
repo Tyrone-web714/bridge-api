@@ -27,6 +27,7 @@ const deliveryNotesApi = read('src/app/services/deliveryNotesApi.js');
 const deliveryPhotoStore = read('src/app/services/deliveryPhotoStore.js');
 const apiConfig = read('src/app/config/api.js');
 const homeApi = read('src/app/services/homeApi.js');
+const homeScreen = read('src/app/screens/HomeScreen.js');
 
 assertContains(tenantContext, 'normalizeDriverSession', 'Trusted session normalization');
 assertContains(tenantContext, 'organizationId', 'Organization context field');
@@ -50,6 +51,9 @@ assertContains(routeManifestOfflineStore, 'migrateLegacyStopQueue', 'Legacy stop
 assertContains(routeManifestOfflineStore, 'legacyQuarantineKey', 'Stop queue quarantine');
 assertContains(routeManifestOfflineStore, 'operationMatchesTenant', 'Stop queue tenant guard');
 assertContains(routeManifestOfflineStore, 'withTenantOperationMetadata', 'Stop operation tenant metadata');
+assertContains(routeManifestOfflineStore, 'cachedRouteMatchesTenant', 'Assigned route cache tenant match guard');
+assertContains(routeManifestOfflineStore, 'quarantineMismatchedRouteCache', 'Assigned route cache tenant mismatch quarantine');
+assertContains(routeManifestOfflineStore, 'assigned-route-tenant-mismatch', 'Assigned route cache mismatch quarantine reason');
 
 assertContains(deliveryOfflineStore, '@truck-safe-routing/delivery-operation-sync/v2', 'Tenant-scoped delivery queue key version');
 assertContains(deliveryOfflineStore, '@truck-safe-routing/stop-delivery/v2', 'Tenant-scoped stop delivery cache key version');
@@ -84,6 +88,27 @@ assertContains(deliveryNotesApi, 'markDeliveryOperationFailed(operation.id, erro
 assertContains(apiConfig, '...getDriverSessionHeaders()', 'Central authenticated request headers');
 assertContains(homeApi, 'headers: jsonApiHeaders()', 'Protected mobile endpoint headers');
 
+assertContains(homeScreen, "useState('restoring')", 'Home startup restoring state');
+assertContains(homeScreen, "setDriverStartupState('restoring')", 'Home explicitly enters restoring state');
+assertContains(homeScreen, 'const session = await initializeDriverSession();', 'Home awaits persisted session restoration');
+assertContains(homeScreen, "setDriverStartupState('unauthenticated')", 'Home handles missing or invalid session as unauthenticated');
+assertContains(homeScreen, 'readCachedAssignedRoute({', 'Home restores assigned route from tenant-scoped cache');
+assertContains(homeScreen, 'fetchAssignedDriverRouteFromDates({', 'Home checks backend when no cached route exists');
+assertContains(homeScreen, "setDriverStartupState('authenticated')", 'Home records restored authenticated state');
+assertContains(homeScreen, "setDriverStartupState('error')", 'Home handles restoration failures');
+assertContains(homeScreen, "driverStartupState === 'restoring'", 'Home derives restoring render state');
+assertContains(homeScreen, 'Restoring driver session...', 'Home avoids login fields while startup restoration is pending');
+assertMatches(
+  homeScreen,
+  /readCachedAssignedRoute\([\s\S]*fetchAssignedDriverRouteFromDates/,
+  'Home checks tenant-scoped route cache before backend fallback'
+);
+assertMatches(
+  homeScreen,
+  /initializeDriverSession\([\s\S]*setDriverIdInput\(authenticatedDriverId\)[\s\S]*setConfirmedDriver\(confirmed\)/,
+  'Home rebuilds confirmed driver state from restored session and route'
+);
+
 assertMatches(
   tenantContext + driverSession + routeManifestOfflineStore + deliveryOfflineStore + routingApi,
   /organizationId[\s\S]*internalDriverId[\s\S]*companyDriverNumber/,
@@ -101,6 +126,7 @@ const mobileSources = [
   deliveryPhotoStore,
   apiConfig,
   homeApi,
+  homeScreen,
 ].join('\n');
 assert(!/organization_id\s*[:=]/.test(mobileSources), 'Mobile source must not send arbitrary organization_id values.');
 

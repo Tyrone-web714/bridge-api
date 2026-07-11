@@ -48,6 +48,31 @@ function routeCacheKey(identity, routeDate) {
   return tenantScopedStorageKey(ROUTE_CACHE_PREFIX, identity, 'route', safeRouteDate);
 }
 
+function cachedRouteMatchesTenant(cached, identity) {
+  return cleanIdentity(cached?.organizationId) === cleanIdentity(identity.organizationId)
+    && cleanIdentity(cached?.internalDriverId) === cleanIdentity(identity.internalDriverId)
+    && cleanIdentity(cached?.companyDriverNumber) === cleanIdentity(identity.companyDriverNumber);
+}
+
+async function quarantineMismatchedRouteCache(cached, identity, routeDate) {
+  if (!cached) return;
+  try {
+    await writeJson(legacyQuarantineKey(ROUTE_CACHE_PREFIX, 'assigned-route-tenant-mismatch'), {
+      reason: 'Assigned route cache did not match authenticated driver context.',
+      createdAt: new Date().toISOString(),
+      routeDate: routeDate || 'today',
+      expected: {
+        organizationId: identity.organizationId,
+        internalDriverId: identity.internalDriverId,
+        companyDriverNumber: identity.companyDriverNumber,
+      },
+      cached,
+    });
+  } catch {
+    // Failing closed is more important than writing the quarantine record.
+  }
+}
+
 function createOperationId() {
   return `stop-sync-${Date.now()}-${Math.random().toString(16).slice(2, 12)}`;
 }
@@ -204,7 +229,14 @@ async function readLegacyAssignedRoute(identity, routeDate) {
 export async function readCachedAssignedRoute({ driverId, routeDate, ...options } = {}) {
   const identity = requireTenantIdentity({ ...options, driverId });
   const cached = await readJson(routeCacheKey(identity, routeDate || 'today'), null);
-  let route = cached?.route || null;
+  let route = null;
+  if (cached?.route) {
+    if (!cachedRouteMatchesTenant(cached, identity)) {
+      await quarantineMismatchedRouteCache(cached, identity, routeDate);
+      return null;
+    }
+    route = cached.route;
+  }
   if (!route) route = await readLegacyAssignedRoute(identity, routeDate);
   if (!routeDate && route?.routeDate) {
     const now = new Date();

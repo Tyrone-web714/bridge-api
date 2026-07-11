@@ -23,6 +23,7 @@ import {
 } from '../utils/destinationUtils';
 import { getAssignedRouteLookupDates, getLocalRouteDate } from '../utils/routeDate';
 import { fetchAssignedDriverRouteFromDates } from '../services/routeManifestApi';
+import { readCachedAssignedRoute } from '../services/routeManifestOfflineStore';
 import {
   initializeDriverSession,
   loginDriverSession,
@@ -90,6 +91,7 @@ export default function HomeScreen({ navigation, route }) {
   const [driverPinInput, setDriverPinInput] = useState('');
   const [confirmedDriver, setConfirmedDriver] = useState(null);
   const [isDriverLoginChecking, setIsDriverLoginChecking] = useState(false);
+  const [driverStartupState, setDriverStartupState] = useState('restoring');
   const [driverLoginStatus, setDriverLoginStatus] = useState('');
   const autocompleteRequestIdRef = useRef(0);
   const autocompleteSessionTokenRef = useRef(createAutocompleteSessionToken());
@@ -193,9 +195,74 @@ export default function HomeScreen({ navigation, route }) {
   };
 
   useEffect(() => {
-    initializeDriverSession().catch(() => null);
+    let isMounted = true;
+
+    const restoreDriverSession = async () => {
+      setDriverStartupState('restoring');
+      try {
+        const session = await initializeDriverSession();
+        if (!isMounted) return;
+
+        const sessionDriver = session?.driver || null;
+        const authenticatedDriverId = sessionDriver?.driverId || sessionDriver?.companyDriverNumber || '';
+        const authenticatedDriverName = sessionDriver?.driverName || authenticatedDriverId;
+
+        if (!session || !authenticatedDriverId) {
+          setDriverStartupState('unauthenticated');
+          setDriverLoginStatus('');
+          return;
+        }
+
+        setDriverIdInput(authenticatedDriverId);
+        setDriverPinInput('');
+        setDriverLoginStatus('Restored driver session. Checking today\'s assigned route...');
+
+        const routeDates = getAssignedRouteLookupDates();
+        let assignedRoute = null;
+        for (const routeDate of routeDates) {
+          assignedRoute = await readCachedAssignedRoute({
+            driverId: authenticatedDriverId,
+            routeDate,
+          });
+          if (assignedRoute) break;
+        }
+
+        if (!assignedRoute) {
+          assignedRoute = await fetchAssignedDriverRouteFromDates({
+            routeDates,
+            driverId: authenticatedDriverId,
+            driverName: authenticatedDriverName,
+          }).catch(() => null);
+        }
+
+        if (!isMounted) return;
+
+        if (assignedRoute) {
+          const confirmed = buildConfirmedDriver(authenticatedDriverId, authenticatedDriverName, assignedRoute);
+          setConfirmedDriver(confirmed);
+          setDriverLoginStatus(`Ready: route ${confirmed.routeNumber} is assigned today.`);
+        } else {
+          setConfirmedDriver(null);
+          setDriverLoginStatus(
+            `Signed in as ${authenticatedDriverName || authenticatedDriverId}. No assigned route is cached for today.`
+          );
+        }
+        setDriverStartupState('authenticated');
+      } catch (error) {
+        if (!isMounted) return;
+        setConfirmedDriver(null);
+        setDriverLoginStatus(error.message || 'Driver session restoration failed. Sign in to continue.');
+        setDriverStartupState('error');
+      }
+    };
+
+    restoreDriverSession();
     checkBackendStatus();
     loadRecentDestinations();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   useEffect(() => {
@@ -494,6 +561,7 @@ export default function HomeScreen({ navigation, route }) {
     }
 
     setIsDriverLoginChecking(true);
+    setDriverStartupState('authenticating');
     setDriverLoginStatus('Authenticating driver...');
     try {
       const session = await loginDriverSession(API_BASE_URL, {
@@ -521,6 +589,7 @@ export default function HomeScreen({ navigation, route }) {
       const confirmed = buildConfirmedDriver(authenticatedDriverId, authenticatedDriverName, assignedRoute);
       setConfirmedDriver(confirmed);
       setDriverPinInput('');
+      setDriverStartupState('authenticated');
       setDriverLoginStatus(`Ready: route ${confirmed.routeNumber} is assigned today.`);
       Alert.alert(
         'Login confirmed',
@@ -528,6 +597,7 @@ export default function HomeScreen({ navigation, route }) {
       );
     } catch (error) {
       setConfirmedDriver(null);
+      setDriverStartupState('unauthenticated');
       setDriverLoginStatus(error.message || 'Backend confirmation failed. Today\'s route is locked.');
       Alert.alert(
         'Driver login failed',
@@ -543,6 +613,7 @@ export default function HomeScreen({ navigation, route }) {
     setDriverIdInput('');
     setDriverPinInput('');
     setConfirmedDriver(null);
+    setDriverStartupState('unauthenticated');
     setDriverLoginStatus('Driver cleared. Enter another driver ID to continue.');
   };
 
@@ -698,6 +769,7 @@ export default function HomeScreen({ navigation, route }) {
   const destinationBusinessCandidates = Array.isArray(destinationDetails?.businessCandidates)
     ? destinationDetails.businessCandidates.filter((candidate) => candidate?.placeId && candidate?.name)
     : [];
+  const isDriverRestoring = driverStartupState === 'restoring';
 
   return (
     <SafeAreaView style={styles.container}>
@@ -706,49 +778,58 @@ export default function HomeScreen({ navigation, route }) {
         keyboardShouldPersistTaps="handled"
       >
         <View style={styles.driverLoginPanel}>
-          <TextInput
-            value={driverIdInput}
-            onChangeText={handleDriverIdChange}
-            placeholder="DRIVER LOGIN"
-            placeholderTextColor="#ffffff"
-            autoCapitalize="none"
-            autoCorrect={false}
-            autoComplete="off"
-            spellCheck={false}
-            textContentType="username"
-            keyboardType="visible-password"
-            returnKeyType="done"
-            textAlign="center"
-            style={styles.driverLoginTitleTab}
-          />
-          <TextInput
-            value={driverPinInput}
-            onChangeText={(value) => {
-              setDriverPinInput(String(value || '').replace(/\D/g, '').slice(0, 12));
-              setConfirmedDriver(null);
-              setDriverLoginStatus('');
-            }}
-            placeholder="DRIVER PIN"
-            placeholderTextColor="#ffffff"
-            keyboardType="number-pad"
-            secureTextEntry
-            maxLength={12}
-            textAlign="center"
-            style={styles.driverLoginTitleTab}
-          />
-          <Pressable
-            onPress={confirmDriverLogin}
-            disabled={isDriverLoginChecking}
-            style={({ pressed }) => [
-              styles.driverLoginButton,
-              isDriverLoginChecking && styles.driverLoginButtonDisabled,
-              pressed && styles.supervisorButtonPressed,
-            ]}
-          >
-            <Text style={styles.driverLoginButtonText}>
-              {isDriverLoginChecking ? 'Authenticating...' : 'Sign In'}
-            </Text>
-          </Pressable>
+          {isDriverRestoring ? (
+            <View style={styles.driverRestorePanel}>
+              <ActivityIndicator color="#ffffff" />
+              <Text style={styles.driverRestoreText}>Restoring driver session...</Text>
+            </View>
+          ) : (
+            <>
+              <TextInput
+                value={driverIdInput}
+                onChangeText={handleDriverIdChange}
+                placeholder="DRIVER LOGIN"
+                placeholderTextColor="#ffffff"
+                autoCapitalize="none"
+                autoCorrect={false}
+                autoComplete="off"
+                spellCheck={false}
+                textContentType="username"
+                keyboardType="visible-password"
+                returnKeyType="done"
+                textAlign="center"
+                style={styles.driverLoginTitleTab}
+              />
+              <TextInput
+                value={driverPinInput}
+                onChangeText={(value) => {
+                  setDriverPinInput(String(value || '').replace(/\D/g, '').slice(0, 12));
+                  setConfirmedDriver(null);
+                  setDriverLoginStatus('');
+                }}
+                placeholder="DRIVER PIN"
+                placeholderTextColor="#ffffff"
+                keyboardType="number-pad"
+                secureTextEntry
+                maxLength={12}
+                textAlign="center"
+                style={styles.driverLoginTitleTab}
+              />
+              <Pressable
+                onPress={confirmDriverLogin}
+                disabled={isDriverLoginChecking}
+                style={({ pressed }) => [
+                  styles.driverLoginButton,
+                  isDriverLoginChecking && styles.driverLoginButtonDisabled,
+                  pressed && styles.supervisorButtonPressed,
+                ]}
+              >
+                <Text style={styles.driverLoginButtonText}>
+                  {isDriverLoginChecking ? 'Authenticating...' : 'Sign In'}
+                </Text>
+              </Pressable>
+            </>
+          )}
           {!!confirmedDriver && (
             <View style={styles.driverLoginConfirmed}>
               <Text style={styles.driverLoginConfirmedTitle}>Login Confirmed</Text>
@@ -1515,6 +1596,25 @@ const styles = StyleSheet.create({
     elevation: 6,
     fontSize: 15,
     lineHeight: 19,
+    fontWeight: '900',
+    color: '#ffffff',
+    textAlign: 'center',
+  },
+  driverRestorePanel: {
+    width: '78%',
+    minHeight: 54,
+    borderRadius: 18,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 18,
+    backgroundColor: 'rgba(17, 25, 35, 0.88)',
+    borderWidth: 1,
+    borderColor: 'rgba(127,208,255,0.32)',
+  },
+  driverRestoreText: {
+    marginTop: 8,
+    fontSize: 13,
+    lineHeight: 17,
     fontWeight: '900',
     color: '#ffffff',
     textAlign: 'center',
