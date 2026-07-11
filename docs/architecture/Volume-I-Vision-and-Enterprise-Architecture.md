@@ -37,6 +37,10 @@ Navigation is one subsystem within a larger platform that includes fleet operati
 
 Every major architectural decision must be documented through an Architecture Decision Record (ADR).
 
+No architectural change may be implemented unless it is reflected in the architecture documentation or an approved ADR.
+
+This governance rule applies to significant design changes, including adding a new service, changing the tenant model, changing authentication or authorization boundaries, changing database ownership boundaries, or introducing a new AI capability. Small implementation fixes that do not alter the architecture do not require a documentation change.
+
 Every implementation must begin with:
 
 - Audit

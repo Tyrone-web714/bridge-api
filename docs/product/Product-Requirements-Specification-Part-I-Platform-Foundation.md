@@ -88,19 +88,35 @@ The platform shall support field execution for drivers while giving supervisors,
 
 ### TSA-PRS-401
 
-Supported actors include:
+Supported platform roles include:
 
-- Platform Owner
-- Platform Administrator
-- Organization Administrator
-- Executive
-- Regional Manager
-- Depot Manager
+- Platform Admin
+- Organization Admin
 - Supervisor
-- Dispatcher
-- Safety Manager
 - Driver
-- Auditor
+- Warehouse Employee
+
+Historical business titles such as Dispatcher, Regional Manager, Depot Manager, Safety Manager, Executive Viewer, Auditor, Maintenance Staff, Customer Service, and External Inspector are not independent platform roles. They are functional responsibilities or permission sets assigned to one of the approved roles where necessary.
+
+Examples of functional responsibilities include:
+
+- Dispatching
+- Safety Management
+- Regional Oversight
+- Depot Operations
+
+Examples of permission sets include:
+
+- Executive Dashboard Access
+- Audit Access
+- Hazard Review
+- KPI Management
+- Route Dispatch
+- Report Export
+- Fleet Analytics
+- Read-Only Executive Reporting
+
+Roles answer "Who is the user?" Permissions answer "What is the user allowed to do?"
 
 ## Assumptions
 
@@ -252,6 +268,22 @@ The platform shall enforce authentication, authorization, RBAC, and audit loggin
 ### TSA-PRS-1003
 
 The platform shall be designed for production-pilot reliability, including rollback planning, test planning, and phased implementation before major platform changes.
+
+### TSA-PRS-1007
+
+The platform shall support separate Development, Staging, Pilot, and Production environments. No normal deployment shall move directly from Development to Production.
+
+### TSA-PRS-1008
+
+The platform shall require rollback baselines for production deployments, including application, database, mobile, deployment, configuration, infrastructure, API, and external dependency identifiers where applicable.
+
+### TSA-PRS-1009
+
+The platform shall use vendor-neutral object storage abstraction for binary assets. Object access shall respect Organization context and platform authorization, and direct public access shall require explicit approval.
+
+### TSA-PRS-1010
+
+The platform shall require warehouse employees to authenticate using at least two factors of knowledge or possession before performing warehouse operations that affect operational records. Warehouse authentication technology may vary by Organization, but authorization shall remain Organization-scoped and permission-based.
 
 ### TSA-PRS-1004
 

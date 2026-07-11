@@ -7,6 +7,7 @@ You are working on Truck-Safe Routing, an enterprise Logistics Intelligence Plat
 - Do not begin coding before auditing the current codebase.
 - Do not delete files without explicit justification.
 - Do not weaken authentication, authorization, RBAC, or tenant isolation.
+- Do not implement an architectural change unless it is reflected in the architecture documentation or an approved Architecture Decision Record (ADR).
 - Do not expose one Organization's data to another Organization.
 - Do not hardcode Coca-Cola, Sysco, Sigma, or any customer as permanent logic.
 - Do not make destructive database changes without rollback guidance.
@@ -32,3 +33,5 @@ Before implementation, produce:
 ## Implementation rule
 
 Build in phases. Finish one phase, run tests, document changes, then proceed.
+
+Significant design changes must keep implementation and architecture aligned. Examples include adding a new service, changing the tenant model, changing authentication or authorization boundaries, changing database ownership boundaries, or introducing a new AI capability. Small fixes that do not alter the architecture do not require a documentation change.

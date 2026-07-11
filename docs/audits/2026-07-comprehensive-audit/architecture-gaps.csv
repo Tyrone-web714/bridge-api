@@ -1,0 +1,7 @@
+"id","risk","action","requirement","evidence","document","status"
+"GAP-001","Critical","Add Organization model and tenant keys before multi-tenant operation","Organization isolation","No organization_id columns detected in parsed schema","Volume II / ADR-0001","Conflicting implementation"
+"GAP-002","High","Introduce versioning with compatibility layer","Versioned APIs","Endpoints mounted under /api/* rather than /api/v1","Volume V","Not implemented"
+"GAP-003","Medium","Design KPI schema after tenant model","Formula-versioned KPI engine","Operational heatmap/intelligence routes exist; no full KPI formula/version model verified","Volume IV","Partially implemented"
+"GAP-004","High","Tenant-aware event model","LIE immutable event model with Organization context","route_session_events and audit_events exist, but no org context","Volume VI TSA-LIE-201/202","Partially implemented"
+"GAP-005","Medium","Defer until data foundation and BI model","Fleet Intelligence Scoring System","No complete configurable scoring engine verified","Volume VII","Not implemented"
+"GAP-006","High","Add tenant context and idempotency model","Offline actions sync reliably","AsyncStorage queues exist; org/idempotency conflict model incomplete","Volume III","Partially implemented"

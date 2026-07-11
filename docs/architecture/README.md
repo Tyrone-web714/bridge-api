@@ -27,3 +27,9 @@ The authoritative Product Requirements Specification Part I is [`../product/Prod
 ## Core Rule
 
 Do not implement features before completing an audit, migration plan, rollback plan, and test plan.
+
+## Architecture Change Rule
+
+No architectural change may be implemented unless it is reflected in the architecture documentation or an approved Architecture Decision Record (ADR).
+
+This rule applies to significant design changes, including adding a new service, changing the tenant model, changing authentication or authorization boundaries, changing database ownership boundaries, or introducing a new AI capability. It does not require documentation updates for small implementation fixes that do not alter the architecture.

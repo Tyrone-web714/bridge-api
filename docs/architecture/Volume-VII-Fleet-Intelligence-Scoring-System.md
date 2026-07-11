@@ -41,11 +41,13 @@ The platform shall support scores for:
 - Route
 - Customer
 - Supervisor
-- Dispatcher
-- Depot
-- Region
+- Route Dispatch Function
+- Depot Operations
+- Regional Operations
 - Organization
 - Fleet
+
+Dispatcher, Depot Manager, Regional Manager, and similar historical business titles are not independent platform roles. In scoring, they are modeled as operational functions, permission scopes, or reporting dimensions assigned under the approved five-role model.
 
 ## Scoring Engine
 
