@@ -102,7 +102,6 @@ const REPORT_HAZARD_TYPES = [
 const NAVIGATION_LOCATION_ACCURACY =
   Location.Accuracy.BestForNavigation ?? Location.Accuracy.Highest ?? Location.Accuracy.High;
 const VOICE_ALERTS_ENABLED = process.env.EXPO_PUBLIC_ENABLE_VOICE_ALERTS === 'true';
-const GOOGLE_MAP_ID = process.env.EXPO_PUBLIC_GOOGLE_MAP_ID || undefined;
 const VOICE_ON_ICON = require('../../assets/voice-on-speaker.png');
 const VOICE_OFF_ICON = require('../../assets/voice-off-speaker.png');
 
@@ -3538,7 +3537,6 @@ export default function MapScreen({ route, navigation }) {
         toolbarEnabled={false}
         mapType={mapType}
         showsTraffic={true}
-        googleMapId={GOOGLE_MAP_ID}
         pitchEnabled={true}
         rotateEnabled={true}
         onPanDrag={handleMapPanDrag}
