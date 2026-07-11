@@ -1,6 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const driverAuth = require('../services/driverAuth');
 const repositories = require('../db/repositories');
 
 const router = express.Router();
@@ -40,6 +41,16 @@ const PLACE_SEARCH_FIELD_MASK = [
   'places.rating',
   'places.userRatingCount'
 ].join(',');
+
+function requirePlacesAuth(req, res, next) {
+  return driverAuth.requireDriverAuth(req, res, next);
+}
+
+function tenantOptionsFromRequest(req) {
+  return {
+    organizationId: req.driverAuth?.organizationId || req.adminSession?.organizationId
+  };
+}
 const AUTOCOMPLETE_FIELD_MASK = [
   'suggestions.placePrediction.placeId',
   'suggestions.placePrediction.text.text',
@@ -263,17 +274,17 @@ function writeRecentDestinations(records) {
   fs.writeFileSync(RECENTS_FILE, JSON.stringify(records, null, 2));
 }
 
-async function listRecentDestinations() {
+async function listRecentDestinations(req) {
   if (repositories.isDatabaseEnabled()) {
-    return repositories.listRecentDestinations();
+    return repositories.listRecentDestinations(tenantOptionsFromRequest(req));
   }
   return readRecentDestinations();
 }
 
-async function saveRecentDestination(destination) {
+async function saveRecentDestination(req, destination) {
   const sanitizedDestination = sanitizeRecentDestination(destination);
   if (repositories.isDatabaseEnabled()) {
-    return repositories.saveRecentDestination(sanitizedDestination, MAX_RECENT_DESTINATIONS);
+    return repositories.saveRecentDestination(sanitizedDestination, MAX_RECENT_DESTINATIONS, tenantOptionsFromRequest(req));
   }
 
   const key = sanitizedDestination.placeId || sanitizedDestination.description.toLowerCase();
@@ -821,7 +832,7 @@ async function geocodePlaceFromAddress(req, address, fallbackPlaceId = null, met
   return attachBusinessCandidates(req, enrichedPlace, address);
 }
 
-router.get('/autocomplete', async (req, res) => {
+router.get('/autocomplete', requirePlacesAuth, async (req, res) => {
   try {
     const input = cleanInput(req.query.input);
     const sessiontoken = cleanInput(req.query.sessiontoken);
@@ -860,7 +871,7 @@ router.get('/autocomplete', async (req, res) => {
   }
 });
 
-router.get('/details', async (req, res) => {
+router.get('/details', requirePlacesAuth, async (req, res) => {
   try {
     const placeId = cleanInput(req.query.placeId);
     const address = cleanLongInput(req.query.address);
@@ -923,7 +934,7 @@ router.get('/details', async (req, res) => {
   }
 });
 
-router.get('/street-view', async (req, res) => {
+router.get('/street-view', requirePlacesAuth, async (req, res) => {
   try {
     const lat = Number(req.query.lat);
     const lng = Number(req.query.lng);
@@ -970,7 +981,7 @@ router.get('/street-view', async (req, res) => {
   }
 });
 
-router.get('/street-view-embed', async (req, res) => {
+router.get('/street-view-embed', requirePlacesAuth, async (req, res) => {
   try {
     const lat = Number(req.query.lat);
     const lng = Number(req.query.lng);
@@ -1032,7 +1043,7 @@ router.get('/street-view-embed', async (req, res) => {
   }
 });
 
-router.get('/photo', async (req, res) => {
+router.get('/photo', requirePlacesAuth, async (req, res) => {
   try {
     const photoReference = cleanLargeInput(req.query.ref);
     const maxWidth = Math.min(Math.max(Number(req.query.maxwidth) || 640, 160), 1000);
@@ -1081,11 +1092,11 @@ router.get('/photo', async (req, res) => {
   }
 });
 
-router.get('/recent-destinations', async (req, res) => {
-  return res.json({ destinations: await listRecentDestinations() });
+router.get('/recent-destinations', requirePlacesAuth, async (req, res) => {
+  return res.json({ destinations: await listRecentDestinations(req) });
 });
 
-router.post('/recent-destinations', express.json(), async (req, res) => {
+router.post('/recent-destinations', requirePlacesAuth, express.json(), async (req, res) => {
   const destination = {
     placeId: cleanInput(req.body?.placeId),
     description: cleanLongInput(req.body?.description),
@@ -1096,7 +1107,7 @@ router.post('/recent-destinations', express.json(), async (req, res) => {
     return res.status(400).json({ error: 'description is required' });
   }
 
-  const nextRecords = await saveRecentDestination(destination);
+  const nextRecords = await saveRecentDestination(req, destination);
 
   return res.json({ destinations: nextRecords });
 });

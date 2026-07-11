@@ -632,7 +632,7 @@ router.get('/admin', requireAdminAuth, (req, res) => {
   return res.send(renderDeliveryNotesAdminPage(req.adminSession));
 });
 
-router.get('/photos/:filename', (req, res) => {
+router.get('/photos/:filename', requireAdminAuth, (req, res) => {
   const filename = path.basename(cleanText(req.params.filename, 160));
   const fullPath = photoStorage.getLocalPhotoPath(filename);
 

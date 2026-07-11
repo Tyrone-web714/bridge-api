@@ -5,6 +5,8 @@ const adminAuth = require('../services/adminAuth');
 const branding = require('../services/branding');
 const driverAuth = require('../services/driverAuth');
 const warehouseAuth = require('../services/warehouseAuth');
+const authorization = require('../middleware/authorization');
+const rbac = require('../services/rbac');
 const repositories = require('../db/repositories');
 
 const router = express.Router();
@@ -47,11 +49,28 @@ function cleanText(value, maxLength = 500) {
   return String(value ?? '').trim().slice(0, maxLength);
 }
 
-async function authenticateWarehouseEmployee(body = {}) {
-  return warehouseAuth.authenticateWarehouseEmployee(
-    body.employeeId || body.employee_id || body.warehouseEmployeeId || body.warehouse_employee_id,
-    body.pin || body.employeePin || body.employee_pin || body.warehouseEmployeePin || body.warehouse_employee_pin
+async function authenticateWarehouseEmployee(req) {
+  const employee = await warehouseAuth.authenticateWarehouseEmployee(
+    req.body?.employeeId || req.body?.employee_id || req.body?.warehouseEmployeeId || req.body?.warehouse_employee_id,
+    req.body?.pin || req.body?.employeePin || req.body?.employee_pin || req.body?.warehouseEmployeePin || req.body?.warehouse_employee_pin
   );
+  req.warehouseAuth = {
+    authenticated: true,
+    method: 'warehouse_pin',
+    employeeId: employee.employee_id,
+    companyEmployeeId: employee.company_employee_id || employee.employee_id,
+    employeeName: employee.employee_name,
+    organizationId: employee.organization_id,
+    approvedRole: rbac.ROLES.WAREHOUSE_EMPLOYEE,
+    permissions: rbac.permissionsForRole(rbac.ROLES.WAREHOUSE_EMPLOYEE)
+  };
+  req.authContext = authorization.buildAuthContext(req);
+  if (!rbac.hasPermission(req.authContext, rbac.PERMISSIONS.WAREHOUSE_CONFIRM)) {
+    const error = new Error('Warehouse confirmation permission is required.');
+    error.status = 403;
+    throw error;
+  }
+  return employee;
 }
 
 function buildDeliveryDocumentPayload(delivery, identity, documentType) {
@@ -1347,7 +1366,7 @@ router.get('/driver/routes/:manifestId/truck-inventory', driverAuth.requireDrive
 router.post('/driver/routes/:manifestId/departure-inventory/confirm', driverAuth.requireDriverAuth, async (req, res) => {
   try {
     const identity = driverAuth.getDriverIdentity(req);
-    const employee = await authenticateWarehouseEmployee(req.body);
+    const employee = await authenticateWarehouseEmployee(req);
     const confirmation = await repositories.prepareDepartureInventoryConfirmation(
       req.params.manifestId,
       identity.driverId,
@@ -1369,7 +1388,7 @@ router.post('/driver/routes/:manifestId/departure-inventory/confirm', driverAuth
 
 router.post('/warehouse/departure-inventory/access', async (req, res) => {
   try {
-    const employee = await authenticateWarehouseEmployee(req.body);
+    const employee = await authenticateWarehouseEmployee(req);
     const routeNumber = cleanText(req.body?.routeNumber || req.body?.route_number, 120);
     const routeDate = normalizeDate(req.body?.routeDate || req.body?.route_date);
     if (!routeNumber || !routeDate) {
@@ -1412,7 +1431,7 @@ router.post('/warehouse/departure-inventory/access', async (req, res) => {
 
 router.post('/warehouse/departure-inventory/confirm', async (req, res) => {
   try {
-    const employee = await authenticateWarehouseEmployee(req.body);
+    const employee = await authenticateWarehouseEmployee(req);
     const driverId = cleanText(req.body?.driverId || req.body?.driver_id, 120);
     const manifestId = cleanText(req.body?.manifestId || req.body?.manifest_id, 160);
     if (!driverId || !manifestId) {
@@ -1435,7 +1454,7 @@ router.post('/warehouse/departure-inventory/confirm', async (req, res) => {
 
 router.put('/warehouse/departure-inventory/confirm-print', async (req, res) => {
   try {
-    const employee = await authenticateWarehouseEmployee(req.body);
+    const employee = await authenticateWarehouseEmployee(req);
     const driverId = cleanText(req.body?.driverId || req.body?.driver_id, 120);
     const manifestId = cleanText(req.body?.manifestId || req.body?.manifest_id, 160);
     const token = cleanText(req.body?.printConfirmationToken || req.body?.print_confirmation_token, 160);
@@ -1463,7 +1482,7 @@ router.put('/warehouse/departure-inventory/confirm-print', async (req, res) => {
 
 router.post('/warehouse/return-inventory/prepare', async (req, res) => {
   try {
-    const employee = await authenticateWarehouseEmployee(req.body);
+    const employee = await authenticateWarehouseEmployee(req);
     const driverId = cleanText(req.body?.driverId || req.body?.driver_id, 120);
     const manifestId = cleanText(req.body?.manifestId || req.body?.manifest_id, 160);
     if (!driverId || !manifestId) {
@@ -1491,7 +1510,7 @@ router.post('/warehouse/return-inventory/prepare', async (req, res) => {
 
 router.put('/warehouse/return-inventory/confirm-print', async (req, res) => {
   try {
-    const employee = await authenticateWarehouseEmployee(req.body);
+    const employee = await authenticateWarehouseEmployee(req);
     const driverId = cleanText(req.body?.driverId || req.body?.driver_id, 120);
     const manifestId = cleanText(req.body?.manifestId || req.body?.manifest_id, 160);
     const token = cleanText(req.body?.printConfirmationToken || req.body?.print_confirmation_token, 160);
@@ -1607,7 +1626,7 @@ router.get('/driver/routes/:manifestId/closeout', driverAuth.requireDriverAuth, 
 router.put('/driver/routes/:manifestId/inventory-closeout', driverAuth.requireDriverAuth, async (req, res) => {
   try {
     const identity = driverAuth.getDriverIdentity(req);
-    const employee = await authenticateWarehouseEmployee(req.body);
+    const employee = await authenticateWarehouseEmployee(req);
     const document = await repositories.prepareRouteInventoryCloseoutForDriver(
       req.params.manifestId,
       identity.driverId,

@@ -1781,18 +1781,22 @@ async function listStaticZonesNearRoute(zoneType, routePoints, bufferMeters, lim
   return result.rows.map(staticZoneFromRow);
 }
 
-async function listRecentDestinations() {
+async function listRecentDestinations(options = {}) {
+  const tenantContext = tenantContextFromOptions({ ...options, allowDevelopmentFallback: true });
   const result = await postgres.query(`
     SELECT *
     FROM recent_destinations
+    WHERE organization_id = $1
     ORDER BY saved_at DESC NULLS LAST
     LIMIT 12
-  `);
+  `, [tenantContext.organizationId]);
   return result.rows.map(recentDestinationFromRow);
 }
 
-async function saveRecentDestination(destination, maxRecords = 12) {
-  const key = destination.placeId || String(destination.description || '').toLowerCase();
+async function saveRecentDestination(destination, maxRecords = 12, options = {}) {
+  const tenantContext = tenantContextFromOptions({ ...options, allowDevelopmentFallback: true });
+  const localKey = destination.placeId || String(destination.description || '').toLowerCase();
+  const key = `${tenantContext.organizationId}:${localKey}`;
   const persistedRecord = {
     placeId: destination.placeId || null,
     description: destination.description,
@@ -1801,12 +1805,13 @@ async function saveRecentDestination(destination, maxRecords = 12) {
 
   await postgres.query(`
     INSERT INTO recent_destinations (
-      record_key, place_id, description, main_text, secondary_text, photo_url,
+      record_key, organization_id, place_id, description, main_text, secondary_text, photo_url,
       place_photo_url, street_view_url, photo_source, phone_number,
       international_phone_number, name, saved_at, raw
     )
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14::jsonb)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15::jsonb)
     ON CONFLICT (record_key) DO UPDATE SET
+      organization_id = EXCLUDED.organization_id,
       place_id = EXCLUDED.place_id,
       description = EXCLUDED.description,
       main_text = NULL,
@@ -1822,6 +1827,7 @@ async function saveRecentDestination(destination, maxRecords = 12) {
       raw = EXCLUDED.raw
   `, [
     key,
+    tenantContext.organizationId,
     destination.placeId || null,
     destination.description,
     null,
@@ -1834,20 +1840,22 @@ async function saveRecentDestination(destination, maxRecords = 12) {
     null,
     null,
     destination.savedAt || new Date().toISOString(),
-    JSON.stringify(persistedRecord)
+    JSON.stringify({ ...persistedRecord, organizationId: tenantContext.organizationId })
   ]);
 
   await postgres.query(`
     DELETE FROM recent_destinations
-    WHERE record_key IN (
+    WHERE organization_id = $2
+      AND record_key IN (
       SELECT record_key
       FROM recent_destinations
+      WHERE organization_id = $2
       ORDER BY saved_at DESC NULLS LAST
       OFFSET $1
     )
-  `, [maxRecords]);
+  `, [maxRecords, tenantContext.organizationId]);
 
-  return listRecentDestinations();
+  return listRecentDestinations({ organizationId: tenantContext.organizationId });
 }
 
 async function upsertStaticBridge(record) {

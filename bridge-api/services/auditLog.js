@@ -64,6 +64,35 @@ async function recordMutation(req, res) {
   );
 }
 
+async function recordSecurityEvent(req, event = {}) {
+  if (!postgres.isDatabaseConfigured()) return;
+  const actor = actorFromRequest(req);
+  await postgres.query(
+    `INSERT INTO audit_events (
+      request_id, actor_type, actor_id, organization_id, method, path, status_code,
+      network_hash, event_type, outcome, session_id, metadata, occurred_at
+    ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12::jsonb, NOW())`,
+    [
+      cleanText(req.requestId, 120) || null,
+      actor.type,
+      actor.id,
+      event.organizationId || actor.organizationId || req.authContext?.organizationId || null,
+      cleanText(req.method, 12),
+      cleanText(req.originalUrl?.split('?')[0], 500),
+      Number(event.statusCode) || 403,
+      hashNetworkAddress(req),
+      cleanText(event.eventType || 'authorization_denial', 80),
+      cleanText(event.outcome || 'denied', 80),
+      actor.sessionId || req.authContext?.sessionId || null,
+      JSON.stringify({
+        code: cleanText(event.code, 80) || null,
+        approvedRole: req.authContext?.approvedRole || null,
+        permission: cleanText(event.permission, 120) || null
+      })
+    ]
+  );
+}
+
 function mutationAuditMiddleware(req, res, next) {
   if (!['POST', 'PUT', 'PATCH', 'DELETE'].includes(req.method)) return next();
   res.on('finish', () => {
@@ -78,5 +107,6 @@ function mutationAuditMiddleware(req, res, next) {
 
 module.exports = {
   mutationAuditMiddleware,
-  recordMutation
+  recordMutation,
+  recordSecurityEvent
 };

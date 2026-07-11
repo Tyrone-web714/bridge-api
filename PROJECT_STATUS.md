@@ -8,7 +8,7 @@
 - Governing Architecture Version: 1.0
 - Authoritative Repository: `C:\dev\bridge-api`
 - GitHub Repository: `https://github.com/Tyrone-web714/bridge-api.git`
-- Current Branch: `authentication-rbac-foundation`
+- Current Branch: `api-tenant-enforcement`
 - Latest Documentation Commit: `cf23662b1bb7ab189960925f9521f6b1c0e8a394` - `Add Truck-Safe Routing governing documentation`
 - Update Guidance: Update this file when the project phase, deployment status, repository structure, major risks, or implementation priorities change.
 
@@ -34,7 +34,8 @@ Current implementation and planned architecture must be kept separate:
 | Product requirements | Complete | PRS Part I is present at `docs/product/Product-Requirements-Specification-Part-I-Platform-Foundation.md`. |
 | Current codebase audit | Pending | Required as the next approved priority before multi-tenant work. Older audit files exist, but the new governance-driven comprehensive audit is not yet verified complete. |
 | Multi-tenant migration | Pending | Architecture defines Organization as tenant boundary; implementation audit and migration plan are still required. |
-| Authentication and RBAC | Foundation Implemented on Branch | Branch `authentication-rbac-foundation` adds approved five-role constants, permission catalog, deny-by-default authorization helpers, trusted auth context, driver session identity claims, warehouse ID+PIN foundation, additive migration `004`, and auth/RBAC tests. |
+| Authentication and RBAC | Merged to Main | Authentication/RBAC foundation is merged at `5a1888fec120285ae698d3ead2196ca8d2af6636`. |
+| API Tenant Enforcement | In Progress on Branch | Branch `api-tenant-enforcement` adds centralized Critical/High path permission enforcement, protected Places proxy endpoints, Organization-scoped recent destinations, warehouse auth context enforcement, protected delivery-note photos, security denial audit events, tests, and implementation docs. |
 | Shared Safety Intelligence | In Progress | Manual hazards, driver hazard reports, and static hazard verification routes exist; full architecture-level shared safety governance remains pending. |
 | Fleet operations expansion | In Progress | Drivers, route manifests, delivery notes, inventory closeouts, operational geography, and heatmap routes exist; full target platform expansion remains pending. |
 | KPI and BI foundation | In Progress | Operational heatmap, geography, account intelligence, prediction, and supervisor intelligence code exists; configurable KPI engine is not verified complete. |
@@ -133,12 +134,13 @@ Key documentation includes:
 
 ## 9. Current Priority
 
-Validate and review the Authentication and RBAC Foundation branch before merge.
+Validate and review the API Tenant Enforcement branch before merge.
 
 Current validation basis:
 
 - Full backend test suite passes with `npm test`.
 - Auth/RBAC foundation test passes with `npm run test:auth-rbac`.
+- API tenant-enforcement test passes with `npm run test:api-tenant`.
 - Secret audit passes with `npm run verify:secrets`.
 - Migration `004_authentication_rbac_foundation.sql` was applied to an isolated local PostgreSQL/PostGIS validation database.
 - Local `/health` and `/ready` passed against the isolated validation database.
@@ -180,10 +182,10 @@ Current approved decisions reflected in governing documentation and project dire
 
 ## 12. Immediate Next Steps
 
-1. Review the `authentication-rbac-foundation` branch.
-2. Expand permission middleware route-by-route across remaining Critical and High API paths.
-3. Add integration coverage for login failures, authorization denials, and tenant isolation using isolated PostgreSQL/PostGIS.
-4. Validate mobile login and warehouse PIN workflows against a fresh APK/backend pairing before pilot use.
+1. Review the `api-tenant-enforcement` branch.
+2. Add full HTTP integration coverage for every Critical and High endpoint.
+3. Validate mobile authenticated Places proxy behavior against a fresh APK/backend pairing before pilot use.
+4. Complete explicit Platform Admin cross-Organization support workflow design.
 5. Remove or disable legacy shared admin and driver token fallbacks before production.
 
 ## 13. Update Rules

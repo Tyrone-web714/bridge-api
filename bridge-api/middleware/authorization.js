@@ -1,4 +1,5 @@
 const { BOOTSTRAP_ORGANIZATION, assertSameOrganization } = require('../services/tenantContext');
+const auditLog = require('../services/auditLog');
 const rbac = require('../services/rbac');
 
 function buildAuthContext(req) {
@@ -109,15 +110,146 @@ function requirePlatformAdmin(req, res, next) {
   return requireRole(rbac.ROLES.PLATFORM_ADMIN)(req, res, next);
 }
 
+function isPublicPath(req) {
+  const path = String(req.path || req.originalUrl || '').split('?')[0];
+  return path === '/health'
+    || path === '/ready'
+    || path === '/api/driver-auth/login'
+    || path === '/api/routing/manual-hazards/admin/login';
+}
+
+function deny(req, res, status, code, message) {
+  req.authorizationDenied = {
+    code,
+    message,
+    organizationId: req.authContext?.organizationId || null,
+    approvedRole: req.authContext?.approvedRole || null
+  };
+  auditLog.recordSecurityEvent(req, {
+    eventType: code === 'AUTHENTICATION_REQUIRED' ? 'unauthenticated_access_attempt' : 'permission_denial',
+    statusCode: status,
+    code,
+    permission: req.requiredPermission || null
+  }).catch((error) => {
+    console.warn(`security audit write failed requestId=${req.requestId || 'unknown'}: ${error.message}`);
+  });
+  return res.status(status).json({ error: message, code });
+}
+
+function enforcePermission(req, res, permission, options = {}) {
+  req.authContext = buildAuthContext(req);
+  req.requiredPermission = permission || null;
+  if (!req.authContext.authenticated) {
+    return deny(req, res, 401, 'AUTHENTICATION_REQUIRED', 'Authentication required.');
+  }
+  if (options.organizationRequired !== false && !req.authContext.organizationId) {
+    return deny(req, res, 403, 'ORGANIZATION_CONTEXT_REQUIRED', 'Organization context is required for this action.');
+  }
+  if (permission && !rbac.hasPermission(req.authContext, permission)) {
+    return deny(req, res, 403, 'PERMISSION_DENIED', 'Insufficient permission for this action.');
+  }
+  return null;
+}
+
+function permissionForRequest(req) {
+  const method = String(req.method || 'GET').toUpperCase();
+  const path = String(req.originalUrl || req.path || '').split('?')[0].replace(/\/+$/, '') || '/';
+
+  if (path.startsWith('/api/drivers')) {
+    return ['POST', 'PUT', 'PATCH', 'DELETE'].includes(method)
+      ? rbac.PERMISSIONS.DRIVERS_MANAGE
+      : rbac.PERMISSIONS.DRIVERS_VIEW;
+  }
+  if (path.startsWith('/api/route-manifests/import')
+    || path.includes('/assign')
+    || path.includes('/unassign')
+    || path.includes('/switch-assignments')) {
+    return ['POST', 'PUT', 'PATCH', 'DELETE'].includes(method)
+      ? rbac.PERMISSIONS.ROUTES_ASSIGN
+      : rbac.PERMISSIONS.ROUTES_VIEW;
+  }
+  if (path.startsWith('/api/route-manifests/documents')
+    || path.startsWith('/api/route-manifests/inventory-closeouts')
+    || path.startsWith('/api/route-manifests/undelivered')) {
+    return ['POST', 'PUT', 'PATCH', 'DELETE'].includes(method)
+      ? rbac.PERMISSIONS.DELIVERY_OPERATE
+      : rbac.PERMISSIONS.REPORTS_VIEW;
+  }
+  if (path.startsWith('/api/route-manifests/warehouse-employees')) {
+    return rbac.PERMISSIONS.WAREHOUSE_CONFIRM;
+  }
+  if (path.startsWith('/api/route-manifests') && !path.startsWith('/api/route-manifests/driver') && !path.startsWith('/api/route-manifests/warehouse')) {
+    return ['POST', 'PUT', 'PATCH', 'DELETE'].includes(method)
+      ? rbac.PERMISSIONS.ROUTES_MANAGE
+      : rbac.PERMISSIONS.ROUTES_VIEW;
+  }
+  if (path.startsWith('/api/data-imports')) {
+    return ['POST', 'PUT', 'PATCH', 'DELETE'].includes(method)
+      ? rbac.PERMISSIONS.ROUTES_MANAGE
+      : rbac.PERMISSIONS.REPORTS_VIEW;
+  }
+  if (path.startsWith('/api/account-intelligence')) {
+    return ['POST', 'PUT', 'PATCH', 'DELETE'].includes(method)
+      ? rbac.PERMISSIONS.DASHBOARD_MANAGE
+      : rbac.PERMISSIONS.DASHBOARD_VIEW;
+  }
+  if (path.startsWith('/api/operational-heatmaps')) return rbac.PERMISSIONS.DASHBOARD_VIEW;
+  if (path.startsWith('/api/operational-geography')) {
+    return ['POST', 'PUT', 'PATCH', 'DELETE'].includes(method)
+      ? rbac.PERMISSIONS.DASHBOARD_MANAGE
+      : rbac.PERMISSIONS.DASHBOARD_VIEW;
+  }
+  if (path.startsWith('/api/supervisor-intelligence')) {
+    return ['POST', 'PUT', 'PATCH', 'DELETE'].includes(method)
+      ? rbac.PERMISSIONS.DASHBOARD_MANAGE
+      : rbac.PERMISSIONS.DASHBOARD_VIEW;
+  }
+  if (path.startsWith('/api/admin')) return rbac.PERMISSIONS.DASHBOARD_VIEW;
+  if (path.startsWith('/api/ai/status')) return rbac.PERMISSIONS.DASHBOARD_VIEW;
+  if (path.startsWith('/api/ai')) return rbac.PERMISSIONS.DASHBOARD_VIEW;
+  if (path.startsWith('/api/delivery-notes/export') || path.startsWith('/api/delivery-notes/admin')) return rbac.PERMISSIONS.REPORTS_VIEW;
+  if (path.startsWith('/api/delivery-notes/photos')) return rbac.PERMISSIONS.REPORTS_VIEW;
+  if (path.startsWith('/api/routing/route-sessions')) return rbac.PERMISSIONS.ROUTE_REPLAY_VIEW;
+  if (path.startsWith('/api/routing/manual-hazards/admin-users')) return rbac.PERMISSIONS.USERS_MANAGE;
+  if (path.startsWith('/api/routing/manual-hazards') || path.startsWith('/api/routing/hazard-verification') || path.startsWith('/api/routing/hazard-location-backfill')) {
+    return ['POST', 'PUT', 'PATCH', 'DELETE'].includes(method)
+      ? rbac.PERMISSIONS.HAZARDS_REVIEW
+      : rbac.PERMISSIONS.HAZARDS_REVIEW;
+  }
+  return null;
+}
+
+function enforceApiTenantPolicy(req, res, next) {
+  if (isPublicPath(req)) return next();
+  const permission = permissionForRequest(req);
+  if (!permission) return next();
+  const denied = enforcePermission(req, res, permission);
+  if (denied) return denied;
+  return next();
+}
+
 function assertRequestOrganization(req, organizationId) {
   req.authContext = buildAuthContext(req);
-  return assertSameOrganization(req.authContext.organizationId, organizationId);
+  try {
+    return assertSameOrganization(req.authContext.organizationId, organizationId);
+  } catch (error) {
+    auditLog.recordSecurityEvent(req, {
+      eventType: 'cross_tenant_access_denial',
+      statusCode: error.status || 403,
+      code: error.code || 'TENANT_ISOLATION_VIOLATION',
+      organizationId
+    }).catch((auditError) => {
+      console.warn(`cross-tenant audit write failed requestId=${req.requestId || 'unknown'}: ${auditError.message}`);
+    });
+    throw error;
+  }
 }
 
 module.exports = {
   attachAuthContext,
   assertRequestOrganization,
   buildAuthContext,
+  enforceApiTenantPolicy,
   requireAuthentication,
   requireOrganizationContext,
   requirePermission,

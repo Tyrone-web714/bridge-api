@@ -128,6 +128,7 @@ app.use('/api/data-imports', express.json({ limit: IMPORT_BODY_LIMIT }));
 app.use(express.json({ limit: REQUEST_BODY_LIMIT }));
 app.use('/api', adminAuth.validateAdminSession);
 app.use('/api', authorization.attachAuthContext);
+app.use('/api', authorization.enforceApiTenantPolicy);
 app.use(auditLog.mutationAuditMiddleware);
 
 // Import routes
