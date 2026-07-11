@@ -1,0 +1,45 @@
+{
+  "expo": {
+    "name": "Truck-Safe Routing",
+    "slug": "truck-safe-routing",
+    "icon": "./assets/icon.png",
+    "android": {
+      "package": "com.nasih.trucksaferouting",
+      "allowBackup": false,
+      "blockedPermissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "permissions": [
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.BLUETOOTH",
+        "android.permission.BLUETOOTH_ADMIN",
+        "android.permission.BLUETOOTH_CONNECT",
+        "android.permission.BLUETOOTH_SCAN",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ]
+    },
+    "plugins": [
+      [
+        "react-native-maps",
+        {}
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow Truck-Safe Routing to attach delivery photos for future drivers."
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "4b7843f4-3d14-4c64-8223-39b06601c781"
+      }
+    }
+  }
+}
