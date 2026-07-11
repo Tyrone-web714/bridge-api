@@ -4,11 +4,11 @@
 
 - Status: Active
 - Document Type: Living Project Status
-- Last Updated: 2026-07-10
+- Last Updated: 2026-07-11
 - Governing Architecture Version: 1.0
 - Authoritative Repository: `C:\dev\bridge-api`
 - GitHub Repository: `https://github.com/Tyrone-web714/bridge-api.git`
-- Current Branch: `main`
+- Current Branch: `authentication-rbac-foundation`
 - Latest Documentation Commit: `cf23662b1bb7ab189960925f9521f6b1c0e8a394` - `Add Truck-Safe Routing governing documentation`
 - Update Guidance: Update this file when the project phase, deployment status, repository structure, major risks, or implementation priorities change.
 
@@ -34,7 +34,7 @@ Current implementation and planned architecture must be kept separate:
 | Product requirements | Complete | PRS Part I is present at `docs/product/Product-Requirements-Specification-Part-I-Platform-Foundation.md`. |
 | Current codebase audit | Pending | Required as the next approved priority before multi-tenant work. Older audit files exist, but the new governance-driven comprehensive audit is not yet verified complete. |
 | Multi-tenant migration | Pending | Architecture defines Organization as tenant boundary; implementation audit and migration plan are still required. |
-| Authentication and RBAC | In Progress | Backend has admin auth/session services, driver auth services, admin-user routes, and role checks; full multi-tenant RBAC remains future work. |
+| Authentication and RBAC | Foundation Implemented on Branch | Branch `authentication-rbac-foundation` adds approved five-role constants, permission catalog, deny-by-default authorization helpers, trusted auth context, driver session identity claims, warehouse ID+PIN foundation, additive migration `004`, and auth/RBAC tests. |
 | Shared Safety Intelligence | In Progress | Manual hazards, driver hazard reports, and static hazard verification routes exist; full architecture-level shared safety governance remains pending. |
 | Fleet operations expansion | In Progress | Drivers, route manifests, delivery notes, inventory closeouts, operational geography, and heatmap routes exist; full target platform expansion remains pending. |
 | KPI and BI foundation | In Progress | Operational heatmap, geography, account intelligence, prediction, and supervisor intelligence code exists; configurable KPI engine is not verified complete. |
@@ -133,24 +133,15 @@ Key documentation includes:
 
 ## 9. Current Priority
 
-Complete a comprehensive architecture and codebase audit before beginning the multi-tenant implementation.
+Validate and review the Authentication and RBAC Foundation branch before merge.
 
-Expected audit deliverables:
+Current validation basis:
 
-- Architecture audit
-- Repository audit
-- Database audit
-- API audit
-- Security audit
-- Dependency audit
-- Performance audit
-- Multi-tenant readiness assessment
-- BI readiness assessment
-- AI readiness assessment
-- Migration plan
-- Rollback plan
-- Testing strategy
-- Prioritized implementation roadmap
+- Full backend test suite passes with `npm test`.
+- Auth/RBAC foundation test passes with `npm run test:auth-rbac`.
+- Secret audit passes with `npm run verify:secrets`.
+- Migration `004_authentication_rbac_foundation.sql` was applied to an isolated local PostgreSQL/PostGIS validation database.
+- Local `/health` and `/ready` passed against the isolated validation database.
 
 ## 10. Known Risks and Constraints
 
@@ -189,11 +180,11 @@ Current approved decisions reflected in governing documentation and project dire
 
 ## 12. Immediate Next Steps
 
-1. Run the comprehensive audit using the governing documentation.
-2. Produce the multi-tenant readiness assessment and identify single-tenant assumptions.
-3. Produce database, API, security, dependency, performance, BI, and AI readiness findings.
-4. Draft migration, rollback, and testing strategy for approved implementation phases.
-5. Review and approve the prioritized implementation roadmap before changing architecture or code.
+1. Review the `authentication-rbac-foundation` branch.
+2. Expand permission middleware route-by-route across remaining Critical and High API paths.
+3. Add integration coverage for login failures, authorization denials, and tenant isolation using isolated PostgreSQL/PostGIS.
+4. Validate mobile login and warehouse PIN workflows against a fresh APK/backend pairing before pilot use.
+5. Remove or disable legacy shared admin and driver token fallbacks before production.
 
 ## 13. Update Rules
 

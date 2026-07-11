@@ -4,6 +4,7 @@ const { parse } = require('csv-parse/sync');
 const adminAuth = require('../services/adminAuth');
 const branding = require('../services/branding');
 const driverAuth = require('../services/driverAuth');
+const warehouseAuth = require('../services/warehouseAuth');
 const repositories = require('../db/repositories');
 
 const router = express.Router();
@@ -46,20 +47,11 @@ function cleanText(value, maxLength = 500) {
   return String(value ?? '').trim().slice(0, maxLength);
 }
 
-async function authenticateWarehouseEmployee(employeeIdValue) {
-  const employeeId = cleanText(employeeIdValue, 120);
-  if (!employeeId) {
-    const error = new Error('Warehouse employee ID is required.');
-    error.status = 400;
-    throw error;
-  }
-  const employee = await repositories.getWarehouseEmployeeWithPin(employeeId);
-  if (!employee || employee.active !== true) {
-    const error = new Error('Warehouse employee ID is invalid or the employee is inactive.');
-    error.status = 401;
-    throw error;
-  }
-  return employee;
+async function authenticateWarehouseEmployee(body = {}) {
+  return warehouseAuth.authenticateWarehouseEmployee(
+    body.employeeId || body.employee_id || body.warehouseEmployeeId || body.warehouse_employee_id,
+    body.pin || body.employeePin || body.employee_pin || body.warehouseEmployeePin || body.warehouse_employee_pin
+  );
 }
 
 function buildDeliveryDocumentPayload(delivery, identity, documentType) {
@@ -590,6 +582,7 @@ function renderRouteManifestAdminPage() {
       <div class="grid">
         <div><label>Company employee ID</label><input id="warehouseEmployeeId" autocomplete="off" /></div>
         <div><label>Employee name</label><input id="warehouseEmployeeName" autocomplete="off" /></div>
+        <div><label>Employee PIN</label><input id="warehouseEmployeePin" type="password" autocomplete="new-password" /></div>
         <div><label>Access status</label><select id="warehouseEmployeeActive"><option value="true">Active</option><option value="false">Inactive</option></select></div>
       </div>
       <p class="row-actions"><button onclick="saveWarehouseEmployee()">Save Employee Access</button><button class="secondary" onclick="loadWarehouseEmployees()">Refresh Employees</button></p>
@@ -695,6 +688,7 @@ function renderRouteManifestAdminPage() {
       const payload = {
         employeeId: document.getElementById('warehouseEmployeeId').value.trim(),
         employeeName: document.getElementById('warehouseEmployeeName').value.trim(),
+        pin: document.getElementById('warehouseEmployeePin').value,
         active: document.getElementById('warehouseEmployeeActive').value === 'true'
       };
       const message = document.getElementById('warehouseEmployeeMessage');
@@ -1142,13 +1136,18 @@ router.post('/warehouse-employees', requireAdminSession, async (req, res) => {
   try {
     const employeeId = cleanText(req.body?.employeeId || req.body?.employee_id, 120);
     const employeeName = cleanText(req.body?.employeeName || req.body?.employee_name, 200);
+    const pin = String(req.body?.pin || req.body?.employeePin || req.body?.employee_pin || '');
     if (!employeeId || !employeeName) {
       return res.status(400).json({ error: 'Company employee ID and employee name are required.' });
+    }
+    const existing = employeeId ? await repositories.getWarehouseEmployeeWithPin(employeeId) : null;
+    if (!existing && pin.length < 6) {
+      return res.status(400).json({ error: 'New warehouse employee access requires a PIN of at least 6 characters.' });
     }
     const employee = await repositories.upsertWarehouseEmployee({
       employeeId,
       employeeName,
-      pinHash: adminAuth.hashPassword(crypto.randomBytes(32).toString('hex')),
+      pinHash: pin ? adminAuth.hashPassword(pin) : existing.pin_hash,
       active: req.body?.active !== false,
       updatedBy: req.adminSession?.username
     });
@@ -1348,7 +1347,7 @@ router.get('/driver/routes/:manifestId/truck-inventory', driverAuth.requireDrive
 router.post('/driver/routes/:manifestId/departure-inventory/confirm', driverAuth.requireDriverAuth, async (req, res) => {
   try {
     const identity = driverAuth.getDriverIdentity(req);
-    const employee = await authenticateWarehouseEmployee(req.body?.employeeId || req.body?.employee_id);
+    const employee = await authenticateWarehouseEmployee(req.body);
     const confirmation = await repositories.prepareDepartureInventoryConfirmation(
       req.params.manifestId,
       identity.driverId,
@@ -1370,7 +1369,7 @@ router.post('/driver/routes/:manifestId/departure-inventory/confirm', driverAuth
 
 router.post('/warehouse/departure-inventory/access', async (req, res) => {
   try {
-    const employee = await authenticateWarehouseEmployee(req.body?.employeeId || req.body?.employee_id);
+    const employee = await authenticateWarehouseEmployee(req.body);
     const routeNumber = cleanText(req.body?.routeNumber || req.body?.route_number, 120);
     const routeDate = normalizeDate(req.body?.routeDate || req.body?.route_date);
     if (!routeNumber || !routeDate) {
@@ -1413,7 +1412,7 @@ router.post('/warehouse/departure-inventory/access', async (req, res) => {
 
 router.post('/warehouse/departure-inventory/confirm', async (req, res) => {
   try {
-    const employee = await authenticateWarehouseEmployee(req.body?.employeeId || req.body?.employee_id);
+    const employee = await authenticateWarehouseEmployee(req.body);
     const driverId = cleanText(req.body?.driverId || req.body?.driver_id, 120);
     const manifestId = cleanText(req.body?.manifestId || req.body?.manifest_id, 160);
     if (!driverId || !manifestId) {
@@ -1436,7 +1435,7 @@ router.post('/warehouse/departure-inventory/confirm', async (req, res) => {
 
 router.put('/warehouse/departure-inventory/confirm-print', async (req, res) => {
   try {
-    const employee = await authenticateWarehouseEmployee(req.body?.employeeId || req.body?.employee_id);
+    const employee = await authenticateWarehouseEmployee(req.body);
     const driverId = cleanText(req.body?.driverId || req.body?.driver_id, 120);
     const manifestId = cleanText(req.body?.manifestId || req.body?.manifest_id, 160);
     const token = cleanText(req.body?.printConfirmationToken || req.body?.print_confirmation_token, 160);
@@ -1464,7 +1463,7 @@ router.put('/warehouse/departure-inventory/confirm-print', async (req, res) => {
 
 router.post('/warehouse/return-inventory/prepare', async (req, res) => {
   try {
-    const employee = await authenticateWarehouseEmployee(req.body?.employeeId || req.body?.employee_id);
+    const employee = await authenticateWarehouseEmployee(req.body);
     const driverId = cleanText(req.body?.driverId || req.body?.driver_id, 120);
     const manifestId = cleanText(req.body?.manifestId || req.body?.manifest_id, 160);
     if (!driverId || !manifestId) {
@@ -1492,7 +1491,7 @@ router.post('/warehouse/return-inventory/prepare', async (req, res) => {
 
 router.put('/warehouse/return-inventory/confirm-print', async (req, res) => {
   try {
-    const employee = await authenticateWarehouseEmployee(req.body?.employeeId || req.body?.employee_id);
+    const employee = await authenticateWarehouseEmployee(req.body);
     const driverId = cleanText(req.body?.driverId || req.body?.driver_id, 120);
     const manifestId = cleanText(req.body?.manifestId || req.body?.manifest_id, 160);
     const token = cleanText(req.body?.printConfirmationToken || req.body?.print_confirmation_token, 160);
@@ -1608,9 +1607,7 @@ router.get('/driver/routes/:manifestId/closeout', driverAuth.requireDriverAuth, 
 router.put('/driver/routes/:manifestId/inventory-closeout', driverAuth.requireDriverAuth, async (req, res) => {
   try {
     const identity = driverAuth.getDriverIdentity(req);
-    const employee = await authenticateWarehouseEmployee(
-      req.body?.warehouseEmployeeId || req.body?.warehouse_employee_id
-    );
+    const employee = await authenticateWarehouseEmployee(req.body);
     const document = await repositories.prepareRouteInventoryCloseoutForDriver(
       req.params.manifestId,
       identity.driverId,

@@ -130,8 +130,8 @@ function getAdminSession(req) {
   return adminAuth.getAdminSession(req);
 }
 
-function setAdminSessionCookie(req, res, username, role, sessionVersion) {
-  adminAuth.setAdminSessionCookie(req, res, username, role, sessionVersion);
+function setAdminSessionCookie(req, res, username, role, sessionVersion, claims) {
+  adminAuth.setAdminSessionCookie(req, res, username, role, sessionVersion, claims);
 }
 
 function clearAdminSessionCookie(res) {
@@ -3838,7 +3838,7 @@ router.post('/manual-hazards/admin/login', express.urlencoded({ extended: false 
     }));
   }
 
-  setAdminSessionCookie(req, res, result.username, result.role, result.sessionVersion);
+  setAdminSessionCookie(req, res, result.username, result.role, result.sessionVersion, result);
   return res.redirect('/api/admin');
 });
 

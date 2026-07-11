@@ -7,7 +7,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "test": "npm run test:ai && npm run test:predictions && npm run test:supervisor-intelligence && npm run test:heatmaps && npm run test:imports && npm run test:delivery-settlement && npm run test:google-maps-compliance && npm run test:multi-tenant && npm run test:security && npm run test:dashboard",
+    "test": "npm run test:ai && npm run test:predictions && npm run test:supervisor-intelligence && npm run test:heatmaps && npm run test:imports && npm run test:delivery-settlement && npm run test:google-maps-compliance && npm run test:multi-tenant && npm run test:auth-rbac && npm run test:security && npm run test:dashboard",
     "test:ai": "node scripts/check-ai-contracts.cjs",
     "test:predictions": "node scripts/check-prediction-engine.cjs",
     "test:supervisor-intelligence": "node scripts/check-supervisor-intelligence-contracts.cjs",
@@ -16,6 +16,7 @@
     "test:delivery-settlement": "node scripts/check-delivery-settlement-contracts.cjs",
     "test:google-maps-compliance": "node scripts/check-google-maps-compliance.cjs",
     "test:multi-tenant": "node scripts/check-multi-tenant-foundation.cjs",
+    "test:auth-rbac": "node scripts/check-auth-rbac-foundation.cjs",
     "test:security": "node scripts/check-security-controls.cjs",
     "test:dashboard": "node scripts/check-supervisor-dashboard-contracts.cjs",
     "start": "node scripts/run-migrations.cjs && node server.js",

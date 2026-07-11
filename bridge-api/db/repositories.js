@@ -6,6 +6,7 @@ const {
   createLegacyDriverStorageId,
   resolveTenantContext
 } = require('../services/tenantContext');
+const rbac = require('../services/rbac');
 const censusServiceAreaPlaces = require('../data/census_service_area_places.json');
 
 function isDatabaseEnabled() {
@@ -76,13 +77,18 @@ function deliveryNoteFromRow(row) {
 }
 
 function adminUserFromRow(row) {
+  const approvedRole = rbac.normalizeRole(row.approved_role || row.role) || rbac.ROLES.SUPERVISOR;
   return {
+    internalUserId: row.internal_user_id || row.username,
     username: row.username,
     organizationId: row.organization_id || BOOTSTRAP_ORGANIZATION.id,
     passwordHash: row.password_hash,
     role: row.role || 'supervisor',
+    approvedRole,
+    permissions: rbac.permissionsForRole(approvedRole),
     displayName: row.display_name || null,
     active: row.active !== false,
+    disabledAt: toIsoString(row.disabled_at),
     sessionVersion: Number(row.session_version) || 1,
     driverCount: Number(row.driver_count) || 0,
     teamCount: Number(row.team_count) || 0,
@@ -909,6 +915,7 @@ async function listAdminUsers(options = {}) {
 async function upsertAdminUser(user) {
   const tenantContext = tenantContextFromOptions({ ...user, allowDevelopmentFallback: true });
   const normalizedUsername = String(user.username || '').trim().toLowerCase();
+  const approvedRole = rbac.assertApprovedRole(user.approvedRole || user.role || rbac.ROLES.SUPERVISOR);
   if (!normalizedUsername) {
     const error = new Error('username is required');
     error.status = 400;
@@ -919,26 +926,32 @@ async function upsertAdminUser(user) {
     error.status = 400;
     throw error;
   }
+  const internalUserId = user.internalUserId || (crypto.randomUUID ? crypto.randomUUID() : crypto.randomBytes(16).toString('hex'));
 
   const result = await postgres.query(`
     INSERT INTO admin_users (
-      username, organization_id, password_hash, role, display_name, active, created_at, updated_at
+      username, organization_id, internal_user_id, password_hash, role, approved_role, display_name, active, created_at, updated_at
     )
-    VALUES ($1, $2, $3, $4, $5, $6, NOW(), NOW())
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, NOW(), NOW())
     ON CONFLICT (username) DO UPDATE SET
       organization_id = EXCLUDED.organization_id,
+      internal_user_id = COALESCE(admin_users.internal_user_id, EXCLUDED.internal_user_id),
       password_hash = EXCLUDED.password_hash,
       role = EXCLUDED.role,
+      approved_role = EXCLUDED.approved_role,
       display_name = EXCLUDED.display_name,
       active = EXCLUDED.active,
+      disabled_at = CASE WHEN EXCLUDED.active THEN NULL ELSE COALESCE(admin_users.disabled_at, NOW()) END,
       session_version = admin_users.session_version + 1,
       updated_at = NOW()
     RETURNING *
   `, [
     normalizedUsername,
     tenantContext.organizationId,
+    internalUserId,
     user.passwordHash,
     user.role || 'supervisor',
+    approvedRole,
     user.displayName || null,
     user.active !== false
   ]);
@@ -952,7 +965,10 @@ async function setAdminUserActive(username, active) {
 
   const result = await postgres.query(`
     UPDATE admin_users
-    SET active = $2, session_version = session_version + 1, updated_at = NOW()
+    SET active = $2,
+        disabled_at = CASE WHEN $2 THEN NULL ELSE COALESCE(disabled_at, NOW()) END,
+        session_version = session_version + 1,
+        updated_at = NOW()
     WHERE username = $1
     RETURNING *
   `, [normalizedUsername, active === true]);
@@ -4435,6 +4451,7 @@ async function getRouteTruckInventoryForDriver(manifestId, driverId) {
 }
 
 async function upsertWarehouseEmployee(input = {}) {
+  const tenantContext = tenantContextFromOptions({ ...input, allowDevelopmentFallback: true });
   const employeeId = cleanRepositoryText(input.employeeId || input.employee_id, 120);
   const employeeName = cleanRepositoryText(input.employeeName || input.employee_name, 200);
   const pinHash = cleanRepositoryText(input.pinHash || input.pin_hash, 500);
@@ -4444,30 +4461,110 @@ async function upsertWarehouseEmployee(input = {}) {
     throw error;
   }
   const result = await postgres.query(`
-    INSERT INTO warehouse_employees (employee_id, employee_name, pin_hash, active, created_by, updated_by, updated_at)
-    VALUES ($1, $2, $3, $4, $5, $5, NOW())
+    INSERT INTO warehouse_employees (
+      employee_id, organization_id, company_employee_id, employee_name, pin_hash, active, created_by, updated_by, updated_at
+    )
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $7, NOW())
     ON CONFLICT (employee_id) DO UPDATE SET
+      organization_id = EXCLUDED.organization_id,
+      company_employee_id = EXCLUDED.company_employee_id,
       employee_name = EXCLUDED.employee_name,
       pin_hash = EXCLUDED.pin_hash,
       active = EXCLUDED.active,
+      disabled_at = CASE WHEN EXCLUDED.active THEN NULL ELSE COALESCE(warehouse_employees.disabled_at, NOW()) END,
       updated_by = EXCLUDED.updated_by,
       updated_at = NOW()
-    RETURNING employee_id, employee_name, active, created_at, updated_at
-  `, [employeeId, employeeName, pinHash, input.active !== false, cleanRepositoryText(input.updatedBy || input.createdBy, 120) || 'supervisor']);
+    RETURNING employee_id, organization_id, company_employee_id, employee_name, active, created_at, updated_at
+  `, [
+    employeeId,
+    tenantContext.organizationId,
+    input.companyEmployeeId || input.company_employee_id || employeeId,
+    employeeName,
+    pinHash,
+    input.active !== false,
+    cleanRepositoryText(input.updatedBy || input.createdBy, 120) || 'supervisor'
+  ]);
   return result.rows[0];
 }
 
-async function listWarehouseEmployees() {
+async function listWarehouseEmployees(options = {}) {
+  const tenantContext = tenantContextFromOptions({ ...options, allowDevelopmentFallback: true });
   const result = await postgres.query(`
-    SELECT employee_id, employee_name, active, created_at, updated_at
-    FROM warehouse_employees ORDER BY employee_name, employee_id
-  `);
+    SELECT employee_id, organization_id, company_employee_id, employee_name, active, created_at, updated_at
+    FROM warehouse_employees
+    WHERE organization_id = $1
+    ORDER BY employee_name, employee_id
+  `, [tenantContext.organizationId]);
   return result.rows;
 }
 
-async function getWarehouseEmployeeWithPin(employeeId) {
-  const result = await postgres.query('SELECT * FROM warehouse_employees WHERE employee_id = $1 LIMIT 1', [cleanRepositoryText(employeeId, 120)]);
+async function getWarehouseEmployeeWithPin(employeeId, options = {}) {
+  const tenantContext = tenantContextFromOptions({ ...options, allowDevelopmentFallback: true });
+  const result = await postgres.query(`
+    SELECT *
+    FROM warehouse_employees
+    WHERE organization_id = $1
+      AND (
+        LOWER(TRIM(employee_id)) = LOWER(TRIM($2))
+        OR LOWER(TRIM(COALESCE(company_employee_id, ''))) = LOWER(TRIM($2))
+      )
+    LIMIT 1
+  `, [tenantContext.organizationId, cleanRepositoryText(employeeId, 120)]);
   return result.rows[0] || null;
+}
+
+async function createWarehouseEmployeeSession(session = {}) {
+  const result = await postgres.query(`
+    INSERT INTO warehouse_employee_sessions (
+      id, organization_id, employee_id, token_hash, created_at, expires_at, last_used_at
+    )
+    VALUES ($1, $2, $3, $4, NOW(), $5, NOW())
+    RETURNING *
+  `, [
+    session.id,
+    session.organizationId || BOOTSTRAP_ORGANIZATION.id,
+    cleanRepositoryText(session.employeeId || session.employee_id, 120),
+    cleanRepositoryText(session.tokenHash || session.token_hash, 500),
+    session.expiresAt || session.expires_at
+  ]);
+  return result.rows[0] || null;
+}
+
+async function getActiveWarehouseEmployeeSession(tokenHash) {
+  const result = await postgres.query(`
+    SELECT
+      session.id,
+      session.organization_id,
+      session.employee_id,
+      session.expires_at,
+      employee.company_employee_id,
+      employee.employee_name,
+      employee.active
+    FROM warehouse_employee_sessions session
+    JOIN warehouse_employees employee
+      ON employee.employee_id = session.employee_id
+     AND employee.organization_id = session.organization_id
+    WHERE session.token_hash = $1
+      AND session.revoked_at IS NULL
+      AND session.expires_at > NOW()
+      AND employee.active = true
+    LIMIT 1
+  `, [cleanRepositoryText(tokenHash, 500)]);
+  const session = result.rows[0] || null;
+  if (session) {
+    await postgres.query('UPDATE warehouse_employee_sessions SET last_used_at = NOW() WHERE id = $1', [session.id]);
+  }
+  return session;
+}
+
+async function revokeWarehouseEmployeeSession(tokenHash) {
+  const result = await postgres.query(`
+    UPDATE warehouse_employee_sessions
+    SET revoked_at = NOW()
+    WHERE token_hash = $1 AND revoked_at IS NULL
+    RETURNING id
+  `, [cleanRepositoryText(tokenHash, 500)]);
+  return Boolean(result.rows[0]);
 }
 
 async function prepareDepartureInventoryConfirmation(manifestId, driverId, warehouseEmployee) {
@@ -7967,6 +8064,9 @@ module.exports = {
   upsertWarehouseEmployee,
   listWarehouseEmployees,
   getWarehouseEmployeeWithPin,
+  createWarehouseEmployeeSession,
+  getActiveWarehouseEmployeeSession,
+  revokeWarehouseEmployeeSession,
   prepareDepartureInventoryConfirmation,
   confirmDepartureInventoryPrint,
   confirmDepartureInventoryPrintForWarehouse,

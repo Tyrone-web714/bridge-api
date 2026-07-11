@@ -8,6 +8,7 @@ const adminAuth = require('./services/adminAuth');
 const aiProvider = require('./services/aiProvider');
 const supervisorIntelligence = require('./services/supervisorIntelligence');
 const auditLog = require('./services/auditLog');
+const authorization = require('./middleware/authorization');
 const { createRateLimiter, positiveInteger } = require('./middleware/securityControls');
 
 dotenv.config();
@@ -126,6 +127,7 @@ app.use('/api/route-manifests', express.json({ limit: MANIFEST_BODY_LIMIT }));
 app.use('/api/data-imports', express.json({ limit: IMPORT_BODY_LIMIT }));
 app.use(express.json({ limit: REQUEST_BODY_LIMIT }));
 app.use('/api', adminAuth.validateAdminSession);
+app.use('/api', authorization.attachAuthContext);
 app.use(auditLog.mutationAuditMiddleware);
 
 // Import routes

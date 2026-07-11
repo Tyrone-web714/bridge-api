@@ -1,5 +1,7 @@
 const crypto = require('crypto');
 const repositories = require('../db/repositories');
+const rbac = require('./rbac');
+const { BOOTSTRAP_ORGANIZATION } = require('./tenantContext');
 
 const ADMIN_COOKIE_NAME = 'tsr_admin_session';
 const ADMIN_SESSION_MS = 12 * 60 * 60 * 1000;
@@ -31,6 +33,16 @@ function getAdminRoleForUsername(username) {
 
   if (adminUsers.includes(normalizedUsername)) return 'admin';
   return cleanText(process.env.ADMIN_DASHBOARD_ROLE || 'supervisor', 40).toLowerCase() || 'supervisor';
+}
+
+function buildAdminSessionClaims(userOrSession = {}) {
+  const approvedRole = rbac.normalizeRole(userOrSession.approvedRole || userOrSession.role) || rbac.ROLES.SUPERVISOR;
+  return {
+    organizationId: userOrSession.organizationId || (approvedRole === rbac.ROLES.PLATFORM_ADMIN ? null : BOOTSTRAP_ORGANIZATION.id),
+    internalUserId: userOrSession.internalUserId || userOrSession.username || null,
+    approvedRole,
+    permissions: rbac.permissionsForRole(approvedRole)
+  };
 }
 
 function timingSafeStringEqual(left, right) {
@@ -71,9 +83,15 @@ function signAdminPayload(payload) {
   return crypto.createHmac('sha256', secret).update(payload).digest('base64url');
 }
 
-function createAdminSessionToken(username, role = 'supervisor', sessionVersion = null) {
+function createAdminSessionToken(username, role = 'supervisor', sessionVersion = null, claims = {}) {
   const expiresAt = Date.now() + ADMIN_SESSION_MS;
-  const payload = Buffer.from(JSON.stringify({ username, role, sessionVersion, expiresAt })).toString('base64url');
+  const payload = Buffer.from(JSON.stringify({
+    username,
+    role,
+    sessionVersion,
+    expiresAt,
+    ...buildAdminSessionClaims({ username, role, ...claims })
+  })).toString('base64url');
   const signature = signAdminPayload(payload);
   return `${payload}.${signature}`;
 }
@@ -103,8 +121,8 @@ function getAdminSession(req) {
   return verifyAdminSessionToken(getCookieValue(req, ADMIN_COOKIE_NAME));
 }
 
-function setAdminSessionCookie(req, res, username, role, sessionVersion = null) {
-  const token = createAdminSessionToken(username, role || getAdminRoleForUsername(username), sessionVersion);
+function setAdminSessionCookie(req, res, username, role, sessionVersion = null, claims = {}) {
+  const token = createAdminSessionToken(username, role || getAdminRoleForUsername(username), sessionVersion, claims);
   const secure = req.secure || String(req.headers['x-forwarded-proto'] || '').includes('https');
   const cookieParts = [
     `${ADMIN_COOKIE_NAME}=${encodeURIComponent(token)}`,
@@ -133,11 +151,13 @@ async function authenticateAdminUser(usernameInput, password) {
       if (!user.active) return { ok: false, reason: 'This admin user is inactive.' };
       if (!verifyPassword(password, user.passwordHash)) return { ok: false, reason: 'Incorrect supervisor username or password.' };
       await repositories.recordAdminUserLogin(username);
+      const claims = buildAdminSessionClaims(user);
       return {
         ok: true,
         username: user.username,
         role: user.role || 'supervisor',
-        sessionVersion: user.sessionVersion
+        sessionVersion: user.sessionVersion,
+        ...claims
       };
     }
   }
@@ -153,7 +173,18 @@ async function authenticateAdminUser(usernameInput, password) {
     return { ok: false, reason: 'Incorrect supervisor username or password.' };
   }
 
-  return { ok: true, username, role: getAdminRoleForUsername(username), usedLegacySharedPassword: true };
+  const role = getAdminRoleForUsername(username);
+  return {
+    ok: true,
+    username,
+    role,
+    usedLegacySharedPassword: true,
+    ...buildAdminSessionClaims({
+      username,
+      role,
+      approvedRole: rbac.ROLES.PLATFORM_ADMIN
+    })
+  };
 }
 
 async function validateAdminSession(req, res, next) {
@@ -175,10 +206,12 @@ async function validateAdminSession(req, res, next) {
         clearAdminSessionCookie(res);
         return next();
       }
+      const claims = buildAdminSessionClaims(user);
       req.adminSession = {
         username: user.username,
         displayName: user.displayName,
         role: user.role,
+        ...claims,
         sessionVersion: user.sessionVersion,
         expiresAt: session.expiresAt
       };
@@ -188,7 +221,13 @@ async function validateAdminSession(req, res, next) {
     const isBootstrapAdmin = session.sessionVersion === null
       && getAdminRoleForUsername(session.username) === 'admin';
     if (isBootstrapAdmin) {
-      req.adminSession = session;
+      req.adminSession = {
+        ...session,
+        ...buildAdminSessionClaims({
+          ...session,
+          approvedRole: rbac.ROLES.PLATFORM_ADMIN
+        })
+      };
     } else {
       clearAdminSessionCookie(res);
     }

@@ -1,6 +1,8 @@
 const crypto = require('crypto');
 const adminAuth = require('./adminAuth');
 const repositories = require('../db/repositories');
+const rbac = require('./rbac');
+const { BOOTSTRAP_ORGANIZATION } = require('./tenantContext');
 
 function cleanText(value, maxLength = 500) {
   return String(value || '').trim().slice(0, maxLength);
@@ -82,9 +84,15 @@ async function requireDriverAuth(req, res, next) {
           tokenHash,
           sessionId: session.id,
           driverId: session.driver_id,
+          legacyDriverId: session.legacy_driver_id,
+          internalDriverId: session.internal_driver_id,
+          organizationId: session.organization_id || BOOTSTRAP_ORGANIZATION.id,
+          companyDriverNumber: session.company_driver_number || session.driver_id,
           driverName: session.driver_name,
           deviceId: session.device_id,
-          expiresAt: session.expires_at
+          expiresAt: session.expires_at,
+          approvedRole: rbac.ROLES.DRIVER,
+          permissions: rbac.permissionsForRole(rbac.ROLES.DRIVER)
         };
         return next();
       }
@@ -96,6 +104,9 @@ async function requireDriverAuth(req, res, next) {
       req.driverAuth = {
         authenticated: true,
         method: 'legacy_driver_api_token',
+        organizationId: BOOTSTRAP_ORGANIZATION.id,
+        approvedRole: rbac.ROLES.DRIVER,
+        permissions: rbac.permissionsForRole(rbac.ROLES.DRIVER),
         ...getDriverIdentity(req)
       };
       return next();

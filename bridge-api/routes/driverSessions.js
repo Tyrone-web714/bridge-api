@@ -55,6 +55,9 @@ router.post('/login', async (req, res) => {
       expiresAt,
       driver: {
         driverId: driver.company_driver_number || driver.driver_id,
+        companyDriverNumber: driver.company_driver_number || driver.driver_id,
+        internalDriverId: driver.internal_driver_id || driver.driver_id,
+        organizationId: driver.organization_id || null,
         driverName: driver.driver_name
       }
     });
@@ -81,6 +84,9 @@ router.get('/session', driverAuth.requireDriverAuth, (req, res) => {
     ok: true,
     driver: {
       driverId: req.driverAuth.driverId,
+      companyDriverNumber: req.driverAuth.companyDriverNumber || req.driverAuth.driverId,
+      internalDriverId: req.driverAuth.internalDriverId || null,
+      organizationId: req.driverAuth.organizationId || null,
       driverName: req.driverAuth.driverName
     },
     deviceId: req.driverAuth.deviceId,
