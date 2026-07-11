@@ -1,6 +1,11 @@
 const crypto = require('crypto');
 const postgres = require('./postgres');
 const branding = require('../services/branding');
+const {
+  BOOTSTRAP_ORGANIZATION,
+  createLegacyDriverStorageId,
+  resolveTenantContext
+} = require('../services/tenantContext');
 const censusServiceAreaPlaces = require('../data/census_service_area_places.json');
 
 function isDatabaseEnabled() {
@@ -28,6 +33,26 @@ function assignedDriverIdMatchesSql(columnSql, parameterSql) {
   return `LOWER(TRIM(${columnSql})) = LOWER(TRIM(${parameterSql}))`;
 }
 
+function tenantContextFromOptions(options = {}) {
+  return resolveTenantContext(
+    options.tenantContext || {
+      organizationId: options.organizationId || options.organization_id,
+      actor: options.actor,
+      role: options.role,
+      permissions: options.permissions,
+      requestId: options.requestId || options.request_id
+    },
+    { allowDevelopmentFallback: options.allowDevelopmentFallback === true }
+  );
+}
+
+function applyOrganizationFilter(where, values, tableOrAlias, options = {}) {
+  const tenantContext = tenantContextFromOptions(options);
+  values.push(tenantContext.organizationId);
+  where.push(`${tableOrAlias}.organization_id = $${values.length}`);
+  return tenantContext;
+}
+
 function asArray(value) {
   return Array.isArray(value) ? value : [];
 }
@@ -53,6 +78,7 @@ function deliveryNoteFromRow(row) {
 function adminUserFromRow(row) {
   return {
     username: row.username,
+    organizationId: row.organization_id || BOOTSTRAP_ORGANIZATION.id,
     passwordHash: row.password_hash,
     role: row.role || 'supervisor',
     displayName: row.display_name || null,
@@ -66,9 +92,25 @@ function adminUserFromRow(row) {
   };
 }
 
+function organizationFromRow(row) {
+  return {
+    id: row.id,
+    name: row.name,
+    slug: row.slug,
+    status: row.status || 'active',
+    createdAt: toIsoString(row.created_at),
+    updatedAt: toIsoString(row.updated_at),
+    deletedAt: toIsoString(row.deleted_at)
+  };
+}
+
 function driverFromRow(row) {
   return {
-    driverId: row.driver_id,
+    driverId: row.company_driver_number || row.driver_id,
+    legacyDriverId: row.driver_id,
+    internalDriverId: row.internal_driver_id || row.driver_id,
+    organizationId: row.organization_id || BOOTSTRAP_ORGANIZATION.id,
+    companyDriverNumber: row.company_driver_number || row.driver_id,
     driverName: row.driver_name,
     pinConfigured: Boolean(row.pin_hash),
     employeeNumber: row.employee_number || null,
@@ -192,6 +234,7 @@ function routeSessionEventFromRow(row) {
 function routeManifestFromRow(row, stops = []) {
   return {
     id: row.id,
+    organizationId: row.organization_id || BOOTSTRAP_ORGANIZATION.id,
     routeDate: row.route_date instanceof Date
       ? row.route_date.toISOString().slice(0, 10)
       : row.route_date ? String(row.route_date).slice(0, 10) : null,
@@ -839,7 +882,8 @@ async function getAdminUser(username) {
   return result.rows[0] ? adminUserFromRow(result.rows[0]) : null;
 }
 
-async function listAdminUsers() {
+async function listAdminUsers(options = {}) {
+  const tenantContext = tenantContextFromOptions({ ...options, allowDevelopmentFallback: true });
   const result = await postgres.query(`
     SELECT
       admin_users.*,
@@ -847,19 +891,23 @@ async function listAdminUsers() {
         SELECT COUNT(*)
         FROM drivers
         WHERE LOWER(TRIM(COALESCE(drivers.supervisor_username, ''))) = admin_users.username
+          AND drivers.organization_id = admin_users.organization_id
       ) AS driver_count,
       (
         SELECT COUNT(DISTINCT NULLIF(TRIM(drivers.team_name), ''))
         FROM drivers
         WHERE LOWER(TRIM(COALESCE(drivers.supervisor_username, ''))) = admin_users.username
+          AND drivers.organization_id = admin_users.organization_id
       ) AS team_count
     FROM admin_users
+    WHERE admin_users.organization_id = $1
     ORDER BY admin_users.role, admin_users.username
-  `);
+  `, [tenantContext.organizationId]);
   return result.rows.map(adminUserFromRow);
 }
 
 async function upsertAdminUser(user) {
+  const tenantContext = tenantContextFromOptions({ ...user, allowDevelopmentFallback: true });
   const normalizedUsername = String(user.username || '').trim().toLowerCase();
   if (!normalizedUsername) {
     const error = new Error('username is required');
@@ -874,10 +922,11 @@ async function upsertAdminUser(user) {
 
   const result = await postgres.query(`
     INSERT INTO admin_users (
-      username, password_hash, role, display_name, active, created_at, updated_at
+      username, organization_id, password_hash, role, display_name, active, created_at, updated_at
     )
-    VALUES ($1, $2, $3, $4, $5, NOW(), NOW())
+    VALUES ($1, $2, $3, $4, $5, $6, NOW(), NOW())
     ON CONFLICT (username) DO UPDATE SET
+      organization_id = EXCLUDED.organization_id,
       password_hash = EXCLUDED.password_hash,
       role = EXCLUDED.role,
       display_name = EXCLUDED.display_name,
@@ -887,6 +936,7 @@ async function upsertAdminUser(user) {
     RETURNING *
   `, [
     normalizedUsername,
+    tenantContext.organizationId,
     user.passwordHash,
     user.role || 'supervisor',
     user.displayName || null,
@@ -924,23 +974,100 @@ async function recordAdminUserLogin(username) {
   return result.rows[0] ? adminUserFromRow(result.rows[0]) : null;
 }
 
-async function getDriver(driverId) {
+async function ensureBootstrapOrganization() {
+  const result = await postgres.query(`
+    INSERT INTO organizations (id, name, slug, status)
+    VALUES ($1, $2, $3, $4)
+    ON CONFLICT (id) DO UPDATE SET
+      name = EXCLUDED.name,
+      slug = EXCLUDED.slug,
+      status = EXCLUDED.status,
+      updated_at = NOW()
+    RETURNING *
+  `, [
+    BOOTSTRAP_ORGANIZATION.id,
+    BOOTSTRAP_ORGANIZATION.name,
+    BOOTSTRAP_ORGANIZATION.slug,
+    BOOTSTRAP_ORGANIZATION.status
+  ]);
+  return organizationFromRow(result.rows[0]);
+}
+
+async function getOrganization(idOrSlug) {
+  const cleaned = cleanRepositoryText(idOrSlug, 160);
+  if (!cleaned) return null;
+
+  const result = await postgres.query(`
+    SELECT *
+    FROM organizations
+    WHERE id = $1 OR slug = $1
+    LIMIT 1
+  `, [cleaned]);
+  return result.rows[0] ? organizationFromRow(result.rows[0]) : null;
+}
+
+async function getDriver(driverId, options = {}) {
   const cleanedDriverId = String(driverId || '').trim();
   if (!cleanedDriverId) return null;
 
-  const result = await postgres.query('SELECT * FROM drivers WHERE driver_id = $1', [cleanedDriverId]);
+  const values = [cleanedDriverId];
+  const where = [
+    `(
+      ${assignedDriverIdMatchesSql('driver_id', '$1')}
+      OR ${assignedDriverIdMatchesSql('COALESCE(company_driver_number, driver_id)', '$1')}
+      OR ${assignedDriverIdMatchesSql('COALESCE(internal_driver_id, driver_id)', '$1')}
+    )`
+  ];
+  applyOrganizationFilter(where, values, 'drivers', { ...options, allowDevelopmentFallback: true });
+
+  const result = await postgres.query(`
+    SELECT *
+    FROM drivers
+    WHERE ${where.join(' AND ')}
+  `, values);
   return result.rows[0] ? driverFromRow(result.rows[0]) : null;
 }
 
-async function getDriverAuthRecord(driverId) {
+async function getDriverByCompanyDriverNumber(companyDriverNumber, options = {}) {
+  const cleanedDriverNumber = cleanRepositoryText(companyDriverNumber, 120);
+  if (!cleanedDriverNumber) return null;
+  const values = [cleanedDriverNumber];
+  const where = [
+    `(
+      ${assignedDriverIdMatchesSql('driver_id', '$1')}
+      OR ${assignedDriverIdMatchesSql('COALESCE(company_driver_number, driver_id)', '$1')}
+    )`
+  ];
+  applyOrganizationFilter(where, values, 'drivers', { ...options, allowDevelopmentFallback: true });
+
+  const result = await postgres.query(`
+    SELECT *
+    FROM drivers
+    WHERE ${where.join(' AND ')}
+    LIMIT 1
+  `, values);
+  return result.rows[0] ? driverFromRow(result.rows[0]) : null;
+}
+
+async function getDriverAuthRecord(driverId, options = {}) {
   const cleanedDriverId = String(driverId || '').trim();
   if (!cleanedDriverId) return null;
 
+  const values = [cleanedDriverId];
+  const where = [
+    `(
+      driver_id = $1
+      OR LOWER(TRIM(COALESCE(company_driver_number, driver_id))) = LOWER(TRIM($1))
+    )`
+  ];
+  applyOrganizationFilter(where, values, 'drivers', { ...options, allowDevelopmentFallback: true });
+
   const result = await postgres.query(`
-    SELECT driver_id, driver_name, active, pin_hash
+    SELECT driver_id, internal_driver_id, organization_id, company_driver_number, driver_name, active, pin_hash
     FROM drivers
-    WHERE driver_id = $1
-  `, [cleanedDriverId]);
+    WHERE ${where.join(' AND ')}
+    LIMIT 1
+  `, values);
   return result.rows[0] || null;
 }
 
@@ -963,21 +1090,24 @@ async function setDriverPinHash(driverId, pinHash, actor = 'supervisor') {
 }
 
 async function createDriverSession(session) {
+  const driver = await getDriver(session.driverId, { allowDevelopmentFallback: true });
   await postgres.query(`
     UPDATE driver_sessions
     SET revoked_at = NOW()
     WHERE driver_id = $1 AND device_id = $2 AND revoked_at IS NULL
-  `, [session.driverId, session.deviceId]);
+  `, [driver?.legacyDriverId || session.driverId, session.deviceId]);
 
   const result = await postgres.query(`
     INSERT INTO driver_sessions (
-      id, driver_id, device_id, token_hash, created_at, expires_at, last_used_at
+      id, driver_id, organization_id, internal_driver_id, device_id, token_hash, created_at, expires_at, last_used_at
     )
-    VALUES ($1, $2, $3, $4, NOW(), $5, NOW())
+    VALUES ($1, $2, $3, $4, $5, $6, NOW(), $7, NOW())
     RETURNING *
   `, [
     session.id,
-    session.driverId,
+    driver?.legacyDriverId || session.driverId,
+    driver?.organizationId || BOOTSTRAP_ORGANIZATION.id,
+    driver?.internalDriverId || null,
     session.deviceId,
     session.tokenHash,
     session.expiresAt
@@ -989,10 +1119,14 @@ async function getActiveDriverSession(tokenHash) {
   const result = await postgres.query(`
     SELECT
       session.id,
-      session.driver_id,
+      COALESCE(driver.company_driver_number, driver.driver_id) AS driver_id,
+      session.driver_id AS legacy_driver_id,
+      session.organization_id,
+      session.internal_driver_id,
       session.device_id,
       session.expires_at,
       driver.driver_name,
+      COALESCE(driver.company_driver_number, driver.driver_id) AS company_driver_number,
       driver.active
     FROM driver_sessions session
     JOIN drivers driver ON driver.driver_id = session.driver_id
@@ -1027,6 +1161,7 @@ async function listDrivers(options = {}) {
   const where = [];
   const search = String(options.search || '').trim();
   const active = options.active;
+  applyOrganizationFilter(where, values, 'drivers', { ...options, allowDevelopmentFallback: true });
 
   if (active === true || active === 'true') {
     where.push('active = true');
@@ -1038,6 +1173,8 @@ async function listDrivers(options = {}) {
     values.push(`%${search.toLowerCase()}%`);
     where.push(`(
       LOWER(driver_id) LIKE $${values.length}
+      OR LOWER(COALESCE(company_driver_number, '')) LIKE $${values.length}
+      OR LOWER(COALESCE(internal_driver_id, '')) LIKE $${values.length}
       OR LOWER(driver_name) LIKE $${values.length}
       OR LOWER(COALESCE(employee_number, '')) LIKE $${values.length}
       OR LOWER(COALESCE(route_group, '')) LIKE $${values.length}
@@ -1071,12 +1208,17 @@ async function listDrivers(options = {}) {
 }
 
 async function upsertDriver(input = {}, actor = 'supervisor') {
-  const driverId = String(input.driverId || input.driver_id || '').trim();
+  const tenantContext = tenantContextFromOptions({ ...input, allowDevelopmentFallback: true });
+  const companyDriverNumber = String(
+    input.companyDriverNumber || input.company_driver_number || input.driverId || input.driver_id || ''
+  ).trim();
+  const driverId = createLegacyDriverStorageId(tenantContext.organizationId, companyDriverNumber);
+  const internalDriverId = String(input.internalDriverId || input.internal_driver_id || '').trim() || crypto.randomUUID();
   const driverName = String(input.driverName || input.driver_name || '').trim();
   const active = input.active === undefined ? true : input.active === true || input.active === 'true';
 
-  if (!driverId) {
-    const error = new Error('driverId is required');
+  if (!companyDriverNumber) {
+    const error = new Error('companyDriverNumber is required');
     error.status = 400;
     throw error;
   }
@@ -1088,12 +1230,16 @@ async function upsertDriver(input = {}, actor = 'supervisor') {
 
   const result = await postgres.query(`
     INSERT INTO drivers (
-      driver_id, driver_name, employee_number, phone_number, route_group,
+      driver_id, internal_driver_id, organization_id, company_driver_number,
+      driver_name, employee_number, phone_number, route_group,
       territory, supervisor_username, supervisor_name, team_name,
       active, notes, created_by, updated_by, created_at, updated_at
     )
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $12, NOW(), NOW())
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $15, NOW(), NOW())
     ON CONFLICT (driver_id) DO UPDATE SET
+      internal_driver_id = COALESCE(drivers.internal_driver_id, EXCLUDED.internal_driver_id),
+      organization_id = EXCLUDED.organization_id,
+      company_driver_number = EXCLUDED.company_driver_number,
       driver_name = EXCLUDED.driver_name,
       employee_number = EXCLUDED.employee_number,
       phone_number = EXCLUDED.phone_number,
@@ -1109,6 +1255,9 @@ async function upsertDriver(input = {}, actor = 'supervisor') {
     RETURNING *
   `, [
     driverId,
+    internalDriverId,
+    tenantContext.organizationId,
+    companyDriverNumber,
     driverName,
     String(input.employeeNumber || input.employee_number || '').trim() || null,
     String(input.phoneNumber || input.phone_number || '').trim() || null,
@@ -2370,9 +2519,10 @@ async function addRouteSessionEvent(event) {
 }
 
 async function upsertDailyRouteManifest(manifest) {
+  const tenantContext = tenantContextFromOptions({ ...manifest, allowDevelopmentFallback: true });
   const result = await postgres.query(`
     INSERT INTO daily_route_manifests (
-      id, route_date, route_number, route_name, start_location,
+      id, organization_id, route_date, route_number, route_name, start_location,
       planned_start_at, planned_end_at, planned_duration_minutes,
       total_stops, total_pallets, total_cases,
       assigned_driver_id, assigned_driver_name, assigned_at, assigned_by,
@@ -2380,15 +2530,16 @@ async function upsertDailyRouteManifest(manifest) {
       raw, updated_at
     )
     VALUES (
-      $1, $2, $3, $4, $5,
-      $6, $7, $8,
-      $9, $10, $11,
-      $12, $13, $14, $15,
-      $16, $17, $18, COALESCE($19::timestamptz, NOW()), $20,
-      $21::jsonb, NOW()
+      $1, $2, $3, $4, $5, $6,
+      $7, $8, $9,
+      $10, $11, $12,
+      $13, $14, $15, $16,
+      $17, $18, $19, COALESCE($20::timestamptz, NOW()), $21,
+      $22::jsonb, NOW()
     )
     ON CONFLICT (route_date, route_number) DO UPDATE SET
       id = EXCLUDED.id,
+      organization_id = EXCLUDED.organization_id,
       route_name = EXCLUDED.route_name,
       start_location = EXCLUDED.start_location,
       planned_start_at = EXCLUDED.planned_start_at,
@@ -2410,6 +2561,7 @@ async function upsertDailyRouteManifest(manifest) {
     RETURNING *
   `, [
     manifest.id,
+    tenantContext.organizationId,
     manifest.routeDate,
     manifest.routeNumber,
     manifest.routeName || null,
@@ -2435,28 +2587,31 @@ async function upsertDailyRouteManifest(manifest) {
 }
 
 async function replaceDailyRouteStops(manifestId, stops = []) {
+  const manifestResult = await postgres.query('SELECT organization_id FROM daily_route_manifests WHERE id = $1', [manifestId]);
+  const organizationId = manifestResult.rows[0]?.organization_id || BOOTSTRAP_ORGANIZATION.id;
   await postgres.query('DELETE FROM daily_route_stops WHERE manifest_id = $1', [manifestId]);
   const savedStops = [];
 
   for (const stop of stops) {
     const result = await postgres.query(`
       INSERT INTO daily_route_stops (
-        id, manifest_id, stop_sequence, account_number, account_name,
+        id, organization_id, manifest_id, stop_sequence, account_number, account_name,
         destination_address, city, state_code, postal_code, latitude, longitude,
         planned_arrival_at, planned_departure_at, planned_service_minutes,
         drive_minutes_to_next, pallet_count, case_count, item_summary,
         status, raw, updated_at
       )
       VALUES (
-        $1, $2, $3, $4, $5,
-        $6, $7, $8, $9, $10, $11,
-        $12, $13, $14,
-        $15, $16, $17, $18::jsonb,
-        $19, $20::jsonb, NOW()
+        $1, $2, $3, $4, $5, $6,
+        $7, $8, $9, $10, $11, $12,
+        $13, $14, $15,
+        $16, $17, $18, $19::jsonb,
+        $20, $21::jsonb, NOW()
       )
       RETURNING *
     `, [
       stop.id,
+      organizationId,
       manifestId,
       stop.stopSequence,
       stop.accountNumber || null,
@@ -2484,7 +2639,14 @@ async function replaceDailyRouteStops(manifestId, stops = []) {
 }
 
 async function getDailyRouteManifest(id, options = {}) {
-  const manifestResult = await postgres.query('SELECT * FROM daily_route_manifests WHERE id = $1', [id]);
+  const values = [id];
+  const where = ['id = $1'];
+  applyOrganizationFilter(where, values, 'daily_route_manifests', { ...options, allowDevelopmentFallback: true });
+  const manifestResult = await postgres.query(`
+    SELECT *
+    FROM daily_route_manifests
+    WHERE ${where.join(' AND ')}
+  `, values);
   const manifestRow = manifestResult.rows[0];
   if (!manifestRow) return null;
 
@@ -2496,8 +2658,9 @@ async function getDailyRouteManifest(id, options = {}) {
     SELECT *
     FROM daily_route_stops
     WHERE manifest_id = $1
+      AND organization_id = $2
     ORDER BY stop_sequence ASC
-  `, [id]);
+  `, [id, manifestRow.organization_id || BOOTSTRAP_ORGANIZATION.id]);
   return routeManifestFromRow(manifestRow, stopsResult.rows.map(routeStopFromRow));
 }
 
@@ -2631,6 +2794,7 @@ function routeCloseoutDocumentFromRow(row) {
   if (!row) return null;
   return {
     id: row.id,
+    organizationId: row.organization_id || BOOTSTRAP_ORGANIZATION.id,
     manifestId: row.manifest_id,
     documentType: 'route_closeout',
     documentNumber: row.document_number,
@@ -3239,14 +3403,16 @@ async function getDailyRouteManifestWithAccountIntelligence(id, options = {}) {
 
   const stopIds = route.stops.map((stop) => stop.id).filter(Boolean);
   const accountNumbers = [...new Set(route.stops.map((stop) => stop.accountNumber).filter(Boolean))];
+  const organizationId = route.organizationId || BOOTSTRAP_ORGANIZATION.id;
 
   const orderRows = stopIds.length
     ? (await postgres.query(`
       SELECT *
       FROM account_orders
       WHERE route_stop_id = ANY($1::text[])
+        AND organization_id = $2
       ORDER BY COALESCE(delivery_date, order_date) DESC, created_at DESC
-    `, [stopIds])).rows
+    `, [stopIds, organizationId])).rows
     : [];
   const orderIds = orderRows.map((row) => row.id).filter(Boolean);
 
@@ -3255,33 +3421,37 @@ async function getDailyRouteManifestWithAccountIntelligence(id, options = {}) {
       SELECT *
       FROM account_order_items
       WHERE order_id = ANY($1::text[])
+        AND organization_id = $2
       ORDER BY product_name ASC
-    `, [orderIds])).rows
+    `, [orderIds, organizationId])).rows
     : [];
   const deductionRows = orderIds.length
     ? (await postgres.query(`
       SELECT *
       FROM delivery_deductions
       WHERE order_id = ANY($1::text[])
+        AND organization_id = $2
       ORDER BY created_at DESC
-    `, [orderIds])).rows
+    `, [orderIds, organizationId])).rows
     : [];
   const insightRows = accountNumbers.length
     ? (await postgres.query(`
       SELECT DISTINCT ON (account_number, insight_type) *
       FROM account_ai_insights
       WHERE account_number = ANY($1::text[])
+        AND organization_id = $2
         AND status = 'active'
       ORDER BY account_number, insight_type, created_at DESC
-    `, [accountNumbers])).rows
+    `, [accountNumbers, organizationId])).rows
     : [];
   const settlementRows = stopIds.length
     ? (await postgres.query(`
       SELECT *
       FROM delivery_settlements
       WHERE route_stop_id = ANY($1::text[])
+        AND organization_id = $2
       ORDER BY created_at ASC
-    `, [stopIds])).rows
+    `, [stopIds, organizationId])).rows
     : [];
 
   const itemsByOrderId = new Map();
@@ -3405,6 +3575,7 @@ async function listDailyRouteManifests(options = {}) {
   const limit = normalizeLimit(options.limit, 100, 500);
   const values = [];
   const where = [];
+  applyOrganizationFilter(where, values, 'daily_route_manifests', { ...options, allowDevelopmentFallback: true });
 
   if (options.routeDate) {
     values.push(options.routeDate);
@@ -3431,6 +3602,7 @@ async function listDailyRouteManifests(options = {}) {
 }
 
 async function assignDailyRouteManifest(id, input = {}) {
+  const tenantContext = tenantContextFromOptions({ ...input, allowDevelopmentFallback: true });
   const driverId = String(input.driverId || input.driver_id || '').trim();
   const driverName = String(input.driverName || input.driver_name || driverId).trim();
   const assignedBy = String(input.assignedBy || input.assigned_by || 'supervisor').trim();
@@ -3450,12 +3622,14 @@ async function assignDailyRouteManifest(id, input = {}) {
       status = CASE WHEN status = 'completed' THEN status ELSE 'assigned' END,
       updated_at = NOW()
     WHERE id = $1
+      AND organization_id = $5
     RETURNING *
-  `, [id, driverId, driverName || driverId, assignedBy || 'supervisor']);
+  `, [id, driverId, driverName || driverId, assignedBy || 'supervisor', tenantContext.organizationId]);
   return result.rows[0] ? routeManifestFromRow(result.rows[0]) : null;
 }
 
 async function unassignDailyRouteManifest(id, input = {}) {
+  const tenantContext = tenantContextFromOptions({ ...input, allowDevelopmentFallback: true });
   const cleanedId = String(id || '').trim();
   const assignedBy = String(input.assignedBy || input.assigned_by || 'supervisor').trim() || 'supervisor';
   if (!cleanedId) {
@@ -3477,14 +3651,16 @@ async function unassignDailyRouteManifest(id, input = {}) {
       END,
       updated_at = NOW()
     WHERE id = $1
+      AND organization_id = $3
       AND status NOT IN ('completed', 'completed_with_exceptions', 'cancelled')
     RETURNING *
-  `, [cleanedId, assignedBy]);
+  `, [cleanedId, assignedBy, tenantContext.organizationId]);
 
   return result.rows[0] ? routeManifestFromRow(result.rows[0]) : null;
 }
 
 async function swapDailyRouteAssignments(leftRouteId, rightRouteId, input = {}) {
+  const tenantContext = tenantContextFromOptions({ ...input, allowDevelopmentFallback: true });
   const leftId = String(leftRouteId || input.leftRouteId || input.left_route_id || '').trim();
   const rightId = String(rightRouteId || input.rightRouteId || input.right_route_id || '').trim();
   const assignedBy = String(input.assignedBy || input.assigned_by || 'supervisor').trim() || 'supervisor';
@@ -3500,6 +3676,7 @@ async function swapDailyRouteAssignments(leftRouteId, rightRouteId, input = {}) 
       SELECT *
       FROM daily_route_manifests
       WHERE id IN ($1, $2)
+        AND organization_id = $4
     ),
     left_route AS (
       SELECT * FROM selected WHERE id = $1
@@ -3544,7 +3721,7 @@ async function swapDailyRouteAssignments(leftRouteId, rightRouteId, input = {}) 
     SELECT * FROM updated_left
     UNION ALL
     SELECT * FROM updated_right
-  `, [leftId, rightId, assignedBy]);
+  `, [leftId, rightId, assignedBy, tenantContext.organizationId]);
 
   if (result.rows.length !== 2) {
     const error = new Error('Both route manifests must exist before assignments can be switched.');
@@ -3556,6 +3733,7 @@ async function swapDailyRouteAssignments(leftRouteId, rightRouteId, input = {}) 
 }
 
 async function deleteDailyRouteManifest(id) {
+  const tenantContext = tenantContextFromOptions({ allowDevelopmentFallback: true });
   const cleanedId = String(id || '').trim();
   if (!cleanedId) {
     const error = new Error('Route manifest id is required.');
@@ -3568,22 +3746,25 @@ async function deleteDailyRouteManifest(id) {
       SELECT id, route_date, route_number, assigned_driver_id
       FROM daily_route_manifests
       WHERE id = $1
+        AND organization_id = $2
     ),
     stop_count AS (
       SELECT count(*)::int AS stops
       FROM daily_route_stops
       WHERE manifest_id = $1
+        AND organization_id = $2
     ),
     deleted AS (
       DELETE FROM daily_route_manifests
       WHERE id = $1
+        AND organization_id = $2
       RETURNING *
     )
     SELECT
       deleted.*,
       COALESCE((SELECT stops FROM stop_count), 0) AS deleted_stops
     FROM deleted
-  `, [cleanedId]);
+  `, [cleanedId, tenantContext.organizationId]);
 
   const row = result.rows[0];
   if (!row) return null;
@@ -3594,6 +3775,7 @@ async function deleteDailyRouteManifest(id) {
 }
 
 async function deleteDailyRouteManifestsByDate(routeDate) {
+  const tenantContext = tenantContextFromOptions({ allowDevelopmentFallback: true });
   const cleanedRouteDate = String(routeDate || '').trim();
   if (!/^\d{4}-\d{2}-\d{2}$/.test(cleanedRouteDate)) {
     const error = new Error('A route date in YYYY-MM-DD format is required.');
@@ -3606,21 +3788,24 @@ async function deleteDailyRouteManifestsByDate(routeDate) {
       SELECT id
       FROM daily_route_manifests
       WHERE route_date = $1
+        AND organization_id = $2
     ),
     stop_count AS (
       SELECT count(*)::int AS stops
       FROM daily_route_stops
       WHERE manifest_id IN (SELECT id FROM selected)
+        AND organization_id = $2
     ),
     deleted AS (
       DELETE FROM daily_route_manifests
       WHERE id IN (SELECT id FROM selected)
+        AND organization_id = $2
       RETURNING id
     )
     SELECT
       (SELECT count(*)::int FROM deleted) AS routes,
       COALESCE((SELECT stops FROM stop_count), 0) AS stops
-  `, [cleanedRouteDate]);
+  `, [cleanedRouteDate, tenantContext.organizationId]);
 
   return {
     routeDate: cleanedRouteDate,
@@ -3773,17 +3958,23 @@ async function updateDailyRouteStopStatusForDriver(stopId, driverId, input = {})
   return updatedStop;
 }
 
-async function getAssignedDailyRouteForDriver(driverId, routeDate) {
+async function getAssignedDailyRouteForDriver(driverId, routeDate, options = {}) {
+  const tenantContext = tenantContextFromOptions({ ...options, allowDevelopmentFallback: true });
   const result = await postgres.query(`
     SELECT manifest.*
     FROM daily_route_manifests AS manifest
     JOIN drivers AS driver
-      ON ${assignedDriverIdMatchesSql('driver.driver_id', 'manifest.assigned_driver_id')}
+      ON (
+        ${assignedDriverIdMatchesSql('driver.driver_id', 'manifest.assigned_driver_id')}
+        OR ${assignedDriverIdMatchesSql('COALESCE(driver.company_driver_number, driver.driver_id)', 'manifest.assigned_driver_id')}
+      )
+      AND driver.organization_id = manifest.organization_id
       AND driver.active = true
     LEFT JOIN route_inventory_closeouts AS inventory_closeout
       ON inventory_closeout.manifest_id = manifest.id
     WHERE ${assignedDriverIdMatchesSql('manifest.assigned_driver_id', '$1')}
       AND manifest.route_date = $2
+      AND manifest.organization_id = $3
       AND manifest.status <> 'cancelled'
       AND (
         manifest.status NOT IN ('completed', 'completed_with_exceptions')
@@ -3791,10 +3982,10 @@ async function getAssignedDailyRouteForDriver(driverId, routeDate) {
       )
     ORDER BY manifest.assigned_at DESC NULLS LAST, manifest.route_number ASC
     LIMIT 1
-  `, [driverId, routeDate]);
+  `, [driverId, routeDate, tenantContext.organizationId]);
   const manifest = result.rows[0] ? routeManifestFromRow(result.rows[0]) : null;
   if (!manifest) return null;
-  return getDailyRouteManifestWithAccountIntelligence(manifest.id);
+  return getDailyRouteManifestWithAccountIntelligence(manifest.id, { tenantContext });
 }
 
 async function listUndeliveredRouteStops(options = {}) {
@@ -7725,6 +7916,8 @@ async function getAiOperationsMetrics(options = {}) {
 }
 
 module.exports = {
+  ensureBootstrapOrganization,
+  getOrganization,
   getAdminUser,
   createDriverSession,
   assignDailyRouteManifest,
@@ -7750,6 +7943,7 @@ module.exports = {
   getDailyRouteManifest,
   getDailyRouteManifestWithAccountIntelligence,
   getDriver,
+  getDriverByCompanyDriverNumber,
   getDriverAuthRecord,
   getActiveDriverSession,
   getAiOperationsMetrics,

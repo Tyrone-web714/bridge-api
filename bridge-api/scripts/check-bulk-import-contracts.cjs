@@ -79,9 +79,13 @@ assert(
 );
 assert(
   repositorySource.includes(
-    'VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $12, NOW(), NOW())'
+    'VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $15, NOW(), NOW())'
   ),
   'Driver creation must provide values for every drivers-table insert column.'
+);
+assert(
+  repositorySource.includes('driver_id, internal_driver_id, organization_id, company_driver_number,'),
+  'Driver creation must persist internal driver ID, Organization ID, and company driver number.'
 );
 
 console.log('[test:imports] validation, grouping, totals, and empty-file contracts verified.');

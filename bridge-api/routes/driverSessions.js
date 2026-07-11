@@ -54,7 +54,7 @@ router.post('/login', async (req, res) => {
       token,
       expiresAt,
       driver: {
-        driverId: driver.driver_id,
+        driverId: driver.company_driver_number || driver.driver_id,
         driverName: driver.driver_name
       }
     });

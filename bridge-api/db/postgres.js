@@ -1,4 +1,5 @@
 const { Pool } = require('pg');
+const { BOOTSTRAP_ORGANIZATION } = require('../services/tenantContext');
 
 let pool = null;
 let schemaReady = false;
@@ -88,6 +89,31 @@ async function ensureSchema() {
 
   const activePool = getPool();
   schemaPromise = activePool.query(`
+    CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
+    CREATE TABLE IF NOT EXISTS organizations (
+      id TEXT PRIMARY KEY,
+      name TEXT NOT NULL,
+      slug TEXT NOT NULL UNIQUE,
+      status TEXT NOT NULL DEFAULT 'active',
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      deleted_at TIMESTAMPTZ
+    );
+
+    INSERT INTO organizations (id, name, slug, status)
+    VALUES (
+      '${BOOTSTRAP_ORGANIZATION.id}',
+      '${BOOTSTRAP_ORGANIZATION.name.replace(/'/g, "''")}',
+      '${BOOTSTRAP_ORGANIZATION.slug}',
+      '${BOOTSTRAP_ORGANIZATION.status}'
+    )
+    ON CONFLICT (id) DO UPDATE SET
+      name = EXCLUDED.name,
+      slug = EXCLUDED.slug,
+      status = EXCLUDED.status,
+      updated_at = NOW();
+
     CREATE TABLE IF NOT EXISTS manual_hazards (
       id TEXT PRIMARY KEY,
       category TEXT NOT NULL,
@@ -141,10 +167,15 @@ async function ensureSchema() {
     );
 
     ALTER TABLE admin_users
-      ADD COLUMN IF NOT EXISTS session_version INTEGER NOT NULL DEFAULT 1;
+      ADD COLUMN IF NOT EXISTS session_version INTEGER NOT NULL DEFAULT 1,
+      ADD COLUMN IF NOT EXISTS organization_id TEXT REFERENCES organizations(id);
 
+    UPDATE admin_users
+    SET organization_id = '${BOOTSTRAP_ORGANIZATION.id}'
+    WHERE organization_id IS NULL;
     CREATE INDEX IF NOT EXISTS admin_users_role_idx ON admin_users(role);
     CREATE INDEX IF NOT EXISTS admin_users_active_idx ON admin_users(active);
+    CREATE INDEX IF NOT EXISTS admin_users_organization_idx ON admin_users(organization_id);
 
     CREATE TABLE IF NOT EXISTS audit_events (
       id BIGSERIAL PRIMARY KEY,
@@ -183,13 +214,31 @@ async function ensureSchema() {
       ADD COLUMN IF NOT EXISTS supervisor_username TEXT,
       ADD COLUMN IF NOT EXISTS supervisor_name TEXT,
       ADD COLUMN IF NOT EXISTS team_name TEXT,
-      ADD COLUMN IF NOT EXISTS pin_hash TEXT;
+      ADD COLUMN IF NOT EXISTS pin_hash TEXT,
+      ADD COLUMN IF NOT EXISTS organization_id TEXT REFERENCES organizations(id),
+      ADD COLUMN IF NOT EXISTS internal_driver_id TEXT,
+      ADD COLUMN IF NOT EXISTS company_driver_number TEXT;
+
+    UPDATE drivers
+    SET
+      organization_id = COALESCE(organization_id, '${BOOTSTRAP_ORGANIZATION.id}'),
+      internal_driver_id = COALESCE(internal_driver_id, gen_random_uuid()::text),
+      company_driver_number = COALESCE(company_driver_number, driver_id)
+    WHERE organization_id IS NULL OR internal_driver_id IS NULL OR company_driver_number IS NULL;
+
     CREATE INDEX IF NOT EXISTS drivers_active_idx ON drivers(active);
     CREATE INDEX IF NOT EXISTS drivers_route_group_idx ON drivers(route_group);
     CREATE INDEX IF NOT EXISTS drivers_territory_idx ON drivers(territory);
     CREATE INDEX IF NOT EXISTS drivers_supervisor_idx ON drivers(supervisor_username);
     CREATE INDEX IF NOT EXISTS drivers_team_name_idx ON drivers(team_name);
     CREATE INDEX IF NOT EXISTS drivers_name_idx ON drivers(driver_name);
+    CREATE INDEX IF NOT EXISTS drivers_organization_idx ON drivers(organization_id);
+    CREATE UNIQUE INDEX IF NOT EXISTS drivers_internal_driver_id_unique_idx
+      ON drivers(internal_driver_id)
+      WHERE internal_driver_id IS NOT NULL;
+    CREATE UNIQUE INDEX IF NOT EXISTS drivers_org_company_driver_number_unique_idx
+      ON drivers(organization_id, LOWER(company_driver_number))
+      WHERE organization_id IS NOT NULL AND company_driver_number IS NOT NULL;
 
     CREATE TABLE IF NOT EXISTS driver_sessions (
       id TEXT PRIMARY KEY,
@@ -206,6 +255,17 @@ async function ensureSchema() {
       ON driver_sessions(driver_id, expires_at DESC);
     CREATE INDEX IF NOT EXISTS driver_sessions_token_idx
       ON driver_sessions(token_hash);
+    ALTER TABLE driver_sessions
+      ADD COLUMN IF NOT EXISTS organization_id TEXT REFERENCES organizations(id),
+      ADD COLUMN IF NOT EXISTS internal_driver_id TEXT;
+    UPDATE driver_sessions AS session
+    SET
+      organization_id = COALESCE(session.organization_id, driver.organization_id),
+      internal_driver_id = COALESCE(session.internal_driver_id, driver.internal_driver_id)
+    FROM drivers AS driver
+    WHERE session.driver_id = driver.driver_id
+      AND (session.organization_id IS NULL OR session.internal_driver_id IS NULL);
+    CREATE INDEX IF NOT EXISTS driver_sessions_organization_idx ON driver_sessions(organization_id);
 
     CREATE TABLE IF NOT EXISTS warehouse_employees (
       employee_id TEXT PRIMARY KEY,
@@ -219,6 +279,15 @@ async function ensureSchema() {
     );
 
     CREATE INDEX IF NOT EXISTS warehouse_employees_active_idx ON warehouse_employees(active);
+    ALTER TABLE warehouse_employees
+      ADD COLUMN IF NOT EXISTS organization_id TEXT REFERENCES organizations(id),
+      ADD COLUMN IF NOT EXISTS company_employee_id TEXT;
+    UPDATE warehouse_employees
+    SET
+      organization_id = COALESCE(organization_id, '${BOOTSTRAP_ORGANIZATION.id}'),
+      company_employee_id = COALESCE(company_employee_id, employee_id)
+    WHERE organization_id IS NULL OR company_employee_id IS NULL;
+    CREATE INDEX IF NOT EXISTS warehouse_employees_organization_idx ON warehouse_employees(organization_id);
 
     CREATE TABLE IF NOT EXISTS operational_distribution_centers (
       code TEXT PRIMARY KEY,
@@ -550,6 +619,12 @@ async function ensureSchema() {
     CREATE INDEX IF NOT EXISTS daily_route_manifests_route_number_idx ON daily_route_manifests(route_number);
     CREATE INDEX IF NOT EXISTS daily_route_manifests_assigned_driver_idx ON daily_route_manifests(assigned_driver_id, route_date DESC);
     CREATE INDEX IF NOT EXISTS daily_route_manifests_status_idx ON daily_route_manifests(status);
+    ALTER TABLE daily_route_manifests
+      ADD COLUMN IF NOT EXISTS organization_id TEXT REFERENCES organizations(id);
+    UPDATE daily_route_manifests
+    SET organization_id = '${BOOTSTRAP_ORGANIZATION.id}'
+    WHERE organization_id IS NULL;
+    CREATE INDEX IF NOT EXISTS daily_route_manifests_organization_idx ON daily_route_manifests(organization_id);
 
     CREATE TABLE IF NOT EXISTS daily_route_stops (
       id TEXT PRIMARY KEY,
@@ -601,9 +676,16 @@ async function ensureSchema() {
       ADD COLUMN IF NOT EXISTS redelivery_date DATE,
       ADD COLUMN IF NOT EXISTS redelivery_notes TEXT,
       ADD COLUMN IF NOT EXISTS redelivery_updated_by TEXT,
-      ADD COLUMN IF NOT EXISTS redelivery_updated_at TIMESTAMPTZ;
+      ADD COLUMN IF NOT EXISTS redelivery_updated_at TIMESTAMPTZ,
+      ADD COLUMN IF NOT EXISTS organization_id TEXT REFERENCES organizations(id);
+    UPDATE daily_route_stops AS stop
+    SET organization_id = manifest.organization_id
+    FROM daily_route_manifests AS manifest
+    WHERE stop.manifest_id = manifest.id
+      AND stop.organization_id IS NULL;
     CREATE INDEX IF NOT EXISTS daily_route_stops_non_delivery_idx ON daily_route_stops(status, non_delivery_reason);
     CREATE INDEX IF NOT EXISTS daily_route_stops_redelivery_status_idx ON daily_route_stops(redelivery_status);
+    CREATE INDEX IF NOT EXISTS daily_route_stops_organization_idx ON daily_route_stops(organization_id);
 
     CREATE TABLE IF NOT EXISTS customer_accounts (
       account_number TEXT PRIMARY KEY,
