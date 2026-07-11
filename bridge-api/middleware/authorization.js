@@ -111,11 +111,25 @@ function requirePlatformAdmin(req, res, next) {
 }
 
 function isPublicPath(req) {
-  const path = String(req.path || req.originalUrl || '').split('?')[0];
+  const path = String(req.originalUrl || req.path || '').split('?')[0].replace(/\/+$/, '') || '/';
   return path === '/health'
     || path === '/ready'
     || path === '/api/driver-auth/login'
     || path === '/api/routing/manual-hazards/admin/login';
+}
+
+function isAdminHtmlRequest(req) {
+  const method = String(req.method || 'GET').toUpperCase();
+  if (method !== 'GET') return false;
+
+  const path = String(req.originalUrl || req.path || '').split('?')[0].replace(/\/+$/, '') || '/';
+  if (!path.startsWith('/api/')) return false;
+  if (path === '/api/routing/manual-hazards/admin/login') return false;
+
+  return path === '/api/admin'
+    || path.endsWith('/admin')
+    || path.endsWith('/admin-users/admin')
+    || path.startsWith('/api/account-intelligence/insights/admin');
 }
 
 function deny(req, res, status, code, message) {
@@ -140,6 +154,9 @@ function enforcePermission(req, res, permission, options = {}) {
   req.authContext = buildAuthContext(req);
   req.requiredPermission = permission || null;
   if (!req.authContext.authenticated) {
+    if (isAdminHtmlRequest(req)) {
+      return res.redirect('/api/routing/manual-hazards/admin/login');
+    }
     return deny(req, res, 401, 'AUTHENTICATION_REQUIRED', 'Authentication required.');
   }
   if (options.organizationRequired !== false && !req.authContext.organizationId) {
