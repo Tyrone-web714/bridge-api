@@ -205,10 +205,10 @@ export async function flushPendingDeliveryNoteOperations() {
   for (const operation of operations) {
     try {
       await sendNoteOperation(operation);
-      await removePendingDeliveryOperation(operation.id);
+      await removePendingDeliveryOperation(operation.id, operation);
       synced += 1;
     } catch (error) {
-      await markDeliveryOperationFailed(operation.id, error.message);
+      await markDeliveryOperationFailed(operation.id, error.message, operation);
       break;
     }
   }

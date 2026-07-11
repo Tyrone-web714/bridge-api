@@ -1,9 +1,19 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { API_BASE_URL, jsonApiHeaders } from '../config/api';
+import { getDriverTenantContext } from './driverSession';
+import {
+  isTrustedTenantContext,
+  legacyMigrationMarkerKey,
+  legacyQuarantineKey,
+  operationMatchesTenant,
+  tenantScopedStorageKey,
+  withTenantOperationMetadata,
+} from './tenantContext';
 
 const ROUTING_REQUEST_TIMEOUT_MS = 20000;
 const ROUTING_BACKGROUND_TIMEOUT_MS = 8000;
-const ROUTE_EVENT_QUEUE_KEY = '@truck-safe-routing/route-events/v1';
+const LEGACY_ROUTE_EVENT_QUEUE_KEY = '@truck-safe-routing/route-events/v1';
+const ROUTE_EVENT_QUEUE_PREFIX = '@truck-safe-routing/route-events/v2';
 const ROUTE_EVENT_QUEUE_LIMIT = 2500;
 let routeEventQueueChain = Promise.resolve();
 
@@ -24,6 +34,18 @@ function routingUrl(path, query = null) {
   const cleanPath = String(path || '').replace(/^\/+/, '');
   const queryString = query ? `?${query.toString()}` : '';
   return `${API_BASE_URL}/api/routing/${cleanPath}${queryString}`;
+}
+
+function requireTenantIdentity() {
+  const identity = getDriverTenantContext();
+  if (!isTrustedTenantContext(identity)) {
+    throw new Error('A trusted driver Organization context is required for route event synchronization.');
+  }
+  return identity;
+}
+
+function routeEventQueueKey(identity) {
+  return tenantScopedStorageKey(ROUTE_EVENT_QUEUE_PREFIX, identity, 'queue');
 }
 
 async function fetchRoutingWithTimeout(url, options = {}, timeoutMs = ROUTING_BACKGROUND_TIMEOUT_MS) {
@@ -61,35 +83,70 @@ async function postRoutingJson(path, payload, timeoutMs = ROUTING_BACKGROUND_TIM
   return { response, data };
 }
 
-async function readRouteEventQueue() {
+async function readJson(key, fallback) {
   try {
-    const value = await AsyncStorage.getItem(ROUTE_EVENT_QUEUE_KEY);
-    const parsed = value ? JSON.parse(value) : [];
-    return Array.isArray(parsed) ? parsed : [];
+    const value = await AsyncStorage.getItem(key);
+    const parsed = value ? JSON.parse(value) : fallback;
+    return Array.isArray(parsed) || parsed ? parsed : fallback;
   } catch {
-    return [];
+    return fallback;
   }
 }
 
-async function writeRouteEventQueue(queue) {
-  await AsyncStorage.setItem(
-    ROUTE_EVENT_QUEUE_KEY,
-    JSON.stringify(queue.slice(-ROUTE_EVENT_QUEUE_LIMIT))
+async function writeJson(key, value) {
+  await AsyncStorage.setItem(key, JSON.stringify(value));
+}
+
+async function migrateLegacyRouteEvents(identity) {
+  const markerKey = legacyMigrationMarkerKey(ROUTE_EVENT_QUEUE_PREFIX, identity);
+  const marker = await readJson(markerKey, null);
+  if (marker?.completedAt) return;
+
+  const legacyQueue = await readJson(LEGACY_ROUTE_EVENT_QUEUE_KEY, []);
+  const legacyEvents = Array.isArray(legacyQueue) ? legacyQueue : [];
+  if (legacyEvents.length) {
+    await writeJson(legacyQuarantineKey(ROUTE_EVENT_QUEUE_PREFIX, 'route-events-ambiguous'), {
+      reason: 'Legacy route events did not contain trusted Organization and internal driver context.',
+      createdAt: new Date().toISOString(),
+      sourceKey: LEGACY_ROUTE_EVENT_QUEUE_KEY,
+      events: legacyEvents,
+    });
+  }
+
+  await writeJson(markerKey, {
+    completedAt: new Date().toISOString(),
+    migratedCount: 0,
+    quarantinedCount: legacyEvents.length,
+    sourceKey: LEGACY_ROUTE_EVENT_QUEUE_KEY,
+  });
+}
+
+async function readRouteEventQueue(identity) {
+  await migrateLegacyRouteEvents(identity);
+  const parsed = await readJson(routeEventQueueKey(identity), []);
+  return (Array.isArray(parsed) ? parsed : []).filter((entry) => operationMatchesTenant(entry, identity));
+}
+
+async function writeRouteEventQueue(identity, queue) {
+  await writeJson(
+    routeEventQueueKey(identity),
+    queue.filter((entry) => operationMatchesTenant(entry, identity)).slice(-ROUTE_EVENT_QUEUE_LIMIT)
   );
 }
 
-async function enqueueRouteEvent(sessionId, payload) {
-  const queue = await readRouteEventQueue();
-  queue.push({
+async function enqueueRouteEvent(sessionId, payload, identity) {
+  const queue = await readRouteEventQueue(identity);
+  queue.push(withTenantOperationMetadata({
     id: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
     sessionId,
     payload,
-  });
-  await writeRouteEventQueue(queue);
+    createdAt: new Date().toISOString(),
+  }, identity, 2));
+  await writeRouteEventQueue(identity, queue);
 }
 
-async function flushRouteEventQueue() {
-  const queue = await readRouteEventQueue();
+async function flushRouteEventQueue(identity) {
+  const queue = await readRouteEventQueue(identity);
   if (!queue.length) return;
 
   let sentCount = 0;
@@ -113,24 +170,25 @@ async function flushRouteEventQueue() {
   }
 
   if (sentCount > 0) {
-    await writeRouteEventQueue(queue.slice(sentCount));
+    await writeRouteEventQueue(identity, queue.slice(sentCount));
   }
 }
 
 export function recordRouteEvent(sessionId, payload) {
   const operation = routeEventQueueChain.catch(() => {}).then(async () => {
-    await flushRouteEventQueue();
+    const identity = requireTenantIdentity();
+    await flushRouteEventQueue(identity);
     try {
       const result = await postRoutingJson(
         `route-sessions/${encodeURIComponent(sessionId)}/events`,
         payload
       );
       if (!result.response.ok) {
-        await enqueueRouteEvent(sessionId, payload);
+        await enqueueRouteEvent(sessionId, payload, identity);
       }
       return result;
     } catch (error) {
-      await enqueueRouteEvent(sessionId, payload);
+      await enqueueRouteEvent(sessionId, payload, identity);
       throw error;
     }
   });

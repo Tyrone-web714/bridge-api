@@ -1,11 +1,26 @@
 import { Directory, File, Paths } from 'expo-file-system';
+import { getDriverTenantContext } from './driverSession';
+import { isTrustedTenantContext, safeStoragePart } from './tenantContext';
 
 const PHOTO_DIRECTORY = new Directory(Paths.document, 'delivery-note-photos');
 
-function ensurePhotoDirectory() {
-  if (!PHOTO_DIRECTORY.exists) {
-    PHOTO_DIRECTORY.create({ intermediates: true, idempotent: true });
+function ensureDirectory(directory) {
+  if (!directory.exists) {
+    directory.create({ intermediates: true, idempotent: true });
   }
+}
+
+function currentTenantPhotoDirectory() {
+  const identity = getDriverTenantContext();
+  if (!isTrustedTenantContext(identity)) {
+    throw new Error('A trusted driver Organization context is required before saving delivery photos offline.');
+  }
+  const organizationDirectory = new Directory(PHOTO_DIRECTORY, safeStoragePart(identity.organizationId));
+  const driverDirectory = new Directory(organizationDirectory, safeStoragePart(identity.internalDriverId));
+  ensureDirectory(PHOTO_DIRECTORY);
+  ensureDirectory(organizationDirectory);
+  ensureDirectory(driverDirectory);
+  return driverDirectory;
 }
 
 function safeExtension(fileName, mimeType) {
@@ -18,11 +33,11 @@ function safeExtension(fileName, mimeType) {
 
 export function persistDeliveryPhoto(asset = {}) {
   if (!asset.uri) throw new Error('The selected photo has no readable file.');
-  ensurePhotoDirectory();
+  const directory = currentTenantPhotoDirectory();
 
   const extension = safeExtension(asset.fileName, asset.mimeType);
   const destination = new File(
-    PHOTO_DIRECTORY,
+    directory,
     `delivery-photo-${Date.now()}-${Math.random().toString(16).slice(2, 10)}${extension}`
   );
   new File(asset.uri).copy(destination);

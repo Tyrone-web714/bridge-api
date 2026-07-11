@@ -1,0 +1,15 @@
+# Mobile Storage Inventory
+
+| Item | Mechanism | Previous key | New key/scope | Context | Migration |
+| --- | --- | --- | --- | --- | --- |
+| Driver session | SecureStore | `truck-safe-routing-driver-session-v1` | Same SecureStore key, normalized payload | token, expiration, Organization, internal driver, company driver number | Invalid sessions lacking trusted tenant context are cleared. |
+| Device ID | SecureStore | `truck-safe-routing-device-id-v1` | Same device key | device only | Preserved. |
+| Assigned route cache | AsyncStorage | `@truck-safe-routing/assigned-route/v1/<driver>/<date>` | `@truck-safe-routing/assigned-route/v2/org/<org>/driver/<internal>/route/<date>` | Organization/internal driver/company driver/date | Legacy route cache is copied only for the authenticated company driver. |
+| Stop completion queue | AsyncStorage | `@truck-safe-routing/route-stop-sync/v1` | `@truck-safe-routing/route-stop-sync/v2/org/<org>/driver/<internal>/queue` | Organization/internal driver/company driver/stop/route/date | Matching legacy operations migrate; non-matching operations quarantine. |
+| Delivery operation queue | AsyncStorage | `@truck-safe-routing/delivery-operation-sync/v1` | `@truck-safe-routing/delivery-operation-sync/v2/org/<org>/driver/<internal>/queue` | Organization/internal driver/company driver/route/stop/type | Matching legacy operations migrate; ambiguous or mismatched operations quarantine. |
+| Stop delivery cache | AsyncStorage | `@truck-safe-routing/stop-delivery/v1/<driver>/<stop>` | `@truck-safe-routing/stop-delivery/v2/org/<org>/driver/<internal>/stop/<stop>` | Organization/internal driver/company driver/stop | Legacy matching cache is copied on read. |
+| Delivery notes cache | AsyncStorage | `@truck-safe-routing/delivery-notes/v1/<account>` | `@truck-safe-routing/delivery-notes/v2/org/<org>/driver/<internal>/notes/<account>` | Organization/internal driver/account/place/destination | Legacy matching cache is copied on read. |
+| Barcode product cache | AsyncStorage | `@truck-safe-routing/product-barcode/v1/<barcode>` | `@truck-safe-routing/product-barcode/v2/org/<org>/driver/<internal>/barcode/<barcode>` | Organization/internal driver/barcode | Legacy cache is copied on authenticated read. |
+| Route event queue | AsyncStorage | `@truck-safe-routing/route-events/v1` | `@truck-safe-routing/route-events/v2/org/<org>/driver/<internal>/queue` | Organization/internal driver/session/event | Legacy route events are quarantined because they lack trusted tenant identity. |
+| Delivery photos | FileSystem | `delivery-note-photos/<file>` | `delivery-note-photos/<org>/<internal-driver>/<file>` | Organization/internal driver | New photos are tenant-directory scoped. Existing photo URIs remain preserved in queued records. |
+| Zebra printer selection | AsyncStorage | `@truck-safe-routing/zebra-printer/v1` | unchanged | device-level printer selection | Not Organization-private; logout clears session, not paired printer. |

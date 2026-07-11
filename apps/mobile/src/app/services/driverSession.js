@@ -1,4 +1,9 @@
 import * as SecureStore from 'expo-secure-store';
+import {
+  isTrustedTenantContext,
+  normalizeDriverSession,
+  tenantIdentityFromSession,
+} from './tenantContext';
 
 const SESSION_KEY = 'truck-safe-routing-driver-session-v1';
 const DEVICE_KEY = 'truck-safe-routing-device-id-v1';
@@ -11,8 +16,15 @@ function createDeviceId() {
 }
 
 function isUsableSession(session) {
-  const expiresAt = Date.parse(session?.expiresAt || '');
-  return Boolean(session?.token && session?.driver?.driverId && Number.isFinite(expiresAt) && expiresAt > Date.now());
+  const normalized = normalizeDriverSession(session || {});
+  const expiresAt = Date.parse(normalized?.expiresAt || '');
+  return Boolean(
+    normalized?.token
+    && normalized?.driver?.driverId
+    && isTrustedTenantContext(normalized.tenantContext)
+    && Number.isFinite(expiresAt)
+    && expiresAt > Date.now()
+  );
 }
 
 export async function initializeDriverSession() {
@@ -25,7 +37,7 @@ export async function initializeDriverSession() {
   const stored = await SecureStore.getItemAsync(SESSION_KEY);
   if (!stored) return null;
   try {
-    const parsed = JSON.parse(stored);
+    const parsed = normalizeDriverSession(JSON.parse(stored));
     if (!isUsableSession(parsed)) {
       await SecureStore.deleteItemAsync(SESSION_KEY);
       return null;
@@ -49,6 +61,11 @@ export function getActiveDriverSession() {
   return isUsableSession(activeSession) ? activeSession : null;
 }
 
+export function getDriverTenantContext() {
+  if (!isUsableSession(activeSession)) return null;
+  return tenantIdentityFromSession(activeSession);
+}
+
 export async function loginDriverSession(apiBaseUrl, { driverId, pin }) {
   if (!deviceId) await initializeDriverSession();
   const response = await fetch(`${apiBaseUrl}/api/driver-auth/login`, {
@@ -67,12 +84,19 @@ export async function loginDriverSession(apiBaseUrl, { driverId, pin }) {
     throw error;
   }
 
-  activeSession = {
+  const normalizedSession = normalizeDriverSession({
     token: data.token,
     expiresAt: data.expiresAt,
     driver: data.driver,
+    permissions: data.permissions,
+    sessionId: data.sessionId,
     deviceId,
-  };
+  });
+  if (!isTrustedTenantContext(normalizedSession.tenantContext)) {
+    throw new Error('Driver login did not return trusted Organization context. Update the backend before continuing.');
+  }
+
+  activeSession = normalizedSession;
   await SecureStore.setItemAsync(SESSION_KEY, JSON.stringify(activeSession));
   return activeSession;
 }
@@ -90,4 +114,3 @@ export async function logoutDriverSession(apiBaseUrl) {
     },
   }).catch(() => null);
 }
-

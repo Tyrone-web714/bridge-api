@@ -1,4 +1,4 @@
-﻿# Truck-Safe Routing Project Status
+# Truck-Safe Routing Project Status
 
 ## 1. Document Control
 
@@ -8,7 +8,7 @@
 - Governing Architecture Version: 1.0
 - Authoritative Repository: `C:\dev\bridge-api`
 - GitHub Repository: `https://github.com/Tyrone-web714/bridge-api.git`
-- Current Branch: `api-tenant-enforcement`
+- Current Branch: `mobile-tenant-context`
 - Latest Documentation Commit: `cf23662b1bb7ab189960925f9521f6b1c0e8a394` - `Add Truck-Safe Routing governing documentation`
 - Update Guidance: Update this file when the project phase, deployment status, repository structure, major risks, or implementation priorities change.
 
@@ -35,7 +35,8 @@ Current implementation and planned architecture must be kept separate:
 | Current codebase audit | Pending | Required as the next approved priority before multi-tenant work. Older audit files exist, but the new governance-driven comprehensive audit is not yet verified complete. |
 | Multi-tenant migration | Pending | Architecture defines Organization as tenant boundary; implementation audit and migration plan are still required. |
 | Authentication and RBAC | Merged to Main | Authentication/RBAC foundation is merged at `5a1888fec120285ae698d3ead2196ca8d2af6636`. |
-| API Tenant Enforcement | In Progress on Branch | Branch `api-tenant-enforcement` adds centralized Critical/High path permission enforcement, protected Places proxy endpoints, Organization-scoped recent destinations, warehouse auth context enforcement, protected delivery-note photos, security denial audit events, tests, and implementation docs. |
+| API Tenant Enforcement | Merged to Main | API Tenant Enforcement is merged at `1c78e4c4cf6d322fa47d867b2d05e684c5392aea`. |
+| Mobile Tenant Context | In Progress on Branch | Branch `mobile-tenant-context` adds trusted mobile Organization context, tenant-scoped local storage, offline queue protections, legacy migration/quarantine behavior, and implementation docs. |
 | Shared Safety Intelligence | In Progress | Manual hazards, driver hazard reports, and static hazard verification routes exist; full architecture-level shared safety governance remains pending. |
 | Fleet operations expansion | In Progress | Drivers, route manifests, delivery notes, inventory closeouts, operational geography, and heatmap routes exist; full target platform expansion remains pending. |
 | KPI and BI foundation | In Progress | Operational heatmap, geography, account intelligence, prediction, and supervisor intelligence code exists; configurable KPI engine is not verified complete. |
@@ -134,13 +135,14 @@ Key documentation includes:
 
 ## 9. Current Priority
 
-Validate and review the API Tenant Enforcement branch before merge.
+Validate and review the Mobile Tenant Context branch before merge.
 
 Current validation basis:
 
 - Full backend test suite passes with `npm test`.
 - Auth/RBAC foundation test passes with `npm run test:auth-rbac`.
 - API tenant-enforcement test passes with `npm run test:api-tenant`.
+- Mobile tenant-context test passes with `npm run test:mobile-tenant`.
 - Secret audit passes with `npm run verify:secrets`.
 - Migration `004_authentication_rbac_foundation.sql` was applied to an isolated local PostgreSQL/PostGIS validation database.
 - Local `/health` and `/ready` passed against the isolated validation database.
@@ -182,11 +184,11 @@ Current approved decisions reflected in governing documentation and project dire
 
 ## 12. Immediate Next Steps
 
-1. Review the `api-tenant-enforcement` branch.
-2. Add full HTTP integration coverage for every Critical and High endpoint.
-3. Validate mobile authenticated Places proxy behavior against a fresh APK/backend pairing before pilot use.
-4. Complete explicit Platform Admin cross-Organization support workflow design.
-5. Remove or disable legacy shared admin and driver token fallbacks before production.
+1. Review the `mobile-tenant-context` branch.
+2. Run device-level Expo smoke tests with a real authenticated driver session.
+3. Verify legacy mobile queue migration/quarantine on a device with existing unscoped queued work.
+4. Confirm route-event, delivery-photo, stop-completion, and delivery-operation offline behavior before pilot APK release.
+5. Continue lower-risk public/reference endpoint review before production hardening.
 
 ## 13. Update Rules
 

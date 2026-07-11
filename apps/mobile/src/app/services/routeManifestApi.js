@@ -158,7 +158,7 @@ export async function flushPendingStopStatusUpdates() {
         }
         results[operation.id] = result;
         synced += 1;
-        await removePendingStopOperation(operation.id);
+        await removePendingStopOperation(operation.id, operation);
       } catch (error) {
         const isLegacyCompletionBlocked =
           error?.status === 409
@@ -166,10 +166,10 @@ export async function flushPendingStopStatusUpdates() {
             String(operation.payload?.status || '').toLowerCase()
           );
         if (isLegacyCompletionBlocked) {
-          await removePendingStopOperation(operation.id);
+          await removePendingStopOperation(operation.id, operation);
           continue;
         }
-        await markPendingStopOperationFailed(operation.id, error.message);
+        await markPendingStopOperationFailed(operation.id, error.message, operation);
         break;
       }
     }
@@ -230,11 +230,11 @@ export async function fetchStopDeliverySettlement(stopId, options = {}) {
     if (!response.ok) {
       throw apiError(data?.error || `Delivery details failed. HTTP ${response.status}`, response);
     }
-    await cacheStopDelivery(stopId, options.driverId, data);
+    await cacheStopDelivery(stopId, options.driverId, data, options);
     return data;
   } catch (error) {
     if (error?.status) throw error;
-    const cached = await readCachedStopDelivery(stopId, options.driverId);
+    const cached = await readCachedStopDelivery(stopId, options.driverId, options);
     if (!cached) throw error;
     return {
       ...cached,
@@ -254,11 +254,11 @@ export async function lookupProductByBarcode(barcode, options = {}) {
     );
     const data = await readJson(response);
     if (!response.ok) throw apiError(data?.error || `Product lookup failed. HTTP ${response.status}`, response);
-    await cacheBarcodeProduct(value, data.product);
+    await cacheBarcodeProduct(value, data.product, options);
     return data.product;
   } catch (error) {
     if (error?.status) throw error;
-    const cached = await readCachedBarcodeProduct(value);
+    const cached = await readCachedBarcodeProduct(value, options);
     if (!cached) throw error;
     return { ...cached, loadedFromOfflineCache: true };
   }
@@ -415,11 +415,11 @@ export async function addRouteTruckInventory(manifestId, payload, options = {}) 
       { ...payload, clientOperationId: operation.id },
       options
     );
-    await removePendingDeliveryOperation(operation.id);
+    await removePendingDeliveryOperation(operation.id, operation);
     return data;
   } catch (error) {
     if (error?.status) {
-      await removePendingDeliveryOperation(operation.id);
+      await removePendingDeliveryOperation(operation.id, operation);
       throw error;
     }
     return { ok: true, queued: true, operationId: operation.id, items: [] };
@@ -441,7 +441,7 @@ async function sendStopDeliverySettlement(stopId, payload, options = {}) {
   if (!response.ok) {
     throw apiError(data?.error || `Delivery settlement failed. HTTP ${response.status}`, response);
   }
-  await cacheStopDelivery(stopId, options.driverId, data);
+  await cacheStopDelivery(stopId, options.driverId, data, options);
   return data;
 }
 
@@ -455,7 +455,7 @@ export async function saveStopDeliverySettlement(stopId, payload, options = {}) 
       { stopId, settlement: payload },
       options
     );
-    const cached = await readCachedStopDelivery(stopId, options.driverId);
+    const cached = await readCachedStopDelivery(stopId, options.driverId, options);
     const optimistic = cached
       ? {
           ...cached,
@@ -472,7 +472,7 @@ export async function saveStopDeliverySettlement(stopId, payload, options = {}) 
           order: null,
           settlement: { ...(payload || {}), pendingSync: true },
         };
-    await cacheStopDelivery(stopId, options.driverId, optimistic);
+    await cacheStopDelivery(stopId, options.driverId, optimistic, options);
     return {
       ...optimistic,
       ok: true,
@@ -617,10 +617,10 @@ export async function flushPendingDeliveryOperations() {
             operation
           );
         }
-        await removePendingDeliveryOperation(operation.id);
+        await removePendingDeliveryOperation(operation.id, operation);
         synced += 1;
       } catch (error) {
-        await markDeliveryOperationFailed(operation.id, error.message);
+        await markDeliveryOperationFailed(operation.id, error.message, operation);
         break;
       }
     }
