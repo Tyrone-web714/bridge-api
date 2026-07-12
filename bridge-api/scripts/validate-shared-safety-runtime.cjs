@@ -29,7 +29,7 @@ async function seedOrganization(id, name) {
 
 async function main() {
   assert(process.env.DATABASE_URL, 'DATABASE_URL is required');
-  assert(/127\.0\.0\.1:55441/.test(process.env.DATABASE_URL), 'runtime validation must use isolated local PostgreSQL on 127.0.0.1:55441');
+  assert(/127\.0\.0\.1:5544\d/.test(process.env.DATABASE_URL), 'runtime validation must use isolated local PostgreSQL on a 5544x validation port');
 
   await seedOrganization(BOOTSTRAP_ORGANIZATION.id, BOOTSTRAP_ORGANIZATION.name);
   await seedOrganization('validation-org-b', 'Validation Organization B');
@@ -99,6 +99,16 @@ async function main() {
     latitude: 29.421,
     longitude: -98.45
   });
+  let privateMediaRejected = false;
+  try {
+    await sharedSafety.approveCandidate(candidate.id, platformAdmin, {
+      severity: 'high',
+      sanitizedMedia: [{ url: 'https://storage.example.invalid/hazard-reports/private-route-photo.jpg' }]
+    });
+  } catch (error) {
+    privateMediaRejected = error.code === 'UNSANITIZED_SHARED_MEDIA';
+  }
+  assert(privateMediaRejected, 'private media references must not be published');
   const record = await sharedSafety.approveCandidate(candidate.id, platformAdmin, {
     severity: 'high',
     confidence: 'medium'
@@ -109,6 +119,7 @@ async function main() {
   const published = shared.find((entry) => entry.id === record.id);
   assert(published, 'approved record must appear in shared read path');
   assert(!Object.prototype.hasOwnProperty.call(published, 'sourceOrganizationId'), 'shared record must not expose source organization');
+  assert(!Object.prototype.hasOwnProperty.call(published, 'metadata'), 'shared record must not expose publication metadata');
 
   const rejection = await sharedSafety.createPrivateHazardSubmission({
     hazardType: 'truck_restriction',

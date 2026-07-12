@@ -104,6 +104,40 @@ function assertSanitizedDescription(description) {
   return cleaned;
 }
 
+function assertNoPrivateReferenceInJson(value, code = 'UNSANITIZED_SHARED_DATA') {
+  const serialized = JSON.stringify(value || {});
+  const blocked = PRIVATE_REFERENCE_PATTERNS.find((pattern) => pattern.test(serialized));
+  const privateUrl = /private|manual-hazards|hazard-reports|delivery-notes|receipt|manifest|route/i.test(serialized)
+    || /https?:\/\/(localhost|127\.0\.0\.1)/i.test(serialized);
+  if (blocked || privateUrl) {
+    const error = new Error('Shared Safety publication data still appears to contain private operational references.');
+    error.status = 400;
+    error.code = code;
+    throw error;
+  }
+}
+
+function sanitizeSharedMedia(value) {
+  const media = Array.isArray(value) ? value : [];
+  return media.slice(0, 8).map((item) => {
+    const safe = {
+      id: cleanNullableText(item?.id, 120),
+      type: cleanNullableText(item?.type || item?.mediaType, 80),
+      url: cleanNullableText(item?.url || item?.publicUrl, 1000),
+      caption: cleanNullableText(item?.caption, 240),
+      approvedAt: cleanNullableText(item?.approvedAt || new Date().toISOString(), 80)
+    };
+    assertNoPrivateReferenceInJson(safe, 'UNSANITIZED_SHARED_MEDIA');
+    if (!safe.url) {
+      const error = new Error('Approved shared media requires a sanitized public URL.');
+      error.status = 400;
+      error.code = 'SANITIZED_MEDIA_URL_REQUIRED';
+      throw error;
+    }
+    return safe;
+  });
+}
+
 function compactMetadata(value, fallback = {}) {
   if (!value || typeof value !== 'object') return fallback;
   return value;
@@ -184,8 +218,7 @@ function sharedRecordFromRow(row) {
     createdAt: row.created_at,
     updatedAt: row.updated_at,
     supersededBy: row.superseded_by,
-    sanitizedMedia: row.sanitized_media || [],
-    metadata: row.metadata || {}
+    sanitizedMedia: row.sanitized_media || []
   };
 }
 
@@ -451,6 +484,7 @@ async function approveCandidate(id, context, input = {}) {
     }
     assertSanitizedDescription(candidate.sanitized_description);
     const sharedRecordId = crypto.randomUUID();
+    const sanitizedMedia = sanitizeSharedMedia(input.sanitizedMedia);
     const sharedResult = await client.query(
       `INSERT INTO shared_safety_records (
         id, hazard_type, latitude, longitude, geometry, severity, verification_status,
@@ -474,8 +508,8 @@ async function approveCandidate(id, context, input = {}) {
         cleanText(input.confidence || 'medium', 40),
         cleanText(input.evidenceLevel || 'reviewed_submission', 80),
         cleanText(context.actorId, 120),
-        JSON.stringify(Array.isArray(input.sanitizedMedia) ? input.sanitizedMedia : []),
-        JSON.stringify(compactMetadata(input.metadata, {}))
+        JSON.stringify(sanitizedMedia),
+        JSON.stringify({})
       ]
     );
     await client.query(

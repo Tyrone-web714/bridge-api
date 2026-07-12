@@ -62,12 +62,15 @@ assertContains(server, "RATE_LIMIT_SHARED_SAFETY_MAX", 'Shared Safety rate limit
 
 assertContains(service, 'assertSanitizedDescription', 'Sanitization guard');
 assertContains(service, 'UNSANITIZED_PRIVATE_REFERENCE', 'Unsanitizable content guard');
+assertContains(service, 'sanitizeSharedMedia', 'Shared media sanitization guard');
+assertContains(service, 'UNSANITIZED_SHARED_MEDIA', 'Private shared media guard');
 assertContains(service, "review_status !== 'pending_review' || candidate.sanitization_status !== 'sanitized'", 'Approval requires sanitization');
 assertContains(service, 'shared_safety_publication_sources', 'Private source linkage kept out of shared record');
 assertContains(service, 'source_organization_id', 'Private source organization retained for audit linkage');
 assertContains(service, 'SELECT id, hazard_type, latitude, longitude, geometry, severity, verification_status', 'Shared read projection');
 assert(!/SELECT \*/.test(service.match(/async function listSharedRecords[\s\S]*?return result\.rows\.map/)?.[0] || ''), 'Shared read must not SELECT *');
 assert(!(service.match(/function sharedRecordFromRow[\s\S]*?}\n/)?.[0] || '').includes('sourceOrganizationId'), 'Shared record response must not expose source organization');
+assert(!(service.match(/function sharedRecordFromRow[\s\S]*?}\n/)?.[0] || '').includes('metadata'), 'Shared record response must not expose publication metadata');
 
 assertContains(authorization, "path.startsWith('/api/shared-safety/moderation')", 'Moderation authorization classification');
 assertContains(authorization, "path.includes('/nominate')", 'Nomination authorization classification');

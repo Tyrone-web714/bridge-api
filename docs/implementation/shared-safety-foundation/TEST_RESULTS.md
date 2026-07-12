@@ -10,7 +10,7 @@ Required checks:
 - `npm run test:api-tenant`: Passed.
 - `npm run test:mobile-tenant`: Passed.
 - `npm run test:shared-safety`: Passed.
-- `npm run validate:shared-safety`: Passed against isolated local PostgreSQL/PostGIS on `127.0.0.1:55441`.
+- `npm run validate:shared-safety`: Passed against isolated local PostgreSQL/PostGIS on `127.0.0.1:55442`.
 - `npm run verify:secrets`: Passed.
 - migration validation on isolated PostgreSQL/PostGIS: migrations `001` through `005` applied successfully.
 - rollback validation: destructive rollback sequence was validated inside a transaction and rolled back; all four Shared Safety tables remained present.
@@ -20,6 +20,8 @@ Required checks:
 - moderation approval/rejection smoke tests: Passed.
 - shared read smoke test: Passed.
 - tenant-isolation smoke test: Passed.
+- private shared-media rejection smoke test: Passed.
+- shared-read metadata exclusion check: Passed.
 - `git diff --check`: Passed.
 
 Production data was not modified.
