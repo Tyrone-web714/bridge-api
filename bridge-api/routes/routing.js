@@ -8,6 +8,7 @@ const repositories = require('../db/repositories');
 const adminAuth = require('../services/adminAuth');
 const driverAuth = require('../services/driverAuth');
 const photoStorage = require('../services/photoStorage');
+const sharedSafety = require('../services/sharedSafety');
 const router = express.Router();
 
 const client = new Client({});
@@ -4249,6 +4250,14 @@ router.post('/manual-hazards/report', driverAuth.requireDriverAuth, async (req, 
     const photos = await saveHazardReportPhotos(req.body?.photos, hazard.id, req);
     hazard.photos = photos;
     await saveManualHazardRecord(hazard);
+    await sharedSafety.createPrivateSubmissionFromDriverReport(
+      hazard,
+      driver,
+      photos,
+      req.body || {}
+    ).catch((sharedSafetyError) => {
+      console.warn(`shared safety private submission mirror failed for ${hazard.id}: ${sharedSafetyError.message}`);
+    });
     const verificationRecord = await saveDriverReportForStaticVerification(hazard, photos);
     return res.status(201).json({
       hazard,

@@ -7,7 +7,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "test": "npm run test:ai && npm run test:predictions && npm run test:supervisor-intelligence && npm run test:heatmaps && npm run test:imports && npm run test:delivery-settlement && npm run test:google-maps-compliance && npm run test:multi-tenant && npm run test:auth-rbac && npm run test:api-tenant && npm run test:mobile-tenant && npm run test:security && npm run test:dashboard",
+    "test": "npm run test:ai && npm run test:predictions && npm run test:supervisor-intelligence && npm run test:heatmaps && npm run test:imports && npm run test:delivery-settlement && npm run test:google-maps-compliance && npm run test:multi-tenant && npm run test:auth-rbac && npm run test:api-tenant && npm run test:mobile-tenant && npm run test:shared-safety && npm run test:security && npm run test:dashboard",
     "test:ai": "node scripts/check-ai-contracts.cjs",
     "test:predictions": "node scripts/check-prediction-engine.cjs",
     "test:supervisor-intelligence": "node scripts/check-supervisor-intelligence-contracts.cjs",
@@ -19,7 +19,9 @@
     "test:auth-rbac": "node scripts/check-auth-rbac-foundation.cjs",
     "test:api-tenant": "node scripts/check-api-tenant-enforcement.cjs",
     "test:mobile-tenant": "node scripts/check-mobile-tenant-context.cjs",
+    "test:shared-safety": "node scripts/check-shared-safety-foundation.cjs",
     "validate:auth-rbac": "node scripts/final-validate-auth-rbac-foundation.cjs",
+    "validate:shared-safety": "node scripts/validate-shared-safety-runtime.cjs",
     "test:security": "node scripts/check-security-controls.cjs",
     "test:dashboard": "node scripts/check-supervisor-dashboard-contracts.cjs",
     "start": "node scripts/run-migrations.cjs && node server.js",

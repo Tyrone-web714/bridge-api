@@ -90,6 +90,10 @@ app.use('/api/routing', createRateLimiter({
   name: 'driver-routing',
   max: positiveInteger(process.env.RATE_LIMIT_DRIVER_MAX, 600)
 }));
+app.use('/api/shared-safety', createRateLimiter({
+  name: 'shared-safety',
+  max: positiveInteger(process.env.RATE_LIMIT_SHARED_SAFETY_MAX, 300)
+}));
 app.use('/api/route-manifests/driver', createRateLimiter({
   name: 'driver-manifests',
   max: positiveInteger(process.env.RATE_LIMIT_DRIVER_MAX, 600)
@@ -126,6 +130,14 @@ app.use('/api/routing/manual-hazards/report', express.json({ limit: HAZARD_REPOR
 app.use('/api/route-manifests', express.json({ limit: MANIFEST_BODY_LIMIT }));
 app.use('/api/data-imports', express.json({ limit: IMPORT_BODY_LIMIT }));
 app.use(express.json({ limit: REQUEST_BODY_LIMIT }));
+function hydrateDriverBearerIfPresent(req, res, next) {
+  const hasDriverBearer = /^Bearer\s+/i.test(String(req.get('authorization') || ''))
+    || Boolean(req.get('x-tsr-driver-token'));
+  if (!hasDriverBearer) return next();
+  return driverAuth.requireDriverAuth(req, res, next);
+}
+app.use('/api/shared-safety', hydrateDriverBearerIfPresent);
+app.use('/api/routing/manual-hazards/report', hydrateDriverBearerIfPresent);
 app.use('/api', adminAuth.validateAdminSession);
 app.use('/api', authorization.attachAuthContext);
 app.use('/api', authorization.enforceApiTenantPolicy);
@@ -147,11 +159,13 @@ const operationalGeographyRoutes = require('./routes/operationalGeography');
 const dataImportRoutes = require('./routes/dataImports');
 const supervisorIntelligenceRoutes = require('./routes/supervisorIntelligence');
 const driverSessionRoutes = require('./routes/driverSessions');
+const sharedSafetyRoutes = require('./routes/sharedSafety');
 
 app.use('/api/bridges', bridgeRoutes);
 app.use('/api/drivers', driverRoutes);
 app.use('/api/supervisors', supervisorRoutes);
 app.use('/api/routing', routingRoutes);
+app.use('/api/shared-safety', sharedSafetyRoutes);
 app.use('/api/places', placesRoutes);
 app.use('/api/delivery-notes', deliveryNotesRoutes);
 app.use('/api/route-manifests', routeManifestRoutes);

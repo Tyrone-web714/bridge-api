@@ -251,6 +251,113 @@ async function ensureSchema() {
     CREATE INDEX IF NOT EXISTS audit_events_actor_idx ON audit_events(actor_type, actor_id);
     CREATE INDEX IF NOT EXISTS audit_events_occurred_at_idx ON audit_events(occurred_at DESC);
 
+    CREATE TABLE IF NOT EXISTS private_hazard_submissions (
+      id TEXT PRIMARY KEY,
+      organization_id TEXT NOT NULL REFERENCES organizations(id),
+      submitted_by_user_id TEXT,
+      internal_driver_id TEXT,
+      company_driver_number TEXT,
+      hazard_type TEXT NOT NULL,
+      latitude DOUBLE PRECISION NOT NULL,
+      longitude DOUBLE PRECISION NOT NULL,
+      heading DOUBLE PRECISION,
+      direction TEXT,
+      description TEXT,
+      source TEXT NOT NULL DEFAULT 'driver_report',
+      severity TEXT NOT NULL DEFAULT 'medium',
+      status TEXT NOT NULL DEFAULT 'submitted',
+      submitted_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      deleted_at TIMESTAMPTZ,
+      photo_metadata JSONB NOT NULL DEFAULT '[]'::jsonb,
+      private_context JSONB NOT NULL DEFAULT '{}'::jsonb,
+      moderation_candidate_id TEXT,
+      legacy_manual_hazard_id TEXT,
+      raw JSONB NOT NULL DEFAULT '{}'::jsonb
+    );
+
+    CREATE INDEX IF NOT EXISTS private_hazard_submissions_org_status_idx
+      ON private_hazard_submissions(organization_id, status, submitted_at DESC);
+    CREATE INDEX IF NOT EXISTS private_hazard_submissions_hazard_type_idx
+      ON private_hazard_submissions(hazard_type);
+    CREATE INDEX IF NOT EXISTS private_hazard_submissions_lat_lng_idx
+      ON private_hazard_submissions(latitude, longitude);
+    CREATE INDEX IF NOT EXISTS private_hazard_submissions_private_context_idx
+      ON private_hazard_submissions USING GIN(private_context);
+
+    CREATE TABLE IF NOT EXISTS shared_safety_moderation_candidates (
+      id TEXT PRIMARY KEY,
+      source_submission_id TEXT NOT NULL REFERENCES private_hazard_submissions(id),
+      source_organization_id TEXT NOT NULL REFERENCES organizations(id),
+      proposed_shared_type TEXT NOT NULL,
+      sanitized_description TEXT,
+      sanitized_latitude DOUBLE PRECISION,
+      sanitized_longitude DOUBLE PRECISION,
+      sanitized_geometry JSONB NOT NULL DEFAULT '{}'::jsonb,
+      sanitization_status TEXT NOT NULL DEFAULT 'pending_sanitization',
+      review_status TEXT NOT NULL DEFAULT 'pending_review',
+      reviewer_user_id TEXT,
+      review_notes TEXT,
+      submitted_for_review_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      reviewed_at TIMESTAMPTZ,
+      approved_at TIMESTAMPTZ,
+      rejected_at TIMESTAMPTZ,
+      rejection_reason TEXT,
+      duplicate_of_shared_record_id TEXT,
+      merged_into_shared_record_id TEXT,
+      published_shared_record_id TEXT,
+      version INTEGER NOT NULL DEFAULT 1,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+
+    CREATE INDEX IF NOT EXISTS shared_safety_moderation_status_idx
+      ON shared_safety_moderation_candidates(review_status, sanitization_status, submitted_for_review_at DESC);
+    CREATE INDEX IF NOT EXISTS shared_safety_moderation_source_org_idx
+      ON shared_safety_moderation_candidates(source_organization_id, review_status);
+
+    CREATE TABLE IF NOT EXISTS shared_safety_records (
+      id TEXT PRIMARY KEY,
+      hazard_type TEXT NOT NULL,
+      latitude DOUBLE PRECISION NOT NULL,
+      longitude DOUBLE PRECISION NOT NULL,
+      geometry JSONB NOT NULL DEFAULT '{}'::jsonb,
+      severity TEXT NOT NULL DEFAULT 'medium',
+      verification_status TEXT NOT NULL DEFAULT 'approved',
+      effective_from TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      effective_to TIMESTAMPTZ,
+      status TEXT NOT NULL DEFAULT 'active',
+      source_classification TEXT NOT NULL DEFAULT 'approved_shared_safety',
+      confidence TEXT NOT NULL DEFAULT 'medium',
+      evidence_level TEXT NOT NULL DEFAULT 'reviewed_submission',
+      approved_by TEXT NOT NULL,
+      approved_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      superseded_by TEXT REFERENCES shared_safety_records(id),
+      sanitized_media JSONB NOT NULL DEFAULT '[]'::jsonb,
+      metadata JSONB NOT NULL DEFAULT '{}'::jsonb
+    );
+
+    CREATE INDEX IF NOT EXISTS shared_safety_records_status_type_idx
+      ON shared_safety_records(status, hazard_type, effective_from DESC);
+    CREATE INDEX IF NOT EXISTS shared_safety_records_lat_lng_idx
+      ON shared_safety_records(latitude, longitude);
+    CREATE INDEX IF NOT EXISTS shared_safety_records_geometry_idx
+      ON shared_safety_records USING GIN(geometry);
+
+    CREATE TABLE IF NOT EXISTS shared_safety_publication_sources (
+      id BIGSERIAL PRIMARY KEY,
+      shared_record_id TEXT NOT NULL REFERENCES shared_safety_records(id),
+      moderation_candidate_id TEXT NOT NULL REFERENCES shared_safety_moderation_candidates(id),
+      source_submission_id TEXT NOT NULL REFERENCES private_hazard_submissions(id),
+      source_organization_id TEXT NOT NULL REFERENCES organizations(id),
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+
+    CREATE INDEX IF NOT EXISTS shared_safety_publication_sources_record_idx
+      ON shared_safety_publication_sources(shared_record_id);
+
     CREATE TABLE IF NOT EXISTS drivers (
       driver_id TEXT PRIMARY KEY,
       driver_name TEXT NOT NULL,

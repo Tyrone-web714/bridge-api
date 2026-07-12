@@ -228,10 +228,27 @@ function permissionForRequest(req) {
   if (path.startsWith('/api/delivery-notes/photos')) return rbac.PERMISSIONS.REPORTS_VIEW;
   if (path.startsWith('/api/routing/route-sessions')) return rbac.PERMISSIONS.ROUTE_REPLAY_VIEW;
   if (path.startsWith('/api/routing/manual-hazards/admin-users')) return rbac.PERMISSIONS.USERS_MANAGE;
+  if (path.startsWith('/api/shared-safety/moderation')) {
+    if (path.includes('/approve')) return rbac.PERMISSIONS.SHARED_SAFETY_APPROVE;
+    if (path.includes('/reject')) return rbac.PERMISSIONS.SHARED_SAFETY_REJECT;
+    return rbac.PERMISSIONS.SHARED_SAFETY_REVIEW;
+  }
+  if (path.startsWith('/api/shared-safety/records') && ['PUT', 'PATCH', 'DELETE'].includes(method)) {
+    return rbac.PERMISSIONS.SHARED_SAFETY_RETIRE;
+  }
+  if (path.startsWith('/api/shared-safety/submissions')) {
+    if (path.includes('/nominate')) return rbac.PERMISSIONS.HAZARD_REVIEW_ORGANIZATION;
+    return ['POST', 'PUT', 'PATCH', 'DELETE'].includes(method)
+      ? rbac.PERMISSIONS.HAZARD_SUBMIT
+      : rbac.PERMISSIONS.HAZARD_VIEW_ORGANIZATION;
+  }
+  if (path.startsWith('/api/routing/manual-hazards/report')) {
+    return rbac.PERMISSIONS.HAZARD_SUBMIT;
+  }
   if (path.startsWith('/api/routing/manual-hazards') || path.startsWith('/api/routing/hazard-verification') || path.startsWith('/api/routing/hazard-location-backfill')) {
     return ['POST', 'PUT', 'PATCH', 'DELETE'].includes(method)
-      ? rbac.PERMISSIONS.HAZARDS_REVIEW
-      : rbac.PERMISSIONS.HAZARDS_REVIEW;
+      ? rbac.PERMISSIONS.HAZARD_REVIEW_ORGANIZATION
+      : rbac.PERMISSIONS.HAZARD_VIEW_ORGANIZATION;
   }
   return null;
 }
@@ -240,7 +257,10 @@ function enforceApiTenantPolicy(req, res, next) {
   if (isPublicPath(req)) return next();
   const permission = permissionForRequest(req);
   if (!permission) return next();
-  const denied = enforcePermission(req, res, permission);
+  const path = String(req.originalUrl || req.path || '').split('?')[0].replace(/\/+$/, '') || '/';
+  const platformScoped = path.startsWith('/api/shared-safety/moderation')
+    || (path.startsWith('/api/shared-safety/records') && ['PUT', 'PATCH', 'DELETE'].includes(String(req.method || 'GET').toUpperCase()));
+  const denied = enforcePermission(req, res, permission, { organizationRequired: !platformScoped });
   if (denied) return denied;
   return next();
 }
