@@ -32,11 +32,18 @@ Runtime smoke checks passed:
 - `/ready` returned `200`
 - Platform Admin queue page rendered and contained `Shared Safety Moderation`
 - Platform Admin candidate detail page rendered and contained `PRIVATE SOURCE`
-- Missing CSRF token on correction action returned `403`
-- Supervisor access to `/api/shared-safety/admin` returned `403`
+- Unauthenticated browser access to `/api/shared-safety/admin` returned `302` to `/api/routing/manual-hazards/admin/login`
+- Unauthenticated JSON/API caller access to moderation candidates returned `401`
+- Organization Admin, Supervisor, Driver, and Warehouse Employee sessions all received `403` for `/api/shared-safety/admin`
+- Missing CSRF token, invalid CSRF token, and body-only CSRF token attempts returned `403` across sanitize, approve, reject, correction, duplicate, merge/link, retire, and supersede actions
+- Valid CSRF with non-JSON mutation content returned `415`
 
 Coverage notes:
 
 - Moderation queue, filters, candidate detail, sanitization preview, moderation actions, audit trail, and Platform Admin navigation are covered by source-level contract checks.
 - Runtime Shared Safety validation covers private submission isolation, sanitization controls, approval/rejection, correction request, duplicate marking, merge/link, supersede, retire, and sanitized shared-read privacy.
 - The UI uses coordinate preview cards only; it does not cache or embed third-party map tiles.
+
+Defects fixed during final merge-gate validation:
+
+- Moderation action CSRF validation previously accepted a request-body `csrfToken`. The guard now requires the `x-tsr-admin-csrf` header and rejects non-JSON moderation mutation requests.

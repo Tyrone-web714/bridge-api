@@ -39,6 +39,8 @@ assertContains(routes, 'shared_safety_correction_requested', 'Correction audit e
 assertContains(routes, 'shared_safety_merge_link_completed', 'Merge audit event');
 assertContains(routes, 'shared_safety_superseded', 'Supersede audit event');
 assertContains(routes, 'shared_safety_csrf_denial', 'CSRF audit event');
+assertContains(routes, 'shared_safety_invalid_content_type', 'Invalid content-type audit event');
+assertContains(routes, 'Moderation actions require application/json', 'Moderation action content-type enforcement');
 
 [
   "sharedSafety.sanitizeCandidate",

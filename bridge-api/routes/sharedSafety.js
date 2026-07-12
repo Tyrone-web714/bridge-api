@@ -29,10 +29,16 @@ function csrfTokenForSession(session = {}) {
 
 function requireCsrf(req, res, next) {
   const expected = csrfTokenForSession(req.adminSession || {});
-  const presented = String(req.get('x-tsr-admin-csrf') || req.body?.csrfToken || '');
+  const presented = String(req.get('x-tsr-admin-csrf') || '');
   if (!presented || presented !== expected) {
     audit(req, 'shared_safety_csrf_denial', 403, { code: 'CSRF_TOKEN_INVALID' });
     return res.status(403).json({ error: 'Invalid admin action token.', code: 'CSRF_TOKEN_INVALID' });
+  }
+  const contentType = String(req.get('content-type') || '').toLowerCase();
+  if (['POST', 'PUT', 'PATCH', 'DELETE'].includes(String(req.method || '').toUpperCase())
+    && !contentType.includes('application/json')) {
+    audit(req, 'shared_safety_invalid_content_type', 415, { code: 'INVALID_CONTENT_TYPE' });
+    return res.status(415).json({ error: 'Moderation actions require application/json.', code: 'INVALID_CONTENT_TYPE' });
   }
   return next();
 }
