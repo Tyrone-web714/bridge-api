@@ -134,9 +134,78 @@ async function main() {
   const sharedAfterReject = await sharedSafety.listSharedRecords({ limit: 250 });
   assert(!sharedAfterReject.some((entry) => entry.id === rejectedCandidate.id), 'rejected candidate must not appear in shared reads');
 
-  await sharedSafety.retireSharedRecord(record.id, platformAdmin, { reason: 'Runtime validation cleanup.' });
+  const correction = await sharedSafety.createPrivateHazardSubmission({
+    hazardType: 'dangerous_turn',
+    latitude: 29.44,
+    longitude: -98.46,
+    description: 'Private evidence for correction test'
+  }, driverContext);
+  const correctionCandidate = await sharedSafety.nominateSubmission(correction.submission.id, orgReviewer, {
+    proposedSharedType: 'dangerous_turn'
+  });
+  const correctionResult = await sharedSafety.requestCandidateCorrection(correctionCandidate.id, platformAdmin, {
+    reviewNotes: 'Need additional field evidence before publication.'
+  });
+  assert(correctionResult.reviewStatus === 'correction_requested', 'correction request must update review status');
+
+  const merge = await sharedSafety.createPrivateHazardSubmission({
+    hazardType: 'low_bridge',
+    latitude: 29.422,
+    longitude: -98.451,
+    description: 'Private evidence for merge test'
+  }, driverContext);
+  const mergeCandidate = await sharedSafety.nominateSubmission(merge.submission.id, orgReviewer, {
+    proposedSharedType: 'low_bridge'
+  });
+  const merged = await sharedSafety.mergeCandidateIntoSharedRecord(mergeCandidate.id, platformAdmin, {
+    sharedRecordId: record.id,
+    reviewNotes: 'Evidence supports existing shared record.'
+  });
+  assert(merged.reviewStatus === 'merged' && merged.mergedIntoSharedRecordId === record.id, 'merge/link must preserve linkage to existing shared record');
+
+  const duplicate = await sharedSafety.createPrivateHazardSubmission({
+    hazardType: 'low_bridge',
+    latitude: 29.423,
+    longitude: -98.452,
+    description: 'Private evidence for duplicate test'
+  }, driverContext);
+  const duplicateCandidate = await sharedSafety.nominateSubmission(duplicate.submission.id, orgReviewer, {
+    proposedSharedType: 'low_bridge'
+  });
+  const duplicateResult = await sharedSafety.markDuplicate(duplicateCandidate.id, platformAdmin, {
+    sharedRecordId: record.id,
+    reviewNotes: 'Duplicate of published runtime validation record.'
+  });
+  assert(duplicateResult.reviewStatus === 'duplicate' && duplicateResult.duplicateOfSharedRecordId === record.id, 'duplicate decision must link to existing shared record');
+
+  const replacement = await sharedSafety.createPrivateHazardSubmission({
+    hazardType: 'low_bridge',
+    latitude: 29.424,
+    longitude: -98.453,
+    description: 'Private evidence for replacement record'
+  }, driverContext);
+  const replacementCandidate = await sharedSafety.nominateSubmission(replacement.submission.id, orgReviewer, {
+    proposedSharedType: 'low_bridge'
+  });
+  await sharedSafety.sanitizeCandidate(replacementCandidate.id, platformAdmin, {
+    sanitizedDescription: 'Updated low-clearance bridge record affects commercial vehicles near the marked coordinates.',
+    latitude: 29.424,
+    longitude: -98.453
+  });
+  const replacementRecord = await sharedSafety.approveCandidate(replacementCandidate.id, platformAdmin, {
+    severity: 'high',
+    confidence: 'medium'
+  });
+  const superseded = await sharedSafety.supersedeSharedRecord(record.id, platformAdmin, {
+    replacementSharedRecordId: replacementRecord.id,
+    reason: 'Runtime validation replacement record.'
+  });
+  assert(superseded.status === 'superseded' && superseded.supersededBy === replacementRecord.id, 'supersede must preserve replacement linkage');
+
+  await sharedSafety.retireSharedRecord(replacementRecord.id, platformAdmin, { reason: 'Runtime validation cleanup.' });
   const afterRetire = await sharedSafety.listSharedRecords({ limit: 250 });
-  assert(!afterRetire.some((entry) => entry.id === record.id), 'retired record must not appear as active shared safety');
+  assert(!afterRetire.some((entry) => entry.id === replacementRecord.id), 'retired record must not appear as active shared safety');
+  assert(!afterRetire.some((entry) => entry.id === record.id), 'superseded record must not appear as active shared safety');
 
   console.log('[shared-safety-runtime] isolated database smoke checks passed');
 }

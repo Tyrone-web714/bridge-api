@@ -260,7 +260,9 @@ function enforceApiTenantPolicy(req, res, next) {
   const path = String(req.originalUrl || req.path || '').split('?')[0].replace(/\/+$/, '') || '/';
   const platformScoped = path.startsWith('/api/shared-safety/moderation')
     || (path.startsWith('/api/shared-safety/records') && ['PUT', 'PATCH', 'DELETE'].includes(String(req.method || 'GET').toUpperCase()));
-  const denied = enforcePermission(req, res, permission, { organizationRequired: !platformScoped });
+  const platformAdminWithoutOrganization = req.authContext?.approvedRole === rbac.ROLES.PLATFORM_ADMIN
+    && !req.authContext.organizationId;
+  const denied = enforcePermission(req, res, permission, { organizationRequired: !(platformScoped || platformAdminWithoutOrganization) });
   if (denied) return denied;
   return next();
 }

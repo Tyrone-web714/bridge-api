@@ -13,6 +13,7 @@ function requireAdminDashboard(req, res, next) {
 function renderAdminDashboard(session) {
   const username = session?.username || 'supervisor';
   const role = session?.role || 'supervisor';
+  const approvedRole = session?.approvedRole || '';
   const sessionRole = String(username).toLowerCase() === String(role).toLowerCase()
     ? ''
     : role;
@@ -52,6 +53,13 @@ function renderAdminDashboard(session) {
       description: 'Verify imported low bridge and restricted-road records on a map before they become trusted production hazards.',
       href: '/api/routing/hazard-verification/admin',
       accent: '#ffbf3f'
+    },
+    {
+      title: 'Shared Safety Moderation',
+      description: 'Sanitize and approve Organization-submitted safety intelligence before it becomes platform-global.',
+      href: '/api/shared-safety/admin',
+      accent: '#24a148',
+      platformAdminOnly: true
     },
     {
       title: 'Delivery Notes',
@@ -109,7 +117,11 @@ function renderAdminDashboard(session) {
       adminOnly: true
     }
   ];
-  const visibleCards = cards.filter((card) => !card.adminOnly || role === 'admin');
+  const visibleCards = cards.filter((card) => {
+    if (card.platformAdminOnly) return approvedRole === 'PLATFORM_ADMIN';
+    if (card.adminOnly) return role === 'admin' || approvedRole === 'PLATFORM_ADMIN';
+    return true;
+  });
 
   return `<!doctype html>
 <html>

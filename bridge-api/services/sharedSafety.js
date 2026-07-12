@@ -222,6 +222,21 @@ function sharedRecordFromRow(row) {
   };
 }
 
+function auditEventFromRow(row) {
+  if (!row) return null;
+  return {
+    id: row.id,
+    requestId: row.request_id,
+    actorType: row.actor_type,
+    actorId: row.actor_id,
+    eventType: row.event_type,
+    outcome: row.outcome,
+    statusCode: row.status_code,
+    occurredAt: row.occurred_at,
+    metadata: row.metadata || {}
+  };
+}
+
 function buildPrivateSubmission(input, context) {
   const organizationId = assertOrganizationContext(context);
   const latitude = numeric(input.latitude ?? input.lat);
@@ -404,21 +419,108 @@ async function listModerationCandidates(context, filters = {}) {
   assertDatabaseReady();
   assertPlatformAdmin(context);
   const status = cleanNullableText(filters.status, 80);
+  const hazardType = filters.hazardType || filters.hazard_type || filters.type;
+  const sourceOrganizationId = cleanNullableText(filters.sourceOrganizationId || filters.source_organization_id, 120);
+  const sort = cleanText(filters.sort || 'newest', 40);
   const limit = Math.min(Math.max(Number.parseInt(filters.limit, 10) || 100, 1), 250);
+  const offset = Math.max(Number.parseInt(filters.offset, 10) || 0, 0);
   const params = [limit];
   let where = '1 = 1';
   if (status) {
     params.push(status);
     where += ` AND review_status = $${params.length}`;
   }
+  if (hazardType) {
+    params.push(normalizeHazardType(hazardType));
+    where += ` AND proposed_shared_type = $${params.length}`;
+  }
+  if (sourceOrganizationId) {
+    params.push(sourceOrganizationId);
+    where += ` AND source_organization_id = $${params.length}`;
+  }
+  if (filters.submittedFrom || filters.submitted_from) {
+    params.push(filters.submittedFrom || filters.submitted_from);
+    where += ` AND submitted_for_review_at >= $${params.length}::timestamptz`;
+  }
+  if (filters.submittedTo || filters.submitted_to) {
+    params.push(filters.submittedTo || filters.submitted_to);
+    where += ` AND submitted_for_review_at <= $${params.length}::timestamptz`;
+  }
+  if (filters.severity) {
+    params.push(cleanText(filters.severity, 40));
+    where += ` AND EXISTS (
+      SELECT 1 FROM private_hazard_submissions s
+      WHERE s.id = source_submission_id AND s.severity = $${params.length}
+    )`;
+  }
+  params.push(offset);
+  const orderBy = sort === 'oldest'
+    ? 'submitted_for_review_at ASC'
+    : sort === 'status'
+      ? 'review_status ASC, submitted_for_review_at DESC'
+      : sort === 'type'
+        ? 'proposed_shared_type ASC, submitted_for_review_at DESC'
+        : 'submitted_for_review_at DESC';
   const result = await postgres.query(
     `SELECT * FROM shared_safety_moderation_candidates
      WHERE ${where}
-     ORDER BY submitted_for_review_at DESC
-     LIMIT $1`,
+     ORDER BY ${orderBy}
+     LIMIT $1 OFFSET $${params.length}`,
     params
   );
   return result.rows.map(candidateFromRow);
+}
+
+async function getModerationCandidateDetail(id, context) {
+  assertDatabaseReady();
+  assertPlatformAdmin(context);
+  const candidateResult = await postgres.query(
+    `SELECT c.*, s.hazard_type AS source_hazard_type, s.latitude AS source_latitude,
+            s.longitude AS source_longitude, s.heading AS source_heading,
+            s.direction AS source_direction, s.description AS source_description,
+            s.source AS source_submission_source, s.severity AS source_severity,
+            s.status AS source_submission_status, s.submitted_at AS source_submitted_at,
+            s.updated_at AS source_updated_at, s.photo_metadata AS source_photo_metadata,
+            s.private_context AS source_private_context, s.internal_driver_id AS source_internal_driver_id,
+            s.company_driver_number AS source_company_driver_number, s.submitted_by_user_id AS source_submitted_by_user_id,
+            o.name AS source_organization_name
+     FROM shared_safety_moderation_candidates c
+     JOIN private_hazard_submissions s ON s.id = c.source_submission_id
+     LEFT JOIN organizations o ON o.id = c.source_organization_id
+     WHERE c.id = $1`,
+    [cleanText(id, 120)]
+  );
+  const row = candidateResult.rows[0];
+  if (!row) {
+    const error = new Error('Moderation candidate not found.');
+    error.status = 404;
+    error.code = 'CANDIDATE_NOT_FOUND';
+    throw error;
+  }
+  const candidate = candidateFromRow(row);
+  const sourceSubmission = {
+    id: row.source_submission_id,
+    organizationId: row.source_organization_id,
+    organizationName: row.source_organization_name || row.source_organization_id,
+    hazardType: row.source_hazard_type,
+    latitude: row.source_latitude,
+    longitude: row.source_longitude,
+    heading: row.source_heading,
+    direction: row.source_direction,
+    description: row.source_description,
+    source: row.source_submission_source,
+    severity: row.source_severity,
+    status: row.source_submission_status,
+    submittedAt: row.source_submitted_at,
+    updatedAt: row.source_updated_at,
+    photoMetadata: row.source_photo_metadata || [],
+    privateContext: row.source_private_context || {},
+    internalDriverId: row.source_internal_driver_id,
+    companyDriverNumber: row.source_company_driver_number,
+    submittedByUserId: row.source_submitted_by_user_id
+  };
+  const auditEvents = await listModerationAuditEvents(id, context);
+  return { candidate, sourceSubmission, auditEvents };
 }
 
 async function sanitizeCandidate(id, context, input = {}) {
@@ -439,6 +541,7 @@ async function sanitizeCandidate(id, context, input = {}) {
          sanitized_latitude = $3,
          sanitized_longitude = $4,
          sanitized_geometry = $5::jsonb,
+         proposed_shared_type = COALESCE($8, proposed_shared_type),
          sanitization_status = 'sanitized',
          reviewer_user_id = $6,
          review_notes = COALESCE($7, review_notes),
@@ -453,13 +556,48 @@ async function sanitizeCandidate(id, context, input = {}) {
       longitude,
       JSON.stringify(compactMetadata(input.sanitizedGeometry || input.geometry, { type: 'Point', coordinates: [longitude, latitude] })),
       cleanNullableText(context.actorId, 120),
-      cleanNullableText(input.reviewNotes, 700)
+      cleanNullableText(input.reviewNotes, 700),
+      (input.proposedSharedType || input.hazardType || input.hazard_type)
+        ? normalizeHazardType(input.proposedSharedType || input.hazardType || input.hazard_type)
+        : null
     ]
   );
   if (!result.rows[0]) {
     const error = new Error('Moderation candidate not found or not sanitizable.');
     error.status = 404;
     error.code = 'CANDIDATE_NOT_SANITIZABLE';
+    throw error;
+  }
+  return candidateFromRow(result.rows[0]);
+}
+
+async function requestCandidateCorrection(id, context, input = {}) {
+  assertDatabaseReady();
+  assertPlatformAdmin(context);
+  const note = cleanNullableText(input.reviewNotes || input.note || input.reason, 700);
+  if (!note) {
+    const error = new Error('Reviewer note is required to request correction.');
+    error.status = 400;
+    error.code = 'CORRECTION_NOTE_REQUIRED';
+    throw error;
+  }
+  const result = await postgres.query(
+    `UPDATE shared_safety_moderation_candidates
+     SET review_status = 'correction_requested',
+         sanitization_status = CASE WHEN sanitization_status = 'sanitized' THEN 'pending_sanitization' ELSE sanitization_status END,
+         reviewer_user_id = $2,
+         review_notes = $3,
+         reviewed_at = NOW(),
+         updated_at = NOW(),
+         version = version + 1
+     WHERE id = $1 AND review_status IN ('pending_review', 'correction_requested')
+     RETURNING *`,
+    [cleanText(id, 120), cleanText(context.actorId, 120), note]
+  );
+  if (!result.rows[0]) {
+    const error = new Error('Moderation candidate not found or not correctable.');
+    error.status = 404;
+    error.code = 'CANDIDATE_NOT_CORRECTABLE';
     throw error;
   }
   return candidateFromRow(result.rows[0]);
@@ -546,9 +684,66 @@ async function approveCandidate(id, context, input = {}) {
   });
 }
 
+async function mergeCandidateIntoSharedRecord(id, context, input = {}) {
+  assertDatabaseReady();
+  assertPlatformAdmin(context);
+  const sharedRecordId = cleanText(input.sharedRecordId || input.mergedIntoSharedRecordId, 120);
+  if (!sharedRecordId) {
+    const error = new Error('Existing shared record ID is required for merge/link.');
+    error.status = 400;
+    error.code = 'MERGE_RECORD_REQUIRED';
+    throw error;
+  }
+  return postgres.withTransaction(async (client) => {
+    const existing = await client.query(
+      'SELECT id FROM shared_safety_records WHERE id = $1 AND status IN ($2, $3)',
+      [sharedRecordId, 'active', 'retired']
+    );
+    if (!existing.rows[0]) {
+      const error = new Error('Target shared safety record was not found.');
+      error.status = 404;
+      error.code = 'MERGE_RECORD_NOT_FOUND';
+      throw error;
+    }
+    const result = await client.query(
+      `UPDATE shared_safety_moderation_candidates
+       SET review_status = 'merged',
+           reviewer_user_id = $2,
+           merged_into_shared_record_id = $3,
+           reviewed_at = NOW(),
+           review_notes = COALESCE($4, review_notes),
+           updated_at = NOW(),
+           version = version + 1
+       WHERE id = $1 AND review_status IN ('pending_review', 'correction_requested')
+       RETURNING *`,
+      [cleanText(id, 120), cleanText(context.actorId, 120), sharedRecordId, cleanNullableText(input.reviewNotes, 700)]
+    );
+    if (!result.rows[0]) {
+      const error = new Error('Moderation candidate not found or not mergeable.');
+      error.status = 404;
+      error.code = 'CANDIDATE_NOT_MERGEABLE';
+      throw error;
+    }
+    await client.query(
+      `INSERT INTO shared_safety_publication_sources (
+        shared_record_id, moderation_candidate_id, source_submission_id, source_organization_id, created_at
+      ) VALUES ($1, $2, $3, $4, NOW())`,
+      [sharedRecordId, result.rows[0].id, result.rows[0].source_submission_id, result.rows[0].source_organization_id]
+    );
+    return candidateFromRow(result.rows[0]);
+  });
+}
+
 async function rejectCandidate(id, context, input = {}) {
   assertDatabaseReady();
   assertPlatformAdmin(context);
+  const rejectionReason = cleanNullableText(input.rejectionReason || input.reason, 700);
+  if (!rejectionReason) {
+    const error = new Error('Rejection reason is required.');
+    error.status = 400;
+    error.code = 'REJECTION_REASON_REQUIRED';
+    throw error;
+  }
   const result = await postgres.query(
     `UPDATE shared_safety_moderation_candidates
      SET review_status = 'rejected',
@@ -564,7 +759,7 @@ async function rejectCandidate(id, context, input = {}) {
     [
       cleanText(id, 120),
       cleanText(context.actorId, 120),
-      cleanNullableText(input.rejectionReason || input.reason, 700),
+      rejectionReason,
       cleanNullableText(input.reviewNotes, 700)
     ]
   );
@@ -618,6 +813,13 @@ async function markDuplicate(id, context, input = {}) {
 async function retireSharedRecord(id, context, input = {}) {
   assertDatabaseReady();
   assertPlatformAdmin(context);
+  const reason = cleanNullableText(input.reason, 700);
+  if (!reason) {
+    const error = new Error('Retirement reason is required.');
+    error.status = 400;
+    error.code = 'RETIRE_REASON_REQUIRED';
+    throw error;
+  }
   const result = await postgres.query(
     `UPDATE shared_safety_records
      SET status = 'retired',
@@ -629,13 +831,56 @@ async function retireSharedRecord(id, context, input = {}) {
     [
       cleanText(id, 120),
       input.effectiveTo || null,
-      JSON.stringify({ retiredBy: cleanText(context.actorId, 120), retireReason: cleanNullableText(input.reason, 700) })
+      JSON.stringify({ retiredBy: cleanText(context.actorId, 120), retireReason: reason })
     ]
   );
   if (!result.rows[0]) {
     const error = new Error('Active shared safety record not found.');
     error.status = 404;
     error.code = 'SHARED_RECORD_NOT_FOUND';
+    throw error;
+  }
+  return sharedRecordFromRow(result.rows[0]);
+}
+
+async function supersedeSharedRecord(id, context, input = {}) {
+  assertDatabaseReady();
+  assertPlatformAdmin(context);
+  const replacementId = cleanText(input.replacementSharedRecordId || input.supersededBy, 120);
+  const reason = cleanNullableText(input.reason, 700);
+  if (!replacementId || replacementId === cleanText(id, 120)) {
+    const error = new Error('Replacement shared record ID is required.');
+    error.status = 400;
+    error.code = 'REPLACEMENT_RECORD_REQUIRED';
+    throw error;
+  }
+  if (!reason) {
+    const error = new Error('Supersession reason is required.');
+    error.status = 400;
+    error.code = 'SUPERSEDE_REASON_REQUIRED';
+    throw error;
+  }
+  const result = await postgres.query(
+    `UPDATE shared_safety_records
+     SET status = 'superseded',
+         superseded_by = $2,
+         effective_to = COALESCE($3::timestamptz, NOW()),
+         metadata = metadata || $4::jsonb,
+         updated_at = NOW()
+     WHERE id = $1 AND status = 'active'
+       AND EXISTS (SELECT 1 FROM shared_safety_records WHERE id = $2)
+     RETURNING *`,
+    [
+      cleanText(id, 120),
+      replacementId,
+      input.effectiveTo || null,
+      JSON.stringify({ supersededByActor: cleanText(context.actorId, 120), supersedeReason: reason })
+    ]
+  );
+  if (!result.rows[0]) {
+    const error = new Error('Active shared safety record or replacement record not found.');
+    error.status = 404;
+    error.code = 'SHARED_RECORD_NOT_SUPERSEDABLE';
     throw error;
   }
   return sharedRecordFromRow(result.rows[0]);
@@ -665,7 +910,7 @@ async function listSharedRecords(filters = {}) {
     `SELECT id, hazard_type, latitude, longitude, geometry, severity, verification_status,
             effective_from, effective_to, status, source_classification, confidence,
             evidence_level, approved_by, approved_at, created_at, updated_at, superseded_by,
-            sanitized_media, metadata
+            sanitized_media
      FROM shared_safety_records
      WHERE ${where.join(' AND ')}
        AND effective_from <= NOW()
@@ -677,17 +922,38 @@ async function listSharedRecords(filters = {}) {
   return result.rows.map(sharedRecordFromRow);
 }
 
+async function listModerationAuditEvents(candidateId, context) {
+  assertDatabaseReady();
+  assertPlatformAdmin(context);
+  const result = await postgres.query(
+    `SELECT id, request_id, actor_type, actor_id, event_type, outcome, status_code,
+            occurred_at, metadata
+     FROM audit_events
+     WHERE metadata ->> 'candidateId' = $1
+        OR path LIKE $2
+     ORDER BY occurred_at DESC
+     LIMIT 100`,
+    [cleanText(candidateId, 120), `%${cleanText(candidateId, 120)}%`]
+  );
+  return result.rows.map(auditEventFromRow);
+}
+
 module.exports = {
   ALLOWED_HAZARD_TYPES,
   approveCandidate,
   createPrivateHazardSubmission,
   createPrivateSubmissionFromDriverReport,
+  getModerationCandidateDetail,
+  listModerationAuditEvents,
   listModerationCandidates,
   listPrivateSubmissions,
   listSharedRecords,
   markDuplicate,
+  mergeCandidateIntoSharedRecord,
   nominateSubmission,
+  requestCandidateCorrection,
   rejectCandidate,
   retireSharedRecord,
+  supersedeSharedRecord,
   sanitizeCandidate
 };

@@ -87,7 +87,8 @@ async function recordSecurityEvent(req, event = {}) {
       JSON.stringify({
         code: cleanText(event.code, 80) || null,
         approvedRole: req.authContext?.approvedRole || null,
-        permission: cleanText(event.permission, 120) || null
+        permission: cleanText(event.permission, 120) || null,
+        ...(event.metadata && typeof event.metadata === 'object' ? event.metadata : {})
       })
     ]
   );

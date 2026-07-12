@@ -4,11 +4,11 @@
 
 - Status: Active
 - Document Type: Living Project Status
-- Last Updated: 2026-07-11
+- Last Updated: 2026-07-12
 - Governing Architecture Version: 1.0
 - Authoritative Repository: `C:\dev\bridge-api`
 - GitHub Repository: `https://github.com/Tyrone-web714/bridge-api.git`
-- Current Branch: `shared-safety-foundation`
+- Current Branch: `shared-safety-moderation-ui`
 - Latest Documentation Commit: `cf23662b1bb7ab189960925f9521f6b1c0e8a394` - `Add Truck-Safe Routing governing documentation`
 - Update Guidance: Update this file when the project phase, deployment status, repository structure, major risks, or implementation priorities change.
 
@@ -37,7 +37,7 @@ Current implementation and planned architecture must be kept separate:
 | Authentication and RBAC | Merged to Main | Authentication/RBAC foundation is merged at `5a1888fec120285ae698d3ead2196ca8d2af6636`. |
 | API Tenant Enforcement | Merged to Main | API Tenant Enforcement is merged at `1c78e4c4cf6d322fa47d867b2d05e684c5392aea`. |
 | Mobile Tenant Context | Merged to Main | Mobile tenant context foundation was physically validated on device and merged before the Shared Safety branch. |
-| Shared Safety Intelligence | In Progress on Branch | Branch `shared-safety-foundation` adds private hazard submissions, moderation candidates, sanitization, Platform Admin approval/rejection, sanitized shared records, audit events, and validation docs. |
+| Shared Safety Intelligence | Moderation UI Validated on Branch | Branch `shared-safety-moderation-ui` adds the Platform Admin moderation queue, candidate detail view, sanitization form, approve/reject/correction/duplicate/merge/retire/supersede actions, audit visibility, privacy safeguards, and validation docs. Foundation commit `849fe82` remains merged to main. |
 | Fleet operations expansion | In Progress | Drivers, route manifests, delivery notes, inventory closeouts, operational geography, and heatmap routes exist; full target platform expansion remains pending. |
 | KPI and BI foundation | In Progress | Operational heatmap, geography, account intelligence, prediction, and supervisor intelligence code exists; configurable KPI engine is not verified complete. |
 | Logistics Intelligence Engine | Pending | Volume VI defines the target engine; complete implementation is not yet verified. |
