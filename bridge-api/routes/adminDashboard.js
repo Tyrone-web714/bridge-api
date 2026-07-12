@@ -86,6 +86,12 @@ function renderAdminDashboard(session) {
       accent: '#ff5964'
     },
     {
+      title: 'BI/KPI Foundation',
+      description: 'Configure Organization-scoped KPIs, versioned formulas, snapshots, dashboards, alerts, and bounded exports.',
+      href: '/api/bi-kpi/admin',
+      accent: '#4ade80'
+    },
+    {
       title: 'Operational Heatmaps',
       description: 'Map recurring delivery delays, failed stops, deductions, hazard events, route events, and recorded revenue concentration.',
       href: '/api/operational-heatmaps/admin',

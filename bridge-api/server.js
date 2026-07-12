@@ -94,6 +94,10 @@ app.use('/api/shared-safety', createRateLimiter({
   name: 'shared-safety',
   max: positiveInteger(process.env.RATE_LIMIT_SHARED_SAFETY_MAX, 300)
 }));
+app.use('/api/bi-kpi', createRateLimiter({
+  name: 'bi-kpi',
+  max: positiveInteger(process.env.RATE_LIMIT_BI_KPI_MAX, 300)
+}));
 app.use('/api/route-manifests/driver', createRateLimiter({
   name: 'driver-manifests',
   max: positiveInteger(process.env.RATE_LIMIT_DRIVER_MAX, 600)
@@ -160,12 +164,14 @@ const dataImportRoutes = require('./routes/dataImports');
 const supervisorIntelligenceRoutes = require('./routes/supervisorIntelligence');
 const driverSessionRoutes = require('./routes/driverSessions');
 const sharedSafetyRoutes = require('./routes/sharedSafety');
+const biKpiRoutes = require('./routes/biKpi');
 
 app.use('/api/bridges', bridgeRoutes);
 app.use('/api/drivers', driverRoutes);
 app.use('/api/supervisors', supervisorRoutes);
 app.use('/api/routing', routingRoutes);
 app.use('/api/shared-safety', sharedSafetyRoutes);
+app.use('/api/bi-kpi', biKpiRoutes);
 app.use('/api/places', placesRoutes);
 app.use('/api/delivery-notes', deliveryNotesRoutes);
 app.use('/api/route-manifests', routeManifestRoutes);

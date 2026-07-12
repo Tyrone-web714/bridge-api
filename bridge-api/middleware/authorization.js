@@ -242,6 +242,28 @@ function permissionForRequest(req) {
       ? rbac.PERMISSIONS.HAZARD_SUBMIT
       : rbac.PERMISSIONS.HAZARD_VIEW_ORGANIZATION;
   }
+  if (path.startsWith('/api/bi-kpi')) {
+    if (path.endsWith('/export.csv')) return rbac.PERMISSIONS.DASHBOARD_EXPORT;
+    if (path.includes('/formulas')) return rbac.PERMISSIONS.KPI_FORMULA_MANAGE;
+    if (path.includes('/calculate')) return rbac.PERMISSIONS.KPI_CALCULATE;
+    if (path.includes('/snapshots')) return rbac.PERMISSIONS.KPI_SNAPSHOT_VIEW;
+    if (path.includes('/dashboards') || path.endsWith('/admin')) {
+      return ['POST', 'PUT', 'PATCH', 'DELETE'].includes(method)
+        ? rbac.PERMISSIONS.DASHBOARD_MANAGE
+        : rbac.PERMISSIONS.DASHBOARD_VIEW;
+    }
+    if (path.includes('/alerts')) {
+      return ['POST', 'PUT', 'PATCH', 'DELETE'].includes(method)
+        ? rbac.PERMISSIONS.KPI_ALERT_MANAGE
+        : rbac.PERMISSIONS.KPI_VIEW;
+    }
+    if (path.includes('/definitions')) {
+      return ['POST', 'PUT', 'PATCH', 'DELETE'].includes(method)
+        ? rbac.PERMISSIONS.KPI_MANAGE
+        : rbac.PERMISSIONS.KPI_VIEW;
+    }
+    return rbac.PERMISSIONS.KPI_VIEW;
+  }
   if (path.startsWith('/api/routing/manual-hazards/report')) {
     return rbac.PERMISSIONS.HAZARD_SUBMIT;
   }

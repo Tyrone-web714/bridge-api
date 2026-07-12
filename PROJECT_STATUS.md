@@ -8,7 +8,7 @@
 - Governing Architecture Version: 1.0
 - Authoritative Repository: `C:\dev\bridge-api`
 - GitHub Repository: `https://github.com/Tyrone-web714/bridge-api.git`
-- Current Branch: `shared-safety-moderation-ui`
+- Current Branch: `bi-kpi-foundation`
 - Latest Documentation Commit: `cf23662b1bb7ab189960925f9521f6b1c0e8a394` - `Add Truck-Safe Routing governing documentation`
 - Update Guidance: Update this file when the project phase, deployment status, repository structure, major risks, or implementation priorities change.
 
@@ -37,9 +37,9 @@ Current implementation and planned architecture must be kept separate:
 | Authentication and RBAC | Merged to Main | Authentication/RBAC foundation is merged at `5a1888fec120285ae698d3ead2196ca8d2af6636`. |
 | API Tenant Enforcement | Merged to Main | API Tenant Enforcement is merged at `1c78e4c4cf6d322fa47d867b2d05e684c5392aea`. |
 | Mobile Tenant Context | Merged to Main | Mobile tenant context foundation was physically validated on device and merged before the Shared Safety branch. |
-| Shared Safety Intelligence | Moderation UI Validated on Branch | Branch `shared-safety-moderation-ui` adds the Platform Admin moderation queue, candidate detail view, sanitization form, approve/reject/correction/duplicate/merge/retire/supersede actions, audit visibility, privacy safeguards, and validation docs. Foundation commit `849fe82` remains merged to main. |
+| Shared Safety Intelligence | Merged to Main | Shared Safety Foundation and Moderation UI are merged to main through commit `d56bc93`. Production migration `005` still requires release approval before production use. |
 | Fleet operations expansion | In Progress | Drivers, route manifests, delivery notes, inventory closeouts, operational geography, and heatmap routes exist; full target platform expansion remains pending. |
-| KPI and BI foundation | In Progress | Operational heatmap, geography, account intelligence, prediction, and supervisor intelligence code exists; configurable KPI engine is not verified complete. |
+| KPI and BI foundation | In Progress on Branch | Branch `bi-kpi-foundation` adds Organization-scoped KPI definitions, versioned formula definitions, deterministic formula evaluation, immutable snapshots, dashboard/widget foundation, alerts, bounded CSV exports, tenant isolation tests, and documentation. |
 | Logistics Intelligence Engine | Pending | Volume VI defines the target engine; complete implementation is not yet verified. |
 | Fleet Intelligence Scoring System | Pending | Volume VII defines the target scoring system; complete implementation is not yet verified. |
 | Security hardening | In Progress | Security controls, auth services, rate limit middleware, secret audit scripts, and security review docs exist; production hardening remains ongoing. |
@@ -135,7 +135,7 @@ Key documentation includes:
 
 ## 9. Current Priority
 
-Validate and review the Shared Safety Foundation branch before merge.
+Validate and review the BI/KPI Foundation branch before merge.
 
 Current validation basis:
 
@@ -144,9 +144,11 @@ Current validation basis:
 - API tenant-enforcement test passes with `npm run test:api-tenant`.
 - Mobile tenant-context test passes with `npm run test:mobile-tenant`.
 - Shared Safety foundation test passes with `npm run test:shared-safety`.
-- Shared Safety runtime validation passes with `npm run validate:shared-safety` against an isolated local PostgreSQL/PostGIS database.
+- Shared Safety moderation UI test passes with `npm run test:shared-safety-ui`.
+- BI/KPI foundation test passes with `npm run test:bi-kpi`.
+- BI/KPI runtime validation passes with `npm run validate:bi-kpi` against an isolated local PostgreSQL/PostGIS database.
 - Secret audit passes with `npm run verify:secrets`.
-- Migrations `001` through `005` were applied to an isolated local PostgreSQL/PostGIS validation database.
+- Migrations `001` through `006` were applied to an isolated local PostgreSQL/PostGIS validation database.
 - Local `/health` and `/ready` passed against the isolated validation database.
 
 ## 10. Known Risks and Constraints
@@ -186,11 +188,10 @@ Current approved decisions reflected in governing documentation and project dire
 
 ## 12. Immediate Next Steps
 
-1. Review the `shared-safety-foundation` branch.
-2. Confirm the Shared Safety admin/moderation UI requirements before adding dashboard controls.
-3. Keep existing mobile hazard submission compatible while deciding whether to add a visible "benefits other fleets" flag.
-4. Do not apply migration `005_shared_safety_foundation.sql` to production until release approval.
-5. Continue lower-risk public/reference endpoint review before production hardening.
+1. Complete final validation of the `bi-kpi-foundation` branch.
+2. Do not apply migration `006_bi_kpi_foundation.sql` to production until release approval.
+3. Keep BI/KPI work scoped to the foundation until pilot validation confirms source data quality and tenant isolation.
+4. Continue lower-risk public/reference endpoint review before production hardening.
 
 ## 13. Update Rules
 
