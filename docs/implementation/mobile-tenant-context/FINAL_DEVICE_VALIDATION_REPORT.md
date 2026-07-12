@@ -65,19 +65,85 @@ Passed command validation:
 
 Note: Expo config validation requires environment values because the consolidated mobile source folder does not store the Android Maps key in `apps/mobile/.env`.
 
-## Device Validation Required
+## Device Validation
 
-A new non-production Android preview APK is required to physically validate this fix on device.
+Device validation was performed after installing a new non-production Android preview APK on `ZY22HJCHCJ`.
 
-Required device test:
+APK/build identification:
 
-1. Install the new preview APK.
-2. Sign in with a valid driver ID and PIN.
-3. Load today's assigned route.
-4. Open the active route/navigation flow.
-5. Force-stop the app.
-6. Relaunch the app.
-7. Confirm the app does not show the driver login panel during restoration.
-8. Confirm the valid session is restored.
-9. Confirm today's assigned route is restored or checked without requiring driver re-login.
-10. Confirm map, route line, truck marker, and route controls still render.
+- Source branch: `mobile-tenant-context`
+- Source commit required for validation: `4fb10ae4b03703adb661c685636881ab2154515a`
+- Android package: `com.nasih.trucksaferouting`
+- Version name: `1.0.0`
+- Version code: `1`
+- Install/update time on device: `2026-07-11 19:09:10`
+- Installer package: `com.google.android.apps.nbu.files`
+- EAS build ID / APK URL: not available in this Codex session because the APK was installed manually outside Codex.
+
+Device:
+
+- Device ID: `ZY22HJCHCJ`
+- Model: `moto g play - 2023`
+- Android version: `13`
+- Android SDK: `33`
+
+Install and launch result:
+
+- Package installed successfully.
+- Existing application data was preserved.
+- App launched successfully.
+
+Cold-restart result:
+
+- Before restart, the app showed an authenticated assigned-route state:
+  - `LOGIN CONFIRMED`
+  - `Anthony Williams | Route TEST-0711-EAST-10 | 10 stops`
+  - `Today's Assigned Route`
+- After force-stop and relaunch, the app restored the authenticated assigned-route state:
+  - `LOGIN CONFIRMED`
+  - `Anthony Williams | Route TEST-0711-EAST-10 | 10 stops`
+  - `Today's Assigned Route`
+- The assigned-route state was not lost after cold restart.
+- The app did not fall back to an unauthenticated route-missing state.
+
+Route restoration result:
+
+- Today's assigned route loaded after restart.
+- Route screen opened successfully.
+- Route shown: `TEST-0711-EAST-10`
+- Driver shown: `Anthony Williams`
+- Stop count shown: `10`
+- Route progress shown: `0 of 10 stops completed`
+- First stop shown: `Eastside Market Test Account`
+- Directions preview opened and route steps loaded.
+
+Tenant-context verification:
+
+- Device validation confirmed the restored route remained associated with the restored authenticated driver session at the UI level.
+- Source-level validation confirms cached routes are keyed by tenant context and mismatched cache metadata is ignored/quarantined.
+- Direct SecureStore inspection of `organizationId` and `internalDriverId` is not exposed through Android UI automation, so device-level tenant context was verified indirectly through restored session and assigned-route behavior.
+
+Regression result:
+
+- Phone network connectivity passed.
+- Assigned-route loading passed.
+- Directions preview passed.
+- Existing route progress remained intact during this validation.
+- No stop completion, arrival, no-delivery, signature, printer, or closeout action was executed.
+- Full active navigation map was not opened in this validation because the available safe `DIRECTIONS` action opens directions preview, while the full active navigation path can update stop status. To avoid modifying backend route data, status-changing controls were not tapped.
+
+Defects found:
+
+- No recurrence of the cold-restart route/session loss defect was observed.
+- Remaining controlled edge cases are documented as non-blocking follow-up tests:
+  - Invalid or expired session
+  - Valid session with no cached route
+  - Mismatched tenant/driver route cache
+  - Full active navigation map regression
+  - Route-progress mutation paths
+
+Final merge recommendation:
+
+- GO for merge.
+- The primary cold-restart restoration defect passed physical-device validation.
+- Remaining controlled edge cases are documented as non-blocking follow-up tests and do not prevent merging the tenant-context foundation.
