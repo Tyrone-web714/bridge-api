@@ -25,6 +25,8 @@ Before architectural work, Codex must read:
 - [Product](product/README.md)
 - [Architecture Index](architecture/ARCHITECTURE_INDEX.md)
 - [Codex Start Here](architecture/CODEX_START_HERE.md)
+- [Data Lifecycle Architecture](architecture/data-lifecycle/TSR_DATA_LIFECYCLE_ARCHITECTURE.md)
+- [Enterprise Identity Architecture](architecture/enterprise-identity/ENTERPRISE_IDENTITY_ARCHITECTURE.md)
 
 ## Product Requirements
 

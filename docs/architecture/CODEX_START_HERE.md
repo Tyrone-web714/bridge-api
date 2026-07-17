@@ -1,7 +1,7 @@
 ﻿# Codex Start Here
 
-**Project:** Truck-Safe Routing  
-**Version:** 1.0  
+**Project:** Truck-Safe Routing
+**Version:** 1.0
 **Status:** Required Codex Entry Document
 
 ## What This Project Is
@@ -18,7 +18,9 @@ Before making any code changes, read:
 4. Volumes Iâ€“V
 5. Volume VI â€” Logistics Intelligence Engine
 6. Volume VII â€” Fleet Intelligence Scoring System
-7. `../product/Product-Requirements-Specification-Part-I-Platform-Foundation.md`
+7. `data-lifecycle/TSR_DATA_LIFECYCLE_ARCHITECTURE.md`
+8. `enterprise-identity/ENTERPRISE_IDENTITY_ARCHITECTURE.md`
+9. `../product/Product-Requirements-Specification-Part-I-Platform-Foundation.md`
 
 ## Required First Action
 
@@ -44,5 +46,6 @@ First produce:
 - Never expose one Organization's private data to another Organization.
 - Never hardcode one customer as permanent logic.
 - Never make destructive database changes without rollback guidance.
+- Never implement deletion, anonymization, retention, purge, SSO, SCIM, or enterprise identity changes unless the work conforms to ODR-019, ODR-020, and the related architecture packages.
 - Never allow AI recommendations to modify operational data without approved workflow.
 

@@ -1,4 +1,4 @@
-# Volume II — Multi-Tenant SaaS & Enterprise Security
+﻿# Volume II â€” Multi-Tenant SaaS & Enterprise Security
 
 ## Purpose
 
@@ -209,3 +209,15 @@ Organizations may choose different retention periods for Organization-owned oper
 AI-related retention shall preserve explainability while avoiding unnecessary long-term storage of intermediate inference artifacts.
 
 Retention policy must support future legal, regulatory, contractual, and customer-specific requirements without schema redesign.
+
+## Data lifecycle governance
+
+Data lifecycle, deletion, anonymization, pseudonymization, legal hold, Organization termination, and referential-integrity behavior are governed by ODR-019 and the Data Lifecycle Architecture package at `data-lifecycle/`.
+
+Deactivation is the default user offboarding mechanism. User deletion shall not cascade into historically significant operational, safety, audit, financial, KPI, routing, compliance, warehouse, or BI records. Organization-private data and Platform-global safety intelligence shall have independent lifecycles.
+
+## Enterprise identity governance
+
+Enterprise SSO and identity federation are governed by ODR-020 and the Enterprise Identity Architecture package at `enterprise-identity/`.
+
+External identity providers authenticate users. Truck-Safe Routing authorizes access through internal TSR user identity, Organization membership, approved role, explicit permissions, and Organization-scoped resource checks. Email alone shall not be the permanent federated identity key. Tenant-specific IdP configuration shall remain isolated per Organization.

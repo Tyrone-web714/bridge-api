@@ -9,16 +9,19 @@ Codex and all developers must read this folder before making architectural chang
 1. `CODEX_START_HERE.md`
 2. `CODEX_INSTRUCTIONS.md`
 3. `IMPLEMENTATION_ORDER.md`
-4. `Volume-I-Vision-and-Enterprise-Architecture.md`
-5. `Volume-II-Multi-Tenant-SaaS-and-Security.md`
-6. `Volume-III-Fleet-Operations-and-Navigation.md`
-7. `Volume-IV-Business-Intelligence-KPI-and-AI.md`
-8. `Volume-V-Platform-API-Database-and-Deployment.md`
-9. `Volume-VI-Logistics-Intelligence-Engine.md`
-10. `Volume-VII-Fleet-Intelligence-Scoring-System.md`
-11. [`Product Requirements Specification Part I`](../product/Product-Requirements-Specification-Part-I-Platform-Foundation.md)
-12. `CODING_STANDARDS.md`
-13. `GLOSSARY.md`
+4. `ARCHITECTURE_GOVERNANCE_BASELINE_v1.1.md`
+5. `Volume-I-Vision-and-Enterprise-Architecture.md`
+6. `Volume-II-Multi-Tenant-SaaS-and-Security.md`
+7. `Volume-III-Fleet-Operations-and-Navigation.md`
+8. `Volume-IV-Business-Intelligence-KPI-and-AI.md`
+9. `Volume-V-Platform-API-Database-and-Deployment.md`
+10. `Volume-VI-Logistics-Intelligence-Engine.md`
+11. `Volume-VII-Fleet-Intelligence-Scoring-System.md`
+12. [`Data Lifecycle Architecture`](data-lifecycle/TSR_DATA_LIFECYCLE_ARCHITECTURE.md)
+13. [`Enterprise Identity Architecture`](enterprise-identity/ENTERPRISE_IDENTITY_ARCHITECTURE.md)
+14. [`Product Requirements Specification Part I`](../product/Product-Requirements-Specification-Part-I-Platform-Foundation.md)
+15. `CODING_STANDARDS.md`
+16. `GLOSSARY.md`
 
 ## Product Requirements
 

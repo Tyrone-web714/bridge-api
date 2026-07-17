@@ -1,9 +1,9 @@
 ﻿# Truck-Safe Routing Product Requirements Specification
 
-**Part I — Platform Foundation**  
-**Version:** 1.0  
-**Document Status:** Approved Product Requirements  
-**Last Updated:** 2026  
+**Part I — Platform Foundation**
+**Version:** 1.0
+**Document Status:** Approved Product Requirements
+**Last Updated:** 2026
 **Dependencies:** Architecture Volumes I–VII
 
 ## Purpose
@@ -53,6 +53,8 @@ The platform shall support the following foundational product areas:
 - Decision Center
 - AI Copilot
 - Audit Center
+- Data Lifecycle and Retention
+- Enterprise Identity and SSO
 - Notifications
 - Search
 - Offline Operation
@@ -200,6 +202,8 @@ The platform shall define detailed future requirements for these product modules
 22. Accessibility
 23. Internationalization
 24. Administration
+25. Data Lifecycle and Retention
+26. Enterprise Identity and SSO
 
 ### TSA-PRS-802
 
@@ -254,6 +258,14 @@ The platform shall support an Audit Center and audit-ready operational history f
 ### TSA-PRS-912
 
 The platform shall support notifications, search, offline operation, accessibility, internationalization, and administration as platform-wide capabilities.
+
+### TSA-PRS-913
+
+The platform shall support governed data lifecycle capabilities, including deactivation, deletion requests, anonymization, pseudonymization, legal holds, Organization termination, retention policy, purge eligibility, object-storage lifecycle, and offline deactivation security.
+
+### TSA-PRS-914
+
+The platform shall support enterprise identity capabilities, including tenant-scoped OIDC, SAML 2.0, external identity mapping, TSR authorization boundary enforcement, JIT policy, SCIM lifecycle readiness, account linking, SSO enforcement, break-glass controls, and mobile/web SSO safety.
 
 ## Non-Functional Requirements
 
@@ -317,7 +329,7 @@ Codex and developers shall reference this document as the sole authoritative Pro
 
 ## Document Status
 
-Status: Approved Product Requirements  
-Version: 1.0  
-Supersedes: `docs/product/Product-Requirements-Specification.md` and `docs/architecture/PRS-Part-I-Platform-Foundation.md`  
+Status: Approved Product Requirements
+Version: 1.0
+Supersedes: `docs/product/Product-Requirements-Specification.md` and `docs/architecture/PRS-Part-I-Platform-Foundation.md`
 Next Document: PRS Part II — Driver Mobile Application

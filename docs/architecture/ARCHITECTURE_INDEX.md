@@ -1,14 +1,14 @@
 ﻿# Truck-Safe Routing Architecture Index
 
-**Version:** 1.0  
-**Status:** Approved Architecture Index  
+**Version:** 1.1
+**Status:** Approved Architecture Index
 **Purpose:** This file is the master table of contents for the Truck-Safe Routing architecture library.
 
 ## Reading Order
 
 1. CODEX_START_HERE.md
 2. README.md
-3. ARCHITECTURE_GOVERNANCE_BASELINE_v1.0.md
+3. ARCHITECTURE_GOVERNANCE_BASELINE_v1.1.md
 4. IMPLEMENTATION_ORDER.md
 5. Volume I — Vision & Enterprise Architecture
 6. Volume II — Multi-Tenant SaaS & Security
@@ -17,12 +17,17 @@
 9. Volume V — Platform API, Database & Deployment
 10. Volume VI — Logistics Intelligence Engine
 11. Volume VII — Fleet Intelligence Scoring System
-12. Product Requirements Specification Part I — Platform Foundation (`../product/Product-Requirements-Specification-Part-I-Platform-Foundation.md`)
+12. Data Lifecycle Architecture (`data-lifecycle/TSR_DATA_LIFECYCLE_ARCHITECTURE.md`)
+13. Enterprise Identity Architecture (`enterprise-identity/ENTERPRISE_IDENTITY_ARCHITECTURE.md`)
+14. Product Requirements Specification Part I — Platform Foundation (`../product/Product-Requirements-Specification-Part-I-Platform-Foundation.md`)
 
 ## Volume Summaries
 
 ### Architecture Governance Baseline v1.0
 Declares the completed Phase 0 governance baseline for Organization tenancy, driver identity, roles, API privacy, shared safety, retention, environments, rollback baseline, object storage, and warehouse authentication. Future implementation work must conform to this baseline unless superseded by an approved Architecture Decision Record.
+
+### Architecture Governance Baseline v1.1
+Extends v1.0 with ODR-019 for Data Lifecycle, deletion, retention, anonymization, and referential integrity, and ODR-020 for Enterprise SSO and Identity Federation. The v1.1 baseline references the detailed architecture packages rather than duplicating them.
 
 ### Volume I — Vision & Enterprise Architecture
 Defines the platform vision, product philosophy, architecture governance, engineering principles, AI governance, security philosophy, and long-term direction.
@@ -44,6 +49,16 @@ Defines the reasoning layer that turns operational events into insights, recomme
 
 ### Volume VII — Fleet Intelligence Scoring System
 Defines composite intelligence scores for drivers, vehicles, routes, customers, depots, supervisors, Organizations, and fleets.
+
+### Data Lifecycle Architecture
+Authoritative path: [`data-lifecycle/TSR_DATA_LIFECYCLE_ARCHITECTURE.md`](data-lifecycle/TSR_DATA_LIFECYCLE_ARCHITECTURE.md).
+
+Defines deactivation, deletion, retention, anonymization, pseudonymization, legal hold, object-storage lifecycle, offline deactivation security, Cascade Map requirements, and purge-engine architecture.
+
+### Enterprise Identity Architecture
+Authoritative path: [`enterprise-identity/ENTERPRISE_IDENTITY_ARCHITECTURE.md`](enterprise-identity/ENTERPRISE_IDENTITY_ARCHITECTURE.md).
+
+Defines tenant-scoped OIDC/SAML federation, external identity mapping, internal TSR authorization boundary, JIT, SCIM, account linking, SSO enforcement, break-glass access, mobile/web SSO, provider compatibility, and identity secrets management.
 
 ### Product Requirements Specification Part I — Platform Foundation
 Authoritative path: [`../product/Product-Requirements-Specification-Part-I-Platform-Foundation.md`](../product/Product-Requirements-Specification-Part-I-Platform-Foundation.md).

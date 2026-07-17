@@ -1,14 +1,14 @@
-# Truck-Safe Routing Project Status
+﻿# Truck-Safe Routing Project Status
 
 ## 1. Document Control
 
 - Status: Active
 - Document Type: Living Project Status
-- Last Updated: 2026-07-12
-- Governing Architecture Version: 1.0
+- Last Updated: 2026-07-17
+- Governing Architecture Version: 1.1
 - Authoritative Repository: `C:\dev\bridge-api`
 - GitHub Repository: `https://github.com/Tyrone-web714/bridge-api.git`
-- Current Branch: `bi-kpi-foundation`
+- Current Branch: `main`
 - Latest Documentation Commit: `cf23662b1bb7ab189960925f9521f6b1c0e8a394` - `Add Truck-Safe Routing governing documentation`
 - Update Guidance: Update this file when the project phase, deployment status, repository structure, major risks, or implementation priorities change.
 
@@ -40,6 +40,8 @@ Current implementation and planned architecture must be kept separate:
 | Shared Safety Intelligence | Merged to Main | Shared Safety Foundation and Moderation UI are merged to main through commit `d56bc93`. Production migration `005` still requires release approval before production use. |
 | Fleet operations expansion | In Progress | Drivers, route manifests, delivery notes, inventory closeouts, operational geography, and heatmap routes exist; full target platform expansion remains pending. |
 | KPI and BI foundation | In Progress on Branch | Branch `bi-kpi-foundation` adds Organization-scoped KPI definitions, versioned formula definitions, deterministic formula evaluation, immutable snapshots, dashboard/widget foundation, alerts, bounded CSV exports, tenant isolation tests, and documentation. |
+| Data Lifecycle architecture | Architecture Designed | ODR-019 and `docs/architecture/data-lifecycle/` define deletion, retention, anonymization, legal hold, Cascade Map, object-storage lifecycle, and offline deactivation security. No implementation or migration is claimed. |
+| Enterprise Identity architecture | Architecture Designed | ODR-020 and `docs/architecture/enterprise-identity/` define tenant-scoped OIDC/SAML, SCIM readiness, account linking, SSO enforcement, break-glass, mobile/web SSO, and provider verification. No implementation is claimed. |
 | Logistics Intelligence Engine | Pending | Volume VI defines the target engine; complete implementation is not yet verified. |
 | Fleet Intelligence Scoring System | Pending | Volume VII defines the target scoring system; complete implementation is not yet verified. |
 | Security hardening | In Progress | Security controls, auth services, rate limit middleware, secret audit scripts, and security review docs exist; production hardening remains ongoing. |
@@ -184,7 +186,8 @@ Current approved decisions reflected in governing documentation and project dire
 - Every production deployment requires a rollback baseline before release.
 - Object storage is vendor-neutral through an abstraction layer; uploaded objects are Organization-owned unless explicitly Platform Global.
 - Warehouse employees must authenticate with at least two factors of knowledge or possession before warehouse operations that affect operational records.
-- Phase 0 governance is complete as Architecture Baseline Version 1.0; implementation work must conform to the baseline unless a future ADR supersedes it.
+- Phase 0 governance is complete as Architecture Baseline Version 1.0.
+- Architecture Baseline Version 1.1 extends the baseline with Data Lifecycle governance (ODR-019) and Enterprise Identity governance (ODR-020); implementation work must conform to the active baseline unless a future ADR or ODR supersedes it.
 
 ## 12. Immediate Next Steps
 

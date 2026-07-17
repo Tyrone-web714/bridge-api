@@ -1,4 +1,4 @@
-# Volume V — APIs, Database, Integration, Deployment, Testing & Operations
+﻿# Volume V â€” APIs, Database, Integration, Deployment, Testing & Operations
 
 ## Purpose
 
@@ -31,6 +31,8 @@ Database migrations must be additive whenever practical.
 
 Rollback procedures must accompany migrations.
 
+Every relevant entity relationship must eventually receive an explicit lifecycle classification under the Data Lifecycle Cascade Map. Blanket destructive `ON DELETE CASCADE` behavior is prohibited for historically significant records.
+
 ## Integrations
 
 External integrations should be isolated through integration services.
@@ -46,6 +48,7 @@ Supported/future integrations:
 - ERP
 - TMS
 - WMS
+- Enterprise identity providers through tenant-scoped OIDC, SAML 2.0, and future SCIM 2.0 lifecycle integration
 
 ## Notifications
 
@@ -183,3 +186,7 @@ Every deployment shall have a documented rollback procedure supporting applicati
 Rollback documentation shall include trigger conditions, decision authority, validation steps, recovery verification, and post-rollback review.
 
 A deployment shall not be considered complete until rollback verification requirements have been satisfied.
+
+## Identity and lifecycle operations
+
+Deletion, anonymization, purge, legal hold, SSO, SCIM, and enterprise identity-provider configuration changes are security-sensitive platform operations. They require tenant scoping, explicit permissions, audit logging, rollback planning, and validation before production use.
