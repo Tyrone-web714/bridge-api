@@ -92,6 +92,12 @@ function renderAdminDashboard(session) {
       accent: '#4ade80'
     },
     {
+      title: 'Logistics Intelligence Foundation',
+      description: 'Review Organization-scoped operational events, signals, findings, recommendations, decisions, outcomes, and lineage.',
+      href: '/api/logistics-intelligence/admin',
+      accent: '#19d3e6'
+    },
+    {
       title: 'Operational Heatmaps',
       description: 'Map recurring delivery delays, failed stops, deductions, hazard events, route events, and recorded revenue concentration.',
       href: '/api/operational-heatmaps/admin',

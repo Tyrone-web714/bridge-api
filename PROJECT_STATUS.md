@@ -39,10 +39,10 @@ Current implementation and planned architecture must be kept separate:
 | Mobile Tenant Context | Merged to Main | Mobile tenant context foundation was physically validated on device and merged before the Shared Safety branch. |
 | Shared Safety Intelligence | Merged to Main | Shared Safety Foundation and Moderation UI are merged to main through commit `d56bc93`. Production migration `005` still requires release approval before production use. |
 | Fleet operations expansion | In Progress | Drivers, route manifests, delivery notes, inventory closeouts, operational geography, and heatmap routes exist; full target platform expansion remains pending. |
-| KPI and BI foundation | In Progress on Branch | Branch `bi-kpi-foundation` adds Organization-scoped KPI definitions, versioned formula definitions, deterministic formula evaluation, immutable snapshots, dashboard/widget foundation, alerts, bounded CSV exports, tenant isolation tests, and documentation. |
+| KPI and BI foundation | Merged to Main | BI/KPI foundation is merged through the active governance baseline; production migration `006` still requires release approval before production use. |
 | Data Lifecycle architecture | Architecture Designed | ODR-019 and `docs/architecture/data-lifecycle/` define deletion, retention, anonymization, legal hold, Cascade Map, object-storage lifecycle, and offline deactivation security. No implementation or migration is claimed. |
 | Enterprise Identity architecture | Architecture Designed | ODR-020 and `docs/architecture/enterprise-identity/` define tenant-scoped OIDC/SAML, SCIM readiness, account linking, SSO enforcement, break-glass, mobile/web SSO, and provider verification. No implementation is claimed. |
-| Logistics Intelligence Engine | Pending | Volume VI defines the target engine; complete implementation is not yet verified. |
+| Logistics Intelligence Engine | In Progress on Branch | Branch `logistics-intelligence-foundation` adds canonical events, signals, findings, advisory recommendations, decisions, outcomes, lineage, tenant isolation, and implementation documentation. Production migration `007` must not be applied until release approval. |
 | Fleet Intelligence Scoring System | Pending | Volume VII defines the target scoring system; complete implementation is not yet verified. |
 | Security hardening | In Progress | Security controls, auth services, rate limit middleware, secret audit scripts, and security review docs exist; production hardening remains ongoing. |
 | Pilot readiness | In Progress | Production pilot checklist reports 55-60% readiness and lists open items. |
@@ -137,7 +137,7 @@ Key documentation includes:
 
 ## 9. Current Priority
 
-Validate and review the BI/KPI Foundation branch before merge.
+Validate and review the Logistics Intelligence Foundation branch before merge.
 
 Current validation basis:
 
@@ -149,8 +149,10 @@ Current validation basis:
 - Shared Safety moderation UI test passes with `npm run test:shared-safety-ui`.
 - BI/KPI foundation test passes with `npm run test:bi-kpi`.
 - BI/KPI runtime validation passes with `npm run validate:bi-kpi` against an isolated local PostgreSQL/PostGIS database.
+- Logistics Intelligence foundation test is being added with `npm run test:logistics-intelligence`.
+- Logistics Intelligence runtime validation is being added with `npm run validate:logistics-intelligence` for an isolated local PostgreSQL/PostGIS database.
 - Secret audit passes with `npm run verify:secrets`.
-- Migrations `001` through `006` were applied to an isolated local PostgreSQL/PostGIS validation database.
+- Migrations `001` through `006` were applied to an isolated local PostgreSQL/PostGIS validation database. Migration `007` is part of the current branch and still requires isolated validation.
 - Local `/health` and `/ready` passed against the isolated validation database.
 
 ## 10. Known Risks and Constraints
@@ -191,9 +193,9 @@ Current approved decisions reflected in governing documentation and project dire
 
 ## 12. Immediate Next Steps
 
-1. Complete final validation of the `bi-kpi-foundation` branch.
-2. Do not apply migration `006_bi_kpi_foundation.sql` to production until release approval.
-3. Keep BI/KPI work scoped to the foundation until pilot validation confirms source data quality and tenant isolation.
+1. Complete implementation and validation of the `logistics-intelligence-foundation` branch.
+2. Do not apply migration `007_logistics_intelligence_foundation.sql` to production until release approval.
+3. Keep Logistics Intelligence scoped to the foundation; do not begin FISS, ODR-019 Data Lifecycle execution, or ODR-020 Enterprise Identity execution in this phase.
 4. Continue lower-risk public/reference endpoint review before production hardening.
 
 ## 13. Update Rules

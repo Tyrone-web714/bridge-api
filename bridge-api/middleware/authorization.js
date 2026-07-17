@@ -264,6 +264,15 @@ function permissionForRequest(req) {
     }
     return rbac.PERMISSIONS.KPI_VIEW;
   }
+  if (path.startsWith('/api/logistics-intelligence')) {
+    if (path.includes('/recommendations') && path.includes('/decisions')) return rbac.PERMISSIONS.RECOMMENDATION_DECIDE;
+    if (path.includes('/recommendations') && path.includes('/outcomes')) return rbac.PERMISSIONS.OUTCOME_RECORD;
+    if (path.includes('/recommendations')) return rbac.PERMISSIONS.RECOMMENDATION_VIEW;
+    if (path.includes('/events') && ['POST', 'PUT', 'PATCH', 'DELETE'].includes(method)) return rbac.PERMISSIONS.INTELLIGENCE_MANAGE;
+    if (path.includes('/signals/run') || path.endsWith('/process')) return rbac.PERMISSIONS.INTELLIGENCE_REVIEW;
+    if (path.endsWith('/admin')) return rbac.PERMISSIONS.INTELLIGENCE_VIEW;
+    return rbac.PERMISSIONS.INTELLIGENCE_VIEW;
+  }
   if (path.startsWith('/api/routing/manual-hazards/report')) {
     return rbac.PERMISSIONS.HAZARD_SUBMIT;
   }
