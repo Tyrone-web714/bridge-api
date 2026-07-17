@@ -34,6 +34,7 @@ async function seedOrganization(id, name) {
 async function main() {
   assert(process.env.DATABASE_URL, 'DATABASE_URL is required');
   assert(/127\.0\.0\.1:5544\d/.test(process.env.DATABASE_URL), 'runtime validation must use isolated local PostgreSQL on a 5544x validation port');
+  const runId = `runtime-${Date.now()}`;
 
   await seedOrganization('demo-fleet-a', 'Demo Fleet A');
   await seedOrganization('demo-fleet-b', 'Demo Fleet B');
@@ -47,21 +48,21 @@ async function main() {
     eventType: 'route_delay',
     eventCategory: 'route_execution',
     sourceType: 'runtime_validation',
-    sourceId: 'runtime-route-delay-1',
+    sourceId: `${runId}-route-delay-1`,
     subjectType: 'route',
-    subjectId: 'runtime-route-1',
-    routeId: 'runtime-route-1',
+    subjectId: `${runId}-route-1`,
+    routeId: `${runId}-route-1`,
     occurredAt: '2026-07-16T12:00:00.000Z',
-    idempotencyKey: 'runtime-route-delay-1',
+    idempotencyKey: `${runId}-route-delay-1`,
     payload: { delayMinutes: 42, severity: 'high' }
   });
   const duplicate = await logisticsIntelligence.ingestEvent(orgA, {
     eventType: 'route_delay',
     sourceType: 'runtime_validation',
     subjectType: 'route',
-    subjectId: 'runtime-route-1',
+    subjectId: `${runId}-route-1`,
     occurredAt: '2026-07-16T12:05:00.000Z',
-    idempotencyKey: 'runtime-route-delay-1',
+    idempotencyKey: `${runId}-route-delay-1`,
     payload: { delayMinutes: 99, severity: 'critical' }
   });
   assert(event.id === duplicate.id, 'event ingestion must be idempotent by Organization and idempotency key');
@@ -70,23 +71,23 @@ async function main() {
     eventType: 'kpi_snapshot_created',
     eventCategory: 'bi_kpi',
     sourceType: 'kpi_snapshot',
-    sourceId: 'runtime-kpi-snapshot-1',
+    sourceId: `${runId}-kpi-snapshot-1`,
     subjectType: 'route',
-    subjectId: 'runtime-route-1',
+    subjectId: `${runId}-route-1`,
     occurredAt: '2026-07-16T13:00:00.000Z',
-    idempotencyKey: 'runtime-kpi-snapshot-1',
+    idempotencyKey: `${runId}-kpi-snapshot-1`,
     payload: { kpiDefinitionId: 'runtime-kpi-definition', formulaVersionId: 'runtime-formula-v1', thresholdStatus: 'critical' }
   });
   await logisticsIntelligence.ingestEvent(orgA, {
     eventType: 'shared_safety_record_published',
     eventCategory: 'shared_safety',
     sourceType: 'shared_safety_record',
-    sourceId: 'runtime-shared-safety-1',
+    sourceId: `${runId}-shared-safety-1`,
     subjectType: 'route',
-    subjectId: 'runtime-route-1',
+    subjectId: `${runId}-route-1`,
     occurredAt: '2026-07-16T14:00:00.000Z',
-    idempotencyKey: 'runtime-shared-safety-1',
-    payload: { sharedRecordId: 'runtime-shared-safety-1', hazardType: 'low_bridge', severity: 'high' }
+    idempotencyKey: `${runId}-shared-safety-1`,
+    payload: { sharedRecordId: `${runId}-shared-safety-1`, hazardType: 'low_bridge', severity: 'high' }
   });
 
   const processed = await logisticsIntelligence.processIntelligence(supervisor, { limit: 20 });
@@ -95,7 +96,7 @@ async function main() {
   assert(processed.recommendations.length >= 3, 'pipeline should create recommendations');
 
   const recommendations = await logisticsIntelligence.listRecommendations(supervisor, { status: 'proposed' });
-  const recommendation = recommendations.find((item) => item.subjectId === 'runtime-route-1');
+  const recommendation = recommendations.find((item) => item.subjectId === `${runId}-route-1`);
   assert(recommendation, 'supervisor should see tenant-scoped recommendation');
   assert(recommendation.lineage?.engineVersion === logisticsIntelligence.ENGINE_VERSION, 'recommendation should include engine lineage');
 

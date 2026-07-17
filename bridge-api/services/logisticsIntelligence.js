@@ -716,6 +716,7 @@ module.exports = {
   createRecommendationFromFinding,
   createSignalFromEvent,
   decideRecommendation,
+  getRecommendation,
   ingestEvent,
   listEvents,
   listFindings,
