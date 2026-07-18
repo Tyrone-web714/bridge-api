@@ -30,9 +30,14 @@ assert(mediaRoute.includes('repositories.listDeliveryNotes({ tenantContext: cont
 assert(mediaRoute.includes('media.storageKey.includes'), 'media route must reject unsafe object keys');
 assert(mediaRoute.includes('object.Body.pipe(res)'), 'media route must stream object through the application');
 assert(!mediaRoute.includes('req.query.storageKey'), 'media route must not accept arbitrary object key input');
+assert(!mediaRoute.includes('req.query.organization'), 'media route must not accept client-supplied organization scope');
 
 assert(repositories.includes('organizationId: row.organization_id'), 'delivery notes must expose organization ownership');
 assert(repositories.includes('organization_id = EXCLUDED.organization_id'), 'delivery note upsert must preserve organization ownership');
+assert(repositories.includes('upsertDeliveryNoteMediaLifecycleReferences'), 'new private delivery-note media must register lifecycle object references');
+assert(repositories.includes('lifecycle_object_references'), 'delivery-note media lifecycle registration must target ODR-019 object references');
+assert(repositories.includes("'delivery_note_photo'"), 'delivery-note media lifecycle registration must classify object kind');
+assert(repositories.includes('legal_hold_eligible'), 'delivery-note media lifecycle registration must keep legal-hold eligibility');
 assert(deliveryNotes.includes('photoStorage.normalizeExistingPhotoUrl'), 'legacy media compatibility path must normalize URLs');
 assert(deliveryNotes.includes('legacyPublicUrl'), 'delivery note normalization must retain legacy URL metadata');
 assert(sharedSafety.includes('sanitizeSharedMedia'), 'shared safety media must remain sanitized before publication');

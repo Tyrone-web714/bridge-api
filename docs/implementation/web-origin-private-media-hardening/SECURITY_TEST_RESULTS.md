@@ -18,6 +18,7 @@ Additional completed checks:
 - `npm.cmd ci --dry-run`: passed.
 - `npm.cmd run verify:secrets`: passed.
 - `npm.cmd run validate:production-rollout`: passed.
+- `npm.cmd run test:api-tenant`: passed.
 - `git diff --check`: passed.
 
 ## Coverage
@@ -29,6 +30,7 @@ Additional completed checks:
 - Tenant-scoped media lookup contract.
 - Rejection of arbitrary storage-key access.
 - Shared Safety sanitized-media boundary.
+- ODR-019 lifecycle object-reference registration for new S3/R2 delivery-note media.
 
 ## Remaining Validation
 
@@ -36,4 +38,4 @@ Full regression, secret verification, and diff validation must pass before merge
 
 Production media metadata counts were verified through the owner-run read-only production assessment. The result found 3 existing delivery-note media items with direct public R2 current URLs. This confirms migration or compatibility transition is required before disabling public R2 access.
 
-Database-backed runtime validators that require an isolated validation database were not rerun in this shell.
+Database-backed runtime validators requiring an isolated `5544x` validation database were attempted but not completed in this shell. They were not pointed at production or an unverified local database.

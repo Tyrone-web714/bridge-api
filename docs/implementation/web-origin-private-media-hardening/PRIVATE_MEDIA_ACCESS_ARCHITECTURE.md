@@ -22,3 +22,7 @@ The API resolves the media ID through tenant-scoped delivery-note data before re
 ## Compatibility
 
 The object remains in R2. This phase changes the preferred application URL and authorization path, not the storage backend.
+
+## Lifecycle Tracking
+
+New S3/R2 delivery-note private media is registered in `lifecycle_object_references` using the existing ODR-019 table so retention, legal hold, deletion eligibility, purge planning, and tombstone workflows have a database-owned object reference.

@@ -2,7 +2,7 @@
 
 ## Status
 
-GO for branch commit and push. Do not merge to main yet.
+GO for merge to main.
 
 ## Summary
 
@@ -14,30 +14,26 @@ Completed:
 
 ```powershell
 node --check scripts/assess-production-media-metadata.cjs
+node --check db/repositories.js
 npm.cmd ci --dry-run
 npm.cmd test
 npm.cmd run test:web-origin
 npm.cmd run test:private-media
+npm.cmd run test:api-tenant
 npm.cmd run verify:secrets
 npm.cmd run validate:production-rollout
 git diff --check
 ```
 
-Not rerun in this shell because they require a correctly configured isolated validation database or approved production-validation environment values:
+Attempted but not completed in this shell because they require a correctly configured isolated local PostgreSQL database on an approved `5544x` validation port or approved production-validation environment values:
 
 ```powershell
-npm.cmd run verify:production
 npm.cmd run validate:auth-rbac
 npm.cmd run validate:shared-safety
-npm.cmd run validate:bi-kpi
-npm.cmd run validate:logistics-intelligence
-npm.cmd run validate:fleet-intelligence-scoring
-npm.cmd run validate:pilot-integration
 npm.cmd run validate:data-lifecycle
-npm.cmd run validate:enterprise-identity
 ```
 
-`npm.cmd run validate:auth-rbac` was attempted before the owner-run media assessment and failed because `DATABASE_URL` is required for final validation in this shell. Runtime validators were not rerun against the wrong local or production database.
+`npm.cmd run validate:shared-safety` and `npm.cmd run validate:data-lifecycle` refused to run without an isolated local PostgreSQL database on a `5544x` validation port. `npm.cmd run validate:auth-rbac` failed because `DATABASE_URL` is required in this shell. Runtime validators were not pointed at production or an unverified local database.
 
 ## Production Media Metadata Assessment
 
@@ -63,6 +59,7 @@ Public R2 access can be disabled immediately: no.
 
 - Existing security contract still checked the older inline CORS production guard. It was updated to validate the new centralized `corsPolicy` production wildcard rejection.
 - Private media contract initially expected the Shared Safety sanitizer under the wrong helper name. The test now verifies the actual `sanitizeSharedMedia` boundary and `UNSANITIZED_SHARED_MEDIA` rejection path.
+- Merge-gate review found that authenticated media access alone did not register new private media in ODR-019 lifecycle tracking. Delivery-note S3/R2 media upsert now registers deterministic `lifecycle_object_references` entries in the same transaction as the delivery-note save.
 
 ## Database Changes
 
@@ -94,7 +91,9 @@ Shared Safety currently has no production media records. The Shared Safety servi
 
 ## Lifecycle Result
 
-ODR-019 lifecycle integration remains intact. No new migration was added. The existing `lifecycle_object_references` table exists in production and currently has 0 references.
+ODR-019 lifecycle integration is now explicitly connected for new S3/R2 delivery-note private media. No new migration was added. The existing `lifecycle_object_references` table exists in production and currently has 0 references for the legacy media items.
+
+New private delivery-note media can participate in retention, legal hold, deletion eligibility, object-storage deletion workflows, tombstone processing, and Organization termination through the ODR-019 object-reference model.
 
 ## Production Safety
 
@@ -111,6 +110,6 @@ No production data, schema, migrations, object-storage contents, or deployment s
 
 ## Final Decision
 
-GO for branch commit and push.
+GO for merge to main.
 
-Do not merge to main yet. Remaining production media migration work must be planned separately before public R2 access is disabled.
+Remaining production media migration work must be planned separately before public R2 access is disabled.
