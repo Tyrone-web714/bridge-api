@@ -6,6 +6,8 @@ Status: NOT VERIFIED.
 
 No production backup was restored into a separate non-production target in this phase.
 
+Because the production backup provider and most recent backup were not verified, restore capability cannot be claimed.
+
 ## Required Restore Rehearsal
 
 Preferred procedure:
@@ -21,4 +23,3 @@ Preferred procedure:
 ## Current Limitation
 
 Provider backup access and a restore target were not available, so production recovery capability remains unproven.
-

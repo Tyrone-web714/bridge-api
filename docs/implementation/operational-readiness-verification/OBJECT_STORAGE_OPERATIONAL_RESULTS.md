@@ -14,6 +14,8 @@ Deployed `/health` returned HTTP 200 and reported:
 
 No disposable production upload/read/delete smoke was executed because production data mutation was not approved.
 
+Configured provider and safe test prefix/bucket path were not directly inspected because Render environment values and object-storage provider controls were not available. The public health endpoint only confirms a durable `s3` integration is configured.
+
 ## Required Operational Smoke
 
 With explicit approval and disposable test data:
@@ -26,4 +28,3 @@ With explicit approval and disposable test data:
 6. Verify lifecycle/tombstone behavior only if safe and approved.
 
 Do not delete retained evidence or test destructive purge behavior against production records.
-

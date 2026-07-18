@@ -4,6 +4,16 @@ Status: NOT VERIFIED.
 
 No authenticated browser walkthrough was performed in this phase because approved live test credentials/browser access were not available.
 
+## Public/Unauthenticated Browser Checks
+
+Deployed checks passed:
+
+- `/api/routing/manual-hazards/admin/login` returned HTTP 200 HTML.
+- `/api/admin` returned HTTP 302 to `/api/routing/manual-hazards/admin/login`.
+- `/api/route-manifests/admin` returned HTTP 302 to `/api/routing/manual-hazards/admin/login`.
+
+These checks show the deployed browser pages do not expose protected admin content while unauthenticated and do not return JSON in place of the login page for those paths.
+
 ## Required Walkthrough
 
 Supervisor:
@@ -45,4 +55,3 @@ Warehouse:
 - Permissions match role boundaries.
 - Tenant isolation remains intact.
 - Test data only.
-

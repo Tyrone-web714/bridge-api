@@ -8,7 +8,7 @@ The platform has application-level health/readiness endpoints, audit logging, au
 
 ## Active Monitoring
 
-Not verified. Render health checks are configured through `healthCheckPath: /health`, but no external uptime monitor, metrics dashboard, or log aggregation configuration was inspected.
+Ready with limitation. Render health checks are configured through `healthCheckPath: /health`, and the deployed `/health` endpoint is currently reachable. No external uptime monitor, metrics dashboard, or log aggregation configuration was inspected.
 
 ## Active Alerting
 
@@ -24,4 +24,3 @@ Not verified. No alert routing evidence was available for backend errors, auth f
 - Deployment failure alerts.
 - Migration failure alert process.
 - Background-processing failure alerts for Shared Safety, BI/KPI, Logistics Intelligence, and FISS.
-

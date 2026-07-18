@@ -4,6 +4,8 @@ Status: READY WITH LIMITATION.
 
 No production migrations were applied.
 
+Production execution status for all migrations in this file: not applied by this phase and not verified against production schema.
+
 | Migration | Production Schema Prerequisite | Application Dependency | Data Impact | Locking Risk | Backup Requirement | Rollback Posture | Owner Approval |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | `006_bi_kpi_foundation.sql` | migrations `001`-`004` | BI/KPI APIs and dashboards | additive KPI tables, immutable formula/snapshot records | Medium | required | prefer app rollback or corrective forward migration; preserve snapshots | required |
@@ -20,4 +22,3 @@ No production migrations were applied.
 - deployment rollback baseline
 - Render environment review
 - authenticated smoke after deployment alignment
-

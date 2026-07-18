@@ -15,7 +15,7 @@ Final recommendation: NO-GO for production rollout until remaining operational b
 | Object storage | READY WITH LIMITATION |
 | Monitoring/alerting | READY WITH LIMITATION |
 | Physical mobile offline/reconnect | NOT VERIFIED |
-| Authenticated dashboard | NOT VERIFIED |
+| Authenticated dashboard | NOT VERIFIED; unauthenticated deployed browser checks passed |
 | Deployed Render smoke | READY WITH LIMITATION |
 | Migrations `006`-`010` | READY WITH LIMITATION |
 | Tenant isolation | READY WITH LIMITATION |
@@ -55,6 +55,16 @@ Passed:
 
 The first parallel `validate:shared-safety` attempt hit a database deadlock while other runtime validators were running concurrently. It passed when rerun sequentially against the same isolated validation database.
 
+Additional deployed smoke evidence:
+
+- `/health`: HTTP 200
+- `/ready`: HTTP 200
+- admin login page: HTTP 200 HTML
+- `/api/admin`: HTTP 302 to login
+- `/api/route-manifests/admin`: HTTP 302 to login
+- `/api/driver-auth/session`: HTTP 401 JSON when unauthenticated
+- `/api/enterprise-identity/providers`: HTTP 401 JSON when unauthenticated
+
 Medium limitations:
 
 - Production DB state was not inspected.
@@ -63,7 +73,7 @@ Medium limitations:
 - Object storage upload/read/denial smoke was not executed.
 - Full mobile offline/reconnect replay was not physically tested.
 - Authenticated dashboard walkthrough was not performed.
-- Deployed commit/schema alignment was not verified.
+- Deployed commit/schema alignment was not verified because deployed commit metadata and production schema preflight were not available.
 - Active monitoring and alerting were not verified.
 
 Low limitations:

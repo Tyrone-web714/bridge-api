@@ -16,7 +16,19 @@ Status: READY WITH LIMITATION.
 
 ## Verified From Deployed Readiness
 
+Deployed `/health` returned HTTP 200 on `https://truck-safe-routing-api.onrender.com/health`.
+
 Deployed `/ready` returned HTTP 200 on `https://truck-safe-routing-api.onrender.com/ready`, indicating the running service reports its dependency checks as ready.
+
+Public response evidence, without secret values:
+
+- database: PostgreSQL
+- PostGIS: ready
+- Google Maps key: configured
+- admin password: configured
+- admin secret: configured
+- durable photo storage: configured
+- photo storage provider: `s3`
 
 ## Not Verified
 
@@ -40,6 +52,14 @@ Required variable status:
 | `PHOTO_STORAGE_SECRET_ACCESS_KEY` | NOT VERIFIED |
 | `PHOTO_STORAGE_PUBLIC_BASE_URL` | NOT VERIFIED |
 | `ALLOW_LEGACY_DRIVER_API_TOKEN` | NOT VERIFIED |
+| `ALLOW_PRODUCTION_LIFECYCLE_PURGE` | NOT VERIFIED; should not be enabled without explicit approval |
+| Enterprise Identity secret-reference settings | NOT VERIFIED |
+| BI/KPI specific required variables | none identified beyond database/auth |
+| Logistics Intelligence specific required variables | none identified beyond database/auth |
+| FISS specific required variables | none identified beyond database/auth |
+
+## Dangerous Setting Review
+
+Public readiness checks did not reveal localhost fallback, development mode, or missing storage configuration. Actual Render dashboard/API inspection is still required to verify `NODE_ENV`, legacy flags, debug settings, and secret-reference configuration by name.
 
 No secret values were printed.
-

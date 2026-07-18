@@ -47,7 +47,7 @@ Current implementation and planned architecture must be kept separate:
 | Security hardening | In Progress | Security controls, auth services, rate limit middleware, secret audit scripts, and security review docs exist; production hardening remains ongoing. |
 | Pilot readiness | Conditional GO | Pilot Integration and End-to-End Hardening completed with no unresolved Critical or High defects; remaining limitations require physical mobile offline/reconnect replay, dashboard browser walkthrough, deployment smoke, and backup/restore verification. |
 | Production rollout planning | Merged to Main | Production rollout planning merged at `aa2832d`; it remains planning only and does not approve production deployment or production migrations. |
-| Production readiness | Operational Verification In Progress | Operational readiness verification is underway on `operational-readiness-verification`. Deployed `/health` and `/ready` are reachable, but production database state, backup existence, restore capability, Render dashboard environment values, authenticated browser walkthrough, physical mobile offline/reconnect replay, production migrations, and production deployment remain unverified/not executed. |
+| Production readiness | Operational Verification In Progress | Operational blocker closure is underway on `operational-readiness-verification`. Public deployed smoke checks pass for `/health`, `/ready`, admin login redirect behavior, and unauthenticated API denial, but production database state, backup existence, restore capability, Render dashboard environment values, authenticated browser walkthrough, physical mobile offline/reconnect replay, production migrations, and production deployment remain unverified/not executed. |
 
 ## 4. Repository Landscape
 

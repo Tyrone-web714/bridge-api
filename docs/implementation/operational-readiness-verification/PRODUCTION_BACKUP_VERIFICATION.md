@@ -4,7 +4,7 @@ Status: BLOCKED.
 
 ## Result
 
-The actual production database provider backup configuration was not verified.
+The actual production database provider backup configuration was not verified. Public `/health` confirms the deployed app is using PostgreSQL, but it does not disclose the provider or backup settings.
 
 ## Evidence Available
 
@@ -13,6 +13,7 @@ Repository documentation requires a verified backup before production migration.
 ## Missing Access
 
 - Database provider dashboard or CLI/API access.
+- Render dashboard/API access sufficient to identify the actual `DATABASE_URL` provider without exposing the secret value.
 - Current production database provider identity.
 - Last successful backup timestamp.
 - Retention settings.
@@ -23,4 +24,3 @@ Repository documentation requires a verified backup before production migration.
 ## Required Next Action
 
 The owner must provide provider access or export evidence from the provider dashboard before production migration or rollout approval.
-
