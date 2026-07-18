@@ -8,7 +8,7 @@
 - Governing Architecture Version: 1.1
 - Authoritative Repository: `C:\dev\bridge-api`
 - GitHub Repository: `https://github.com/Tyrone-web714/bridge-api.git`
-- Current Branch: `enterprise-identity-foundation`
+- Current Branch: `operational-readiness-verification`
 - Latest Documentation Commit: `cf23662b1bb7ab189960925f9521f6b1c0e8a394` - `Add Truck-Safe Routing governing documentation`
 - Update Guidance: Update this file when the project phase, deployment status, repository structure, major risks, or implementation priorities change.
 
@@ -41,13 +41,13 @@ Current implementation and planned architecture must be kept separate:
 | Fleet operations expansion | In Progress | Drivers, route manifests, delivery notes, inventory closeouts, operational geography, and heatmap routes exist; full target platform expansion remains pending. |
 | KPI and BI foundation | Merged to Main | BI/KPI foundation is merged through the active governance baseline; production migration `006` still requires release approval before production use. |
 | Data Lifecycle architecture | Merged to Main | ODR-019 foundation is merged through commit `36c006d`; production migration `009` still requires release approval before production use. |
-| Enterprise Identity architecture | In Progress | ODR-020 foundation is being implemented on `enterprise-identity-foundation` with migration `010`, tenant-scoped IdP configuration, federated identity mapping, verified-domain discovery, SSO transaction foundation, SCIM foundation, break-glass records, identity audit events, and implementation docs. No external provider interoperability is claimed. Production migration `010` is not applied. |
+| Enterprise Identity architecture | Merged to Main | ODR-020 foundation is merged to main through commit `632709e`; no external provider interoperability is claimed. Production migration `010` is not applied. Provider verification is paused pending operational readiness verification. |
 | Logistics Intelligence Engine | Merged to Main | Logistics Intelligence Foundation is merged through commit `3f2590d`; production migration `007` still requires release approval before production use. |
 | Fleet Intelligence Scoring System | Merged to Main | Fleet Intelligence Scoring Foundation is merged through commit `630288e`; production migration `008` still requires release approval before production use. |
 | Security hardening | In Progress | Security controls, auth services, rate limit middleware, secret audit scripts, and security review docs exist; production hardening remains ongoing. |
 | Pilot readiness | Conditional GO | Pilot Integration and End-to-End Hardening completed with no unresolved Critical or High defects; remaining limitations require physical mobile offline/reconnect replay, dashboard browser walkthrough, deployment smoke, and backup/restore verification. |
 | Production rollout planning | Merged to Main | Production rollout planning merged at `aa2832d`; it remains planning only and does not approve production deployment or production migrations. |
-| Production readiness | Not Started | Production database state, backup existence, restore capability, Render environment values, object storage smoke, production migrations, and production deployment remain unverified/not executed. |
+| Production readiness | Operational Verification In Progress | Operational readiness verification is underway on `operational-readiness-verification`. Deployed `/health` and `/ready` are reachable, but production database state, backup existence, restore capability, Render dashboard environment values, authenticated browser walkthrough, physical mobile offline/reconnect replay, production migrations, and production deployment remain unverified/not executed. |
 
 ## 4. Repository Landscape
 
@@ -138,7 +138,7 @@ Key documentation includes:
 
 ## 9. Current Priority
 
-Complete ODR-020 Enterprise Identity foundation without deploying, applying production migrations, configuring real customer IdPs, or claiming external provider verification.
+Complete production and pilot operational verification before Enterprise Identity provider verification, production migration, or production rollout.
 
 Current validation basis:
 
@@ -202,11 +202,11 @@ Current approved decisions reflected in governing documentation and project dire
 
 ## 12. Immediate Next Steps
 
-1. Complete and validate the `enterprise-identity-foundation` branch.
-2. Do not deploy, configure real customer IdPs, or apply production migration `010`.
-3. Validate migration `010` against isolated PostgreSQL/PostGIS only.
-4. Keep provider interoperability marked as not verified until actual provider testing occurs.
-5. After ODR-020 passes its implementation validation, stop for a separate merge-gate review.
+1. Complete `operational-readiness-verification` without merging to main.
+2. Do not deploy, configure real customer IdPs, or apply production migrations.
+3. Obtain explicit owner approval before production database preflight or production data mutation.
+4. Keep provider interoperability marked as not verified until actual provider testing occurs in a later approved phase.
+5. Close or explicitly accept operational blockers before production rollout.
 
 ## 13. Update Rules
 
