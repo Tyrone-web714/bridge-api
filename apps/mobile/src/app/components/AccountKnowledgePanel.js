@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-native';
+import AuthenticatedMediaImage from './AuthenticatedMediaImage';
 import { fetchAccountDeliveryNotes } from '../services/deliveryNotesApi';
 
 export default function AccountKnowledgePanel({
@@ -88,9 +89,9 @@ export default function AccountKnowledgePanel({
       {photos.length > 0 && (
         <View style={styles.photoRow}>
           {photos.map((photo, index) => (
-            <Image
+            <AuthenticatedMediaImage
               key={photo.id || photo.url || index}
-              source={{ uri: photo.url }}
+              media={photo}
               style={styles.photo}
               resizeMode="cover"
             />

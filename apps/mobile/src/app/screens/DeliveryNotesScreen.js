@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { ActivityIndicator, Alert, Image, Modal, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { DRIVER_NAME } from '../config/api';
+import AuthenticatedMediaImage from '../components/AuthenticatedMediaImage';
 import {
   deleteAccountDeliveryNote,
   fetchAccountDeliveryNotes,
@@ -396,7 +397,7 @@ export default function DeliveryNotesScreen({ route }) {
             <View style={styles.selectedPhotoGrid}>
               {existingPhotoDraft.map((photo) => (
                 <View key={photo.id || photo.url} style={styles.selectedPhotoWrap}>
-                  <Image source={{ uri: photo.url }} style={styles.selectedPhoto} resizeMode="cover" />
+                  <AuthenticatedMediaImage media={photo} style={styles.selectedPhoto} resizeMode="cover" />
                   <Pressable
                     onPress={() => removeExistingPhoto(photo)}
                     style={styles.removePhotoButton}
@@ -466,8 +467,8 @@ export default function DeliveryNotesScreen({ route }) {
                           pressed && styles.savedPhotoButtonPressed,
                         ]}
                       >
-                        <Image
-                          source={{ uri: photo.url }}
+                        <AuthenticatedMediaImage
+                          media={photo}
                           style={styles.savedPhoto}
                           resizeMode="cover"
                         />
@@ -541,8 +542,8 @@ export default function DeliveryNotesScreen({ route }) {
             </View>
 
             {!!previewPhoto?.url && (
-              <Image
-                source={{ uri: previewPhoto.url }}
+              <AuthenticatedMediaImage
+                media={previewPhoto}
                 style={styles.photoPreviewImage}
                 resizeMode="contain"
               />

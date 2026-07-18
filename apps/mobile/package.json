@@ -13,6 +13,7 @@
     "export:android:preview": "npm run verify:production && expo export --platform android --output-dir .expo-export-preview-check",
     "verify:production": "node scripts/verify-production-config.cjs",
     "verify:secrets": "node scripts/audit-secrets.cjs",
+    "test:mobile-private-media": "node scripts/check-mobile-private-media.cjs",
     "compliance:generate": "node scripts/generate-compliance-artifacts.cjs",
     "web": "expo start --web"
   },

@@ -3,6 +3,7 @@ import { ActivityIndicator, Alert, Image, Linking, Modal, Pressable, ScrollView,
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { WebView } from 'react-native-webview';
 import { API_BASE_URL } from '../config/api';
+import AuthenticatedMediaImage from '../components/AuthenticatedMediaImage';
 import {
   fetchAddressPredictions,
   fetchBackendHealth,
@@ -1362,8 +1363,8 @@ export default function HomeScreen({ navigation, route }) {
               >
                 <Text style={styles.driverPhotoBackText}>Back to photos</Text>
               </Pressable>
-              <Image
-                source={{ uri: selectedDriverPhoto.url }}
+              <AuthenticatedMediaImage
+                media={selectedDriverPhoto}
                 style={styles.driverPhotoDetailImage}
                 resizeMode="contain"
               />
@@ -1408,8 +1409,8 @@ export default function HomeScreen({ navigation, route }) {
                         pressed && styles.destinationActionPressed,
                       ]}
                     >
-                      <Image
-                        source={{ uri: photo.url }}
+                      <AuthenticatedMediaImage
+                        media={photo}
                         style={styles.driverPhotoTileImage}
                         resizeMode="cover"
                       />
