@@ -2,7 +2,9 @@
 
 ## Status
 
-Production migration completed by owner-run approved apply. GO for branch commit and push. Do not merge to main yet.
+Production migration completed by owner-run approved apply.
+
+Final merge-gate validation passed. GO for merge to `main`.
 
 ## Production Writes
 
@@ -85,7 +87,7 @@ Existing public R2 access remains enabled for compatibility until the remaining 
 
 The post-migration dry-run verifies authenticated TSR media paths are present as the primary metadata path for the 3 migrated records. Credentialed media retrieval was not directly exercised from this Codex shell because approved production tenant media-test credentials were not available in the shell.
 
-Unauthorized and cross-tenant denial remain covered by the private-media hardening contract tests and must be rechecked during the final merge gate or a credentialed operational walkthrough before public R2 shutdown.
+Unauthorized and cross-tenant denial are covered by the private-media hardening contract tests. Credentialed production media retrieval remains a separate operational walkthrough prerequisite before public R2 shutdown.
 
 ## Health And Readiness Result
 
@@ -100,12 +102,33 @@ Completed:
 
 ```powershell
 npm.cmd ci --dry-run
-npm.cmd test
-npm.cmd run verify:secrets
 npm.cmd run test:legacy-private-media
+npm.cmd run test:private-media
+npm.cmd run test:shared-safety
+npm.cmd run test:shared-safety-ui
+npm.cmd run test:web-origin
+npm.cmd run test:auth-rbac
+npm.cmd run test:api-tenant
+npm.cmd run verify:secrets
+npm.cmd test
 npm.cmd run check:deployed -- https://truck-safe-routing-api.onrender.com
 git diff --check
 ```
+
+Merge-gate results:
+
+- Branch diff against `main`: limited to legacy private-media migration tooling, validation script registration, implementation documentation, and project status.
+- Migration tooling safety and idempotency: passed.
+- Legacy media compatibility: passed by metadata preservation design and documented compatibility path.
+- Authenticated media path metadata: passed by post-migration dry-run evidence.
+- Ownership preservation: passed.
+- Lifecycle-object-reference behavior: passed by deterministic reference design and idempotent post-migration dry-run evidence.
+- Tenant isolation and authorization: passed by `test:auth-rbac`, `test:api-tenant`, and `test:private-media`.
+- Shared Safety private-media boundary: passed by `test:shared-safety` and `test:shared-safety-ui`.
+- CORS regression: passed by `test:web-origin`.
+- Full regression suite: passed.
+
+No unresolved Critical or High defect remains for merging the branch.
 
 ## Rollback Readiness
 
@@ -113,6 +136,6 @@ Rollback is documented in `ROLLBACK_PROCEDURE.md`. Rollback must not delete R2 o
 
 ## Final Decision
 
-GO for branch commit and push.
+GO for merge to `main`.
 
 NO-GO for public R2 shutdown until separate shutdown prerequisites are satisfied and separately approved.
