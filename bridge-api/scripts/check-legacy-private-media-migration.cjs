@@ -29,6 +29,8 @@ assert(script.includes('primaryUrlFor'), 'tool must set authenticated media acce
 assert(script.includes('upsertLifecycleReference'), 'tool must create lifecycle object references');
 assert(script.includes('ON CONFLICT (id) DO UPDATE'), 'lifecycle registration must be idempotent');
 assert(script.includes('recordAuditEvent'), 'apply mode must record auditable migration event');
+assert(script.includes('assertApprovedApplyCandidateSet'), 'apply mode must enforce the approved production candidate count');
+assert(script.includes('Apply candidate set does not match the approved dry-run'), 'apply mode must refuse unexpected production candidate sets');
 assert(script.includes('knownProductionReferenceCountMatches: items.length === 3'), 'dry-run must reconcile against verified legacy count');
 assert(!script.includes('console.log(storageKey)'), 'tool must not log storage keys directly');
 assert(!script.includes('console.log(currentUrl)'), 'tool must not log public URLs directly');

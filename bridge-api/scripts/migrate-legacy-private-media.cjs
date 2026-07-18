@@ -259,6 +259,30 @@ async function recordAuditEvent(client, counts) {
   })]);
 }
 
+function assertApprovedApplyCandidateSet(items, counts, missingMetadataCount) {
+  const approved = items.length === 3
+    && counts.READY_TO_MIGRATE === 3
+    && counts.ALREADY_MIGRATED === 0
+    && counts.BLOCKED === 0
+    && counts.AMBIGUOUS === 0
+    && counts.MISSING_REQUIRED_METADATA === 0
+    && missingMetadataCount === 0;
+
+  if (!approved) {
+    const error = new Error('Apply candidate set does not match the approved dry-run. Refusing production write.');
+    error.safeCounts = {
+      totalLegacyCandidates: items.length,
+      readyToMigrate: counts.READY_TO_MIGRATE,
+      alreadyMigrated: counts.ALREADY_MIGRATED,
+      blocked: counts.BLOCKED,
+      ambiguous: counts.AMBIGUOUS,
+      missingRequiredMetadata: counts.MISSING_REQUIRED_METADATA,
+      missingMetadataCount
+    };
+    throw error;
+  }
+}
+
 async function migrateReadyItems(client, notes, items) {
   const byNote = new Map();
   for (const item of items.filter((entry) => entry.classification === CLASSIFICATIONS.READY_TO_MIGRATE)) {
@@ -324,6 +348,7 @@ async function main() {
     }
 
     if (APPLY) {
+      assertApprovedApplyCandidateSet(items, counts, missingMetadataCount);
       await migrateReadyItems(activeClient, notes, items);
       await recordAuditEvent(activeClient, counts);
       await activeClient.query('COMMIT');

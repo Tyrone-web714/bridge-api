@@ -37,13 +37,33 @@ The verified dry-run reconciled exactly to the expected 3 candidates.
 
 Known production reference count matches: true.
 
-## Future Write Command
+## Post-Migration Dry-Run
 
-The production write is not approved yet. If separately approved, run from `C:\dev\bridge-api\bridge-api` in a temporary PowerShell session where `DATABASE_URL` points to the verified Render production database:
+After the approved production write, the owner immediately reran the tool in read-only dry-run mode against the verified Render production database.
+
+| Metric | Count |
+| --- | ---: |
+| Total legacy candidates | 3 |
+| Ready to migrate | 0 |
+| Already migrated | 3 |
+| Blocked | 0 |
+| Ambiguous | 0 |
+| Missing required metadata | 0 |
+| Missing metadata count | 0 |
+
+Known production reference count matches: true.
+
+Write mode executed: false.
+
+This verifies that direct public R2 URLs are no longer the primary current metadata path for the 3 migrated records and that authenticated TSR media access metadata is present for all 3.
+
+## Production Write Command
+
+The production write was approved and manually executed by the owner in a temporary PowerShell session where `DATABASE_URL` pointed to the verified Render production database:
 
 ```powershell
 $env:OWNER_APPROVED_LEGACY_MEDIA_MIGRATION='true'
 node scripts\migrate-legacy-private-media.cjs --apply
 ```
 
-Do not run this write command until explicit owner approval is granted.
+Do not run this write command again unless a separate owner approval is granted.
