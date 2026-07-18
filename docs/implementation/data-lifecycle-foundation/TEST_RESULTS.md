@@ -26,5 +26,6 @@ Defects found and fixed during validation:
 - Recovery-window SQL placeholder used ambiguous typing; fixed with explicit integer interval arithmetic.
 - Organization purge preview attempted optional counts on tables without `organization_id`; fixed by checking column existence first.
 - Runtime test initially assumed Organization Admin could terminate an Organization; corrected to keep Organization termination Platform Admin-gated.
+- Merge-gate review found purge execution was not linked to an impact-preview job; fixed and covered by runtime validation.
 
 Final results are summarized in `FINAL_VALIDATION_REPORT.md`.

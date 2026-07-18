@@ -73,6 +73,8 @@ const docsDir = path.join(repoRoot, 'docs', 'implementation', 'data-lifecycle-fo
   'reviewDataSubjectRequest',
   'createDataExportRequest',
   'executeEphemeralPurge',
+  'PURGE_PREVIEW_REQUIRED',
+  'previewLinked',
   'POLICY_DECISION_REQUIRED',
   'hasActiveLegalHold'
 ].forEach((pattern) => assertContains(service, pattern, 'service contract'));

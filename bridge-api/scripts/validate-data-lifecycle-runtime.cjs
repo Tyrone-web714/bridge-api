@@ -225,6 +225,23 @@ async function main() {
   });
   assert(exportRequest.dataExport.manifest.format === 'OWNER_DECISION_REQUIRED', 'export format must remain owner decision');
 
+  let unpreviewedPurgeBlocked = false;
+  try {
+    await dataLifecycle.executeEphemeralPurge(platformAdmin, { organizationId: orgA });
+  } catch (error) {
+    unpreviewedPurgeBlocked = error.code === 'PURGE_PREVIEW_REQUIRED';
+  }
+  assert(unpreviewedPurgeBlocked, 'ephemeral purge execution must require a preview-linked purge job');
+
+  await dataLifecycle.releaseLegalHold(platformAdmin, hold.legalHold.id, 'runtime release before ephemeral purge');
+  const purgePreview = await dataLifecycle.previewEphemeralPurge(platformAdmin, { organizationId: orgA });
+  assert(purgePreview.purgeJobId, 'ephemeral purge preview must create a purge job');
+  const purgeExecution = await dataLifecycle.executeEphemeralPurge(platformAdmin, {
+    organizationId: orgA,
+    previewJobId: purgePreview.purgeJobId
+  });
+  assert(purgeExecution.purgeJobId === purgePreview.purgeJobId, 'ephemeral purge execution must link to preview job');
+
   let auditImmutable = false;
   try {
     await postgres.query('DELETE FROM audit_events WHERE request_id = $1', [runId]);

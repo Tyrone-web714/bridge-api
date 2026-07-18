@@ -14,7 +14,7 @@ Legal hold result: Legal holds block purge preview actions and anonymization.
 
 Retention result: Retention policy lookup is centralized and returns `POLICY_DECISION_REQUIRED` where no approved duration exists.
 
-Purge result: Purge preview is non-destructive. Execution is limited to eligible ephemeral records and is disabled for production unless explicitly enabled.
+Purge result: Purge preview is non-destructive and creates a preview-linked `lifecycle_purge_jobs` record. Execution is limited to eligible ephemeral records, requires the preview job ID, remains tenant-scoped and permission-controlled, and is disabled for production unless explicitly enabled.
 
 Historical preservation result: Operational, safety, KPI, Logistics Intelligence, FISS, Shared Safety, and audit records are retained by lifecycle workflows.
 
@@ -47,6 +47,7 @@ Defects found and fixed:
 - Recovery-window SQL parameter typing defect in deletion request creation.
 - Organization purge preview optional-count transaction abort when a historical table lacked `organization_id`.
 - Runtime validation authority assumption for Organization termination; corrected validation to keep termination Platform Admin-gated.
+- Merge-gate review found purge execution was not linked to an impact-preview job. Fixed by requiring a preview-linked purge job before ephemeral purge execution and validating that behavior.
 
 Production data modification: None.
 

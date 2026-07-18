@@ -783,22 +783,64 @@ async function createDataExportRequest(context, input = {}) {
 async function previewEphemeralPurge(context, input = {}) {
   requirePermission(context, rbac.PERMISSIONS.LIFECYCLE_USER_REVIEW_DELETE);
   const organizationId = requireOrganizationScope(context, input.organizationId || input.organization_id || context.organizationId);
-  const recordsToDelete = [];
-  for (const candidate of EPHEMERAL_TABLES) {
-    const count = await postgres.rawQuery(
-      `SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema = current_schema() AND table_name = $1) AS exists`,
-      [candidate.table]
+  return postgres.withTransaction(async (client) => {
+    const legalHold = await hasActiveLegalHold({ organizationId, scopeType: 'ORGANIZATION', scopeId: organizationId });
+    const recordsToDelete = [];
+    for (const candidate of EPHEMERAL_TABLES) {
+      if (!(await tableExists(client, candidate.table))) continue;
+      if (!(await hasColumn(client, candidate.table, 'organization_id'))) continue;
+      const rows = await client.query(
+        `SELECT COUNT(*)::int AS count FROM ${candidate.table} WHERE organization_id = $1 AND (${candidate.where})`,
+        [organizationId]
+      );
+      recordsToDelete.push({
+        table: candidate.table,
+        action: legalHold ? 'LEGAL HOLD' : 'HARD DELETE',
+        count: Number(rows.rows[0]?.count) || 0
+      });
+    }
+    const preview = {
+      targetType: 'EPHEMERAL_RECORDS',
+      targetId: organizationId,
+      organizationId,
+      blockedByLegalHold: legalHold,
+      recordsToDelete: legalHold ? [] : recordsToDelete,
+      recordsBlockedByLegalHold: legalHold ? recordsToDelete : [],
+      recordsToRetain: [],
+      recordsToAnonymize: [],
+      objectStorageFilesAffected: [],
+      sharedSafetyGlobalRecordsPreserved: true,
+      policyDecisions: [],
+      dryRun: true
+    };
+    const job = await client.query(
+      `INSERT INTO lifecycle_purge_jobs (
+        organization_id, target_type, target_id, preview, status, dry_run, requested_by, metadata
+      ) VALUES ($1, 'EPHEMERAL_RECORDS', $1, $2::jsonb, $3, true, $4, $5::jsonb)
+      RETURNING id, status`,
+      [
+        organizationId,
+        JSON.stringify(preview),
+        legalHold ? 'BLOCKED' : 'PREVIEWED',
+        actorId(context),
+        JSON.stringify({ previewLinked: true })
+      ]
     );
-    if (!count.rows[0]?.exists) continue;
-    const rows = await postgres.query(`SELECT COUNT(*)::int AS count FROM ${candidate.table} WHERE organization_id = $1 AND (${candidate.where})`, [organizationId]);
-    recordsToDelete.push({ table: candidate.table, action: 'HARD DELETE', count: Number(rows.rows[0]?.count) || 0 });
-  }
-  return { targetType: 'EPHEMERAL_RECORDS', organizationId, recordsToDelete, dryRun: true };
+    await recordLifecycleEvent(client, context, 'EPHEMERAL_RECORDS', organizationId, 'impact_preview', { purgeJobId: job.rows[0].id, preview }, organizationId);
+    return { ...preview, purgeJobId: job.rows[0].id, purgeJobStatus: job.rows[0].status };
+  });
 }
 
 async function executeEphemeralPurge(context, input = {}) {
   requirePermission(context, rbac.PERMISSIONS.LIFECYCLE_USER_PURGE);
   const organizationId = requireOrganizationScope(context, input.organizationId || input.organization_id || context.organizationId);
+  const previewJobId = cleanText(input.previewJobId || input.preview_job_id || input.purgeJobId || input.purge_job_id, 160);
+  if (!previewJobId) {
+    const error = new Error('A preview-linked lifecycle purge job is required before purge execution.');
+    error.status = 400;
+    error.code = 'PURGE_PREVIEW_REQUIRED';
+    throw error;
+  }
   if (process.env.ALLOW_PRODUCTION_LIFECYCLE_PURGE !== 'true' && process.env.NODE_ENV === 'production') {
     const error = new Error('Production lifecycle purge execution requires explicit owner-approved ALLOW_PRODUCTION_LIFECYCLE_PURGE=true.');
     error.status = 403;
@@ -812,14 +854,65 @@ async function executeEphemeralPurge(context, input = {}) {
     throw error;
   }
   return postgres.withTransaction(async (client) => {
-    const results = [];
-    for (const candidate of EPHEMERAL_TABLES) {
-      if (!(await tableExists(client, candidate.table))) continue;
-      const deleted = await client.query(`DELETE FROM ${candidate.table} WHERE organization_id = $1 AND (${candidate.where})`, [organizationId]);
-      results.push({ table: candidate.table, deletedCount: deleted.rowCount });
+    const jobResult = await client.query(
+      `SELECT *
+       FROM lifecycle_purge_jobs
+       WHERE id = $1
+         AND organization_id = $2
+         AND target_type = 'EPHEMERAL_RECORDS'
+       FOR UPDATE`,
+      [previewJobId, organizationId]
+    );
+    const job = jobResult.rows[0];
+    if (!job) {
+      const error = new Error('Preview-linked purge job not found for this Organization.');
+      error.status = 404;
+      error.code = 'PURGE_PREVIEW_NOT_FOUND';
+      throw error;
     }
-    await recordLifecycleEvent(client, context, 'EPHEMERAL_RECORDS', organizationId, 'purge_execution', { results }, organizationId);
-    return { ok: true, organizationId, results };
+    if (job.status !== 'PREVIEWED' && job.status !== 'APPROVED') {
+      const error = new Error('Purge job is not eligible for execution.');
+      error.status = 409;
+      error.code = 'PURGE_JOB_NOT_EXECUTABLE';
+      throw error;
+    }
+    if (job.preview?.blockedByLegalHold === true) {
+      const error = new Error('Preview-linked purge job is blocked by legal hold.');
+      error.status = 409;
+      error.code = 'LEGAL_HOLD_BLOCKS_PURGE';
+      throw error;
+    }
+    await client.query(
+      `UPDATE lifecycle_purge_jobs
+       SET status = 'RUNNING', dry_run = false, confirmed_by = $2, executed_at = NOW()
+       WHERE id = $1`,
+      [previewJobId, actorId(context)]
+    );
+    const results = [];
+    try {
+      for (const candidate of EPHEMERAL_TABLES) {
+        if (!(await tableExists(client, candidate.table))) continue;
+        if (!(await hasColumn(client, candidate.table, 'organization_id'))) continue;
+        const deleted = await client.query(`DELETE FROM ${candidate.table} WHERE organization_id = $1 AND (${candidate.where})`, [organizationId]);
+        results.push({ table: candidate.table, deletedCount: deleted.rowCount });
+      }
+      await client.query(
+        `UPDATE lifecycle_purge_jobs
+         SET status = 'COMPLETED', completed_at = NOW(), metadata = metadata || $2::jsonb
+         WHERE id = $1`,
+        [previewJobId, JSON.stringify({ results })]
+      );
+    } catch (error) {
+      await client.query(
+        `UPDATE lifecycle_purge_jobs
+         SET status = 'FAILED', failed_at = NOW(), error_message = $2
+         WHERE id = $1`,
+        [previewJobId, cleanText(error.message, 1000)]
+      );
+      throw error;
+    }
+    await recordLifecycleEvent(client, context, 'EPHEMERAL_RECORDS', organizationId, 'purge_execution', { purgeJobId: previewJobId, results }, organizationId);
+    return { ok: true, organizationId, purgeJobId: previewJobId, results };
   });
 }
 
