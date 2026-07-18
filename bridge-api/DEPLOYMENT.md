@@ -17,6 +17,7 @@ ADMIN_CREATE_PASSWORD=temporary-strong-password-used-once
 ADMIN_CREATE_ROLE=admin
 ADMIN_CREATE_DISPLAY_NAME=Supervisor Admin
 DRIVER_API_TOKEN=random-driver-app-token-at-least-32-characters
+ALLOW_LEGACY_DRIVER_API_TOKEN=false
 BACKEND_PUBLIC_URL=https://your-deployed-api.example
 PHOTO_STORAGE_PROVIDER=s3
 PHOTO_STORAGE_BUCKET=truck-safe-routing-delivery-photos

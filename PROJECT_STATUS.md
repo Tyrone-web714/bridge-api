@@ -8,7 +8,7 @@
 - Governing Architecture Version: 1.1
 - Authoritative Repository: `C:\dev\bridge-api`
 - GitHub Repository: `https://github.com/Tyrone-web714/bridge-api.git`
-- Current Branch: `pilot-integration-hardening`
+- Current Branch: `production-rollout-planning`
 - Latest Documentation Commit: `cf23662b1bb7ab189960925f9521f6b1c0e8a394` - `Add Truck-Safe Routing governing documentation`
 - Update Guidance: Update this file when the project phase, deployment status, repository structure, major risks, or implementation priorities change.
 
@@ -45,8 +45,9 @@ Current implementation and planned architecture must be kept separate:
 | Logistics Intelligence Engine | Merged to Main | Logistics Intelligence Foundation is merged through commit `3f2590d`; production migration `007` still requires release approval before production use. |
 | Fleet Intelligence Scoring System | Merged to Main | Fleet Intelligence Scoring Foundation is merged through commit `630288e`; production migration `008` still requires release approval before production use. |
 | Security hardening | In Progress | Security controls, auth services, rate limit middleware, secret audit scripts, and security review docs exist; production hardening remains ongoing. |
-| Pilot readiness | In Progress | Branch `pilot-integration-hardening` is validating integrated driver, warehouse, supervisor, BI/KPI, Logistics Intelligence, FISS, Shared Safety, security, migration-readiness, and rollback workflows. |
-| Production readiness | Not Started | Repository evidence does not support calling the full platform production-ready. |
+| Pilot readiness | Conditional GO | Pilot Integration and End-to-End Hardening completed with no unresolved Critical or High defects; remaining limitations require physical mobile offline/reconnect replay, dashboard browser walkthrough, deployment smoke, and backup/restore verification. |
+| Production rollout planning | In Progress | Branch `production-rollout-planning` is preparing migration readiness, database preflight, backup/restore, rollback, environment, deployment, smoke-test, observability, release-gate, and runbook documentation. |
+| Production readiness | Not Started | Production database state, backup existence, restore capability, Render environment values, object storage smoke, production migrations, and production deployment remain unverified/not executed. |
 
 ## 4. Repository Landscape
 
@@ -137,7 +138,7 @@ Key documentation includes:
 
 ## 9. Current Priority
 
-Validate and review the Fleet Intelligence Scoring Foundation branch before merge.
+Complete Production Rollout Planning and readiness validation without deploying, applying production migrations, or modifying production data.
 
 Current validation basis:
 
@@ -151,10 +152,12 @@ Current validation basis:
 - BI/KPI runtime validation passes with `npm run validate:bi-kpi` against an isolated local PostgreSQL/PostGIS database.
 - Logistics Intelligence foundation test is being added with `npm run test:logistics-intelligence`.
 - Logistics Intelligence runtime validation is being added with `npm run validate:logistics-intelligence` for an isolated local PostgreSQL/PostGIS database.
-- Fleet Intelligence Scoring foundation test is being added with `npm run test:fleet-intelligence-scoring`.
-- Fleet Intelligence Scoring runtime validation is being added with `npm run validate:fleet-intelligence-scoring` for an isolated local PostgreSQL/PostGIS database.
+- Fleet Intelligence Scoring foundation test passes with `npm run test:fleet-intelligence-scoring`.
+- Fleet Intelligence Scoring runtime validation passes with `npm run validate:fleet-intelligence-scoring` for an isolated local PostgreSQL/PostGIS database.
+- Pilot Integration validator passes with `npm run validate:pilot-integration` for an isolated local PostgreSQL/PostGIS database.
+- Production rollout planning validation is being added with `npm run validate:production-rollout`.
 - Secret audit passes with `npm run verify:secrets`.
-- Migrations `001` through `007` were applied to an isolated local PostgreSQL/PostGIS validation database during the Logistics Intelligence merge gate. Migration `008` is part of the current branch and still requires isolated validation.
+- Migrations `001` through `008` were validated against isolated local PostgreSQL/PostGIS during prior merge gates. Production application still requires release approval.
 - Local `/health` and `/ready` passed against the isolated validation database.
 
 ## 10. Known Risks and Constraints
@@ -195,10 +198,11 @@ Current approved decisions reflected in governing documentation and project dire
 
 ## 12. Immediate Next Steps
 
-1. Complete implementation and validation of the `fleet-intelligence-scoring-foundation` branch.
-2. Do not apply migration `008_fleet_intelligence_scoring_foundation.sql` to production until release approval.
-3. Keep Fleet Intelligence Scoring scoped to the foundation; do not begin autonomous scoring actions, ODR-019 Data Lifecycle execution, or ODR-020 Enterprise Identity execution in this phase.
-4. Continue lower-risk public/reference endpoint review before production hardening.
+1. Complete and validate the `production-rollout-planning` branch.
+2. Do not deploy or apply production migrations during planning.
+3. Establish production database starting state with a read-only preflight before any migration approval.
+4. Verify production backup and restore capability before any production migration.
+5. After rollout planning passes its own merge gate, proceed deliberately to ODR-019 Data Lifecycle implementation and then ODR-020 Enterprise Identity implementation.
 
 ## 13. Update Rules
 
