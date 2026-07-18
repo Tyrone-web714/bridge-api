@@ -21,17 +21,14 @@ const IMPORT_BODY_LIMIT = process.env.IMPORT_BODY_LIMIT || '15mb';
 const HAZARD_REPORT_BODY_LIMIT = process.env.HAZARD_REPORT_BODY_LIMIT || '24mb';
 const SLOW_REQUEST_MS = Number.parseInt(process.env.SLOW_REQUEST_MS, 10) || 2000;
 const READINESS_TIMEOUT_MS = Number.parseInt(process.env.READINESS_TIMEOUT_MS, 10) || 2500;
-const allowedOrigins = (process.env.CORS_ORIGIN || '*')
-  .split(',')
-  .map((origin) => origin.trim())
-  .filter(Boolean);
-const allowWildcardCors = allowedOrigins.includes('*') && process.env.NODE_ENV !== 'production';
+const corsPolicy = require('./services/corsPolicy');
+const corsConfig = corsPolicy.buildCorsConfig(process.env, { allowDevelopmentDefault: true });
 
 app.set('trust proxy', 1);
 app.disable('x-powered-by');
 app.use(cors({
   origin(origin, callback) {
-    if (!origin || allowWildcardCors || allowedOrigins.includes(origin)) {
+    if (corsPolicy.isOriginAllowed(origin, corsConfig)) {
       return callback(null, true);
     }
     return callback(null, false);
@@ -158,6 +155,7 @@ function hydrateDriverBearerIfPresent(req, res, next) {
 }
 app.use('/api/shared-safety', hydrateDriverBearerIfPresent);
 app.use('/api/routing/manual-hazards/report', hydrateDriverBearerIfPresent);
+app.use('/api/media', hydrateDriverBearerIfPresent);
 app.use('/api', adminAuth.validateAdminSession);
 app.use('/api', authorization.attachAuthContext);
 app.use('/api', authorization.enforceApiTenantPolicy);
@@ -185,6 +183,7 @@ const logisticsIntelligenceRoutes = require('./routes/logisticsIntelligence');
 const fleetIntelligenceScoringRoutes = require('./routes/fleetIntelligenceScoring');
 const dataLifecycleRoutes = require('./routes/dataLifecycle');
 const enterpriseIdentityRoutes = require('./routes/enterpriseIdentity');
+const mediaRoutes = require('./routes/media');
 
 app.use('/api/bridges', bridgeRoutes);
 app.use('/api/drivers', driverRoutes);
@@ -196,6 +195,7 @@ app.use('/api/logistics-intelligence', logisticsIntelligenceRoutes);
 app.use('/api/fleet-intelligence-scoring', fleetIntelligenceScoringRoutes);
 app.use('/api/data-lifecycle', dataLifecycleRoutes);
 app.use('/api/enterprise-identity', enterpriseIdentityRoutes);
+app.use('/api/media', mediaRoutes);
 app.use('/api/places', placesRoutes);
 app.use('/api/delivery-notes', deliveryNotesRoutes);
 app.use('/api/route-manifests', routeManifestRoutes);

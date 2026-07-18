@@ -69,6 +69,7 @@ function asArray(value) {
 function deliveryNoteFromRow(row) {
   return {
     id: row.id,
+    organizationId: row.organization_id || BOOTSTRAP_ORGANIZATION.id,
     accountNumber: row.account_number || null,
     placeId: row.place_id || null,
     destination: row.destination || '',
@@ -895,12 +896,18 @@ function buildGeoJsonPolygon(points) {
   };
 }
 
-async function listDeliveryNotes() {
+async function listDeliveryNotes(options = {}) {
+  const values = [];
+  const where = [];
+  if (options.organizationId || options.organization_id || options.tenantContext) {
+    applyOrganizationFilter(where, values, 'delivery_notes', options);
+  }
   const result = await postgres.query(`
     SELECT *
     FROM delivery_notes
+    ${where.length ? `WHERE ${where.join(' AND ')}` : ''}
     ORDER BY COALESCE(updated_at, created_at) DESC NULLS LAST
-  `);
+  `, values);
   return result.rows.map(deliveryNoteFromRow);
 }
 
@@ -1445,13 +1452,19 @@ async function deleteDriver(driverId) {
 }
 
 async function upsertDeliveryNote(note) {
+  const tenantContext = tenantContextFromOptions({
+    organizationId: note.organizationId || note.organization_id,
+    tenantContext: note.tenantContext,
+    allowDevelopmentFallback: true
+  });
   await postgres.query(`
     INSERT INTO delivery_notes (
-      id, account_number, place_id, destination, address, account_name, customer_name,
+      id, organization_id, account_number, place_id, destination, address, account_name, customer_name,
       instructions, driver_name, route_context, photos, created_at, updated_at, raw
     )
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11::jsonb, $12, $13, $14::jsonb)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12::jsonb, $13, $14, $15::jsonb)
     ON CONFLICT (id) DO UPDATE SET
+      organization_id = EXCLUDED.organization_id,
       account_number = EXCLUDED.account_number,
       place_id = EXCLUDED.place_id,
       destination = EXCLUDED.destination,
@@ -1467,6 +1480,7 @@ async function upsertDeliveryNote(note) {
       raw = EXCLUDED.raw
   `, [
     note.id,
+    tenantContext.organizationId,
     note.accountNumber || null,
     note.placeId || null,
     note.destination || null,
@@ -1479,10 +1493,10 @@ async function upsertDeliveryNote(note) {
     JSON.stringify(asArray(note.photos)),
     note.createdAt || new Date().toISOString(),
     note.updatedAt || new Date().toISOString(),
-    JSON.stringify(note)
+    JSON.stringify({ ...note, organizationId: tenantContext.organizationId })
   ]);
 
-  return note;
+  return { ...note, organizationId: tenantContext.organizationId };
 }
 
 async function deleteDeliveryNote(id) {

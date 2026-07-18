@@ -1,0 +1,42 @@
+const assert = require('assert');
+const fs = require('fs');
+const path = require('path');
+
+const root = path.join(__dirname, '..');
+function read(relativePath) {
+  return fs.readFileSync(path.join(root, relativePath), 'utf8');
+}
+
+const photoStorage = read('services/photoStorage.js');
+const mediaRoute = read('routes/media.js');
+const deliveryNotes = read('routes/deliveryNotes.js');
+const server = read('server.js');
+const repositories = read('db/repositories.js');
+const sharedSafety = read('services/sharedSafety.js');
+const lifecycleMigration = read('migrations/009_data_lifecycle_foundation.sql');
+
+assert(photoStorage.includes("mediaClassification: 'ORGANIZATION_PRIVATE'"), 'new S3 media must be classified organization-private');
+assert(photoStorage.includes('accessPath'), 'new S3 media must expose controlled access path');
+assert(photoStorage.includes('legacyPublicUrl'), 'legacy public URL must be retained as compatibility metadata');
+assert(photoStorage.includes('getPrivateMediaUrl(req, id)'), 'new private media URL must not be direct R2 public URL when request context is available');
+assert(photoStorage.includes('GetObjectCommand'), 'private media route must be able to read exact S3 object');
+assert(photoStorage.includes('readS3Object'), 'photo storage must expose controlled object read helper');
+
+assert(server.includes("const mediaRoutes = require('./routes/media')"), 'server must mount authenticated media route');
+assert(server.includes("app.use('/api/media', mediaRoutes)"), 'server must mount /api/media');
+assert(mediaRoute.includes("router.get('/:mediaId', authorization.requireAuthentication"), 'media route must require authentication');
+assert(mediaRoute.includes('canViewMedia'), 'media route must check permissions');
+assert(mediaRoute.includes('repositories.listDeliveryNotes({ tenantContext: context })'), 'media route must load media through tenant-scoped repository query');
+assert(mediaRoute.includes('media.storageKey.includes'), 'media route must reject unsafe object keys');
+assert(mediaRoute.includes('object.Body.pipe(res)'), 'media route must stream object through the application');
+assert(!mediaRoute.includes('req.query.storageKey'), 'media route must not accept arbitrary object key input');
+
+assert(repositories.includes('organizationId: row.organization_id'), 'delivery notes must expose organization ownership');
+assert(repositories.includes('organization_id = EXCLUDED.organization_id'), 'delivery note upsert must preserve organization ownership');
+assert(deliveryNotes.includes('photoStorage.normalizeExistingPhotoUrl'), 'legacy media compatibility path must normalize URLs');
+assert(deliveryNotes.includes('legacyPublicUrl'), 'delivery note normalization must retain legacy URL metadata');
+assert(sharedSafety.includes('sanitizeSharedMedia'), 'shared safety media must remain sanitized before publication');
+assert(sharedSafety.includes('UNSANITIZED_SHARED_MEDIA'), 'shared safety media must reject private operational references before publication');
+assert(lifecycleMigration.includes('lifecycle_object_references'), 'ODR-019 object lifecycle reference table must remain available');
+
+console.log('[test:private-media] authenticated private media contracts verified.');

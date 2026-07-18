@@ -4,6 +4,7 @@ const { spawnSync } = require('child_process');
 const postgres = require('../db/postgres');
 const photoStorage = require('../services/photoStorage');
 const driverAuth = require('../services/driverAuth');
+const corsPolicy = require('../services/corsPolicy');
 
 const REQUIRED_ENV = [
   'GOOGLE_MAPS_API_KEY',
@@ -34,8 +35,13 @@ function checkRequiredEnv() {
     }
   }
 
-  if (process.env.CORS_ORIGIN === '*') {
-    failures.push('CORS_ORIGIN is "*" - set this to the deployed mobile/web origins for pilot');
+  try {
+    const corsConfig = corsPolicy.buildCorsConfig({ ...process.env, NODE_ENV: 'production' });
+    if (!corsConfig.origins.length) {
+      failures.push('CORS_ORIGIN must list at least one explicit production origin');
+    }
+  } catch (error) {
+    failures.push(error.message);
   }
 
   if (process.env.ADMIN_DASHBOARD_SECRET && process.env.ADMIN_DASHBOARD_SECRET.length < 32) {

@@ -8,7 +8,7 @@
 - Governing Architecture Version: 1.1
 - Authoritative Repository: `C:\dev\bridge-api`
 - GitHub Repository: `https://github.com/Tyrone-web714/bridge-api.git`
-- Current Branch: `operational-readiness-verification`
+- Current Branch: `web-origin-and-private-media-hardening`
 - Latest Documentation Commit: `cf23662b1bb7ab189960925f9521f6b1c0e8a394` - `Add Truck-Safe Routing governing documentation`
 - Update Guidance: Update this file when the project phase, deployment status, repository structure, major risks, or implementation priorities change.
 
@@ -48,6 +48,7 @@ Current implementation and planned architecture must be kept separate:
 | Pilot readiness | Conditional GO | Pilot Integration and End-to-End Hardening completed with no unresolved Critical or High defects; remaining limitations require physical mobile offline/reconnect replay, dashboard browser walkthrough, deployment smoke, and backup/restore verification. |
 | Production rollout planning | Merged to Main | Production rollout planning merged at `aa2832d`; it remains planning only and does not approve production deployment or production migrations. |
 | Production readiness | Operational Verification In Progress | Operational blocker closure is underway on `operational-readiness-verification`. Public deployed smoke checks pass for `/health`, `/ready`, admin login redirect behavior, and unauthenticated API denial. Owner-completed read-only production preflight verified PostgreSQL/PostGIS, migrations `001`-`010`, core ownership, and driver identity. Production backup provider/PITR capability, non-production restore rehearsal, Render environment name inventory, deployed commit/schema alignment, production CORS remediation, and Cloudflare R2 object-storage smoke are verified. Authenticated browser walkthrough, physical mobile offline/reconnect replay, monitoring, temporary restore cleanup review, and production rollout remain unresolved/not executed. |
+| Web origin and private media hardening | In Progress | Focused branch `web-origin-and-private-media-hardening` adds explicit production CORS policy validation and authenticated application media access for Organization-private S3/R2 delivery-note media. Owner-run read-only production metadata assessment verified 3 existing delivery-note media items with direct public R2 current URLs, so public R2 access cannot be disabled until those records are migrated or safely transitioned. No production media, production data, schema, migration, deployment setting, or R2 access-control change has been made. |
 
 ## 4. Repository Landscape
 

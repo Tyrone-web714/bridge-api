@@ -61,16 +61,16 @@ function writeNotes(records) {
   fs.writeFileSync(NOTES_FILE, JSON.stringify(records, null, 2));
 }
 
-async function listStoredNotes() {
+async function listStoredNotes(options = {}) {
   if (repositories.isDatabaseEnabled()) {
-    return repositories.listDeliveryNotes();
+    return repositories.listDeliveryNotes(options);
   }
   return readNotes();
 }
 
-async function saveStoredNote(note) {
+async function saveStoredNote(note, options = {}) {
   if (repositories.isDatabaseEnabled()) {
-    return repositories.upsertDeliveryNote(note);
+    return repositories.upsertDeliveryNote({ ...note, tenantContext: options.tenantContext });
   }
 
   const existing = readNotes().filter((record) => record.id !== note.id);
@@ -115,6 +115,16 @@ function requireAdminAuth(req, res, next) {
     return next();
   }
   return res.redirect('/api/routing/manual-hazards/admin/login');
+}
+
+function getRequestTenantContext(req) {
+  return req.authContext?.organizationId
+    ? req.authContext
+    : req.driverAuth?.organizationId
+      ? { organizationId: req.driverAuth.organizationId }
+      : req.adminSession?.organizationId
+        ? { organizationId: req.adminSession.organizationId }
+        : undefined;
 }
 
 async function normalizeBase64Photo(photo, noteId, index, req) {
@@ -174,10 +184,12 @@ function normalizeExistingPhoto(photo, req) {
     filename: filename || null,
     storageProvider: cleanText(photo?.storageProvider, 40) || (filename ? 'local' : null),
     storageKey: cleanText(photo?.storageKey, 500) || filename || null,
+    mediaClassification: cleanText(photo?.mediaClassification || photo?.media_classification, 80) || null,
     sizeBytes: Number.isFinite(Number(photo?.sizeBytes)) ? Number(photo.sizeBytes) : null,
     originalName: cleanText(photo?.originalName, 180) || null,
     mimeType: cleanText(photo?.mimeType, 40) || 'image/jpeg',
     url: photoStorage.normalizeExistingPhotoUrl(req, { ...photo, filename, url }),
+    legacyPublicUrl: cleanLongText(photo?.legacyPublicUrl || (photo?.storageProvider === 's3' ? url : ''), 1000) || null,
     uploadedAt: cleanText(photo?.uploadedAt, 80) || null
   };
 }
@@ -266,7 +278,7 @@ function filterNotes(records, query) {
 }
 
 router.get('/', driverAuth.requireDriverAuth, async (req, res) => {
-  const notes = filterNotes(await listStoredNotes(), req.query)
+  const notes = filterNotes(await listStoredNotes({ tenantContext: getRequestTenantContext(req) }), req.query)
     .sort((a, b) => Date.parse(b.createdAt || 0) - Date.parse(a.createdAt || 0));
 
   return res.json({
@@ -283,7 +295,7 @@ router.post('/', driverAuth.requireDriverAuth, async (req, res) => {
       driverName: req.body?.driverName || identity.driverName,
       driverId: identity.driverId
     }, req);
-    await saveStoredNote(note);
+    await saveStoredNote(note, { tenantContext: getRequestTenantContext(req) });
 
     return res.status(201).json({ note });
   } catch (error) {
@@ -299,7 +311,7 @@ router.post('/', driverAuth.requireDriverAuth, async (req, res) => {
 router.put('/:id', driverAuth.requireDriverAuth, async (req, res) => {
   try {
     const id = cleanText(req.params.id, 80);
-    const records = await listStoredNotes();
+    const records = await listStoredNotes({ tenantContext: getRequestTenantContext(req) });
     const existing = records.find((record) => record.id === id);
 
     if (!existing) {
@@ -314,7 +326,7 @@ router.put('/:id', driverAuth.requireDriverAuth, async (req, res) => {
     });
     await deletePhotoFiles(removedPhotos);
 
-    await saveStoredNote(updated);
+    await saveStoredNote(updated, { tenantContext: getRequestTenantContext(req) });
     return res.json({ note: updated });
   } catch (error) {
     return res.status(error.status || 500).json({
@@ -335,12 +347,12 @@ router.delete('/:id', driverAuth.requireDriverAuth, async (req, res) => {
   }
 
   await deletePhotoFiles(existing.photos || []);
-  const count = (await listStoredNotes()).length;
+  const count = (await listStoredNotes({ tenantContext: getRequestTenantContext(req) })).length;
   return res.json({ deleted: id, count });
 });
 
 router.get('/export', requireAdminAuth, async (req, res) => {
-  const records = (await listStoredNotes())
+  const records = (await listStoredNotes({ tenantContext: getRequestTenantContext(req) }))
     .sort((a, b) => Date.parse(b.updatedAt || b.createdAt || 0) - Date.parse(a.updatedAt || a.createdAt || 0));
   const exportedAt = new Date().toISOString();
 
