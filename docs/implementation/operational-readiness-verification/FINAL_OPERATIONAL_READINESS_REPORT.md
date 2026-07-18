@@ -9,15 +9,15 @@ Final recommendation: NO-GO for production rollout until remaining operational b
 | Area | Result |
 | --- | --- |
 | Production DB verification | READY; owner completed approved read-only preflight against actual production PostgreSQL/PostGIS |
-| Backup | READY WITH LIMITATION |
+| Backup | PASSED |
 | Restore | PASSED |
-| Render environment | READY WITH LIMITATION |
+| Render environment | PASSED WITH LIMITATION |
 | Object storage | READY WITH LIMITATION |
 | Monitoring/alerting | READY WITH LIMITATION |
 | Physical mobile offline/reconnect | NOT VERIFIED |
 | Authenticated dashboard | NOT VERIFIED; unauthenticated deployed browser checks passed |
-| Deployed Render smoke | READY WITH LIMITATION |
-| Migrations `006`-`010` | READY WITH LIMITATION; applied and verified by production read-only preflight |
+| Deployed Render smoke | PASSED WITH LIMITATION |
+| Migrations `006`-`010` | PASSED; applied and verified by production and restored-copy preflights |
 | Tenant isolation | READY WITH LIMITATION |
 | Authentication | READY WITH LIMITATION |
 | Data Lifecycle | READY WITH LIMITATION |
@@ -27,7 +27,7 @@ Final recommendation: NO-GO for production rollout until remaining operational b
 
 Critical defects: none confirmed.
 
-High defects: none confirmed.
+High defects: CORS wildcard drift confirmed in production Render environment; `CORS_ORIGIN` must be restricted to approved origins before production rollout GO.
 
 Medium defects fixed:
 
@@ -81,11 +81,11 @@ Production database preflight evidence supplied by owner:
 Medium limitations:
 
 - Production backup provider/PITR capability and non-production restore rehearsal are verified; temporary restored DB cleanup remains an owner decision.
-- Render dashboard environment values were not inspected.
+- Render dashboard environment names and selected safe metadata were inspected; `CORS_ORIGIN` wildcard drift remains.
 - Object storage upload/read/denial smoke was not executed.
 - Full mobile offline/reconnect replay was not physically tested.
 - Authenticated dashboard walkthrough was not performed.
-- Deployed commit/schema alignment was not verified because deployed commit metadata and production schema preflight were not available.
+- Deployed commit/schema alignment is verified: Render deploy `632709e0ee9adf934c4f157017fbbfaf9a158872` matches `origin/main`, and production/restored schemas are verified through migration `010`.
 - Active monitoring and alerting were not verified.
 - `organization_memberships` contains zero rows; this is acceptable for current native authentication but should be addressed by an approved membership backfill plan before Enterprise Identity federation is enabled for existing users.
 
@@ -106,4 +106,4 @@ Enterprise Identity provider verification started: no.
 
 ## Final Position
 
-The platform has strong code-level foundation validation, and the production database schema is now verified through migration `010` by read-only preflight. Operational readiness is still not fully proven. Production backup capability and restore readiness are now verified for the current Render PostgreSQL PITR baseline. The remaining NO-GO items are external access and operational verification blockers, not confirmed source-code defects. The next work should collect the remaining owner evidence described in [Owner Access And Verification Handoff](OWNER_ACCESS_AND_VERIFICATION_HANDOFF.md), then close mobile offline replay, dashboard walkthrough, object-storage smoke, monitoring, deployment alignment gaps, and temporary restore cleanup review before any production rollout or provider verification.
+The platform has strong code-level foundation validation, and the production database schema is now verified through migration `010` by read-only preflight. Operational readiness is still not fully proven. Production backup capability and restore readiness are now verified for the current Render PostgreSQL PITR baseline. The remaining NO-GO items are external access and operational verification blockers, not confirmed source-code defects. The next work should collect the remaining owner evidence described in [Owner Access And Verification Handoff](OWNER_ACCESS_AND_VERIFICATION_HANDOFF.md), then close CORS wildcard remediation, mobile offline replay, dashboard walkthrough, object-storage smoke, monitoring, and temporary restore cleanup review before any production rollout or provider verification.
