@@ -11,3 +11,7 @@
 | Authenticated dashboard walkthrough | OPERATIONAL VERIFICATION REQUIRED | Approved non-production/test accounts for supervisor, Organization Admin, Platform Admin, and warehouse. |
 | Deployed commit/schema alignment | NOT VERIFIED | Render deploy metadata and approved read-only production DB inspection. |
 | Provider verification | PAUSED | Future approved branch and actual Microsoft/Okta/Google/OIDC/SAML test providers. |
+
+## Owner Handoff
+
+The remaining NO-GO items are external access and operational verification blockers, not confirmed source-code defects. Use [Owner Access And Verification Handoff](OWNER_ACCESS_AND_VERIFICATION_HANDOFF.md) to collect the exact Render, database provider, object-storage, monitoring, mobile-device, and authenticated-dashboard evidence needed to resume.
