@@ -102,6 +102,10 @@ app.use('/api/logistics-intelligence', createRateLimiter({
   name: 'logistics-intelligence',
   max: positiveInteger(process.env.RATE_LIMIT_LOGISTICS_INTELLIGENCE_MAX, 300)
 }));
+app.use('/api/fleet-intelligence-scoring', createRateLimiter({
+  name: 'fleet-intelligence-scoring',
+  max: positiveInteger(process.env.RATE_LIMIT_FLEET_SCORE_MAX, 300)
+}));
 app.use('/api/route-manifests/driver', createRateLimiter({
   name: 'driver-manifests',
   max: positiveInteger(process.env.RATE_LIMIT_DRIVER_MAX, 600)
@@ -170,6 +174,7 @@ const driverSessionRoutes = require('./routes/driverSessions');
 const sharedSafetyRoutes = require('./routes/sharedSafety');
 const biKpiRoutes = require('./routes/biKpi');
 const logisticsIntelligenceRoutes = require('./routes/logisticsIntelligence');
+const fleetIntelligenceScoringRoutes = require('./routes/fleetIntelligenceScoring');
 
 app.use('/api/bridges', bridgeRoutes);
 app.use('/api/drivers', driverRoutes);
@@ -178,6 +183,7 @@ app.use('/api/routing', routingRoutes);
 app.use('/api/shared-safety', sharedSafetyRoutes);
 app.use('/api/bi-kpi', biKpiRoutes);
 app.use('/api/logistics-intelligence', logisticsIntelligenceRoutes);
+app.use('/api/fleet-intelligence-scoring', fleetIntelligenceScoringRoutes);
 app.use('/api/places', placesRoutes);
 app.use('/api/delivery-notes', deliveryNotesRoutes);
 app.use('/api/route-manifests', routeManifestRoutes);

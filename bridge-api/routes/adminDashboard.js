@@ -98,6 +98,12 @@ function renderAdminDashboard(session) {
       accent: '#19d3e6'
     },
     {
+      title: 'Fleet Intelligence Scoring Foundation',
+      description: 'Review versioned, explainable, Organization-scoped scores derived from Logistics Intelligence outputs.',
+      href: '/api/fleet-intelligence-scoring/admin',
+      accent: '#7dffb0'
+    },
+    {
       title: 'Operational Heatmaps',
       description: 'Map recurring delivery delays, failed stops, deductions, hazard events, route events, and recorded revenue concentration.',
       href: '/api/operational-heatmaps/admin',
