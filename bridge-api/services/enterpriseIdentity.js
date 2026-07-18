@@ -703,12 +703,15 @@ async function authenticateFederatedIdentity(input = {}) {
     if (identity.organization_status !== 'active' || (identity.organization_lifecycle_status && identity.organization_lifecycle_status !== 'ACTIVE')) {
       throw createError('Organization is not active.', 403, 'ORGANIZATION_INACTIVE');
     }
-    const approvedRole = rbac.assertApprovedRole(identity.membership_approved_role || identity.approved_role);
+    if (!identity.membership_status) {
+      throw createError('Organization membership is required for federated access.', 403, 'MEMBERSHIP_REQUIRED');
+    }
+    if (identity.membership_status !== 'ACTIVE') {
+      throw createError('Organization membership is not active.', 403, 'MEMBERSHIP_INACTIVE');
+    }
+    const approvedRole = rbac.assertApprovedRole(identity.membership_approved_role);
     if (approvedRole === rbac.ROLES.PLATFORM_ADMIN) {
       throw createError('Platform Admin cannot be granted through tenant federation.', 403, 'PLATFORM_ADMIN_FEDERATION_DENIED');
-    }
-    if (identity.membership_status && identity.membership_status !== 'ACTIVE') {
-      throw createError('Organization membership is not active.', 403, 'MEMBERSHIP_INACTIVE');
     }
     await client.query(`
       UPDATE federated_identities
@@ -841,7 +844,7 @@ async function createScimConfiguration(authContext, input = {}) {
     const provider = await getProviderRaw(providerId, organizationId);
     if (!provider) throw createError('Identity provider was not found.', 404, 'IDENTITY_PROVIDER_NOT_FOUND');
   }
-  const credentialRef = cleanText(input.credentialRef || input.credential_ref, 240);
+  const credentialRef = assertSecretReference(input.credentialRef || input.credential_ref, false);
   const existing = await postgres.query(`
     SELECT id
     FROM scim_configurations

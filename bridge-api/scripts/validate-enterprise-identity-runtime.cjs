@@ -247,6 +247,64 @@ async function main() {
   }
   assert(replayBlocked, 'SSO transaction replay must be denied');
 
+  await postgres.query(`
+    UPDATE organization_memberships
+    SET status = 'REVOKED', revoked_at = NOW(), revoked_by = 'runtime-validation'
+    WHERE organization_id = $1 AND subject_type = 'ADMIN_USER' AND subject_id = $2
+  `, [orgA, usernameA]);
+  const revokedMembershipTransaction = await enterpriseIdentity.createAuthenticationTransaction({
+    organizationId: orgA,
+    identityProviderId: provider.id,
+    protocol: 'OIDC',
+    redirectRef: 'admin_dashboard'
+  });
+  let revokedMembershipBlocked = false;
+  try {
+    await enterpriseIdentity.authenticateFederatedIdentity({
+      transactionId: revokedMembershipTransaction.transactionId,
+      state: revokedMembershipTransaction.state,
+      nonce: revokedMembershipTransaction.nonce,
+      externalSubject
+    });
+  } catch (error) {
+    revokedMembershipBlocked = error.code === 'MEMBERSHIP_INACTIVE';
+  }
+  assert(revokedMembershipBlocked, 'revoked Organization membership must block federated access');
+  await postgres.query(`
+    UPDATE organization_memberships
+    SET status = 'ACTIVE', revoked_at = NULL, revoked_by = NULL
+    WHERE organization_id = $1 AND subject_type = 'ADMIN_USER' AND subject_id = $2
+  `, [orgA, usernameA]);
+
+  await postgres.query(`
+    DELETE FROM organization_memberships
+    WHERE organization_id = $1 AND subject_type = 'ADMIN_USER' AND subject_id = $2
+  `, [orgA, usernameA]);
+  const missingMembershipTransaction = await enterpriseIdentity.createAuthenticationTransaction({
+    organizationId: orgA,
+    identityProviderId: provider.id,
+    protocol: 'OIDC',
+    redirectRef: 'admin_dashboard'
+  });
+  let missingMembershipBlocked = false;
+  try {
+    await enterpriseIdentity.authenticateFederatedIdentity({
+      transactionId: missingMembershipTransaction.transactionId,
+      state: missingMembershipTransaction.state,
+      nonce: missingMembershipTransaction.nonce,
+      externalSubject
+    });
+  } catch (error) {
+    missingMembershipBlocked = error.code === 'MEMBERSHIP_REQUIRED';
+  }
+  assert(missingMembershipBlocked, 'missing Organization membership must block federated access');
+  await postgres.query(`
+    INSERT INTO organization_memberships (
+      organization_id, subject_type, subject_id, internal_user_id, approved_role, status, source, created_by
+    )
+    VALUES ($1, 'ADMIN_USER', $2, $3, 'SUPERVISOR', 'ACTIVE', 'RUNTIME_RESTORE', 'runtime-validation')
+  `, [orgA, usernameA, userA]);
+
   await enterpriseIdentity.recordScimProvisioningEvent(orgAdminA, {
     organizationId: orgA,
     identityProviderId: provider.id,
@@ -312,6 +370,19 @@ async function main() {
     ssoPolicyState: 'SSO_OPTIONAL',
     jitPolicyState: 'DISABLED'
   });
+
+  let rawScimCredentialRejected = false;
+  try {
+    await enterpriseIdentity.createScimConfiguration(orgAdminA, {
+      organizationId: orgA,
+      identityProviderId: provider.id,
+      status: 'ENABLED',
+      credentialRef: 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'
+    });
+  } catch (error) {
+    rawScimCredentialRejected = error.code === 'RAW_SECRET_REJECTED';
+  }
+  assert(rawScimCredentialRejected, 'SCIM raw-looking credential values must be rejected');
 
   const scimConfig = await enterpriseIdentity.createScimConfiguration(orgAdminA, {
     organizationId: orgA,
