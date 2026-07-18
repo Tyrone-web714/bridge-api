@@ -115,6 +115,10 @@ function isPublicPath(req) {
   return path === '/health'
     || path === '/ready'
     || path === '/api/driver-auth/login'
+    || path === '/api/enterprise-identity/discover'
+    || path === '/api/enterprise-identity/oidc/initiate'
+    || path === '/api/enterprise-identity/oidc/callback'
+    || path === '/api/enterprise-identity/saml/acs'
     || path === '/api/routing/manual-hazards/admin/login';
 }
 
@@ -291,6 +295,19 @@ function permissionForRequest(req) {
     if (path.includes('/reactivate')) return rbac.PERMISSIONS.LIFECYCLE_USER_REACTIVATE;
     if (path.includes('/deletion-requests')) return rbac.PERMISSIONS.LIFECYCLE_USER_REQUEST_DELETE;
     return rbac.PERMISSIONS.LIFECYCLE_DSR_MANAGE;
+  }
+  if (path.startsWith('/api/enterprise-identity')) {
+    if (path.includes('/providers') && path.includes('/rotate-secret-reference')) return rbac.PERMISSIONS.IDENTITY_PROVIDER_MANAGE;
+    if (path.includes('/providers') && ['POST', 'PUT', 'PATCH', 'DELETE'].includes(method)) return rbac.PERMISSIONS.IDENTITY_PROVIDER_MANAGE;
+    if (path.includes('/providers')) return rbac.PERMISSIONS.IDENTITY_PROVIDER_VIEW;
+    if (path.includes('/domains')) return rbac.PERMISSIONS.IDENTITY_DOMAIN_MANAGE;
+    if (path.includes('/claim-mappings')) return rbac.PERMISSIONS.IDENTITY_MAPPING_MANAGE;
+    if (path.includes('/account-links')) return rbac.PERMISSIONS.IDENTITY_ACCOUNT_LINK_MANAGE;
+    if (path.includes('/sso-policy')) return rbac.PERMISSIONS.IDENTITY_SSO_POLICY_MANAGE;
+    if (path.includes('/scim')) return rbac.PERMISSIONS.IDENTITY_SCIM_MANAGE;
+    if (path.includes('/break-glass')) return rbac.PERMISSIONS.IDENTITY_BREAK_GLASS_MANAGE;
+    if (path.includes('/provider-capabilities')) return rbac.PERMISSIONS.IDENTITY_AUDIT_VIEW;
+    return rbac.PERMISSIONS.IDENTITY_AUDIT_VIEW;
   }
   if (path.startsWith('/api/routing/manual-hazards/report')) {
     return rbac.PERMISSIONS.HAZARD_SUBMIT;

@@ -39,10 +39,11 @@ function validateMigrations() {
     '006_bi_kpi_foundation.sql',
     '007_logistics_intelligence_foundation.sql',
     '008_fleet_intelligence_scoring_foundation.sql',
-    '009_data_lifecycle_foundation.sql'
+    '009_data_lifecycle_foundation.sql',
+    '010_enterprise_identity_foundation.sql'
   ];
   const actual = listMigrationFiles();
-  assert(JSON.stringify(actual) === JSON.stringify(expected), 'migration files 001-008 must exist in strict order');
+  assert(JSON.stringify(actual) === JSON.stringify(expected), 'migration files 001-010 must exist in strict order');
 
   const migrationRunner = read('scripts/run-migrations.cjs');
   assert(migrationRunner.includes('schema_migrations'), 'migration runner must record schema_migrations');
@@ -66,6 +67,12 @@ function validateMigrations() {
   assert(m009.includes('CREATE TABLE IF NOT EXISTS legal_holds'), 'migration 009 must create legal holds');
   assert(m009.includes('CREATE TABLE IF NOT EXISTS lifecycle_deletion_requests'), 'migration 009 must create deletion requests');
   assert(m009.includes('prevent_audit_events_delete_without_lifecycle_override'), 'migration 009 must protect audit evidence');
+
+  const m010 = read('migrations/010_enterprise_identity_foundation.sql');
+  assert(m010.includes('CREATE TABLE IF NOT EXISTS organization_identity_providers'), 'migration 010 must create tenant IdP configuration');
+  assert(m010.includes('CREATE TABLE IF NOT EXISTS federated_identities'), 'migration 010 must create federated identity mapping');
+  assert(m010.includes('CREATE TABLE IF NOT EXISTS sso_authentication_transactions'), 'migration 010 must create SSO transactions');
+  assert(m010.includes('ON DELETE RESTRICT'), 'migration 010 must avoid destructive identity cascades into Organization-owned history');
 }
 
 function validateDeployment() {

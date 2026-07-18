@@ -45,6 +45,16 @@ This document defines the required Cascade Map structure. It does not claim that
 | `fleet_score_*` | Score models/snapshots | Analytical/scoring data | Driver IDs possible | High | Organization-private | RETAIN | POLICY_DECISION_REQUIRED | PSEUDONYMIZE subject if approved | Yes |
 | `audit_events` | Actor reference | Audit data | Actor ID | High | Organization/platform | RETAIN | POLICY_DECISION_REQUIRED | PSEUDONYMIZE actor only through approved process | Yes |
 | `lifecycle_object_references` | Object owner table/id | Object-storage metadata | Possible | Variable | Organization-private or platform | POLICY_DECISION_REQUIRED / LEGAL HOLD | POLICY_DECISION_REQUIRED | Depends on object class | Yes |
+| `organization_memberships` | `organizations.id` / TSR identity records | Authorization membership | User identifiers | High | Organization-private | RESTRICT / DEACTIVATE | POLICY_DECISION_REQUIRED | PSEUDONYMIZE or detach actor where approved | Yes |
+| `organization_identity_providers` | `organizations.id` | Enterprise IdP configuration | Admin/config metadata possible | Medium/High | Organization-private | RESTRICT / ARCHIVE | POLICY_DECISION_REQUIRED | Remove direct administrator identifiers where approved | Yes |
+| `verified_organization_domains` | `organizations.id` | Domain verification evidence | Low | Medium | Organization-private | RESTRICT / ARCHIVE | POLICY_DECISION_REQUIRED | N/A unless contact metadata added | Yes |
+| `federated_identities` | IdP connection / TSR internal user | Federated identity mapping | Yes | High | Organization-private | DEACTIVATE / PSEUDONYMIZE / RETAIN | POLICY_DECISION_REQUIRED | External subject may be pseudonymized under approved deletion workflow | Yes |
+| `identity_claim_mappings` | IdP connection | Authorization mapping configuration | Low | Medium | Organization-private | ARCHIVE / RESTRICT | POLICY_DECISION_REQUIRED | N/A | Yes |
+| `sso_authentication_transactions` | IdP connection | Authentication transaction artifact | Yes | Low | Organization-private | HARD DELETE eligible | Authentication artifact policy | N/A | No |
+| `scim_configurations` | Organization / IdP connection | Enterprise lifecycle configuration | Credential reference | Medium | Organization-private | ARCHIVE / RESTRICT | POLICY_DECISION_REQUIRED | Remove administrator identifiers where approved | Yes |
+| `scim_provisioning_events` | SCIM configuration / identity | Enterprise lifecycle audit | Yes | High | Organization-private | RETAIN | POLICY_DECISION_REQUIRED | PSEUDONYMIZE subject where approved | Yes |
+| `enterprise_identity_break_glass_records` | Organization / actor | Emergency access governance | Yes | High | Organization-private or Platform | RETAIN | POLICY_DECISION_REQUIRED | PSEUDONYMIZE actor only through approved process | Yes |
+| `identity_security_events` | Organization / IdP / federated identity | Security audit data | Possible | High | Organization-private or Platform | RETAIN | POLICY_DECISION_REQUIRED | PSEUDONYMIZE actor only through approved process | Yes |
 
 ## Rules
 

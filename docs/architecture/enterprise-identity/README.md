@@ -2,7 +2,7 @@
 
 **Status:** ARCHITECTURE DESIGNED
 **Governance:** ODR-020
-**Implementation State:** Not implemented by this documentation package.
+**Implementation State:** Foundation implemented on `enterprise-identity-foundation`; external provider interoperability is not verified.
 
 This package governs enterprise SSO, identity federation, tenant identity-provider configuration, external identity mapping, JIT provisioning, SCIM, account linking, mobile/web SSO, break-glass access, and identity lifecycle.
 
