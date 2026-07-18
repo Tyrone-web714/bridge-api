@@ -2,7 +2,7 @@
 
 | Area | Status | Evidence | Required Next Action |
 | --- | --- | --- | --- |
-| Production DB state | OWNER APPROVAL REQUIRED | Read-only preflight tooling exists and now checks migrations `001` through `010`. | Owner must approve target `DATABASE_URL` before production preflight execution. |
+| Production DB state | BLOCKED | Owner approval received; read-only preflight tooling exists and checks migrations `001` through `010`; local visible `DATABASE_URL` is development localhost, not production. | Provide/confirm actual production `DATABASE_URL` target through Render/provider access before preflight execution. |
 | Production backup | BLOCKED | Provider dashboard/API access was not available. | Inspect actual database provider backup settings. |
 | Restore capability | NOT VERIFIED | Non-production rehearsal evidence exists from rollout planning only. | Restore a recent production backup to a separate non-production database. |
 | Render environment | READY WITH LIMITATION | `render.yaml`, deployed `/health`, and deployed `/ready` confirm runtime dependency readiness; actual Render dashboard/API variable inventory was not inspected. | Verify variables by name in Render dashboard/API without revealing values. |
@@ -19,4 +19,4 @@
 
 ## Consolidated Prior Findings
 
-Items identified in previous reports as `OPERATIONAL_VERIFICATION_REQUIRED`, `OWNER APPROVAL REQUIRED`, `READY WITH LIMITATION`, or `NOT VERIFIED` were consolidated into this package. The deployed public smoke checks are stronger after this closure pass, but the highest blockers remain production backup/restore evidence, production database state, mobile offline replay, authenticated dashboard walkthrough, object-storage disposable mutation approval, and Render/provider operational access.
+Items identified in previous reports as `OPERATIONAL_VERIFICATION_REQUIRED`, `OWNER APPROVAL REQUIRED`, `READY WITH LIMITATION`, or `NOT VERIFIED` were consolidated into this package. The deployed public smoke checks are stronger after this closure pass, and owner approval for read-only production preflight has been received, but the preflight remains blocked until the actual production database target is available. The highest blockers remain production backup/restore evidence, production database target access, mobile offline replay, authenticated dashboard walkthrough, object-storage disposable mutation approval, and Render/provider operational access.

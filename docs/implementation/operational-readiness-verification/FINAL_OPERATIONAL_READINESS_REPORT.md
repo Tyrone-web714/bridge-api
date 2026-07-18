@@ -8,7 +8,7 @@ Final recommendation: NO-GO for production rollout until remaining operational b
 
 | Area | Result |
 | --- | --- |
-| Production DB verification | OWNER APPROVAL REQUIRED |
+| Production DB verification | BLOCKED; owner approval received but actual production target unavailable |
 | Backup | BLOCKED |
 | Restore | NOT VERIFIED |
 | Render environment | READY WITH LIMITATION |
@@ -67,7 +67,7 @@ Additional deployed smoke evidence:
 
 Medium limitations:
 
-- Production DB state was not inspected.
+- Production DB state was not inspected because the approved preflight lacked the actual production database target. The visible local `DATABASE_URL` is development localhost and was not used.
 - Production backup and restore capability remain unverified.
 - Render dashboard environment values were not inspected.
 - Object storage upload/read/denial smoke was not executed.

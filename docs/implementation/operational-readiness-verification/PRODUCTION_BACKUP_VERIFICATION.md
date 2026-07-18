@@ -4,7 +4,7 @@ Status: BLOCKED.
 
 ## Result
 
-The actual production database provider backup configuration was not verified. Public `/health` confirms the deployed app is using PostgreSQL, but it does not disclose the provider or backup settings.
+The actual production database provider backup configuration was not verified. Public `/health` confirms the deployed app is using PostgreSQL, but it does not disclose the provider, backup status, PITR status, retention, encryption, or restore settings.
 
 ## Evidence Available
 

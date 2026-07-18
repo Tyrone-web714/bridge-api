@@ -8,6 +8,8 @@ No production backup was restored into a separate non-production target in this 
 
 Because the production backup provider and most recent backup were not verified, restore capability cannot be claimed.
 
+The approved production database preflight could not run because the production database target was unavailable. Therefore no restored-production comparison or schema/readiness validation could be performed.
+
 ## Required Restore Rehearsal
 
 Preferred procedure:

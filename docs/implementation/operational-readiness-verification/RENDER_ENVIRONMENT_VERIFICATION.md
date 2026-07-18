@@ -34,6 +34,11 @@ Public response evidence, without secret values:
 
 Actual Render dashboard/API environment variables were not inspected by name because Render API/dashboard access was not available in this phase.
 
+Additional tooling check:
+
+- Render CLI was not available in the local shell.
+- The repository `render.yaml` marks production secrets, including `DATABASE_URL`, as `sync: false`; this correctly prevents secret exposure in source but also means the actual values cannot be verified from the repository.
+
 Required variable status:
 
 | Variable | Status |
