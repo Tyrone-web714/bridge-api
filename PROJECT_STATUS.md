@@ -1,4 +1,4 @@
-﻿# Truck-Safe Routing Project Status
+# Truck-Safe Routing Project Status
 
 ## 1. Document Control
 
@@ -8,7 +8,7 @@
 - Governing Architecture Version: 1.1
 - Authoritative Repository: `C:\dev\bridge-api`
 - GitHub Repository: `https://github.com/Tyrone-web714/bridge-api.git`
-- Current Branch: `enterprise-identity-foundation`
+- Current Branch: `web-origin-and-private-media-hardening`
 - Latest Documentation Commit: `cf23662b1bb7ab189960925f9521f6b1c0e8a394` - `Add Truck-Safe Routing governing documentation`
 - Update Guidance: Update this file when the project phase, deployment status, repository structure, major risks, or implementation priorities change.
 
@@ -39,15 +39,16 @@ Current implementation and planned architecture must be kept separate:
 | Mobile Tenant Context | Merged to Main | Mobile tenant context foundation was physically validated on device and merged before the Shared Safety branch. |
 | Shared Safety Intelligence | Merged to Main | Shared Safety Foundation and Moderation UI are merged to main through commit `d56bc93`. Production migration `005` still requires release approval before production use. |
 | Fleet operations expansion | In Progress | Drivers, route manifests, delivery notes, inventory closeouts, operational geography, and heatmap routes exist; full target platform expansion remains pending. |
-| KPI and BI foundation | Merged to Main | BI/KPI foundation is merged through the active governance baseline; production migration `006` still requires release approval before production use. |
-| Data Lifecycle architecture | Merged to Main | ODR-019 foundation is merged through commit `36c006d`; production migration `009` still requires release approval before production use. |
-| Enterprise Identity architecture | In Progress | ODR-020 foundation is being implemented on `enterprise-identity-foundation` with migration `010`, tenant-scoped IdP configuration, federated identity mapping, verified-domain discovery, SSO transaction foundation, SCIM foundation, break-glass records, identity audit events, and implementation docs. No external provider interoperability is claimed. Production migration `010` is not applied. |
+| KPI and BI foundation | Merged to Main | BI/KPI foundation is merged through the active governance baseline; production migration `006` is applied and verified by read-only production preflight. |
+| Data Lifecycle architecture | Merged to Main | ODR-019 foundation is merged through commit `36c006d`; production migration `009` is applied and verified by read-only production preflight. |
+| Enterprise Identity architecture | Merged to Main | ODR-020 foundation is merged to main through commit `632709e`; production migration `010` is applied and verified by read-only production preflight. No external provider interoperability is claimed. Provider verification is paused pending remaining operational readiness verification. |
 | Logistics Intelligence Engine | Merged to Main | Logistics Intelligence Foundation is merged through commit `3f2590d`; production migration `007` still requires release approval before production use. |
 | Fleet Intelligence Scoring System | Merged to Main | Fleet Intelligence Scoring Foundation is merged through commit `630288e`; production migration `008` still requires release approval before production use. |
 | Security hardening | In Progress | Security controls, auth services, rate limit middleware, secret audit scripts, and security review docs exist; production hardening remains ongoing. |
 | Pilot readiness | Conditional GO | Pilot Integration and End-to-End Hardening completed with no unresolved Critical or High defects; remaining limitations require physical mobile offline/reconnect replay, dashboard browser walkthrough, deployment smoke, and backup/restore verification. |
 | Production rollout planning | Merged to Main | Production rollout planning merged at `aa2832d`; it remains planning only and does not approve production deployment or production migrations. |
-| Production readiness | Not Started | Production database state, backup existence, restore capability, Render environment values, object storage smoke, production migrations, and production deployment remain unverified/not executed. |
+| Production readiness | Operational Verification In Progress | Operational blocker closure is underway on `operational-readiness-verification`. Public deployed smoke checks pass for `/health`, `/ready`, admin login redirect behavior, and unauthenticated API denial. Owner-completed read-only production preflight verified PostgreSQL/PostGIS, migrations `001`-`010`, core ownership, and driver identity. Production backup provider/PITR capability, non-production restore rehearsal, Render environment name inventory, deployed commit/schema alignment, production CORS remediation, and Cloudflare R2 object-storage smoke are verified. Authenticated browser walkthrough, physical mobile offline/reconnect replay, monitoring, temporary restore cleanup review, and production rollout remain unresolved/not executed. |
+| Web origin and private media hardening | In Progress | Focused branch `web-origin-and-private-media-hardening` adds explicit production CORS policy validation and authenticated application media access for Organization-private S3/R2 delivery-note media. Owner-run read-only production metadata assessment verified 3 existing delivery-note media items with direct public R2 current URLs, so public R2 access cannot be disabled until those records are migrated or safely transitioned. No production media, production data, schema, migration, deployment setting, or R2 access-control change has been made. |
 
 ## 4. Repository Landscape
 
@@ -138,7 +139,7 @@ Key documentation includes:
 
 ## 9. Current Priority
 
-Complete ODR-020 Enterprise Identity foundation without deploying, applying production migrations, configuring real customer IdPs, or claiming external provider verification.
+Complete production and pilot operational verification before Enterprise Identity provider verification, production migration, or production rollout.
 
 Current validation basis:
 
@@ -161,7 +162,7 @@ Current validation basis:
 - Enterprise Identity foundation test is being added with `npm run test:enterprise-identity`.
 - Enterprise Identity runtime validation is being added with `npm run validate:enterprise-identity` for an isolated local PostgreSQL/PostGIS database.
 - Secret audit passes with `npm run verify:secrets`.
-- Migrations `001` through `008` were validated against isolated local PostgreSQL/PostGIS during prior merge gates. Production application still requires release approval.
+- Migrations `001` through `010` are applied in production and verified by owner-completed read-only production preflight. No production migration was applied by Codex during operational blocker closure.
 - Local `/health` and `/ready` passed against the isolated validation database.
 
 ## 10. Known Risks and Constraints
@@ -202,11 +203,11 @@ Current approved decisions reflected in governing documentation and project dire
 
 ## 12. Immediate Next Steps
 
-1. Complete and validate the `enterprise-identity-foundation` branch.
-2. Do not deploy, configure real customer IdPs, or apply production migration `010`.
-3. Validate migration `010` against isolated PostgreSQL/PostGIS only.
-4. Keep provider interoperability marked as not verified until actual provider testing occurs.
-5. After ODR-020 passes its implementation validation, stop for a separate merge-gate review.
+1. Complete `operational-readiness-verification` without merging to main.
+2. Do not deploy, configure real customer IdPs, or apply production migrations.
+3. Obtain explicit owner approval before production database preflight or production data mutation.
+4. Keep provider interoperability marked as not verified until actual provider testing occurs in a later approved phase.
+5. Close or explicitly accept operational blockers before production rollout.
 
 ## 13. Update Rules
 

@@ -69,6 +69,7 @@ function asArray(value) {
 function deliveryNoteFromRow(row) {
   return {
     id: row.id,
+    organizationId: row.organization_id || BOOTSTRAP_ORGANIZATION.id,
     accountNumber: row.account_number || null,
     placeId: row.place_id || null,
     destination: row.destination || '',
@@ -895,12 +896,18 @@ function buildGeoJsonPolygon(points) {
   };
 }
 
-async function listDeliveryNotes() {
+async function listDeliveryNotes(options = {}) {
+  const values = [];
+  const where = [];
+  if (options.organizationId || options.organization_id || options.tenantContext) {
+    applyOrganizationFilter(where, values, 'delivery_notes', options);
+  }
   const result = await postgres.query(`
     SELECT *
     FROM delivery_notes
+    ${where.length ? `WHERE ${where.join(' AND ')}` : ''}
     ORDER BY COALESCE(updated_at, created_at) DESC NULLS LAST
-  `);
+  `, values);
   return result.rows.map(deliveryNoteFromRow);
 }
 
@@ -1444,45 +1451,121 @@ async function deleteDriver(driverId) {
   return result.rows[0] ? driverFromRow(result.rows[0]) : null;
 }
 
-async function upsertDeliveryNote(note) {
-  await postgres.query(`
-    INSERT INTO delivery_notes (
-      id, account_number, place_id, destination, address, account_name, customer_name,
-      instructions, driver_name, route_context, photos, created_at, updated_at, raw
-    )
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11::jsonb, $12, $13, $14::jsonb)
-    ON CONFLICT (id) DO UPDATE SET
-      account_number = EXCLUDED.account_number,
-      place_id = EXCLUDED.place_id,
-      destination = EXCLUDED.destination,
-      address = EXCLUDED.address,
-      account_name = EXCLUDED.account_name,
-      customer_name = EXCLUDED.customer_name,
-      instructions = EXCLUDED.instructions,
-      driver_name = EXCLUDED.driver_name,
-      route_context = EXCLUDED.route_context,
-      photos = EXCLUDED.photos,
-      created_at = EXCLUDED.created_at,
-      updated_at = EXCLUDED.updated_at,
-      raw = EXCLUDED.raw
-  `, [
-    note.id,
-    note.accountNumber || null,
-    note.placeId || null,
-    note.destination || null,
-    note.address || null,
-    note.accountName || null,
-    note.customerName || null,
-    note.instructions || '',
-    note.driverName || 'driver_app',
-    note.routeContext || null,
-    JSON.stringify(asArray(note.photos)),
-    note.createdAt || new Date().toISOString(),
-    note.updatedAt || new Date().toISOString(),
-    JSON.stringify(note)
-  ]);
+function deliveryNoteMediaLifecycleReferenceId(organizationId, noteId, photo) {
+  const stableKey = [
+    organizationId,
+    'delivery_notes',
+    noteId,
+    photo?.id || photo?.storageKey || photo?.storage_key || ''
+  ].join(':');
+  return `media-${crypto.createHash('sha256').update(stableKey).digest('hex').slice(0, 48)}`;
+}
 
-  return note;
+async function lifecycleObjectReferencesTableExists(client) {
+  const result = await client.query("SELECT to_regclass('public.lifecycle_object_references') AS table_name");
+  return Boolean(result.rows[0]?.table_name);
+}
+
+async function upsertDeliveryNoteMediaLifecycleReferences(client, note, tenantContext) {
+  const photos = asArray(note.photos)
+    .filter((photo) => String(photo?.storageProvider || photo?.storage_provider || '').trim().toLowerCase() === 's3')
+    .filter((photo) => String(photo?.storageKey || photo?.storage_key || '').trim());
+
+  if (!photos.length || !(await lifecycleObjectReferencesTableExists(client))) return;
+
+  for (const photo of photos) {
+    const storageKey = String(photo.storageKey || photo.storage_key || '').trim();
+    const storageProvider = String(photo.storageProvider || photo.storage_provider || 's3').trim().toLowerCase();
+    const id = deliveryNoteMediaLifecycleReferenceId(tenantContext.organizationId, note.id, { ...photo, storageKey });
+    const metadata = {
+      mediaId: photo.id || null,
+      mediaClassification: photo.mediaClassification || photo.media_classification || 'ORGANIZATION_PRIVATE',
+      mimeType: photo.mimeType || photo.mime_type || null,
+      sizeBytes: Number(photo.sizeBytes || photo.size_bytes) || null,
+      accessPathPresent: Boolean(photo.accessPath || photo.access_path || String(photo.url || '').includes('/api/media/')),
+      legacyPublicUrlPresent: Boolean(photo.legacyPublicUrl || photo.legacy_public_url)
+    };
+
+    await client.query(`
+      INSERT INTO lifecycle_object_references (
+        id, organization_id, owner_table, owner_id, object_kind, storage_provider,
+        storage_key, contains_personal_data, legal_hold_eligible, lifecycle_status, metadata
+      )
+      VALUES ($1, $2, 'delivery_notes', $3, 'delivery_note_photo', $4, $5, true, true, 'ACTIVE', $6::jsonb)
+      ON CONFLICT (id) DO UPDATE SET
+        organization_id = EXCLUDED.organization_id,
+        owner_table = EXCLUDED.owner_table,
+        owner_id = EXCLUDED.owner_id,
+        object_kind = EXCLUDED.object_kind,
+        storage_provider = EXCLUDED.storage_provider,
+        storage_key = EXCLUDED.storage_key,
+        contains_personal_data = EXCLUDED.contains_personal_data,
+        legal_hold_eligible = EXCLUDED.legal_hold_eligible,
+        lifecycle_status = CASE
+          WHEN lifecycle_object_references.lifecycle_status = 'PURGED' THEN lifecycle_object_references.lifecycle_status
+          ELSE EXCLUDED.lifecycle_status
+        END,
+        metadata = EXCLUDED.metadata
+    `, [
+      id,
+      tenantContext.organizationId,
+      note.id,
+      storageProvider,
+      storageKey,
+      JSON.stringify(metadata)
+    ]);
+  }
+}
+
+async function upsertDeliveryNote(note) {
+  const tenantContext = tenantContextFromOptions({
+    organizationId: note.organizationId || note.organization_id,
+    tenantContext: note.tenantContext,
+    allowDevelopmentFallback: true
+  });
+  await postgres.withTransaction(async (client) => {
+    await client.query(`
+      INSERT INTO delivery_notes (
+        id, organization_id, account_number, place_id, destination, address, account_name, customer_name,
+        instructions, driver_name, route_context, photos, created_at, updated_at, raw
+      )
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12::jsonb, $13, $14, $15::jsonb)
+      ON CONFLICT (id) DO UPDATE SET
+        organization_id = EXCLUDED.organization_id,
+        account_number = EXCLUDED.account_number,
+        place_id = EXCLUDED.place_id,
+        destination = EXCLUDED.destination,
+        address = EXCLUDED.address,
+        account_name = EXCLUDED.account_name,
+        customer_name = EXCLUDED.customer_name,
+        instructions = EXCLUDED.instructions,
+        driver_name = EXCLUDED.driver_name,
+        route_context = EXCLUDED.route_context,
+        photos = EXCLUDED.photos,
+        created_at = EXCLUDED.created_at,
+        updated_at = EXCLUDED.updated_at,
+        raw = EXCLUDED.raw
+    `, [
+      note.id,
+      tenantContext.organizationId,
+      note.accountNumber || null,
+      note.placeId || null,
+      note.destination || null,
+      note.address || null,
+      note.accountName || null,
+      note.customerName || null,
+      note.instructions || '',
+      note.driverName || 'driver_app',
+      note.routeContext || null,
+      JSON.stringify(asArray(note.photos)),
+      note.createdAt || new Date().toISOString(),
+      note.updatedAt || new Date().toISOString(),
+      JSON.stringify({ ...note, organizationId: tenantContext.organizationId })
+    ]);
+    await upsertDeliveryNoteMediaLifecycleReferences(client, note, tenantContext);
+  });
+
+  return { ...note, organizationId: tenantContext.organizationId };
 }
 
 async function deleteDeliveryNote(id) {

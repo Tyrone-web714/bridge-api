@@ -1,7 +1,7 @@
 const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
-const { DeleteObjectCommand, PutObjectCommand, S3Client } = require('@aws-sdk/client-s3');
+const { DeleteObjectCommand, GetObjectCommand, PutObjectCommand, S3Client } = require('@aws-sdk/client-s3');
 
 const LOCAL_PHOTO_DIR = path.resolve(process.env.PHOTO_STORAGE_LOCAL_DIR || path.join(__dirname, '..', 'data', 'delivery_note_photos'));
 const SUPPORTED_PROVIDERS = new Set(['local', 's3']);
@@ -137,10 +137,13 @@ async function saveLocalPhoto({ req, buffer, mimeType, noteId, index, originalNa
   };
 }
 
-async function saveS3Photo({ buffer, mimeType, noteId, index, originalName, folder }) {
+async function saveS3Photo({ req, buffer, mimeType, noteId, index, originalName, folder }) {
   const { bucket, publicBaseUrl } = getS3Config();
   const extension = getExtension(mimeType);
   const key = buildObjectKey({ noteId, index, extension, folder });
+  const id = `${noteId}-photo-${index}-${crypto.randomBytes(4).toString('hex')}`;
+  const publicUrl = `${publicBaseUrl}/${key.split('/').map(encodeURIComponent).join('/')}`;
+  const accessPath = `/api/media/${encodeURIComponent(id)}`;
 
   await getS3Client().send(new PutObjectCommand({
     Bucket: bucket,
@@ -151,14 +154,18 @@ async function saveS3Photo({ buffer, mimeType, noteId, index, originalName, fold
   }));
 
   return {
-    id: `${noteId}-photo-${index}-${crypto.randomBytes(4).toString('hex')}`,
+    id,
     filename: path.basename(key),
     storageProvider: 's3',
     storageKey: key,
+    bucket,
+    mediaClassification: 'ORGANIZATION_PRIVATE',
+    accessPath,
     mimeType,
     sizeBytes: buffer.length,
     originalName: cleanText(originalName, 180) || null,
-    url: `${publicBaseUrl}/${key.split('/').map(encodeURIComponent).join('/')}`,
+    url: req ? getPrivateMediaUrl(req, id) : accessPath,
+    legacyPublicUrl: publicUrl,
     uploadedAt: new Date().toISOString()
   };
 }
@@ -204,6 +211,27 @@ async function deleteS3Photo(photo) {
   }));
 }
 
+async function readS3Object(photo) {
+  const storageKey = cleanText(photo?.storageKey, 500);
+  if (!storageKey || storageKey.includes('..')) {
+    const error = new Error('Invalid storage key.');
+    error.status = 400;
+    throw error;
+  }
+
+  const { bucket } = getS3Config();
+  return getS3Client().send(new GetObjectCommand({
+    Bucket: bucket,
+    Key: storageKey
+  }));
+}
+
+function getPrivateMediaUrl(req, mediaId) {
+  const id = cleanText(mediaId, 220);
+  if (!id) return '';
+  return `${getPublicBaseUrl(req)}/api/media/${encodeURIComponent(id)}`;
+}
+
 async function deleteDeliveryNotePhoto(photo) {
   const provider = cleanText(photo?.storageProvider || (photo?.storageKey ? getProvider() : 'local'), 40).toLowerCase();
   if (provider === 'local') return deleteLocalPhoto(photo);
@@ -219,6 +247,8 @@ async function deleteDeliveryNotePhotos(photos = []) {
 function normalizeExistingPhotoUrl(req, photo) {
   const filename = path.basename(cleanText(photo?.filename, 220));
   const storageProvider = cleanText(photo?.storageProvider, 40).toLowerCase();
+  const id = cleanText(photo?.id, 220);
+  if (storageProvider === 's3' && id) return getPrivateMediaUrl(req, id);
   if (storageProvider === 'local' && filename) return getLocalPhotoUrl(req, filename);
   if (filename && !photo?.url) return getLocalPhotoUrl(req, filename);
   return cleanText(photo?.url, 1000);
@@ -250,10 +280,12 @@ function getStorageStatus() {
 
 module.exports = {
   deleteDeliveryNotePhotos,
+  getPrivateMediaUrl,
   getLocalPhotoPath,
   getProvider,
   getStorageStatus,
   normalizeExistingPhotoUrl,
+  readS3Object,
   saveHazardReportPhoto,
   saveDeliveryNotePhoto,
   validateStorageConfig

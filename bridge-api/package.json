@@ -7,7 +7,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "test": "npm run test:ai && npm run test:predictions && npm run test:supervisor-intelligence && npm run test:heatmaps && npm run test:imports && npm run test:delivery-settlement && npm run test:google-maps-compliance && npm run test:multi-tenant && npm run test:auth-rbac && npm run test:api-tenant && npm run test:mobile-tenant && npm run test:shared-safety && npm run test:shared-safety-ui && npm run test:bi-kpi && npm run test:logistics-intelligence && npm run test:fleet-intelligence-scoring && npm run test:data-lifecycle && npm run test:enterprise-identity && npm run test:security && npm run test:dashboard",
+    "test": "npm run test:ai && npm run test:predictions && npm run test:supervisor-intelligence && npm run test:heatmaps && npm run test:imports && npm run test:delivery-settlement && npm run test:google-maps-compliance && npm run test:multi-tenant && npm run test:auth-rbac && npm run test:api-tenant && npm run test:mobile-tenant && npm run test:shared-safety && npm run test:shared-safety-ui && npm run test:bi-kpi && npm run test:logistics-intelligence && npm run test:fleet-intelligence-scoring && npm run test:data-lifecycle && npm run test:enterprise-identity && npm run test:web-origin && npm run test:private-media && npm run test:security && npm run test:dashboard",
     "test:ai": "node scripts/check-ai-contracts.cjs",
     "test:predictions": "node scripts/check-prediction-engine.cjs",
     "test:supervisor-intelligence": "node scripts/check-supervisor-intelligence-contracts.cjs",
@@ -30,6 +30,8 @@
     "test:data-lifecycle": "node scripts/check-data-lifecycle-foundation.cjs",
     "validate:data-lifecycle": "node scripts/validate-data-lifecycle-runtime.cjs",
     "test:enterprise-identity": "node scripts/check-enterprise-identity-foundation.cjs",
+    "test:web-origin": "node scripts/check-web-origin-hardening.cjs",
+    "test:private-media": "node scripts/check-private-media-hardening.cjs",
     "validate:enterprise-identity": "node scripts/validate-enterprise-identity-runtime.cjs",
     "validate:pilot-integration": "node scripts/validate-pilot-integration-runtime.cjs",
     "validate:production-rollout": "node scripts/validate-production-rollout.cjs",

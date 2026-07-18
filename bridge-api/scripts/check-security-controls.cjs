@@ -11,6 +11,7 @@ const driverAuth = fs.readFileSync(path.join(root, 'services', 'driverAuth.js'),
 const driverSessions = fs.readFileSync(path.join(root, 'routes', 'driverSessions.js'), 'utf8');
 const driverSessionMigration = fs.readFileSync(path.join(root, 'migrations', '002_driver_sessions.sql'), 'utf8');
 const adminAuth = fs.readFileSync(path.join(root, 'services', 'adminAuth.js'), 'utf8');
+const corsPolicy = fs.readFileSync(path.join(root, 'services', 'corsPolicy.js'), 'utf8');
 
 assert.match(server, /REQUEST_BODY_LIMIT.*1mb/);
 assert.match(server, /DELIVERY_BODY_LIMIT.*30mb/);
@@ -19,7 +20,8 @@ assert.match(server, /mutationAuditMiddleware/);
 assert.match(server, /app\.disable\('x-powered-by'\)/);
 assert.match(server, /X-Content-Type-Options/);
 assert.match(server, /Strict-Transport-Security/);
-assert.match(server, /process\.env\.NODE_ENV !== 'production'/);
+assert.match(server, /corsPolicy\.buildCorsConfig/);
+assert.match(corsPolicy, /CORS_ORIGIN cannot contain wildcard in production/);
 assert.match(deliveryNotes, /detectImageMimeType/);
 assert.match(deliveryNotes, /content does not match/);
 assert.match(routing, /detectHazardPhotoMimeType/);

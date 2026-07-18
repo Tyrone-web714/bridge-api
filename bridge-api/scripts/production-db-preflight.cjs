@@ -11,7 +11,9 @@ const EXPECTED_MIGRATIONS = [
   '005_shared_safety_foundation.sql',
   '006_bi_kpi_foundation.sql',
   '007_logistics_intelligence_foundation.sql',
-  '008_fleet_intelligence_scoring_foundation.sql'
+  '008_fleet_intelligence_scoring_foundation.sql',
+  '009_data_lifecycle_foundation.sql',
+  '010_enterprise_identity_foundation.sql'
 ];
 
 const EXPECTED_TABLES = [
@@ -34,7 +36,27 @@ const EXPECTED_TABLES = [
   'logistics_signals',
   'logistics_recommendations',
   'fleet_score_models',
-  'fleet_score_snapshots'
+  'fleet_score_snapshots',
+  'retention_policies',
+  'legal_holds',
+  'lifecycle_deletion_requests',
+  'data_subject_requests',
+  'organization_lifecycle_events',
+  'lifecycle_object_references',
+  'lifecycle_purge_jobs',
+  'lifecycle_tombstones',
+  'data_exports',
+  'lifecycle_events',
+  'organization_memberships',
+  'organization_identity_providers',
+  'verified_organization_domains',
+  'federated_identities',
+  'identity_claim_mappings',
+  'sso_authentication_transactions',
+  'scim_configurations',
+  'scim_provisioning_events',
+  'enterprise_identity_break_glass_records',
+  'identity_security_events'
 ];
 
 function assertDatabaseConfigured() {
