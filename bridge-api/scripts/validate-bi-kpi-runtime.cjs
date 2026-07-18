@@ -34,6 +34,15 @@ async function seedOrganization(id, name) {
 async function main() {
   assert(process.env.DATABASE_URL, 'DATABASE_URL is required');
   assert(/127\.0\.0\.1:5544\d/.test(process.env.DATABASE_URL), 'runtime validation must use isolated local PostgreSQL on a 5544x validation port');
+  const now = Date.now();
+  const dayMs = 24 * 60 * 60 * 1000;
+  const formulaEffectiveFrom = new Date(now - 4 * dayMs).toISOString();
+  const routePeriodOneStart = new Date(now - 3 * dayMs).toISOString();
+  const routePeriodOneEnd = new Date(now - 2 * dayMs).toISOString();
+  const routePeriodTwoStart = new Date(now - 2 * dayMs).toISOString();
+  const routePeriodTwoEnd = new Date(now - dayMs).toISOString();
+  const routePeriodThreeStart = new Date(now - dayMs).toISOString();
+  const routePeriodThreeEnd = new Date(now).toISOString();
 
   await seedOrganization('demo-fleet-a', 'Demo Fleet A');
   await seedOrganization('demo-fleet-b', 'Demo Fleet B');
@@ -65,15 +74,16 @@ async function main() {
       { name: 'planned_stops', unit: 'count' }
     ],
     thresholds: { good: 95, warning: 80, critical: 60 },
-    roundingRules: { decimals: 2 }
+    roundingRules: { decimals: 2 },
+    effectiveFrom: formulaEffectiveFrom
   });
   assert(formula.version === 1, 'first formula version should be v1');
 
   const snapshot = await biKpi.calculateKpi(orgA, definition.id, {
     subjectType: 'route',
     subjectId: 'runtime-route-1',
-    periodStart: '2026-07-12T00:00:00.000Z',
-    periodEnd: '2026-07-12T23:59:59.000Z',
+    periodStart: routePeriodOneStart,
+    periodEnd: routePeriodOneEnd,
     inputs: { completed_stops: 9, planned_stops: 10 },
     calculationRunKey: `runtime-${definition.id}-route-1`
   });
@@ -142,8 +152,8 @@ async function main() {
   const criticalSnapshot = await biKpi.calculateKpi(orgA, definition.id, {
     subjectType: 'route',
     subjectId: 'runtime-route-2',
-    periodStart: '2026-07-13T00:00:00.000Z',
-    periodEnd: '2026-07-13T23:59:59.000Z',
+    periodStart: routePeriodTwoStart,
+    periodEnd: routePeriodTwoEnd,
     inputs: { completed_stops: 5, planned_stops: 10 },
     calculationRunKey: `runtime-${definition.id}-route-2`
   });
@@ -174,8 +184,8 @@ async function main() {
   const recalculated = await biKpi.calculateKpi(orgA, definition.id, {
     subjectType: 'route',
     subjectId: 'runtime-route-1',
-    periodStart: '2026-07-14T00:00:00.000Z',
-    periodEnd: '2026-07-14T23:59:59.000Z',
+    periodStart: routePeriodThreeStart,
+    periodEnd: routePeriodThreeEnd,
     inputs: { completed_stops: 10, planned_stops: 10 },
     calculationRunKey: `runtime-${definition.id}-route-1-recalc`
   });

@@ -6,15 +6,20 @@ Passed validation commands:
 
 - `npm.cmd run test:fleet-intelligence-scoring`
 - `npm.cmd test`
+- `npm.cmd ci --dry-run`
+- `npm.cmd run validate:auth-rbac`
+- `npm.cmd run validate:shared-safety`
+- `npm.cmd run validate:bi-kpi`
+- `npm.cmd run validate:logistics-intelligence`
+- `npm.cmd run validate:fleet-intelligence-scoring`
 - `npm.cmd run verify:secrets`
 - `git diff --check`
-- `npm.cmd run validate:fleet-intelligence-scoring`
 
 Runtime validation used an isolated local PostgreSQL/PostGIS validation database:
 
 - Host: `127.0.0.1`
-- Port: `55445`
-- Database: `tsr_fiss_validation`
+- Port: `55447`
+- Database: `tsr_fiss_mergegate`
 - User: `tsr_validation`
 - PostgreSQL: `17.10`
 - PostGIS: `3.6.2`

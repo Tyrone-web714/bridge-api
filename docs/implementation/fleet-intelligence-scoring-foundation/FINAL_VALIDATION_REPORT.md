@@ -2,7 +2,7 @@
 
 ## Validation Status
 
-Status: Passed for branch completion.
+Status: Passed for final merge-gate validation.
 
 The Fleet Intelligence Scoring Foundation implements Organization-scoped, versioned, explainable, reproducible, and non-autonomous scoring based on Logistics Intelligence outputs.
 
@@ -14,8 +14,8 @@ The Fleet Intelligence Scoring Foundation implements Organization-scoped, versio
 - Validation date: 2026-07-17
 - Database: isolated local PostgreSQL/PostGIS validation cluster
 - Host: `127.0.0.1`
-- Port: `55445`
-- Database name: `tsr_fiss_validation`
+- Port: `55447`
+- Database name: `tsr_fiss_mergegate`
 - Database user: `tsr_validation`
 - PostgreSQL: `17.10`
 - PostGIS: `3.6.2`
@@ -80,7 +80,7 @@ The `/api/fleet-intelligence-scoring` route is registered with private-by-defaul
 
 Passed.
 
-Migrations `001` through `008` applied successfully to the isolated PostgreSQL/PostGIS validation database. Migration `008` creates the required Fleet Intelligence Scoring tables, constraints, indexes, immutability triggers, and role-permission seed records.
+Migrations `001` through `008` applied successfully to a fresh isolated PostgreSQL/PostGIS validation database. Migration `008` creates the required Fleet Intelligence Scoring tables, constraints, indexes, immutability triggers, and role-permission seed records.
 
 ## Rollback Result
 
@@ -94,8 +94,13 @@ Passed.
 
 The following commands passed:
 
+- `npm.cmd ci --dry-run`
 - `npm.cmd run test:fleet-intelligence-scoring`
 - `npm.cmd test`
+- `npm.cmd run validate:auth-rbac`
+- `npm.cmd run validate:shared-safety`
+- `npm.cmd run validate:bi-kpi`
+- `npm.cmd run validate:logistics-intelligence`
 - `npm.cmd run validate:fleet-intelligence-scoring`
 - `npm.cmd run verify:secrets`
 - `git diff --check`
@@ -104,12 +109,13 @@ Local `/health` and `/ready` checks also passed against the isolated validation 
 
 ## Defects Found and Fixed
 
-Two validation-script defects were found and fixed during foundation validation:
+Three validation-script defects were found and fixed during foundation and merge-gate validation:
 
 1. The active score model version effective window did not cover the fixed validation period.
 2. Seeded Logistics Intelligence signal timestamps did not fall inside the fixed validation period.
+3. The BI/KPI runtime validator created an active formula effective at validation time while calculating fixed historical periods that could fall before that effective date.
 
-Both issues were corrected by aligning validation periods dynamically with the test data. No production data or production configuration was changed.
+These issues were corrected by aligning validation periods dynamically with the test data. No production data or production configuration was changed.
 
 ## Deprecated Flows Remaining
 
@@ -133,6 +139,6 @@ No deprecated Fleet Intelligence Scoring flow is introduced by this foundation.
 
 ## Final Recommendation
 
-GO for completing the Fleet Intelligence Scoring Foundation branch.
+GO for merging the Fleet Intelligence Scoring Foundation branch.
 
 The foundation is tenant-isolated, explainable, versioned, reproducible, and non-autonomous. It consumes Logistics Intelligence outputs without taking automated operational action.
