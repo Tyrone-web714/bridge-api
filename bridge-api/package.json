@@ -27,6 +27,7 @@
     "validate:logistics-intelligence": "node scripts/validate-logistics-intelligence-runtime.cjs",
     "test:fleet-intelligence-scoring": "node scripts/check-fleet-intelligence-scoring-foundation.cjs",
     "validate:fleet-intelligence-scoring": "node scripts/validate-fleet-intelligence-scoring-runtime.cjs",
+    "validate:pilot-integration": "node scripts/validate-pilot-integration-runtime.cjs",
     "validate:auth-rbac": "node scripts/final-validate-auth-rbac-foundation.cjs",
     "validate:shared-safety": "node scripts/validate-shared-safety-runtime.cjs",
     "test:security": "node scripts/check-security-controls.cjs",

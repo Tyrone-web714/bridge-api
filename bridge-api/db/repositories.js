@@ -34,6 +34,14 @@ function assignedDriverIdMatchesSql(columnSql, parameterSql) {
   return `LOWER(TRIM(${columnSql})) = LOWER(TRIM(${parameterSql}))`;
 }
 
+function assignedManifestDriverMatchesSql(driverAlias = 'driver', manifestAlias = 'manifest') {
+  return `(
+    ${assignedDriverIdMatchesSql(`${driverAlias}.driver_id`, `${manifestAlias}.assigned_driver_id`)}
+    OR ${assignedDriverIdMatchesSql(`COALESCE(${driverAlias}.company_driver_number, ${driverAlias}.driver_id)`, `${manifestAlias}.assigned_driver_id`)}
+    OR ${assignedDriverIdMatchesSql(`COALESCE(${driverAlias}.internal_driver_id, ${driverAlias}.driver_id)`, `${manifestAlias}.assigned_driver_id`)}
+  )`;
+}
+
 function tenantContextFromOptions(options = {}) {
   return resolveTenantContext(
     options.tenantContext || {
@@ -3087,7 +3095,7 @@ async function prepareRouteInventoryCloseoutForDriver(manifestId, driverId, inpu
     SELECT manifest.*
     FROM daily_route_manifests AS manifest
     JOIN drivers AS driver
-      ON ${assignedDriverIdMatchesSql('driver.driver_id', 'manifest.assigned_driver_id')}
+      ON ${assignedManifestDriverMatchesSql('driver', 'manifest')}
       AND driver.active = true
     WHERE manifest.id = $1
       AND ${assignedDriverIdMatchesSql('manifest.assigned_driver_id', '$2')}
@@ -3320,7 +3328,7 @@ async function confirmRouteInventoryCloseoutPrintForDriver(manifestId, driverId,
       updated_at = NOW()
     FROM daily_route_manifests AS manifest
     JOIN drivers AS driver
-      ON ${assignedDriverIdMatchesSql('driver.driver_id', 'manifest.assigned_driver_id')}
+      ON ${assignedManifestDriverMatchesSql('driver', 'manifest')}
       AND driver.active = true
     WHERE closeout.manifest_id = manifest.id
       AND closeout.manifest_id = $1
@@ -4367,7 +4375,7 @@ async function addRouteTruckInventoryForDriver(manifestId, driverId, input = {})
     const routeResult = await client.query(`
       SELECT manifest.id
       FROM daily_route_manifests AS manifest
-      JOIN drivers AS driver ON ${assignedDriverIdMatchesSql('driver.driver_id', 'manifest.assigned_driver_id')} AND driver.active
+      JOIN drivers AS driver ON ${assignedManifestDriverMatchesSql('driver', 'manifest')} AND driver.active
       WHERE manifest.id = $1 AND ${assignedDriverIdMatchesSql('manifest.assigned_driver_id', '$2')}
       FOR UPDATE OF manifest
     `, [cleanedManifestId, cleanedDriverId]);
@@ -4583,7 +4591,7 @@ async function prepareDepartureInventoryConfirmation(manifestId, driverId, wareh
   const cleanedDriverId = cleanRepositoryText(driverId, 120);
   const routeResult = await postgres.query(`
     SELECT manifest.* FROM daily_route_manifests AS manifest
-    JOIN drivers AS driver ON ${assignedDriverIdMatchesSql('driver.driver_id', 'manifest.assigned_driver_id')} AND driver.active
+    JOIN drivers AS driver ON ${assignedManifestDriverMatchesSql('driver', 'manifest')} AND driver.active
     WHERE manifest.id = $1 AND ${assignedDriverIdMatchesSql('manifest.assigned_driver_id', '$2')}
       AND manifest.status IN ('assigned', 'active')
     LIMIT 1

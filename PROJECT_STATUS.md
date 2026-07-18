@@ -8,7 +8,7 @@
 - Governing Architecture Version: 1.1
 - Authoritative Repository: `C:\dev\bridge-api`
 - GitHub Repository: `https://github.com/Tyrone-web714/bridge-api.git`
-- Current Branch: `main`
+- Current Branch: `pilot-integration-hardening`
 - Latest Documentation Commit: `cf23662b1bb7ab189960925f9521f6b1c0e8a394` - `Add Truck-Safe Routing governing documentation`
 - Update Guidance: Update this file when the project phase, deployment status, repository structure, major risks, or implementation priorities change.
 
@@ -30,7 +30,7 @@ Current implementation and planned architecture must be kept separate:
 | --- | --- | --- |
 | Product concept | Complete | Architecture Volume I and PRS Part I define the platform concept and product foundation. |
 | Enterprise architecture baseline | Complete | Volumes I-VII and the architecture index are present under `docs/architecture`. |
-| Repository governance documentation | In Progress | Governing docs are committed; additional architecture-governance wording is currently modified but not committed. |
+| Repository governance documentation | Complete | Governing docs and Architecture Governance Baseline v1.1 are committed. |
 | Product requirements | Complete | PRS Part I is present at `docs/product/Product-Requirements-Specification-Part-I-Platform-Foundation.md`. |
 | Current codebase audit | Pending | Required as the next approved priority before multi-tenant work. Older audit files exist, but the new governance-driven comprehensive audit is not yet verified complete. |
 | Multi-tenant migration | Pending | Architecture defines Organization as tenant boundary; implementation audit and migration plan are still required. |
@@ -43,9 +43,9 @@ Current implementation and planned architecture must be kept separate:
 | Data Lifecycle architecture | Architecture Designed | ODR-019 and `docs/architecture/data-lifecycle/` define deletion, retention, anonymization, legal hold, Cascade Map, object-storage lifecycle, and offline deactivation security. No implementation or migration is claimed. |
 | Enterprise Identity architecture | Architecture Designed | ODR-020 and `docs/architecture/enterprise-identity/` define tenant-scoped OIDC/SAML, SCIM readiness, account linking, SSO enforcement, break-glass, mobile/web SSO, and provider verification. No implementation is claimed. |
 | Logistics Intelligence Engine | Merged to Main | Logistics Intelligence Foundation is merged through commit `3f2590d`; production migration `007` still requires release approval before production use. |
-| Fleet Intelligence Scoring System | In Progress on Branch | Branch `fleet-intelligence-scoring-foundation` adds versioned score models, immutable score snapshots, component evidence, private benchmarks, tenant isolation, and implementation documentation. Production migration `008` must not be applied until release approval. |
+| Fleet Intelligence Scoring System | Merged to Main | Fleet Intelligence Scoring Foundation is merged through commit `630288e`; production migration `008` still requires release approval before production use. |
 | Security hardening | In Progress | Security controls, auth services, rate limit middleware, secret audit scripts, and security review docs exist; production hardening remains ongoing. |
-| Pilot readiness | In Progress | Production pilot checklist reports 55-60% readiness and lists open items. |
+| Pilot readiness | In Progress | Branch `pilot-integration-hardening` is validating integrated driver, warehouse, supervisor, BI/KPI, Logistics Intelligence, FISS, Shared Safety, security, migration-readiness, and rollback workflows. |
 | Production readiness | Not Started | Repository evidence does not support calling the full platform production-ready. |
 
 ## 4. Repository Landscape
