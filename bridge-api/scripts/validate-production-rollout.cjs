@@ -38,7 +38,8 @@ function validateMigrations() {
     '005_shared_safety_foundation.sql',
     '006_bi_kpi_foundation.sql',
     '007_logistics_intelligence_foundation.sql',
-    '008_fleet_intelligence_scoring_foundation.sql'
+    '008_fleet_intelligence_scoring_foundation.sql',
+    '009_data_lifecycle_foundation.sql'
   ];
   const actual = listMigrationFiles();
   assert(JSON.stringify(actual) === JSON.stringify(expected), 'migration files 001-008 must exist in strict order');
@@ -60,6 +61,11 @@ function validateMigrations() {
 
   const m008 = read('migrations/008_fleet_intelligence_scoring_foundation.sql');
   assert(m008.includes('prevent_fleet_score_snapshot_mutation'), 'migration 008 must protect FISS snapshot immutability');
+
+  const m009 = read('migrations/009_data_lifecycle_foundation.sql');
+  assert(m009.includes('CREATE TABLE IF NOT EXISTS legal_holds'), 'migration 009 must create legal holds');
+  assert(m009.includes('CREATE TABLE IF NOT EXISTS lifecycle_deletion_requests'), 'migration 009 must create deletion requests');
+  assert(m009.includes('prevent_audit_events_delete_without_lifecycle_override'), 'migration 009 must protect audit evidence');
 }
 
 function validateDeployment() {

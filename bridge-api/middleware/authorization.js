@@ -279,6 +279,19 @@ function permissionForRequest(req) {
     if (path.includes('/models') && ['POST', 'PUT', 'PATCH', 'DELETE'].includes(method)) return rbac.PERMISSIONS.FLEET_SCORE_MANAGE;
     return rbac.PERMISSIONS.FLEET_SCORE_VIEW;
   }
+  if (path.startsWith('/api/data-lifecycle')) {
+    if (path.includes('/legal-holds')) return rbac.PERMISSIONS.LIFECYCLE_LEGAL_HOLD_MANAGE;
+    if (path.includes('/data-subject-requests')) return rbac.PERMISSIONS.LIFECYCLE_DSR_MANAGE;
+    if (path.includes('/exports')) return rbac.PERMISSIONS.LIFECYCLE_EXPORT;
+    if (path.includes('/organizations/termination')) return rbac.PERMISSIONS.LIFECYCLE_ORGANIZATION_TERMINATE;
+    if (path.includes('/organizations/purge-preview')) return rbac.PERMISSIONS.LIFECYCLE_ORGANIZATION_REVIEW;
+    if (path.includes('/purge/ephemeral-execute')) return rbac.PERMISSIONS.LIFECYCLE_USER_PURGE;
+    if (path.includes('/purge') || path.includes('/purge-preview')) return rbac.PERMISSIONS.LIFECYCLE_USER_REVIEW_DELETE;
+    if (path.includes('/deactivate')) return rbac.PERMISSIONS.LIFECYCLE_USER_DEACTIVATE;
+    if (path.includes('/reactivate')) return rbac.PERMISSIONS.LIFECYCLE_USER_REACTIVATE;
+    if (path.includes('/deletion-requests')) return rbac.PERMISSIONS.LIFECYCLE_USER_REQUEST_DELETE;
+    return rbac.PERMISSIONS.LIFECYCLE_DSR_MANAGE;
+  }
   if (path.startsWith('/api/routing/manual-hazards/report')) {
     return rbac.PERMISSIONS.HAZARD_SUBMIT;
   }

@@ -39,7 +39,7 @@ router.post('/login', async (req, res) => {
     if (!driver || !driver.pin_hash || !adminAuth.verifyPassword(pin, driver.pin_hash)) {
       return res.status(401).json({ error: 'Driver ID or PIN is invalid.' });
     }
-    if (driver.active !== true) {
+    if (driver.active !== true || (driver.lifecycle_status && driver.lifecycle_status !== 'ACTIVE')) {
       return res.status(403).json({
         error: 'Driver ID is inactive. A supervisor must activate the driver before login.',
         code: 'DRIVER_INACTIVE'

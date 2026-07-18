@@ -4,11 +4,11 @@
 
 - Status: Active
 - Document Type: Living Project Status
-- Last Updated: 2026-07-17
+- Last Updated: 2026-07-18
 - Governing Architecture Version: 1.1
 - Authoritative Repository: `C:\dev\bridge-api`
 - GitHub Repository: `https://github.com/Tyrone-web714/bridge-api.git`
-- Current Branch: `production-rollout-planning`
+- Current Branch: `data-lifecycle-foundation`
 - Latest Documentation Commit: `cf23662b1bb7ab189960925f9521f6b1c0e8a394` - `Add Truck-Safe Routing governing documentation`
 - Update Guidance: Update this file when the project phase, deployment status, repository structure, major risks, or implementation priorities change.
 
@@ -40,13 +40,13 @@ Current implementation and planned architecture must be kept separate:
 | Shared Safety Intelligence | Merged to Main | Shared Safety Foundation and Moderation UI are merged to main through commit `d56bc93`. Production migration `005` still requires release approval before production use. |
 | Fleet operations expansion | In Progress | Drivers, route manifests, delivery notes, inventory closeouts, operational geography, and heatmap routes exist; full target platform expansion remains pending. |
 | KPI and BI foundation | Merged to Main | BI/KPI foundation is merged through the active governance baseline; production migration `006` still requires release approval before production use. |
-| Data Lifecycle architecture | Architecture Designed | ODR-019 and `docs/architecture/data-lifecycle/` define deletion, retention, anonymization, legal hold, Cascade Map, object-storage lifecycle, and offline deactivation security. No implementation or migration is claimed. |
+| Data Lifecycle architecture | In Progress | ODR-019 foundation is being implemented on `data-lifecycle-foundation` with migration `009`, lifecycle services/APIs, retention policy foundation, legal holds, purge preview, and implementation docs. Production migration `009` is not applied. |
 | Enterprise Identity architecture | Architecture Designed | ODR-020 and `docs/architecture/enterprise-identity/` define tenant-scoped OIDC/SAML, SCIM readiness, account linking, SSO enforcement, break-glass, mobile/web SSO, and provider verification. No implementation is claimed. |
 | Logistics Intelligence Engine | Merged to Main | Logistics Intelligence Foundation is merged through commit `3f2590d`; production migration `007` still requires release approval before production use. |
 | Fleet Intelligence Scoring System | Merged to Main | Fleet Intelligence Scoring Foundation is merged through commit `630288e`; production migration `008` still requires release approval before production use. |
 | Security hardening | In Progress | Security controls, auth services, rate limit middleware, secret audit scripts, and security review docs exist; production hardening remains ongoing. |
 | Pilot readiness | Conditional GO | Pilot Integration and End-to-End Hardening completed with no unresolved Critical or High defects; remaining limitations require physical mobile offline/reconnect replay, dashboard browser walkthrough, deployment smoke, and backup/restore verification. |
-| Production rollout planning | In Progress | Branch `production-rollout-planning` is preparing migration readiness, database preflight, backup/restore, rollback, environment, deployment, smoke-test, observability, release-gate, and runbook documentation. |
+| Production rollout planning | Merged to Main | Production rollout planning merged at `aa2832d`; it remains planning only and does not approve production deployment or production migrations. |
 | Production readiness | Not Started | Production database state, backup existence, restore capability, Render environment values, object storage smoke, production migrations, and production deployment remain unverified/not executed. |
 
 ## 4. Repository Landscape
@@ -138,7 +138,7 @@ Key documentation includes:
 
 ## 9. Current Priority
 
-Complete Production Rollout Planning and readiness validation without deploying, applying production migrations, or modifying production data.
+Complete ODR-019 Data Lifecycle foundation without deploying, applying production migrations, purging production records, or implementing ODR-020.
 
 Current validation basis:
 
@@ -155,7 +155,9 @@ Current validation basis:
 - Fleet Intelligence Scoring foundation test passes with `npm run test:fleet-intelligence-scoring`.
 - Fleet Intelligence Scoring runtime validation passes with `npm run validate:fleet-intelligence-scoring` for an isolated local PostgreSQL/PostGIS database.
 - Pilot Integration validator passes with `npm run validate:pilot-integration` for an isolated local PostgreSQL/PostGIS database.
-- Production rollout planning validation is being added with `npm run validate:production-rollout`.
+- Production rollout planning validation passes with `npm run validate:production-rollout`.
+- Data Lifecycle foundation test is being added with `npm run test:data-lifecycle`.
+- Data Lifecycle runtime validation is being added with `npm run validate:data-lifecycle` for an isolated local PostgreSQL/PostGIS database.
 - Secret audit passes with `npm run verify:secrets`.
 - Migrations `001` through `008` were validated against isolated local PostgreSQL/PostGIS during prior merge gates. Production application still requires release approval.
 - Local `/health` and `/ready` passed against the isolated validation database.
@@ -198,11 +200,11 @@ Current approved decisions reflected in governing documentation and project dire
 
 ## 12. Immediate Next Steps
 
-1. Complete and validate the `production-rollout-planning` branch.
-2. Do not deploy or apply production migrations during planning.
-3. Establish production database starting state with a read-only preflight before any migration approval.
-4. Verify production backup and restore capability before any production migration.
-5. After rollout planning passes its own merge gate, proceed deliberately to ODR-019 Data Lifecycle implementation and then ODR-020 Enterprise Identity implementation.
+1. Complete and validate the `data-lifecycle-foundation` branch.
+2. Do not deploy, purge production data, or apply production migration `009`.
+3. Validate migration `009` against isolated PostgreSQL/PostGIS only.
+4. Keep unresolved retention/export/legal items marked as policy or legal review requirements.
+5. After ODR-019 passes its merge gate, select the next phase deliberately; do not start ODR-020 automatically.
 
 ## 13. Update Rules
 

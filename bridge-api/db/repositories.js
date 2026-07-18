@@ -97,6 +97,12 @@ function adminUserFromRow(row) {
     displayName: row.display_name || null,
     active: row.active !== false,
     disabledAt: toIsoString(row.disabled_at),
+    lifecycleStatus: row.lifecycle_status || (row.active === false ? 'DEACTIVATED' : 'ACTIVE'),
+    deactivatedAt: toIsoString(row.deactivated_at),
+    deletionRequestedAt: toIsoString(row.deletion_requested_at),
+    scheduledPurgeAt: toIsoString(row.scheduled_purge_at),
+    anonymizedAt: toIsoString(row.anonymized_at),
+    pseudonymousActorId: row.pseudonymous_actor_id || null,
     sessionVersion: Number(row.session_version) || 1,
     driverCount: Number(row.driver_count) || 0,
     teamCount: Number(row.team_count) || 0,
@@ -112,6 +118,10 @@ function organizationFromRow(row) {
     name: row.name,
     slug: row.slug,
     status: row.status || 'active',
+    lifecycleStatus: row.lifecycle_status || (row.status === 'active' ? 'ACTIVE' : 'SUSPENDED'),
+    terminationRequestedAt: toIsoString(row.termination_requested_at),
+    purgeEligibleAt: toIsoString(row.purge_eligible_at),
+    purgedAt: toIsoString(row.purged_at),
     createdAt: toIsoString(row.created_at),
     updatedAt: toIsoString(row.updated_at),
     deletedAt: toIsoString(row.deleted_at)
@@ -135,6 +145,12 @@ function driverFromRow(row) {
     supervisorName: row.supervisor_name || null,
     teamName: row.team_name || null,
     active: row.active !== false,
+    lifecycleStatus: row.lifecycle_status || (row.active === false ? 'DEACTIVATED' : 'ACTIVE'),
+    deactivatedAt: toIsoString(row.deactivated_at),
+    deletionRequestedAt: toIsoString(row.deletion_requested_at),
+    scheduledPurgeAt: toIsoString(row.scheduled_purge_at),
+    anonymizedAt: toIsoString(row.anonymized_at),
+    pseudonymousActorId: row.pseudonymous_actor_id || null,
     notes: row.notes || null,
     createdBy: row.created_by || null,
     updatedBy: row.updated_by || null,
@@ -949,6 +965,7 @@ async function upsertAdminUser(user) {
       approved_role = EXCLUDED.approved_role,
       display_name = EXCLUDED.display_name,
       active = EXCLUDED.active,
+      lifecycle_status = CASE WHEN EXCLUDED.active THEN 'ACTIVE' ELSE 'DEACTIVATED' END,
       disabled_at = CASE WHEN EXCLUDED.active THEN NULL ELSE COALESCE(admin_users.disabled_at, NOW()) END,
       session_version = admin_users.session_version + 1,
       updated_at = NOW()
@@ -974,6 +991,9 @@ async function setAdminUserActive(username, active) {
   const result = await postgres.query(`
     UPDATE admin_users
     SET active = $2,
+        lifecycle_status = CASE WHEN $2 THEN 'ACTIVE' ELSE 'DEACTIVATED' END,
+        deactivated_at = CASE WHEN $2 THEN deactivated_at ELSE COALESCE(deactivated_at, NOW()) END,
+        reactivated_at = CASE WHEN $2 THEN NOW() ELSE reactivated_at END,
         disabled_at = CASE WHEN $2 THEN NULL ELSE COALESCE(disabled_at, NOW()) END,
         session_version = session_version + 1,
         updated_at = NOW()
@@ -1087,9 +1107,14 @@ async function getDriverAuthRecord(driverId, options = {}) {
   applyOrganizationFilter(where, values, 'drivers', { ...options, allowDevelopmentFallback: true });
 
   const result = await postgres.query(`
-    SELECT driver_id, internal_driver_id, organization_id, company_driver_number, driver_name, active, pin_hash
-    FROM drivers
-    WHERE ${where.join(' AND ')}
+    SELECT driver.driver_id, driver.internal_driver_id, driver.organization_id, driver.company_driver_number,
+      driver.driver_name, driver.active, driver.lifecycle_status, driver.pin_hash,
+      org.status AS organization_status, org.lifecycle_status AS organization_lifecycle_status
+    FROM drivers AS driver
+    JOIN organizations AS org ON org.id = driver.organization_id
+    WHERE ${where.map((clause) => clause.replace(/\bdrivers\./g, 'driver.')).join(' AND ')}
+      AND org.status = 'active'
+      AND COALESCE(org.lifecycle_status, 'ACTIVE') = 'ACTIVE'
     LIMIT 1
   `, values);
   return result.rows[0] || null;
@@ -1154,13 +1179,20 @@ async function getActiveDriverSession(tokenHash) {
       session.expires_at,
       driver.driver_name,
       COALESCE(driver.company_driver_number, driver.driver_id) AS company_driver_number,
-      driver.active
+      driver.active,
+      driver.lifecycle_status AS driver_lifecycle_status,
+      org.status AS organization_status,
+      org.lifecycle_status AS organization_lifecycle_status
     FROM driver_sessions session
     JOIN drivers driver ON driver.driver_id = session.driver_id
+    JOIN organizations org ON org.id = session.organization_id
     WHERE session.token_hash = $1
       AND session.revoked_at IS NULL
       AND session.expires_at > NOW()
       AND driver.active = true
+      AND COALESCE(driver.lifecycle_status, 'ACTIVE') = 'ACTIVE'
+      AND org.status = 'active'
+      AND COALESCE(org.lifecycle_status, 'ACTIVE') = 'ACTIVE'
     LIMIT 1
   `, [String(tokenHash || '')]);
   const session = result.rows[0] || null;
@@ -1276,6 +1308,7 @@ async function upsertDriver(input = {}, actor = 'supervisor') {
       supervisor_name = EXCLUDED.supervisor_name,
       team_name = EXCLUDED.team_name,
       active = EXCLUDED.active,
+      lifecycle_status = CASE WHEN EXCLUDED.active THEN 'ACTIVE' ELSE 'DEACTIVATED' END,
       notes = EXCLUDED.notes,
       updated_by = EXCLUDED.updated_by,
       updated_at = NOW()
@@ -1307,7 +1340,14 @@ async function setDriverActive(driverId, active, actor = 'supervisor') {
 
   const result = await postgres.query(`
     UPDATE drivers
-    SET active = $2, updated_by = $3, updated_at = NOW()
+    SET active = $2,
+        lifecycle_status = CASE WHEN $2 THEN 'ACTIVE' ELSE 'DEACTIVATED' END,
+        deactivated_at = CASE WHEN $2 THEN deactivated_at ELSE COALESCE(deactivated_at, NOW()) END,
+        deactivated_by = CASE WHEN $2 THEN deactivated_by ELSE COALESCE(deactivated_by, $3) END,
+        reactivated_at = CASE WHEN $2 THEN NOW() ELSE reactivated_at END,
+        reactivated_by = CASE WHEN $2 THEN $3 ELSE reactivated_by END,
+        updated_by = $3,
+        updated_at = NOW()
     WHERE driver_id = $1
     RETURNING *
   `, [cleanedDriverId, active === true, String(actor || 'supervisor').trim() || 'supervisor']);
@@ -4490,6 +4530,7 @@ async function upsertWarehouseEmployee(input = {}) {
       employee_name = EXCLUDED.employee_name,
       pin_hash = EXCLUDED.pin_hash,
       active = EXCLUDED.active,
+      lifecycle_status = CASE WHEN EXCLUDED.active THEN 'ACTIVE' ELSE 'DEACTIVATED' END,
       disabled_at = CASE WHEN EXCLUDED.active THEN NULL ELSE COALESCE(warehouse_employees.disabled_at, NOW()) END,
       updated_by = EXCLUDED.updated_by,
       updated_at = NOW()
@@ -4558,15 +4599,22 @@ async function getActiveWarehouseEmployeeSession(tokenHash) {
       session.expires_at,
       employee.company_employee_id,
       employee.employee_name,
-      employee.active
+      employee.active,
+      employee.lifecycle_status AS employee_lifecycle_status,
+      org.status AS organization_status,
+      org.lifecycle_status AS organization_lifecycle_status
     FROM warehouse_employee_sessions session
     JOIN warehouse_employees employee
       ON employee.employee_id = session.employee_id
      AND employee.organization_id = session.organization_id
+    JOIN organizations org ON org.id = session.organization_id
     WHERE session.token_hash = $1
       AND session.revoked_at IS NULL
       AND session.expires_at > NOW()
       AND employee.active = true
+      AND COALESCE(employee.lifecycle_status, 'ACTIVE') = 'ACTIVE'
+      AND org.status = 'active'
+      AND COALESCE(org.lifecycle_status, 'ACTIVE') = 'ACTIVE'
     LIMIT 1
   `, [cleanRepositoryText(tokenHash, 500)]);
   const session = result.rows[0] || null;

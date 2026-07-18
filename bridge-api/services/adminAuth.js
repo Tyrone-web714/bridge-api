@@ -202,7 +202,10 @@ async function validateAdminSession(req, res, next) {
     if (user) {
       const validVersion = Number.isInteger(session.sessionVersion)
         && session.sessionVersion === user.sessionVersion;
-      if (!user.active || !validVersion || session.role !== user.role) {
+      const organization = user.organizationId ? await repositories.getOrganization(user.organizationId) : null;
+      const organizationActive = user.approvedRole === rbac.ROLES.PLATFORM_ADMIN
+        || (organization?.status === 'active' && (organization.lifecycleStatus || 'ACTIVE') === 'ACTIVE');
+      if (!user.active || (user.lifecycleStatus && user.lifecycleStatus !== 'ACTIVE') || !organizationActive || !validVersion || session.role !== user.role) {
         clearAdminSessionCookie(res);
         return next();
       }
