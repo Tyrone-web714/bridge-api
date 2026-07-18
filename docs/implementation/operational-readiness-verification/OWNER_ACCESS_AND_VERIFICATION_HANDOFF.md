@@ -10,7 +10,7 @@ Do not paste full secret values into Git, documentation, chat, screenshots, or t
 
 | Blocker | Required Access | Owner Action | Evidence Needed | Codex Can Continue After |
 | --- | --- | --- | --- | --- |
-| Production PostgreSQL/PostGIS database | Render service environment or database provider dashboard/API | Identify the actual production database target without exposing the full `DATABASE_URL`. Confirm provider, host, port, DB name, SSL, and PostGIS. | Redacted target metadata and confirmation that the target is production. | A secure production `DATABASE_URL` is made temporarily available in the execution environment, or owner runs the read-only preflight and returns the JSON report. |
+| Production PostgreSQL/PostGIS database | Completed by owner-run read-only preflight | No further action unless schema/data changes before rollout. | `ok=true`, `readOnly=true`, PostgreSQL 18.4, PostGIS enabled, migrations `001`-`010` applied, ownership and driver identity checks passed. | Production DB state is now verified. |
 | Production database backups | Database provider dashboard/API/CLI | Open backup settings and verify enabled backups, last success, frequency, retention, PITR, encryption, restore ownership. | Screenshot or text summary with no secrets. | Backup status, last backup time, retention, PITR, and restore method are confirmed. |
 | Production restore capability | Database provider plus separate non-production restore target | Restore a recent production backup into a separate non-production database. Do not restore over production. | Restore target metadata, restore timestamp, schema/PostGIS result, representative counts. | Restored database exists and can be validated read-only. |
 | Render environment variables | Render dashboard or Render API for service `truck-safe-routing-api` | Verify variable names are present and dangerous settings are absent. Do not reveal secret values. | Variable-name checklist marked PRESENT/MISSING/NOT VERIFIED. | Required names are confirmed and any missing/dangerous settings are reported. |
@@ -23,17 +23,36 @@ Do not paste full secret values into Git, documentation, chat, screenshots, or t
 ## Minimum Information Needed To Resume
 
 1. Render service deployment metadata: connected repo, branch, deployed commit SHA, root directory, latest deploy status.
-2. Production database target metadata: provider, host, port, database name, SSL requirement, and PostGIS status.
-3. Secure method for production DB preflight: either a temporary local environment `DATABASE_URL` that is not committed/printed, or owner-run preflight JSON output.
-4. Database backup evidence: last successful backup time, retention, PITR status, encryption status, restore method.
-5. Restore rehearsal evidence or a non-production restore target for validation.
-6. Render environment variable name checklist, without secret values.
-7. Object storage provider/bucket/prefix evidence and whether a disposable object smoke is approved.
-8. Monitoring/alerting provider evidence and alert destination test result.
-9. Mobile offline/reconnect test evidence.
-10. Authenticated dashboard walkthrough evidence.
+2. Database backup evidence: last successful backup time, retention, PITR status, encryption status, restore method.
+3. Restore rehearsal evidence or a non-production restore target for validation.
+4. Render environment variable name checklist, without secret values.
+5. Object storage provider/bucket/prefix evidence and whether a disposable object smoke is approved.
+6. Monitoring/alerting provider evidence and alert destination test result.
+7. Mobile offline/reconnect test evidence.
+8. Authenticated dashboard walkthrough evidence.
 
 ## A. Production PostgreSQL/PostGIS Database
+
+### Production Preflight Result
+
+The approved non-destructive production database preflight was completed manually by the owner against the actual TSR production PostgreSQL/PostGIS database.
+
+Verified:
+
+- `ok=true`
+- `readOnly=true`
+- PostgreSQL 18.4
+- PostGIS enabled
+- `schema_migrations` exists
+- migrations `001` through `010` are recorded as applied
+- no expected migrations are missing
+- core Organization ownership checks passed
+- driver internal identity and duplicate Organization/company driver number checks passed
+- foundation tables exist through BI/KPI, Logistics Intelligence, FISS, Data Lifecycle, and Enterprise Identity
+
+Important note:
+
+- `organization_memberships` currently contains zero rows. This is acceptable for native admin/driver/warehouse authentication, but existing internal users should eventually receive approved Organization membership records before Enterprise Identity federation is enabled for those users.
 
 ### Where The Production `DATABASE_URL` Is Expected To Come From
 
@@ -382,4 +401,3 @@ Evidence to send back:
 - pass/fail per page
 - screenshots with secrets/customer-sensitive data hidden
 - any unexpected JSON auth errors or redirect loops
-

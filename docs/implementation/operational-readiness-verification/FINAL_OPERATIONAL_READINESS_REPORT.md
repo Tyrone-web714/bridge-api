@@ -8,7 +8,7 @@ Final recommendation: NO-GO for production rollout until remaining operational b
 
 | Area | Result |
 | --- | --- |
-| Production DB verification | BLOCKED; owner approval received but actual production target unavailable |
+| Production DB verification | READY; owner completed approved read-only preflight against actual production PostgreSQL/PostGIS |
 | Backup | BLOCKED |
 | Restore | NOT VERIFIED |
 | Render environment | READY WITH LIMITATION |
@@ -17,7 +17,7 @@ Final recommendation: NO-GO for production rollout until remaining operational b
 | Physical mobile offline/reconnect | NOT VERIFIED |
 | Authenticated dashboard | NOT VERIFIED; unauthenticated deployed browser checks passed |
 | Deployed Render smoke | READY WITH LIMITATION |
-| Migrations `006`-`010` | READY WITH LIMITATION |
+| Migrations `006`-`010` | READY WITH LIMITATION; applied and verified by production read-only preflight |
 | Tenant isolation | READY WITH LIMITATION |
 | Authentication | READY WITH LIMITATION |
 | Data Lifecycle | READY WITH LIMITATION |
@@ -65,9 +65,21 @@ Additional deployed smoke evidence:
 - `/api/driver-auth/session`: HTTP 401 JSON when unauthenticated
 - `/api/enterprise-identity/providers`: HTTP 401 JSON when unauthenticated
 
+Production database preflight evidence supplied by owner:
+
+- `ok=true`
+- `readOnly=true`
+- PostgreSQL 18.4
+- PostGIS enabled
+- `schema_migrations` exists
+- migrations `001` through `010` are all recorded as applied
+- no expected migrations are missing
+- core Organization ownership checks passed
+- driver internal identity and Organization/company driver number uniqueness checks passed
+- foundation tables exist through BI/KPI, Logistics Intelligence, FISS, Data Lifecycle, and Enterprise Identity
+
 Medium limitations:
 
-- Production DB state was not inspected because the approved preflight lacked the actual production database target. The visible local `DATABASE_URL` is development localhost and was not used.
 - Production backup and restore capability remain unverified.
 - Render dashboard environment values were not inspected.
 - Object storage upload/read/denial smoke was not executed.
@@ -75,6 +87,7 @@ Medium limitations:
 - Authenticated dashboard walkthrough was not performed.
 - Deployed commit/schema alignment was not verified because deployed commit metadata and production schema preflight were not available.
 - Active monitoring and alerting were not verified.
+- `organization_memberships` contains zero rows; this is acceptable for current native authentication but should be addressed by an approved membership backfill plan before Enterprise Identity federation is enabled for existing users.
 
 Low limitations:
 
@@ -93,4 +106,4 @@ Enterprise Identity provider verification started: no.
 
 ## Final Position
 
-The platform has strong code-level foundation validation, but operational readiness is not fully proven. The remaining NO-GO items are external access and operational verification blockers, not confirmed source-code defects. The next work should collect the owner evidence described in [Owner Access And Verification Handoff](OWNER_ACCESS_AND_VERIFICATION_HANDOFF.md), then close the production DB, backup, restore, mobile offline replay, dashboard walkthrough, object-storage smoke, monitoring, and deployment alignment gaps before any production rollout or provider verification.
+The platform has strong code-level foundation validation, and the production database schema is now verified through migration `010` by read-only preflight. Operational readiness is still not fully proven. The remaining NO-GO items are external access and operational verification blockers, not confirmed source-code defects. The next work should collect the remaining owner evidence described in [Owner Access And Verification Handoff](OWNER_ACCESS_AND_VERIFICATION_HANDOFF.md), then close backup, restore, mobile offline replay, dashboard walkthrough, object-storage smoke, monitoring, and deployment alignment gaps before any production rollout or provider verification.

@@ -2,7 +2,7 @@
 
 | Blocker | Status | Required Access Or Approval |
 | --- | --- | --- |
-| Production DB state | BLOCKED | Owner approval received, but the actual production `DATABASE_URL` target is unavailable. Local visible `DATABASE_URL` is localhost development. Provide Render/provider access or secure production connection in the execution environment. |
+| Production DB state | READY | Owner completed approved read-only preflight manually against actual production PostgreSQL/PostGIS. Migrations `001`-`010` are applied; ownership and driver identity checks passed. |
 | Production backup | BLOCKED | Render access to identify the database provider, plus database provider dashboard/API/CLI access or owner-provided provider evidence. |
 | Restore capability | NOT VERIFIED | Verified production backup, non-production restore target, and provider restore access. |
 | Render environment variable review | BLOCKED | Render dashboard/API access. |

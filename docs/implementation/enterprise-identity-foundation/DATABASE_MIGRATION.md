@@ -8,4 +8,4 @@ Foreign keys use restrictive or history-preserving behavior. IdP deletion cannot
 
 Validation result: migration 010 applied cleanly after migrations 001 through 009 on an isolated local PostgreSQL database.
 
-Production migration 010 has not been applied.
+Production status: migration 010 is applied and verified by owner-completed read-only production preflight. Provider interoperability remains not verified.

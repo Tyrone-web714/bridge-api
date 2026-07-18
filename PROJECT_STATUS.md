@@ -39,15 +39,15 @@ Current implementation and planned architecture must be kept separate:
 | Mobile Tenant Context | Merged to Main | Mobile tenant context foundation was physically validated on device and merged before the Shared Safety branch. |
 | Shared Safety Intelligence | Merged to Main | Shared Safety Foundation and Moderation UI are merged to main through commit `d56bc93`. Production migration `005` still requires release approval before production use. |
 | Fleet operations expansion | In Progress | Drivers, route manifests, delivery notes, inventory closeouts, operational geography, and heatmap routes exist; full target platform expansion remains pending. |
-| KPI and BI foundation | Merged to Main | BI/KPI foundation is merged through the active governance baseline; production migration `006` still requires release approval before production use. |
-| Data Lifecycle architecture | Merged to Main | ODR-019 foundation is merged through commit `36c006d`; production migration `009` still requires release approval before production use. |
-| Enterprise Identity architecture | Merged to Main | ODR-020 foundation is merged to main through commit `632709e`; no external provider interoperability is claimed. Production migration `010` is not applied. Provider verification is paused pending operational readiness verification. |
+| KPI and BI foundation | Merged to Main | BI/KPI foundation is merged through the active governance baseline; production migration `006` is applied and verified by read-only production preflight. |
+| Data Lifecycle architecture | Merged to Main | ODR-019 foundation is merged through commit `36c006d`; production migration `009` is applied and verified by read-only production preflight. |
+| Enterprise Identity architecture | Merged to Main | ODR-020 foundation is merged to main through commit `632709e`; production migration `010` is applied and verified by read-only production preflight. No external provider interoperability is claimed. Provider verification is paused pending remaining operational readiness verification. |
 | Logistics Intelligence Engine | Merged to Main | Logistics Intelligence Foundation is merged through commit `3f2590d`; production migration `007` still requires release approval before production use. |
 | Fleet Intelligence Scoring System | Merged to Main | Fleet Intelligence Scoring Foundation is merged through commit `630288e`; production migration `008` still requires release approval before production use. |
 | Security hardening | In Progress | Security controls, auth services, rate limit middleware, secret audit scripts, and security review docs exist; production hardening remains ongoing. |
 | Pilot readiness | Conditional GO | Pilot Integration and End-to-End Hardening completed with no unresolved Critical or High defects; remaining limitations require physical mobile offline/reconnect replay, dashboard browser walkthrough, deployment smoke, and backup/restore verification. |
 | Production rollout planning | Merged to Main | Production rollout planning merged at `aa2832d`; it remains planning only and does not approve production deployment or production migrations. |
-| Production readiness | Operational Verification In Progress | Operational blocker closure is underway on `operational-readiness-verification`. Public deployed smoke checks pass for `/health`, `/ready`, admin login redirect behavior, and unauthenticated API denial. Owner approval for read-only production DB preflight was received, but the actual production `DATABASE_URL` target is not available in this workspace; production database state, backup existence, restore capability, Render dashboard environment values, authenticated browser walkthrough, physical mobile offline/reconnect replay, production migrations, and production deployment remain unverified/not executed. |
+| Production readiness | Operational Verification In Progress | Operational blocker closure is underway on `operational-readiness-verification`. Public deployed smoke checks pass for `/health`, `/ready`, admin login redirect behavior, and unauthenticated API denial. Owner-completed read-only production preflight verified PostgreSQL/PostGIS, migrations `001`-`010`, core ownership, and driver identity. Backup existence, restore capability, Render dashboard environment values, authenticated browser walkthrough, physical mobile offline/reconnect replay, monitoring, object-storage smoke, deployed commit alignment, and production deployment remain unverified/not executed. |
 
 ## 4. Repository Landscape
 
@@ -161,7 +161,7 @@ Current validation basis:
 - Enterprise Identity foundation test is being added with `npm run test:enterprise-identity`.
 - Enterprise Identity runtime validation is being added with `npm run validate:enterprise-identity` for an isolated local PostgreSQL/PostGIS database.
 - Secret audit passes with `npm run verify:secrets`.
-- Migrations `001` through `008` were validated against isolated local PostgreSQL/PostGIS during prior merge gates. Production application still requires release approval.
+- Migrations `001` through `010` are applied in production and verified by owner-completed read-only production preflight. No production migration was applied by Codex during operational blocker closure.
 - Local `/health` and `/ready` passed against the isolated validation database.
 
 ## 10. Known Risks and Constraints

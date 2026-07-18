@@ -2,9 +2,11 @@
 
 Status: READY WITH LIMITATION.
 
-No production migrations were applied.
+Production read-only preflight result:
 
-Production execution status for all migrations in this file: not applied by this phase and not verified against production schema.
+MIGRATIONS `001`-`010`: APPLIED AND VERIFIED BY READ-ONLY PREFLIGHT.
+
+No production migrations were applied by Codex in this phase.
 
 | Migration | Production Schema Prerequisite | Application Dependency | Data Impact | Locking Risk | Backup Requirement | Rollback Posture | Owner Approval |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -16,9 +18,12 @@ Production execution status for all migrations in this file: not applied by this
 
 ## Production Verification Required
 
-- read-only production DB preflight through migration `010`
 - verified production backup
 - restore rehearsal or formal scheduled restore
 - deployment rollback baseline
 - Render environment review
 - authenticated smoke after deployment alignment
+
+## Remaining Limitation
+
+Although migrations `001` through `010` are applied and schema/ownership/driver identity checks passed, recovery controls are still not verified. Production backup and restore evidence remain required before any production rollout GO decision.
