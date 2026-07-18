@@ -12,7 +12,7 @@ Do not paste full secret values into Git, documentation, chat, screenshots, or t
 | --- | --- | --- | --- | --- |
 | Production PostgreSQL/PostGIS database | Completed by owner-run read-only preflight | No further action unless schema/data changes before rollout. | `ok=true`, `readOnly=true`, PostgreSQL 18.4, PostGIS enabled, migrations `001`-`010` applied, ownership and driver identity checks passed. | Production DB state is now verified. |
 | Production database backups | Render PostgreSQL dashboard | Render provider, PITR availability, 3-day recovery window, encryption-by-documentation, and on-demand logical export capability were verified. | Dashboard text summary with no secrets. | Backup provider/PITR capability confirmed; latest discrete backup timestamp not exposed and no logical export currently exists. |
-| Production restore capability | Database provider plus separate non-production restore target | Restore a recent production backup into a separate non-production database. Do not restore over production. | Restore target metadata, restore timestamp, schema/PostGIS result, representative counts. | Restored database exists and can be validated read-only. |
+| Production restore capability | Render PostgreSQL plus separate restored database | Completed PITR restore rehearsal into `tsr-restore-rehearsal-20260718`. Do not restore over production. | Restore target metadata, restore timestamp, schema/PostGIS result, representative counts. | PASSED; temporary restore cleanup remains an owner decision. |
 | Render environment variables | Render dashboard or Render API for service `truck-safe-routing-api` | Verify variable names are present and dangerous settings are absent. Do not reveal secret values. | Variable-name checklist marked PRESENT/MISSING/NOT VERIFIED. | Required names are confirmed and any missing/dangerous settings are reported. |
 | Deployed commit/version | Render service deployment page | Confirm connected repo, branch, latest deployed commit, root directory, start command, health path, deployment status. | Commit SHA, branch, deploy ID/date, root directory, latest deploy result. | Deployed commit can be compared to `origin/main`. |
 | Object storage | Render env names plus S3-compatible storage provider dashboard | Confirm bucket/container, credentials, tenant prefix strategy, disposable test prefix, upload/read/delete permissions. | Provider name if known, bucket name or redacted bucket ID, disposable prefix, permission result. | Owner approves a disposable object smoke or provides provider-side evidence. |
@@ -24,7 +24,7 @@ Do not paste full secret values into Git, documentation, chat, screenshots, or t
 
 1. Render service deployment metadata: connected repo, branch, deployed commit SHA, root directory, latest deploy status.
 2. Database backup evidence: Render PostgreSQL PITR verified with 3-day recovery window; restore rehearsal still required.
-3. Restore rehearsal evidence or a non-production restore target for validation.
+3. Restore rehearsal evidence recorded; temporary restored database cleanup remains for owner review.
 4. Render environment variable name checklist, without secret values.
 5. Object storage provider/bucket/prefix evidence and whether a disposable object smoke is approved.
 6. Monitoring/alerting provider evidence and alert destination test result.

@@ -4,7 +4,7 @@
 | --- | --- | --- |
 | Production DB state | READY | Owner completed approved read-only preflight manually against actual production PostgreSQL/PostGIS. Migrations `001`-`010` are applied; ownership and driver identity checks passed. |
 | Production backup | READY WITH LIMITATION | Render PostgreSQL provider, paid `Basic-1gb` plan, PITR Recovery page, 3-day recovery window, and on-demand logical export capability verified. Latest discrete backup timestamp not shown; no logical export currently exists. |
-| Restore capability | NOT VERIFIED | Provider restore path is available through Render PITR, but a separate non-production restore rehearsal has not been approved or performed. |
+| Restore capability | PASSED | Render PITR restored production backup point to separate non-production database `tsr-restore-rehearsal-20260718`; read-only preflight passed. Cleanup owner decision remains. |
 | Render environment variable review | BLOCKED | Render dashboard/API access. |
 | Object storage write/read smoke | OWNER APPROVAL REQUIRED | Approval for disposable production test object and tenant-scoped test metadata. |
 | Mobile offline/reconnect replay | OPERATIONAL VERIFICATION REQUIRED | Physical Android device with current pilot APK and assigned test route. |

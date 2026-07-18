@@ -10,7 +10,7 @@ Final recommendation: NO-GO for production rollout until remaining operational b
 | --- | --- |
 | Production DB verification | READY; owner completed approved read-only preflight against actual production PostgreSQL/PostGIS |
 | Backup | READY WITH LIMITATION |
-| Restore | NOT VERIFIED |
+| Restore | PASSED |
 | Render environment | READY WITH LIMITATION |
 | Object storage | READY WITH LIMITATION |
 | Monitoring/alerting | READY WITH LIMITATION |
@@ -80,7 +80,7 @@ Production database preflight evidence supplied by owner:
 
 Medium limitations:
 
-- Production backup provider and PITR capability are verified; restore rehearsal remains unperformed.
+- Production backup provider/PITR capability and non-production restore rehearsal are verified; temporary restored DB cleanup remains an owner decision.
 - Render dashboard environment values were not inspected.
 - Object storage upload/read/denial smoke was not executed.
 - Full mobile offline/reconnect replay was not physically tested.
@@ -106,4 +106,4 @@ Enterprise Identity provider verification started: no.
 
 ## Final Position
 
-The platform has strong code-level foundation validation, and the production database schema is now verified through migration `010` by read-only preflight. Operational readiness is still not fully proven. Production backup capability is now verified with limitations, but restore readiness is not proven until a separate non-production restore rehearsal is performed. The remaining NO-GO items are external access and operational verification blockers, not confirmed source-code defects. The next work should collect the remaining owner evidence described in [Owner Access And Verification Handoff](OWNER_ACCESS_AND_VERIFICATION_HANDOFF.md), then close restore rehearsal, mobile offline replay, dashboard walkthrough, object-storage smoke, monitoring, and deployment alignment gaps before any production rollout or provider verification.
+The platform has strong code-level foundation validation, and the production database schema is now verified through migration `010` by read-only preflight. Operational readiness is still not fully proven. Production backup capability and restore readiness are now verified for the current Render PostgreSQL PITR baseline. The remaining NO-GO items are external access and operational verification blockers, not confirmed source-code defects. The next work should collect the remaining owner evidence described in [Owner Access And Verification Handoff](OWNER_ACCESS_AND_VERIFICATION_HANDOFF.md), then close mobile offline replay, dashboard walkthrough, object-storage smoke, monitoring, deployment alignment gaps, and temporary restore cleanup review before any production rollout or provider verification.
