@@ -5,7 +5,7 @@
 | Production DB state | READY | Owner completed approved read-only preflight manually against actual production PostgreSQL/PostGIS. Migrations `001`-`010` are applied; ownership and driver identity checks passed. |
 | Production backup | PASSED | Render PostgreSQL provider, paid `Basic-1gb` plan, PITR Recovery page, 3-day recovery window, and on-demand logical export capability verified. Backup capability blocker accepted as closed by owner. |
 | Restore capability | PASSED | Render PITR restored production backup point to separate non-production database `tsr-restore-rehearsal-20260718`; read-only preflight passed. Cleanup owner decision remains. |
-| Render environment variable review | PASSED WITH LIMITATION | Render dashboard variable names inspected; required names present; `DATABASE_URL` points to production DB; `DATABASE_SSL` enabled. High drift: `CORS_ORIGIN` wildcard. |
+| Render environment variable review | PASSED | Render dashboard variable names inspected; required names present; `DATABASE_URL` points to production DB; `DATABASE_SSL` enabled; `CORS_ORIGIN` remediated to explicit approved origin and verified by HTTP CORS behavior. |
 | Object storage write/read smoke | OWNER APPROVAL REQUIRED | Approval for disposable production test object and tenant-scoped test metadata. |
 | Mobile offline/reconnect replay | OPERATIONAL VERIFICATION REQUIRED | Physical Android device with current pilot APK and assigned test route. |
 | Authenticated dashboard walkthrough | OPERATIONAL VERIFICATION REQUIRED | Approved non-production/test accounts for supervisor, Organization Admin, Platform Admin, and warehouse. |
@@ -14,4 +14,4 @@
 
 ## Owner Handoff
 
-The remaining NO-GO items are external access and operational verification blockers, not confirmed source-code defects. Use [Owner Access And Verification Handoff](OWNER_ACCESS_AND_VERIFICATION_HANDOFF.md) to collect the exact Render, database provider, object-storage, monitoring, mobile-device, and authenticated-dashboard evidence needed to resume.
+The remaining NO-GO items are external access and operational verification blockers, not confirmed source-code defects. The CORS wildcard High-severity blocker is closed. Use [Owner Access And Verification Handoff](OWNER_ACCESS_AND_VERIFICATION_HANDOFF.md) to collect the exact Render, database provider, object-storage, monitoring, mobile-device, and authenticated-dashboard evidence needed to resume.

@@ -13,7 +13,7 @@ Do not paste full secret values into Git, documentation, chat, screenshots, or t
 | Production PostgreSQL/PostGIS database | Completed by owner-run read-only preflight | No further action unless schema/data changes before rollout. | `ok=true`, `readOnly=true`, PostgreSQL 18.4, PostGIS enabled, migrations `001`-`010` applied, ownership and driver identity checks passed. | Production DB state is now verified. |
 | Production database backups | Render PostgreSQL dashboard | Render provider, PITR availability, 3-day recovery window, encryption-by-documentation, and on-demand logical export capability were verified. | Dashboard text summary with no secrets. | Backup provider/PITR capability confirmed; latest discrete backup timestamp not exposed and no logical export currently exists. |
 | Production restore capability | Render PostgreSQL plus separate restored database | Completed PITR restore rehearsal into `tsr-restore-rehearsal-20260718`. Do not restore over production. | Restore target metadata, restore timestamp, schema/PostGIS result, representative counts. | PASSED; temporary restore cleanup remains an owner decision. |
-| Render environment variables | Render dashboard for service `truck-safe-routing-api` | Variable names and safe metadata verified without exposing secret values. | Variable-name checklist recorded. | PASSED WITH LIMITATION; High drift: `CORS_ORIGIN` wildcard must be replaced with approved explicit origins. |
+| Render environment variables | Render dashboard for service `truck-safe-routing-api` | Variable names and safe metadata verified without exposing secret values; `CORS_ORIGIN` remediated to explicit approved origin. | Variable-name checklist and CORS smoke evidence recorded. | PASSED; rerun CORS smoke only if approved browser origins change. |
 | Deployed commit/version | Render service deployment page | Connected repo, branch, latest deployed commit, root directory, health path, and deployment status verified. | Commit SHA, branch, root directory, latest deploy result. | PASSED; deployed commit matches `origin/main`. |
 | Object storage | Render env names plus S3-compatible storage provider dashboard | Confirm bucket/container, credentials, tenant prefix strategy, disposable test prefix, upload/read/delete permissions. | Provider name if known, bucket name or redacted bucket ID, disposable prefix, permission result. | Owner approves a disposable object smoke or provides provider-side evidence. |
 | Monitoring and alerting | Render notifications/logs and any external monitor/alert provider | Verify active monitoring and alert routing for health, readiness, DB, error rate, auth failures, deployment failures. | Monitor names, alert destinations, last test alert/result. | Monitoring matrix can be marked verified or gaps documented. |
@@ -25,7 +25,7 @@ Do not paste full secret values into Git, documentation, chat, screenshots, or t
 1. Render service deployment metadata: connected repo, branch, deployed commit SHA, root directory, latest deploy status.
 2. Database backup evidence: Render PostgreSQL PITR verified with 3-day recovery window; restore rehearsal still required.
 3. Restore rehearsal evidence recorded; temporary restored database cleanup remains for owner review.
-4. Render environment variable name checklist recorded; CORS wildcard drift remains.
+4. Render environment variable name checklist recorded; CORS wildcard drift is closed by explicit-origin CORS verification.
 5. Object storage provider/bucket/prefix evidence and whether a disposable object smoke is approved.
 6. Monitoring/alerting provider evidence and alert destination test result.
 7. Mobile offline/reconnect test evidence.
@@ -194,7 +194,7 @@ Dangerous settings to flag:
 
 - `NODE_ENV` not `production`
 - `DATABASE_URL` points to localhost/private development database
-- `CORS_ORIGIN=*`
+- `CORS_ORIGIN=https://truck-safe-routing-api.onrender.com`
 - `ALLOW_LEGACY_DRIVER_API_TOKEN=true`
 - missing admin session secret
 - missing object-storage settings

@@ -1,6 +1,6 @@
 # Render Environment Verification
 
-Status: PASSED WITH LIMITATION.
+Status: PASSED.
 
 ## Verified Production Service
 
@@ -49,7 +49,7 @@ Actual Render environment variable names were inspected from the production serv
 | `ADMIN_DASHBOARD_ROLE` | PRESENT | name present |
 | `ADMIN_DASHBOARD_SECRET` | PRESENT | name present; length check passed by safe metadata; readiness reports configured |
 | `BACKEND_PUBLIC_URL` | PRESENT | name present; safe metadata matches Render backend URL |
-| `CORS_ORIGIN` | PRESENT WITH DRIFT | name present, but value is wildcard; repo production verification rejects wildcard CORS for production |
+| `CORS_ORIGIN` | PRESENT; REMEDIATED | name present; production CORS now uses explicit approved origin `https://truck-safe-routing-api.onrender.com`; wildcard no longer returned |
 | `DATABASE_SSL` | PRESENT | name present; safe metadata confirms `true` |
 | `DATABASE_URL` | PRESENT | name present; safe metadata points to production database host `dpg-d88mpah9rddc738jl2tg-a`, not restore host `dpg-d9dq9qe1a83c73b85sq0-a` |
 | `DRIVER_API_TOKEN` | PRESENT | name present; length check passed by safe metadata |
@@ -114,9 +114,11 @@ The owner-approved production preflight and restored-copy preflight both verifie
 
 ## Configuration Drift
 
-Confirmed drift:
+Confirmed drift: none remaining for the inspected required production environment names.
 
-- `CORS_ORIGIN` is configured as wildcard. The repository production verification tooling treats wildcard CORS as invalid for production pilot configuration. This is a High configuration issue to remediate before production rollout GO.
+Closed drift:
+
+- `CORS_ORIGIN` previously used wildcard `*`. It was remediated to `https://truck-safe-routing-api.onrender.com` and verified by production HTTP CORS checks. See [CORS Remediation Verification](CORS_REMEDIATION_VERIFICATION.md).
 
 Non-blocking differences / defaults:
 
@@ -128,10 +130,10 @@ Non-blocking differences / defaults:
 
 Production data modified: no.
 
-Production environment variables changed: no.
+Production environment variables changed: yes; `CORS_ORIGIN` only.
 
-Production service restarted: no.
+Production service restarted: yes; Render configuration-triggered Environment deploy only.
 
-Deployment triggered: no.
+Deployment triggered: yes; Render Environment deploy on existing deployed commit only.
 
 Secrets printed or committed: no.

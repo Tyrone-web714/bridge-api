@@ -15,6 +15,7 @@ This phase does not perform Microsoft Entra, Okta, Google, generic OIDC, or gene
 - [Production Backup Verification](PRODUCTION_BACKUP_VERIFICATION.md)
 - [Restore Verification](RESTORE_VERIFICATION.md)
 - [Render Environment Verification](RENDER_ENVIRONMENT_VERIFICATION.md)
+- [CORS Remediation Verification](CORS_REMEDIATION_VERIFICATION.md)
 - [Object Storage Operational Results](OBJECT_STORAGE_OPERATIONAL_RESULTS.md)
 - [Monitoring and Alerting Results](MONITORING_AND_ALERTING_RESULTS.md)
 - [Mobile Offline Device Results](MOBILE_OFFLINE_DEVICE_RESULTS.md)
@@ -24,4 +25,3 @@ This phase does not perform Microsoft Entra, Okta, Google, generic OIDC, or gene
 - [Operational Defect Register](OPERATIONAL_DEFECT_REGISTER.md)
 - [Remaining Blockers](REMAINING_BLOCKERS.md)
 - [Final Operational Readiness Report](FINAL_OPERATIONAL_READINESS_REPORT.md)
-

@@ -11,12 +11,12 @@ Final recommendation: NO-GO for production rollout until remaining operational b
 | Production DB verification | READY; owner completed approved read-only preflight against actual production PostgreSQL/PostGIS |
 | Backup | PASSED |
 | Restore | PASSED |
-| Render environment | PASSED WITH LIMITATION |
+| Render environment | PASSED |
 | Object storage | READY WITH LIMITATION |
 | Monitoring/alerting | READY WITH LIMITATION |
 | Physical mobile offline/reconnect | NOT VERIFIED |
 | Authenticated dashboard | NOT VERIFIED; unauthenticated deployed browser checks passed |
-| Deployed Render smoke | PASSED WITH LIMITATION |
+| Deployed Render smoke | PASSED |
 | Migrations `006`-`010` | PASSED; applied and verified by production and restored-copy preflights |
 | Tenant isolation | READY WITH LIMITATION |
 | Authentication | READY WITH LIMITATION |
@@ -27,7 +27,7 @@ Final recommendation: NO-GO for production rollout until remaining operational b
 
 Critical defects: none confirmed.
 
-High defects: CORS wildcard drift confirmed in production Render environment; `CORS_ORIGIN` must be restricted to approved origins before production rollout GO.
+High defects: none remaining after CORS remediation. `CORS_ORIGIN` wildcard drift was remediated and verified.
 
 Medium defects fixed:
 
@@ -81,7 +81,7 @@ Production database preflight evidence supplied by owner:
 Medium limitations:
 
 - Production backup provider/PITR capability and non-production restore rehearsal are verified; temporary restored DB cleanup remains an owner decision.
-- Render dashboard environment names and selected safe metadata were inspected; `CORS_ORIGIN` wildcard drift remains.
+- Render dashboard environment names and selected safe metadata were inspected; `CORS_ORIGIN` wildcard drift is closed by explicit-origin CORS behavior verification.
 - Object storage upload/read/denial smoke was not executed.
 - Full mobile offline/reconnect replay was not physically tested.
 - Authenticated dashboard walkthrough was not performed.
@@ -100,10 +100,10 @@ Production data modified: no.
 
 Production migrations applied: no.
 
-Production deployment performed: no.
+Production deployment performed: no application-code deployment; yes configuration-triggered Render Environment deploy for `CORS_ORIGIN` only.
 
 Enterprise Identity provider verification started: no.
 
 ## Final Position
 
-The platform has strong code-level foundation validation, and the production database schema is now verified through migration `010` by read-only preflight. Operational readiness is still not fully proven. Production backup capability and restore readiness are now verified for the current Render PostgreSQL PITR baseline. The remaining NO-GO items are external access and operational verification blockers, not confirmed source-code defects. The next work should collect the remaining owner evidence described in [Owner Access And Verification Handoff](OWNER_ACCESS_AND_VERIFICATION_HANDOFF.md), then close CORS wildcard remediation, mobile offline replay, dashboard walkthrough, object-storage smoke, monitoring, and temporary restore cleanup review before any production rollout or provider verification.
+The platform has strong code-level foundation validation, and the production database schema is now verified through migration `010` by read-only preflight. Operational readiness is still not fully proven. Production backup capability, restore readiness, Render environment alignment, deployed commit/schema alignment, and production CORS are now verified for the current baseline. The remaining NO-GO items are external access and operational verification blockers, not confirmed source-code defects. The next work should collect the remaining owner evidence described in [Owner Access And Verification Handoff](OWNER_ACCESS_AND_VERIFICATION_HANDOFF.md), then close mobile offline replay, dashboard walkthrough, object-storage smoke, monitoring, and temporary restore cleanup review before any production rollout or provider verification.

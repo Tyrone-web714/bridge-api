@@ -1,6 +1,6 @@
 # Deployed Render Smoke Results
 
-Status: PASSED WITH LIMITATION.
+Status: PASSED.
 
 Target: `https://truck-safe-routing-api.onrender.com`
 
@@ -44,9 +44,22 @@ Prior unauthenticated access checks also passed:
 | `/api/driver-auth/session` unauthenticated | HTTP 401 JSON |
 | `/api/enterprise-identity/providers` unauthenticated | HTTP 401 JSON |
 
+## CORS Remediation Smoke
+
+CORS remediation passed after changing production `CORS_ORIGIN` from `*` to `https://truck-safe-routing-api.onrender.com`.
+
+| Check | Result |
+| --- | --- |
+| Approved origin | HTTP 200 with `Access-Control-Allow-Origin: https://truck-safe-routing-api.onrender.com` |
+| Unapproved origin | no `Access-Control-Allow-Origin` header |
+| No-Origin `/health` | HTTP 200 |
+| Approved preflight | HTTP 204 with approved origin |
+| Unapproved preflight | no `Access-Control-Allow-Origin` header |
+| Wildcard ACAO | not returned |
+| Credentials | `Access-Control-Allow-Credentials` not returned |
+
 ## Limitations
 
-- `CORS_ORIGIN` wildcard drift was found in Render environment configuration and must be remediated before production rollout GO.
 - Authenticated admin, dashboard, driver, warehouse, and mobile flows were not tested in this phase.
-- No deployment was triggered.
+- A configuration-triggered Render Environment deploy occurred to activate the CORS change; no application code deployment was performed.
 - No object-storage mutation smoke was performed.
