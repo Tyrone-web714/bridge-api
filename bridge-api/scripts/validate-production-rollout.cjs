@@ -131,7 +131,8 @@ function validateDocs() {
     'PRODUCTION_ROLLOUT_RUNBOOK.md',
     'REMAINING_PRODUCTION_RISKS.md',
     'ODR_019_020_IMPLEMENTATION_HANDOFF.md',
-    'FINAL_PRODUCTION_ROLLOUT_PLANNING_REPORT.md'
+    'FINAL_PRODUCTION_ROLLOUT_PLANNING_REPORT.md',
+    'FINAL_VALIDATION_REPORT.md'
   ];
   for (const doc of docs) {
     assert(existsRepo(path.join('docs', 'implementation', 'production-rollout-planning', doc)), `missing production rollout doc ${doc}`);

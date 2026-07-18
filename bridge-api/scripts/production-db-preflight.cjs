@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+const { Pool } = require('pg');
 const postgres = require('../db/postgres');
 
 const EXPECTED_MIGRATIONS = [
@@ -73,8 +74,19 @@ async function columnExists(client, tableName, columnName) {
 
 async function main() {
   assertDatabaseConfigured();
-  const client = (text, params = []) => postgres.rawQuery(text, params);
+  const pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+    max: 1,
+    idleTimeoutMillis: Number.parseInt(process.env.PG_IDLE_TIMEOUT_MS, 10) || 30000,
+    connectionTimeoutMillis: Number.parseInt(process.env.PG_CONNECTION_TIMEOUT_MS, 10) || 5000,
+    ssl: process.env.DATABASE_SSL === 'true'
+      ? { rejectUnauthorized: false }
+      : undefined
+  });
+  const activeClient = await pool.connect();
+  const client = (text, params = []) => activeClient.query(text, params);
   try {
+    await client('BEGIN READ ONLY');
     const version = await client('SHOW server_version');
     const postgis = await client("SELECT EXISTS (SELECT 1 FROM pg_extension WHERE extname = 'postgis') AS enabled");
     const migrationsTableExists = await tableExists(client, 'schema_migrations');
@@ -122,6 +134,8 @@ async function main() {
       tableCounts.push(safeCount(table, result.rows));
     }
 
+    await client('ROLLBACK');
+
     const report = {
       ok: true,
       readOnly: true,
@@ -151,8 +165,15 @@ async function main() {
     console.log(JSON.stringify(report, null, 2));
     if (!report.ok) process.exitCode = 1;
   } catch (error) {
+    try {
+      await client('ROLLBACK');
+    } catch {
+      // ignored
+    }
     throw error;
   } finally {
+    activeClient.release();
+    await pool.end();
     await postgres.closePool();
   }
 }
