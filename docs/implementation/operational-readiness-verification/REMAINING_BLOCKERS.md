@@ -3,8 +3,8 @@
 | Blocker | Status | Required Access Or Approval |
 | --- | --- | --- |
 | Production DB state | READY | Owner completed approved read-only preflight manually against actual production PostgreSQL/PostGIS. Migrations `001`-`010` are applied; ownership and driver identity checks passed. |
-| Production backup | BLOCKED | Render access to identify the database provider, plus database provider dashboard/API/CLI access or owner-provided provider evidence. |
-| Restore capability | NOT VERIFIED | Verified production backup, non-production restore target, and provider restore access. |
+| Production backup | READY WITH LIMITATION | Render PostgreSQL provider, paid `Basic-1gb` plan, PITR Recovery page, 3-day recovery window, and on-demand logical export capability verified. Latest discrete backup timestamp not shown; no logical export currently exists. |
+| Restore capability | NOT VERIFIED | Provider restore path is available through Render PITR, but a separate non-production restore rehearsal has not been approved or performed. |
 | Render environment variable review | BLOCKED | Render dashboard/API access. |
 | Object storage write/read smoke | OWNER APPROVAL REQUIRED | Approval for disposable production test object and tenant-scoped test metadata. |
 | Mobile offline/reconnect replay | OPERATIONAL VERIFICATION REQUIRED | Physical Android device with current pilot APK and assigned test route. |

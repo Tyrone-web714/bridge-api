@@ -3,8 +3,8 @@
 | Area | Status | Evidence | Required Next Action |
 | --- | --- | --- | --- |
 | Production DB state | READY | Owner manually completed approved read-only preflight against actual production PostgreSQL/PostGIS. `ok=true`, `readOnly=true`, PostGIS enabled, migrations `001`-`010` applied, ownership and driver identity checks passed. | Keep evidence attached; rerun only if production schema/data changes before rollout. |
-| Production backup | BLOCKED | Provider dashboard/API access was not available. | Inspect actual database provider backup settings. |
-| Restore capability | NOT VERIFIED | Non-production rehearsal evidence exists from rollout planning only. | Restore a recent production backup to a separate non-production database. |
+| Production backup | READY WITH LIMITATION | Render PostgreSQL Recovery page verified PITR availability for `truck-safe-routing-db`; 3-day recovery window and on-demand logical export capability observed. | Separately approve restore rehearsal before production rollout GO. |
+| Restore capability | NOT VERIFIED | Render PITR restore path is available, but no production restore rehearsal was performed. | Restore a recent PITR point to a separate non-production database after separate owner approval. |
 | Render environment | READY WITH LIMITATION | `render.yaml`, deployed `/health`, and deployed `/ready` confirm runtime dependency readiness; actual Render dashboard/API variable inventory was not inspected. | Verify variables by name in Render dashboard/API without revealing values. |
 | Object storage | READY WITH LIMITATION | Deployed `/health` reports durable `s3` photo storage configured. | Run approved disposable upload/read/denial smoke. |
 | Monitoring and alerting | READY WITH LIMITATION | Application health, readiness, audit, and error logging exist. | Configure active external monitoring and alert routing. |
@@ -19,4 +19,4 @@
 
 ## Consolidated Prior Findings
 
-Items identified in previous reports as `OPERATIONAL_VERIFICATION_REQUIRED`, `OWNER APPROVAL REQUIRED`, `READY WITH LIMITATION`, or `NOT VERIFIED` were consolidated into this package. The deployed public smoke checks are stronger after this closure pass, and the approved production read-only preflight now verifies production schema state through migration `010`. The highest blockers remain production backup/restore evidence, mobile offline replay, authenticated dashboard walkthrough, object-storage disposable mutation approval, monitoring evidence, deployed commit alignment, and Render/provider operational access.
+Items identified in previous reports as `OPERATIONAL_VERIFICATION_REQUIRED`, `OWNER APPROVAL REQUIRED`, `READY WITH LIMITATION`, or `NOT VERIFIED` were consolidated into this package. The deployed public smoke checks are stronger after this closure pass, and the approved production read-only preflight now verifies production schema state through migration `010`. The highest blockers remain restore rehearsal evidence, mobile offline replay, authenticated dashboard walkthrough, object-storage disposable mutation approval, monitoring evidence, deployed commit alignment, and remaining Render/provider operational evidence.

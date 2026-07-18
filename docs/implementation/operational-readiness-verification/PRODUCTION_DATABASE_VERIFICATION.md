@@ -94,7 +94,7 @@ MIGRATIONS `001`-`010`: APPLIED AND VERIFIED BY READ-ONLY PREFLIGHT.
 
 ## Production `DATABASE_URL` Source
 
-`DATABASE_URL` is configured as a secret Render environment variable in `render.yaml` with `sync: false`. The actual value and database provider were not visible from the repository or public endpoints and must be confirmed from Render/provider access before preflight.
+`DATABASE_URL` is configured as a secret Render environment variable in `render.yaml` with `sync: false`. The actual secret value remains intentionally undisclosed. Subsequent Render dashboard inspection verified the production database provider as Render PostgreSQL resource `truck-safe-routing-db`.
 
 Local environment check:
 

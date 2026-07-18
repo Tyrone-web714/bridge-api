@@ -11,7 +11,7 @@ Do not paste full secret values into Git, documentation, chat, screenshots, or t
 | Blocker | Required Access | Owner Action | Evidence Needed | Codex Can Continue After |
 | --- | --- | --- | --- | --- |
 | Production PostgreSQL/PostGIS database | Completed by owner-run read-only preflight | No further action unless schema/data changes before rollout. | `ok=true`, `readOnly=true`, PostgreSQL 18.4, PostGIS enabled, migrations `001`-`010` applied, ownership and driver identity checks passed. | Production DB state is now verified. |
-| Production database backups | Database provider dashboard/API/CLI | Open backup settings and verify enabled backups, last success, frequency, retention, PITR, encryption, restore ownership. | Screenshot or text summary with no secrets. | Backup status, last backup time, retention, PITR, and restore method are confirmed. |
+| Production database backups | Render PostgreSQL dashboard | Render provider, PITR availability, 3-day recovery window, encryption-by-documentation, and on-demand logical export capability were verified. | Dashboard text summary with no secrets. | Backup provider/PITR capability confirmed; latest discrete backup timestamp not exposed and no logical export currently exists. |
 | Production restore capability | Database provider plus separate non-production restore target | Restore a recent production backup into a separate non-production database. Do not restore over production. | Restore target metadata, restore timestamp, schema/PostGIS result, representative counts. | Restored database exists and can be validated read-only. |
 | Render environment variables | Render dashboard or Render API for service `truck-safe-routing-api` | Verify variable names are present and dangerous settings are absent. Do not reveal secret values. | Variable-name checklist marked PRESENT/MISSING/NOT VERIFIED. | Required names are confirmed and any missing/dangerous settings are reported. |
 | Deployed commit/version | Render service deployment page | Confirm connected repo, branch, latest deployed commit, root directory, start command, health path, deployment status. | Commit SHA, branch, deploy ID/date, root directory, latest deploy result. | Deployed commit can be compared to `origin/main`. |
@@ -23,7 +23,7 @@ Do not paste full secret values into Git, documentation, chat, screenshots, or t
 ## Minimum Information Needed To Resume
 
 1. Render service deployment metadata: connected repo, branch, deployed commit SHA, root directory, latest deploy status.
-2. Database backup evidence: last successful backup time, retention, PITR status, encryption status, restore method.
+2. Database backup evidence: Render PostgreSQL PITR verified with 3-day recovery window; restore rehearsal still required.
 3. Restore rehearsal evidence or a non-production restore target for validation.
 4. Render environment variable name checklist, without secret values.
 5. Object storage provider/bucket/prefix evidence and whether a disposable object smoke is approved.
@@ -105,30 +105,32 @@ Never commit `.env` changes. Never paste the full connection string into documen
 
 ## B. Production Database Backups
 
-Provider identification is required first.
+Provider identification is complete: the production database is Render PostgreSQL resource `truck-safe-routing-db` (`dpg-d88mpah9rddc738jl2tg-a`) on the `Basic-1gb` plan in Oregon (US West).
 
-Once the provider is known, owner must open the provider backup page and verify:
+Verified backup facts:
 
-- backups enabled
-- most recent successful backup timestamp
-- backup frequency
-- retention period
-- point-in-time recovery availability
-- encryption status where visible
-- restore workflow
-- access control for backup/restore operations
+- Render PostgreSQL Recovery page is available.
+- Point-in-Time Recovery is available for the past 3 days.
+- On-demand logical exports are available.
+- The export table currently shows 0 files.
+- Render documentation states paid PostgreSQL databases are continuously backed up for PITR.
+- Render documentation states PostgreSQL databases, replicas, and backups are encrypted at rest with AES-256, and external connections use Render-managed TLS.
 
-Evidence to send back:
+Still not visible or not performed:
 
-- provider name
-- backup enabled: yes/no
-- last successful backup timestamp
-- retention
-- PITR: yes/no/not available
-- encryption: yes/no/not visible
-- restore method summary
-- screenshot with secrets hidden, if helpful
+- a discrete most-recent successful backup timestamp
+- an actual logical export
+- an actual restore rehearsal
 
+Evidence now recorded:
+
+- provider name: Render PostgreSQL
+- backup enabled: yes, through Render PITR
+- last successful backup timestamp: not exposed as a discrete timestamp in the dashboard
+- retention: PITR past 3 days; logical exports retained at least 7 days after creation
+- PITR: yes
+- encryption: Render documentation says AES-256 at rest and TLS in transit
+- restore method summary: PITR restore creates a new database instance for validation before cutover
 ## C. Production Restore Capability
 
 Preferred test:
