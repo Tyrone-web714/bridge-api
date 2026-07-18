@@ -15,7 +15,7 @@ Do not paste full secret values into Git, documentation, chat, screenshots, or t
 | Production restore capability | Render PostgreSQL plus separate restored database | Completed PITR restore rehearsal into `tsr-restore-rehearsal-20260718`. Do not restore over production. | Restore target metadata, restore timestamp, schema/PostGIS result, representative counts. | PASSED; temporary restore cleanup remains an owner decision. |
 | Render environment variables | Render dashboard for service `truck-safe-routing-api` | Variable names and safe metadata verified without exposing secret values; `CORS_ORIGIN` remediated to explicit approved origin. | Variable-name checklist and CORS smoke evidence recorded. | PASSED; rerun CORS smoke only if approved browser origins change. |
 | Deployed commit/version | Render service deployment page | Connected repo, branch, latest deployed commit, root directory, health path, and deployment status verified. | Commit SHA, branch, root directory, latest deploy result. | PASSED; deployed commit matches `origin/main`. |
-| Object storage | Render env names plus S3-compatible storage provider dashboard | Confirm bucket/container, credentials, tenant prefix strategy, disposable test prefix, upload/read/delete permissions. | Provider name if known, bucket name or redacted bucket ID, disposable prefix, permission result. | Owner approves a disposable object smoke or provides provider-side evidence. |
+| Object storage | Render env names plus S3-compatible storage smoke | Cloudflare R2 target and disposable prefix smoke verified. | Provider, bucket, prefix, checksum, read/delete/post-delete results. | PASSED; no further owner action unless storage provider/policy changes. |
 | Monitoring and alerting | Render notifications/logs and any external monitor/alert provider | Verify active monitoring and alert routing for health, readiness, DB, error rate, auth failures, deployment failures. | Monitor names, alert destinations, last test alert/result. | Monitoring matrix can be marked verified or gaps documented. |
 | Physical mobile offline/reconnect validation | Physical Android device with current pilot APK and test route | Execute manual device scenario and capture evidence. | Device model, Android version, app version/build, route ID, screenshots/video, sync result. | Full scenario result and any defects are returned. |
 | Authenticated dashboard walkthrough | Approved test credentials for Supervisor, Organization Admin, Platform Admin, Warehouse | Walk deployed dashboard pages with test records only. | Role used, pages checked, screenshots, pass/fail notes, no secret passwords. | Role/page matrix results are returned. |
@@ -26,7 +26,7 @@ Do not paste full secret values into Git, documentation, chat, screenshots, or t
 2. Database backup evidence: Render PostgreSQL PITR verified with 3-day recovery window; restore rehearsal still required.
 3. Restore rehearsal evidence recorded; temporary restored database cleanup remains for owner review.
 4. Render environment variable name checklist recorded; CORS wildcard drift is closed by explicit-origin CORS verification.
-5. Object storage provider/bucket/prefix evidence and whether a disposable object smoke is approved.
+5. Object storage provider/bucket/prefix evidence and disposable smoke result recorded; object-storage blocker passed.
 6. Monitoring/alerting provider evidence and alert destination test result.
 7. Mobile offline/reconnect test evidence.
 8. Authenticated dashboard walkthrough evidence.

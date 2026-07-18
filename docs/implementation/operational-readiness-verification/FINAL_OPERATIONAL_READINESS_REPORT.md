@@ -12,7 +12,7 @@ Final recommendation: NO-GO for production rollout until remaining operational b
 | Backup | PASSED |
 | Restore | PASSED |
 | Render environment | PASSED |
-| Object storage | READY WITH LIMITATION |
+| Object storage | PASSED |
 | Monitoring/alerting | READY WITH LIMITATION |
 | Physical mobile offline/reconnect | NOT VERIFIED |
 | Authenticated dashboard | NOT VERIFIED; unauthenticated deployed browser checks passed |
@@ -82,7 +82,7 @@ Medium limitations:
 
 - Production backup provider/PITR capability and non-production restore rehearsal are verified; temporary restored DB cleanup remains an owner decision.
 - Render dashboard environment names and selected safe metadata were inspected; `CORS_ORIGIN` wildcard drift is closed by explicit-origin CORS behavior verification.
-- Object storage upload/read/denial smoke was not executed.
+- Object storage operational smoke passed against Cloudflare R2 with one synthetic disposable object; tenant-scoped object authorization was not separately tested because current S3 reads use configured public URLs rather than an application-mediated private object-read endpoint.
 - Full mobile offline/reconnect replay was not physically tested.
 - Authenticated dashboard walkthrough was not performed.
 - Deployed commit/schema alignment is verified: Render deploy `632709e0ee9adf934c4f157017fbbfaf9a158872` matches `origin/main`, and production/restored schemas are verified through migration `010`.
@@ -96,7 +96,7 @@ Low limitations:
 
 ## Production Safety
 
-Production data modified: no.
+Production data modified: no business data; one approved synthetic disposable object was created and deleted for object-storage verification.
 
 Production migrations applied: no.
 
@@ -106,4 +106,4 @@ Enterprise Identity provider verification started: no.
 
 ## Final Position
 
-The platform has strong code-level foundation validation, and the production database schema is now verified through migration `010` by read-only preflight. Operational readiness is still not fully proven. Production backup capability, restore readiness, Render environment alignment, deployed commit/schema alignment, and production CORS are now verified for the current baseline. The remaining NO-GO items are external access and operational verification blockers, not confirmed source-code defects. The next work should collect the remaining owner evidence described in [Owner Access And Verification Handoff](OWNER_ACCESS_AND_VERIFICATION_HANDOFF.md), then close mobile offline replay, dashboard walkthrough, object-storage smoke, monitoring, and temporary restore cleanup review before any production rollout or provider verification.
+The platform has strong code-level foundation validation, and the production database schema is now verified through migration `010` by read-only preflight. Operational readiness is still not fully proven. Production backup capability, restore readiness, Render environment alignment, deployed commit/schema alignment, production CORS, and durable object storage are now verified for the current baseline. The remaining NO-GO items are external access and operational verification blockers, not confirmed source-code defects. The next work should collect the remaining owner evidence described in [Owner Access And Verification Handoff](OWNER_ACCESS_AND_VERIFICATION_HANDOFF.md), then close mobile offline replay, dashboard walkthrough, monitoring, and temporary restore cleanup review before any production rollout or provider verification.
