@@ -122,6 +122,7 @@ export async function prepareDeliveryPhotoForUpload(photo = {}) {
   try {
     return {
       base64: await file.base64(),
+      clientPhotoId: photo.clientPhotoId || null,
       mimeType: photo.mimeType || 'image/jpeg',
       fileName: photo.fileName || file.name,
       mediaSource: photo.mediaSource || 'unknown',

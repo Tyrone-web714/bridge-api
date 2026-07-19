@@ -1,12 +1,12 @@
 # Final Validation Report
 
-Status: THREE-DEFECT SOURCE REPAIR COMPLETE; NEW PREVIEW APK AND PHYSICAL VALIDATION REQUIRED.
+Status: FORENSIC ROOT-CAUSE SOURCE REPAIR COMPLETE; BACKEND DEPLOY AND NEW PREVIEW APK REQUIRED.
 
 ## Summary
 
 Mobile authenticated private-media compatibility has been implemented at source level. Physical Android testing then confirmed route notes/photo workflow defects. The first repair addressed camera upload durability, camera return to login, and route-stop note retrieval. A later physical test confirmed three additional integration defects that had to be audited together: four captured photos could appear as three, camera return could still land nondeterministically on Login or Routes instead of the note workflow, and Driver Copilot returned "Authentication required" while the driver was logged in.
 
-Those defects are now documented in `DRIVER_ROUTE_NOTES_PHOTO_ROOT_CAUSE_AUDIT.md` and repaired at source level. A new non-production preview APK and physical acceptance test are still required. No public R2 shutdown, branch merge, or production mutation is authorized by this report.
+Those defects are now documented in `DRIVER_ROUTE_NOTES_PHOTO_ROOT_CAUSE_AUDIT.md` and repaired at source level. The later physical failure after commit `a1655a8` was traced to the root mobile session/context model plus photo-save cleanup semantics. A backend deploy and a new non-production preview APK are still required before physical acceptance. No public R2 shutdown, branch merge, or production mutation is authorized by this report.
 
 ## Physical-Device Regression
 
@@ -33,6 +33,23 @@ Root causes:
 
 Fix: route/account previews now render up to the four-photo note limit, draft restore failures are visible, the backend rejects over-limit saves instead of truncating, mobile verifies expected versus server-confirmed saved photo count, root navigation and Home both use a deterministic reset to the pending note/hazard workflow, `/api/ai` hydrates driver Bearer auth before tenant enforcement, and Driver Copilot uses a narrow `ai.driver_copilot.use` permission instead of granting drivers dashboard access.
 
+Final forensic regression set: physical testing after commit `a1655a8` confirmed photos were not saved at all, camera return still went to Home/Driver Login, and Driver Copilot still returned "Authentication required".
+
+Root causes:
+
+- mobile session/context: SecureStore contained the persistent session, but the runtime Bearer header and tenant context came from a module-level `activeSession` variable. Camera/activity recreation can leave that in-memory value unloaded until `initializeDriverSession()` runs;
+- workflow timing: Root navigation attempted pending camera draft recovery before proving the canonical driver session was restored, so tenant-scoped draft/photo operations could fail while the session still existed on disk;
+- photo persistence: photo-note saves could still be treated like offline text-note saves, and the screen cleared selected photos/drafts before the authoritative backend refresh proved the media was returned;
+- Copilot physical validation: the mobile source used authenticated headers, but the deployed Render backend must also contain the `/api/ai` driver-Bearer hydration and narrow permission fix. `/health` and `/ready` are healthy but do not expose deployed commit identity.
+
+Fix:
+
+- Root navigation now restores the canonical driver session before rendering app workflows and before foreground camera-draft recovery;
+- photo-note saves no longer report queued/offline success when new photos are present and authoritative upload fails;
+- local photo files and drafts are preserved until backend success and authoritative refresh complete;
+- upload payloads preserve safe per-photo correlation IDs;
+- Copilot backend source remains fixed, but phone validation requires deploying that backend repair before retest.
+
 ## Current Result
 
 Maximum R2 shutdown classification remains READY FOR PHYSICAL VALIDATION until a new preview APK containing the route notes/photo workflow repair is built and tested on an Android device.
@@ -44,6 +61,8 @@ The preview APK built as `344d34ae-b083-4171-ab1a-32de556517e9` is also supersed
 The preview APK built as `4435a491-f270-4a54-8352-3b653750af73` is superseded because physical Android testing confirmed the remaining camera upload, return-to-login, and route-notes retrieval defects documented above.
 
 The preview APK built as `b65ed650-c218-46e3-8fd8-2cb83c625f5f` is superseded because physical Android testing confirmed the later four-photo display, nondeterministic return-state, and Driver Copilot authentication defects documented above.
+
+The preview APK built from commit `a1655a8` is superseded for acceptance because physical Android testing confirmed photos were still not authoritatively saved, camera return still reached Home/Driver Login, and Driver Copilot still returned "Authentication required".
 
 ## Photo Workflows Audited
 
@@ -134,6 +153,8 @@ The focused driver route notes/photo workflow test now also checks deterministic
 
 The new focused Driver Copilot auth test checks that mobile Copilot requests use the canonical authenticated JSON header helper, `/api/ai` driver Bearer auth is hydrated before tenant enforcement, `/api/ai/driver-copilot` is classified before generic `/api/ai`, drivers receive only the narrow `ai.driver_copilot.use` permission, drivers still do not receive `dashboard.view`, fresh RBAC setup includes the permission, the AI route uses the authenticated tenant context, and no shared mobile driver token is used.
 
+The focused driver route notes/photo workflow test now additionally checks root-level canonical session bootstrap, foreground session restoration before photo workflow recovery, no offline queued-success for photo saves, authoritative note refresh before reporting save success, and per-photo correlation preservation into upload payloads.
+
 Backend `npm.cmd run verify:production` was attempted but could not pass in the local shell because production environment values were unavailable. The failure was limited to missing local `DATABASE_URL` and `CORS_ORIGIN` values. No production data, credentials, or provider settings were accessed or changed during this repair.
 
 ## APK Status
@@ -163,7 +184,7 @@ Latest superseded build:
 - Source commit: `87172a27b48ced29d69aa092615fb9f17e42b8f4`
 - Result: superseded before acceptance because physical testing exposed the three-defect set documented in this report.
 
-A new preview APK must be built from the next committed repair before any physical acceptance claim.
+A new preview APK must be built from the next committed repair before any physical acceptance claim. Driver Copilot acceptance also requires the matching backend repair to be deployed to Render.
 
 ## Critical Defects
 

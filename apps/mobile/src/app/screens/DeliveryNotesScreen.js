@@ -384,23 +384,27 @@ export default function DeliveryNotesScreen({ route }) {
         editingNoteId
       );
 
-      resetForm();
-      await clearPhotoDraft({
-        workflow: DELIVERY_NOTE_DRAFT_WORKFLOW,
-        context: draftContext,
-      }).catch(() => null);
-      setStatusText(data.queued
-        ? 'Delivery note and photos saved offline. They will synchronize when service returns.'
-        : editingNoteId
-          ? 'Delivery note updated.'
-          : 'Delivery note saved for future drivers.');
       if (data.queued && data.note) {
+        resetForm();
+        await clearPhotoDraft({
+          workflow: DELIVERY_NOTE_DRAFT_WORKFLOW,
+          context: draftContext,
+        }).catch(() => null);
+        setStatusText('Delivery note saved offline. It will synchronize when service returns.');
         setExistingNotes((current) => [
           data.note,
           ...current.filter((note) => note.id !== data.note.id),
         ]);
       } else {
         await loadNotes();
+        resetForm();
+        await clearPhotoDraft({
+          workflow: DELIVERY_NOTE_DRAFT_WORKFLOW,
+          context: draftContext,
+        }).catch(() => null);
+        setStatusText(editingNoteId
+          ? 'Delivery note updated.'
+          : 'Delivery note saved for future drivers.');
       }
     } catch (error) {
       setStatusText(error.message || 'Unable to save delivery note.');

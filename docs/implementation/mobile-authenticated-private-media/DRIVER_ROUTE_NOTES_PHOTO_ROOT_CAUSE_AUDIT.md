@@ -1,6 +1,6 @@
 # Driver Route Notes and Photo Root-Cause Audit
 
-Status: THREE-DEFECT ROOT-CAUSE REPAIR COMPLETE AT SOURCE LEVEL; NEW PREVIEW APK AND PHYSICAL VALIDATION REQUIRED.
+Status: FORENSIC ROOT-CAUSE REPAIR COMPLETE AT SOURCE LEVEL; BACKEND DEPLOY AND NEW PREVIEW APK REQUIRED.
 
 Scope: driver route notes and photo workflow only. This audit does not authorize public R2 shutdown, production data changes, production media writes, or branch merge.
 
@@ -12,6 +12,7 @@ Scope: driver route notes and photo workflow only. This audit does not authorize
 4. Physical testing later confirmed that a four-photo stop/account delivery note could appear as only three photos afterward.
 5. Physical testing later confirmed nondeterministic post-camera return state: sometimes Driver Login, sometimes Routes Page.
 6. Physical testing later confirmed Driver Copilot returned "Authentication required" even though the driver was logged in and could access the assigned route.
+7. Physical testing after commit `a1655a8` confirmed photos were not being saved at all, camera return still reached Home/Driver Login, and Driver Copilot still returned "Authentication required".
 
 ## Root Cause A - Camera Upload Failure
 
@@ -122,6 +123,59 @@ Repair:
 
 This keeps Copilot private, tenant-scoped, and tied to the existing driver session.
 
+## Root Cause G - Common Mobile Session/Context Architecture Defect
+
+First divergence point: app/activity restoration after Android camera handoff.
+
+The mobile app had one persistent session record in SecureStore, but the active runtime source used by protected requests and tenant-scoped storage was a module-level `activeSession` variable in `driverSession.js`. That in-memory value is restored only when `initializeDriverSession()` runs. Several critical paths read it synchronously:
+
+- `jsonApiHeaders()` adds `Authorization` only from `getDriverSessionHeaders()`;
+- `deliveryPhotoStore.persistDeliveryPhoto()` requires `getDriverTenantContext()`;
+- delivery-note offline/cache storage requires `getDriverTenantContext()`;
+- `AuthenticatedMediaImage` adds private-media headers only from `getDriverSessionHeaders()`;
+- Driver Copilot uses the same `jsonApiHeaders()` path.
+
+Android camera/background return can recreate or foreground the app before Home finishes restoring the session. Root navigation also tried to recover pending photo workflows without first proving the canonical driver session had been restored. When `activeSession` was temporarily null while the SecureStore session still existed, the app could:
+
+- fail tenant-scoped local photo persistence;
+- fail pending camera draft recovery;
+- send protected API calls without Bearer auth;
+- render Home/Login before the route/notes workflow was rebuilt.
+
+This explains why photo save, Home-to-Driver-Login, and Copilot authentication failures can appear together even though their UI surfaces differ.
+
+Repair:
+
+- `RootNavigator` now bootstraps the canonical driver session before rendering navigation workflows.
+- App foreground recovery now runs `initializeDriverSession()` before attempting pending camera/photo workflow recovery.
+- The UI remains in a neutral restoring state instead of showing Driver Login while the persisted session is being restored.
+- This does not create a second authentication system and does not trust client-supplied Organization IDs.
+
+## Root Cause H - Photo Save Reported Success Without Authoritative Persistence
+
+First divergence point: delivery-note save cleanup after a non-authoritative result.
+
+Photo saves used the same offline queue path as text notes for generic network failures. That is acceptable for text-only notes, but unsafe for captured photos because the driver must see whether the actual media was saved. The screen also cleared local selected photos/drafts immediately after `saveAccountDeliveryNote()` returned, before the authoritative `loadNotes()` refresh had proved the backend saved and returned the note/media.
+
+Repair:
+
+- delivery-note saves with new photos no longer fall back to queued/offline success on upload/network failure;
+- captured photos remain in selected state and draft storage when authoritative upload fails;
+- local photo files are deleted only after backend success and photo-count confirmation;
+- the screen now refreshes authoritative notes before reporting non-queued save success and clearing the draft;
+- per-photo `clientPhotoId` is preserved into the upload payload.
+
+Text-only notes may still use the existing offline queue behavior. Photo notes require authoritative save success before the app reports success.
+
+## Deployment Finding - Copilot Physical Test
+
+The mobile APK calls the deployed Render backend. The source-level Copilot fix exists on branch `mobile-authenticated-private-media`, but physical Copilot validation will continue to return "Authentication required" if Render is still running backend code that does not hydrate driver Bearer auth for `/api/ai` and does not classify `/api/ai/driver-copilot` with the narrow Driver permission.
+
+Read-only `/health` and `/ready` checks on Render passed during this audit, but those endpoints do not expose the deployed commit. Therefore physical Copilot acceptance requires both:
+
+- deploying the backend commit that contains the Copilot auth/RBAC fix; and
+- installing a mobile APK built from the mobile session/photo repair commit.
+
 ## Persistence Model Verified
 
 Authoritative table: `delivery_notes`.
@@ -177,3 +231,7 @@ Required physical tests remain:
 - four-photo camera and library note persistence;
 - repeated camera return to same stop/account note context;
 - Driver Copilot question using the existing logged-in driver session.
+
+Backend deployment prerequisite:
+
+- deploy the backend repair containing `/api/ai` driver Bearer hydration and `ai.driver_copilot.use` permission before retesting Driver Copilot on the phone.

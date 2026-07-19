@@ -95,6 +95,60 @@ npm.cmd run verify:production
 
 Backend `npm.cmd run verify:production` was rerun and failed because this local shell still does not contain real production values for `DATABASE_URL` and `CORS_ORIGIN`. This is the expected local environment limitation for that check. No production secrets were retrieved, printed, or changed.
 
+## 2026-07-19 Forensic Root Architecture Repair Validation
+
+Validation performed after physical Android testing confirmed the previous source repair still did not close the blocker:
+
+- photos were not saved at all;
+- camera return reached Home and Driver Login immediately after the photo workflow;
+- Driver Copilot still returned "Authentication required".
+
+Root findings validated in source:
+
+- `driverSession.js` stores the persistent session in SecureStore but exposes Bearer headers and tenant context through module-level `activeSession`.
+- protected request helpers, private media image loading, tenant-scoped draft/photo storage, and Copilot all depend on that in-memory session.
+- Root navigation previously could attempt camera draft recovery before canonical session restoration completed.
+- Delivery Notes could clear local photo state/draft before the authoritative server refresh proved the saved media was returned.
+- photo-note saves could be treated like queued/offline text-note saves on network failure.
+
+Targeted validation passed:
+
+```powershell
+npm.cmd run test:driver-route-notes-photo
+npm.cmd run test:driver-copilot-auth
+npm.cmd run test:mobile-private-media
+npm.cmd run test:api-tenant
+```
+
+Regression validation passed:
+
+```powershell
+npm.cmd run test:mobile-tenant
+npm.cmd run test:private-media
+npm.cmd run test:auth-rbac
+npm.cmd run verify:secrets
+npm.cmd test
+git diff --check
+```
+
+Mobile validation passed:
+
+```powershell
+npm.cmd run verify:secrets
+$env:EXPO_PUBLIC_API_BASE_URL='https://truck-safe-routing-api.onrender.com'
+$env:EXPO_PUBLIC_ANDROID_MAPS_API_KEY='validation-maps-key-for-config-check'
+npm.cmd run verify:production
+```
+
+Read-only deployed backend checks:
+
+```powershell
+Invoke-WebRequest https://truck-safe-routing-api.onrender.com/health
+Invoke-WebRequest https://truck-safe-routing-api.onrender.com/ready
+```
+
+Result: both returned HTTP 200. These endpoints do not expose deployed commit identity, so they do not prove the deployed backend contains the Driver Copilot repair.
+
 ## Photo-Capture Validation
 
 Verified at source and automated-test level:

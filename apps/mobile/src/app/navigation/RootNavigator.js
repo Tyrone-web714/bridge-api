@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { AppState } from 'react-native';
+import { ActivityIndicator, AppState, StyleSheet, Text, View } from 'react-native';
 import { createNavigationContainerRef, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LandingScreen from '../screens/LandingScreen';
@@ -15,17 +15,29 @@ import WarehouseInventoryScreen from '../screens/WarehouseInventoryScreen';
 import DriverSettingsOverlay from '../components/DriverSettingsOverlay';
 import { recoverPendingCameraDraft } from '../services/mobileMediaSelection';
 import { readLatestPhotoDraft } from '../services/photoDraftStore';
+import { initializeDriverSession } from '../services/driverSession';
 
 const Stack = createNativeStackNavigator();
 const navigationRef = createNavigationContainerRef();
 
 export default function RootNavigator() {
   const [activeScreen, setActiveScreen] = useState('Landing');
+  const [sessionBootstrapState, setSessionBootstrapState] = useState('restoring');
   const updateActiveScreen = () => {
     setActiveScreen(navigationRef.getCurrentRoute()?.name || 'Landing');
   };
+  const restoreCanonicalSession = useCallback(async () => {
+    try {
+      await initializeDriverSession();
+      setSessionBootstrapState('ready');
+    } catch {
+      setSessionBootstrapState('ready');
+    }
+  }, []);
+
   const resumePhotoWorkflow = useCallback(async () => {
     if (!navigationRef.isReady()) return;
+    await initializeDriverSession().catch(() => null);
     const recovered = await recoverPendingCameraDraft().catch(() => null);
     const draft = recovered || await readLatestPhotoDraft().catch(() => null);
     if (!draft?.workflow || !draft?.photos?.length || !draft?.context?.routeParams) return;
@@ -62,13 +74,26 @@ export default function RootNavigator() {
   }, []);
 
   useEffect(() => {
+    restoreCanonicalSession();
+  }, [restoreCanonicalSession]);
+
+  useEffect(() => {
     const subscription = AppState.addEventListener('change', (state) => {
       if (state === 'active') {
-        resumePhotoWorkflow();
+        restoreCanonicalSession().then(resumePhotoWorkflow);
       }
     });
     return () => subscription.remove();
-  }, [resumePhotoWorkflow]);
+  }, [restoreCanonicalSession, resumePhotoWorkflow]);
+
+  if (sessionBootstrapState === 'restoring') {
+    return (
+      <View style={styles.restoreRoot}>
+        <ActivityIndicator color="#ffffff" />
+        <Text style={styles.restoreText}>Restoring driver session...</Text>
+      </View>
+    );
+  }
 
   return (
     <NavigationContainer ref={navigationRef} onReady={() => { updateActiveScreen(); resumePhotoWorkflow(); }} onStateChange={updateActiveScreen}>
@@ -137,3 +162,18 @@ export default function RootNavigator() {
     </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({
+  restoreRoot: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#102033',
+  },
+  restoreText: {
+    marginTop: 12,
+    color: '#ffffff',
+    fontSize: 15,
+    fontWeight: '800',
+  },
+});

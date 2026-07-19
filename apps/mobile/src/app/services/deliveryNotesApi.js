@@ -171,6 +171,7 @@ async function sendNoteOperation(operation) {
 
 export async function saveAccountDeliveryNote(note, identity = {}, noteId = null) {
   const operationType = noteId ? 'delivery_note_update' : 'delivery_note_create';
+  const hasNewPhotos = Array.isArray(note?.photos) && note.photos.length > 0;
   const persistedNote = {
     ...note,
     id: noteId || note.id || `delivery-note-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`,
@@ -187,6 +188,9 @@ export async function saveAccountDeliveryNote(note, identity = {}, noteId = null
   } catch (error) {
     if (isLocalMediaUploadError(error)) throw error;
     if (error?.status) throw error;
+    if (hasNewPhotos) {
+      throw new Error(error.message || 'Delivery note photos were not saved. Check the connection and try again before leaving this stop.');
+    }
     const operation = await enqueueDeliveryOperation(
       operationType,
       { noteId, note: persistedNote },
