@@ -393,3 +393,50 @@ Source-level assertions now verify:
 Physical validation:
 
 - Pending. A new preview APK must be installed and tested on Android before this blocker can be closed.
+
+## 2026-07-19 Android Camera Pending-Result Recovery Repair
+
+Scope:
+
+- Android native camera lifecycle only.
+- Driver Copilot was not changed because physical testing confirmed it works.
+- Account Knowledge was not redesigned because gallery-uploaded notes/photos display correctly.
+
+Focused validation passed:
+
+```powershell
+npm.cmd run test:mobile-private-media
+npm.cmd run test:driver-route-notes-photo
+git diff --check
+```
+
+Regression validation passed:
+
+```powershell
+npm.cmd test
+npm.cmd run test:mobile-tenant
+npm.cmd run test:api-tenant
+npm.cmd run test:auth-rbac
+npm.cmd run verify:secrets
+```
+
+Mobile validation passed:
+
+```powershell
+npm.cmd run test:mobile-private-media
+npm.cmd run verify:secrets
+```
+
+Source-level assertions now verify:
+
+- Expo `getPendingResultAsync()` is recovered only by `RootNavigator`;
+- `HomeScreen`, `DeliveryNotesScreen`, and `HazardReportScreen` do not consume pending camera results directly;
+- camera launch stores a tenant-scoped `captureRequestId` before native camera handoff;
+- `handleCapturedMediaResult(result, pendingContext)` is the shared camera and pending-result persistence pipeline;
+- processed camera request IDs prevent duplicate pending-result handling;
+- recovered workflows reset directly to `DeliveryNotes` or `HazardReport`, without routing through Home;
+- camera-captured photos are copied into TSR-controlled storage before draft persistence.
+
+Physical validation:
+
+- Pending. A new preview APK must be installed and tested on Android before this blocker can be closed.

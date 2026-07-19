@@ -44,9 +44,8 @@ export default function RootNavigator() {
 
     if (draft.workflow === 'delivery-notes') {
       navigationRef.reset({
-        index: 1,
+        index: 0,
         routes: [
-          { name: 'Home' },
           {
             name: 'DeliveryNotes',
             params: {
@@ -58,9 +57,8 @@ export default function RootNavigator() {
       });
     } else if (draft.workflow === 'hazard-report') {
       navigationRef.reset({
-        index: 1,
+        index: 0,
         routes: [
-          { name: 'Home' },
           {
             name: 'HazardReport',
             params: {

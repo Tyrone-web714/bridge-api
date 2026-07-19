@@ -170,8 +170,10 @@ Photo workflow recovery was split between screen-level restoration and Home rout
 
 Repair:
 
-- `RootNavigator` now listens for app foreground and navigation readiness, recovers the pending camera draft, and resets the stack to one authoritative path: `Home -> DeliveryNotes` or `Home -> HazardReport`.
-- `HomeScreen` uses the same reset-based path when it discovers a pending photo draft after driver-session restoration.
+- `RootNavigator` now listens for app foreground and navigation readiness, recovers the pending camera draft, and resets the stack directly to one authoritative path: `DeliveryNotes` or `HazardReport`.
+- `HomeScreen`, `DeliveryNotesScreen`, and `HazardReportScreen` no longer consume Expo pending camera results directly.
+- Normal `launchCameraAsync()` results and Android `getPendingResultAsync()` results now share `handleCapturedMediaResult(result, pendingContext)`.
+- Camera launch persists a tenant-scoped `captureRequestId` before opening the native camera, and processed camera result IDs prevent duplicate handling.
 - No arbitrary delay, fake driver state, second login, or route reassignment behavior was added.
 
 Expected result: while a valid driver session exists, camera/photo resume returns to the same workflow context instead of randomly choosing Driver Login or Routes.

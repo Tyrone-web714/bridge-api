@@ -124,6 +124,46 @@ Production safety:
 - Public R2 access was not disabled.
 - Branch must not merge until physical acceptance passes.
 
+## 2026-07-19 Android Camera Pending-Result Recovery Repair
+
+Status: SOURCE VALIDATION PASSED; PREVIEW APK AND PHYSICAL ACCEPTANCE REQUIRED.
+
+Physical Android testing confirmed the remaining blocker was isolated to native camera capture and activity recreation. Driver Copilot works and was not changed. Account Knowledge already displays gallery-uploaded notes/photos and was not redesigned.
+
+Finding:
+
+- `getPendingResultAsync()` was present, but recovery ownership was split across `RootNavigator`, `HomeScreen`, `DeliveryNotesScreen`, and `HazardReportScreen`.
+- Screen-level recovery could consume or clear the pending Android camera result before the canonical driver session and route context were stable.
+- Home also had its own draft navigation reset path, so camera return could pass through Home and expose Driver Login during route/session reconstruction.
+- Camera/gallery persistence converged only after normal screen handling, not at one authoritative camera-result handler.
+
+Repair:
+
+- `RootNavigator` is now the only code path that consumes Expo pending camera results.
+- `HomeScreen`, `DeliveryNotesScreen`, and `HazardReportScreen` no longer call `recoverPendingCameraDraft()`.
+- Camera launch persists a tenant-scoped pending camera context with a stable `captureRequestId` before the native camera opens.
+- Normal `launchCameraAsync()` results and Android `getPendingResultAsync()` results both flow through `handleCapturedMediaResult(result, pendingContext)`.
+- Recovered camera assets are copied into TSR-controlled tenant-scoped storage before draft persistence.
+- Processed camera result IDs are retained in tenant-scoped storage to avoid duplicate handling if foreground and navigation-ready recovery both fire.
+- Recovered delivery-note and hazard-report workflows reset directly to the interrupted workflow screen instead of resetting through Home.
+
+Validation passed:
+
+- `npm.cmd run test:mobile-private-media`
+- `npm.cmd run test:driver-route-notes-photo`
+- `npm.cmd test`
+- `npm.cmd run test:mobile-tenant`
+- `npm.cmd run test:api-tenant`
+- `npm.cmd run test:auth-rbac`
+- backend `npm.cmd run verify:secrets`
+- mobile `npm.cmd run verify:secrets`
+- `git diff --check`
+
+Physical status:
+
+- MainActivity recreation has not been revalidated by Codex after this source fix. It requires a new preview APK and physical Android test.
+- The expected physical result is: Take Photo returns to the same Delivery Notes or Hazard Report workflow, does not show Driver Login, persists the captured photo in the note draft, saves successfully, and the saved photo appears in Account Knowledge after save.
+
 ## Physical-Device Regression
 
 Status: SOURCE REPAIR UPDATED AFTER FAILED PHYSICAL TEST; NEW APK AND PHYSICAL REVALIDATION REQUIRED.
@@ -180,6 +220,8 @@ The preview APK built as `b65ed650-c218-46e3-8fd8-2cb83c625f5f` is superseded be
 
 The preview APK built from commit `a1655a8` is superseded for acceptance because physical Android testing confirmed photos were still not authoritatively saved, camera return still reached Home/Driver Login, and Driver Copilot still returned "Authentication required".
 
+The preview APK built from commit `51a81642ddca4c19ec8d851991a242926d878d7b` is superseded because physical Android testing confirmed native camera capture still did not persist reliably and camera return could still expose Home/Driver Login. Gallery upload and Account Knowledge display were confirmed working and remain out of scope for redesign.
+
 ## Photo Workflows Audited
 
 Audited driver-facing photo attachment and display workflows:
@@ -210,15 +252,15 @@ Delivery Notes now presents the source prompt from the existing photo action. Ha
 
 ## Session and Route Continuity Result
 
-The source-level recovery path reuses the existing driver session and assigned-route restoration architecture. It does not create a second login/session system and does not fabricate login state. If Android recreates TSR while the camera is open, Home restores the valid driver session and assigned route first, then resumes the pending photo workflow.
+The source-level recovery path reuses the existing driver session and assigned-route restoration architecture. It does not create a second login/session system and does not fabricate login state. If Android recreates TSR while the camera is open, RootNavigator restores the valid driver session first, recovers the pending Android camera result once, persists it as a tenant-scoped draft, and resets directly to the interrupted photo workflow.
 
 ## Durable Draft Result
 
-Photo drafts preserve local URI, file name, MIME type, source type, workflow/resource context, Organization ID, internal driver ID, company driver number, route/screen context where available, and creation/update timestamps.
+Photo drafts preserve local URI, file name, MIME type, source type, workflow/resource context, Organization ID, internal driver ID, company driver number, route/screen context where available, camera capture request ID, and creation/update timestamps.
 
 Photo drafts do not store auth tokens.
 
-Drafts are cleared on save/upload, explicit remove/reset, canceled pending result, camera failure, tenant/driver mismatch, or TTL expiration. They are not cleared merely because the camera opens, the app backgrounds, or the app regains focus.
+Drafts are cleared on save/upload, explicit remove/reset, canceled pending result, tenant/driver mismatch, or TTL expiration. They are not cleared merely because the camera opens, the app backgrounds, or the app regains focus.
 
 ## Private-Media Result
 
@@ -270,6 +312,8 @@ The focused driver route notes/photo workflow test now also checks deterministic
 The new focused Driver Copilot auth test checks that mobile Copilot requests use the canonical authenticated JSON header helper, `/api/ai` driver Bearer auth is hydrated before tenant enforcement, `/api/ai/driver-copilot` is classified before generic `/api/ai`, drivers receive only the narrow `ai.driver_copilot.use` permission, drivers still do not receive `dashboard.view`, fresh RBAC setup includes the permission, the AI route uses the authenticated tenant context, and no shared mobile driver token is used.
 
 The focused driver route notes/photo workflow test now additionally checks root-level canonical session bootstrap, foreground session restoration before photo workflow recovery, no offline queued-success for photo saves, authoritative note refresh before reporting save success, and per-photo correlation preservation into upload payloads.
+
+The focused mobile private-media and driver route notes/photo workflow tests now also check centralized Android pending-result recovery, capture request ID persistence, duplicate pending-result prevention, direct reset to the interrupted workflow, and removal of pending-result consumption from Home, Delivery Notes, and Hazard Report screens.
 
 Backend `npm.cmd run verify:production` was attempted but could not pass in the local shell because production environment values were unavailable. The failure was limited to missing local `DATABASE_URL` and `CORS_ORIGIN` values. No production data, credentials, or provider settings were accessed or changed during this repair.
 

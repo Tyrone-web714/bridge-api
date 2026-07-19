@@ -37,12 +37,17 @@ assert(hazardReportScreen.includes('Promise.all(photos.map(photoPayload))'), 'ha
 
 assert(homeScreen.includes('shouldShowDriverLoginForm'), 'Home must explicitly gate Driver Login rendering');
 assert(homeScreen.includes("driverStartupState === 'authenticated'"), 'Home must distinguish restored authenticated sessions from unauthenticated login');
-assert(homeScreen.includes('navigateToPhotoDraft'), 'Home must return restored sessions to pending photo workflows');
-assert(homeScreen.includes('navigation.reset'), 'Home photo workflow recovery must use a deterministic reset path');
+assert(!homeScreen.includes('recoverPendingCameraDraft'), 'Home must not consume Expo pending camera results directly');
+assert(!homeScreen.includes('navigateToPhotoDraft'), 'Home must not route recovered camera results through Home');
 assert(rootNavigator.includes('sessionBootstrapState') && rootNavigator.includes('initializeDriverSession'), 'Root navigator must restore canonical driver session before rendering route workflows');
 assert(rootNavigator.includes('AppState.addEventListener') && rootNavigator.includes('resumePhotoWorkflow'), 'Root navigator must recover camera drafts on foreground');
 assert(rootNavigator.includes('navigationRef.reset'), 'Root navigator must reset to the authoritative photo workflow route');
+assert(/index:\s*0,[\s\S]*name:\s*'DeliveryNotes'/.test(rootNavigator), 'Root navigator must restore delivery-note camera drafts directly without Home in the reset stack');
+assert(/index:\s*0,[\s\S]*name:\s*'HazardReport'/.test(rootNavigator), 'Root navigator must restore hazard camera drafts directly without Home in the reset stack');
 assert(photoDraftStore.includes('routeStopId') && photoDraftStore.includes('routeManifestId'), 'photo draft context must preserve route stop and manifest identity');
+assert(photoDraftStore.includes('captureRequestId'), 'photo draft camera intent must persist a capture request ID before native camera launch');
+assert(photoDraftStore.includes('markCameraResultProcessed'), 'photo draft store must prevent duplicate pending camera result processing');
+assert(photoDraftStore.includes('hasProcessedCameraResult'), 'photo draft store must expose duplicate pending camera result checks');
 
 assert(deliveryNotesScreen.includes('routeStopId') && deliveryNotesScreen.includes('routeManifestId'), 'DeliveryNotesScreen must send route-stop scope on save/fetch');
 assert(deliveryNotesScreen.includes('failedRestoreCount'), 'DeliveryNotesScreen must surface partial camera draft restore failures');

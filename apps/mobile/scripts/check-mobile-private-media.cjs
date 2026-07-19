@@ -68,6 +68,9 @@ assert(mediaSelection.includes('if (result.canceled) return []'), 'camera/librar
 assert(mediaSelection.includes('rememberCameraWorkflow'), 'camera launch must record workflow intent before native camera handoff');
 assert(mediaSelection.includes('getPendingResultAsync'), 'camera return must recover Expo pending camera result after Android activity recreation');
 assert(mediaSelection.includes('recoverPendingCameraDraft'), 'mobile media selection must expose pending camera draft recovery');
+assert(mediaSelection.includes('handleCapturedMediaResult'), 'camera and pending camera results must share one persistence pipeline');
+assert(mediaSelection.includes('captureRequestId'), 'camera workflow intent must include a stable capture request ID');
+assert(mediaSelection.includes('hasProcessedCameraResult') && mediaSelection.includes('markCameraResultProcessed'), 'pending camera recovery must prevent duplicate processing');
 assert(mediaSelection.includes('savePhotoDraft'), 'camera result must be persisted as a durable draft');
 assert(mediaSelection.includes('clearCameraWorkflowIntent'), 'camera workflow intent must be cleared after success or cancellation');
 
@@ -77,7 +80,7 @@ assert(deliveryNotes.includes('routeStopId'), 'DeliveryNotesScreen must carry ro
 assert(deliveryNotes.includes('routeManifestId'), 'DeliveryNotesScreen must carry route manifest identity for run-scoped notes');
 assert(deliveryNotes.includes('routeDate'), 'DeliveryNotesScreen must carry route date for run-scoped notes');
 assert(deliveryNotes.includes('sourceUriScheme'), 'DeliveryNotesScreen must preserve safe camera/library source diagnostics');
-assert(deliveryNotes.includes('recoverPendingCameraDraft'), 'DeliveryNotesScreen must recover pending camera results after remount');
+assert(!deliveryNotes.includes('recoverPendingCameraDraft'), 'DeliveryNotesScreen must not consume Expo pending camera results directly');
 assert(deliveryNotes.includes('readPhotoDraft'), 'DeliveryNotesScreen must restore existing tenant-scoped delivery photo drafts');
 assert(deliveryNotes.includes('savePhotoDraft'), 'DeliveryNotesScreen must preserve selected camera photos as a durable draft');
 assert(deliveryNotes.includes('clearPhotoDraft'), 'DeliveryNotesScreen must clear only its intended photo draft after save/remove/reset');
@@ -85,13 +88,12 @@ assert(hazardReport.includes('capturePhotoAssets'), 'HazardReportScreen must use
 assert(hazardReport.includes('choosePhotoLibraryAssets'), 'HazardReportScreen must preserve library selection through the shared flow');
 assert(hazardReport.includes('persistDeliveryPhoto'), 'HazardReportScreen must persist camera/library URIs before upload');
 assert(hazardReport.includes('Promise.all(photos.map(photoPayload))'), 'hazard photos from both sources must use the same async submit payload path');
-assert(hazardReport.includes('recoverPendingCameraDraft'), 'HazardReportScreen must recover pending camera results after remount');
+assert(!hazardReport.includes('recoverPendingCameraDraft'), 'HazardReportScreen must not consume Expo pending camera results directly');
 assert(hazardReport.includes('readPhotoDraft'), 'HazardReportScreen must restore existing tenant-scoped hazard photo drafts');
 assert(hazardReport.includes('savePhotoDraft'), 'HazardReportScreen must preserve selected camera photos as a durable draft');
 assert(hazardReport.includes('clearPhotoDraft'), 'HazardReportScreen must clear only its intended photo draft after submit/remove');
-assert(home.includes('recoverPendingCameraDraft'), 'HomeScreen must recover pending camera draft after cold restart/session restoration');
-assert(home.includes('readLatestPhotoDraft'), 'HomeScreen must route a restored valid session to the latest recoverable photo workflow');
-assert(home.includes('navigateToPhotoDraft'), 'HomeScreen must navigate back to the original photo workflow after restoring session and route state');
+assert(!home.includes('recoverPendingCameraDraft'), 'HomeScreen must not consume Expo pending camera results directly');
+assert(!home.includes('navigateToPhotoDraft'), 'HomeScreen must not route recovered camera results through Home');
 assert(home.includes('shouldShowDriverLoginForm'), 'HomeScreen must not render Driver Login while an authenticated session is restored without route state');
 assert(appConfig.includes('cameraPermission'), 'Expo image picker config must include camera permission copy');
 assert(appJson.expo.android.permissions.includes('android.permission.CAMERA'), 'Android manifest permissions must include camera access');
@@ -102,6 +104,9 @@ assert(photoDraftStore.includes('operationMatchesTenant'), 'photo drafts must re
 assert(photoDraftStore.includes('DRAFT_TTL_MS'), 'photo drafts must expire stale local records');
 assert(photoDraftStore.includes('readLatestPhotoDraft'), 'photo draft store must support cold-restart recovery');
 assert(photoDraftStore.includes('clearPhotoDraft'), 'photo draft store must support explicit cleanup');
+assert(photoDraftStore.includes('PHOTO_DRAFT_PROCESSED_CAMERA_PART'), 'photo drafts must keep tenant-scoped processed camera result markers');
+assert(photoDraftStore.includes('markCameraResultProcessed'), 'photo drafts must record processed camera request IDs');
+assert(photoDraftStore.includes('hasProcessedCameraResult'), 'photo drafts must identify duplicate camera result recovery attempts');
 assert(!photoDraftStore.includes('token'), 'photo drafts must not persist authentication tokens');
 
 assert(deliveryPhotoStore.includes('isLocalMediaUploadError'), 'delivery photo upload must classify unreadable local media errors');

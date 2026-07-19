@@ -1,5 +1,7 @@
 import {
   clearCameraWorkflowIntent,
+  hasProcessedCameraResult,
+  markCameraResultProcessed,
   readCameraWorkflowIntent,
   rememberCameraWorkflow,
   savePhotoDraft,
@@ -51,11 +53,63 @@ function stabilizeCameraAssets(assets = []) {
   return assets.map((asset) => persistDeliveryPhoto(asset));
 }
 
+function getCaptureRequestId(intent = {}) {
+  return intent.captureRequestId || intent.context?.captureRequestId || null;
+}
+
 function imagePickerUnavailable(Alert) {
   Alert.alert(
     'New build required',
     'Photo upload needs the newest Truck-Safe development build. You can still save written information now.'
   );
+}
+
+export async function handleCapturedMediaResult(result, pendingContext = {}) {
+  if (!pendingContext?.workflow) return { assets: [], draft: null, canceled: false };
+
+  const captureRequestId = getCaptureRequestId(pendingContext);
+  if (captureRequestId && await hasProcessedCameraResult(captureRequestId)) {
+    return { assets: [], draft: null, canceled: false, duplicate: true };
+  }
+
+  if (!result) return { assets: [], draft: null, canceled: false };
+
+  if (result.canceled) {
+    if (captureRequestId) await markCameraResultProcessed(captureRequestId).catch(() => null);
+    await clearCameraWorkflowIntent().catch(() => null);
+    return { assets: [], draft: null, canceled: true };
+  }
+
+  if (result.errorCode || result.errorMessage) {
+    if (captureRequestId) await markCameraResultProcessed(captureRequestId).catch(() => null);
+    await clearCameraWorkflowIntent().catch(() => null);
+    const error = new Error(result.errorMessage || 'Unable to recover the captured photo.');
+    error.code = result.errorCode || 'CAMERA_RESULT_ERROR';
+    throw error;
+  }
+
+  const assets = stabilizeCameraAssets((result.assets || [])
+    .filter((asset) => asset?.uri)
+    .map((asset) => normalizeImageAsset(asset, 'camera')));
+  if (!assets.length) return { assets: [], draft: null, canceled: false };
+
+  const context = {
+    ...(pendingContext.context || {}),
+    ...(captureRequestId ? { captureRequestId } : {}),
+  };
+  const draft = await savePhotoDraft({
+    workflow: pendingContext.workflow,
+    context,
+    photos: assets,
+  });
+  if (captureRequestId) await markCameraResultProcessed(captureRequestId).catch(() => null);
+  await clearCameraWorkflowIntent().catch(() => null);
+  return {
+    assets,
+    draft,
+    canceled: false,
+    captureRequestId,
+  };
 }
 
 export async function capturePhotoAssets({
@@ -78,8 +132,9 @@ export async function capturePhotoAssets({
       return [];
     }
 
+    let pendingContext = null;
     if (draftWorkflow) {
-      await rememberCameraWorkflow({ workflow: draftWorkflow, context: draftContext });
+      pendingContext = await rememberCameraWorkflow({ workflow: draftWorkflow, context: draftContext });
     }
 
     const result = await ImagePicker.launchCameraAsync({
@@ -87,19 +142,15 @@ export async function capturePhotoAssets({
       quality,
       base64,
     });
-    if (result.canceled) {
-      if (draftWorkflow) await clearCameraWorkflowIntent().catch(() => null);
-      return [];
+    if (draftWorkflow) {
+      const handled = await handleCapturedMediaResult(result, pendingContext);
+      return handled.assets || [];
     }
+    if (result.canceled) return [];
 
-    const assets = stabilizeCameraAssets((result.assets || [])
+    return (result.assets || [])
       .filter((asset) => asset?.uri)
-      .map((asset) => normalizeImageAsset(asset, 'camera')));
-    if (draftWorkflow && assets.length) {
-      await savePhotoDraft({ workflow: draftWorkflow, context: draftContext, photos: assets });
-      await clearCameraWorkflowIntent().catch(() => null);
-    }
-    return assets;
+      .map((asset) => normalizeImageAsset(asset, 'camera'));
   } catch (error) {
     if (draftWorkflow) await clearCameraWorkflowIntent().catch(() => null);
     Alert.alert('Camera unavailable', error.message || 'Unable to take a photo right now.');
@@ -115,22 +166,8 @@ export async function recoverPendingCameraDraft() {
 
   const result = await ImagePicker.getPendingResultAsync().catch(() => null);
   if (!result) return null;
-  if (result.canceled) {
-    await clearCameraWorkflowIntent().catch(() => null);
-    return null;
-  }
-  const assets = stabilizeCameraAssets((result.assets || [])
-    .filter((asset) => asset?.uri)
-    .map((asset) => normalizeImageAsset(asset, 'camera')));
-  if (!assets.length) return null;
-
-  const draft = await savePhotoDraft({
-    workflow: intent.workflow,
-    context: intent.context,
-    photos: assets,
-  });
-  await clearCameraWorkflowIntent().catch(() => null);
-  return draft;
+  const handled = await handleCapturedMediaResult(result, intent);
+  return handled.draft || null;
 }
 
 export async function choosePhotoLibraryAssets({

@@ -13,7 +13,7 @@ import {
 import * as Location from 'expo-location';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { submitDriverHazardReport } from '../services/routingApi';
-import { capturePhotoAssets, choosePhotoLibraryAssets, recoverPendingCameraDraft } from '../services/mobileMediaSelection';
+import { capturePhotoAssets, choosePhotoLibraryAssets } from '../services/mobileMediaSelection';
 import { persistDeliveryPhoto, prepareDeliveryPhotoForUpload } from '../services/deliveryPhotoStore';
 import {
   buildHazardDraftContext,
@@ -82,13 +82,10 @@ export default function HazardReportScreen({ navigation, route }) {
     let isMounted = true;
 
     const restorePhotoDraft = async () => {
-      const recovered = await recoverPendingCameraDraft().catch(() => null);
-      const draft = recovered?.workflow === HAZARD_DRAFT_WORKFLOW
-        ? recovered
-        : await readPhotoDraft({
-          workflow: HAZARD_DRAFT_WORKFLOW,
-          context: draftContext,
-        }).catch(() => null);
+      const draft = await readPhotoDraft({
+        workflow: HAZARD_DRAFT_WORKFLOW,
+        context: draftContext,
+      }).catch(() => null);
       if (!isMounted || !draft?.photos?.length) return;
       setPhotos((current) => {
         const seen = new Set(current.map((photo) => photo.uri));

@@ -9,7 +9,7 @@ import {
   saveAccountDeliveryNote,
 } from '../services/deliveryNotesApi';
 import { persistDeliveryPhoto } from '../services/deliveryPhotoStore';
-import { recoverPendingCameraDraft, selectImageAssetsWithPrompt } from '../services/mobileMediaSelection';
+import { selectImageAssetsWithPrompt } from '../services/mobileMediaSelection';
 import {
   buildDeliveryNoteDraftContext,
   clearPhotoDraft,
@@ -96,13 +96,10 @@ export default function DeliveryNotesScreen({ route }) {
     let isMounted = true;
 
     const restorePhotoDraft = async () => {
-      const recovered = await recoverPendingCameraDraft().catch(() => null);
-      const draft = recovered?.workflow === DELIVERY_NOTE_DRAFT_WORKFLOW
-        ? recovered
-        : await readPhotoDraft({
-          workflow: DELIVERY_NOTE_DRAFT_WORKFLOW,
-          context: draftContext,
-        }).catch(() => null);
+      const draft = await readPhotoDraft({
+        workflow: DELIVERY_NOTE_DRAFT_WORKFLOW,
+        context: draftContext,
+      }).catch(() => null);
       if (!isMounted || !draft?.photos?.length) return;
 
       const restoredPhotos = [];

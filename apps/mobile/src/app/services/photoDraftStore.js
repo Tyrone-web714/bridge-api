@@ -11,6 +11,7 @@ import {
 const PHOTO_DRAFT_PREFIX = '@truck-safe-routing/photo-drafts/v1';
 const PHOTO_DRAFT_INDEX_PART = 'index';
 const PHOTO_DRAFT_INTENT_PART = 'active-camera-intent';
+const PHOTO_DRAFT_PROCESSED_CAMERA_PART = 'processed-camera-results';
 const DRAFT_TTL_MS = 24 * 60 * 60 * 1000;
 
 function requireIdentity() {
@@ -23,6 +24,10 @@ function requireIdentity() {
 
 function nowIso() {
   return new Date().toISOString();
+}
+
+function createCaptureRequestId() {
+  return `camera-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
 }
 
 function isFresh(record = {}) {
@@ -49,6 +54,10 @@ function indexKey(identity) {
 
 function intentKey(identity) {
   return tenantScopedStorageKey(PHOTO_DRAFT_PREFIX, identity, PHOTO_DRAFT_INTENT_PART);
+}
+
+function processedCameraKey(identity) {
+  return tenantScopedStorageKey(PHOTO_DRAFT_PREFIX, identity, PHOTO_DRAFT_PROCESSED_CAMERA_PART);
 }
 
 function draftKey(identity, workflow, context = {}) {
@@ -132,9 +141,15 @@ export function buildHazardDraftContext(routeParams = {}) {
 
 export async function rememberCameraWorkflow({ workflow, context = {} } = {}) {
   const identity = requireIdentity();
+  const captureRequestId = cleanTenantValue(context.captureRequestId) || createCaptureRequestId();
+  const normalizedContext = {
+    ...context,
+    captureRequestId,
+  };
   const intent = {
     workflow,
-    context,
+    context: normalizedContext,
+    captureRequestId,
     organizationId: identity.organizationId,
     internalDriverId: identity.internalDriverId,
     companyDriverNumber: identity.companyDriverNumber,
@@ -154,6 +169,36 @@ export async function readCameraWorkflowIntent() {
 export async function clearCameraWorkflowIntent() {
   const identity = requireIdentity();
   await AsyncStorage.removeItem(intentKey(identity));
+}
+
+export async function hasProcessedCameraResult(captureRequestId) {
+  const identity = requireIdentity();
+  const cleanedCaptureRequestId = cleanTenantValue(captureRequestId);
+  if (!cleanedCaptureRequestId) return false;
+  const processed = await readJson(processedCameraKey(identity), []);
+  return (Array.isArray(processed) ? processed : []).some(
+    (item) => item?.captureRequestId === cleanedCaptureRequestId && isFresh(item)
+  );
+}
+
+export async function markCameraResultProcessed(captureRequestId) {
+  const identity = requireIdentity();
+  const cleanedCaptureRequestId = cleanTenantValue(captureRequestId);
+  if (!cleanedCaptureRequestId) return;
+  const key = processedCameraKey(identity);
+  const current = await readJson(key, []);
+  const active = (Array.isArray(current) ? current : [])
+    .filter((item) => item?.captureRequestId !== cleanedCaptureRequestId && isFresh(item));
+  await writeJson(key, [
+    {
+      captureRequestId: cleanedCaptureRequestId,
+      organizationId: identity.organizationId,
+      internalDriverId: identity.internalDriverId,
+      companyDriverNumber: identity.companyDriverNumber,
+      createdAt: nowIso(),
+    },
+    ...active,
+  ].slice(0, 12));
 }
 
 export async function savePhotoDraft({ workflow, context = {}, photos = [] } = {}) {
