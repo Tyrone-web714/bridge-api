@@ -47,6 +47,7 @@ function optimisticPhotos(note = {}) {
     if (photo?.url && !photo?.base64) return photo;
     return {
       id: `offline-photo-${Date.now()}-${index}`,
+      clientPhotoId: photo.clientPhotoId || null,
       mimeType: photo.mimeType || 'image/jpeg',
       originalName: photo.fileName || null,
       url: photo.localUri || photo.uri || (photo.base64
@@ -129,6 +130,10 @@ async function sendNoteOperation(operation) {
       ? 'PUT'
       : 'POST';
   const rawNote = operation.payload?.note || {};
+  const expectedPhotoCount = method === 'DELETE'
+    ? 0
+    : (Array.isArray(rawNote.existingPhotos) ? rawNote.existingPhotos.length : 0)
+      + (Array.isArray(rawNote.photos) ? rawNote.photos.length : 0);
   const preparedPhotos = method === 'DELETE'
     ? []
     : await Promise.all(
@@ -147,6 +152,16 @@ async function sendNoteOperation(operation) {
     const error = new Error(data?.error || `Delivery note failed. HTTP ${response.status}`);
     error.status = response.status;
     throw error;
+  }
+  if (method !== 'DELETE' && expectedPhotoCount > 0) {
+    const savedPhotoCount = Array.isArray(data?.note?.photos) ? data.note.photos.length : 0;
+    if (savedPhotoCount !== expectedPhotoCount) {
+      const error = new Error(`Delivery note photo save mismatch: expected ${expectedPhotoCount}, saved ${savedPhotoCount}.`);
+      error.status = 409;
+      error.expectedPhotoCount = expectedPhotoCount;
+      error.savedPhotoCount = savedPhotoCount;
+      throw error;
+    }
   }
   if (method !== 'DELETE') {
     deleteLocalDeliveryPhotos(rawNote.photos);

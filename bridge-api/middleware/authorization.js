@@ -227,6 +227,7 @@ function permissionForRequest(req) {
   }
   if (path.startsWith('/api/admin')) return rbac.PERMISSIONS.DASHBOARD_VIEW;
   if (path.startsWith('/api/ai/status')) return rbac.PERMISSIONS.DASHBOARD_VIEW;
+  if (path.startsWith('/api/ai/driver-copilot')) return rbac.PERMISSIONS.DRIVER_COPILOT_USE;
   if (path.startsWith('/api/ai')) return rbac.PERMISSIONS.DASHBOARD_VIEW;
   if (path.startsWith('/api/delivery-notes/export') || path.startsWith('/api/delivery-notes/admin')) return rbac.PERMISSIONS.REPORTS_VIEW;
   if (path.startsWith('/api/delivery-notes/photos')) return rbac.PERMISSIONS.REPORTS_VIEW;

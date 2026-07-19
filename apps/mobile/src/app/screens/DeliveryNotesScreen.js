@@ -106,14 +106,20 @@ export default function DeliveryNotesScreen({ route }) {
       if (!isMounted || !draft?.photos?.length) return;
 
       const restoredPhotos = [];
+      let failedRestoreCount = 0;
       for (const photo of draft.photos.slice(0, MAX_NOTE_PHOTOS)) {
         try {
           restoredPhotos.push(photo.localUri ? photo : persistDeliveryPhoto(photo));
         } catch {
-          // A stale camera temp file should not crash the note screen.
+          failedRestoreCount += 1;
         }
       }
-      if (!restoredPhotos.length) return;
+      if (!restoredPhotos.length) {
+        if (failedRestoreCount > 0) {
+          setStatusText(`Unable to restore ${failedRestoreCount} captured photo${failedRestoreCount === 1 ? '' : 's'}. Retake before saving.`);
+        }
+        return;
+      }
       setSelectedPhotos((current) => {
         const seen = new Set(current.map((photo) => photo.localUri || photo.uri));
         const next = [
@@ -127,7 +133,9 @@ export default function DeliveryNotesScreen({ route }) {
         }).catch(() => null);
         return next;
       });
-      setStatusText('Restored captured photo draft. Review and save the delivery note.');
+      setStatusText(failedRestoreCount > 0
+        ? `Restored ${restoredPhotos.length} captured photo${restoredPhotos.length === 1 ? '' : 's'}; ${failedRestoreCount} could not be restored. Retake missing photo${failedRestoreCount === 1 ? '' : 's'} before saving.`
+        : 'Restored captured photo draft. Review and save the delivery note.');
     };
 
     restorePhotoDraft();
@@ -353,6 +361,7 @@ export default function DeliveryNotesScreen({ route }) {
         routeNumber,
         existingPhotos: existingPhotoDraft,
         photos: selectedPhotos.map((photo) => ({
+          clientPhotoId: photo.clientPhotoId,
           localUri: photo.localUri || photo.uri,
           mimeType: photo.mimeType,
           fileName: photo.fileName,

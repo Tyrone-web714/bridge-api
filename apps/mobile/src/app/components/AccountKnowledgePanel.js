@@ -3,6 +3,8 @@ import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-nati
 import AuthenticatedMediaImage from './AuthenticatedMediaImage';
 import { fetchAccountDeliveryNotes } from '../services/deliveryNotesApi';
 
+const MAX_PREVIEW_PHOTOS = 4;
+
 export default function AccountKnowledgePanel({
   accountNumber,
   destination,
@@ -57,7 +59,7 @@ export default function AccountKnowledgePanel({
   const photos = notes
     .flatMap((note) => note.photos || [])
     .filter((photo) => photo?.url)
-    .slice(0, 3);
+    .slice(0, MAX_PREVIEW_PHOTOS);
 
   return (
     <View style={styles.panel}>

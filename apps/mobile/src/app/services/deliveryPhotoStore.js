@@ -100,6 +100,7 @@ export function persistDeliveryPhoto(asset = {}) {
   });
 
   return {
+    clientPhotoId: asset.clientPhotoId || `client-photo-${Date.now()}-${Math.random().toString(16).slice(2, 10)}`,
     uri: destination.uri,
     localUri: destination.uri,
     mimeType: asset.mimeType || 'image/jpeg',

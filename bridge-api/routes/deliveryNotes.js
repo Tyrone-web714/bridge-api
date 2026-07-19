@@ -180,7 +180,7 @@ async function normalizeBase64Photo(photo, noteId, index, req) {
     throw error;
   }
 
-  return photoStorage.saveDeliveryNotePhoto({
+  const savedPhoto = await photoStorage.saveDeliveryNotePhoto({
     req,
     buffer,
     mimeType: detectedMimeType,
@@ -188,6 +188,10 @@ async function normalizeBase64Photo(photo, noteId, index, req) {
     index,
     originalName: photo?.fileName || photo?.filename || photo?.name
   });
+  return {
+    ...savedPhoto,
+    clientPhotoId: cleanText(photo?.clientPhotoId || photo?.client_photo_id, 120) || null
+  };
 }
 
 function normalizeExistingPhoto(photo, req) {
@@ -247,8 +251,14 @@ async function buildNoteFromInput(input, req, existing = null) {
       : [];
 
   const remainingSlots = Math.max(0, MAX_PHOTOS_PER_NOTE - keptPhotos.length);
+  const requestedNewPhotos = Array.isArray(input?.photos) ? input.photos.length : 0;
+  if (requestedNewPhotos > remainingSlots) {
+    const error = new Error(`delivery note supports ${MAX_PHOTOS_PER_NOTE} total photos; ${remainingSlots} new photo slot(s) remain`);
+    error.status = 400;
+    throw error;
+  }
   const newPhotos = Array.isArray(input?.photos)
-    ? (await Promise.all(input.photos.slice(0, remainingSlots)
+    ? (await Promise.all(input.photos
       .map((photo, index) => normalizeBase64Photo(photo, noteId, keptPhotos.length + index + 1, req))))
       .filter(Boolean)
     : [];

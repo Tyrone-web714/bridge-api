@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import { AppState } from 'react-native';
 import { createNavigationContainerRef, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LandingScreen from '../screens/LandingScreen';
@@ -12,6 +13,8 @@ import RouteInventoryScreen from '../screens/RouteInventoryScreen';
 import HazardReportScreen from '../screens/HazardReportScreen';
 import WarehouseInventoryScreen from '../screens/WarehouseInventoryScreen';
 import DriverSettingsOverlay from '../components/DriverSettingsOverlay';
+import { recoverPendingCameraDraft } from '../services/mobileMediaSelection';
+import { readLatestPhotoDraft } from '../services/photoDraftStore';
 
 const Stack = createNativeStackNavigator();
 const navigationRef = createNavigationContainerRef();
@@ -21,9 +24,54 @@ export default function RootNavigator() {
   const updateActiveScreen = () => {
     setActiveScreen(navigationRef.getCurrentRoute()?.name || 'Landing');
   };
+  const resumePhotoWorkflow = useCallback(async () => {
+    if (!navigationRef.isReady()) return;
+    const recovered = await recoverPendingCameraDraft().catch(() => null);
+    const draft = recovered || await readLatestPhotoDraft().catch(() => null);
+    if (!draft?.workflow || !draft?.photos?.length || !draft?.context?.routeParams) return;
+
+    if (draft.workflow === 'delivery-notes') {
+      navigationRef.reset({
+        index: 1,
+        routes: [
+          { name: 'Home' },
+          {
+            name: 'DeliveryNotes',
+            params: {
+              ...draft.context.routeParams,
+              restoredPhotoDraft: true,
+            },
+          },
+        ],
+      });
+    } else if (draft.workflow === 'hazard-report') {
+      navigationRef.reset({
+        index: 1,
+        routes: [
+          { name: 'Home' },
+          {
+            name: 'HazardReport',
+            params: {
+              ...draft.context.routeParams,
+              restoredPhotoDraft: true,
+            },
+          },
+        ],
+      });
+    }
+  }, []);
+
+  useEffect(() => {
+    const subscription = AppState.addEventListener('change', (state) => {
+      if (state === 'active') {
+        resumePhotoWorkflow();
+      }
+    });
+    return () => subscription.remove();
+  }, [resumePhotoWorkflow]);
 
   return (
-    <NavigationContainer ref={navigationRef} onReady={updateActiveScreen} onStateChange={updateActiveScreen}>
+    <NavigationContainer ref={navigationRef} onReady={() => { updateActiveScreen(); resumePhotoWorkflow(); }} onStateChange={updateActiveScreen}>
       <Stack.Navigator initialRouteName="Landing" screenOptions={{ headerTitleAlign: 'center' }}>
         <Stack.Screen
           name="Landing"

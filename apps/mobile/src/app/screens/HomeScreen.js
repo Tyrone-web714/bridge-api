@@ -47,16 +47,34 @@ function buildConfirmedDriver(driverId, driverName, assignedRoute) {
 function navigateToPhotoDraft(navigation, draft) {
   if (!draft?.workflow || !draft?.context?.routeParams) return false;
   if (draft.workflow === 'delivery-notes') {
-    navigation.navigate('DeliveryNotes', {
-      ...draft.context.routeParams,
-      restoredPhotoDraft: true,
+    navigation.reset({
+      index: 1,
+      routes: [
+        { name: 'Home' },
+        {
+          name: 'DeliveryNotes',
+          params: {
+            ...draft.context.routeParams,
+            restoredPhotoDraft: true,
+          },
+        },
+      ],
     });
     return true;
   }
   if (draft.workflow === 'hazard-report') {
-    navigation.navigate('HazardReport', {
-      ...draft.context.routeParams,
-      restoredPhotoDraft: true,
+    navigation.reset({
+      index: 1,
+      routes: [
+        { name: 'Home' },
+        {
+          name: 'HazardReport',
+          params: {
+            ...draft.context.routeParams,
+            restoredPhotoDraft: true,
+          },
+        },
+      ],
     });
     return true;
   }

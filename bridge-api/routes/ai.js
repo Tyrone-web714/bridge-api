@@ -2242,7 +2242,9 @@ router.post('/driver-copilot', requireAiAccess, requireAiConfigured, async (req,
   }
 
   try {
-    const route = await repositories.getAssignedDailyRouteForDriver(driverId, routeDate);
+    const route = await repositories.getAssignedDailyRouteForDriver(driverId, routeDate, {
+      tenantContext: req.authContext
+    });
     if (!route) {
       return res.status(404).json({
         ok: false,

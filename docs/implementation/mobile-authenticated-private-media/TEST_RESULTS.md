@@ -49,6 +49,52 @@ Results:
 
 Backend `verify:production` was attempted in the local shell and failed because local production environment values were not present (`DATABASE_URL`, `CORS_ORIGIN`). This was treated as an environment-availability limitation, not a source defect. No production credentials were requested or printed during this workflow repair.
 
+## 2026-07-19 Three-Defect Repair Validation
+
+Validation performed after physical Android testing confirmed:
+
+- four captured photos could appear as three;
+- post-camera return state could vary between Driver Login and Routes Page;
+- Driver Copilot returned "Authentication required" despite a valid logged-in driver session.
+
+Targeted validation passed:
+
+```powershell
+npm.cmd run test:driver-route-notes-photo
+npm.cmd run test:driver-copilot-auth
+npm.cmd run test:mobile-private-media
+npm.cmd run test:api-tenant
+```
+
+Results:
+
+- backend `test:driver-route-notes-photo`: passed; now verifies deterministic reset-based photo workflow recovery, visible partial draft-restore failure handling, per-photo client correlation IDs, expected/saved photo count checks, four-photo route preview rendering, and backend rejection of over-limit photo saves instead of silent truncation.
+- backend `test:driver-copilot-auth`: passed; verifies canonical mobile authenticated headers, `/api/ai` driver Bearer hydration before tenant enforcement, endpoint-specific Driver Copilot permission classification, narrow Driver permission, no broad dashboard grant, RBAC seed coverage, authenticated tenant context in route lookup, and no shared mobile driver token.
+- mobile `test:mobile-private-media`: passed.
+- backend `test:api-tenant`: passed.
+
+Regression validation passed:
+
+```powershell
+npm.cmd run test:mobile-tenant
+npm.cmd run test:private-media
+npm.cmd run test:auth-rbac
+npm.cmd run verify:secrets
+npm.cmd test
+git diff --check
+```
+
+Mobile validation passed:
+
+```powershell
+npm.cmd run verify:secrets
+$env:EXPO_PUBLIC_API_BASE_URL='https://truck-safe-routing-api.onrender.com'
+$env:EXPO_PUBLIC_ANDROID_MAPS_API_KEY='validation-maps-key-for-config-check'
+npm.cmd run verify:production
+```
+
+Backend `npm.cmd run verify:production` was rerun and failed because this local shell still does not contain real production values for `DATABASE_URL` and `CORS_ORIGIN`. This is the expected local environment limitation for that check. No production secrets were retrieved, printed, or changed.
+
 ## Photo-Capture Validation
 
 Verified at source and automated-test level:
@@ -126,6 +172,14 @@ Superseded after physical Android testing:
 - Result: installed/tested, but did not close the blocker because camera upload, return-to-login, and route notes retrieval remained defective.
 
 Next build must be created from the route notes/photo workflow repair commit.
+
+Additional superseded build:
+
+- EAS build ID: `b65ed650-c218-46e3-8fd8-2cb83c625f5f`
+- Source commit: `87172a27b48ced29d69aa092615fb9f17e42b8f4`
+- Result: superseded before acceptance because it does not contain the four-photo, deterministic resume, and Driver Copilot auth repairs.
+
+Next build must be created from the committed three-defect repair.
 
 ## Production Safety
 

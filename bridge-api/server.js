@@ -156,6 +156,7 @@ function hydrateDriverBearerIfPresent(req, res, next) {
 app.use('/api/shared-safety', hydrateDriverBearerIfPresent);
 app.use('/api/routing/manual-hazards/report', hydrateDriverBearerIfPresent);
 app.use('/api/media', hydrateDriverBearerIfPresent);
+app.use('/api/ai', hydrateDriverBearerIfPresent);
 app.use('/api', adminAuth.validateAdminSession);
 app.use('/api', authorization.attachAuthContext);
 app.use('/api', authorization.enforceApiTenantPolicy);
