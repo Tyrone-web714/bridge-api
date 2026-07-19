@@ -798,6 +798,8 @@ export default function HomeScreen({ navigation, route }) {
     ? destinationDetails.businessCandidates.filter((candidate) => candidate?.placeId && candidate?.name)
     : [];
   const isDriverRestoring = driverStartupState === 'restoring';
+  const isDriverAuthenticated = driverStartupState === 'authenticated';
+  const shouldShowDriverLoginForm = !isDriverRestoring && !isDriverAuthenticated && !confirmedDriver;
 
   return (
     <SafeAreaView style={styles.container}>
@@ -811,7 +813,7 @@ export default function HomeScreen({ navigation, route }) {
               <ActivityIndicator color="#ffffff" />
               <Text style={styles.driverRestoreText}>Restoring driver session...</Text>
             </View>
-          ) : (
+          ) : shouldShowDriverLoginForm ? (
             <>
               <TextInput
                 value={driverIdInput}
@@ -857,7 +859,23 @@ export default function HomeScreen({ navigation, route }) {
                 </Text>
               </Pressable>
             </>
-          )}
+          ) : !confirmedDriver ? (
+            <View style={styles.driverLoginConfirmed}>
+              <Text style={styles.driverLoginConfirmedTitle}>Login Confirmed</Text>
+              <Text style={styles.driverLoginConfirmedText}>
+                {driverLoginStatus || 'Driver session is active. Checking assigned route...'}
+              </Text>
+              <Pressable
+                onPress={switchDriver}
+                style={({ pressed }) => [
+                  styles.switchDriverButton,
+                  pressed && styles.supervisorButtonPressed,
+                ]}
+              >
+                <Text style={styles.switchDriverButtonText}>Switch Driver</Text>
+              </Pressable>
+            </View>
+          ) : null}
           {!!confirmedDriver && (
             <View style={styles.driverLoginConfirmed}>
               <Text style={styles.driverLoginConfirmedTitle}>Login Confirmed</Text>

@@ -743,6 +743,8 @@ export default function DeliverySettlementScreen({ navigation, route }) {
         <AccountKnowledgePanel
           accountNumber={stop?.accountNumber}
           destination={buildStopAddress(stop)}
+          routeStopId={stopId}
+          routeDate={routeDate}
           driverId={driverId}
           driverName={driverName}
           onOpen={openDeliveryNotes}

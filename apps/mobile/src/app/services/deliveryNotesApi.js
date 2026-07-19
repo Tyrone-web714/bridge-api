@@ -9,6 +9,7 @@ import {
 } from './deliveryOfflineStore';
 import {
   deleteLocalDeliveryPhotos,
+  isLocalMediaUploadError,
   prepareDeliveryPhotoForUpload,
 } from './deliveryPhotoStore';
 
@@ -30,6 +31,10 @@ async function readJson(response) {
 
 function noteIdentity(note = {}) {
   return {
+    routeStopId: note.routeStopId,
+    routeManifestId: note.routeManifestId,
+    routeDate: note.routeDate,
+    routeNumber: note.routeNumber,
     accountNumber: note.accountNumber,
     placeId: note.placeId,
     destination: note.destination || note.address,
@@ -76,11 +81,19 @@ export async function fetchAccountDeliveryNotes({
   accountNumber,
   placeId,
   destination,
+  routeStopId,
+  routeManifestId,
+  routeDate,
+  routeNumber,
   driverId,
   driverName,
 } = {}) {
-  const identity = { accountNumber, placeId, destination };
+  const identity = { accountNumber, placeId, destination, routeStopId, routeManifestId, routeDate, routeNumber };
   const query = new URLSearchParams();
+  if (routeStopId) query.set('routeStopId', routeStopId);
+  if (routeManifestId) query.set('routeManifestId', routeManifestId);
+  if (routeDate) query.set('routeDate', routeDate);
+  if (routeNumber) query.set('routeNumber', routeNumber);
   if (accountNumber) query.set('accountNumber', accountNumber);
   if (placeId) query.set('placeId', placeId);
   if (destination) query.set('destination', destination);
@@ -157,6 +170,7 @@ export async function saveAccountDeliveryNote(note, identity = {}, noteId = null
     await upsertCachedNote(savedNote, savedNote.id, false);
     return result;
   } catch (error) {
+    if (isLocalMediaUploadError(error)) throw error;
     if (error?.status) throw error;
     const operation = await enqueueDeliveryOperation(
       operationType,

@@ -25,6 +25,10 @@ export default function DeliveryNotesScreen({ route }) {
   const destinationPlaceId = route?.params?.destinationPlaceId || null;
   const destinationDetails = route?.params?.destinationDetails || null;
   const accountNumber = route?.params?.accountNumber || destinationDetails?.accountNumber || null;
+  const routeManifestId = route?.params?.routeManifestId || destinationDetails?.routeManifestId || null;
+  const routeStopId = route?.params?.routeStopId || destinationDetails?.routeStopId || null;
+  const routeDate = route?.params?.routeDate || route?.params?.routeManifestDate || destinationDetails?.routeDate || null;
+  const routeNumber = route?.params?.routeNumber || destinationDetails?.routeNumber || null;
   const routeDriverId = route?.params?.driverId || destinationDetails?.routeManifestDriverId || '';
   const routeDriverName = route?.params?.driverName || destinationDetails?.routeManifestDriverName || DRIVER_NAME;
 
@@ -44,6 +48,10 @@ export default function DeliveryNotesScreen({ route }) {
     accountNumber,
     placeId: destinationPlaceId,
     destination,
+    routeManifestId,
+    routeStopId,
+    routeDate,
+    routeNumber,
     routeParams: route?.params,
   });
 
@@ -54,6 +62,10 @@ export default function DeliveryNotesScreen({ route }) {
         accountNumber,
         placeId: destinationPlaceId,
         destination,
+        routeManifestId,
+        routeStopId,
+        routeDate,
+        routeNumber,
         driverId: routeDriverId,
         driverName: routeDriverName,
       });
@@ -68,6 +80,10 @@ export default function DeliveryNotesScreen({ route }) {
     accountNumber,
     destination,
     destinationPlaceId,
+    routeManifestId,
+    routeStopId,
+    routeDate,
+    routeNumber,
     routeDriverId,
     routeDriverName,
   ]);
@@ -122,6 +138,10 @@ export default function DeliveryNotesScreen({ route }) {
     accountNumber,
     destination,
     destinationPlaceId,
+    routeManifestId,
+    routeStopId,
+    routeDate,
+    routeNumber,
   ]);
 
   const pickPhotos = async () => {
@@ -219,8 +239,19 @@ export default function DeliveryNotesScreen({ route }) {
         ...updates,
         photos: updates.photos || [],
         accountNumber: note.accountNumber || accountNumber,
+        routeManifestId: note.routeManifestId || routeManifestId,
+        routeStopId: note.routeStopId || routeStopId,
+        routeDate: note.routeDate || routeDate,
+        routeNumber: note.routeNumber || routeNumber,
       },
-      { driverId: routeDriverId, driverName: routeDriverName },
+      {
+        driverId: routeDriverId,
+        driverName: routeDriverName,
+        routeManifestId,
+        routeStopId,
+        routeDate,
+        routeNumber,
+      },
       note.id
     );
     return data.note || data;
@@ -316,17 +347,31 @@ export default function DeliveryNotesScreen({ route }) {
         driverName,
         instructions: cleanedInstructions,
         routeContext: destination,
+        routeManifestId,
+        routeStopId,
+        routeDate,
+        routeNumber,
         existingPhotos: existingPhotoDraft,
         photos: selectedPhotos.map((photo) => ({
           localUri: photo.localUri || photo.uri,
           mimeType: photo.mimeType,
           fileName: photo.fileName,
+          mediaSource: photo.mediaSource,
+          sizeBytes: photo.sizeBytes,
+          sourceUriScheme: photo.sourceUriScheme,
         })),
       };
 
       const data = await saveAccountDeliveryNote(
         payload,
-        { driverId: routeDriverId, driverName: routeDriverName },
+        {
+          driverId: routeDriverId,
+          driverName: routeDriverName,
+          routeManifestId,
+          routeStopId,
+          routeDate,
+          routeNumber,
+        },
         editingNoteId
       );
 

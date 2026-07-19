@@ -733,6 +733,10 @@
             }), /*#__PURE__*/(0, _reactJsxRuntime.jsx)(AccountKnowledgePanel.default, {
               accountNumber: nextStop.accountNumber,
               destination: buildStopAddress(nextStop),
+              routeManifestId: routeManifest?.id,
+              routeStopId: nextStop.id,
+              routeDate: routeManifest?.routeDate,
+              routeNumber: routeManifest?.routeNumber,
               driverId: confirmedDriverId,
               driverName: confirmedDriverName,
               compact: true,
@@ -855,6 +859,10 @@
                 }), /*#__PURE__*/(0, _reactJsxRuntime.jsx)(AccountKnowledgePanel.default, {
                   accountNumber: stop.accountNumber,
                   destination: buildStopAddress(stop),
+                  routeManifestId: routeManifest?.id,
+                  routeStopId: stop.id,
+                  routeDate: routeManifest?.routeDate,
+                  routeNumber: routeManifest?.routeNumber,
                   driverId: confirmedDriverId,
                   driverName: confirmedDriverName,
                   compact: true,

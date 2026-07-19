@@ -31,6 +31,9 @@ function getDriverIdentity(req) {
   if (req.driverAuth?.driverId) {
     return {
       driverId: req.driverAuth.driverId,
+      internalDriverId: req.driverAuth.internalDriverId || req.driverAuth.driverId,
+      companyDriverNumber: req.driverAuth.companyDriverNumber || req.driverAuth.driverId,
+      organizationId: req.driverAuth.organizationId || BOOTSTRAP_ORGANIZATION.id,
       driverName: req.driverAuth.driverName || req.driverAuth.driverId,
       deviceId: req.driverAuth.deviceId || null
     };
@@ -50,6 +53,9 @@ function getDriverIdentity(req) {
 
   return {
     driverId,
+    internalDriverId: driverId,
+    companyDriverNumber: driverId,
+    organizationId: BOOTSTRAP_ORGANIZATION.id,
     driverName,
     deviceId
   };

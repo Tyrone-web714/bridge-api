@@ -21,6 +21,16 @@ function cleanLongText(value, maxLength = 2500) {
   return String(value || '').trim().slice(0, maxLength);
 }
 
+function cleanOptionalText(value, maxLength = 200) {
+  const cleaned = cleanText(value, maxLength);
+  return cleaned || null;
+}
+
+function cleanRouteDate(value) {
+  const cleaned = cleanText(value, 40);
+  return /^\d{4}-\d{2}-\d{2}/.test(cleaned) ? cleaned.slice(0, 10) : null;
+}
+
 function isSupportedImageMimeType(mimeType) {
   return ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'].includes(cleanText(mimeType, 40).toLowerCase());
 }
@@ -121,7 +131,13 @@ function getRequestTenantContext(req) {
   return req.authContext?.organizationId
     ? req.authContext
     : req.driverAuth?.organizationId
-      ? { organizationId: req.driverAuth.organizationId }
+      ? {
+        organizationId: req.driverAuth.organizationId,
+        internalDriverId: req.driverAuth.internalDriverId,
+        companyDriverNumber: req.driverAuth.companyDriverNumber,
+        role: req.driverAuth.approvedRole,
+        permissions: req.driverAuth.permissions
+      }
       : req.adminSession?.organizationId
         ? { organizationId: req.adminSession.organizationId }
         : undefined;
@@ -247,6 +263,13 @@ async function buildNoteFromInput(input, req, existing = null) {
     customerName: cleanText(input?.customerName ?? existing?.customerName, 160) || null,
     instructions,
     driverName: cleanText(input?.driverName ?? existing?.driverName, 120) || 'driver_app',
+    driverId: cleanOptionalText(input?.driverId ?? input?.driver_id ?? existing?.driverId, 120),
+    internalDriverId: cleanOptionalText(input?.internalDriverId ?? input?.internal_driver_id ?? existing?.internalDriverId, 160),
+    companyDriverNumber: cleanOptionalText(input?.companyDriverNumber ?? input?.company_driver_number ?? input?.driverId ?? existing?.companyDriverNumber, 120),
+    routeManifestId: cleanOptionalText(input?.routeManifestId ?? input?.route_manifest_id ?? input?.manifestId ?? existing?.routeManifestId, 160),
+    routeStopId: cleanOptionalText(input?.routeStopId ?? input?.route_stop_id ?? input?.stopId ?? existing?.routeStopId, 160),
+    routeDate: cleanRouteDate(input?.routeDate ?? input?.route_date ?? existing?.routeDate),
+    routeNumber: cleanOptionalText(input?.routeNumber ?? input?.route_number ?? existing?.routeNumber, 120),
     routeContext: cleanText(input?.routeContext ?? existing?.routeContext, 240) || null,
     photos: [...keptPhotos, ...newPhotos].slice(0, MAX_PHOTOS_PER_NOTE),
     createdAt: existing?.createdAt || now,
@@ -255,13 +278,32 @@ async function buildNoteFromInput(input, req, existing = null) {
 }
 
 function filterNotes(records, query) {
+  const routeStopId = cleanText(query.routeStopId || query.route_stop_id || query.stopId, 160).toLowerCase();
+  const routeManifestId = cleanText(query.routeManifestId || query.route_manifest_id || query.manifestId, 160).toLowerCase();
+  const routeDate = cleanRouteDate(query.routeDate || query.route_date);
+  const routeNumber = cleanText(query.routeNumber || query.route_number, 120).toLowerCase();
   const accountNumber = cleanText(query.accountNumber || query.account_number, 120).toLowerCase();
   const placeId = cleanText(query.placeId, 160);
   const destination = cleanText(query.destination, 240).toLowerCase();
 
-  if (!accountNumber && !placeId && !destination) return records;
+  if (!routeStopId && !routeManifestId && !routeDate && !routeNumber && !accountNumber && !placeId && !destination) return records;
 
   return records.filter((record) => {
+    const recordRouteStopId = String(record.routeStopId || '').toLowerCase();
+    const recordRouteManifestId = String(record.routeManifestId || '').toLowerCase();
+    const recordRouteDate = String(record.routeDate || '').slice(0, 10);
+    const recordRouteNumber = String(record.routeNumber || '').toLowerCase();
+
+    if (routeStopId) {
+      if (recordRouteStopId === routeStopId) return true;
+      if (recordRouteStopId) return false;
+    }
+    if (routeManifestId) {
+      if (recordRouteManifestId === routeManifestId) return true;
+      if (recordRouteManifestId) return false;
+    }
+    if (routeDate && recordRouteDate && recordRouteDate !== routeDate) return false;
+    if (routeNumber && recordRouteNumber && recordRouteNumber !== routeNumber) return false;
     if (accountNumber && String(record.accountNumber || '').toLowerCase() === accountNumber) return true;
     if (placeId && record.placeId && record.placeId === placeId) return true;
     if (!destination) return false;
@@ -293,7 +335,10 @@ router.post('/', driverAuth.requireDriverAuth, async (req, res) => {
     const note = await buildNoteFromInput({
       ...(req.body || {}),
       driverName: req.body?.driverName || identity.driverName,
-      driverId: identity.driverId
+      driverId: identity.driverId,
+      internalDriverId: identity.internalDriverId,
+      companyDriverNumber: identity.companyDriverNumber,
+      organizationId: identity.organizationId
     }, req);
     await saveStoredNote(note, { tenantContext: getRequestTenantContext(req) });
 

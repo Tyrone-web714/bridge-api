@@ -3922,6 +3922,8 @@ export default function MapScreen({ route, navigation }) {
                 accountNumber={destinationDetails?.accountNumber || null}
                 destination={destinationAddress}
                 placeId={destinationPlaceId}
+                routeStopId={routeManifestStopId}
+                routeDate={routeManifestDate}
                 driverId={routeManifestDriverId}
                 driverName={routeManifestDriverName}
                 compact

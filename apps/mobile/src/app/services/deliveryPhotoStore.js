@@ -3,6 +3,19 @@ import { getDriverTenantContext } from './driverSession';
 import { isTrustedTenantContext, safeStoragePart } from './tenantContext';
 
 const PHOTO_DIRECTORY = new Directory(Paths.document, 'delivery-note-photos');
+const LOCAL_MEDIA_ERROR_CODE = 'LOCAL_MEDIA_UNREADABLE';
+
+function createLocalMediaError(message, metadata = {}) {
+  const error = new Error(message);
+  error.code = LOCAL_MEDIA_ERROR_CODE;
+  error.isLocalMediaError = true;
+  error.photoMetadata = metadata;
+  return error;
+}
+
+export function isLocalMediaUploadError(error) {
+  return Boolean(error?.isLocalMediaError || error?.code === LOCAL_MEDIA_ERROR_CODE);
+}
 
 function ensureDirectory(directory) {
   if (!directory.exists) {
@@ -31,22 +44,69 @@ function safeExtension(fileName, mimeType) {
   return '.jpg';
 }
 
+function safeUriScheme(uri) {
+  return String(uri || '').split(':')[0] || 'unknown';
+}
+
+function fileSize(file) {
+  const size = Number(file?.size);
+  return Number.isFinite(size) ? size : null;
+}
+
+function assertReadableFile(file, label, source = {}) {
+  if (!file?.exists) {
+    throw createLocalMediaError(`${label} photo file is no longer available. Attach the photo again.`, {
+      source: source.mediaSource || 'unknown',
+      scheme: safeUriScheme(source.localUri || source.uri),
+      fileName: source.fileName || file?.name || null,
+    });
+  }
+
+  const size = fileSize(file);
+  if (size === 0) {
+    throw createLocalMediaError(`${label} photo file is empty. Attach the photo again.`, {
+      source: source.mediaSource || 'unknown',
+      scheme: safeUriScheme(source.localUri || source.uri),
+      fileName: source.fileName || file?.name || null,
+      sizeBytes: 0,
+    });
+  }
+}
+
 export function persistDeliveryPhoto(asset = {}) {
   if (!asset.uri) throw new Error('The selected photo has no readable file.');
   const directory = currentTenantPhotoDirectory();
+  const source = new File(asset.uri);
 
   const extension = safeExtension(asset.fileName, asset.mimeType);
   const destination = new File(
     directory,
     `delivery-photo-${Date.now()}-${Math.random().toString(16).slice(2, 10)}${extension}`
   );
-  new File(asset.uri).copy(destination);
+  try {
+    source.copy(destination);
+  } catch (error) {
+    throw createLocalMediaError('Selected photo could not be copied into Truck-Safe storage. Attach the photo again.', {
+      source: asset.mediaSource || 'unknown',
+      scheme: safeUriScheme(asset.uri),
+      fileName: asset.fileName || null,
+      cause: error.message || null,
+    });
+  }
+  assertReadableFile(destination, 'Stored delivery', {
+    ...asset,
+    uri: destination.uri,
+    localUri: destination.uri,
+  });
 
   return {
     uri: destination.uri,
     localUri: destination.uri,
     mimeType: asset.mimeType || 'image/jpeg',
     fileName: asset.fileName || destination.name,
+    mediaSource: asset.mediaSource || 'unknown',
+    sizeBytes: fileSize(destination),
+    sourceUriScheme: safeUriScheme(asset.uri),
   };
 }
 
@@ -56,15 +116,25 @@ export async function prepareDeliveryPhotoForUpload(photo = {}) {
   if (!localUri) return photo;
 
   const file = new File(localUri);
-  if (!file.exists) {
-    throw new Error(`Offline delivery photo is no longer available: ${photo.fileName || 'photo'}`);
-  }
+  assertReadableFile(file, 'Stored delivery', photo);
 
-  return {
-    base64: await file.base64(),
-    mimeType: photo.mimeType || 'image/jpeg',
-    fileName: photo.fileName || file.name,
-  };
+  try {
+    return {
+      base64: await file.base64(),
+      mimeType: photo.mimeType || 'image/jpeg',
+      fileName: photo.fileName || file.name,
+      mediaSource: photo.mediaSource || 'unknown',
+      sourceUriScheme: photo.sourceUriScheme || safeUriScheme(localUri),
+      sizeBytes: fileSize(file),
+    };
+  } catch (error) {
+    throw createLocalMediaError('Stored delivery photo could not be read for upload. Attach the photo again.', {
+      source: photo.mediaSource || 'unknown',
+      scheme: safeUriScheme(localUri),
+      fileName: photo.fileName || file.name || null,
+      cause: error.message || null,
+    });
+  }
 }
 
 export function deleteLocalDeliveryPhotos(photos = []) {

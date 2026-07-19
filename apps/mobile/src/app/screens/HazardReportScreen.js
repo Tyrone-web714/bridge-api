@@ -14,6 +14,7 @@ import * as Location from 'expo-location';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { submitDriverHazardReport } from '../services/routingApi';
 import { capturePhotoAssets, choosePhotoLibraryAssets, recoverPendingCameraDraft } from '../services/mobileMediaSelection';
+import { persistDeliveryPhoto, prepareDeliveryPhotoForUpload } from '../services/deliveryPhotoStore';
 import {
   buildHazardDraftContext,
   clearPhotoDraft,
@@ -29,12 +30,12 @@ const HAZARD_TYPES = [
 const MAX_PHOTOS = 4;
 const HAZARD_DRAFT_WORKFLOW = 'hazard-report';
 
-function photoPayload(asset) {
-  return {
-    base64: asset.base64,
+async function photoPayload(asset) {
+  return prepareDeliveryPhotoForUpload({
+    ...asset,
     mimeType: asset.mimeType || 'image/jpeg',
     fileName: asset.fileName || `hazard-${Date.now()}.jpg`,
-  };
+  });
 }
 
 export default function HazardReportScreen({ navigation, route }) {
@@ -122,17 +123,22 @@ export default function HazardReportScreen({ navigation, route }) {
       draftWorkflow: HAZARD_DRAFT_WORKFLOW,
       draftContext,
     });
-    const selected = assets.filter((asset) => asset?.base64).slice(0, 1);
+    const selected = assets.filter((asset) => asset?.uri || asset?.base64).slice(0, 1);
     if (selected.length > 0) {
-      setPhotos((current) => {
-        const next = [...current, ...selected].slice(0, MAX_PHOTOS);
-        savePhotoDraft({
-          workflow: HAZARD_DRAFT_WORKFLOW,
-          context: draftContext,
-          photos: next,
-        }).catch(() => null);
-        return next;
-      });
+      try {
+        const persisted = selected.map((asset) => (asset.localUri ? asset : persistDeliveryPhoto(asset)));
+        setPhotos((current) => {
+          const next = [...current, ...persisted].slice(0, MAX_PHOTOS);
+          savePhotoDraft({
+            workflow: HAZARD_DRAFT_WORKFLOW,
+            context: draftContext,
+            photos: next,
+          }).catch(() => null);
+          return next;
+        });
+      } catch (error) {
+        Alert.alert('Photo unavailable', error.message || 'Unable to attach this photo.');
+      }
     }
   };
 
@@ -150,7 +156,20 @@ export default function HazardReportScreen({ navigation, route }) {
       base64: true,
     });
     if (selected.length > 0) {
-      setPhotos((current) => [...current, ...selected].slice(0, MAX_PHOTOS));
+      try {
+        const persisted = selected.map((asset) => (asset.localUri ? asset : persistDeliveryPhoto(asset)));
+        setPhotos((current) => {
+          const next = [...current, ...persisted].slice(0, MAX_PHOTOS);
+          savePhotoDraft({
+            workflow: HAZARD_DRAFT_WORKFLOW,
+            context: draftContext,
+            photos: next,
+          }).catch(() => null);
+          return next;
+        });
+      } catch (error) {
+        Alert.alert('Photo unavailable', error.message || 'Unable to attach this photo.');
+      }
     }
   };
 
@@ -186,7 +205,7 @@ export default function HazardReportScreen({ navigation, route }) {
         reported_heading: Number.isFinite(coordinate.heading) ? coordinate.heading : null,
         reported_speed_mph: Number.isFinite(coordinate.speed) ? coordinate.speed * 2.236936 : null,
         route_destination: route?.params?.routeDestination || null,
-        photos: photos.map(photoPayload),
+        photos: await Promise.all(photos.map(photoPayload)),
       });
       Alert.alert(
         'Hazard submitted',

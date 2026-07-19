@@ -66,7 +66,19 @@ function asArray(value) {
   return Array.isArray(value) ? value : [];
 }
 
+function parseJsonObject(value) {
+  if (!value) return {};
+  if (typeof value === 'object' && !Array.isArray(value)) return value;
+  try {
+    const parsed = JSON.parse(value);
+    return parsed && typeof parsed === 'object' && !Array.isArray(parsed) ? parsed : {};
+  } catch {
+    return {};
+  }
+}
+
 function deliveryNoteFromRow(row) {
+  const raw = parseJsonObject(row.raw);
   return {
     id: row.id,
     organizationId: row.organization_id || BOOTSTRAP_ORGANIZATION.id,
@@ -78,6 +90,13 @@ function deliveryNoteFromRow(row) {
     customerName: row.customer_name || null,
     instructions: row.instructions || '',
     driverName: row.driver_name || 'driver_app',
+    driverId: raw.driverId || raw.driver_id || null,
+    internalDriverId: raw.internalDriverId || raw.internal_driver_id || null,
+    companyDriverNumber: raw.companyDriverNumber || raw.company_driver_number || raw.driverId || raw.driver_id || null,
+    routeManifestId: raw.routeManifestId || raw.route_manifest_id || raw.manifestId || null,
+    routeStopId: raw.routeStopId || raw.route_stop_id || raw.stopId || null,
+    routeDate: raw.routeDate || raw.route_date || null,
+    routeNumber: raw.routeNumber || raw.route_number || null,
     routeContext: row.route_context || null,
     photos: asArray(row.photos),
     createdAt: toIsoString(row.created_at),

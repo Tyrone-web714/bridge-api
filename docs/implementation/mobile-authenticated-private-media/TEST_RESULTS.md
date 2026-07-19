@@ -14,12 +14,16 @@ Additional validation completed:
 npm.cmd run test:mobile-tenant
 npm.cmd run verify:secrets
 npm.cmd run verify:production
+npm.cmd ci --dry-run
+Expo config validation
 npm.cmd run test:private-media
 npm.cmd run test:legacy-private-media
+npm.cmd run test:driver-route-notes-photo
 npm.cmd run test:mobile-tenant
 npm.cmd run test:auth-rbac
 npm.cmd run test:api-tenant
 npm.cmd run verify:secrets
+npm.cmd ci --dry-run
 npm.cmd test
 git diff --check
 ```
@@ -30,14 +34,20 @@ Results:
 - backend `test:mobile-tenant`: passed.
 - mobile `verify:secrets`: passed.
 - mobile `verify:production`: passed with validation-only environment values; no env values were committed.
+- mobile `npm ci --dry-run`: passed after rerun with filesystem permission because Windows initially denied unlink access to `apps/mobile/node_modules/.package-lock.json`.
+- mobile Expo config validation: passed with validation-only environment values and without printing resolved config values.
 - backend `test:private-media`: passed.
 - backend `test:legacy-private-media`: passed.
+- backend `test:driver-route-notes-photo`: passed.
 - backend `test:mobile-tenant`: passed.
 - backend `test:auth-rbac`: passed.
 - backend `test:api-tenant`: passed.
 - backend `verify:secrets`: passed.
+- backend `npm ci --dry-run`: passed.
 - backend full `npm.cmd test`: passed.
 - `git diff --check`: passed.
+
+Backend `verify:production` was attempted in the local shell and failed because local production environment values were not present (`DATABASE_URL`, `CORS_ORIGIN`). This was treated as an environment-availability limitation, not a source defect. No production credentials were requested or printed during this workflow repair.
 
 ## Photo-Capture Validation
 
@@ -69,6 +79,23 @@ Source-level fix implemented after physical-device defect:
 
 Physical validation remains pending until the next APK is installed and tested on device.
 
+## Driver Route Notes/Photo Workflow Validation
+
+Source-level repair completed after failed physical Android testing.
+
+Verified by `npm.cmd run test:driver-route-notes-photo`:
+
+- camera and library assets are copied into TSR-controlled local storage before upload;
+- the TSR-owned local copy is checked for readability before upload;
+- unreadable local media is classified and is not queued as offline success;
+- Home does not show Driver Login for a restored authenticated session that is still resolving route state;
+- pending photo draft context preserves route manifest/stop/date/number metadata;
+- Delivery Notes save, fetch, and cache use route-stop scope when available;
+- route preview panels use the same scoped delivery-note fetch path;
+- backend delivery-note saves record authenticated internal driver ID and company driver number metadata;
+- backend delivery-note responses hydrate route-stop and driver metadata from persisted raw JSON;
+- backend filtering avoids returning another stop's stop-scoped note for a mismatched route stop.
+
 ## Preview APK Build
 
 Superseded:
@@ -92,6 +119,13 @@ Completed replacement build:
 - Install/QR page: `https://expo.dev/accounts/lamont76/projects/truck-safe-routing/builds/4435a491-f270-4a54-8352-3b653750af73`
 
 Physical validation remains pending until this APK is installed and tested on device.
+
+Superseded after physical Android testing:
+
+- EAS build ID: `4435a491-f270-4a54-8352-3b653750af73`
+- Result: installed/tested, but did not close the blocker because camera upload, return-to-login, and route notes retrieval remained defective.
+
+Next build must be created from the route notes/photo workflow repair commit.
 
 ## Production Safety
 

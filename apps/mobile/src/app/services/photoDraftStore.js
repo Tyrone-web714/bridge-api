@@ -86,6 +86,7 @@ async function upsertIndex(identity, draft) {
 }
 
 function sanitizeRouteParams(routeParams = {}) {
+  const destinationDetails = routeParams.destinationDetails || {};
   return {
     destinationAddress: cleanTenantValue(routeParams.destinationAddress),
     destinationPlaceId: cleanTenantValue(routeParams.destinationPlaceId),
@@ -93,6 +94,10 @@ function sanitizeRouteParams(routeParams = {}) {
     driverId: cleanTenantValue(routeParams.driverId),
     driverName: cleanTenantValue(routeParams.driverName),
     routeDestination: cleanTenantValue(routeParams.routeDestination),
+    routeManifestId: cleanTenantValue(routeParams.routeManifestId || destinationDetails.routeManifestId),
+    routeStopId: cleanTenantValue(routeParams.routeStopId || destinationDetails.routeStopId),
+    routeDate: cleanTenantValue(routeParams.routeDate || routeParams.routeManifestDate || destinationDetails.routeDate),
+    routeNumber: cleanTenantValue(routeParams.routeNumber || destinationDetails.routeNumber),
   };
 }
 
@@ -100,12 +105,20 @@ export function buildDeliveryNoteDraftContext({
   accountNumber,
   placeId,
   destination,
+  routeManifestId,
+  routeStopId,
+  routeDate,
+  routeNumber,
   routeParams,
 } = {}) {
   return {
     accountNumber: cleanTenantValue(accountNumber),
     placeId: cleanTenantValue(placeId),
     destination: cleanTenantValue(destination),
+    routeManifestId: cleanTenantValue(routeManifestId || routeParams?.routeManifestId || routeParams?.destinationDetails?.routeManifestId),
+    stopId: cleanTenantValue(routeStopId || routeParams?.routeStopId || routeParams?.destinationDetails?.routeStopId),
+    routeDate: cleanTenantValue(routeDate || routeParams?.routeDate || routeParams?.routeManifestDate || routeParams?.destinationDetails?.routeDate),
+    routeNumber: cleanTenantValue(routeNumber || routeParams?.routeNumber || routeParams?.destinationDetails?.routeNumber),
     routeParams: sanitizeRouteParams(routeParams),
   };
 }

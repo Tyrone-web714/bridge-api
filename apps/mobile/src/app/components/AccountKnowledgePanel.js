@@ -7,6 +7,10 @@ export default function AccountKnowledgePanel({
   accountNumber,
   destination,
   placeId,
+  routeManifestId,
+  routeStopId,
+  routeDate,
+  routeNumber,
   driverId,
   driverName,
   onOpen,
@@ -27,6 +31,10 @@ export default function AccountKnowledgePanel({
       accountNumber,
       placeId,
       destination,
+      routeManifestId,
+      routeStopId,
+      routeDate,
+      routeNumber,
       driverId,
       driverName,
     })
@@ -43,7 +51,7 @@ export default function AccountKnowledgePanel({
     return () => {
       active = false;
     };
-  }, [accountNumber, destination, driverId, driverName, placeId]);
+  }, [accountNumber, destination, driverId, driverName, placeId, routeManifestId, routeStopId, routeDate, routeNumber]);
 
   const latestNotes = notes.slice(0, compact ? 1 : 2);
   const photos = notes

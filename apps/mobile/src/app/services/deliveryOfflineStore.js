@@ -48,7 +48,14 @@ function legacyCacheKey(stopId, companyDriverNumber) {
   return `${LEGACY_DELIVERY_CACHE_PREFIX}/${clean(companyDriverNumber) || 'unknown-driver'}/${clean(stopId)}`;
 }
 
-function notesIdentityPart({ accountNumber, placeId, destination } = {}) {
+function notesIdentityPart({ routeStopId, routeManifestId, routeDate, routeNumber, accountNumber, placeId, destination } = {}) {
+  const stopScoped = clean(routeStopId);
+  if (stopScoped) return `stop-${stopScoped}`;
+  const routeScoped = [routeManifestId, routeDate, routeNumber, accountNumber]
+    .map(clean)
+    .filter(Boolean)
+    .join('-');
+  if (routeScoped) return `route-${routeScoped}`;
   return clean(accountNumber)
     || clean(placeId)
     || clean(destination).toLowerCase().replace(/\s+/g, '-').slice(0, 180)
