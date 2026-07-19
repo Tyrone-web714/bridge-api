@@ -4,20 +4,20 @@
 
 READY FOR PHYSICAL VALIDATION.
 
-The source-level mobile private-media blocker has been addressed. The mobile photo-capture workflow has also been fixed at source level. Physical Android validation and authenticated dashboard validation remain outstanding.
+The source-level mobile private-media blocker has been addressed. The mobile photo-capture workflow has also been fixed at source level. A physical-device camera-return regression was found after the first camera APK and has now been fixed at source level with tenant-scoped camera workflow intent, Expo pending-result recovery, and durable photo drafts. Physical Android revalidation and authenticated dashboard validation remain outstanding.
 
 The preview APK built from commit `24485ea1bf9364e6f39a328bd012bad4ac9e9261` is no longer sufficient for final physical media validation.
 
-A new non-production preview APK has been built from the camera-capture fix commit:
+The non-production preview APK built from the first camera-capture commit is superseded by the camera-return/session-draft fix:
 
 - EAS build ID: `344d34ae-b083-4171-ab1a-32de556517e9`
 - Install/QR page: `https://expo.dev/accounts/lamont76/projects/truck-safe-routing/builds/344d34ae-b083-4171-ab1a-32de556517e9`
 
-Physical validation of this new APK remains pending.
+Do not use that APK for final R2 shutdown validation. A new APK must be built from the camera-return fix commit.
 
 ## Remaining Sequence
 
-1. Install the new non-production preview APK on an Android device.
+1. Build and install a new non-production preview APK from the camera-return fix commit.
 2. Confirm Delivery Notes offers `Take Photo`, `Choose From Library`, and `Cancel`.
 3. Physically validate camera-captured delivery-note upload and authenticated rendering.
 4. Physically validate library-selected delivery-note upload and authenticated rendering.

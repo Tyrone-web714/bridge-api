@@ -53,9 +53,25 @@ Verified at source and automated-test level:
 - Hazard camera and library photos both enter the same hazard submission payload path.
 - Authenticated private-media rendering still avoids direct public R2 URLs, token-in-URL behavior, and legacy public URL fallback.
 
+## Camera-Return Regression Validation
+
+Source-level fix implemented after physical-device defect:
+
+- Camera launch records a tenant-scoped workflow intent before Android native camera handoff.
+- Expo pending camera result recovery uses `getPendingResultAsync`.
+- Delivery Notes and Hazard Report restore matching tenant-scoped drafts after remount.
+- Home restores a valid driver session and assigned route before navigating to a recoverable pending photo workflow.
+- Draft storage rejects Organization/driver mismatches.
+- Draft storage expires stale records.
+- Photo drafts do not persist auth tokens.
+- Successful save/upload and explicit remove/reset clear the intended draft.
+- Backgrounding, app resume, or camera launch alone do not clear the draft.
+
+Physical validation remains pending until the next APK is installed and tested on device.
+
 ## Preview APK Build
 
-Completed:
+Superseded:
 
 - EAS build ID: `344d34ae-b083-4171-ab1a-32de556517e9`
 - Build profile: `preview`
@@ -64,7 +80,9 @@ Completed:
 - Source commit: camera-capture fix commit
 - Install/QR page: `https://expo.dev/accounts/lamont76/projects/truck-safe-routing/builds/344d34ae-b083-4171-ab1a-32de556517e9`
 
-Physical validation remains pending until this APK is installed and tested on an Android device.
+This APK does not contain the camera-return/session-draft fix and must not be used for final physical validation.
+
+Pending: new EAS preview APK from the camera-return fix commit.
 
 ## Production Safety
 

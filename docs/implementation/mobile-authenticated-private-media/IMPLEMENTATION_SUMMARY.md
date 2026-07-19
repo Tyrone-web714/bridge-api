@@ -43,10 +43,24 @@ Hazard reporting already exposed separate camera and library actions. Those acti
 
 Camera-captured delivery-note photos are persisted through the same tenant-scoped local delivery-photo store used by library-selected photos, then uploaded through the existing delivery-note private-media workflow. No separate public or unauthenticated camera upload path was introduced.
 
+## Camera-Return Continuity
+
+The Android native camera can background or recreate TSR while a driver is taking a photo. The implementation now preserves that workflow by:
+
+- recording camera workflow intent before opening the native camera;
+- recovering Expo Image Picker pending results after app resume/recreation;
+- storing tenant-scoped photo drafts without auth tokens;
+- restoring the original Delivery Notes or Hazard Report workflow after session and route restoration;
+- clearing drafts only on save/upload, explicit remove/reset, canceled pending result, failure, mismatch, or expiration.
+
 ## R2 Public Access
 
 Public R2 access remains enabled. This implementation removes the mobile source-level blocker but does not by itself authorize shutdown.
 
 ## APK Status
 
-The preview APK previously built from commit `24485ea1bf9364e6f39a328bd012bad4ac9e9261` is superseded by the camera-capture workflow changes. Final physical media validation requires a new non-production preview APK from the new commit.
+The preview APK previously built from commit `24485ea1bf9364e6f39a328bd012bad4ac9e9261` is superseded by the camera-capture workflow changes.
+
+The preview APK built as `344d34ae-b083-4171-ab1a-32de556517e9` is superseded by the camera-return/session-draft fix.
+
+Final physical media validation requires a new non-production preview APK from the camera-return fix commit.

@@ -25,6 +25,8 @@ import {
 import { getAssignedRouteLookupDates, getLocalRouteDate } from '../utils/routeDate';
 import { fetchAssignedDriverRouteFromDates } from '../services/routeManifestApi';
 import { readCachedAssignedRoute } from '../services/routeManifestOfflineStore';
+import { recoverPendingCameraDraft } from '../services/mobileMediaSelection';
+import { readLatestPhotoDraft } from '../services/photoDraftStore';
 import {
   initializeDriverSession,
   loginDriverSession,
@@ -40,6 +42,25 @@ function buildConfirmedDriver(driverId, driverName, assignedRoute) {
     stopCount: assignedRoute?.totalStops,
     manifestId: assignedRoute?.id || assignedRoute?.manifestId,
   };
+}
+
+function navigateToPhotoDraft(navigation, draft) {
+  if (!draft?.workflow || !draft?.context?.routeParams) return false;
+  if (draft.workflow === 'delivery-notes') {
+    navigation.navigate('DeliveryNotes', {
+      ...draft.context.routeParams,
+      restoredPhotoDraft: true,
+    });
+    return true;
+  }
+  if (draft.workflow === 'hazard-report') {
+    navigation.navigate('HazardReport', {
+      ...draft.context.routeParams,
+      restoredPhotoDraft: true,
+    });
+    return true;
+  }
+  return false;
 }
 
 function GoogleMapsAttribution({ photoAttributions = [] }) {
@@ -249,6 +270,12 @@ export default function HomeScreen({ navigation, route }) {
           );
         }
         setDriverStartupState('authenticated');
+
+        const recoveredDraft = await recoverPendingCameraDraft().catch(() => null);
+        const latestDraft = recoveredDraft || await readLatestPhotoDraft().catch(() => null);
+        if (isMounted && latestDraft?.photos?.length) {
+          navigateToPhotoDraft(navigation, latestDraft);
+        }
       } catch (error) {
         if (!isMounted) return;
         setConfirmedDriver(null);

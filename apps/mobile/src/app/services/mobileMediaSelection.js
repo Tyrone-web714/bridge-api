@@ -1,3 +1,10 @@
+import {
+  clearCameraWorkflowIntent,
+  readCameraWorkflowIntent,
+  rememberCameraWorkflow,
+  savePhotoDraft,
+} from './photoDraftStore';
+
 const DEFAULT_IMAGE_QUALITY = 0.35;
 
 function getImagePickerModule() {
@@ -50,6 +57,8 @@ export async function capturePhotoAssets({
   Alert,
   base64 = false,
   quality = DEFAULT_IMAGE_QUALITY,
+  draftWorkflow = null,
+  draftContext = {},
 } = {}) {
   const ImagePicker = getImagePickerModule();
   if (!ImagePicker) {
@@ -64,20 +73,59 @@ export async function capturePhotoAssets({
       return [];
     }
 
+    if (draftWorkflow) {
+      await rememberCameraWorkflow({ workflow: draftWorkflow, context: draftContext });
+    }
+
     const result = await ImagePicker.launchCameraAsync({
       mediaTypes: ['images'],
       quality,
       base64,
     });
-    if (result.canceled) return [];
+    if (result.canceled) {
+      if (draftWorkflow) await clearCameraWorkflowIntent().catch(() => null);
+      return [];
+    }
 
-    return (result.assets || [])
+    const assets = (result.assets || [])
       .filter((asset) => asset?.uri)
       .map((asset) => normalizeImageAsset(asset, 'camera'));
+    if (draftWorkflow && assets.length) {
+      await savePhotoDraft({ workflow: draftWorkflow, context: draftContext, photos: assets });
+      await clearCameraWorkflowIntent().catch(() => null);
+    }
+    return assets;
   } catch (error) {
+    if (draftWorkflow) await clearCameraWorkflowIntent().catch(() => null);
     Alert.alert('Camera unavailable', error.message || 'Unable to take a photo right now.');
     return [];
   }
+}
+
+export async function recoverPendingCameraDraft() {
+  const ImagePicker = getImagePickerModule();
+  if (!ImagePicker?.getPendingResultAsync) return null;
+  const intent = await readCameraWorkflowIntent().catch(() => null);
+  if (!intent?.workflow) return null;
+
+  const result = await ImagePicker.getPendingResultAsync().catch(() => null);
+  if (!result) return null;
+  if (result.canceled) {
+    await clearCameraWorkflowIntent().catch(() => null);
+    return null;
+  }
+  const assets = (result.assets || [])
+    .filter((asset) => asset?.uri)
+    .map((asset) => normalizeImageAsset(asset, 'camera'));
+  if (!assets.length) return null;
+
+  const draft = await savePhotoDraft({
+    workflow: intent.workflow,
+    context: intent.context,
+    photos: assets,
+  });
+  await clearCameraWorkflowIntent().catch(() => null);
+  return draft;
 }
 
 export async function choosePhotoLibraryAssets({
@@ -127,6 +175,8 @@ export function selectImageAssetsWithPrompt({
   base64 = false,
   quality = DEFAULT_IMAGE_QUALITY,
   allowsMultipleSelection = false,
+  draftWorkflow = null,
+  draftContext = {},
 } = {}) {
   return new Promise((resolve) => {
     Alert.alert(
@@ -136,7 +186,13 @@ export function selectImageAssetsWithPrompt({
         {
           text: 'Take Photo',
           onPress: async () => {
-            const assets = await capturePhotoAssets({ Alert, base64, quality });
+            const assets = await capturePhotoAssets({
+              Alert,
+              base64,
+              quality,
+              draftWorkflow,
+              draftContext,
+            });
             resolve(assets.slice(0, Math.max(remainingSlots, 0)));
           },
         },

@@ -13,7 +13,13 @@ import {
 import * as Location from 'expo-location';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { submitDriverHazardReport } from '../services/routingApi';
-import { capturePhotoAssets, choosePhotoLibraryAssets } from '../services/mobileMediaSelection';
+import { capturePhotoAssets, choosePhotoLibraryAssets, recoverPendingCameraDraft } from '../services/mobileMediaSelection';
+import {
+  buildHazardDraftContext,
+  clearPhotoDraft,
+  readPhotoDraft,
+  savePhotoDraft,
+} from '../services/photoDraftStore';
 
 const HAZARD_TYPES = [
   { key: 'low_bridge', label: 'Low Bridge' },
@@ -21,6 +27,7 @@ const HAZARD_TYPES = [
   { key: 'residential', label: 'Residential' },
 ];
 const MAX_PHOTOS = 4;
+const HAZARD_DRAFT_WORKFLOW = 'hazard-report';
 
 function photoPayload(asset) {
   return {
@@ -42,6 +49,7 @@ export default function HazardReportScreen({ navigation, route }) {
   const [photos, setPhotos] = useState([]);
   const [isLocating, setIsLocating] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const draftContext = buildHazardDraftContext(route?.params);
 
   const refreshLocation = async () => {
     setIsLocating(true);
@@ -69,6 +77,39 @@ export default function HazardReportScreen({ navigation, route }) {
     refreshLocation();
   }, []);
 
+  useEffect(() => {
+    let isMounted = true;
+
+    const restorePhotoDraft = async () => {
+      const recovered = await recoverPendingCameraDraft().catch(() => null);
+      const draft = recovered?.workflow === HAZARD_DRAFT_WORKFLOW
+        ? recovered
+        : await readPhotoDraft({
+          workflow: HAZARD_DRAFT_WORKFLOW,
+          context: draftContext,
+        }).catch(() => null);
+      if (!isMounted || !draft?.photos?.length) return;
+      setPhotos((current) => {
+        const seen = new Set(current.map((photo) => photo.uri));
+        const next = [
+          ...current,
+          ...draft.photos.filter((photo) => photo?.uri && !seen.has(photo.uri)),
+        ].slice(0, MAX_PHOTOS);
+        savePhotoDraft({
+          workflow: HAZARD_DRAFT_WORKFLOW,
+          context: draftContext,
+          photos: next,
+        }).catch(() => null);
+        return next;
+      });
+    };
+
+    restorePhotoDraft();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   const takePhoto = async () => {
     if (photos.length >= MAX_PHOTOS) {
       Alert.alert('Photo limit reached', `Attach up to ${MAX_PHOTOS} hazard photos.`);
@@ -78,10 +119,20 @@ export default function HazardReportScreen({ navigation, route }) {
       Alert,
       quality: 0.35,
       base64: true,
+      draftWorkflow: HAZARD_DRAFT_WORKFLOW,
+      draftContext,
     });
     const selected = assets.filter((asset) => asset?.base64).slice(0, 1);
     if (selected.length > 0) {
-      setPhotos((current) => [...current, ...selected].slice(0, MAX_PHOTOS));
+      setPhotos((current) => {
+        const next = [...current, ...selected].slice(0, MAX_PHOTOS);
+        savePhotoDraft({
+          workflow: HAZARD_DRAFT_WORKFLOW,
+          context: draftContext,
+          photos: next,
+        }).catch(() => null);
+        return next;
+      });
     }
   };
 
@@ -140,7 +191,16 @@ export default function HazardReportScreen({ navigation, route }) {
       Alert.alert(
         'Hazard submitted',
         result?.message || 'The report is awaiting supervisor verification.',
-        [{ text: 'Done', onPress: () => navigation.goBack() }]
+        [{
+          text: 'Done',
+          onPress: () => {
+            clearPhotoDraft({
+              workflow: HAZARD_DRAFT_WORKFLOW,
+              context: draftContext,
+            }).catch(() => null);
+            navigation.goBack();
+          },
+        }]
       );
     } catch (error) {
       Alert.alert('Submission failed', error.message || 'Unable to submit the hazard report.');
@@ -245,7 +305,22 @@ export default function HazardReportScreen({ navigation, route }) {
             <View key={`${photo.uri}-${index}`} style={styles.photoTile}>
               <Image source={{ uri: photo.uri }} style={styles.photo} />
               <Pressable
-                onPress={() => setPhotos((current) => current.filter((_, itemIndex) => itemIndex !== index))}
+                onPress={() => setPhotos((current) => {
+                  const next = current.filter((_, itemIndex) => itemIndex !== index);
+                  if (next.length) {
+                    savePhotoDraft({
+                      workflow: HAZARD_DRAFT_WORKFLOW,
+                      context: draftContext,
+                      photos: next,
+                    }).catch(() => null);
+                  } else {
+                    clearPhotoDraft({
+                      workflow: HAZARD_DRAFT_WORKFLOW,
+                      context: draftContext,
+                    }).catch(() => null);
+                  }
+                  return next;
+                })}
                 style={styles.removePhoto}
               >
                 <Text style={styles.removePhotoText}>X</Text>

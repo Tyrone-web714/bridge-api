@@ -9,9 +9,16 @@ import {
   saveAccountDeliveryNote,
 } from '../services/deliveryNotesApi';
 import { persistDeliveryPhoto } from '../services/deliveryPhotoStore';
-import { selectImageAssetsWithPrompt } from '../services/mobileMediaSelection';
+import { recoverPendingCameraDraft, selectImageAssetsWithPrompt } from '../services/mobileMediaSelection';
+import {
+  buildDeliveryNoteDraftContext,
+  clearPhotoDraft,
+  readPhotoDraft,
+  savePhotoDraft,
+} from '../services/photoDraftStore';
 
 const MAX_NOTE_PHOTOS = 4;
+const DELIVERY_NOTE_DRAFT_WORKFLOW = 'delivery-notes';
 
 export default function DeliveryNotesScreen({ route }) {
   const destination = route?.params?.destinationAddress || '';
@@ -33,6 +40,12 @@ export default function DeliveryNotesScreen({ route }) {
   const [previewPhoto, setPreviewPhoto] = useState(null);
   const [editingNoteId, setEditingNoteId] = useState(null);
   const [existingPhotoDraft, setExistingPhotoDraft] = useState([]);
+  const draftContext = buildDeliveryNoteDraftContext({
+    accountNumber,
+    placeId: destinationPlaceId,
+    destination,
+    routeParams: route?.params,
+  });
 
   const loadNotes = useCallback(async () => {
     setIsLoadingNotes(true);
@@ -63,6 +76,54 @@ export default function DeliveryNotesScreen({ route }) {
     loadNotes();
   }, [loadNotes]);
 
+  useEffect(() => {
+    let isMounted = true;
+
+    const restorePhotoDraft = async () => {
+      const recovered = await recoverPendingCameraDraft().catch(() => null);
+      const draft = recovered?.workflow === DELIVERY_NOTE_DRAFT_WORKFLOW
+        ? recovered
+        : await readPhotoDraft({
+          workflow: DELIVERY_NOTE_DRAFT_WORKFLOW,
+          context: draftContext,
+        }).catch(() => null);
+      if (!isMounted || !draft?.photos?.length) return;
+
+      const restoredPhotos = [];
+      for (const photo of draft.photos.slice(0, MAX_NOTE_PHOTOS)) {
+        try {
+          restoredPhotos.push(photo.localUri ? photo : persistDeliveryPhoto(photo));
+        } catch {
+          // A stale camera temp file should not crash the note screen.
+        }
+      }
+      if (!restoredPhotos.length) return;
+      setSelectedPhotos((current) => {
+        const seen = new Set(current.map((photo) => photo.localUri || photo.uri));
+        const next = [
+          ...current,
+          ...restoredPhotos.filter((photo) => !seen.has(photo.localUri || photo.uri)),
+        ].slice(0, MAX_NOTE_PHOTOS);
+        savePhotoDraft({
+          workflow: DELIVERY_NOTE_DRAFT_WORKFLOW,
+          context: draftContext,
+          photos: next,
+        }).catch(() => null);
+        return next;
+      });
+      setStatusText('Restored captured photo draft. Review and save the delivery note.');
+    };
+
+    restorePhotoDraft();
+    return () => {
+      isMounted = false;
+    };
+  }, [
+    accountNumber,
+    destination,
+    destinationPlaceId,
+  ]);
+
   const pickPhotos = async () => {
     const remainingSlots = MAX_NOTE_PHOTOS - selectedPhotos.length - existingPhotoDraft.length;
     if (remainingSlots <= 0) {
@@ -77,20 +138,47 @@ export default function DeliveryNotesScreen({ route }) {
       remainingSlots,
       allowsMultipleSelection: true,
       quality: 0.35,
+      draftWorkflow: DELIVERY_NOTE_DRAFT_WORKFLOW,
+      draftContext,
     });
 
     if (assets.length === 0) return;
 
     try {
       const nextPhotos = assets.map((asset) => persistDeliveryPhoto(asset));
-      setSelectedPhotos((current) => [...current, ...nextPhotos].slice(0, MAX_NOTE_PHOTOS));
+      setSelectedPhotos((current) => {
+        const merged = [...current, ...nextPhotos].slice(0, MAX_NOTE_PHOTOS);
+        if (assets.some((asset) => asset.mediaSource === 'camera')) {
+          savePhotoDraft({
+            workflow: DELIVERY_NOTE_DRAFT_WORKFLOW,
+            context: draftContext,
+            photos: merged,
+          }).catch(() => null);
+        }
+        return merged;
+      });
     } catch (error) {
       Alert.alert('Photo unavailable', error.message || 'Unable to attach this photo.');
     }
   };
 
   const removePhoto = (indexToRemove) => {
-    setSelectedPhotos((current) => current.filter((_, index) => index !== indexToRemove));
+    setSelectedPhotos((current) => {
+      const next = current.filter((_, index) => index !== indexToRemove);
+      if (next.length) {
+        savePhotoDraft({
+          workflow: DELIVERY_NOTE_DRAFT_WORKFLOW,
+          context: draftContext,
+          photos: next,
+        }).catch(() => null);
+      } else {
+        clearPhotoDraft({
+          workflow: DELIVERY_NOTE_DRAFT_WORKFLOW,
+          context: draftContext,
+        }).catch(() => null);
+      }
+      return next;
+    });
   };
 
   const removeExistingPhoto = (photoToRemove) => {
@@ -107,6 +195,10 @@ export default function DeliveryNotesScreen({ route }) {
     setInstructions('');
     setSelectedPhotos([]);
     setExistingPhotoDraft([]);
+    clearPhotoDraft({
+      workflow: DELIVERY_NOTE_DRAFT_WORKFLOW,
+      context: draftContext,
+    }).catch(() => null);
   };
 
   const beginEditNote = (note) => {
@@ -239,6 +331,10 @@ export default function DeliveryNotesScreen({ route }) {
       );
 
       resetForm();
+      await clearPhotoDraft({
+        workflow: DELIVERY_NOTE_DRAFT_WORKFLOW,
+        context: draftContext,
+      }).catch(() => null);
       setStatusText(data.queued
         ? 'Delivery note and photos saved offline. They will synchronize when service returns.'
         : editingNoteId
