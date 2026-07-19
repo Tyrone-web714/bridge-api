@@ -4,17 +4,52 @@ Status: READY FOR PHYSICAL VALIDATION.
 
 ## Summary
 
-Mobile authenticated private-media compatibility has been implemented at source level.
+Mobile authenticated private-media compatibility has been implemented at source level. The mobile photo-capture workflow has also been fixed so driver-facing photo attachment paths support camera capture and library selection.
 
 ## Current Result
 
-Maximum R2 shutdown classification is READY FOR PHYSICAL VALIDATION until a preview APK is built and tested on an Android device.
+Maximum R2 shutdown classification is READY FOR PHYSICAL VALIDATION until a new preview APK containing the camera-capture workflow is built and tested on an Android device.
+
+The previous preview APK built from `24485ea1bf9364e6f39a328bd012bad4ac9e9261` must not be used for final physical media validation because it does not contain the camera-capture workflow fix.
+
+## Photo Workflows Audited
+
+Audited driver-facing photo attachment and display workflows:
+
+- Delivery Notes photo attachments;
+- Account Knowledge panel private photo display;
+- Home screen driver-uploaded account photo gallery/detail;
+- Hazard Report camera and library photo attachments;
+- local-only selected photo previews;
+- Google Places, recent-destination, and Street View media.
+
+Only driver-uploaded private-media paths were changed. Google/public/local preview media remains on its existing path.
+
+## Camera-Capture Result
+
+Implemented a reusable mobile media-selection helper that supports:
+
+- `Take Photo`;
+- `Choose From Library`;
+- `Cancel`;
+- camera permission denial;
+- media-library permission denial;
+- camera/picker cancellation;
+- camera/picker failure;
+- normalized local image metadata.
+
+Delivery Notes now presents the source prompt from the existing photo action. Hazard reporting keeps its two explicit photo buttons and uses the same helper under both buttons.
+
+## Private-Media Result
+
+Camera-captured delivery-note photos use the same tenant-scoped local persistence and delivery-note upload path as library-selected photos. No direct public R2 URL path, token-in-URL path, or unauthenticated camera upload path was added.
 
 ## Automated Validation
 
 Passed:
 
 - mobile `npm.cmd run test:mobile-private-media`
+- backend `npm.cmd run test:mobile-tenant`
 - mobile `npm.cmd run verify:secrets`
 - mobile `npm.cmd run verify:production` with validation-only environment values
 - backend `npm.cmd run test:private-media`
@@ -28,7 +63,7 @@ Passed:
 
 ## APK Status
 
-Pending EAS preview APK build.
+Pending new EAS preview APK build from the camera-capture fix commit.
 
 ## Critical Defects
 
@@ -40,4 +75,4 @@ None remaining at source level. Physical validation is still required before clo
 
 ## Production Safety
 
-No production data/media was modified. Public R2 access remains enabled.
+No production data/media was modified. Public R2 access remains enabled. No R2 settings were changed.

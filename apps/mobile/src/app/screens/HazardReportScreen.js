@@ -10,10 +10,10 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
 import * as Location from 'expo-location';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { submitDriverHazardReport } from '../services/routingApi';
+import { capturePhotoAssets, choosePhotoLibraryAssets } from '../services/mobileMediaSelection';
 
 const HAZARD_TYPES = [
   { key: 'low_bridge', label: 'Low Bridge' },
@@ -74,18 +74,14 @@ export default function HazardReportScreen({ navigation, route }) {
       Alert.alert('Photo limit reached', `Attach up to ${MAX_PHOTOS} hazard photos.`);
       return;
     }
-    const permission = await ImagePicker.requestCameraPermissionsAsync();
-    if (!permission.granted) {
-      Alert.alert('Camera permission needed', 'Allow camera access to photograph the hazard.');
-      return;
-    }
-    const result = await ImagePicker.launchCameraAsync({
-      mediaTypes: ['images'],
+    const assets = await capturePhotoAssets({
+      Alert,
       quality: 0.35,
       base64: true,
     });
-    if (!result.canceled && result.assets?.[0]?.base64) {
-      setPhotos((current) => [...current, result.assets[0]].slice(0, MAX_PHOTOS));
+    const selected = assets.filter((asset) => asset?.base64).slice(0, 1);
+    if (selected.length > 0) {
+      setPhotos((current) => [...current, ...selected].slice(0, MAX_PHOTOS));
     }
   };
 
@@ -95,20 +91,14 @@ export default function HazardReportScreen({ navigation, route }) {
       Alert.alert('Photo limit reached', `Attach up to ${MAX_PHOTOS} hazard photos.`);
       return;
     }
-    const permission = await ImagePicker.requestMediaLibraryPermissionsAsync();
-    if (!permission.granted) {
-      Alert.alert('Photo permission needed', 'Allow photo access to attach hazard pictures.');
-      return;
-    }
-    const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ['images'],
+    const selected = await choosePhotoLibraryAssets({
+      Alert,
       allowsMultipleSelection: true,
       selectionLimit: remaining,
       quality: 0.35,
       base64: true,
     });
-    if (!result.canceled) {
-      const selected = (result.assets || []).filter((asset) => asset?.base64).slice(0, remaining);
+    if (selected.length > 0) {
       setPhotos((current) => [...current, ...selected].slice(0, MAX_PHOTOS));
     }
   };

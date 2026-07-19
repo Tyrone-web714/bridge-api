@@ -64,6 +64,7 @@ module.exports = ({ config }) => {
         'expo-image-picker',
         {
           photosPermission: 'Allow Truck-Safe Routing to attach delivery photos for future drivers.',
+          cameraPermission: 'Allow Truck-Safe Routing to take delivery and hazard photos in the app.',
         },
       ],
       [

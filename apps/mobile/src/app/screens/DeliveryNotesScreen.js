@@ -9,24 +9,9 @@ import {
   saveAccountDeliveryNote,
 } from '../services/deliveryNotesApi';
 import { persistDeliveryPhoto } from '../services/deliveryPhotoStore';
+import { selectImageAssetsWithPrompt } from '../services/mobileMediaSelection';
 
 const MAX_NOTE_PHOTOS = 4;
-
-function getPhotoMimeType(asset) {
-  if (asset?.mimeType) return asset.mimeType;
-  const uri = String(asset?.uri || '').toLowerCase();
-  if (uri.endsWith('.png')) return 'image/png';
-  if (uri.endsWith('.webp')) return 'image/webp';
-  return 'image/jpeg';
-}
-
-function getImagePickerModule() {
-  try {
-    return require('expo-image-picker');
-  } catch {
-    return null;
-  }
-}
 
 export default function DeliveryNotesScreen({ route }) {
   const destination = route?.params?.destinationAddress || '';
@@ -79,45 +64,29 @@ export default function DeliveryNotesScreen({ route }) {
   }, [loadNotes]);
 
   const pickPhotos = async () => {
-    const ImagePicker = getImagePickerModule();
-    if (!ImagePicker) {
-      Alert.alert(
-        'New build required',
-        'Photo upload needs the newest Truck-Safe development build. You can still save written delivery notes now.'
-      );
-      return;
-    }
-
     const remainingSlots = MAX_NOTE_PHOTOS - selectedPhotos.length - existingPhotoDraft.length;
     if (remainingSlots <= 0) {
       Alert.alert('Photo limit reached', `You can attach up to ${MAX_NOTE_PHOTOS} photos per note.`);
       return;
     }
 
-    const permission = await ImagePicker.requestMediaLibraryPermissionsAsync();
-    if (!permission.granted) {
-      Alert.alert('Photo access needed', 'Allow photo access to attach delivery photos for future drivers.');
-      return;
-    }
-
-    const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ['images'],
+    const assets = await selectImageAssetsWithPrompt({
+      Alert,
+      title: 'Attach Photos',
+      message: 'Take a new photo or choose existing photos from the library.',
+      remainingSlots,
       allowsMultipleSelection: true,
-      selectionLimit: remainingSlots,
       quality: 0.35,
     });
 
-    if (result.canceled) return;
+    if (assets.length === 0) return;
 
-    const nextPhotos = (result.assets || [])
-      .filter((asset) => asset?.uri)
-      .slice(0, remainingSlots)
-      .map((asset) => persistDeliveryPhoto({
-        ...asset,
-        mimeType: getPhotoMimeType(asset),
-      }));
-
-    setSelectedPhotos((current) => [...current, ...nextPhotos].slice(0, MAX_NOTE_PHOTOS));
+    try {
+      const nextPhotos = assets.map((asset) => persistDeliveryPhoto(asset));
+      setSelectedPhotos((current) => [...current, ...nextPhotos].slice(0, MAX_NOTE_PHOTOS));
+    } catch (error) {
+      Alert.alert('Photo unavailable', error.message || 'Unable to attach this photo.');
+    }
   };
 
   const removePhoto = (indexToRemove) => {
