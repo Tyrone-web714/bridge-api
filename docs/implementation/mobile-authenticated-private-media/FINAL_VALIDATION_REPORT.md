@@ -1,12 +1,53 @@
 # Final Validation Report
 
-Status: FORENSIC ROOT-CAUSE SOURCE REPAIR COMPLETE; BACKEND DEPLOY AND NEW PREVIEW APK REQUIRED.
+Status: MERGE-GATE VALIDATION PASSED; MAIN MERGE AND RENDER BACKEND DEPLOY REQUIRED BEFORE PHYSICAL DRIVER COPILOT ACCEPTANCE.
 
 ## Summary
 
 Mobile authenticated private-media compatibility has been implemented at source level. Physical Android testing then confirmed route notes/photo workflow defects. The first repair addressed camera upload durability, camera return to login, and route-stop note retrieval. A later physical test confirmed three additional integration defects that had to be audited together: four captured photos could appear as three, camera return could still land nondeterministically on Login or Routes instead of the note workflow, and Driver Copilot returned "Authentication required" while the driver was logged in.
 
-Those defects are now documented in `DRIVER_ROUTE_NOTES_PHOTO_ROOT_CAUSE_AUDIT.md` and repaired at source level. The later physical failure after commit `a1655a8` was traced to the root mobile session/context model plus photo-save cleanup semantics. A backend deploy and a new non-production preview APK are still required before physical acceptance. No public R2 shutdown, branch merge, or production mutation is authorized by this report.
+Those defects are now documented in `DRIVER_ROUTE_NOTES_PHOTO_ROOT_CAUSE_AUDIT.md` and repaired at source level. The later physical failure after commit `a1655a8` was traced to the root mobile session/context model plus photo-save cleanup semantics. A backend deploy from main is still required before physical Driver Copilot acceptance because the `/api/ai` driver-auth repair is not present on `origin/main` before this merge gate. A new non-production preview APK was built from commit `45dab5890848d7aafee306b082cf266f5161dd90` for physical mobile media/session validation. No public R2 shutdown, production mutation, or Enterprise Identity provider verification is authorized by this report.
+
+## 2026-07-19 Merge-Gate Review
+
+Status: PASSED.
+
+Validated repair commits:
+
+- `a1655a87322a24c17361a6d4637658e2293f0d95` - `/api/ai` driver-authentication and Driver Copilot authorization repair.
+- `45dab5890848d7aafee306b082cf266f5161dd90` - root mobile session restoration and photo persistence stabilization, containing the backend repair by ancestry.
+
+Merge-gate findings:
+
+- `/api/ai` is hydrated with driver Bearer authentication before tenant enforcement.
+- `/api/ai/driver-copilot` is classified before the generic `/api/ai` dashboard authorization rule.
+- Driver Copilot uses the narrow `ai.driver_copilot.use` permission.
+- The Driver role receives `ai.driver_copilot.use` without receiving `dashboard.view`.
+- Existing admin AI routes remain protected by the existing admin/dashboard AI permission path.
+- Missing bearer, revoked/deactivated driver, and wrong-tenant denial contracts remain covered by Auth/RBAC, API tenant, and Driver Copilot focused tests.
+- Mobile Driver Copilot uses the canonical authenticated JSON header helper shared by protected mobile requests.
+- Root-level mobile session restoration runs before app workflows render and before foreground photo workflow recovery.
+- Photo persistence no longer reports queued/offline success for new photo saves without authoritative media persistence.
+
+Merge-gate validation commands passed:
+
+- `npm.cmd test`
+- `npm.cmd run test:driver-copilot-auth`
+- `npm.cmd run test:driver-route-notes-photo`
+- `npm.cmd run test:mobile-private-media`
+- `npm.cmd run test:mobile-tenant`
+- `npm.cmd run test:api-tenant`
+- `npm.cmd run test:auth-rbac`
+- `npm.cmd run verify:secrets`
+- `git diff --check`
+
+Production status:
+
+- No production data or media was modified.
+- No migrations were applied.
+- Public R2 access was not disabled.
+- Enterprise Identity provider verification was not started.
+- Physical Driver Copilot validation must wait until the backend repair is deployed to Render.
 
 ## Physical-Device Regression
 

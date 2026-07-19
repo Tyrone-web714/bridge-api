@@ -238,3 +238,49 @@ Next build must be created from the committed three-defect repair.
 ## Production Safety
 
 No production media writes, production database writes, R2 object operations, Cloudflare setting changes, Render setting changes, deployments, or Enterprise Identity provider verification were performed.
+
+## 2026-07-19 Merge-Gate Validation
+
+Scope:
+
+- `/api/ai` driver-Bearer hydration before tenant enforcement.
+- `/api/ai/driver-copilot` endpoint-specific authorization before generic `/api/ai` authorization.
+- Narrow `ai.driver_copilot.use` permission for Driver Copilot.
+- Existing admin AI route protection.
+- Missing bearer, revoked/deactivated driver, and wrong-tenant denial contracts.
+- Canonical mobile driver session headers for Copilot and other protected mobile requests.
+- Root-level mobile session restoration after camera/activity resume.
+- Photo persistence and authoritative refresh behavior.
+
+Validation passed:
+
+```powershell
+npm.cmd test
+npm.cmd run test:driver-copilot-auth
+npm.cmd run test:driver-route-notes-photo
+npm.cmd run test:mobile-private-media
+npm.cmd run test:mobile-tenant
+npm.cmd run test:api-tenant
+npm.cmd run test:auth-rbac
+npm.cmd run verify:secrets
+git diff --check
+```
+
+Results:
+
+- backend full regression: passed.
+- Driver Copilot auth contract: passed.
+- driver route notes/photo workflow contract: passed.
+- mobile private media rendering contract: passed.
+- mobile tenant context contract: passed.
+- API tenant enforcement contract: passed.
+- Auth/RBAC foundation contract: passed.
+- secret audit: passed.
+- diff whitespace check: passed.
+
+Production safety:
+
+- no production data or media was modified;
+- no migrations were applied;
+- public R2 access was not disabled;
+- Enterprise Identity provider verification was not started.
