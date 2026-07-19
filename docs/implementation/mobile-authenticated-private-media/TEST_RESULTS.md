@@ -345,3 +345,51 @@ Production safety:
 - no production migration records were manually modified;
 - no migration safety checks were bypassed;
 - no public R2 setting was changed.
+
+## 2026-07-19 Focused Notes / Photo / Account Knowledge Repair
+
+Scope:
+
+- camera capture durability;
+- same-screen save behavior;
+- false-success removal for photo saves;
+- durable Account Knowledge account-level reads;
+- Account Knowledge count refresh after note/photo save;
+- tenant/account isolation.
+
+Focused validation passed:
+
+```powershell
+npm.cmd run test:mobile-private-media
+npm.cmd run test:driver-route-notes-photo
+git diff --check
+```
+
+Regression validation passed:
+
+```powershell
+npm.cmd test
+npm.cmd run test:mobile-tenant
+npm.cmd run test:api-tenant
+npm.cmd run test:auth-rbac
+npm.cmd run verify:secrets
+git diff --check
+```
+
+Source-level assertions now verify:
+
+- camera assets are stabilized immediately after camera return;
+- Expo pending camera results are stabilized before draft persistence;
+- selected source files are verified before copy;
+- TSR-owned copies are verified before upload;
+- already-stabilized TSR files are not double-copied;
+- Delivery Notes save does not navigate away;
+- failed photo saves do not clear the draft;
+- successful photo saves refresh authoritative notes before clearing the draft;
+- Account Knowledge uses account-scoped fetches rather than route-stop fetches;
+- Account Knowledge refreshes after matching note changes;
+- library photo flow remains on the same upload path.
+
+Physical validation:
+
+- Pending. A new preview APK must be installed and tested on Android before this blocker can be closed.

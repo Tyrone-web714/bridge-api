@@ -22,9 +22,15 @@ const repositories = read('bridge-api/db/repositories.js');
 const driverAuth = read('bridge-api/services/driverAuth.js');
 
 assert(deliveryPhotoStore.includes('source.copy(destination)'), 'camera/library assets must be copied into TSR-controlled app storage');
+assert(deliveryPhotoStore.includes('assertReadableFile(source'), 'camera/library source files must be verified before copy');
 assert(deliveryPhotoStore.includes('assertReadableFile(destination'), 'TSR-controlled photo copy must be readable before upload');
+assert(deliveryPhotoStore.includes('isTsrControlledPhoto'), 'already-stabilized camera assets must not be double-copied');
+assert(deliveryPhotoStore.includes('photoSourceDiagnostics'), 'photo workflow must retain safe diagnostics without logging private paths or content');
 assert(deliveryPhotoStore.includes('LOCAL_MEDIA_UNREADABLE'), 'unreadable camera assets must be classified distinctly');
+assert(deliveryNotesScreen.includes('saveNote') && !deliveryNotesScreen.includes('navigation.navigate(') && !deliveryNotesScreen.includes('navigation.reset('), 'DeliveryNotesScreen save must not navigate away from the account/stop notes screen');
 assert(deliveryNotesApi.includes('isLocalMediaUploadError(error)') && deliveryNotesApi.includes('throw error'), 'unreadable local media must not be queued as offline success');
+assert(deliveryNotesApi.includes('fetchAccountKnowledgeDeliveryNotes'), 'Account Knowledge must use account-scoped delivery-note fetches');
+assert(deliveryNotesApi.includes('subscribeDeliveryNotesChanged'), 'post-save account knowledge refresh must be event-driven');
 assert(deliveryNotesScreen.includes('sourceUriScheme'), 'delivery notes must keep safe source diagnostics for preview builds');
 assert(hazardReportScreen.includes('persistDeliveryPhoto'), 'hazard report camera/library assets must use durable local photo persistence');
 assert(hazardReportScreen.includes('Promise.all(photos.map(photoPayload))'), 'hazard photo payload construction must handle async local file reads');
@@ -47,7 +53,9 @@ assert(deliveryNotesApi.includes('hasNewPhotos') && deliveryNotesApi.includes('D
 assert(deliveryNotesApi.includes("query.set('routeStopId'") && deliveryNotesApi.includes("query.set('routeManifestId'"), 'delivery-note fetch must include route-stop query parameters');
 assert(deliveryPhotoStore.includes('clientPhotoId: photo.clientPhotoId || null'), 'photo upload payload must preserve per-photo correlation ID');
 assert(deliveryOfflineStore.includes("return `stop-${stopScoped}`"), 'offline notes cache must prioritize stop-scoped identity');
-assert(accountPanel.includes('routeStopId') && accountPanel.includes('routeManifestId'), 'route notes preview panel must use the same scoped fetch path');
+assert(accountPanel.includes('fetchAccountKnowledgeDeliveryNotes'), 'Account Knowledge must read account-scoped delivery notes');
+assert(!accountPanel.includes("routeStopId,\\n      routeManifestId"), 'Account Knowledge query must not be narrowed by run/stop identifiers');
+assert(accountPanel.includes('subscribeDeliveryNotesChanged'), 'Account Knowledge must refetch after successful note/photo saves');
 assert(accountPanel.includes('MAX_PREVIEW_PHOTOS = 4') && accountPanel.includes('slice(0, MAX_PREVIEW_PHOTOS)'), 'route notes preview panel must render up to the full four-photo note limit');
 
 assert(driverAuth.includes('internalDriverId: req.driverAuth.internalDriverId'), 'driver auth identity must expose permanent internal driver ID');

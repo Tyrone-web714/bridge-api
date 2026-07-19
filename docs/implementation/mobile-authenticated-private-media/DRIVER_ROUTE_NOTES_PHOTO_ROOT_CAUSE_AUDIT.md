@@ -4,6 +4,80 @@ Status: FORENSIC ROOT-CAUSE REPAIR COMPLETE AT SOURCE LEVEL; BACKEND DEPLOY AND 
 
 Scope: driver route notes and photo workflow only. This audit does not authorize public R2 shutdown, production data changes, production media writes, or branch merge.
 
+## 2026-07-19 Focused Account Note / Photo / Account Knowledge Repair
+
+Status: SOURCE REPAIR COMPLETE; APK AND PHYSICAL ACCEPTANCE REQUIRED.
+
+Driver Copilot is out of scope for this repair because physical testing confirmed it now works with the existing driver session.
+
+### Note-System Mapping
+
+The current implementation has one authoritative driver note store:
+
+| Concept | Database table | Backend write endpoint | Backend read endpoint | Mobile writer | Mobile reader |
+| --- | --- | --- | --- | --- | --- |
+| Delivery note | `delivery_notes` | `POST /api/delivery-notes` | `GET /api/delivery-notes` | `DeliveryNotesScreen` through `saveAccountDeliveryNote()` | `DeliveryNotesScreen` through `fetchAccountDeliveryNotes()` |
+| Stop note / route note | `delivery_notes` with raw `routeManifestId`, `routeStopId`, `routeDate`, `routeNumber` metadata | `POST /api/delivery-notes` | `GET /api/delivery-notes?routeStopId=...` | `DeliveryNotesScreen` | `DeliveryNotesScreen` |
+| Account note / shared note / Account Knowledge | `delivery_notes` with `account_number`, `place_id`, `destination`, photos | `POST /api/delivery-notes` | `GET /api/delivery-notes?accountNumber=...` or account/place/destination fallback | same driver-created note | `AccountKnowledgePanel` |
+| Driver note | same `delivery_notes` row with authenticated driver metadata in `raw` | same write endpoint | same read endpoint, tenant-filtered | same writer | same readers |
+
+Identifiers written by the delivery-note flow:
+
+- `organization_id`: derived from authenticated driver/admin tenant context on the backend.
+- `internal_driver_id`: stored in note raw metadata from authenticated driver identity.
+- `company_driver_number`: stored in note raw metadata from authenticated driver identity.
+- route/run/stop metadata: stored in note raw metadata when the note is created from a route stop.
+- account/customer metadata: stored in table columns and raw metadata.
+
+Account Knowledge does not use a separate table. It is the durable account-level read of driver delivery notes/photos intended to help future drivers.
+
+### Current Camera Failure Root Cause
+
+The camera flow still failed because raw camera assets were not stabilized at the first safe point. `launchCameraAsync()` and `getPendingResultAsync()` returned transient camera URIs, and the app saved those raw assets into the photo draft before copying them into TSR-controlled storage. If Android recreated TSR or the temporary camera URI expired before `DeliveryNotesScreen` restored the draft, the later upload had no readable file to persist.
+
+Fix:
+
+- Camera assets are now copied into TSR-controlled tenant-scoped storage immediately after `launchCameraAsync()` returns.
+- Pending Android camera results recovered through `getPendingResultAsync()` are also copied before draft persistence.
+- `persistDeliveryPhoto()` verifies the selected source file exists and has a non-zero size before copying.
+- `persistDeliveryPhoto()` detects already-stabilized TSR files and verifies them without double-copying.
+- Safe diagnostics retain only source type, file existence, file size, MIME type, and upload stage.
+
+### Current Home/Login Navigation Root Cause
+
+The delivery-note save code was not explicitly navigating to Home or Login. The apparent navigation break came from the same camera-resume/session lifecycle: a transient camera draft or session bootstrap path could reset the navigation stack through Home while Home was still rebuilding route state. That made the driver see Home and then Driver Login even though photo save itself did not call a navigation reset.
+
+Fix:
+
+- Root/session restoration remains the only camera-resume navigation owner.
+- The Delivery Notes save path does not call `navigation.navigate`, `navigation.reset`, or `navigation.replace`.
+- Photo-save failures stay on the Delivery Notes screen and retain the draft.
+- Successful photo saves refresh authoritative notes first, then clear only the confirmed draft.
+
+### Current Account Knowledge 0-Count Root Cause
+
+Account Knowledge was reading the same `delivery_notes` dataset, but it was being queried with route/manifest/stop identifiers from route screens. That narrowed a durable account-level panel into a stop-scoped query. When the saved note's route identifiers did not exactly match the panel's route identifiers, or when the account panel needed durable account knowledge across runs, the backend filter could exclude the note and the panel displayed `0 shared notes`.
+
+This was not a separate table problem. It was a scope problem.
+
+Fix:
+
+- `AccountKnowledgePanel` now uses `fetchAccountKnowledgeDeliveryNotes()`, which sends only durable account identity: account number, place ID, and destination.
+- Stop/run identifiers remain on `DeliveryNotesScreen` for editing the current delivery event.
+- Saved notes are cached under both stop-scoped identity and account-scoped identity.
+- Account Knowledge subscribes to note-change events and refetches when a note/photo is saved for the same account.
+
+### Intended Product Behavior
+
+The implemented model is:
+
+- A Delivery Note is tied to a specific run/stop/delivery event when route metadata is present.
+- Account Knowledge is a durable account-level view of those driver-created notes/photos for future drivers.
+- A driver-created delivery note/photo with account identity should appear in Account Knowledge without duplicating the database row.
+- The same `delivery_notes` row can support both views because it carries both stop/run metadata and account/customer metadata.
+
+No duplicate note rows were introduced.
+
 ## Confirmed Physical Failures
 
 1. Camera-captured delivery-note photos did not upload while library-selected photos could upload.

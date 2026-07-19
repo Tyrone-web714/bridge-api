@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-native';
 import AuthenticatedMediaImage from './AuthenticatedMediaImage';
-import { fetchAccountDeliveryNotes } from '../services/deliveryNotesApi';
+import {
+  fetchAccountKnowledgeDeliveryNotes,
+  noteMatchesAccountIdentity,
+  subscribeDeliveryNotesChanged,
+} from '../services/deliveryNotesApi';
 
 const MAX_PREVIEW_PHOTOS = 4;
 
@@ -20,6 +24,7 @@ export default function AccountKnowledgePanel({
 }) {
   const [notes, setNotes] = useState([]);
   const [loading, setLoading] = useState(false);
+  const accountIdentity = { accountNumber, placeId, destination };
 
   useEffect(() => {
     let active = true;
@@ -29,14 +34,10 @@ export default function AccountKnowledgePanel({
     }
 
     setLoading(true);
-    fetchAccountDeliveryNotes({
+    fetchAccountKnowledgeDeliveryNotes({
       accountNumber,
       placeId,
       destination,
-      routeManifestId,
-      routeStopId,
-      routeDate,
-      routeNumber,
       driverId,
       driverName,
     })
@@ -53,7 +54,24 @@ export default function AccountKnowledgePanel({
     return () => {
       active = false;
     };
-  }, [accountNumber, destination, driverId, driverName, placeId, routeManifestId, routeStopId, routeDate, routeNumber]);
+  }, [accountNumber, destination, driverId, driverName, placeId]);
+
+  useEffect(() => {
+    return subscribeDeliveryNotesChanged((changedIdentity) => {
+      if (!noteMatchesAccountIdentity(changedIdentity, accountIdentity)) return;
+      setLoading(true);
+      fetchAccountKnowledgeDeliveryNotes({
+        accountNumber,
+        placeId,
+        destination,
+        driverId,
+        driverName,
+      })
+        .then(setNotes)
+        .catch(() => null)
+        .finally(() => setLoading(false));
+    });
+  }, [accountNumber, destination, driverId, driverName, placeId]);
 
   const latestNotes = notes.slice(0, compact ? 1 : 2);
   const photos = notes

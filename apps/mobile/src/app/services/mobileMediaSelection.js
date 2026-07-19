@@ -4,6 +4,7 @@ import {
   rememberCameraWorkflow,
   savePhotoDraft,
 } from './photoDraftStore';
+import { persistDeliveryPhoto } from './deliveryPhotoStore';
 
 const DEFAULT_IMAGE_QUALITY = 0.35;
 
@@ -44,6 +45,10 @@ export function normalizeImageAsset(asset = {}, source = 'library') {
     height: asset.height || null,
     mediaSource: source,
   };
+}
+
+function stabilizeCameraAssets(assets = []) {
+  return assets.map((asset) => persistDeliveryPhoto(asset));
 }
 
 function imagePickerUnavailable(Alert) {
@@ -87,9 +92,9 @@ export async function capturePhotoAssets({
       return [];
     }
 
-    const assets = (result.assets || [])
+    const assets = stabilizeCameraAssets((result.assets || [])
       .filter((asset) => asset?.uri)
-      .map((asset) => normalizeImageAsset(asset, 'camera'));
+      .map((asset) => normalizeImageAsset(asset, 'camera')));
     if (draftWorkflow && assets.length) {
       await savePhotoDraft({ workflow: draftWorkflow, context: draftContext, photos: assets });
       await clearCameraWorkflowIntent().catch(() => null);
@@ -114,9 +119,9 @@ export async function recoverPendingCameraDraft() {
     await clearCameraWorkflowIntent().catch(() => null);
     return null;
   }
-  const assets = (result.assets || [])
+  const assets = stabilizeCameraAssets((result.assets || [])
     .filter((asset) => asset?.uri)
-    .map((asset) => normalizeImageAsset(asset, 'camera'));
+    .map((asset) => normalizeImageAsset(asset, 'camera')));
   if (!assets.length) return null;
 
   const draft = await savePhotoDraft({

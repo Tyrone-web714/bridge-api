@@ -13,6 +13,43 @@ import {
   prepareDeliveryPhotoForUpload,
 } from './deliveryPhotoStore';
 
+const deliveryNoteListeners = new Set();
+
+function accountKnowledgeIdentity(note = {}) {
+  return {
+    accountNumber: note.accountNumber,
+    placeId: note.placeId,
+    destination: note.destination || note.address,
+  };
+}
+
+export function noteMatchesAccountIdentity(note = {}, identity = {}) {
+  const accountNumber = String(identity.accountNumber || '').trim().toLowerCase();
+  const placeId = String(identity.placeId || '').trim();
+  const destination = String(identity.destination || '').trim().toLowerCase();
+  if (accountNumber && String(note.accountNumber || '').trim().toLowerCase() === accountNumber) return true;
+  if (placeId && String(note.placeId || '').trim() === placeId) return true;
+  if (!destination) return false;
+  const noteDestination = String(note.destination || note.address || '').trim().toLowerCase();
+  return Boolean(noteDestination && (noteDestination.includes(destination) || destination.includes(noteDestination)));
+}
+
+function emitDeliveryNotesChanged(identity = {}) {
+  for (const listener of deliveryNoteListeners) {
+    try {
+      listener(identity);
+    } catch {
+      // Listener failures must not block the authoritative save path.
+    }
+  }
+}
+
+export function subscribeDeliveryNotesChanged(listener) {
+  if (typeof listener !== 'function') return () => {};
+  deliveryNoteListeners.add(listener);
+  return () => deliveryNoteListeners.delete(listener);
+}
+
 function identityHeaders({ driverId, driverName } = {}) {
   const headers = {};
   if (String(driverId || '').trim()) headers['X-TSR-Driver-Id'] = String(driverId).trim();
@@ -75,6 +112,15 @@ async function upsertCachedNote(note, noteId = null, pendingSync = false) {
     optimisticNote,
     ...notes.filter((item) => item.id !== id),
   ]);
+
+  const accountIdentity = accountKnowledgeIdentity(note);
+  if (accountIdentity.accountNumber || accountIdentity.placeId || accountIdentity.destination) {
+    const accountNotes = await readCachedDeliveryNotes(accountIdentity);
+    await cacheDeliveryNotes(accountIdentity, [
+      optimisticNote,
+      ...accountNotes.filter((item) => item.id !== id),
+    ]);
+  }
   return optimisticNote;
 }
 
@@ -117,6 +163,22 @@ export async function fetchAccountDeliveryNotes({
     if (!cached.length) throw error;
     return cached.map((note) => ({ ...note, loadedFromOfflineCache: true }));
   }
+}
+
+export async function fetchAccountKnowledgeDeliveryNotes({
+  accountNumber,
+  placeId,
+  destination,
+  driverId,
+  driverName,
+} = {}) {
+  return fetchAccountDeliveryNotes({
+    accountNumber,
+    placeId,
+    destination,
+    driverId,
+    driverName,
+  });
 }
 
 async function sendNoteOperation(operation) {
@@ -184,6 +246,7 @@ export async function saveAccountDeliveryNote(note, identity = {}, noteId = null
     });
     const savedNote = result.note || persistedNote;
     await upsertCachedNote(savedNote, savedNote.id, false);
+    emitDeliveryNotesChanged(accountKnowledgeIdentity(savedNote));
     return result;
   } catch (error) {
     if (isLocalMediaUploadError(error)) throw error;
@@ -197,6 +260,7 @@ export async function saveAccountDeliveryNote(note, identity = {}, noteId = null
       identity
     );
     const optimisticNote = await upsertCachedNote(persistedNote, persistedNote.id, true);
+    emitDeliveryNotesChanged(accountKnowledgeIdentity(optimisticNote));
     return { ok: true, queued: true, operationId: operation.id, note: optimisticNote };
   }
 }
@@ -213,6 +277,10 @@ export async function deleteAccountDeliveryNote(noteOrId, identity = {}) {
     if (note) {
       const notes = await readCachedDeliveryNotes(noteIdentity(note));
       await cacheDeliveryNotes(noteIdentity(note), notes.filter((item) => item.id !== noteId));
+      const accountIdentity = accountKnowledgeIdentity(note);
+      const accountNotes = await readCachedDeliveryNotes(accountIdentity);
+      await cacheDeliveryNotes(accountIdentity, accountNotes.filter((item) => item.id !== noteId));
+      emitDeliveryNotesChanged(accountIdentity);
     }
     return result;
   } catch (error) {
@@ -225,6 +293,10 @@ export async function deleteAccountDeliveryNote(noteOrId, identity = {}) {
     if (note) {
       const notes = await readCachedDeliveryNotes(noteIdentity(note));
       await cacheDeliveryNotes(noteIdentity(note), notes.filter((item) => item.id !== noteId));
+      const accountIdentity = accountKnowledgeIdentity(note);
+      const accountNotes = await readCachedDeliveryNotes(accountIdentity);
+      await cacheDeliveryNotes(accountIdentity, accountNotes.filter((item) => item.id !== noteId));
+      emitDeliveryNotesChanged(accountIdentity);
     }
     return { ok: true, queued: true, operationId: operation.id };
   }

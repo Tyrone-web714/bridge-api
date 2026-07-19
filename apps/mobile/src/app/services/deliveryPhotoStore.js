@@ -73,10 +73,54 @@ function assertReadableFile(file, label, source = {}) {
   }
 }
 
+function isTsrControlledPhoto(asset = {}) {
+  const localUri = asset.localUri || asset.uri;
+  return Boolean(localUri && String(localUri).startsWith(Paths.document.uri));
+}
+
+export function photoSourceDiagnostics(asset = {}, stage = 'unknown') {
+  const localUri = asset.localUri || asset.uri;
+  let exists = false;
+  let sizeBytes = Number.isFinite(Number(asset.sizeBytes)) ? Number(asset.sizeBytes) : null;
+  try {
+    if (localUri) {
+      const file = new File(localUri);
+      exists = Boolean(file.exists);
+      sizeBytes = fileSize(file);
+    }
+  } catch {
+    exists = false;
+  }
+  return {
+    source: asset.mediaSource || 'unknown',
+    exists,
+    sizeBytes,
+    mimeType: asset.mimeType || 'image/jpeg',
+    stage,
+  };
+}
+
 export function persistDeliveryPhoto(asset = {}) {
   if (!asset.uri) throw new Error('The selected photo has no readable file.');
   const directory = currentTenantPhotoDirectory();
+  if (isTsrControlledPhoto(asset)) {
+    const stableFile = new File(asset.localUri || asset.uri);
+    assertReadableFile(stableFile, 'Stored delivery', asset);
+    return {
+      ...asset,
+      clientPhotoId: asset.clientPhotoId || `client-photo-${Date.now()}-${Math.random().toString(16).slice(2, 10)}`,
+      uri: stableFile.uri,
+      localUri: stableFile.uri,
+      mimeType: asset.mimeType || 'image/jpeg',
+      fileName: asset.fileName || stableFile.name,
+      mediaSource: asset.mediaSource || 'unknown',
+      sizeBytes: fileSize(stableFile),
+      sourceUriScheme: asset.sourceUriScheme || safeUriScheme(stableFile.uri),
+      photoDiagnostics: photoSourceDiagnostics({ ...asset, uri: stableFile.uri, localUri: stableFile.uri }, 'stable-copy-verified'),
+    };
+  }
   const source = new File(asset.uri);
+  assertReadableFile(source, 'Selected delivery', asset);
 
   const extension = safeExtension(asset.fileName, asset.mimeType);
   const destination = new File(
@@ -108,6 +152,7 @@ export function persistDeliveryPhoto(asset = {}) {
     mediaSource: asset.mediaSource || 'unknown',
     sizeBytes: fileSize(destination),
     sourceUriScheme: safeUriScheme(asset.uri),
+    photoDiagnostics: photoSourceDiagnostics({ ...asset, uri: destination.uri, localUri: destination.uri }, 'stable-copy-created'),
   };
 }
 

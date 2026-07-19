@@ -58,6 +58,8 @@ assert(mediaSelection.includes("text: 'Take Photo'"), 'photo prompt must include
 assert(mediaSelection.includes("text: 'Choose From Library'"), 'photo prompt must include Choose From Library option');
 assert(mediaSelection.includes("text: 'Cancel'"), 'photo prompt must include Cancel option');
 assert(mediaSelection.includes('normalizeImageAsset'), 'camera and library assets must share normalized metadata');
+assert(mediaSelection.includes('stabilizeCameraAssets'), 'camera assets must be stabilized immediately after camera return');
+assert(mediaSelection.includes('persistDeliveryPhoto(asset)'), 'camera assets must be copied into TSR-controlled storage before being returned to screens');
 assert(mediaSelection.includes('fileName: safeFileName'), 'normalized assets must include fallback filename metadata');
 assert(mediaSelection.includes('mimeType: getImageMimeType'), 'normalized assets must include MIME metadata');
 assert(mediaSelection.includes('width: asset.width || null'), 'normalized assets must preserve width when available');
@@ -103,10 +105,17 @@ assert(photoDraftStore.includes('clearPhotoDraft'), 'photo draft store must supp
 assert(!photoDraftStore.includes('token'), 'photo drafts must not persist authentication tokens');
 
 assert(deliveryPhotoStore.includes('isLocalMediaUploadError'), 'delivery photo upload must classify unreadable local media errors');
+assert(deliveryPhotoStore.includes('assertReadableFile(source'), 'delivery photo upload must verify the selected source file before copy');
 assert(deliveryPhotoStore.includes('assertReadableFile(destination'), 'delivery photo upload must prove the TSR-owned copy is readable before upload');
+assert(deliveryPhotoStore.includes('isTsrControlledPhoto'), 'delivery photo persistence must detect already-stabilized TSR files');
+assert(deliveryPhotoStore.includes('photoSourceDiagnostics'), 'delivery photo persistence must expose safe source diagnostics');
 assert(deliveryPhotoStore.includes('sizeBytes'), 'delivery photo upload must preserve safe file-size diagnostics');
 assert(deliveryNotesApi.includes('isLocalMediaUploadError(error)') && deliveryNotesApi.includes('throw error'), 'delivery note saves must not queue unreadable camera assets as offline success');
 assert(deliveryNotesApi.includes("query.set('routeStopId'"), 'delivery note fetch must request stop-scoped notes when route stop identity is available');
 assert(deliveryNotesApi.includes("routeStopId: note.routeStopId"), 'delivery note cache identity must include route stop identity');
+assert(deliveryNotesApi.includes('fetchAccountKnowledgeDeliveryNotes'), 'Account Knowledge must use a durable account-scoped delivery-note read helper');
+assert(deliveryNotesApi.includes('subscribeDeliveryNotesChanged'), 'Account Knowledge must be able to refresh after local note changes');
+assert(accountPanel.includes('fetchAccountKnowledgeDeliveryNotes'), 'AccountKnowledgePanel must read from account-scoped notes, not stop-scoped notes');
+assert(!accountPanel.includes('routeStopId,\\n      routeManifestId'), 'AccountKnowledgePanel must not pass route-stop scope into the durable account knowledge query');
 
 console.log('[test:mobile-private-media] authenticated private media rendering contracts verified.');

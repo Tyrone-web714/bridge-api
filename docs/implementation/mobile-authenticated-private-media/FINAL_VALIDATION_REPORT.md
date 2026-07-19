@@ -84,6 +84,46 @@ Production safety:
 - No production schema was manually changed.
 - No migration safety checks were bypassed.
 
+## 2026-07-19 Focused Mobile Notes / Photo / Account Knowledge Repair
+
+Status: SOURCE VALIDATION PASSED; PREVIEW APK AND PHYSICAL ACCEPTANCE REQUIRED.
+
+Driver Copilot is intentionally out of scope for this repair because physical testing confirmed it works.
+
+Root causes:
+
+- Camera failure: raw Android camera result URIs were stored in drafts before being copied into TSR-controlled storage. If the camera URI expired or Android recreated the app before `DeliveryNotesScreen` restored the draft, the saved draft pointed at media that could no longer be uploaded.
+- Home/Login transition: the Delivery Notes save path did not navigate to Home or Login. The observed transition came from camera/session resume behavior resetting through Home while route state was still rebuilding. The save path now remains on the same note screen and does not navigate.
+- Account Knowledge zero count: Account Knowledge read from the same `delivery_notes` table, but the panel passed route/stop identifiers into the query. That narrowed durable account knowledge into a stop-scoped query and could exclude valid account notes/photos.
+
+Repair:
+
+- Camera results from both `launchCameraAsync()` and `getPendingResultAsync()` are stabilized immediately into TSR-controlled tenant-scoped storage.
+- Source files are checked for existence and non-zero size before copy; the TSR-owned copy is verified after copy.
+- Already-stabilized TSR files are detected and verified without double-copying.
+- Safe diagnostics expose only source type, file existence, file size, MIME type, and upload stage.
+- Account Knowledge now uses an account-scoped fetch helper and no longer sends route/stop identifiers for its durable account count.
+- Successful saves update both the stop-scoped cache and durable account-scoped cache.
+- Account Knowledge subscribes to delivery-note changes and refetches the matching account after a save/delete.
+
+Validated behavior:
+
+- Camera asset copied into stable app storage before upload: source-level test passed.
+- Camera photo upload uses the same authoritative media path as library photos: source-level test passed.
+- Save path does not navigate Home/Login: source-level test passed.
+- Failed photo save retains draft because errors do not call reset/clear: source-level test passed.
+- Successful photo save clears draft only after authoritative backend refresh: source-level test passed.
+- Text and photo notes are readable through Account Knowledge account-scoped fetch: source-level test passed.
+- Wrong account and wrong Organization remain protected through account identity and tenant-auth checks: source-level test passed.
+- Library photo flow remains unchanged and covered by regression.
+
+Production safety:
+
+- No production data or media was modified.
+- No backend deployment was performed.
+- Public R2 access was not disabled.
+- Branch must not merge until physical acceptance passes.
+
 ## Physical-Device Regression
 
 Status: SOURCE REPAIR UPDATED AFTER FAILED PHYSICAL TEST; NEW APK AND PHYSICAL REVALIDATION REQUIRED.
