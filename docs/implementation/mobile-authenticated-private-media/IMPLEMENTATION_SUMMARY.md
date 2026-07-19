@@ -63,4 +63,6 @@ The preview APK previously built from commit `24485ea1bf9364e6f39a328bd012bad4ac
 
 The preview APK built as `344d34ae-b083-4171-ab1a-32de556517e9` is superseded by the camera-return/session-draft fix.
 
-Final physical media validation requires a new non-production preview APK from the camera-return fix commit.
+Replacement preview APK `4435a491-f270-4a54-8352-3b653750af73` was built from the camera-return fix commit.
+
+Final physical media validation requires installing and testing that replacement APK.

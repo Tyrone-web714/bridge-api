@@ -96,7 +96,15 @@ The EAS preview APK build from the camera-capture fix commit is superseded by th
 - Build type: Android APK
 - Install/QR page: `https://expo.dev/accounts/lamont76/projects/truck-safe-routing/builds/344d34ae-b083-4171-ab1a-32de556517e9`
 
-Pending new EAS preview APK build from the camera-return fix commit. Physical device validation has not been claimed. The new APK must be installed and tested on an Android device before the mobile media blocker can be closed.
+New EAS preview APK build completed from the camera-return fix commit.
+
+- EAS build ID: `4435a491-f270-4a54-8352-3b653750af73`
+- Build profile: `preview`
+- Build type: Android APK
+- Source commit: `5296b96`
+- Install/QR page: `https://expo.dev/accounts/lamont76/projects/truck-safe-routing/builds/4435a491-f270-4a54-8352-3b653750af73`
+
+Physical device validation has not been claimed. The new APK must be installed and tested on an Android device before the mobile media blocker can be closed.
 
 ## Critical Defects
 

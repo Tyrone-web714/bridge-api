@@ -82,7 +82,16 @@ Superseded:
 
 This APK does not contain the camera-return/session-draft fix and must not be used for final physical validation.
 
-Pending: new EAS preview APK from the camera-return fix commit.
+Completed replacement build:
+
+- EAS build ID: `4435a491-f270-4a54-8352-3b653750af73`
+- Build profile: `preview`
+- Build type: Android APK
+- Source branch: `mobile-authenticated-private-media`
+- Source commit: `5296b96`
+- Install/QR page: `https://expo.dev/accounts/lamont76/projects/truck-safe-routing/builds/4435a491-f270-4a54-8352-3b653750af73`
+
+Physical validation remains pending until this APK is installed and tested on device.
 
 ## Production Safety
 

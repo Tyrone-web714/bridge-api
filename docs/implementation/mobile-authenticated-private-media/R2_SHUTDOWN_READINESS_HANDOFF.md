@@ -13,11 +13,19 @@ The non-production preview APK built from the first camera-capture commit is sup
 - EAS build ID: `344d34ae-b083-4171-ab1a-32de556517e9`
 - Install/QR page: `https://expo.dev/accounts/lamont76/projects/truck-safe-routing/builds/344d34ae-b083-4171-ab1a-32de556517e9`
 
-Do not use that APK for final R2 shutdown validation. A new APK must be built from the camera-return fix commit.
+Do not use that APK for final R2 shutdown validation.
+
+A replacement non-production preview APK has been built from the camera-return fix commit:
+
+- EAS build ID: `4435a491-f270-4a54-8352-3b653750af73`
+- Source commit: `5296b96`
+- Install/QR page: `https://expo.dev/accounts/lamont76/projects/truck-safe-routing/builds/4435a491-f270-4a54-8352-3b653750af73`
+
+Physical validation of this replacement APK remains pending.
 
 ## Remaining Sequence
 
-1. Build and install a new non-production preview APK from the camera-return fix commit.
+1. Install the replacement non-production preview APK from the camera-return fix commit.
 2. Confirm Delivery Notes offers `Take Photo`, `Choose From Library`, and `Cancel`.
 3. Physically validate camera-captured delivery-note upload and authenticated rendering.
 4. Physically validate library-selected delivery-note upload and authenticated rendering.
