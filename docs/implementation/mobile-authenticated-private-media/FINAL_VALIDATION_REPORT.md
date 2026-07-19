@@ -49,6 +49,41 @@ Production status:
 - Enterprise Identity provider verification was not started.
 - Physical Driver Copilot validation must wait until the backend repair is deployed to Render.
 
+## 2026-07-19 Deployment Repair: Migration 004 Immutability
+
+Status: PASSED.
+
+Render startup for main commit `b449ee2b423e9913bc81999b6206d0f753f45bdf` failed because the migration runner detected that the already-applied historical migration `004_authentication_rbac_foundation.sql` had changed. The change was introduced by commit `a1655a87322a24c17361a6d4637658e2293f0d95`.
+
+Exact historical migration drift found:
+
+- Added `('PLATFORM_ADMIN', 'ai.driver_copilot.use')` to migration `004`.
+- Added `('ORGANIZATION_ADMIN', 'ai.driver_copilot.use')` to migration `004`.
+- Added `('SUPERVISOR', 'ai.driver_copilot.use')` to migration `004`.
+- Added `('DRIVER', 'ai.driver_copilot.use')` to migration `004`.
+
+Repair:
+
+- Restored `004_authentication_rbac_foundation.sql` to the exact pre-repair Git content from `a1655a87322a24c17361a6d4637658e2293f0d95^`.
+- Added forward migration `011_driver_copilot_permission_repair.sql`.
+- Moved the four Driver Copilot permission seed rows into migration `011` using `ON CONFLICT (role, permission) DO NOTHING`.
+- Updated the Driver Copilot auth contract test to reject `ai.driver_copilot.use` in historical migration `004` and require it in forward migration `011`.
+
+Migration-history validation:
+
+- Migrations `001` through `010` have no drift versus the pre-merge production baseline commit `37922d7`.
+- Fresh isolated PostgreSQL/PostGIS validation applied migrations `001` through `011` successfully.
+- Upgrade-path simulation reproduced the Render production condition: migrations `001` through `010` were already applied with current restored checksums, the runner reported them as already applied with no changed-migration error, and migration `011` applied successfully.
+- Driver Copilot permission rows exist once each for `PLATFORM_ADMIN`, `ORGANIZATION_ADMIN`, `SUPERVISOR`, and `DRIVER`.
+- Duplicate `role_permissions` rows: `0`.
+
+Production safety:
+
+- No production data was modified.
+- No production migration records were manually modified.
+- No production schema was manually changed.
+- No migration safety checks were bypassed.
+
 ## Physical-Device Regression
 
 Status: SOURCE REPAIR UPDATED AFTER FAILED PHYSICAL TEST; NEW APK AND PHYSICAL REVALIDATION REQUIRED.

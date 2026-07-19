@@ -14,6 +14,7 @@ const server = read('bridge-api/server.js');
 const authorization = read('bridge-api/middleware/authorization.js');
 const aiRoute = read('bridge-api/routes/ai.js');
 const migration004 = read('bridge-api/migrations/004_authentication_rbac_foundation.sql');
+const migration011 = read('bridge-api/migrations/011_driver_copilot_permission_repair.sql');
 
 assert(
   mobileRouteManifestApi.includes('askDriverCopilot') &&
@@ -46,8 +47,13 @@ assert(
   'Driver role must not gain broad dashboard access for Copilot'
 );
 assert(
-  migration004.includes("('DRIVER', 'ai.driver_copilot.use')"),
-  'RBAC migration seed must include Driver Copilot permission for Driver role'
+  !migration004.includes('ai.driver_copilot.use'),
+  'Historical migration 004 must remain immutable and must not seed Driver Copilot permission'
+);
+assert(
+  migration011.includes("('DRIVER', 'ai.driver_copilot.use')") &&
+    migration011.includes('ON CONFLICT (role, permission) DO NOTHING'),
+  'Forward migration 011 must idempotently seed Driver Copilot permission for Driver role'
 );
 assert(
   aiRoute.includes("router.post('/driver-copilot', requireAiAccess, requireAiConfigured") &&

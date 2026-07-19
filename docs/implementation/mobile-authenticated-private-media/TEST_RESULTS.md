@@ -284,3 +284,64 @@ Production safety:
 - no migrations were applied;
 - public R2 access was not disabled;
 - Enterprise Identity provider verification was not started.
+
+## 2026-07-19 Migration Immutability Deployment Repair
+
+Problem reproduced from Render startup:
+
+- `004_authentication_rbac_foundation.sql` had been modified after production recorded it as applied.
+- The modified historical migration added `ai.driver_copilot.use` seed rows.
+
+Repair validation passed:
+
+```powershell
+git diff --exit-code a1655a87322a24c17361a6d4637658e2293f0d95^ -- bridge-api/migrations/004_authentication_rbac_foundation.sql
+git diff --name-only 37922d7 -- bridge-api/migrations/001_audit_events.sql bridge-api/migrations/002_driver_sessions.sql bridge-api/migrations/003_multi_tenant_foundation.sql bridge-api/migrations/004_authentication_rbac_foundation.sql bridge-api/migrations/005_shared_safety_foundation.sql bridge-api/migrations/006_bi_kpi_foundation.sql bridge-api/migrations/007_logistics_intelligence_foundation.sql bridge-api/migrations/008_fleet_intelligence_scoring_foundation.sql bridge-api/migrations/009_data_lifecycle_foundation.sql bridge-api/migrations/010_enterprise_identity_foundation.sql
+```
+
+Results:
+
+- migration `004` matches the pre-repair Git content;
+- migrations `001` through `010` have no drift versus the pre-merge production baseline;
+- new additive migration `011_driver_copilot_permission_repair.sql` contains the moved Copilot permission rows.
+
+Fresh isolated PostgreSQL/PostGIS migration validation passed:
+
+```powershell
+npm.cmd run db:migrate
+```
+
+Result:
+
+- migrations `001` through `011` applied successfully;
+- `ai.driver_copilot.use` exists once for `PLATFORM_ADMIN`, `ORGANIZATION_ADMIN`, `SUPERVISOR`, and `DRIVER`;
+- duplicate `role_permissions` rows: `0`.
+
+Mandatory upgrade-path simulation passed:
+
+- isolated database was initialized with the application base schema;
+- migrations `001` through `010` were applied and recorded first;
+- current migration runner then reported `001` through `010` as already applied with no `Applied migration changed` error;
+- migration `011_driver_copilot_permission_repair.sql` applied successfully;
+- duplicate `role_permissions` rows remained `0`.
+
+Regression validation passed:
+
+```powershell
+npm.cmd test
+npm.cmd run test:driver-copilot-auth
+npm.cmd run test:driver-route-notes-photo
+npm.cmd run test:mobile-private-media
+npm.cmd run test:mobile-tenant
+npm.cmd run test:api-tenant
+npm.cmd run test:auth-rbac
+npm.cmd run verify:secrets
+git diff --check
+```
+
+Production safety:
+
+- no production data was modified;
+- no production migration records were manually modified;
+- no migration safety checks were bypassed;
+- no public R2 setting was changed.

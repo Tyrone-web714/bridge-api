@@ -69,7 +69,6 @@ VALUES
   ('PLATFORM_ADMIN', 'hazards.review'),
   ('PLATFORM_ADMIN', 'dashboard.view'),
   ('PLATFORM_ADMIN', 'dashboard.manage'),
-  ('PLATFORM_ADMIN', 'ai.driver_copilot.use'),
   ('PLATFORM_ADMIN', 'reports.view'),
   ('PLATFORM_ADMIN', 'reports.export'),
   ('PLATFORM_ADMIN', 'route_replay.view'),
@@ -89,7 +88,6 @@ VALUES
   ('ORGANIZATION_ADMIN', 'hazards.review'),
   ('ORGANIZATION_ADMIN', 'dashboard.view'),
   ('ORGANIZATION_ADMIN', 'dashboard.manage'),
-  ('ORGANIZATION_ADMIN', 'ai.driver_copilot.use'),
   ('ORGANIZATION_ADMIN', 'reports.view'),
   ('ORGANIZATION_ADMIN', 'reports.export'),
   ('ORGANIZATION_ADMIN', 'route_replay.view'),
@@ -104,7 +102,6 @@ VALUES
   ('SUPERVISOR', 'delivery.operate'),
   ('SUPERVISOR', 'hazards.review'),
   ('SUPERVISOR', 'dashboard.view'),
-  ('SUPERVISOR', 'ai.driver_copilot.use'),
   ('SUPERVISOR', 'reports.view'),
   ('SUPERVISOR', 'reports.export'),
   ('SUPERVISOR', 'route_replay.view'),
@@ -112,7 +109,6 @@ VALUES
   ('DRIVER', 'stops.manage'),
   ('DRIVER', 'delivery.operate'),
   ('DRIVER', 'hazards.submit'),
-  ('DRIVER', 'ai.driver_copilot.use'),
   ('WAREHOUSE_EMPLOYEE', 'routes.view'),
   ('WAREHOUSE_EMPLOYEE', 'warehouse.confirm')
 ON CONFLICT (role, permission) DO NOTHING;
