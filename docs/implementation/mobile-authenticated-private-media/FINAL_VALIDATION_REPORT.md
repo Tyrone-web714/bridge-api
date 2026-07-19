@@ -63,7 +63,14 @@ Passed:
 
 ## APK Status
 
-Pending new EAS preview APK build from the camera-capture fix commit.
+New EAS preview APK build completed from the camera-capture fix commit.
+
+- EAS build ID: `344d34ae-b083-4171-ab1a-32de556517e9`
+- Build profile: `preview`
+- Build type: Android APK
+- Install/QR page: `https://expo.dev/accounts/lamont76/projects/truck-safe-routing/builds/344d34ae-b083-4171-ab1a-32de556517e9`
+
+Physical device validation has not been claimed. The APK still must be installed and tested on an Android device before the mobile media blocker can be closed.
 
 ## Critical Defects
 

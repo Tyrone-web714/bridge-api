@@ -53,6 +53,19 @@ Verified at source and automated-test level:
 - Hazard camera and library photos both enter the same hazard submission payload path.
 - Authenticated private-media rendering still avoids direct public R2 URLs, token-in-URL behavior, and legacy public URL fallback.
 
+## Preview APK Build
+
+Completed:
+
+- EAS build ID: `344d34ae-b083-4171-ab1a-32de556517e9`
+- Build profile: `preview`
+- Build type: Android APK
+- Source branch: `mobile-authenticated-private-media`
+- Source commit: camera-capture fix commit
+- Install/QR page: `https://expo.dev/accounts/lamont76/projects/truck-safe-routing/builds/344d34ae-b083-4171-ab1a-32de556517e9`
+
+Physical validation remains pending until this APK is installed and tested on an Android device.
+
 ## Production Safety
 
 No production media writes, production database writes, R2 object operations, Cloudflare setting changes, Render setting changes, deployments, or Enterprise Identity provider verification were performed.
