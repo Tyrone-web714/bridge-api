@@ -6,6 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { API_BASE_URL, DRIVER_ID, DRIVER_NAME } from '../config/api';
 import AccountKnowledgePanel from '../components/AccountKnowledgePanel';
 import VehicleLayer from '../components/VehicleLayer';
+import { openDeliveryNotes as openDeliveryNotesScreen } from '../navigation/deliveryNotesNavigation';
 import {
   fetchHazardsInBounds,
   fetchHazardsNearCoordinate,
@@ -1470,6 +1471,7 @@ export default function MapScreen({ route, navigation }) {
   const destinationPlaceId = route?.params?.destinationPlaceId ?? null;
   const destinationDetails = route?.params?.destinationDetails ?? null;
   const routeManifestStopId = destinationDetails?.routeStopId || route?.params?.routeStopId || null;
+  const routeManifestId = destinationDetails?.routeManifestId || route?.params?.routeManifestId || null;
   const routeManifestDate = destinationDetails?.routeDate || route?.params?.routeManifestDate || null;
   const routeManifestDriverId =
     destinationDetails?.routeManifestDriverId || route?.params?.routeManifestDriverId || null;
@@ -2154,15 +2156,26 @@ export default function MapScreen({ route, navigation }) {
     return true;
   };
 
-  const openArrivalDeliveryNotes = () => {
-    navigation?.navigate?.('DeliveryNotes', {
+  const openArrivalDeliveryNotes = (entry = {}) => {
+    openDeliveryNotesScreen(navigation, {
+      source: entry.source || 'route-stop',
+      returnRoute: 'Map',
+      returnParams: {
+        ...(route?.params || {}),
+        restoredAccountKnowledge: entry.source === 'account-knowledge',
+      },
       destinationAddress,
       destinationPlaceId,
       accountNumber: destinationDetails?.accountNumber || null,
+      accountName: destinationDetails?.accountName || destinationDetails?.name || null,
       driverId: routeManifestDriverId,
       driverName: routeManifestDriverName,
+      routeManifestId,
+      routeStopId: routeManifestStopId,
+      routeDate: routeManifestDate,
       destinationDetails: {
         ...(destinationDetails || {}),
+        routeManifestId,
         routeStopId: routeManifestStopId,
         routeDate: routeManifestDate,
         routeManifestDriverId,

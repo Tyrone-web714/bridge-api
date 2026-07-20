@@ -24,6 +24,7 @@ import {
 import SignatureCaptureModal from '../components/SignatureCaptureModal';
 import AccountKnowledgePanel from '../components/AccountKnowledgePanel';
 import ProductBarcodeScannerModal from '../components/ProductBarcodeScannerModal';
+import { openDeliveryNotes as openDeliveryNotesScreen } from '../navigation/deliveryNotesNavigation';
 import {
   buildLocalDeliveryDocument,
   buildLocalRouteCloseoutDocument,
@@ -412,19 +413,32 @@ export default function DeliverySettlementScreen({ navigation, route }) {
     })),
   });
 
-  const openDeliveryNotes = () => {
+  const openDeliveryNotes = (entry = {}) => {
     const stop = delivery?.stop || {};
-    navigation.navigate('DeliveryNotes', {
+    openDeliveryNotesScreen(navigation, {
+      source: entry.source || 'delivery-settlement',
+      returnRoute: 'DeliverySettlement',
+      returnParams: {
+        ...(route?.params || {}),
+        restoredAccountKnowledge: entry.source === 'account-knowledge',
+      },
       destinationAddress: buildStopAddress(stop),
       destinationPlaceId: null,
       accountNumber: stop.accountNumber,
+      accountName: stop.accountName,
       driverId,
       driverName,
+      routeManifestId: stop.manifestId,
+      routeStopId: stopId,
+      routeDate,
+      routeNumber: stop.routeNumber,
       destinationDetails: {
         name: stop.accountName,
         formattedAddress: buildStopAddress(stop),
         accountNumber: stop.accountNumber,
         accountName: stop.accountName,
+        routeManifestId: stop.manifestId,
+        routeNumber: stop.routeNumber,
         routeStopId: stopId,
         routeDate,
         routeManifestDriverId: driverId,

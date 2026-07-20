@@ -23,6 +23,7 @@
   var _reactNativeSafeAreaContext = require("react-native-safe-area-context");
   var _componentsAccountKnowledgePanel = require("../components/AccountKnowledgePanel");
   var AccountKnowledgePanel = _interopDefault(_componentsAccountKnowledgePanel);
+  var _navigationDeliveryNotesNavigation = require("../navigation/deliveryNotesNavigation");
   var _configApi = require("../config/api");
   var _servicesRouteManifestApi = require("../services/routeManifestApi");
   var _servicesRouteManifestOfflineStore = require("../services/routeManifestOfflineStore");
@@ -310,17 +311,33 @@
         return _ref5.apply(this, arguments);
       };
     }();
-    var openStopDeliveryNotes = stop => {
+    var openStopDeliveryNotes = (stop, entry = {}) => {
       var destinationAddress = buildStopAddress(stop);
-      navigation.navigate('DeliveryNotes', {
+      (0, _navigationDeliveryNotesNavigation.openDeliveryNotes)(navigation, {
+        source: entry.source || 'route-stop',
+        returnRoute: 'TodayRoute',
+        returnParams: {
+          driverId: confirmedDriverId,
+          driverName: confirmedDriverName,
+          routeDate: routeManifest?.routeDate,
+          restoredAccountKnowledge: entry.source === 'account-knowledge'
+        },
         destinationAddress,
         destinationPlaceId: null,
         accountNumber: stop.accountNumber,
+        accountName: stop.accountName,
         driverId: confirmedDriverId,
         driverName: confirmedDriverName,
+        routeManifestId: routeManifest?.id,
+        routeStopId: stop.id,
+        routeDate: routeManifest?.routeDate,
+        routeNumber: routeManifest?.routeNumber,
         destinationDetails: {
           name: stop.accountName || stop.destinationAddress,
           formattedAddress: destinationAddress,
+          secondaryText: destinationAddress,
+          routeManifestId: routeManifest?.id,
+          routeNumber: routeManifest?.routeNumber,
           accountNumber: stop.accountNumber,
           accountName: stop.accountName,
           routeStopId: stop.id,
@@ -740,7 +757,7 @@
               driverId: confirmedDriverId,
               driverName: confirmedDriverName,
               compact: true,
-              onOpen: () => openStopDeliveryNotes(nextStop)
+              onOpen: entry => openStopDeliveryNotes(nextStop, entry)
             }), renderLifecycleActions(nextStop, {
               primaryOnly: true
             })]
@@ -866,7 +883,7 @@
                   driverId: confirmedDriverId,
                   driverName: confirmedDriverName,
                   compact: true,
-                  onOpen: () => openStopDeliveryNotes(stop)
+                  onOpen: entry => openStopDeliveryNotes(stop, entry)
                 }), renderLifecycleActions(stop)]
               }, stop.id);
             })]

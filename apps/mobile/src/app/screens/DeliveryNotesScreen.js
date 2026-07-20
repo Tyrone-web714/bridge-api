@@ -16,21 +16,29 @@ import {
   readPhotoDraft,
   savePhotoDraft,
 } from '../services/photoDraftStore';
+import {
+  buildDeliveryNotesParams,
+  returnFromDeliveryNotes,
+  validateDeliveryNotesParams,
+} from '../navigation/deliveryNotesNavigation';
 
 const MAX_NOTE_PHOTOS = 4;
 const DELIVERY_NOTE_DRAFT_WORKFLOW = 'delivery-notes';
 
-export default function DeliveryNotesScreen({ route }) {
-  const destination = route?.params?.destinationAddress || '';
-  const destinationPlaceId = route?.params?.destinationPlaceId || null;
-  const destinationDetails = route?.params?.destinationDetails || null;
-  const accountNumber = route?.params?.accountNumber || destinationDetails?.accountNumber || null;
-  const routeManifestId = route?.params?.routeManifestId || destinationDetails?.routeManifestId || null;
-  const routeStopId = route?.params?.routeStopId || destinationDetails?.routeStopId || null;
-  const routeDate = route?.params?.routeDate || route?.params?.routeManifestDate || destinationDetails?.routeDate || null;
-  const routeNumber = route?.params?.routeNumber || destinationDetails?.routeNumber || null;
-  const routeDriverId = route?.params?.driverId || destinationDetails?.routeManifestDriverId || '';
-  const routeDriverName = route?.params?.driverName || destinationDetails?.routeManifestDriverName || DRIVER_NAME;
+export default function DeliveryNotesScreen({ navigation, route }) {
+  const deliveryNotesContext = buildDeliveryNotesParams(route?.params || {});
+  const contextValidation = validateDeliveryNotesParams(deliveryNotesContext);
+  const contextError = contextValidation.errors.join(' ');
+  const destination = deliveryNotesContext.destinationAddress || '';
+  const destinationPlaceId = deliveryNotesContext.destinationPlaceId || null;
+  const destinationDetails = deliveryNotesContext.destinationDetails || null;
+  const accountNumber = deliveryNotesContext.accountNumber || null;
+  const routeManifestId = deliveryNotesContext.routeManifestId || null;
+  const routeStopId = deliveryNotesContext.routeStopId || null;
+  const routeDate = deliveryNotesContext.routeDate || null;
+  const routeNumber = deliveryNotesContext.routeNumber || null;
+  const routeDriverId = deliveryNotesContext.driverId || '';
+  const routeDriverName = deliveryNotesContext.driverName || DRIVER_NAME;
 
   const [accountName, setAccountName] = useState(destinationDetails?.name || '');
   const [customerName, setCustomerName] = useState('');
@@ -52,10 +60,22 @@ export default function DeliveryNotesScreen({ route }) {
     routeStopId,
     routeDate,
     routeNumber,
-    routeParams: route?.params,
+    routeParams: deliveryNotesContext,
   });
 
+  const handleBack = () => {
+    const returned = returnFromDeliveryNotes(navigation, deliveryNotesContext);
+    if (!returned) {
+      setStatusText('Return destination is unavailable. Use the app navigation controls to return to the route.');
+    }
+  };
+
   const loadNotes = useCallback(async () => {
+    if (!contextValidation.valid) {
+      setExistingNotes([]);
+      setStatusText(contextError || 'Delivery Notes cannot open without account context.');
+      return;
+    }
     setIsLoadingNotes(true);
     try {
       const notes = await fetchAccountDeliveryNotes({
@@ -86,6 +106,8 @@ export default function DeliveryNotesScreen({ route }) {
     routeNumber,
     routeDriverId,
     routeDriverName,
+    contextValidation.valid,
+    contextError,
   ]);
 
   useEffect(() => {
@@ -150,6 +172,10 @@ export default function DeliveryNotesScreen({ route }) {
   ]);
 
   const pickPhotos = async () => {
+    if (!contextValidation.valid) {
+      Alert.alert('Delivery context missing', contextError || 'Open Delivery Notes from a route stop or Account Knowledge.');
+      return;
+    }
     const remainingSlots = MAX_NOTE_PHOTOS - selectedPhotos.length - existingPhotoDraft.length;
     if (remainingSlots <= 0) {
       Alert.alert('Photo limit reached', `You can attach up to ${MAX_NOTE_PHOTOS} photos per note.`);
@@ -332,6 +358,10 @@ export default function DeliveryNotesScreen({ route }) {
   };
 
   const saveNote = async () => {
+    if (!contextValidation.valid) {
+      Alert.alert('Delivery context missing', contextError || 'Open Delivery Notes from a route stop or Account Knowledge.');
+      return;
+    }
     const cleanedInstructions = instructions.trim();
     if (!cleanedInstructions && selectedPhotos.length === 0 && existingPhotoDraft.length === 0) {
       Alert.alert('Add a note', 'Enter delivery instructions or attach at least one photo.');
@@ -414,6 +444,15 @@ export default function DeliveryNotesScreen({ route }) {
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
         <View style={styles.headerPanel}>
+          <Pressable
+            onPress={handleBack}
+            style={({ pressed }) => [
+              styles.backButton,
+              pressed && styles.buttonPressed,
+            ]}
+          >
+            <Text style={styles.backButtonText}>{'< Back'}</Text>
+          </Pressable>
           <Text style={styles.kicker}>Driver knowledge</Text>
           <Text style={styles.title}>Delivery Notes</Text>
           <Text style={styles.destinationText} numberOfLines={2}>
@@ -425,6 +464,13 @@ export default function DeliveryNotesScreen({ route }) {
             </Text>
           )}
         </View>
+
+        {!contextValidation.valid && (
+          <View style={styles.contextErrorPanel}>
+            <Text style={styles.contextErrorTitle}>Delivery context needed</Text>
+            <Text style={styles.contextErrorText}>{contextError}</Text>
+          </View>
+        )}
 
         <View style={styles.formPanel}>
           <View style={styles.formTitleRow}>
@@ -702,6 +748,23 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 5 },
     elevation: 7,
   },
+  backButton: {
+    alignSelf: 'flex-start',
+    minHeight: 34,
+    borderRadius: 17,
+    paddingHorizontal: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(255,255,255,0.18)',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.34)',
+    marginBottom: 12,
+  },
+  backButtonText: {
+    fontSize: 13,
+    fontWeight: '900',
+    color: '#ffffff',
+  },
   kicker: {
     fontSize: 11,
     lineHeight: 14,
@@ -729,6 +792,27 @@ const styles = StyleSheet.create({
     lineHeight: 17,
     fontWeight: '700',
     color: '#ffe8ec',
+  },
+  contextErrorPanel: {
+    borderRadius: 12,
+    padding: 14,
+    marginBottom: 14,
+    backgroundColor: '#fff0f1',
+    borderWidth: 1,
+    borderColor: '#c8131f',
+  },
+  contextErrorTitle: {
+    fontSize: 14,
+    fontWeight: '900',
+    color: '#a20f18',
+    textTransform: 'uppercase',
+  },
+  contextErrorText: {
+    marginTop: 6,
+    fontSize: 13,
+    lineHeight: 18,
+    fontWeight: '700',
+    color: '#4d1f23',
   },
   formPanel: {
     borderRadius: 18,

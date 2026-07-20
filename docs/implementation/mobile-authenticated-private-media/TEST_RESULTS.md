@@ -440,3 +440,41 @@ Source-level assertions now verify:
 Physical validation:
 
 - Pending. A new preview APK must be installed and tested on Android before this blocker can be closed.
+
+## 2026-07-19 Delivery Notes Navigation Contract Repair
+
+Scope:
+
+- Delivery Notes entry/context contract;
+- route stop entry;
+- Account Knowledge Add Note entry;
+- Map arrival entry;
+- Delivery Settlement entry;
+- Home destination-search entry;
+- deterministic Back behavior;
+- safe missing-context handling.
+
+Focused validation passed:
+
+```powershell
+npm.cmd run test:mobile-private-media
+npm.cmd run test:driver-route-notes-photo
+git diff --check
+```
+
+Source-level assertions now verify:
+
+- all Delivery Notes entry points use a canonical helper;
+- route entries pass account, manifest, stop, date/number, and driver context;
+- Account Knowledge Add Note identifies `source: account-knowledge`;
+- DeliveryNotesScreen validates required context before loading, photo picking, or saving;
+- missing context fails safely instead of saving against an undefined account;
+- Back uses the caller-defined return route;
+- successful save does not navigate to Home;
+- failed save does not navigate to Home/Login;
+- Account Knowledge refresh remains event-driven and account-scoped;
+- camera and gallery use the same initialized Delivery Notes context after screen entry.
+
+Physical validation:
+
+- Pending. Do not build another APK until the navigation/context root-cause report has been reviewed.

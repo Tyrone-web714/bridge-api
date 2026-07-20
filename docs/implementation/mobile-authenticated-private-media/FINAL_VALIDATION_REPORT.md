@@ -164,6 +164,44 @@ Physical status:
 - MainActivity recreation has not been revalidated by Codex after this source fix. It requires a new preview APK and physical Android test.
 - The expected physical result is: Take Photo returns to the same Delivery Notes or Hazard Report workflow, does not show Driver Login, persists the captured photo in the note draft, saves successfully, and the saved photo appears in Account Knowledge after save.
 
+## 2026-07-19 Delivery Notes Navigation Contract Repair
+
+Status: SOURCE VALIDATION PASSED; PREVIEW APK AND PHYSICAL ACCEPTANCE REQUIRED.
+
+New physical-device evidence showed the remaining blocker was not safely isolated to camera code. Delivery Notes could be opened through route stop buttons, Account Knowledge Add Note, Map arrival, Delivery Settlement, Home destination search, and Android pending camera recovery, with different parameter shapes and implicit return behavior.
+
+The full entry-point matrix and navigation contract are documented in `DELIVERY_NOTES_NAVIGATION_CONTRACT_AUDIT.md`.
+
+Root cause:
+
+- Delivery Notes accepted caller-specific params instead of one explicit contract.
+- Some route entries omitted top-level route manifest ID.
+- Account Knowledge Add Note did not identify itself as the source.
+- Delivery Notes did not validate required account/route/return context before load/save.
+- Return behavior depended on the navigator stack rather than caller-provided return metadata.
+
+Repair:
+
+- Added canonical `openDeliveryNotes(navigation, input)` helper.
+- Added canonical Delivery Notes params for source, return route, account identity, route manifest, stop, route date/number, driver identity, and compatible destination details.
+- Updated Home, Today Route, Map, Delivery Settlement, and Account Knowledge entry paths to use the shared contract.
+- Added Delivery Notes context validation before load, photo pick, and save.
+- Added an explicit Back control using the caller-defined return route.
+- Kept successful saves on Delivery Notes after authoritative refresh.
+- Kept failed saves on Delivery Notes with draft/state preserved.
+- Delivery Notes still does not navigate to Home or reset root navigation after save.
+
+Validation passed:
+
+- `npm.cmd run test:mobile-private-media`
+- `npm.cmd run test:driver-route-notes-photo`
+- `git diff --check`
+
+Physical status:
+
+- No APK has been built from this navigation-contract repair.
+- Physical acceptance remains open for route entry, Account Knowledge entry, repeatability, Account Knowledge refresh, and failure-path behavior.
+
 ## Physical-Device Regression
 
 Status: SOURCE REPAIR UPDATED AFTER FAILED PHYSICAL TEST; NEW APK AND PHYSICAL REVALIDATION REQUIRED.

@@ -91,7 +91,21 @@ export default function AccountKnowledgePanel({
         {loading
           ? <ActivityIndicator color="#67e8f9" />
           : (
-            <Pressable onPress={onOpen} style={styles.openButton}>
+            <Pressable
+              onPress={() => onOpen?.({
+                source: 'account-knowledge',
+                accountNumber,
+                placeId,
+                destination,
+                routeManifestId,
+                routeStopId,
+                routeDate,
+                routeNumber,
+                driverId,
+                driverName,
+              })}
+              style={styles.openButton}
+            >
               <Text style={styles.openButtonText}>{notes.length ? 'View / Edit' : 'Add Note'}</Text>
             </Pressable>
           )}

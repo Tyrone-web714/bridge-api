@@ -30,6 +30,7 @@ import {
   loginDriverSession,
   logoutDriverSession,
 } from '../services/driverSession';
+import { openDeliveryNotes as openDeliveryNotesScreen } from '../navigation/deliveryNotesNavigation';
 
 function buildConfirmedDriver(driverId, driverName, assignedRoute) {
   return {
@@ -633,9 +634,21 @@ export default function HomeScreen({ navigation, route }) {
   };
 
   const openDeliveryNotes = () => {
-    navigation.navigate('DeliveryNotes', {
+    openDeliveryNotesScreen(navigation, {
+      source: 'destination-search',
+      returnRoute: 'Home',
+      returnParams: {
+        returnDestination: {
+          address: destination.trim(),
+          placeId: destinationDetails?.placeId || destinationPlaceId || null,
+          details: destinationDetails,
+        },
+        returnDestinationToken: Date.now(),
+      },
       destinationAddress: destination.trim(),
       destinationPlaceId: destinationDetails?.placeId || destinationPlaceId || null,
+      accountNumber: destinationDetails?.accountNumber || null,
+      accountName: destinationDetails?.accountName || destinationDetails?.name || null,
       destinationDetails,
     });
   };

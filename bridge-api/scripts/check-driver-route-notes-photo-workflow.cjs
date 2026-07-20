@@ -16,7 +16,11 @@ const deliveryNotesScreen = read('apps/mobile/src/app/screens/DeliveryNotesScree
 const hazardReportScreen = read('apps/mobile/src/app/screens/HazardReportScreen.js');
 const homeScreen = read('apps/mobile/src/app/screens/HomeScreen.js');
 const rootNavigator = read('apps/mobile/src/app/navigation/RootNavigator.js');
+const deliveryNotesNavigation = read('apps/mobile/src/app/navigation/deliveryNotesNavigation.js');
 const accountPanel = read('apps/mobile/src/app/components/AccountKnowledgePanel.js');
+const todayRouteScreen = read('apps/mobile/src/app/screens/TodayRouteScreen.js');
+const mapScreen = read('apps/mobile/src/app/screens/MapScreen.js');
+const deliverySettlementScreen = read('apps/mobile/src/app/screens/DeliverySettlementScreen.js');
 const deliveryNotesRoute = read('bridge-api/routes/deliveryNotes.js');
 const repositories = read('bridge-api/db/repositories.js');
 const driverAuth = read('bridge-api/services/driverAuth.js');
@@ -31,6 +35,7 @@ assert(deliveryNotesScreen.includes('saveNote') && !deliveryNotesScreen.includes
 assert(deliveryNotesApi.includes('isLocalMediaUploadError(error)') && deliveryNotesApi.includes('throw error'), 'unreadable local media must not be queued as offline success');
 assert(deliveryNotesApi.includes('fetchAccountKnowledgeDeliveryNotes'), 'Account Knowledge must use account-scoped delivery-note fetches');
 assert(deliveryNotesApi.includes('subscribeDeliveryNotesChanged'), 'post-save account knowledge refresh must be event-driven');
+assert(accountPanel.includes("source: 'account-knowledge'"), 'Account Knowledge Add Note must identify its entry source');
 assert(deliveryNotesScreen.includes('sourceUriScheme'), 'delivery notes must keep safe source diagnostics for preview builds');
 assert(hazardReportScreen.includes('persistDeliveryPhoto'), 'hazard report camera/library assets must use durable local photo persistence');
 assert(hazardReportScreen.includes('Promise.all(photos.map(photoPayload))'), 'hazard photo payload construction must handle async local file reads');
@@ -39,6 +44,7 @@ assert(homeScreen.includes('shouldShowDriverLoginForm'), 'Home must explicitly g
 assert(homeScreen.includes("driverStartupState === 'authenticated'"), 'Home must distinguish restored authenticated sessions from unauthenticated login');
 assert(!homeScreen.includes('recoverPendingCameraDraft'), 'Home must not consume Expo pending camera results directly');
 assert(!homeScreen.includes('navigateToPhotoDraft'), 'Home must not route recovered camera results through Home');
+assert(homeScreen.includes('openDeliveryNotesScreen') && homeScreen.includes("source: 'destination-search'"), 'Home destination notes must use the canonical Delivery Notes contract');
 assert(rootNavigator.includes('sessionBootstrapState') && rootNavigator.includes('initializeDriverSession'), 'Root navigator must restore canonical driver session before rendering route workflows');
 assert(rootNavigator.includes('AppState.addEventListener') && rootNavigator.includes('resumePhotoWorkflow'), 'Root navigator must recover camera drafts on foreground');
 assert(rootNavigator.includes('navigationRef.reset'), 'Root navigator must reset to the authoritative photo workflow route');
@@ -48,8 +54,17 @@ assert(photoDraftStore.includes('routeStopId') && photoDraftStore.includes('rout
 assert(photoDraftStore.includes('captureRequestId'), 'photo draft camera intent must persist a capture request ID before native camera launch');
 assert(photoDraftStore.includes('markCameraResultProcessed'), 'photo draft store must prevent duplicate pending camera result processing');
 assert(photoDraftStore.includes('hasProcessedCameraResult'), 'photo draft store must expose duplicate pending camera result checks');
+assert(deliveryNotesNavigation.includes('buildDeliveryNotesParams'), 'Delivery Notes navigation must have one canonical params builder');
+assert(deliveryNotesNavigation.includes('validateDeliveryNotesParams'), 'Delivery Notes navigation must validate account, stop, manifest, and return context');
+assert(deliveryNotesNavigation.includes('returnFromDeliveryNotes'), 'Delivery Notes navigation must provide deterministic caller-defined Back behavior');
+assert(deliveryNotesNavigation.includes('accountNumber') && deliveryNotesNavigation.includes('destinationPlaceId'), 'Delivery Notes durable account scope must use account number or place ID, not display name');
+assert(deliveryNotesNavigation.includes('routeManifestId') && deliveryNotesNavigation.includes('routeStopId'), 'Delivery Notes route scope must preserve manifest and stop identity');
 
 assert(deliveryNotesScreen.includes('routeStopId') && deliveryNotesScreen.includes('routeManifestId'), 'DeliveryNotesScreen must send route-stop scope on save/fetch');
+assert(deliveryNotesScreen.includes('contextValidation.valid'), 'DeliveryNotesScreen must not load, pick photos, or save with invalid context');
+assert(deliveryNotesScreen.includes('Delivery context missing'), 'DeliveryNotesScreen must fail safely when required context is missing');
+assert(deliveryNotesScreen.includes('returnFromDeliveryNotes'), 'DeliveryNotesScreen must expose explicit Back behavior');
+assert(!deliveryNotesScreen.includes("navigate('Home'") && !deliveryNotesScreen.includes("replace('Home'"), 'DeliveryNotesScreen must not use Home as error recovery');
 assert(deliveryNotesScreen.includes('failedRestoreCount'), 'DeliveryNotesScreen must surface partial camera draft restore failures');
 assert(deliveryNotesScreen.includes('clientPhotoId'), 'DeliveryNotesScreen must send safe per-photo correlation IDs');
 assert(deliveryNotesScreen.indexOf('await loadNotes();') < deliveryNotesScreen.indexOf("setStatusText(editingNoteId"), 'DeliveryNotesScreen must refresh authoritative notes before reporting save success');
@@ -62,6 +77,12 @@ assert(accountPanel.includes('fetchAccountKnowledgeDeliveryNotes'), 'Account Kno
 assert(!accountPanel.includes("routeStopId,\\n      routeManifestId"), 'Account Knowledge query must not be narrowed by run/stop identifiers');
 assert(accountPanel.includes('subscribeDeliveryNotesChanged'), 'Account Knowledge must refetch after successful note/photo saves');
 assert(accountPanel.includes('MAX_PREVIEW_PHOTOS = 4') && accountPanel.includes('slice(0, MAX_PREVIEW_PHOTOS)'), 'route notes preview panel must render up to the full four-photo note limit');
+assert(todayRouteScreen.includes('openDeliveryNotes)(navigation') && todayRouteScreen.includes("source: entry.source || 'route-stop'"), 'TodayRoute route and Account Knowledge entries must converge through the canonical Delivery Notes contract');
+assert(todayRouteScreen.includes("returnRoute: 'TodayRoute'"), 'TodayRoute Delivery Notes entries must return to TodayRoute');
+assert(mapScreen.includes('openDeliveryNotesScreen(navigation') && mapScreen.includes("source: entry.source || 'route-stop'"), 'Map route and Account Knowledge entries must converge through the canonical Delivery Notes contract');
+assert(mapScreen.includes("returnRoute: 'Map'"), 'Map Delivery Notes entries must return to Map');
+assert(deliverySettlementScreen.includes('openDeliveryNotesScreen(navigation') && deliverySettlementScreen.includes("source: entry.source || 'delivery-settlement'"), 'DeliverySettlement route and Account Knowledge entries must converge through the canonical Delivery Notes contract');
+assert(deliverySettlementScreen.includes("returnRoute: 'DeliverySettlement'"), 'DeliverySettlement Delivery Notes entries must return to DeliverySettlement');
 
 assert(driverAuth.includes('internalDriverId: req.driverAuth.internalDriverId'), 'driver auth identity must expose permanent internal driver ID');
 assert(driverAuth.includes('companyDriverNumber: req.driverAuth.companyDriverNumber'), 'driver auth identity must preserve company driver number');
