@@ -395,3 +395,70 @@ None remaining at source level after the route notes/photo workflow and Driver C
 ## Production Safety
 
 No production data/media was modified. Public R2 access remains enabled. No R2 settings were changed.
+
+## 2026-07-19 In-App Camera Note Composer Rebuild
+
+Physical Android testing showed that the external `ImagePicker.launchCameraAsync()` Delivery Notes camera path remained unreliable even after targeted navigation and pending-result fixes. The patch-by-patch path was stopped and the primary Delivery Notes camera workflow was rebuilt around an in-app TSR camera and a durable note composer draft.
+
+Implemented files:
+
+- `apps/mobile/src/app/screens/TsrCameraScreen.js`
+- `apps/mobile/src/app/services/noteComposerStore.js`
+- `apps/mobile/src/app/navigation/RootNavigator.js`
+- `apps/mobile/src/app/screens/DeliveryNotesScreen.js`
+- `apps/mobile/scripts/check-mobile-private-media.cjs`
+- `bridge-api/scripts/check-driver-route-notes-photo-workflow.cjs`
+- `docs/implementation/mobile-authenticated-private-media/IN_APP_CAMERA_NOTE_COMPOSER_REBUILD.md`
+
+Key outcomes:
+
+- Delivery Notes no longer uses `selectImageAssetsWithPrompt()` or `launchCameraAsync()` for its primary Take Photo flow.
+- Delivery Notes opens the in-app `TsrCamera` screen with the canonical route/account/return context.
+- `TsrCamera` uses `expo-camera` `CameraView` and `takePictureAsync()` while TSR remains foregrounded.
+- Captured photos are previewed before acceptance.
+- `Use Photo` writes the accepted photo into a tenant-scoped note composer draft before returning.
+- Gallery selection remains available and now attaches through the same note composer draft.
+- Note drafts store `noteDraftId`, `localPhotoId`, Organization ID, internal driver ID, company driver number, route/account context, stable app-controlled local file URI, upload state, and safe source diagnostics.
+- Note drafts do not store tokens, R2 credentials, public R2 URLs, or signed URLs.
+- Root-level Delivery Notes pending-camera reset recovery was removed from the primary Delivery Notes workflow; the older root recovery remains only for workflows that still use the external camera path.
+
+Focused validation passed:
+
+```powershell
+npm.cmd run test:mobile-private-media
+npm.cmd run test:driver-route-notes-photo
+git diff --check
+```
+
+`git diff --check` reported only line-ending warnings for touched files and no whitespace errors.
+
+Additional regression validation passed:
+
+```powershell
+npm.cmd test
+npm.cmd run test:mobile-tenant
+npm.cmd run test:api-tenant
+npm.cmd run test:auth-rbac
+npm.cmd run verify:secrets
+```
+
+Mobile-local validation passed:
+
+```powershell
+npm.cmd run test:mobile-private-media
+npm.cmd run verify:secrets
+npm.cmd ci --dry-run
+npm.cmd run verify:production
+npx.cmd expo config --type public
+```
+
+Notes:
+
+- The first mobile `npm.cmd ci --dry-run` attempt was blocked by Windows `EPERM` on `node_modules/.package-lock.json`; rerunning with filesystem access passed.
+- Expo config and mobile production verification were run with validation-only environment values, including a non-secret placeholder Android Maps key. No real Maps key or `.env` value was reported.
+
+APK status:
+
+- No APK has been built from `in-app-camera-note-composer-rebuild`.
+- Physical Android validation has not been claimed.
+- The branch is not ready for merge until the rebuilt camera workflow passes the approved physical checklist.

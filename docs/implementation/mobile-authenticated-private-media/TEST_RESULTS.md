@@ -462,6 +462,31 @@ npm.cmd run test:driver-route-notes-photo
 git diff --check
 ```
 
+Regression validation passed:
+
+```powershell
+npm.cmd test
+npm.cmd run test:mobile-tenant
+npm.cmd run test:api-tenant
+npm.cmd run test:auth-rbac
+npm.cmd run verify:secrets
+```
+
+Mobile-local validation passed:
+
+```powershell
+npm.cmd run test:mobile-private-media
+npm.cmd run verify:secrets
+npm.cmd ci --dry-run
+npm.cmd run verify:production
+npx.cmd expo config --type public
+```
+
+Validation notes:
+
+- `npm.cmd ci --dry-run` passed after rerun with filesystem access because Windows initially denied unlink access to `node_modules/.package-lock.json`.
+- Expo config and production-config validation used validation-only environment values and did not expose real `.env` secrets.
+
 Source-level assertions now verify:
 
 - all Delivery Notes entry points use a canonical helper;
@@ -478,3 +503,39 @@ Source-level assertions now verify:
 Physical validation:
 
 - Pending. Do not build another APK until the navigation/context root-cause report has been reviewed.
+
+## 2026-07-19 In-App Camera Note Composer Rebuild
+
+Scope:
+
+- removed the external Android camera activity as the primary Delivery Notes Take Photo path;
+- added in-app TSR camera capture through `expo-camera`;
+- added durable tenant-scoped note composer drafts;
+- kept gallery upload support;
+- removed Delivery Notes from root-level external-camera pending-result reset recovery;
+- preserved route/stop/account context and explicit Back behavior.
+
+Focused validation passed:
+
+```powershell
+npm.cmd run test:mobile-private-media
+npm.cmd run test:driver-route-notes-photo
+git diff --check
+```
+
+Source-level assertions now verify:
+
+- Delivery Notes does not call `selectImageAssetsWithPrompt` or `launchCameraAsync`;
+- Delivery Notes opens `TsrCamera` for camera capture;
+- `TsrCamera` uses `CameraView`, `useCameraPermissions`, and `takePictureAsync`;
+- `TsrCamera` writes accepted photos to the note composer draft before returning;
+- `TsrCamera` does not navigate to Home/Login and does not reset navigation;
+- gallery photos use the same note composer attachment path;
+- note composer drafts are tenant-scoped by Organization and internal driver;
+- note composer drafts preserve `noteDraftId`, `localPhotoId`, stable local URI, upload status, route context, and safe diagnostics;
+- note composer drafts do not persist tokens or public R2 URLs;
+- Delivery Notes save remains on the same screen and still refreshes authoritative notes before success status.
+
+Physical validation:
+
+- Pending. No preview APK has been built from `in-app-camera-note-composer-rebuild` yet.

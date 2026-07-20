@@ -6,6 +6,7 @@ import LandingScreen from '../screens/LandingScreen';
 import HomeScreen from '../screens/HomeScreen';
 import MapScreen from '../screens/MapScreen';
 import DeliveryNotesScreen from '../screens/DeliveryNotesScreen';
+import TsrCameraScreen from '../screens/TsrCameraScreen';
 import TodayRouteScreen from '../screens/TodayRouteScreen';
 import DeliverySettlementScreen from '../screens/DeliverySettlementScreen';
 import FinalInventoryCloseoutScreen from '../screens/FinalInventoryCloseoutScreen';
@@ -42,20 +43,7 @@ export default function RootNavigator() {
     const draft = recovered || await readLatestPhotoDraft().catch(() => null);
     if (!draft?.workflow || !draft?.photos?.length || !draft?.context?.routeParams) return;
 
-    if (draft.workflow === 'delivery-notes') {
-      navigationRef.reset({
-        index: 0,
-        routes: [
-          {
-            name: 'DeliveryNotes',
-            params: {
-              ...draft.context.routeParams,
-              restoredPhotoDraft: true,
-            },
-          },
-        ],
-      });
-    } else if (draft.workflow === 'hazard-report') {
+    if (draft.workflow === 'hazard-report') {
       navigationRef.reset({
         index: 0,
         routes: [
@@ -120,6 +108,11 @@ export default function RootNavigator() {
             headerTintColor: '#102033',
             headerTitleStyle: { fontWeight: '900' },
           }}
+        />
+        <Stack.Screen
+          name="TsrCamera"
+          component={TsrCameraScreen}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="TodayRoute"

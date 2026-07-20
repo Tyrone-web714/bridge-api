@@ -8,7 +8,7 @@
 - Governing Architecture Version: 1.1
 - Authoritative Repository: `C:\dev\bridge-api`
 - GitHub Repository: `https://github.com/Tyrone-web714/bridge-api.git`
-- Current Branch: `mobile-authenticated-private-media`
+- Current Branch: `in-app-camera-note-composer-rebuild`
 - Latest Documentation Commit: `cf23662b1bb7ab189960925f9521f6b1c0e8a394` - `Add Truck-Safe Routing governing documentation`
 - Update Guidance: Update this file when the project phase, deployment status, repository structure, major risks, or implementation priorities change.
 
@@ -51,7 +51,7 @@ Current implementation and planned architecture must be kept separate:
 | Web origin and private media hardening | Merged to Main | Web origin and private media hardening merged through commit `b0652e7`. New Organization-private S3/R2 delivery-note media uses authenticated TSR media access and ODR-019 lifecycle object references. Verified production evidence still shows 3 legacy delivery-note media references using direct public R2 current URLs, so public R2 access cannot be disabled until legacy migration is approved and completed. |
 | Legacy private media migration | In Progress | Branch `legacy-private-media-migration` contains validated migration tooling and documentation. Owner-run approved production apply migrated the 3 verified legacy delivery-note media metadata references; immediate post-migration dry-run reported `alreadyMigrated = 3`, `readyToMigrate = 0`, and no blocked/ambiguous/missing metadata items. Deployed `/health` and `/ready` remained HTTP 200 after migration. No R2 object mutation, R2 setting change, deployment, or public R2 shutdown has been performed. |
 | Private R2 shutdown readiness | Blocked | Branch `private-r2-shutdown-readiness` documents that public R2 shutdown is not ready. Backend private-media and legacy migration foundations are in place, but active mobile `Image` components consume `photo.url` without auth headers, so delivery-note photos may fail once public `r2.dev` access is disabled. |
-| Mobile authenticated private media | Notes/Photo Source Repair Complete; Physical Acceptance Required | Branch `mobile-notes-photo-account-knowledge-repair` focuses only on the remaining driver notes/photo/account-knowledge defects after Driver Copilot passed physical testing. Camera results are now copied into TSR-controlled tenant-scoped storage immediately, Delivery Notes save remains on the same screen, and Account Knowledge now reads durable account-scoped delivery notes/photos instead of route-stop-scoped notes. Public R2 remains enabled. This branch must not merge until the new APK passes physical acceptance. |
+| Mobile authenticated private media | In-App Camera Rebuild Implemented; Physical Acceptance Required | Branch `in-app-camera-note-composer-rebuild` replaces the failed Delivery Notes external-camera flow with an in-app TSR camera screen and durable tenant-scoped note composer drafts. Gallery upload remains supported through the same composer path. Driver Copilot is not being changed. Public R2 remains enabled. No APK has been built from this rebuild branch yet, and this branch must not merge until the new APK passes physical acceptance. |
 
 ## 4. Repository Landscape
 

@@ -1,5 +1,6 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, Alert, Image, Modal, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { DRIVER_NAME } from '../config/api';
 import AuthenticatedMediaImage from '../components/AuthenticatedMediaImage';
@@ -8,14 +9,16 @@ import {
   fetchAccountDeliveryNotes,
   saveAccountDeliveryNote,
 } from '../services/deliveryNotesApi';
-import { persistDeliveryPhoto } from '../services/deliveryPhotoStore';
-import { selectImageAssetsWithPrompt } from '../services/mobileMediaSelection';
+import { choosePhotoLibraryAssets } from '../services/mobileMediaSelection';
 import {
-  buildDeliveryNoteDraftContext,
-  clearPhotoDraft,
-  readPhotoDraft,
-  savePhotoDraft,
-} from '../services/photoDraftStore';
+  attachPhotoToNoteDraft,
+  clearNoteDraft,
+  loadOrCreateNoteDraft,
+  markNoteDraftError,
+  markNoteDraftSaving,
+  removePhotoFromNoteDraft,
+  saveNoteDraftText,
+} from '../services/noteComposerStore';
 import {
   buildDeliveryNotesParams,
   returnFromDeliveryNotes,
@@ -23,11 +26,16 @@ import {
 } from '../navigation/deliveryNotesNavigation';
 
 const MAX_NOTE_PHOTOS = 4;
-const DELIVERY_NOTE_DRAFT_WORKFLOW = 'delivery-notes';
 
 export default function DeliveryNotesScreen({ navigation, route }) {
-  const deliveryNotesContext = buildDeliveryNotesParams(route?.params || {});
-  const contextValidation = validateDeliveryNotesParams(deliveryNotesContext);
+  const deliveryNotesContext = useMemo(
+    () => buildDeliveryNotesParams(route?.params || {}),
+    [route?.params]
+  );
+  const contextValidation = useMemo(
+    () => validateDeliveryNotesParams(deliveryNotesContext),
+    [deliveryNotesContext]
+  );
   const contextError = contextValidation.errors.join(' ');
   const destination = deliveryNotesContext.destinationAddress || '';
   const destinationPlaceId = deliveryNotesContext.destinationPlaceId || null;
@@ -52,16 +60,7 @@ export default function DeliveryNotesScreen({ navigation, route }) {
   const [previewPhoto, setPreviewPhoto] = useState(null);
   const [editingNoteId, setEditingNoteId] = useState(null);
   const [existingPhotoDraft, setExistingPhotoDraft] = useState([]);
-  const draftContext = buildDeliveryNoteDraftContext({
-    accountNumber,
-    placeId: destinationPlaceId,
-    destination,
-    routeManifestId,
-    routeStopId,
-    routeDate,
-    routeNumber,
-    routeParams: deliveryNotesContext,
-  });
+  const noteDraftContext = deliveryNotesContext;
 
   const handleBack = () => {
     const returned = returnFromDeliveryNotes(navigation, deliveryNotesContext);
@@ -114,62 +113,69 @@ export default function DeliveryNotesScreen({ navigation, route }) {
     loadNotes();
   }, [loadNotes]);
 
-  useEffect(() => {
-    let isMounted = true;
-
-    const restorePhotoDraft = async () => {
-      const draft = await readPhotoDraft({
-        workflow: DELIVERY_NOTE_DRAFT_WORKFLOW,
-        context: draftContext,
-      }).catch(() => null);
-      if (!isMounted || !draft?.photos?.length) return;
-
-      const restoredPhotos = [];
-      let failedRestoreCount = 0;
-      for (const photo of draft.photos.slice(0, MAX_NOTE_PHOTOS)) {
-        try {
-          restoredPhotos.push(photo.localUri ? photo : persistDeliveryPhoto(photo));
-        } catch {
-          failedRestoreCount += 1;
-        }
-      }
-      if (!restoredPhotos.length) {
-        if (failedRestoreCount > 0) {
-          setStatusText(`Unable to restore ${failedRestoreCount} captured photo${failedRestoreCount === 1 ? '' : 's'}. Retake before saving.`);
-        }
-        return;
-      }
-      setSelectedPhotos((current) => {
-        const seen = new Set(current.map((photo) => photo.localUri || photo.uri));
-        const next = [
-          ...current,
-          ...restoredPhotos.filter((photo) => !seen.has(photo.localUri || photo.uri)),
-        ].slice(0, MAX_NOTE_PHOTOS);
-        savePhotoDraft({
-          workflow: DELIVERY_NOTE_DRAFT_WORKFLOW,
-          context: draftContext,
-          photos: next,
-        }).catch(() => null);
-        return next;
-      });
-      setStatusText(failedRestoreCount > 0
-        ? `Restored ${restoredPhotos.length} captured photo${restoredPhotos.length === 1 ? '' : 's'}; ${failedRestoreCount} could not be restored. Retake missing photo${failedRestoreCount === 1 ? '' : 's'} before saving.`
-        : 'Restored captured photo draft. Review and save the delivery note.');
-    };
-
-    restorePhotoDraft();
-    return () => {
-      isMounted = false;
-    };
+  const loadComposerDraft = useCallback(async () => {
+    if (!contextValidation.valid) return;
+    const draft = await loadOrCreateNoteDraft(noteDraftContext).catch(() => null);
+    if (!draft) return;
+    setSelectedPhotos((draft.photos || []).slice(0, MAX_NOTE_PHOTOS));
+    if (!editingNoteId && draft.text) {
+      setAccountName(draft.text.accountName || destinationDetails?.name || '');
+      setCustomerName(draft.text.customerName || '');
+      setDriverName(draft.text.driverName || routeDriverName);
+      setInstructions(draft.text.instructions || '');
+    }
   }, [
-    accountNumber,
-    destination,
-    destinationPlaceId,
-    routeManifestId,
-    routeStopId,
-    routeDate,
-    routeNumber,
+    contextValidation.valid,
+    destinationDetails?.name,
+    editingNoteId,
+    noteDraftContext,
+    routeDriverName,
   ]);
+
+  useFocusEffect(
+    useCallback(() => {
+      let isActive = true;
+      loadComposerDraft().catch((error) => {
+        if (isActive) {
+          setStatusText(error.message || 'Unable to restore note draft.');
+        }
+      });
+      return () => {
+        isActive = false;
+      };
+    }, [loadComposerDraft])
+  );
+
+  const persistTextDraft = async () => saveNoteDraftText(noteDraftContext, {
+    accountName,
+    customerName,
+    driverName,
+    instructions,
+  });
+
+  const openInAppCamera = async (remainingSlots) => {
+    await persistTextDraft();
+    navigation.push('TsrCamera', {
+      deliveryNotesContext: noteDraftContext,
+      remainingSlots,
+    });
+  };
+
+  const attachGalleryPhotos = async (remainingSlots) => {
+    const assets = await choosePhotoLibraryAssets({
+      Alert,
+      allowsMultipleSelection: true,
+      selectionLimit: Math.max(remainingSlots, 1),
+      quality: 0.35,
+    });
+    if (assets.length === 0) return;
+
+    let latestDraft = await persistTextDraft();
+    for (const asset of assets.slice(0, remainingSlots)) {
+      latestDraft = await attachPhotoToNoteDraft(noteDraftContext, asset, 'library');
+    }
+    setSelectedPhotos((latestDraft.photos || []).slice(0, MAX_NOTE_PHOTOS));
+  };
 
   const pickPhotos = async () => {
     if (!contextValidation.valid) {
@@ -182,51 +188,34 @@ export default function DeliveryNotesScreen({ navigation, route }) {
       return;
     }
 
-    const assets = await selectImageAssetsWithPrompt({
-      Alert,
-      title: 'Attach Photos',
-      message: 'Take a new photo or choose existing photos from the library.',
-      remainingSlots,
-      allowsMultipleSelection: true,
-      quality: 0.35,
-      draftWorkflow: DELIVERY_NOTE_DRAFT_WORKFLOW,
-      draftContext,
-    });
-
-    if (assets.length === 0) return;
-
-    try {
-      const nextPhotos = assets.map((asset) => persistDeliveryPhoto(asset));
-      setSelectedPhotos((current) => {
-        const merged = [...current, ...nextPhotos].slice(0, MAX_NOTE_PHOTOS);
-        if (assets.some((asset) => asset.mediaSource === 'camera')) {
-          savePhotoDraft({
-            workflow: DELIVERY_NOTE_DRAFT_WORKFLOW,
-            context: draftContext,
-            photos: merged,
-          }).catch(() => null);
-        }
-        return merged;
-      });
-    } catch (error) {
-      Alert.alert('Photo unavailable', error.message || 'Unable to attach this photo.');
-    }
+    Alert.alert(
+      'Attach Photos',
+      'Take a new photo or choose existing photos from the library.',
+      [
+        {
+          text: 'Take Photo',
+          onPress: () => openInAppCamera(remainingSlots).catch((error) => {
+            Alert.alert('Camera unavailable', error.message || 'Unable to open the Truck-Safe camera.');
+          }),
+        },
+        {
+          text: 'Choose From Library',
+          onPress: () => attachGalleryPhotos(remainingSlots).catch((error) => {
+            Alert.alert('Photo unavailable', error.message || 'Unable to attach this photo.');
+          }),
+        },
+        { text: 'Cancel', style: 'cancel' },
+      ],
+      { cancelable: true }
+    );
   };
 
   const removePhoto = (indexToRemove) => {
     setSelectedPhotos((current) => {
       const next = current.filter((_, index) => index !== indexToRemove);
-      if (next.length) {
-        savePhotoDraft({
-          workflow: DELIVERY_NOTE_DRAFT_WORKFLOW,
-          context: draftContext,
-          photos: next,
-        }).catch(() => null);
-      } else {
-        clearPhotoDraft({
-          workflow: DELIVERY_NOTE_DRAFT_WORKFLOW,
-          context: draftContext,
-        }).catch(() => null);
+      const removed = current[indexToRemove];
+      if (removed?.localPhotoId) {
+        removePhotoFromNoteDraft(noteDraftContext, removed.localPhotoId).catch(() => null);
       }
       return next;
     });
@@ -246,10 +235,7 @@ export default function DeliveryNotesScreen({ navigation, route }) {
     setInstructions('');
     setSelectedPhotos([]);
     setExistingPhotoDraft([]);
-    clearPhotoDraft({
-      workflow: DELIVERY_NOTE_DRAFT_WORKFLOW,
-      context: draftContext,
-    }).catch(() => null);
+    clearNoteDraft(noteDraftContext).catch(() => null);
   };
 
   const beginEditNote = (note) => {
@@ -372,6 +358,14 @@ export default function DeliveryNotesScreen({ navigation, route }) {
     setStatusText(editingNoteId ? 'Updating delivery note...' : 'Saving delivery note...');
 
     try {
+      await saveNoteDraftText(noteDraftContext, {
+        accountName,
+        customerName,
+        driverName,
+        instructions,
+      });
+      const savingDraft = await markNoteDraftSaving(noteDraftContext);
+      setSelectedPhotos((savingDraft.photos || []).slice(0, MAX_NOTE_PHOTOS));
       const payload = {
         accountNumber,
         placeId: destinationPlaceId,
@@ -389,12 +383,14 @@ export default function DeliveryNotesScreen({ navigation, route }) {
         existingPhotos: existingPhotoDraft,
         photos: selectedPhotos.map((photo) => ({
           clientPhotoId: photo.clientPhotoId,
-          localUri: photo.localUri || photo.uri,
+          localUri: photo.stableLocalUri || photo.localUri || photo.uri,
+          uri: photo.stableLocalUri || photo.localUri || photo.uri,
           mimeType: photo.mimeType,
           fileName: photo.fileName,
           mediaSource: photo.mediaSource,
           sizeBytes: photo.sizeBytes,
           sourceUriScheme: photo.sourceUriScheme,
+          uploadStatus: photo.uploadStatus,
         })),
       };
 
@@ -413,10 +409,7 @@ export default function DeliveryNotesScreen({ navigation, route }) {
 
       if (data.queued && data.note) {
         resetForm();
-        await clearPhotoDraft({
-          workflow: DELIVERY_NOTE_DRAFT_WORKFLOW,
-          context: draftContext,
-        }).catch(() => null);
+        await clearNoteDraft(noteDraftContext).catch(() => null);
         setStatusText('Delivery note saved offline. It will synchronize when service returns.');
         setExistingNotes((current) => [
           data.note,
@@ -425,15 +418,16 @@ export default function DeliveryNotesScreen({ navigation, route }) {
       } else {
         await loadNotes();
         resetForm();
-        await clearPhotoDraft({
-          workflow: DELIVERY_NOTE_DRAFT_WORKFLOW,
-          context: draftContext,
-        }).catch(() => null);
+        await clearNoteDraft(noteDraftContext).catch(() => null);
         setStatusText(editingNoteId
           ? 'Delivery note updated.'
           : 'Delivery note saved for future drivers.');
       }
     } catch (error) {
+      const failedDraft = await markNoteDraftError(noteDraftContext).catch(() => null);
+      if (failedDraft?.photos?.length) {
+        setSelectedPhotos(failedDraft.photos.slice(0, MAX_NOTE_PHOTOS));
+      }
       setStatusText(error.message || 'Unable to save delivery note.');
     } finally {
       setIsSaving(false);
