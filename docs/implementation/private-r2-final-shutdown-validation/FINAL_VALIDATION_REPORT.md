@@ -1,94 +1,76 @@
-# Final Validation Report - Private R2 Shutdown Readiness
+# Final Validation Report - Private R2 Pre-Shutdown Remediation
 
-## Final Shutdown-Readiness Status
+## Final R2 Shutdown-Readiness Classification
 
-BLOCKED.
+NOT READY FOR OWNER SHUTDOWN APPROVAL.
 
-Public R2 access should not be disabled yet.
+The architectural dependency that caused new Organization-private S3/R2 uploads to generate public R2 metadata has been removed, but actual public R2 shutdown still requires production lifecycle reconciliation, credentialed production media walkthrough, monitoring alert-delivery verification, and a separately approved metadata cleanup for existing legacy fields.
 
-## Validation Basis
+## A. legacyPublicUrl Writer Status
 
-- Source review of backend media storage and media access code.
-- Source review of mobile authenticated media rendering paths.
-- Source review of migration, assessment, and hardening scripts.
-- Owner-supplied read-only production media metadata assessment.
-- Prior validated web-origin, private-media, legacy migration, mobile private-media, and in-app camera/note-composer phases.
+CLOSED FOR NEW PRIVATE MEDIA.
 
-No production media, production database records, R2 settings, or production application settings were modified during this analysis.
+`bridge-api/services/photoStorage.js` no longer constructs or returns `legacyPublicUrl` for new Organization-private S3/R2 delivery-note media. Existing production `legacyPublicUrl` fields are preserved and were not modified.
 
-## Production Metadata Result
+## B. PHOTO_STORAGE_PUBLIC_BASE_URL Dependency Status
 
-The verified production assessment reports 5 delivery-note media items. All 5 have authenticated access paths and no direct public current URLs. All 5 still have `legacyPublicUrl` fields containing `r2.dev` references.
+CLOSED FOR PRIVATE MEDIA.
 
-## Why 5 Public References Remain
+Private S3/R2 media upload, read, and storage validation no longer require `PHOTO_STORAGE_PUBLIC_BASE_URL`. The variable remains optional for legacy review or a separately governed sanitized public-media workflow.
 
-The remaining public references are compatibility metadata, not primary current media URLs. They remain because the migration preserved `legacyPublicUrl`, delivery-note normalization preserves it, and S3/R2 upload code still creates it from `PHOTO_STORAGE_PUBLIC_BASE_URL`.
+## C. New Private-Media Upload Result
 
-## Active Workflow Dependency Result
+PASS in isolated fixture.
 
-No active mobile private-media component was found reading `legacyPublicUrl`. Mobile private media uses authenticated media access and has a guardrail test preventing fallback to `legacyPublicUrl`.
+`npm.cmd run test:private-r2-shutdown` verifies a mocked S3/R2 private media upload with `PHOTO_STORAGE_PUBLIC_BASE_URL` absent. The saved media includes storage provider, storage key, Organization-private classification, authenticated access path, and authenticated primary URL, and excludes `legacyPublicUrl`.
 
-The current delivery-note admin path renders `photo.url`, not `legacyPublicUrl`. Production current URLs are authenticated paths, so direct public R2 is not functionally required for current delivery-note rendering.
+## D. Lifecycle Reference Reconciliation Result
 
-## Direct Public R2 Requirement
+TOOL CREATED; PRODUCTION RUN OPEN.
 
-Direct public R2 access is not required for current authenticated delivery-note media display, but public shutdown is blocked because public URL compatibility metadata remains and the active writer can create more of it.
+`npm.cmd run media:lifecycle:reconcile` provides a read-only aggregate reconciliation report for `lifecycle_object_references`. It was not run against production by Codex in this phase.
 
-## Lifecycle Reference Result
+## E. Duplicate-Reference Result
 
-Production has 20 `delivery_note_photo` / `s3` lifecycle references for 5 current media items.
+UNKNOWN UNTIL PRODUCTION RECONCILIATION RUN.
 
-The repository upsert code uses deterministic reference IDs and `ON CONFLICT (id) DO UPDATE`, which should prevent exact duplicate IDs for the same stable note/media identity. The count of 20 may represent expected historical lifecycle retention for media previously saved or replaced during testing. Aggregate evidence alone does not prove whether storage-key duplicates or stale owner references exist.
+The source code uses deterministic lifecycle IDs and `ON CONFLICT (id) DO UPDATE`, but the verified production count of 20 lifecycle references for 5 current media items still requires aggregate read-only reconciliation before classification as historical retention, duplicate defect, or mixed.
 
-A read-only lifecycle reconciliation report is required before any lifecycle cleanup or final shutdown approval.
+## F. Authenticated Admin/Media Walkthrough Result
 
-## Critical Defects
+OPEN / OWNER WALKTHROUGH REQUIRED.
 
-None found in active authenticated media access.
+Codex did not use production credentials or retrieve production media. Manual owner steps are documented in `CREDENTIALLED_MEDIA_WALKTHROUGH.md`.
 
-## High Defects
+## G. Monitoring Alert-Delivery Result
 
-None found in active authenticated media access.
+READY WITH LIMITATION.
 
-## Shutdown Blockers
+Provider alert delivery was not verified in-session. Required checks are documented in `MONITORING_ALERT_DELIVERY_STATUS.md`.
 
-- Existing `legacyPublicUrl` / `r2.dev` metadata remains in production.
-- New S3/R2 uploads still write `legacyPublicUrl` metadata.
-- S3 config still requires `PHOTO_STORAGE_PUBLIC_BASE_URL`.
-- Lifecycle reference count requires read-only reconciliation.
-- Credentialed admin/browser media walkthrough remains outstanding.
-- Monitoring alert delivery remains outstanding.
+## H. Critical Defects
 
-## Updated Shutdown Classification
+None found in the private-media remediation code or guardrails.
 
-BLOCKED FOR ACTUAL SHUTDOWN.
+## I. High Defects
 
-The system is closer than the previous readiness state because current delivery-note media has authenticated primary access paths and no direct public current URLs. However, final public R2 shutdown should wait for metadata writer remediation, bounded cleanup, lifecycle reconciliation, and final credentialed walkthrough.
+None found in the private-media remediation code or guardrails.
 
-## Proposed Next Phase
+## J. Production Data/Media Modification Status
 
-Create a separate bounded metadata cleanup and writer-remediation plan. The plan must not execute until explicitly approved by the owner.
+No production data or production media was modified. No R2 object was uploaded, read, deleted, copied, or moved by Codex during this phase. No Cloudflare R2 setting was changed.
 
-## Production Mutation Status
+## K. Public R2 Status
 
-No production data or media was modified by this validation.
+Public R2 remains enabled. Do not disable public R2 until the remaining blockers are closed and the owner gives separate explicit shutdown approval.
 
-## R2 Public-Access Status
+## Validation Results
 
-Public R2 remains enabled. No Cloudflare R2 settings were changed.
-## Automated Validation Results
-
-| Validation | Result |
+| Command | Result |
 | --- | --- |
-| Full backend regression (`npm.cmd test`) | PASS |
-| Private media guardrail | PASS |
-| Legacy private media guardrail | PASS |
-| Mobile private media guardrail | PASS from `C:\dev\bridge-api\apps\mobile` |
-| Shared Safety | PASS |
-| Shared Safety UI | PASS |
-| Auth/RBAC | PASS |
-| API tenant enforcement | PASS |
-| Secret audit | PASS |
-| Git whitespace check | PASS after documentation EOF cleanup |
+| `npm.cmd run test:private-r2-shutdown` | PASS |
+| `npm.cmd run test:private-media` | PASS |
+| `npm.cmd run test:legacy-private-media` | PASS |
+| `npm.cmd run verify:secrets` | PASS |
 
-No unresolved Critical or High active authenticated-media defects were found. Actual public R2 shutdown remains blocked by documented operational and metadata prerequisites.
+Full required validation results are recorded in `TEST_RESULTS.md`.

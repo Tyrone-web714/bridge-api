@@ -37,9 +37,6 @@ function validateStorageConfig() {
     if (!cleanText(process.env.PHOTO_STORAGE_REGION || process.env.AWS_REGION, 120)) {
       issues.push('PHOTO_STORAGE_REGION or AWS_REGION is required when PHOTO_STORAGE_PROVIDER=s3');
     }
-    if (!cleanText(process.env.PHOTO_STORAGE_PUBLIC_BASE_URL, 500)) {
-      issues.push('PHOTO_STORAGE_PUBLIC_BASE_URL is required when PHOTO_STORAGE_PROVIDER=s3');
-    }
     const hasPartialCredentials =
       Boolean(process.env.PHOTO_STORAGE_ACCESS_KEY_ID) !==
       Boolean(process.env.PHOTO_STORAGE_SECRET_ACCESS_KEY);
@@ -103,16 +100,12 @@ function getS3Client() {
 
 function getS3Config() {
   const bucket = cleanText(process.env.PHOTO_STORAGE_BUCKET, 200);
-  const publicBaseUrl = cleanText(process.env.PHOTO_STORAGE_PUBLIC_BASE_URL, 500).replace(/\/+$/, '');
 
   if (!bucket) {
     throw new Error('PHOTO_STORAGE_BUCKET is required when PHOTO_STORAGE_PROVIDER=s3');
   }
-  if (!publicBaseUrl) {
-    throw new Error('PHOTO_STORAGE_PUBLIC_BASE_URL is required when PHOTO_STORAGE_PROVIDER=s3');
-  }
 
-  return { bucket, publicBaseUrl };
+  return { bucket };
 }
 
 async function saveLocalPhoto({ req, buffer, mimeType, noteId, index, originalName, folder }) {
@@ -138,11 +131,10 @@ async function saveLocalPhoto({ req, buffer, mimeType, noteId, index, originalNa
 }
 
 async function saveS3Photo({ req, buffer, mimeType, noteId, index, originalName, folder }) {
-  const { bucket, publicBaseUrl } = getS3Config();
+  const { bucket } = getS3Config();
   const extension = getExtension(mimeType);
   const key = buildObjectKey({ noteId, index, extension, folder });
   const id = `${noteId}-photo-${index}-${crypto.randomBytes(4).toString('hex')}`;
-  const publicUrl = `${publicBaseUrl}/${key.split('/').map(encodeURIComponent).join('/')}`;
   const accessPath = `/api/media/${encodeURIComponent(id)}`;
 
   await getS3Client().send(new PutObjectCommand({
@@ -150,7 +142,7 @@ async function saveS3Photo({ req, buffer, mimeType, noteId, index, originalName,
     Key: key,
     Body: buffer,
     ContentType: mimeType,
-    CacheControl: 'public, max-age=31536000, immutable'
+    CacheControl: 'private, max-age=0, no-store'
   }));
 
   return {
@@ -165,7 +157,6 @@ async function saveS3Photo({ req, buffer, mimeType, noteId, index, originalName,
     sizeBytes: buffer.length,
     originalName: cleanText(originalName, 180) || null,
     url: req ? getPrivateMediaUrl(req, id) : accessPath,
-    legacyPublicUrl: publicUrl,
     uploadedAt: new Date().toISOString()
   };
 }

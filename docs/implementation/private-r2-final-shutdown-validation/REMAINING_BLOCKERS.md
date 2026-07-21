@@ -1,38 +1,32 @@
-﻿# Remaining Blockers
+# Remaining Blockers
 
-## Blocking Public R2 Shutdown
+## Blocking Final Public R2 Shutdown Approval
 
-1. Production still contains 5 `legacyPublicUrl` / `r2.dev` compatibility references.
-2. `bridge-api/services/photoStorage.js` still writes `legacyPublicUrl` for new S3/R2 delivery-note media.
-3. S3 configuration still requires `PHOTO_STORAGE_PUBLIC_BASE_URL`.
-4. `lifecycle_object_references` contains 20 `delivery_note_photo` / `s3` references for 5 current delivery-note media items; this may be historical retention data, but it requires read-only reconciliation.
-5. Credentialed admin/browser media walkthrough remains required before final shutdown.
-6. Monitoring alert delivery remains to be verified for the shutdown window.
+1. Existing production `legacyPublicUrl` / `r2.dev` metadata remains on 5 delivery-note media items.
+2. Production lifecycle reference reconciliation has not yet been run with the new read-only aggregate tool.
+3. Credentialed production admin/browser media walkthrough remains owner-executed or owner-approved.
+4. Monitoring alert delivery to an actual owner/operator remains unverified.
+5. A separate approved metadata cleanup is still required before public R2 shutdown.
 
-## Bounded Cleanup Plan Required
+## Closed In This Phase
 
-If the owner approves, prepare a separate cleanup/remediation phase that:
+1. New Organization-private S3/R2 uploads no longer generate `legacyPublicUrl`.
+2. Private S3/R2 media no longer requires `PHOTO_STORAGE_PUBLIC_BASE_URL`.
+3. New private media keeps authenticated TSR `/api/media/:mediaId` primary access.
+4. New private media keeps storage provider, storage key, media classification, and lifecycle compatibility.
+5. Focused private R2 shutdown guardrail was added to the test chain.
+6. Read-only lifecycle reconciliation tooling was created.
 
-1. Stops writing `legacyPublicUrl` for new Organization-private S3/R2 media.
-2. Makes `PHOTO_STORAGE_PUBLIC_BASE_URL` optional or inert for private S3/R2 media reads and writes.
-3. Removes or quarantines existing `legacyPublicUrl` values for the 5 migrated delivery-note media items after confirming no active workflow reads them.
-4. Runs a read-only production metadata assessment expecting direct public current URLs = 0, `legacyPublicUrl` fields = 0, authenticated access paths = 5.
-5. Runs a read-only lifecycle reconciliation report for the 20 object references.
-6. Does not delete R2 objects.
-7. Does not disable public R2 until a separate shutdown approval is given.
+## Proposed Next Bounded Cleanup Plan
 
-## Lifecycle Reconciliation Needed
+After owner approval:
 
-Run a read-only aggregate report that returns only counts:
-
-- total lifecycle references;
-- distinct lifecycle reference IDs;
-- duplicate reference ID count;
-- distinct storage-key count;
-- duplicate storage-key group count;
-- references matching current `delivery_notes.photos` storage keys;
-- references not matching current `delivery_notes.photos` storage keys;
-- references with missing owner delivery notes;
-- references with mismatched Organization ownership.
-
-No lifecycle cleanup is approved in this phase.
+1. Deploy this branch or merge/deploy through the normal release process.
+2. Run the read-only lifecycle reconciliation against production and record aggregate counts only.
+3. Perform credentialed admin/browser media walkthrough.
+4. Verify monitoring alert delivery.
+5. Run a production dry-run for metadata cleanup limited to the 5 verified `legacyPublicUrl` fields.
+6. Request explicit approval for the metadata cleanup write.
+7. Remove only those stale `legacyPublicUrl` fields.
+8. Rerun the production metadata assessment expecting `legacyPublicUrl` fields = 0 and authenticated paths = 5.
+9. Request separate final owner approval before disabling public R2.

@@ -1,24 +1,29 @@
-﻿# Test Results
+# Test Results
 
-## Automated Validation
+## Focused Validation
 
-| Command | Working Directory | Result |
-| --- | --- | --- |
-| `npm.cmd test` | `C:\dev\bridge-api\bridge-api` | PASS |
-| `npm.cmd run test:private-media` | `C:\dev\bridge-api\bridge-api` | PASS |
-| `npm.cmd run test:legacy-private-media` | `C:\dev\bridge-api\bridge-api` | PASS |
-| `npm.cmd run test:mobile-private-media` | `C:\dev\bridge-api\apps\mobile` | PASS |
-| `npm.cmd run test:shared-safety` | `C:\dev\bridge-api\bridge-api` | PASS |
-| `npm.cmd run test:shared-safety-ui` | `C:\dev\bridge-api\bridge-api` | PASS |
-| `npm.cmd run test:auth-rbac` | `C:\dev\bridge-api\bridge-api` | PASS |
-| `npm.cmd run test:api-tenant` | `C:\dev\bridge-api\bridge-api` | PASS |
-| `npm.cmd run verify:secrets` | `C:\dev\bridge-api\bridge-api` | PASS |
-| `git diff --check` | `C:\dev\bridge-api` | PASS after documentation EOF cleanup |
+| Command | Result |
+| --- | --- |
+| `npm.cmd run test:private-r2-shutdown` | PASS |
+| `npm.cmd run test:private-media` | PASS |
+| `npm.cmd run test:legacy-private-media` | PASS |
+| `npm.cmd run verify:secrets` | PASS |
 
-## Notes
+## Full Merge-Gate Validation
 
-`test:mobile-private-media` is a mobile package script, not a backend package script. Running it from `C:\dev\bridge-api\bridge-api` reports a missing script. The correct execution path is `C:\dev\bridge-api\apps\mobile`, where the test passed.
+The full required validation suite was run after implementation and documentation updates:
 
-## Production Validation Scope
+| Command | Result |
+| --- | --- |
+| `npm.cmd test` | PASS |
+| `npm.cmd run test:private-media` | PASS |
+| `npm.cmd run test:legacy-private-media` | PASS |
+| `npm.cmd run test:shared-safety` | PASS |
+| `npm.cmd run test:auth-rbac` | PASS |
+| `npm.cmd run test:api-tenant` | PASS |
+| `npm.cmd run verify:secrets` | PASS |
+| `git diff --check` | PASS |
 
-No production write, production media read, R2 setting change, object mutation, deployment, or migration was performed by this validation.
+## Production Scope
+
+No production upload, production media read, production database write, migration, deployment, or Cloudflare R2 setting change was performed.
