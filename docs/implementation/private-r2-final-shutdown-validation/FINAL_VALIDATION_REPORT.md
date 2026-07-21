@@ -46,13 +46,15 @@ The owner manually verified in the production Truck-Safe Delivery Notes admin pa
 
 ## G. Monitoring Alert-Delivery Result
 
-READY WITH LIMITATION.
+PILOT BLOCKER - ALERT DELIVERY NOT VERIFIED.
 
-Provider alert delivery was not verified in-session. Required checks are documented in `MONITORING_ALERT_DELIVERY_STATUS.md`.
+Render is configured to health-check `/health`, and live production checks confirmed `/health` and `/ready` both return HTTP 200. However, actual alert delivery to an owner/operator was not verified in-session. Render notification destinations, database alert delivery, backup/recovery notification routing, external uptime monitoring, and media-route error-rate alerting still require owner/provider verification. Required checks are documented in `MONITORING_ALERT_DELIVERY_STATUS.md`.
 
 ## H. Critical Defects
 
 None found in the private-media remediation code or guardrails.
+
+Operational high-risk gap: production alert delivery remains unverified. This is not a source-code defect, but it remains a controlled-pilot and public-R2-shutdown blocker until at least service-failure, deployment-failure, database-failure, and `/api/media` error-rate notifications are proven.
 
 ## I. High Defects
 

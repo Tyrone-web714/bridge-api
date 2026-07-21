@@ -3,7 +3,7 @@
 ## Blocking Final Public R2 Shutdown Approval
 
 1. Existing production `legacyPublicUrl` / `r2.dev` metadata remains on 5 delivery-note media items.
-2. Monitoring alert delivery to an actual owner/operator remains unverified.
+2. Monitoring alert delivery to an actual owner/operator remains unverified. Render health checks target `/health`, and `/health` plus `/ready` are live, but notification destinations and alert delivery have not been proven.
 3. The pre-shutdown remediation branch must be merged/deployed so production stops generating new `legacyPublicUrl` metadata before cleanup.
 4. A separate approved metadata cleanup is still required before public R2 shutdown.
 5. Final owner approval is required before disabling public R2.
@@ -38,3 +38,14 @@ After owner approval:
 5. Remove only those stale `legacyPublicUrl` fields.
 6. Rerun the production metadata assessment expecting `legacyPublicUrl` fields = 0 and authenticated paths = 5.
 7. Request separate final owner approval before disabling public R2.
+
+## Monitoring Owner Action Required
+
+The next owner/provider task is to inspect Render and any external uptime provider configuration and prove that alerts reach the intended owner/operator. Minimum proof should cover:
+
+1. Render service deployment failure notification.
+2. Render service health/crash/restart notification.
+3. Render PostgreSQL database failure notification or equivalent monitored channel.
+4. External uptime notification for `/health`.
+5. External uptime notification for `/ready`.
+6. Media-route elevated error notification for `/api/media` before public R2 shutdown.
