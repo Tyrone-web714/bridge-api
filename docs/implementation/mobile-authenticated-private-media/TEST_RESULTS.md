@@ -538,4 +538,23 @@ Source-level assertions now verify:
 
 Physical validation:
 
-- Pending. No preview APK has been built from `in-app-camera-note-composer-rebuild` yet.
+- PASSED.
+
+Accepted physical-device results from preview APK build `f1091f8d-240f-4aef-b8d6-e059fca025c1` at source commit `fbd013f809111172b0e90dc1b32434da1ac126a4`:
+
+- TSR in-app camera opens correctly.
+- Camera capture succeeds.
+- `Use Photo` returns directly to Delivery Notes.
+- No Home redirect occurs.
+- No Driver Login redirect occurs.
+- Driver session remains intact.
+- Route/account context remains intact.
+- Camera photos save correctly.
+- Repeated camera captures work.
+- Four-photo workflow works.
+- Saved camera photos remain after leaving and returning.
+- Account Knowledge reflects saved notes/photos correctly.
+- Gallery-selected photo regression passed.
+- Text-note persistence passed.
+- Durable draft behavior passed.
+- Cold restart/session restoration passed.

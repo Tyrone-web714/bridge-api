@@ -82,4 +82,37 @@ git diff --check
 
 `git diff --check` reported only existing line-ending warnings for touched files and no whitespace errors.
 
-Physical Android validation is still required. No APK has been built from this rebuild branch yet.
+## Preview APK
+
+- EAS build ID: `f1091f8d-240f-4aef-b8d6-e059fca025c1`
+- Build profile: `preview`
+- Build type: Android APK
+- Source commit: `fbd013f809111172b0e90dc1b32434da1ac126a4`
+- Install page: `https://expo.dev/accounts/lamont76/projects/truck-safe-routing/builds/f1091f8d-240f-4aef-b8d6-e059fca025c1`
+
+## Physical Validation
+
+Status: PASSED.
+
+Accepted owner-reported physical results:
+
+- TSR in-app camera opens correctly.
+- Camera capture succeeds.
+- `Use Photo` returns directly to Delivery Notes.
+- No Home redirect occurs.
+- No Driver Login redirect occurs.
+- Driver session remains intact.
+- Route/account context remains intact.
+- Camera photos save correctly.
+- Repeated camera captures work.
+- Four-photo workflow works.
+- Saved camera photos remain after leaving and returning.
+- Account Knowledge reflects saved notes/photos correctly.
+- Gallery-selected photo regression passed.
+- Text-note persistence passed.
+- Durable draft behavior passed.
+- Cold restart/session restoration passed.
+
+## Legacy Camera Classification
+
+Remaining `launchCameraAsync()` and `ImagePicker.getPendingResultAsync()` usage is intentionally retained in `mobileMediaSelection.js` for workflows that still use the older external-camera path, including Hazard Report. That retained code is classified as `ACTIVE LEGITIMATE USE` for Hazard Report and `BACKWARD COMPATIBILITY` for old pending-result recovery. It is not active in the primary Delivery Notes Take Photo workflow.

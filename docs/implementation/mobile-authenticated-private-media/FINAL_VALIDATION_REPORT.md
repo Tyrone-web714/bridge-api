@@ -459,6 +459,96 @@ Notes:
 
 APK status:
 
-- No APK has been built from `in-app-camera-note-composer-rebuild`.
-- Physical Android validation has not been claimed.
-- The branch is not ready for merge until the rebuilt camera workflow passes the approved physical checklist.
+- EAS build ID: `f1091f8d-240f-4aef-b8d6-e059fca025c1`
+- Build profile: `preview`
+- Build type: Android APK
+- Source commit: `fbd013f809111172b0e90dc1b32434da1ac126a4`
+- Install page: `https://expo.dev/accounts/lamont76/projects/truck-safe-routing/builds/f1091f8d-240f-4aef-b8d6-e059fca025c1`
+
+Physical validation status: PASSED.
+
+Accepted physical-device results:
+
+- TSR in-app camera opens correctly.
+- Camera capture succeeds.
+- `Use Photo` returns directly to Delivery Notes.
+- No Home redirect occurs.
+- No Driver Login redirect occurs.
+- Driver session remains intact.
+- Route/account context remains intact.
+- Camera photos save correctly.
+- Repeated camera captures work.
+- Four-photo workflow works.
+- Saved camera photos remain after leaving and returning.
+- Account Knowledge reflects saved notes/photos correctly.
+- Gallery-selected photo regression passed.
+- Text-note persistence passed.
+- Durable draft behavior passed.
+- Cold restart/session restoration passed.
+
+Legacy camera cleanup result:
+
+- Delivery Notes primary Take Photo no longer uses the old external `ImagePicker.launchCameraAsync()` path.
+- Remaining `launchCameraAsync()` and `ImagePicker.getPendingResultAsync()` usage is retained only for workflows that still legitimately use the older helper, including Hazard Report, and for backward-compatible pending-result recovery.
+- No retained legacy camera code is active in the primary Delivery Notes Take Photo workflow.
+
+Merge recommendation: GO, pending final automated merge-gate regression against current `origin/main`.
+
+## 2026-07-20 Final Merge-Gate Validation
+
+Status: PASSED.
+
+The merge gate reviewed the complete branch diff against current `origin/main` and confirmed the branch remains scoped to the in-app TSR camera, tenant/driver-scoped Note Composer drafts, Delivery Notes workflow, Account Knowledge integration, directly necessary mobile navigation/session support, and focused validation documentation.
+
+Final validation confirmed:
+
+- `TsrCameraScreen` is the authoritative Take Photo path for Delivery Notes.
+- Delivery Notes no longer depends on `launchCameraAsync()` for its primary Take Photo flow.
+- Camera capture remains inside TSR navigation.
+- `TsrCameraScreen` does not own, clear, or reset global authentication.
+- `TsrCameraScreen` does not navigate to Home or Driver Login.
+- Captured files are stabilized in TSR-controlled local storage before save.
+- Gallery selection remains available and converges into the same note composer persistence path.
+- Drafts are scoped by trusted Organization and internal driver session context.
+- Drafts do not persist bearer tokens, R2 credentials, signed URLs, or public R2 URLs.
+- Multiple photos keep distinct `localPhotoId` and `clientPhotoId` values.
+- Draft cleanup occurs only after authoritative save success or explicit discard/remove behavior.
+- Account Knowledge refresh remains account-scoped and event-driven after note/photo save.
+- Private-media security, tenant isolation, Shared Safety boundaries, and ODR-019 lifecycle behavior remain unchanged.
+
+Legacy camera classification:
+
+- `mobileMediaSelection.js` `launchCameraAsync()` use: `ACTIVE LEGITIMATE USE` for Hazard Report and other workflows still using the older helper.
+- `ImagePicker.getPendingResultAsync()` / `recoverPendingCameraDraft()`: `BACKWARD COMPATIBILITY` for workflows still using the older external-camera helper.
+- Delivery Notes primary Take Photo path: old external-camera flow is `OBSOLETE` and not active.
+
+Final automated validation passed:
+
+```powershell
+npm.cmd test
+npm.cmd run test:mobile-private-media
+npm.cmd run test:driver-route-notes-photo
+npm.cmd run test:mobile-tenant
+npm.cmd run test:private-media
+npm.cmd run test:legacy-private-media
+npm.cmd run test:auth-rbac
+npm.cmd run test:api-tenant
+npm.cmd run verify:secrets
+git diff --check
+```
+
+Mobile workspace validation passed:
+
+```powershell
+npm.cmd run test:mobile-private-media
+npm.cmd run verify:secrets
+npm.cmd run verify:production
+npm.cmd ci --dry-run
+npx.cmd expo config --type public
+```
+
+Critical defects remaining: none.
+
+High defects remaining: none.
+
+Merge gate result: GO for merge.
