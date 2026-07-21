@@ -1,4 +1,4 @@
-﻿# R2 Shutdown Plan
+# R2 Shutdown Plan
 
 ## Current Shutdown Classification
 
@@ -17,7 +17,7 @@ After blockers are closed, the proposed action is to disable public `r2.dev` or 
 3. `PHOTO_STORAGE_PUBLIC_BASE_URL` is no longer required for private S3/R2 media operation, or it is retained only as an inert non-access dependency with owner approval.
 4. Read-only production metadata assessment reports no active public current URLs and no unapproved public URL compatibility references.
 5. Lifecycle-object-reference reconciliation explains the 20 references and confirms no duplicate corruption requiring cleanup before shutdown.
-6. Credentialed mobile and admin media walkthroughs pass.
+6. Credentialed admin media walkthrough has passed for Delivery Notes; repeat mobile/media smoke after deployment and metadata cleanup if required by owner.
 7. Monitoring and rollback procedures are ready.
 
 ## Shutdown Window Steps

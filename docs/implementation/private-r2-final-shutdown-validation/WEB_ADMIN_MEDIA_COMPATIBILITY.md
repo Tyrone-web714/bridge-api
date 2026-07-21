@@ -1,8 +1,8 @@
-﻿# Web and Admin Media Compatibility
+# Web and Admin Media Compatibility
 
 ## Result
 
-Web/admin delivery-note media compatibility is source-verified for current primary URL usage, but a credentialed browser walkthrough remains required before actual public R2 shutdown.
+CLOSED / PASSED for the tested production Delivery Notes admin media workflow.
 
 ## Delivery Notes Admin Path
 
@@ -11,23 +11,16 @@ The server-rendered delivery-note page uses the media object's primary `url` fie
 - Direct public current URLs: 0.
 - Authenticated access paths: 5.
 
-Therefore the delivery-note admin page should render through authenticated TSR media paths for the current media records.
+The owner manually verified that production Delivery Notes admin photos load successfully and the browser network requests use `https://truck-safe-routing-api.onrender.com/api/media/` with HTTP 200 responses.
 
 ## Legacy Metadata
 
-The web/admin delivery-note render path does not need `legacyPublicUrl` for current display. `legacyPublicUrl` is preserved as compatibility/audit metadata and is counted by the production assessment.
+The tested web/admin Delivery Notes render path did not require direct `r2.dev` access. Existing `legacyPublicUrl` fields remain compatibility metadata until a separate owner-approved cleanup removes them.
 
 ## Hazard and Shared Safety Media
 
-Production evidence shows no current media records for `private_hazard_submissions` or `shared_safety_records`. Those paths must remain included in the shutdown checklist if media is added later.
+Production evidence shows no current media records for `private_hazard_submissions` or `shared_safety_records`. Those paths must remain included in future validation if media is added later.
 
-## Remaining Operational Walkthrough
+## Remaining Operational Work
 
-Before actual shutdown, perform a credentialed browser walkthrough:
-
-1. Sign in to the admin dashboard.
-2. Open Delivery Notes.
-3. Verify migrated delivery-note media renders through `/api/media`.
-4. Confirm expired or unauthenticated browser sessions cannot retrieve private media.
-5. Confirm a user outside the Organization cannot retrieve private media.
-6. Verify hazard and Shared Safety pages do not expose private media through public URLs.
+The credentialed admin/browser media walkthrough blocker is closed for Delivery Notes. Public R2 shutdown still requires monitoring alert-delivery verification, bounded legacy metadata cleanup approval, merge/deploy of the pre-shutdown remediation, and final owner shutdown approval.

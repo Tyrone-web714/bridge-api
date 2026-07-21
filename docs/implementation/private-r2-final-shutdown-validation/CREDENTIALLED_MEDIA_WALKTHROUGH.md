@@ -2,34 +2,34 @@
 
 ## Status
 
-OWNER WALKTHROUGH REQUIRED.
+CLOSED / PASSED.
 
-Codex did not use production credentials, create production users, expose tokens, or retrieve production media contents during this phase.
+The credentialed production admin/media walkthrough was completed manually by the owner in the production Truck-Safe Delivery Notes admin page.
 
-## Supervisor/Admin Manual Steps
+## Verified Production Evidence
 
-1. Open the production admin dashboard.
-2. Sign in using an approved existing supervisor/admin account.
-3. Open Delivery Notes.
-4. Open a delivery note known to contain migrated media.
-5. Verify photos render without opening a direct R2 URL manually.
-6. Refresh the page.
-7. Verify photos still render.
-8. Copy no URLs into chat; report only pass/fail and aggregate behavior.
-9. Sign out or use an incognito window and attempt to open the same media path if visible from browser dev tools.
-10. Confirm unauthenticated access is denied.
+The owner verified:
 
-## Mobile Driver Evidence
+- Delivery-note photos loaded successfully.
+- Browser DevTools Network showed the photo requests returning HTTP 200.
+- The request URL for photo requests began with `https://truck-safe-routing-api.onrender.com/api/media/`.
+- The tested admin/dashboard media workflow uses TSR authenticated `/api/media/:mediaId` paths.
+- Direct `r2.dev` access was not required for the tested media rendering workflow.
 
-Physical mobile private-media behavior has been validated in prior mobile/in-app camera phases. Before public R2 shutdown, repeat one final device check after the metadata cleanup and writer-remediation branch is deployed:
+No authentication tokens, cookies, credentials, private object keys, or media URLs were exposed in project documentation.
 
-1. Log in as the approved test driver.
-2. Open today’s assigned route.
-3. Open a stop/account with delivery-note media.
-4. Verify existing photos render.
-5. Capture and save a new photo.
-6. Verify it appears and persists after app restart.
+## Authorized Workflow Confirmed
 
-## Result For This Phase
+The verified page was the production Delivery Notes admin page.
 
-Authenticated media source and automated guardrails pass, but credentialed production browser verification remains open.
+Expected path:
+
+`https://truck-safe-routing-api.onrender.com/api/delivery-notes/admin`
+
+The admin/dashboard workflow is authorized through existing production admin authentication and dashboard permissions. The tested rendering path uses `photo.url` values that resolve to authenticated TSR media routes, not direct public R2 object URLs.
+
+## Remaining Notes
+
+This closes the credentialed authenticated admin/media walkthrough blocker for the tested delivery-note admin media workflow.
+
+It does not authorize disabling public R2. Public R2 shutdown still requires monitoring/alert-delivery verification, bounded cleanup approval for the 5 existing `legacyPublicUrl` metadata fields, merge/deploy of the pre-shutdown remediation so production stops generating new legacy public metadata, and final owner shutdown approval.

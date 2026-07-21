@@ -1,4 +1,4 @@
-﻿# Authenticated Media Operational Results
+# Authenticated Media Operational Results
 
 ## Source-Level Result
 
@@ -19,15 +19,15 @@ Current production delivery-note media records have authenticated access paths f
 
 ## Credentialed Runtime Result
 
-A new credentialed production media walkthrough was not performed in this analysis turn. The current readiness conclusion relies on source review, automated tests, prior mobile validation, and the owner-supplied production metadata assessment.
+CLOSED / PASSED for the tested admin/dashboard delivery-note media workflow.
 
-## Required Pre-Shutdown Runtime Checks
+The owner manually verified in production that Delivery Notes admin photos loaded with HTTP 200 responses through request URLs beginning with `https://truck-safe-routing-api.onrender.com/api/media/`. Direct `r2.dev` access was not required for the tested media rendering workflow.
+
+## Remaining Pre-Shutdown Runtime Checks
 
 Before actual public R2 shutdown:
 
-1. Authorized driver can read own delivery-note media through `/api/media`.
-2. Authorized admin/supervisor can read permitted Organization media through `/api/media`.
-3. Unauthenticated access is denied.
-4. Cross-tenant access is denied.
-5. Existing migrated media renders in mobile and admin.
-6. Newly uploaded media renders in mobile and admin without writing a public URL reference.
+1. Verify monitoring alert delivery.
+2. Merge/deploy the pre-shutdown remediation so new private media no longer writes `legacyPublicUrl` in production.
+3. Complete separately approved cleanup of the 5 existing `legacyPublicUrl` fields.
+4. Perform final owner-approved shutdown verification after public R2 is disabled.

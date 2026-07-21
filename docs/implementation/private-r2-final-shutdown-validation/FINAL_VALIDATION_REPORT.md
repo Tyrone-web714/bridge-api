@@ -4,17 +4,19 @@
 
 NOT READY FOR OWNER SHUTDOWN APPROVAL.
 
-The architectural dependency that caused new Organization-private S3/R2 uploads to generate public R2 metadata has been removed, and production lifecycle reconciliation found no duplicate-reference defect. Actual public R2 shutdown still requires credentialed production media walkthrough, monitoring alert-delivery verification, separately approved cleanup of the 5 existing legacy public metadata fields, and final owner shutdown approval.
+The architectural dependency that caused new Organization-private S3/R2 uploads to generate public R2 metadata has been removed in this branch, production lifecycle reconciliation found no duplicate-reference defect, and the credentialed production Delivery Notes admin media walkthrough passed. Actual public R2 shutdown still requires monitoring alert-delivery verification, merge/deploy of the pre-shutdown remediation, separately approved cleanup of the 5 existing legacy public metadata fields, and final owner shutdown approval.
 
 ## A. legacyPublicUrl Writer Status
 
-CLOSED FOR NEW PRIVATE MEDIA.
+CLOSED FOR NEW PRIVATE MEDIA IN THIS BRANCH.
 
 `bridge-api/services/photoStorage.js` no longer constructs or returns `legacyPublicUrl` for new Organization-private S3/R2 delivery-note media. Existing production `legacyPublicUrl` fields are preserved and were not modified.
 
+Production still needs the pre-shutdown remediation branch merged/deployed before relying on this behavior in the deployed backend.
+
 ## B. PHOTO_STORAGE_PUBLIC_BASE_URL Dependency Status
 
-CLOSED FOR PRIVATE MEDIA.
+CLOSED FOR PRIVATE MEDIA IN THIS BRANCH.
 
 Private S3/R2 media upload, read, and storage validation no longer require `PHOTO_STORAGE_PUBLIC_BASE_URL`. The variable remains optional for legacy review or a separately governed sanitized public-media workflow.
 
@@ -26,21 +28,21 @@ PASS in isolated fixture.
 
 ## D. Lifecycle Reference Reconciliation Result
 
-TOOL CREATED; PRODUCTION RUN OPEN.
+CLOSED FOR DUPLICATE-DEFECT INVESTIGATION.
 
-`npm.cmd run media:lifecycle:reconcile` provides a read-only aggregate reconciliation report for `lifecycle_object_references`. It was not run against production by Codex in this phase.
+Owner-run read-only production reconciliation returned 20 total references, 20 unique storage objects, 20 unique delivery-note/media identities, 5 references tied to current media, 15 references not tied to current media, and 0 ownership mismatches.
 
 ## E. Duplicate-Reference Result
 
-UNKNOWN UNTIL PRODUCTION RECONCILIATION RUN.
+NO DUPLICATION DEFECT FOUND.
 
-The source code uses deterministic lifecycle IDs and `ON CONFLICT (id) DO UPDATE`, but the verified production count of 20 lifecycle references for 5 current media items still requires aggregate read-only reconciliation before classification as historical retention, duplicate defect, or mixed.
+Exact duplicate reference groups = 0 and duplicate storage-object groups = 0. The 15 references not tied to current media are classified as historical-retention candidates under ODR-019 lifecycle-policy review, not as an immediate public R2 shutdown blocker.
 
 ## F. Authenticated Admin/Media Walkthrough Result
 
-OPEN / OWNER WALKTHROUGH REQUIRED.
+CLOSED / PASSED.
 
-Codex did not use production credentials or retrieve production media. Manual owner steps are documented in `CREDENTIALLED_MEDIA_WALKTHROUGH.md`.
+The owner manually verified in the production Truck-Safe Delivery Notes admin page that delivery-note photos loaded successfully, browser DevTools Network showed HTTP 200 photo responses, request URLs began with `https://truck-safe-routing-api.onrender.com/api/media/`, and direct `r2.dev` access was not required for the tested media rendering workflow.
 
 ## G. Monitoring Alert-Delivery Result
 
@@ -58,7 +60,7 @@ None found in the private-media remediation code or guardrails.
 
 ## J. Production Data/Media Modification Status
 
-No production data or production media was modified. No R2 object was uploaded, read, deleted, copied, or moved by Codex during this phase. No Cloudflare R2 setting was changed.
+No production data or production media was modified by this documentation update. No R2 object was uploaded, read, deleted, copied, or moved by Codex. No Cloudflare R2 setting was changed.
 
 ## K. Public R2 Status
 
@@ -72,5 +74,6 @@ Public R2 remains enabled. Do not disable public R2 until the remaining blockers
 | `npm.cmd run test:private-media` | PASS |
 | `npm.cmd run test:legacy-private-media` | PASS |
 | `npm.cmd run verify:secrets` | PASS |
+| Credentialed production Delivery Notes admin media walkthrough | PASS |
 
 Full required validation results are recorded in `TEST_RESULTS.md`.
