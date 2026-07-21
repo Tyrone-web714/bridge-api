@@ -4,7 +4,7 @@
 
 NOT READY FOR OWNER SHUTDOWN APPROVAL.
 
-The architectural dependency that caused new Organization-private S3/R2 uploads to generate public R2 metadata has been removed, but actual public R2 shutdown still requires production lifecycle reconciliation, credentialed production media walkthrough, monitoring alert-delivery verification, and a separately approved metadata cleanup for existing legacy fields.
+The architectural dependency that caused new Organization-private S3/R2 uploads to generate public R2 metadata has been removed, and production lifecycle reconciliation found no duplicate-reference defect. Actual public R2 shutdown still requires credentialed production media walkthrough, monitoring alert-delivery verification, separately approved cleanup of the 5 existing legacy public metadata fields, and final owner shutdown approval.
 
 ## A. legacyPublicUrl Writer Status
 
