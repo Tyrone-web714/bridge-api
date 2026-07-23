@@ -4,7 +4,7 @@
 
 PILOT BLOCKER - ALERT DELIVERY NOT VERIFIED.
 
-Source and operational documentation identify the checks needed for private media shutdown, and production `/health` and `/ready` both return HTTP 200. Render is configured to health-check `/health`, but actual alert delivery and post-shutdown monitoring behavior have not been fully proven during this final analysis.
+Source and operational documentation identify the checks needed for private media shutdown, and production `/health` and `/ready` both return HTTP 200. Render is configured to health-check `/health`, and deployment failure notification delivery is now verified by owner evidence from the failed `b449ee2` production deploy on July 19, 2026. Running-service health failure alerts, database-critical alerts, external uptime alerts, and post-shutdown media-route monitoring remain unverified.
 
 ## Required Signals
 
@@ -24,19 +24,23 @@ Before public R2 shutdown, verify that operational alerts are delivered to the e
 
 ## Owner Actions Required
 
-1. Inspect Render notification settings for `truck-safe-routing-api`.
-2. Confirm deployment failure, service failure, crash/restart, and health-check failure notifications reach the responsible owner/operator.
-3. Inspect Render PostgreSQL notification settings for `truck-safe-routing-db`.
-4. Configure external uptime checks for `/health` and `/ready`, or provide evidence that an external monitor already exists.
-5. After separate approval, send a safe test notification if the provider or uptime service supports it.
-6. Document the destination type without exposing personal addresses, tokens, phone numbers, or webhook secrets.
+1. In Render, open the workspace that owns `truck-safe-routing-api`.
+2. Open **Integrations** then **Notifications**.
+3. Confirm the workspace notification destination and default service notification level. Do not document the private destination value.
+4. Open `truck-safe-routing-api` then **Settings** and confirm the Health Check path is `/health`.
+5. Confirm running-service unhealthy/failure notifications are enabled or otherwise routed to the owner/operator.
+6. Open `truck-safe-routing-db` and inspect **Events**, **Metrics**, **Recovery**, and any notification/integration settings for database-critical events.
+7. Confirm whether an external uptime monitor currently exists for `/health`.
+8. Confirm whether an external uptime monitor currently exists for `/ready`.
+9. After separate approval, send a safe test notification if Render or the uptime service supports it.
+10. Document the destination type without exposing personal addresses, tokens, phone numbers, or webhook secrets.
 
 ## Classification
 
 | Gap | Classification |
 | --- | --- |
 | Owner/operator alert delivery for service failure | PILOT BLOCKER |
-| Owner/operator alert delivery for deployment failure | PILOT BLOCKER |
+| Owner/operator alert delivery for deployment failure | VERIFIED |
 | Owner/operator alert delivery for database failure | PILOT BLOCKER |
 | External uptime monitor for `/health` | PILOT BLOCKER for unattended pilot |
 | External uptime monitor for `/ready` | PILOT BLOCKER for unattended pilot |
@@ -44,3 +48,7 @@ Before public R2 shutdown, verify that operational alerts are delivered to the e
 | CPU/memory/resource threshold alerts | PRODUCTION SCALE REQUIREMENT |
 | Centralized log aggregation and dashboards | PRODUCTION SCALE REQUIREMENT |
 | Formal on-call schedule | FUTURE ENHANCEMENT |
+
+## `/health` And `/ready`
+
+Render should keep `/health` as the service health check. `/ready` should be monitored separately because it checks production dependencies and is the better signal for operational readiness.

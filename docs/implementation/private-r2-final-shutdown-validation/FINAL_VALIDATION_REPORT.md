@@ -48,13 +48,13 @@ The owner manually verified in the production Truck-Safe Delivery Notes admin pa
 
 PILOT BLOCKER - ALERT DELIVERY NOT VERIFIED.
 
-Render is configured to health-check `/health`, and live production checks confirmed `/health` and `/ready` both return HTTP 200. However, actual alert delivery to an owner/operator was not verified in-session. Render notification destinations, database alert delivery, backup/recovery notification routing, external uptime monitoring, and media-route error-rate alerting still require owner/provider verification. Required checks are documented in `MONITORING_ALERT_DELIVERY_STATUS.md`.
+Render is configured to health-check `/health`, and live production checks confirmed `/health` and `/ready` both return HTTP 200. Deployment failure notification delivery is now VERIFIED by owner evidence: Render emailed the owner when the production deployment for commit `b449ee2` failed on July 19, 2026. Overall monitoring is still not fully verified because running-service health failure notifications, database-critical notifications, external uptime monitoring, and media-route error-rate alerting still require owner/provider verification. Required checks are documented in `MONITORING_ALERT_DELIVERY_STATUS.md`.
 
 ## H. Critical Defects
 
 None found in the private-media remediation code or guardrails.
 
-Operational high-risk gap: production alert delivery remains unverified. This is not a source-code defect, but it remains a controlled-pilot and public-R2-shutdown blocker until at least service-failure, deployment-failure, database-failure, and `/api/media` error-rate notifications are proven.
+Operational high-risk gap: production alert delivery remains partially verified only. Deployment failure notification delivery is verified, but this is not enough to close monitoring. Controlled-pilot and public-R2-shutdown readiness still require service-failure, database-failure, external uptime, and `/api/media` error-rate notifications to be proven.
 
 ## I. High Defects
 
