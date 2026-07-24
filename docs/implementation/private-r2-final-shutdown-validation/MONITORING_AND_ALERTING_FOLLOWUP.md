@@ -4,7 +4,7 @@
 
 PILOT BLOCKER - ALERT DELIVERY NOT VERIFIED.
 
-Source and operational documentation identify the checks needed for private media shutdown, and production `/health` and `/ready` both return HTTP 200. Render is configured to health-check `/health`, and deployment failure notification delivery is now verified by owner evidence from the failed `b449ee2` production deploy on July 19, 2026. Running-service health failure alerts, database-critical alerts, external uptime alerts, and post-shutdown media-route monitoring remain unverified.
+Source and operational documentation identify the checks needed for private media shutdown, and production `/health` and `/ready` both return HTTP 200. Render is configured to health-check `/health`, and deployment failure notification delivery is now verified by owner evidence from the failed `b449ee2` production deploy on July 19, 2026. Render workspace email notification destination is verified, and Render notifications are set to ALL NOTIFICATIONS. Database observability is verified through available Render metrics. Database metric-threshold alert delivery, external uptime alerts, and post-shutdown media-route monitoring remain unverified or deferred.
 
 ## Required Signals
 
@@ -39,11 +39,11 @@ Before public R2 shutdown, verify that operational alerts are delivered to the e
 
 | Gap | Classification |
 | --- | --- |
-| Owner/operator alert delivery for service failure | PILOT BLOCKER |
+| Owner/operator alert delivery for service failure | Configured through Render ALL NOTIFICATIONS; not outage-tested |
 | Owner/operator alert delivery for deployment failure | VERIFIED |
-| Owner/operator alert delivery for database failure | PILOT BLOCKER |
-| External uptime monitor for `/health` | PILOT BLOCKER for unattended pilot |
-| External uptime monitor for `/ready` | PILOT BLOCKER for unattended pilot |
+| Owner/operator alert delivery for database failure | Database observability verified; metric-threshold delivery not independently verified |
+| External uptime monitor for `/health` | DEFERRED for later setup |
+| External uptime monitor for `/ready` | DEFERRED for later setup |
 | `/api/media` error-rate alerting | Required before public R2 shutdown |
 | CPU/memory/resource threshold alerts | PRODUCTION SCALE REQUIREMENT |
 | Centralized log aggregation and dashboards | PRODUCTION SCALE REQUIREMENT |
@@ -52,3 +52,7 @@ Before public R2 shutdown, verify that operational alerts are delivered to the e
 ## `/health` And `/ready`
 
 Render should keep `/health` as the service health check. `/ready` should be monitored separately because it checks production dependencies and is the better signal for operational readiness.
+
+## Current R2 Hardening Gate Decision
+
+The current monitoring state is sufficient to proceed with merging and deploying the pre-shutdown remediation so production stops generating new `legacyPublicUrl` metadata. It is not sufficient to approve disabling public R2.

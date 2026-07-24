@@ -48,13 +48,13 @@ The owner manually verified in the production Truck-Safe Delivery Notes admin pa
 
 PILOT BLOCKER - ALERT DELIVERY NOT VERIFIED.
 
-Render is configured to health-check `/health`, and live production checks confirmed `/health` and `/ready` both return HTTP 200. Deployment failure notification delivery is now VERIFIED by owner evidence: Render emailed the owner when the production deployment for commit `b449ee2` failed on July 19, 2026. Overall monitoring is still not fully verified because running-service health failure notifications, database-critical notifications, external uptime monitoring, and media-route error-rate alerting still require owner/provider verification. Required checks are documented in `MONITORING_ALERT_DELIVERY_STATUS.md`.
+Render is configured to health-check `/health`, and live production checks confirmed `/health` and `/ready` both return HTTP 200. Deployment failure notification delivery is VERIFIED by owner evidence: Render emailed the owner when the production deployment for commit `b449ee2` failed on July 19, 2026. Render workspace email notification destination is VERIFIED, and Render notifications are set to ALL NOTIFICATIONS. Render production database observability is VERIFIED through available metrics for memory, CPU, disk, disk activity, disk operations, network activity, database metrics, active connections, transaction volume, locked/delayed queries, table sizes, index sizes, processes, and top queries. Overall monitoring is still not fully enterprise-grade because database metric-threshold alert delivery, external uptime monitoring, and media-route error-rate alerting remain unverified or deferred. Required checks are documented in `MONITORING_ALERT_DELIVERY_STATUS.md`.
 
 ## H. Critical Defects
 
 None found in the private-media remediation code or guardrails.
 
-Operational high-risk gap: production alert delivery remains partially verified only. Deployment failure notification delivery is verified, but this is not enough to close monitoring. Controlled-pilot and public-R2-shutdown readiness still require service-failure, database-failure, external uptime, and `/api/media` error-rate notifications to be proven.
+Operational high-risk gap: monitoring remains partially verified only. Deployment failure notification delivery, workspace email destination, ALL NOTIFICATIONS posture, `/health`, `/ready`, and database observability are verified. Public-R2-shutdown readiness still requires final owner approval and should separately address database metric-threshold delivery, external uptime, and `/api/media` error-rate notifications.
 
 ## I. High Defects
 

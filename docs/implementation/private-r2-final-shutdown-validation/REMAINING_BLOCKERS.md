@@ -3,7 +3,7 @@
 ## Blocking Final Public R2 Shutdown Approval
 
 1. Existing production `legacyPublicUrl` / `r2.dev` metadata remains on 5 delivery-note media items.
-2. Monitoring alert delivery remains only partially verified. Deployment failure notification delivery is verified by the owner-received Render email for failed commit `b449ee2` on July 19, 2026. Running-service health failure alerts, database-critical alerts, external uptime alerts, and media-route error-rate alerts have not been proven.
+2. Monitoring is partially verified and sufficient for this R2 hardening merge/deploy gate, but not enough by itself for public R2 shutdown. Deployment failure notification delivery is verified by the owner-received Render email for failed commit `b449ee2` on July 19, 2026. Workspace email notification destination is verified, Render notifications are set to ALL NOTIFICATIONS, Render health check targets `/health`, `/health` and `/ready` are live, and database observability is available. Database metric-threshold alert delivery, external uptime alerts, and media-route error-rate alerts remain deferred or unproven.
 3. The pre-shutdown remediation branch must be merged/deployed so production stops generating new `legacyPublicUrl` metadata before cleanup.
 4. A separate approved metadata cleanup is still required before public R2 shutdown.
 5. Final owner approval is required before disabling public R2.
@@ -50,4 +50,4 @@ The next owner/provider task is to inspect Render and any external uptime provid
 5. External uptime notification for `/ready`.
 6. Media-route elevated error notification for `/api/media` before public R2 shutdown.
 
-Deployment failure notification is now closed as verified. The remaining owner/provider inspection should focus on running-service health failure, database-critical events, and external uptime monitoring.
+Deployment failure notification is now closed as verified. Render ALL NOTIFICATIONS and database observability are sufficient to continue this security remediation. The remaining owner/provider inspection should focus on database metric-threshold delivery, external uptime monitoring, and media-route error-rate alerting before final public R2 shutdown.
