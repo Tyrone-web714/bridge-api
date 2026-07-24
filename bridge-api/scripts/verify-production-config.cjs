@@ -65,7 +65,7 @@ function checkRequiredEnv() {
     failures.push('PHOTO_STORAGE_PROVIDER must be a durable provider such as "s3" for production pilot');
   }
   if (storage.provider === 's3') {
-    for (const key of ['PHOTO_STORAGE_BUCKET', 'PHOTO_STORAGE_REGION', 'PHOTO_STORAGE_PUBLIC_BASE_URL']) {
+    for (const key of ['PHOTO_STORAGE_BUCKET', 'PHOTO_STORAGE_REGION']) {
       if (!process.env[key] || isPlaceholder(process.env[key])) {
         failures.push(`${key} is missing or still looks like a placeholder`);
       }

@@ -26,14 +26,14 @@ PHOTO_STORAGE_ENDPOINT=https://your-account-id.r2.cloudflarestorage.com
 PHOTO_STORAGE_FORCE_PATH_STYLE=true
 PHOTO_STORAGE_ACCESS_KEY_ID=object-storage-access-key
 PHOTO_STORAGE_SECRET_ACCESS_KEY=object-storage-secret-key
-PHOTO_STORAGE_PUBLIC_BASE_URL=https://your-photo-cdn-or-bucket-url.example
+PHOTO_STORAGE_PUBLIC_BASE_URL=https://your-sanitized-public-media-url.example
 ```
 
 The backend key must be a server-side Google key with the Directions API enabled. For production, restrict it by the backend host's outbound IP if the hosting provider gives you a stable egress IP.
 
 For production pilot, do **not** leave `CORS_ORIGIN=*`. Set it to the exact deployed app/web origins that should be allowed to call the backend.
 
-Delivery-note photos must not use local disk in production. Set `PHOTO_STORAGE_PROVIDER=s3` and point it at durable S3-compatible object storage such as AWS S3, Cloudflare R2, or another provider with an S3 API. `PHOTO_STORAGE_PUBLIC_BASE_URL` must be the public URL prefix where uploaded photos can be read by the driver app and admin dashboard.
+Delivery-note photos must not use local disk in production. Set `PHOTO_STORAGE_PROVIDER=s3` and point it at durable S3-compatible object storage such as AWS S3, Cloudflare R2, or another provider with an S3 API. Organization-private delivery-note photos are read through authenticated TSR media routes and do not require `PHOTO_STORAGE_PUBLIC_BASE_URL`. Keep `PHOTO_STORAGE_PUBLIC_BASE_URL` only for a separately approved sanitized public-media workflow or legacy compatibility review.
 
 To move existing local delivery-note photos into the configured object storage provider:
 
@@ -89,7 +89,7 @@ Expected response:
    - `PHOTO_STORAGE_REGION`
    - `PHOTO_STORAGE_ACCESS_KEY_ID`
    - `PHOTO_STORAGE_SECRET_ACCESS_KEY`
-   - `PHOTO_STORAGE_PUBLIC_BASE_URL`
+   - `PHOTO_STORAGE_PUBLIC_BASE_URL` only if using a separately approved sanitized public-media workflow
 5. Confirm `/health` returns `ok: true`.
 6. Confirm `/ready` returns `ok: true`. Render uses `/health` as the platform health check so the container can start even while you are still correcting environment variables. Production readiness is still gated by `/ready` and `npm.cmd run check:deployed`.
 7. Set the mobile app's `EXPO_PUBLIC_API_BASE_URL` to the deployed API URL.
