@@ -1,5 +1,11 @@
 # Current Media Storage Audit
 
+## Status
+
+HISTORICAL PRE-MIGRATION AUDIT.
+
+This document preserves the production media storage state observed before the later private-media migration, bounded legacy metadata cleanup, and owner-approved Cloudflare R2 Public Development URL shutdown. It is not the current production state. Current completion status is recorded in docs/PRIVATE_R2_HARDENING_FINAL_COMPLETION_REPORT.md.
+
 ## Verified Configuration Context
 
 Truck-Safe Routing uses the S3-compatible photo storage adapter for production media. Cloudflare R2 is configured as the object-storage provider.
@@ -13,9 +19,9 @@ Prior operational readiness smoke testing proved the configured R2 public develo
 - New S3 delivery-note media is classified as `ORGANIZATION_PRIVATE`.
 - New S3 media receives an authenticated application access path under `/api/media/:mediaId`.
 - The legacy public URL is retained as `legacyPublicUrl` for migration and compatibility review.
-- Existing R2 public access must not be disabled until production media metadata and mobile/dashboard behavior are fully migrated.
+- At the time of this audit, existing R2 public access was not to be disabled until production media metadata and mobile/dashboard behavior were fully migrated. That condition has since been satisfied and the owner-approved shutdown has completed.
 
-## Production Metadata Count
+## Historical Production Metadata Count
 
 Owner approval was granted for a read-only metadata-only production media query. The verified owner-run production assessment found:
 
@@ -30,4 +36,4 @@ Owner approval was granted for a read-only metadata-only production media query.
 - `shared_safety_records` media records: 0.
 - `lifecycle_object_references` exists with 0 current references.
 
-The 3 existing production delivery-note media items require migration or compatibility transition before public R2 access can be disabled.
+At the time of this audit, the 3 existing production delivery-note media items required migration or compatibility transition before public R2 access could be disabled. That migration/transition work has since completed, and final shutdown validation passed.

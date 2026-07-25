@@ -1,26 +1,20 @@
-# Web and Admin Media Compatibility
+# Web Admin Media Compatibility
 
-## Result
+## Status
 
-CLOSED / PASSED for the tested production Delivery Notes admin media workflow.
+COMPLETE / PASSED.
 
-## Delivery Notes Admin Path
+The production Delivery Notes admin media workflow uses authenticated TSR `/api/media/:mediaId` routes and remained functional after the Cloudflare R2 Public Development URL was disabled.
 
-The server-rendered delivery-note page uses the media object's primary `url` field for image rendering. Current production evidence reports:
+## Final Validation
 
-- Direct public current URLs: 0.
-- Authenticated access paths: 5.
+| Workflow | Result |
+| --- | --- |
+| Credentialed Delivery Notes admin media render | PASS |
+| Authenticated media route | HTTP 200 |
+| Unauthenticated media route | HTTP 401 |
+| Former public R2 development endpoint | HTTP 401 `This bucket cannot be viewed` |
 
-The owner manually verified that production Delivery Notes admin photos load successfully and the browser network requests use `https://truck-safe-routing-api.onrender.com/api/media/` with HTTP 200 responses.
+## Conclusion
 
-## Legacy Metadata
-
-The tested web/admin Delivery Notes render path did not require direct `r2.dev` access. The obsolete production `legacyPublicUrl` compatibility metadata has since been removed by the owner-approved bounded cleanup.
-
-## Hazard and Shared Safety Media
-
-Production evidence shows no current media records for `private_hazard_submissions` or `shared_safety_records`. Those paths must remain included in future validation if media is added later.
-
-## Remaining Operational Work
-
-The credentialed admin/browser media walkthrough blocker is closed for Delivery Notes. Public R2 shutdown still requires final owner shutdown approval, controlled Cloudflare R2 Public Development URL shutdown, final production smoke validation, and completion reporting.
+The web/admin Delivery Notes media workflow does not require direct public `r2.dev` access for the validated current media path. The previous shutdown blocker is closed.

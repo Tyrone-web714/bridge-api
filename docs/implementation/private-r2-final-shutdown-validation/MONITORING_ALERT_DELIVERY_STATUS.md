@@ -109,7 +109,7 @@ The current monitoring posture is sufficient for the owner-approved private R2 s
 6. Render database observability is available.
 7. Private-media remediation and bounded metadata cleanup are complete.
 
-This does not itself authorize public R2 shutdown. Public R2 shutdown still requires explicit owner approval, controlled Cloudflare R2 Public Development URL shutdown, final production smoke validation, and completion reporting.
+The owner-approved public R2 shutdown has since completed successfully. Remaining monitoring gaps are post-completion operational enhancements and do not reopen the Private R2 Hardening shutdown track.
 
 ## Safe Test Notification
 

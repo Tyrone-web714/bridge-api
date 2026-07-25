@@ -41,4 +41,4 @@ Authenticated private media delivery has been validated after the private-media 
 
 Earlier repository documents correctly described the pre-cleanup production assessment, where five `legacyPublicUrl` / `r2.dev` compatibility metadata fields remained. Those documents were stale after the owner-verified production cleanup completed outside the repository.
 
-This document is now the authoritative historical record for the completed cleanup result. Public R2 access is still not changed by this documentation update and still requires separate owner approval before shutdown.
+This document is now the authoritative historical record for the completed cleanup result. The later owner-approved Private R2 Hardening shutdown disabled the Cloudflare R2 Public Development URL; see `docs/PRIVATE_R2_HARDENING_FINAL_COMPLETION_REPORT.md` for the final production closure record.

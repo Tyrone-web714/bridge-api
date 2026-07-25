@@ -1,68 +1,21 @@
-# Test Results
+# Private R2 Final Test Results
 
-## Focused Validation
+## Status
 
-| Command | Result |
-| --- | --- |
-| `npm.cmd run test:private-r2-shutdown` | PASS |
-| `npm.cmd run test:private-media` | PASS |
-| `npm.cmd run test:legacy-private-media` | PASS |
-| `npm.cmd run verify:secrets` | PASS |
+COMPLETE / PASSED.
 
-## Full Merge-Gate Validation
+## Final Production Smoke Validation
 
-The full required validation suite was run after implementation and documentation updates:
+| Test | Result | Evidence |
+| --- | --- | --- |
+| Production `/health` | PASS | HTTP 200; `ok: true`; PostgreSQL/PostGIS and durable S3-compatible storage reported configured |
+| Production `/ready` | PASS | HTTP 200; database reachable; PostGIS, durable photo storage, and driver auth reported ready |
+| Authenticated Delivery Notes media | PASS | `https://truck-safe-routing-api.onrender.com/api/media/delivery-note-1779576407644-photo-3-873e1909` returned HTTP 200 and rendered successfully |
+| Unauthenticated media access | PASS | Same media route returned HTTP 401 with `{"error":"Authentication required."}` |
+| Former Cloudflare R2 Public Development URL | PASS | Returned HTTP 401 with `This bucket cannot be viewed` |
 
-| Command | Result |
-| --- | --- |
-| `npm.cmd test` | PASS |
-| `npm.cmd run test:private-media` | PASS |
-| `npm.cmd run test:private-r2-shutdown` | PASS |
-| `npm.cmd run test:legacy-private-media` | PASS |
-| `npm.cmd run test:shared-safety` | PASS |
-| `npm.cmd run test:shared-safety-ui` | PASS |
-| `npm.cmd run test:auth-rbac` | PASS |
-| `npm.cmd run test:api-tenant` | PASS |
-| `npm.cmd run verify:secrets` | PASS |
-| `git diff --check` | PASS |
+## Regression Boundary
 
-## Final Merge And Deployment Gate Validation
+The final validation confirms that disabling the public R2 development endpoint did not break authenticated backend media delivery. It also confirms that anonymous access remains blocked.
 
-The final pre-merge validation for `private-r2-final-shutdown-validation` passed:
-
-| Command | Result |
-| --- | --- |
-| `npm.cmd run test:private-r2-shutdown` | PASS |
-| `npm.cmd run test:private-media` | PASS |
-| `npm.cmd run test:legacy-private-media` | PASS |
-| `npm.cmd run test:shared-safety` | PASS |
-| `npm.cmd run test:shared-safety-ui` | PASS |
-| `npm.cmd run test:auth-rbac` | PASS |
-| `npm.cmd run test:api-tenant` | PASS |
-| `npm.cmd run verify:secrets` | PASS |
-| `npm.cmd test` | PASS |
-| `git diff --check` | PASS |
-
-## Owner-Verified Production Cleanup Validation
-
-The bounded production cleanup was executed outside repository source control and later reconciled into documentation.
-
-| Check | Result |
-| --- | --- |
-| recordsFound | 5 |
-| recordsModified | 5 |
-| remainingLegacyPublicUrlCount | 0 |
-| storageKeyChanges | 0 |
-| storageProviderChanges | 0 |
-| lifecycleChanges | 0 |
-| organizationChanges | 0 |
-| mediaIdChanges | 0 |
-| `/health` | HTTP 200 |
-| `/ready` | HTTP 200 |
-| Authenticated media delivery through `/api/media/:mediaId` | Verified |
-| Unauthenticated media request behavior | HTTP 401 |
-| Private media regression suite | PASS |
-
-## Production Scope
-
-The original validation analysis did not perform production upload, production media read, production database write, migration, deployment, or Cloudflare R2 setting changes. The later bounded metadata cleanup was owner-approved and owner-verified outside this documentation reconciliation. This documentation update performed no production writes, deployments, media object changes, or Cloudflare configuration changes.
+No test in this final shutdown window deployed code, wrote production database rows, mutated R2 objects, changed lifecycle state, changed organization ownership, changed storage providers, changed media identifiers, or rotated credentials.

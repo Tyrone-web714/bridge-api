@@ -1,42 +1,32 @@
 # Private R2 Final Shutdown Validation
 
-Status: READY FOR OWNER-APPROVED PUBLIC R2 SHUTDOWN WINDOW
+Status: COMPLETE
 
-This package records the final shutdown-readiness analysis for Cloudflare R2 public `r2.dev` access after web-origin hardening, legacy private-media migration, mobile authenticated private-media compatibility, and the in-app camera/note-composer rebuild.
+This package records the final validation and closure of the Private R2 Hardening work. The owner-approved Cloudflare R2 Public Development URL shutdown has been completed for the production bucket `truck-safe-routing-delivery-photos`, and final production smoke validation passed.
 
-No production media, production database records, Cloudflare R2 settings, or production application settings were modified during the original analysis. A later owner-approved production metadata cleanup was executed outside repository source control and is recorded in `PRODUCTION_LEGACY_METADATA_CLEANUP_RESULTS.md`.
+## Final Production State
 
-## Verified Production Evidence
+| Area | Result |
+| --- | --- |
+| Authenticated media delivery | PASS through TSR `/api/media/:mediaId` |
+| Unauthenticated media access | PASS, denied with HTTP 401 |
+| Former public R2 development endpoint | PASS, denied with HTTP 401 `This bucket cannot be viewed` |
+| `/health` | PASS, HTTP 200 |
+| `/ready` | PASS, HTTP 200 |
+| Legacy `legacyPublicUrl` metadata | COMPLETE, `remainingLegacyPublicUrlCount = 0` |
+| Public Development URL shutdown | COMPLETE |
 
-Owner-run read-only production metadata assessment reported before cleanup:
+## Key Records
 
-- `delivery_notes`: 3 records, 2 records with media, 5 media items.
-- `r2.dev` references: 5.
-- `legacyPublicUrl` fields: 5.
-- Direct public current URLs: 0.
-- Authenticated access paths: 5.
-- Media classification fields: 5.
-- Storage key fields: 5.
-- Storage provider fields: 5.
-- `lifecycle_object_references`: 20 total `delivery_note_photo` / `s3` references.
+- Final completion report: `docs/PRIVATE_R2_HARDENING_FINAL_COMPLETION_REPORT.md`
+- Shutdown execution record: `R2_SHUTDOWN_PLAN.md`
+- Rollback posture: `R2_ROLLBACK_PLAN.md`
+- Final validation detail: `FINAL_VALIDATION_REPORT.md`
+- Final test evidence: `TEST_RESULTS.md`
+- Legacy metadata cleanup record: `PRODUCTION_LEGACY_METADATA_CLEANUP_RESULTS.md`
 
-Owner-verified post-cleanup production results reported:
+## Scope Boundary
 
-- recordsFound: 5.
-- recordsModified: 5.
-- remainingLegacyPublicUrlCount: 0.
-- storageKeyChanges: 0.
-- storageProviderChanges: 0.
-- lifecycleChanges: 0.
-- organizationChanges: 0.
-- mediaIdChanges: 0.
+No application code deployment, database migration, database write, R2 object mutation, lifecycle modification, organization ownership change, storage provider change, media identifier change, credential rotation, or unrelated Cloudflare configuration change is included in this documentation update.
 
-## Decision
-
-Public R2 access is ready for the owner-approved shutdown window, but must not be disabled without explicit owner approval.
-
-Current delivery-note media uses authenticated TSR `/api/media/:mediaId` paths as the primary access path. The private-media writer remediation is deployed, the obsolete production `legacyPublicUrl` compatibility fields have been removed, and lifecycle reconciliation found no duplicate-reference defect.
-
-## Required Next Step
-
-Request explicit owner approval for Cloudflare R2 Public Development URL shutdown, execute the controlled shutdown window, run final production smoke validation, and record the final project completion report.
+Older implementation documents may preserve historical pre-shutdown evidence. This package and `docs/PRIVATE_R2_HARDENING_FINAL_COMPLETION_REPORT.md` are the current authoritative records for the completed Private R2 Hardening state.

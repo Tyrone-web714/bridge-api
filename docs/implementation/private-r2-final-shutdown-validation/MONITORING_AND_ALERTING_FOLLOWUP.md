@@ -22,7 +22,7 @@ Monitor at minimum:
 
 ## Recommended Follow-up
 
-After public R2 shutdown, continue improving operational alert delivery to the expected owner channel and keep a rollback owner available during any future storage configuration changes.
+After the completed public R2 shutdown, continue improving operational alert delivery to the expected owner channel and keep a rollback owner available during any future storage configuration changes.
 
 ## Owner Actions Recommended
 
@@ -57,4 +57,4 @@ Render should keep `/health` as the service health check. `/ready` should be mon
 
 ## Current R2 Hardening Gate Decision
 
-The current monitoring state is sufficient for the shutdown track after the private-media remediation and bounded metadata cleanup. The expected remaining work is owner-approved Cloudflare R2 Public Development URL shutdown, final production smoke validation, and final project completion reporting.
+The monitoring state was sufficient for the completed owner-approved shutdown track after private-media remediation and bounded metadata cleanup. Remaining monitoring work is classified as post-completion operational enhancement, not Private R2 Hardening implementation work.

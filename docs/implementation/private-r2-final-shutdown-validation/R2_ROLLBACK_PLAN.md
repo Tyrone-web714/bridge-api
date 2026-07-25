@@ -1,25 +1,25 @@
-﻿# R2 Rollback Plan
+# R2 Rollback Plan
+
+## Status
+
+READY / NOT USED.
+
+Rollback readiness was confirmed before the owner-approved Cloudflare R2 Public Development URL shutdown. Rollback was not executed because final production smoke validation passed.
 
 ## Rollback Trigger
 
-Rollback is required if disabling public R2 access causes authorized media retrieval, mobile media display, admin media display, or operational readiness checks to fail.
+Rollback would have been triggered by any of the following after shutdown:
+
+- `/health` failed.
+- `/ready` failed.
+- Authenticated Delivery Notes media failed to render through `/api/media/:mediaId`.
+- Unauthenticated media access did not return HTTP 401.
+- The Cloudflare setting change affected any resource beyond the approved Public Development URL setting.
 
 ## Rollback Action
 
-Re-enable the same Cloudflare R2 public access setting that was disabled during the shutdown window. Do not restore, delete, copy, or rewrite objects unless a separate data-recovery incident is declared.
+Re-enable the same Cloudflare R2 Public Development URL setting for bucket `truck-safe-routing-delivery-photos`, then repeat the production smoke validation.
 
-## Rollback Validation
+## Final Outcome
 
-After re-enabling public access:
-
-1. Confirm `/health` is 200.
-2. Confirm `/ready` is 200.
-3. Confirm authorized `/api/media` access succeeds.
-4. Confirm mobile delivery-note media renders.
-5. Confirm admin delivery-note media renders.
-6. Confirm no production database records were modified by rollback.
-7. Record timestamps, symptoms, root cause, and follow-up fix.
-
-## Rollback Readiness
-
-Rollback is operationally straightforward because the planned shutdown action is a Cloudflare access-setting change, not an object mutation. Rollback still requires owner/operator access to the Cloudflare R2 bucket settings.
+Rollback was not needed. The former public R2 development endpoint returned HTTP 401 `This bucket cannot be viewed`, while authenticated TSR media delivery continued to work.
