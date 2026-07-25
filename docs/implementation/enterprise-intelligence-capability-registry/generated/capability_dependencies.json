@@ -1,0 +1,102 @@
+{
+  "generatedFrom": "bridge-api/services/intelligenceExecution/enterpriseCapabilityRegistry.js",
+  "generatedArtifact": true,
+  "dependencies": [
+    {
+      "capabilityId": "delivery_note.summarize",
+      "downstreamCapabilityIds": [],
+      "optionalDependencies": [],
+      "requiredDataSources": [
+        "delivery note records"
+      ],
+      "requiredExecutors": [],
+      "requiredPolicies": [],
+      "requiredServices": [],
+      "upstreamCapabilityIds": []
+    },
+    {
+      "capabilityId": "legacy.ai.structured_response",
+      "downstreamCapabilityIds": [],
+      "optionalDependencies": [],
+      "requiredDataSources": [],
+      "requiredExecutors": [
+        "HOSTED_BALANCED_MODEL"
+      ],
+      "requiredPolicies": [
+        "capability-specific hosted inference policy"
+      ],
+      "requiredServices": [
+        "services/intelligenceExecution/legacyAiAdapter.js",
+        "services/intelligenceExecution/providerAdapters.js"
+      ],
+      "upstreamCapabilityIds": []
+    },
+    {
+      "capabilityId": "policy.answer",
+      "downstreamCapabilityIds": [],
+      "optionalDependencies": [],
+      "requiredDataSources": [
+        "approved policy corpus"
+      ],
+      "requiredExecutors": [],
+      "requiredPolicies": [
+        "compliance source governance"
+      ],
+      "requiredServices": [],
+      "upstreamCapabilityIds": []
+    },
+    {
+      "capabilityId": "route.risk_explanation",
+      "downstreamCapabilityIds": [],
+      "optionalDependencies": [],
+      "requiredDataSources": [
+        "truck restriction data",
+        "low-clearance bridge data",
+        "hazard rules"
+      ],
+      "requiredExecutors": [],
+      "requiredPolicies": [
+        "safety-critical human review policy"
+      ],
+      "requiredServices": [
+        "routing engine",
+        "hazard services"
+      ],
+      "upstreamCapabilityIds": []
+    },
+    {
+      "capabilityId": "supervisor.daily_operations_report",
+      "downstreamCapabilityIds": [],
+      "optionalDependencies": [],
+      "requiredDataSources": [
+        "supervisor operational repositories"
+      ],
+      "requiredExecutors": [
+        "HOSTED_BALANCED_MODEL"
+      ],
+      "requiredPolicies": [
+        "supervisor role gate",
+        "capability-specific hosted inference policy"
+      ],
+      "requiredServices": [
+        "services/supervisorIntelligence.js",
+        "services/intelligenceExecution/supervisorAiAdapter.js"
+      ],
+      "upstreamCapabilityIds": []
+    },
+    {
+      "capabilityId": "text.cleanup",
+      "downstreamCapabilityIds": [],
+      "optionalDependencies": [],
+      "requiredDataSources": [],
+      "requiredExecutors": [
+        "DETERMINISTIC_RULES"
+      ],
+      "requiredPolicies": [],
+      "requiredServices": [
+        "services/intelligenceExecution/deterministicExecutor.js"
+      ],
+      "upstreamCapabilityIds": []
+    }
+  ]
+}
