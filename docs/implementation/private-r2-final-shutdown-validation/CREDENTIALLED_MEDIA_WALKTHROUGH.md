@@ -32,4 +32,4 @@ The admin/dashboard workflow is authorized through existing production admin aut
 
 This closes the credentialed authenticated admin/media walkthrough blocker for the tested delivery-note admin media workflow.
 
-It does not authorize disabling public R2. Public R2 shutdown still requires monitoring/alert-delivery verification, bounded cleanup approval for the 5 existing `legacyPublicUrl` metadata fields, merge/deploy of the pre-shutdown remediation so production stops generating new legacy public metadata, and final owner shutdown approval.
+It does not authorize disabling public R2. The bounded production cleanup has since removed the 5 obsolete `legacyPublicUrl` metadata fields, and public R2 shutdown still requires final owner approval, controlled Cloudflare R2 Public Development URL shutdown, final production smoke validation, and completion reporting.

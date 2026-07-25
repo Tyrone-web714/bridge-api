@@ -17,7 +17,7 @@ New Organization-private S3/R2 delivery-note media no longer generates `legacyPu
 
 ## Preserved Behavior
 
-Existing production records are not modified by this code change. Existing `legacyPublicUrl` values remain present until a separately approved metadata cleanup is performed.
+Existing production records were not modified by this code change. The existing obsolete `legacyPublicUrl` values were later removed by the separately approved bounded production metadata cleanup recorded in `PRODUCTION_LEGACY_METADATA_CLEANUP_RESULTS.md`.
 
 The legacy private-media migration tooling still preserves legacy compatibility metadata when assessing or normalizing old records. That tooling is not the new-upload writer.
 

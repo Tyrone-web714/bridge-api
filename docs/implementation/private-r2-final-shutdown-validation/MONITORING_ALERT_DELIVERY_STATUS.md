@@ -116,7 +116,7 @@ The current monitoring posture is sufficient to continue the private R2 pre-shut
 5. `/health` and `/ready` both return HTTP 200.
 6. Render database observability is available.
 
-This does not authorize public R2 shutdown. Public R2 shutdown still requires the remaining blockers to be closed or explicitly accepted by the owner.
+This does not itself authorize public R2 shutdown. After the completed private-media remediation and bounded metadata cleanup, public R2 shutdown still requires explicit owner approval, controlled Cloudflare R2 Public Development URL shutdown, final production smoke validation, and completion reporting.
 
 ## Safe Test Notification
 

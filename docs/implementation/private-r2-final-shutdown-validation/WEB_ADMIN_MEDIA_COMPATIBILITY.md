@@ -15,7 +15,7 @@ The owner manually verified that production Delivery Notes admin photos load suc
 
 ## Legacy Metadata
 
-The tested web/admin Delivery Notes render path did not require direct `r2.dev` access. Existing `legacyPublicUrl` fields remain compatibility metadata until a separate owner-approved cleanup removes them.
+The tested web/admin Delivery Notes render path did not require direct `r2.dev` access. The obsolete production `legacyPublicUrl` compatibility metadata has since been removed by the owner-approved bounded cleanup.
 
 ## Hazard and Shared Safety Media
 
@@ -23,4 +23,4 @@ Production evidence shows no current media records for `private_hazard_submissio
 
 ## Remaining Operational Work
 
-The credentialed admin/browser media walkthrough blocker is closed for Delivery Notes. Public R2 shutdown still requires monitoring alert-delivery verification, bounded legacy metadata cleanup approval, merge/deploy of the pre-shutdown remediation, and final owner shutdown approval.
+The credentialed admin/browser media walkthrough blocker is closed for Delivery Notes. Public R2 shutdown still requires final owner shutdown approval, controlled Cloudflare R2 Public Development URL shutdown, final production smoke validation, and completion reporting.

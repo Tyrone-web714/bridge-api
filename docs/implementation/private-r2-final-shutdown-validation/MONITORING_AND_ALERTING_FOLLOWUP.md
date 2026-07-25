@@ -55,4 +55,4 @@ Render should keep `/health` as the service health check. `/ready` should be mon
 
 ## Current R2 Hardening Gate Decision
 
-The current monitoring state is sufficient to proceed with merging and deploying the pre-shutdown remediation so production stops generating new `legacyPublicUrl` metadata. It is not sufficient to approve disabling public R2.
+The current monitoring state is sufficient for the shutdown track after the private-media remediation and bounded metadata cleanup. The expected remaining work is owner-approved Cloudflare R2 Public Development URL shutdown, final production smoke validation, and final project completion reporting.

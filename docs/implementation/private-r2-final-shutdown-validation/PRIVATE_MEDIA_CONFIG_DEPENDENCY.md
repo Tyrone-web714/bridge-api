@@ -11,7 +11,7 @@
 | Private S3/R2 delivery-note upload | PRIVATE MEDIA LEGACY ONLY | Removed as a requirement. |
 | Private S3/R2 authenticated media read | DEAD/UNUSED for private reads | Backend reads by `storageKey` with server-side object-storage credentials. |
 | Private S3/R2 delivery-note rendering | DEAD/UNUSED for current primary rendering | Mobile/admin use authenticated TSR media paths. |
-| Existing production `legacyPublicUrl` fields | PRIVATE MEDIA LEGACY ONLY | Preserved until separately approved metadata cleanup. |
+| Existing production `legacyPublicUrl` fields | CLEANED UP | Removed by owner-approved bounded production metadata cleanup; see `PRODUCTION_LEGACY_METADATA_CLEANUP_RESULTS.md`. |
 | Shared Safety approved sanitized media | SANITIZED PUBLIC MEDIA | Kept separate; not changed by this phase. |
 | Config docs/examples | OPTIONAL LEGACY/SANITIZED PUBLIC | Updated to show the variable is optional for private media. |
 

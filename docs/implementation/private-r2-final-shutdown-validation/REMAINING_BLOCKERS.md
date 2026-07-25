@@ -2,11 +2,9 @@
 
 ## Blocking Final Public R2 Shutdown Approval
 
-1. Existing production `legacyPublicUrl` / `r2.dev` metadata remains on 5 delivery-note media items.
-2. Monitoring is partially verified and sufficient for this R2 hardening merge/deploy gate, but not enough by itself for public R2 shutdown. Deployment failure notification delivery is verified by the owner-received Render email for failed commit `b449ee2` on July 19, 2026. Workspace email notification destination is verified, Render notifications are set to ALL NOTIFICATIONS, Render health check targets `/health`, `/health` and `/ready` are live, and database observability is available. Database metric-threshold alert delivery, external uptime alerts, and media-route error-rate alerts remain deferred or unproven.
-3. The pre-shutdown remediation branch must be merged/deployed so production stops generating new `legacyPublicUrl` metadata before cleanup.
-4. A separate approved metadata cleanup is still required before public R2 shutdown.
-5. Final owner approval is required before disabling public R2.
+1. Final owner approval is required before disabling the Cloudflare R2 Public Development URL.
+2. Final production smoke validation must run after the R2 public access setting is changed.
+3. A final project completion report must record the shutdown result, smoke validation, and rollback status.
 
 ## Closed In This Phase
 
@@ -18,6 +16,8 @@
 6. Read-only lifecycle reconciliation tooling was created.
 7. Owner-run production lifecycle reconciliation found no duplicate-reference defect.
 8. Owner-run credentialed production Delivery Notes admin media walkthrough passed through `/api/media/:mediaId` and did not require direct `r2.dev` access.
+9. The bounded production metadata cleanup removed the 5 obsolete `legacyPublicUrl` fields.
+10. Post-cleanup production results reported `recordsFound = 5`, `recordsModified = 5`, `remainingLegacyPublicUrlCount = 0`, and zero storage key, storage provider, lifecycle, organization, or media ID changes.
 
 ## Historical Lifecycle References
 
@@ -27,27 +27,23 @@ The 15 references not tied to current delivery-note media records are historical
 
 Do not delete, purge, or modify those 15 references or their underlying R2 objects in this phase.
 
-## Proposed Next Bounded Cleanup Plan
+## Completed Bounded Cleanup
 
-After owner approval:
+The bounded metadata cleanup has been executed and owner-verified. The production operation occurred outside repository source control and is recorded in `PRODUCTION_LEGACY_METADATA_CLEANUP_RESULTS.md`.
 
-1. Verify monitoring alert delivery.
-2. Merge/deploy the pre-shutdown remediation branch through the approved release path.
-3. Run a production dry-run for metadata cleanup limited to the 5 verified `legacyPublicUrl` fields.
-4. Request explicit approval for the metadata cleanup write.
-5. Remove only those stale `legacyPublicUrl` fields.
-6. Rerun the production metadata assessment expecting `legacyPublicUrl` fields = 0 and authenticated paths = 5.
-7. Request separate final owner approval before disabling public R2.
+No media objects were moved. No storage providers changed. No lifecycle values changed. No organization ownership changed. No media identifiers changed. The cleanup removed only obsolete `legacyPublicUrl` metadata fields.
 
-## Monitoring Owner Action Required
+## Remaining Infrastructure Sequence
 
-The next owner/provider task is to inspect Render and any external uptime provider configuration and prove that alerts reach the intended owner/operator. Minimum proof should cover:
+After explicit owner approval:
 
-1. Render service deployment failure notification.
-2. Render service health/crash/restart notification.
-3. Render PostgreSQL database failure notification or equivalent monitored channel.
-4. External uptime notification for `/health`.
-5. External uptime notification for `/ready`.
-6. Media-route elevated error notification for `/api/media` before public R2 shutdown.
+1. Disable the Cloudflare R2 Public Development URL for the intended TSR media bucket only.
+2. Do not delete, move, copy, or rewrite R2 objects.
+3. Confirm `/health` returns HTTP 200.
+4. Confirm `/ready` returns HTTP 200.
+5. Confirm authenticated media delivery through `/api/media/:mediaId`.
+6. Confirm unauthenticated media requests return HTTP 401.
+7. Confirm mobile and admin Delivery Notes media render through authenticated media paths.
+8. Record the final project completion report.
 
-Deployment failure notification is now closed as verified. Render ALL NOTIFICATIONS and database observability are sufficient to continue this security remediation. The remaining owner/provider inspection should focus on database metric-threshold delivery, external uptime monitoring, and media-route error-rate alerting before final public R2 shutdown.
+Deployment failure notification is now closed as verified. Render ALL NOTIFICATIONS and database observability remain useful operational controls, but the expected remaining infrastructure work for this shutdown track is limited to owner-approved R2 Public Development URL shutdown, final production smoke validation, and final project completion reporting.

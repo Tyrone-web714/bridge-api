@@ -4,11 +4,11 @@
 
 - Status: Active
 - Document Type: Living Project Status
-- Last Updated: 2026-07-21
+- Last Updated: 2026-07-25
 - Governing Architecture Version: 1.1
 - Authoritative Repository: `C:\dev\bridge-api`
 - GitHub Repository: `https://github.com/Tyrone-web714/bridge-api.git`
-- Current Branch: `private-r2-final-shutdown-validation`
+- Current Branch: `legacy-public-url-final-cleanup`
 - Latest Documentation Commit: `cf23662b1bb7ab189960925f9521f6b1c0e8a394` - `Add Truck-Safe Routing governing documentation`
 - Update Guidance: Update this file when the project phase, deployment status, repository structure, major risks, or implementation priorities change.
 
@@ -50,7 +50,7 @@ Current implementation and planned architecture must be kept separate:
 | Production readiness | Operational Verification In Progress | Operational blocker closure is underway. Public deployed smoke checks pass for `/health`, `/ready`, admin login redirect behavior, and unauthenticated API denial. Owner-completed read-only production preflight verified PostgreSQL/PostGIS, migrations `001`-`010`, core ownership, and driver identity. Production backup provider/PITR capability, non-production restore rehearsal, Render environment name inventory, deployed commit/schema alignment, production CORS remediation, and Cloudflare R2 object-storage smoke are verified. Mobile authenticated private-media source compatibility is implemented and awaits preview APK/physical validation. Authenticated browser walkthrough, physical mobile offline/reconnect replay, monitoring alert delivery, temporary restore cleanup review, and production rollout remain unresolved/not executed. |
 | Web origin and private media hardening | Merged to Main | Web origin and private media hardening merged through commit `b0652e7`. New Organization-private S3/R2 delivery-note media uses authenticated TSR media access and ODR-019 lifecycle object references. Verified production evidence still shows 3 legacy delivery-note media references using direct public R2 current URLs, so public R2 access cannot be disabled until legacy migration is approved and completed. |
 | Legacy private media migration | In Progress | Branch `legacy-private-media-migration` contains validated migration tooling and documentation. Owner-run approved production apply migrated the 3 verified legacy delivery-note media metadata references; immediate post-migration dry-run reported `alreadyMigrated = 3`, `readyToMigrate = 0`, and no blocked/ambiguous/missing metadata items. Deployed `/health` and `/ready` remained HTTP 200 after migration. No R2 object mutation, R2 setting change, deployment, or public R2 shutdown has been performed. |
-| Private R2 shutdown readiness | Pre-Shutdown Remediation In Progress | Branch `private-r2-final-shutdown-validation` removes the new private-media writer dependency on `legacyPublicUrl` and `PHOTO_STORAGE_PUBLIC_BASE_URL` and adds read-only lifecycle reconciliation tooling. Public R2 shutdown remains blocked until existing 5 production legacy metadata fields are cleaned through a separate approved write, lifecycle references are reconciled, credentialed admin media walkthrough passes, and monitoring alert delivery is verified. |
+| Private R2 shutdown readiness | Ready for Owner-Approved Shutdown Window | Private-media writer remediation is deployed, authenticated media delivery through `/api/media/:mediaId` is verified, unauthenticated media requests return HTTP 401, and the bounded production cleanup removed the 5 obsolete `legacyPublicUrl` fields with no storage key, storage provider, lifecycle, organization, or media ID changes. Public R2 remains enabled and must not be disabled until the owner explicitly approves the Cloudflare R2 Public Development URL shutdown and final production smoke validation. |
 | Mobile authenticated private media | In-App Camera Rebuild Merged; Physical Validation Passed | The in-app TSR camera and durable note composer repair passed owner-reported physical validation and is part of the active readiness baseline. Mobile private-media rendering no longer depends on direct public R2 URLs for verified delivery-note media. |
 
 ## 4. Repository Landscape
@@ -210,7 +210,7 @@ Current approved decisions reflected in governing documentation and project dire
 2. Do not deploy, configure real customer IdPs, or apply production migrations.
 3. Obtain explicit owner approval before production database preflight or production data mutation.
 4. Keep provider interoperability marked as not verified until actual provider testing occurs in a later approved phase.
-5. Close or explicitly accept operational blockers before production rollout.
+5. Complete the owner-approved Cloudflare R2 Public Development URL shutdown window, final production smoke validation, and final project completion report.
 
 ## 13. Update Rules
 

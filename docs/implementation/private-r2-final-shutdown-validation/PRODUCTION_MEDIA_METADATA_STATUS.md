@@ -1,10 +1,10 @@
-﻿# Production Media Metadata Status
+# Production Media Metadata Status
 
 ## Evidence Source
 
-The owner manually ran the approved read-only production media metadata assessment against the verified Render production database. The assessment was metadata-only and redacted URLs and object keys.
+The owner manually ran the approved read-only production media metadata assessment against the verified Render production database. The assessment was metadata-only and redacted URLs and object keys. A later owner-approved production cleanup was executed outside repository source control and is recorded here from owner-verified results.
 
-## Production Results
+## Pre-Cleanup Production Results
 
 | Area | Result |
 | --- | --- |
@@ -13,7 +13,7 @@ The owner manually ran the approved read-only production media metadata assessme
 | Metadata-only | true |
 | URLs/object keys redacted | true |
 
-### delivery_notes
+### delivery_notes pre-cleanup
 
 | Metric | Count |
 | --- | ---: |
@@ -43,7 +43,7 @@ No media records.
 | Total references | 20 |
 | `delivery_note_photo` / `s3` references | 20 |
 
-## Aggregate Result
+## Pre-Cleanup Aggregate Result
 
 | Metric | Count / Status |
 | --- | --- |
@@ -54,8 +54,23 @@ No media records.
 | Migration or compatibility plan required | true |
 | Public access can be disabled immediately | false |
 
+## Post-Cleanup Production Result
+
+The bounded production cleanup was executed after the original metadata assessment and was owner-verified outside repository source control.
+
+| Metric | Result |
+| --- | ---: |
+| recordsFound | 5 |
+| recordsModified | 5 |
+| remainingLegacyPublicUrlCount | 0 |
+| storageKeyChanges | 0 |
+| storageProviderChanges | 0 |
+| lifecycleChanges | 0 |
+| organizationChanges | 0 |
+| mediaIdChanges | 0 |
+
 ## Interpretation
 
-The five remaining `r2.dev` references are not current primary media URLs. They are compatibility metadata fields. The active primary access path is authenticated TSR media access.
+The original five `r2.dev` references were not current primary media URLs. They were compatibility metadata fields. The active primary access path is authenticated TSR media access.
 
-The system is not ready for immediate public R2 shutdown because the compatibility metadata remains and the current S3/R2 writer still creates `legacyPublicUrl` metadata for new uploads.
+The obsolete compatibility metadata has now been removed, and private media remains served through authenticated TSR media access. Public R2 shutdown still requires separate owner approval, Cloudflare configuration change, and final production smoke validation.
