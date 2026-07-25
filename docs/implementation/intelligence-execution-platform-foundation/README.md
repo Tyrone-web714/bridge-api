@@ -22,3 +22,7 @@ Implemented foundation:
 - contract tests.
 
 No deployment, production migration execution, production database write, provider configuration change, model configuration change, Cloudflare change, R2 change, or private-media change is included in AI-IEP-001.
+
+## AI-IEP-002 Activation Note
+
+AI-IEP-002 activates hosted execution only for the migrated legacy `/api/ai` structured-response capability `legacy.ai.structured_response`. The broader foundation remains conservative: other hosted capabilities remain disabled or deferred, additional providers are not enabled, and model optimization is deferred.

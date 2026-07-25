@@ -13,3 +13,7 @@ Seeded but disabled foundation capabilities:
 - `route.risk_explanation`
 
 Disabled capabilities document future intent without exposing unsafe or undefined execution paths.
+
+## AI-IEP-002 Capability Addition
+
+The registry now includes active capability `legacy.ai.structured_response` for compatibility migration of existing `/api/ai` structured logistics responses. It permits `HOSTED_BALANCED_MODEL` only and does not authorize premium escalation, new providers, retrieval, agents, embeddings, or arbitrary expansion beyond the existing legacy route behavior.

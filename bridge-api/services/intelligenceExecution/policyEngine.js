@@ -2,7 +2,24 @@ const rbac = require('../rbac');
 const { EXECUTION_STRATEGIES, POLICY_VERSION } = require('./constants');
 const { parseUsdToMicros } = require('./money');
 
-function resolveOrganizationPolicy() {
+const LEGACY_HOSTED_CAPABILITIES = Object.freeze(new Set([
+  'legacy.ai.structured_response'
+]));
+
+function resolveOrganizationPolicy(organizationId, request = {}, capability = null) {
+  if (organizationId && LEGACY_HOSTED_CAPABILITIES.has(capability?.id)) {
+    return Object.freeze({
+      policyVersion: POLICY_VERSION,
+      allowHostedInference: true,
+      allowLocalInference: false,
+      allowPremiumModels: false,
+      approvedProviders: Object.freeze(['openai']),
+      prohibitedProviders: Object.freeze([]),
+      retentionMode: 'PROVIDER_STORE_DISABLED',
+      regionalRestrictions: Object.freeze([]),
+      maxRequestCostUsd: null
+    });
+  }
   return Object.freeze({
     policyVersion: POLICY_VERSION,
     allowHostedInference: false,

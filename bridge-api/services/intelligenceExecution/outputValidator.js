@@ -14,6 +14,10 @@ function validateOutput(capability, result) {
   let errors = [];
   if (capability.id === 'text.cleanup') {
     errors = validateTextCleanupOutput(result.output);
+  } else if (capability.id === 'legacy.ai.structured_response') {
+    if (!result.output || typeof result.output !== 'object' || Array.isArray(result.output)) {
+      errors.push('Legacy AI structured output must be an object.');
+    }
   }
   if (errors.length) {
     throw createError('Intelligence output failed schema validation.', 502, 'INTELLIGENCE_OUTPUT_INVALID', errors);

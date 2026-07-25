@@ -23,6 +23,28 @@ const CAPABILITIES = Object.freeze({
     active: true,
     version: 'text.cleanup.v1'
   }),
+  'legacy.ai.structured_response': Object.freeze({
+    id: 'legacy.ai.structured_response',
+    displayName: 'Legacy AI Structured Response',
+    description: 'Compatibility capability for existing /api/ai structured logistics intelligence responses.',
+    ownerDomain: 'logistics_intelligence',
+    inputSchemaRef: 'schemas/intelligence/legacy-ai-structured-response-input.v1',
+    outputSchemaRef: 'schemas/intelligence/legacy-ai-structured-response-output.v1',
+    allowedExecutionStrategies: Object.freeze([EXECUTION_STRATEGIES.HOSTED_BALANCED_MODEL]),
+    defaultExecutionProfile: EXECUTION_PROFILES.BALANCED,
+    safetyClassification: 'MEDIUM',
+    defaultConfidenceThreshold: null,
+    defaultAccuracyThreshold: null,
+    defaultLatencyTargetMs: 30000,
+    defaultCostCeilingUsd: null,
+    cacheEligible: false,
+    batchEligible: false,
+    humanReviewRule: 'NOT_REQUIRED_FOR_COMPATIBILITY_RESPONSE',
+    organizationPolicyCompatibility: 'TENANT_SCOPED',
+    approvedFallbackSequence: Object.freeze([]),
+    active: true,
+    version: 'legacy.ai.structured_response.v1'
+  }),
   'delivery_note.summarize': Object.freeze({
     id: 'delivery_note.summarize',
     displayName: 'Delivery Note Summary',

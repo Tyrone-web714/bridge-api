@@ -1,7 +1,7 @@
 const express = require('express');
 const adminAuth = require('../services/adminAuth');
 const driverAuth = require('../services/driverAuth');
-const aiProvider = require('../services/aiProvider');
+const legacyAiAdapter = require('../services/intelligenceExecution/legacyAiAdapter');
 const predictionEngine = require('../services/predictionEngine');
 const repositories = require('../db/repositories');
 
@@ -80,7 +80,7 @@ function requireAdminAiAccess(req, res, next) {
 }
 
 function requireAiConfigured(req, res, next) {
-  if (aiProvider.isConfigured()) return next();
+  if (legacyAiAdapter.isConfigured()) return next();
   return res.status(503).json({
     ok: false,
     error: 'AI provider is not configured. Set OPENAI_API_KEY on the backend.'
@@ -2064,7 +2064,7 @@ async function buildUnifiedIntelligenceDashboardContext({ accountNumber, routeDa
 router.get('/status', (req, res) => {
   res.json({
     ok: true,
-    ai: aiProvider.getStatus()
+    ai: legacyAiAdapter.getStatus()
   });
 });
 
@@ -2074,7 +2074,7 @@ router.get('/operations', requireAdminAiAccess, async (req, res) => {
     const metrics = await repositories.getAiOperationsMetrics({ periodDays });
     return res.json({
       ok: true,
-      ai: aiProvider.getStatus(),
+      ai: legacyAiAdapter.getStatus(),
       metrics
     });
   } catch (error) {
@@ -2122,13 +2122,13 @@ router.post('/account-summary', requireAiAccess, requireAiConfigured, async (req
     const driverRouteContext = await ensureDriverCanAccessAccount(requester, accountNumber, routeDate);
     const sourceSummary = await repositories.getAccountProductSummary(accountNumber, { periodDays });
     const aiInput = compactAccountSummaryForAi(sourceSummary);
-    aiResult = await aiProvider.createStructuredResponse({
+    aiResult = await legacyAiAdapter.createStructuredResponse(req.authContext, {
       endpoint: 'account-summary',
       instructions: buildAccountSummaryPrompt(),
       input: aiInput,
       schemaName: 'truck_safe_account_summary',
       schema: accountSummarySchema
-    });
+    }, { req });
 
     const savedInsight = await repositories.saveAccountInsight({
       accountNumber,
@@ -2200,7 +2200,7 @@ router.post('/account-summary', requireAiAccess, requireAiConfigured, async (req
       requesterType: requester.type,
       requesterId: requester.id,
       accountNumber,
-      model: aiResult?.model || aiProvider.getModel(),
+      model: aiResult?.model || legacyAiAdapter.getModel(),
       status: 'error',
       inputSummary: { accountNumber, periodDays },
       outputSummary: {},
@@ -2253,7 +2253,7 @@ router.post('/driver-copilot', requireAiAccess, requireAiConfigured, async (req,
     }
 
     routeContext = compactAssignedRouteForDriverCopilot(route, currentStopId);
-    aiResult = await aiProvider.createStructuredResponse({
+    aiResult = await legacyAiAdapter.createStructuredResponse(req.authContext, {
       endpoint: 'driver-copilot',
       instructions: buildDriverCopilotPrompt(),
       input: {
@@ -2262,7 +2262,7 @@ router.post('/driver-copilot', requireAiAccess, requireAiConfigured, async (req,
       },
       schemaName: 'truck_safe_driver_copilot',
       schema: driverCopilotSchema
-    });
+    }, { req });
 
     await repositories.saveAiInteractionLog({
       endpoint: 'driver-copilot',
@@ -2306,7 +2306,7 @@ router.post('/driver-copilot', requireAiAccess, requireAiConfigured, async (req,
       accountNumber: routeContext?.selectedStop?.accountNumber || null,
       routeManifestId: routeContext?.id || null,
       routeStopId: routeContext?.selectedStop?.id || null,
-      model: aiResult?.model || aiProvider.getModel(),
+      model: aiResult?.model || legacyAiAdapter.getModel(),
       status: 'error',
       inputSummary: { question, routeDate, driverId, currentStopId },
       outputSummary: {},
@@ -2338,13 +2338,13 @@ router.post('/delivery-notes-summary', requireAdminAiAccess, requireAiConfigured
 
   try {
     const sourceContext = await buildDeliveryNotesContext({ accountNumber, destination, routeDate });
-    aiResult = await aiProvider.createStructuredResponse({
+    aiResult = await legacyAiAdapter.createStructuredResponse(req.authContext, {
       endpoint: 'delivery-notes-summary',
       instructions: buildDeliveryNotesSummaryPrompt(),
       input: sourceContext,
       schemaName: 'truck_safe_delivery_notes_summary',
       schema: deliveryNotesSummarySchema
-    });
+    }, { req });
 
     if (accountNumber) {
       await repositories.saveAccountInsight({
@@ -2407,7 +2407,7 @@ router.post('/delivery-notes-summary', requireAdminAiAccess, requireAiConfigured
       requesterType: requester.type,
       requesterId: requester.id,
       accountNumber: accountNumber || null,
-      model: aiResult?.model || aiProvider.getModel(),
+      model: aiResult?.model || legacyAiAdapter.getModel(),
       status: 'error',
       inputSummary: { accountNumber, destination, routeDate },
       outputSummary: {},
@@ -2439,13 +2439,13 @@ router.post('/account-guidance', requireAiAccess, requireAiConfigured, async (re
 
   try {
     sourceContext = await buildAccountGuidanceContext({ accountNumber, routeDate, requester });
-    aiResult = await aiProvider.createStructuredResponse({
+    aiResult = await legacyAiAdapter.createStructuredResponse(req.authContext, {
       endpoint: 'account-guidance',
       instructions: buildAccountGuidancePrompt(),
       input: sourceContext,
       schemaName: 'truck_safe_account_guidance',
       schema: accountGuidanceSchema
-    });
+    }, { req });
 
     const savedInsight = await repositories.saveAccountInsight({
       accountNumber,
@@ -2510,7 +2510,7 @@ router.post('/account-guidance', requireAiAccess, requireAiConfigured, async (re
       accountNumber,
       routeManifestId: sourceContext?.routeAccess?.routeManifestId || null,
       routeStopId: sourceContext?.routeAccess?.routeStopId || null,
-      model: aiResult?.model || aiProvider.getModel(),
+      model: aiResult?.model || legacyAiAdapter.getModel(),
       status: 'error',
       inputSummary: { accountNumber, routeDate },
       outputSummary: {},
@@ -2545,13 +2545,13 @@ router.post('/delivery-failure-risk', requireAdminAiAccess, requireAiConfigured,
         periodDays
       }
     });
-    aiResult = await aiProvider.createStructuredResponse({
+    aiResult = await legacyAiAdapter.createStructuredResponse(req.authContext, {
       endpoint: 'delivery-failure-risk',
       instructions: buildDeliveryFailureRiskPrompt(),
       input: sourceContext,
       schemaName: 'truck_safe_delivery_failure_risk',
       schema: deliveryFailureRiskSchema
-    });
+    }, { req });
 
     await repositories.saveAiInteractionLog({
       endpoint: 'delivery-failure-risk',
@@ -2592,7 +2592,7 @@ router.post('/delivery-failure-risk', requireAdminAiAccess, requireAiConfigured,
       requesterType: requester.type,
       requesterId: requester.id,
       accountNumber: accountNumber || null,
-      model: aiResult?.model || aiProvider.getModel(),
+      model: aiResult?.model || legacyAiAdapter.getModel(),
       status: 'error',
       inputSummary: { accountNumber, routeDate, periodDays },
       outputSummary: {},
@@ -2617,13 +2617,13 @@ router.post('/deduction-risk', requireAdminAiAccess, requireAiConfigured, async 
 
   try {
     const sourceContext = await buildDeductionRiskContext({ accountNumber, routeDate, periodDays });
-    aiResult = await aiProvider.createStructuredResponse({
+    aiResult = await legacyAiAdapter.createStructuredResponse(req.authContext, {
       endpoint: 'deduction-risk',
       instructions: buildDeductionRiskPrompt(),
       input: sourceContext,
       schemaName: 'truck_safe_deduction_risk',
       schema: deductionRiskSchema
-    });
+    }, { req });
 
     if (accountNumber) {
       await repositories.saveAccountInsight({
@@ -2684,7 +2684,7 @@ router.post('/deduction-risk', requireAdminAiAccess, requireAiConfigured, async 
       requesterType: requester.type,
       requesterId: requester.id,
       accountNumber: accountNumber || null,
-      model: aiResult?.model || aiProvider.getModel(),
+      model: aiResult?.model || legacyAiAdapter.getModel(),
       status: 'error',
       inputSummary: { accountNumber, routeDate, periodDays },
       outputSummary: {},
@@ -2717,7 +2717,7 @@ router.post('/supervisor-question', requireAdminAiAccess, requireAiConfigured, a
 
   try {
     const sourceContext = await buildSupervisorContext({ accountNumber, routeDate, periodDays });
-    aiResult = await aiProvider.createStructuredResponse({
+    aiResult = await legacyAiAdapter.createStructuredResponse(req.authContext, {
       endpoint: 'supervisor-question',
       instructions: buildSupervisorQuestionPrompt(),
       input: {
@@ -2726,7 +2726,7 @@ router.post('/supervisor-question', requireAdminAiAccess, requireAiConfigured, a
       },
       schemaName: 'truck_safe_supervisor_question',
       schema: supervisorQuestionSchema
-    });
+    }, { req });
 
     await repositories.saveAiInteractionLog({
       endpoint: 'supervisor-question',
@@ -2768,7 +2768,7 @@ router.post('/supervisor-question', requireAdminAiAccess, requireAiConfigured, a
       requesterType: requester.type,
       requesterId: requester.id,
       accountNumber: accountNumber || null,
-      model: aiResult?.model || aiProvider.getModel(),
+      model: aiResult?.model || legacyAiAdapter.getModel(),
       status: 'error',
       inputSummary: { question, accountNumber, routeDate, periodDays },
       outputSummary: {},
@@ -2810,13 +2810,13 @@ router.post('/account-forecast', requireAdminAiAccess, requireAiConfigured, asyn
         periodDays
       }
     });
-    aiResult = await aiProvider.createStructuredResponse({
+    aiResult = await legacyAiAdapter.createStructuredResponse(req.authContext, {
       endpoint: 'account-forecast',
       instructions: buildAccountForecastPrompt(),
       input: sourceContext,
       schemaName: 'truck_safe_account_forecast',
       schema: accountForecastSchema
-    });
+    }, { req });
 
     const savedInsight = await repositories.saveAccountInsight({
       accountNumber,
@@ -2879,7 +2879,7 @@ router.post('/account-forecast', requireAdminAiAccess, requireAiConfigured, asyn
       requesterType: requester.type,
       requesterId: requester.id,
       accountNumber,
-      model: aiResult?.model || aiProvider.getModel(),
+      model: aiResult?.model || legacyAiAdapter.getModel(),
       status: 'error',
       inputSummary: { accountNumber, routeDate, periodDays },
       outputSummary: {},
@@ -2918,13 +2918,13 @@ router.post('/product-demand-forecast', requireAdminAiAccess, requireAiConfigure
         periodDays
       }
     });
-    aiResult = await aiProvider.createStructuredResponse({
+    aiResult = await legacyAiAdapter.createStructuredResponse(req.authContext, {
       endpoint: 'product-demand-forecast',
       instructions: buildProductDemandForecastPrompt(),
       input: sourceContext,
       schemaName: 'truck_safe_product_demand_forecast',
       schema: productDemandForecastSchema
-    });
+    }, { req });
 
     if (accountNumber) {
       await repositories.saveAccountInsight({
@@ -2987,7 +2987,7 @@ router.post('/product-demand-forecast', requireAdminAiAccess, requireAiConfigure
       requesterType: requester.type,
       requesterId: requester.id,
       accountNumber: accountNumber || null,
-      model: aiResult?.model || aiProvider.getModel(),
+      model: aiResult?.model || legacyAiAdapter.getModel(),
       status: 'error',
       inputSummary: { accountNumber, routeDate, periodDays },
       outputSummary: {},
@@ -3019,13 +3019,13 @@ router.post('/route-completion-prediction', requireAdminAiAccess, requireAiConfi
         routeCount: sourceContext.routeSignals.length
       }
     });
-    aiResult = await aiProvider.createStructuredResponse({
+    aiResult = await legacyAiAdapter.createStructuredResponse(req.authContext, {
       endpoint: 'route-completion-prediction',
       instructions: buildRouteCompletionPredictionPrompt(),
       input: sourceContext,
       schemaName: 'truck_safe_route_completion_prediction',
       schema: routeCompletionPredictionSchema
-    });
+    }, { req });
 
     await repositories.saveAiInteractionLog({
       endpoint: 'route-completion-prediction',
@@ -3064,7 +3064,7 @@ router.post('/route-completion-prediction', requireAdminAiAccess, requireAiConfi
       requesterType: requester.type,
       requesterId: requester.id,
       accountNumber: null,
-      model: aiResult?.model || aiProvider.getModel(),
+      model: aiResult?.model || legacyAiAdapter.getModel(),
       status: 'error',
       inputSummary: { routeDate },
       outputSummary: {},
@@ -3113,13 +3113,13 @@ router.post('/operational-heatmap', requireAdminAiAccess, requireAiConfigured, a
       categoryCounts: context.categoryCounts,
       clusters: context.clusters
     };
-    aiResult = await aiProvider.createStructuredResponse({
+    aiResult = await legacyAiAdapter.createStructuredResponse(req.authContext, {
       endpoint: 'operational-heatmap',
       instructions: buildOperationalHeatmapPrompt(),
       input: aiInput,
       schemaName: 'truck_safe_operational_heatmap',
       schema: operationalHeatmapSchema
-    });
+    }, { req });
 
     await repositories.saveAiInteractionLog({
       endpoint: 'operational-heatmap',
@@ -3185,7 +3185,7 @@ router.post('/operational-heatmap', requireAdminAiAccess, requireAiConfigured, a
       requesterType: requester.type,
       requesterId: requester.id,
       accountNumber: null,
-      model: aiResult?.model || aiProvider.getModel(),
+      model: aiResult?.model || legacyAiAdapter.getModel(),
       status: 'error',
       inputSummary: { routeDate, periodDays, filters },
       outputSummary: {},
@@ -3215,13 +3215,13 @@ router.post('/driver-coaching', requireAdminAiAccess, requireAiConfigured, async
       routeDate,
       periodDays
     });
-    aiResult = await aiProvider.createStructuredResponse({
+    aiResult = await legacyAiAdapter.createStructuredResponse(req.authContext, {
       endpoint: 'driver-coaching',
       instructions: buildDriverCoachingPrompt(),
       input: sourceContext,
       schemaName: 'truck_safe_driver_coaching',
       schema: driverCoachingSchema
-    });
+    }, { req });
 
     await repositories.saveAiInteractionLog({
       endpoint: 'driver-coaching',
@@ -3260,7 +3260,7 @@ router.post('/driver-coaching', requireAdminAiAccess, requireAiConfigured, async
       requesterType: requester.type,
       requesterId: requester.id,
       accountNumber: null,
-      model: aiResult?.model || aiProvider.getModel(),
+      model: aiResult?.model || legacyAiAdapter.getModel(),
       status: 'error',
       inputSummary: { driverId: driverId || null, routeDate, periodDays },
       outputSummary: {},
@@ -3290,13 +3290,13 @@ router.post('/incident-reconstruction', requireAdminAiAccess, requireAiConfigure
 
   try {
     const sourceContext = await buildIncidentReconstructionContext(routeSessionId);
-    aiResult = await aiProvider.createStructuredResponse({
+    aiResult = await legacyAiAdapter.createStructuredResponse(req.authContext, {
       endpoint: 'incident-reconstruction',
       instructions: buildIncidentReconstructionPrompt(),
       input: sourceContext,
       schemaName: 'truck_safe_incident_reconstruction',
       schema: incidentReconstructionSchema
-    });
+    }, { req });
 
     await repositories.saveAiInteractionLog({
       endpoint: 'incident-reconstruction',
@@ -3331,7 +3331,7 @@ router.post('/incident-reconstruction', requireAdminAiAccess, requireAiConfigure
       requesterType: requester.type,
       requesterId: requester.id,
       accountNumber: null,
-      model: aiResult?.model || aiProvider.getModel(),
+      model: aiResult?.model || legacyAiAdapter.getModel(),
       status: 'error',
       inputSummary: { routeSessionId },
       outputSummary: {},
@@ -3369,13 +3369,13 @@ router.post('/what-if-simulation', requireAdminAiAccess, requireAiConfigured, as
       routeDate,
       periodDays
     });
-    aiResult = await aiProvider.createStructuredResponse({
+    aiResult = await legacyAiAdapter.createStructuredResponse(req.authContext, {
       endpoint: 'what-if-simulation',
       instructions: buildWhatIfSimulationPrompt(),
       input: sourceContext,
       schemaName: 'truck_safe_what_if_simulation',
       schema: whatIfSimulationSchema
-    });
+    }, { req });
 
     await repositories.saveAiInteractionLog({
       endpoint: 'what-if-simulation',
@@ -3419,7 +3419,7 @@ router.post('/what-if-simulation', requireAdminAiAccess, requireAiConfigured, as
       requesterType: requester.type,
       requesterId: requester.id,
       accountNumber: accountNumber || null,
-      model: aiResult?.model || aiProvider.getModel(),
+      model: aiResult?.model || legacyAiAdapter.getModel(),
       status: 'error',
       inputSummary: { scenario, accountNumber: accountNumber || null, routeDate, periodDays },
       outputSummary: {},
@@ -3444,13 +3444,13 @@ router.post('/knowledge-graph-insights', requireAdminAiAccess, requireAiConfigur
 
   try {
     const context = await buildKnowledgeGraphContext({ routeDate, periodDays });
-    aiResult = await aiProvider.createStructuredResponse({
+    aiResult = await legacyAiAdapter.createStructuredResponse(req.authContext, {
       endpoint: 'knowledge-graph-insights',
       instructions: buildKnowledgeGraphPrompt(),
       input: context.aiInput,
       schemaName: 'truck_safe_knowledge_graph_insights',
       schema: knowledgeGraphSchema
-    });
+    }, { req });
 
     await repositories.saveAiInteractionLog({
       endpoint: 'knowledge-graph-insights',
@@ -3490,7 +3490,7 @@ router.post('/knowledge-graph-insights', requireAdminAiAccess, requireAiConfigur
       requesterType: requester.type,
       requesterId: requester.id,
       accountNumber: null,
-      model: aiResult?.model || aiProvider.getModel(),
+      model: aiResult?.model || legacyAiAdapter.getModel(),
       status: 'error',
       inputSummary: { routeDate, periodDays },
       outputSummary: {},
@@ -3519,13 +3519,13 @@ router.post('/unified-intelligence-dashboard', requireAdminAiAccess, requireAiCo
       routeDate,
       periodDays
     });
-    aiResult = await aiProvider.createStructuredResponse({
+    aiResult = await legacyAiAdapter.createStructuredResponse(req.authContext, {
       endpoint: 'unified-intelligence-dashboard',
       instructions: buildUnifiedIntelligenceDashboardPrompt(),
       input: sourceContext,
       schemaName: 'truck_safe_unified_intelligence_dashboard',
       schema: unifiedIntelligenceDashboardSchema
-    });
+    }, { req });
 
     await repositories.saveAiInteractionLog({
       endpoint: 'unified-intelligence-dashboard',
@@ -3582,7 +3582,7 @@ router.post('/unified-intelligence-dashboard', requireAdminAiAccess, requireAiCo
       requesterType: requester.type,
       requesterId: requester.id,
       accountNumber: accountNumber || null,
-      model: aiResult?.model || aiProvider.getModel(),
+      model: aiResult?.model || legacyAiAdapter.getModel(),
       status: 'error',
       inputSummary: { accountNumber: accountNumber || null, routeDate, periodDays },
       outputSummary: {},
@@ -3606,13 +3606,13 @@ router.post('/redelivery-plan', requireAdminAiAccess, requireAiConfigured, async
 
   try {
     const sourceContext = await buildSupervisorContext({ routeDate, periodDays });
-    aiResult = await aiProvider.createStructuredResponse({
+    aiResult = await legacyAiAdapter.createStructuredResponse(req.authContext, {
       endpoint: 'redelivery-plan',
       instructions: buildRedeliveryPlanPrompt(),
       input: sourceContext,
       schemaName: 'truck_safe_redelivery_plan',
       schema: redeliveryPlanSchema
-    });
+    }, { req });
 
     await repositories.saveAiInteractionLog({
       endpoint: 'redelivery-plan',
@@ -3650,7 +3650,7 @@ router.post('/redelivery-plan', requireAdminAiAccess, requireAiConfigured, async
       requesterType: requester.type,
       requesterId: requester.id,
       accountNumber: null,
-      model: aiResult?.model || aiProvider.getModel(),
+      model: aiResult?.model || legacyAiAdapter.getModel(),
       status: 'error',
       inputSummary: { routeDate, periodDays },
       outputSummary: {},
@@ -3691,13 +3691,13 @@ router.post('/route-risk-explanation', requireAdminAiAccess, requireAiConfigured
       routeSession: compactRouteSessionForAi(routeSession)
     };
 
-    aiResult = await aiProvider.createStructuredResponse({
+    aiResult = await legacyAiAdapter.createStructuredResponse(req.authContext, {
       endpoint: 'route-risk-explanation',
       instructions: buildRouteRiskExplanationPrompt(),
       input: sourceContext,
       schemaName: 'truck_safe_route_risk_explanation',
       schema: routeRiskExplanationSchema
-    });
+    }, { req });
 
     await repositories.saveAiInteractionLog({
       endpoint: 'route-risk-explanation',
@@ -3735,7 +3735,7 @@ router.post('/route-risk-explanation', requireAdminAiAccess, requireAiConfigured
       requesterType: requester.type,
       requesterId: requester.id,
       accountNumber: null,
-      model: aiResult?.model || aiProvider.getModel(),
+      model: aiResult?.model || legacyAiAdapter.getModel(),
       status: 'error',
       inputSummary: { routeSessionId },
       outputSummary: {},
@@ -3759,13 +3759,13 @@ router.post('/supervisor-brief', requireAdminAiAccess, requireAiConfigured, asyn
 
   try {
     const sourceContext = await buildSupervisorContext({ routeDate, periodDays });
-    aiResult = await aiProvider.createStructuredResponse({
+    aiResult = await legacyAiAdapter.createStructuredResponse(req.authContext, {
       endpoint: 'supervisor-brief',
       instructions: buildSupervisorBriefPrompt(),
       input: sourceContext,
       schemaName: 'truck_safe_supervisor_brief',
       schema: supervisorBriefSchema
-    });
+    }, { req });
 
     await repositories.saveAiInteractionLog({
       endpoint: 'supervisor-brief',
@@ -3803,7 +3803,7 @@ router.post('/supervisor-brief', requireAdminAiAccess, requireAiConfigured, asyn
       requesterType: requester.type,
       requesterId: requester.id,
       accountNumber: null,
-      model: aiResult?.model || aiProvider.getModel(),
+      model: aiResult?.model || legacyAiAdapter.getModel(),
       status: 'error',
       inputSummary: { routeDate, periodDays },
       outputSummary: {},

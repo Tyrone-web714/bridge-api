@@ -19,6 +19,26 @@ const COST_ORDER = Object.freeze([
   EXECUTION_STRATEGIES.HUMAN_REVIEW
 ]);
 
+function selectedProviderAdapterFor(strategy, capability) {
+  if (
+    strategy === EXECUTION_STRATEGIES.HOSTED_BALANCED_MODEL
+    && capability.id === 'legacy.ai.structured_response'
+  ) {
+    return 'openai';
+  }
+  return null;
+}
+
+function selectedModelClassFor(strategy, capability) {
+  if (
+    strategy === EXECUTION_STRATEGIES.HOSTED_BALANCED_MODEL
+    && capability.id === 'legacy.ai.structured_response'
+  ) {
+    return 'HOSTED_BALANCED';
+  }
+  return null;
+}
+
 function createExecutionPlan(request, capability, profile, policy) {
   if (!policy.allowed) {
     throw createError('Intelligence policy denied the request.', 403, 'INTELLIGENCE_POLICY_DENIED', policy.denials);
@@ -54,8 +74,8 @@ function createExecutionPlan(request, capability, profile, policy) {
       capability: capability.id,
       capabilityVersion: capability.version,
       selectedStrategy: strategy,
-      selectedProviderAdapter: null,
-      selectedModelClass: null,
+      selectedProviderAdapter: selectedProviderAdapterFor(strategy, capability),
+      selectedModelClass: selectedModelClassFor(strategy, capability),
       selectionReason: 'Selected the lowest-cost registered strategy allowed by capability metadata, execution profile, and effective policy.',
       consideredStrategies,
       rejectedStrategies,

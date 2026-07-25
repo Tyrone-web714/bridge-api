@@ -5,7 +5,7 @@ const postgres = require('./db/postgres');
 const photoStorage = require('./services/photoStorage');
 const driverAuth = require('./services/driverAuth');
 const adminAuth = require('./services/adminAuth');
-const aiProvider = require('./services/aiProvider');
+const legacyAiAdapter = require('./services/intelligenceExecution/legacyAiAdapter');
 const supervisorIntelligence = require('./services/supervisorIntelligence');
 const auditLog = require('./services/auditLog');
 const authorization = require('./middleware/authorization');
@@ -227,7 +227,7 @@ app.get('/health', async (req, res) => {
       configured: storageStatus.configured,
       durable: storageStatus.durable
     },
-    ai: aiProvider.getStatus(),
+    ai: legacyAiAdapter.getStatus(),
     driverAuth: driverAuth.isDriverAuthConfigured() ? 'configured' : 'not-configured',
     uptime_s: Math.round(process.uptime())
   });
@@ -268,7 +268,7 @@ app.get('/ready', async (req, res) => {
     ok,
     service: 'bridge-api',
     checks,
-    ai: aiProvider.getStatus(),
+    ai: legacyAiAdapter.getStatus(),
     ...(databaseError ? { databaseError: 'Database readiness check failed.' } : {}),
     photoStorage: {
       provider: storageStatus.provider,

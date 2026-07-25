@@ -106,8 +106,14 @@ async function execute(authContext, input = {}, options = {}) {
       requestId: request.requestId,
       capability: request.capability,
       selectedStrategy: plan.selectedStrategy,
+      provider: response.provider,
+      model: response.model,
+      modelClass: response.modelClass,
+      promptVersion: response.promptVersion,
+      usage: response.usage,
       latencyMs: response.latencyMs,
-      estimatedCostUsd: response.estimatedCostUsd
+      estimatedCostUsd: response.estimatedCostUsd,
+      actualCostUsd: response.actualCostUsd
     });
     return response;
   } catch (error) {
