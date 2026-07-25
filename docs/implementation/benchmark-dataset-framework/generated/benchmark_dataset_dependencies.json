@@ -1,0 +1,72 @@
+{
+  "generatedFrom": "bridge-api/benchmarks/datasets",
+  "generatedArtifact": true,
+  "dependencies": [
+    {
+      "capabilityId": "legacy.ai.structured_response",
+      "datasetId": "legacy.ai.structured_response.benchmark.schema_compliance",
+      "executorVersionCompatibility": [
+        "legacy.hosted.structured-response.adapter.v1"
+      ],
+      "inputSchemaId": "schemas/intelligence/legacy-ai-structured-response-input.v1",
+      "outputSchemaId": "schemas/intelligence/legacy-ai-structured-response-output.v1",
+      "policyVersionCompatibility": [
+        "intelligence.policy.v1"
+      ],
+      "promptVersionCompatibility": [
+        "legacy-ai-route-contract.v1"
+      ],
+      "sourceFiles": [
+        "bridge-api/benchmarks/datasets/legacy.ai.structured_response/schema_compliance/dataset.json"
+      ],
+      "supportedCapabilityVersions": [
+        "legacy.ai.structured_response.v1"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "capabilityId": "supervisor.daily_operations_report",
+      "datasetId": "supervisor.daily_operations_report.benchmark.safety_language",
+      "executorVersionCompatibility": [
+        "supervisor.daily_operations_report.adapter.v1"
+      ],
+      "inputSchemaId": "schemas/intelligence/supervisor-daily-operations-report-input.v1",
+      "outputSchemaId": "schemas/intelligence/supervisor-daily-operations-report-output.v1",
+      "policyVersionCompatibility": [
+        "intelligence.policy.v1"
+      ],
+      "promptVersionCompatibility": [
+        "supervisor-daily-operations-report.v1"
+      ],
+      "sourceFiles": [
+        "bridge-api/benchmarks/datasets/supervisor.daily_operations_report/safety_language/dataset.json"
+      ],
+      "supportedCapabilityVersions": [
+        "supervisor.daily_operations_report.v1"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "capabilityId": "text.cleanup",
+      "datasetId": "text.cleanup.benchmark.core",
+      "executorVersionCompatibility": [
+        "deterministic.text.cleanup.v1"
+      ],
+      "inputSchemaId": "schemas/intelligence/text-cleanup-input.v1",
+      "outputSchemaId": "schemas/intelligence/text-cleanup-output.v1",
+      "policyVersionCompatibility": [
+        "intelligence.policy.v1"
+      ],
+      "promptVersionCompatibility": [
+        "not-applicable"
+      ],
+      "sourceFiles": [
+        "bridge-api/benchmarks/datasets/text.cleanup/core/dataset.json"
+      ],
+      "supportedCapabilityVersions": [
+        "text.cleanup.v1"
+      ],
+      "version": "0.1.0"
+    }
+  ]
+}

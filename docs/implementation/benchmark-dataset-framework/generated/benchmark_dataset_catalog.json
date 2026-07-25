@@ -1,0 +1,128 @@
+{
+  "generatedFrom": "bridge-api/benchmarks/datasets",
+  "generatedArtifact": true,
+  "datasets": [
+    {
+      "allowedEnvironments": [
+        "LOCAL_TEST",
+        "CI"
+      ],
+      "approvalStatus": "TECHNICAL_VALIDATION_COMPLETE",
+      "benchmarkReadiness": "NOT_READY",
+      "capabilityId": "legacy.ai.structured_response",
+      "caseCount": 4,
+      "contentHash": "594c4c1fcf010b21821f9e57401fdd007fa39c2990b4aebd19c8d63cc5879480",
+      "dataClassification": "INTERNAL",
+      "datasetId": "legacy.ai.structured_response.benchmark.schema_compliance",
+      "displayName": "Legacy Structured Response Schema Compliance Synthetic Dataset",
+      "enabled": true,
+      "evaluationTypes": [
+        "STRUCTURED_SCHEMA",
+        "FIELD_LEVEL_ASSERTION",
+        "REFUSAL_EXPECTED",
+        "INSUFFICIENT_EVIDENCE_EXPECTED",
+        "POLICY_CONSTRAINT"
+      ],
+      "knownLimitations": [
+        "Does not benchmark a hosted model or response quality."
+      ],
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "missingCoverage": [],
+      "privacyIndicators": {
+        "containsCustomerData": false,
+        "containsEmployeeData": false,
+        "containsPersonalData": false,
+        "containsPreciseLocationData": false,
+        "containsSensitivePersonalData": false,
+        "productionDataUsed": false
+      },
+      "riskCoverage": [
+        "LOW",
+        "MODERATE"
+      ],
+      "sourceType": "SYNTHETIC",
+      "version": "0.1.0"
+    },
+    {
+      "allowedEnvironments": [
+        "LOCAL_TEST",
+        "CI"
+      ],
+      "approvalStatus": "TECHNICAL_VALIDATION_COMPLETE",
+      "benchmarkReadiness": "NOT_READY",
+      "capabilityId": "supervisor.daily_operations_report",
+      "caseCount": 4,
+      "contentHash": "63a32291dc96e18ba89775fe02a7b2f627db5826069ac56a253ac7f274026adc",
+      "dataClassification": "INTERNAL",
+      "datasetId": "supervisor.daily_operations_report.benchmark.safety_language",
+      "displayName": "Supervisor Daily Operations Report Safety Language Synthetic Dataset",
+      "enabled": true,
+      "evaluationTypes": [
+        "FIELD_LEVEL_ASSERTION",
+        "NUMERICAL_TOLERANCE",
+        "SAFETY_CONSTRAINT",
+        "POLICY_CONSTRAINT",
+        "RUBRIC_BASED",
+        "INSUFFICIENT_EVIDENCE_EXPECTED",
+        "HUMAN_REVIEW_EXPECTED"
+      ],
+      "knownLimitations": [
+        "Does not measure narrative quality or production representativeness."
+      ],
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "missingCoverage": [],
+      "privacyIndicators": {
+        "containsCustomerData": false,
+        "containsEmployeeData": false,
+        "containsPersonalData": false,
+        "containsPreciseLocationData": false,
+        "containsSensitivePersonalData": false,
+        "productionDataUsed": false
+      },
+      "riskCoverage": [
+        "LOW",
+        "HIGH"
+      ],
+      "sourceType": "SYNTHETIC",
+      "version": "0.1.0"
+    },
+    {
+      "allowedEnvironments": [
+        "LOCAL_TEST",
+        "CI"
+      ],
+      "approvalStatus": "TECHNICAL_VALIDATION_COMPLETE",
+      "benchmarkReadiness": "NOT_READY",
+      "capabilityId": "text.cleanup",
+      "caseCount": 5,
+      "contentHash": "9ddf4704e420ffdfa02e01b920206cd0934201e875777b8712fa43a30c73c503",
+      "dataClassification": "INTERNAL",
+      "datasetId": "text.cleanup.benchmark.core",
+      "displayName": "Text Cleanup Core Synthetic Dataset",
+      "enabled": true,
+      "evaluationTypes": [
+        "NORMALIZED_TEXT_MATCH",
+        "FIELD_LEVEL_ASSERTION",
+        "REFUSAL_EXPECTED"
+      ],
+      "knownLimitations": [
+        "Small synthetic dataset; not a production benchmark corpus."
+      ],
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "missingCoverage": [],
+      "privacyIndicators": {
+        "containsCustomerData": false,
+        "containsEmployeeData": false,
+        "containsPersonalData": false,
+        "containsPreciseLocationData": false,
+        "containsSensitivePersonalData": false,
+        "productionDataUsed": false
+      },
+      "riskCoverage": [
+        "LOW"
+      ],
+      "sourceType": "SYNTHETIC",
+      "version": "0.1.0"
+    }
+  ]
+}

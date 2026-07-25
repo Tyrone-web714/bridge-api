@@ -1,0 +1,769 @@
+{
+  "aliases": [
+    "text.cleanup.core"
+  ],
+  "allowedEnvironments": [
+    "LOCAL_TEST",
+    "CI"
+  ],
+  "anonymizedData": false,
+  "approvalStatus": "TECHNICAL_VALIDATION_COMPLETE",
+  "approvedAt": null,
+  "approvedBy": null,
+  "approvedRealDataUse": false,
+  "benchmarkPurpose": "framework validation for deterministic text normalization",
+  "biasRisks": [
+    "Does not cover multilingual or real customer text."
+  ],
+  "boundaryConditionCoverage": [
+    "empty_string",
+    "max_contract_length_placeholder"
+  ],
+  "capabilityId": "text.cleanup",
+  "caseCount": 5,
+  "cases": [
+    {
+      "OrganizationContextMode": "SYNTHETIC_TRUSTED_CONTEXT",
+      "acceptableVariations": [],
+      "actorRole": "supervisor",
+      "advisoryInterpretations": [],
+      "assertions": {
+        "exclusionAssertions": [
+          "new destination"
+        ],
+        "inclusionAssertions": [
+          "Dock",
+          "door",
+          "ready"
+        ],
+        "policyAssertions": [
+          "no_fabrication"
+        ],
+        "privacyAssertions": [],
+        "safetyAssertions": []
+      },
+      "benchmarkEligible": false,
+      "canonicalFacts": [
+        "Dock door ready"
+      ],
+      "capabilityId": "text.cleanup",
+      "caseId": "text-cleanup-core-001",
+      "caseSourceType": "SYNTHETIC",
+      "caseVersion": "0.1.0",
+      "coverageCategories": [
+        "normal",
+        "deterministic_verification"
+      ],
+      "customerImpact": "NONE",
+      "datasetId": "text.cleanup.benchmark.core",
+      "description": "Collapses repeated whitespace without changing words.",
+      "deterministicSeed": "text-cleanup-core-001",
+      "displayName": "Whitespace Cleanup",
+      "employmentImpact": "NONE",
+      "enabled": true,
+      "environmentalContext": {},
+      "evaluationTypes": [
+        "NORMALIZED_TEXT_MATCH",
+        "FIELD_LEVEL_ASSERTION"
+      ],
+      "exactExpectedOutput": "Dock door ready",
+      "expectedCategories": [],
+      "expectedErrorClass": null,
+      "expectedHumanReview": false,
+      "expectedInsufficientEvidence": false,
+      "expectedNumericalValues": [],
+      "expectedPolicyFlags": [
+        "no_fabrication"
+      ],
+      "expectedRanking": [],
+      "expectedRefusal": false,
+      "expectedResultType": "normalized_text",
+      "expectedRouteProperties": {},
+      "expectedSafetyFlags": [],
+      "expectedStructuredFields": [
+        {
+          "field": "text",
+          "required": true
+        }
+      ],
+      "financialImpact": "NONE",
+      "inputHash": null,
+      "integrity": {
+        "contentHash": "b003cb2b005da0c9fec977f9967ab437f902091e0e9bab81c165d695d8858713"
+      },
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "locale": "en-US",
+      "minimumEvidenceRequirements": [
+        "requestPayload.text"
+      ],
+      "notes": [
+        "Framework validation fixture only."
+      ],
+      "ownerApprovalRequired": true,
+      "partialExpectedOutput": null,
+      "permissions": [
+        "INTELLIGENCE_EXECUTE"
+      ],
+      "privacyImpact": "NONE",
+      "prohibitedInferences": [
+        "Inferring operational status beyond supplied text."
+      ],
+      "referenceOutputs": [],
+      "referenceRubricId": null,
+      "regressionRequired": true,
+      "requestMetadata": {
+        "schemaVersion": "benchmark.case.schema.v1"
+      },
+      "requestPayload": {
+        "text": "  Dock   door   ready  "
+      },
+      "reviewStatus": "REVIEWED_SYNTHETIC",
+      "reviewedBy": "TECHNICAL_VALIDATION_SCRIPT",
+      "riskTier": "LOW",
+      "safetyImpact": "NONE",
+      "sanitizationMethod": null,
+      "securityImpact": "NONE",
+      "sourceReference": "manual.synthetic.text.cleanup",
+      "syntheticGenerationMethod": "manual",
+      "tags": [
+        "normal",
+        "whitespace"
+      ],
+      "testOnly": true,
+      "timezone": "America/Chicago",
+      "transformationNotes": "None; authored synthetic.",
+      "unacceptableClaims": [
+        "Invented customer or route facts."
+      ]
+    },
+    {
+      "OrganizationContextMode": "SYNTHETIC_TRUSTED_CONTEXT",
+      "acceptableVariations": [],
+      "actorRole": "supervisor",
+      "advisoryInterpretations": [],
+      "assertions": {
+        "exclusionAssertions": [
+          "25",
+          "3"
+        ],
+        "inclusionAssertions": [
+          "24",
+          "2"
+        ],
+        "policyAssertions": [
+          "no_fabrication"
+        ],
+        "privacyAssertions": [],
+        "safetyAssertions": []
+      },
+      "benchmarkEligible": false,
+      "canonicalFacts": [
+        "24 cases",
+        "2 returns"
+      ],
+      "capabilityId": "text.cleanup",
+      "caseId": "text-cleanup-core-002",
+      "caseSourceType": "SYNTHETIC",
+      "caseVersion": "0.1.0",
+      "coverageCategories": [
+        "normal",
+        "deterministic_verification"
+      ],
+      "customerImpact": "NONE",
+      "datasetId": "text.cleanup.benchmark.core",
+      "description": "Normalizes spacing while preserving synthetic quantities.",
+      "deterministicSeed": "text-cleanup-core-002",
+      "displayName": "Preserve Numbers",
+      "employmentImpact": "NONE",
+      "enabled": true,
+      "environmentalContext": {},
+      "evaluationTypes": [
+        "NORMALIZED_TEXT_MATCH",
+        "FIELD_LEVEL_ASSERTION"
+      ],
+      "exactExpectedOutput": "Cases: 24. Returns: 2.",
+      "expectedCategories": [],
+      "expectedErrorClass": null,
+      "expectedHumanReview": false,
+      "expectedInsufficientEvidence": false,
+      "expectedNumericalValues": [
+        {
+          "field": "cases",
+          "target": 24,
+          "tolerance": 0
+        },
+        {
+          "field": "returns",
+          "target": 2,
+          "tolerance": 0
+        }
+      ],
+      "expectedPolicyFlags": [
+        "preserve_numbers"
+      ],
+      "expectedRanking": [],
+      "expectedRefusal": false,
+      "expectedResultType": "normalized_text",
+      "expectedRouteProperties": {},
+      "expectedSafetyFlags": [],
+      "expectedStructuredFields": [
+        {
+          "field": "text",
+          "required": true
+        }
+      ],
+      "financialImpact": "LOW",
+      "inputHash": null,
+      "integrity": {
+        "contentHash": "048454d1703acfb931724a8791dacfca1ca18aeebbd6bd34c4531f23c1a3707d"
+      },
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "locale": "en-US",
+      "minimumEvidenceRequirements": [
+        "requestPayload.text"
+      ],
+      "notes": [
+        "Framework validation fixture only."
+      ],
+      "ownerApprovalRequired": true,
+      "partialExpectedOutput": null,
+      "permissions": [
+        "INTELLIGENCE_EXECUTE"
+      ],
+      "privacyImpact": "NONE",
+      "prohibitedInferences": [
+        "Inferring shortage cause."
+      ],
+      "referenceOutputs": [],
+      "referenceRubricId": null,
+      "regressionRequired": true,
+      "requestMetadata": {
+        "schemaVersion": "benchmark.case.schema.v1"
+      },
+      "requestPayload": {
+        "text": "Cases:   24.  Returns:  2."
+      },
+      "reviewStatus": "REVIEWED_SYNTHETIC",
+      "reviewedBy": "TECHNICAL_VALIDATION_SCRIPT",
+      "riskTier": "LOW",
+      "safetyImpact": "NONE",
+      "sanitizationMethod": null,
+      "securityImpact": "NONE",
+      "sourceReference": "manual.synthetic.text.cleanup",
+      "syntheticGenerationMethod": "manual",
+      "tags": [
+        "numbers",
+        "preservation"
+      ],
+      "testOnly": true,
+      "timezone": "America/Chicago",
+      "transformationNotes": "None; authored synthetic.",
+      "unacceptableClaims": [
+        "Changed numeric values."
+      ]
+    },
+    {
+      "OrganizationContextMode": "SYNTHETIC_TRUSTED_CONTEXT",
+      "acceptableVariations": [],
+      "actorRole": "supervisor",
+      "advisoryInterpretations": [],
+      "assertions": {
+        "exclusionAssertions": [
+          "invented"
+        ],
+        "inclusionAssertions": [],
+        "policyAssertions": [
+          "no_fabrication"
+        ],
+        "privacyAssertions": [],
+        "safetyAssertions": []
+      },
+      "benchmarkEligible": false,
+      "canonicalFacts": [],
+      "capabilityId": "text.cleanup",
+      "caseId": "text-cleanup-core-003",
+      "caseSourceType": "SYNTHETIC",
+      "caseVersion": "0.1.0",
+      "coverageCategories": [
+        "edge_case",
+        "boundary_condition"
+      ],
+      "customerImpact": "NONE",
+      "datasetId": "text.cleanup.benchmark.core",
+      "description": "Represents an empty text input edge case.",
+      "deterministicSeed": "text-cleanup-core-003",
+      "displayName": "Empty Input",
+      "employmentImpact": "NONE",
+      "enabled": true,
+      "environmentalContext": {},
+      "evaluationTypes": [
+        "NORMALIZED_TEXT_MATCH"
+      ],
+      "exactExpectedOutput": "",
+      "expectedCategories": [
+        "empty_input"
+      ],
+      "expectedErrorClass": null,
+      "expectedHumanReview": false,
+      "expectedInsufficientEvidence": false,
+      "expectedNumericalValues": [],
+      "expectedPolicyFlags": [
+        "no_fabrication"
+      ],
+      "expectedRanking": [],
+      "expectedRefusal": false,
+      "expectedResultType": "empty_text",
+      "expectedRouteProperties": {},
+      "expectedSafetyFlags": [],
+      "expectedStructuredFields": [
+        {
+          "field": "text",
+          "required": true
+        }
+      ],
+      "financialImpact": "NONE",
+      "inputHash": null,
+      "integrity": {
+        "contentHash": "7f66ac92261e0cbec34c0e3087c28f33d89be9b5a10aea4078ccb380b596ac4b"
+      },
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "locale": "en-US",
+      "minimumEvidenceRequirements": [],
+      "notes": [
+        "Framework validation fixture only."
+      ],
+      "ownerApprovalRequired": true,
+      "partialExpectedOutput": null,
+      "permissions": [
+        "INTELLIGENCE_EXECUTE"
+      ],
+      "privacyImpact": "NONE",
+      "prohibitedInferences": [
+        "Inferring omitted content."
+      ],
+      "referenceOutputs": [],
+      "referenceRubricId": null,
+      "regressionRequired": true,
+      "requestMetadata": {
+        "schemaVersion": "benchmark.case.schema.v1"
+      },
+      "requestPayload": {
+        "text": ""
+      },
+      "reviewStatus": "REVIEWED_SYNTHETIC",
+      "reviewedBy": "TECHNICAL_VALIDATION_SCRIPT",
+      "riskTier": "LOW",
+      "safetyImpact": "NONE",
+      "sanitizationMethod": null,
+      "securityImpact": "NONE",
+      "sourceReference": "manual.synthetic.text.cleanup",
+      "syntheticGenerationMethod": "manual",
+      "tags": [
+        "edge_case",
+        "empty"
+      ],
+      "testOnly": true,
+      "timezone": "America/Chicago",
+      "transformationNotes": "None; authored synthetic.",
+      "unacceptableClaims": [
+        "Invented text."
+      ]
+    },
+    {
+      "OrganizationContextMode": "SYNTHETIC_TRUSTED_CONTEXT",
+      "acceptableVariations": [],
+      "actorRole": "supervisor",
+      "advisoryInterpretations": [],
+      "assertions": {
+        "exclusionAssertions": [
+          "real driver"
+        ],
+        "inclusionAssertions": [
+          "DRIVER_ALPHA"
+        ],
+        "policyAssertions": [
+          "no_fabrication"
+        ],
+        "privacyAssertions": [
+          "synthetic_placeholder_only"
+        ],
+        "safetyAssertions": []
+      },
+      "benchmarkEligible": false,
+      "canonicalFacts": [
+        "DRIVER_ALPHA completed check-in"
+      ],
+      "capabilityId": "text.cleanup",
+      "caseId": "text-cleanup-core-004",
+      "caseSourceType": "SYNTHETIC",
+      "caseVersion": "0.1.0",
+      "coverageCategories": [
+        "edge_case",
+        "deterministic_verification"
+      ],
+      "customerImpact": "NONE",
+      "datasetId": "text.cleanup.benchmark.core",
+      "description": "Preserves an explicit synthetic placeholder without treating it as real personal data.",
+      "deterministicSeed": "text-cleanup-core-004",
+      "displayName": "Synthetic Placeholder Name",
+      "employmentImpact": "NONE",
+      "enabled": true,
+      "environmentalContext": {},
+      "evaluationTypes": [
+        "NORMALIZED_TEXT_MATCH",
+        "FIELD_LEVEL_ASSERTION"
+      ],
+      "exactExpectedOutput": "DRIVER_ALPHA completed check-in.",
+      "expectedCategories": [
+        "synthetic_placeholder"
+      ],
+      "expectedErrorClass": null,
+      "expectedHumanReview": false,
+      "expectedInsufficientEvidence": false,
+      "expectedNumericalValues": [],
+      "expectedPolicyFlags": [
+        "preserve_placeholder"
+      ],
+      "expectedRanking": [],
+      "expectedRefusal": false,
+      "expectedResultType": "normalized_text",
+      "expectedRouteProperties": {},
+      "expectedSafetyFlags": [],
+      "expectedStructuredFields": [
+        {
+          "field": "text",
+          "required": true
+        }
+      ],
+      "financialImpact": "NONE",
+      "inputHash": null,
+      "integrity": {
+        "contentHash": "3a1223a43239161f0a437352d80a539bcb0c3b416538c18e145aa3e8f50029d1"
+      },
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "locale": "en-US",
+      "minimumEvidenceRequirements": [
+        "requestPayload.text"
+      ],
+      "notes": [
+        "Framework validation fixture only."
+      ],
+      "ownerApprovalRequired": true,
+      "partialExpectedOutput": null,
+      "permissions": [
+        "INTELLIGENCE_EXECUTE"
+      ],
+      "privacyImpact": "LOW",
+      "prohibitedInferences": [
+        "Identifying a real driver."
+      ],
+      "referenceOutputs": [],
+      "referenceRubricId": null,
+      "regressionRequired": true,
+      "requestMetadata": {
+        "schemaVersion": "benchmark.case.schema.v1"
+      },
+      "requestPayload": {
+        "text": " DRIVER_ALPHA   completed check-in. "
+      },
+      "reviewStatus": "REVIEWED_SYNTHETIC",
+      "reviewedBy": "TECHNICAL_VALIDATION_SCRIPT",
+      "riskTier": "LOW",
+      "safetyImpact": "NONE",
+      "sanitizationMethod": null,
+      "securityImpact": "NONE",
+      "sourceReference": "manual.synthetic.text.cleanup",
+      "syntheticGenerationMethod": "manual",
+      "tags": [
+        "placeholder",
+        "privacy"
+      ],
+      "testOnly": true,
+      "timezone": "America/Chicago",
+      "transformationNotes": "None; authored synthetic.",
+      "unacceptableClaims": [
+        "Mapping placeholder to a real person."
+      ]
+    },
+    {
+      "OrganizationContextMode": "SYNTHETIC_TRUSTED_CONTEXT",
+      "acceptableVariations": [],
+      "actorRole": "supervisor",
+      "advisoryInterpretations": [],
+      "assertions": {
+        "exclusionAssertions": [
+          "coerced null"
+        ],
+        "inclusionAssertions": [],
+        "policyAssertions": [
+          "fail_closed"
+        ],
+        "privacyAssertions": [],
+        "refusalAssertion": "reject_non_string_text",
+        "safetyAssertions": []
+      },
+      "benchmarkEligible": false,
+      "canonicalFacts": [],
+      "capabilityId": "text.cleanup",
+      "caseId": "text-cleanup-core-005",
+      "caseSourceType": "SYNTHETIC",
+      "caseVersion": "0.1.0",
+      "coverageCategories": [
+        "invalid_input",
+        "boundary_condition"
+      ],
+      "customerImpact": "NONE",
+      "datasetId": "text.cleanup.benchmark.core",
+      "description": "Represents invalid input handling without a live execution call.",
+      "deterministicSeed": "text-cleanup-core-005",
+      "displayName": "Invalid Non-String Input",
+      "employmentImpact": "NONE",
+      "enabled": true,
+      "environmentalContext": {},
+      "evaluationTypes": [
+        "REFUSAL_EXPECTED",
+        "POLICY_CONSTRAINT"
+      ],
+      "exactExpectedOutput": null,
+      "expectedCategories": [
+        "invalid_input"
+      ],
+      "expectedErrorClass": "VALIDATION_ERROR",
+      "expectedHumanReview": false,
+      "expectedInsufficientEvidence": false,
+      "expectedNumericalValues": [],
+      "expectedPolicyFlags": [
+        "fail_closed"
+      ],
+      "expectedRanking": [],
+      "expectedRefusal": true,
+      "expectedResultType": "error",
+      "expectedRouteProperties": {},
+      "expectedSafetyFlags": [],
+      "expectedStructuredFields": [
+        {
+          "field": "error",
+          "required": true
+        }
+      ],
+      "financialImpact": "NONE",
+      "inputHash": null,
+      "integrity": {
+        "contentHash": "0932a11a2640238ae7d9bff69305ad69783f30cfa64666a89fd61566e24c4af3"
+      },
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "locale": "en-US",
+      "minimumEvidenceRequirements": [],
+      "notes": [
+        "Framework validation fixture only."
+      ],
+      "ownerApprovalRequired": true,
+      "partialExpectedOutput": null,
+      "permissions": [
+        "INTELLIGENCE_EXECUTE"
+      ],
+      "privacyImpact": "NONE",
+      "prohibitedInferences": [
+        "Inferring missing content."
+      ],
+      "referenceOutputs": [],
+      "referenceRubricId": null,
+      "regressionRequired": true,
+      "requestMetadata": {
+        "schemaVersion": "benchmark.case.schema.v1"
+      },
+      "requestPayload": {
+        "text": null
+      },
+      "reviewStatus": "REVIEWED_SYNTHETIC",
+      "reviewedBy": "TECHNICAL_VALIDATION_SCRIPT",
+      "riskTier": "LOW",
+      "safetyImpact": "NONE",
+      "sanitizationMethod": null,
+      "securityImpact": "LOW",
+      "sourceReference": "manual.synthetic.text.cleanup",
+      "syntheticGenerationMethod": "manual",
+      "tags": [
+        "invalid_input"
+      ],
+      "testOnly": true,
+      "timezone": "America/Chicago",
+      "transformationNotes": "None; authored synthetic.",
+      "unacceptableClaims": [
+        "Treating null as text content."
+      ]
+    }
+  ],
+  "claimsCapabilityActivation": false,
+  "collectionMethod": "MANUALLY_AUTHORED",
+  "completenessStatus": "MINIMAL_FRAMEWORK_COVERAGE",
+  "containsCustomerData": false,
+  "containsEmployeeData": false,
+  "containsOrganizationConfidentialData": false,
+  "containsPersonalData": false,
+  "containsPreciseLocationData": false,
+  "containsSensitivePersonalData": false,
+  "coverageNotes": "Covers whitespace, punctuation, numeric preservation, empty input, and invalid input contracts.",
+  "coveredScenarioCategories": [
+    "normal",
+    "edge_case",
+    "invalid_input",
+    "boundary_condition",
+    "deterministic_verification"
+  ],
+  "createdAt": "2026-07-25",
+  "createdBy": "Codex AI-IEP-004A.2",
+  "dataClassification": "INTERNAL",
+  "datasetFamily": "text.cleanup.benchmark",
+  "datasetId": "text.cleanup.benchmark.core",
+  "datasetOwner": "OWNER_DECISION_REQUIRED",
+  "datasetVariant": "core",
+  "decisionRecordId": null,
+  "deprecatedAt": null,
+  "description": "Small manually authored synthetic fixtures for validating deterministic text cleanup benchmark contracts.",
+  "deterministicAssertionsSupported": true,
+  "displayName": "Text Cleanup Core Synthetic Dataset",
+  "duplicateCaseCount": 0,
+  "edgeCaseSubset": true,
+  "enabled": true,
+  "evaluationType": [
+    "NORMALIZED_TEXT_MATCH",
+    "FIELD_LEVEL_ASSERTION",
+    "REFUSAL_EXPECTED"
+  ],
+  "evidenceStatus": "LOCAL_FIXTURE_ONLY",
+  "executorVersionCompatibility": [
+    "deterministic.text.cleanup.v1"
+  ],
+  "expectedResultQualityStatus": "STRUCTURED_ASSERTIONS_ONLY",
+  "failureModeCoverage": [
+    "invalid_input"
+  ],
+  "fixtureFormatVersion": "benchmark.fixture.json.v1",
+  "freshnessStatus": "STATIC_SYNTHETIC",
+  "geospatialToleranceSupported": false,
+  "governanceOwner": "OWNER_DECISION_REQUIRED",
+  "humanReviewSupported": false,
+  "inputSchemaId": "schemas/intelligence/text-cleanup-input.v1",
+  "inputSizeCoverage": [
+    "empty",
+    "small",
+    "boundary"
+  ],
+  "integrity": {
+    "caseCountVerified": 5,
+    "contentHash": "9ddf4704e420ffdfa02e01b920206cd0934201e875777b8712fa43a30c73c503",
+    "deterministicOrdering": true,
+    "immutableWhenFrozen": false,
+    "manifestHash": "9ddf4704e420ffdfa02e01b920206cd0934201e875777b8712fa43a30c73c503"
+  },
+  "intendedUse": [
+    "LOCAL_TEST",
+    "CI"
+  ],
+  "invalidCaseCount": 0,
+  "jurisdictionCoverage": [
+    "not-applicable"
+  ],
+  "knownLimitations": [
+    "Small synthetic dataset; not a production benchmark corpus."
+  ],
+  "labelQualityStatus": "MANUAL_REVIEW_REQUIRED_FOR_FORMAL_BENCHMARK",
+  "languageCoverage": [
+    "en-US"
+  ],
+  "lastReviewedAt": "2026-07-25",
+  "lifecycleState": "APPROVED_FOR_TEST",
+  "missingScenarioCategories": [],
+  "numericalToleranceSupported": false,
+  "outputSchemaId": "schemas/intelligence/text-cleanup-output.v1",
+  "ownerDecisionRequired": true,
+  "policyConstraintValidationSupported": true,
+  "policyVersionCompatibility": [
+    "intelligence.policy.v1"
+  ],
+  "productionDataUsed": false,
+  "prohibitedUse": [
+    "PRODUCTION_BENCHMARK",
+    "MODEL_RANKING",
+    "COST_DECISION"
+  ],
+  "promptVersionCompatibility": [
+    "not-applicable"
+  ],
+  "provenanceStatus": "DOCUMENTED_SYNTHETIC",
+  "pseudonymizedData": false,
+  "qualityStatus": "FRAMEWORK_VALIDATION_ONLY",
+  "realDataApprovalRequired": false,
+  "redactionStatus": "NOT_REQUIRED_SYNTHETIC",
+  "referenceOutputsSupported": false,
+  "regressionSubset": true,
+  "reidentificationRisk": "NONE_SYNTHETIC",
+  "replacementDatasetId": null,
+  "representativenessStatus": "NOT_PRODUCTION_REPRESENTATIVE",
+  "requiredScenarioCategories": [
+    "normal",
+    "edge_case",
+    "invalid_input",
+    "boundary_condition",
+    "deterministic_verification"
+  ],
+  "retentionClassification": "TEST_FIXTURE",
+  "retiredAt": null,
+  "reviewCadence": "OWNER_DEFINED",
+  "riskTierCoverage": [
+    "LOW"
+  ],
+  "roleCoverage": [
+    "supervisor"
+  ],
+  "rubricEvaluationSupported": false,
+  "safetyConstraintValidationSupported": false,
+  "safetyCriticalSubset": false,
+  "sanitizedData": false,
+  "schemaVersion": "benchmark.dataset.schema.v1",
+  "sourceDecisionIds": [],
+  "sourceDescription": "Manual synthetic strings authored for AI-IEP-004A.2 framework validation.",
+  "sourceDocuments": [
+    "docs/implementation/benchmark-dataset-framework/INITIAL_DATASET_POPULATION.md"
+  ],
+  "sourceFiles": [
+    "bridge-api/benchmarks/datasets/text.cleanup/core/dataset.json"
+  ],
+  "sourceLicense": null,
+  "sourceReferences": [],
+  "sourceRestrictions": [
+    "not production representative"
+  ],
+  "sourceType": "SYNTHETIC",
+  "stressSubset": false,
+  "structuredSchemaValidationSupported": true,
+  "supportedCapabilityVersions": [
+    "text.cleanup.v1"
+  ],
+  "supportedEvaluationModes": [
+    "DETERMINISTIC"
+  ],
+  "syntheticData": true,
+  "syntheticDataMetadata": {
+    "generatedBy": "Codex AI-IEP-004A.2",
+    "generationDate": "2026-07-25",
+    "generatorName": "manual.synthetic.text.cleanup",
+    "generatorVersion": "0.1.0",
+    "parameters": {
+      "productionDataAllowed": false
+    },
+    "privacyReviewStatus": "NO_REAL_DATA",
+    "seed": "text-cleanup-core-001",
+    "validationStatus": "VALIDATED_BY_SCRIPT"
+  },
+  "tags": [
+    "synthetic",
+    "test-only",
+    "deterministic"
+  ],
+  "technicalOwner": "Truck-Safe Routing engineering",
+  "transformationHistory": [],
+  "validCaseCount": 5,
+  "version": "0.1.0"
+}

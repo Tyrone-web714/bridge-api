@@ -1,0 +1,135 @@
+{
+  "generatedArtifact": true,
+  "generatedFrom": "bridge-api/benchmarks/datasets",
+  "reports": [
+    {
+      "capabilityId": "legacy.ai.structured_response",
+      "capabilityVersionCoverage": {
+        "legacy.ai.structured_response.v1": 4
+      },
+      "caseCountsByCategory": {
+        "insufficient_evidence": 1,
+        "normal": 1,
+        "refusal_required": 1,
+        "schema_validation": 2,
+        "unexpected_field": 1
+      },
+      "coveredScenarioCategories": [
+        "insufficient_evidence",
+        "normal",
+        "refusal_required",
+        "schema_validation",
+        "unexpected_field"
+      ],
+      "datasetId": "legacy.ai.structured_response.benchmark.schema_compliance",
+      "evaluationTypeCoverage": {
+        "FIELD_LEVEL_ASSERTION": 2,
+        "INSUFFICIENT_EVIDENCE_EXPECTED": 1,
+        "POLICY_CONSTRAINT": 2,
+        "REFUSAL_EXPECTED": 1,
+        "STRUCTURED_SCHEMA": 2
+      },
+      "missingScenarioCategories": [],
+      "requiredScenarioCategories": [
+        "insufficient_evidence",
+        "normal",
+        "refusal_required",
+        "schema_validation",
+        "unexpected_field"
+      ],
+      "riskTierCoverage": {
+        "LOW": 2,
+        "MODERATE": 2
+      },
+      "thresholdDecision": "OWNER_DECISION_REQUIRED",
+      "version": "0.1.0"
+    },
+    {
+      "capabilityId": "supervisor.daily_operations_report",
+      "capabilityVersionCoverage": {
+        "supervisor.daily_operations_report.v1": 4
+      },
+      "caseCountsByCategory": {
+        "employment_impact": 1,
+        "human_review": 3,
+        "insufficient_evidence": 1,
+        "no_incidents": 1,
+        "normal": 1,
+        "safety_critical": 1
+      },
+      "coveredScenarioCategories": [
+        "employment_impact",
+        "human_review",
+        "insufficient_evidence",
+        "no_incidents",
+        "normal",
+        "safety_critical"
+      ],
+      "datasetId": "supervisor.daily_operations_report.benchmark.safety_language",
+      "evaluationTypeCoverage": {
+        "FIELD_LEVEL_ASSERTION": 3,
+        "HUMAN_REVIEW_EXPECTED": 3,
+        "INSUFFICIENT_EVIDENCE_EXPECTED": 1,
+        "NUMERICAL_TOLERANCE": 2,
+        "POLICY_CONSTRAINT": 4,
+        "RUBRIC_BASED": 1,
+        "SAFETY_CONSTRAINT": 1
+      },
+      "missingScenarioCategories": [],
+      "requiredScenarioCategories": [
+        "employment_impact",
+        "human_review",
+        "insufficient_evidence",
+        "no_incidents",
+        "normal",
+        "safety_critical"
+      ],
+      "riskTierCoverage": {
+        "HIGH": 2,
+        "MODERATE": 2
+      },
+      "thresholdDecision": "OWNER_DECISION_REQUIRED",
+      "version": "0.1.0"
+    },
+    {
+      "capabilityId": "text.cleanup",
+      "capabilityVersionCoverage": {
+        "text.cleanup.v1": 5
+      },
+      "caseCountsByCategory": {
+        "boundary_condition": 2,
+        "deterministic_verification": 3,
+        "edge_case": 2,
+        "invalid_input": 1,
+        "normal": 2
+      },
+      "coveredScenarioCategories": [
+        "boundary_condition",
+        "deterministic_verification",
+        "edge_case",
+        "invalid_input",
+        "normal"
+      ],
+      "datasetId": "text.cleanup.benchmark.core",
+      "evaluationTypeCoverage": {
+        "FIELD_LEVEL_ASSERTION": 3,
+        "NORMALIZED_TEXT_MATCH": 4,
+        "POLICY_CONSTRAINT": 1,
+        "REFUSAL_EXPECTED": 1
+      },
+      "missingScenarioCategories": [],
+      "requiredScenarioCategories": [
+        "boundary_condition",
+        "deterministic_verification",
+        "edge_case",
+        "invalid_input",
+        "normal"
+      ],
+      "riskTierCoverage": {
+        "LOW": 5
+      },
+      "thresholdDecision": "OWNER_DECISION_REQUIRED",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,283 @@
+{
+  "generatedFrom": "bridge-api/benchmarks/datasets",
+  "generatedArtifact": true,
+  "cases": [
+    {
+      "benchmarkEligible": false,
+      "capabilityId": "legacy.ai.structured_response",
+      "caseId": "legacy-structured-schema-001",
+      "caseVersion": "0.1.0",
+      "contentHash": "083a934c3759a22e4dccf6ebd885525ab8bd50d44d76bb2e3e79ff9197d37911",
+      "coverageCategories": [
+        "normal",
+        "schema_validation"
+      ],
+      "datasetId": "legacy.ai.structured_response.benchmark.schema_compliance",
+      "datasetVersion": "0.1.0",
+      "enabled": true,
+      "evaluationTypes": [
+        "STRUCTURED_SCHEMA",
+        "FIELD_LEVEL_ASSERTION"
+      ],
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "riskTier": "LOW",
+      "testOnly": true
+    },
+    {
+      "benchmarkEligible": false,
+      "capabilityId": "legacy.ai.structured_response",
+      "caseId": "legacy-structured-schema-002",
+      "caseVersion": "0.1.0",
+      "contentHash": "b0edb3297e4b85f8a368eaaa66b99c41046f90f5634915b1dfc437942aa0e0e2",
+      "coverageCategories": [
+        "unexpected_field",
+        "schema_validation"
+      ],
+      "datasetId": "legacy.ai.structured_response.benchmark.schema_compliance",
+      "datasetVersion": "0.1.0",
+      "enabled": true,
+      "evaluationTypes": [
+        "STRUCTURED_SCHEMA",
+        "FIELD_LEVEL_ASSERTION"
+      ],
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "riskTier": "MODERATE",
+      "testOnly": true
+    },
+    {
+      "benchmarkEligible": false,
+      "capabilityId": "legacy.ai.structured_response",
+      "caseId": "legacy-structured-schema-003",
+      "caseVersion": "0.1.0",
+      "contentHash": "afeda43ca5840fcbde2a42522ee5cf6f1868fa5cde02a43e48f3a7516d53b756",
+      "coverageCategories": [
+        "insufficient_evidence"
+      ],
+      "datasetId": "legacy.ai.structured_response.benchmark.schema_compliance",
+      "datasetVersion": "0.1.0",
+      "enabled": true,
+      "evaluationTypes": [
+        "INSUFFICIENT_EVIDENCE_EXPECTED",
+        "POLICY_CONSTRAINT"
+      ],
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "riskTier": "LOW",
+      "testOnly": true
+    },
+    {
+      "benchmarkEligible": false,
+      "capabilityId": "legacy.ai.structured_response",
+      "caseId": "legacy-structured-schema-004",
+      "caseVersion": "0.1.0",
+      "contentHash": "17c2b737f17fe2ceebcf0ab480526c359dcd622042017be367becb480a08f4cf",
+      "coverageCategories": [
+        "refusal_required"
+      ],
+      "datasetId": "legacy.ai.structured_response.benchmark.schema_compliance",
+      "datasetVersion": "0.1.0",
+      "enabled": true,
+      "evaluationTypes": [
+        "REFUSAL_EXPECTED",
+        "POLICY_CONSTRAINT"
+      ],
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "riskTier": "MODERATE",
+      "testOnly": true
+    },
+    {
+      "benchmarkEligible": false,
+      "capabilityId": "supervisor.daily_operations_report",
+      "caseId": "supervisor-safety-language-001",
+      "caseVersion": "0.1.0",
+      "contentHash": "5536d4a2107c1e0ed852fe032d12ff5aee90d8798028524b89c2daec9977ac6d",
+      "coverageCategories": [
+        "normal",
+        "no_incidents"
+      ],
+      "datasetId": "supervisor.daily_operations_report.benchmark.safety_language",
+      "datasetVersion": "0.1.0",
+      "enabled": true,
+      "evaluationTypes": [
+        "FIELD_LEVEL_ASSERTION",
+        "NUMERICAL_TOLERANCE",
+        "POLICY_CONSTRAINT",
+        "RUBRIC_BASED"
+      ],
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "riskTier": "MODERATE",
+      "testOnly": true
+    },
+    {
+      "benchmarkEligible": false,
+      "capabilityId": "supervisor.daily_operations_report",
+      "caseId": "supervisor-safety-language-002",
+      "caseVersion": "0.1.0",
+      "contentHash": "b55eefac936b7f17b0659bf96d752f4c40ab0c1a0f9fcab0525bd9b67eb94e4a",
+      "coverageCategories": [
+        "safety_critical",
+        "human_review"
+      ],
+      "datasetId": "supervisor.daily_operations_report.benchmark.safety_language",
+      "datasetVersion": "0.1.0",
+      "enabled": true,
+      "evaluationTypes": [
+        "NUMERICAL_TOLERANCE",
+        "SAFETY_CONSTRAINT",
+        "POLICY_CONSTRAINT",
+        "HUMAN_REVIEW_EXPECTED"
+      ],
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "riskTier": "HIGH",
+      "testOnly": true
+    },
+    {
+      "benchmarkEligible": false,
+      "capabilityId": "supervisor.daily_operations_report",
+      "caseId": "supervisor-safety-language-003",
+      "caseVersion": "0.1.0",
+      "contentHash": "50376f319ef9a84ee495a8e0c527916999af2bca95b297538a40b423fe9eb782",
+      "coverageCategories": [
+        "insufficient_evidence",
+        "human_review"
+      ],
+      "datasetId": "supervisor.daily_operations_report.benchmark.safety_language",
+      "datasetVersion": "0.1.0",
+      "enabled": true,
+      "evaluationTypes": [
+        "INSUFFICIENT_EVIDENCE_EXPECTED",
+        "FIELD_LEVEL_ASSERTION",
+        "POLICY_CONSTRAINT",
+        "HUMAN_REVIEW_EXPECTED"
+      ],
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "riskTier": "MODERATE",
+      "testOnly": true
+    },
+    {
+      "benchmarkEligible": false,
+      "capabilityId": "supervisor.daily_operations_report",
+      "caseId": "supervisor-safety-language-004",
+      "caseVersion": "0.1.0",
+      "contentHash": "f6d23a6bd7d4a0f15b6d6b9f97f93f91f8496ad13e740fb07b2e7177e253451d",
+      "coverageCategories": [
+        "employment_impact",
+        "human_review"
+      ],
+      "datasetId": "supervisor.daily_operations_report.benchmark.safety_language",
+      "datasetVersion": "0.1.0",
+      "enabled": true,
+      "evaluationTypes": [
+        "POLICY_CONSTRAINT",
+        "FIELD_LEVEL_ASSERTION",
+        "HUMAN_REVIEW_EXPECTED"
+      ],
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "riskTier": "HIGH",
+      "testOnly": true
+    },
+    {
+      "benchmarkEligible": false,
+      "capabilityId": "text.cleanup",
+      "caseId": "text-cleanup-core-001",
+      "caseVersion": "0.1.0",
+      "contentHash": "b003cb2b005da0c9fec977f9967ab437f902091e0e9bab81c165d695d8858713",
+      "coverageCategories": [
+        "normal",
+        "deterministic_verification"
+      ],
+      "datasetId": "text.cleanup.benchmark.core",
+      "datasetVersion": "0.1.0",
+      "enabled": true,
+      "evaluationTypes": [
+        "NORMALIZED_TEXT_MATCH",
+        "FIELD_LEVEL_ASSERTION"
+      ],
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "riskTier": "LOW",
+      "testOnly": true
+    },
+    {
+      "benchmarkEligible": false,
+      "capabilityId": "text.cleanup",
+      "caseId": "text-cleanup-core-002",
+      "caseVersion": "0.1.0",
+      "contentHash": "048454d1703acfb931724a8791dacfca1ca18aeebbd6bd34c4531f23c1a3707d",
+      "coverageCategories": [
+        "normal",
+        "deterministic_verification"
+      ],
+      "datasetId": "text.cleanup.benchmark.core",
+      "datasetVersion": "0.1.0",
+      "enabled": true,
+      "evaluationTypes": [
+        "NORMALIZED_TEXT_MATCH",
+        "FIELD_LEVEL_ASSERTION"
+      ],
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "riskTier": "LOW",
+      "testOnly": true
+    },
+    {
+      "benchmarkEligible": false,
+      "capabilityId": "text.cleanup",
+      "caseId": "text-cleanup-core-003",
+      "caseVersion": "0.1.0",
+      "contentHash": "7f66ac92261e0cbec34c0e3087c28f33d89be9b5a10aea4078ccb380b596ac4b",
+      "coverageCategories": [
+        "edge_case",
+        "boundary_condition"
+      ],
+      "datasetId": "text.cleanup.benchmark.core",
+      "datasetVersion": "0.1.0",
+      "enabled": true,
+      "evaluationTypes": [
+        "NORMALIZED_TEXT_MATCH"
+      ],
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "riskTier": "LOW",
+      "testOnly": true
+    },
+    {
+      "benchmarkEligible": false,
+      "capabilityId": "text.cleanup",
+      "caseId": "text-cleanup-core-004",
+      "caseVersion": "0.1.0",
+      "contentHash": "3a1223a43239161f0a437352d80a539bcb0c3b416538c18e145aa3e8f50029d1",
+      "coverageCategories": [
+        "edge_case",
+        "deterministic_verification"
+      ],
+      "datasetId": "text.cleanup.benchmark.core",
+      "datasetVersion": "0.1.0",
+      "enabled": true,
+      "evaluationTypes": [
+        "NORMALIZED_TEXT_MATCH",
+        "FIELD_LEVEL_ASSERTION"
+      ],
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "riskTier": "LOW",
+      "testOnly": true
+    },
+    {
+      "benchmarkEligible": false,
+      "capabilityId": "text.cleanup",
+      "caseId": "text-cleanup-core-005",
+      "caseVersion": "0.1.0",
+      "contentHash": "0932a11a2640238ae7d9bff69305ad69783f30cfa64666a89fd61566e24c4af3",
+      "coverageCategories": [
+        "invalid_input",
+        "boundary_condition"
+      ],
+      "datasetId": "text.cleanup.benchmark.core",
+      "datasetVersion": "0.1.0",
+      "enabled": true,
+      "evaluationTypes": [
+        "REFUSAL_EXPECTED",
+        "POLICY_CONSTRAINT"
+      ],
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "riskTier": "LOW",
+      "testOnly": true
+    }
+  ]
+}

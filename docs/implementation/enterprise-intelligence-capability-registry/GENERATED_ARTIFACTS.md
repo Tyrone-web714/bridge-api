@@ -10,3 +10,5 @@ Artifacts:
 - `capability_dependencies.json`
 
 `npm run capability-registry:check` verifies they are current and deterministic.
+
+Benchmark dataset artifacts are generated separately under docs/implementation/benchmark-dataset-framework/generated/ by AI-IEP-004A.2. They consume registry capability metadata but are not registry source artifacts.

@@ -1,0 +1,5 @@
+# Generated from bridge-api/benchmarks/datasets. Do not hand-edit.
+datasetId,version,capabilityId,lifecycleState,approvalStatus,sourceType,dataClassification,caseCount,evaluationTypes,riskCoverage,allowedEnvironments,benchmarkReadiness,missingCoverage
+legacy.ai.structured_response.benchmark.schema_compliance,0.1.0,legacy.ai.structured_response,APPROVED_FOR_TEST,TECHNICAL_VALIDATION_COMPLETE,SYNTHETIC,INTERNAL,4,STRUCTURED_SCHEMA|FIELD_LEVEL_ASSERTION|REFUSAL_EXPECTED|INSUFFICIENT_EVIDENCE_EXPECTED|POLICY_CONSTRAINT,LOW|MODERATE,LOCAL_TEST|CI,NOT_READY,
+supervisor.daily_operations_report.benchmark.safety_language,0.1.0,supervisor.daily_operations_report,APPROVED_FOR_TEST,TECHNICAL_VALIDATION_COMPLETE,SYNTHETIC,INTERNAL,4,FIELD_LEVEL_ASSERTION|NUMERICAL_TOLERANCE|SAFETY_CONSTRAINT|POLICY_CONSTRAINT|RUBRIC_BASED|INSUFFICIENT_EVIDENCE_EXPECTED|HUMAN_REVIEW_EXPECTED,LOW|HIGH,LOCAL_TEST|CI,NOT_READY,
+text.cleanup.benchmark.core,0.1.0,text.cleanup,APPROVED_FOR_TEST,TECHNICAL_VALIDATION_COMPLETE,SYNTHETIC,INTERNAL,5,NORMALIZED_TEXT_MATCH|FIELD_LEVEL_ASSERTION|REFUSAL_EXPECTED,LOW,LOCAL_TEST|CI,NOT_READY,
