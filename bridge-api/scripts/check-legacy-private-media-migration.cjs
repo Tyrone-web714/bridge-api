@@ -4,6 +4,7 @@ const path = require('path');
 
 const root = path.join(__dirname, '..');
 const script = fs.readFileSync(path.join(root, 'scripts', 'migrate-legacy-private-media.cjs'), 'utf8');
+const cleanupScript = fs.readFileSync(path.join(root, 'scripts', 'cleanup-legacy-public-url-fields.cjs'), 'utf8');
 const packageJson = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
 
 assert(script.includes("const APPLY = process.argv.includes('--apply')"), 'migration tool must default to dry-run unless --apply is present');
@@ -35,7 +36,21 @@ assert(script.includes('knownProductionReferenceCountMatches: items.length === 3
 assert(!script.includes('console.log(storageKey)'), 'tool must not log storage keys directly');
 assert(!script.includes('console.log(currentUrl)'), 'tool must not log public URLs directly');
 
+assert(cleanupScript.includes("const APPLY = process.argv.includes('--apply')"), 'legacy public URL cleanup must default to dry-run unless --apply is present');
+assert(cleanupScript.includes('OWNER_APPROVED_LEGACY_PUBLIC_URL_CLEANUP'), 'legacy public URL cleanup must require explicit owner approval env flag');
+assert(cleanupScript.includes("LEGACY_PUBLIC_URL_CLEANUP_EXPECTED_COUNT || '5'"), 'legacy public URL cleanup must default to exactly five records');
+assert(cleanupScript.includes('BEGIN READ ONLY'), 'legacy public URL cleanup dry-run must use read-only transaction');
+assert(cleanupScript.includes('delete next.legacyPublicUrl'), 'legacy public URL cleanup must remove legacyPublicUrl only');
+assert(cleanupScript.includes('delete next.legacy_public_url'), 'legacy public URL cleanup must remove legacy_public_url only');
+assert(cleanupScript.includes('assertIdentityUnchanged'), 'legacy public URL cleanup must verify identity and storage metadata remain unchanged');
+assert(cleanupScript.includes('lifecycleSnapshot'), 'legacy public URL cleanup must verify lifecycle references remain unchanged');
+assert(cleanupScript.includes('writeBackup'), 'legacy public URL cleanup must export a local backup before writes');
+assert(cleanupScript.includes('urlsAndObjectKeysRedacted: true'), 'legacy public URL cleanup report must redact sensitive URL and object-key values');
+assert(!cleanupScript.includes('console.log(storageKey)'), 'legacy public URL cleanup must not log storage keys directly');
+assert(!cleanupScript.includes('console.log(legacyPublicUrl)'), 'legacy public URL cleanup must not log legacy public URLs directly');
+
 assert(packageJson.scripts['test:legacy-private-media'] === 'node scripts/check-legacy-private-media-migration.cjs', 'package script must register legacy private media migration test');
 assert(packageJson.scripts.test.includes('test:legacy-private-media'), 'full test chain must include legacy private media migration test');
+assert(packageJson.scripts['media:legacy-public-url:cleanup'] === 'node scripts/cleanup-legacy-public-url-fields.cjs', 'package script must register legacy public URL cleanup command');
 
 console.log('[test:legacy-private-media] dry-run migration safeguards verified.');

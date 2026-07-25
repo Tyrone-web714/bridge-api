@@ -57,6 +57,7 @@
     "photos:verify-storage": "node scripts/verify-photo-storage.cjs",
     "photos:migrate": "node scripts/migrate-local-photos-to-storage.cjs",
     "media:lifecycle:reconcile": "node scripts/reconcile-lifecycle-object-references.cjs",
+    "media:legacy-public-url:cleanup": "node scripts/cleanup-legacy-public-url-fields.cjs",
     "db:migrate:json": "node scripts/migrate-json-to-postgres.cjs",
     "db:postgis:init": "node scripts/enable-postgis.cjs",
     "db:migrate": "node scripts/run-migrations.cjs",
