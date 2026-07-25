@@ -1,0 +1,6 @@
+{
+  "gateId": "SAFETY_FAILURE",
+  "dimensionId": "SAFETY",
+  "action": "INVALIDATE_OR_CAP",
+  "testOnly": true
+}

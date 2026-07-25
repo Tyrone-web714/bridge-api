@@ -1,0 +1,231 @@
+{
+  "generatedFrom": "bridge-api/scoring",
+  "generatedArtifact": true,
+  "sensitivity": [
+    {
+      "changedParameter": "dimensions.CORRECTNESS.weight",
+      "dimensionsMostAffected": [
+        "CORRECTNESS"
+      ],
+      "gateDelta": 0,
+      "note": "Deterministic sensitivity exposure only; no optimized or preferred profile is selected.",
+      "originalValue": 14,
+      "scoreDelta": 0.2121,
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "testValue": 15.4,
+      "thresholdDelta": 0,
+      "validityDelta": "NO_RECOMMENDATION",
+      "variantId": "CORE_BALANCED_TEST_PROFILE.CORRECTNESS.weight_plus_10"
+    },
+    {
+      "changedParameter": "dimensions.POLICY_COMPLIANCE.weight",
+      "dimensionsMostAffected": [
+        "POLICY_COMPLIANCE"
+      ],
+      "gateDelta": 0,
+      "note": "Deterministic sensitivity exposure only; no optimized or preferred profile is selected.",
+      "originalValue": 10,
+      "scoreDelta": 0.5,
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "testValue": 11,
+      "thresholdDelta": 0,
+      "validityDelta": "NO_RECOMMENDATION",
+      "variantId": "CORE_BALANCED_TEST_PROFILE.POLICY_COMPLIANCE.weight_plus_10"
+    },
+    {
+      "changedParameter": "dimensions.PRIVACY.weight",
+      "dimensionsMostAffected": [
+        "PRIVACY"
+      ],
+      "gateDelta": 0,
+      "note": "Deterministic sensitivity exposure only; no optimized or preferred profile is selected.",
+      "originalValue": 8,
+      "scoreDelta": null,
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "testValue": 8.8,
+      "thresholdDelta": 0,
+      "validityDelta": "NO_RECOMMENDATION",
+      "variantId": "CORE_BALANCED_TEST_PROFILE.PRIVACY.weight_plus_10"
+    },
+    {
+      "changedParameter": "dimensions.SAFETY.weight",
+      "dimensionsMostAffected": [
+        "SAFETY"
+      ],
+      "gateDelta": 0,
+      "note": "Deterministic sensitivity exposure only; no optimized or preferred profile is selected.",
+      "originalValue": 12,
+      "scoreDelta": 1,
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "testValue": 13.2,
+      "thresholdDelta": 0,
+      "validityDelta": "NO_RECOMMENDATION",
+      "variantId": "CORE_BALANCED_TEST_PROFILE.SAFETY.weight_plus_10"
+    },
+    {
+      "changedParameter": "dimensions.SECURITY.weight",
+      "dimensionsMostAffected": [
+        "SECURITY"
+      ],
+      "gateDelta": 0,
+      "note": "Deterministic sensitivity exposure only; no optimized or preferred profile is selected.",
+      "originalValue": 6,
+      "scoreDelta": null,
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "testValue": 6.6,
+      "thresholdDelta": 0,
+      "validityDelta": "NO_RECOMMENDATION",
+      "variantId": "CORE_BALANCED_TEST_PROFILE.SECURITY.weight_plus_10"
+    },
+    {
+      "changedParameter": "dimensions.CORRECTNESS.weight",
+      "dimensionsMostAffected": [
+        "CORRECTNESS"
+      ],
+      "gateDelta": 0,
+      "note": "Deterministic sensitivity exposure only; no optimized or preferred profile is selected.",
+      "originalValue": 5,
+      "scoreDelta": 0.3125,
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1",
+      "testValue": 5.5,
+      "thresholdDelta": 0,
+      "validityDelta": "NO_RECOMMENDATION",
+      "variantId": "SAFETY_CRITICAL_TEST_PROFILE.CORRECTNESS.weight_plus_10"
+    },
+    {
+      "changedParameter": "dimensions.EMPLOYMENT_GOVERNANCE.weight",
+      "dimensionsMostAffected": [
+        "EMPLOYMENT_GOVERNANCE"
+      ],
+      "gateDelta": 0,
+      "note": "Deterministic sensitivity exposure only; no optimized or preferred profile is selected.",
+      "originalValue": 15,
+      "scoreDelta": 0,
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1",
+      "testValue": 16.5,
+      "thresholdDelta": 0,
+      "validityDelta": "NO_RECOMMENDATION",
+      "variantId": "SAFETY_CRITICAL_TEST_PROFILE.EMPLOYMENT_GOVERNANCE.weight_plus_10"
+    },
+    {
+      "changedParameter": "dimensions.POLICY_COMPLIANCE.weight",
+      "dimensionsMostAffected": [
+        "POLICY_COMPLIANCE"
+      ],
+      "gateDelta": 0,
+      "note": "Deterministic sensitivity exposure only; no optimized or preferred profile is selected.",
+      "originalValue": 20,
+      "scoreDelta": 0.4286,
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1",
+      "testValue": 22,
+      "thresholdDelta": 0,
+      "validityDelta": "NO_RECOMMENDATION",
+      "variantId": "SAFETY_CRITICAL_TEST_PROFILE.POLICY_COMPLIANCE.weight_plus_10"
+    },
+    {
+      "changedParameter": "dimensions.PRIVACY.weight",
+      "dimensionsMostAffected": [
+        "PRIVACY"
+      ],
+      "gateDelta": 0,
+      "note": "Deterministic sensitivity exposure only; no optimized or preferred profile is selected.",
+      "originalValue": 15,
+      "scoreDelta": null,
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1",
+      "testValue": 16.5,
+      "thresholdDelta": 0,
+      "validityDelta": "NO_RECOMMENDATION",
+      "variantId": "SAFETY_CRITICAL_TEST_PROFILE.PRIVACY.weight_plus_10"
+    },
+    {
+      "changedParameter": "dimensions.SAFETY.weight",
+      "dimensionsMostAffected": [
+        "SAFETY"
+      ],
+      "gateDelta": 0,
+      "note": "Deterministic sensitivity exposure only; no optimized or preferred profile is selected.",
+      "originalValue": 25,
+      "scoreDelta": 1,
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1",
+      "testValue": 27.5,
+      "thresholdDelta": 0,
+      "validityDelta": "NO_RECOMMENDATION",
+      "variantId": "SAFETY_CRITICAL_TEST_PROFILE.SAFETY.weight_plus_10"
+    },
+    {
+      "changedParameter": "dimensions.CORRECTNESS.weight",
+      "dimensionsMostAffected": [
+        "CORRECTNESS"
+      ],
+      "gateDelta": 0,
+      "note": "Deterministic sensitivity exposure only; no optimized or preferred profile is selected.",
+      "originalValue": 25,
+      "scoreDelta": 0.1176,
+      "scoringRequestId": "score.structured_output.initial.offline.v1",
+      "testValue": 27.5,
+      "thresholdDelta": 0,
+      "validityDelta": "NO_RECOMMENDATION",
+      "variantId": "STRUCTURED_OUTPUT_TEST_PROFILE.CORRECTNESS.weight_plus_10"
+    },
+    {
+      "changedParameter": "dimensions.FACTUAL_GROUNDING.weight",
+      "dimensionsMostAffected": [
+        "FACTUAL_GROUNDING"
+      ],
+      "gateDelta": 0,
+      "note": "Deterministic sensitivity exposure only; no optimized or preferred profile is selected.",
+      "originalValue": 15,
+      "scoreDelta": 0.3333,
+      "scoringRequestId": "score.structured_output.initial.offline.v1",
+      "testValue": 16.5,
+      "thresholdDelta": 0,
+      "validityDelta": "NO_RECOMMENDATION",
+      "variantId": "STRUCTURED_OUTPUT_TEST_PROFILE.FACTUAL_GROUNDING.weight_plus_10"
+    },
+    {
+      "changedParameter": "dimensions.INSUFFICIENT_EVIDENCE_HANDLING.weight",
+      "dimensionsMostAffected": [
+        "INSUFFICIENT_EVIDENCE_HANDLING"
+      ],
+      "gateDelta": 0,
+      "note": "Deterministic sensitivity exposure only; no optimized or preferred profile is selected.",
+      "originalValue": 10,
+      "scoreDelta": 0.25,
+      "scoringRequestId": "score.structured_output.initial.offline.v1",
+      "testValue": 11,
+      "thresholdDelta": 0,
+      "validityDelta": "NO_RECOMMENDATION",
+      "variantId": "STRUCTURED_OUTPUT_TEST_PROFILE.INSUFFICIENT_EVIDENCE_HANDLING.weight_plus_10"
+    },
+    {
+      "changedParameter": "dimensions.REFUSAL_BEHAVIOR.weight",
+      "dimensionsMostAffected": [
+        "REFUSAL_BEHAVIOR"
+      ],
+      "gateDelta": 0,
+      "note": "Deterministic sensitivity exposure only; no optimized or preferred profile is selected.",
+      "originalValue": 10,
+      "scoreDelta": 0.2857,
+      "scoringRequestId": "score.structured_output.initial.offline.v1",
+      "testValue": 11,
+      "thresholdDelta": 0,
+      "validityDelta": "NO_RECOMMENDATION",
+      "variantId": "STRUCTURED_OUTPUT_TEST_PROFILE.REFUSAL_BEHAVIOR.weight_plus_10"
+    },
+    {
+      "changedParameter": "dimensions.STRUCTURED_OUTPUT_QUALITY.weight",
+      "dimensionsMostAffected": [
+        "STRUCTURED_OUTPUT_QUALITY"
+      ],
+      "gateDelta": 0,
+      "note": "Deterministic sensitivity exposure only; no optimized or preferred profile is selected.",
+      "originalValue": 25,
+      "scoreDelta": 0.25,
+      "scoringRequestId": "score.structured_output.initial.offline.v1",
+      "testValue": 27.5,
+      "thresholdDelta": 0,
+      "validityDelta": "NO_RECOMMENDATION",
+      "variantId": "STRUCTURED_OUTPUT_TEST_PROFILE.STRUCTURED_OUTPUT_QUALITY.weight_plus_10"
+    }
+  ]
+}

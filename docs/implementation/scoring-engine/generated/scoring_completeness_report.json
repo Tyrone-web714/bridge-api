@@ -1,0 +1,1926 @@
+{
+  "generatedFrom": "bridge-api/scoring",
+  "generatedArtifact": true,
+  "completeness": [
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "EXECUTOR_ERROR",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-001.error-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "ASSERTION_FAILURE",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-001.invalid-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SCHEMA_ERROR",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-001.malformed-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "UNAUTHORIZED",
+          "scorableDimensions": 4,
+          "timeout": false,
+          "unauthorized": true,
+          "unknownDimensions": 3
+        },
+        "score": 22.2222,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-001.unauthorized-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SUCCESS",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-001.valid-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "EXECUTOR_ERROR",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-002.error-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "ASSERTION_FAILURE",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-002.invalid-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SCHEMA_ERROR",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-002.malformed-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "UNAUTHORIZED",
+          "scorableDimensions": 4,
+          "timeout": false,
+          "unauthorized": true,
+          "unknownDimensions": 3
+        },
+        "score": 22.2222,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-002.unauthorized-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SUCCESS",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-002.valid-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "EXECUTOR_ERROR",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-003.error-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "ASSERTION_FAILURE",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-003.invalid-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SCHEMA_ERROR",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-003.malformed-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "UNAUTHORIZED",
+          "scorableDimensions": 4,
+          "timeout": false,
+          "unauthorized": true,
+          "unknownDimensions": 3
+        },
+        "score": 22.2222,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-003.unauthorized-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SUCCESS",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-003.valid-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "EXECUTOR_ERROR",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-004.error-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "ASSERTION_FAILURE",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-004.invalid-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SCHEMA_ERROR",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-004.malformed-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "UNAUTHORIZED",
+          "scorableDimensions": 4,
+          "timeout": false,
+          "unauthorized": true,
+          "unknownDimensions": 3
+        },
+        "score": 22.2222,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-004.unauthorized-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SUCCESS",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-004.valid-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SCHEMA_ERROR",
+          "scorableDimensions": 8,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 44.4444,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-001.invalid-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "ASSERTION_FAILURE",
+          "scorableDimensions": 8,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 2
+        },
+        "score": 44.4444,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-001.partial-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "TIMEOUT",
+          "scorableDimensions": 8,
+          "timeout": true,
+          "unauthorized": false,
+          "unknownDimensions": 2
+        },
+        "score": 44.4444,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-001.timeout-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "UNAUTHORIZED",
+          "scorableDimensions": 4,
+          "timeout": false,
+          "unauthorized": true,
+          "unknownDimensions": 3
+        },
+        "score": 22.2222,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-001.unauthorized-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "ASSERTION_FAILURE",
+          "scorableDimensions": 8,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 2
+        },
+        "score": 44.4444,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-001.valid-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SCHEMA_ERROR",
+          "scorableDimensions": 9,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 2
+        },
+        "score": 50,
+        "status": "PARTIAL"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-002.invalid-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "PARTIAL_OUTPUT",
+          "scorableDimensions": 9,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 1
+        },
+        "score": 50,
+        "status": "PARTIAL"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-002.partial-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "TIMEOUT",
+          "scorableDimensions": 9,
+          "timeout": true,
+          "unauthorized": false,
+          "unknownDimensions": 1
+        },
+        "score": 50,
+        "status": "PARTIAL"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-002.timeout-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "UNAUTHORIZED",
+          "scorableDimensions": 4,
+          "timeout": false,
+          "unauthorized": true,
+          "unknownDimensions": 3
+        },
+        "score": 22.2222,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-002.unauthorized-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SUCCESS",
+          "scorableDimensions": 9,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 1
+        },
+        "score": 50,
+        "status": "PARTIAL"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-002.valid-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SCHEMA_ERROR",
+          "scorableDimensions": 9,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 50,
+        "status": "PARTIAL"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-003.invalid-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "PARTIAL_OUTPUT",
+          "scorableDimensions": 9,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 2
+        },
+        "score": 50,
+        "status": "PARTIAL"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-003.partial-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "TIMEOUT",
+          "scorableDimensions": 9,
+          "timeout": true,
+          "unauthorized": false,
+          "unknownDimensions": 2
+        },
+        "score": 50,
+        "status": "PARTIAL"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-003.timeout-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "UNAUTHORIZED",
+          "scorableDimensions": 4,
+          "timeout": false,
+          "unauthorized": true,
+          "unknownDimensions": 3
+        },
+        "score": 22.2222,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-003.unauthorized-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SUCCESS",
+          "scorableDimensions": 9,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 2
+        },
+        "score": 50,
+        "status": "PARTIAL"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-003.valid-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SCHEMA_ERROR",
+          "scorableDimensions": 8,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 44.4444,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.invalid-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "POLICY_BLOCKED",
+          "scorableDimensions": 8,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 44.4444,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.partial-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "TIMEOUT",
+          "scorableDimensions": 8,
+          "timeout": true,
+          "unauthorized": false,
+          "unknownDimensions": 2
+        },
+        "score": 44.4444,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.timeout-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "UNAUTHORIZED",
+          "scorableDimensions": 4,
+          "timeout": false,
+          "unauthorized": true,
+          "unknownDimensions": 3
+        },
+        "score": 22.2222,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.unauthorized-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "POLICY_BLOCKED",
+          "scorableDimensions": 8,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 44.4444,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.valid-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SCHEMA_ERROR",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-001.invalid-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "TIMEOUT",
+          "scorableDimensions": 7,
+          "timeout": true,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-001.timeout-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "UNAUTHORIZED",
+          "scorableDimensions": 4,
+          "timeout": false,
+          "unauthorized": true,
+          "unknownDimensions": 3
+        },
+        "score": 22.2222,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-001.unauthorized-hosted-economy",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "ASSERTION_FAILURE",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-001.valid-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SCHEMA_ERROR",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-002.invalid-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "TIMEOUT",
+          "scorableDimensions": 7,
+          "timeout": true,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-002.timeout-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "UNAUTHORIZED",
+          "scorableDimensions": 4,
+          "timeout": false,
+          "unauthorized": true,
+          "unknownDimensions": 3
+        },
+        "score": 22.2222,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-002.unauthorized-hosted-economy",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "ASSERTION_FAILURE",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-002.valid-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SCHEMA_ERROR",
+          "scorableDimensions": 6,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 4
+        },
+        "score": 33.3333,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-003.invalid-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "TIMEOUT",
+          "scorableDimensions": 6,
+          "timeout": true,
+          "unauthorized": false,
+          "unknownDimensions": 4
+        },
+        "score": 33.3333,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-003.timeout-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "UNAUTHORIZED",
+          "scorableDimensions": 4,
+          "timeout": false,
+          "unauthorized": true,
+          "unknownDimensions": 3
+        },
+        "score": 22.2222,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-003.unauthorized-hosted-economy",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SCHEMA_ERROR",
+          "scorableDimensions": 6,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 4
+        },
+        "score": 33.3333,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-003.valid-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SCHEMA_ERROR",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-004.invalid-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "TIMEOUT",
+          "scorableDimensions": 7,
+          "timeout": true,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-004.timeout-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "UNAUTHORIZED",
+          "scorableDimensions": 4,
+          "timeout": false,
+          "unauthorized": true,
+          "unknownDimensions": 3
+        },
+        "score": 22.2222,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-004.unauthorized-hosted-economy",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "ASSERTION_FAILURE",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-004.valid-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SCHEMA_ERROR",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-005.invalid-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "TIMEOUT",
+          "scorableDimensions": 7,
+          "timeout": true,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-005.timeout-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "UNAUTHORIZED",
+          "scorableDimensions": 4,
+          "timeout": false,
+          "unauthorized": true,
+          "unknownDimensions": 3
+        },
+        "score": 22.2222,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-005.unauthorized-hosted-economy",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SCHEMA_ERROR",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-005.valid-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SCHEMA_ERROR",
+          "scorableDimensions": 8,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 44.4444,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-001.invalid-hosted-balanced-mock",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "ASSERTION_FAILURE",
+          "scorableDimensions": 8,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 44.4444,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-001.partial-hosted-balanced-mock",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "TIMEOUT",
+          "scorableDimensions": 8,
+          "timeout": true,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 44.4444,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-001.timeout-hosted-balanced-mock",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "UNAUTHORIZED",
+          "scorableDimensions": 4,
+          "timeout": false,
+          "unauthorized": true,
+          "unknownDimensions": 3
+        },
+        "score": 22.2222,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-001.unauthorized-deterministic",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "ASSERTION_FAILURE",
+          "scorableDimensions": 8,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 44.4444,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-001.valid-hosted-balanced-mock",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SCHEMA_ERROR",
+          "scorableDimensions": 9,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 2
+        },
+        "score": 50,
+        "status": "PARTIAL"
+      },
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-002.invalid-hosted-balanced-mock",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "PARTIAL_OUTPUT",
+          "scorableDimensions": 9,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 2
+        },
+        "score": 50,
+        "status": "PARTIAL"
+      },
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-002.partial-hosted-balanced-mock",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "TIMEOUT",
+          "scorableDimensions": 9,
+          "timeout": true,
+          "unauthorized": false,
+          "unknownDimensions": 2
+        },
+        "score": 50,
+        "status": "PARTIAL"
+      },
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-002.timeout-hosted-balanced-mock",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "UNAUTHORIZED",
+          "scorableDimensions": 4,
+          "timeout": false,
+          "unauthorized": true,
+          "unknownDimensions": 3
+        },
+        "score": 22.2222,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-002.unauthorized-deterministic",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SUCCESS",
+          "scorableDimensions": 9,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 2
+        },
+        "score": 50,
+        "status": "PARTIAL"
+      },
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-002.valid-hosted-balanced-mock",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SCHEMA_ERROR",
+          "scorableDimensions": 9,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 50,
+        "status": "PARTIAL"
+      },
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-003.invalid-hosted-balanced-mock",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "PARTIAL_OUTPUT",
+          "scorableDimensions": 9,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 50,
+        "status": "PARTIAL"
+      },
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-003.partial-hosted-balanced-mock",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "TIMEOUT",
+          "scorableDimensions": 9,
+          "timeout": true,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 50,
+        "status": "PARTIAL"
+      },
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-003.timeout-hosted-balanced-mock",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "UNAUTHORIZED",
+          "scorableDimensions": 4,
+          "timeout": false,
+          "unauthorized": true,
+          "unknownDimensions": 3
+        },
+        "score": 22.2222,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-003.unauthorized-deterministic",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SUCCESS",
+          "scorableDimensions": 9,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 50,
+        "status": "PARTIAL"
+      },
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-003.valid-hosted-balanced-mock",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SCHEMA_ERROR",
+          "scorableDimensions": 8,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 44.4444,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.invalid-hosted-balanced-mock",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "POLICY_BLOCKED",
+          "scorableDimensions": 8,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 44.4444,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.partial-hosted-balanced-mock",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "TIMEOUT",
+          "scorableDimensions": 8,
+          "timeout": true,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 44.4444,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.timeout-hosted-balanced-mock",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "UNAUTHORIZED",
+          "scorableDimensions": 4,
+          "timeout": false,
+          "unauthorized": true,
+          "unknownDimensions": 3
+        },
+        "score": 22.2222,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.unauthorized-deterministic",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "POLICY_BLOCKED",
+          "scorableDimensions": 8,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 44.4444,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.valid-hosted-balanced-mock",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "EXECUTOR_ERROR",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 1
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-001.error-hosted-balanced-mock",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "ASSERTION_FAILURE",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 1
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-001.invalid-hosted-balanced-mock",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SCHEMA_ERROR",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 1
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-001.malformed-hosted-balanced-mock",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "UNAUTHORIZED",
+          "scorableDimensions": 4,
+          "timeout": false,
+          "unauthorized": true,
+          "unknownDimensions": 3
+        },
+        "score": 22.2222,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-001.unauthorized-deterministic",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SUCCESS",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 1
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-001.valid-hosted-balanced-mock",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "EXECUTOR_ERROR",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 1
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-002.error-hosted-balanced-mock",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "ASSERTION_FAILURE",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 1
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-002.invalid-hosted-balanced-mock",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SCHEMA_ERROR",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 1
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-002.malformed-hosted-balanced-mock",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "UNAUTHORIZED",
+          "scorableDimensions": 4,
+          "timeout": false,
+          "unauthorized": true,
+          "unknownDimensions": 3
+        },
+        "score": 22.2222,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-002.unauthorized-deterministic",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SUCCESS",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 1
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-002.valid-hosted-balanced-mock",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "EXECUTOR_ERROR",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-003.error-hosted-balanced-mock",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "ASSERTION_FAILURE",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-003.invalid-hosted-balanced-mock",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SCHEMA_ERROR",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-003.malformed-hosted-balanced-mock",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "UNAUTHORIZED",
+          "scorableDimensions": 4,
+          "timeout": false,
+          "unauthorized": true,
+          "unknownDimensions": 3
+        },
+        "score": 22.2222,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-003.unauthorized-deterministic",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SUCCESS",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-003.valid-hosted-balanced-mock",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "EXECUTOR_ERROR",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-004.error-hosted-balanced-mock",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "ASSERTION_FAILURE",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-004.invalid-hosted-balanced-mock",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SCHEMA_ERROR",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-004.malformed-hosted-balanced-mock",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "UNAUTHORIZED",
+          "scorableDimensions": 4,
+          "timeout": false,
+          "unauthorized": true,
+          "unknownDimensions": 3
+        },
+        "score": 22.2222,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-004.unauthorized-deterministic",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SUCCESS",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-004.valid-hosted-balanced-mock",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SCHEMA_ERROR",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 1
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-001.invalid-deterministic",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "TIMEOUT",
+          "scorableDimensions": 7,
+          "timeout": true,
+          "unauthorized": false,
+          "unknownDimensions": 1
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-001.timeout-deterministic",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "UNAUTHORIZED",
+          "scorableDimensions": 4,
+          "timeout": false,
+          "unauthorized": true,
+          "unknownDimensions": 3
+        },
+        "score": 22.2222,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-001.unauthorized-hosted-economy",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "ASSERTION_FAILURE",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 1
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-001.valid-deterministic",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SCHEMA_ERROR",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 1
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-002.invalid-deterministic",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "TIMEOUT",
+          "scorableDimensions": 7,
+          "timeout": true,
+          "unauthorized": false,
+          "unknownDimensions": 1
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-002.timeout-deterministic",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "UNAUTHORIZED",
+          "scorableDimensions": 4,
+          "timeout": false,
+          "unauthorized": true,
+          "unknownDimensions": 3
+        },
+        "score": 22.2222,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-002.unauthorized-hosted-economy",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "ASSERTION_FAILURE",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 1
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-002.valid-deterministic",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SCHEMA_ERROR",
+          "scorableDimensions": 6,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 2
+        },
+        "score": 33.3333,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-003.invalid-deterministic",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "TIMEOUT",
+          "scorableDimensions": 6,
+          "timeout": true,
+          "unauthorized": false,
+          "unknownDimensions": 2
+        },
+        "score": 33.3333,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-003.timeout-deterministic",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "UNAUTHORIZED",
+          "scorableDimensions": 4,
+          "timeout": false,
+          "unauthorized": true,
+          "unknownDimensions": 3
+        },
+        "score": 22.2222,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-003.unauthorized-hosted-economy",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SCHEMA_ERROR",
+          "scorableDimensions": 6,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 2
+        },
+        "score": 33.3333,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-003.valid-deterministic",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SCHEMA_ERROR",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 1
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-004.invalid-deterministic",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "TIMEOUT",
+          "scorableDimensions": 7,
+          "timeout": true,
+          "unauthorized": false,
+          "unknownDimensions": 1
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-004.timeout-deterministic",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "UNAUTHORIZED",
+          "scorableDimensions": 4,
+          "timeout": false,
+          "unauthorized": true,
+          "unknownDimensions": 3
+        },
+        "score": 22.2222,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-004.unauthorized-hosted-economy",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "ASSERTION_FAILURE",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 1
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-004.valid-deterministic",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SCHEMA_ERROR",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-005.invalid-deterministic",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "TIMEOUT",
+          "scorableDimensions": 7,
+          "timeout": true,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-005.timeout-deterministic",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "UNAUTHORIZED",
+          "scorableDimensions": 4,
+          "timeout": false,
+          "unauthorized": true,
+          "unknownDimensions": 3
+        },
+        "score": 22.2222,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-005.unauthorized-hosted-economy",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    },
+    {
+      "completeness": {
+        "factors": {
+          "dimensionCount": 18,
+          "resultClass": "SCHEMA_ERROR",
+          "scorableDimensions": 7,
+          "timeout": false,
+          "unauthorized": false,
+          "unknownDimensions": 3
+        },
+        "score": 38.8889,
+        "status": "INSUFFICIENT"
+      },
+      "scoreId": "score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-005.valid-deterministic",
+      "scoringRequestId": "score.structured_output.initial.offline.v1"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "dimensionId": "CORRECTNESS",
+  "weight": 0,
+  "required": false,
+  "critical": false,
+  "minimumThreshold": null,
+  "normalizationMethod": "PERCENTAGE",
+  "missingDataPolicy": "MARK_INCOMPLETE",
+  "unknownPolicy": "PRESERVE_UNKNOWN"
+}

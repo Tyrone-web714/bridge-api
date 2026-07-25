@@ -1,0 +1,5 @@
+# Generated from bridge-api/scoring. Do not hand-edit.
+scoringRequestId,scoringProfileId,scoringProfileVersion,scoreRecordCount,totalObservations,gateFailureCount,testOnly,productionUseAllowed,scoreRunHash
+score.core_balanced.initial.offline.v1,CORE_BALANCED_TEST_PROFILE,0.1.0,60,226,34,true,false,ca825257e14c890a04fea1945851d09087945b5a9541c62777138b0d184ab696
+score.safety_critical.supervisor.offline.v1,SAFETY_CRITICAL_TEST_PROFILE,0.1.0,20,96,20,true,false,f71f1a7401b8e80dff26c705fae3131c02a3ebde6d8dc06b92b5a69758517049
+score.structured_output.initial.offline.v1,STRUCTURED_OUTPUT_TEST_PROFILE,0.1.0,40,130,14,true,false,c0d5cdb66b2e772031af8b362a5b8cdd3b52635a53da3b39e5247b2c0238d534

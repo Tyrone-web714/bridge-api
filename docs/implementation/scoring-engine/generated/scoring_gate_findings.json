@@ -1,0 +1,814 @@
+{
+  "generatedFrom": "bridge-api/scoring",
+  "generatedArtifact": true,
+  "findings": [
+    {
+      "action": "INVALIDATE_SCORE_RECORD",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-001.unauthorized-deterministic"
+      ],
+      "gateId": "UNAUTHORIZED_EXECUTION",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-001.unauthorized-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_SCORE_RECORD",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-002.unauthorized-deterministic"
+      ],
+      "gateId": "UNAUTHORIZED_EXECUTION",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-002.unauthorized-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_SCORE_RECORD",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-003.unauthorized-deterministic"
+      ],
+      "gateId": "UNAUTHORIZED_EXECUTION",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-003.unauthorized-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_SCORE_RECORD",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-004.unauthorized-deterministic"
+      ],
+      "gateId": "UNAUTHORIZED_EXECUTION",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-004.unauthorized-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "REQUIRE_HUMAN_REVIEW_AND_CAP_COMPOSITE",
+      "dimensionId": "EMPLOYMENT_GOVERNANCE",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-001.invalid-hosted-balanced-mock.obs.003"
+      ],
+      "gateId": "EMPLOYMENT_GOVERNANCE_FAILURE",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-001.invalid-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_DIMENSION_AND_CAP_COMPOSITE",
+      "dimensionId": "POLICY_COMPLIANCE",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-001.timeout-hosted-balanced-mock.obs.003"
+      ],
+      "gateId": "POLICY_FAILURE",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-001.timeout-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "MARK_RELIABILITY_FAILURE",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-001.timeout-hosted-balanced-mock"
+      ],
+      "gateId": "TIMEOUT",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-001.timeout-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_SCORE_RECORD",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-001.unauthorized-deterministic"
+      ],
+      "gateId": "UNAUTHORIZED_EXECUTION",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-001.unauthorized-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "REQUIRE_HUMAN_REVIEW_AND_CAP_COMPOSITE",
+      "dimensionId": "EMPLOYMENT_GOVERNANCE",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-002.invalid-hosted-balanced-mock.obs.003"
+      ],
+      "gateId": "EMPLOYMENT_GOVERNANCE_FAILURE",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-002.invalid-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_DIMENSION_AND_CAP_COMPOSITE",
+      "dimensionId": "POLICY_COMPLIANCE",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-002.timeout-hosted-balanced-mock.obs.003"
+      ],
+      "gateId": "POLICY_FAILURE",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-002.timeout-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "MARK_RELIABILITY_FAILURE",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-002.timeout-hosted-balanced-mock"
+      ],
+      "gateId": "TIMEOUT",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-002.timeout-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_SCORE_RECORD",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-002.unauthorized-deterministic"
+      ],
+      "gateId": "UNAUTHORIZED_EXECUTION",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-002.unauthorized-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "REQUIRE_HUMAN_REVIEW_AND_CAP_COMPOSITE",
+      "dimensionId": "EMPLOYMENT_GOVERNANCE",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-003.invalid-hosted-balanced-mock.obs.003"
+      ],
+      "gateId": "EMPLOYMENT_GOVERNANCE_FAILURE",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-003.invalid-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_DIMENSION_AND_CAP_COMPOSITE",
+      "dimensionId": "POLICY_COMPLIANCE",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-003.timeout-hosted-balanced-mock.obs.003"
+      ],
+      "gateId": "POLICY_FAILURE",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-003.timeout-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "MARK_RELIABILITY_FAILURE",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-003.timeout-hosted-balanced-mock"
+      ],
+      "gateId": "TIMEOUT",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-003.timeout-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_SCORE_RECORD",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-003.unauthorized-deterministic"
+      ],
+      "gateId": "UNAUTHORIZED_EXECUTION",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-003.unauthorized-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "REQUIRE_HUMAN_REVIEW_AND_CAP_COMPOSITE",
+      "dimensionId": "EMPLOYMENT_GOVERNANCE",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.invalid-hosted-balanced-mock.obs.001"
+      ],
+      "gateId": "EMPLOYMENT_GOVERNANCE_FAILURE",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.invalid-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_DIMENSION_AND_CAP_COMPOSITE",
+      "dimensionId": "POLICY_COMPLIANCE",
+      "evidence": [],
+      "gateId": "POLICY_FAILURE",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.partial-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "REQUIRE_HUMAN_REVIEW_AND_CAP_COMPOSITE",
+      "dimensionId": "EMPLOYMENT_GOVERNANCE",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.partial-hosted-balanced-mock.obs.001"
+      ],
+      "gateId": "EMPLOYMENT_GOVERNANCE_FAILURE",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.partial-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_DIMENSION_AND_CAP_COMPOSITE",
+      "dimensionId": "POLICY_COMPLIANCE",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.timeout-hosted-balanced-mock.obs.001"
+      ],
+      "gateId": "POLICY_FAILURE",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.timeout-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "MARK_RELIABILITY_FAILURE",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.timeout-hosted-balanced-mock"
+      ],
+      "gateId": "TIMEOUT",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.timeout-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_SCORE_RECORD",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.unauthorized-deterministic"
+      ],
+      "gateId": "UNAUTHORIZED_EXECUTION",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.unauthorized-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_DIMENSION_AND_CAP_COMPOSITE",
+      "dimensionId": "POLICY_COMPLIANCE",
+      "evidence": [],
+      "gateId": "POLICY_FAILURE",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.valid-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "REQUIRE_HUMAN_REVIEW_AND_CAP_COMPOSITE",
+      "dimensionId": "EMPLOYMENT_GOVERNANCE",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.valid-hosted-balanced-mock.obs.001"
+      ],
+      "gateId": "EMPLOYMENT_GOVERNANCE_FAILURE",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.valid-hosted-balanced-mock",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "MARK_RELIABILITY_FAILURE",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.text.cleanup.core.offline.v1.text-cleanup-core-001.timeout-deterministic"
+      ],
+      "gateId": "TIMEOUT",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-001.timeout-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_SCORE_RECORD",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.text.cleanup.core.offline.v1.text-cleanup-core-001.unauthorized-hosted-economy"
+      ],
+      "gateId": "UNAUTHORIZED_EXECUTION",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-001.unauthorized-hosted-economy",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "MARK_RELIABILITY_FAILURE",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.text.cleanup.core.offline.v1.text-cleanup-core-002.timeout-deterministic"
+      ],
+      "gateId": "TIMEOUT",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-002.timeout-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_SCORE_RECORD",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.text.cleanup.core.offline.v1.text-cleanup-core-002.unauthorized-hosted-economy"
+      ],
+      "gateId": "UNAUTHORIZED_EXECUTION",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-002.unauthorized-hosted-economy",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "MARK_RELIABILITY_FAILURE",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.text.cleanup.core.offline.v1.text-cleanup-core-003.timeout-deterministic"
+      ],
+      "gateId": "TIMEOUT",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-003.timeout-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_SCORE_RECORD",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.text.cleanup.core.offline.v1.text-cleanup-core-003.unauthorized-hosted-economy"
+      ],
+      "gateId": "UNAUTHORIZED_EXECUTION",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-003.unauthorized-hosted-economy",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "MARK_RELIABILITY_FAILURE",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.text.cleanup.core.offline.v1.text-cleanup-core-004.timeout-deterministic"
+      ],
+      "gateId": "TIMEOUT",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-004.timeout-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_SCORE_RECORD",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.text.cleanup.core.offline.v1.text-cleanup-core-004.unauthorized-hosted-economy"
+      ],
+      "gateId": "UNAUTHORIZED_EXECUTION",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-004.unauthorized-hosted-economy",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "MARK_RELIABILITY_FAILURE",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.text.cleanup.core.offline.v1.text-cleanup-core-005.timeout-deterministic"
+      ],
+      "gateId": "TIMEOUT",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-005.timeout-deterministic",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_SCORE_RECORD",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.text.cleanup.core.offline.v1.text-cleanup-core-005.unauthorized-hosted-economy"
+      ],
+      "gateId": "UNAUTHORIZED_EXECUTION",
+      "scoreId": "score.core_balanced.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-005.unauthorized-hosted-economy",
+      "scoringRequestId": "score.core_balanced.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "REQUIRE_HUMAN_REVIEW_AND_CAP_COMPOSITE",
+      "dimensionId": "EMPLOYMENT_GOVERNANCE",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-001.invalid-hosted-balanced-mock.obs.003"
+      ],
+      "gateId": "EMPLOYMENT_GOVERNANCE_FAILURE",
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-001.invalid-hosted-balanced-mock",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_DIMENSION_AND_CAP_COMPOSITE",
+      "dimensionId": "POLICY_COMPLIANCE",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-001.timeout-hosted-balanced-mock.obs.003"
+      ],
+      "gateId": "POLICY_FAILURE",
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-001.timeout-hosted-balanced-mock",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "MARK_RELIABILITY_FAILURE",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-001.timeout-hosted-balanced-mock"
+      ],
+      "gateId": "TIMEOUT",
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-001.timeout-hosted-balanced-mock",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_SCORE_RECORD",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-001.unauthorized-deterministic"
+      ],
+      "gateId": "UNAUTHORIZED_EXECUTION",
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-001.unauthorized-deterministic",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "REQUIRE_HUMAN_REVIEW_AND_CAP_COMPOSITE",
+      "dimensionId": "EMPLOYMENT_GOVERNANCE",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-002.invalid-hosted-balanced-mock.obs.003"
+      ],
+      "gateId": "EMPLOYMENT_GOVERNANCE_FAILURE",
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-002.invalid-hosted-balanced-mock",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_DIMENSION_AND_CAP_COMPOSITE",
+      "dimensionId": "POLICY_COMPLIANCE",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-002.timeout-hosted-balanced-mock.obs.003"
+      ],
+      "gateId": "POLICY_FAILURE",
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-002.timeout-hosted-balanced-mock",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "MARK_RELIABILITY_FAILURE",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-002.timeout-hosted-balanced-mock"
+      ],
+      "gateId": "TIMEOUT",
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-002.timeout-hosted-balanced-mock",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_SCORE_RECORD",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-002.unauthorized-deterministic"
+      ],
+      "gateId": "UNAUTHORIZED_EXECUTION",
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-002.unauthorized-deterministic",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "REQUIRE_HUMAN_REVIEW_AND_CAP_COMPOSITE",
+      "dimensionId": "EMPLOYMENT_GOVERNANCE",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-003.invalid-hosted-balanced-mock.obs.003"
+      ],
+      "gateId": "EMPLOYMENT_GOVERNANCE_FAILURE",
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-003.invalid-hosted-balanced-mock",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_DIMENSION_AND_CAP_COMPOSITE",
+      "dimensionId": "POLICY_COMPLIANCE",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-003.timeout-hosted-balanced-mock.obs.003"
+      ],
+      "gateId": "POLICY_FAILURE",
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-003.timeout-hosted-balanced-mock",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "MARK_RELIABILITY_FAILURE",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-003.timeout-hosted-balanced-mock"
+      ],
+      "gateId": "TIMEOUT",
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-003.timeout-hosted-balanced-mock",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_SCORE_RECORD",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-003.unauthorized-deterministic"
+      ],
+      "gateId": "UNAUTHORIZED_EXECUTION",
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-003.unauthorized-deterministic",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "REQUIRE_HUMAN_REVIEW_AND_CAP_COMPOSITE",
+      "dimensionId": "EMPLOYMENT_GOVERNANCE",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.invalid-hosted-balanced-mock.obs.001"
+      ],
+      "gateId": "EMPLOYMENT_GOVERNANCE_FAILURE",
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.invalid-hosted-balanced-mock",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_DIMENSION_AND_CAP_COMPOSITE",
+      "dimensionId": "POLICY_COMPLIANCE",
+      "evidence": [],
+      "gateId": "POLICY_FAILURE",
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.partial-hosted-balanced-mock",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "REQUIRE_HUMAN_REVIEW_AND_CAP_COMPOSITE",
+      "dimensionId": "EMPLOYMENT_GOVERNANCE",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.partial-hosted-balanced-mock.obs.001"
+      ],
+      "gateId": "EMPLOYMENT_GOVERNANCE_FAILURE",
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.partial-hosted-balanced-mock",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_DIMENSION_AND_CAP_COMPOSITE",
+      "dimensionId": "POLICY_COMPLIANCE",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.timeout-hosted-balanced-mock.obs.001"
+      ],
+      "gateId": "POLICY_FAILURE",
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.timeout-hosted-balanced-mock",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "MARK_RELIABILITY_FAILURE",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.timeout-hosted-balanced-mock"
+      ],
+      "gateId": "TIMEOUT",
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.timeout-hosted-balanced-mock",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_SCORE_RECORD",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.unauthorized-deterministic"
+      ],
+      "gateId": "UNAUTHORIZED_EXECUTION",
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.unauthorized-deterministic",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_DIMENSION_AND_CAP_COMPOSITE",
+      "dimensionId": "POLICY_COMPLIANCE",
+      "evidence": [],
+      "gateId": "POLICY_FAILURE",
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.valid-hosted-balanced-mock",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "REQUIRE_HUMAN_REVIEW_AND_CAP_COMPOSITE",
+      "dimensionId": "EMPLOYMENT_GOVERNANCE",
+      "evidence": [
+        "eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.valid-hosted-balanced-mock.obs.001"
+      ],
+      "gateId": "EMPLOYMENT_GOVERNANCE_FAILURE",
+      "scoreId": "score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.valid-hosted-balanced-mock",
+      "scoringRequestId": "score.safety_critical.supervisor.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_SCORE_RECORD",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-001.unauthorized-deterministic"
+      ],
+      "gateId": "UNAUTHORIZED_EXECUTION",
+      "scoreId": "score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-001.unauthorized-deterministic",
+      "scoringRequestId": "score.structured_output.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_SCORE_RECORD",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-002.unauthorized-deterministic"
+      ],
+      "gateId": "UNAUTHORIZED_EXECUTION",
+      "scoreId": "score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-002.unauthorized-deterministic",
+      "scoringRequestId": "score.structured_output.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_SCORE_RECORD",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-003.unauthorized-deterministic"
+      ],
+      "gateId": "UNAUTHORIZED_EXECUTION",
+      "scoreId": "score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-003.unauthorized-deterministic",
+      "scoringRequestId": "score.structured_output.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_SCORE_RECORD",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-004.unauthorized-deterministic"
+      ],
+      "gateId": "UNAUTHORIZED_EXECUTION",
+      "scoreId": "score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-004.unauthorized-deterministic",
+      "scoringRequestId": "score.structured_output.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "MARK_RELIABILITY_FAILURE",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.text.cleanup.core.offline.v1.text-cleanup-core-001.timeout-deterministic"
+      ],
+      "gateId": "TIMEOUT",
+      "scoreId": "score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-001.timeout-deterministic",
+      "scoringRequestId": "score.structured_output.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_SCORE_RECORD",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.text.cleanup.core.offline.v1.text-cleanup-core-001.unauthorized-hosted-economy"
+      ],
+      "gateId": "UNAUTHORIZED_EXECUTION",
+      "scoreId": "score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-001.unauthorized-hosted-economy",
+      "scoringRequestId": "score.structured_output.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "MARK_RELIABILITY_FAILURE",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.text.cleanup.core.offline.v1.text-cleanup-core-002.timeout-deterministic"
+      ],
+      "gateId": "TIMEOUT",
+      "scoreId": "score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-002.timeout-deterministic",
+      "scoringRequestId": "score.structured_output.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_SCORE_RECORD",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.text.cleanup.core.offline.v1.text-cleanup-core-002.unauthorized-hosted-economy"
+      ],
+      "gateId": "UNAUTHORIZED_EXECUTION",
+      "scoreId": "score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-002.unauthorized-hosted-economy",
+      "scoringRequestId": "score.structured_output.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "MARK_RELIABILITY_FAILURE",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.text.cleanup.core.offline.v1.text-cleanup-core-003.timeout-deterministic"
+      ],
+      "gateId": "TIMEOUT",
+      "scoreId": "score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-003.timeout-deterministic",
+      "scoringRequestId": "score.structured_output.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_SCORE_RECORD",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.text.cleanup.core.offline.v1.text-cleanup-core-003.unauthorized-hosted-economy"
+      ],
+      "gateId": "UNAUTHORIZED_EXECUTION",
+      "scoreId": "score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-003.unauthorized-hosted-economy",
+      "scoringRequestId": "score.structured_output.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "MARK_RELIABILITY_FAILURE",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.text.cleanup.core.offline.v1.text-cleanup-core-004.timeout-deterministic"
+      ],
+      "gateId": "TIMEOUT",
+      "scoreId": "score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-004.timeout-deterministic",
+      "scoringRequestId": "score.structured_output.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_SCORE_RECORD",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.text.cleanup.core.offline.v1.text-cleanup-core-004.unauthorized-hosted-economy"
+      ],
+      "gateId": "UNAUTHORIZED_EXECUTION",
+      "scoreId": "score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-004.unauthorized-hosted-economy",
+      "scoringRequestId": "score.structured_output.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "MARK_RELIABILITY_FAILURE",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.text.cleanup.core.offline.v1.text-cleanup-core-005.timeout-deterministic"
+      ],
+      "gateId": "TIMEOUT",
+      "scoreId": "score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-005.timeout-deterministic",
+      "scoringRequestId": "score.structured_output.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    },
+    {
+      "action": "INVALIDATE_SCORE_RECORD",
+      "dimensionId": "RELIABILITY",
+      "evidence": [
+        "eval.text.cleanup.core.offline.v1.text-cleanup-core-005.unauthorized-hosted-economy"
+      ],
+      "gateId": "UNAUTHORIZED_EXECUTION",
+      "scoreId": "score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-005.unauthorized-hosted-economy",
+      "scoringRequestId": "score.structured_output.initial.offline.v1",
+      "status": "TRIGGERED",
+      "triggered": true
+    }
+  ]
+}

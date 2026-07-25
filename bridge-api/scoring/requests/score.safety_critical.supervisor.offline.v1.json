@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "intelligence.scoring.request.v1",
+  "scoringRequestId": "score.safety_critical.supervisor.offline.v1",
+  "scoringRequestVersion": "0.1.0",
+  "displayName": "Safety critical supervisor offline score run",
+  "description": "Synthetic offline scoring request for AI-IEP-004A.4 framework validation.",
+  "evaluationRunIds": [
+    "eval.supervisor.daily_operations_report.safety_language.offline.v1"
+  ],
+  "capabilityIds": [],
+  "datasetIds": [],
+  "candidateStrategyIds": [],
+  "candidateExecutorIds": [],
+  "caseIds": [],
+  "scoringProfileId": "SAFETY_CRITICAL_TEST_PROFILE",
+  "scoringProfileVersion": "0.1.0",
+  "profileOverrides": {},
+  "normalizationProfileId": "DEFAULT_TEST_NORMALIZATION_V1",
+  "thresholdProfileId": "DEFAULT_TEST_THRESHOLDS_V1",
+  "dryRun": true,
+  "failOnIncompleteEvidence": false,
+  "failOnCriticalGate": false,
+  "allowPartialScoring": true,
+  "includeUnauthorized": true,
+  "includeSkipped": true,
+  "includeNotApplicable": true,
+  "includeUnknown": true,
+  "deterministicSeed": "score.safety_critical.supervisor.offline.v1",
+  "generateSensitivityAnalysis": true,
+  "requestedAggregationLevels": [
+    "CASE",
+    "DATASET",
+    "CAPABILITY",
+    "CANDIDATE",
+    "EVALUATION_RUN"
+  ],
+  "reportFormats": [
+    "json",
+    "csv",
+    "md"
+  ],
+  "includeObservationDetails": true,
+  "includeMetricDetails": true,
+  "includeGateDetails": true,
+  "testOnly": true,
+  "productionDataUsed": false
+}

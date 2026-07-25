@@ -1,0 +1,6 @@
+{
+  "scoringRequestId": "score.example.offline.v1",
+  "variationPct": 10,
+  "optimize": false,
+  "recommendProfile": false
+}

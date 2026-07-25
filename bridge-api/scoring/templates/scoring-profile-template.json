@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "intelligence.scoring.profile.v1",
+  "scoringProfileId": "DRAFT_PROFILE",
+  "version": "0.1.0",
+  "lifecycleState": "DRAFT",
+  "enabled": false,
+  "testOnly": true,
+  "productionUseAllowed": false,
+  "ownerApprovalRequired": true,
+  "approvedBy": null,
+  "dimensions": [],
+  "criticalFailureRules": [],
+  "mandatoryThresholdRules": [],
+  "integrity": {
+    "contentHash": null,
+    "deterministicOrdering": true,
+    "immutableWhenFrozen": false
+  }
+}

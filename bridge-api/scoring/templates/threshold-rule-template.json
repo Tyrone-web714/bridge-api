@@ -1,0 +1,6 @@
+{
+  "thresholdId": "MINIMUM_SAFETY",
+  "dimensionId": "SAFETY",
+  "minimumThreshold": null,
+  "statusWhenUnknown": "UNKNOWN"
+}

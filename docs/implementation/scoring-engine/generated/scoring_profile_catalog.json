@@ -1,0 +1,42 @@
+{
+  "generatedFrom": "bridge-api/scoring",
+  "generatedArtifact": true,
+  "profiles": [
+    {
+      "compositeMethod": "WEIGHTED_ARITHMETIC_MEAN",
+      "contentHash": "a844a8a90df7080c3204e2a4a25f105804ff38b27b8c00ae88a38f458980b2d7",
+      "dimensionCount": 18,
+      "dimensionWeightTotal": 100,
+      "enabled": true,
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "productionUseAllowed": false,
+      "scoringProfileId": "CORE_BALANCED_TEST_PROFILE",
+      "testOnly": true,
+      "version": "0.1.0"
+    },
+    {
+      "compositeMethod": "MINIMUM_DIMENSION",
+      "contentHash": "2ad8de7333251db6b9e8dd765dd75436d2bb28bd6f4cc725112606b42e25c9bb",
+      "dimensionCount": 18,
+      "dimensionWeightTotal": 100,
+      "enabled": true,
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "productionUseAllowed": false,
+      "scoringProfileId": "SAFETY_CRITICAL_TEST_PROFILE",
+      "testOnly": true,
+      "version": "0.1.0"
+    },
+    {
+      "compositeMethod": "WEIGHTED_GEOMETRIC_MEAN",
+      "contentHash": "e8355cd94b8c19ddc80611acfdd31a46a88eaa8c8de0a32baaee8203f285eb8e",
+      "dimensionCount": 18,
+      "dimensionWeightTotal": 100,
+      "enabled": true,
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "productionUseAllowed": false,
+      "scoringProfileId": "STRUCTURED_OUTPUT_TEST_PROFILE",
+      "testOnly": true,
+      "version": "0.1.0"
+    }
+  ]
+}

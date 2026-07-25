@@ -1,0 +1,5 @@
+# Generated from bridge-api/scoring. Do not hand-edit.
+scoringProfileId,version,lifecycleState,enabled,testOnly,productionUseAllowed,compositeMethod,dimensionCount,dimensionWeightTotal,contentHash
+CORE_BALANCED_TEST_PROFILE,0.1.0,APPROVED_FOR_TEST,true,true,false,WEIGHTED_ARITHMETIC_MEAN,18,100,a844a8a90df7080c3204e2a4a25f105804ff38b27b8c00ae88a38f458980b2d7
+SAFETY_CRITICAL_TEST_PROFILE,0.1.0,APPROVED_FOR_TEST,true,true,false,MINIMUM_DIMENSION,18,100,2ad8de7333251db6b9e8dd765dd75436d2bb28bd6f4cc725112606b42e25c9bb
+STRUCTURED_OUTPUT_TEST_PROFILE,0.1.0,APPROVED_FOR_TEST,true,true,false,WEIGHTED_GEOMETRIC_MEAN,18,100,e8355cd94b8c19ddc80611acfdd31a46a88eaa8c8de0a32baaee8203f285eb8e

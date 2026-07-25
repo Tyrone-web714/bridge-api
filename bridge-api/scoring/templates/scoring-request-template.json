@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "intelligence.scoring.request.v1",
+  "scoringRequestId": "score.example.offline.v1",
+  "scoringRequestVersion": "0.1.0",
+  "evaluationRunIds": [],
+  "scoringProfileId": "DRAFT_PROFILE",
+  "scoringProfileVersion": "0.1.0",
+  "dryRun": true,
+  "includeUnknown": true,
+  "testOnly": true,
+  "productionDataUsed": false
+}
