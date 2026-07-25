@@ -1,0 +1,33 @@
+{
+  "generatedFrom": "bridge-api/evaluations",
+  "generatedArtifact": true,
+  "replay": [
+    {
+      "deterministicReplayClaimed": true,
+      "nonReproducibleReasons": [],
+      "planHash": "089d46c378a6971f279d461bb810ccda2599fa8baecda416c3ed289031973cea",
+      "replayable": true,
+      "requestHash": "e8111328faeefa23fed4d6a599a67bfff1025ac8e77e20abc0b5b3362d4bd111",
+      "resultHash": "3822f9c43d0007af92a2d427704730711582154c82600cec03f305856e2ec6cc",
+      "runId": "eval.legacy.ai.structured_response.schema_compliance.offline.v1"
+    },
+    {
+      "deterministicReplayClaimed": true,
+      "nonReproducibleReasons": [],
+      "planHash": "cdf512eae1797a870d4cda6375a7deb0b64dc9637a2a174283b798ec07e7baaa",
+      "replayable": true,
+      "requestHash": "3f6e101a788e07c1e97e6582c2c802ab8723ab3649495d7387e0f2c03f85137a",
+      "resultHash": "b38a39588e57e3e3510716d529da44b5db15646eb50d15f5fab61697171297a6",
+      "runId": "eval.supervisor.daily_operations_report.safety_language.offline.v1"
+    },
+    {
+      "deterministicReplayClaimed": true,
+      "nonReproducibleReasons": [],
+      "planHash": "e87cb7bad04ca0bf376999ee4028bb060c5ef23665becfe0f8cba3ff7985556c",
+      "replayable": true,
+      "requestHash": "bc081fd35e8b71cc9faa6cd5ed3251ae2aba3e650538e95a34df688b9c5c59d9",
+      "resultHash": "356bdb4c4fde8f1b3b08728d86b1030d6f12d5783dba9bb44e2504d1d387ce8a",
+      "runId": "eval.text.cleanup.core.offline.v1"
+    }
+  ]
+}

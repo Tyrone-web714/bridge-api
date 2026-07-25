@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "execution.evaluation.request.v1",
+  "runId": "eval.<capability>.<dataset-purpose>.offline.v1",
+  "runVersion": "0.1.0",
+  "repositoryCommit": "<git-commit>",
+  "engineVersion": "execution.strategy.evaluation.engine.v1",
+  "environment": "CI",
+  "capabilityId": "<registered-capability-id>",
+  "datasetId": "<benchmark-dataset-id>",
+  "datasetVersion": "0.1.0",
+  "deterministicSeed": "<stable-seed>",
+  "testOnly": true,
+  "productionDataUsed": false,
+  "controls": {
+    "offlineOnly": true,
+    "allowHostedExecution": false,
+    "allowPremiumExecution": false,
+    "allowHumanReview": false,
+    "dryRun": true
+  },
+  "candidates": []
+}

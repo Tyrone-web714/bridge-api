@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "execution.evaluation.request.v1",
+  "runId": "eval.legacy.ai.structured_response.schema_compliance.offline.v1",
+  "runVersion": "0.1.0",
+  "repositoryCommit": "97ffbfef0a30d16eedb109621e3e8cf68652f6df",
+  "engineVersion": "execution.strategy.evaluation.engine.v1",
+  "environment": "CI",
+  "capabilityId": "legacy.ai.structured_response",
+  "datasetId": "legacy.ai.structured_response.benchmark.schema_compliance",
+  "datasetVersion": "0.1.0",
+  "deterministicSeed": "ai-iep-004a3-legacy-structured",
+  "defaultTimeoutMs": 250,
+  "testOnly": true,
+  "productionDataUsed": false,
+  "controls": {
+    "offlineOnly": true,
+    "allowHostedExecution": false,
+    "allowPremiumExecution": false,
+    "allowHumanReview": false,
+    "dryRun": true
+  },
+  "candidates": [
+    {
+      "candidateId": "valid-hosted-balanced-mock",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "executorId": "mock.legacy_structured_response.v1",
+      "behavior": "valid",
+      "authorizedMockExecution": true,
+      "timeoutMs": 250,
+      "retryCount": 0
+    },
+    {
+      "candidateId": "invalid-hosted-balanced-mock",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "executorId": "mock.legacy_structured_response.v1",
+      "behavior": "invalid",
+      "authorizedMockExecution": true,
+      "timeoutMs": 250,
+      "retryCount": 0
+    },
+    {
+      "candidateId": "malformed-hosted-balanced-mock",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "executorId": "mock.legacy_structured_response.v1",
+      "behavior": "malformed_json",
+      "authorizedMockExecution": true,
+      "timeoutMs": 250,
+      "retryCount": 0
+    },
+    {
+      "candidateId": "error-hosted-balanced-mock",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "executorId": "mock.legacy_structured_response.v1",
+      "behavior": "error",
+      "authorizedMockExecution": true,
+      "timeoutMs": 250,
+      "retryCount": 1
+    },
+    {
+      "candidateId": "unauthorized-deterministic",
+      "strategy": "DETERMINISTIC_RULES",
+      "executorId": "mock.legacy_structured_response.v1",
+      "behavior": "valid",
+      "authorizedMockExecution": true,
+      "timeoutMs": 250,
+      "retryCount": 0
+    }
+  ]
+}

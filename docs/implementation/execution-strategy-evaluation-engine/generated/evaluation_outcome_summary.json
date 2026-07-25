@@ -1,0 +1,167 @@
+{
+  "generatedArtifact": true,
+  "generatedFrom": "bridge-api/evaluations",
+  "note": "Descriptive counts only; no scores, weights, winners, rankings, or recommendations.",
+  "runs": [
+    {
+      "aggregates": {
+        "candidatesAttempted": 16,
+        "candidatesUnauthorized": 4,
+        "casesCompleted": 4,
+        "casesSkipped": 0,
+        "observationsByDomain": {
+          "COST": 16,
+          "FACT": 4,
+          "FIELD": 8,
+          "POLICY": 12,
+          "REFUSAL": 4,
+          "STRUCTURAL": 8,
+          "TIMING": 16
+        },
+        "observationsByEvaluationType": {
+          "CANDIDATE_ELIGIBILITY": 4,
+          "COST_OBSERVATION": 16,
+          "FIELD_LEVEL_ASSERTION": 8,
+          "INSUFFICIENT_EVIDENCE_EXPECTED": 4,
+          "POLICY_CONSTRAINT": 8,
+          "REFUSAL_EXPECTED": 4,
+          "STRUCTURED_SCHEMA": 8,
+          "TIMING_OBSERVATION": 16
+        },
+        "observationsByOutcome": {
+          "BLOCKED": 4,
+          "FAILED": 18,
+          "MATCHED": 46
+        },
+        "observationsBySeverity": {
+          "INFO": 50,
+          "MEDIUM": 18
+        },
+        "policyFailures": 0,
+        "privacyFailures": 0,
+        "resultClasses": {
+          "ASSERTION_FAILURE": 4,
+          "EXECUTOR_ERROR": 4,
+          "SCHEMA_ERROR": 4,
+          "SUCCESS": 4,
+          "UNAUTHORIZED": 4
+        },
+        "safetyFailures": 0,
+        "schemaFailures": 4,
+        "timeouts": 0,
+        "unknownCostObservations": 16
+      },
+      "capabilityId": "legacy.ai.structured_response",
+      "datasetId": "legacy.ai.structured_response.benchmark.schema_compliance",
+      "runId": "eval.legacy.ai.structured_response.schema_compliance.offline.v1"
+    },
+    {
+      "aggregates": {
+        "candidatesAttempted": 16,
+        "candidatesUnauthorized": 4,
+        "casesCompleted": 4,
+        "casesSkipped": 0,
+        "observationsByDomain": {
+          "COST": 16,
+          "FACT": 8,
+          "FIELD": 12,
+          "HUMAN_REVIEW": 12,
+          "NUMERICAL": 8,
+          "POLICY": 20,
+          "SAFETY": 4,
+          "TIMING": 16
+        },
+        "observationsByEvaluationType": {
+          "CANDIDATE_ELIGIBILITY": 4,
+          "COST_OBSERVATION": 16,
+          "FIELD_LEVEL_ASSERTION": 12,
+          "HUMAN_REVIEW_EXPECTED": 12,
+          "INSUFFICIENT_EVIDENCE_EXPECTED": 4,
+          "NUMERICAL_TOLERANCE": 8,
+          "POLICY_CONSTRAINT": 16,
+          "RUBRIC_BASED": 4,
+          "SAFETY_CONSTRAINT": 4,
+          "TIMING_OBSERVATION": 16
+        },
+        "observationsByOutcome": {
+          "BLOCKED": 4,
+          "FAILED": 32,
+          "MATCHED": 56,
+          "UNAVAILABLE": 4
+        },
+        "observationsBySeverity": {
+          "HIGH": 10,
+          "INFO": 64,
+          "MEDIUM": 22
+        },
+        "policyFailures": 10,
+        "privacyFailures": 0,
+        "resultClasses": {
+          "ASSERTION_FAILURE": 2,
+          "PARTIAL_OUTPUT": 2,
+          "POLICY_BLOCKED": 2,
+          "SCHEMA_ERROR": 4,
+          "SUCCESS": 2,
+          "TIMEOUT": 4,
+          "UNAUTHORIZED": 4
+        },
+        "safetyFailures": 0,
+        "schemaFailures": 4,
+        "timeouts": 4,
+        "unknownCostObservations": 16
+      },
+      "capabilityId": "supervisor.daily_operations_report",
+      "datasetId": "supervisor.daily_operations_report.benchmark.safety_language",
+      "runId": "eval.supervisor.daily_operations_report.safety_language.offline.v1"
+    },
+    {
+      "aggregates": {
+        "candidatesAttempted": 15,
+        "candidatesUnauthorized": 5,
+        "casesCompleted": 5,
+        "casesSkipped": 0,
+        "observationsByDomain": {
+          "COST": 15,
+          "FACT": 12,
+          "FIELD": 9,
+          "POLICY": 8,
+          "REFUSAL": 3,
+          "TIMING": 15
+        },
+        "observationsByEvaluationType": {
+          "CANDIDATE_ELIGIBILITY": 5,
+          "COST_OBSERVATION": 15,
+          "FIELD_LEVEL_ASSERTION": 9,
+          "NORMALIZED_TEXT_MATCH": 12,
+          "POLICY_CONSTRAINT": 3,
+          "REFUSAL_EXPECTED": 3,
+          "TIMING_OBSERVATION": 15
+        },
+        "observationsByOutcome": {
+          "BLOCKED": 5,
+          "FAILED": 19,
+          "MATCHED": 38
+        },
+        "observationsBySeverity": {
+          "INFO": 43,
+          "MEDIUM": 19
+        },
+        "policyFailures": 0,
+        "privacyFailures": 0,
+        "resultClasses": {
+          "ASSERTION_FAILURE": 3,
+          "SCHEMA_ERROR": 7,
+          "TIMEOUT": 5,
+          "UNAUTHORIZED": 5
+        },
+        "safetyFailures": 0,
+        "schemaFailures": 7,
+        "timeouts": 5,
+        "unknownCostObservations": 10
+      },
+      "capabilityId": "text.cleanup",
+      "datasetId": "text.cleanup.benchmark.core",
+      "runId": "eval.text.cleanup.core.offline.v1"
+    }
+  ]
+}

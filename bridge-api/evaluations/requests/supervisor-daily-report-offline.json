@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "execution.evaluation.request.v1",
+  "runId": "eval.supervisor.daily_operations_report.safety_language.offline.v1",
+  "runVersion": "0.1.0",
+  "repositoryCommit": "97ffbfef0a30d16eedb109621e3e8cf68652f6df",
+  "engineVersion": "execution.strategy.evaluation.engine.v1",
+  "environment": "CI",
+  "capabilityId": "supervisor.daily_operations_report",
+  "datasetId": "supervisor.daily_operations_report.benchmark.safety_language",
+  "datasetVersion": "0.1.0",
+  "deterministicSeed": "ai-iep-004a3-supervisor-report",
+  "defaultTimeoutMs": 250,
+  "testOnly": true,
+  "productionDataUsed": false,
+  "controls": {
+    "offlineOnly": true,
+    "allowHostedExecution": false,
+    "allowPremiumExecution": false,
+    "allowHumanReview": false,
+    "dryRun": true
+  },
+  "candidates": [
+    {
+      "candidateId": "valid-hosted-balanced-mock",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "executorId": "mock.supervisor_daily_report.v1",
+      "behavior": "valid",
+      "authorizedMockExecution": true,
+      "timeoutMs": 250,
+      "retryCount": 0
+    },
+    {
+      "candidateId": "invalid-hosted-balanced-mock",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "executorId": "mock.supervisor_daily_report.v1",
+      "behavior": "invalid",
+      "authorizedMockExecution": true,
+      "timeoutMs": 250,
+      "retryCount": 0
+    },
+    {
+      "candidateId": "partial-hosted-balanced-mock",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "executorId": "mock.supervisor_daily_report.v1",
+      "behavior": "partial",
+      "authorizedMockExecution": true,
+      "timeoutMs": 250,
+      "retryCount": 0
+    },
+    {
+      "candidateId": "timeout-hosted-balanced-mock",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "executorId": "mock.supervisor_daily_report.v1",
+      "behavior": "timeout",
+      "authorizedMockExecution": true,
+      "timeoutMs": 25,
+      "retryCount": 1
+    },
+    {
+      "candidateId": "unauthorized-deterministic",
+      "strategy": "DETERMINISTIC_RULES",
+      "executorId": "mock.supervisor_daily_report.v1",
+      "behavior": "valid",
+      "authorizedMockExecution": true,
+      "timeoutMs": 250,
+      "retryCount": 0
+    }
+  ]
+}

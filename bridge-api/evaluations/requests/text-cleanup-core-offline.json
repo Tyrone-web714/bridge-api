@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "execution.evaluation.request.v1",
+  "runId": "eval.text.cleanup.core.offline.v1",
+  "runVersion": "0.1.0",
+  "repositoryCommit": "97ffbfef0a30d16eedb109621e3e8cf68652f6df",
+  "engineVersion": "execution.strategy.evaluation.engine.v1",
+  "environment": "CI",
+  "capabilityId": "text.cleanup",
+  "datasetId": "text.cleanup.benchmark.core",
+  "datasetVersion": "0.1.0",
+  "deterministicSeed": "ai-iep-004a3-text-cleanup",
+  "defaultTimeoutMs": 250,
+  "testOnly": true,
+  "productionDataUsed": false,
+  "controls": {
+    "offlineOnly": true,
+    "allowHostedExecution": false,
+    "allowPremiumExecution": false,
+    "allowHumanReview": false,
+    "dryRun": true
+  },
+  "candidates": [
+    {
+      "candidateId": "valid-deterministic",
+      "strategy": "DETERMINISTIC_RULES",
+      "executorId": "mock.deterministic_text_cleanup.v1",
+      "behavior": "valid",
+      "authorizedMockExecution": true,
+      "timeoutMs": 250,
+      "retryCount": 0,
+      "mockCost": {
+        "knowledgeStatus": "KNOWN_ZERO",
+        "estimatedCostMicroUsd": 0,
+        "actualCostMicroUsd": 0,
+        "source": "MOCK_VERIFIED_ZERO"
+      }
+    },
+    {
+      "candidateId": "invalid-deterministic",
+      "strategy": "DETERMINISTIC_RULES",
+      "executorId": "mock.deterministic_text_cleanup.v1",
+      "behavior": "invalid",
+      "authorizedMockExecution": true,
+      "timeoutMs": 250,
+      "retryCount": 0
+    },
+    {
+      "candidateId": "timeout-deterministic",
+      "strategy": "DETERMINISTIC_RULES",
+      "executorId": "mock.deterministic_text_cleanup.v1",
+      "behavior": "timeout",
+      "authorizedMockExecution": true,
+      "timeoutMs": 25,
+      "retryCount": 1
+    },
+    {
+      "candidateId": "unauthorized-hosted-economy",
+      "strategy": "HOSTED_ECONOMY_MODEL",
+      "executorId": "mock.deterministic_text_cleanup.v1",
+      "behavior": "valid",
+      "authorizedMockExecution": true,
+      "timeoutMs": 250,
+      "retryCount": 0
+    }
+  ]
+}

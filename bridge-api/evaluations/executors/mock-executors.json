@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "execution.evaluation.mock_executor_catalog.v1",
+  "testOnly": true,
+  "offlineOnly": true,
+  "executors": [
+    {
+      "executorId": "mock.deterministic_text_cleanup.v1",
+      "executorVersion": "1.0.0",
+      "displayName": "Mock Deterministic Text Cleanup",
+      "offlineCapable": true,
+      "mockOnly": true,
+      "liveProviderCallCapable": false,
+      "supportedCapabilities": ["text.cleanup"],
+      "supportedStrategies": ["DETERMINISTIC_RULES", "HOSTED_ECONOMY_MODEL"],
+      "defaultBehavior": "valid"
+    },
+    {
+      "executorId": "mock.legacy_structured_response.v1",
+      "executorVersion": "1.0.0",
+      "displayName": "Mock Legacy Structured Response",
+      "offlineCapable": true,
+      "mockOnly": true,
+      "liveProviderCallCapable": false,
+      "supportedCapabilities": ["legacy.ai.structured_response"],
+      "supportedStrategies": ["HOSTED_BALANCED_MODEL", "DETERMINISTIC_RULES"],
+      "defaultBehavior": "valid"
+    },
+    {
+      "executorId": "mock.supervisor_daily_report.v1",
+      "executorVersion": "1.0.0",
+      "displayName": "Mock Supervisor Daily Report",
+      "offlineCapable": true,
+      "mockOnly": true,
+      "liveProviderCallCapable": false,
+      "supportedCapabilities": ["supervisor.daily_operations_report"],
+      "supportedStrategies": ["HOSTED_BALANCED_MODEL", "DETERMINISTIC_RULES", "HUMAN_REVIEW"],
+      "defaultBehavior": "valid"
+    }
+  ]
+}

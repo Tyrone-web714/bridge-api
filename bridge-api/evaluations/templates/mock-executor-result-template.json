@@ -1,0 +1,13 @@
+{
+  "resultClass": "SUCCESS",
+  "rawOutput": {},
+  "durationMs": 0,
+  "timedOut": false,
+  "usage": null,
+  "cost": {
+    "knowledgeStatus": "UNKNOWN",
+    "estimatedCostMicroUsd": null,
+    "actualCostMicroUsd": null,
+    "source": "MOCK_UNKNOWN"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "runId": "eval.<capability>.<dataset-purpose>.offline.v1",
+  "expectedRequestHash": "<hash>",
+  "expectedPlanHash": "<hash>",
+  "expectedResultHash": "<hash>",
+  "offlineOnly": true,
+  "claimDeterministicReproductionOnlyIfHashesMatch": true
+}

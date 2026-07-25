@@ -1,0 +1,606 @@
+{
+  "generatedFrom": "bridge-api/evaluations",
+  "generatedArtifact": true,
+  "metrics": [
+    {
+      "candidateId": "error-hosted-balanced-mock",
+      "caseId": "legacy-structured-schema-001",
+      "durationMs": 3,
+      "executorId": "mock.legacy_structured_response.v1",
+      "resultClass": "EXECUTOR_ERROR",
+      "runId": "eval.legacy.ai.structured_response.schema_compliance.offline.v1",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "invalid-hosted-balanced-mock",
+      "caseId": "legacy-structured-schema-001",
+      "durationMs": 5,
+      "executorId": "mock.legacy_structured_response.v1",
+      "resultClass": "ASSERTION_FAILURE",
+      "runId": "eval.legacy.ai.structured_response.schema_compliance.offline.v1",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "malformed-hosted-balanced-mock",
+      "caseId": "legacy-structured-schema-001",
+      "durationMs": 2,
+      "executorId": "mock.legacy_structured_response.v1",
+      "resultClass": "SCHEMA_ERROR",
+      "runId": "eval.legacy.ai.structured_response.schema_compliance.offline.v1",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "unauthorized-deterministic",
+      "caseId": "legacy-structured-schema-001",
+      "durationMs": 0,
+      "executorId": "mock.legacy_structured_response.v1",
+      "resultClass": "UNAUTHORIZED",
+      "runId": "eval.legacy.ai.structured_response.schema_compliance.offline.v1",
+      "strategy": "DETERMINISTIC_RULES",
+      "timedOut": false
+    },
+    {
+      "candidateId": "valid-hosted-balanced-mock",
+      "caseId": "legacy-structured-schema-001",
+      "durationMs": 5,
+      "executorId": "mock.legacy_structured_response.v1",
+      "resultClass": "SUCCESS",
+      "runId": "eval.legacy.ai.structured_response.schema_compliance.offline.v1",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "error-hosted-balanced-mock",
+      "caseId": "legacy-structured-schema-002",
+      "durationMs": 3,
+      "executorId": "mock.legacy_structured_response.v1",
+      "resultClass": "EXECUTOR_ERROR",
+      "runId": "eval.legacy.ai.structured_response.schema_compliance.offline.v1",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "invalid-hosted-balanced-mock",
+      "caseId": "legacy-structured-schema-002",
+      "durationMs": 5,
+      "executorId": "mock.legacy_structured_response.v1",
+      "resultClass": "ASSERTION_FAILURE",
+      "runId": "eval.legacy.ai.structured_response.schema_compliance.offline.v1",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "malformed-hosted-balanced-mock",
+      "caseId": "legacy-structured-schema-002",
+      "durationMs": 2,
+      "executorId": "mock.legacy_structured_response.v1",
+      "resultClass": "SCHEMA_ERROR",
+      "runId": "eval.legacy.ai.structured_response.schema_compliance.offline.v1",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "unauthorized-deterministic",
+      "caseId": "legacy-structured-schema-002",
+      "durationMs": 0,
+      "executorId": "mock.legacy_structured_response.v1",
+      "resultClass": "UNAUTHORIZED",
+      "runId": "eval.legacy.ai.structured_response.schema_compliance.offline.v1",
+      "strategy": "DETERMINISTIC_RULES",
+      "timedOut": false
+    },
+    {
+      "candidateId": "valid-hosted-balanced-mock",
+      "caseId": "legacy-structured-schema-002",
+      "durationMs": 5,
+      "executorId": "mock.legacy_structured_response.v1",
+      "resultClass": "SUCCESS",
+      "runId": "eval.legacy.ai.structured_response.schema_compliance.offline.v1",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "error-hosted-balanced-mock",
+      "caseId": "legacy-structured-schema-003",
+      "durationMs": 3,
+      "executorId": "mock.legacy_structured_response.v1",
+      "resultClass": "EXECUTOR_ERROR",
+      "runId": "eval.legacy.ai.structured_response.schema_compliance.offline.v1",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "invalid-hosted-balanced-mock",
+      "caseId": "legacy-structured-schema-003",
+      "durationMs": 5,
+      "executorId": "mock.legacy_structured_response.v1",
+      "resultClass": "ASSERTION_FAILURE",
+      "runId": "eval.legacy.ai.structured_response.schema_compliance.offline.v1",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "malformed-hosted-balanced-mock",
+      "caseId": "legacy-structured-schema-003",
+      "durationMs": 2,
+      "executorId": "mock.legacy_structured_response.v1",
+      "resultClass": "SCHEMA_ERROR",
+      "runId": "eval.legacy.ai.structured_response.schema_compliance.offline.v1",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "unauthorized-deterministic",
+      "caseId": "legacy-structured-schema-003",
+      "durationMs": 0,
+      "executorId": "mock.legacy_structured_response.v1",
+      "resultClass": "UNAUTHORIZED",
+      "runId": "eval.legacy.ai.structured_response.schema_compliance.offline.v1",
+      "strategy": "DETERMINISTIC_RULES",
+      "timedOut": false
+    },
+    {
+      "candidateId": "valid-hosted-balanced-mock",
+      "caseId": "legacy-structured-schema-003",
+      "durationMs": 5,
+      "executorId": "mock.legacy_structured_response.v1",
+      "resultClass": "SUCCESS",
+      "runId": "eval.legacy.ai.structured_response.schema_compliance.offline.v1",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "error-hosted-balanced-mock",
+      "caseId": "legacy-structured-schema-004",
+      "durationMs": 3,
+      "executorId": "mock.legacy_structured_response.v1",
+      "resultClass": "EXECUTOR_ERROR",
+      "runId": "eval.legacy.ai.structured_response.schema_compliance.offline.v1",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "invalid-hosted-balanced-mock",
+      "caseId": "legacy-structured-schema-004",
+      "durationMs": 5,
+      "executorId": "mock.legacy_structured_response.v1",
+      "resultClass": "ASSERTION_FAILURE",
+      "runId": "eval.legacy.ai.structured_response.schema_compliance.offline.v1",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "malformed-hosted-balanced-mock",
+      "caseId": "legacy-structured-schema-004",
+      "durationMs": 2,
+      "executorId": "mock.legacy_structured_response.v1",
+      "resultClass": "SCHEMA_ERROR",
+      "runId": "eval.legacy.ai.structured_response.schema_compliance.offline.v1",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "unauthorized-deterministic",
+      "caseId": "legacy-structured-schema-004",
+      "durationMs": 0,
+      "executorId": "mock.legacy_structured_response.v1",
+      "resultClass": "UNAUTHORIZED",
+      "runId": "eval.legacy.ai.structured_response.schema_compliance.offline.v1",
+      "strategy": "DETERMINISTIC_RULES",
+      "timedOut": false
+    },
+    {
+      "candidateId": "valid-hosted-balanced-mock",
+      "caseId": "legacy-structured-schema-004",
+      "durationMs": 5,
+      "executorId": "mock.legacy_structured_response.v1",
+      "resultClass": "SUCCESS",
+      "runId": "eval.legacy.ai.structured_response.schema_compliance.offline.v1",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "invalid-hosted-balanced-mock",
+      "caseId": "supervisor-safety-language-001",
+      "durationMs": 5,
+      "executorId": "mock.supervisor_daily_report.v1",
+      "resultClass": "SCHEMA_ERROR",
+      "runId": "eval.supervisor.daily_operations_report.safety_language.offline.v1",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "partial-hosted-balanced-mock",
+      "caseId": "supervisor-safety-language-001",
+      "durationMs": 5,
+      "executorId": "mock.supervisor_daily_report.v1",
+      "resultClass": "ASSERTION_FAILURE",
+      "runId": "eval.supervisor.daily_operations_report.safety_language.offline.v1",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "timeout-hosted-balanced-mock",
+      "caseId": "supervisor-safety-language-001",
+      "durationMs": 25,
+      "executorId": "mock.supervisor_daily_report.v1",
+      "resultClass": "TIMEOUT",
+      "runId": "eval.supervisor.daily_operations_report.safety_language.offline.v1",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "timedOut": true
+    },
+    {
+      "candidateId": "unauthorized-deterministic",
+      "caseId": "supervisor-safety-language-001",
+      "durationMs": 0,
+      "executorId": "mock.supervisor_daily_report.v1",
+      "resultClass": "UNAUTHORIZED",
+      "runId": "eval.supervisor.daily_operations_report.safety_language.offline.v1",
+      "strategy": "DETERMINISTIC_RULES",
+      "timedOut": false
+    },
+    {
+      "candidateId": "valid-hosted-balanced-mock",
+      "caseId": "supervisor-safety-language-001",
+      "durationMs": 5,
+      "executorId": "mock.supervisor_daily_report.v1",
+      "resultClass": "ASSERTION_FAILURE",
+      "runId": "eval.supervisor.daily_operations_report.safety_language.offline.v1",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "invalid-hosted-balanced-mock",
+      "caseId": "supervisor-safety-language-002",
+      "durationMs": 5,
+      "executorId": "mock.supervisor_daily_report.v1",
+      "resultClass": "SCHEMA_ERROR",
+      "runId": "eval.supervisor.daily_operations_report.safety_language.offline.v1",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "partial-hosted-balanced-mock",
+      "caseId": "supervisor-safety-language-002",
+      "durationMs": 5,
+      "executorId": "mock.supervisor_daily_report.v1",
+      "resultClass": "PARTIAL_OUTPUT",
+      "runId": "eval.supervisor.daily_operations_report.safety_language.offline.v1",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "timeout-hosted-balanced-mock",
+      "caseId": "supervisor-safety-language-002",
+      "durationMs": 25,
+      "executorId": "mock.supervisor_daily_report.v1",
+      "resultClass": "TIMEOUT",
+      "runId": "eval.supervisor.daily_operations_report.safety_language.offline.v1",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "timedOut": true
+    },
+    {
+      "candidateId": "unauthorized-deterministic",
+      "caseId": "supervisor-safety-language-002",
+      "durationMs": 0,
+      "executorId": "mock.supervisor_daily_report.v1",
+      "resultClass": "UNAUTHORIZED",
+      "runId": "eval.supervisor.daily_operations_report.safety_language.offline.v1",
+      "strategy": "DETERMINISTIC_RULES",
+      "timedOut": false
+    },
+    {
+      "candidateId": "valid-hosted-balanced-mock",
+      "caseId": "supervisor-safety-language-002",
+      "durationMs": 5,
+      "executorId": "mock.supervisor_daily_report.v1",
+      "resultClass": "SUCCESS",
+      "runId": "eval.supervisor.daily_operations_report.safety_language.offline.v1",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "invalid-hosted-balanced-mock",
+      "caseId": "supervisor-safety-language-003",
+      "durationMs": 5,
+      "executorId": "mock.supervisor_daily_report.v1",
+      "resultClass": "SCHEMA_ERROR",
+      "runId": "eval.supervisor.daily_operations_report.safety_language.offline.v1",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "partial-hosted-balanced-mock",
+      "caseId": "supervisor-safety-language-003",
+      "durationMs": 5,
+      "executorId": "mock.supervisor_daily_report.v1",
+      "resultClass": "PARTIAL_OUTPUT",
+      "runId": "eval.supervisor.daily_operations_report.safety_language.offline.v1",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "timeout-hosted-balanced-mock",
+      "caseId": "supervisor-safety-language-003",
+      "durationMs": 25,
+      "executorId": "mock.supervisor_daily_report.v1",
+      "resultClass": "TIMEOUT",
+      "runId": "eval.supervisor.daily_operations_report.safety_language.offline.v1",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "timedOut": true
+    },
+    {
+      "candidateId": "unauthorized-deterministic",
+      "caseId": "supervisor-safety-language-003",
+      "durationMs": 0,
+      "executorId": "mock.supervisor_daily_report.v1",
+      "resultClass": "UNAUTHORIZED",
+      "runId": "eval.supervisor.daily_operations_report.safety_language.offline.v1",
+      "strategy": "DETERMINISTIC_RULES",
+      "timedOut": false
+    },
+    {
+      "candidateId": "valid-hosted-balanced-mock",
+      "caseId": "supervisor-safety-language-003",
+      "durationMs": 5,
+      "executorId": "mock.supervisor_daily_report.v1",
+      "resultClass": "SUCCESS",
+      "runId": "eval.supervisor.daily_operations_report.safety_language.offline.v1",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "invalid-hosted-balanced-mock",
+      "caseId": "supervisor-safety-language-004",
+      "durationMs": 5,
+      "executorId": "mock.supervisor_daily_report.v1",
+      "resultClass": "SCHEMA_ERROR",
+      "runId": "eval.supervisor.daily_operations_report.safety_language.offline.v1",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "partial-hosted-balanced-mock",
+      "caseId": "supervisor-safety-language-004",
+      "durationMs": 5,
+      "executorId": "mock.supervisor_daily_report.v1",
+      "resultClass": "POLICY_BLOCKED",
+      "runId": "eval.supervisor.daily_operations_report.safety_language.offline.v1",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "timeout-hosted-balanced-mock",
+      "caseId": "supervisor-safety-language-004",
+      "durationMs": 25,
+      "executorId": "mock.supervisor_daily_report.v1",
+      "resultClass": "TIMEOUT",
+      "runId": "eval.supervisor.daily_operations_report.safety_language.offline.v1",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "timedOut": true
+    },
+    {
+      "candidateId": "unauthorized-deterministic",
+      "caseId": "supervisor-safety-language-004",
+      "durationMs": 0,
+      "executorId": "mock.supervisor_daily_report.v1",
+      "resultClass": "UNAUTHORIZED",
+      "runId": "eval.supervisor.daily_operations_report.safety_language.offline.v1",
+      "strategy": "DETERMINISTIC_RULES",
+      "timedOut": false
+    },
+    {
+      "candidateId": "valid-hosted-balanced-mock",
+      "caseId": "supervisor-safety-language-004",
+      "durationMs": 5,
+      "executorId": "mock.supervisor_daily_report.v1",
+      "resultClass": "POLICY_BLOCKED",
+      "runId": "eval.supervisor.daily_operations_report.safety_language.offline.v1",
+      "strategy": "HOSTED_BALANCED_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "invalid-deterministic",
+      "caseId": "text-cleanup-core-001",
+      "durationMs": 5,
+      "executorId": "mock.deterministic_text_cleanup.v1",
+      "resultClass": "SCHEMA_ERROR",
+      "runId": "eval.text.cleanup.core.offline.v1",
+      "strategy": "DETERMINISTIC_RULES",
+      "timedOut": false
+    },
+    {
+      "candidateId": "timeout-deterministic",
+      "caseId": "text-cleanup-core-001",
+      "durationMs": 25,
+      "executorId": "mock.deterministic_text_cleanup.v1",
+      "resultClass": "TIMEOUT",
+      "runId": "eval.text.cleanup.core.offline.v1",
+      "strategy": "DETERMINISTIC_RULES",
+      "timedOut": true
+    },
+    {
+      "candidateId": "unauthorized-hosted-economy",
+      "caseId": "text-cleanup-core-001",
+      "durationMs": 0,
+      "executorId": "mock.deterministic_text_cleanup.v1",
+      "resultClass": "UNAUTHORIZED",
+      "runId": "eval.text.cleanup.core.offline.v1",
+      "strategy": "HOSTED_ECONOMY_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "valid-deterministic",
+      "caseId": "text-cleanup-core-001",
+      "durationMs": 5,
+      "executorId": "mock.deterministic_text_cleanup.v1",
+      "resultClass": "ASSERTION_FAILURE",
+      "runId": "eval.text.cleanup.core.offline.v1",
+      "strategy": "DETERMINISTIC_RULES",
+      "timedOut": false
+    },
+    {
+      "candidateId": "invalid-deterministic",
+      "caseId": "text-cleanup-core-002",
+      "durationMs": 5,
+      "executorId": "mock.deterministic_text_cleanup.v1",
+      "resultClass": "SCHEMA_ERROR",
+      "runId": "eval.text.cleanup.core.offline.v1",
+      "strategy": "DETERMINISTIC_RULES",
+      "timedOut": false
+    },
+    {
+      "candidateId": "timeout-deterministic",
+      "caseId": "text-cleanup-core-002",
+      "durationMs": 25,
+      "executorId": "mock.deterministic_text_cleanup.v1",
+      "resultClass": "TIMEOUT",
+      "runId": "eval.text.cleanup.core.offline.v1",
+      "strategy": "DETERMINISTIC_RULES",
+      "timedOut": true
+    },
+    {
+      "candidateId": "unauthorized-hosted-economy",
+      "caseId": "text-cleanup-core-002",
+      "durationMs": 0,
+      "executorId": "mock.deterministic_text_cleanup.v1",
+      "resultClass": "UNAUTHORIZED",
+      "runId": "eval.text.cleanup.core.offline.v1",
+      "strategy": "HOSTED_ECONOMY_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "valid-deterministic",
+      "caseId": "text-cleanup-core-002",
+      "durationMs": 5,
+      "executorId": "mock.deterministic_text_cleanup.v1",
+      "resultClass": "ASSERTION_FAILURE",
+      "runId": "eval.text.cleanup.core.offline.v1",
+      "strategy": "DETERMINISTIC_RULES",
+      "timedOut": false
+    },
+    {
+      "candidateId": "invalid-deterministic",
+      "caseId": "text-cleanup-core-003",
+      "durationMs": 5,
+      "executorId": "mock.deterministic_text_cleanup.v1",
+      "resultClass": "SCHEMA_ERROR",
+      "runId": "eval.text.cleanup.core.offline.v1",
+      "strategy": "DETERMINISTIC_RULES",
+      "timedOut": false
+    },
+    {
+      "candidateId": "timeout-deterministic",
+      "caseId": "text-cleanup-core-003",
+      "durationMs": 25,
+      "executorId": "mock.deterministic_text_cleanup.v1",
+      "resultClass": "TIMEOUT",
+      "runId": "eval.text.cleanup.core.offline.v1",
+      "strategy": "DETERMINISTIC_RULES",
+      "timedOut": true
+    },
+    {
+      "candidateId": "unauthorized-hosted-economy",
+      "caseId": "text-cleanup-core-003",
+      "durationMs": 0,
+      "executorId": "mock.deterministic_text_cleanup.v1",
+      "resultClass": "UNAUTHORIZED",
+      "runId": "eval.text.cleanup.core.offline.v1",
+      "strategy": "HOSTED_ECONOMY_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "valid-deterministic",
+      "caseId": "text-cleanup-core-003",
+      "durationMs": 5,
+      "executorId": "mock.deterministic_text_cleanup.v1",
+      "resultClass": "SCHEMA_ERROR",
+      "runId": "eval.text.cleanup.core.offline.v1",
+      "strategy": "DETERMINISTIC_RULES",
+      "timedOut": false
+    },
+    {
+      "candidateId": "invalid-deterministic",
+      "caseId": "text-cleanup-core-004",
+      "durationMs": 5,
+      "executorId": "mock.deterministic_text_cleanup.v1",
+      "resultClass": "SCHEMA_ERROR",
+      "runId": "eval.text.cleanup.core.offline.v1",
+      "strategy": "DETERMINISTIC_RULES",
+      "timedOut": false
+    },
+    {
+      "candidateId": "timeout-deterministic",
+      "caseId": "text-cleanup-core-004",
+      "durationMs": 25,
+      "executorId": "mock.deterministic_text_cleanup.v1",
+      "resultClass": "TIMEOUT",
+      "runId": "eval.text.cleanup.core.offline.v1",
+      "strategy": "DETERMINISTIC_RULES",
+      "timedOut": true
+    },
+    {
+      "candidateId": "unauthorized-hosted-economy",
+      "caseId": "text-cleanup-core-004",
+      "durationMs": 0,
+      "executorId": "mock.deterministic_text_cleanup.v1",
+      "resultClass": "UNAUTHORIZED",
+      "runId": "eval.text.cleanup.core.offline.v1",
+      "strategy": "HOSTED_ECONOMY_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "valid-deterministic",
+      "caseId": "text-cleanup-core-004",
+      "durationMs": 5,
+      "executorId": "mock.deterministic_text_cleanup.v1",
+      "resultClass": "ASSERTION_FAILURE",
+      "runId": "eval.text.cleanup.core.offline.v1",
+      "strategy": "DETERMINISTIC_RULES",
+      "timedOut": false
+    },
+    {
+      "candidateId": "invalid-deterministic",
+      "caseId": "text-cleanup-core-005",
+      "durationMs": 5,
+      "executorId": "mock.deterministic_text_cleanup.v1",
+      "resultClass": "SCHEMA_ERROR",
+      "runId": "eval.text.cleanup.core.offline.v1",
+      "strategy": "DETERMINISTIC_RULES",
+      "timedOut": false
+    },
+    {
+      "candidateId": "timeout-deterministic",
+      "caseId": "text-cleanup-core-005",
+      "durationMs": 25,
+      "executorId": "mock.deterministic_text_cleanup.v1",
+      "resultClass": "TIMEOUT",
+      "runId": "eval.text.cleanup.core.offline.v1",
+      "strategy": "DETERMINISTIC_RULES",
+      "timedOut": true
+    },
+    {
+      "candidateId": "unauthorized-hosted-economy",
+      "caseId": "text-cleanup-core-005",
+      "durationMs": 0,
+      "executorId": "mock.deterministic_text_cleanup.v1",
+      "resultClass": "UNAUTHORIZED",
+      "runId": "eval.text.cleanup.core.offline.v1",
+      "strategy": "HOSTED_ECONOMY_MODEL",
+      "timedOut": false
+    },
+    {
+      "candidateId": "valid-deterministic",
+      "caseId": "text-cleanup-core-005",
+      "durationMs": 5,
+      "executorId": "mock.deterministic_text_cleanup.v1",
+      "resultClass": "SCHEMA_ERROR",
+      "runId": "eval.text.cleanup.core.offline.v1",
+      "strategy": "DETERMINISTIC_RULES",
+      "timedOut": false
+    }
+  ]
+}

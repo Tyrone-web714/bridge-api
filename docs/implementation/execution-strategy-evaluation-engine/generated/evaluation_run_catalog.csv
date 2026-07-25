@@ -1,0 +1,5 @@
+# Generated from bridge-api/evaluations. Do not hand-edit.
+runId,capabilityId,datasetId,datasetVersion,environment,offlineOnly,productionDataUsed,replayable,resultHash
+eval.legacy.ai.structured_response.schema_compliance.offline.v1,legacy.ai.structured_response,legacy.ai.structured_response.benchmark.schema_compliance,0.1.0,CI,true,false,true,3822f9c43d0007af92a2d427704730711582154c82600cec03f305856e2ec6cc
+eval.supervisor.daily_operations_report.safety_language.offline.v1,supervisor.daily_operations_report,supervisor.daily_operations_report.benchmark.safety_language,0.1.0,CI,true,false,true,b38a39588e57e3e3510716d529da44b5db15646eb50d15f5fab61697171297a6
+eval.text.cleanup.core.offline.v1,text.cleanup,text.cleanup.benchmark.core,0.1.0,CI,true,false,true,356bdb4c4fde8f1b3b08728d86b1030d6f12d5783dba9bb44e2504d1d387ce8a
