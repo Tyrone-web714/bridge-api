@@ -2,9 +2,11 @@
 
 ## Current Status
 
-PILOT BLOCKER - ALERT DELIVERY NOT VERIFIED.
+PARTIALLY VERIFIED / OPERATIONAL ENHANCEMENT.
 
-Source and operational documentation identify the checks needed for private media shutdown, and production `/health` and `/ready` both return HTTP 200. Render is configured to health-check `/health`, and deployment failure notification delivery is now verified by owner evidence from the failed `b449ee2` production deploy on July 19, 2026. Render workspace email notification destination is verified, and Render notifications are set to ALL NOTIFICATIONS. Database observability is verified through available Render metrics. Database metric-threshold alert delivery, external uptime alerts, and post-shutdown media-route monitoring remain unverified or deferred.
+Source and operational documentation identify the checks needed for private media shutdown, and production `/health` and `/ready` both return HTTP 200. Render is configured to health-check `/health`, and deployment failure notification delivery is verified by owner evidence from the failed `b449ee2` production deploy on July 19, 2026. Render workspace email notification destination is verified, and Render notifications are set to ALL NOTIFICATIONS. Database observability is verified through available Render metrics. Database metric-threshold alert delivery, external uptime alerts, and post-shutdown media-route monitoring remain unverified or deferred.
+
+These gaps are not remaining blockers for the approved private R2 shutdown track after private-media remediation and bounded metadata cleanup. They remain production-scale operational enhancements.
 
 ## Required Signals
 
@@ -18,11 +20,11 @@ Monitor at minimum:
 - Cloudflare R2 access-setting changes;
 - unexpected direct public URL creation after writer remediation.
 
-## Required Follow-up
+## Recommended Follow-up
 
-Before public R2 shutdown, verify that operational alerts are delivered to the expected owner channel and that a rollback owner is available during the shutdown window.
+After public R2 shutdown, continue improving operational alert delivery to the expected owner channel and keep a rollback owner available during any future storage configuration changes.
 
-## Owner Actions Required
+## Owner Actions Recommended
 
 1. In Render, open the workspace that owns `truck-safe-routing-api`.
 2. Open **Integrations** then **Notifications**.
@@ -44,7 +46,7 @@ Before public R2 shutdown, verify that operational alerts are delivered to the e
 | Owner/operator alert delivery for database failure | Database observability verified; metric-threshold delivery not independently verified |
 | External uptime monitor for `/health` | DEFERRED for later setup |
 | External uptime monitor for `/ready` | DEFERRED for later setup |
-| `/api/media` error-rate alerting | Required before public R2 shutdown |
+| `/api/media` error-rate alerting | Recommended post-shutdown operational enhancement |
 | CPU/memory/resource threshold alerts | PRODUCTION SCALE REQUIREMENT |
 | Centralized log aggregation and dashboards | PRODUCTION SCALE REQUIREMENT |
 | Formal on-call schedule | FUTURE ENHANCEMENT |

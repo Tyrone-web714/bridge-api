@@ -2,23 +2,26 @@
 
 ## Current Shutdown Classification
 
-BLOCKED FOR ACTUAL SHUTDOWN.
+READY FOR OWNER-APPROVED SHUTDOWN WINDOW.
 
-Public R2 should not be disabled until the remaining metadata/writer and lifecycle-reference blockers are closed or explicitly accepted.
+Public R2 must not be disabled until the owner gives final explicit approval for the Cloudflare R2 Public Development URL shutdown. Legacy metadata cleanup, writer remediation, lifecycle reconciliation, authenticated media validation, and unauthenticated denial validation are complete for this shutdown track.
 
-## Exact Shutdown Action Proposed Later
+## Exact Shutdown Action
 
-After blockers are closed, the proposed action is to disable public `r2.dev` or equivalent public development URL access for the Truck-Safe Routing Cloudflare R2 media bucket. This action must not delete, move, copy, or rewrite any R2 object.
+Disable public `r2.dev` or equivalent Public Development URL access for the Truck-Safe Routing Cloudflare R2 media bucket. This action must not delete, move, copy, rewrite, rename, reclassify, or otherwise mutate any R2 object.
 
 ## Preconditions
 
-1. Existing `legacyPublicUrl` / `r2.dev` metadata is removed, quarantined, or formally accepted as inert through an approved metadata plan.
-2. The S3/R2 writer no longer creates new public URL metadata for Organization-private media.
-3. `PHOTO_STORAGE_PUBLIC_BASE_URL` is no longer required for private S3/R2 media operation, or it is retained only as an inert non-access dependency with owner approval.
-4. Read-only production metadata assessment reports no active public current URLs and no unapproved public URL compatibility references.
+1. Owner gives final explicit approval for the shutdown window.
+2. Existing obsolete `legacyPublicUrl` / `r2.dev` compatibility metadata has been removed by the bounded production cleanup.
+3. The S3/R2 writer no longer creates new public URL metadata for Organization-private media.
+4. `PHOTO_STORAGE_PUBLIC_BASE_URL` is no longer required for private S3/R2 media operation; if present, it is inert legacy or separately governed sanitized-public configuration for this code path.
 5. Lifecycle-object-reference reconciliation explains the 20 references and confirms no duplicate corruption requiring cleanup before shutdown.
-6. Credentialed admin media walkthrough has passed for Delivery Notes; repeat mobile/media smoke after deployment and metadata cleanup if required by owner.
-7. Monitoring and rollback procedures are ready.
+6. Credentialed admin media walkthrough has passed for Delivery Notes.
+7. Authenticated private media delivery through `/api/media/:mediaId` is verified.
+8. Unauthenticated media requests return HTTP 401.
+9. Rollback owner/operator has Cloudflare access and is available during the shutdown window.
+10. Baseline `/health`, `/ready`, authenticated media, unauthenticated media denial, mobile media, and admin media checks are ready to run.
 
 ## Shutdown Window Steps
 
@@ -33,13 +36,20 @@ After blockers are closed, the proposed action is to disable public `r2.dev` or 
 9. Verify mobile delivery-note and Account Knowledge media still render.
 10. Verify admin Delivery Notes media still renders.
 11. Monitor logs for `/api/media` failures.
+12. Record shutdown timestamp, validation results, and rollback readiness in the final completion report.
 
 ## Stop Conditions
 
 Stop and rollback if:
 
+- `/health` or `/ready` fails;
 - `/api/media` returns elevated 5xx responses;
 - authorized media reads fail;
+- unauthenticated media requests do not return HTTP 401;
 - mobile or admin cannot display private media;
 - unexpected public object references are still required;
 - production error rate increases beyond the accepted threshold.
+
+## Success Criteria
+
+The shutdown is successful when public R2 development URL access is disabled, authenticated TSR media delivery still works, unauthenticated access remains denied, no object or database mutation occurs, and the final production smoke validation is documented.

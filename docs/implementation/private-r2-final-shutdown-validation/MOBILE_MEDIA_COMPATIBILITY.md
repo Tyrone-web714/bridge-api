@@ -1,8 +1,8 @@
-﻿# Mobile Media Compatibility
+# Mobile Media Compatibility
 
 ## Result
 
-Mobile private-media compatibility is source-verified and previously physically validated for delivery-note/account media workflows, but final public R2 shutdown remains blocked by backend metadata dependencies rather than mobile display behavior.
+Mobile private-media compatibility is source-verified and physically validated for delivery-note/account media workflows. Final public R2 shutdown is no longer blocked by mobile display behavior or legacy metadata cleanup; it is awaiting owner-approved Cloudflare R2 Public Development URL shutdown and final production smoke validation.
 
 ## Active Mobile Paths
 
@@ -16,15 +16,15 @@ Mobile private-media compatibility is source-verified and previously physically 
 
 ## Conclusion
 
-Mobile display does not require direct public R2 URLs for the current private delivery-note media workflow. The remaining shutdown blocker is backend metadata generation/preservation, not a mobile image-rendering dependency.
+Mobile display does not require direct public R2 URLs for the current private delivery-note media workflow. Backend writer remediation is complete, obsolete legacy public metadata cleanup is complete, and the remaining mobile obligation is post-shutdown smoke validation.
 
-## Remaining Mobile Follow-up
+## Final Smoke Validation
 
-Before actual public R2 shutdown, repeat a physical phone test after metadata writer remediation and cleanup:
+After owner-approved public R2 shutdown:
 
 1. Open an existing delivery note with migrated media.
 2. Verify authenticated photos load.
-3. Capture a new in-app camera photo.
-4. Save and verify the new media loads through `/api/media`.
-5. Confirm no new public URL metadata is persisted.
+3. Capture a new in-app camera photo only if the owner approves an upload smoke step during the shutdown window.
+4. Save and verify any new owner-approved test media loads through `/api/media`.
+5. Confirm no new public URL metadata is persisted if an upload smoke step is performed.
 6. Force close and reopen the app and verify media still loads.
