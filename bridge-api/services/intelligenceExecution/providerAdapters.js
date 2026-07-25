@@ -3,7 +3,8 @@ const { MODEL_CLASSES } = require('./constants');
 const { createError, normalizeProviderError } = require('./errors');
 
 const HOSTED_STRUCTURED_CAPABILITIES = Object.freeze(new Set([
-  'legacy.ai.structured_response'
+  'legacy.ai.structured_response',
+  'supervisor.daily_operations_report'
 ]));
 const OPENAI_LEGACY_MODEL_MAPPING_VERSION = 'openai.legacy-model-mapping.v1';
 

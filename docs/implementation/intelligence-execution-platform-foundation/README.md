@@ -26,3 +26,7 @@ No deployment, production migration execution, production database write, provid
 ## AI-IEP-002 Activation Note
 
 AI-IEP-002 activates hosted execution only for the migrated legacy `/api/ai` structured-response capability `legacy.ai.structured_response`. The broader foundation remains conservative: other hosted capabilities remain disabled or deferred, additional providers are not enabled, and model optimization is deferred.
+
+## AI-IEP-003 Activation Note
+
+AI-IEP-003 activates hosted execution for `supervisor.daily_operations_report` only, migrates scheduled supervisor intelligence narrative generation behind the Intelligence Execution Platform, and adds `npm run test:ai-architecture` to prevent active route/service provider bypass. The full Enterprise AI platform remains incomplete and undeployed by this local work.

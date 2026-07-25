@@ -21,6 +21,7 @@ function getStatus() {
       legacyCapability: LEGACY_AI_CAPABILITY,
       hostedProviderConfigured: provider.configured,
       hostedCapabilityEnabled: true,
+      supervisorCapabilitiesEnabled: ['supervisor.daily_operations_report'],
       policy: 'capability-specific',
       pricingConfigured: provider.costTrackingConfigured,
       persistenceMigrationApplied: 'not_verified',

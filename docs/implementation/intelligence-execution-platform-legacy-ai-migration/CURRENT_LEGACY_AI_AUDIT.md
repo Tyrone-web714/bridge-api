@@ -47,3 +47,7 @@ Direct provider call inventory:
 - Test-only use: `scripts/check-ai-contracts.cjs` imports and mocks `aiProvider`.
 - Separate later migration: `services/supervisorIntelligence.js` still imports `aiProvider`; it is not part of the active `/api/ai` compatibility route migration.
 - UI/status references: dashboard source still displays OpenAI/provider labels for legacy compatibility.
+
+## AI-IEP-003 Reconciliation Note
+
+The AI-IEP-002 audit classified `services/supervisorIntelligence.js` as a later direct-provider migration. AI-IEP-003 completed that migration; the service now uses `services/intelligenceExecution/supervisorAiAdapter.js` and no longer imports or invokes `aiProvider` directly.

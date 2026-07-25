@@ -22,7 +22,7 @@ const COST_ORDER = Object.freeze([
 function selectedProviderAdapterFor(strategy, capability) {
   if (
     strategy === EXECUTION_STRATEGIES.HOSTED_BALANCED_MODEL
-    && capability.id === 'legacy.ai.structured_response'
+    && ['legacy.ai.structured_response', 'supervisor.daily_operations_report'].includes(capability.id)
   ) {
     return 'openai';
   }
@@ -32,7 +32,7 @@ function selectedProviderAdapterFor(strategy, capability) {
 function selectedModelClassFor(strategy, capability) {
   if (
     strategy === EXECUTION_STRATEGIES.HOSTED_BALANCED_MODEL
-    && capability.id === 'legacy.ai.structured_response'
+    && ['legacy.ai.structured_response', 'supervisor.daily_operations_report'].includes(capability.id)
   ) {
     return 'HOSTED_BALANCED';
   }

@@ -14,3 +14,7 @@ Persisted per-Organization policies are deferred. The resolver boundary is imple
 ## AI-IEP-002 Hosted Policy Exception
 
 Hosted inference remains denied by default. AI-IEP-002 adds a capability-specific exception for `legacy.ai.structured_response` when trusted organization context and `intelligence.view` permission are present. Approved provider is `openai`, approved model class is `HOSTED_BALANCED`, premium models remain disabled, and pricing remains unknown unless existing OpenAI cost-rate environment variables are configured.
+
+## AI-IEP-003 Supervisor Policy Addition
+
+The policy engine now permits hosted execution for `supervisor.daily_operations_report` only for Supervisor, Organization Admin, and Platform Admin roles. Non-supervisor roles with generic `intelligence.view` are denied by `SUPERVISOR_CAPABILITY_ROLE_DENIED`. Outputs are advisory and require human interpretation for material action.

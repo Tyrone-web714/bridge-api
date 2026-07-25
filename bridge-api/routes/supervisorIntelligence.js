@@ -1,6 +1,7 @@
 const express = require('express');
 const adminAuth = require('../services/adminAuth');
 const repositories = require('../db/repositories');
+const authorization = require('../middleware/authorization');
 const supervisorIntelligence = require('../services/supervisorIntelligence');
 
 const router = express.Router();
@@ -256,7 +257,9 @@ router.post('/schedules/:id/run', requireAdminSession, async (req, res) => {
     const schedule = schedules.find((candidate) => candidate.id === req.params.id);
     if (!schedule) return res.status(404).json({ ok: false, error: 'Scheduled report definition not found.' });
     const result = await supervisorIntelligence.runSchedule(schedule, {
-      routeDate: cleanText(req.body?.routeDate, 40) || undefined
+      routeDate: cleanText(req.body?.routeDate, 40) || undefined,
+      authContext: req.authContext || authorization.buildAuthContext(req),
+      req
     });
     return res.json({ ok: true, ...result });
   } catch (error) {

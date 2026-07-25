@@ -1,31 +1,7 @@
 const repositories = require('../db/repositories');
 const predictionEngine = require('./predictionEngine');
-const aiProvider = require('./aiProvider');
+const supervisorAiAdapter = require('./intelligenceExecution/supervisorAiAdapter');
 
-const REPORT_SCHEMA = {
-  type: 'object',
-  additionalProperties: false,
-  properties: {
-    title: { type: 'string' },
-    summary: { type: 'string' },
-    priorities: { type: 'array', items: { type: 'string' }, maxItems: 8 },
-    routeRisks: { type: 'array', items: { type: 'string' }, maxItems: 8 },
-    deliveryRisks: { type: 'array', items: { type: 'string' }, maxItems: 8 },
-    productSignals: { type: 'array', items: { type: 'string' }, maxItems: 8 },
-    recommendedActions: { type: 'array', items: { type: 'string' }, maxItems: 8 },
-    missingData: { type: 'array', items: { type: 'string' }, maxItems: 8 }
-  },
-  required: [
-    'title',
-    'summary',
-    'priorities',
-    'routeRisks',
-    'deliveryRisks',
-    'productSignals',
-    'recommendedActions',
-    'missingData'
-  ]
-};
 
 let timer = null;
 let tickInProgress = false;
@@ -200,23 +176,15 @@ async function createAlerts(schedule, sourceContext) {
   return saved;
 }
 
-async function createAiNarrative(sourceContext, fallback) {
-  if (!aiProvider.isConfigured()) return { content: fallback, generatedBy: 'rules_engine' };
+async function createAiNarrative(schedule, sourceContext, fallback, options = {}) {
   try {
-    const result = await aiProvider.createStructuredResponse({
-      endpoint: 'scheduled-supervisor-brief',
-      instructions: [
-        'You are generating a scheduled supervisor logistics brief for Truck-Safe Routing.',
-        'Use only the source-of-truth predictions and exceptions supplied.',
-        'Do not invent traffic, weather, inventory, customer behavior, or driver behavior.',
-        'Treat deterministic predictions as calculated facts and preserve uncertainty.',
-        'AI recommends only. Supervisors and backend records remain the source of truth.'
-      ].join('\n'),
-      input: sourceContext,
-      schemaName: 'scheduled_supervisor_intelligence_brief',
-      schema: REPORT_SCHEMA
+    return await supervisorAiAdapter.createDailyReportNarrative({
+      schedule,
+      sourceContext,
+      fallback,
+      authContext: options.authContext,
+      req: options.req
     });
-    return { content: result.parsed, generatedBy: `openai:${result.model}` };
   } catch (error) {
     return {
       content: {
@@ -237,7 +205,10 @@ async function runSchedule(schedule, options = {}) {
   const sourceContext = await buildSourceContext(schedule, routeDate);
   const alerts = await createAlerts(schedule, sourceContext);
   const fallback = deterministicReport(sourceContext);
-  const narrative = await createAiNarrative(sourceContext, fallback);
+  const narrative = await createAiNarrative(schedule, sourceContext, fallback, {
+    authContext: options.authContext,
+    req: options.req
+  });
   const report = await repositories.saveScheduledReport({
     scheduleId: schedule.id,
     reportType: schedule.reportType,

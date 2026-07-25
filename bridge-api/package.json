@@ -7,7 +7,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "test": "npm run test:intelligence-execution && npm run test:ai && npm run test:predictions && npm run test:supervisor-intelligence && npm run test:heatmaps && npm run test:imports && npm run test:delivery-settlement && npm run test:google-maps-compliance && npm run test:multi-tenant && npm run test:auth-rbac && npm run test:api-tenant && npm run test:mobile-tenant && npm run test:shared-safety && npm run test:shared-safety-ui && npm run test:bi-kpi && npm run test:logistics-intelligence && npm run test:fleet-intelligence-scoring && npm run test:data-lifecycle && npm run test:enterprise-identity && npm run test:web-origin && npm run test:private-media && npm run test:private-r2-shutdown && npm run test:legacy-private-media && npm run test:driver-route-notes-photo && npm run test:driver-copilot-auth && npm run test:security && npm run test:dashboard",
+    "test": "npm run test:intelligence-execution && npm run test:ai && npm run test:ai-architecture && npm run test:predictions && npm run test:supervisor-intelligence && npm run test:heatmaps && npm run test:imports && npm run test:delivery-settlement && npm run test:google-maps-compliance && npm run test:multi-tenant && npm run test:auth-rbac && npm run test:api-tenant && npm run test:mobile-tenant && npm run test:shared-safety && npm run test:shared-safety-ui && npm run test:bi-kpi && npm run test:logistics-intelligence && npm run test:fleet-intelligence-scoring && npm run test:data-lifecycle && npm run test:enterprise-identity && npm run test:web-origin && npm run test:private-media && npm run test:private-r2-shutdown && npm run test:legacy-private-media && npm run test:driver-route-notes-photo && npm run test:driver-copilot-auth && npm run test:security && npm run test:dashboard",
     "test:intelligence-execution": "node scripts/check-intelligence-execution-platform.cjs",
     "test:ai": "node scripts/check-ai-contracts.cjs",
     "test:predictions": "node scripts/check-prediction-engine.cjs",
@@ -69,7 +69,8 @@
     "db:queue:locations": "node scripts/queue-location-backfill.cjs",
     "db:process:locations": "node scripts/process-location-backfill-queue.cjs",
     "build:bridges": "node scripts/build-bridges.cjs",
-    "build:zones:sw": "node scripts/build-zones-regions.cjs"
+    "build:zones:sw": "node scripts/build-zones-regions.cjs",
+    "test:ai-architecture": "node scripts/check-ai-provider-boundaries.cjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1048.0",

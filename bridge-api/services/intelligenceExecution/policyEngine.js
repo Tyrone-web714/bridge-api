@@ -3,7 +3,8 @@ const { EXECUTION_STRATEGIES, POLICY_VERSION } = require('./constants');
 const { parseUsdToMicros } = require('./money');
 
 const LEGACY_HOSTED_CAPABILITIES = Object.freeze(new Set([
-  'legacy.ai.structured_response'
+  'legacy.ai.structured_response',
+  'supervisor.daily_operations_report'
 ]));
 
 function resolveOrganizationPolicy(organizationId, request = {}, capability = null) {
@@ -14,6 +15,8 @@ function resolveOrganizationPolicy(organizationId, request = {}, capability = nu
       allowLocalInference: false,
       allowPremiumModels: false,
       approvedProviders: Object.freeze(['openai']),
+      advisoryOnly: capability?.id === 'supervisor.daily_operations_report',
+      humanInterpretationRequired: capability?.id === 'supervisor.daily_operations_report',
       prohibitedProviders: Object.freeze([]),
       retentionMode: 'PROVIDER_STORE_DISABLED',
       regionalRestrictions: Object.freeze([]),
@@ -44,6 +47,13 @@ function evaluatePolicy(request, capability, profile, authContext = {}) {
   }
   if (!rbac.hasPermission(authContext, rbac.PERMISSIONS.INTELLIGENCE_VIEW)) {
     denials.push({ code: 'PERMISSION_DENIED', reason: 'Caller lacks intelligence.view permission.' });
+  }
+  if (capability?.id === 'supervisor.daily_operations_report') {
+    const role = rbac.normalizeRole(authContext.approvedRole || authContext.role);
+    const allowedRoles = [rbac.ROLES.SUPERVISOR, rbac.ROLES.ORGANIZATION_ADMIN, rbac.ROLES.PLATFORM_ADMIN];
+    if (!allowedRoles.includes(role)) {
+      denials.push({ code: 'SUPERVISOR_CAPABILITY_ROLE_DENIED', reason: 'Caller role is not allowed to invoke supervisor intelligence capabilities.' });
+    }
   }
   if (!capability) {
     denials.push({ code: 'CAPABILITY_NOT_FOUND', reason: 'Requested capability is not registered.' });

@@ -12,3 +12,7 @@ Deferred by scope:
 - Migration of `services/supervisorIntelligence.js` direct provider usage.
 - Durable IEP persistence validation against migration 012 in production.
 - Production deployment and smoke validation for AI-IEP-002.
+
+## AI-IEP-003 Reconciliation Note
+
+The AI-IEP-002 deferred item for `services/supervisorIntelligence.js` direct provider usage has been completed by AI-IEP-003. The remaining deferred items in this document still apply unless superseded by later approved work.
