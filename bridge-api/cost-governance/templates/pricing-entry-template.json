@@ -1,0 +1,8 @@
+{
+  "pricingEntryId": "draft.entry",
+  "costComponentType": "REQUEST_FEE",
+  "unitType": "REQUEST",
+  "priceMicroUsd": null,
+  "sourceClass": "UNKNOWN",
+  "productionApplicable": false
+}

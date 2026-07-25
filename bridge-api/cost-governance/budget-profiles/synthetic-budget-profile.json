@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "intelligence.budget.profile.v1",
+  "budgetProfileId": "SYNTHETIC_BUDGET_PROFILE",
+  "displayName": "Synthetic Budget Profile",
+  "description": "Synthetic test-only budget profile for cost governance validation.",
+  "version": "0.1.0",
+  "enabled": true,
+  "testOnly": true,
+  "currency": "USD",
+  "budgetScope": "PLATFORM_TEST",
+  "limitMicroUsd": 1000000,
+  "softLimitMicroUsd": 800000,
+  "hardLimitMicroUsd": 1000000,
+  "warningThresholdPct": 50,
+  "softLimitPct": 80,
+  "blockingThresholdPct": 100,
+  "productionEnforcementAllowed": false,
+  "premiumExecutionAllowed": false,
+  "premiumRequiresExplicitApproval": true,
+  "safetyOverrideAllowed": false,
+  "unknownCostPolicy": "PRESERVE_UNKNOWN",
+  "ownerApprovalRequired": true,
+  "approvedBy": null,
+  "approvedAt": null,
+  "decisionRecordId": null,
+  "integrity": {
+    "contentHash": null,
+    "deterministicOrdering": true,
+    "immutableWhenFrozen": false
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "intelligence.pricing.catalog.v1",
+  "pricingCatalogId": "DRAFT_TEST_PRICING_CATALOG",
+  "version": "0.1.0",
+  "lifecycleState": "DRAFT",
+  "testOnly": true,
+  "productionUseAllowed": false,
+  "currency": "USD",
+  "approvedBy": null,
+  "entries": []
+}

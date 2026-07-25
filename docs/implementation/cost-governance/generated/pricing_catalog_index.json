@@ -1,0 +1,17 @@
+{
+  "generatedFrom": "bridge-api/cost-governance",
+  "generatedArtifact": true,
+  "pricingCatalogs": [
+    {
+      "contentHash": "11cb5e9d407de1e28190e8537564bdbc4a80bbc4242416e503485241b9ceeada",
+      "currency": "USD",
+      "enabled": true,
+      "entryCount": 6,
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "pricingCatalogId": "SYNTHETIC_TEST_PRICING_CATALOG",
+      "productionUseAllowed": false,
+      "testOnly": true,
+      "version": "0.1.0"
+    }
+  ]
+}

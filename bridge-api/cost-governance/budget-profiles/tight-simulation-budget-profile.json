@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "intelligence.budget.profile.v1",
+  "budgetProfileId": "TIGHT_SIMULATION_BUDGET_PROFILE",
+  "displayName": "Tight Simulation Budget Profile",
+  "description": "Synthetic profile designed to exercise warning and simulated-block reporting.",
+  "version": "0.1.0",
+  "enabled": true,
+  "testOnly": true,
+  "currency": "USD",
+  "budgetScope": "CAPABILITY_TEST",
+  "limitMicroUsd": 1000,
+  "softLimitMicroUsd": 750,
+  "hardLimitMicroUsd": 1000,
+  "warningThresholdPct": 25,
+  "softLimitPct": 75,
+  "blockingThresholdPct": 90,
+  "productionEnforcementAllowed": false,
+  "premiumExecutionAllowed": false,
+  "premiumRequiresExplicitApproval": true,
+  "safetyOverrideAllowed": false,
+  "unknownCostPolicy": "FAIL_CLOSED",
+  "ownerApprovalRequired": true,
+  "approvedBy": null,
+  "approvedAt": null,
+  "decisionRecordId": null,
+  "integrity": {
+    "contentHash": null,
+    "deterministicOrdering": true,
+    "immutableWhenFrozen": false
+  }
+}

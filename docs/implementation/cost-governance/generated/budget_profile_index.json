@@ -1,0 +1,26 @@
+{
+  "generatedFrom": "bridge-api/cost-governance",
+  "generatedArtifact": true,
+  "budgetProfiles": [
+    {
+      "blockingThresholdPct": 100,
+      "budgetProfileId": "SYNTHETIC_BUDGET_PROFILE",
+      "contentHash": "02ceb822f7cb44965d64d757a48e35adb9384afddea41c711b119d1853f305f7",
+      "premiumExecutionAllowed": false,
+      "productionEnforcementAllowed": false,
+      "testOnly": true,
+      "version": "0.1.0",
+      "warningThresholdPct": 50
+    },
+    {
+      "blockingThresholdPct": 90,
+      "budgetProfileId": "TIGHT_SIMULATION_BUDGET_PROFILE",
+      "contentHash": "58b9a476d41325eeee9f77c3319e1c3ea4248618811c7c9b95b7cc0efe7c3c00",
+      "premiumExecutionAllowed": false,
+      "productionEnforcementAllowed": false,
+      "testOnly": true,
+      "version": "0.1.0",
+      "warningThresholdPct": 25
+    }
+  ]
+}

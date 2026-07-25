@@ -1,0 +1,33 @@
+{
+  "generatedFrom": "bridge-api/cost-governance",
+  "generatedArtifact": true,
+  "costModelProfiles": [
+    {
+      "contentHash": "2caf7182affac17ea3b3f42d87585f10818fa422d9a33bac98761da0e105c1b3",
+      "costModelProfileId": "BUDGET_SIMULATION_TEST_PROFILE",
+      "fixedCostAllocationMethod": "PROPORTIONAL_WORKLOAD",
+      "productionUseAllowed": false,
+      "testOnly": true,
+      "unknownCostPolicy": "FAIL_CLOSED",
+      "version": "0.1.0"
+    },
+    {
+      "contentHash": "ff7a32ffb9160cdcc085a77fb2831f1974e1c75a68460fe5e77fb59940c6bc99",
+      "costModelProfileId": "DIRECT_EXECUTION_COST_TEST_PROFILE",
+      "fixedCostAllocationMethod": "PER_REQUEST",
+      "productionUseAllowed": false,
+      "testOnly": true,
+      "unknownCostPolicy": "PRESERVE_UNKNOWN",
+      "version": "0.1.0"
+    },
+    {
+      "contentHash": "9cb7f8730744ef13ac82a2644ba177df6238800e21d04b9b6765c3375ce02583",
+      "costModelProfileId": "FULLY_LOADED_TEST_PROFILE",
+      "fixedCostAllocationMethod": "PER_VALID_RESULT",
+      "productionUseAllowed": false,
+      "testOnly": true,
+      "unknownCostPolicy": "PRESERVE_UNKNOWN",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "intelligence.cost.model.profile.v1",
+  "costModelProfileId": "DRAFT_COST_MODEL_PROFILE",
+  "version": "0.1.0",
+  "testOnly": true,
+  "productionUseAllowed": false,
+  "unknownCostPolicy": "FAIL_CLOSED",
+  "roundingMode": "FLOOR_REMAINDER_TRACKED"
+}

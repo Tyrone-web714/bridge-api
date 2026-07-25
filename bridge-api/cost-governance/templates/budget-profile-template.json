@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "intelligence.budget.profile.v1",
+  "budgetProfileId": "DRAFT_BUDGET_PROFILE",
+  "version": "0.1.0",
+  "testOnly": true,
+  "productionEnforcementAllowed": false,
+  "premiumExecutionAllowed": false,
+  "safetyOverrideAllowed": false
+}

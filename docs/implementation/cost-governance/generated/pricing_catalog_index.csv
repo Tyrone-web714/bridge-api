@@ -1,0 +1,3 @@
+# Generated from bridge-api/cost-governance. Do not hand-edit.
+pricingCatalogId,version,lifecycleState,currency,entryCount,productionUseAllowed
+SYNTHETIC_TEST_PRICING_CATALOG,0.1.0,APPROVED_FOR_TEST,USD,6,false

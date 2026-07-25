@@ -1,0 +1,366 @@
+{
+  "generatedFrom": "bridge-api/cost-governance",
+  "generatedArtifact": true,
+  "evidence": [
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.structured_response.initial.offline.v1.score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-001.error-hosted-balanced-mock",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.structured_response.initial.offline.v1.score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-001.invalid-hosted-balanced-mock",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.structured_response.initial.offline.v1.score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-001.malformed-hosted-balanced-mock",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.structured_response.initial.offline.v1.score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-001.unauthorized-deterministic",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.structured_response.initial.offline.v1.score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-001.valid-hosted-balanced-mock",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.structured_response.initial.offline.v1.score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-002.error-hosted-balanced-mock",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.structured_response.initial.offline.v1.score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-002.invalid-hosted-balanced-mock",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.structured_response.initial.offline.v1.score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-002.malformed-hosted-balanced-mock",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.structured_response.initial.offline.v1.score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-002.unauthorized-deterministic",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.structured_response.initial.offline.v1.score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-002.valid-hosted-balanced-mock",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.structured_response.initial.offline.v1.score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-003.error-hosted-balanced-mock",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.structured_response.initial.offline.v1.score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-003.invalid-hosted-balanced-mock",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.structured_response.initial.offline.v1.score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-003.malformed-hosted-balanced-mock",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.structured_response.initial.offline.v1.score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-003.unauthorized-deterministic",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.structured_response.initial.offline.v1.score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-003.valid-hosted-balanced-mock",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.structured_response.initial.offline.v1.score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-004.error-hosted-balanced-mock",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.structured_response.initial.offline.v1.score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-004.invalid-hosted-balanced-mock",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.structured_response.initial.offline.v1.score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-004.malformed-hosted-balanced-mock",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.structured_response.initial.offline.v1.score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-004.unauthorized-deterministic",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.structured_response.initial.offline.v1.score.structured_output.initial.offline.v1.eval.legacy.ai.structured_response.schema_compliance.offline.v1.legacy-structured-schema-004.valid-hosted-balanced-mock",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.supervisor_report.budget_simulation.offline.v1.score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-001.invalid-hosted-balanced-mock",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.supervisor_report.budget_simulation.offline.v1.score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-001.partial-hosted-balanced-mock",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.supervisor_report.budget_simulation.offline.v1.score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-001.timeout-hosted-balanced-mock",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.supervisor_report.budget_simulation.offline.v1.score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-001.unauthorized-deterministic",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.supervisor_report.budget_simulation.offline.v1.score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-001.valid-hosted-balanced-mock",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.supervisor_report.budget_simulation.offline.v1.score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-002.invalid-hosted-balanced-mock",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.supervisor_report.budget_simulation.offline.v1.score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-002.partial-hosted-balanced-mock",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.supervisor_report.budget_simulation.offline.v1.score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-002.timeout-hosted-balanced-mock",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.supervisor_report.budget_simulation.offline.v1.score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-002.unauthorized-deterministic",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.supervisor_report.budget_simulation.offline.v1.score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-002.valid-hosted-balanced-mock",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.supervisor_report.budget_simulation.offline.v1.score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-003.invalid-hosted-balanced-mock",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.supervisor_report.budget_simulation.offline.v1.score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-003.partial-hosted-balanced-mock",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.supervisor_report.budget_simulation.offline.v1.score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-003.timeout-hosted-balanced-mock",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.supervisor_report.budget_simulation.offline.v1.score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-003.unauthorized-deterministic",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.supervisor_report.budget_simulation.offline.v1.score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-003.valid-hosted-balanced-mock",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.supervisor_report.budget_simulation.offline.v1.score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.invalid-hosted-balanced-mock",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.supervisor_report.budget_simulation.offline.v1.score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.partial-hosted-balanced-mock",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.supervisor_report.budget_simulation.offline.v1.score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.timeout-hosted-balanced-mock",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.supervisor_report.budget_simulation.offline.v1.score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.unauthorized-deterministic",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.supervisor_report.budget_simulation.offline.v1.score.safety_critical.supervisor.offline.v1.eval.supervisor.daily_operations_report.safety_language.offline.v1.supervisor-safety-language-004.valid-hosted-balanced-mock",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.text_cleanup.initial.offline.v1.score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-001.invalid-deterministic",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.text_cleanup.initial.offline.v1.score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-001.timeout-deterministic",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.text_cleanup.initial.offline.v1.score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-001.unauthorized-hosted-economy",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.text_cleanup.initial.offline.v1.score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-001.valid-deterministic",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.text_cleanup.initial.offline.v1.score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-002.invalid-deterministic",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.text_cleanup.initial.offline.v1.score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-002.timeout-deterministic",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.text_cleanup.initial.offline.v1.score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-002.unauthorized-hosted-economy",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.text_cleanup.initial.offline.v1.score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-002.valid-deterministic",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.text_cleanup.initial.offline.v1.score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-003.invalid-deterministic",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.text_cleanup.initial.offline.v1.score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-003.timeout-deterministic",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.text_cleanup.initial.offline.v1.score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-003.unauthorized-hosted-economy",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.text_cleanup.initial.offline.v1.score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-003.valid-deterministic",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.text_cleanup.initial.offline.v1.score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-004.invalid-deterministic",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.text_cleanup.initial.offline.v1.score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-004.timeout-deterministic",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.text_cleanup.initial.offline.v1.score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-004.unauthorized-hosted-economy",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.text_cleanup.initial.offline.v1.score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-004.valid-deterministic",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.text_cleanup.initial.offline.v1.score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-005.invalid-deterministic",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.text_cleanup.initial.offline.v1.score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-005.timeout-deterministic",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.text_cleanup.initial.offline.v1.score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-005.unauthorized-hosted-economy",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    },
+    {
+      "costEffectivenessEvidence": "NOT_NUMERICALLY_COMPARABLE",
+      "costRecordId": "cost.text_cleanup.initial.offline.v1.score.structured_output.initial.offline.v1.eval.text.cleanup.core.offline.v1.text-cleanup-core-005.valid-deterministic",
+      "safetyCompliant": true,
+      "thresholdCompliant": false
+    }
+  ]
+}

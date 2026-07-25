@@ -1,0 +1,16 @@
+{
+  "generatedFrom": "bridge-api/cost-governance",
+  "generatedArtifact": true,
+  "premiumRestrictions": [
+    {
+      "budgetProfileId": "SYNTHETIC_BUDGET_PROFILE",
+      "premiumExecutionAllowed": false,
+      "premiumRequiresExplicitApproval": true
+    },
+    {
+      "budgetProfileId": "TIGHT_SIMULATION_BUDGET_PROFILE",
+      "premiumExecutionAllowed": false,
+      "premiumRequiresExplicitApproval": true
+    }
+  ]
+}

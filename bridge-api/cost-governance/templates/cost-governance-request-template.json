@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "intelligence.cost.governance.request.v1",
+  "costGovernanceRequestId": "cost.draft.offline.v1",
+  "version": "0.1.0",
+  "dryRun": true,
+  "simulationOnly": true,
+  "livePricingLookup": false,
+  "productionEnforcementRequested": false,
+  "testOnly": true
+}

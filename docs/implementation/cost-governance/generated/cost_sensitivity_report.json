@@ -1,0 +1,105 @@
+{
+  "generatedFrom": "bridge-api/cost-governance",
+  "generatedArtifact": true,
+  "sensitivity": [
+    {
+      "budgetStatusDelta": "SIMULATED_ONLY",
+      "changedParameter": "pricingCatalog.entries.priceMicroUsd",
+      "costGovernanceRequestId": "cost.structured_response.initial.offline.v1",
+      "note": "Deterministic cost sensitivity only; no optimized profile, winner, procurement action, or production recommendation is selected.",
+      "originalValue": "synthetic catalog",
+      "recommendation": null,
+      "testValue": "+10%",
+      "totalCostDeltaMicroUsd": 701,
+      "variantId": "cost.structured_response.initial.offline.v1.pricing_increase_10"
+    },
+    {
+      "budgetStatusDelta": "SIMULATED_ONLY",
+      "changedParameter": "pricingCatalog.entries.priceMicroUsd",
+      "costGovernanceRequestId": "cost.structured_response.initial.offline.v1",
+      "note": "Deterministic cost sensitivity only; no optimized profile, winner, procurement action, or production recommendation is selected.",
+      "originalValue": "synthetic catalog",
+      "recommendation": null,
+      "testValue": "+25%",
+      "totalCostDeltaMicroUsd": 1753,
+      "variantId": "cost.structured_response.initial.offline.v1.pricing_increase_25"
+    },
+    {
+      "budgetStatusDelta": "NO_RUNTIME_EFFECT",
+      "changedParameter": "cache.hit.rate",
+      "costGovernanceRequestId": "cost.structured_response.initial.offline.v1",
+      "note": "Catalog SYNTHETIC_TEST_PRICING_CATALOG remains synthetic and test-only.",
+      "originalValue": "not modeled",
+      "recommendation": null,
+      "testValue": "synthetic 20 percent cache-hit scenario",
+      "totalCostDeltaMicroUsd": 0,
+      "variantId": "cost.structured_response.initial.offline.v1.cache_hit_rate"
+    },
+    {
+      "budgetStatusDelta": "SIMULATED_ONLY",
+      "changedParameter": "pricingCatalog.entries.priceMicroUsd",
+      "costGovernanceRequestId": "cost.supervisor_report.budget_simulation.offline.v1",
+      "note": "Deterministic cost sensitivity only; no optimized profile, winner, procurement action, or production recommendation is selected.",
+      "originalValue": "synthetic catalog",
+      "recommendation": null,
+      "testValue": "+10%",
+      "totalCostDeltaMicroUsd": 2705,
+      "variantId": "cost.supervisor_report.budget_simulation.offline.v1.pricing_increase_10"
+    },
+    {
+      "budgetStatusDelta": "SIMULATED_ONLY",
+      "changedParameter": "pricingCatalog.entries.priceMicroUsd",
+      "costGovernanceRequestId": "cost.supervisor_report.budget_simulation.offline.v1",
+      "note": "Deterministic cost sensitivity only; no optimized profile, winner, procurement action, or production recommendation is selected.",
+      "originalValue": "synthetic catalog",
+      "recommendation": null,
+      "testValue": "+25%",
+      "totalCostDeltaMicroUsd": 6763,
+      "variantId": "cost.supervisor_report.budget_simulation.offline.v1.pricing_increase_25"
+    },
+    {
+      "budgetStatusDelta": "NO_RUNTIME_EFFECT",
+      "changedParameter": "cache.hit.rate",
+      "costGovernanceRequestId": "cost.supervisor_report.budget_simulation.offline.v1",
+      "note": "Catalog SYNTHETIC_TEST_PRICING_CATALOG remains synthetic and test-only.",
+      "originalValue": "not modeled",
+      "recommendation": null,
+      "testValue": "synthetic 20 percent cache-hit scenario",
+      "totalCostDeltaMicroUsd": 0,
+      "variantId": "cost.supervisor_report.budget_simulation.offline.v1.cache_hit_rate"
+    },
+    {
+      "budgetStatusDelta": "SIMULATED_ONLY",
+      "changedParameter": "pricingCatalog.entries.priceMicroUsd",
+      "costGovernanceRequestId": "cost.text_cleanup.initial.offline.v1",
+      "note": "Deterministic cost sensitivity only; no optimized profile, winner, procurement action, or production recommendation is selected.",
+      "originalValue": "synthetic catalog",
+      "recommendation": null,
+      "testValue": "+10%",
+      "totalCostDeltaMicroUsd": 53,
+      "variantId": "cost.text_cleanup.initial.offline.v1.pricing_increase_10"
+    },
+    {
+      "budgetStatusDelta": "SIMULATED_ONLY",
+      "changedParameter": "pricingCatalog.entries.priceMicroUsd",
+      "costGovernanceRequestId": "cost.text_cleanup.initial.offline.v1",
+      "note": "Deterministic cost sensitivity only; no optimized profile, winner, procurement action, or production recommendation is selected.",
+      "originalValue": "synthetic catalog",
+      "recommendation": null,
+      "testValue": "+25%",
+      "totalCostDeltaMicroUsd": 133,
+      "variantId": "cost.text_cleanup.initial.offline.v1.pricing_increase_25"
+    },
+    {
+      "budgetStatusDelta": "NO_RUNTIME_EFFECT",
+      "changedParameter": "cache.hit.rate",
+      "costGovernanceRequestId": "cost.text_cleanup.initial.offline.v1",
+      "note": "Catalog SYNTHETIC_TEST_PRICING_CATALOG remains synthetic and test-only.",
+      "originalValue": "not modeled",
+      "recommendation": null,
+      "testValue": "synthetic 20 percent cache-hit scenario",
+      "totalCostDeltaMicroUsd": 0,
+      "variantId": "cost.text_cleanup.initial.offline.v1.cache_hit_rate"
+    }
+  ]
+}

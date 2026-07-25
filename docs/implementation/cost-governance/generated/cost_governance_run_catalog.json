@@ -1,0 +1,45 @@
+{
+  "generatedFrom": "bridge-api/cost-governance",
+  "generatedArtifact": true,
+  "costGovernanceRuns": [
+    {
+      "budgetProfileId": "SYNTHETIC_BUDGET_PROFILE",
+      "costGovernanceRequestId": "cost.structured_response.initial.offline.v1",
+      "costGovernanceRunHash": "ed719b95bb64ae4dc86e844eb7d50dad8ae2efa942ccf6ac87997f62dcdb339b",
+      "costModelProfileId": "FULLY_LOADED_TEST_PROFILE",
+      "costRecordCount": 20,
+      "pricingCatalogId": "SYNTHETIC_TEST_PRICING_CATALOG",
+      "productionUseAllowed": false,
+      "simulatedBlockCount": 0,
+      "testOnly": true,
+      "totalKnownCostMicroUsd": 7012,
+      "unknownCostRecordCount": 20
+    },
+    {
+      "budgetProfileId": "TIGHT_SIMULATION_BUDGET_PROFILE",
+      "costGovernanceRequestId": "cost.supervisor_report.budget_simulation.offline.v1",
+      "costGovernanceRunHash": "1b18d304759375c4e10e3596c09310fe63b4f2d61024243265614bb17760e55c",
+      "costModelProfileId": "BUDGET_SIMULATION_TEST_PROFILE",
+      "costRecordCount": 20,
+      "pricingCatalogId": "SYNTHETIC_TEST_PRICING_CATALOG",
+      "productionUseAllowed": false,
+      "simulatedBlockCount": 0,
+      "testOnly": true,
+      "totalKnownCostMicroUsd": 27054,
+      "unknownCostRecordCount": 20
+    },
+    {
+      "budgetProfileId": "SYNTHETIC_BUDGET_PROFILE",
+      "costGovernanceRequestId": "cost.text_cleanup.initial.offline.v1",
+      "costGovernanceRunHash": "962f965f8582362d4d162c641089bcfd3ff668a92539f0a773ae436f6a5b1fdd",
+      "costModelProfileId": "DIRECT_EXECUTION_COST_TEST_PROFILE",
+      "costRecordCount": 20,
+      "pricingCatalogId": "SYNTHETIC_TEST_PRICING_CATALOG",
+      "productionUseAllowed": false,
+      "simulatedBlockCount": 0,
+      "testOnly": true,
+      "totalKnownCostMicroUsd": 535,
+      "unknownCostRecordCount": 20
+    }
+  ]
+}

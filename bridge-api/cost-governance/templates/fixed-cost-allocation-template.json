@@ -1,0 +1,6 @@
+{
+  "allocationMethod": "PER_REQUEST",
+  "syntheticFixedPoolMicroUsd": 0,
+  "roundingMode": "FLOOR_REMAINDER_TRACKED",
+  "remainderPolicy": "TRACK_UNALLOCATED"
+}

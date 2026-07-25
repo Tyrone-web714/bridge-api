@@ -1,0 +1,6 @@
+{
+  "variantId": "draft.cost.sensitivity",
+  "changedParameter": "pricingCatalog.entries.priceMicroUsd",
+  "testValue": "+10%",
+  "recommendation": null
+}
