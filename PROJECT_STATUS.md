@@ -43,6 +43,7 @@ Current implementation and planned architecture must be kept separate:
 | Data Lifecycle architecture | Merged to Main | ODR-019 foundation is merged through commit `36c006d`; production migration `009` is applied and verified by read-only production preflight. |
 | Enterprise Identity architecture | Merged to Main | ODR-020 foundation is merged to main through commit `632709e`; production migration `010` is applied and verified by read-only production preflight. No external provider interoperability is claimed. Provider verification is paused pending remaining operational readiness verification. |
 | Logistics Intelligence Engine | Merged to Main | Logistics Intelligence Foundation is merged through commit `3f2590d`; production migration `007` still requires release approval before production use. |
+| Intelligence Execution Platform foundation | Implemented Locally | AI-IEP-001 adds the provider-neutral execution foundation under `bridge-api/services/intelligenceExecution`, an internal authenticated `/api/intelligence/execute` boundary, deterministic `text.cleanup`, policy-first/cost-first planning, additive migration `012_intelligence_execution_foundation.sql`, and contract test `npm run test:intelligence-execution`. No production deployment or production migration is claimed. |
 | Fleet Intelligence Scoring System | Merged to Main | Fleet Intelligence Scoring Foundation is merged through commit `630288e`; production migration `008` still requires release approval before production use. |
 | Security hardening | In Progress | Security controls, auth services, rate limit middleware, secret audit scripts, and security review docs exist; production hardening remains ongoing. |
 | Pilot readiness | Conditional GO | Pilot Integration and End-to-End Hardening completed with no unresolved Critical or High defects; remaining limitations require physical mobile offline/reconnect replay, dashboard browser walkthrough, deployment smoke, and backup/restore verification. |
@@ -210,7 +211,7 @@ Current approved decisions reflected in governing documentation and project dire
 2. Do not deploy, configure real customer IdPs, or apply production migrations.
 3. Obtain explicit owner approval before production database preflight or production data mutation.
 4. Keep provider interoperability marked as not verified until actual provider testing occurs in a later approved phase.
-5. Complete the owner-approved Cloudflare R2 Public Development URL shutdown window, final production smoke validation, and final project completion report.
+5. Review and commit the AI-IEP-001 Intelligence Execution Platform foundation after validation. Do not deploy or run production migrations without separate owner approval.
 
 ## 13. Update Rules
 

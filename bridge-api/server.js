@@ -99,6 +99,10 @@ app.use('/api/logistics-intelligence', createRateLimiter({
   name: 'logistics-intelligence',
   max: positiveInteger(process.env.RATE_LIMIT_LOGISTICS_INTELLIGENCE_MAX, 300)
 }));
+app.use('/api/intelligence', createRateLimiter({
+  name: 'intelligence-execution',
+  max: positiveInteger(process.env.RATE_LIMIT_INTELLIGENCE_MAX, 120)
+}));
 app.use('/api/fleet-intelligence-scoring', createRateLimiter({
   name: 'fleet-intelligence-scoring',
   max: positiveInteger(process.env.RATE_LIMIT_FLEET_SCORE_MAX, 300)
@@ -181,6 +185,7 @@ const driverSessionRoutes = require('./routes/driverSessions');
 const sharedSafetyRoutes = require('./routes/sharedSafety');
 const biKpiRoutes = require('./routes/biKpi');
 const logisticsIntelligenceRoutes = require('./routes/logisticsIntelligence');
+const intelligenceRoutes = require('./routes/intelligence');
 const fleetIntelligenceScoringRoutes = require('./routes/fleetIntelligenceScoring');
 const dataLifecycleRoutes = require('./routes/dataLifecycle');
 const enterpriseIdentityRoutes = require('./routes/enterpriseIdentity');
@@ -193,6 +198,7 @@ app.use('/api/routing', routingRoutes);
 app.use('/api/shared-safety', sharedSafetyRoutes);
 app.use('/api/bi-kpi', biKpiRoutes);
 app.use('/api/logistics-intelligence', logisticsIntelligenceRoutes);
+app.use('/api/intelligence', intelligenceRoutes);
 app.use('/api/fleet-intelligence-scoring', fleetIntelligenceScoringRoutes);
 app.use('/api/data-lifecycle', dataLifecycleRoutes);
 app.use('/api/enterprise-identity', enterpriseIdentityRoutes);

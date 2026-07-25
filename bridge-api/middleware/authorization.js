@@ -278,6 +278,10 @@ function permissionForRequest(req) {
     if (path.endsWith('/admin')) return rbac.PERMISSIONS.INTELLIGENCE_VIEW;
     return rbac.PERMISSIONS.INTELLIGENCE_VIEW;
   }
+  if (path.startsWith('/api/intelligence')) {
+    if (path.endsWith('/execute')) return rbac.PERMISSIONS.INTELLIGENCE_VIEW;
+    return rbac.PERMISSIONS.INTELLIGENCE_VIEW;
+  }
   if (path.startsWith('/api/fleet-intelligence-scoring')) {
     if (path.includes('/benchmarks')) return rbac.PERMISSIONS.FLEET_SCORE_BENCHMARK;
     if (path.includes('/calculate')) return rbac.PERMISSIONS.FLEET_SCORE_CALCULATE;
