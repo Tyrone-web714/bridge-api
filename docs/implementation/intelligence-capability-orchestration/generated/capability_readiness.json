@@ -1,0 +1,137 @@
+{
+  "generatedArtifact": true,
+  "readiness": [
+    {
+      "businessDomain": "Route Intelligence",
+      "capabilityId": "route.intelligence.optimization",
+      "dependencyComplete": true,
+      "executionContractPresent": true,
+      "executionPlanTemplatePresent": true,
+      "hash": "efc48b508d813140c4bb7002471ee0b64d9a5340885703ce1397dbb79fc3b270",
+      "implementationStatus": "METADATA_ONLY",
+      "lifecycleState": "DEFINED",
+      "readiness": "READY_FOR_IMPLEMENTATION"
+    },
+    {
+      "businessDomain": "Driver Intelligence",
+      "capabilityId": "driver.intelligence.performance",
+      "dependencyComplete": true,
+      "executionContractPresent": true,
+      "executionPlanTemplatePresent": true,
+      "hash": "ccef3e8de1d727f2a5fc892f1fdcf57fe22b83b75819b09a919b12f87aaef319",
+      "implementationStatus": "METADATA_ONLY",
+      "lifecycleState": "DEFINED",
+      "readiness": "READY_FOR_IMPLEMENTATION"
+    },
+    {
+      "businessDomain": "Supervisor Intelligence",
+      "capabilityId": "supervisor.intelligence.operations",
+      "dependencyComplete": true,
+      "executionContractPresent": true,
+      "executionPlanTemplatePresent": true,
+      "hash": "5256bc5dcebe9d855ac08b1f94b779595d1d89087eb252f51523650f51ac1120",
+      "implementationStatus": "METADATA_ONLY",
+      "lifecycleState": "DEFINED",
+      "readiness": "READY_FOR_IMPLEMENTATION"
+    },
+    {
+      "businessDomain": "Warehouse Intelligence",
+      "capabilityId": "warehouse.intelligence.flow",
+      "dependencyComplete": true,
+      "executionContractPresent": true,
+      "executionPlanTemplatePresent": true,
+      "hash": "53a4b5a0d6c3b41731b0b0e3c8148dad2a475fc69d737c08ea1e029c37a23fa7",
+      "implementationStatus": "METADATA_ONLY",
+      "lifecycleState": "DEFINED",
+      "readiness": "READY_FOR_IMPLEMENTATION"
+    },
+    {
+      "businessDomain": "Customer Intelligence",
+      "capabilityId": "customer.intelligence.account",
+      "dependencyComplete": true,
+      "executionContractPresent": true,
+      "executionPlanTemplatePresent": true,
+      "hash": "f0e08b49a0e73e3d83a5007ff992188b926046ac14bbd3d230cd844a4faf3b51",
+      "implementationStatus": "METADATA_ONLY",
+      "lifecycleState": "DEFINED",
+      "readiness": "READY_FOR_IMPLEMENTATION"
+    },
+    {
+      "businessDomain": "Fleet Intelligence",
+      "capabilityId": "fleet.intelligence.utilization",
+      "dependencyComplete": true,
+      "executionContractPresent": true,
+      "executionPlanTemplatePresent": true,
+      "hash": "e83326c7895bc7345dbad061d120341f1ffca30fcba3ad36ef437d35f9d3c67f",
+      "implementationStatus": "METADATA_ONLY",
+      "lifecycleState": "DEFINED",
+      "readiness": "READY_FOR_IMPLEMENTATION"
+    },
+    {
+      "businessDomain": "Safety Intelligence",
+      "capabilityId": "safety.intelligence.risk",
+      "dependencyComplete": true,
+      "executionContractPresent": true,
+      "executionPlanTemplatePresent": true,
+      "hash": "90b925b082bfcd1caa3ab4405e3e14d65f7b949dc60d078e1f26a7f53bae2d30",
+      "implementationStatus": "METADATA_ONLY",
+      "lifecycleState": "DEFINED",
+      "readiness": "READY_FOR_IMPLEMENTATION"
+    },
+    {
+      "businessDomain": "Operations Intelligence",
+      "capabilityId": "operations.intelligence.throughput",
+      "dependencyComplete": true,
+      "executionContractPresent": true,
+      "executionPlanTemplatePresent": true,
+      "hash": "1b3de380e1de60ee2abaa75d7d21012d1f8e8e90571f327af0145b14ea2c39bf",
+      "implementationStatus": "METADATA_ONLY",
+      "lifecycleState": "DEFINED",
+      "readiness": "READY_FOR_IMPLEMENTATION"
+    },
+    {
+      "businessDomain": "Maintenance Intelligence",
+      "capabilityId": "maintenance.intelligence.health",
+      "dependencyComplete": true,
+      "executionContractPresent": true,
+      "executionPlanTemplatePresent": true,
+      "hash": "6427125da369be16f857fb0ab4089a2a9be6fb461ea7de1afd2498ecb9d846ed",
+      "implementationStatus": "METADATA_ONLY",
+      "lifecycleState": "DEFINED",
+      "readiness": "READY_FOR_IMPLEMENTATION"
+    },
+    {
+      "businessDomain": "Inventory Intelligence",
+      "capabilityId": "inventory.intelligence.availability",
+      "dependencyComplete": true,
+      "executionContractPresent": true,
+      "executionPlanTemplatePresent": true,
+      "hash": "eae78f60992f329c44cb8cf20139d95c2b0bc76df4d0ca52a674f1af0f984ef0",
+      "implementationStatus": "METADATA_ONLY",
+      "lifecycleState": "DEFINED",
+      "readiness": "READY_FOR_IMPLEMENTATION"
+    },
+    {
+      "businessDomain": "Financial Intelligence",
+      "capabilityId": "financial.intelligence.margin",
+      "dependencyComplete": true,
+      "executionContractPresent": true,
+      "executionPlanTemplatePresent": true,
+      "hash": "9526ad41aabe224f7b5f9b788e2e071c6add2eed349f1c8b1fc93e041c272ee0",
+      "implementationStatus": "METADATA_ONLY",
+      "lifecycleState": "DEFINED",
+      "readiness": "READY_FOR_IMPLEMENTATION"
+    },
+    {
+      "businessDomain": "Enterprise Intelligence",
+      "capabilityId": "enterprise.intelligence.overview",
+      "dependencyComplete": true,
+      "executionContractPresent": true,
+      "executionPlanTemplatePresent": true,
+      "hash": "6cbdbde0a4a3199499947ae521b6d441aae1bcc8351f4f09b96f13dc22e73535",
+      "implementationStatus": "METADATA_ONLY",
+      "lifecycleState": "DEFINED",
+      "readiness": "READY_FOR_IMPLEMENTATION"
+    }
+  ]
+}

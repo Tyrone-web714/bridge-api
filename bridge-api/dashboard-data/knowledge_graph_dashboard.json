@@ -17,7 +17,7 @@
       "dashboard-data/knowledge_graph_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "8250d66c74681e48d5deed1ba65ea8aa81b49fc0165fac1db74288ed41bd9198",
+    "generationHash": "2827e4b51c7c3c5659f70723752cf73fb2133a4cabf5cb9f0eadbbbdf6adcbef",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -57,7 +57,7 @@
         "USES": 95
       },
       "graphDensity": 0.0009499,
-      "graphHash": "5d7fa2aaca4307c094039d6e1f840de5fc1702804a74435b192b0defd7fd8392",
+      "graphHash": "33d85f9c1ce7c6e8f0bc8a103a420880b57eb7e6670a3c21c130aec5d2b72343",
       "nodeCount": 924,
       "nodeTypes": {
         "Architecture Decision": 13,
@@ -100,7 +100,7 @@
     "statusIndicators": [],
     "summary": {
       "edges": 811,
-      "graphHash": "5d7fa2aaca4307c094039d6e1f840de5fc1702804a74435b192b0defd7fd8392",
+      "graphHash": "33d85f9c1ce7c6e8f0bc8a103a420880b57eb7e6670a3c21c130aec5d2b72343",
       "nodes": 924,
       "valid": true
     },

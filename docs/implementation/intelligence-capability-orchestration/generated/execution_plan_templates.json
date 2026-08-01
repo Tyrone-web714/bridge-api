@@ -1,0 +1,743 @@
+{
+  "generatedArtifact": true,
+  "plans": [
+    {
+      "advisoryOnly": true,
+      "budgetChecks": [
+        {
+          "maxEstimatedCostMicroUsd": 100000,
+          "unknownCostPolicy": "FAIL_CLOSED"
+        }
+      ],
+      "candidateStrategies": [
+        "DETERMINISTIC_RULES",
+        "HOSTED_BALANCED_MODEL"
+      ],
+      "confidenceGates": [
+        {
+          "actionBelowThreshold": "ABSTAIN_WITH_EXPLANATION",
+          "minimumConfidence": 0.7
+        }
+      ],
+      "expectedOutputs": [
+        "routePlan",
+        "routeRiskSummary"
+      ],
+      "fallbackPlan": [
+        {
+          "mode": "ABSTAIN_WITH_EXPLANATION",
+          "preservesPriorDecision": true
+        }
+      ],
+      "handsToIntelligenceExecutionPlatform": true,
+      "humanReviewRequirements": {
+        "requiredForLowConfidence": true,
+        "requiredForProduction": true,
+        "threshold": 0.7
+      },
+      "inputs": {},
+      "planHash": "624b35eca9eea37470807dbfe7ae28d719345a22dca1679fd2f6ba80e5fbdc60",
+      "policyChecks": [
+        "TEST_ONLY",
+        "HUMAN_REVIEW_REQUIRED_FOR_PRODUCTION",
+        "NO_PROVIDER_CALL"
+      ],
+      "productionApplicable": false,
+      "providerCallInvoked": false,
+      "requestedCapability": "route.intelligence.optimization",
+      "resolvedDependencies": [],
+      "runtimeExecutionInvoked": false,
+      "schemaVersion": "intelligence.execution.plan.template.v1",
+      "testOnly": true,
+      "validationRequirements": [
+        "VALID_CAPABILITY_ID",
+        "KNOWN_DATA_SOURCES",
+        "VALID_LIFECYCLE",
+        "DOCUMENTATION_PRESENT",
+        "NO_RUNTIME_EXECUTION"
+      ]
+    },
+    {
+      "advisoryOnly": true,
+      "budgetChecks": [
+        {
+          "maxEstimatedCostMicroUsd": 100000,
+          "unknownCostPolicy": "FAIL_CLOSED"
+        }
+      ],
+      "candidateStrategies": [
+        "DETERMINISTIC_RULES",
+        "HOSTED_BALANCED_MODEL"
+      ],
+      "confidenceGates": [
+        {
+          "actionBelowThreshold": "ABSTAIN_WITH_EXPLANATION",
+          "minimumConfidence": 0.7
+        }
+      ],
+      "expectedOutputs": [
+        "driverPerformanceSummary",
+        "coachingSignals"
+      ],
+      "fallbackPlan": [
+        {
+          "mode": "ABSTAIN_WITH_EXPLANATION",
+          "preservesPriorDecision": true
+        }
+      ],
+      "handsToIntelligenceExecutionPlatform": true,
+      "humanReviewRequirements": {
+        "requiredForLowConfidence": true,
+        "requiredForProduction": true,
+        "threshold": 0.7
+      },
+      "inputs": {},
+      "planHash": "82f86f8f2b694b2a1f47aa93593c5e84fd0707134bc7768db79b86c223b3cbb8",
+      "policyChecks": [
+        "TEST_ONLY",
+        "HUMAN_REVIEW_REQUIRED_FOR_PRODUCTION",
+        "NO_PROVIDER_CALL"
+      ],
+      "productionApplicable": false,
+      "providerCallInvoked": false,
+      "requestedCapability": "driver.intelligence.performance",
+      "resolvedDependencies": [
+        {
+          "dependencyId": "route.intelligence.optimization",
+          "lifecycleState": "DEFINED",
+          "resolved": true
+        }
+      ],
+      "runtimeExecutionInvoked": false,
+      "schemaVersion": "intelligence.execution.plan.template.v1",
+      "testOnly": true,
+      "validationRequirements": [
+        "VALID_CAPABILITY_ID",
+        "KNOWN_DATA_SOURCES",
+        "VALID_LIFECYCLE",
+        "DOCUMENTATION_PRESENT",
+        "NO_RUNTIME_EXECUTION"
+      ]
+    },
+    {
+      "advisoryOnly": true,
+      "budgetChecks": [
+        {
+          "maxEstimatedCostMicroUsd": 100000,
+          "unknownCostPolicy": "FAIL_CLOSED"
+        }
+      ],
+      "candidateStrategies": [
+        "DETERMINISTIC_RULES",
+        "HOSTED_BALANCED_MODEL"
+      ],
+      "confidenceGates": [
+        {
+          "actionBelowThreshold": "ABSTAIN_WITH_EXPLANATION",
+          "minimumConfidence": 0.7
+        }
+      ],
+      "expectedOutputs": [
+        "supervisorBrief",
+        "operationalExceptions"
+      ],
+      "fallbackPlan": [
+        {
+          "mode": "ABSTAIN_WITH_EXPLANATION",
+          "preservesPriorDecision": true
+        }
+      ],
+      "handsToIntelligenceExecutionPlatform": true,
+      "humanReviewRequirements": {
+        "requiredForLowConfidence": true,
+        "requiredForProduction": true,
+        "threshold": 0.7
+      },
+      "inputs": {},
+      "planHash": "5eeadac8082ce0f8c78a042a9933c8bcc4d97a99e50aad0d9e63578ab9648d19",
+      "policyChecks": [
+        "TEST_ONLY",
+        "HUMAN_REVIEW_REQUIRED_FOR_PRODUCTION",
+        "NO_PROVIDER_CALL"
+      ],
+      "productionApplicable": false,
+      "providerCallInvoked": false,
+      "requestedCapability": "supervisor.intelligence.operations",
+      "resolvedDependencies": [
+        {
+          "dependencyId": "route.intelligence.optimization",
+          "lifecycleState": "DEFINED",
+          "resolved": true
+        }
+      ],
+      "runtimeExecutionInvoked": false,
+      "schemaVersion": "intelligence.execution.plan.template.v1",
+      "testOnly": true,
+      "validationRequirements": [
+        "VALID_CAPABILITY_ID",
+        "KNOWN_DATA_SOURCES",
+        "VALID_LIFECYCLE",
+        "DOCUMENTATION_PRESENT",
+        "NO_RUNTIME_EXECUTION"
+      ]
+    },
+    {
+      "advisoryOnly": true,
+      "budgetChecks": [
+        {
+          "maxEstimatedCostMicroUsd": 100000,
+          "unknownCostPolicy": "FAIL_CLOSED"
+        }
+      ],
+      "candidateStrategies": [
+        "DETERMINISTIC_RULES",
+        "HOSTED_BALANCED_MODEL"
+      ],
+      "confidenceGates": [
+        {
+          "actionBelowThreshold": "ABSTAIN_WITH_EXPLANATION",
+          "minimumConfidence": 0.7
+        }
+      ],
+      "expectedOutputs": [
+        "warehouseFlowSummary",
+        "bottleneckSignals"
+      ],
+      "fallbackPlan": [
+        {
+          "mode": "ABSTAIN_WITH_EXPLANATION",
+          "preservesPriorDecision": true
+        }
+      ],
+      "handsToIntelligenceExecutionPlatform": true,
+      "humanReviewRequirements": {
+        "requiredForLowConfidence": true,
+        "requiredForProduction": true,
+        "threshold": 0.7
+      },
+      "inputs": {},
+      "planHash": "535fbea0df13ff9e307c644742f5996b8ca311cb0d9257c70c82d344a0dfd372",
+      "policyChecks": [
+        "TEST_ONLY",
+        "HUMAN_REVIEW_REQUIRED_FOR_PRODUCTION",
+        "NO_PROVIDER_CALL"
+      ],
+      "productionApplicable": false,
+      "providerCallInvoked": false,
+      "requestedCapability": "warehouse.intelligence.flow",
+      "resolvedDependencies": [
+        {
+          "dependencyId": "route.intelligence.optimization",
+          "lifecycleState": "DEFINED",
+          "resolved": true
+        }
+      ],
+      "runtimeExecutionInvoked": false,
+      "schemaVersion": "intelligence.execution.plan.template.v1",
+      "testOnly": true,
+      "validationRequirements": [
+        "VALID_CAPABILITY_ID",
+        "KNOWN_DATA_SOURCES",
+        "VALID_LIFECYCLE",
+        "DOCUMENTATION_PRESENT",
+        "NO_RUNTIME_EXECUTION"
+      ]
+    },
+    {
+      "advisoryOnly": true,
+      "budgetChecks": [
+        {
+          "maxEstimatedCostMicroUsd": 100000,
+          "unknownCostPolicy": "FAIL_CLOSED"
+        }
+      ],
+      "candidateStrategies": [
+        "DETERMINISTIC_RULES",
+        "HOSTED_BALANCED_MODEL"
+      ],
+      "confidenceGates": [
+        {
+          "actionBelowThreshold": "ABSTAIN_WITH_EXPLANATION",
+          "minimumConfidence": 0.7
+        }
+      ],
+      "expectedOutputs": [
+        "customerHealthSummary",
+        "serviceSignals"
+      ],
+      "fallbackPlan": [
+        {
+          "mode": "ABSTAIN_WITH_EXPLANATION",
+          "preservesPriorDecision": true
+        }
+      ],
+      "handsToIntelligenceExecutionPlatform": true,
+      "humanReviewRequirements": {
+        "requiredForLowConfidence": true,
+        "requiredForProduction": true,
+        "threshold": 0.7
+      },
+      "inputs": {},
+      "planHash": "ca4debd8c3828bd475799543bf2c8dc2aaa8f879d335f003c24366255b2018c0",
+      "policyChecks": [
+        "TEST_ONLY",
+        "HUMAN_REVIEW_REQUIRED_FOR_PRODUCTION",
+        "NO_PROVIDER_CALL"
+      ],
+      "productionApplicable": false,
+      "providerCallInvoked": false,
+      "requestedCapability": "customer.intelligence.account",
+      "resolvedDependencies": [
+        {
+          "dependencyId": "route.intelligence.optimization",
+          "lifecycleState": "DEFINED",
+          "resolved": true
+        }
+      ],
+      "runtimeExecutionInvoked": false,
+      "schemaVersion": "intelligence.execution.plan.template.v1",
+      "testOnly": true,
+      "validationRequirements": [
+        "VALID_CAPABILITY_ID",
+        "KNOWN_DATA_SOURCES",
+        "VALID_LIFECYCLE",
+        "DOCUMENTATION_PRESENT",
+        "NO_RUNTIME_EXECUTION"
+      ]
+    },
+    {
+      "advisoryOnly": true,
+      "budgetChecks": [
+        {
+          "maxEstimatedCostMicroUsd": 100000,
+          "unknownCostPolicy": "FAIL_CLOSED"
+        }
+      ],
+      "candidateStrategies": [
+        "DETERMINISTIC_RULES",
+        "HOSTED_BALANCED_MODEL"
+      ],
+      "confidenceGates": [
+        {
+          "actionBelowThreshold": "ABSTAIN_WITH_EXPLANATION",
+          "minimumConfidence": 0.7
+        }
+      ],
+      "expectedOutputs": [
+        "fleetUtilizationSummary",
+        "capacitySignals"
+      ],
+      "fallbackPlan": [
+        {
+          "mode": "ABSTAIN_WITH_EXPLANATION",
+          "preservesPriorDecision": true
+        }
+      ],
+      "handsToIntelligenceExecutionPlatform": true,
+      "humanReviewRequirements": {
+        "requiredForLowConfidence": true,
+        "requiredForProduction": true,
+        "threshold": 0.7
+      },
+      "inputs": {},
+      "planHash": "bf2ae1ceeaf2875ef984d11d37d0243a59807d2768bf2d2302b331942c0a5a6b",
+      "policyChecks": [
+        "TEST_ONLY",
+        "HUMAN_REVIEW_REQUIRED_FOR_PRODUCTION",
+        "NO_PROVIDER_CALL"
+      ],
+      "productionApplicable": false,
+      "providerCallInvoked": false,
+      "requestedCapability": "fleet.intelligence.utilization",
+      "resolvedDependencies": [
+        {
+          "dependencyId": "route.intelligence.optimization",
+          "lifecycleState": "DEFINED",
+          "resolved": true
+        }
+      ],
+      "runtimeExecutionInvoked": false,
+      "schemaVersion": "intelligence.execution.plan.template.v1",
+      "testOnly": true,
+      "validationRequirements": [
+        "VALID_CAPABILITY_ID",
+        "KNOWN_DATA_SOURCES",
+        "VALID_LIFECYCLE",
+        "DOCUMENTATION_PRESENT",
+        "NO_RUNTIME_EXECUTION"
+      ]
+    },
+    {
+      "advisoryOnly": true,
+      "budgetChecks": [
+        {
+          "maxEstimatedCostMicroUsd": 100000,
+          "unknownCostPolicy": "FAIL_CLOSED"
+        }
+      ],
+      "candidateStrategies": [
+        "DETERMINISTIC_RULES",
+        "HOSTED_BALANCED_MODEL"
+      ],
+      "confidenceGates": [
+        {
+          "actionBelowThreshold": "ABSTAIN_WITH_EXPLANATION",
+          "minimumConfidence": 0.7
+        }
+      ],
+      "expectedOutputs": [
+        "safetyRiskSummary",
+        "mitigationSignals"
+      ],
+      "fallbackPlan": [
+        {
+          "mode": "ABSTAIN_WITH_EXPLANATION",
+          "preservesPriorDecision": true
+        }
+      ],
+      "handsToIntelligenceExecutionPlatform": true,
+      "humanReviewRequirements": {
+        "requiredForLowConfidence": true,
+        "requiredForProduction": true,
+        "threshold": 0.7
+      },
+      "inputs": {},
+      "planHash": "75c7c11dcae160b59c495551e1fe49360f3f66a371a25e5dc93b6bc9ef42341f",
+      "policyChecks": [
+        "TEST_ONLY",
+        "HUMAN_REVIEW_REQUIRED_FOR_PRODUCTION",
+        "NO_PROVIDER_CALL"
+      ],
+      "productionApplicable": false,
+      "providerCallInvoked": false,
+      "requestedCapability": "safety.intelligence.risk",
+      "resolvedDependencies": [
+        {
+          "dependencyId": "route.intelligence.optimization",
+          "lifecycleState": "DEFINED",
+          "resolved": true
+        }
+      ],
+      "runtimeExecutionInvoked": false,
+      "schemaVersion": "intelligence.execution.plan.template.v1",
+      "testOnly": true,
+      "validationRequirements": [
+        "VALID_CAPABILITY_ID",
+        "KNOWN_DATA_SOURCES",
+        "VALID_LIFECYCLE",
+        "DOCUMENTATION_PRESENT",
+        "NO_RUNTIME_EXECUTION"
+      ]
+    },
+    {
+      "advisoryOnly": true,
+      "budgetChecks": [
+        {
+          "maxEstimatedCostMicroUsd": 100000,
+          "unknownCostPolicy": "FAIL_CLOSED"
+        }
+      ],
+      "candidateStrategies": [
+        "DETERMINISTIC_RULES",
+        "HOSTED_BALANCED_MODEL"
+      ],
+      "confidenceGates": [
+        {
+          "actionBelowThreshold": "ABSTAIN_WITH_EXPLANATION",
+          "minimumConfidence": 0.7
+        }
+      ],
+      "expectedOutputs": [
+        "throughputSummary",
+        "delaySignals"
+      ],
+      "fallbackPlan": [
+        {
+          "mode": "ABSTAIN_WITH_EXPLANATION",
+          "preservesPriorDecision": true
+        }
+      ],
+      "handsToIntelligenceExecutionPlatform": true,
+      "humanReviewRequirements": {
+        "requiredForLowConfidence": true,
+        "requiredForProduction": true,
+        "threshold": 0.7
+      },
+      "inputs": {},
+      "planHash": "cbd22d9254505e499ebfa36b457ad821df194eadf1fa8625ed041b09f5168a13",
+      "policyChecks": [
+        "TEST_ONLY",
+        "HUMAN_REVIEW_REQUIRED_FOR_PRODUCTION",
+        "NO_PROVIDER_CALL"
+      ],
+      "productionApplicable": false,
+      "providerCallInvoked": false,
+      "requestedCapability": "operations.intelligence.throughput",
+      "resolvedDependencies": [
+        {
+          "dependencyId": "route.intelligence.optimization",
+          "lifecycleState": "DEFINED",
+          "resolved": true
+        }
+      ],
+      "runtimeExecutionInvoked": false,
+      "schemaVersion": "intelligence.execution.plan.template.v1",
+      "testOnly": true,
+      "validationRequirements": [
+        "VALID_CAPABILITY_ID",
+        "KNOWN_DATA_SOURCES",
+        "VALID_LIFECYCLE",
+        "DOCUMENTATION_PRESENT",
+        "NO_RUNTIME_EXECUTION"
+      ]
+    },
+    {
+      "advisoryOnly": true,
+      "budgetChecks": [
+        {
+          "maxEstimatedCostMicroUsd": 100000,
+          "unknownCostPolicy": "FAIL_CLOSED"
+        }
+      ],
+      "candidateStrategies": [
+        "DETERMINISTIC_RULES",
+        "HOSTED_BALANCED_MODEL"
+      ],
+      "confidenceGates": [
+        {
+          "actionBelowThreshold": "ABSTAIN_WITH_EXPLANATION",
+          "minimumConfidence": 0.7
+        }
+      ],
+      "expectedOutputs": [
+        "maintenanceHealthSummary",
+        "serviceRiskSignals"
+      ],
+      "fallbackPlan": [
+        {
+          "mode": "ABSTAIN_WITH_EXPLANATION",
+          "preservesPriorDecision": true
+        }
+      ],
+      "handsToIntelligenceExecutionPlatform": true,
+      "humanReviewRequirements": {
+        "requiredForLowConfidence": true,
+        "requiredForProduction": true,
+        "threshold": 0.7
+      },
+      "inputs": {},
+      "planHash": "f8c004ebf606b9412aec34ed12c602c053d9d27c663ee3702769569974abfbc9",
+      "policyChecks": [
+        "TEST_ONLY",
+        "HUMAN_REVIEW_REQUIRED_FOR_PRODUCTION",
+        "NO_PROVIDER_CALL"
+      ],
+      "productionApplicable": false,
+      "providerCallInvoked": false,
+      "requestedCapability": "maintenance.intelligence.health",
+      "resolvedDependencies": [
+        {
+          "dependencyId": "route.intelligence.optimization",
+          "lifecycleState": "DEFINED",
+          "resolved": true
+        }
+      ],
+      "runtimeExecutionInvoked": false,
+      "schemaVersion": "intelligence.execution.plan.template.v1",
+      "testOnly": true,
+      "validationRequirements": [
+        "VALID_CAPABILITY_ID",
+        "KNOWN_DATA_SOURCES",
+        "VALID_LIFECYCLE",
+        "DOCUMENTATION_PRESENT",
+        "NO_RUNTIME_EXECUTION"
+      ]
+    },
+    {
+      "advisoryOnly": true,
+      "budgetChecks": [
+        {
+          "maxEstimatedCostMicroUsd": 100000,
+          "unknownCostPolicy": "FAIL_CLOSED"
+        }
+      ],
+      "candidateStrategies": [
+        "DETERMINISTIC_RULES",
+        "HOSTED_BALANCED_MODEL"
+      ],
+      "confidenceGates": [
+        {
+          "actionBelowThreshold": "ABSTAIN_WITH_EXPLANATION",
+          "minimumConfidence": 0.7
+        }
+      ],
+      "expectedOutputs": [
+        "inventoryAvailabilitySummary",
+        "stockoutSignals"
+      ],
+      "fallbackPlan": [
+        {
+          "mode": "ABSTAIN_WITH_EXPLANATION",
+          "preservesPriorDecision": true
+        }
+      ],
+      "handsToIntelligenceExecutionPlatform": true,
+      "humanReviewRequirements": {
+        "requiredForLowConfidence": true,
+        "requiredForProduction": true,
+        "threshold": 0.7
+      },
+      "inputs": {},
+      "planHash": "2c14b441313dd8f2f002fbf913c5b02a2ee2edb4a756f21d0d225f2280545a70",
+      "policyChecks": [
+        "TEST_ONLY",
+        "HUMAN_REVIEW_REQUIRED_FOR_PRODUCTION",
+        "NO_PROVIDER_CALL"
+      ],
+      "productionApplicable": false,
+      "providerCallInvoked": false,
+      "requestedCapability": "inventory.intelligence.availability",
+      "resolvedDependencies": [
+        {
+          "dependencyId": "route.intelligence.optimization",
+          "lifecycleState": "DEFINED",
+          "resolved": true
+        }
+      ],
+      "runtimeExecutionInvoked": false,
+      "schemaVersion": "intelligence.execution.plan.template.v1",
+      "testOnly": true,
+      "validationRequirements": [
+        "VALID_CAPABILITY_ID",
+        "KNOWN_DATA_SOURCES",
+        "VALID_LIFECYCLE",
+        "DOCUMENTATION_PRESENT",
+        "NO_RUNTIME_EXECUTION"
+      ]
+    },
+    {
+      "advisoryOnly": true,
+      "budgetChecks": [
+        {
+          "maxEstimatedCostMicroUsd": 100000,
+          "unknownCostPolicy": "FAIL_CLOSED"
+        }
+      ],
+      "candidateStrategies": [
+        "DETERMINISTIC_RULES",
+        "HOSTED_BALANCED_MODEL"
+      ],
+      "confidenceGates": [
+        {
+          "actionBelowThreshold": "ABSTAIN_WITH_EXPLANATION",
+          "minimumConfidence": 0.7
+        }
+      ],
+      "expectedOutputs": [
+        "marginSummary",
+        "costSignals"
+      ],
+      "fallbackPlan": [
+        {
+          "mode": "ABSTAIN_WITH_EXPLANATION",
+          "preservesPriorDecision": true
+        }
+      ],
+      "handsToIntelligenceExecutionPlatform": true,
+      "humanReviewRequirements": {
+        "requiredForLowConfidence": true,
+        "requiredForProduction": true,
+        "threshold": 0.7
+      },
+      "inputs": {},
+      "planHash": "b6bd203cdda1c08e663004e60e5aa90988bbec179cf814db2a1a404242e4c2a0",
+      "policyChecks": [
+        "TEST_ONLY",
+        "HUMAN_REVIEW_REQUIRED_FOR_PRODUCTION",
+        "NO_PROVIDER_CALL"
+      ],
+      "productionApplicable": false,
+      "providerCallInvoked": false,
+      "requestedCapability": "financial.intelligence.margin",
+      "resolvedDependencies": [
+        {
+          "dependencyId": "route.intelligence.optimization",
+          "lifecycleState": "DEFINED",
+          "resolved": true
+        }
+      ],
+      "runtimeExecutionInvoked": false,
+      "schemaVersion": "intelligence.execution.plan.template.v1",
+      "testOnly": true,
+      "validationRequirements": [
+        "VALID_CAPABILITY_ID",
+        "KNOWN_DATA_SOURCES",
+        "VALID_LIFECYCLE",
+        "DOCUMENTATION_PRESENT",
+        "NO_RUNTIME_EXECUTION"
+      ]
+    },
+    {
+      "advisoryOnly": true,
+      "budgetChecks": [
+        {
+          "maxEstimatedCostMicroUsd": 100000,
+          "unknownCostPolicy": "FAIL_CLOSED"
+        }
+      ],
+      "candidateStrategies": [
+        "DETERMINISTIC_RULES",
+        "HOSTED_BALANCED_MODEL"
+      ],
+      "confidenceGates": [
+        {
+          "actionBelowThreshold": "ABSTAIN_WITH_EXPLANATION",
+          "minimumConfidence": 0.7
+        }
+      ],
+      "expectedOutputs": [
+        "enterpriseSummary",
+        "crossDomainSignals"
+      ],
+      "fallbackPlan": [
+        {
+          "mode": "ABSTAIN_WITH_EXPLANATION",
+          "preservesPriorDecision": true
+        }
+      ],
+      "handsToIntelligenceExecutionPlatform": true,
+      "humanReviewRequirements": {
+        "requiredForLowConfidence": true,
+        "requiredForProduction": true,
+        "threshold": 0.7
+      },
+      "inputs": {},
+      "planHash": "961c00a27a0a3bb376eccf6bfe40e3f10c65f9144ae7ed6b7f21334966c8f70e",
+      "policyChecks": [
+        "TEST_ONLY",
+        "HUMAN_REVIEW_REQUIRED_FOR_PRODUCTION",
+        "NO_PROVIDER_CALL"
+      ],
+      "productionApplicable": false,
+      "providerCallInvoked": false,
+      "requestedCapability": "enterprise.intelligence.overview",
+      "resolvedDependencies": [
+        {
+          "dependencyId": "route.intelligence.optimization",
+          "lifecycleState": "DEFINED",
+          "resolved": true
+        }
+      ],
+      "runtimeExecutionInvoked": false,
+      "schemaVersion": "intelligence.execution.plan.template.v1",
+      "testOnly": true,
+      "validationRequirements": [
+        "VALID_CAPABILITY_ID",
+        "KNOWN_DATA_SOURCES",
+        "VALID_LIFECYCLE",
+        "DOCUMENTATION_PRESENT",
+        "NO_RUNTIME_EXECUTION"
+      ]
+    }
+  ]
+}

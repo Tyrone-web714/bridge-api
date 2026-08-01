@@ -1,0 +1,1082 @@
+{
+  "capabilities": [
+    {
+      "businessDomain": "Route Intelligence",
+      "capabilityHash": "e0059cbf394e70ae73239b8d9cef854cbecb97743a939a82e9df996e13ab66f2",
+      "capabilityId": "route.intelligence.optimization",
+      "complianceTags": [
+        "TEST_ONLY",
+        "PROVIDER_NEUTRAL",
+        "NO_PRODUCTION_ACTIVATION"
+      ],
+      "costConstraints": {
+        "maxEstimatedCostMicroUsd": 100000,
+        "unknownCostPolicy": "FAIL_CLOSED"
+      },
+      "dependencies": [],
+      "description": "Route Intelligence Optimization capability metadata definition for future enterprise intelligence orchestration.",
+      "displayName": "Route Intelligence Optimization",
+      "documentationReferences": [
+        "docs/implementation/intelligence-capability-orchestration/README.md"
+      ],
+      "executionProfile": "STANDARD",
+      "executionStrategyPreferences": [
+        "DETERMINISTIC_RULES",
+        "HOSTED_BALANCED_MODEL"
+      ],
+      "fallbackBehavior": {
+        "mode": "ABSTAIN_WITH_EXPLANATION",
+        "preservesPriorDecision": true
+      },
+      "humanReviewPolicy": {
+        "requiredForLowConfidence": true,
+        "requiredForProduction": true,
+        "threshold": 0.7
+      },
+      "inputs": [
+        {
+          "inputId": "gps",
+          "required": true,
+          "source": "GPS"
+        },
+        {
+          "inputId": "routing",
+          "required": true,
+          "source": "Routing"
+        },
+        {
+          "inputId": "bridge.database",
+          "required": true,
+          "source": "Bridge Database"
+        },
+        {
+          "inputId": "traffic",
+          "required": true,
+          "source": "Traffic"
+        },
+        {
+          "inputId": "weather",
+          "required": true,
+          "source": "Weather"
+        }
+      ],
+      "lifecycleState": "DEFINED",
+      "minimumConfidence": 0.7,
+      "outputs": [
+        {
+          "outputId": "routePlan",
+          "schema": "routePlan.v1",
+          "testOnly": true
+        },
+        {
+          "outputId": "routeRiskSummary",
+          "schema": "routeRiskSummary.v1",
+          "testOnly": true
+        }
+      ],
+      "owner": "Truck-Safe Routing Architecture",
+      "privacyClassification": "INTERNAL",
+      "productionApplicable": false,
+      "registeredWithEnterpriseCapabilityRegistry": true,
+      "requiredDataSources": [
+        "GPS",
+        "Routing",
+        "Bridge Database",
+        "Traffic",
+        "Weather"
+      ],
+      "schemaVersion": "intelligence.capability.orchestration.v1",
+      "securityClassification": "INTERNAL",
+      "testOnly": true,
+      "version": "0.1.0"
+    },
+    {
+      "businessDomain": "Driver Intelligence",
+      "capabilityHash": "37384c76a52a72cc7e72e8bfea1b17c93419684b2a145fb2da68fc1635bfd7ff",
+      "capabilityId": "driver.intelligence.performance",
+      "complianceTags": [
+        "TEST_ONLY",
+        "PROVIDER_NEUTRAL",
+        "NO_PRODUCTION_ACTIVATION"
+      ],
+      "costConstraints": {
+        "maxEstimatedCostMicroUsd": 100000,
+        "unknownCostPolicy": "FAIL_CLOSED"
+      },
+      "dependencies": [
+        "route.intelligence.optimization"
+      ],
+      "description": "Driver Intelligence Performance capability metadata definition for future enterprise intelligence orchestration.",
+      "displayName": "Driver Intelligence Performance",
+      "documentationReferences": [
+        "docs/implementation/intelligence-capability-orchestration/README.md"
+      ],
+      "executionProfile": "STANDARD",
+      "executionStrategyPreferences": [
+        "DETERMINISTIC_RULES",
+        "HOSTED_BALANCED_MODEL"
+      ],
+      "fallbackBehavior": {
+        "mode": "ABSTAIN_WITH_EXPLANATION",
+        "preservesPriorDecision": true
+      },
+      "humanReviewPolicy": {
+        "requiredForLowConfidence": true,
+        "requiredForProduction": true,
+        "threshold": 0.7
+      },
+      "inputs": [
+        {
+          "inputId": "driver.activity",
+          "required": true,
+          "source": "Driver Activity"
+        },
+        {
+          "inputId": "safety.events",
+          "required": true,
+          "source": "Safety Events"
+        },
+        {
+          "inputId": "supervisor.notes",
+          "required": true,
+          "source": "Supervisor Notes"
+        }
+      ],
+      "lifecycleState": "DEFINED",
+      "minimumConfidence": 0.7,
+      "outputs": [
+        {
+          "outputId": "driverPerformanceSummary",
+          "schema": "driverPerformanceSummary.v1",
+          "testOnly": true
+        },
+        {
+          "outputId": "coachingSignals",
+          "schema": "coachingSignals.v1",
+          "testOnly": true
+        }
+      ],
+      "owner": "Truck-Safe Routing Architecture",
+      "privacyClassification": "SENSITIVE",
+      "productionApplicable": false,
+      "registeredWithEnterpriseCapabilityRegistry": true,
+      "requiredDataSources": [
+        "Driver Activity",
+        "Safety Events",
+        "Supervisor Notes"
+      ],
+      "schemaVersion": "intelligence.capability.orchestration.v1",
+      "securityClassification": "INTERNAL",
+      "testOnly": true,
+      "version": "0.1.0"
+    },
+    {
+      "businessDomain": "Supervisor Intelligence",
+      "capabilityHash": "1122f21a190401704099c3dcc6c1bbba43a8874af96b4610d8ee3891bda87a5a",
+      "capabilityId": "supervisor.intelligence.operations",
+      "complianceTags": [
+        "TEST_ONLY",
+        "PROVIDER_NEUTRAL",
+        "NO_PRODUCTION_ACTIVATION"
+      ],
+      "costConstraints": {
+        "maxEstimatedCostMicroUsd": 100000,
+        "unknownCostPolicy": "FAIL_CLOSED"
+      },
+      "dependencies": [
+        "route.intelligence.optimization"
+      ],
+      "description": "Supervisor Intelligence Operations capability metadata definition for future enterprise intelligence orchestration.",
+      "displayName": "Supervisor Intelligence Operations",
+      "documentationReferences": [
+        "docs/implementation/intelligence-capability-orchestration/README.md"
+      ],
+      "executionProfile": "STANDARD",
+      "executionStrategyPreferences": [
+        "DETERMINISTIC_RULES",
+        "HOSTED_BALANCED_MODEL"
+      ],
+      "fallbackBehavior": {
+        "mode": "ABSTAIN_WITH_EXPLANATION",
+        "preservesPriorDecision": true
+      },
+      "humanReviewPolicy": {
+        "requiredForLowConfidence": true,
+        "requiredForProduction": true,
+        "threshold": 0.7
+      },
+      "inputs": [
+        {
+          "inputId": "supervisor.notes",
+          "required": true,
+          "source": "Supervisor Notes"
+        },
+        {
+          "inputId": "driver.activity",
+          "required": true,
+          "source": "Driver Activity"
+        },
+        {
+          "inputId": "user.notes",
+          "required": true,
+          "source": "User Notes"
+        }
+      ],
+      "lifecycleState": "DEFINED",
+      "minimumConfidence": 0.7,
+      "outputs": [
+        {
+          "outputId": "supervisorBrief",
+          "schema": "supervisorBrief.v1",
+          "testOnly": true
+        },
+        {
+          "outputId": "operationalExceptions",
+          "schema": "operationalExceptions.v1",
+          "testOnly": true
+        }
+      ],
+      "owner": "Truck-Safe Routing Architecture",
+      "privacyClassification": "SENSITIVE",
+      "productionApplicable": false,
+      "registeredWithEnterpriseCapabilityRegistry": true,
+      "requiredDataSources": [
+        "Supervisor Notes",
+        "Driver Activity",
+        "User Notes"
+      ],
+      "schemaVersion": "intelligence.capability.orchestration.v1",
+      "securityClassification": "INTERNAL",
+      "testOnly": true,
+      "version": "0.1.0"
+    },
+    {
+      "businessDomain": "Warehouse Intelligence",
+      "capabilityHash": "ca65136ce5eff12fefb2aba2a7c23c6f0cc7d0848319825a0cf66978309b135f",
+      "capabilityId": "warehouse.intelligence.flow",
+      "complianceTags": [
+        "TEST_ONLY",
+        "PROVIDER_NEUTRAL",
+        "NO_PRODUCTION_ACTIVATION"
+      ],
+      "costConstraints": {
+        "maxEstimatedCostMicroUsd": 100000,
+        "unknownCostPolicy": "FAIL_CLOSED"
+      },
+      "dependencies": [
+        "route.intelligence.optimization"
+      ],
+      "description": "Warehouse Intelligence Flow capability metadata definition for future enterprise intelligence orchestration.",
+      "displayName": "Warehouse Intelligence Flow",
+      "documentationReferences": [
+        "docs/implementation/intelligence-capability-orchestration/README.md"
+      ],
+      "executionProfile": "STANDARD",
+      "executionStrategyPreferences": [
+        "DETERMINISTIC_RULES",
+        "HOSTED_BALANCED_MODEL"
+      ],
+      "fallbackBehavior": {
+        "mode": "ABSTAIN_WITH_EXPLANATION",
+        "preservesPriorDecision": true
+      },
+      "humanReviewPolicy": {
+        "requiredForLowConfidence": true,
+        "requiredForProduction": true,
+        "threshold": 0.7
+      },
+      "inputs": [
+        {
+          "inputId": "warehouse",
+          "required": true,
+          "source": "Warehouse"
+        },
+        {
+          "inputId": "inventory",
+          "required": true,
+          "source": "Inventory"
+        },
+        {
+          "inputId": "products",
+          "required": true,
+          "source": "Products"
+        }
+      ],
+      "lifecycleState": "DEFINED",
+      "minimumConfidence": 0.7,
+      "outputs": [
+        {
+          "outputId": "warehouseFlowSummary",
+          "schema": "warehouseFlowSummary.v1",
+          "testOnly": true
+        },
+        {
+          "outputId": "bottleneckSignals",
+          "schema": "bottleneckSignals.v1",
+          "testOnly": true
+        }
+      ],
+      "owner": "Truck-Safe Routing Architecture",
+      "privacyClassification": "INTERNAL",
+      "productionApplicable": false,
+      "registeredWithEnterpriseCapabilityRegistry": true,
+      "requiredDataSources": [
+        "Warehouse",
+        "Inventory",
+        "Products"
+      ],
+      "schemaVersion": "intelligence.capability.orchestration.v1",
+      "securityClassification": "INTERNAL",
+      "testOnly": true,
+      "version": "0.1.0"
+    },
+    {
+      "businessDomain": "Customer Intelligence",
+      "capabilityHash": "460c4a8accf2452214bda0ba1d7ab101fa44f27e3ef9814695e07fdfbe91e1aa",
+      "capabilityId": "customer.intelligence.account",
+      "complianceTags": [
+        "TEST_ONLY",
+        "PROVIDER_NEUTRAL",
+        "NO_PRODUCTION_ACTIVATION"
+      ],
+      "costConstraints": {
+        "maxEstimatedCostMicroUsd": 100000,
+        "unknownCostPolicy": "FAIL_CLOSED"
+      },
+      "dependencies": [
+        "route.intelligence.optimization"
+      ],
+      "description": "Customer Intelligence Account capability metadata definition for future enterprise intelligence orchestration.",
+      "displayName": "Customer Intelligence Account",
+      "documentationReferences": [
+        "docs/implementation/intelligence-capability-orchestration/README.md"
+      ],
+      "executionProfile": "STANDARD",
+      "executionStrategyPreferences": [
+        "DETERMINISTIC_RULES",
+        "HOSTED_BALANCED_MODEL"
+      ],
+      "fallbackBehavior": {
+        "mode": "ABSTAIN_WITH_EXPLANATION",
+        "preservesPriorDecision": true
+      },
+      "humanReviewPolicy": {
+        "requiredForLowConfidence": true,
+        "requiredForProduction": true,
+        "threshold": 0.7
+      },
+      "inputs": [
+        {
+          "inputId": "customer.accounts",
+          "required": true,
+          "source": "Customer Accounts"
+        },
+        {
+          "inputId": "invoices",
+          "required": true,
+          "source": "Invoices"
+        },
+        {
+          "inputId": "sales.history",
+          "required": true,
+          "source": "Sales History"
+        },
+        {
+          "inputId": "documents",
+          "required": true,
+          "source": "Documents"
+        }
+      ],
+      "lifecycleState": "DEFINED",
+      "minimumConfidence": 0.7,
+      "outputs": [
+        {
+          "outputId": "customerHealthSummary",
+          "schema": "customerHealthSummary.v1",
+          "testOnly": true
+        },
+        {
+          "outputId": "serviceSignals",
+          "schema": "serviceSignals.v1",
+          "testOnly": true
+        }
+      ],
+      "owner": "Truck-Safe Routing Architecture",
+      "privacyClassification": "SENSITIVE",
+      "productionApplicable": false,
+      "registeredWithEnterpriseCapabilityRegistry": true,
+      "requiredDataSources": [
+        "Customer Accounts",
+        "Invoices",
+        "Sales History",
+        "Documents"
+      ],
+      "schemaVersion": "intelligence.capability.orchestration.v1",
+      "securityClassification": "INTERNAL",
+      "testOnly": true,
+      "version": "0.1.0"
+    },
+    {
+      "businessDomain": "Fleet Intelligence",
+      "capabilityHash": "d8147a03ed5ac42292471ed7a1a59b5ae0444d9428788947a9ed1e5644f6d429",
+      "capabilityId": "fleet.intelligence.utilization",
+      "complianceTags": [
+        "TEST_ONLY",
+        "PROVIDER_NEUTRAL",
+        "NO_PRODUCTION_ACTIVATION"
+      ],
+      "costConstraints": {
+        "maxEstimatedCostMicroUsd": 100000,
+        "unknownCostPolicy": "FAIL_CLOSED"
+      },
+      "dependencies": [
+        "route.intelligence.optimization"
+      ],
+      "description": "Fleet Intelligence Utilization capability metadata definition for future enterprise intelligence orchestration.",
+      "displayName": "Fleet Intelligence Utilization",
+      "documentationReferences": [
+        "docs/implementation/intelligence-capability-orchestration/README.md"
+      ],
+      "executionProfile": "STANDARD",
+      "executionStrategyPreferences": [
+        "DETERMINISTIC_RULES",
+        "HOSTED_BALANCED_MODEL"
+      ],
+      "fallbackBehavior": {
+        "mode": "ABSTAIN_WITH_EXPLANATION",
+        "preservesPriorDecision": true
+      },
+      "humanReviewPolicy": {
+        "requiredForLowConfidence": true,
+        "requiredForProduction": true,
+        "threshold": 0.7
+      },
+      "inputs": [
+        {
+          "inputId": "vehicle.telemetry",
+          "required": true,
+          "source": "Vehicle Telemetry"
+        },
+        {
+          "inputId": "gps",
+          "required": true,
+          "source": "GPS"
+        },
+        {
+          "inputId": "driver.activity",
+          "required": true,
+          "source": "Driver Activity"
+        }
+      ],
+      "lifecycleState": "DEFINED",
+      "minimumConfidence": 0.7,
+      "outputs": [
+        {
+          "outputId": "fleetUtilizationSummary",
+          "schema": "fleetUtilizationSummary.v1",
+          "testOnly": true
+        },
+        {
+          "outputId": "capacitySignals",
+          "schema": "capacitySignals.v1",
+          "testOnly": true
+        }
+      ],
+      "owner": "Truck-Safe Routing Architecture",
+      "privacyClassification": "SENSITIVE",
+      "productionApplicable": false,
+      "registeredWithEnterpriseCapabilityRegistry": true,
+      "requiredDataSources": [
+        "Vehicle Telemetry",
+        "GPS",
+        "Driver Activity"
+      ],
+      "schemaVersion": "intelligence.capability.orchestration.v1",
+      "securityClassification": "INTERNAL",
+      "testOnly": true,
+      "version": "0.1.0"
+    },
+    {
+      "businessDomain": "Safety Intelligence",
+      "capabilityHash": "d5cb6f555274f3f5e7cf9ff05cd82ae626b911cb1dd704d37ee28f26cf108924",
+      "capabilityId": "safety.intelligence.risk",
+      "complianceTags": [
+        "TEST_ONLY",
+        "PROVIDER_NEUTRAL",
+        "NO_PRODUCTION_ACTIVATION"
+      ],
+      "costConstraints": {
+        "maxEstimatedCostMicroUsd": 100000,
+        "unknownCostPolicy": "FAIL_CLOSED"
+      },
+      "dependencies": [
+        "route.intelligence.optimization"
+      ],
+      "description": "Safety Intelligence Risk capability metadata definition for future enterprise intelligence orchestration.",
+      "displayName": "Safety Intelligence Risk",
+      "documentationReferences": [
+        "docs/implementation/intelligence-capability-orchestration/README.md"
+      ],
+      "executionProfile": "STANDARD",
+      "executionStrategyPreferences": [
+        "DETERMINISTIC_RULES",
+        "HOSTED_BALANCED_MODEL"
+      ],
+      "fallbackBehavior": {
+        "mode": "ABSTAIN_WITH_EXPLANATION",
+        "preservesPriorDecision": true
+      },
+      "humanReviewPolicy": {
+        "requiredForLowConfidence": true,
+        "requiredForProduction": true,
+        "threshold": 0.7
+      },
+      "inputs": [
+        {
+          "inputId": "safety.events",
+          "required": true,
+          "source": "Safety Events"
+        },
+        {
+          "inputId": "routing",
+          "required": true,
+          "source": "Routing"
+        },
+        {
+          "inputId": "bridge.database",
+          "required": true,
+          "source": "Bridge Database"
+        },
+        {
+          "inputId": "weather",
+          "required": true,
+          "source": "Weather"
+        }
+      ],
+      "lifecycleState": "DEFINED",
+      "minimumConfidence": 0.7,
+      "outputs": [
+        {
+          "outputId": "safetyRiskSummary",
+          "schema": "safetyRiskSummary.v1",
+          "testOnly": true
+        },
+        {
+          "outputId": "mitigationSignals",
+          "schema": "mitigationSignals.v1",
+          "testOnly": true
+        }
+      ],
+      "owner": "Truck-Safe Routing Architecture",
+      "privacyClassification": "INTERNAL",
+      "productionApplicable": false,
+      "registeredWithEnterpriseCapabilityRegistry": true,
+      "requiredDataSources": [
+        "Safety Events",
+        "Routing",
+        "Bridge Database",
+        "Weather"
+      ],
+      "schemaVersion": "intelligence.capability.orchestration.v1",
+      "securityClassification": "INTERNAL",
+      "testOnly": true,
+      "version": "0.1.0"
+    },
+    {
+      "businessDomain": "Operations Intelligence",
+      "capabilityHash": "ac9d090fed3ce893ef0ba7dac68361482a6a850049a2b2d39f54cffd1973982b",
+      "capabilityId": "operations.intelligence.throughput",
+      "complianceTags": [
+        "TEST_ONLY",
+        "PROVIDER_NEUTRAL",
+        "NO_PRODUCTION_ACTIVATION"
+      ],
+      "costConstraints": {
+        "maxEstimatedCostMicroUsd": 100000,
+        "unknownCostPolicy": "FAIL_CLOSED"
+      },
+      "dependencies": [
+        "route.intelligence.optimization"
+      ],
+      "description": "Operations Intelligence Throughput capability metadata definition for future enterprise intelligence orchestration.",
+      "displayName": "Operations Intelligence Throughput",
+      "documentationReferences": [
+        "docs/implementation/intelligence-capability-orchestration/README.md"
+      ],
+      "executionProfile": "STANDARD",
+      "executionStrategyPreferences": [
+        "DETERMINISTIC_RULES",
+        "HOSTED_BALANCED_MODEL"
+      ],
+      "fallbackBehavior": {
+        "mode": "ABSTAIN_WITH_EXPLANATION",
+        "preservesPriorDecision": true
+      },
+      "humanReviewPolicy": {
+        "requiredForLowConfidence": true,
+        "requiredForProduction": true,
+        "threshold": 0.7
+      },
+      "inputs": [
+        {
+          "inputId": "routing",
+          "required": true,
+          "source": "Routing"
+        },
+        {
+          "inputId": "warehouse",
+          "required": true,
+          "source": "Warehouse"
+        },
+        {
+          "inputId": "driver.activity",
+          "required": true,
+          "source": "Driver Activity"
+        },
+        {
+          "inputId": "customer.accounts",
+          "required": true,
+          "source": "Customer Accounts"
+        }
+      ],
+      "lifecycleState": "DEFINED",
+      "minimumConfidence": 0.7,
+      "outputs": [
+        {
+          "outputId": "throughputSummary",
+          "schema": "throughputSummary.v1",
+          "testOnly": true
+        },
+        {
+          "outputId": "delaySignals",
+          "schema": "delaySignals.v1",
+          "testOnly": true
+        }
+      ],
+      "owner": "Truck-Safe Routing Architecture",
+      "privacyClassification": "SENSITIVE",
+      "productionApplicable": false,
+      "registeredWithEnterpriseCapabilityRegistry": true,
+      "requiredDataSources": [
+        "Routing",
+        "Warehouse",
+        "Driver Activity",
+        "Customer Accounts"
+      ],
+      "schemaVersion": "intelligence.capability.orchestration.v1",
+      "securityClassification": "INTERNAL",
+      "testOnly": true,
+      "version": "0.1.0"
+    },
+    {
+      "businessDomain": "Maintenance Intelligence",
+      "capabilityHash": "3e146dd6e3104ecade0b6f994cea0498052b7ed8c484282919767d9e98abce12",
+      "capabilityId": "maintenance.intelligence.health",
+      "complianceTags": [
+        "TEST_ONLY",
+        "PROVIDER_NEUTRAL",
+        "NO_PRODUCTION_ACTIVATION"
+      ],
+      "costConstraints": {
+        "maxEstimatedCostMicroUsd": 100000,
+        "unknownCostPolicy": "FAIL_CLOSED"
+      },
+      "dependencies": [
+        "route.intelligence.optimization"
+      ],
+      "description": "Maintenance Intelligence Health capability metadata definition for future enterprise intelligence orchestration.",
+      "displayName": "Maintenance Intelligence Health",
+      "documentationReferences": [
+        "docs/implementation/intelligence-capability-orchestration/README.md"
+      ],
+      "executionProfile": "STANDARD",
+      "executionStrategyPreferences": [
+        "DETERMINISTIC_RULES",
+        "HOSTED_BALANCED_MODEL"
+      ],
+      "fallbackBehavior": {
+        "mode": "ABSTAIN_WITH_EXPLANATION",
+        "preservesPriorDecision": true
+      },
+      "humanReviewPolicy": {
+        "requiredForLowConfidence": true,
+        "requiredForProduction": true,
+        "threshold": 0.7
+      },
+      "inputs": [
+        {
+          "inputId": "vehicle.telemetry",
+          "required": true,
+          "source": "Vehicle Telemetry"
+        },
+        {
+          "inputId": "future.connectors",
+          "required": false,
+          "source": "Future Connectors"
+        },
+        {
+          "inputId": "driver.activity",
+          "required": true,
+          "source": "Driver Activity"
+        }
+      ],
+      "lifecycleState": "DEFINED",
+      "minimumConfidence": 0.7,
+      "outputs": [
+        {
+          "outputId": "maintenanceHealthSummary",
+          "schema": "maintenanceHealthSummary.v1",
+          "testOnly": true
+        },
+        {
+          "outputId": "serviceRiskSignals",
+          "schema": "serviceRiskSignals.v1",
+          "testOnly": true
+        }
+      ],
+      "owner": "Truck-Safe Routing Architecture",
+      "privacyClassification": "SENSITIVE",
+      "productionApplicable": false,
+      "registeredWithEnterpriseCapabilityRegistry": true,
+      "requiredDataSources": [
+        "Vehicle Telemetry",
+        "Future Connectors",
+        "Driver Activity"
+      ],
+      "schemaVersion": "intelligence.capability.orchestration.v1",
+      "securityClassification": "INTERNAL",
+      "testOnly": true,
+      "version": "0.1.0"
+    },
+    {
+      "businessDomain": "Inventory Intelligence",
+      "capabilityHash": "512f722ecef87c9f670d053881f1333f9ee6f731d0d6d33641da7309fb2be7ba",
+      "capabilityId": "inventory.intelligence.availability",
+      "complianceTags": [
+        "TEST_ONLY",
+        "PROVIDER_NEUTRAL",
+        "NO_PRODUCTION_ACTIVATION"
+      ],
+      "costConstraints": {
+        "maxEstimatedCostMicroUsd": 100000,
+        "unknownCostPolicy": "FAIL_CLOSED"
+      },
+      "dependencies": [
+        "route.intelligence.optimization"
+      ],
+      "description": "Inventory Intelligence Availability capability metadata definition for future enterprise intelligence orchestration.",
+      "displayName": "Inventory Intelligence Availability",
+      "documentationReferences": [
+        "docs/implementation/intelligence-capability-orchestration/README.md"
+      ],
+      "executionProfile": "STANDARD",
+      "executionStrategyPreferences": [
+        "DETERMINISTIC_RULES",
+        "HOSTED_BALANCED_MODEL"
+      ],
+      "fallbackBehavior": {
+        "mode": "ABSTAIN_WITH_EXPLANATION",
+        "preservesPriorDecision": true
+      },
+      "humanReviewPolicy": {
+        "requiredForLowConfidence": true,
+        "requiredForProduction": true,
+        "threshold": 0.7
+      },
+      "inputs": [
+        {
+          "inputId": "inventory",
+          "required": true,
+          "source": "Inventory"
+        },
+        {
+          "inputId": "products",
+          "required": true,
+          "source": "Products"
+        },
+        {
+          "inputId": "warehouse",
+          "required": true,
+          "source": "Warehouse"
+        },
+        {
+          "inputId": "sales.history",
+          "required": true,
+          "source": "Sales History"
+        }
+      ],
+      "lifecycleState": "DEFINED",
+      "minimumConfidence": 0.7,
+      "outputs": [
+        {
+          "outputId": "inventoryAvailabilitySummary",
+          "schema": "inventoryAvailabilitySummary.v1",
+          "testOnly": true
+        },
+        {
+          "outputId": "stockoutSignals",
+          "schema": "stockoutSignals.v1",
+          "testOnly": true
+        }
+      ],
+      "owner": "Truck-Safe Routing Architecture",
+      "privacyClassification": "INTERNAL",
+      "productionApplicable": false,
+      "registeredWithEnterpriseCapabilityRegistry": true,
+      "requiredDataSources": [
+        "Inventory",
+        "Products",
+        "Warehouse",
+        "Sales History"
+      ],
+      "schemaVersion": "intelligence.capability.orchestration.v1",
+      "securityClassification": "INTERNAL",
+      "testOnly": true,
+      "version": "0.1.0"
+    },
+    {
+      "businessDomain": "Financial Intelligence",
+      "capabilityHash": "d56ae08b617369cf4994ccc31b73886599b7d72a5fb70190f98732365acf0650",
+      "capabilityId": "financial.intelligence.margin",
+      "complianceTags": [
+        "TEST_ONLY",
+        "PROVIDER_NEUTRAL",
+        "NO_PRODUCTION_ACTIVATION"
+      ],
+      "costConstraints": {
+        "maxEstimatedCostMicroUsd": 100000,
+        "unknownCostPolicy": "FAIL_CLOSED"
+      },
+      "dependencies": [
+        "route.intelligence.optimization"
+      ],
+      "description": "Financial Intelligence Margin capability metadata definition for future enterprise intelligence orchestration.",
+      "displayName": "Financial Intelligence Margin",
+      "documentationReferences": [
+        "docs/implementation/intelligence-capability-orchestration/README.md"
+      ],
+      "executionProfile": "STANDARD",
+      "executionStrategyPreferences": [
+        "DETERMINISTIC_RULES",
+        "HOSTED_BALANCED_MODEL"
+      ],
+      "fallbackBehavior": {
+        "mode": "ABSTAIN_WITH_EXPLANATION",
+        "preservesPriorDecision": true
+      },
+      "humanReviewPolicy": {
+        "requiredForLowConfidence": true,
+        "requiredForProduction": true,
+        "threshold": 0.7
+      },
+      "inputs": [
+        {
+          "inputId": "invoices",
+          "required": true,
+          "source": "Invoices"
+        },
+        {
+          "inputId": "sales.history",
+          "required": true,
+          "source": "Sales History"
+        },
+        {
+          "inputId": "products",
+          "required": true,
+          "source": "Products"
+        },
+        {
+          "inputId": "customer.accounts",
+          "required": true,
+          "source": "Customer Accounts"
+        }
+      ],
+      "lifecycleState": "DEFINED",
+      "minimumConfidence": 0.7,
+      "outputs": [
+        {
+          "outputId": "marginSummary",
+          "schema": "marginSummary.v1",
+          "testOnly": true
+        },
+        {
+          "outputId": "costSignals",
+          "schema": "costSignals.v1",
+          "testOnly": true
+        }
+      ],
+      "owner": "Truck-Safe Routing Architecture",
+      "privacyClassification": "SENSITIVE",
+      "productionApplicable": false,
+      "registeredWithEnterpriseCapabilityRegistry": true,
+      "requiredDataSources": [
+        "Invoices",
+        "Sales History",
+        "Products",
+        "Customer Accounts"
+      ],
+      "schemaVersion": "intelligence.capability.orchestration.v1",
+      "securityClassification": "INTERNAL",
+      "testOnly": true,
+      "version": "0.1.0"
+    },
+    {
+      "businessDomain": "Enterprise Intelligence",
+      "capabilityHash": "097b5edaab524f12707226409a5873f665b69114aef7131b7e2b29e117e8d5d6",
+      "capabilityId": "enterprise.intelligence.overview",
+      "complianceTags": [
+        "TEST_ONLY",
+        "PROVIDER_NEUTRAL",
+        "NO_PRODUCTION_ACTIVATION"
+      ],
+      "costConstraints": {
+        "maxEstimatedCostMicroUsd": 100000,
+        "unknownCostPolicy": "FAIL_CLOSED"
+      },
+      "dependencies": [
+        "route.intelligence.optimization"
+      ],
+      "description": "Enterprise Intelligence Overview capability metadata definition for future enterprise intelligence orchestration.",
+      "displayName": "Enterprise Intelligence Overview",
+      "documentationReferences": [
+        "docs/implementation/intelligence-capability-orchestration/README.md"
+      ],
+      "executionProfile": "STANDARD",
+      "executionStrategyPreferences": [
+        "DETERMINISTIC_RULES",
+        "HOSTED_BALANCED_MODEL"
+      ],
+      "fallbackBehavior": {
+        "mode": "ABSTAIN_WITH_EXPLANATION",
+        "preservesPriorDecision": true
+      },
+      "humanReviewPolicy": {
+        "requiredForLowConfidence": true,
+        "requiredForProduction": true,
+        "threshold": 0.7
+      },
+      "inputs": [
+        {
+          "inputId": "future.connectors",
+          "required": false,
+          "source": "Future Connectors"
+        },
+        {
+          "inputId": "documents",
+          "required": true,
+          "source": "Documents"
+        },
+        {
+          "inputId": "user.notes",
+          "required": true,
+          "source": "User Notes"
+        }
+      ],
+      "lifecycleState": "DEFINED",
+      "minimumConfidence": 0.7,
+      "outputs": [
+        {
+          "outputId": "enterpriseSummary",
+          "schema": "enterpriseSummary.v1",
+          "testOnly": true
+        },
+        {
+          "outputId": "crossDomainSignals",
+          "schema": "crossDomainSignals.v1",
+          "testOnly": true
+        }
+      ],
+      "owner": "Truck-Safe Routing Architecture",
+      "privacyClassification": "SENSITIVE",
+      "productionApplicable": false,
+      "registeredWithEnterpriseCapabilityRegistry": true,
+      "requiredDataSources": [
+        "Future Connectors",
+        "Documents",
+        "User Notes"
+      ],
+      "schemaVersion": "intelligence.capability.orchestration.v1",
+      "securityClassification": "INTERNAL",
+      "testOnly": true,
+      "version": "0.1.0"
+    }
+  ],
+  "catalog": {
+    "capabilityCount": 12,
+    "catalogHash": "15042779b1ad3fc85b9c229aeb0b7445f8570d64094c903c0edacf85f04dc02b",
+    "contractCount": 12,
+    "documentationReferences": [
+      "docs/implementation/intelligence-capability-orchestration/ARCHITECTURE.md",
+      "docs/implementation/intelligence-capability-orchestration/CAPABILITY_CONTRACTS.md",
+      "docs/implementation/intelligence-capability-orchestration/DEFERRED_WORK.md",
+      "docs/implementation/intelligence-capability-orchestration/EXECUTION_CONTRACTS.md",
+      "docs/implementation/intelligence-capability-orchestration/generated/domain_summary.md",
+      "docs/implementation/intelligence-capability-orchestration/GENERATED_ARTIFACTS.md",
+      "docs/implementation/intelligence-capability-orchestration/IMPLEMENTATION_REPORT.md",
+      "docs/implementation/intelligence-capability-orchestration/INTEGRATION_POINTS.md",
+      "docs/implementation/intelligence-capability-orchestration/ORCHESTRATION_PIPELINE.md",
+      "docs/implementation/intelligence-capability-orchestration/README.md",
+      "docs/implementation/intelligence-capability-orchestration/ROLLBACK.md",
+      "docs/implementation/intelligence-capability-orchestration/TEST_PLAN.md",
+      "docs/implementation/intelligence-capability-orchestration/TEST_RESULTS.md",
+      "docs/implementation/intelligence-capability-orchestration/VALIDATION_RULES.md"
+    ],
+    "domains": [
+      {
+        "capabilityCount": 1,
+        "domain": "Route Intelligence"
+      },
+      {
+        "capabilityCount": 1,
+        "domain": "Driver Intelligence"
+      },
+      {
+        "capabilityCount": 1,
+        "domain": "Supervisor Intelligence"
+      },
+      {
+        "capabilityCount": 1,
+        "domain": "Warehouse Intelligence"
+      },
+      {
+        "capabilityCount": 1,
+        "domain": "Customer Intelligence"
+      },
+      {
+        "capabilityCount": 1,
+        "domain": "Fleet Intelligence"
+      },
+      {
+        "capabilityCount": 1,
+        "domain": "Safety Intelligence"
+      },
+      {
+        "capabilityCount": 1,
+        "domain": "Operations Intelligence"
+      },
+      {
+        "capabilityCount": 1,
+        "domain": "Maintenance Intelligence"
+      },
+      {
+        "capabilityCount": 1,
+        "domain": "Inventory Intelligence"
+      },
+      {
+        "capabilityCount": 1,
+        "domain": "Financial Intelligence"
+      },
+      {
+        "capabilityCount": 1,
+        "domain": "Enterprise Intelligence"
+      }
+    ],
+    "engineVersion": "intelligence.capability.orchestration.engine.v1",
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "planTemplateCount": 12,
+    "productionApplicable": false,
+    "schemaVersion": "intelligence.capability.orchestration.v1",
+    "testOnly": true
+  },
+  "generatedArtifact": true
+}

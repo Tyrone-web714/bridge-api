@@ -1,0 +1,84 @@
+{
+  "catalog": {
+    "capabilityCount": 12,
+    "catalogHash": "15042779b1ad3fc85b9c229aeb0b7445f8570d64094c903c0edacf85f04dc02b",
+    "contractCount": 12,
+    "documentationReferences": [
+      "docs/implementation/intelligence-capability-orchestration/ARCHITECTURE.md",
+      "docs/implementation/intelligence-capability-orchestration/CAPABILITY_CONTRACTS.md",
+      "docs/implementation/intelligence-capability-orchestration/DEFERRED_WORK.md",
+      "docs/implementation/intelligence-capability-orchestration/EXECUTION_CONTRACTS.md",
+      "docs/implementation/intelligence-capability-orchestration/generated/domain_summary.md",
+      "docs/implementation/intelligence-capability-orchestration/GENERATED_ARTIFACTS.md",
+      "docs/implementation/intelligence-capability-orchestration/IMPLEMENTATION_REPORT.md",
+      "docs/implementation/intelligence-capability-orchestration/INTEGRATION_POINTS.md",
+      "docs/implementation/intelligence-capability-orchestration/ORCHESTRATION_PIPELINE.md",
+      "docs/implementation/intelligence-capability-orchestration/README.md",
+      "docs/implementation/intelligence-capability-orchestration/ROLLBACK.md",
+      "docs/implementation/intelligence-capability-orchestration/TEST_PLAN.md",
+      "docs/implementation/intelligence-capability-orchestration/TEST_RESULTS.md",
+      "docs/implementation/intelligence-capability-orchestration/VALIDATION_RULES.md"
+    ],
+    "domains": [
+      {
+        "capabilityCount": 1,
+        "domain": "Route Intelligence"
+      },
+      {
+        "capabilityCount": 1,
+        "domain": "Driver Intelligence"
+      },
+      {
+        "capabilityCount": 1,
+        "domain": "Supervisor Intelligence"
+      },
+      {
+        "capabilityCount": 1,
+        "domain": "Warehouse Intelligence"
+      },
+      {
+        "capabilityCount": 1,
+        "domain": "Customer Intelligence"
+      },
+      {
+        "capabilityCount": 1,
+        "domain": "Fleet Intelligence"
+      },
+      {
+        "capabilityCount": 1,
+        "domain": "Safety Intelligence"
+      },
+      {
+        "capabilityCount": 1,
+        "domain": "Operations Intelligence"
+      },
+      {
+        "capabilityCount": 1,
+        "domain": "Maintenance Intelligence"
+      },
+      {
+        "capabilityCount": 1,
+        "domain": "Inventory Intelligence"
+      },
+      {
+        "capabilityCount": 1,
+        "domain": "Financial Intelligence"
+      },
+      {
+        "capabilityCount": 1,
+        "domain": "Enterprise Intelligence"
+      }
+    ],
+    "engineVersion": "intelligence.capability.orchestration.engine.v1",
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "planTemplateCount": 12,
+    "productionApplicable": false,
+    "schemaVersion": "intelligence.capability.orchestration.v1",
+    "testOnly": true
+  },
+  "generatedArtifact": true,
+  "validation": {
+    "errors": [],
+    "valid": true
+  }
+}

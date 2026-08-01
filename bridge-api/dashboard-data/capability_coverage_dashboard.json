@@ -20,7 +20,7 @@
       "dashboard-data/capability_coverage_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "62694acb6b1a4f39899083679b1cfd0905949e60a3b1d150adbcfc99c410ac06",
+    "generationHash": "e2f86fa0d136728af3abf6626a6269a8f7c7be51723890a7eb636b6462353d71",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -74,7 +74,7 @@
         "docs/implementation/shared-safety-moderation-ui": 14,
         "docs/implementation/web-origin-private-media-hardening": 16
       },
-      "testScripts": 38
+      "testScripts": 40
     },
     "statusIndicators": [],
     "summary": {

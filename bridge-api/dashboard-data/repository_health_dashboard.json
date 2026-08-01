@@ -18,7 +18,7 @@
       "dashboard-data/repository_health_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "a9cfd6cf3685adf3e2a60587ea44907beac7823c2e718b1566462d08555afd34",
+    "generationHash": "5bc451fae3aa492d364c38ea98b63b75e553477e59843dfd49c2a1ae724de57c",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -34,7 +34,7 @@
     ],
     "statistics": {
       "dependencyCount": 8,
-      "scriptCount": 120
+      "scriptCount": 130
     },
     "statusIndicators": [],
     "summary": {

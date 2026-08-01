@@ -1,0 +1,734 @@
+{
+  "contracts": [
+    {
+      "capabilityId": "route.intelligence.optimization",
+      "capabilityVersion": "0.1.0",
+      "confidenceMetadata": {
+        "confidenceRequired": true,
+        "minimumConfidence": 0.7
+      },
+      "contractHash": "cd584f5a7c4eb5eac990ab0774f393e15d22c468f7d8a3e840eacc214754bb6d",
+      "costMetadata": {
+        "maxEstimatedCostMicroUsd": 100000,
+        "unknownCostPolicy": "FAIL_CLOSED"
+      },
+      "errorHandling": {
+        "dependencyFailure": "ABSTAIN_WITH_EXPLANATION",
+        "invalidInput": "REJECT_REQUEST",
+        "unknownCost": "FAIL_CLOSED"
+      },
+      "explainabilityMetadata": {
+        "evidenceReferencesRequired": true,
+        "reasonCodesRequired": true,
+        "required": true
+      },
+      "inputSchema": {
+        "optionalInputs": [],
+        "requiredInputs": [
+          "gps",
+          "routing",
+          "bridge.database",
+          "traffic",
+          "weather"
+        ]
+      },
+      "outputSchema": {
+        "outputs": [
+          "routePlan",
+          "routeRiskSummary"
+        ]
+      },
+      "productionApplicable": false,
+      "qualityMetadata": {
+        "qualityGates": [
+          "SCHEMA_VALID",
+          "SOURCE_REFERENCES_PRESENT",
+          "CONFIDENCE_RECORDED"
+        ]
+      },
+      "reasonCodes": [
+        "CAPABILITY_DEFINED",
+        "DEPENDENCIES_RESOLVED",
+        "TEST_ONLY_EXECUTION_PLAN",
+        "NO_PROVIDER_CALL"
+      ],
+      "schemaVersion": "intelligence.execution.contract.v1",
+      "testOnly": true,
+      "validationRules": [
+        "VALID_CAPABILITY_ID",
+        "KNOWN_DATA_SOURCES",
+        "VALID_LIFECYCLE",
+        "DOCUMENTATION_PRESENT",
+        "NO_RUNTIME_EXECUTION"
+      ]
+    },
+    {
+      "capabilityId": "driver.intelligence.performance",
+      "capabilityVersion": "0.1.0",
+      "confidenceMetadata": {
+        "confidenceRequired": true,
+        "minimumConfidence": 0.7
+      },
+      "contractHash": "ea0365dcef411bee74e648f8cc68f56040d28c80fac43e8fe354cb6a2b6ef3d0",
+      "costMetadata": {
+        "maxEstimatedCostMicroUsd": 100000,
+        "unknownCostPolicy": "FAIL_CLOSED"
+      },
+      "errorHandling": {
+        "dependencyFailure": "ABSTAIN_WITH_EXPLANATION",
+        "invalidInput": "REJECT_REQUEST",
+        "unknownCost": "FAIL_CLOSED"
+      },
+      "explainabilityMetadata": {
+        "evidenceReferencesRequired": true,
+        "reasonCodesRequired": true,
+        "required": true
+      },
+      "inputSchema": {
+        "optionalInputs": [],
+        "requiredInputs": [
+          "driver.activity",
+          "safety.events",
+          "supervisor.notes"
+        ]
+      },
+      "outputSchema": {
+        "outputs": [
+          "driverPerformanceSummary",
+          "coachingSignals"
+        ]
+      },
+      "productionApplicable": false,
+      "qualityMetadata": {
+        "qualityGates": [
+          "SCHEMA_VALID",
+          "SOURCE_REFERENCES_PRESENT",
+          "CONFIDENCE_RECORDED"
+        ]
+      },
+      "reasonCodes": [
+        "CAPABILITY_DEFINED",
+        "DEPENDENCIES_RESOLVED",
+        "TEST_ONLY_EXECUTION_PLAN",
+        "NO_PROVIDER_CALL"
+      ],
+      "schemaVersion": "intelligence.execution.contract.v1",
+      "testOnly": true,
+      "validationRules": [
+        "VALID_CAPABILITY_ID",
+        "KNOWN_DATA_SOURCES",
+        "VALID_LIFECYCLE",
+        "DOCUMENTATION_PRESENT",
+        "NO_RUNTIME_EXECUTION"
+      ]
+    },
+    {
+      "capabilityId": "supervisor.intelligence.operations",
+      "capabilityVersion": "0.1.0",
+      "confidenceMetadata": {
+        "confidenceRequired": true,
+        "minimumConfidence": 0.7
+      },
+      "contractHash": "145402a1f94ebdc977019ac02c90058cbccb41e999bbae7606e4efa5a6504837",
+      "costMetadata": {
+        "maxEstimatedCostMicroUsd": 100000,
+        "unknownCostPolicy": "FAIL_CLOSED"
+      },
+      "errorHandling": {
+        "dependencyFailure": "ABSTAIN_WITH_EXPLANATION",
+        "invalidInput": "REJECT_REQUEST",
+        "unknownCost": "FAIL_CLOSED"
+      },
+      "explainabilityMetadata": {
+        "evidenceReferencesRequired": true,
+        "reasonCodesRequired": true,
+        "required": true
+      },
+      "inputSchema": {
+        "optionalInputs": [],
+        "requiredInputs": [
+          "supervisor.notes",
+          "driver.activity",
+          "user.notes"
+        ]
+      },
+      "outputSchema": {
+        "outputs": [
+          "supervisorBrief",
+          "operationalExceptions"
+        ]
+      },
+      "productionApplicable": false,
+      "qualityMetadata": {
+        "qualityGates": [
+          "SCHEMA_VALID",
+          "SOURCE_REFERENCES_PRESENT",
+          "CONFIDENCE_RECORDED"
+        ]
+      },
+      "reasonCodes": [
+        "CAPABILITY_DEFINED",
+        "DEPENDENCIES_RESOLVED",
+        "TEST_ONLY_EXECUTION_PLAN",
+        "NO_PROVIDER_CALL"
+      ],
+      "schemaVersion": "intelligence.execution.contract.v1",
+      "testOnly": true,
+      "validationRules": [
+        "VALID_CAPABILITY_ID",
+        "KNOWN_DATA_SOURCES",
+        "VALID_LIFECYCLE",
+        "DOCUMENTATION_PRESENT",
+        "NO_RUNTIME_EXECUTION"
+      ]
+    },
+    {
+      "capabilityId": "warehouse.intelligence.flow",
+      "capabilityVersion": "0.1.0",
+      "confidenceMetadata": {
+        "confidenceRequired": true,
+        "minimumConfidence": 0.7
+      },
+      "contractHash": "75aa0b15bacde7bf2594ae47927016ee1383671829fb53d6fc82139794218de6",
+      "costMetadata": {
+        "maxEstimatedCostMicroUsd": 100000,
+        "unknownCostPolicy": "FAIL_CLOSED"
+      },
+      "errorHandling": {
+        "dependencyFailure": "ABSTAIN_WITH_EXPLANATION",
+        "invalidInput": "REJECT_REQUEST",
+        "unknownCost": "FAIL_CLOSED"
+      },
+      "explainabilityMetadata": {
+        "evidenceReferencesRequired": true,
+        "reasonCodesRequired": true,
+        "required": true
+      },
+      "inputSchema": {
+        "optionalInputs": [],
+        "requiredInputs": [
+          "warehouse",
+          "inventory",
+          "products"
+        ]
+      },
+      "outputSchema": {
+        "outputs": [
+          "warehouseFlowSummary",
+          "bottleneckSignals"
+        ]
+      },
+      "productionApplicable": false,
+      "qualityMetadata": {
+        "qualityGates": [
+          "SCHEMA_VALID",
+          "SOURCE_REFERENCES_PRESENT",
+          "CONFIDENCE_RECORDED"
+        ]
+      },
+      "reasonCodes": [
+        "CAPABILITY_DEFINED",
+        "DEPENDENCIES_RESOLVED",
+        "TEST_ONLY_EXECUTION_PLAN",
+        "NO_PROVIDER_CALL"
+      ],
+      "schemaVersion": "intelligence.execution.contract.v1",
+      "testOnly": true,
+      "validationRules": [
+        "VALID_CAPABILITY_ID",
+        "KNOWN_DATA_SOURCES",
+        "VALID_LIFECYCLE",
+        "DOCUMENTATION_PRESENT",
+        "NO_RUNTIME_EXECUTION"
+      ]
+    },
+    {
+      "capabilityId": "customer.intelligence.account",
+      "capabilityVersion": "0.1.0",
+      "confidenceMetadata": {
+        "confidenceRequired": true,
+        "minimumConfidence": 0.7
+      },
+      "contractHash": "73e31014afa632055deeee857a0588a118eaef410c531d32701a66e839009883",
+      "costMetadata": {
+        "maxEstimatedCostMicroUsd": 100000,
+        "unknownCostPolicy": "FAIL_CLOSED"
+      },
+      "errorHandling": {
+        "dependencyFailure": "ABSTAIN_WITH_EXPLANATION",
+        "invalidInput": "REJECT_REQUEST",
+        "unknownCost": "FAIL_CLOSED"
+      },
+      "explainabilityMetadata": {
+        "evidenceReferencesRequired": true,
+        "reasonCodesRequired": true,
+        "required": true
+      },
+      "inputSchema": {
+        "optionalInputs": [],
+        "requiredInputs": [
+          "customer.accounts",
+          "invoices",
+          "sales.history",
+          "documents"
+        ]
+      },
+      "outputSchema": {
+        "outputs": [
+          "customerHealthSummary",
+          "serviceSignals"
+        ]
+      },
+      "productionApplicable": false,
+      "qualityMetadata": {
+        "qualityGates": [
+          "SCHEMA_VALID",
+          "SOURCE_REFERENCES_PRESENT",
+          "CONFIDENCE_RECORDED"
+        ]
+      },
+      "reasonCodes": [
+        "CAPABILITY_DEFINED",
+        "DEPENDENCIES_RESOLVED",
+        "TEST_ONLY_EXECUTION_PLAN",
+        "NO_PROVIDER_CALL"
+      ],
+      "schemaVersion": "intelligence.execution.contract.v1",
+      "testOnly": true,
+      "validationRules": [
+        "VALID_CAPABILITY_ID",
+        "KNOWN_DATA_SOURCES",
+        "VALID_LIFECYCLE",
+        "DOCUMENTATION_PRESENT",
+        "NO_RUNTIME_EXECUTION"
+      ]
+    },
+    {
+      "capabilityId": "fleet.intelligence.utilization",
+      "capabilityVersion": "0.1.0",
+      "confidenceMetadata": {
+        "confidenceRequired": true,
+        "minimumConfidence": 0.7
+      },
+      "contractHash": "a3dd9060c35223f118e4765bb21c567922f5216ba109fc8cc5e7f45846254f0f",
+      "costMetadata": {
+        "maxEstimatedCostMicroUsd": 100000,
+        "unknownCostPolicy": "FAIL_CLOSED"
+      },
+      "errorHandling": {
+        "dependencyFailure": "ABSTAIN_WITH_EXPLANATION",
+        "invalidInput": "REJECT_REQUEST",
+        "unknownCost": "FAIL_CLOSED"
+      },
+      "explainabilityMetadata": {
+        "evidenceReferencesRequired": true,
+        "reasonCodesRequired": true,
+        "required": true
+      },
+      "inputSchema": {
+        "optionalInputs": [],
+        "requiredInputs": [
+          "vehicle.telemetry",
+          "gps",
+          "driver.activity"
+        ]
+      },
+      "outputSchema": {
+        "outputs": [
+          "fleetUtilizationSummary",
+          "capacitySignals"
+        ]
+      },
+      "productionApplicable": false,
+      "qualityMetadata": {
+        "qualityGates": [
+          "SCHEMA_VALID",
+          "SOURCE_REFERENCES_PRESENT",
+          "CONFIDENCE_RECORDED"
+        ]
+      },
+      "reasonCodes": [
+        "CAPABILITY_DEFINED",
+        "DEPENDENCIES_RESOLVED",
+        "TEST_ONLY_EXECUTION_PLAN",
+        "NO_PROVIDER_CALL"
+      ],
+      "schemaVersion": "intelligence.execution.contract.v1",
+      "testOnly": true,
+      "validationRules": [
+        "VALID_CAPABILITY_ID",
+        "KNOWN_DATA_SOURCES",
+        "VALID_LIFECYCLE",
+        "DOCUMENTATION_PRESENT",
+        "NO_RUNTIME_EXECUTION"
+      ]
+    },
+    {
+      "capabilityId": "safety.intelligence.risk",
+      "capabilityVersion": "0.1.0",
+      "confidenceMetadata": {
+        "confidenceRequired": true,
+        "minimumConfidence": 0.7
+      },
+      "contractHash": "3d8fe1fb86431e431f64794b13bdcd252a5918a97218c1ec05b93b9a7c7b30e9",
+      "costMetadata": {
+        "maxEstimatedCostMicroUsd": 100000,
+        "unknownCostPolicy": "FAIL_CLOSED"
+      },
+      "errorHandling": {
+        "dependencyFailure": "ABSTAIN_WITH_EXPLANATION",
+        "invalidInput": "REJECT_REQUEST",
+        "unknownCost": "FAIL_CLOSED"
+      },
+      "explainabilityMetadata": {
+        "evidenceReferencesRequired": true,
+        "reasonCodesRequired": true,
+        "required": true
+      },
+      "inputSchema": {
+        "optionalInputs": [],
+        "requiredInputs": [
+          "safety.events",
+          "routing",
+          "bridge.database",
+          "weather"
+        ]
+      },
+      "outputSchema": {
+        "outputs": [
+          "safetyRiskSummary",
+          "mitigationSignals"
+        ]
+      },
+      "productionApplicable": false,
+      "qualityMetadata": {
+        "qualityGates": [
+          "SCHEMA_VALID",
+          "SOURCE_REFERENCES_PRESENT",
+          "CONFIDENCE_RECORDED"
+        ]
+      },
+      "reasonCodes": [
+        "CAPABILITY_DEFINED",
+        "DEPENDENCIES_RESOLVED",
+        "TEST_ONLY_EXECUTION_PLAN",
+        "NO_PROVIDER_CALL"
+      ],
+      "schemaVersion": "intelligence.execution.contract.v1",
+      "testOnly": true,
+      "validationRules": [
+        "VALID_CAPABILITY_ID",
+        "KNOWN_DATA_SOURCES",
+        "VALID_LIFECYCLE",
+        "DOCUMENTATION_PRESENT",
+        "NO_RUNTIME_EXECUTION"
+      ]
+    },
+    {
+      "capabilityId": "operations.intelligence.throughput",
+      "capabilityVersion": "0.1.0",
+      "confidenceMetadata": {
+        "confidenceRequired": true,
+        "minimumConfidence": 0.7
+      },
+      "contractHash": "508701520af3931776fac136071834523aeca0ade51d0686e4cab60d7bad8bbc",
+      "costMetadata": {
+        "maxEstimatedCostMicroUsd": 100000,
+        "unknownCostPolicy": "FAIL_CLOSED"
+      },
+      "errorHandling": {
+        "dependencyFailure": "ABSTAIN_WITH_EXPLANATION",
+        "invalidInput": "REJECT_REQUEST",
+        "unknownCost": "FAIL_CLOSED"
+      },
+      "explainabilityMetadata": {
+        "evidenceReferencesRequired": true,
+        "reasonCodesRequired": true,
+        "required": true
+      },
+      "inputSchema": {
+        "optionalInputs": [],
+        "requiredInputs": [
+          "routing",
+          "warehouse",
+          "driver.activity",
+          "customer.accounts"
+        ]
+      },
+      "outputSchema": {
+        "outputs": [
+          "throughputSummary",
+          "delaySignals"
+        ]
+      },
+      "productionApplicable": false,
+      "qualityMetadata": {
+        "qualityGates": [
+          "SCHEMA_VALID",
+          "SOURCE_REFERENCES_PRESENT",
+          "CONFIDENCE_RECORDED"
+        ]
+      },
+      "reasonCodes": [
+        "CAPABILITY_DEFINED",
+        "DEPENDENCIES_RESOLVED",
+        "TEST_ONLY_EXECUTION_PLAN",
+        "NO_PROVIDER_CALL"
+      ],
+      "schemaVersion": "intelligence.execution.contract.v1",
+      "testOnly": true,
+      "validationRules": [
+        "VALID_CAPABILITY_ID",
+        "KNOWN_DATA_SOURCES",
+        "VALID_LIFECYCLE",
+        "DOCUMENTATION_PRESENT",
+        "NO_RUNTIME_EXECUTION"
+      ]
+    },
+    {
+      "capabilityId": "maintenance.intelligence.health",
+      "capabilityVersion": "0.1.0",
+      "confidenceMetadata": {
+        "confidenceRequired": true,
+        "minimumConfidence": 0.7
+      },
+      "contractHash": "188718b2fd8f80a71e1c391c04ef15ffc559a2397f5abf8afbed8e237246e539",
+      "costMetadata": {
+        "maxEstimatedCostMicroUsd": 100000,
+        "unknownCostPolicy": "FAIL_CLOSED"
+      },
+      "errorHandling": {
+        "dependencyFailure": "ABSTAIN_WITH_EXPLANATION",
+        "invalidInput": "REJECT_REQUEST",
+        "unknownCost": "FAIL_CLOSED"
+      },
+      "explainabilityMetadata": {
+        "evidenceReferencesRequired": true,
+        "reasonCodesRequired": true,
+        "required": true
+      },
+      "inputSchema": {
+        "optionalInputs": [
+          "future.connectors"
+        ],
+        "requiredInputs": [
+          "vehicle.telemetry",
+          "driver.activity"
+        ]
+      },
+      "outputSchema": {
+        "outputs": [
+          "maintenanceHealthSummary",
+          "serviceRiskSignals"
+        ]
+      },
+      "productionApplicable": false,
+      "qualityMetadata": {
+        "qualityGates": [
+          "SCHEMA_VALID",
+          "SOURCE_REFERENCES_PRESENT",
+          "CONFIDENCE_RECORDED"
+        ]
+      },
+      "reasonCodes": [
+        "CAPABILITY_DEFINED",
+        "DEPENDENCIES_RESOLVED",
+        "TEST_ONLY_EXECUTION_PLAN",
+        "NO_PROVIDER_CALL"
+      ],
+      "schemaVersion": "intelligence.execution.contract.v1",
+      "testOnly": true,
+      "validationRules": [
+        "VALID_CAPABILITY_ID",
+        "KNOWN_DATA_SOURCES",
+        "VALID_LIFECYCLE",
+        "DOCUMENTATION_PRESENT",
+        "NO_RUNTIME_EXECUTION"
+      ]
+    },
+    {
+      "capabilityId": "inventory.intelligence.availability",
+      "capabilityVersion": "0.1.0",
+      "confidenceMetadata": {
+        "confidenceRequired": true,
+        "minimumConfidence": 0.7
+      },
+      "contractHash": "a93646708eed4167a6f9818eda751f7f5ec8145f93f2e160b15a55a71ba83486",
+      "costMetadata": {
+        "maxEstimatedCostMicroUsd": 100000,
+        "unknownCostPolicy": "FAIL_CLOSED"
+      },
+      "errorHandling": {
+        "dependencyFailure": "ABSTAIN_WITH_EXPLANATION",
+        "invalidInput": "REJECT_REQUEST",
+        "unknownCost": "FAIL_CLOSED"
+      },
+      "explainabilityMetadata": {
+        "evidenceReferencesRequired": true,
+        "reasonCodesRequired": true,
+        "required": true
+      },
+      "inputSchema": {
+        "optionalInputs": [],
+        "requiredInputs": [
+          "inventory",
+          "products",
+          "warehouse",
+          "sales.history"
+        ]
+      },
+      "outputSchema": {
+        "outputs": [
+          "inventoryAvailabilitySummary",
+          "stockoutSignals"
+        ]
+      },
+      "productionApplicable": false,
+      "qualityMetadata": {
+        "qualityGates": [
+          "SCHEMA_VALID",
+          "SOURCE_REFERENCES_PRESENT",
+          "CONFIDENCE_RECORDED"
+        ]
+      },
+      "reasonCodes": [
+        "CAPABILITY_DEFINED",
+        "DEPENDENCIES_RESOLVED",
+        "TEST_ONLY_EXECUTION_PLAN",
+        "NO_PROVIDER_CALL"
+      ],
+      "schemaVersion": "intelligence.execution.contract.v1",
+      "testOnly": true,
+      "validationRules": [
+        "VALID_CAPABILITY_ID",
+        "KNOWN_DATA_SOURCES",
+        "VALID_LIFECYCLE",
+        "DOCUMENTATION_PRESENT",
+        "NO_RUNTIME_EXECUTION"
+      ]
+    },
+    {
+      "capabilityId": "financial.intelligence.margin",
+      "capabilityVersion": "0.1.0",
+      "confidenceMetadata": {
+        "confidenceRequired": true,
+        "minimumConfidence": 0.7
+      },
+      "contractHash": "ac7243ed49f0dd4a66acd88153a829855be453f9a63030318abb4cb09a7e7cf9",
+      "costMetadata": {
+        "maxEstimatedCostMicroUsd": 100000,
+        "unknownCostPolicy": "FAIL_CLOSED"
+      },
+      "errorHandling": {
+        "dependencyFailure": "ABSTAIN_WITH_EXPLANATION",
+        "invalidInput": "REJECT_REQUEST",
+        "unknownCost": "FAIL_CLOSED"
+      },
+      "explainabilityMetadata": {
+        "evidenceReferencesRequired": true,
+        "reasonCodesRequired": true,
+        "required": true
+      },
+      "inputSchema": {
+        "optionalInputs": [],
+        "requiredInputs": [
+          "invoices",
+          "sales.history",
+          "products",
+          "customer.accounts"
+        ]
+      },
+      "outputSchema": {
+        "outputs": [
+          "marginSummary",
+          "costSignals"
+        ]
+      },
+      "productionApplicable": false,
+      "qualityMetadata": {
+        "qualityGates": [
+          "SCHEMA_VALID",
+          "SOURCE_REFERENCES_PRESENT",
+          "CONFIDENCE_RECORDED"
+        ]
+      },
+      "reasonCodes": [
+        "CAPABILITY_DEFINED",
+        "DEPENDENCIES_RESOLVED",
+        "TEST_ONLY_EXECUTION_PLAN",
+        "NO_PROVIDER_CALL"
+      ],
+      "schemaVersion": "intelligence.execution.contract.v1",
+      "testOnly": true,
+      "validationRules": [
+        "VALID_CAPABILITY_ID",
+        "KNOWN_DATA_SOURCES",
+        "VALID_LIFECYCLE",
+        "DOCUMENTATION_PRESENT",
+        "NO_RUNTIME_EXECUTION"
+      ]
+    },
+    {
+      "capabilityId": "enterprise.intelligence.overview",
+      "capabilityVersion": "0.1.0",
+      "confidenceMetadata": {
+        "confidenceRequired": true,
+        "minimumConfidence": 0.7
+      },
+      "contractHash": "df7df3f4b668a5a3386dcf12ca72b73ef82c11887132ad403efa383f267f908c",
+      "costMetadata": {
+        "maxEstimatedCostMicroUsd": 100000,
+        "unknownCostPolicy": "FAIL_CLOSED"
+      },
+      "errorHandling": {
+        "dependencyFailure": "ABSTAIN_WITH_EXPLANATION",
+        "invalidInput": "REJECT_REQUEST",
+        "unknownCost": "FAIL_CLOSED"
+      },
+      "explainabilityMetadata": {
+        "evidenceReferencesRequired": true,
+        "reasonCodesRequired": true,
+        "required": true
+      },
+      "inputSchema": {
+        "optionalInputs": [
+          "future.connectors"
+        ],
+        "requiredInputs": [
+          "documents",
+          "user.notes"
+        ]
+      },
+      "outputSchema": {
+        "outputs": [
+          "enterpriseSummary",
+          "crossDomainSignals"
+        ]
+      },
+      "productionApplicable": false,
+      "qualityMetadata": {
+        "qualityGates": [
+          "SCHEMA_VALID",
+          "SOURCE_REFERENCES_PRESENT",
+          "CONFIDENCE_RECORDED"
+        ]
+      },
+      "reasonCodes": [
+        "CAPABILITY_DEFINED",
+        "DEPENDENCIES_RESOLVED",
+        "TEST_ONLY_EXECUTION_PLAN",
+        "NO_PROVIDER_CALL"
+      ],
+      "schemaVersion": "intelligence.execution.contract.v1",
+      "testOnly": true,
+      "validationRules": [
+        "VALID_CAPABILITY_ID",
+        "KNOWN_DATA_SOURCES",
+        "VALID_LIFECYCLE",
+        "DOCUMENTATION_PRESENT",
+        "NO_RUNTIME_EXECUTION"
+      ]
+    }
+  ],
+  "generatedArtifact": true
+}
