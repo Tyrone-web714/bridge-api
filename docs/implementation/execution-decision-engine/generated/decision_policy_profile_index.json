@@ -1,0 +1,66 @@
+{
+  "generatedArtifact": true,
+  "generatedFrom": "bridge-api/execution-decisions",
+  "policyProfiles": [
+    {
+      "allowedStrategyCount": 12,
+      "contentHash": "1b62410ef4e2847826bb74da99ae9664302ddf6fd14b83bc66e596cf1875997a",
+      "decisionPolicyProfileId": "CHEAPEST_SUFFICIENT_TEST_POLICY",
+      "enabled": true,
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "productionUseAllowed": false,
+      "testOnly": true,
+      "unknownCostPolicy": "PRESERVE_UNKNOWN",
+      "utilityMethod": "CHEAPEST_SUFFICIENT",
+      "version": "0.1.0"
+    },
+    {
+      "allowedStrategyCount": 12,
+      "contentHash": "d851f202d912953130727b9dc08bba60dede47fec856b725f26e0dfad2f51545",
+      "decisionPolicyProfileId": "INSUFFICIENT_EVIDENCE_FAIL_CLOSED_TEST_POLICY",
+      "enabled": true,
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "productionUseAllowed": false,
+      "testOnly": true,
+      "unknownCostPolicy": "FAIL_CLOSED",
+      "utilityMethod": "CHEAPEST_SUFFICIENT",
+      "version": "0.1.0"
+    },
+    {
+      "allowedStrategyCount": 12,
+      "contentHash": "fb47427838a467327ac8c78dadd4560a4dcbe403734fbcc43318ef8f16d79b91",
+      "decisionPolicyProfileId": "OFFLINE_FIRST_TEST_POLICY",
+      "enabled": true,
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "productionUseAllowed": false,
+      "testOnly": true,
+      "unknownCostPolicy": "PRESERVE_UNKNOWN",
+      "utilityMethod": "CHEAPEST_SUFFICIENT",
+      "version": "0.1.0"
+    },
+    {
+      "allowedStrategyCount": 12,
+      "contentHash": "10a48a93412d74029c30e65f4a95339d18265ecb0e422cff04a15446d9f778df",
+      "decisionPolicyProfileId": "PREMIUM_RESTRICTED_TEST_POLICY",
+      "enabled": true,
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "productionUseAllowed": false,
+      "testOnly": true,
+      "unknownCostPolicy": "FAIL_CLOSED",
+      "utilityMethod": "CHEAPEST_SUFFICIENT",
+      "version": "0.1.0"
+    },
+    {
+      "allowedStrategyCount": 12,
+      "contentHash": "e46782b071cb403b4428b87b4010e34ec1aded5768298aacba96d57996d2a638",
+      "decisionPolicyProfileId": "SAFETY_CRITICAL_TEST_POLICY",
+      "enabled": true,
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "productionUseAllowed": false,
+      "testOnly": true,
+      "unknownCostPolicy": "PRESERVE_UNKNOWN",
+      "utilityMethod": "CHEAPEST_SUFFICIENT",
+      "version": "0.1.0"
+    }
+  ]
+}

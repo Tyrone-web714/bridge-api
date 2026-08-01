@@ -1,0 +1,16 @@
+{
+  "defaultStrategyPreferenceOrder": [
+    "CACHE",
+    "DETERMINISTIC_RULES",
+    "SQL",
+    "STATISTICAL_FORMULA",
+    "GEOSPATIAL_ENGINE",
+    "OPTIMIZATION_ENGINE",
+    "CONVENTIONAL_ML",
+    "LOCAL_INFERENCE",
+    "HOSTED_ECONOMY",
+    "HOSTED_BALANCED",
+    "HOSTED_PREMIUM",
+    "HUMAN_REVIEW"
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "fallbackPlans": [
+    {
+      "decisionRequestId": "decision.structured_response.fail_closed.offline.v1",
+      "fallbackPlan": []
+    },
+    {
+      "decisionRequestId": "decision.structured_response.initial.offline.v1",
+      "fallbackPlan": [
+        {
+          "budgetRequirement": "simulation only; no runtime budget enforcement",
+          "candidateId": "decision.structured_response.initial.offline.v1.HOSTED_BALANCED.mock.legacy_structured_response.v1.33ef22e1",
+          "eligibilityRequirements": [
+            "same capability",
+            "same policy profile",
+            "validated evidence"
+          ],
+          "fallbackOrder": 1,
+          "humanReviewRequirement": false,
+          "maximumAttempts": 1,
+          "requiredApprovals": [],
+          "safetyRequirements": "all critical gates must remain satisfied",
+          "strategyId": "HOSTED_BALANCED",
+          "terminalCondition": "safe advisory result, human review, deferral, or abstention",
+          "timeoutBehavior": "record timeout and move to next advisory fallback",
+          "triggeringConditions": [
+            "PRIMARY_UNAVAILABLE",
+            "PRIMARY_INSUFFICIENT",
+            "POLICY_REQUIRES_ESCALATION"
+          ]
+        },
+        {
+          "budgetRequirement": "simulation only; no runtime budget enforcement",
+          "candidateId": "decision.structured_response.initial.offline.v1.HOSTED_BALANCED.mock.legacy_structured_response.v1.381d3346",
+          "eligibilityRequirements": [
+            "same capability",
+            "same policy profile",
+            "validated evidence"
+          ],
+          "fallbackOrder": 2,
+          "humanReviewRequirement": false,
+          "maximumAttempts": 1,
+          "requiredApprovals": [],
+          "safetyRequirements": "all critical gates must remain satisfied",
+          "strategyId": "HOSTED_BALANCED",
+          "terminalCondition": "safe advisory result, human review, deferral, or abstention",
+          "timeoutBehavior": "record timeout and move to next advisory fallback",
+          "triggeringConditions": [
+            "PRIMARY_UNAVAILABLE",
+            "PRIMARY_INSUFFICIENT",
+            "POLICY_REQUIRES_ESCALATION"
+          ]
+        },
+        {
+          "budgetRequirement": "simulation only; no runtime budget enforcement",
+          "candidateId": "decision.structured_response.initial.offline.v1.HOSTED_BALANCED.mock.legacy_structured_response.v1.3e88b9d5",
+          "eligibilityRequirements": [
+            "same capability",
+            "same policy profile",
+            "validated evidence"
+          ],
+          "fallbackOrder": 3,
+          "humanReviewRequirement": false,
+          "maximumAttempts": 1,
+          "requiredApprovals": [],
+          "safetyRequirements": "all critical gates must remain satisfied",
+          "strategyId": "HOSTED_BALANCED",
+          "terminalCondition": "safe advisory result, human review, deferral, or abstention",
+          "timeoutBehavior": "record timeout and move to next advisory fallback",
+          "triggeringConditions": [
+            "PRIMARY_UNAVAILABLE",
+            "PRIMARY_INSUFFICIENT",
+            "POLICY_REQUIRES_ESCALATION"
+          ]
+        }
+      ]
+    },
+    {
+      "decisionRequestId": "decision.supervisor_report.initial.offline.v1",
+      "fallbackPlan": []
+    },
+    {
+      "decisionRequestId": "decision.text_cleanup.initial.offline.v1",
+      "fallbackPlan": [
+        {
+          "budgetRequirement": "simulation only; no runtime budget enforcement",
+          "candidateId": "decision.text_cleanup.initial.offline.v1.DETERMINISTIC_RULES.mock.deterministic_text_cleanup.v1.1681dc53",
+          "eligibilityRequirements": [
+            "same capability",
+            "same policy profile",
+            "validated evidence"
+          ],
+          "fallbackOrder": 1,
+          "humanReviewRequirement": false,
+          "maximumAttempts": 1,
+          "requiredApprovals": [],
+          "safetyRequirements": "all critical gates must remain satisfied",
+          "strategyId": "DETERMINISTIC_RULES",
+          "terminalCondition": "safe advisory result, human review, deferral, or abstention",
+          "timeoutBehavior": "record timeout and move to next advisory fallback",
+          "triggeringConditions": [
+            "PRIMARY_UNAVAILABLE",
+            "PRIMARY_INSUFFICIENT",
+            "POLICY_REQUIRES_ESCALATION"
+          ]
+        },
+        {
+          "budgetRequirement": "simulation only; no runtime budget enforcement",
+          "candidateId": "decision.text_cleanup.initial.offline.v1.DETERMINISTIC_RULES.mock.deterministic_text_cleanup.v1.2ab18cde",
+          "eligibilityRequirements": [
+            "same capability",
+            "same policy profile",
+            "validated evidence"
+          ],
+          "fallbackOrder": 2,
+          "humanReviewRequirement": false,
+          "maximumAttempts": 1,
+          "requiredApprovals": [],
+          "safetyRequirements": "all critical gates must remain satisfied",
+          "strategyId": "DETERMINISTIC_RULES",
+          "terminalCondition": "safe advisory result, human review, deferral, or abstention",
+          "timeoutBehavior": "record timeout and move to next advisory fallback",
+          "triggeringConditions": [
+            "PRIMARY_UNAVAILABLE",
+            "PRIMARY_INSUFFICIENT",
+            "POLICY_REQUIRES_ESCALATION"
+          ]
+        },
+        {
+          "budgetRequirement": "simulation only; no runtime budget enforcement",
+          "candidateId": "decision.text_cleanup.initial.offline.v1.DETERMINISTIC_RULES.mock.deterministic_text_cleanup.v1.5774a0d5",
+          "eligibilityRequirements": [
+            "same capability",
+            "same policy profile",
+            "validated evidence"
+          ],
+          "fallbackOrder": 3,
+          "humanReviewRequirement": false,
+          "maximumAttempts": 1,
+          "requiredApprovals": [],
+          "safetyRequirements": "all critical gates must remain satisfied",
+          "strategyId": "DETERMINISTIC_RULES",
+          "terminalCondition": "safe advisory result, human review, deferral, or abstention",
+          "timeoutBehavior": "record timeout and move to next advisory fallback",
+          "triggeringConditions": [
+            "PRIMARY_UNAVAILABLE",
+            "PRIMARY_INSUFFICIENT",
+            "POLICY_REQUIRES_ESCALATION"
+          ]
+        }
+      ]
+    }
+  ],
+  "generatedArtifact": true,
+  "generatedFrom": "bridge-api/execution-decisions"
+}

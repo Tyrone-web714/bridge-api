@@ -1,0 +1,54 @@
+{
+  "decisionRequests": [
+    {
+      "capabilityId": "legacy.ai.structured_response",
+      "capabilityVersion": "legacy.ai.structured_response.v1",
+      "decisionPolicyProfileId": "INSUFFICIENT_EVIDENCE_FAIL_CLOSED_TEST_POLICY",
+      "decisionRequestId": "decision.structured_response.fail_closed.offline.v1",
+      "dryRun": true,
+      "executionProfileId": "BALANCED",
+      "liveProviderExecutionRequested": false,
+      "productionExecutionRequested": false,
+      "requestHash": "0b64b8a0c2e8ca8259e548c8ee7e1c3d83174c56537db8c3374f2b52ede54fa8",
+      "simulationOnly": true
+    },
+    {
+      "capabilityId": "legacy.ai.structured_response",
+      "capabilityVersion": "legacy.ai.structured_response.v1",
+      "decisionPolicyProfileId": "OFFLINE_FIRST_TEST_POLICY",
+      "decisionRequestId": "decision.structured_response.initial.offline.v1",
+      "dryRun": true,
+      "executionProfileId": "BALANCED",
+      "liveProviderExecutionRequested": false,
+      "productionExecutionRequested": false,
+      "requestHash": "39d86ed5adaa7d9c0b9c73c5187ab2d8f6ccebd99b31301217b623800da37ad8",
+      "simulationOnly": true
+    },
+    {
+      "capabilityId": "supervisor.daily_operations_report",
+      "capabilityVersion": "supervisor.daily_operations_report.v1",
+      "decisionPolicyProfileId": "SAFETY_CRITICAL_TEST_POLICY",
+      "decisionRequestId": "decision.supervisor_report.initial.offline.v1",
+      "dryRun": true,
+      "executionProfileId": "BACKGROUND_BATCH",
+      "liveProviderExecutionRequested": false,
+      "productionExecutionRequested": false,
+      "requestHash": "4fcddf1d799d13d6b23e104ec413821fee5c2986fd3dd7684b4852c1e5193a17",
+      "simulationOnly": true
+    },
+    {
+      "capabilityId": "text.cleanup",
+      "capabilityVersion": "text.cleanup.v1",
+      "decisionPolicyProfileId": "CHEAPEST_SUFFICIENT_TEST_POLICY",
+      "decisionRequestId": "decision.text_cleanup.initial.offline.v1",
+      "dryRun": true,
+      "executionProfileId": "ULTRA_LOW_COST",
+      "liveProviderExecutionRequested": false,
+      "productionExecutionRequested": false,
+      "requestHash": "240e8021af3fd75f11f57767a6b443d4b2f8eaca7c32a653644686a22059d928",
+      "simulationOnly": true
+    }
+  ],
+  "generatedArtifact": true,
+  "generatedFrom": "bridge-api/execution-decisions"
+}

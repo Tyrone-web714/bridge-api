@@ -1,0 +1,171 @@
+{
+  "schemaVersion": "intelligence.execution.decision.policy.profile.v1",
+  "decisionPolicyProfileId": "INSUFFICIENT_EVIDENCE_FAIL_CLOSED_TEST_POLICY",
+  "displayName": "Insufficient Evidence Fail Closed Test Policy",
+  "description": "Insufficient Evidence Fail Closed Test Policy for AI-IEP-004A.6 synthetic validation.",
+  "version": "0.1.0",
+  "lifecycleState": "APPROVED_FOR_TEST",
+  "enabled": true,
+  "testOnly": true,
+  "supportedCapabilities": [
+    "text.cleanup",
+    "legacy.ai.structured_response",
+    "supervisor.daily_operations_report"
+  ],
+  "supportedRiskTiers": [
+    "LOW",
+    "MODERATE",
+    "HIGH",
+    "CRITICAL",
+    "UNKNOWN"
+  ],
+  "supportedExecutionProfiles": [
+    "DETERMINISTIC_ONLY",
+    "ULTRA_LOW_COST",
+    "BALANCED",
+    "REAL_TIME_OPERATIONAL",
+    "BACKGROUND_BATCH",
+    "SAFETY_CRITICAL",
+    "PRIVACY_RESTRICTED",
+    "PREMIUM_APPROVAL_REQUIRED"
+  ],
+  "supportedStrategies": [
+    "CACHE",
+    "DETERMINISTIC_RULES",
+    "SQL",
+    "STATISTICAL_FORMULA",
+    "GEOSPATIAL_ENGINE",
+    "OPTIMIZATION_ENGINE",
+    "CONVENTIONAL_ML",
+    "LOCAL_INFERENCE",
+    "HOSTED_ECONOMY",
+    "HOSTED_BALANCED",
+    "HOSTED_PREMIUM",
+    "HUMAN_REVIEW"
+  ],
+  "supportedDataClassifications": [
+    "SYNTHETIC",
+    "INTERNAL_TEST"
+  ],
+  "supportedHumanImpactClassifications": [
+    "NONE",
+    "LOW",
+    "MODERATE",
+    "HIGH",
+    "EMPLOYMENT_DECISION"
+  ],
+  "defaultStrategyPreferenceOrder": [
+    "CACHE",
+    "DETERMINISTIC_RULES",
+    "SQL",
+    "STATISTICAL_FORMULA",
+    "GEOSPATIAL_ENGINE",
+    "OPTIMIZATION_ENGINE",
+    "CONVENTIONAL_ML",
+    "LOCAL_INFERENCE",
+    "HOSTED_ECONOMY",
+    "HOSTED_BALANCED",
+    "HOSTED_PREMIUM",
+    "HUMAN_REVIEW"
+  ],
+  "allowedStrategies": [
+    "CACHE",
+    "DETERMINISTIC_RULES",
+    "SQL",
+    "STATISTICAL_FORMULA",
+    "GEOSPATIAL_ENGINE",
+    "OPTIMIZATION_ENGINE",
+    "CONVENTIONAL_ML",
+    "LOCAL_INFERENCE",
+    "HOSTED_ECONOMY",
+    "HOSTED_BALANCED",
+    "HOSTED_PREMIUM",
+    "HUMAN_REVIEW"
+  ],
+  "prohibitedStrategies": [],
+  "premiumStrategyPolicy": {
+    "premiumAllowed": false,
+    "requiresExplicitApproval": true,
+    "lowerTierInsufficiencyRequired": true
+  },
+  "humanReviewPolicy": {
+    "allowed": true,
+    "requiredWhenNoFeasibleCandidate": false
+  },
+  "fallbackPolicy": {
+    "allowed": true,
+    "maxFallbacks": 3,
+    "maximumAttempts": 1
+  },
+  "cachePolicy": {
+    "allowed": true,
+    "readOnly": true
+  },
+  "deterministicStrategyPreference": true,
+  "hostedExecutionAllowed": true,
+  "mandatoryDimensions": [
+    "CORRECTNESS",
+    "SAFETY",
+    "POLICY_COMPLIANCE",
+    "PRIVACY",
+    "SECURITY",
+    "EMPLOYMENT_GOVERNANCE"
+  ],
+  "minimumDimensionScores": {},
+  "criticalGatePolicy": {
+    "failClosedOnUnknown": true,
+    "safetyOverrideAllowed": false
+  },
+  "thresholdPolicy": "MANDATORY_BEFORE_COST",
+  "evidenceCompletenessPolicy": "FAIL_CLOSED",
+  "confidencePolicy": "TEST_CONFIDENCE_ONLY",
+  "reliabilityPolicy": "TEST_RELIABILITY_ONLY",
+  "latencyPolicy": "MOCK_LATENCY_NOT_PRODUCTION_LATENCY",
+  "privacyPolicy": "FAIL_CLOSED_FOR_PRIVATE_OR_SECRET_DATA",
+  "securityPolicy": "FAIL_CLOSED_FOR_SECRET_OR_PROVIDER_PAYLOAD",
+  "employmentGovernancePolicy": "NO_AUTOMATED_EMPLOYMENT_DECISIONS",
+  "costPolicy": {
+    "unknownCostPolicy": "FAIL_CLOSED",
+    "estimatedCostPolicy": "ALLOW_SYNTHETIC_ESTIMATED",
+    "modeledCostPolicy": "ALLOW_SYNTHETIC_MODELED",
+    "comparableCostMetric": "costPerAttemptedRequestMicroUsd",
+    "maximumCostPerRequestMicroUsd": null
+  },
+  "unknownCostPolicy": "FAIL_CLOSED",
+  "estimatedCostPolicy": "ALLOW_SYNTHETIC_ESTIMATED",
+  "modeledCostPolicy": "ALLOW_SYNTHETIC_MODELED",
+  "costCeilingPolicy": "SIMULATION_ONLY",
+  "budgetPolicy": "SIMULATION_ONLY_NO_RUNTIME_ENFORCEMENT",
+  "cheapestSufficientPolicy": "MANDATORY_GATES_THEN_LOWEST_KNOWN_COST",
+  "costTieBreakerPolicy": "DETERMINISTIC_STRATEGY_ORDER",
+  "feasibilityPolicy": "FAIL_MANDATORY_GATES_BEFORE_UTILITY",
+  "utilityMethod": "CHEAPEST_SUFFICIENT",
+  "tieBreakerOrder": [
+    "LOWER_STRATEGY_TIER",
+    "DETERMINISTIC_OVER_PROBABILISTIC",
+    "HIGHER_CONFIDENCE",
+    "HIGHER_COMPLETENESS",
+    "LEXICAL_CANDIDATE_ID"
+  ],
+  "abstentionPolicy": "ABSTAIN_WHEN_NO_SAFE_OR_AUTHORIZED_CANDIDATE",
+  "insufficientEvidencePolicy": "FAIL_CLOSED",
+  "noFeasibleCandidatePolicy": "DEFER_PENDING_EVIDENCE",
+  "fallbackConstructionPolicy": "ORDERED_POLICY_DRIVEN_NO_EXECUTION",
+  "intendedUse": "Synthetic offline advisory decision validation.",
+  "prohibitedUse": [
+    "production runtime selection",
+    "provider procurement",
+    "real budget enforcement",
+    "premium activation"
+  ],
+  "ownerApprovalRequired": true,
+  "approvedBy": null,
+  "approvedAt": null,
+  "productionUseAllowed": false,
+  "decisionRecordId": null,
+  "integrity": {
+    "contentHash": null,
+    "deterministicOrdering": true,
+    "immutableWhenFrozen": false
+  }
+}

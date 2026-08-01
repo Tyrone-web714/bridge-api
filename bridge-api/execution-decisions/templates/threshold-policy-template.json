@@ -1,0 +1,9 @@
+{
+  "thresholdStatus": [
+    "MET",
+    "NOT_MET",
+    "UNKNOWN",
+    "NOT_APPLICABLE",
+    "INSUFFICIENT_EVIDENCE"
+  ]
+}

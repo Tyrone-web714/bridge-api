@@ -1,0 +1,23 @@
+{
+  "generatedArtifact": true,
+  "generatedFrom": "bridge-api/execution-decisions",
+  "humanReview": [
+    {
+      "candidateCount": 20,
+      "capabilityId": "supervisor.daily_operations_report",
+      "conditionalCandidateCount": 0,
+      "decisionOutcome": "HUMAN_REVIEW_REQUIRED",
+      "decisionPolicyProfileId": "SAFETY_CRITICAL_TEST_POLICY",
+      "decisionRecordHash": "28b86b27c121c4da3a89e6cbaef91cabd72aa40d253dc97fc4150df3ecda0d3c",
+      "decisionRecordId": "decision.supervisor_report.initial.offline.v1.record.v1",
+      "decisionRequestId": "decision.supervisor_report.initial.offline.v1",
+      "fallbackCount": 0,
+      "feasibleCandidateCount": 0,
+      "productionUseAllowed": false,
+      "rejectedCandidateCount": 20,
+      "selectedComparableCostMicroUsd": null,
+      "selectedStrategyId": null,
+      "testOnly": true
+    }
+  ]
+}

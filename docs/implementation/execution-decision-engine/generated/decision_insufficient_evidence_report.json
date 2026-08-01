@@ -1,0 +1,23 @@
+{
+  "generatedArtifact": true,
+  "generatedFrom": "bridge-api/execution-decisions",
+  "insufficientEvidence": [
+    {
+      "candidateCount": 20,
+      "capabilityId": "legacy.ai.structured_response",
+      "conditionalCandidateCount": 0,
+      "decisionOutcome": "DEFER_PENDING_EVIDENCE",
+      "decisionPolicyProfileId": "INSUFFICIENT_EVIDENCE_FAIL_CLOSED_TEST_POLICY",
+      "decisionRecordHash": "ea922edca1323e884d0cbcd9529fad050ac289dcfb14d54f0ccc3e14100165b7",
+      "decisionRecordId": "decision.structured_response.fail_closed.offline.v1.record.v1",
+      "decisionRequestId": "decision.structured_response.fail_closed.offline.v1",
+      "fallbackCount": 0,
+      "feasibleCandidateCount": 0,
+      "productionUseAllowed": false,
+      "rejectedCandidateCount": 20,
+      "selectedComparableCostMicroUsd": null,
+      "selectedStrategyId": null,
+      "testOnly": true
+    }
+  ]
+}

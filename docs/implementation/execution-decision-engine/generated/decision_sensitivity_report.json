@@ -1,0 +1,110 @@
+{
+  "generatedArtifact": true,
+  "generatedFrom": "bridge-api/execution-decisions",
+  "sensitivity": [
+    {
+      "completenessDelta": "unchanged",
+      "confidenceDelta": "stricter",
+      "decisionOutcomeDelta": "deterministic simulation only",
+      "decisionRequestId": "decision.structured_response.fail_closed.offline.v1",
+      "fallbackPlanDelta": "recomputed deterministically",
+      "feasibilityDelta": "lower confidence candidates may be excluded",
+      "originalValue": 0,
+      "parameter": "minimumConfidence",
+      "selectedCandidateDelta": null,
+      "sensitivityId": "decision.structured_response.fail_closed.offline.v1.confidence_plus_10",
+      "testValue": 10
+    },
+    {
+      "completenessDelta": "unchanged",
+      "confidenceDelta": "unchanged",
+      "decisionOutcomeDelta": "budget restriction may increase",
+      "decisionRequestId": "decision.structured_response.fail_closed.offline.v1",
+      "fallbackPlanDelta": "over-budget candidates excluded",
+      "feasibilityDelta": "over budget candidates increase",
+      "originalValue": null,
+      "parameter": "maximumCostPerRequestMicroUsd",
+      "selectedCandidateDelta": null,
+      "sensitivityId": "decision.structured_response.fail_closed.offline.v1.budget_halved",
+      "testValue": null
+    },
+    {
+      "completenessDelta": "unchanged",
+      "confidenceDelta": "stricter",
+      "decisionOutcomeDelta": "deterministic simulation only",
+      "decisionRequestId": "decision.structured_response.initial.offline.v1",
+      "fallbackPlanDelta": "recomputed deterministically",
+      "feasibilityDelta": "lower confidence candidates may be excluded",
+      "originalValue": 0,
+      "parameter": "minimumConfidence",
+      "selectedCandidateDelta": "decision.structured_response.initial.offline.v1.HOSTED_BALANCED.mock.legacy_structured_response.v1.dd61a711",
+      "sensitivityId": "decision.structured_response.initial.offline.v1.confidence_plus_10",
+      "testValue": 10
+    },
+    {
+      "completenessDelta": "unchanged",
+      "confidenceDelta": "unchanged",
+      "decisionOutcomeDelta": "budget restriction may increase",
+      "decisionRequestId": "decision.structured_response.initial.offline.v1",
+      "fallbackPlanDelta": "over-budget candidates excluded",
+      "feasibilityDelta": "over budget candidates increase",
+      "originalValue": null,
+      "parameter": "maximumCostPerRequestMicroUsd",
+      "selectedCandidateDelta": "decision.structured_response.initial.offline.v1.HOSTED_BALANCED.mock.legacy_structured_response.v1.dd61a711",
+      "sensitivityId": "decision.structured_response.initial.offline.v1.budget_halved",
+      "testValue": null
+    },
+    {
+      "completenessDelta": "unchanged",
+      "confidenceDelta": "stricter",
+      "decisionOutcomeDelta": "deterministic simulation only",
+      "decisionRequestId": "decision.supervisor_report.initial.offline.v1",
+      "fallbackPlanDelta": "recomputed deterministically",
+      "feasibilityDelta": "lower confidence candidates may be excluded",
+      "originalValue": 0,
+      "parameter": "minimumConfidence",
+      "selectedCandidateDelta": null,
+      "sensitivityId": "decision.supervisor_report.initial.offline.v1.confidence_plus_10",
+      "testValue": 10
+    },
+    {
+      "completenessDelta": "unchanged",
+      "confidenceDelta": "unchanged",
+      "decisionOutcomeDelta": "budget restriction may increase",
+      "decisionRequestId": "decision.supervisor_report.initial.offline.v1",
+      "fallbackPlanDelta": "over-budget candidates excluded",
+      "feasibilityDelta": "over budget candidates increase",
+      "originalValue": null,
+      "parameter": "maximumCostPerRequestMicroUsd",
+      "selectedCandidateDelta": null,
+      "sensitivityId": "decision.supervisor_report.initial.offline.v1.budget_halved",
+      "testValue": null
+    },
+    {
+      "completenessDelta": "unchanged",
+      "confidenceDelta": "stricter",
+      "decisionOutcomeDelta": "deterministic simulation only",
+      "decisionRequestId": "decision.text_cleanup.initial.offline.v1",
+      "fallbackPlanDelta": "recomputed deterministically",
+      "feasibilityDelta": "lower confidence candidates may be excluded",
+      "originalValue": 0,
+      "parameter": "minimumConfidence",
+      "selectedCandidateDelta": "decision.text_cleanup.initial.offline.v1.DETERMINISTIC_RULES.mock.deterministic_text_cleanup.v1.536ceb62",
+      "sensitivityId": "decision.text_cleanup.initial.offline.v1.confidence_plus_10",
+      "testValue": 10
+    },
+    {
+      "completenessDelta": "unchanged",
+      "confidenceDelta": "unchanged",
+      "decisionOutcomeDelta": "budget restriction may increase",
+      "decisionRequestId": "decision.text_cleanup.initial.offline.v1",
+      "fallbackPlanDelta": "over-budget candidates excluded",
+      "feasibilityDelta": "over budget candidates increase",
+      "originalValue": null,
+      "parameter": "maximumCostPerRequestMicroUsd",
+      "selectedCandidateDelta": "decision.text_cleanup.initial.offline.v1.DETERMINISTIC_RULES.mock.deterministic_text_cleanup.v1.536ceb62",
+      "sensitivityId": "decision.text_cleanup.initial.offline.v1.budget_halved",
+      "testValue": null
+    }
+  ]
+}

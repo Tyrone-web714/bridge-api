@@ -7,7 +7,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "test": "npm run test:capability-registry && npm run test:benchmark-datasets && npm run test:evaluation-engine && npm run test:scoring-engine && npm run test:cost-governance && npm run test:intelligence-execution && npm run test:ai && npm run test:ai-architecture && npm run test:predictions && npm run test:supervisor-intelligence && npm run test:heatmaps && npm run test:imports && npm run test:delivery-settlement && npm run test:google-maps-compliance && npm run test:multi-tenant && npm run test:auth-rbac && npm run test:api-tenant && npm run test:mobile-tenant && npm run test:shared-safety && npm run test:shared-safety-ui && npm run test:bi-kpi && npm run test:logistics-intelligence && npm run test:fleet-intelligence-scoring && npm run test:data-lifecycle && npm run test:enterprise-identity && npm run test:web-origin && npm run test:private-media && npm run test:private-r2-shutdown && npm run test:legacy-private-media && npm run test:driver-route-notes-photo && npm run test:driver-copilot-auth && npm run test:security && npm run test:dashboard",
+    "test": "npm run test:capability-registry && npm run test:benchmark-datasets && npm run test:evaluation-engine && npm run test:scoring-engine && npm run test:cost-governance && npm run test:execution-decisions && npm run test:intelligence-execution && npm run test:ai && npm run test:ai-architecture && npm run test:predictions && npm run test:supervisor-intelligence && npm run test:heatmaps && npm run test:imports && npm run test:delivery-settlement && npm run test:google-maps-compliance && npm run test:multi-tenant && npm run test:auth-rbac && npm run test:api-tenant && npm run test:mobile-tenant && npm run test:shared-safety && npm run test:shared-safety-ui && npm run test:bi-kpi && npm run test:logistics-intelligence && npm run test:fleet-intelligence-scoring && npm run test:data-lifecycle && npm run test:enterprise-identity && npm run test:web-origin && npm run test:private-media && npm run test:private-r2-shutdown && npm run test:legacy-private-media && npm run test:driver-route-notes-photo && npm run test:driver-copilot-auth && npm run test:security && npm run test:dashboard",
     "test:capability-registry": "node scripts/check-capability-registry.cjs",
     "test:intelligence-execution": "node scripts/check-intelligence-execution-platform.cjs",
     "test:ai": "node scripts/check-ai-contracts.cjs",
@@ -99,7 +99,14 @@
     "cost-governance:check": "node scripts/check-cost-governance.cjs",
     "cost-governance:run": "node scripts/generate-cost-governance-artifacts.cjs",
     "cost-governance:sensitivity": "node scripts/check-cost-governance.cjs",
-    "cost-governance:simulate-budget": "node scripts/check-cost-governance.cjs"
+    "cost-governance:simulate-budget": "node scripts/check-cost-governance.cjs",
+    "test:execution-decisions": "node scripts/check-execution-decision-engine.cjs",
+    "execution-decisions:generate": "node scripts/generate-execution-decision-artifacts.cjs",
+    "execution-decisions:validate": "node scripts/check-execution-decision-engine.cjs",
+    "execution-decisions:check": "node scripts/check-execution-decision-engine.cjs",
+    "execution-decisions:run": "node scripts/generate-execution-decision-artifacts.cjs",
+    "execution-decisions:counterfactual": "node scripts/check-execution-decision-engine.cjs",
+    "execution-decisions:sensitivity": "node scripts/check-execution-decision-engine.cjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1048.0",
