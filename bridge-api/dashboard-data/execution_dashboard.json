@@ -1,0 +1,60 @@
+{
+  "dashboard": {
+    "authoritativeSources": [
+      "evaluation-engine",
+      "execution-decisions",
+      "execution.strategy"
+    ],
+    "dashboardId": "execution.strategy",
+    "dashboardTitle": "Execution Strategy Dashboard",
+    "dashboardVersion": "0.1.0",
+    "documentationReferences": [
+      "docs/implementation/dashboard-data-generation/README.md"
+    ],
+    "drillDownReferences": [],
+    "engineVersion": "intelligence.dashboard.generation.engine.v1",
+    "errors": [],
+    "generatedArtifacts": [
+      "dashboard-data/execution_dashboard.json"
+    ],
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "generationHash": "4b2430c08c2cd83bd6c3146849af59aee8fd6b1a03b54e7f1c41ae01ec5e6072",
+    "productionApplicable": false,
+    "records": [],
+    "relatedDashboards": [
+      "capability.coverage",
+      "capability.lifecycle",
+      "capability.overview",
+      "executive.summary"
+    ],
+    "schemaVersion": "intelligence.dashboard.dataset.v1",
+    "sourceSubsystems": [
+      "evaluation-engine",
+      "execution-decisions"
+    ],
+    "statistics": {
+      "fallbackCoverage": 2,
+      "selectedSynthetic": {
+        "NONE": 2,
+        "decision.structured_response.initial.offline.v1.HOSTED_BALANCED.mock.legacy_structured_response.v1.dd61a711": 1,
+        "decision.text_cleanup.initial.offline.v1.DETERMINISTIC_RULES.mock.deterministic_text_cleanup.v1.536ceb62": 1
+      },
+      "usage": {
+        "DETERMINISTIC_RULES": 50,
+        "HOSTED_BALANCED": 48,
+        "HOSTED_BALANCED_MODEL": 32,
+        "HOSTED_ECONOMY": 5,
+        "HOSTED_ECONOMY_MODEL": 5
+      }
+    },
+    "statusIndicators": [],
+    "summary": {
+      "candidates": 80,
+      "supportedStrategies": 13
+    },
+    "testOnly": true,
+    "unknownValues": [],
+    "warnings": []
+  },
+  "generatedArtifact": true
+}

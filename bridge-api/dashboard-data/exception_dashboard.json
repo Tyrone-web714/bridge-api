@@ -1,0 +1,51 @@
+{
+  "dashboard": {
+    "authoritativeSources": [
+      "decision-governance",
+      "exception.overview"
+    ],
+    "dashboardId": "exception.overview",
+    "dashboardTitle": "Exception Dashboard",
+    "dashboardVersion": "0.1.0",
+    "documentationReferences": [
+      "docs/implementation/dashboard-data-generation/README.md"
+    ],
+    "drillDownReferences": [],
+    "engineVersion": "intelligence.dashboard.generation.engine.v1",
+    "errors": [],
+    "generatedArtifacts": [
+      "dashboard-data/exception_dashboard.json"
+    ],
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "generationHash": "780596c0a5862625e72529597aca6c7d04996a897c8d9441d8063993730a8286",
+    "productionApplicable": false,
+    "records": [],
+    "relatedDashboards": [
+      "capability.coverage",
+      "capability.lifecycle",
+      "capability.overview",
+      "executive.summary"
+    ],
+    "schemaVersion": "intelligence.dashboard.dataset.v1",
+    "sourceSubsystems": [
+      "decision-governance"
+    ],
+    "statistics": {
+      "state": {
+        "GRANTED": 1,
+        "NONE": 3
+      },
+      "type": {
+        "UNKNOWN": 1
+      }
+    },
+    "statusIndicators": [],
+    "summary": {
+      "records": 1
+    },
+    "testOnly": true,
+    "unknownValues": [],
+    "warnings": []
+  },
+  "generatedArtifact": true
+}

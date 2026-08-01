@@ -1,0 +1,51 @@
+{
+  "dashboard": {
+    "authoritativeSources": [
+      "decision-governance",
+      "human.review"
+    ],
+    "dashboardId": "human.review",
+    "dashboardTitle": "Human Review Dashboard",
+    "dashboardVersion": "0.1.0",
+    "documentationReferences": [
+      "docs/implementation/dashboard-data-generation/README.md"
+    ],
+    "drillDownReferences": [],
+    "engineVersion": "intelligence.dashboard.generation.engine.v1",
+    "errors": [],
+    "generatedArtifacts": [
+      "dashboard-data/human_review_dashboard.json"
+    ],
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "generationHash": "337c10c75cafe42bc4bcd3e93b08bd5a0337ba1bf351b1f639c346d60fd2cd23",
+    "productionApplicable": false,
+    "records": [],
+    "relatedDashboards": [
+      "capability.coverage",
+      "capability.lifecycle",
+      "capability.overview",
+      "executive.summary"
+    ],
+    "schemaVersion": "intelligence.dashboard.dataset.v1",
+    "sourceSubsystems": [
+      "decision-governance"
+    ],
+    "statistics": {
+      "reviewerType": {
+        "UNKNOWN": 1
+      },
+      "state": {
+        "NOT_REQUIRED": 3,
+        "UNRESOLVED": 1
+      }
+    },
+    "statusIndicators": [],
+    "summary": {
+      "records": 1
+    },
+    "testOnly": true,
+    "unknownValues": [],
+    "warnings": []
+  },
+  "generatedArtifact": true
+}

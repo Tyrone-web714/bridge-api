@@ -1,0 +1,50 @@
+{
+  "dashboard": {
+    "authoritativeSources": [
+      "attestation.overview",
+      "decision-governance"
+    ],
+    "dashboardId": "attestation.overview",
+    "dashboardTitle": "Attestation Dashboard",
+    "dashboardVersion": "0.1.0",
+    "documentationReferences": [
+      "docs/implementation/dashboard-data-generation/README.md"
+    ],
+    "drillDownReferences": [],
+    "engineVersion": "intelligence.dashboard.generation.engine.v1",
+    "errors": [],
+    "generatedArtifacts": [
+      "dashboard-data/attestation_dashboard.json"
+    ],
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "generationHash": "46c8cf8de8c55d7f8ac8d66a16b7703f01685b1077f95bb3666a85dd3d1a6835",
+    "productionApplicable": false,
+    "records": [],
+    "relatedDashboards": [
+      "capability.coverage",
+      "capability.lifecycle",
+      "capability.overview",
+      "executive.summary"
+    ],
+    "schemaVersion": "intelligence.dashboard.dataset.v1",
+    "sourceSubsystems": [
+      "decision-governance"
+    ],
+    "statistics": {
+      "actor": {
+        "UNKNOWN": 4
+      },
+      "type": {
+        "TECHNICAL_TEST_ATTESTATION": 4
+      }
+    },
+    "statusIndicators": [],
+    "summary": {
+      "attestations": 4
+    },
+    "testOnly": true,
+    "unknownValues": [],
+    "warnings": []
+  },
+  "generatedArtifact": true
+}

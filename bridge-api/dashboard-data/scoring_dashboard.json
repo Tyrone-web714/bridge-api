@@ -1,0 +1,51 @@
+{
+  "dashboard": {
+    "authoritativeSources": [
+      "scoring-engine",
+      "scoring.overview"
+    ],
+    "dashboardId": "scoring.overview",
+    "dashboardTitle": "Scoring Dashboard",
+    "dashboardVersion": "0.1.0",
+    "documentationReferences": [
+      "docs/implementation/dashboard-data-generation/README.md"
+    ],
+    "drillDownReferences": [],
+    "engineVersion": "intelligence.dashboard.generation.engine.v1",
+    "errors": [],
+    "generatedArtifacts": [
+      "dashboard-data/scoring_dashboard.json"
+    ],
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "generationHash": "f5d57337ee9291152f066526d5b6d4e940ee27ae37bad63c5e7cceb673bfc4d0",
+    "productionApplicable": false,
+    "records": [],
+    "relatedDashboards": [
+      "capability.coverage",
+      "capability.lifecycle",
+      "capability.overview",
+      "executive.summary"
+    ],
+    "schemaVersion": "intelligence.dashboard.dataset.v1",
+    "sourceSubsystems": [
+      "scoring-engine"
+    ],
+    "statistics": {
+      "completenessAverage": 37.222215,
+      "confidenceAverage": 48.611133,
+      "gates": {
+        "UNKNOWN": 120
+      }
+    },
+    "statusIndicators": [],
+    "summary": {
+      "profiles": 3,
+      "records": 120,
+      "runs": 3
+    },
+    "testOnly": true,
+    "unknownValues": [],
+    "warnings": []
+  },
+  "generatedArtifact": true
+}

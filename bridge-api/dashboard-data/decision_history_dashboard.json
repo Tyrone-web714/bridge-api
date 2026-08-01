@@ -1,0 +1,59 @@
+{
+  "dashboard": {
+    "authoritativeSources": [
+      "decision-governance",
+      "decision.history"
+    ],
+    "dashboardId": "decision.history",
+    "dashboardTitle": "Decision History Dashboard",
+    "dashboardVersion": "0.1.0",
+    "documentationReferences": [
+      "docs/implementation/dashboard-data-generation/README.md"
+    ],
+    "drillDownReferences": [],
+    "engineVersion": "intelligence.dashboard.generation.engine.v1",
+    "errors": [],
+    "generatedArtifacts": [
+      "dashboard-data/decision_history_dashboard.json"
+    ],
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "generationHash": "0b58ad0ac456387aa832cf73f77c99ea140f700ec5eb3a532dfedf47aa7070d8",
+    "productionApplicable": false,
+    "records": [],
+    "relatedDashboards": [
+      "capability.coverage",
+      "capability.lifecycle",
+      "capability.overview",
+      "executive.summary"
+    ],
+    "schemaVersion": "intelligence.dashboard.dataset.v1",
+    "sourceSubsystems": [
+      "decision-governance"
+    ],
+    "statistics": {
+      "byLifecycle": {
+        "APPROVED_WITH_CONDITIONS": 1,
+        "EXCEPTION_GRANTED": 1,
+        "HUMAN_REVIEW_REQUIRED": 1,
+        "PENDING_REVIEW": 1
+      },
+      "byOutcome": {
+        "DEFER_PENDING_EVIDENCE": 1,
+        "HUMAN_REVIEW_REQUIRED": 1,
+        "SELECT_ADVISORY_CANDIDATE_WITH_FALLBACK": 2
+      },
+      "supersession": {
+        "CURRENT": 4
+      }
+    },
+    "statusIndicators": [],
+    "summary": {
+      "events": 48,
+      "histories": 4
+    },
+    "testOnly": true,
+    "unknownValues": [],
+    "warnings": []
+  },
+  "generatedArtifact": true
+}

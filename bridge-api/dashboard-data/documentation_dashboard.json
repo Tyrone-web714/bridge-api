@@ -1,0 +1,82 @@
+{
+  "dashboard": {
+    "authoritativeSources": [
+      "documentation-metadata",
+      "documentation.overview"
+    ],
+    "dashboardId": "documentation.overview",
+    "dashboardTitle": "Documentation Dashboard",
+    "dashboardVersion": "0.1.0",
+    "documentationReferences": [
+      "docs/implementation/dashboard-data-generation/README.md"
+    ],
+    "drillDownReferences": [],
+    "engineVersion": "intelligence.dashboard.generation.engine.v1",
+    "errors": [],
+    "generatedArtifacts": [
+      "dashboard-data/documentation_dashboard.json"
+    ],
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "generationHash": "a0ce112865b8b369576a5d7ec8174a839e4060cc5acd10196eb73068c49cfbc6",
+    "productionApplicable": false,
+    "records": [],
+    "relatedDashboards": [
+      "capability.coverage",
+      "capability.lifecycle",
+      "capability.overview",
+      "executive.summary"
+    ],
+    "schemaVersion": "intelligence.dashboard.dataset.v1",
+    "sourceSubsystems": [
+      "documentation-metadata"
+    ],
+    "statistics": {
+      "docsByArea": {
+        "docs/implementation/api-tenant-enforcement": 13,
+        "docs/implementation/authentication-rbac-foundation": 18,
+        "docs/implementation/benchmark-dataset-framework": 37,
+        "docs/implementation/bi-kpi-foundation": 19,
+        "docs/implementation/cost-governance": 62,
+        "docs/implementation/dashboard-data-generation": 14,
+        "docs/implementation/data-lifecycle-foundation": 25,
+        "docs/implementation/decision-history-and-governance": 60,
+        "docs/implementation/enterprise-identity-foundation": 32,
+        "docs/implementation/enterprise-intelligence-capability-registry": 29,
+        "docs/implementation/execution-decision-engine": 58,
+        "docs/implementation/execution-strategy-evaluation-engine": 50,
+        "docs/implementation/fleet-intelligence-scoring-foundation": 13,
+        "docs/implementation/framework-validation": 25,
+        "docs/implementation/intelligence-capability-orchestration": 19,
+        "docs/implementation/intelligence-execution-platform-foundation": 21,
+        "docs/implementation/intelligence-execution-platform-legacy-ai-migration": 18,
+        "docs/implementation/intelligence-execution-platform-supervisor-migration": 20,
+        "docs/implementation/intelligence-knowledge-graph": 39,
+        "docs/implementation/intelligence-lifecycle-framework": 24,
+        "docs/implementation/legacy-private-media-migration": 11,
+        "docs/implementation/logistics-intelligence-foundation": 21,
+        "docs/implementation/mobile-authenticated-private-media": 13,
+        "docs/implementation/mobile-tenant-context": 14,
+        "docs/implementation/multi-tenant-foundation": 12,
+        "docs/implementation/operational-readiness-verification": 17,
+        "docs/implementation/pilot-integration-hardening": 26,
+        "docs/implementation/platform-integration-verification": 10,
+        "docs/implementation/private-r2-final-shutdown-validation": 19,
+        "docs/implementation/private-r2-shutdown-readiness": 9,
+        "docs/implementation/production-rollout-planning": 21,
+        "docs/implementation/scoring-engine": 59,
+        "docs/implementation/shared-safety-foundation": 18,
+        "docs/implementation/shared-safety-moderation-ui": 14,
+        "docs/implementation/web-origin-private-media-hardening": 16
+      },
+      "generatedDocs": 146
+    },
+    "statusIndicators": [],
+    "summary": {
+      "documentationFiles": 876
+    },
+    "testOnly": true,
+    "unknownValues": [],
+    "warnings": []
+  },
+  "generatedArtifact": true
+}

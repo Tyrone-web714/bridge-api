@@ -1,0 +1,54 @@
+{
+  "dashboard": {
+    "authoritativeSources": [
+      "cost-governance",
+      "cost.governance"
+    ],
+    "dashboardId": "cost.governance",
+    "dashboardTitle": "Cost Governance Dashboard",
+    "dashboardVersion": "0.1.0",
+    "documentationReferences": [
+      "docs/implementation/dashboard-data-generation/README.md"
+    ],
+    "drillDownReferences": [],
+    "engineVersion": "intelligence.dashboard.generation.engine.v1",
+    "errors": [],
+    "generatedArtifacts": [
+      "dashboard-data/cost_dashboard.json"
+    ],
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "generationHash": "229e4c90ddf1e51df2035e12ed58fe14e146c290e44f176f99f8747a2c066415",
+    "productionApplicable": false,
+    "records": [],
+    "relatedDashboards": [
+      "capability.coverage",
+      "capability.lifecycle",
+      "capability.overview",
+      "executive.summary"
+    ],
+    "schemaVersion": "intelligence.dashboard.dataset.v1",
+    "sourceSubsystems": [
+      "cost-governance"
+    ],
+    "statistics": {
+      "confidence": {
+        "UNKNOWN": 60
+      },
+      "estimatedCosts": 0,
+      "measuredCosts": 0,
+      "mockCosts": 0,
+      "unknownCosts": 0
+    },
+    "statusIndicators": [],
+    "summary": {
+      "budgets": 2,
+      "models": 3,
+      "pricingCatalogs": 1,
+      "records": 60
+    },
+    "testOnly": true,
+    "unknownValues": [],
+    "warnings": []
+  },
+  "generatedArtifact": true
+}

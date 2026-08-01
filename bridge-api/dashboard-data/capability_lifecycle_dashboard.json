@@ -1,0 +1,55 @@
+{
+  "dashboard": {
+    "authoritativeSources": [
+      "capability-registry",
+      "capability.lifecycle"
+    ],
+    "dashboardId": "capability.lifecycle",
+    "dashboardTitle": "Capability Lifecycle Dashboard",
+    "dashboardVersion": "0.1.0",
+    "documentationReferences": [
+      "docs/implementation/dashboard-data-generation/README.md"
+    ],
+    "drillDownReferences": [],
+    "engineVersion": "intelligence.dashboard.generation.engine.v1",
+    "errors": [],
+    "generatedArtifacts": [
+      "dashboard-data/capability_lifecycle_dashboard.json"
+    ],
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "generationHash": "3c96721d96b7a7e44b01fb728b802a311f08f2d1582e6e586809a29df22a48f6",
+    "productionApplicable": false,
+    "records": [],
+    "relatedDashboards": [
+      "benchmark.dataset",
+      "capability.coverage",
+      "capability.overview",
+      "executive.summary"
+    ],
+    "schemaVersion": "intelligence.dashboard.dataset.v1",
+    "sourceSubsystems": [
+      "capability-registry"
+    ],
+    "statistics": {
+      "versionDistribution": {
+        "delivery_note.summarize.v1": 1,
+        "legacy.ai.structured_response.v1": 1,
+        "policy.answer.v1": 1,
+        "route.risk_explanation.v1": 1,
+        "supervisor.daily_operations_report.v1": 1,
+        "text.cleanup.v1": 1
+      }
+    },
+    "statusIndicators": [],
+    "summary": {
+      "byLifecycle": {
+        "DRAFT": 3,
+        "PILOT": 3
+      }
+    },
+    "testOnly": true,
+    "unknownValues": [],
+    "warnings": []
+  },
+  "generatedArtifact": true
+}

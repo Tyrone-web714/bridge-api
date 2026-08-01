@@ -1,0 +1,56 @@
+{
+  "dashboard": {
+    "authoritativeSources": [
+      "all-intelligence-repository-evidence",
+      "overall.platform"
+    ],
+    "dashboardId": "overall.platform",
+    "dashboardTitle": "Overall Intelligence Platform Dashboard",
+    "dashboardVersion": "0.1.0",
+    "documentationReferences": [
+      "docs/implementation/dashboard-data-generation/README.md"
+    ],
+    "drillDownReferences": [],
+    "engineVersion": "intelligence.dashboard.generation.engine.v1",
+    "errors": [],
+    "generatedArtifacts": [
+      "dashboard-data/overall_platform_dashboard.json"
+    ],
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "generationHash": "ca74905d4e2195932834d540014eabca293a63cefd17181ba01c28bf60698c56",
+    "productionApplicable": false,
+    "records": [],
+    "relatedDashboards": [
+      "capability.coverage",
+      "capability.lifecycle",
+      "capability.overview",
+      "executive.summary"
+    ],
+    "schemaVersion": "intelligence.dashboard.dataset.v1",
+    "sourceSubsystems": [
+      "all-intelligence-repository-evidence"
+    ],
+    "statistics": {
+      "capabilities": 6,
+      "costs": 3,
+      "datasets": 3,
+      "decisions": 4,
+      "evaluations": 3,
+      "governanceRecords": 4,
+      "graphEdges": 811,
+      "graphNodes": 924,
+      "scores": 3
+    },
+    "statusIndicators": [],
+    "summary": {
+      "allDashboardsTestOnly": true,
+      "dashboardCount": 30,
+      "platformReadinessAdvisoryOnly": true,
+      "productionCertification": false
+    },
+    "testOnly": true,
+    "unknownValues": [],
+    "warnings": []
+  },
+  "generatedArtifact": true
+}

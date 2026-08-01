@@ -1,0 +1,64 @@
+{
+  "dashboard": {
+    "authoritativeSources": [
+      "decision-governance",
+      "governance.overview"
+    ],
+    "dashboardId": "governance.overview",
+    "dashboardTitle": "Governance Dashboard",
+    "dashboardVersion": "0.1.0",
+    "documentationReferences": [
+      "docs/implementation/dashboard-data-generation/README.md"
+    ],
+    "drillDownReferences": [],
+    "engineVersion": "intelligence.dashboard.generation.engine.v1",
+    "errors": [],
+    "generatedArtifacts": [
+      "dashboard-data/governance_dashboard.json"
+    ],
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "generationHash": "56a9832cc983b13dcad155ac262267f0b04bb5b42f526c5148550b3c318f21e7",
+    "productionApplicable": false,
+    "records": [],
+    "relatedDashboards": [
+      "capability.coverage",
+      "capability.lifecycle",
+      "capability.overview",
+      "executive.summary"
+    ],
+    "schemaVersion": "intelligence.dashboard.dataset.v1",
+    "sourceSubsystems": [
+      "decision-governance"
+    ],
+    "statistics": {
+      "approval": {
+        "APPROVED_WITH_CONDITIONS": 2,
+        "NOT_REQUESTED": 2
+      },
+      "evidenceStaleness": 1,
+      "exceptions": {
+        "GRANTED": 1,
+        "NONE": 3
+      },
+      "humanReview": {
+        "NOT_REQUIRED": 3,
+        "UNRESOLVED": 1
+      },
+      "policyDrift": 1,
+      "review": {
+        "COMPLETED": 4
+      }
+    },
+    "statusIndicators": [],
+    "summary": {
+      "attestations": 4,
+      "events": 48,
+      "findings": 1,
+      "histories": 4
+    },
+    "testOnly": true,
+    "unknownValues": [],
+    "warnings": []
+  },
+  "generatedArtifact": true
+}

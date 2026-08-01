@@ -1,0 +1,102 @@
+{
+  "dashboard": {
+    "authoritativeSources": [
+      "benchmark-datasets",
+      "capability-registry",
+      "cost-governance",
+      "decision-governance",
+      "evaluation-engine",
+      "execution-decisions",
+      "executive.summary",
+      "knowledge-graph",
+      "scoring-engine"
+    ],
+    "dashboardId": "executive.summary",
+    "dashboardTitle": "Executive Summary Dashboard",
+    "dashboardVersion": "0.1.0",
+    "documentationReferences": [
+      "docs/implementation/dashboard-data-generation/README.md"
+    ],
+    "drillDownReferences": [],
+    "engineVersion": "intelligence.dashboard.generation.engine.v1",
+    "errors": [],
+    "generatedArtifacts": [
+      "dashboard-data/executive_dashboard.json"
+    ],
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "generationHash": "563f758418279e3b15176a7094aac55ee1cac748824c5694906dca47e56e721e",
+    "productionApplicable": false,
+    "records": [],
+    "relatedDashboards": [
+      "benchmark.dataset",
+      "capability.coverage",
+      "capability.lifecycle",
+      "capability.overview"
+    ],
+    "schemaVersion": "intelligence.dashboard.dataset.v1",
+    "sourceSubsystems": [
+      "benchmark-datasets",
+      "capability-registry",
+      "cost-governance",
+      "decision-governance",
+      "evaluation-engine",
+      "execution-decisions",
+      "knowledge-graph",
+      "scoring-engine"
+    ],
+    "statistics": {
+      "generatedArtifacts": 23
+    },
+    "statusIndicators": [
+      {
+        "area": "capabilities",
+        "ready": true,
+        "status": "READY_REPOSITORY_ONLY"
+      },
+      {
+        "area": "benchmarkDatasets",
+        "ready": true,
+        "status": "READY_REPOSITORY_ONLY"
+      },
+      {
+        "area": "evaluationRuns",
+        "ready": true,
+        "status": "READY_REPOSITORY_ONLY"
+      },
+      {
+        "area": "scoreRuns",
+        "ready": true,
+        "status": "READY_REPOSITORY_ONLY"
+      },
+      {
+        "area": "costRuns",
+        "ready": true,
+        "status": "READY_REPOSITORY_ONLY"
+      },
+      {
+        "area": "decisionRecords",
+        "ready": true,
+        "status": "READY_REPOSITORY_ONLY"
+      },
+      {
+        "area": "historyRecords",
+        "ready": true,
+        "status": "READY_REPOSITORY_ONLY"
+      },
+      {
+        "area": "knowledgeGraph",
+        "ready": true,
+        "status": "READY_REPOSITORY_ONLY"
+      }
+    ],
+    "summary": {
+      "capabilities": 6,
+      "dashboards": 30,
+      "graphHash": "5d7fa2aaca4307c094039d6e1f840de5fc1702804a74435b192b0defd7fd8392"
+    },
+    "testOnly": true,
+    "unknownValues": [],
+    "warnings": []
+  },
+  "generatedArtifact": true
+}

@@ -1,0 +1,60 @@
+{
+  "dashboard": {
+    "authoritativeSources": [
+      "evaluation-engine",
+      "evaluation.runs"
+    ],
+    "dashboardId": "evaluation.runs",
+    "dashboardTitle": "Evaluation Dashboard",
+    "dashboardVersion": "0.1.0",
+    "documentationReferences": [
+      "docs/implementation/dashboard-data-generation/README.md"
+    ],
+    "drillDownReferences": [],
+    "engineVersion": "intelligence.dashboard.generation.engine.v1",
+    "errors": [],
+    "generatedArtifacts": [
+      "dashboard-data/evaluation_dashboard.json"
+    ],
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "generationHash": "1fa4c2a2de909edc14d80ba786a87a88a84b5299422d7333fa07b243388034a3",
+    "productionApplicable": false,
+    "records": [],
+    "relatedDashboards": [
+      "capability.coverage",
+      "capability.lifecycle",
+      "capability.overview",
+      "executive.summary"
+    ],
+    "schemaVersion": "intelligence.dashboard.dataset.v1",
+    "sourceSubsystems": [
+      "evaluation-engine"
+    ],
+    "statistics": {
+      "byResultClass": {
+        "ASSERTION_FAILURE": 9,
+        "EXECUTOR_ERROR": 4,
+        "PARTIAL_OUTPUT": 2,
+        "POLICY_BLOCKED": 2,
+        "SCHEMA_ERROR": 15,
+        "SUCCESS": 6,
+        "TIMEOUT": 9,
+        "UNAUTHORIZED": 13
+      },
+      "byStrategy": {
+        "DETERMINISTIC_RULES": 23,
+        "HOSTED_BALANCED_MODEL": 32,
+        "HOSTED_ECONOMY_MODEL": 5
+      }
+    },
+    "statusIndicators": [],
+    "summary": {
+      "results": 60,
+      "runs": 3
+    },
+    "testOnly": true,
+    "unknownValues": [],
+    "warnings": []
+  },
+  "generatedArtifact": true
+}

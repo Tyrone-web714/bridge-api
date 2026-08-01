@@ -1,0 +1,89 @@
+{
+  "dashboard": {
+    "authoritativeSources": [
+      "knowledge-graph",
+      "validation",
+      "validation.overview"
+    ],
+    "dashboardId": "validation.overview",
+    "dashboardTitle": "Validation Dashboard",
+    "dashboardVersion": "0.1.0",
+    "documentationReferences": [
+      "docs/implementation/dashboard-data-generation/README.md"
+    ],
+    "drillDownReferences": [],
+    "engineVersion": "intelligence.dashboard.generation.engine.v1",
+    "errors": [],
+    "generatedArtifacts": [
+      "dashboard-data/validation_dashboard.json"
+    ],
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "generationHash": "13c6be5e7b64e6e8d787007c82434f3f29853f89dd02d7be79a913508ef40ae0",
+    "productionApplicable": false,
+    "records": [],
+    "relatedDashboards": [
+      "capability.coverage",
+      "capability.lifecycle",
+      "capability.overview",
+      "executive.summary"
+    ],
+    "schemaVersion": "intelligence.dashboard.dataset.v1",
+    "sourceSubsystems": [
+      "knowledge-graph",
+      "validation"
+    ],
+    "statistics": {
+      "readyChecks": 8,
+      "totalChecks": 8
+    },
+    "statusIndicators": [
+      {
+        "area": "capabilities",
+        "ready": true,
+        "status": "READY_REPOSITORY_ONLY"
+      },
+      {
+        "area": "benchmarkDatasets",
+        "ready": true,
+        "status": "READY_REPOSITORY_ONLY"
+      },
+      {
+        "area": "evaluationRuns",
+        "ready": true,
+        "status": "READY_REPOSITORY_ONLY"
+      },
+      {
+        "area": "scoreRuns",
+        "ready": true,
+        "status": "READY_REPOSITORY_ONLY"
+      },
+      {
+        "area": "costRuns",
+        "ready": true,
+        "status": "READY_REPOSITORY_ONLY"
+      },
+      {
+        "area": "decisionRecords",
+        "ready": true,
+        "status": "READY_REPOSITORY_ONLY"
+      },
+      {
+        "area": "historyRecords",
+        "ready": true,
+        "status": "READY_REPOSITORY_ONLY"
+      },
+      {
+        "area": "knowledgeGraph",
+        "ready": true,
+        "status": "READY_REPOSITORY_ONLY"
+      }
+    ],
+    "summary": {
+      "allRepositoryOnly": true
+    },
+    "testOnly": true,
+    "unknownValues": [],
+    "warnings": []
+  },
+  "generatedArtifact": true
+}

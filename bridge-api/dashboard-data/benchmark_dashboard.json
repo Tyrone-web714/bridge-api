@@ -1,0 +1,53 @@
+{
+  "dashboard": {
+    "authoritativeSources": [
+      "benchmark-datasets",
+      "benchmark.dataset"
+    ],
+    "dashboardId": "benchmark.dataset",
+    "dashboardTitle": "Benchmark Dataset Dashboard",
+    "dashboardVersion": "0.1.0",
+    "documentationReferences": [
+      "docs/implementation/dashboard-data-generation/README.md"
+    ],
+    "drillDownReferences": [],
+    "engineVersion": "intelligence.dashboard.generation.engine.v1",
+    "errors": [],
+    "generatedArtifacts": [
+      "dashboard-data/benchmark_dashboard.json"
+    ],
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "generationHash": "2d170e99b8fa3ad24362a9e8762b6537d0078e4175dd832cf64b629c962c52c4",
+    "productionApplicable": false,
+    "records": [],
+    "relatedDashboards": [
+      "capability.coverage",
+      "capability.lifecycle",
+      "capability.overview",
+      "executive.summary"
+    ],
+    "schemaVersion": "intelligence.dashboard.dataset.v1",
+    "sourceSubsystems": [
+      "benchmark-datasets"
+    ],
+    "statistics": {
+      "byCapability": {
+        "legacy.ai.structured_response": 1,
+        "supervisor.daily_operations_report": 1,
+        "text.cleanup": 1
+      },
+      "byVersion": {
+        "0.1.0": 3
+      }
+    },
+    "statusIndicators": [],
+    "summary": {
+      "cases": 13,
+      "datasets": 3
+    },
+    "testOnly": true,
+    "unknownValues": [],
+    "warnings": []
+  },
+  "generatedArtifact": true
+}

@@ -1,0 +1,447 @@
+{
+  "catalog": [
+    {
+      "dashboardId": "attestation.overview",
+      "dashboardTitle": "Attestation Dashboard",
+      "dashboardVersion": "0.1.0",
+      "fileName": "attestation_dashboard.json",
+      "generatedAt": "2026-07-25T00:00:00.000Z",
+      "generationHash": "46c8cf8de8c55d7f8ac8d66a16b7703f01685b1077f95bb3666a85dd3d1a6835",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.dashboard.dataset.v1",
+      "sourceSubsystems": [
+        "decision-governance"
+      ],
+      "testOnly": true
+    },
+    {
+      "dashboardId": "benchmark.dataset",
+      "dashboardTitle": "Benchmark Dataset Dashboard",
+      "dashboardVersion": "0.1.0",
+      "fileName": "benchmark_dashboard.json",
+      "generatedAt": "2026-07-25T00:00:00.000Z",
+      "generationHash": "2d170e99b8fa3ad24362a9e8762b6537d0078e4175dd832cf64b629c962c52c4",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.dashboard.dataset.v1",
+      "sourceSubsystems": [
+        "benchmark-datasets"
+      ],
+      "testOnly": true
+    },
+    {
+      "dashboardId": "budget.overview",
+      "dashboardTitle": "Budget Dashboard",
+      "dashboardVersion": "0.1.0",
+      "fileName": "budget_dashboard.json",
+      "generatedAt": "2026-07-25T00:00:00.000Z",
+      "generationHash": "768f094033826f0b3358d2c7d473ed1aa7077ccab60ac3ff3b251079294b0ed2",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.dashboard.dataset.v1",
+      "sourceSubsystems": [
+        "cost-governance"
+      ],
+      "testOnly": true
+    },
+    {
+      "dashboardId": "capability.coverage",
+      "dashboardTitle": "Capability Coverage Dashboard",
+      "dashboardVersion": "0.1.0",
+      "fileName": "capability_coverage_dashboard.json",
+      "generatedAt": "2026-07-25T00:00:00.000Z",
+      "generationHash": "62694acb6b1a4f39899083679b1cfd0905949e60a3b1d150adbcfc99c410ac06",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.dashboard.dataset.v1",
+      "sourceSubsystems": [
+        "benchmark-datasets",
+        "capability-registry",
+        "decision-governance",
+        "execution-decisions"
+      ],
+      "testOnly": true
+    },
+    {
+      "dashboardId": "capability.lifecycle",
+      "dashboardTitle": "Capability Lifecycle Dashboard",
+      "dashboardVersion": "0.1.0",
+      "fileName": "capability_lifecycle_dashboard.json",
+      "generatedAt": "2026-07-25T00:00:00.000Z",
+      "generationHash": "3c96721d96b7a7e44b01fb728b802a311f08f2d1582e6e586809a29df22a48f6",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.dashboard.dataset.v1",
+      "sourceSubsystems": [
+        "capability-registry"
+      ],
+      "testOnly": true
+    },
+    {
+      "dashboardId": "capability.overview",
+      "dashboardTitle": "Capability Dashboard",
+      "dashboardVersion": "0.1.0",
+      "fileName": "capability_dashboard.json",
+      "generatedAt": "2026-07-25T00:00:00.000Z",
+      "generationHash": "f0155da530f2ff9290e3cbcca0516a9032ed255e229765bc59e9737d170e8a3c",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.dashboard.dataset.v1",
+      "sourceSubsystems": [
+        "capability-registry",
+        "knowledge-graph"
+      ],
+      "testOnly": true
+    },
+    {
+      "dashboardId": "cost.governance",
+      "dashboardTitle": "Cost Governance Dashboard",
+      "dashboardVersion": "0.1.0",
+      "fileName": "cost_dashboard.json",
+      "generatedAt": "2026-07-25T00:00:00.000Z",
+      "generationHash": "229e4c90ddf1e51df2035e12ed58fe14e146c290e44f176f99f8747a2c066415",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.dashboard.dataset.v1",
+      "sourceSubsystems": [
+        "cost-governance"
+      ],
+      "testOnly": true
+    },
+    {
+      "dashboardId": "decision.history",
+      "dashboardTitle": "Decision History Dashboard",
+      "dashboardVersion": "0.1.0",
+      "fileName": "decision_history_dashboard.json",
+      "generatedAt": "2026-07-25T00:00:00.000Z",
+      "generationHash": "0b58ad0ac456387aa832cf73f77c99ea140f700ec5eb3a532dfedf47aa7070d8",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.dashboard.dataset.v1",
+      "sourceSubsystems": [
+        "decision-governance"
+      ],
+      "testOnly": true
+    },
+    {
+      "dashboardId": "deferred.work",
+      "dashboardTitle": "Deferred Work Dashboard",
+      "dashboardVersion": "0.1.0",
+      "fileName": "deferred_work_dashboard.json",
+      "generatedAt": "2026-07-25T00:00:00.000Z",
+      "generationHash": "2ec37cd119c620043ceb9d72a48bd7fd4ac7fea6e2eaa56ff0d85f4f9b550034",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.dashboard.dataset.v1",
+      "sourceSubsystems": [
+        "documentation-metadata"
+      ],
+      "testOnly": true
+    },
+    {
+      "dashboardId": "dependency.overview",
+      "dashboardTitle": "Dependency Dashboard",
+      "dashboardVersion": "0.1.0",
+      "fileName": "dependency_dashboard.json",
+      "generatedAt": "2026-07-25T00:00:00.000Z",
+      "generationHash": "b5a6d4de851e5a570a45eb274283874b7f630fd2d8a7b23480b92dccb876246c",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.dashboard.dataset.v1",
+      "sourceSubsystems": [
+        "knowledge-graph"
+      ],
+      "testOnly": true
+    },
+    {
+      "dashboardId": "documentation.overview",
+      "dashboardTitle": "Documentation Dashboard",
+      "dashboardVersion": "0.1.0",
+      "fileName": "documentation_dashboard.json",
+      "generatedAt": "2026-07-25T00:00:00.000Z",
+      "generationHash": "a0ce112865b8b369576a5d7ec8174a839e4060cc5acd10196eb73068c49cfbc6",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.dashboard.dataset.v1",
+      "sourceSubsystems": [
+        "documentation-metadata"
+      ],
+      "testOnly": true
+    },
+    {
+      "dashboardId": "evaluation.runs",
+      "dashboardTitle": "Evaluation Dashboard",
+      "dashboardVersion": "0.1.0",
+      "fileName": "evaluation_dashboard.json",
+      "generatedAt": "2026-07-25T00:00:00.000Z",
+      "generationHash": "1fa4c2a2de909edc14d80ba786a87a88a84b5299422d7333fa07b243388034a3",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.dashboard.dataset.v1",
+      "sourceSubsystems": [
+        "evaluation-engine"
+      ],
+      "testOnly": true
+    },
+    {
+      "dashboardId": "exception.overview",
+      "dashboardTitle": "Exception Dashboard",
+      "dashboardVersion": "0.1.0",
+      "fileName": "exception_dashboard.json",
+      "generatedAt": "2026-07-25T00:00:00.000Z",
+      "generationHash": "780596c0a5862625e72529597aca6c7d04996a897c8d9441d8063993730a8286",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.dashboard.dataset.v1",
+      "sourceSubsystems": [
+        "decision-governance"
+      ],
+      "testOnly": true
+    },
+    {
+      "dashboardId": "execution.decision",
+      "dashboardTitle": "Execution Decision Dashboard",
+      "dashboardVersion": "0.1.0",
+      "fileName": "decision_dashboard.json",
+      "generatedAt": "2026-07-25T00:00:00.000Z",
+      "generationHash": "5ae2c5fc2684c423b92447e465adac03a3f8015b4264d91a92acd0317652811b",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.dashboard.dataset.v1",
+      "sourceSubsystems": [
+        "execution-decisions"
+      ],
+      "testOnly": true
+    },
+    {
+      "dashboardId": "execution.strategy",
+      "dashboardTitle": "Execution Strategy Dashboard",
+      "dashboardVersion": "0.1.0",
+      "fileName": "execution_dashboard.json",
+      "generatedAt": "2026-07-25T00:00:00.000Z",
+      "generationHash": "4b2430c08c2cd83bd6c3146849af59aee8fd6b1a03b54e7f1c41ae01ec5e6072",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.dashboard.dataset.v1",
+      "sourceSubsystems": [
+        "evaluation-engine",
+        "execution-decisions"
+      ],
+      "testOnly": true
+    },
+    {
+      "dashboardId": "executive.summary",
+      "dashboardTitle": "Executive Summary Dashboard",
+      "dashboardVersion": "0.1.0",
+      "fileName": "executive_dashboard.json",
+      "generatedAt": "2026-07-25T00:00:00.000Z",
+      "generationHash": "563f758418279e3b15176a7094aac55ee1cac748824c5694906dca47e56e721e",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.dashboard.dataset.v1",
+      "sourceSubsystems": [
+        "benchmark-datasets",
+        "capability-registry",
+        "cost-governance",
+        "decision-governance",
+        "evaluation-engine",
+        "execution-decisions",
+        "knowledge-graph",
+        "scoring-engine"
+      ],
+      "testOnly": true
+    },
+    {
+      "dashboardId": "findings.overview",
+      "dashboardTitle": "Findings Dashboard",
+      "dashboardVersion": "0.1.0",
+      "fileName": "findings_dashboard.json",
+      "generatedAt": "2026-07-25T00:00:00.000Z",
+      "generationHash": "b7d883a81a503fdb83e327fe72bf0350a881dba79426e3ce0e0b12c36cd2f457",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.dashboard.dataset.v1",
+      "sourceSubsystems": [
+        "decision-governance"
+      ],
+      "testOnly": true
+    },
+    {
+      "dashboardId": "generated.artifacts",
+      "dashboardTitle": "Generated Artifact Dashboard",
+      "dashboardVersion": "0.1.0",
+      "fileName": "artifact_dashboard.json",
+      "generatedAt": "2026-07-25T00:00:00.000Z",
+      "generationHash": "48260e71db03b865f361dc8ce24edf2333ca83115017bf8976d0ad5f34b57993",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.dashboard.dataset.v1",
+      "sourceSubsystems": [
+        "generated-artifacts"
+      ],
+      "testOnly": true
+    },
+    {
+      "dashboardId": "governance.overview",
+      "dashboardTitle": "Governance Dashboard",
+      "dashboardVersion": "0.1.0",
+      "fileName": "governance_dashboard.json",
+      "generatedAt": "2026-07-25T00:00:00.000Z",
+      "generationHash": "56a9832cc983b13dcad155ac262267f0b04bb5b42f526c5148550b3c318f21e7",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.dashboard.dataset.v1",
+      "sourceSubsystems": [
+        "decision-governance"
+      ],
+      "testOnly": true
+    },
+    {
+      "dashboardId": "human.review",
+      "dashboardTitle": "Human Review Dashboard",
+      "dashboardVersion": "0.1.0",
+      "fileName": "human_review_dashboard.json",
+      "generatedAt": "2026-07-25T00:00:00.000Z",
+      "generationHash": "337c10c75cafe42bc4bcd3e93b08bd5a0337ba1bf351b1f639c346d60fd2cd23",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.dashboard.dataset.v1",
+      "sourceSubsystems": [
+        "decision-governance"
+      ],
+      "testOnly": true
+    },
+    {
+      "dashboardId": "impact.analysis",
+      "dashboardTitle": "Impact Analysis Dashboard",
+      "dashboardVersion": "0.1.0",
+      "fileName": "impact_dashboard.json",
+      "generatedAt": "2026-07-25T00:00:00.000Z",
+      "generationHash": "bc9a57af5570e662590dd215e0f2e1e76c61930bb8615bfe273ed00c1f52f550",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.dashboard.dataset.v1",
+      "sourceSubsystems": [
+        "knowledge-graph"
+      ],
+      "testOnly": true
+    },
+    {
+      "dashboardId": "knowledge.graph",
+      "dashboardTitle": "Knowledge Graph Dashboard",
+      "dashboardVersion": "0.1.0",
+      "fileName": "knowledge_graph_dashboard.json",
+      "generatedAt": "2026-07-25T00:00:00.000Z",
+      "generationHash": "8250d66c74681e48d5deed1ba65ea8aa81b49fc0165fac1db74288ed41bd9198",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.dashboard.dataset.v1",
+      "sourceSubsystems": [
+        "knowledge-graph"
+      ],
+      "testOnly": true
+    },
+    {
+      "dashboardId": "overall.platform",
+      "dashboardTitle": "Overall Intelligence Platform Dashboard",
+      "dashboardVersion": "0.1.0",
+      "fileName": "overall_platform_dashboard.json",
+      "generatedAt": "2026-07-25T00:00:00.000Z",
+      "generationHash": "ca74905d4e2195932834d540014eabca293a63cefd17181ba01c28bf60698c56",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.dashboard.dataset.v1",
+      "sourceSubsystems": [
+        "all-intelligence-repository-evidence"
+      ],
+      "testOnly": true
+    },
+    {
+      "dashboardId": "owner.decisions",
+      "dashboardTitle": "Owner Decision Dashboard",
+      "dashboardVersion": "0.1.0",
+      "fileName": "owner_decision_dashboard.json",
+      "generatedAt": "2026-07-25T00:00:00.000Z",
+      "generationHash": "014cf120c324f195970220042334d36ebf9cd4743413c5d969c5b5b12cfadc50",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.dashboard.dataset.v1",
+      "sourceSubsystems": [
+        "architecture-decisions",
+        "knowledge-graph",
+        "owner-decisions"
+      ],
+      "testOnly": true
+    },
+    {
+      "dashboardId": "platform.readiness",
+      "dashboardTitle": "Platform Readiness Dashboard",
+      "dashboardVersion": "0.1.0",
+      "fileName": "readiness_dashboard.json",
+      "generatedAt": "2026-07-25T00:00:00.000Z",
+      "generationHash": "d27938567f17955ab487ab987314c65a7aecf469f815bffdfedcb8ec468df171",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.dashboard.dataset.v1",
+      "sourceSubsystems": [
+        "cost-governance",
+        "dashboard-generation",
+        "execution-decisions",
+        "governance",
+        "knowledge-graph",
+        "validation"
+      ],
+      "testOnly": true
+    },
+    {
+      "dashboardId": "repository.health",
+      "dashboardTitle": "Repository Health Dashboard",
+      "dashboardVersion": "0.1.0",
+      "fileName": "repository_health_dashboard.json",
+      "generatedAt": "2026-07-25T00:00:00.000Z",
+      "generationHash": "a9cfd6cf3685adf3e2a60587ea44907beac7823c2e718b1566462d08555afd34",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.dashboard.dataset.v1",
+      "sourceSubsystems": [
+        "package-metadata",
+        "repository-inventory"
+      ],
+      "testOnly": true
+    },
+    {
+      "dashboardId": "scoring.overview",
+      "dashboardTitle": "Scoring Dashboard",
+      "dashboardVersion": "0.1.0",
+      "fileName": "scoring_dashboard.json",
+      "generatedAt": "2026-07-25T00:00:00.000Z",
+      "generationHash": "f5d57337ee9291152f066526d5b6d4e940ee27ae37bad63c5e7cceb673bfc4d0",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.dashboard.dataset.v1",
+      "sourceSubsystems": [
+        "scoring-engine"
+      ],
+      "testOnly": true
+    },
+    {
+      "dashboardId": "technical.debt",
+      "dashboardTitle": "Technical Debt Dashboard",
+      "dashboardVersion": "0.1.0",
+      "fileName": "technical_debt_dashboard.json",
+      "generatedAt": "2026-07-25T00:00:00.000Z",
+      "generationHash": "e44e593976d7fe915b28ebd318bbce5cacf35caa6c56a2be18ca966ebbef27fb",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.dashboard.dataset.v1",
+      "sourceSubsystems": [
+        "documentation-metadata",
+        "repository-inventory"
+      ],
+      "testOnly": true
+    },
+    {
+      "dashboardId": "test.coverage",
+      "dashboardTitle": "Test Coverage Dashboard",
+      "dashboardVersion": "0.1.0",
+      "fileName": "test_coverage_dashboard.json",
+      "generatedAt": "2026-07-25T00:00:00.000Z",
+      "generationHash": "13ff4cf3956f078c11fbbd6bf3922146bef18dce88a5412f3516617c3747d531",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.dashboard.dataset.v1",
+      "sourceSubsystems": [
+        "package-metadata"
+      ],
+      "testOnly": true
+    },
+    {
+      "dashboardId": "validation.overview",
+      "dashboardTitle": "Validation Dashboard",
+      "dashboardVersion": "0.1.0",
+      "fileName": "validation_dashboard.json",
+      "generatedAt": "2026-07-25T00:00:00.000Z",
+      "generationHash": "13c6be5e7b64e6e8d787007c82434f3f29853f89dd02d7be79a913508ef40ae0",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.dashboard.dataset.v1",
+      "sourceSubsystems": [
+        "knowledge-graph",
+        "validation"
+      ],
+      "testOnly": true
+    }
+  ],
+  "generatedArtifact": true
+}

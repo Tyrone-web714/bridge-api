@@ -1,0 +1,46 @@
+{
+  "dashboard": {
+    "authoritativeSources": [
+      "budget.overview",
+      "cost-governance"
+    ],
+    "dashboardId": "budget.overview",
+    "dashboardTitle": "Budget Dashboard",
+    "dashboardVersion": "0.1.0",
+    "documentationReferences": [
+      "docs/implementation/dashboard-data-generation/README.md"
+    ],
+    "drillDownReferences": [],
+    "engineVersion": "intelligence.dashboard.generation.engine.v1",
+    "errors": [],
+    "generatedArtifacts": [
+      "dashboard-data/budget_dashboard.json"
+    ],
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "generationHash": "768f094033826f0b3358d2c7d473ed1aa7077ccab60ac3ff3b251079294b0ed2",
+    "productionApplicable": false,
+    "records": [],
+    "relatedDashboards": [
+      "capability.coverage",
+      "capability.lifecycle",
+      "capability.overview",
+      "executive.summary"
+    ],
+    "schemaVersion": "intelligence.dashboard.dataset.v1",
+    "sourceSubsystems": [
+      "cost-governance"
+    ],
+    "statistics": {
+      "budgetViolationsSynthetic": 0,
+      "status": {}
+    },
+    "statusIndicators": [],
+    "summary": {
+      "budgetProfiles": 2
+    },
+    "testOnly": true,
+    "unknownValues": [],
+    "warnings": []
+  },
+  "generatedArtifact": true
+}

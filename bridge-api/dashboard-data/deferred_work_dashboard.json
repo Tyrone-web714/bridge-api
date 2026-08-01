@@ -1,0 +1,53 @@
+{
+  "dashboard": {
+    "authoritativeSources": [
+      "deferred.work",
+      "documentation-metadata"
+    ],
+    "dashboardId": "deferred.work",
+    "dashboardTitle": "Deferred Work Dashboard",
+    "dashboardVersion": "0.1.0",
+    "documentationReferences": [
+      "docs/implementation/dashboard-data-generation/README.md"
+    ],
+    "drillDownReferences": [],
+    "engineVersion": "intelligence.dashboard.generation.engine.v1",
+    "errors": [],
+    "generatedArtifacts": [
+      "dashboard-data/deferred_work_dashboard.json"
+    ],
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "generationHash": "2ec37cd119c620043ceb9d72a48bd7fd4ac7fea6e2eaa56ff0d85f4f9b550034",
+    "productionApplicable": false,
+    "records": [],
+    "relatedDashboards": [
+      "capability.coverage",
+      "capability.lifecycle",
+      "capability.overview",
+      "executive.summary"
+    ],
+    "schemaVersion": "intelligence.dashboard.dataset.v1",
+    "sourceSubsystems": [
+      "documentation-metadata"
+    ],
+    "statistics": {
+      "deferredItems": [
+        "runtime dashboard UI",
+        "dashboard API exposure",
+        "production dashboard validation",
+        "provider benchmarking expansion",
+        "graph visualization",
+        "BI connector export"
+      ],
+      "requiresOwnerApproval": true
+    },
+    "statusIndicators": [],
+    "summary": {
+      "deferredWorkDashboard": true
+    },
+    "testOnly": true,
+    "unknownValues": [],
+    "warnings": []
+  },
+  "generatedArtifact": true
+}

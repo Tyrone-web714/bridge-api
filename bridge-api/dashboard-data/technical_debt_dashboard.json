@@ -1,0 +1,71 @@
+{
+  "dashboard": {
+    "authoritativeSources": [
+      "documentation-metadata",
+      "repository-inventory",
+      "technical.debt"
+    ],
+    "dashboardId": "technical.debt",
+    "dashboardTitle": "Technical Debt Dashboard",
+    "dashboardVersion": "0.1.0",
+    "documentationReferences": [
+      "docs/implementation/dashboard-data-generation/README.md"
+    ],
+    "drillDownReferences": [],
+    "engineVersion": "intelligence.dashboard.generation.engine.v1",
+    "errors": [],
+    "generatedArtifacts": [
+      "dashboard-data/technical_debt_dashboard.json"
+    ],
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "generationHash": "e44e593976d7fe915b28ebd318bbce5cacf35caa6c56a2be18ca966ebbef27fb",
+    "productionApplicable": false,
+    "records": [],
+    "relatedDashboards": [
+      "capability.coverage",
+      "capability.lifecycle",
+      "capability.overview",
+      "executive.summary"
+    ],
+    "schemaVersion": "intelligence.dashboard.dataset.v1",
+    "sourceSubsystems": [
+      "documentation-metadata",
+      "repository-inventory"
+    ],
+    "statistics": {
+      "deferredWorkDocs": [
+        "docs/implementation/benchmark-dataset-framework/DEFERRED_WORK.md",
+        "docs/implementation/cost-governance/DEFERRED_WORK.md",
+        "docs/implementation/dashboard-data-generation/DEFERRED_WORK.md",
+        "docs/implementation/decision-history-and-governance/DEFERRED_WORK.md",
+        "docs/implementation/enterprise-intelligence-capability-registry/DEFERRED_WORK.md",
+        "docs/implementation/execution-strategy-evaluation-engine/DEFERRED_WORK.md",
+        "docs/implementation/framework-validation/DEFERRED_WORK.md",
+        "docs/implementation/intelligence-capability-orchestration/DEFERRED_WORK.md",
+        "docs/implementation/intelligence-execution-platform-foundation/DEFERRED_WORK.md",
+        "docs/implementation/intelligence-execution-platform-legacy-ai-migration/DEFERRED_WORK.md",
+        "docs/implementation/intelligence-execution-platform-supervisor-migration/DEFERRED_WORK.md",
+        "docs/implementation/intelligence-knowledge-graph/DEFERRED_WORK.md",
+        "docs/implementation/intelligence-lifecycle-framework/DEFERRED_WORK.md",
+        "docs/implementation/scoring-engine/DEFERRED_WORK.md"
+      ],
+      "missingIntegrations": [
+        "runtime-dashboard-ui",
+        "public-dashboard-api",
+        "graph-visualization",
+        "cross-repository-mobile-dashboard-data"
+      ],
+      "unsupportedProviders": [
+        "premium-hosted-providers-deferred"
+      ]
+    },
+    "statusIndicators": [],
+    "summary": {
+      "todoReferences": 33
+    },
+    "testOnly": true,
+    "unknownValues": [],
+    "warnings": []
+  },
+  "generatedArtifact": true
+}

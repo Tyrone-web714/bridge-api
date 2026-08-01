@@ -1,0 +1,50 @@
+{
+  "dashboard": {
+    "authoritativeSources": [
+      "decision-governance",
+      "findings.overview"
+    ],
+    "dashboardId": "findings.overview",
+    "dashboardTitle": "Findings Dashboard",
+    "dashboardVersion": "0.1.0",
+    "documentationReferences": [
+      "docs/implementation/dashboard-data-generation/README.md"
+    ],
+    "drillDownReferences": [],
+    "engineVersion": "intelligence.dashboard.generation.engine.v1",
+    "errors": [],
+    "generatedArtifacts": [
+      "dashboard-data/findings_dashboard.json"
+    ],
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "generationHash": "b7d883a81a503fdb83e327fe72bf0350a881dba79426e3ce0e0b12c36cd2f457",
+    "productionApplicable": false,
+    "records": [],
+    "relatedDashboards": [
+      "capability.coverage",
+      "capability.lifecycle",
+      "capability.overview",
+      "executive.summary"
+    ],
+    "schemaVersion": "intelligence.dashboard.dataset.v1",
+    "sourceSubsystems": [
+      "decision-governance"
+    ],
+    "statistics": {
+      "severity": {
+        "LOW": 1
+      },
+      "status": {
+        "OPEN": 1
+      }
+    },
+    "statusIndicators": [],
+    "summary": {
+      "findings": 1
+    },
+    "testOnly": true,
+    "unknownValues": [],
+    "warnings": []
+  },
+  "generatedArtifact": true
+}

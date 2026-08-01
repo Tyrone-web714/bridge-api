@@ -1,0 +1,98 @@
+{
+  "dashboard": {
+    "authoritativeSources": [
+      "capability-registry",
+      "capability.overview",
+      "knowledge-graph"
+    ],
+    "dashboardId": "capability.overview",
+    "dashboardTitle": "Capability Dashboard",
+    "dashboardVersion": "0.1.0",
+    "documentationReferences": [
+      "docs/implementation/dashboard-data-generation/README.md"
+    ],
+    "drillDownReferences": [],
+    "engineVersion": "intelligence.dashboard.generation.engine.v1",
+    "errors": [],
+    "generatedArtifacts": [
+      "dashboard-data/capability_dashboard.json"
+    ],
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "generationHash": "f0155da530f2ff9290e3cbcca0516a9032ed255e229765bc59e9737d170e8a3c",
+    "productionApplicable": false,
+    "records": [],
+    "relatedDashboards": [
+      "benchmark.dataset",
+      "capability.coverage",
+      "capability.lifecycle",
+      "executive.summary"
+    ],
+    "schemaVersion": "intelligence.dashboard.dataset.v1",
+    "sourceSubsystems": [
+      "capability-registry",
+      "knowledge-graph"
+    ],
+    "statistics": {
+      "costCoverage": {
+        "legacy.ai.structured_response": 20,
+        "supervisor.daily_operations_report": 20,
+        "text.cleanup": 20
+      },
+      "datasetCoverage": {
+        "legacy.ai.structured_response": 1,
+        "supervisor.daily_operations_report": 1,
+        "text.cleanup": 1
+      },
+      "decisionCoverage": {
+        "legacy.ai.structured_response": 2,
+        "supervisor.daily_operations_report": 1,
+        "text.cleanup": 1
+      },
+      "governanceCoverage": {
+        "legacy.ai.structured_response": 2,
+        "supervisor.daily_operations_report": 1,
+        "text.cleanup": 1
+      }
+    },
+    "statusIndicators": [],
+    "summary": {
+      "byLifecycle": {
+        "DRAFT": 3,
+        "PILOT": 3
+      },
+      "deprecated": 0,
+      "disabled": 3,
+      "enabled": 3,
+      "executionStrategySupport": {
+        "CACHE": 0,
+        "CONVENTIONAL_ML": 0,
+        "DETERMINISTIC_RULES": 2,
+        "GEOSPATIAL_ENGINE": 1,
+        "HOSTED_BALANCED_MODEL": 2,
+        "HOSTED_ECONOMY_MODEL": 3,
+        "HOSTED_PREMIUM_MODEL": 0,
+        "HUMAN_REVIEW": 0,
+        "LOCAL_MODEL": 0,
+        "MULTI_MODEL_WORKFLOW": 0,
+        "OPTIMIZATION_ENGINE": 0,
+        "SQL_ANALYTICS": 1,
+        "STATISTICAL_MODEL": 0
+      },
+      "experimental": 0,
+      "retired": 0,
+      "total": 6,
+      "versionDistribution": {
+        "delivery_note.summarize.v1": 1,
+        "legacy.ai.structured_response.v1": 1,
+        "policy.answer.v1": 1,
+        "route.risk_explanation.v1": 1,
+        "supervisor.daily_operations_report.v1": 1,
+        "text.cleanup.v1": 1
+      }
+    },
+    "testOnly": true,
+    "unknownValues": [],
+    "warnings": []
+  },
+  "generatedArtifact": true
+}

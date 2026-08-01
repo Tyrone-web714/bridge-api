@@ -1,0 +1,111 @@
+{
+  "dashboard": {
+    "authoritativeSources": [
+      "package-metadata",
+      "test.coverage"
+    ],
+    "dashboardId": "test.coverage",
+    "dashboardTitle": "Test Coverage Dashboard",
+    "dashboardVersion": "0.1.0",
+    "documentationReferences": [
+      "docs/implementation/dashboard-data-generation/README.md"
+    ],
+    "drillDownReferences": [],
+    "engineVersion": "intelligence.dashboard.generation.engine.v1",
+    "errors": [],
+    "generatedArtifacts": [
+      "dashboard-data/test_coverage_dashboard.json"
+    ],
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "generationHash": "13ff4cf3956f078c11fbbd6bf3922146bef18dce88a5412f3516617c3747d531",
+    "productionApplicable": false,
+    "records": [],
+    "relatedDashboards": [
+      "capability.coverage",
+      "capability.lifecycle",
+      "capability.overview",
+      "executive.summary"
+    ],
+    "schemaVersion": "intelligence.dashboard.dataset.v1",
+    "sourceSubsystems": [
+      "package-metadata"
+    ],
+    "statistics": {
+      "intelligenceScripts": [
+        "benchmark-datasets:check",
+        "benchmark-datasets:coverage",
+        "benchmark-datasets:generate",
+        "benchmark-datasets:update-hashes",
+        "benchmark-datasets:validate",
+        "capability-registry:check",
+        "capability-registry:generate",
+        "capability-registry:validate",
+        "cost-governance:check",
+        "cost-governance:generate",
+        "cost-governance:run",
+        "cost-governance:sensitivity",
+        "cost-governance:simulate-budget",
+        "cost-governance:validate",
+        "dashboard-data:catalog",
+        "dashboard-data:check",
+        "dashboard-data:generate",
+        "dashboard-data:hashes",
+        "dashboard-data:validate",
+        "decision-governance:check",
+        "decision-governance:generate",
+        "decision-governance:lineage",
+        "decision-governance:project",
+        "decision-governance:replay",
+        "decision-governance:validate",
+        "evaluation-engine:check",
+        "evaluation-engine:generate",
+        "evaluation-engine:replay",
+        "evaluation-engine:run-offline",
+        "evaluation-engine:validate",
+        "execution-decisions:check",
+        "execution-decisions:counterfactual",
+        "execution-decisions:generate",
+        "execution-decisions:run",
+        "execution-decisions:sensitivity",
+        "execution-decisions:validate",
+        "knowledge-graph:check",
+        "knowledge-graph:cycles",
+        "knowledge-graph:dependencies",
+        "knowledge-graph:generate",
+        "knowledge-graph:impact",
+        "knowledge-graph:validate",
+        "scoring-engine:check",
+        "scoring-engine:generate",
+        "scoring-engine:run",
+        "scoring-engine:sensitivity",
+        "scoring-engine:validate",
+        "test:ai",
+        "test:ai-architecture",
+        "test:benchmark-datasets",
+        "test:capability-registry",
+        "test:cost-governance",
+        "test:dashboard",
+        "test:dashboard-data",
+        "test:decision-governance",
+        "test:evaluation-engine",
+        "test:execution-decisions",
+        "test:fleet-intelligence-scoring",
+        "test:intelligence-execution",
+        "test:knowledge-graph",
+        "test:logistics-intelligence",
+        "test:scoring-engine",
+        "test:supervisor-intelligence",
+        "validate:fleet-intelligence-scoring",
+        "validate:logistics-intelligence"
+      ]
+    },
+    "statusIndicators": [],
+    "summary": {
+      "testScripts": 38
+    },
+    "testOnly": true,
+    "unknownValues": [],
+    "warnings": []
+  },
+  "generatedArtifact": true
+}

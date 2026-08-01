@@ -1,0 +1,64 @@
+{
+  "dashboard": {
+    "authoritativeSources": [
+      "execution-decisions",
+      "execution.decision"
+    ],
+    "dashboardId": "execution.decision",
+    "dashboardTitle": "Execution Decision Dashboard",
+    "dashboardVersion": "0.1.0",
+    "documentationReferences": [
+      "docs/implementation/dashboard-data-generation/README.md"
+    ],
+    "drillDownReferences": [],
+    "engineVersion": "intelligence.dashboard.generation.engine.v1",
+    "errors": [],
+    "generatedArtifacts": [
+      "dashboard-data/decision_dashboard.json"
+    ],
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "generationHash": "5ae2c5fc2684c423b92447e465adac03a3f8015b4264d91a92acd0317652811b",
+    "productionApplicable": false,
+    "records": [],
+    "relatedDashboards": [
+      "capability.coverage",
+      "capability.lifecycle",
+      "capability.overview",
+      "executive.summary"
+    ],
+    "schemaVersion": "intelligence.dashboard.dataset.v1",
+    "sourceSubsystems": [
+      "execution-decisions"
+    ],
+    "statistics": {
+      "candidateFeasibility": {
+        "FEASIBLE": 26,
+        "INFEASIBLE": 21,
+        "INSUFFICIENT_EVIDENCE": 16,
+        "UNAUTHORIZED": 17
+      },
+      "confidenceAverage": 61.4795,
+      "outcomes": {
+        "DEFER_PENDING_EVIDENCE": 1,
+        "HUMAN_REVIEW_REQUIRED": 1,
+        "SELECT_ADVISORY_CANDIDATE_WITH_FALLBACK": 2
+      },
+      "policyUsage": {
+        "CHEAPEST_SUFFICIENT_TEST_POLICY": 1,
+        "INSUFFICIENT_EVIDENCE_FAIL_CLOSED_TEST_POLICY": 1,
+        "OFFLINE_FIRST_TEST_POLICY": 1,
+        "SAFETY_CRITICAL_TEST_POLICY": 1
+      }
+    },
+    "statusIndicators": [],
+    "summary": {
+      "abstentions": 0,
+      "records": 4,
+      "requests": 4
+    },
+    "testOnly": true,
+    "unknownValues": [],
+    "warnings": []
+  },
+  "generatedArtifact": true
+}

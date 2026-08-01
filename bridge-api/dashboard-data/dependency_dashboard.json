@@ -1,0 +1,46 @@
+{
+  "dashboard": {
+    "authoritativeSources": [
+      "dependency.overview",
+      "knowledge-graph"
+    ],
+    "dashboardId": "dependency.overview",
+    "dashboardTitle": "Dependency Dashboard",
+    "dashboardVersion": "0.1.0",
+    "documentationReferences": [
+      "docs/implementation/dashboard-data-generation/README.md"
+    ],
+    "drillDownReferences": [],
+    "engineVersion": "intelligence.dashboard.generation.engine.v1",
+    "errors": [],
+    "generatedArtifacts": [
+      "dashboard-data/dependency_dashboard.json"
+    ],
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "generationHash": "b5a6d4de851e5a570a45eb274283874b7f630fd2d8a7b23480b92dccb876246c",
+    "productionApplicable": false,
+    "records": [],
+    "relatedDashboards": [
+      "capability.coverage",
+      "capability.lifecycle",
+      "capability.overview",
+      "executive.summary"
+    ],
+    "schemaVersion": "intelligence.dashboard.dataset.v1",
+    "sourceSubsystems": [
+      "knowledge-graph"
+    ],
+    "statistics": {
+      "nodesWithDependencies": 128,
+      "reverseDependencyRows": 80
+    },
+    "statusIndicators": [],
+    "summary": {
+      "matrixRows": 924
+    },
+    "testOnly": true,
+    "unknownValues": [],
+    "warnings": []
+  },
+  "generatedArtifact": true
+}

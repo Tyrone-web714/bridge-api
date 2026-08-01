@@ -1,0 +1,112 @@
+{
+  "dashboard": {
+    "authoritativeSources": [
+      "knowledge-graph",
+      "knowledge.graph"
+    ],
+    "dashboardId": "knowledge.graph",
+    "dashboardTitle": "Knowledge Graph Dashboard",
+    "dashboardVersion": "0.1.0",
+    "documentationReferences": [
+      "docs/implementation/dashboard-data-generation/README.md"
+    ],
+    "drillDownReferences": [],
+    "engineVersion": "intelligence.dashboard.generation.engine.v1",
+    "errors": [],
+    "generatedArtifacts": [
+      "dashboard-data/knowledge_graph_dashboard.json"
+    ],
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "generationHash": "8250d66c74681e48d5deed1ba65ea8aa81b49fc0165fac1db74288ed41bd9198",
+    "productionApplicable": false,
+    "records": [],
+    "relatedDashboards": [
+      "capability.coverage",
+      "capability.lifecycle",
+      "capability.overview",
+      "executive.summary"
+    ],
+    "schemaVersion": "intelligence.dashboard.dataset.v1",
+    "sourceSubsystems": [
+      "knowledge-graph"
+    ],
+    "statistics": {
+      "cycleCount": 0,
+      "disconnectedCount": 323,
+      "edgeCount": 811,
+      "edgeTypes": {
+        "ALLOWS": 30,
+        "BELONGS_TO": 3,
+        "CREATED_FROM": 8,
+        "DEPENDS_ON": 60,
+        "DOCUMENTS": 118,
+        "EVALUATES": 3,
+        "FALLBACK_TO": 6,
+        "GENERATED_FROM": 134,
+        "GOVERNS": 56,
+        "HAS_HASH": 6,
+        "HAS_POLICY": 12,
+        "HAS_VERSION": 15,
+        "IMPLEMENTS": 36,
+        "INFLUENCES": 14,
+        "PRODUCES": 185,
+        "REPLAYS": 4,
+        "REQUIRES": 1,
+        "SCORES": 6,
+        "TESTS": 19,
+        "USES": 95
+      },
+      "graphDensity": 0.0009499,
+      "graphHash": "5d7fa2aaca4307c094039d6e1f840de5fc1702804a74435b192b0defd7fd8392",
+      "nodeCount": 924,
+      "nodeTypes": {
+        "Architecture Decision": 13,
+        "Attestation": 4,
+        "Benchmark Dataset": 3,
+        "Budget Profile": 2,
+        "Capability": 6,
+        "Capability Version": 6,
+        "Cost Governance Record": 3,
+        "Cost Model Profile": 3,
+        "Decision History Record": 4,
+        "Decision Policy Profile": 8,
+        "Documentation Page": 396,
+        "Evaluation Result": 60,
+        "Evaluation Run": 3,
+        "Exception Record": 1,
+        "Execution Decision Record": 4,
+        "Execution Decision Request": 4,
+        "Execution Profile": 8,
+        "Execution Strategy": 13,
+        "Finding": 1,
+        "Generated Artifact": 134,
+        "Governance Event": 48,
+        "Hash": 130,
+        "Human Review Record": 1,
+        "Lifecycle State": 2,
+        "Owner Decision": 1,
+        "Package": 1,
+        "Pricing Catalog": 1,
+        "Repository Module": 29,
+        "Score Profile": 3,
+        "Score Run": 3,
+        "Script": 19,
+        "Service": 1,
+        "Unknown": 6,
+        "Version": 3
+      },
+      "orphanCount": 542
+    },
+    "statusIndicators": [],
+    "summary": {
+      "edges": 811,
+      "graphHash": "5d7fa2aaca4307c094039d6e1f840de5fc1702804a74435b192b0defd7fd8392",
+      "nodes": 924,
+      "valid": true
+    },
+    "testOnly": true,
+    "unknownValues": [],
+    "warnings": []
+  },
+  "generatedArtifact": true
+}

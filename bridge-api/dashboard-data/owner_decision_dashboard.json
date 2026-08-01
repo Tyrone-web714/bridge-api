@@ -1,0 +1,67 @@
+{
+  "dashboard": {
+    "authoritativeSources": [
+      "architecture-decisions",
+      "knowledge-graph",
+      "owner-decisions",
+      "owner.decisions"
+    ],
+    "dashboardId": "owner.decisions",
+    "dashboardTitle": "Owner Decision Dashboard",
+    "dashboardVersion": "0.1.0",
+    "documentationReferences": [
+      "docs/implementation/dashboard-data-generation/README.md"
+    ],
+    "drillDownReferences": [],
+    "engineVersion": "intelligence.dashboard.generation.engine.v1",
+    "errors": [],
+    "generatedArtifacts": [
+      "dashboard-data/owner_decision_dashboard.json"
+    ],
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "generationHash": "014cf120c324f195970220042334d36ebf9cd4743413c5d969c5b5b12cfadc50",
+    "productionApplicable": false,
+    "records": [],
+    "relatedDashboards": [
+      "capability.coverage",
+      "capability.lifecycle",
+      "capability.overview",
+      "executive.summary"
+    ],
+    "schemaVersion": "intelligence.dashboard.dataset.v1",
+    "sourceSubsystems": [
+      "architecture-decisions",
+      "knowledge-graph",
+      "owner-decisions"
+    ],
+    "statistics": {
+      "architectureDecisions": [
+        "Architecture Decision:docs/architecture/ADR/ADR-0001-Use-Organization-As-Tenant-Boundary.md",
+        "Architecture Decision:docs/architecture/ADR/ODR-019-Data-Lifecycle-Deletion-Retention-Anonymization-and-Referential-Integrity-Architecture.md",
+        "Architecture Decision:docs/architecture/ADR/ODR-020-Enterprise-SSO-and-Identity-Federation-Architecture.md",
+        "Architecture Decision:docs/architecture/ARCHITECTURE_GOVERNANCE_BASELINE_v1.0.md",
+        "Architecture Decision:docs/architecture/ARCHITECTURE_GOVERNANCE_BASELINE_v1.1.md",
+        "Architecture Decision:docs/architecture/ARCHITECTURE_INDEX.md",
+        "Architecture Decision:docs/architecture/data-lifecycle/TSR_DATA_LIFECYCLE_ARCHITECTURE.md",
+        "Architecture Decision:docs/architecture/data-lifecycle/TSR_DATA_SUBJECT_REQUEST_ARCHITECTURE.md",
+        "Architecture Decision:docs/architecture/data-lifecycle/TSR_LEGAL_HOLD_ARCHITECTURE.md",
+        "Architecture Decision:docs/architecture/diagrams/tenant-architecture.mmd",
+        "Architecture Decision:docs/architecture/enterprise-identity/ENTERPRISE_IDENTITY_ARCHITECTURE.md",
+        "Architecture Decision:docs/architecture/enterprise-identity/ENTERPRISE_IDENTITY_MOBILE_ARCHITECTURE.md",
+        "Architecture Decision:docs/architecture/Volume-I-Vision-and-Enterprise-Architecture.md"
+      ],
+      "ownerDecisions": [
+        "Owner Decision:OWNER_DECISION_REGISTER"
+      ]
+    },
+    "statusIndicators": [],
+    "summary": {
+      "architectureDecisionNodes": 13,
+      "ownerDecisionNodes": 1
+    },
+    "testOnly": true,
+    "unknownValues": [],
+    "warnings": []
+  },
+  "generatedArtifact": true
+}

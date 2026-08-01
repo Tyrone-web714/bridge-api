@@ -1,0 +1,50 @@
+{
+  "dashboard": {
+    "authoritativeSources": [
+      "package-metadata",
+      "repository-inventory",
+      "repository.health"
+    ],
+    "dashboardId": "repository.health",
+    "dashboardTitle": "Repository Health Dashboard",
+    "dashboardVersion": "0.1.0",
+    "documentationReferences": [
+      "docs/implementation/dashboard-data-generation/README.md"
+    ],
+    "drillDownReferences": [],
+    "engineVersion": "intelligence.dashboard.generation.engine.v1",
+    "errors": [],
+    "generatedArtifacts": [
+      "dashboard-data/repository_health_dashboard.json"
+    ],
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "generationHash": "a9cfd6cf3685adf3e2a60587ea44907beac7823c2e718b1566462d08555afd34",
+    "productionApplicable": false,
+    "records": [],
+    "relatedDashboards": [
+      "capability.coverage",
+      "capability.lifecycle",
+      "capability.overview",
+      "executive.summary"
+    ],
+    "schemaVersion": "intelligence.dashboard.dataset.v1",
+    "sourceSubsystems": [
+      "package-metadata",
+      "repository-inventory"
+    ],
+    "statistics": {
+      "dependencyCount": 8,
+      "scriptCount": 120
+    },
+    "statusIndicators": [],
+    "summary": {
+      "filesIndexed": 9824,
+      "packageName": "bridge-api",
+      "packageVersion": "1.0.0"
+    },
+    "testOnly": true,
+    "unknownValues": [],
+    "warnings": []
+  },
+  "generatedArtifact": true
+}

@@ -1,0 +1,58 @@
+{
+  "dashboard": {
+    "authoritativeSources": [
+      "generated-artifacts",
+      "generated.artifacts"
+    ],
+    "dashboardId": "generated.artifacts",
+    "dashboardTitle": "Generated Artifact Dashboard",
+    "dashboardVersion": "0.1.0",
+    "documentationReferences": [
+      "docs/implementation/dashboard-data-generation/README.md"
+    ],
+    "drillDownReferences": [],
+    "engineVersion": "intelligence.dashboard.generation.engine.v1",
+    "errors": [],
+    "generatedArtifacts": [
+      "dashboard-data/artifact_dashboard.json"
+    ],
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "generationHash": "48260e71db03b865f361dc8ce24edf2333ca83115017bf8976d0ad5f34b57993",
+    "productionApplicable": false,
+    "records": [],
+    "relatedDashboards": [
+      "capability.coverage",
+      "capability.lifecycle",
+      "capability.overview",
+      "executive.summary"
+    ],
+    "schemaVersion": "intelligence.dashboard.dataset.v1",
+    "sourceSubsystems": [
+      "generated-artifacts"
+    ],
+    "statistics": {
+      "byArea": {
+        "docs/implementation/benchmark-dataset-framework/generated": 7,
+        "docs/implementation/cost-governance/generated": 21,
+        "docs/implementation/decision-history-and-governance/generated": 23,
+        "docs/implementation/enterprise-intelligence-capability-registry/generated": 4,
+        "docs/implementation/execution-decision-engine/generated": 18,
+        "docs/implementation/execution-strategy-evaluation-engine/generated": 12,
+        "docs/implementation/framework-validation/generated": 12,
+        "docs/implementation/intelligence-capability-orchestration/generated": 6,
+        "docs/implementation/intelligence-knowledge-graph/generated": 20,
+        "docs/implementation/intelligence-lifecycle-framework/generated": 7,
+        "docs/implementation/scoring-engine/generated": 16
+      },
+      "dashboardArtifacts": 23
+    },
+    "statusIndicators": [],
+    "summary": {
+      "generatedArtifacts": 146
+    },
+    "testOnly": true,
+    "unknownValues": [],
+    "warnings": []
+  },
+  "generatedArtifact": true
+}

@@ -1,0 +1,46 @@
+{
+  "dashboard": {
+    "authoritativeSources": [
+      "impact.analysis",
+      "knowledge-graph"
+    ],
+    "dashboardId": "impact.analysis",
+    "dashboardTitle": "Impact Analysis Dashboard",
+    "dashboardVersion": "0.1.0",
+    "documentationReferences": [
+      "docs/implementation/dashboard-data-generation/README.md"
+    ],
+    "drillDownReferences": [],
+    "engineVersion": "intelligence.dashboard.generation.engine.v1",
+    "errors": [],
+    "generatedArtifacts": [
+      "dashboard-data/impact_dashboard.json"
+    ],
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "generationHash": "bc9a57af5570e662590dd215e0f2e1e76c61930bb8615bfe273ed00c1f52f550",
+    "productionApplicable": false,
+    "records": [],
+    "relatedDashboards": [
+      "capability.coverage",
+      "capability.lifecycle",
+      "capability.overview",
+      "executive.summary"
+    ],
+    "schemaVersion": "intelligence.dashboard.dataset.v1",
+    "sourceSubsystems": [
+      "knowledge-graph"
+    ],
+    "statistics": {
+      "impactedNodes": 365,
+      "unknownImpacts": 84
+    },
+    "statusIndicators": [],
+    "summary": {
+      "matrixRows": 924
+    },
+    "testOnly": true,
+    "unknownValues": [],
+    "warnings": []
+  },
+  "generatedArtifact": true
+}
