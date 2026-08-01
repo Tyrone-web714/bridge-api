@@ -48,7 +48,7 @@
       "dashboardVersion": "0.1.0",
       "fileName": "capability_coverage_dashboard.json",
       "generatedAt": "2026-07-25T00:00:00.000Z",
-      "generationHash": "39fa859a069f4ece2785f8b0fa2927b797b537a58918cb853d863e959c5f0e73",
+      "generationHash": "7ff1d142e1dd6717ada45c5a1a573422ef0eed721a62b31d3b64d2aeb528fdec",
       "productionApplicable": false,
       "schemaVersion": "intelligence.dashboard.dataset.v1",
       "sourceSubsystems": [
@@ -221,7 +221,7 @@
       "dashboardVersion": "0.1.0",
       "fileName": "executive_dashboard.json",
       "generatedAt": "2026-07-25T00:00:00.000Z",
-      "generationHash": "a8de1eb452ac7560d9e1d76252452a64e9fd44d88e1ff9b994bed93bc69e663b",
+      "generationHash": "7dd9e0fe88b2deebed84daf0b47ae4a26cbe26423c9e7789b00fe536347bd53b",
       "productionApplicable": false,
       "schemaVersion": "intelligence.dashboard.dataset.v1",
       "sourceSubsystems": [
@@ -312,7 +312,7 @@
       "dashboardVersion": "0.1.0",
       "fileName": "knowledge_graph_dashboard.json",
       "generatedAt": "2026-07-25T00:00:00.000Z",
-      "generationHash": "847dd38ce845aead4c785dd98e7a2c448e0c475f7e5954cadcd6c86b428b4793",
+      "generationHash": "b08f274c96ae8e193989dbefa65b9c324d8af2ef8a53d2716e9c0af4a9f49022",
       "productionApplicable": false,
       "schemaVersion": "intelligence.dashboard.dataset.v1",
       "sourceSubsystems": [
@@ -375,7 +375,7 @@
       "dashboardVersion": "0.1.0",
       "fileName": "repository_health_dashboard.json",
       "generatedAt": "2026-07-25T00:00:00.000Z",
-      "generationHash": "889019ac6fbe01311df2b005c28822376fa73a5d04069d01767cd1e9419de69f",
+      "generationHash": "97f24690575415a1c3e88d32b3e0dab06f77c4c05e7d8d5238d1dc4f01414d22",
       "productionApplicable": false,
       "schemaVersion": "intelligence.dashboard.dataset.v1",
       "sourceSubsystems": [
@@ -404,7 +404,7 @@
       "dashboardVersion": "0.1.0",
       "fileName": "technical_debt_dashboard.json",
       "generatedAt": "2026-07-25T00:00:00.000Z",
-      "generationHash": "b208995fcbbd03bd00b35ec629a447ca1614136725ef0b6596f50c6337ce9f13",
+      "generationHash": "787219a5855f2bc8b14abc6867597705a4e10811360140f856a9a8acf1f98eea",
       "productionApplicable": false,
       "schemaVersion": "intelligence.dashboard.dataset.v1",
       "sourceSubsystems": [
@@ -419,7 +419,7 @@
       "dashboardVersion": "0.1.0",
       "fileName": "test_coverage_dashboard.json",
       "generatedAt": "2026-07-25T00:00:00.000Z",
-      "generationHash": "cef5f93a472c52b2acb88c3a3b6fa028dc766f0dabcdbbdccedd68def5ca7383",
+      "generationHash": "1f7a097fdd1479be5bb0561479c0de09129f5206accf8829463af40f3bf9787f",
       "productionApplicable": false,
       "schemaVersion": "intelligence.dashboard.dataset.v1",
       "sourceSubsystems": [

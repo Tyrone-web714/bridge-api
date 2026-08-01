@@ -1,0 +1,29 @@
+{
+  "authorizedByThisPackage": false,
+  "complete": false,
+  "gatePath": "docs/ai-development/PRODUCTION_ORCHESTRATION_GATE.md",
+  "requirements": [
+    "approved intelligence capability",
+    "benchmark evidence",
+    "approved providers",
+    "approved model/executor catalog",
+    "production scoring thresholds",
+    "production cost policies",
+    "provider/model allowlists",
+    "tenant-specific restrictions",
+    "persistent audit records",
+    "persistent cost records",
+    "secret management",
+    "monitoring",
+    "rate limits",
+    "timeout policy",
+    "fallback chain",
+    "circuit breakers",
+    "rollback controls",
+    "shadow-mode validation",
+    "advisory-mode validation",
+    "canary authorization",
+    "owner approval"
+  ],
+  "status": "DEFERRED"
+}

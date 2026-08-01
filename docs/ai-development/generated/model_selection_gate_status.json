@@ -1,0 +1,15 @@
+{
+  "complete": false,
+  "gatePath": "docs/ai-development/AI_MODEL_SELECTION_GATE.md",
+  "requiredCoreDomains": [
+    "Route Intelligence",
+    "Driver Intelligence",
+    "Supervisor Intelligence",
+    "Warehouse Intelligence",
+    "Fleet Intelligence",
+    "Customer Intelligence",
+    "Operations Intelligence",
+    "Safety Intelligence"
+  ],
+  "status": "DEFERRED"
+}

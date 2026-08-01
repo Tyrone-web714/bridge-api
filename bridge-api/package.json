@@ -7,7 +7,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "test": "npm run test:capability-registry && npm run test:benchmark-datasets && npm run test:evaluation-engine && npm run test:scoring-engine && npm run test:cost-governance && npm run test:execution-decisions && npm run test:decision-governance && npm run test:knowledge-graph && npm run test:dashboard-data && npm run test:framework-validation && npm run test:intelligence-orchestration && npm run test:intelligence-lifecycle && npm run test:route-intelligence && npm run test:driver-intelligence && npm run test:intelligence-execution && npm run test:ai && npm run test:ai-architecture && npm run test:predictions && npm run test:supervisor-intelligence && npm run test:heatmaps && npm run test:imports && npm run test:delivery-settlement && npm run test:google-maps-compliance && npm run test:multi-tenant && npm run test:auth-rbac && npm run test:api-tenant && npm run test:mobile-tenant && npm run test:shared-safety && npm run test:shared-safety-ui && npm run test:bi-kpi && npm run test:logistics-intelligence && npm run test:fleet-intelligence-scoring && npm run test:data-lifecycle && npm run test:enterprise-identity && npm run test:web-origin && npm run test:private-media && npm run test:private-r2-shutdown && npm run test:legacy-private-media && npm run test:driver-route-notes-photo && npm run test:driver-copilot-auth && npm run test:security && npm run test:dashboard",
+    "test": "npm run test:capability-registry && npm run test:benchmark-datasets && npm run test:evaluation-engine && npm run test:scoring-engine && npm run test:cost-governance && npm run test:execution-decisions && npm run test:decision-governance && npm run test:knowledge-graph && npm run test:dashboard-data && npm run test:framework-validation && npm run test:intelligence-orchestration && npm run test:intelligence-lifecycle && npm run test:route-intelligence && npm run test:driver-intelligence && npm run test:ai-roadmap && npm run test:intelligence-execution && npm run test:ai && npm run test:ai-architecture && npm run test:predictions && npm run test:supervisor-intelligence && npm run test:heatmaps && npm run test:imports && npm run test:delivery-settlement && npm run test:google-maps-compliance && npm run test:multi-tenant && npm run test:auth-rbac && npm run test:api-tenant && npm run test:mobile-tenant && npm run test:shared-safety && npm run test:shared-safety-ui && npm run test:bi-kpi && npm run test:logistics-intelligence && npm run test:fleet-intelligence-scoring && npm run test:data-lifecycle && npm run test:enterprise-identity && npm run test:web-origin && npm run test:private-media && npm run test:private-r2-shutdown && npm run test:legacy-private-media && npm run test:driver-route-notes-photo && npm run test:driver-copilot-auth && npm run test:security && npm run test:dashboard",
     "test:capability-registry": "node scripts/check-capability-registry.cjs",
     "test:intelligence-execution": "node scripts/check-intelligence-execution-platform.cjs",
     "test:ai": "node scripts/check-ai-contracts.cjs",
@@ -143,6 +143,7 @@
     "intelligence-lifecycle:check": "node scripts/check-intelligence-lifecycle.cjs",
     "test:route-intelligence": "node scripts/check-route-intelligence.cjs",
     "test:driver-intelligence": "node scripts/check-driver-intelligence.cjs",
+    "test:ai-roadmap": "node scripts/check-ai-development-roadmap.cjs",
     "route-intelligence:generate": "node scripts/generate-route-intelligence-artifacts.cjs",
     "route-intelligence:validate": "node scripts/check-route-intelligence.cjs",
     "route-intelligence:check": "node scripts/check-route-intelligence.cjs",
@@ -150,7 +151,11 @@
     "driver-intelligence:generate": "node scripts/generate-driver-intelligence-artifacts.cjs",
     "driver-intelligence:validate": "node scripts/check-driver-intelligence.cjs",
     "driver-intelligence:check": "node scripts/check-driver-intelligence.cjs",
-    "driver-intelligence:benchmarks": "node scripts/check-driver-intelligence.cjs"
+    "driver-intelligence:benchmarks": "node scripts/check-driver-intelligence.cjs",
+    "ai-roadmap:generate": "node scripts/generate-ai-development-roadmap-artifacts.cjs",
+    "ai-roadmap:validate": "node scripts/check-ai-development-roadmap.cjs",
+    "ai-roadmap:check": "node scripts/check-ai-development-roadmap.cjs",
+    "ai-roadmap:summary": "node -e \"const g=require('./scripts/generate-ai-development-roadmap-artifacts.cjs'); const result=g.generate({check:true}); console.log(JSON.stringify({changed: result.changed}, null, 2));\""
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1048.0",

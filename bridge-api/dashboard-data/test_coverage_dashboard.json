@@ -17,7 +17,7 @@
       "dashboard-data/test_coverage_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "cef5f93a472c52b2acb88c3a3b6fa028dc766f0dabcdbbdccedd68def5ca7383",
+    "generationHash": "1f7a097fdd1479be5bb0561479c0de09129f5206accf8829463af40f3bf9787f",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -32,6 +32,10 @@
     ],
     "statistics": {
       "intelligenceScripts": [
+        "ai-roadmap:check",
+        "ai-roadmap:generate",
+        "ai-roadmap:summary",
+        "ai-roadmap:validate",
         "benchmark-datasets:check",
         "benchmark-datasets:coverage",
         "benchmark-datasets:generate",
@@ -96,6 +100,7 @@
         "scoring-engine:validate",
         "test:ai",
         "test:ai-architecture",
+        "test:ai-roadmap",
         "test:benchmark-datasets",
         "test:capability-registry",
         "test:cost-governance",
@@ -120,7 +125,7 @@
     },
     "statusIndicators": [],
     "summary": {
-      "testScripts": 43
+      "testScripts": 44
     },
     "testOnly": true,
     "unknownValues": [],

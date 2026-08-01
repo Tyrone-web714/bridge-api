@@ -18,7 +18,7 @@
       "dashboard-data/technical_debt_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "b208995fcbbd03bd00b35ec629a447ca1614136725ef0b6596f50c6337ce9f13",
+    "generationHash": "787219a5855f2bc8b14abc6867597705a4e10811360140f856a9a8acf1f98eea",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -63,7 +63,7 @@
     },
     "statusIndicators": [],
     "summary": {
-      "todoReferences": 33
+      "todoReferences": 40
     },
     "testOnly": true,
     "unknownValues": [],
