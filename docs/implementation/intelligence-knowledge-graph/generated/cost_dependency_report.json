@@ -1,0 +1,218 @@
+{
+  "generatedArtifact": true,
+  "generatedFrom": "bridge-api/intelligence-knowledge-graph",
+  "report": [
+    {
+      "directDependencies": [
+        "Pricing Catalog:SYNTHETIC_TEST_PRICING_CATALOG",
+        "Cost Model Profile:FULLY_LOADED_TEST_PROFILE",
+        "Budget Profile:SYNTHETIC_BUDGET_PROFILE",
+        "Benchmark Dataset:legacy.ai.structured_response.benchmark.schema_compliance"
+      ],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Pricing Catalog:SYNTHETIC_TEST_PRICING_CATALOG",
+          "Cost Model Profile:FULLY_LOADED_TEST_PROFILE",
+          "Budget Profile:SYNTHETIC_BUDGET_PROFILE",
+          "Capability:legacy.ai.structured_response",
+          "Benchmark Dataset:legacy.ai.structured_response.benchmark.schema_compliance"
+        ],
+        "indirectImpacts": [
+          "Pricing Catalog:SYNTHETIC_TEST_PRICING_CATALOG",
+          "Cost Model Profile:FULLY_LOADED_TEST_PROFILE",
+          "Budget Profile:SYNTHETIC_BUDGET_PROFILE",
+          "Capability:legacy.ai.structured_response",
+          "Benchmark Dataset:legacy.ai.structured_response.benchmark.schema_compliance",
+          "Capability Version:legacy.ai.structured_response@legacy.ai.structured_response.v1",
+          "Hash:d5c24c743c4c1538ae154373e7ef3688ad5f84d2e861796e022ab59a2c31f451",
+          "Lifecycle State:PILOT",
+          "Execution Strategy:HOSTED_BALANCED_MODEL",
+          "Version:legacy.ai.structured_response.benchmark.schema_compliance@0.1.0"
+        ],
+        "nodeId": "Cost Governance Record:cost.structured_response.initial.offline.v1",
+        "potentialImpacts": [
+          "Execution Decision Request:decision.structured_response.fail_closed.offline.v1",
+          "Execution Decision Request:decision.structured_response.initial.offline.v1",
+          "Execution Decision Record:decision.structured_response.fail_closed.offline.v1.record.v1",
+          "Execution Decision Record:decision.structured_response.initial.offline.v1.record.v1",
+          "Decision History Record:history.decision.structured_response.fail_closed.offline.v1.record.v1",
+          "Decision History Record:history.decision.structured_response.initial.offline.v1.record.v1",
+          "Governance Event:history.decision.structured_response.fail_closed.offline.v1.record.v1.event.001.history_record_created",
+          "Governance Event:history.decision.structured_response.fail_closed.offline.v1.record.v1.event.002.decision_recorded",
+          "Governance Event:history.decision.structured_response.fail_closed.offline.v1.record.v1.event.003.review_requested",
+          "Governance Event:history.decision.structured_response.fail_closed.offline.v1.record.v1.event.004.review_completed",
+          "Governance Event:history.decision.structured_response.fail_closed.offline.v1.record.v1.event.005.evidence_stale_detected",
+          "Governance Event:history.decision.structured_response.fail_closed.offline.v1.record.v1.event.006.policy_drift_detected",
+          "Governance Event:history.decision.structured_response.fail_closed.offline.v1.record.v1.event.007.finding_recorded",
+          "Governance Event:history.decision.structured_response.fail_closed.offline.v1.record.v1.event.008.remediation_linked",
+          "Governance Event:history.decision.structured_response.fail_closed.offline.v1.record.v1.event.009.replay_requested",
+          "Governance Event:history.decision.structured_response.fail_closed.offline.v1.record.v1.event.010.replay_completed",
+          "Governance Event:history.decision.structured_response.fail_closed.offline.v1.record.v1.event.011.reproducibility_confirmed",
+          "Governance Event:history.decision.structured_response.fail_closed.offline.v1.record.v1.event.012.attestation_recorded",
+          "Governance Event:history.decision.structured_response.fail_closed.offline.v1.record.v1.event.013.prior_event_annotated",
+          "Governance Event:history.decision.structured_response.initial.offline.v1.record.v1.event.001.history_record_created",
+          "Governance Event:history.decision.structured_response.initial.offline.v1.record.v1.event.002.decision_recorded",
+          "Governance Event:history.decision.structured_response.initial.offline.v1.record.v1.event.003.review_requested",
+          "Governance Event:history.decision.structured_response.initial.offline.v1.record.v1.event.004.review_completed",
+          "Governance Event:history.decision.structured_response.initial.offline.v1.record.v1.event.005.approval_requested",
+          "Governance Event:history.decision.structured_response.initial.offline.v1.record.v1.event.006.approved_with_conditions",
+          "Governance Event:history.decision.structured_response.initial.offline.v1.record.v1.event.007.replay_requested",
+          "Governance Event:history.decision.structured_response.initial.offline.v1.record.v1.event.008.replay_completed",
+          "Governance Event:history.decision.structured_response.initial.offline.v1.record.v1.event.009.reproducibility_confirmed",
+          "Governance Event:history.decision.structured_response.initial.offline.v1.record.v1.event.010.attestation_recorded",
+          "Governance Event:history.decision.structured_response.initial.offline.v1.record.v1.event.011.prior_event_annotated"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Capability:legacy.ai.structured_response",
+        "Capability Version:legacy.ai.structured_response@legacy.ai.structured_response.v1",
+        "Hash:d5c24c743c4c1538ae154373e7ef3688ad5f84d2e861796e022ab59a2c31f451",
+        "Lifecycle State:PILOT",
+        "Execution Strategy:HOSTED_BALANCED_MODEL",
+        "Version:legacy.ai.structured_response.benchmark.schema_compliance@0.1.0"
+      ],
+      "nodeId": "Cost Governance Record:cost.structured_response.initial.offline.v1",
+      "reverseDependencies": [
+        "Execution Decision Request:decision.structured_response.fail_closed.offline.v1",
+        "Execution Decision Request:decision.structured_response.initial.offline.v1",
+        "Execution Decision Record:decision.structured_response.fail_closed.offline.v1.record.v1",
+        "Execution Decision Record:decision.structured_response.initial.offline.v1.record.v1"
+      ],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [
+        "Pricing Catalog:SYNTHETIC_TEST_PRICING_CATALOG",
+        "Cost Model Profile:BUDGET_SIMULATION_TEST_PROFILE",
+        "Budget Profile:TIGHT_SIMULATION_BUDGET_PROFILE",
+        "Benchmark Dataset:supervisor.daily_operations_report.benchmark.safety_language"
+      ],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Pricing Catalog:SYNTHETIC_TEST_PRICING_CATALOG",
+          "Cost Model Profile:BUDGET_SIMULATION_TEST_PROFILE",
+          "Budget Profile:TIGHT_SIMULATION_BUDGET_PROFILE",
+          "Capability:supervisor.daily_operations_report",
+          "Benchmark Dataset:supervisor.daily_operations_report.benchmark.safety_language"
+        ],
+        "indirectImpacts": [
+          "Pricing Catalog:SYNTHETIC_TEST_PRICING_CATALOG",
+          "Cost Model Profile:BUDGET_SIMULATION_TEST_PROFILE",
+          "Budget Profile:TIGHT_SIMULATION_BUDGET_PROFILE",
+          "Capability:supervisor.daily_operations_report",
+          "Benchmark Dataset:supervisor.daily_operations_report.benchmark.safety_language",
+          "Capability Version:supervisor.daily_operations_report@supervisor.daily_operations_report.v1",
+          "Hash:fc07dd144bb68650a2611b298441d66ad14e9a88b3b91cc31d5238216f6db1df",
+          "Lifecycle State:PILOT",
+          "Execution Strategy:HOSTED_BALANCED_MODEL",
+          "Version:supervisor.daily_operations_report.benchmark.safety_language@0.1.0"
+        ],
+        "nodeId": "Cost Governance Record:cost.supervisor_report.budget_simulation.offline.v1",
+        "potentialImpacts": [
+          "Execution Decision Request:decision.supervisor_report.initial.offline.v1",
+          "Execution Decision Record:decision.supervisor_report.initial.offline.v1.record.v1",
+          "Decision History Record:history.decision.supervisor_report.initial.offline.v1.record.v1",
+          "Governance Event:history.decision.supervisor_report.initial.offline.v1.record.v1.event.001.history_record_created",
+          "Governance Event:history.decision.supervisor_report.initial.offline.v1.record.v1.event.002.decision_recorded",
+          "Governance Event:history.decision.supervisor_report.initial.offline.v1.record.v1.event.003.review_requested",
+          "Governance Event:history.decision.supervisor_report.initial.offline.v1.record.v1.event.004.review_completed",
+          "Governance Event:history.decision.supervisor_report.initial.offline.v1.record.v1.event.005.human_review_required",
+          "Governance Event:history.decision.supervisor_report.initial.offline.v1.record.v1.event.006.human_review_unresolved",
+          "Governance Event:history.decision.supervisor_report.initial.offline.v1.record.v1.event.007.replay_requested",
+          "Governance Event:history.decision.supervisor_report.initial.offline.v1.record.v1.event.008.replay_completed",
+          "Governance Event:history.decision.supervisor_report.initial.offline.v1.record.v1.event.009.reproducibility_confirmed",
+          "Governance Event:history.decision.supervisor_report.initial.offline.v1.record.v1.event.010.attestation_recorded",
+          "Governance Event:history.decision.supervisor_report.initial.offline.v1.record.v1.event.011.prior_event_annotated"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Capability:supervisor.daily_operations_report",
+        "Capability Version:supervisor.daily_operations_report@supervisor.daily_operations_report.v1",
+        "Hash:fc07dd144bb68650a2611b298441d66ad14e9a88b3b91cc31d5238216f6db1df",
+        "Lifecycle State:PILOT",
+        "Execution Strategy:HOSTED_BALANCED_MODEL",
+        "Version:supervisor.daily_operations_report.benchmark.safety_language@0.1.0"
+      ],
+      "nodeId": "Cost Governance Record:cost.supervisor_report.budget_simulation.offline.v1",
+      "reverseDependencies": [
+        "Execution Decision Request:decision.supervisor_report.initial.offline.v1",
+        "Execution Decision Record:decision.supervisor_report.initial.offline.v1.record.v1"
+      ],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [
+        "Pricing Catalog:SYNTHETIC_TEST_PRICING_CATALOG",
+        "Cost Model Profile:DIRECT_EXECUTION_COST_TEST_PROFILE",
+        "Budget Profile:SYNTHETIC_BUDGET_PROFILE",
+        "Benchmark Dataset:text.cleanup.benchmark.core"
+      ],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Pricing Catalog:SYNTHETIC_TEST_PRICING_CATALOG",
+          "Cost Model Profile:DIRECT_EXECUTION_COST_TEST_PROFILE",
+          "Budget Profile:SYNTHETIC_BUDGET_PROFILE",
+          "Capability:text.cleanup",
+          "Benchmark Dataset:text.cleanup.benchmark.core"
+        ],
+        "indirectImpacts": [
+          "Pricing Catalog:SYNTHETIC_TEST_PRICING_CATALOG",
+          "Cost Model Profile:DIRECT_EXECUTION_COST_TEST_PROFILE",
+          "Budget Profile:SYNTHETIC_BUDGET_PROFILE",
+          "Capability:text.cleanup",
+          "Benchmark Dataset:text.cleanup.benchmark.core",
+          "Capability Version:text.cleanup@text.cleanup.v1",
+          "Hash:e21405d5e33f3cb139f47d429388dda5d7c4ee1453b417589d4c1c471ee1078c",
+          "Lifecycle State:PILOT",
+          "Execution Strategy:DETERMINISTIC_RULES",
+          "Version:text.cleanup.benchmark.core@0.1.0"
+        ],
+        "nodeId": "Cost Governance Record:cost.text_cleanup.initial.offline.v1",
+        "potentialImpacts": [
+          "Execution Decision Request:decision.text_cleanup.initial.offline.v1",
+          "Execution Decision Record:decision.text_cleanup.initial.offline.v1.record.v1",
+          "Decision History Record:history.decision.text_cleanup.initial.offline.v1.record.v1",
+          "Governance Event:history.decision.text_cleanup.initial.offline.v1.record.v1.event.001.history_record_created",
+          "Governance Event:history.decision.text_cleanup.initial.offline.v1.record.v1.event.002.decision_recorded",
+          "Governance Event:history.decision.text_cleanup.initial.offline.v1.record.v1.event.003.review_requested",
+          "Governance Event:history.decision.text_cleanup.initial.offline.v1.record.v1.event.004.review_completed",
+          "Governance Event:history.decision.text_cleanup.initial.offline.v1.record.v1.event.005.approval_requested",
+          "Governance Event:history.decision.text_cleanup.initial.offline.v1.record.v1.event.006.approved_with_conditions",
+          "Governance Event:history.decision.text_cleanup.initial.offline.v1.record.v1.event.007.exception_requested",
+          "Governance Event:history.decision.text_cleanup.initial.offline.v1.record.v1.event.008.exception_granted",
+          "Governance Event:history.decision.text_cleanup.initial.offline.v1.record.v1.event.009.replay_requested",
+          "Governance Event:history.decision.text_cleanup.initial.offline.v1.record.v1.event.010.replay_completed",
+          "Governance Event:history.decision.text_cleanup.initial.offline.v1.record.v1.event.011.reproducibility_confirmed",
+          "Governance Event:history.decision.text_cleanup.initial.offline.v1.record.v1.event.012.attestation_recorded",
+          "Governance Event:history.decision.text_cleanup.initial.offline.v1.record.v1.event.013.prior_event_annotated"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Capability:text.cleanup",
+        "Capability Version:text.cleanup@text.cleanup.v1",
+        "Hash:e21405d5e33f3cb139f47d429388dda5d7c4ee1453b417589d4c1c471ee1078c",
+        "Lifecycle State:PILOT",
+        "Execution Strategy:DETERMINISTIC_RULES",
+        "Version:text.cleanup.benchmark.core@0.1.0"
+      ],
+      "nodeId": "Cost Governance Record:cost.text_cleanup.initial.offline.v1",
+      "reverseDependencies": [
+        "Execution Decision Request:decision.text_cleanup.initial.offline.v1",
+        "Execution Decision Record:decision.text_cleanup.initial.offline.v1.record.v1"
+      ],
+      "testsToRerun": []
+    }
+  ]
+}

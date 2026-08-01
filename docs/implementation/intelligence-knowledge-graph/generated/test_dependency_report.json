@@ -1,0 +1,501 @@
+{
+  "generatedArtifact": true,
+  "generatedFrom": "bridge-api/intelligence-knowledge-graph",
+  "report": [
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Script:bridge-api/scripts/check-benchmark-datasets.cjs",
+        "potentialImpacts": [
+          "Package:bridge-api"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Script:bridge-api/scripts/check-benchmark-datasets.cjs",
+      "reverseDependencies": [],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Script:bridge-api/scripts/check-capability-registry.cjs",
+        "potentialImpacts": [
+          "Package:bridge-api"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Script:bridge-api/scripts/check-capability-registry.cjs",
+      "reverseDependencies": [],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Script:bridge-api/scripts/check-cost-governance.cjs",
+        "potentialImpacts": [
+          "Package:bridge-api"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Script:bridge-api/scripts/check-cost-governance.cjs",
+      "reverseDependencies": [],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Script:bridge-api/scripts/check-decision-governance.cjs",
+        "potentialImpacts": [
+          "Package:bridge-api"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Script:bridge-api/scripts/check-decision-governance.cjs",
+      "reverseDependencies": [],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Script:bridge-api/scripts/check-execution-decision-engine.cjs",
+        "potentialImpacts": [
+          "Package:bridge-api"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Script:bridge-api/scripts/check-execution-decision-engine.cjs",
+      "reverseDependencies": [],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Script:bridge-api/scripts/check-execution-evaluation-engine.cjs",
+        "potentialImpacts": [
+          "Package:bridge-api"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Script:bridge-api/scripts/check-execution-evaluation-engine.cjs",
+      "reverseDependencies": [],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Script:bridge-api/scripts/check-fleet-intelligence-scoring-foundation.cjs",
+        "potentialImpacts": [
+          "Package:bridge-api"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Script:bridge-api/scripts/check-fleet-intelligence-scoring-foundation.cjs",
+      "reverseDependencies": [],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Script:bridge-api/scripts/check-knowledge-graph.cjs",
+        "potentialImpacts": [
+          "Package:bridge-api"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Script:bridge-api/scripts/check-knowledge-graph.cjs",
+      "reverseDependencies": [],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Script:bridge-api/scripts/check-scoring-engine.cjs",
+        "potentialImpacts": [
+          "Package:bridge-api"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Script:bridge-api/scripts/check-scoring-engine.cjs",
+      "reverseDependencies": [],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Script:bridge-api/scripts/generate-benchmark-dataset-artifacts.cjs",
+        "potentialImpacts": [
+          "Package:bridge-api"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Script:bridge-api/scripts/generate-benchmark-dataset-artifacts.cjs",
+      "reverseDependencies": [],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Script:bridge-api/scripts/generate-capability-registry-artifacts.cjs",
+        "potentialImpacts": [
+          "Package:bridge-api"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Script:bridge-api/scripts/generate-capability-registry-artifacts.cjs",
+      "reverseDependencies": [],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Script:bridge-api/scripts/generate-cost-governance-artifacts.cjs",
+        "potentialImpacts": [
+          "Package:bridge-api"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Script:bridge-api/scripts/generate-cost-governance-artifacts.cjs",
+      "reverseDependencies": [],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Script:bridge-api/scripts/generate-decision-governance-artifacts.cjs",
+        "potentialImpacts": [
+          "Package:bridge-api"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Script:bridge-api/scripts/generate-decision-governance-artifacts.cjs",
+      "reverseDependencies": [],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Script:bridge-api/scripts/generate-execution-decision-artifacts.cjs",
+        "potentialImpacts": [
+          "Package:bridge-api"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Script:bridge-api/scripts/generate-execution-decision-artifacts.cjs",
+      "reverseDependencies": [],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Script:bridge-api/scripts/generate-execution-evaluation-artifacts.cjs",
+        "potentialImpacts": [
+          "Package:bridge-api"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Script:bridge-api/scripts/generate-execution-evaluation-artifacts.cjs",
+      "reverseDependencies": [],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "potentialImpacts": [
+          "Package:bridge-api",
+          "Generated Artifact:docs/implementation/benchmark-dataset-framework/generated/benchmark_case_index.json",
+          "Generated Artifact:docs/implementation/benchmark-dataset-framework/generated/benchmark_coverage_report.json",
+          "Generated Artifact:docs/implementation/benchmark-dataset-framework/generated/BENCHMARK_COVERAGE_REPORT.md",
+          "Generated Artifact:docs/implementation/benchmark-dataset-framework/generated/benchmark_dataset_catalog.csv",
+          "Generated Artifact:docs/implementation/benchmark-dataset-framework/generated/benchmark_dataset_catalog.json",
+          "Generated Artifact:docs/implementation/benchmark-dataset-framework/generated/BENCHMARK_DATASET_CATALOG.md",
+          "Generated Artifact:docs/implementation/benchmark-dataset-framework/generated/benchmark_dataset_dependencies.json",
+          "Generated Artifact:docs/implementation/cost-governance/generated/budget_evaluation_summary.json",
+          "Generated Artifact:docs/implementation/cost-governance/generated/budget_profile_index.json",
+          "Generated Artifact:docs/implementation/cost-governance/generated/budget_warning_report.json",
+          "Generated Artifact:docs/implementation/cost-governance/generated/cost_completeness_report.json",
+          "Generated Artifact:docs/implementation/cost-governance/generated/cost_component_summary.json",
+          "Generated Artifact:docs/implementation/cost-governance/generated/cost_confidence_report.json",
+          "Generated Artifact:docs/implementation/cost-governance/generated/cost_effectiveness_evidence.json",
+          "Generated Artifact:docs/implementation/cost-governance/generated/cost_governance_run_catalog.csv",
+          "Generated Artifact:docs/implementation/cost-governance/generated/cost_governance_run_catalog.json",
+          "Generated Artifact:docs/implementation/cost-governance/generated/COST_GOVERNANCE_RUN_CATALOG.md",
+          "Generated Artifact:docs/implementation/cost-governance/generated/COST_GOVERNANCE_SUMMARY.md",
+          "Generated Artifact:docs/implementation/cost-governance/generated/cost_metric_summary.json",
+          "Generated Artifact:docs/implementation/cost-governance/generated/cost_model_profile_index.json",
+          "Generated Artifact:docs/implementation/cost-governance/generated/cost_record_index.json",
+          "Generated Artifact:docs/implementation/cost-governance/generated/cost_sensitivity_report.json",
+          "Generated Artifact:docs/implementation/cost-governance/generated/premium_restriction_report.json",
+          "Generated Artifact:docs/implementation/cost-governance/generated/pricing_catalog_index.csv",
+          "Generated Artifact:docs/implementation/cost-governance/generated/pricing_catalog_index.json",
+          "Generated Artifact:docs/implementation/cost-governance/generated/PRICING_CATALOG_INDEX.md",
+          "Generated Artifact:docs/implementation/cost-governance/generated/simulated_block_report.json",
+          "Generated Artifact:docs/implementation/cost-governance/generated/unknown_cost_report.json",
+          "Generated Artifact:docs/implementation/decision-history-and-governance/generated/DECISION_GOVERNANCE_SUMMARY.md",
+          "Generated Artifact:docs/implementation/decision-history-and-governance/generated/decision_history_record_index.csv",
+          "Generated Artifact:docs/implementation/decision-history-and-governance/generated/decision_history_record_index.json",
+          "Generated Artifact:docs/implementation/decision-history-and-governance/generated/DECISION_HISTORY_RECORD_INDEX.md",
+          "Generated Artifact:docs/implementation/decision-history-and-governance/generated/decision_lineage_graph.json",
+          "Generated Artifact:docs/implementation/decision-history-and-governance/generated/decision_replay_report.json",
+          "Generated Artifact:docs/implementation/decision-history-and-governance/generated/decision_supersession_report.json",
+          "Generated Artifact:docs/implementation/decision-history-and-governance/generated/event_chain_integrity_report.json",
+          "Generated Artifact:docs/implementation/decision-history-and-governance/generated/evidence_staleness_report.json",
+          "Generated Artifact:docs/implementation/decision-history-and-governance/generated/governance_annotation_report.json",
+          "Generated Artifact:docs/implementation/decision-history-and-governance/generated/governance_approval_report.json",
+          "Generated Artifact:docs/implementation/decision-history-and-governance/generated/governance_attestation_report.json",
+          "Generated Artifact:docs/implementation/decision-history-and-governance/generated/governance_current_state.json",
+          "Generated Artifact:docs/implementation/decision-history-and-governance/generated/governance_event_catalog.csv",
+          "Generated Artifact:docs/implementation/decision-history-and-governance/generated/governance_event_catalog.json",
+          "Generated Artifact:docs/implementation/decision-history-and-governance/generated/GOVERNANCE_EVENT_CATALOG.md",
+          "Generated Artifact:docs/implementation/decision-history-and-governance/generated/governance_exception_report.json",
+          "Generated Artifact:docs/implementation/decision-history-and-governance/generated/governance_finding_report.json",
+          "Generated Artifact:docs/implementation/decision-history-and-governance/generated/governance_human_review_report.json",
+          "Generated Artifact:docs/implementation/decision-history-and-governance/generated/governance_policy_profile_index.json",
+          "Generated Artifact:docs/implementation/decision-history-and-governance/generated/governance_review_report.json",
+          "Generated Artifact:docs/implementation/decision-history-and-governance/generated/policy_drift_report.json",
+          "Generated Artifact:docs/implementation/decision-history-and-governance/generated/unresolved_governance_items.json",
+          "Generated Artifact:docs/implementation/enterprise-intelligence-capability-registry/generated/capability_dependencies.json",
+          "Generated Artifact:docs/implementation/enterprise-intelligence-capability-registry/generated/capability_registry.csv",
+          "Generated Artifact:docs/implementation/enterprise-intelligence-capability-registry/generated/capability_registry.json",
+          "Generated Artifact:docs/implementation/enterprise-intelligence-capability-registry/generated/CAPABILITY_REGISTRY.md",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_abstention_report.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_candidate_index.csv",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_candidate_index.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/DECISION_CANDIDATE_INDEX.md",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_counterfactual_report.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_critical_gate_rejection_report.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_fallback_plan_index.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_human_review_report.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_insufficient_evidence_report.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_over_budget_report.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_policy_profile_index.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/DECISION_POLICY_PROFILE_INDEX.md",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_premium_restriction_report.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_record_index.csv",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_record_index.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_request_index.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_sensitivity_report.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/DECISION_SUMMARY.md",
+          "Generated Artifact:docs/implementation/execution-strategy-evaluation-engine/generated/evaluation_cost_observations.json",
+          "Generated Artifact:docs/implementation/execution-strategy-evaluation-engine/generated/evaluation_execution_metrics.json",
+          "Generated Artifact:docs/implementation/execution-strategy-evaluation-engine/generated/evaluation_observation_index.json",
+          "Generated Artifact:docs/implementation/execution-strategy-evaluation-engine/generated/evaluation_outcome_summary.json",
+          "Generated Artifact:docs/implementation/execution-strategy-evaluation-engine/generated/EVALUATION_OUTCOME_SUMMARY.md",
+          "Generated Artifact:docs/implementation/execution-strategy-evaluation-engine/generated/evaluation_policy_findings.json",
+          "Generated Artifact:docs/implementation/execution-strategy-evaluation-engine/generated/evaluation_privacy_findings.json",
+          "Generated Artifact:docs/implementation/execution-strategy-evaluation-engine/generated/evaluation_replay_report.json",
+          "Generated Artifact:docs/implementation/execution-strategy-evaluation-engine/generated/evaluation_run_catalog.csv",
+          "Generated Artifact:docs/implementation/execution-strategy-evaluation-engine/generated/evaluation_run_catalog.json",
+          "Generated Artifact:docs/implementation/execution-strategy-evaluation-engine/generated/EVALUATION_RUN_CATALOG.md",
+          "Generated Artifact:docs/implementation/execution-strategy-evaluation-engine/generated/evaluation_safety_findings.json",
+          "Generated Artifact:docs/implementation/intelligence-capability-orchestration/generated/capability_readiness.json",
+          "Generated Artifact:docs/implementation/intelligence-capability-orchestration/generated/domain_summary.md",
+          "Generated Artifact:docs/implementation/intelligence-capability-orchestration/generated/execution_contract_catalog.json",
+          "Generated Artifact:docs/implementation/intelligence-capability-orchestration/generated/execution_plan_templates.json",
+          "Generated Artifact:docs/implementation/intelligence-capability-orchestration/generated/intelligence_capability_catalog.json",
+          "Generated Artifact:docs/implementation/intelligence-capability-orchestration/generated/orchestration_catalog.json",
+          "Generated Artifact:docs/implementation/intelligence-knowledge-graph/generated/capability_dependency_report.json",
+          "Generated Artifact:docs/implementation/intelligence-knowledge-graph/generated/cost_dependency_report.json",
+          "Generated Artifact:docs/implementation/intelligence-knowledge-graph/generated/cycle_report.json",
+          "Generated Artifact:docs/implementation/intelligence-knowledge-graph/generated/dataset_dependency_report.json",
+          "Generated Artifact:docs/implementation/intelligence-knowledge-graph/generated/decision_dependency_report.json",
+          "Generated Artifact:docs/implementation/intelligence-knowledge-graph/generated/dependency_matrix.json",
+          "Generated Artifact:docs/implementation/intelligence-knowledge-graph/generated/documentation_dependency_report.json",
+          "Generated Artifact:docs/implementation/intelligence-knowledge-graph/generated/edge_catalog.json",
+          "Generated Artifact:docs/implementation/intelligence-knowledge-graph/generated/generated_artifact_dependency_report.json",
+          "Generated Artifact:docs/implementation/intelligence-knowledge-graph/generated/governance_dependency_report.json",
+          "Generated Artifact:docs/implementation/intelligence-knowledge-graph/generated/graph_statistics.json",
+          "Generated Artifact:docs/implementation/intelligence-knowledge-graph/generated/impact_matrix.json",
+          "Generated Artifact:docs/implementation/intelligence-knowledge-graph/generated/knowledge_graph_hash.json",
+          "Generated Artifact:docs/implementation/intelligence-knowledge-graph/generated/knowledge_graph_summary.md",
+          "Generated Artifact:docs/implementation/intelligence-knowledge-graph/generated/knowledge_graph.csv",
+          "Generated Artifact:docs/implementation/intelligence-knowledge-graph/generated/knowledge_graph.json",
+          "Generated Artifact:docs/implementation/intelligence-knowledge-graph/generated/node_catalog.json",
+          "Generated Artifact:docs/implementation/intelligence-knowledge-graph/generated/orphan_report.json",
+          "Generated Artifact:docs/implementation/intelligence-knowledge-graph/generated/policy_dependency_report.json",
+          "Generated Artifact:docs/implementation/intelligence-knowledge-graph/generated/test_dependency_report.json",
+          "Generated Artifact:docs/implementation/intelligence-lifecycle-framework/generated/intelligence_lifecycle_catalog.json",
+          "Generated Artifact:docs/implementation/intelligence-lifecycle-framework/generated/learning_policy_catalog.json",
+          "Generated Artifact:docs/implementation/intelligence-lifecycle-framework/generated/lifecycle_summary.md",
+          "Generated Artifact:docs/implementation/intelligence-lifecycle-framework/generated/maturity_matrix.json",
+          "Generated Artifact:docs/implementation/intelligence-lifecycle-framework/generated/readiness_matrix.json",
+          "Generated Artifact:docs/implementation/intelligence-lifecycle-framework/generated/validation_readiness.json",
+          "Generated Artifact:docs/implementation/intelligence-lifecycle-framework/generated/version_evolution_catalog.json",
+          "Generated Artifact:docs/implementation/scoring-engine/generated/candidate_score_index.json",
+          "Generated Artifact:docs/implementation/scoring-engine/generated/capability_score_index.json",
+          "Generated Artifact:docs/implementation/scoring-engine/generated/case_score_index.json",
+          "Generated Artifact:docs/implementation/scoring-engine/generated/dataset_score_index.json",
+          "Generated Artifact:docs/implementation/scoring-engine/generated/score_run_catalog.csv",
+          "Generated Artifact:docs/implementation/scoring-engine/generated/score_run_catalog.json",
+          "Generated Artifact:docs/implementation/scoring-engine/generated/SCORE_RUN_CATALOG.md",
+          "Generated Artifact:docs/implementation/scoring-engine/generated/SCORE_SUMMARY.md",
+          "Generated Artifact:docs/implementation/scoring-engine/generated/scoring_completeness_report.json",
+          "Generated Artifact:docs/implementation/scoring-engine/generated/scoring_confidence_report.json",
+          "Generated Artifact:docs/implementation/scoring-engine/generated/scoring_gate_findings.json",
+          "Generated Artifact:docs/implementation/scoring-engine/generated/scoring_profile_catalog.csv",
+          "Generated Artifact:docs/implementation/scoring-engine/generated/scoring_profile_catalog.json",
+          "Generated Artifact:docs/implementation/scoring-engine/generated/SCORING_PROFILE_CATALOG.md",
+          "Generated Artifact:docs/implementation/scoring-engine/generated/scoring_sensitivity_report.json",
+          "Generated Artifact:docs/implementation/scoring-engine/generated/scoring_threshold_findings.json"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "reverseDependencies": [],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Script:bridge-api/scripts/generate-scoring-engine-artifacts.cjs",
+        "potentialImpacts": [
+          "Package:bridge-api"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Script:bridge-api/scripts/generate-scoring-engine-artifacts.cjs",
+      "reverseDependencies": [],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Script:bridge-api/scripts/update-benchmark-dataset-hashes.cjs",
+        "potentialImpacts": [
+          "Package:bridge-api"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Script:bridge-api/scripts/update-benchmark-dataset-hashes.cjs",
+      "reverseDependencies": [],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Script:bridge-api/scripts/validate-fleet-intelligence-scoring-runtime.cjs",
+        "potentialImpacts": [
+          "Package:bridge-api"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Script:bridge-api/scripts/validate-fleet-intelligence-scoring-runtime.cjs",
+      "reverseDependencies": [],
+      "testsToRerun": []
+    }
+  ]
+}

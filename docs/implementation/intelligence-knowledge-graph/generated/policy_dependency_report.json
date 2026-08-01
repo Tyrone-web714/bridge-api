@@ -1,0 +1,222 @@
+{
+  "generatedArtifact": true,
+  "generatedFrom": "bridge-api/intelligence-knowledge-graph",
+  "report": [
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Decision Policy Profile:CHEAPEST_SUFFICIENT_TEST_POLICY",
+        "potentialImpacts": [
+          "Execution Decision Request:decision.text_cleanup.initial.offline.v1",
+          "Execution Decision Record:decision.text_cleanup.initial.offline.v1.record.v1",
+          "Decision History Record:history.decision.text_cleanup.initial.offline.v1.record.v1",
+          "Governance Event:history.decision.text_cleanup.initial.offline.v1.record.v1.event.001.history_record_created",
+          "Governance Event:history.decision.text_cleanup.initial.offline.v1.record.v1.event.002.decision_recorded",
+          "Governance Event:history.decision.text_cleanup.initial.offline.v1.record.v1.event.003.review_requested",
+          "Governance Event:history.decision.text_cleanup.initial.offline.v1.record.v1.event.004.review_completed",
+          "Governance Event:history.decision.text_cleanup.initial.offline.v1.record.v1.event.005.approval_requested",
+          "Governance Event:history.decision.text_cleanup.initial.offline.v1.record.v1.event.006.approved_with_conditions",
+          "Governance Event:history.decision.text_cleanup.initial.offline.v1.record.v1.event.007.exception_requested",
+          "Governance Event:history.decision.text_cleanup.initial.offline.v1.record.v1.event.008.exception_granted",
+          "Governance Event:history.decision.text_cleanup.initial.offline.v1.record.v1.event.009.replay_requested",
+          "Governance Event:history.decision.text_cleanup.initial.offline.v1.record.v1.event.010.replay_completed",
+          "Governance Event:history.decision.text_cleanup.initial.offline.v1.record.v1.event.011.reproducibility_confirmed",
+          "Governance Event:history.decision.text_cleanup.initial.offline.v1.record.v1.event.012.attestation_recorded",
+          "Governance Event:history.decision.text_cleanup.initial.offline.v1.record.v1.event.013.prior_event_annotated"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Decision Policy Profile:CHEAPEST_SUFFICIENT_TEST_POLICY",
+      "reverseDependencies": [
+        "Execution Decision Request:decision.text_cleanup.initial.offline.v1",
+        "Execution Decision Record:decision.text_cleanup.initial.offline.v1.record.v1",
+        "Decision History Record:history.decision.text_cleanup.initial.offline.v1.record.v1"
+      ],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Decision Policy Profile:INSUFFICIENT_EVIDENCE_FAIL_CLOSED_TEST_POLICY",
+        "potentialImpacts": [
+          "Execution Decision Request:decision.structured_response.fail_closed.offline.v1",
+          "Execution Decision Record:decision.structured_response.fail_closed.offline.v1.record.v1",
+          "Decision History Record:history.decision.structured_response.fail_closed.offline.v1.record.v1",
+          "Governance Event:history.decision.structured_response.fail_closed.offline.v1.record.v1.event.001.history_record_created",
+          "Governance Event:history.decision.structured_response.fail_closed.offline.v1.record.v1.event.002.decision_recorded",
+          "Governance Event:history.decision.structured_response.fail_closed.offline.v1.record.v1.event.003.review_requested",
+          "Governance Event:history.decision.structured_response.fail_closed.offline.v1.record.v1.event.004.review_completed",
+          "Governance Event:history.decision.structured_response.fail_closed.offline.v1.record.v1.event.005.evidence_stale_detected",
+          "Governance Event:history.decision.structured_response.fail_closed.offline.v1.record.v1.event.006.policy_drift_detected",
+          "Governance Event:history.decision.structured_response.fail_closed.offline.v1.record.v1.event.007.finding_recorded",
+          "Governance Event:history.decision.structured_response.fail_closed.offline.v1.record.v1.event.008.remediation_linked",
+          "Governance Event:history.decision.structured_response.fail_closed.offline.v1.record.v1.event.009.replay_requested",
+          "Governance Event:history.decision.structured_response.fail_closed.offline.v1.record.v1.event.010.replay_completed",
+          "Governance Event:history.decision.structured_response.fail_closed.offline.v1.record.v1.event.011.reproducibility_confirmed",
+          "Governance Event:history.decision.structured_response.fail_closed.offline.v1.record.v1.event.012.attestation_recorded",
+          "Governance Event:history.decision.structured_response.fail_closed.offline.v1.record.v1.event.013.prior_event_annotated"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Decision Policy Profile:INSUFFICIENT_EVIDENCE_FAIL_CLOSED_TEST_POLICY",
+      "reverseDependencies": [
+        "Execution Decision Request:decision.structured_response.fail_closed.offline.v1",
+        "Execution Decision Record:decision.structured_response.fail_closed.offline.v1.record.v1",
+        "Decision History Record:history.decision.structured_response.fail_closed.offline.v1.record.v1"
+      ],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Decision Policy Profile:OFFLINE_FIRST_TEST_POLICY",
+        "potentialImpacts": [
+          "Execution Decision Request:decision.structured_response.initial.offline.v1",
+          "Execution Decision Record:decision.structured_response.initial.offline.v1.record.v1",
+          "Decision History Record:history.decision.structured_response.initial.offline.v1.record.v1",
+          "Governance Event:history.decision.structured_response.initial.offline.v1.record.v1.event.001.history_record_created",
+          "Governance Event:history.decision.structured_response.initial.offline.v1.record.v1.event.002.decision_recorded",
+          "Governance Event:history.decision.structured_response.initial.offline.v1.record.v1.event.003.review_requested",
+          "Governance Event:history.decision.structured_response.initial.offline.v1.record.v1.event.004.review_completed",
+          "Governance Event:history.decision.structured_response.initial.offline.v1.record.v1.event.005.approval_requested",
+          "Governance Event:history.decision.structured_response.initial.offline.v1.record.v1.event.006.approved_with_conditions",
+          "Governance Event:history.decision.structured_response.initial.offline.v1.record.v1.event.007.replay_requested",
+          "Governance Event:history.decision.structured_response.initial.offline.v1.record.v1.event.008.replay_completed",
+          "Governance Event:history.decision.structured_response.initial.offline.v1.record.v1.event.009.reproducibility_confirmed",
+          "Governance Event:history.decision.structured_response.initial.offline.v1.record.v1.event.010.attestation_recorded",
+          "Governance Event:history.decision.structured_response.initial.offline.v1.record.v1.event.011.prior_event_annotated"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Decision Policy Profile:OFFLINE_FIRST_TEST_POLICY",
+      "reverseDependencies": [
+        "Execution Decision Request:decision.structured_response.initial.offline.v1",
+        "Execution Decision Record:decision.structured_response.initial.offline.v1.record.v1",
+        "Decision History Record:history.decision.structured_response.initial.offline.v1.record.v1"
+      ],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Decision Policy Profile:PREMIUM_RESTRICTED_TEST_POLICY",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Decision Policy Profile:PREMIUM_RESTRICTED_TEST_POLICY",
+      "reverseDependencies": [],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Decision Policy Profile:SAFETY_CRITICAL_TEST_POLICY",
+        "potentialImpacts": [
+          "Execution Decision Request:decision.supervisor_report.initial.offline.v1",
+          "Execution Decision Record:decision.supervisor_report.initial.offline.v1.record.v1",
+          "Decision History Record:history.decision.supervisor_report.initial.offline.v1.record.v1",
+          "Governance Event:history.decision.supervisor_report.initial.offline.v1.record.v1.event.001.history_record_created",
+          "Governance Event:history.decision.supervisor_report.initial.offline.v1.record.v1.event.002.decision_recorded",
+          "Governance Event:history.decision.supervisor_report.initial.offline.v1.record.v1.event.003.review_requested",
+          "Governance Event:history.decision.supervisor_report.initial.offline.v1.record.v1.event.004.review_completed",
+          "Governance Event:history.decision.supervisor_report.initial.offline.v1.record.v1.event.005.human_review_required",
+          "Governance Event:history.decision.supervisor_report.initial.offline.v1.record.v1.event.006.human_review_unresolved",
+          "Governance Event:history.decision.supervisor_report.initial.offline.v1.record.v1.event.007.replay_requested",
+          "Governance Event:history.decision.supervisor_report.initial.offline.v1.record.v1.event.008.replay_completed",
+          "Governance Event:history.decision.supervisor_report.initial.offline.v1.record.v1.event.009.reproducibility_confirmed",
+          "Governance Event:history.decision.supervisor_report.initial.offline.v1.record.v1.event.010.attestation_recorded",
+          "Governance Event:history.decision.supervisor_report.initial.offline.v1.record.v1.event.011.prior_event_annotated"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Decision Policy Profile:SAFETY_CRITICAL_TEST_POLICY",
+      "reverseDependencies": [
+        "Execution Decision Request:decision.supervisor_report.initial.offline.v1",
+        "Execution Decision Record:decision.supervisor_report.initial.offline.v1.record.v1",
+        "Decision History Record:history.decision.supervisor_report.initial.offline.v1.record.v1"
+      ],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Decision Policy Profile:CONSERVATIVE_TEST_GOVERNANCE_PROFILE",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Decision Policy Profile:CONSERVATIVE_TEST_GOVERNANCE_PROFILE",
+      "reverseDependencies": [],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Decision Policy Profile:FAIL_CLOSED_GOVERNANCE_PROFILE",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Decision Policy Profile:FAIL_CLOSED_GOVERNANCE_PROFILE",
+      "reverseDependencies": [],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Decision Policy Profile:HUMAN_REVIEW_GOVERNANCE_PROFILE",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Decision Policy Profile:HUMAN_REVIEW_GOVERNANCE_PROFILE",
+      "reverseDependencies": [],
+      "testsToRerun": []
+    }
+  ]
+}
