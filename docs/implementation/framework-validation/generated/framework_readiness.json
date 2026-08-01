@@ -1,0 +1,89 @@
+{
+  "generatedArtifact": true,
+  "readiness": [
+    {
+      "area": "Architecture",
+      "hash": "393b3f82aadfc861b7c640cf54fa6b913dc768264db4b59bc1bbe553f2f19c55",
+      "productionReadinessClaimed": false,
+      "readiness": "COMPLETE",
+      "testOnly": true
+    },
+    {
+      "area": "Documentation",
+      "hash": "acdc6a12fe4baf79481a0e317dab3709912bd1481de30349200f557a14da7d88",
+      "productionReadinessClaimed": false,
+      "readiness": "COMPLETE",
+      "testOnly": true
+    },
+    {
+      "area": "Testing",
+      "hash": "8d91e21c7adc32a653c7338550276e0e85b94eb20c36fc63d0f85dda98edf01d",
+      "productionReadinessClaimed": false,
+      "readiness": "COMPLETE",
+      "testOnly": true
+    },
+    {
+      "area": "Governance",
+      "hash": "713596d2366e2031d9cbeb417cdc588a3e05e604440b51ffa95b78859a2ebb0e",
+      "productionReadinessClaimed": false,
+      "readiness": "COMPLETE",
+      "testOnly": true
+    },
+    {
+      "area": "Decision Engine",
+      "hash": "d9ecf114288ea61bfcaefa05f4cb8a0f1eecdaa034652bae2e1f1eebd4816ec5",
+      "productionReadinessClaimed": false,
+      "readiness": "COMPLETE",
+      "testOnly": true
+    },
+    {
+      "area": "Knowledge Graph",
+      "hash": "6de3881836723db579b065fc89cbe695d806bdefc2cce961d2fb843a1c5fbab2",
+      "productionReadinessClaimed": false,
+      "readiness": "COMPLETE",
+      "testOnly": true
+    },
+    {
+      "area": "Dashboard Generation",
+      "hash": "633e6e11d4a0abe384c8947bba53caaad02a6420d5aa49fbbae6eac293856a7b",
+      "productionReadinessClaimed": false,
+      "readiness": "COMPLETE",
+      "testOnly": true
+    },
+    {
+      "area": "Determinism",
+      "hash": "0ca3444a867bade70362cf68716937d9c3251311b2901efee8cb609e94fd0a2e",
+      "productionReadinessClaimed": false,
+      "readiness": "COMPLETE",
+      "testOnly": true
+    },
+    {
+      "area": "Provider Independence",
+      "hash": "217a99c83c677a808b391ffa53926dc627cc03a241a30c260b952ce38c2c64e2",
+      "productionReadinessClaimed": false,
+      "readiness": "COMPLETE",
+      "testOnly": true
+    },
+    {
+      "area": "Cost Governance",
+      "hash": "0822562311ecf8eb1da9231ee1c6585091747ad040a0222af2bd7d9d633cc638",
+      "productionReadinessClaimed": false,
+      "readiness": "COMPLETE",
+      "testOnly": true
+    },
+    {
+      "area": "Integration",
+      "hash": "a5dd3e16a285bb8083f34464aa3c2912cf033b0615951a8288f6fa137ac71249",
+      "productionReadinessClaimed": false,
+      "readiness": "COMPLETE",
+      "testOnly": true
+    },
+    {
+      "area": "Overall Framework",
+      "hash": "b795677d1b3ce67d6abefbaa5f059e414708080f80282d45792db39033ad2b28",
+      "productionReadinessClaimed": false,
+      "readiness": "COMPLETE",
+      "testOnly": true
+    }
+  ]
+}

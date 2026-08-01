@@ -1,0 +1,20 @@
+{
+  "documentation": {
+    "coverage": {
+      "capabilityCoverage": {
+        "capabilityDatasetCoverage": 50,
+        "capabilityDecisionCoverage": 50,
+        "dashboardCatalogCoverage": 100,
+        "dashboardValidationIntegrity": 100,
+        "graphValidationIntegrity": 100
+      },
+      "integrationCoverage": {
+        "crossReferences": 100,
+        "integration": 100
+      }
+    },
+    "documentationPages": 876,
+    "generatedArtifacts": 180
+  },
+  "generatedArtifact": true
+}

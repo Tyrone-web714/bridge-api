@@ -1,0 +1,95 @@
+{
+  "generatedArtifact": true,
+  "subsystems": [
+    {
+      "hash": "66eea0c7bbd00f41e2e3bbc22eaff3f7f5733b56484a0fb27d039c0134254529",
+      "present": true,
+      "primaryNodeType": "Capability",
+      "productionApplicable": false,
+      "recordCount": 6,
+      "subsystemId": "capability-registry",
+      "testOnly": true,
+      "validationState": "COMPLETE"
+    },
+    {
+      "hash": "102e8157a6be0084e447aff14397114e269065a0e9c0c6f42482764e4d249a80",
+      "present": true,
+      "primaryNodeType": "Benchmark Dataset",
+      "productionApplicable": false,
+      "recordCount": 3,
+      "subsystemId": "benchmark-datasets",
+      "testOnly": true,
+      "validationState": "COMPLETE"
+    },
+    {
+      "hash": "bf754062db76e21e8a19e98b5916e8bcd82b9491c2e78e30b9fbccf22f52f7fa",
+      "present": true,
+      "primaryNodeType": "Evaluation Run",
+      "productionApplicable": false,
+      "recordCount": 3,
+      "subsystemId": "evaluation-engine",
+      "testOnly": true,
+      "validationState": "COMPLETE"
+    },
+    {
+      "hash": "2c34a61fb58d2961fd5e49062ce6c1a55371399c33e1e1c7d487b981a192f922",
+      "present": true,
+      "primaryNodeType": "Score Run",
+      "productionApplicable": false,
+      "recordCount": 3,
+      "subsystemId": "scoring-engine",
+      "testOnly": true,
+      "validationState": "COMPLETE"
+    },
+    {
+      "hash": "f3e5000800e103f3ce2d4788ba92d243738b4802f411107b07c5676e16fe6990",
+      "present": true,
+      "primaryNodeType": "Cost Governance Record",
+      "productionApplicable": false,
+      "recordCount": 3,
+      "subsystemId": "cost-governance",
+      "testOnly": true,
+      "validationState": "COMPLETE"
+    },
+    {
+      "hash": "3d763bf793db87ccd1a10f1034cd59879ae01c31e698232fa3fd3040193db658",
+      "present": true,
+      "primaryNodeType": "Execution Decision Record",
+      "productionApplicable": false,
+      "recordCount": 4,
+      "subsystemId": "execution-decisions",
+      "testOnly": true,
+      "validationState": "COMPLETE"
+    },
+    {
+      "hash": "131d3f0a379f79206ddc8e3eabcb748e9dac6de175676f8bd1441b9da8f18211",
+      "present": true,
+      "primaryNodeType": "Decision History Record",
+      "productionApplicable": false,
+      "recordCount": 4,
+      "subsystemId": "decision-governance",
+      "testOnly": true,
+      "validationState": "COMPLETE"
+    },
+    {
+      "hash": "500e12b128d8e742e59ab07d3bd693fac16f98a7594b9aab818ad946bb2f647c",
+      "present": true,
+      "primaryNodeType": "Repository Graph",
+      "productionApplicable": false,
+      "recordCount": 924,
+      "subsystemId": "knowledge-graph",
+      "testOnly": true,
+      "validationState": "COMPLETE"
+    },
+    {
+      "hash": "ca5ae68e55996a30249b7fdb801aff0e0b398727cfdff0beb4f0517bee4126e2",
+      "present": true,
+      "primaryNodeType": "Dashboard Dataset",
+      "productionApplicable": false,
+      "recordCount": 30,
+      "subsystemId": "dashboard-data",
+      "testOnly": true,
+      "validationState": "COMPLETE"
+    }
+  ]
+}

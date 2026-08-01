@@ -1,0 +1,61 @@
+{
+  "generatedArtifact": true,
+  "integration": [
+    {
+      "hash": "94f1344a4def9f1d17f4db154bfef038b3f3e6cf8ec10d8c5440057cf2edc90c",
+      "integrated": true,
+      "sourceSubsystem": "capability-registry",
+      "status": "COMPLETE",
+      "targetSubsystem": "benchmark-datasets"
+    },
+    {
+      "hash": "0ff52beb408da5a1718a80e905d93b3ec7cb16c7f70a32f1ac56e441c4ebe9a2",
+      "integrated": true,
+      "sourceSubsystem": "benchmark-datasets",
+      "status": "COMPLETE",
+      "targetSubsystem": "evaluation-engine"
+    },
+    {
+      "hash": "574278e8bc43aa2609bdcc145f9942766b69ccc19803c649d3440eace82b8c11",
+      "integrated": true,
+      "sourceSubsystem": "evaluation-engine",
+      "status": "COMPLETE",
+      "targetSubsystem": "scoring-engine"
+    },
+    {
+      "hash": "af8bb1687726cb780c6bc17614f9963f99dcacf2e738fc5f79226ba90b8a7897",
+      "integrated": true,
+      "sourceSubsystem": "scoring-engine",
+      "status": "COMPLETE",
+      "targetSubsystem": "cost-governance"
+    },
+    {
+      "hash": "5445eb919123d90f2b5935e1af774e9d2c7bd5628f968f3e33bcbdd479533a86",
+      "integrated": true,
+      "sourceSubsystem": "cost-governance",
+      "status": "COMPLETE",
+      "targetSubsystem": "execution-decisions"
+    },
+    {
+      "hash": "f58be10cb54597f571f86b695931d77466805e5dd8afe3f419b7abdffda7604f",
+      "integrated": true,
+      "sourceSubsystem": "execution-decisions",
+      "status": "COMPLETE",
+      "targetSubsystem": "decision-governance"
+    },
+    {
+      "hash": "a8cb3fcd2ee9f12647a2b5db4740e760ca066c99d9f4785ad2d9cb93a56d438a",
+      "integrated": true,
+      "sourceSubsystem": "decision-governance",
+      "status": "COMPLETE",
+      "targetSubsystem": "knowledge-graph"
+    },
+    {
+      "hash": "61fa1da4989465896383048330f86e73246e0bf9a031d6af6f3c28bdca5823f2",
+      "integrated": true,
+      "sourceSubsystem": "knowledge-graph",
+      "status": "COMPLETE",
+      "targetSubsystem": "dashboard-data"
+    }
+  ]
+}

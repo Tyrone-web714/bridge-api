@@ -1,0 +1,44 @@
+{
+  "generatedArtifact": true,
+  "health": {
+    "coveragePercentages": {
+      "capabilityDatasetCoverage": 50,
+      "capabilityDecisionCoverage": 50,
+      "dashboardCatalogCoverage": 100,
+      "dashboardValidationIntegrity": 100,
+      "graphValidationIntegrity": 100
+    },
+    "deferredCounts": {
+      "deferredWorkDocs": 14
+    },
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "hash": "fc68aa1583e4489d1b8778eef499a7ef7df45424db88e9f2c4d47b696215b665",
+    "integrityPercentages": {
+      "crossReferences": 100,
+      "integration": 100
+    },
+    "schemaVersion": "intelligence.framework.validation.v1",
+    "totals": {
+      "benchmarkDatasets": 3,
+      "budgetProfiles": 2,
+      "capabilities": 6,
+      "dashboardDatasets": 30,
+      "documentationPages": 876,
+      "evaluations": 3,
+      "executionDecisions": 4,
+      "generatedArtifacts": 180,
+      "governanceEvents": 48,
+      "graphEdges": 811,
+      "graphNodes": 924,
+      "historyRecords": 4,
+      "pricingCatalogs": 1,
+      "scoreRuns": 3,
+      "templates": 0,
+      "tests": 39,
+      "validationRules": 9
+    },
+    "unknownCounts": {
+      "graphUnknownNodes": 6
+    }
+  }
+}

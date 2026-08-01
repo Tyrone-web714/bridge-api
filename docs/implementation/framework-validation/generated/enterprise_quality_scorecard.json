@@ -1,0 +1,125 @@
+{
+  "generatedArtifact": true,
+  "scorecard": [
+    {
+      "advisoryOnly": true,
+      "area": "Architecture",
+      "hash": "8ca6238740fa46b008032590ccadcea4c965c2a3aa17e9fcef0ee039d21a4eca",
+      "maxScore": 100,
+      "productionCertificationClaimed": false,
+      "score": 90
+    },
+    {
+      "advisoryOnly": true,
+      "area": "Modularity",
+      "hash": "762de2403a7e07f606dc5c5038b3129771296c5ef9914f3c626b8a0c9f518bbc",
+      "maxScore": 100,
+      "productionCertificationClaimed": false,
+      "score": 90
+    },
+    {
+      "advisoryOnly": true,
+      "area": "Determinism",
+      "hash": "d7cb4e414e8a1d9e01b76d5c9bd151cdb1b391238591be7e9b683d97b8844bc3",
+      "maxScore": 100,
+      "productionCertificationClaimed": false,
+      "score": 90
+    },
+    {
+      "advisoryOnly": true,
+      "area": "Documentation",
+      "hash": "0f1ab08ed23bf98effa4fb006fb1dba65c642d2437a0a7b7556b4acc35c848ab",
+      "maxScore": 100,
+      "productionCertificationClaimed": false,
+      "score": 90
+    },
+    {
+      "advisoryOnly": true,
+      "area": "Traceability",
+      "hash": "f7c4caff72f5d4c744cb615ad4483b7f896134b705db7635d52f5a4d22a48d49",
+      "maxScore": 100,
+      "productionCertificationClaimed": false,
+      "score": 90
+    },
+    {
+      "advisoryOnly": true,
+      "area": "Governance",
+      "hash": "c8cbb43c0f11469579565948f4226832274606fe488a7cfb5dfc0e6921f09bb8",
+      "maxScore": 100,
+      "productionCertificationClaimed": false,
+      "score": 90
+    },
+    {
+      "advisoryOnly": true,
+      "area": "Explainability",
+      "hash": "a3945e5cfa29ce92d77e27c804b679654ce1de0432e861c1b9e038756cabc05f",
+      "maxScore": 100,
+      "productionCertificationClaimed": false,
+      "score": 90
+    },
+    {
+      "advisoryOnly": true,
+      "area": "Cost Awareness",
+      "hash": "fbdb1308b811e168d76d2a4fb2c8b648394501c40feea3013e940fa1b4bda677",
+      "maxScore": 100,
+      "productionCertificationClaimed": false,
+      "score": 90
+    },
+    {
+      "advisoryOnly": true,
+      "area": "Testability",
+      "hash": "e8c0d330b7d51a9ba9ddb253a3fdd9476d36c651b946b80a7a7567427b88033f",
+      "maxScore": 100,
+      "productionCertificationClaimed": false,
+      "score": 90
+    },
+    {
+      "advisoryOnly": true,
+      "area": "Provider Independence",
+      "hash": "498313ed998d65599c24746235cda1c3da8681e6f34a95cfa572910ca8bd1833",
+      "maxScore": 100,
+      "productionCertificationClaimed": false,
+      "score": 90
+    },
+    {
+      "advisoryOnly": true,
+      "area": "Maintainability",
+      "hash": "441a2b5369ea45cf62b18c63086d0fec9e577aa5600afdaed76a63a369fd8446",
+      "maxScore": 100,
+      "productionCertificationClaimed": false,
+      "score": 90
+    },
+    {
+      "advisoryOnly": true,
+      "area": "Extensibility",
+      "hash": "214f516eddabd6f8b0e291c2991c90258714453aa3101318d0c68a1cdf5deda7",
+      "maxScore": 100,
+      "productionCertificationClaimed": false,
+      "score": 90
+    },
+    {
+      "advisoryOnly": true,
+      "area": "Technical Debt",
+      "hash": "fa8f9ffff984fc01fcaf21856cee7dbeb0b922af9183df00f86fe9ab531ff307",
+      "maxScore": 100,
+      "productionCertificationClaimed": false,
+      "score": 80
+    },
+    {
+      "advisoryOnly": true,
+      "area": "Risk",
+      "hash": "55131362fe33f7fd1bb2bb04e034548dadaa6d6c4391ce77c67d0cda363a4c6a",
+      "maxScore": 100,
+      "productionCertificationClaimed": false,
+      "score": 80
+    },
+    {
+      "advisoryOnly": true,
+      "area": "Overall Integration",
+      "hash": "0ee539672a601d4bbde43e800a061b76d369f5e180be9810295f4932e3731b7e",
+      "maxScore": 100,
+      "productionCertificationClaimed": false,
+      "score": 90
+    }
+  ]
+}

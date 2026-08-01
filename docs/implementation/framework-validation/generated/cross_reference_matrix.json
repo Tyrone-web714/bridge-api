@@ -1,0 +1,82 @@
+{
+  "crossReferences": [
+    {
+      "hash": "6b4b4174b785e8da3ea253b036f73824001bba0ea8b1472cdad032ba1aca2bff",
+      "source": "capability-registry",
+      "status": "COMPLETE",
+      "target": "knowledge-graph",
+      "valid": true
+    },
+    {
+      "hash": "f571e3a1a974e8e2d59c81960169ba00975422285fb6be6d56c7d8576eee3cdf",
+      "source": "capability-registry",
+      "status": "COMPLETE",
+      "target": "dashboard-data",
+      "valid": true
+    },
+    {
+      "hash": "276cdd9caba95fb959299175c26770ca1a6b85b29eabcfc3da1e11160e751b8f",
+      "source": "capability-registry",
+      "status": "COMPLETE",
+      "target": "execution-decisions",
+      "valid": true
+    },
+    {
+      "hash": "79a1ff288c05a52e2735d7609d09c3379b6672366d372a195a06af5ce0bc2e56",
+      "source": "evaluation-engine",
+      "status": "COMPLETE",
+      "target": "scoring-engine",
+      "valid": true
+    },
+    {
+      "hash": "8fad38ae2ec59748811de0f77781983464be68cda843b0535ee0243404f8eb21",
+      "source": "scoring-engine",
+      "status": "COMPLETE",
+      "target": "cost-governance",
+      "valid": true
+    },
+    {
+      "hash": "e24bd49cbff90e3174b478167ad0d42917dcb6bf63687914dafd3c8bb7541ac0",
+      "source": "cost-governance",
+      "status": "COMPLETE",
+      "target": "execution-decisions",
+      "valid": true
+    },
+    {
+      "hash": "5f179e0c54824c47e93067b80a83718af6c27d11d078bbbd257f1a0511ef2869",
+      "source": "execution-decisions",
+      "status": "COMPLETE",
+      "target": "decision-governance",
+      "valid": true
+    },
+    {
+      "hash": "c7881a1d7a9b604556414bcc3d0c088de34b6abb02b32f99ba0a283625b036e4",
+      "source": "governance",
+      "status": "COMPLETE",
+      "target": "knowledge-graph",
+      "valid": true
+    },
+    {
+      "hash": "2a58c6701a77b3522d8f0e7b8c163d9b3a093f543ae888847684a0db5689bc0a",
+      "source": "dashboard-data",
+      "status": "COMPLETE",
+      "target": "documentation",
+      "valid": true
+    },
+    {
+      "hash": "3a070f0125f5dbd4252bf9b42be02237a4e9e373550cb1aca71f5fb1dde9f294",
+      "source": "documentation",
+      "status": "COMPLETE",
+      "target": "generated-artifacts",
+      "valid": true
+    },
+    {
+      "hash": "d905a05d446e902a1db63bcc0243e49b7aef617311c3573ce98148111a5e0aa0",
+      "source": "tests",
+      "status": "COMPLETE",
+      "target": "package-scripts",
+      "valid": true
+    }
+  ],
+  "generatedArtifact": true
+}

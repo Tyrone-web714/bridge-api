@@ -7,7 +7,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "test": "npm run test:capability-registry && npm run test:benchmark-datasets && npm run test:evaluation-engine && npm run test:scoring-engine && npm run test:cost-governance && npm run test:execution-decisions && npm run test:decision-governance && npm run test:knowledge-graph && npm run test:dashboard-data && npm run test:intelligence-execution && npm run test:ai && npm run test:ai-architecture && npm run test:predictions && npm run test:supervisor-intelligence && npm run test:heatmaps && npm run test:imports && npm run test:delivery-settlement && npm run test:google-maps-compliance && npm run test:multi-tenant && npm run test:auth-rbac && npm run test:api-tenant && npm run test:mobile-tenant && npm run test:shared-safety && npm run test:shared-safety-ui && npm run test:bi-kpi && npm run test:logistics-intelligence && npm run test:fleet-intelligence-scoring && npm run test:data-lifecycle && npm run test:enterprise-identity && npm run test:web-origin && npm run test:private-media && npm run test:private-r2-shutdown && npm run test:legacy-private-media && npm run test:driver-route-notes-photo && npm run test:driver-copilot-auth && npm run test:security && npm run test:dashboard",
+    "test": "npm run test:capability-registry && npm run test:benchmark-datasets && npm run test:evaluation-engine && npm run test:scoring-engine && npm run test:cost-governance && npm run test:execution-decisions && npm run test:decision-governance && npm run test:knowledge-graph && npm run test:dashboard-data && npm run test:framework-validation && npm run test:intelligence-execution && npm run test:ai && npm run test:ai-architecture && npm run test:predictions && npm run test:supervisor-intelligence && npm run test:heatmaps && npm run test:imports && npm run test:delivery-settlement && npm run test:google-maps-compliance && npm run test:multi-tenant && npm run test:auth-rbac && npm run test:api-tenant && npm run test:mobile-tenant && npm run test:shared-safety && npm run test:shared-safety-ui && npm run test:bi-kpi && npm run test:logistics-intelligence && npm run test:fleet-intelligence-scoring && npm run test:data-lifecycle && npm run test:enterprise-identity && npm run test:web-origin && npm run test:private-media && npm run test:private-r2-shutdown && npm run test:legacy-private-media && npm run test:driver-route-notes-photo && npm run test:driver-copilot-auth && npm run test:security && npm run test:dashboard",
     "test:capability-registry": "node scripts/check-capability-registry.cjs",
     "test:intelligence-execution": "node scripts/check-intelligence-execution-platform.cjs",
     "test:ai": "node scripts/check-ai-contracts.cjs",
@@ -126,7 +126,12 @@
     "dashboard-data:validate": "node scripts/check-dashboard-data-generation.cjs",
     "dashboard-data:check": "node scripts/check-dashboard-data-generation.cjs",
     "dashboard-data:catalog": "node -e \"const d=require('./services/intelligenceExecution/dashboardDataGeneration'); console.log(JSON.stringify(d.buildCatalog(), null, 2));\"",
-    "dashboard-data:hashes": "node -e \"const d=require('./services/intelligenceExecution/dashboardDataGeneration'); console.log(JSON.stringify(d.dashboardHashes(), null, 2));\""
+    "dashboard-data:hashes": "node -e \"const d=require('./services/intelligenceExecution/dashboardDataGeneration'); console.log(JSON.stringify(d.dashboardHashes(), null, 2));\"",
+    "test:framework-validation": "node scripts/check-framework-validation.cjs",
+    "framework-validation:generate": "node scripts/generate-framework-validation-artifacts.cjs",
+    "framework-validation:validate": "node scripts/check-framework-validation.cjs",
+    "framework-validation:check": "node scripts/check-framework-validation.cjs",
+    "framework-validation:summary": "node -e \"const f=require('./services/intelligenceExecution/frameworkValidation'); console.log(JSON.stringify(f.buildFrameworkValidation().report, null, 2));\""
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1048.0",
