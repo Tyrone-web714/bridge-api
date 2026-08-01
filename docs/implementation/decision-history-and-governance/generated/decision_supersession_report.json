@@ -1,0 +1,30 @@
+{
+  "generatedArtifact": true,
+  "generatedFrom": "bridge-api/decision-governance",
+  "supersession": [
+    {
+      "decisionHistoryRecordId": "history.decision.structured_response.fail_closed.offline.v1.record.v1",
+      "lineageRootId": "history.decision.structured_response.fail_closed.offline.v1.record.v1",
+      "supersededByHistoryRecordId": null,
+      "supersedesHistoryRecordId": null
+    },
+    {
+      "decisionHistoryRecordId": "history.decision.structured_response.initial.offline.v1.record.v1",
+      "lineageRootId": "history.decision.structured_response.initial.offline.v1.record.v1",
+      "supersededByHistoryRecordId": null,
+      "supersedesHistoryRecordId": null
+    },
+    {
+      "decisionHistoryRecordId": "history.decision.supervisor_report.initial.offline.v1.record.v1",
+      "lineageRootId": "history.decision.supervisor_report.initial.offline.v1.record.v1",
+      "supersededByHistoryRecordId": null,
+      "supersedesHistoryRecordId": null
+    },
+    {
+      "decisionHistoryRecordId": "history.decision.text_cleanup.initial.offline.v1.record.v1",
+      "lineageRootId": "history.decision.text_cleanup.initial.offline.v1.record.v1",
+      "supersededByHistoryRecordId": null,
+      "supersedesHistoryRecordId": null
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "generatedArtifact": true,
+  "generatedFrom": "bridge-api/decision-governance",
+  "policyDrift": [
+    {
+      "approvalState": "NOT_REQUESTED",
+      "capabilityId": "legacy.ai.structured_response",
+      "decisionHistoryRecordId": "history.decision.structured_response.fail_closed.offline.v1.record.v1",
+      "decisionOutcome": "DEFER_PENDING_EVIDENCE",
+      "decisionRecordId": "decision.structured_response.fail_closed.offline.v1.record.v1",
+      "eventCount": 13,
+      "exceptionState": "NONE",
+      "governanceLifecycleState": "PENDING_REVIEW",
+      "historyRecordHash": "8cd5400b30637e0133fd58ba13035a78557a6fe6fd544944f0895db6e3f81b4d",
+      "humanReviewState": "NOT_REQUIRED",
+      "productionUseAllowed": false,
+      "reviewState": "COMPLETED",
+      "testOnly": true
+    }
+  ]
+}

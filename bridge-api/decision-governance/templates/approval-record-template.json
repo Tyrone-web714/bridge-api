@@ -1,0 +1,6 @@
+{
+  "schemaVersion": "intelligence.decision.governance.approval.v1",
+  "approvalState": "NOT_REQUESTED",
+  "productionApproval": false,
+  "approvalInferredFromTests": false
+}

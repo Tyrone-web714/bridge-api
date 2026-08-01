@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "intelligence.decision.governance.event.v1",
+  "governanceEventId": "event.template",
+  "eventType": "DECISION_RECORDED",
+  "appendOnly": true,
+  "testOnly": true,
+  "productionApplicable": false
+}

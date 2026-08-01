@@ -1,0 +1,174 @@
+{
+  "generatedArtifact": true,
+  "generatedFrom": "bridge-api/decision-governance",
+  "reviews": [
+    {
+      "decisionHistoryRecordId": "history.decision.structured_response.fail_closed.offline.v1.record.v1",
+      "reviewRecord": {
+        "completionEventId": "history.decision.structured_response.fail_closed.offline.v1.record.v1.event.004.review_completed",
+        "conclusion": "TEST_REVIEW_COMPLETED_NO_PRODUCTION_AUTHORITY",
+        "findings": [],
+        "integrityHash": "1e7fa7ea59d74a8debe8686d773a9549fd396a5ca72eee27f11eb7a4b16d3a98",
+        "limitations": [
+          "synthetic repository-only review fixture",
+          "review does not imply approval"
+        ],
+        "reviewRecordId": "review.decision.structured_response.fail_closed.offline.v1.record.v1",
+        "reviewScope": [
+          "decision snapshot",
+          "policy context",
+          "evidence lineage",
+          "production boundary"
+        ],
+        "reviewedEvidence": {
+          "costGovernanceRunHashes": [
+            "ed719b95bb64ae4dc86e844eb7d50dad8ae2efa942ccf6ac87997f62dcdb339b"
+          ],
+          "scoreRunHashes": [
+            "c0d5cdb66b2e772031af8b362a5b8cdd3b52635a53da3b39e5247b2c0238d534"
+          ]
+        },
+        "reviewer": {
+          "OrganizationContext": null,
+          "actorId": "synthetic-governance-reviewer",
+          "actorType": "REVIEWER",
+          "authenticationContextReference": null,
+          "authorityScope": "TEST_REVIEW_ONLY",
+          "displayLabel": "Synthetic reviewer: synthetic-governance-reviewer",
+          "productionAuthorized": false,
+          "source": "fixture",
+          "testFixture": true,
+          "verified": true
+        },
+        "schemaVersion": "intelligence.decision.governance.review.v1"
+      },
+      "reviewState": "COMPLETED"
+    },
+    {
+      "decisionHistoryRecordId": "history.decision.structured_response.initial.offline.v1.record.v1",
+      "reviewRecord": {
+        "completionEventId": "history.decision.structured_response.initial.offline.v1.record.v1.event.004.review_completed",
+        "conclusion": "TEST_REVIEW_COMPLETED_NO_PRODUCTION_AUTHORITY",
+        "findings": [],
+        "integrityHash": "e3d17413a2e1c214fb53e308184bf8c60dc3322e8e74816ea4c3b14fc0bfd130",
+        "limitations": [
+          "synthetic repository-only review fixture",
+          "review does not imply approval"
+        ],
+        "reviewRecordId": "review.decision.structured_response.initial.offline.v1.record.v1",
+        "reviewScope": [
+          "decision snapshot",
+          "policy context",
+          "evidence lineage",
+          "production boundary"
+        ],
+        "reviewedEvidence": {
+          "costGovernanceRunHashes": [
+            "ed719b95bb64ae4dc86e844eb7d50dad8ae2efa942ccf6ac87997f62dcdb339b"
+          ],
+          "scoreRunHashes": [
+            "c0d5cdb66b2e772031af8b362a5b8cdd3b52635a53da3b39e5247b2c0238d534"
+          ]
+        },
+        "reviewer": {
+          "OrganizationContext": null,
+          "actorId": "synthetic-governance-reviewer",
+          "actorType": "REVIEWER",
+          "authenticationContextReference": null,
+          "authorityScope": "TEST_REVIEW_ONLY",
+          "displayLabel": "Synthetic reviewer: synthetic-governance-reviewer",
+          "productionAuthorized": false,
+          "source": "fixture",
+          "testFixture": true,
+          "verified": true
+        },
+        "schemaVersion": "intelligence.decision.governance.review.v1"
+      },
+      "reviewState": "COMPLETED"
+    },
+    {
+      "decisionHistoryRecordId": "history.decision.supervisor_report.initial.offline.v1.record.v1",
+      "reviewRecord": {
+        "completionEventId": "history.decision.supervisor_report.initial.offline.v1.record.v1.event.004.review_completed",
+        "conclusion": "TEST_REVIEW_COMPLETED_NO_PRODUCTION_AUTHORITY",
+        "findings": [],
+        "integrityHash": "967c86363a3a3fffb6d74ddb6fb044f5a4b8468cd143b2c0656f858fa7d3baa3",
+        "limitations": [
+          "synthetic repository-only review fixture",
+          "review does not imply approval"
+        ],
+        "reviewRecordId": "review.decision.supervisor_report.initial.offline.v1.record.v1",
+        "reviewScope": [
+          "decision snapshot",
+          "policy context",
+          "evidence lineage",
+          "production boundary"
+        ],
+        "reviewedEvidence": {
+          "costGovernanceRunHashes": [
+            "1b18d304759375c4e10e3596c09310fe63b4f2d61024243265614bb17760e55c"
+          ],
+          "scoreRunHashes": [
+            "f71f1a7401b8e80dff26c705fae3131c02a3ebde6d8dc06b92b5a69758517049"
+          ]
+        },
+        "reviewer": {
+          "OrganizationContext": null,
+          "actorId": "synthetic-governance-reviewer",
+          "actorType": "REVIEWER",
+          "authenticationContextReference": null,
+          "authorityScope": "TEST_REVIEW_ONLY",
+          "displayLabel": "Synthetic reviewer: synthetic-governance-reviewer",
+          "productionAuthorized": false,
+          "source": "fixture",
+          "testFixture": true,
+          "verified": true
+        },
+        "schemaVersion": "intelligence.decision.governance.review.v1"
+      },
+      "reviewState": "COMPLETED"
+    },
+    {
+      "decisionHistoryRecordId": "history.decision.text_cleanup.initial.offline.v1.record.v1",
+      "reviewRecord": {
+        "completionEventId": "history.decision.text_cleanup.initial.offline.v1.record.v1.event.004.review_completed",
+        "conclusion": "TEST_REVIEW_COMPLETED_NO_PRODUCTION_AUTHORITY",
+        "findings": [],
+        "integrityHash": "bed37720c56db9f765f4e1c410d79d7b0edb8ef5c0473bae9635e5b4fbe9ef5f",
+        "limitations": [
+          "synthetic repository-only review fixture",
+          "review does not imply approval"
+        ],
+        "reviewRecordId": "review.decision.text_cleanup.initial.offline.v1.record.v1",
+        "reviewScope": [
+          "decision snapshot",
+          "policy context",
+          "evidence lineage",
+          "production boundary"
+        ],
+        "reviewedEvidence": {
+          "costGovernanceRunHashes": [
+            "962f965f8582362d4d162c641089bcfd3ff668a92539f0a773ae436f6a5b1fdd"
+          ],
+          "scoreRunHashes": [
+            "c0d5cdb66b2e772031af8b362a5b8cdd3b52635a53da3b39e5247b2c0238d534"
+          ]
+        },
+        "reviewer": {
+          "OrganizationContext": null,
+          "actorId": "synthetic-governance-reviewer",
+          "actorType": "REVIEWER",
+          "authenticationContextReference": null,
+          "authorityScope": "TEST_REVIEW_ONLY",
+          "displayLabel": "Synthetic reviewer: synthetic-governance-reviewer",
+          "productionAuthorized": false,
+          "source": "fixture",
+          "testFixture": true,
+          "verified": true
+        },
+        "schemaVersion": "intelligence.decision.governance.review.v1"
+      },
+      "reviewState": "COMPLETED"
+    }
+  ]
+}

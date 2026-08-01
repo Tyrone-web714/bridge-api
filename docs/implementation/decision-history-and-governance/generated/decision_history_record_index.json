@@ -1,0 +1,66 @@
+{
+  "generatedArtifact": true,
+  "generatedFrom": "bridge-api/decision-governance",
+  "histories": [
+    {
+      "approvalState": "NOT_REQUESTED",
+      "capabilityId": "legacy.ai.structured_response",
+      "decisionHistoryRecordId": "history.decision.structured_response.fail_closed.offline.v1.record.v1",
+      "decisionOutcome": "DEFER_PENDING_EVIDENCE",
+      "decisionRecordId": "decision.structured_response.fail_closed.offline.v1.record.v1",
+      "eventCount": 13,
+      "exceptionState": "NONE",
+      "governanceLifecycleState": "PENDING_REVIEW",
+      "historyRecordHash": "8cd5400b30637e0133fd58ba13035a78557a6fe6fd544944f0895db6e3f81b4d",
+      "humanReviewState": "NOT_REQUIRED",
+      "productionUseAllowed": false,
+      "reviewState": "COMPLETED",
+      "testOnly": true
+    },
+    {
+      "approvalState": "APPROVED_WITH_CONDITIONS",
+      "capabilityId": "legacy.ai.structured_response",
+      "decisionHistoryRecordId": "history.decision.structured_response.initial.offline.v1.record.v1",
+      "decisionOutcome": "SELECT_ADVISORY_CANDIDATE_WITH_FALLBACK",
+      "decisionRecordId": "decision.structured_response.initial.offline.v1.record.v1",
+      "eventCount": 11,
+      "exceptionState": "NONE",
+      "governanceLifecycleState": "APPROVED_WITH_CONDITIONS",
+      "historyRecordHash": "5f13c9b4973ccb19afafa48b01143f1f8fbb88daf578bd151acd5c30b61389e9",
+      "humanReviewState": "NOT_REQUIRED",
+      "productionUseAllowed": false,
+      "reviewState": "COMPLETED",
+      "testOnly": true
+    },
+    {
+      "approvalState": "NOT_REQUESTED",
+      "capabilityId": "supervisor.daily_operations_report",
+      "decisionHistoryRecordId": "history.decision.supervisor_report.initial.offline.v1.record.v1",
+      "decisionOutcome": "HUMAN_REVIEW_REQUIRED",
+      "decisionRecordId": "decision.supervisor_report.initial.offline.v1.record.v1",
+      "eventCount": 11,
+      "exceptionState": "NONE",
+      "governanceLifecycleState": "HUMAN_REVIEW_REQUIRED",
+      "historyRecordHash": "c5c6d755d79e4d44d41364946fa019a0704b7468c569718a244833a61fa2c5a3",
+      "humanReviewState": "UNRESOLVED",
+      "productionUseAllowed": false,
+      "reviewState": "COMPLETED",
+      "testOnly": true
+    },
+    {
+      "approvalState": "APPROVED_WITH_CONDITIONS",
+      "capabilityId": "text.cleanup",
+      "decisionHistoryRecordId": "history.decision.text_cleanup.initial.offline.v1.record.v1",
+      "decisionOutcome": "SELECT_ADVISORY_CANDIDATE_WITH_FALLBACK",
+      "decisionRecordId": "decision.text_cleanup.initial.offline.v1.record.v1",
+      "eventCount": 13,
+      "exceptionState": "GRANTED",
+      "governanceLifecycleState": "EXCEPTION_GRANTED",
+      "historyRecordHash": "1a8ee3a98937a15162ce83ca128f5cf34309a31848981fcf0c9458708a6d8d43",
+      "humanReviewState": "NOT_REQUIRED",
+      "productionUseAllowed": false,
+      "reviewState": "COMPLETED",
+      "testOnly": true
+    }
+  ]
+}

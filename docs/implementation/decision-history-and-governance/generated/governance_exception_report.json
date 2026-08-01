@@ -1,0 +1,67 @@
+{
+  "exceptions": [
+    {
+      "decisionHistoryRecordId": "history.decision.text_cleanup.initial.offline.v1.record.v1",
+      "exceptionDecisionRecord": {
+        "active": true,
+        "conditions": [
+          "test-only",
+          "non-safety",
+          "non-privacy",
+          "no tenant isolation impact"
+        ],
+        "decidedBy": {
+          "OrganizationContext": null,
+          "actorId": "synthetic-exception-reviewer",
+          "actorType": "REVIEWER",
+          "authenticationContextReference": null,
+          "authorityScope": "TEST_REVIEW_ONLY",
+          "displayLabel": "Synthetic reviewer: synthetic-exception-reviewer",
+          "productionAuthorized": false,
+          "source": "fixture",
+          "testFixture": true,
+          "verified": true
+        },
+        "decision": "GRANTED",
+        "eventId": "history.decision.text_cleanup.initial.offline.v1.record.v1.event.008.exception_granted",
+        "exceptionDecisionId": "exception-decision.exception-request.decision.text_cleanup.initial.offline.v1.record.v1.7",
+        "exceptionRequestId": "exception-request.decision.text_cleanup.initial.offline.v1.record.v1.7",
+        "integrityHash": "6a4ca55d9ae8784bb6a404d27f1e6957ba3b2063a4a8d2c37b46c66de6f655cd",
+        "productionApplicable": false,
+        "schemaVersion": "intelligence.decision.governance.exception.decision.v1",
+        "testOnly": true
+      },
+      "exceptionRequestRecord": {
+        "category": "NON_SAFETY_TEST_LIMITATION",
+        "decisionHistoryRecordId": "history.decision.text_cleanup.initial.offline.v1.record.v1",
+        "employmentGovernanceImpact": false,
+        "eventId": "history.decision.text_cleanup.initial.offline.v1.record.v1.event.007.exception_requested",
+        "exceptionRequestId": "exception-request.decision.text_cleanup.initial.offline.v1.record.v1.7",
+        "expiresAt": "2026-07-26T00:00:00.000Z",
+        "integrityHash": "0cf8b9e81d4b7a2dc852f9457045307436a0bf2a17b9fae642bf622f98cf8aca",
+        "privacyImpact": false,
+        "productionApplicable": false,
+        "requestedBy": {
+          "OrganizationContext": null,
+          "actorId": "synthetic-exception-requester",
+          "actorType": "REVIEWER",
+          "authenticationContextReference": null,
+          "authorityScope": "TEST_REVIEW_ONLY",
+          "displayLabel": "Synthetic reviewer: synthetic-exception-requester",
+          "productionAuthorized": false,
+          "source": "fixture",
+          "testFixture": true,
+          "verified": true
+        },
+        "requestedScope": "TEST_FIXTURE_ONLY",
+        "safetyImpact": false,
+        "schemaVersion": "intelligence.decision.governance.exception.request.v1",
+        "tenantIsolationImpact": false,
+        "testOnly": true,
+        "timeBound": true
+      }
+    }
+  ],
+  "generatedArtifact": true,
+  "generatedFrom": "bridge-api/decision-governance"
+}

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "intelligence.decision.governance.policy.profile.v1",
+  "version": "0.1.0",
+  "lifecycleState": "APPROVED_FOR_TEST",
+  "enabled": true,
+  "testOnly": true,
+  "productionUseAllowed": false,
+  "productionApprovalAllowed": false,
+  "certificationClaimsAllowed": false,
+  "safetyExceptionAllowed": false,
+  "privacyExceptionAllowed": false,
+  "tenantIsolationExceptionAllowed": false,
+  "employmentGovernanceExceptionAllowed": false,
+  "allowedActorTypes": [
+    "SYSTEM",
+    "TEST_HARNESS",
+    "REVIEWER",
+    "UNKNOWN"
+  ],
+  "allowedSubjectTypes": [
+    "EXECUTION_DECISION_RECORD",
+    "DECISION_POLICY_PROFILE",
+    "SCORE_RUN",
+    "COST_GOVERNANCE_RUN",
+    "GENERATED_ARTIFACT",
+    "IMPLEMENTATION_WORK_PACKAGE"
+  ],
+  "appendOnlyEventsRequired": true,
+  "immutableDecisionSnapshotRequired": true,
+  "deterministicTimestampPolicy": "FIXED_SYNTHETIC_TIMESTAMPS",
+  "approvalInferencePolicy": "NO_APPROVAL_FROM_TESTS_COMMITS_OR_ABSENCE_OF_REJECTION",
+  "unknownActorPolicy": "PRESERVE_UNKNOWN_EXPLICITLY",
+  "prohibitedClaims": [
+    "productionApproved",
+    "complianceCertified",
+    "SOC2Certified",
+    "regulatorApproved",
+    "automaticOwnerApproval",
+    "liveRuntimeActivated",
+    "providerProcurementApproved"
+  ],
+  "integrity": {
+    "contentHash": null,
+    "deterministicOrdering": true
+  },
+  "governancePolicyProfileId": "FAIL_CLOSED_GOVERNANCE_PROFILE",
+  "displayName": "Fail Closed Governance Profile",
+  "reviewRequiredForAllRecords": true,
+  "testApprovalAllowed": false,
+  "exceptionsAllowed": false
+}

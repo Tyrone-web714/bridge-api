@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "intelligence.decision.governance.human_review.v1",
+  "required": false,
+  "containsEmployeeData": false,
+  "reviewer": {
+    "actorType": "UNKNOWN",
+    "actorId": "UNKNOWN"
+  }
+}

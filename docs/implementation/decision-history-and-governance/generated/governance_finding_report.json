@@ -1,0 +1,21 @@
+{
+  "findings": [
+    {
+      "acceptedRiskReference": null,
+      "decisionHistoryRecordId": "history.decision.structured_response.fail_closed.offline.v1.record.v1",
+      "eventId": "history.decision.structured_response.fail_closed.offline.v1.record.v1.event.007.finding_recorded",
+      "findingRecordId": "finding.decision.structured_response.fail_closed.offline.v1.record.v1.7",
+      "findingType": "SYNTHETIC_GOVERNANCE_LIMITATION",
+      "integrityHash": "20b72c4c2c9cc453b537f959236822987d2e78b2a4c41490fc2d6c2f5227f05e",
+      "productionApplicable": false,
+      "remediationReferences": [],
+      "schemaVersion": "intelligence.decision.governance.finding.v1",
+      "severity": "LOW",
+      "status": "OPEN",
+      "summary": "Synthetic evidence requires governance review before production use.",
+      "testOnly": true
+    }
+  ],
+  "generatedArtifact": true,
+  "generatedFrom": "bridge-api/decision-governance"
+}

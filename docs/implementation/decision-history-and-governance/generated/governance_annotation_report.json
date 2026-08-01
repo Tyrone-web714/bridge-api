@@ -1,0 +1,42 @@
+{
+  "annotations": [
+    {
+      "annotatedEventId": "history.decision.structured_response.fail_closed.offline.v1.record.v1.event.002.decision_recorded",
+      "annotationRecordId": "annotation.history.decision.structured_response.fail_closed.offline.v1.record.v1.event.013.prior_event_annotated",
+      "appendOnly": true,
+      "decisionHistoryRecordId": "history.decision.structured_response.fail_closed.offline.v1.record.v1",
+      "eventId": "history.decision.structured_response.fail_closed.offline.v1.record.v1.event.013.prior_event_annotated",
+      "integrityHash": "b8164f5288a0283823cbca96053905c1584af5195e20d02039b994304902a891",
+      "supersedesAnnotationRecordId": null
+    },
+    {
+      "annotatedEventId": "history.decision.structured_response.initial.offline.v1.record.v1.event.002.decision_recorded",
+      "annotationRecordId": "annotation.history.decision.structured_response.initial.offline.v1.record.v1.event.011.prior_event_annotated",
+      "appendOnly": true,
+      "decisionHistoryRecordId": "history.decision.structured_response.initial.offline.v1.record.v1",
+      "eventId": "history.decision.structured_response.initial.offline.v1.record.v1.event.011.prior_event_annotated",
+      "integrityHash": "c3349c7f8dd703f5e6bd41f086bfde403b4d3bb874b0ff77977313149b8d6a7a",
+      "supersedesAnnotationRecordId": null
+    },
+    {
+      "annotatedEventId": "history.decision.supervisor_report.initial.offline.v1.record.v1.event.002.decision_recorded",
+      "annotationRecordId": "annotation.history.decision.supervisor_report.initial.offline.v1.record.v1.event.011.prior_event_annotated",
+      "appendOnly": true,
+      "decisionHistoryRecordId": "history.decision.supervisor_report.initial.offline.v1.record.v1",
+      "eventId": "history.decision.supervisor_report.initial.offline.v1.record.v1.event.011.prior_event_annotated",
+      "integrityHash": "edc9ad85614ada3b15bc72c1c62d3f345c01afa2bfcee2aebd0751b07098be49",
+      "supersedesAnnotationRecordId": null
+    },
+    {
+      "annotatedEventId": "history.decision.text_cleanup.initial.offline.v1.record.v1.event.002.decision_recorded",
+      "annotationRecordId": "annotation.history.decision.text_cleanup.initial.offline.v1.record.v1.event.013.prior_event_annotated",
+      "appendOnly": true,
+      "decisionHistoryRecordId": "history.decision.text_cleanup.initial.offline.v1.record.v1",
+      "eventId": "history.decision.text_cleanup.initial.offline.v1.record.v1.event.013.prior_event_annotated",
+      "integrityHash": "2b528a345ee7fcd1baf9333ab245c9dfd3a8cbaa6be67b35e0440cd779896d94",
+      "supersedesAnnotationRecordId": null
+    }
+  ],
+  "generatedArtifact": true,
+  "generatedFrom": "bridge-api/decision-governance"
+}

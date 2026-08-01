@@ -1,0 +1,5 @@
+{
+  "schemaVersion": "intelligence.decision.governance.attestation.v1",
+  "certificationClaim": false,
+  "complianceCertified": false
+}

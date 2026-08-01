@@ -1,0 +1,53 @@
+<!-- Generated from bridge-api/decision-governance. Do not hand-edit. -->
+# Governance Event Catalog
+
+| Event | Type | Sequence | Actor | Chain Hash |
+| --- | --- | --- | --- | --- |
+| history.decision.structured_response.fail_closed.offline.v1.record.v1.event.001.history_record_created | HISTORY_RECORD_CREATED | 1 | SYSTEM | 90ca047b64dad3e6584beaa5a9c5447cba0147b134508e879f2f8dc9103911d5 |
+| history.decision.structured_response.fail_closed.offline.v1.record.v1.event.002.decision_recorded | DECISION_RECORDED | 2 | SYSTEM | 4b88601b44675a496bd9a4382eb1e88bf6e55f4ac10bec133466b7db287f9f0e |
+| history.decision.structured_response.fail_closed.offline.v1.record.v1.event.003.review_requested | REVIEW_REQUESTED | 3 | SYSTEM | 45badb7cd5d7d09129cf35ab98b20735d03a33ccb2ac5a16859b5f469c36a5bb |
+| history.decision.structured_response.fail_closed.offline.v1.record.v1.event.004.review_completed | REVIEW_COMPLETED | 4 | REVIEWER | 5544cde59251556ef5ac1deff775383b4f9dcfac872cec9c6f06f8cc2ed0339f |
+| history.decision.structured_response.fail_closed.offline.v1.record.v1.event.005.evidence_stale_detected | EVIDENCE_STALE_DETECTED | 5 | SYSTEM | 5d970503eeb952e07d466f612c438b9f14f3821706b56fe8c028b12167efd453 |
+| history.decision.structured_response.fail_closed.offline.v1.record.v1.event.006.policy_drift_detected | POLICY_DRIFT_DETECTED | 6 | SYSTEM | 28f657dae1ee6fa2f6ede305563d37b738d497694a8ca044ba41629aa4581941 |
+| history.decision.structured_response.fail_closed.offline.v1.record.v1.event.007.finding_recorded | FINDING_RECORDED | 7 | REVIEWER | a50c3d063bc8ab1ee96c840ca3f0ec57b5e72a38df338ea10f1afd298294335e |
+| history.decision.structured_response.fail_closed.offline.v1.record.v1.event.008.remediation_linked | REMEDIATION_LINKED | 8 | REVIEWER | bc089b224e77177545519e758ab2553389764bfba4d6118aade0a18ad0591edc |
+| history.decision.structured_response.fail_closed.offline.v1.record.v1.event.009.replay_requested | REPLAY_REQUESTED | 9 | SYSTEM | ea059ed8908a6c30b5064b6a1b7738f6d162c6eaad475e64c57cabebef370e85 |
+| history.decision.structured_response.fail_closed.offline.v1.record.v1.event.010.replay_completed | REPLAY_COMPLETED | 10 | SYSTEM | a89a2901f11383fc794f2900fad85f09925f4dfcef663db55cc1c6baf46dcb4e |
+| history.decision.structured_response.fail_closed.offline.v1.record.v1.event.011.reproducibility_confirmed | REPRODUCIBILITY_CONFIRMED | 11 | SYSTEM | a945d16a4eb75a69b61daa44b3a6b3fce3c26161862c14c96ffe007d07ec31c3 |
+| history.decision.structured_response.fail_closed.offline.v1.record.v1.event.012.attestation_recorded | ATTESTATION_RECORDED | 12 | SYSTEM | 3bf87614991903d64d9a5c1d2d7aebdb39ee9d4d4e91606d352bf75355a152e5 |
+| history.decision.structured_response.fail_closed.offline.v1.record.v1.event.013.prior_event_annotated | PRIOR_EVENT_ANNOTATED | 13 | REVIEWER | 1eb727beca56835e9019e3a893be1f75fdddbd2becf3ad449e7b798b34dd3c9a |
+| history.decision.structured_response.initial.offline.v1.record.v1.event.001.history_record_created | HISTORY_RECORD_CREATED | 1 | SYSTEM | d445d7b85df33ff50cd8e38b22fa2cf213d9194c48c3b1d1ebea439148bfbb00 |
+| history.decision.structured_response.initial.offline.v1.record.v1.event.002.decision_recorded | DECISION_RECORDED | 2 | SYSTEM | 3d25abe88b31987b68128d656099f79145351ebda73b7e3fe33636fc0ed59a27 |
+| history.decision.structured_response.initial.offline.v1.record.v1.event.003.review_requested | REVIEW_REQUESTED | 3 | SYSTEM | 514c1fb895c8f633ed5ad644c0892924bf1ac6ab26033ec104e49dee77ee05d9 |
+| history.decision.structured_response.initial.offline.v1.record.v1.event.004.review_completed | REVIEW_COMPLETED | 4 | REVIEWER | 1a810417ee98eae8d0d104d8aeb62af5a6dbf02b05e969d83997a14acd14f6c3 |
+| history.decision.structured_response.initial.offline.v1.record.v1.event.005.approval_requested | APPROVAL_REQUESTED | 5 | SYSTEM | d764637ad1b7ab68f4606722cfcba8c9278a068998061163b474c6c42bf57121 |
+| history.decision.structured_response.initial.offline.v1.record.v1.event.006.approved_with_conditions | APPROVED_WITH_CONDITIONS | 6 | REVIEWER | a64feac729b331c565d37f440e706f3f42bac1f8117f33333759c5dae51c98df |
+| history.decision.structured_response.initial.offline.v1.record.v1.event.007.replay_requested | REPLAY_REQUESTED | 7 | SYSTEM | dbd6c8b9ce95b8acddedccdff8fb27d5e179b3308f7a3841e4839718fc62cbfd |
+| history.decision.structured_response.initial.offline.v1.record.v1.event.008.replay_completed | REPLAY_COMPLETED | 8 | SYSTEM | 2908361951f0a3b4fdf67d87f3d2f53d8486e6d14484a77188df2883d7fc9096 |
+| history.decision.structured_response.initial.offline.v1.record.v1.event.009.reproducibility_confirmed | REPRODUCIBILITY_CONFIRMED | 9 | SYSTEM | 2bc7d7a6519d1bd08a167f303e606e9e5694de0bed290375941a3bd005ac6751 |
+| history.decision.structured_response.initial.offline.v1.record.v1.event.010.attestation_recorded | ATTESTATION_RECORDED | 10 | SYSTEM | c43cd933b4e5e6dea3fbeb1362a44ddfdb522f26a0eec77033a8504113e2571c |
+| history.decision.structured_response.initial.offline.v1.record.v1.event.011.prior_event_annotated | PRIOR_EVENT_ANNOTATED | 11 | REVIEWER | 80d1432898bdd944987ed84f5fe31716021d4b1350964bb76634203627afc1f8 |
+| history.decision.supervisor_report.initial.offline.v1.record.v1.event.001.history_record_created | HISTORY_RECORD_CREATED | 1 | SYSTEM | 2536fbdb42d7d5799197d881f4d8a481bbec5897d199062c9ba4f18eb0da4ad6 |
+| history.decision.supervisor_report.initial.offline.v1.record.v1.event.002.decision_recorded | DECISION_RECORDED | 2 | SYSTEM | 45872a30b2cf883b43f56d53afa1de8524b7f717ed1e848fa37cf89b47078e37 |
+| history.decision.supervisor_report.initial.offline.v1.record.v1.event.003.review_requested | REVIEW_REQUESTED | 3 | SYSTEM | c61c11f24528de17cc1993ff50b1e6cfb3fdb0a0221da106ae1dd0898dc8c26d |
+| history.decision.supervisor_report.initial.offline.v1.record.v1.event.004.review_completed | REVIEW_COMPLETED | 4 | REVIEWER | 3af5686981acbf403abbe37d065c271b55aa8097156240d2c1af8e17a523413a |
+| history.decision.supervisor_report.initial.offline.v1.record.v1.event.005.human_review_required | HUMAN_REVIEW_REQUIRED | 5 | SYSTEM | 4f763c7280ce606b2211146ea51f9f7c6b26b2250708dfff453f5969b906e6f5 |
+| history.decision.supervisor_report.initial.offline.v1.record.v1.event.006.human_review_unresolved | HUMAN_REVIEW_UNRESOLVED | 6 | UNKNOWN | 30290092fbe2c5d0ab583f1bd37ac71ff1d9de00510bf0710fdfe6b5a4f9bbb2 |
+| history.decision.supervisor_report.initial.offline.v1.record.v1.event.007.replay_requested | REPLAY_REQUESTED | 7 | SYSTEM | c7bac3b3e420fea3b367e35a21ea16ba18934131716ac2a4812de883ea957aa1 |
+| history.decision.supervisor_report.initial.offline.v1.record.v1.event.008.replay_completed | REPLAY_COMPLETED | 8 | SYSTEM | ccf224832c63f0725474de77e1b902e22f5e36922b425a2358237907792861b9 |
+| history.decision.supervisor_report.initial.offline.v1.record.v1.event.009.reproducibility_confirmed | REPRODUCIBILITY_CONFIRMED | 9 | SYSTEM | 868d06c3c68bcede0be76f0b6f85b7664925a41e2d59ad3eef4dfc1655c59464 |
+| history.decision.supervisor_report.initial.offline.v1.record.v1.event.010.attestation_recorded | ATTESTATION_RECORDED | 10 | SYSTEM | 674aacc51abe3ba016dea9e5dcd0dccc1bee26fb68680aa47a5559b0b56ddae5 |
+| history.decision.supervisor_report.initial.offline.v1.record.v1.event.011.prior_event_annotated | PRIOR_EVENT_ANNOTATED | 11 | REVIEWER | 745edc8b42a006cc8f8115d99766564f8e2c73e0078b67526630f051c3382130 |
+| history.decision.text_cleanup.initial.offline.v1.record.v1.event.001.history_record_created | HISTORY_RECORD_CREATED | 1 | SYSTEM | e46307eca96c10626732c41a7e5f014ce2ad4ea45fa7b32a0802482155d66831 |
+| history.decision.text_cleanup.initial.offline.v1.record.v1.event.002.decision_recorded | DECISION_RECORDED | 2 | SYSTEM | fb8726b56f983f741ce93fa74372fac46628122e9927c5246038947f12bc59bd |
+| history.decision.text_cleanup.initial.offline.v1.record.v1.event.003.review_requested | REVIEW_REQUESTED | 3 | SYSTEM | 6cd01333e5984adf5ad5d20a911caca63a1027949f5728d2d02c97628fd7172c |
+| history.decision.text_cleanup.initial.offline.v1.record.v1.event.004.review_completed | REVIEW_COMPLETED | 4 | REVIEWER | 0af657492f09a2a4fd2320bdf0f59b8a8631b93635f1139ea1e7d1e57a57c2c2 |
+| history.decision.text_cleanup.initial.offline.v1.record.v1.event.005.approval_requested | APPROVAL_REQUESTED | 5 | SYSTEM | 1a71ee72be7da9a018c3a18d88c839ceab827f2d0521158ae37fbe7fb6456453 |
+| history.decision.text_cleanup.initial.offline.v1.record.v1.event.006.approved_with_conditions | APPROVED_WITH_CONDITIONS | 6 | REVIEWER | 8652a9d24739ee90202789b19f7fd4685bc9c0b61430aec39f9843df170641da |
+| history.decision.text_cleanup.initial.offline.v1.record.v1.event.007.exception_requested | EXCEPTION_REQUESTED | 7 | REVIEWER | dc4413d57506370b4e0090eb5c54eb347db67750f15d657e63cb668f4aef9b7e |
+| history.decision.text_cleanup.initial.offline.v1.record.v1.event.008.exception_granted | EXCEPTION_GRANTED | 8 | REVIEWER | 2e2568d19d6a5c933dada69357572712f2f3c7cda31c7dac075e273682b6988f |
+| history.decision.text_cleanup.initial.offline.v1.record.v1.event.009.replay_requested | REPLAY_REQUESTED | 9 | SYSTEM | 0e49e7cdc8d1836eb294ab14b98f3ebb4a3e41fda47961abfecee313b923a4ba |
+| history.decision.text_cleanup.initial.offline.v1.record.v1.event.010.replay_completed | REPLAY_COMPLETED | 10 | SYSTEM | f4bf5bc552f7ffc4ed70267e8817660ef0d0e91afd470dc036f85cfec235ad98 |
+| history.decision.text_cleanup.initial.offline.v1.record.v1.event.011.reproducibility_confirmed | REPRODUCIBILITY_CONFIRMED | 11 | SYSTEM | ee7218f2d86e5350351fe0c1617ed4802afc442a67fecb256c9d627a6fe5dc1a |
+| history.decision.text_cleanup.initial.offline.v1.record.v1.event.012.attestation_recorded | ATTESTATION_RECORDED | 12 | SYSTEM | c2f61e8720f9829e1f3461eb114583756ccc3b97bfd86d3f50b1bcfc899f440b |
+| history.decision.text_cleanup.initial.offline.v1.record.v1.event.013.prior_event_annotated | PRIOR_EVENT_ANNOTATED | 13 | REVIEWER | ca2e7674c94eddb4517233ee0ee625918bf5252e4c0ad02f3a8b6458be5bd8bd |

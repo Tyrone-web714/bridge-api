@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "intelligence.decision.governance.review.v1",
+  "reviewState": "NOT_REQUESTED",
+  "reviewer": {
+    "actorType": "UNKNOWN",
+    "actorId": "UNKNOWN"
+  },
+  "approvalInferred": false
+}

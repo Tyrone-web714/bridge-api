@@ -1,0 +1,66 @@
+{
+  "generatedArtifact": true,
+  "generatedFrom": "bridge-api/decision-governance",
+  "replays": [
+    {
+      "decisionHistoryRecordId": "history.decision.structured_response.fail_closed.offline.v1.record.v1",
+      "eventId": "history.decision.structured_response.fail_closed.offline.v1.record.v1.event.010.replay_completed",
+      "exactReplay": true,
+      "integrityHash": "3b451bcc2dc99fa84c9ac7c59ab2e8c6387db53fb7c431a6171d66e7f13a43a6",
+      "liveExecutionInvoked": false,
+      "mismatchRecorded": false,
+      "originalDecisionRecordHash": "ea922edca1323e884d0cbcd9529fad050ac289dcfb14d54f0ccc3e14100165b7",
+      "overwroteOriginalDecision": false,
+      "productionApplicable": false,
+      "replayDecisionRecordHash": "ea922edca1323e884d0cbcd9529fad050ac289dcfb14d54f0ccc3e14100165b7",
+      "replayRecordId": "replay.decision.structured_response.fail_closed.offline.v1.record.v1.10",
+      "schemaVersion": "intelligence.decision.governance.replay.v1",
+      "testOnly": true
+    },
+    {
+      "decisionHistoryRecordId": "history.decision.structured_response.initial.offline.v1.record.v1",
+      "eventId": "history.decision.structured_response.initial.offline.v1.record.v1.event.008.replay_completed",
+      "exactReplay": true,
+      "integrityHash": "9e7ce2ef3640fbef4d99d260a951a04fc87be8691fac62ba6f05311c204f98ec",
+      "liveExecutionInvoked": false,
+      "mismatchRecorded": false,
+      "originalDecisionRecordHash": "f0632783889a4d5c847ea2bae2ab5fe71f848cb8968233111f01910560a6bfe5",
+      "overwroteOriginalDecision": false,
+      "productionApplicable": false,
+      "replayDecisionRecordHash": "f0632783889a4d5c847ea2bae2ab5fe71f848cb8968233111f01910560a6bfe5",
+      "replayRecordId": "replay.decision.structured_response.initial.offline.v1.record.v1.8",
+      "schemaVersion": "intelligence.decision.governance.replay.v1",
+      "testOnly": true
+    },
+    {
+      "decisionHistoryRecordId": "history.decision.supervisor_report.initial.offline.v1.record.v1",
+      "eventId": "history.decision.supervisor_report.initial.offline.v1.record.v1.event.008.replay_completed",
+      "exactReplay": true,
+      "integrityHash": "5c0ceec0beb8c29aeb3504161f8f009ca78a5d1ec9d5a9778250362355c384bf",
+      "liveExecutionInvoked": false,
+      "mismatchRecorded": false,
+      "originalDecisionRecordHash": "28b86b27c121c4da3a89e6cbaef91cabd72aa40d253dc97fc4150df3ecda0d3c",
+      "overwroteOriginalDecision": false,
+      "productionApplicable": false,
+      "replayDecisionRecordHash": "28b86b27c121c4da3a89e6cbaef91cabd72aa40d253dc97fc4150df3ecda0d3c",
+      "replayRecordId": "replay.decision.supervisor_report.initial.offline.v1.record.v1.8",
+      "schemaVersion": "intelligence.decision.governance.replay.v1",
+      "testOnly": true
+    },
+    {
+      "decisionHistoryRecordId": "history.decision.text_cleanup.initial.offline.v1.record.v1",
+      "eventId": "history.decision.text_cleanup.initial.offline.v1.record.v1.event.010.replay_completed",
+      "exactReplay": true,
+      "integrityHash": "0db653adcf9b2cebf381497399de25a6ba93091efbb66ee271a1c636482bd8db",
+      "liveExecutionInvoked": false,
+      "mismatchRecorded": false,
+      "originalDecisionRecordHash": "70a72a0a9a6cc540f7517afe2548bbf2163357b03f19edf4c712ba609e14721b",
+      "overwroteOriginalDecision": false,
+      "productionApplicable": false,
+      "replayDecisionRecordHash": "70a72a0a9a6cc540f7517afe2548bbf2163357b03f19edf4c712ba609e14721b",
+      "replayRecordId": "replay.decision.text_cleanup.initial.offline.v1.record.v1.10",
+      "schemaVersion": "intelligence.decision.governance.replay.v1",
+      "testOnly": true
+    }
+  ]
+}

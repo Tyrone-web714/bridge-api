@@ -1,0 +1,7 @@
+{
+  "schemaVersion": "intelligence.decision.history.record.v1",
+  "decisionHistoryRecordId": "history.template",
+  "immutableDecisionSnapshot": true,
+  "testOnly": true,
+  "productionUseAllowed": false
+}

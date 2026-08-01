@@ -1,0 +1,36 @@
+{
+  "generatedArtifact": true,
+  "generatedFrom": "bridge-api/decision-governance",
+  "profiles": [
+    {
+      "certificationClaimsAllowed": false,
+      "contentHash": "5f8a51a972ec6b82f082566ada612182e993b820152481740a4ac65e7223f88c",
+      "governancePolicyProfileId": "CONSERVATIVE_TEST_GOVERNANCE_PROFILE",
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "productionApprovalAllowed": false,
+      "productionUseAllowed": false,
+      "testOnly": true,
+      "version": "0.1.0"
+    },
+    {
+      "certificationClaimsAllowed": false,
+      "contentHash": "a59ced63e8dbb459c200a7944d27a66abe6931950794aa7a5204ea9cc9fea34b",
+      "governancePolicyProfileId": "FAIL_CLOSED_GOVERNANCE_PROFILE",
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "productionApprovalAllowed": false,
+      "productionUseAllowed": false,
+      "testOnly": true,
+      "version": "0.1.0"
+    },
+    {
+      "certificationClaimsAllowed": false,
+      "contentHash": "8f7f9cf110fda8a7894a1b329dc2cde934fd24a96fd5426a6100273375141d93",
+      "governancePolicyProfileId": "HUMAN_REVIEW_GOVERNANCE_PROFILE",
+      "lifecycleState": "APPROVED_FOR_TEST",
+      "productionApprovalAllowed": false,
+      "productionUseAllowed": false,
+      "testOnly": true,
+      "version": "0.1.0"
+    }
+  ]
+}

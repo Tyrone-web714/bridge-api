@@ -1,0 +1,4 @@
+{
+  "eventType": "EVIDENCE_STALE_DETECTED",
+  "staleDoesNotInvalidateOriginal": true
+}

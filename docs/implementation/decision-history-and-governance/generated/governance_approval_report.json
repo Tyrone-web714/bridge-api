@@ -1,0 +1,94 @@
+{
+  "approvals": [
+    {
+      "approvalRecord": null,
+      "approvalState": "NOT_REQUESTED",
+      "decisionHistoryRecordId": "history.decision.structured_response.fail_closed.offline.v1.record.v1"
+    },
+    {
+      "approvalRecord": {
+        "approvalRecordId": "approval.decision.structured_response.initial.offline.v1.record.v1",
+        "approvalScope": "TEST_FIXTURE_ONLY",
+        "approvalState": "APPROVED_WITH_CONDITIONS",
+        "approver": {
+          "OrganizationContext": null,
+          "actorId": "synthetic-test-approver",
+          "actorType": "REVIEWER",
+          "authenticationContextReference": null,
+          "authorityScope": "TEST_REVIEW_ONLY",
+          "displayLabel": "Synthetic reviewer: synthetic-test-approver",
+          "productionAuthorized": false,
+          "source": "fixture",
+          "testFixture": true,
+          "verified": true
+        },
+        "authority": "NO_PRODUCTION_AUTHORITY",
+        "completionEventId": "history.decision.structured_response.initial.offline.v1.record.v1.event.006.approved_with_conditions",
+        "conditions": [
+          "fallback plan remains advisory",
+          "no production activation"
+        ],
+        "integrityHash": "0b03c0db6427e88a50dd80ed333aa88f7a2398c3f2231565c8c8b6d40bb7d16e",
+        "productionApplicable": false,
+        "reviewedEvidence": {
+          "costGovernanceRunHashes": [
+            "ed719b95bb64ae4dc86e844eb7d50dad8ae2efa942ccf6ac87997f62dcdb339b"
+          ],
+          "scoreRunHashes": [
+            "c0d5cdb66b2e772031af8b362a5b8cdd3b52635a53da3b39e5247b2c0238d534"
+          ]
+        },
+        "schemaVersion": "intelligence.decision.governance.approval.v1",
+        "testOnly": true
+      },
+      "approvalState": "APPROVED_WITH_CONDITIONS",
+      "decisionHistoryRecordId": "history.decision.structured_response.initial.offline.v1.record.v1"
+    },
+    {
+      "approvalRecord": null,
+      "approvalState": "NOT_REQUESTED",
+      "decisionHistoryRecordId": "history.decision.supervisor_report.initial.offline.v1.record.v1"
+    },
+    {
+      "approvalRecord": {
+        "approvalRecordId": "approval.decision.text_cleanup.initial.offline.v1.record.v1",
+        "approvalScope": "TEST_FIXTURE_ONLY",
+        "approvalState": "APPROVED_WITH_CONDITIONS",
+        "approver": {
+          "OrganizationContext": null,
+          "actorId": "synthetic-test-approver",
+          "actorType": "REVIEWER",
+          "authenticationContextReference": null,
+          "authorityScope": "TEST_REVIEW_ONLY",
+          "displayLabel": "Synthetic reviewer: synthetic-test-approver",
+          "productionAuthorized": false,
+          "source": "fixture",
+          "testFixture": true,
+          "verified": true
+        },
+        "authority": "NO_PRODUCTION_AUTHORITY",
+        "completionEventId": "history.decision.text_cleanup.initial.offline.v1.record.v1.event.006.approved_with_conditions",
+        "conditions": [
+          "fallback plan remains advisory",
+          "no production activation"
+        ],
+        "integrityHash": "12de41c9e98b8cec0d24cdaab20c71039ccd12c626ea187fc0d095f14ab93c8d",
+        "productionApplicable": false,
+        "reviewedEvidence": {
+          "costGovernanceRunHashes": [
+            "962f965f8582362d4d162c641089bcfd3ff668a92539f0a773ae436f6a5b1fdd"
+          ],
+          "scoreRunHashes": [
+            "c0d5cdb66b2e772031af8b362a5b8cdd3b52635a53da3b39e5247b2c0238d534"
+          ]
+        },
+        "schemaVersion": "intelligence.decision.governance.approval.v1",
+        "testOnly": true
+      },
+      "approvalState": "APPROVED_WITH_CONDITIONS",
+      "decisionHistoryRecordId": "history.decision.text_cleanup.initial.offline.v1.record.v1"
+    }
+  ],
+  "generatedArtifact": true,
+  "generatedFrom": "bridge-api/decision-governance"
+}

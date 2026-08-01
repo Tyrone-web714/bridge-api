@@ -1,0 +1,26 @@
+{
+  "chains": [
+    {
+      "decisionHistoryRecordId": "history.decision.structured_response.fail_closed.offline.v1.record.v1",
+      "eventChainHash": "1eb727beca56835e9019e3a893be1f75fdddbd2becf3ad449e7b798b34dd3c9a",
+      "valid": true
+    },
+    {
+      "decisionHistoryRecordId": "history.decision.structured_response.initial.offline.v1.record.v1",
+      "eventChainHash": "80d1432898bdd944987ed84f5fe31716021d4b1350964bb76634203627afc1f8",
+      "valid": true
+    },
+    {
+      "decisionHistoryRecordId": "history.decision.supervisor_report.initial.offline.v1.record.v1",
+      "eventChainHash": "745edc8b42a006cc8f8115d99766564f8e2c73e0078b67526630f051c3382130",
+      "valid": true
+    },
+    {
+      "decisionHistoryRecordId": "history.decision.text_cleanup.initial.offline.v1.record.v1",
+      "eventChainHash": "ca2e7674c94eddb4517233ee0ee625918bf5252e4c0ad02f3a8b6458be5bd8bd",
+      "valid": true
+    }
+  ],
+  "generatedArtifact": true,
+  "generatedFrom": "bridge-api/decision-governance"
+}

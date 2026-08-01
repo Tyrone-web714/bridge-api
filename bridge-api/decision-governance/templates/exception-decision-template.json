@@ -1,0 +1,5 @@
+{
+  "schemaVersion": "intelligence.decision.governance.exception.decision.v1",
+  "decision": "DENIED",
+  "productionApplicable": false
+}

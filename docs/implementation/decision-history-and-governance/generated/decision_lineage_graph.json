@@ -1,0 +1,54 @@
+{
+  "generatedArtifact": true,
+  "generatedFrom": "bridge-api/decision-governance",
+  "graph": {
+    "deterministic": true,
+    "edges": [],
+    "graphHash": "604bdcb70ea2412d495b1d70bdcdb9cb317295037f6635cf4f0eab5f50e0137f",
+    "graphVersion": "decision.governance.lineage.graph.v1",
+    "nodes": [
+      {
+        "capabilityId": "legacy.ai.structured_response",
+        "decisionRecordId": "decision.structured_response.fail_closed.offline.v1.record.v1",
+        "historyRecordHash": "8cd5400b30637e0133fd58ba13035a78557a6fe6fd544944f0895db6e3f81b4d",
+        "id": "history.decision.structured_response.fail_closed.offline.v1.record.v1",
+        "lineageRootId": "history.decision.structured_response.fail_closed.offline.v1.record.v1",
+        "policyId": "INSUFFICIENT_EVIDENCE_FAIL_CLOSED_TEST_POLICY",
+        "supersededBy": null,
+        "supersedes": null
+      },
+      {
+        "capabilityId": "legacy.ai.structured_response",
+        "decisionRecordId": "decision.structured_response.initial.offline.v1.record.v1",
+        "historyRecordHash": "5f13c9b4973ccb19afafa48b01143f1f8fbb88daf578bd151acd5c30b61389e9",
+        "id": "history.decision.structured_response.initial.offline.v1.record.v1",
+        "lineageRootId": "history.decision.structured_response.initial.offline.v1.record.v1",
+        "policyId": "OFFLINE_FIRST_TEST_POLICY",
+        "supersededBy": null,
+        "supersedes": null
+      },
+      {
+        "capabilityId": "supervisor.daily_operations_report",
+        "decisionRecordId": "decision.supervisor_report.initial.offline.v1.record.v1",
+        "historyRecordHash": "c5c6d755d79e4d44d41364946fa019a0704b7468c569718a244833a61fa2c5a3",
+        "id": "history.decision.supervisor_report.initial.offline.v1.record.v1",
+        "lineageRootId": "history.decision.supervisor_report.initial.offline.v1.record.v1",
+        "policyId": "SAFETY_CRITICAL_TEST_POLICY",
+        "supersededBy": null,
+        "supersedes": null
+      },
+      {
+        "capabilityId": "text.cleanup",
+        "decisionRecordId": "decision.text_cleanup.initial.offline.v1.record.v1",
+        "historyRecordHash": "1a8ee3a98937a15162ce83ca128f5cf34309a31848981fcf0c9458708a6d8d43",
+        "id": "history.decision.text_cleanup.initial.offline.v1.record.v1",
+        "lineageRootId": "history.decision.text_cleanup.initial.offline.v1.record.v1",
+        "policyId": "CHEAPEST_SUFFICIENT_TEST_POLICY",
+        "supersededBy": null,
+        "supersedes": null
+      }
+    ],
+    "productionApplicable": false,
+    "testOnly": true
+  }
+}

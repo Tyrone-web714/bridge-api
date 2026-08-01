@@ -1,0 +1,38 @@
+{
+  "generatedArtifact": true,
+  "generatedFrom": "bridge-api/decision-governance",
+  "humanReviews": [
+    {
+      "decisionHistoryRecordId": "history.decision.supervisor_report.initial.offline.v1.record.v1",
+      "humanReviewRecord": {
+        "assignmentState": "UNASSIGNED_SYNTHETIC",
+        "completionEventId": "history.decision.supervisor_report.initial.offline.v1.record.v1.event.006.human_review_unresolved",
+        "conclusion": "SYNTHETIC_HUMAN_REVIEW_UNRESOLVED",
+        "containsEmployeeData": false,
+        "decisionHistoryRecordId": "history.decision.supervisor_report.initial.offline.v1.record.v1",
+        "decisionRecordId": "decision.supervisor_report.initial.offline.v1.record.v1",
+        "findings": [],
+        "humanReviewRecordId": "human-review.decision.supervisor_report.initial.offline.v1.record.v1",
+        "integrityHash": "021a5a47b34ddd310219068d5eb482251189c7d53f808ba9666371b37f05ae75",
+        "productionApplicable": false,
+        "required": true,
+        "reviewedEvidence": null,
+        "reviewer": {
+          "OrganizationContext": null,
+          "actorId": "UNKNOWN",
+          "actorType": "UNKNOWN",
+          "authenticationContextReference": null,
+          "authorityScope": "UNKNOWN",
+          "displayLabel": "UNKNOWN",
+          "productionAuthorized": false,
+          "source": "unknown",
+          "testFixture": true,
+          "verified": false
+        },
+        "schemaVersion": "intelligence.decision.governance.human_review.v1",
+        "testOnly": true
+      },
+      "humanReviewState": "UNRESOLVED"
+    }
+  ]
+}

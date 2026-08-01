@@ -1,0 +1,106 @@
+{
+  "attestations": [
+    {
+      "attestationRecordId": "attestation.decision.structured_response.fail_closed.offline.v1.record.v1",
+      "attestationType": "TECHNICAL_TEST_ATTESTATION",
+      "attestor": {
+        "OrganizationContext": null,
+        "actorId": "test-harness",
+        "actorType": "SYSTEM",
+        "authenticationContextReference": null,
+        "authorityScope": "TEST_FIXTURE_ONLY",
+        "displayLabel": "Synthetic system actor: test-harness",
+        "productionAuthorized": false,
+        "source": "test-harness",
+        "testFixture": true,
+        "verified": true
+      },
+      "certificationClaim": false,
+      "complianceCertified": false,
+      "decisionHistoryRecordId": "history.decision.structured_response.fail_closed.offline.v1.record.v1",
+      "eventId": "history.decision.structured_response.fail_closed.offline.v1.record.v1.event.012.attestation_recorded",
+      "integrityHash": "b5e1440d6b98b82a702df4bb47c0b11046e86987176c19bf94f57486992c2fab",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.decision.governance.attestation.v1",
+      "statement": "Repository-only deterministic validation completed for synthetic fixture.",
+      "testOnly": true
+    },
+    {
+      "attestationRecordId": "attestation.decision.structured_response.initial.offline.v1.record.v1",
+      "attestationType": "TECHNICAL_TEST_ATTESTATION",
+      "attestor": {
+        "OrganizationContext": null,
+        "actorId": "test-harness",
+        "actorType": "SYSTEM",
+        "authenticationContextReference": null,
+        "authorityScope": "TEST_FIXTURE_ONLY",
+        "displayLabel": "Synthetic system actor: test-harness",
+        "productionAuthorized": false,
+        "source": "test-harness",
+        "testFixture": true,
+        "verified": true
+      },
+      "certificationClaim": false,
+      "complianceCertified": false,
+      "decisionHistoryRecordId": "history.decision.structured_response.initial.offline.v1.record.v1",
+      "eventId": "history.decision.structured_response.initial.offline.v1.record.v1.event.010.attestation_recorded",
+      "integrityHash": "93c9753b5a54c031706be9e0ec6498fb655ca75feea979ed95b353e3a5322b11",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.decision.governance.attestation.v1",
+      "statement": "Repository-only deterministic validation completed for synthetic fixture.",
+      "testOnly": true
+    },
+    {
+      "attestationRecordId": "attestation.decision.supervisor_report.initial.offline.v1.record.v1",
+      "attestationType": "TECHNICAL_TEST_ATTESTATION",
+      "attestor": {
+        "OrganizationContext": null,
+        "actorId": "test-harness",
+        "actorType": "SYSTEM",
+        "authenticationContextReference": null,
+        "authorityScope": "TEST_FIXTURE_ONLY",
+        "displayLabel": "Synthetic system actor: test-harness",
+        "productionAuthorized": false,
+        "source": "test-harness",
+        "testFixture": true,
+        "verified": true
+      },
+      "certificationClaim": false,
+      "complianceCertified": false,
+      "decisionHistoryRecordId": "history.decision.supervisor_report.initial.offline.v1.record.v1",
+      "eventId": "history.decision.supervisor_report.initial.offline.v1.record.v1.event.010.attestation_recorded",
+      "integrityHash": "c2f1fdde60d0d584d45046835a640e771a9c6c5b0b77a2262c84e4ac9e2875d3",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.decision.governance.attestation.v1",
+      "statement": "Repository-only deterministic validation completed for synthetic fixture.",
+      "testOnly": true
+    },
+    {
+      "attestationRecordId": "attestation.decision.text_cleanup.initial.offline.v1.record.v1",
+      "attestationType": "TECHNICAL_TEST_ATTESTATION",
+      "attestor": {
+        "OrganizationContext": null,
+        "actorId": "test-harness",
+        "actorType": "SYSTEM",
+        "authenticationContextReference": null,
+        "authorityScope": "TEST_FIXTURE_ONLY",
+        "displayLabel": "Synthetic system actor: test-harness",
+        "productionAuthorized": false,
+        "source": "test-harness",
+        "testFixture": true,
+        "verified": true
+      },
+      "certificationClaim": false,
+      "complianceCertified": false,
+      "decisionHistoryRecordId": "history.decision.text_cleanup.initial.offline.v1.record.v1",
+      "eventId": "history.decision.text_cleanup.initial.offline.v1.record.v1.event.012.attestation_recorded",
+      "integrityHash": "4fa264d27cace3865ad19edfa3f916f85e11b184df6ef4afdcc18bb2c55cfe8d",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.decision.governance.attestation.v1",
+      "statement": "Repository-only deterministic validation completed for synthetic fixture.",
+      "testOnly": true
+    }
+  ],
+  "generatedArtifact": true,
+  "generatedFrom": "bridge-api/decision-governance"
+}
