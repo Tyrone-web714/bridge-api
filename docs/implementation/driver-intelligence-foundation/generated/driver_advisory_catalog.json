@@ -1,0 +1,316 @@
+{
+  "advisories": [
+    {
+      "advisoryHash": "f59d06ddfc754f89d1820ad557b8caf6af210801b8dab1ea991bc12a82d11fc5",
+      "advisoryId": "driver.advisory.driver_route_adherence.route_deviation_warning",
+      "advisoryType": "RETURN_TO_ROUTE",
+      "employeeScoring": false,
+      "providerGenerated": false,
+      "reasonCode": "ROUTE_DEVIATION_WARNING",
+      "sourceAssessmentType": "DRIVER_ROUTE_ADHERENCE",
+      "structuredOnly": true
+    },
+    {
+      "advisoryHash": "b74310e48bfcaf2df2bd0aaa97e196cb253825c0bd9677d17c32330fd6f7c43d",
+      "advisoryId": "driver.advisory.driver_speed_compliance.speed_advisory_60",
+      "advisoryType": "REDUCE_SPEED",
+      "employeeScoring": false,
+      "providerGenerated": false,
+      "reasonCode": "SPEED_ADVISORY_60",
+      "sourceAssessmentType": "DRIVER_SPEED_COMPLIANCE",
+      "structuredOnly": true
+    },
+    {
+      "advisoryHash": "b74310e48bfcaf2df2bd0aaa97e196cb253825c0bd9677d17c32330fd6f7c43d",
+      "advisoryId": "driver.advisory.driver_speed_compliance.speed_advisory_60",
+      "advisoryType": "REDUCE_SPEED",
+      "employeeScoring": false,
+      "providerGenerated": false,
+      "reasonCode": "SPEED_ADVISORY_60",
+      "sourceAssessmentType": "DRIVER_SPEED_COMPLIANCE",
+      "structuredOnly": true
+    },
+    {
+      "advisoryHash": "b74310e48bfcaf2df2bd0aaa97e196cb253825c0bd9677d17c32330fd6f7c43d",
+      "advisoryId": "driver.advisory.driver_speed_compliance.speed_advisory_60",
+      "advisoryType": "REDUCE_SPEED",
+      "employeeScoring": false,
+      "providerGenerated": false,
+      "reasonCode": "SPEED_ADVISORY_60",
+      "sourceAssessmentType": "DRIVER_SPEED_COMPLIANCE",
+      "structuredOnly": true
+    },
+    {
+      "advisoryHash": "e10e79acb6b7a361d27b3f45797cb0aebd1c3f23ce9d25b04bbee192f8de4ca7",
+      "advisoryId": "driver.advisory.driver_speed_compliance.speed_warning_65",
+      "advisoryType": "REDUCE_SPEED",
+      "employeeScoring": false,
+      "providerGenerated": false,
+      "reasonCode": "SPEED_WARNING_65",
+      "sourceAssessmentType": "DRIVER_SPEED_COMPLIANCE",
+      "structuredOnly": true
+    },
+    {
+      "advisoryHash": "e2900a9b7d80e1c09d8bbda2e09f0ede476a11b3dd69ee51959d02e36fb62a48",
+      "advisoryId": "driver.advisory.driver_speed_compliance.speed_repeated_warning",
+      "advisoryType": "REDUCE_SPEED",
+      "employeeScoring": false,
+      "providerGenerated": false,
+      "reasonCode": "SPEED_REPEATED_WARNING",
+      "sourceAssessmentType": "DRIVER_SPEED_COMPLIANCE",
+      "structuredOnly": true
+    },
+    {
+      "advisoryHash": "f02605c0c91a6c5d5cdc8bb7bdb8d986227beaefd413758fe1546d7649d4fd3d",
+      "advisoryId": "driver.advisory.driver_speed_compliance.speed_evidence_stale",
+      "advisoryType": "UNABLE_TO_DETERMINE",
+      "employeeScoring": false,
+      "providerGenerated": false,
+      "reasonCode": "SPEED_EVIDENCE_STALE",
+      "sourceAssessmentType": "DRIVER_SPEED_COMPLIANCE",
+      "structuredOnly": true
+    },
+    {
+      "advisoryHash": "50d5e57e27acd802d7d9948157c0cd12ae6ee2a3f688f22c81dbb59d15c4275a",
+      "advisoryId": "driver.advisory.driver_stop_progress.stop_geometry_insufficient",
+      "advisoryType": "UNABLE_TO_DETERMINE",
+      "employeeScoring": false,
+      "providerGenerated": false,
+      "reasonCode": "STOP_GEOMETRY_INSUFFICIENT",
+      "sourceAssessmentType": "DRIVER_STOP_PROGRESS",
+      "structuredOnly": true
+    },
+    {
+      "advisoryHash": "d03cf742a5f3ee21eea733a897377984b18a1826af6ad63c48918ed9e5548f86",
+      "advisoryId": "driver.advisory.driver_low_bridge_approach.low_bridge_approach",
+      "advisoryType": "LOW_BRIDGE_AHEAD",
+      "employeeScoring": false,
+      "providerGenerated": false,
+      "reasonCode": "LOW_BRIDGE_APPROACH",
+      "sourceAssessmentType": "DRIVER_LOW_BRIDGE_APPROACH",
+      "structuredOnly": true
+    },
+    {
+      "advisoryHash": "16e2368c0a40fabaeed22a38e450cec5c39a1a3b41fea11407380a956a444e23",
+      "advisoryId": "driver.advisory.driver_restricted_road_approach.restricted_road_approach",
+      "advisoryType": "RESTRICTED_ROAD_AHEAD",
+      "employeeScoring": false,
+      "providerGenerated": false,
+      "reasonCode": "RESTRICTED_ROAD_APPROACH",
+      "sourceAssessmentType": "DRIVER_RESTRICTED_ROAD_APPROACH",
+      "structuredOnly": true
+    },
+    {
+      "advisoryHash": "ea4e3f85286f76d2c9e0881b1449ef66d543024265199a55de6d47b6b2c8a131",
+      "advisoryId": "driver.advisory.driver_restricted_road_approach.no_through_truck_approach",
+      "advisoryType": "NO_THROUGH_TRUCK_AHEAD",
+      "employeeScoring": false,
+      "providerGenerated": false,
+      "reasonCode": "NO_THROUGH_TRUCK_APPROACH",
+      "sourceAssessmentType": "DRIVER_RESTRICTED_ROAD_APPROACH",
+      "structuredOnly": true
+    },
+    {
+      "advisoryHash": "f1d1631d16db37354e650d9b67dcda4483f3fed447bf0101d099a4891f598cd8",
+      "advisoryId": "driver.advisory.driver_restricted_road_approach.local_delivery_exception",
+      "advisoryType": "RESIDENTIAL_AREA_ADVISORY",
+      "employeeScoring": false,
+      "providerGenerated": false,
+      "reasonCode": "LOCAL_DELIVERY_EXCEPTION",
+      "sourceAssessmentType": "DRIVER_RESTRICTED_ROAD_APPROACH",
+      "structuredOnly": true
+    },
+    {
+      "advisoryHash": "9b08d046f54937e7afd53e0d0849ef1b12823414eb9ae7d90411463f51eaf330",
+      "advisoryId": "driver.advisory.driver_restricted_road_approach.residential_area_approach",
+      "advisoryType": "RESIDENTIAL_AREA_ADVISORY",
+      "employeeScoring": false,
+      "providerGenerated": false,
+      "reasonCode": "RESIDENTIAL_AREA_APPROACH",
+      "sourceAssessmentType": "DRIVER_RESTRICTED_ROAD_APPROACH",
+      "structuredOnly": true
+    },
+    {
+      "advisoryHash": "0850bffb201059b7c17491732052d1c8b73b35beadb31369085ac970b8ab8061",
+      "advisoryId": "driver.advisory.driver_restricted_road_approach.residential_prohibition_approach",
+      "advisoryType": "RESTRICTED_ROAD_AHEAD",
+      "employeeScoring": false,
+      "providerGenerated": false,
+      "reasonCode": "RESIDENTIAL_PROHIBITION_APPROACH",
+      "sourceAssessmentType": "DRIVER_RESTRICTED_ROAD_APPROACH",
+      "structuredOnly": true
+    },
+    {
+      "advisoryHash": "7c9ad3c77cdef7a021474ba1aab9ce497bfa2104a7d550dc57fe3e083661e7c5",
+      "advisoryId": "driver.advisory.driver_restricted_road_approach.road_closure_approach",
+      "advisoryType": "RESTRICTED_ROAD_AHEAD",
+      "employeeScoring": false,
+      "providerGenerated": false,
+      "reasonCode": "ROAD_CLOSURE_APPROACH",
+      "sourceAssessmentType": "DRIVER_RESTRICTED_ROAD_APPROACH",
+      "structuredOnly": true
+    },
+    {
+      "advisoryHash": "18bd7ea12601fbbb12e8435a3d70bbbeb7c81510e56083fb4c762911e84a0531",
+      "advisoryId": "driver.advisory.driver_route_adherence.route_evidence_insufficient",
+      "advisoryType": "UNABLE_TO_DETERMINE",
+      "employeeScoring": false,
+      "providerGenerated": false,
+      "reasonCode": "ROUTE_EVIDENCE_INSUFFICIENT",
+      "sourceAssessmentType": "DRIVER_ROUTE_ADHERENCE",
+      "structuredOnly": true
+    },
+    {
+      "advisoryHash": "47eb395de0656cf24b3ee2f0b55c9c18cee199f38b9ceb2fb40d71f649383aba",
+      "advisoryId": "driver.advisory.driver_speed_compliance.gps_unavailable",
+      "advisoryType": "UNABLE_TO_DETERMINE",
+      "employeeScoring": false,
+      "providerGenerated": false,
+      "reasonCode": "GPS_UNAVAILABLE",
+      "sourceAssessmentType": "DRIVER_SPEED_COMPLIANCE",
+      "structuredOnly": true
+    },
+    {
+      "advisoryHash": "346af30637b3f81b8fbb2d67a7e1b5a2044897625c3db4f5d2311b745ae699f9",
+      "advisoryId": "driver.advisory.driver_low_bridge_approach.gps_unavailable",
+      "advisoryType": "UNABLE_TO_DETERMINE",
+      "employeeScoring": false,
+      "providerGenerated": false,
+      "reasonCode": "GPS_UNAVAILABLE",
+      "sourceAssessmentType": "DRIVER_LOW_BRIDGE_APPROACH",
+      "structuredOnly": true
+    },
+    {
+      "advisoryHash": "5dc5e0a4da14088779abf9f06a67622b5919d92d31b38d01bdf43b6889b5cc2a",
+      "advisoryId": "driver.advisory.driver_restricted_road_approach.gps_unavailable",
+      "advisoryType": "UNABLE_TO_DETERMINE",
+      "employeeScoring": false,
+      "providerGenerated": false,
+      "reasonCode": "GPS_UNAVAILABLE",
+      "sourceAssessmentType": "DRIVER_RESTRICTED_ROAD_APPROACH",
+      "structuredOnly": true
+    },
+    {
+      "advisoryHash": "4adb63d35aaff10816fcebe676bc02d9f548e11e8a612786eacc65b75aae78ad",
+      "advisoryId": "driver.advisory.driver_evidence_completeness.human_review_required",
+      "advisoryType": "REVIEW_REQUIRED",
+      "employeeScoring": false,
+      "providerGenerated": false,
+      "reasonCode": "HUMAN_REVIEW_REQUIRED",
+      "sourceAssessmentType": "DRIVER_EVIDENCE_COMPLETENESS",
+      "structuredOnly": true
+    },
+    {
+      "advisoryHash": "2737b40a30025377a4550ada0575ffe9d8dcde5ca29296a739547ff3de2fbc3b",
+      "advisoryId": "driver.advisory.driver_speed_compliance.speed_unknown",
+      "advisoryType": "UNABLE_TO_DETERMINE",
+      "employeeScoring": false,
+      "providerGenerated": false,
+      "reasonCode": "SPEED_UNKNOWN",
+      "sourceAssessmentType": "DRIVER_SPEED_COMPLIANCE",
+      "structuredOnly": true
+    },
+    {
+      "advisoryHash": "4adb63d35aaff10816fcebe676bc02d9f548e11e8a612786eacc65b75aae78ad",
+      "advisoryId": "driver.advisory.driver_evidence_completeness.human_review_required",
+      "advisoryType": "REVIEW_REQUIRED",
+      "employeeScoring": false,
+      "providerGenerated": false,
+      "reasonCode": "HUMAN_REVIEW_REQUIRED",
+      "sourceAssessmentType": "DRIVER_EVIDENCE_COMPLETENESS",
+      "structuredOnly": true
+    },
+    {
+      "advisoryHash": "18bd7ea12601fbbb12e8435a3d70bbbeb7c81510e56083fb4c762911e84a0531",
+      "advisoryId": "driver.advisory.driver_route_adherence.route_evidence_insufficient",
+      "advisoryType": "UNABLE_TO_DETERMINE",
+      "employeeScoring": false,
+      "providerGenerated": false,
+      "reasonCode": "ROUTE_EVIDENCE_INSUFFICIENT",
+      "sourceAssessmentType": "DRIVER_ROUTE_ADHERENCE",
+      "structuredOnly": true
+    },
+    {
+      "advisoryHash": "346af30637b3f81b8fbb2d67a7e1b5a2044897625c3db4f5d2311b745ae699f9",
+      "advisoryId": "driver.advisory.driver_low_bridge_approach.gps_unavailable",
+      "advisoryType": "UNABLE_TO_DETERMINE",
+      "employeeScoring": false,
+      "providerGenerated": false,
+      "reasonCode": "GPS_UNAVAILABLE",
+      "sourceAssessmentType": "DRIVER_LOW_BRIDGE_APPROACH",
+      "structuredOnly": true
+    },
+    {
+      "advisoryHash": "5dc5e0a4da14088779abf9f06a67622b5919d92d31b38d01bdf43b6889b5cc2a",
+      "advisoryId": "driver.advisory.driver_restricted_road_approach.gps_unavailable",
+      "advisoryType": "UNABLE_TO_DETERMINE",
+      "employeeScoring": false,
+      "providerGenerated": false,
+      "reasonCode": "GPS_UNAVAILABLE",
+      "sourceAssessmentType": "DRIVER_RESTRICTED_ROAD_APPROACH",
+      "structuredOnly": true
+    },
+    {
+      "advisoryHash": "4adb63d35aaff10816fcebe676bc02d9f548e11e8a612786eacc65b75aae78ad",
+      "advisoryId": "driver.advisory.driver_evidence_completeness.human_review_required",
+      "advisoryType": "REVIEW_REQUIRED",
+      "employeeScoring": false,
+      "providerGenerated": false,
+      "reasonCode": "HUMAN_REVIEW_REQUIRED",
+      "sourceAssessmentType": "DRIVER_EVIDENCE_COMPLETENESS",
+      "structuredOnly": true
+    },
+    {
+      "advisoryHash": "9e3dc34ee57a98ef132e7525e7b3af2746f924ff13301b0ef39f383c0076bdc0",
+      "advisoryId": "driver.advisory.driver_operational_state.driver_state_unknown",
+      "advisoryType": "REVIEW_REQUIRED",
+      "employeeScoring": false,
+      "providerGenerated": false,
+      "reasonCode": "DRIVER_STATE_UNKNOWN",
+      "sourceAssessmentType": "DRIVER_OPERATIONAL_STATE",
+      "structuredOnly": true
+    },
+    {
+      "advisoryHash": "cd0e82b8c70a555b8ebd0d696cd969ab2a53b57afad66fa6cd002fc080f86fcc",
+      "advisoryId": "driver.advisory.driver_hazard_acknowledgement.hazard_acknowledgement_missing",
+      "advisoryType": "ACKNOWLEDGE_HAZARD",
+      "employeeScoring": false,
+      "providerGenerated": false,
+      "reasonCode": "HAZARD_ACKNOWLEDGEMENT_MISSING",
+      "sourceAssessmentType": "DRIVER_HAZARD_ACKNOWLEDGEMENT",
+      "structuredOnly": true
+    },
+    {
+      "advisoryHash": "18bd7ea12601fbbb12e8435a3d70bbbeb7c81510e56083fb4c762911e84a0531",
+      "advisoryId": "driver.advisory.driver_route_adherence.route_evidence_insufficient",
+      "advisoryType": "UNABLE_TO_DETERMINE",
+      "employeeScoring": false,
+      "providerGenerated": false,
+      "reasonCode": "ROUTE_EVIDENCE_INSUFFICIENT",
+      "sourceAssessmentType": "DRIVER_ROUTE_ADHERENCE",
+      "structuredOnly": true
+    },
+    {
+      "advisoryHash": "4adb63d35aaff10816fcebe676bc02d9f548e11e8a612786eacc65b75aae78ad",
+      "advisoryId": "driver.advisory.driver_evidence_completeness.human_review_required",
+      "advisoryType": "REVIEW_REQUIRED",
+      "employeeScoring": false,
+      "providerGenerated": false,
+      "reasonCode": "HUMAN_REVIEW_REQUIRED",
+      "sourceAssessmentType": "DRIVER_EVIDENCE_COMPLETENESS",
+      "structuredOnly": true
+    }
+  ],
+  "advisoryTypes": [
+    "REDUCE_SPEED",
+    "RETURN_TO_ROUTE",
+    "LOW_BRIDGE_AHEAD",
+    "RESTRICTED_ROAD_AHEAD",
+    "NO_THROUGH_TRUCK_AHEAD",
+    "RESIDENTIAL_AREA_ADVISORY",
+    "REVIEW_REQUIRED",
+    "UNABLE_TO_DETERMINE",
+    "ACKNOWLEDGE_HAZARD"
+  ],
+  "generatedArtifact": true
+}

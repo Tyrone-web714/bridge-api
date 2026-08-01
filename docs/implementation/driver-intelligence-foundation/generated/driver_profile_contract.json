@@ -1,0 +1,28 @@
+{
+  "contract": {
+    "employeeScoringAllowed": false,
+    "optional": [
+      "assignedVehicleId",
+      "routeAssignmentId",
+      "dutyState",
+      "qualificationClass"
+    ],
+    "prohibited": [
+      "performanceScore",
+      "employeeRank",
+      "disciplinaryStatus",
+      "terminationRecommendation"
+    ],
+    "required": [
+      "driverId",
+      "organizationId",
+      "syntheticOnly"
+    ],
+    "schemaVersion": "driver.profile.contract.v1",
+    "tenantDerived": [
+      "organizationId"
+    ],
+    "testOnly": true
+  },
+  "generatedArtifact": true
+}

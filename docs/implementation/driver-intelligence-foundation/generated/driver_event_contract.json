@@ -1,0 +1,30 @@
+{
+  "contract": {
+    "eventTypes": [
+      "ROUTE_STARTED",
+      "ROUTE_COMPLETED",
+      "STOP_ARRIVED",
+      "STOP_DEPARTED",
+      "ROUTE_DEVIATED",
+      "ROUTE_RESUMED",
+      "SPEED_WARNING",
+      "LOW_BRIDGE_WARNING",
+      "RESTRICTED_ROAD_WARNING",
+      "RESIDENTIAL_AREA_WARNING",
+      "ROUTE_CANCELLED",
+      "EMERGENCY_STOP",
+      "GPS_LOST",
+      "EVIDENCE_MISSING",
+      "MANUAL_REVIEW_REQUIRED"
+    ],
+    "providerGenerated": false,
+    "required": [
+      "eventType",
+      "observedAt",
+      "source"
+    ],
+    "schemaVersion": "driver.event.contract.v1",
+    "syntheticOnly": true
+  },
+  "generatedArtifact": true
+}

@@ -17,7 +17,7 @@
       "dashboard-data/documentation_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "338990270029250e447be97b3a8795f762645769771fcd714937255e3a4dfe25",
+    "generationHash": "5947fef4a3732137a19e602e4cee9e659704b5db2ac58f0369dc1dc1d104b0df",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -40,6 +40,7 @@
         "docs/implementation/dashboard-data-generation": 14,
         "docs/implementation/data-lifecycle-foundation": 25,
         "docs/implementation/decision-history-and-governance": 60,
+        "docs/implementation/driver-intelligence-foundation": 43,
         "docs/implementation/enterprise-identity-foundation": 32,
         "docs/implementation/enterprise-intelligence-capability-registry": 29,
         "docs/implementation/execution-decision-engine": 58,
@@ -69,11 +70,11 @@
         "docs/implementation/shared-safety-moderation-ui": 14,
         "docs/implementation/web-origin-private-media-hardening": 16
       },
-      "generatedDocs": 159
+      "generatedDocs": 172
     },
     "statusIndicators": [],
     "summary": {
-      "documentationFiles": 923
+      "documentationFiles": 966
     },
     "testOnly": true,
     "unknownValues": [],

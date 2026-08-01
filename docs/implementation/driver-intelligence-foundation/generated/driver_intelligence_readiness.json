@@ -1,0 +1,17 @@
+{
+  "generatedArtifact": true,
+  "readiness": {
+    "deterministicRulesOnly": true,
+    "disciplinaryRecommendation": false,
+    "employeeScoring": false,
+    "hostedAiInvoked": false,
+    "predictiveModel": false,
+    "productionApplicable": false,
+    "providerCallInvoked": false,
+    "repositoryOnly": true,
+    "validation": {
+      "errors": [],
+      "valid": true
+    }
+  }
+}

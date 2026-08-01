@@ -18,7 +18,7 @@
       "dashboard-data/technical_debt_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "eb0a93f4d4605c9d63eacaf2488b8a9e91e3591db4f0f20aa07b8be7fbd0ed57",
+    "generationHash": "b208995fcbbd03bd00b35ec629a447ca1614136725ef0b6596f50c6337ce9f13",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -38,6 +38,7 @@
         "docs/implementation/cost-governance/DEFERRED_WORK.md",
         "docs/implementation/dashboard-data-generation/DEFERRED_WORK.md",
         "docs/implementation/decision-history-and-governance/DEFERRED_WORK.md",
+        "docs/implementation/driver-intelligence-foundation/DEFERRED_WORK.md",
         "docs/implementation/enterprise-intelligence-capability-registry/DEFERRED_WORK.md",
         "docs/implementation/execution-strategy-evaluation-engine/DEFERRED_WORK.md",
         "docs/implementation/framework-validation/DEFERRED_WORK.md",

@@ -17,7 +17,7 @@
       "dashboard-data/artifact_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "dbf41a6304d74ec5dec04f3123e0e8d6884bff7fa5dc5f40e86945358d3f0924",
+    "generationHash": "9b406f5b3b977606a10ce600ee29bfdf5ee8534e18b804934cfa464c48fc55a1",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -35,6 +35,7 @@
         "docs/implementation/benchmark-dataset-framework/generated": 7,
         "docs/implementation/cost-governance/generated": 21,
         "docs/implementation/decision-history-and-governance/generated": 23,
+        "docs/implementation/driver-intelligence-foundation/generated": 13,
         "docs/implementation/enterprise-intelligence-capability-registry/generated": 4,
         "docs/implementation/execution-decision-engine/generated": 18,
         "docs/implementation/execution-strategy-evaluation-engine/generated": 12,
@@ -49,7 +50,7 @@
     },
     "statusIndicators": [],
     "summary": {
-      "generatedArtifacts": 159
+      "generatedArtifacts": 172
     },
     "testOnly": true,
     "unknownValues": [],

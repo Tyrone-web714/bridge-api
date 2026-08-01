@@ -1,0 +1,233 @@
+{
+  "generatedArtifact": true,
+  "humanReviewFlags": [
+    {
+      "caseId": "driver_on_route",
+      "humanReviewFlags": [],
+      "status": "NORMAL"
+    },
+    {
+      "caseId": "driver_route_resumed",
+      "humanReviewFlags": [],
+      "status": "NORMAL"
+    },
+    {
+      "caseId": "driver_off_route",
+      "humanReviewFlags": [
+        {
+          "assessmentType": "DRIVER_ROUTE_ADHERENCE",
+          "reasonCode": "ROUTE_DEVIATION_WARNING"
+        }
+      ],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "caseId": "driver_speeding_at_threshold",
+      "humanReviewFlags": [],
+      "status": "ADVISORY"
+    },
+    {
+      "caseId": "driver_speeding_advisory",
+      "humanReviewFlags": [],
+      "status": "ADVISORY"
+    },
+    {
+      "caseId": "driver_speeding_between_thresholds",
+      "humanReviewFlags": [],
+      "status": "ADVISORY"
+    },
+    {
+      "caseId": "driver_speeding_warning",
+      "humanReviewFlags": [
+        {
+          "assessmentType": "DRIVER_SPEED_COMPLIANCE",
+          "reasonCode": "SPEED_WARNING_65"
+        }
+      ],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "caseId": "driver_repeated_speeding",
+      "humanReviewFlags": [
+        {
+          "assessmentType": "DRIVER_SPEED_COMPLIANCE",
+          "reasonCode": "SPEED_REPEATED_WARNING"
+        }
+      ],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "caseId": "driver_stale_speed_evidence",
+      "humanReviewFlags": [],
+      "status": "INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "caseId": "driver_stop_arrival",
+      "humanReviewFlags": [],
+      "status": "NORMAL"
+    },
+    {
+      "caseId": "driver_stop_departure",
+      "humanReviewFlags": [],
+      "status": "NORMAL"
+    },
+    {
+      "caseId": "unknown_stop_geometry",
+      "humanReviewFlags": [
+        {
+          "assessmentType": "DRIVER_STOP_PROGRESS",
+          "reasonCode": "STOP_GEOMETRY_INSUFFICIENT"
+        }
+      ],
+      "status": "INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "caseId": "driver_approaching_bridge",
+      "humanReviewFlags": [
+        {
+          "assessmentType": "DRIVER_LOW_BRIDGE_APPROACH",
+          "reasonCode": "LOW_BRIDGE_APPROACH"
+        }
+      ],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "caseId": "driver_bridge_outside_threshold",
+      "humanReviewFlags": [],
+      "status": "NORMAL"
+    },
+    {
+      "caseId": "driver_approaching_restricted_road",
+      "humanReviewFlags": [
+        {
+          "assessmentType": "DRIVER_RESTRICTED_ROAD_APPROACH",
+          "reasonCode": "RESTRICTED_ROAD_APPROACH"
+        }
+      ],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "caseId": "driver_no_through_truck_approach",
+      "humanReviewFlags": [
+        {
+          "assessmentType": "DRIVER_RESTRICTED_ROAD_APPROACH",
+          "reasonCode": "NO_THROUGH_TRUCK_APPROACH"
+        }
+      ],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "caseId": "driver_no_through_local_delivery",
+      "humanReviewFlags": [],
+      "status": "ADVISORY"
+    },
+    {
+      "caseId": "driver_residential_approach",
+      "humanReviewFlags": [],
+      "status": "WARNING"
+    },
+    {
+      "caseId": "driver_residential_prohibition",
+      "humanReviewFlags": [
+        {
+          "assessmentType": "DRIVER_RESTRICTED_ROAD_APPROACH",
+          "reasonCode": "RESIDENTIAL_PROHIBITION_APPROACH"
+        }
+      ],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "caseId": "driver_road_closure",
+      "humanReviewFlags": [
+        {
+          "assessmentType": "DRIVER_RESTRICTED_ROAD_APPROACH",
+          "reasonCode": "ROAD_CLOSURE_APPROACH"
+        }
+      ],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "caseId": "unknown_gps",
+      "humanReviewFlags": [
+        {
+          "assessmentType": "DRIVER_ROUTE_ADHERENCE",
+          "reasonCode": "ROUTE_EVIDENCE_INSUFFICIENT"
+        },
+        {
+          "assessmentType": "DRIVER_LOW_BRIDGE_APPROACH",
+          "reasonCode": "GPS_UNAVAILABLE"
+        },
+        {
+          "assessmentType": "DRIVER_RESTRICTED_ROAD_APPROACH",
+          "reasonCode": "GPS_UNAVAILABLE"
+        },
+        {
+          "assessmentType": "DRIVER_EVIDENCE_COMPLETENESS",
+          "reasonCode": "HUMAN_REVIEW_REQUIRED"
+        }
+      ],
+      "status": "INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "caseId": "unknown_speed",
+      "humanReviewFlags": [
+        {
+          "assessmentType": "DRIVER_EVIDENCE_COMPLETENESS",
+          "reasonCode": "HUMAN_REVIEW_REQUIRED"
+        }
+      ],
+      "status": "INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "caseId": "unknown_location",
+      "humanReviewFlags": [
+        {
+          "assessmentType": "DRIVER_ROUTE_ADHERENCE",
+          "reasonCode": "ROUTE_EVIDENCE_INSUFFICIENT"
+        },
+        {
+          "assessmentType": "DRIVER_LOW_BRIDGE_APPROACH",
+          "reasonCode": "GPS_UNAVAILABLE"
+        },
+        {
+          "assessmentType": "DRIVER_RESTRICTED_ROAD_APPROACH",
+          "reasonCode": "GPS_UNAVAILABLE"
+        },
+        {
+          "assessmentType": "DRIVER_EVIDENCE_COMPLETENESS",
+          "reasonCode": "HUMAN_REVIEW_REQUIRED"
+        }
+      ],
+      "status": "INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "caseId": "evidence_conflict_unknown_state",
+      "humanReviewFlags": [],
+      "status": "ADVISORY"
+    },
+    {
+      "caseId": "hazard_ack_missing",
+      "humanReviewFlags": [
+        {
+          "assessmentType": "DRIVER_HAZARD_ACKNOWLEDGEMENT",
+          "reasonCode": "HAZARD_ACKNOWLEDGEMENT_MISSING"
+        }
+      ],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "caseId": "manual_review_required",
+      "humanReviewFlags": [
+        {
+          "assessmentType": "DRIVER_ROUTE_ADHERENCE",
+          "reasonCode": "ROUTE_EVIDENCE_INSUFFICIENT"
+        },
+        {
+          "assessmentType": "DRIVER_EVIDENCE_COMPLETENESS",
+          "reasonCode": "HUMAN_REVIEW_REQUIRED"
+        }
+      ],
+      "status": "INSUFFICIENT_EVIDENCE"
+    }
+  ]
+}

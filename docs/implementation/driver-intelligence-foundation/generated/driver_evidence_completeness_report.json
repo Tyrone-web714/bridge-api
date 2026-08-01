@@ -1,0 +1,863 @@
+{
+  "completeness": [
+    {
+      "caseId": "driver_on_route",
+      "confidence": {
+        "score": 1,
+        "status": "KNOWN_SYNTHETIC_EVIDENCE"
+      },
+      "evidenceCompleteness": [
+        {
+          "name": "driverProfile",
+          "present": true
+        },
+        {
+          "name": "driverState",
+          "present": true
+        },
+        {
+          "name": "currentPosition",
+          "present": true
+        },
+        {
+          "name": "assignedRoute",
+          "present": true
+        },
+        {
+          "name": "speed",
+          "present": true
+        },
+        {
+          "name": "events",
+          "present": true
+        }
+      ]
+    },
+    {
+      "caseId": "driver_route_resumed",
+      "confidence": {
+        "score": 1,
+        "status": "KNOWN_SYNTHETIC_EVIDENCE"
+      },
+      "evidenceCompleteness": [
+        {
+          "name": "driverProfile",
+          "present": true
+        },
+        {
+          "name": "driverState",
+          "present": true
+        },
+        {
+          "name": "currentPosition",
+          "present": true
+        },
+        {
+          "name": "assignedRoute",
+          "present": true
+        },
+        {
+          "name": "speed",
+          "present": true
+        },
+        {
+          "name": "events",
+          "present": true
+        }
+      ]
+    },
+    {
+      "caseId": "driver_off_route",
+      "confidence": {
+        "score": null,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "evidenceCompleteness": [
+        {
+          "name": "driverProfile",
+          "present": true
+        },
+        {
+          "name": "driverState",
+          "present": true
+        },
+        {
+          "name": "currentPosition",
+          "present": true
+        },
+        {
+          "name": "assignedRoute",
+          "present": true
+        },
+        {
+          "name": "speed",
+          "present": true
+        },
+        {
+          "name": "events",
+          "present": true
+        }
+      ]
+    },
+    {
+      "caseId": "driver_speeding_at_threshold",
+      "confidence": {
+        "score": null,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "evidenceCompleteness": [
+        {
+          "name": "driverProfile",
+          "present": true
+        },
+        {
+          "name": "driverState",
+          "present": true
+        },
+        {
+          "name": "currentPosition",
+          "present": true
+        },
+        {
+          "name": "assignedRoute",
+          "present": true
+        },
+        {
+          "name": "speed",
+          "present": true
+        },
+        {
+          "name": "events",
+          "present": true
+        }
+      ]
+    },
+    {
+      "caseId": "driver_speeding_advisory",
+      "confidence": {
+        "score": null,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "evidenceCompleteness": [
+        {
+          "name": "driverProfile",
+          "present": true
+        },
+        {
+          "name": "driverState",
+          "present": true
+        },
+        {
+          "name": "currentPosition",
+          "present": true
+        },
+        {
+          "name": "assignedRoute",
+          "present": true
+        },
+        {
+          "name": "speed",
+          "present": true
+        },
+        {
+          "name": "events",
+          "present": true
+        }
+      ]
+    },
+    {
+      "caseId": "driver_speeding_between_thresholds",
+      "confidence": {
+        "score": null,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "evidenceCompleteness": [
+        {
+          "name": "driverProfile",
+          "present": true
+        },
+        {
+          "name": "driverState",
+          "present": true
+        },
+        {
+          "name": "currentPosition",
+          "present": true
+        },
+        {
+          "name": "assignedRoute",
+          "present": true
+        },
+        {
+          "name": "speed",
+          "present": true
+        },
+        {
+          "name": "events",
+          "present": true
+        }
+      ]
+    },
+    {
+      "caseId": "driver_speeding_warning",
+      "confidence": {
+        "score": null,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "evidenceCompleteness": [
+        {
+          "name": "driverProfile",
+          "present": true
+        },
+        {
+          "name": "driverState",
+          "present": true
+        },
+        {
+          "name": "currentPosition",
+          "present": true
+        },
+        {
+          "name": "assignedRoute",
+          "present": true
+        },
+        {
+          "name": "speed",
+          "present": true
+        },
+        {
+          "name": "events",
+          "present": true
+        }
+      ]
+    },
+    {
+      "caseId": "driver_repeated_speeding",
+      "confidence": {
+        "score": null,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "evidenceCompleteness": [
+        {
+          "name": "driverProfile",
+          "present": true
+        },
+        {
+          "name": "driverState",
+          "present": true
+        },
+        {
+          "name": "currentPosition",
+          "present": true
+        },
+        {
+          "name": "assignedRoute",
+          "present": true
+        },
+        {
+          "name": "speed",
+          "present": true
+        },
+        {
+          "name": "events",
+          "present": true
+        }
+      ]
+    },
+    {
+      "caseId": "driver_stale_speed_evidence",
+      "confidence": {
+        "score": null,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "evidenceCompleteness": [
+        {
+          "name": "driverProfile",
+          "present": true
+        },
+        {
+          "name": "driverState",
+          "present": true
+        },
+        {
+          "name": "currentPosition",
+          "present": true
+        },
+        {
+          "name": "assignedRoute",
+          "present": true
+        },
+        {
+          "name": "speed",
+          "present": true
+        },
+        {
+          "name": "events",
+          "present": true
+        }
+      ]
+    },
+    {
+      "caseId": "driver_stop_arrival",
+      "confidence": {
+        "score": 1,
+        "status": "KNOWN_SYNTHETIC_EVIDENCE"
+      },
+      "evidenceCompleteness": [
+        {
+          "name": "driverProfile",
+          "present": true
+        },
+        {
+          "name": "driverState",
+          "present": true
+        },
+        {
+          "name": "currentPosition",
+          "present": true
+        },
+        {
+          "name": "assignedRoute",
+          "present": true
+        },
+        {
+          "name": "speed",
+          "present": true
+        },
+        {
+          "name": "events",
+          "present": true
+        }
+      ]
+    },
+    {
+      "caseId": "driver_stop_departure",
+      "confidence": {
+        "score": 1,
+        "status": "KNOWN_SYNTHETIC_EVIDENCE"
+      },
+      "evidenceCompleteness": [
+        {
+          "name": "driverProfile",
+          "present": true
+        },
+        {
+          "name": "driverState",
+          "present": true
+        },
+        {
+          "name": "currentPosition",
+          "present": true
+        },
+        {
+          "name": "assignedRoute",
+          "present": true
+        },
+        {
+          "name": "speed",
+          "present": true
+        },
+        {
+          "name": "events",
+          "present": true
+        }
+      ]
+    },
+    {
+      "caseId": "unknown_stop_geometry",
+      "confidence": {
+        "score": null,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "evidenceCompleteness": [
+        {
+          "name": "driverProfile",
+          "present": true
+        },
+        {
+          "name": "driverState",
+          "present": true
+        },
+        {
+          "name": "currentPosition",
+          "present": true
+        },
+        {
+          "name": "assignedRoute",
+          "present": true
+        },
+        {
+          "name": "speed",
+          "present": true
+        },
+        {
+          "name": "events",
+          "present": true
+        }
+      ]
+    },
+    {
+      "caseId": "driver_approaching_bridge",
+      "confidence": {
+        "score": null,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "evidenceCompleteness": [
+        {
+          "name": "driverProfile",
+          "present": true
+        },
+        {
+          "name": "driverState",
+          "present": true
+        },
+        {
+          "name": "currentPosition",
+          "present": true
+        },
+        {
+          "name": "assignedRoute",
+          "present": true
+        },
+        {
+          "name": "speed",
+          "present": true
+        },
+        {
+          "name": "events",
+          "present": true
+        }
+      ]
+    },
+    {
+      "caseId": "driver_bridge_outside_threshold",
+      "confidence": {
+        "score": 1,
+        "status": "KNOWN_SYNTHETIC_EVIDENCE"
+      },
+      "evidenceCompleteness": [
+        {
+          "name": "driverProfile",
+          "present": true
+        },
+        {
+          "name": "driverState",
+          "present": true
+        },
+        {
+          "name": "currentPosition",
+          "present": true
+        },
+        {
+          "name": "assignedRoute",
+          "present": true
+        },
+        {
+          "name": "speed",
+          "present": true
+        },
+        {
+          "name": "events",
+          "present": true
+        }
+      ]
+    },
+    {
+      "caseId": "driver_approaching_restricted_road",
+      "confidence": {
+        "score": null,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "evidenceCompleteness": [
+        {
+          "name": "driverProfile",
+          "present": true
+        },
+        {
+          "name": "driverState",
+          "present": true
+        },
+        {
+          "name": "currentPosition",
+          "present": true
+        },
+        {
+          "name": "assignedRoute",
+          "present": true
+        },
+        {
+          "name": "speed",
+          "present": true
+        },
+        {
+          "name": "events",
+          "present": true
+        }
+      ]
+    },
+    {
+      "caseId": "driver_no_through_truck_approach",
+      "confidence": {
+        "score": null,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "evidenceCompleteness": [
+        {
+          "name": "driverProfile",
+          "present": true
+        },
+        {
+          "name": "driverState",
+          "present": true
+        },
+        {
+          "name": "currentPosition",
+          "present": true
+        },
+        {
+          "name": "assignedRoute",
+          "present": true
+        },
+        {
+          "name": "speed",
+          "present": true
+        },
+        {
+          "name": "events",
+          "present": true
+        }
+      ]
+    },
+    {
+      "caseId": "driver_no_through_local_delivery",
+      "confidence": {
+        "score": null,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "evidenceCompleteness": [
+        {
+          "name": "driverProfile",
+          "present": true
+        },
+        {
+          "name": "driverState",
+          "present": true
+        },
+        {
+          "name": "currentPosition",
+          "present": true
+        },
+        {
+          "name": "assignedRoute",
+          "present": true
+        },
+        {
+          "name": "speed",
+          "present": true
+        },
+        {
+          "name": "events",
+          "present": true
+        }
+      ]
+    },
+    {
+      "caseId": "driver_residential_approach",
+      "confidence": {
+        "score": null,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "evidenceCompleteness": [
+        {
+          "name": "driverProfile",
+          "present": true
+        },
+        {
+          "name": "driverState",
+          "present": true
+        },
+        {
+          "name": "currentPosition",
+          "present": true
+        },
+        {
+          "name": "assignedRoute",
+          "present": true
+        },
+        {
+          "name": "speed",
+          "present": true
+        },
+        {
+          "name": "events",
+          "present": true
+        }
+      ]
+    },
+    {
+      "caseId": "driver_residential_prohibition",
+      "confidence": {
+        "score": null,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "evidenceCompleteness": [
+        {
+          "name": "driverProfile",
+          "present": true
+        },
+        {
+          "name": "driverState",
+          "present": true
+        },
+        {
+          "name": "currentPosition",
+          "present": true
+        },
+        {
+          "name": "assignedRoute",
+          "present": true
+        },
+        {
+          "name": "speed",
+          "present": true
+        },
+        {
+          "name": "events",
+          "present": true
+        }
+      ]
+    },
+    {
+      "caseId": "driver_road_closure",
+      "confidence": {
+        "score": null,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "evidenceCompleteness": [
+        {
+          "name": "driverProfile",
+          "present": true
+        },
+        {
+          "name": "driverState",
+          "present": true
+        },
+        {
+          "name": "currentPosition",
+          "present": true
+        },
+        {
+          "name": "assignedRoute",
+          "present": true
+        },
+        {
+          "name": "speed",
+          "present": true
+        },
+        {
+          "name": "events",
+          "present": true
+        }
+      ]
+    },
+    {
+      "caseId": "unknown_gps",
+      "confidence": {
+        "score": null,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "evidenceCompleteness": [
+        {
+          "name": "driverProfile",
+          "present": true
+        },
+        {
+          "name": "driverState",
+          "present": true
+        },
+        {
+          "name": "currentPosition",
+          "present": false
+        },
+        {
+          "name": "assignedRoute",
+          "present": true
+        },
+        {
+          "name": "speed",
+          "present": true
+        },
+        {
+          "name": "events",
+          "present": true
+        }
+      ]
+    },
+    {
+      "caseId": "unknown_speed",
+      "confidence": {
+        "score": null,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "evidenceCompleteness": [
+        {
+          "name": "driverProfile",
+          "present": true
+        },
+        {
+          "name": "driverState",
+          "present": true
+        },
+        {
+          "name": "currentPosition",
+          "present": true
+        },
+        {
+          "name": "assignedRoute",
+          "present": true
+        },
+        {
+          "name": "speed",
+          "present": false
+        },
+        {
+          "name": "events",
+          "present": true
+        }
+      ]
+    },
+    {
+      "caseId": "unknown_location",
+      "confidence": {
+        "score": null,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "evidenceCompleteness": [
+        {
+          "name": "driverProfile",
+          "present": true
+        },
+        {
+          "name": "driverState",
+          "present": true
+        },
+        {
+          "name": "currentPosition",
+          "present": false
+        },
+        {
+          "name": "assignedRoute",
+          "present": true
+        },
+        {
+          "name": "speed",
+          "present": true
+        },
+        {
+          "name": "events",
+          "present": true
+        }
+      ]
+    },
+    {
+      "caseId": "evidence_conflict_unknown_state",
+      "confidence": {
+        "score": null,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "evidenceCompleteness": [
+        {
+          "name": "driverProfile",
+          "present": true
+        },
+        {
+          "name": "driverState",
+          "present": true
+        },
+        {
+          "name": "currentPosition",
+          "present": true
+        },
+        {
+          "name": "assignedRoute",
+          "present": true
+        },
+        {
+          "name": "speed",
+          "present": true
+        },
+        {
+          "name": "events",
+          "present": true
+        }
+      ]
+    },
+    {
+      "caseId": "hazard_ack_missing",
+      "confidence": {
+        "score": null,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "evidenceCompleteness": [
+        {
+          "name": "driverProfile",
+          "present": true
+        },
+        {
+          "name": "driverState",
+          "present": true
+        },
+        {
+          "name": "currentPosition",
+          "present": true
+        },
+        {
+          "name": "assignedRoute",
+          "present": true
+        },
+        {
+          "name": "speed",
+          "present": true
+        },
+        {
+          "name": "events",
+          "present": true
+        }
+      ]
+    },
+    {
+      "caseId": "manual_review_required",
+      "confidence": {
+        "score": null,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "evidenceCompleteness": [
+        {
+          "name": "driverProfile",
+          "present": true
+        },
+        {
+          "name": "driverState",
+          "present": true
+        },
+        {
+          "name": "currentPosition",
+          "present": true
+        },
+        {
+          "name": "assignedRoute",
+          "present": false
+        },
+        {
+          "name": "speed",
+          "present": true
+        },
+        {
+          "name": "events",
+          "present": true
+        }
+      ]
+    }
+  ],
+  "generatedArtifact": true
+}

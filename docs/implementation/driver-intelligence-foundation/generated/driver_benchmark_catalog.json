@@ -1,0 +1,2469 @@
+{
+  "benchmarkCases": [
+    {
+      "caseId": "driver_on_route",
+      "employeeScoringExpected": false,
+      "expectedStatus": "NORMAL",
+      "providerCallExpected": false,
+      "request": {
+        "driverProfile": {
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "driverId": "driver-synthetic-001",
+          "organizationId": "org_synthetic_driver_intelligence",
+          "routeAssignmentId": "route-assignment-001",
+          "syntheticOnly": true
+        },
+        "snapshot": {
+          "activeWarnings": [],
+          "assignedRoute": {
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "routeCandidateId": "route-clear-pass"
+          },
+          "currentPosition": {
+            "latitude": 33.5005,
+            "longitude": -86.7995
+          },
+          "currentStop": null,
+          "driverProfile": {
+            "assignedVehicleId": "vehicle-box-12ft-6in",
+            "driverId": "driver-synthetic-001",
+            "organizationId": "org_synthetic_driver_intelligence",
+            "routeAssignmentId": "route-assignment-001",
+            "syntheticOnly": true
+          },
+          "driverState": "DRIVING",
+          "events": [
+            {
+              "eventType": "ROUTE_STARTED",
+              "observedAt": "2026-07-25T00:00:00.000Z",
+              "source": "synthetic.driver.fixture"
+            }
+          ],
+          "gpsAvailable": true,
+          "hazardAcknowledgements": [],
+          "offRouteDurationMinutes": 0,
+          "recentSpeedEvents": [],
+          "routePurpose": "THROUGH_ROUTE",
+          "snapshotId": "snapshot-on-route",
+          "speedMph": 45,
+          "speedObservedAt": "2026-07-24T23:59:00.000Z",
+          "upcomingBridges": [
+            {
+              "bridgeId": "bridge-clear-far",
+              "clearance": {
+                "unit": "ft",
+                "value": 15
+              },
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              }
+            }
+          ],
+          "upcomingRestrictions": [
+            {
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              },
+              "restrictionId": "residential-far",
+              "type": "RESIDENTIAL_AVOID"
+            }
+          ]
+        },
+        "tenantContext": {
+          "organizationId": "org_synthetic_driver_intelligence"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "driver_route_resumed",
+      "employeeScoringExpected": false,
+      "expectedStatus": "NORMAL",
+      "providerCallExpected": false,
+      "request": {
+        "driverProfile": {
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "driverId": "driver-synthetic-001",
+          "organizationId": "org_synthetic_driver_intelligence",
+          "routeAssignmentId": "route-assignment-001",
+          "syntheticOnly": true
+        },
+        "snapshot": {
+          "activeWarnings": [],
+          "assignedRoute": {
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "routeCandidateId": "route-clear-pass"
+          },
+          "currentPosition": {
+            "latitude": 33.5005,
+            "longitude": -86.7995
+          },
+          "currentStop": null,
+          "driverProfile": {
+            "assignedVehicleId": "vehicle-box-12ft-6in",
+            "driverId": "driver-synthetic-001",
+            "organizationId": "org_synthetic_driver_intelligence",
+            "routeAssignmentId": "route-assignment-001",
+            "syntheticOnly": true
+          },
+          "driverState": "DRIVING",
+          "events": [
+            {
+              "eventType": "ROUTE_DEVIATED",
+              "observedAt": "2026-07-24T23:58:00.000Z",
+              "source": "synthetic.driver.fixture"
+            },
+            {
+              "eventType": "ROUTE_RESUMED",
+              "observedAt": "2026-07-24T23:59:00.000Z",
+              "source": "synthetic.driver.fixture"
+            }
+          ],
+          "gpsAvailable": true,
+          "hazardAcknowledgements": [],
+          "offRouteDurationMinutes": 0,
+          "recentSpeedEvents": [],
+          "routePurpose": "THROUGH_ROUTE",
+          "snapshotId": "snapshot-route-resumed",
+          "speedMph": 45,
+          "speedObservedAt": "2026-07-24T23:59:00.000Z",
+          "upcomingBridges": [
+            {
+              "bridgeId": "bridge-clear-far",
+              "clearance": {
+                "unit": "ft",
+                "value": 15
+              },
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              }
+            }
+          ],
+          "upcomingRestrictions": [
+            {
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              },
+              "restrictionId": "residential-far",
+              "type": "RESIDENTIAL_AVOID"
+            }
+          ]
+        },
+        "tenantContext": {
+          "organizationId": "org_synthetic_driver_intelligence"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "driver_off_route",
+      "employeeScoringExpected": false,
+      "expectedStatus": "REVIEW_REQUIRED",
+      "providerCallExpected": false,
+      "request": {
+        "driverProfile": {
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "driverId": "driver-synthetic-001",
+          "organizationId": "org_synthetic_driver_intelligence",
+          "routeAssignmentId": "route-assignment-001",
+          "syntheticOnly": true
+        },
+        "snapshot": {
+          "activeWarnings": [],
+          "assignedRoute": {
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "routeCandidateId": "route-clear-pass"
+          },
+          "currentPosition": {
+            "latitude": 33.506,
+            "longitude": -86.79
+          },
+          "currentStop": null,
+          "driverProfile": {
+            "assignedVehicleId": "vehicle-box-12ft-6in",
+            "driverId": "driver-synthetic-001",
+            "organizationId": "org_synthetic_driver_intelligence",
+            "routeAssignmentId": "route-assignment-001",
+            "syntheticOnly": true
+          },
+          "driverState": "DRIVING",
+          "events": [
+            {
+              "eventType": "ROUTE_STARTED",
+              "observedAt": "2026-07-25T00:00:00.000Z",
+              "source": "synthetic.driver.fixture"
+            }
+          ],
+          "gpsAvailable": true,
+          "hazardAcknowledgements": [],
+          "offRouteDurationMinutes": 6,
+          "recentSpeedEvents": [],
+          "routePurpose": "THROUGH_ROUTE",
+          "snapshotId": "snapshot-off-route",
+          "speedMph": 45,
+          "speedObservedAt": "2026-07-24T23:59:00.000Z",
+          "upcomingBridges": [
+            {
+              "bridgeId": "bridge-clear-far",
+              "clearance": {
+                "unit": "ft",
+                "value": 15
+              },
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              }
+            }
+          ],
+          "upcomingRestrictions": [
+            {
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              },
+              "restrictionId": "residential-far",
+              "type": "RESIDENTIAL_AVOID"
+            }
+          ]
+        },
+        "tenantContext": {
+          "organizationId": "org_synthetic_driver_intelligence"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "driver_speeding_at_threshold",
+      "employeeScoringExpected": false,
+      "expectedStatus": "ADVISORY",
+      "providerCallExpected": false,
+      "request": {
+        "driverProfile": {
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "driverId": "driver-synthetic-001",
+          "organizationId": "org_synthetic_driver_intelligence",
+          "routeAssignmentId": "route-assignment-001",
+          "syntheticOnly": true
+        },
+        "snapshot": {
+          "activeWarnings": [],
+          "assignedRoute": {
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "routeCandidateId": "route-clear-pass"
+          },
+          "currentPosition": {
+            "latitude": 33.5005,
+            "longitude": -86.7995
+          },
+          "currentStop": null,
+          "driverProfile": {
+            "assignedVehicleId": "vehicle-box-12ft-6in",
+            "driverId": "driver-synthetic-001",
+            "organizationId": "org_synthetic_driver_intelligence",
+            "routeAssignmentId": "route-assignment-001",
+            "syntheticOnly": true
+          },
+          "driverState": "DRIVING",
+          "events": [
+            {
+              "eventType": "ROUTE_STARTED",
+              "observedAt": "2026-07-25T00:00:00.000Z",
+              "source": "synthetic.driver.fixture"
+            }
+          ],
+          "gpsAvailable": true,
+          "hazardAcknowledgements": [],
+          "offRouteDurationMinutes": 0,
+          "recentSpeedEvents": [],
+          "routePurpose": "THROUGH_ROUTE",
+          "snapshotId": "snapshot-speed-60-exact",
+          "speedMph": 60,
+          "speedObservedAt": "2026-07-24T23:59:00.000Z",
+          "upcomingBridges": [
+            {
+              "bridgeId": "bridge-clear-far",
+              "clearance": {
+                "unit": "ft",
+                "value": 15
+              },
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              }
+            }
+          ],
+          "upcomingRestrictions": [
+            {
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              },
+              "restrictionId": "residential-far",
+              "type": "RESIDENTIAL_AVOID"
+            }
+          ]
+        },
+        "tenantContext": {
+          "organizationId": "org_synthetic_driver_intelligence"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "driver_speeding_advisory",
+      "employeeScoringExpected": false,
+      "expectedStatus": "ADVISORY",
+      "providerCallExpected": false,
+      "request": {
+        "driverProfile": {
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "driverId": "driver-synthetic-001",
+          "organizationId": "org_synthetic_driver_intelligence",
+          "routeAssignmentId": "route-assignment-001",
+          "syntheticOnly": true
+        },
+        "snapshot": {
+          "activeWarnings": [],
+          "assignedRoute": {
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "routeCandidateId": "route-clear-pass"
+          },
+          "currentPosition": {
+            "latitude": 33.5005,
+            "longitude": -86.7995
+          },
+          "currentStop": null,
+          "driverProfile": {
+            "assignedVehicleId": "vehicle-box-12ft-6in",
+            "driverId": "driver-synthetic-001",
+            "organizationId": "org_synthetic_driver_intelligence",
+            "routeAssignmentId": "route-assignment-001",
+            "syntheticOnly": true
+          },
+          "driverState": "DRIVING",
+          "events": [
+            {
+              "eventType": "ROUTE_STARTED",
+              "observedAt": "2026-07-25T00:00:00.000Z",
+              "source": "synthetic.driver.fixture"
+            }
+          ],
+          "gpsAvailable": true,
+          "hazardAcknowledgements": [],
+          "offRouteDurationMinutes": 0,
+          "recentSpeedEvents": [],
+          "routePurpose": "THROUGH_ROUTE",
+          "snapshotId": "snapshot-speed-60",
+          "speedMph": 62,
+          "speedObservedAt": "2026-07-24T23:59:00.000Z",
+          "upcomingBridges": [
+            {
+              "bridgeId": "bridge-clear-far",
+              "clearance": {
+                "unit": "ft",
+                "value": 15
+              },
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              }
+            }
+          ],
+          "upcomingRestrictions": [
+            {
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              },
+              "restrictionId": "residential-far",
+              "type": "RESIDENTIAL_AVOID"
+            }
+          ]
+        },
+        "tenantContext": {
+          "organizationId": "org_synthetic_driver_intelligence"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "driver_speeding_between_thresholds",
+      "employeeScoringExpected": false,
+      "expectedStatus": "ADVISORY",
+      "providerCallExpected": false,
+      "request": {
+        "driverProfile": {
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "driverId": "driver-synthetic-001",
+          "organizationId": "org_synthetic_driver_intelligence",
+          "routeAssignmentId": "route-assignment-001",
+          "syntheticOnly": true
+        },
+        "snapshot": {
+          "activeWarnings": [],
+          "assignedRoute": {
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "routeCandidateId": "route-clear-pass"
+          },
+          "currentPosition": {
+            "latitude": 33.5005,
+            "longitude": -86.7995
+          },
+          "currentStop": null,
+          "driverProfile": {
+            "assignedVehicleId": "vehicle-box-12ft-6in",
+            "driverId": "driver-synthetic-001",
+            "organizationId": "org_synthetic_driver_intelligence",
+            "routeAssignmentId": "route-assignment-001",
+            "syntheticOnly": true
+          },
+          "driverState": "DRIVING",
+          "events": [
+            {
+              "eventType": "ROUTE_STARTED",
+              "observedAt": "2026-07-25T00:00:00.000Z",
+              "source": "synthetic.driver.fixture"
+            }
+          ],
+          "gpsAvailable": true,
+          "hazardAcknowledgements": [],
+          "offRouteDurationMinutes": 0,
+          "recentSpeedEvents": [],
+          "routePurpose": "THROUGH_ROUTE",
+          "snapshotId": "snapshot-speed-between",
+          "speedMph": 65,
+          "speedObservedAt": "2026-07-24T23:59:00.000Z",
+          "upcomingBridges": [
+            {
+              "bridgeId": "bridge-clear-far",
+              "clearance": {
+                "unit": "ft",
+                "value": 15
+              },
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              }
+            }
+          ],
+          "upcomingRestrictions": [
+            {
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              },
+              "restrictionId": "residential-far",
+              "type": "RESIDENTIAL_AVOID"
+            }
+          ]
+        },
+        "tenantContext": {
+          "organizationId": "org_synthetic_driver_intelligence"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "driver_speeding_warning",
+      "employeeScoringExpected": false,
+      "expectedStatus": "REVIEW_REQUIRED",
+      "providerCallExpected": false,
+      "request": {
+        "driverProfile": {
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "driverId": "driver-synthetic-001",
+          "organizationId": "org_synthetic_driver_intelligence",
+          "routeAssignmentId": "route-assignment-001",
+          "syntheticOnly": true
+        },
+        "snapshot": {
+          "activeWarnings": [],
+          "assignedRoute": {
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "routeCandidateId": "route-clear-pass"
+          },
+          "currentPosition": {
+            "latitude": 33.5005,
+            "longitude": -86.7995
+          },
+          "currentStop": null,
+          "driverProfile": {
+            "assignedVehicleId": "vehicle-box-12ft-6in",
+            "driverId": "driver-synthetic-001",
+            "organizationId": "org_synthetic_driver_intelligence",
+            "routeAssignmentId": "route-assignment-001",
+            "syntheticOnly": true
+          },
+          "driverState": "DRIVING",
+          "events": [
+            {
+              "eventType": "ROUTE_STARTED",
+              "observedAt": "2026-07-25T00:00:00.000Z",
+              "source": "synthetic.driver.fixture"
+            }
+          ],
+          "gpsAvailable": true,
+          "hazardAcknowledgements": [],
+          "offRouteDurationMinutes": 0,
+          "recentSpeedEvents": [],
+          "routePurpose": "THROUGH_ROUTE",
+          "snapshotId": "snapshot-speed-65",
+          "speedMph": 67,
+          "speedObservedAt": "2026-07-24T23:59:00.000Z",
+          "upcomingBridges": [
+            {
+              "bridgeId": "bridge-clear-far",
+              "clearance": {
+                "unit": "ft",
+                "value": 15
+              },
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              }
+            }
+          ],
+          "upcomingRestrictions": [
+            {
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              },
+              "restrictionId": "residential-far",
+              "type": "RESIDENTIAL_AVOID"
+            }
+          ]
+        },
+        "tenantContext": {
+          "organizationId": "org_synthetic_driver_intelligence"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "driver_repeated_speeding",
+      "employeeScoringExpected": false,
+      "expectedStatus": "REVIEW_REQUIRED",
+      "providerCallExpected": false,
+      "request": {
+        "driverProfile": {
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "driverId": "driver-synthetic-001",
+          "organizationId": "org_synthetic_driver_intelligence",
+          "routeAssignmentId": "route-assignment-001",
+          "syntheticOnly": true
+        },
+        "snapshot": {
+          "activeWarnings": [],
+          "assignedRoute": {
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "routeCandidateId": "route-clear-pass"
+          },
+          "currentPosition": {
+            "latitude": 33.5005,
+            "longitude": -86.7995
+          },
+          "currentStop": null,
+          "driverProfile": {
+            "assignedVehicleId": "vehicle-box-12ft-6in",
+            "driverId": "driver-synthetic-001",
+            "organizationId": "org_synthetic_driver_intelligence",
+            "routeAssignmentId": "route-assignment-001",
+            "syntheticOnly": true
+          },
+          "driverState": "DRIVING",
+          "events": [
+            {
+              "eventType": "ROUTE_STARTED",
+              "observedAt": "2026-07-25T00:00:00.000Z",
+              "source": "synthetic.driver.fixture"
+            }
+          ],
+          "gpsAvailable": true,
+          "hazardAcknowledgements": [],
+          "offRouteDurationMinutes": 0,
+          "recentSpeedEvents": [
+            {
+              "speedMph": 66
+            },
+            {
+              "speedMph": 68
+            },
+            {
+              "speedMph": 70
+            }
+          ],
+          "routePurpose": "THROUGH_ROUTE",
+          "snapshotId": "snapshot-repeat-speed",
+          "speedMph": 58,
+          "speedObservedAt": "2026-07-24T23:59:00.000Z",
+          "upcomingBridges": [
+            {
+              "bridgeId": "bridge-clear-far",
+              "clearance": {
+                "unit": "ft",
+                "value": 15
+              },
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              }
+            }
+          ],
+          "upcomingRestrictions": [
+            {
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              },
+              "restrictionId": "residential-far",
+              "type": "RESIDENTIAL_AVOID"
+            }
+          ]
+        },
+        "tenantContext": {
+          "organizationId": "org_synthetic_driver_intelligence"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "driver_stale_speed_evidence",
+      "employeeScoringExpected": false,
+      "expectedStatus": "INSUFFICIENT_EVIDENCE",
+      "providerCallExpected": false,
+      "request": {
+        "driverProfile": {
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "driverId": "driver-synthetic-001",
+          "organizationId": "org_synthetic_driver_intelligence",
+          "routeAssignmentId": "route-assignment-001",
+          "syntheticOnly": true
+        },
+        "snapshot": {
+          "activeWarnings": [],
+          "assignedRoute": {
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "routeCandidateId": "route-clear-pass"
+          },
+          "currentPosition": {
+            "latitude": 33.5005,
+            "longitude": -86.7995
+          },
+          "currentStop": null,
+          "driverProfile": {
+            "assignedVehicleId": "vehicle-box-12ft-6in",
+            "driverId": "driver-synthetic-001",
+            "organizationId": "org_synthetic_driver_intelligence",
+            "routeAssignmentId": "route-assignment-001",
+            "syntheticOnly": true
+          },
+          "driverState": "DRIVING",
+          "events": [
+            {
+              "eventType": "ROUTE_STARTED",
+              "observedAt": "2026-07-25T00:00:00.000Z",
+              "source": "synthetic.driver.fixture"
+            }
+          ],
+          "gpsAvailable": true,
+          "hazardAcknowledgements": [],
+          "offRouteDurationMinutes": 0,
+          "recentSpeedEvents": [],
+          "routePurpose": "THROUGH_ROUTE",
+          "snapshotId": "snapshot-stale-speed",
+          "speedMph": 45,
+          "speedObservedAt": "2026-07-24T23:40:00.000Z",
+          "upcomingBridges": [
+            {
+              "bridgeId": "bridge-clear-far",
+              "clearance": {
+                "unit": "ft",
+                "value": 15
+              },
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              }
+            }
+          ],
+          "upcomingRestrictions": [
+            {
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              },
+              "restrictionId": "residential-far",
+              "type": "RESIDENTIAL_AVOID"
+            }
+          ]
+        },
+        "tenantContext": {
+          "organizationId": "org_synthetic_driver_intelligence"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "driver_stop_arrival",
+      "employeeScoringExpected": false,
+      "expectedStatus": "NORMAL",
+      "providerCallExpected": false,
+      "request": {
+        "driverProfile": {
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "driverId": "driver-synthetic-001",
+          "organizationId": "org_synthetic_driver_intelligence",
+          "routeAssignmentId": "route-assignment-001",
+          "syntheticOnly": true
+        },
+        "snapshot": {
+          "activeWarnings": [],
+          "assignedRoute": {
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "routeCandidateId": "route-clear-pass"
+          },
+          "currentPosition": {
+            "latitude": 33.5005,
+            "longitude": -86.7995
+          },
+          "currentStop": {
+            "point": {
+              "latitude": 33.5005,
+              "longitude": -86.7995
+            },
+            "stopId": "stop-001"
+          },
+          "driverProfile": {
+            "assignedVehicleId": "vehicle-box-12ft-6in",
+            "driverId": "driver-synthetic-001",
+            "organizationId": "org_synthetic_driver_intelligence",
+            "routeAssignmentId": "route-assignment-001",
+            "syntheticOnly": true
+          },
+          "driverState": "AT_STOP",
+          "events": [
+            {
+              "eventType": "STOP_ARRIVED",
+              "observedAt": "2026-07-24T23:59:00.000Z",
+              "source": "synthetic.driver.fixture"
+            }
+          ],
+          "gpsAvailable": true,
+          "hazardAcknowledgements": [],
+          "offRouteDurationMinutes": 0,
+          "recentSpeedEvents": [],
+          "routePurpose": "THROUGH_ROUTE",
+          "snapshotId": "snapshot-stop-arrival",
+          "speedMph": 45,
+          "speedObservedAt": "2026-07-24T23:59:00.000Z",
+          "upcomingBridges": [
+            {
+              "bridgeId": "bridge-clear-far",
+              "clearance": {
+                "unit": "ft",
+                "value": 15
+              },
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              }
+            }
+          ],
+          "upcomingRestrictions": [
+            {
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              },
+              "restrictionId": "residential-far",
+              "type": "RESIDENTIAL_AVOID"
+            }
+          ]
+        },
+        "tenantContext": {
+          "organizationId": "org_synthetic_driver_intelligence"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "driver_stop_departure",
+      "employeeScoringExpected": false,
+      "expectedStatus": "NORMAL",
+      "providerCallExpected": false,
+      "request": {
+        "driverProfile": {
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "driverId": "driver-synthetic-001",
+          "organizationId": "org_synthetic_driver_intelligence",
+          "routeAssignmentId": "route-assignment-001",
+          "syntheticOnly": true
+        },
+        "snapshot": {
+          "activeWarnings": [],
+          "assignedRoute": {
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "routeCandidateId": "route-clear-pass"
+          },
+          "currentPosition": {
+            "latitude": 33.5013,
+            "longitude": -86.7987
+          },
+          "currentStop": {
+            "point": {
+              "latitude": 33.5005,
+              "longitude": -86.7995
+            },
+            "stopId": "stop-001"
+          },
+          "driverProfile": {
+            "assignedVehicleId": "vehicle-box-12ft-6in",
+            "driverId": "driver-synthetic-001",
+            "organizationId": "org_synthetic_driver_intelligence",
+            "routeAssignmentId": "route-assignment-001",
+            "syntheticOnly": true
+          },
+          "driverState": "DRIVING",
+          "events": [
+            {
+              "eventType": "STOP_ARRIVED",
+              "observedAt": "2026-07-24T23:58:00.000Z",
+              "source": "synthetic.driver.fixture"
+            },
+            {
+              "eventType": "STOP_DEPARTED",
+              "observedAt": "2026-07-24T23:59:00.000Z",
+              "source": "synthetic.driver.fixture"
+            }
+          ],
+          "gpsAvailable": true,
+          "hazardAcknowledgements": [],
+          "offRouteDurationMinutes": 0,
+          "recentSpeedEvents": [],
+          "routePurpose": "THROUGH_ROUTE",
+          "snapshotId": "snapshot-stop-departure",
+          "speedMph": 45,
+          "speedObservedAt": "2026-07-24T23:59:00.000Z",
+          "upcomingBridges": [
+            {
+              "bridgeId": "bridge-clear-far",
+              "clearance": {
+                "unit": "ft",
+                "value": 15
+              },
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              }
+            }
+          ],
+          "upcomingRestrictions": [
+            {
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              },
+              "restrictionId": "residential-far",
+              "type": "RESIDENTIAL_AVOID"
+            }
+          ]
+        },
+        "tenantContext": {
+          "organizationId": "org_synthetic_driver_intelligence"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "unknown_stop_geometry",
+      "employeeScoringExpected": false,
+      "expectedStatus": "INSUFFICIENT_EVIDENCE",
+      "providerCallExpected": false,
+      "request": {
+        "driverProfile": {
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "driverId": "driver-synthetic-001",
+          "organizationId": "org_synthetic_driver_intelligence",
+          "routeAssignmentId": "route-assignment-001",
+          "syntheticOnly": true
+        },
+        "snapshot": {
+          "activeWarnings": [],
+          "assignedRoute": {
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "routeCandidateId": "route-clear-pass"
+          },
+          "currentPosition": {
+            "latitude": 33.5005,
+            "longitude": -86.7995
+          },
+          "currentStop": {
+            "stopId": "stop-unknown"
+          },
+          "driverProfile": {
+            "assignedVehicleId": "vehicle-box-12ft-6in",
+            "driverId": "driver-synthetic-001",
+            "organizationId": "org_synthetic_driver_intelligence",
+            "routeAssignmentId": "route-assignment-001",
+            "syntheticOnly": true
+          },
+          "driverState": "DRIVING",
+          "events": [
+            {
+              "eventType": "ROUTE_STARTED",
+              "observedAt": "2026-07-25T00:00:00.000Z",
+              "source": "synthetic.driver.fixture"
+            }
+          ],
+          "gpsAvailable": true,
+          "hazardAcknowledgements": [],
+          "offRouteDurationMinutes": 0,
+          "recentSpeedEvents": [],
+          "routePurpose": "THROUGH_ROUTE",
+          "snapshotId": "snapshot-stop-unknown",
+          "speedMph": 45,
+          "speedObservedAt": "2026-07-24T23:59:00.000Z",
+          "upcomingBridges": [
+            {
+              "bridgeId": "bridge-clear-far",
+              "clearance": {
+                "unit": "ft",
+                "value": 15
+              },
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              }
+            }
+          ],
+          "upcomingRestrictions": [
+            {
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              },
+              "restrictionId": "residential-far",
+              "type": "RESIDENTIAL_AVOID"
+            }
+          ]
+        },
+        "tenantContext": {
+          "organizationId": "org_synthetic_driver_intelligence"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "driver_approaching_bridge",
+      "employeeScoringExpected": false,
+      "expectedStatus": "REVIEW_REQUIRED",
+      "providerCallExpected": false,
+      "request": {
+        "driverProfile": {
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "driverId": "driver-synthetic-001",
+          "organizationId": "org_synthetic_driver_intelligence",
+          "routeAssignmentId": "route-assignment-001",
+          "syntheticOnly": true
+        },
+        "snapshot": {
+          "activeWarnings": [],
+          "assignedRoute": {
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "routeCandidateId": "route-clear-pass"
+          },
+          "currentPosition": {
+            "latitude": 33.5005,
+            "longitude": -86.7995
+          },
+          "currentStop": null,
+          "driverProfile": {
+            "assignedVehicleId": "vehicle-box-12ft-6in",
+            "driverId": "driver-synthetic-001",
+            "organizationId": "org_synthetic_driver_intelligence",
+            "routeAssignmentId": "route-assignment-001",
+            "syntheticOnly": true
+          },
+          "driverState": "DRIVING",
+          "events": [
+            {
+              "eventType": "ROUTE_STARTED",
+              "observedAt": "2026-07-25T00:00:00.000Z",
+              "source": "synthetic.driver.fixture"
+            }
+          ],
+          "gpsAvailable": true,
+          "hazardAcknowledgements": [],
+          "offRouteDurationMinutes": 0,
+          "recentSpeedEvents": [],
+          "routePurpose": "THROUGH_ROUTE",
+          "snapshotId": "snapshot-bridge",
+          "speedMph": 45,
+          "speedObservedAt": "2026-07-24T23:59:00.000Z",
+          "upcomingBridges": [
+            {
+              "bridgeId": "bridge-near",
+              "clearance": {
+                "unit": "ft",
+                "value": 12.8
+              },
+              "confidence": 1,
+              "point": {
+                "latitude": 33.50062,
+                "longitude": -86.7995
+              }
+            }
+          ],
+          "upcomingRestrictions": [
+            {
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              },
+              "restrictionId": "residential-far",
+              "type": "RESIDENTIAL_AVOID"
+            }
+          ]
+        },
+        "tenantContext": {
+          "organizationId": "org_synthetic_driver_intelligence"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "driver_bridge_outside_threshold",
+      "employeeScoringExpected": false,
+      "expectedStatus": "NORMAL",
+      "providerCallExpected": false,
+      "request": {
+        "driverProfile": {
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "driverId": "driver-synthetic-001",
+          "organizationId": "org_synthetic_driver_intelligence",
+          "routeAssignmentId": "route-assignment-001",
+          "syntheticOnly": true
+        },
+        "snapshot": {
+          "activeWarnings": [],
+          "assignedRoute": {
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "routeCandidateId": "route-clear-pass"
+          },
+          "currentPosition": {
+            "latitude": 33.5005,
+            "longitude": -86.7995
+          },
+          "currentStop": null,
+          "driverProfile": {
+            "assignedVehicleId": "vehicle-box-12ft-6in",
+            "driverId": "driver-synthetic-001",
+            "organizationId": "org_synthetic_driver_intelligence",
+            "routeAssignmentId": "route-assignment-001",
+            "syntheticOnly": true
+          },
+          "driverState": "DRIVING",
+          "events": [
+            {
+              "eventType": "ROUTE_STARTED",
+              "observedAt": "2026-07-25T00:00:00.000Z",
+              "source": "synthetic.driver.fixture"
+            }
+          ],
+          "gpsAvailable": true,
+          "hazardAcknowledgements": [],
+          "offRouteDurationMinutes": 0,
+          "recentSpeedEvents": [],
+          "routePurpose": "THROUGH_ROUTE",
+          "snapshotId": "snapshot-bridge-outside",
+          "speedMph": 45,
+          "speedObservedAt": "2026-07-24T23:59:00.000Z",
+          "upcomingBridges": [
+            {
+              "bridgeId": "bridge-far",
+              "clearance": {
+                "unit": "ft",
+                "value": 15
+              },
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              }
+            }
+          ],
+          "upcomingRestrictions": [
+            {
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              },
+              "restrictionId": "residential-far",
+              "type": "RESIDENTIAL_AVOID"
+            }
+          ]
+        },
+        "tenantContext": {
+          "organizationId": "org_synthetic_driver_intelligence"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "driver_approaching_restricted_road",
+      "employeeScoringExpected": false,
+      "expectedStatus": "REVIEW_REQUIRED",
+      "providerCallExpected": false,
+      "request": {
+        "driverProfile": {
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "driverId": "driver-synthetic-001",
+          "organizationId": "org_synthetic_driver_intelligence",
+          "routeAssignmentId": "route-assignment-001",
+          "syntheticOnly": true
+        },
+        "snapshot": {
+          "activeWarnings": [],
+          "assignedRoute": {
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "routeCandidateId": "route-clear-pass"
+          },
+          "currentPosition": {
+            "latitude": 33.5005,
+            "longitude": -86.7995
+          },
+          "currentStop": null,
+          "driverProfile": {
+            "assignedVehicleId": "vehicle-box-12ft-6in",
+            "driverId": "driver-synthetic-001",
+            "organizationId": "org_synthetic_driver_intelligence",
+            "routeAssignmentId": "route-assignment-001",
+            "syntheticOnly": true
+          },
+          "driverState": "DRIVING",
+          "events": [
+            {
+              "eventType": "ROUTE_STARTED",
+              "observedAt": "2026-07-25T00:00:00.000Z",
+              "source": "synthetic.driver.fixture"
+            }
+          ],
+          "gpsAvailable": true,
+          "hazardAcknowledgements": [],
+          "offRouteDurationMinutes": 0,
+          "recentSpeedEvents": [],
+          "routePurpose": "THROUGH_ROUTE",
+          "snapshotId": "snapshot-restricted",
+          "speedMph": 45,
+          "speedObservedAt": "2026-07-24T23:59:00.000Z",
+          "upcomingBridges": [
+            {
+              "bridgeId": "bridge-clear-far",
+              "clearance": {
+                "unit": "ft",
+                "value": 15
+              },
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              }
+            }
+          ],
+          "upcomingRestrictions": [
+            {
+              "confidence": 1,
+              "point": {
+                "latitude": 33.50062,
+                "longitude": -86.7995
+              },
+              "restrictionId": "truck-prohibited-near",
+              "type": "TRUCK_PROHIBITED"
+            }
+          ]
+        },
+        "tenantContext": {
+          "organizationId": "org_synthetic_driver_intelligence"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "driver_no_through_truck_approach",
+      "employeeScoringExpected": false,
+      "expectedStatus": "REVIEW_REQUIRED",
+      "providerCallExpected": false,
+      "request": {
+        "driverProfile": {
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "driverId": "driver-synthetic-001",
+          "organizationId": "org_synthetic_driver_intelligence",
+          "routeAssignmentId": "route-assignment-001",
+          "syntheticOnly": true
+        },
+        "snapshot": {
+          "activeWarnings": [],
+          "assignedRoute": {
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "routeCandidateId": "route-clear-pass"
+          },
+          "currentPosition": {
+            "latitude": 33.5005,
+            "longitude": -86.7995
+          },
+          "currentStop": null,
+          "driverProfile": {
+            "assignedVehicleId": "vehicle-box-12ft-6in",
+            "driverId": "driver-synthetic-001",
+            "organizationId": "org_synthetic_driver_intelligence",
+            "routeAssignmentId": "route-assignment-001",
+            "syntheticOnly": true
+          },
+          "driverState": "DRIVING",
+          "events": [
+            {
+              "eventType": "ROUTE_STARTED",
+              "observedAt": "2026-07-25T00:00:00.000Z",
+              "source": "synthetic.driver.fixture"
+            }
+          ],
+          "gpsAvailable": true,
+          "hazardAcknowledgements": [],
+          "offRouteDurationMinutes": 0,
+          "recentSpeedEvents": [],
+          "routePurpose": "THROUGH_ROUTE",
+          "snapshotId": "snapshot-no-through",
+          "speedMph": 45,
+          "speedObservedAt": "2026-07-24T23:59:00.000Z",
+          "upcomingBridges": [
+            {
+              "bridgeId": "bridge-clear-far",
+              "clearance": {
+                "unit": "ft",
+                "value": 15
+              },
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              }
+            }
+          ],
+          "upcomingRestrictions": [
+            {
+              "confidence": 1,
+              "point": {
+                "latitude": 33.50062,
+                "longitude": -86.7995
+              },
+              "restrictionId": "no-through-near",
+              "type": "NO_THROUGH_TRUCKS"
+            }
+          ]
+        },
+        "tenantContext": {
+          "organizationId": "org_synthetic_driver_intelligence"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "driver_no_through_local_delivery",
+      "employeeScoringExpected": false,
+      "expectedStatus": "ADVISORY",
+      "providerCallExpected": false,
+      "request": {
+        "driverProfile": {
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "driverId": "driver-synthetic-001",
+          "organizationId": "org_synthetic_driver_intelligence",
+          "routeAssignmentId": "route-assignment-001",
+          "syntheticOnly": true
+        },
+        "snapshot": {
+          "activeWarnings": [],
+          "assignedRoute": {
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "routeCandidateId": "route-clear-pass"
+          },
+          "currentPosition": {
+            "latitude": 33.5005,
+            "longitude": -86.7995
+          },
+          "currentStop": null,
+          "driverProfile": {
+            "assignedVehicleId": "vehicle-box-12ft-6in",
+            "driverId": "driver-synthetic-001",
+            "organizationId": "org_synthetic_driver_intelligence",
+            "routeAssignmentId": "route-assignment-001",
+            "syntheticOnly": true
+          },
+          "driverState": "DRIVING",
+          "events": [
+            {
+              "eventType": "ROUTE_STARTED",
+              "observedAt": "2026-07-25T00:00:00.000Z",
+              "source": "synthetic.driver.fixture"
+            }
+          ],
+          "gpsAvailable": true,
+          "hazardAcknowledgements": [],
+          "offRouteDurationMinutes": 0,
+          "recentSpeedEvents": [],
+          "routePurpose": "LOCAL_DELIVERY",
+          "snapshotId": "snapshot-no-through-local",
+          "speedMph": 45,
+          "speedObservedAt": "2026-07-24T23:59:00.000Z",
+          "upcomingBridges": [
+            {
+              "bridgeId": "bridge-clear-far",
+              "clearance": {
+                "unit": "ft",
+                "value": 15
+              },
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              }
+            }
+          ],
+          "upcomingRestrictions": [
+            {
+              "confidence": 1,
+              "point": {
+                "latitude": 33.50062,
+                "longitude": -86.7995
+              },
+              "restrictionId": "no-through-local-near",
+              "type": "NO_THROUGH_TRUCKS"
+            }
+          ]
+        },
+        "tenantContext": {
+          "organizationId": "org_synthetic_driver_intelligence"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "driver_residential_approach",
+      "employeeScoringExpected": false,
+      "expectedStatus": "WARNING",
+      "providerCallExpected": false,
+      "request": {
+        "driverProfile": {
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "driverId": "driver-synthetic-001",
+          "organizationId": "org_synthetic_driver_intelligence",
+          "routeAssignmentId": "route-assignment-001",
+          "syntheticOnly": true
+        },
+        "snapshot": {
+          "activeWarnings": [],
+          "assignedRoute": {
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "routeCandidateId": "route-clear-pass"
+          },
+          "currentPosition": {
+            "latitude": 33.5005,
+            "longitude": -86.7995
+          },
+          "currentStop": null,
+          "driverProfile": {
+            "assignedVehicleId": "vehicle-box-12ft-6in",
+            "driverId": "driver-synthetic-001",
+            "organizationId": "org_synthetic_driver_intelligence",
+            "routeAssignmentId": "route-assignment-001",
+            "syntheticOnly": true
+          },
+          "driverState": "DRIVING",
+          "events": [
+            {
+              "eventType": "ROUTE_STARTED",
+              "observedAt": "2026-07-25T00:00:00.000Z",
+              "source": "synthetic.driver.fixture"
+            }
+          ],
+          "gpsAvailable": true,
+          "hazardAcknowledgements": [],
+          "offRouteDurationMinutes": 0,
+          "recentSpeedEvents": [],
+          "routePurpose": "THROUGH_ROUTE",
+          "snapshotId": "snapshot-residential",
+          "speedMph": 45,
+          "speedObservedAt": "2026-07-24T23:59:00.000Z",
+          "upcomingBridges": [
+            {
+              "bridgeId": "bridge-clear-far",
+              "clearance": {
+                "unit": "ft",
+                "value": 15
+              },
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              }
+            }
+          ],
+          "upcomingRestrictions": [
+            {
+              "confidence": 1,
+              "point": {
+                "latitude": 33.50062,
+                "longitude": -86.7995
+              },
+              "restrictionId": "residential-near",
+              "type": "RESIDENTIAL_AVOID"
+            }
+          ]
+        },
+        "tenantContext": {
+          "organizationId": "org_synthetic_driver_intelligence"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "driver_residential_prohibition",
+      "employeeScoringExpected": false,
+      "expectedStatus": "REVIEW_REQUIRED",
+      "providerCallExpected": false,
+      "request": {
+        "driverProfile": {
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "driverId": "driver-synthetic-001",
+          "organizationId": "org_synthetic_driver_intelligence",
+          "routeAssignmentId": "route-assignment-001",
+          "syntheticOnly": true
+        },
+        "snapshot": {
+          "activeWarnings": [],
+          "assignedRoute": {
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "routeCandidateId": "route-clear-pass"
+          },
+          "currentPosition": {
+            "latitude": 33.5005,
+            "longitude": -86.7995
+          },
+          "currentStop": null,
+          "driverProfile": {
+            "assignedVehicleId": "vehicle-box-12ft-6in",
+            "driverId": "driver-synthetic-001",
+            "organizationId": "org_synthetic_driver_intelligence",
+            "routeAssignmentId": "route-assignment-001",
+            "syntheticOnly": true
+          },
+          "driverState": "DRIVING",
+          "events": [
+            {
+              "eventType": "ROUTE_STARTED",
+              "observedAt": "2026-07-25T00:00:00.000Z",
+              "source": "synthetic.driver.fixture"
+            }
+          ],
+          "gpsAvailable": true,
+          "hazardAcknowledgements": [],
+          "offRouteDurationMinutes": 0,
+          "recentSpeedEvents": [],
+          "routePurpose": "THROUGH_ROUTE",
+          "snapshotId": "snapshot-residential-prohibited",
+          "speedMph": 45,
+          "speedObservedAt": "2026-07-24T23:59:00.000Z",
+          "upcomingBridges": [
+            {
+              "bridgeId": "bridge-clear-far",
+              "clearance": {
+                "unit": "ft",
+                "value": 15
+              },
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              }
+            }
+          ],
+          "upcomingRestrictions": [
+            {
+              "confidence": 1,
+              "point": {
+                "latitude": 33.50062,
+                "longitude": -86.7995
+              },
+              "restrictionId": "residential-prohibited-near",
+              "type": "RESIDENTIAL_TRUCK_PROHIBITED"
+            }
+          ]
+        },
+        "tenantContext": {
+          "organizationId": "org_synthetic_driver_intelligence"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "driver_road_closure",
+      "employeeScoringExpected": false,
+      "expectedStatus": "REVIEW_REQUIRED",
+      "providerCallExpected": false,
+      "request": {
+        "driverProfile": {
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "driverId": "driver-synthetic-001",
+          "organizationId": "org_synthetic_driver_intelligence",
+          "routeAssignmentId": "route-assignment-001",
+          "syntheticOnly": true
+        },
+        "snapshot": {
+          "activeWarnings": [],
+          "assignedRoute": {
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "routeCandidateId": "route-clear-pass"
+          },
+          "currentPosition": {
+            "latitude": 33.5005,
+            "longitude": -86.7995
+          },
+          "currentStop": null,
+          "driverProfile": {
+            "assignedVehicleId": "vehicle-box-12ft-6in",
+            "driverId": "driver-synthetic-001",
+            "organizationId": "org_synthetic_driver_intelligence",
+            "routeAssignmentId": "route-assignment-001",
+            "syntheticOnly": true
+          },
+          "driverState": "DRIVING",
+          "events": [
+            {
+              "eventType": "ROUTE_STARTED",
+              "observedAt": "2026-07-25T00:00:00.000Z",
+              "source": "synthetic.driver.fixture"
+            }
+          ],
+          "gpsAvailable": true,
+          "hazardAcknowledgements": [],
+          "offRouteDurationMinutes": 0,
+          "recentSpeedEvents": [],
+          "routePurpose": "THROUGH_ROUTE",
+          "snapshotId": "snapshot-road-closed",
+          "speedMph": 45,
+          "speedObservedAt": "2026-07-24T23:59:00.000Z",
+          "upcomingBridges": [
+            {
+              "bridgeId": "bridge-clear-far",
+              "clearance": {
+                "unit": "ft",
+                "value": 15
+              },
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              }
+            }
+          ],
+          "upcomingRestrictions": [
+            {
+              "confidence": 1,
+              "point": {
+                "latitude": 33.50062,
+                "longitude": -86.7995
+              },
+              "restrictionId": "road-closed-near",
+              "type": "ROAD_CLOSED"
+            }
+          ]
+        },
+        "tenantContext": {
+          "organizationId": "org_synthetic_driver_intelligence"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "unknown_gps",
+      "employeeScoringExpected": false,
+      "expectedStatus": "INSUFFICIENT_EVIDENCE",
+      "providerCallExpected": false,
+      "request": {
+        "driverProfile": {
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "driverId": "driver-synthetic-001",
+          "organizationId": "org_synthetic_driver_intelligence",
+          "routeAssignmentId": "route-assignment-001",
+          "syntheticOnly": true
+        },
+        "snapshot": {
+          "activeWarnings": [],
+          "assignedRoute": {
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "routeCandidateId": "route-clear-pass"
+          },
+          "currentPosition": null,
+          "currentStop": null,
+          "driverProfile": {
+            "assignedVehicleId": "vehicle-box-12ft-6in",
+            "driverId": "driver-synthetic-001",
+            "organizationId": "org_synthetic_driver_intelligence",
+            "routeAssignmentId": "route-assignment-001",
+            "syntheticOnly": true
+          },
+          "driverState": "DRIVING",
+          "events": [
+            {
+              "eventType": "ROUTE_STARTED",
+              "observedAt": "2026-07-25T00:00:00.000Z",
+              "source": "synthetic.driver.fixture"
+            }
+          ],
+          "gpsAvailable": false,
+          "hazardAcknowledgements": [],
+          "offRouteDurationMinutes": 0,
+          "recentSpeedEvents": [],
+          "routePurpose": "THROUGH_ROUTE",
+          "snapshotId": "snapshot-gps-unknown",
+          "speedMph": 45,
+          "speedObservedAt": "2026-07-24T23:59:00.000Z",
+          "upcomingBridges": [
+            {
+              "bridgeId": "bridge-clear-far",
+              "clearance": {
+                "unit": "ft",
+                "value": 15
+              },
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              }
+            }
+          ],
+          "upcomingRestrictions": [
+            {
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              },
+              "restrictionId": "residential-far",
+              "type": "RESIDENTIAL_AVOID"
+            }
+          ]
+        },
+        "tenantContext": {
+          "organizationId": "org_synthetic_driver_intelligence"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "unknown_speed",
+      "employeeScoringExpected": false,
+      "expectedStatus": "INSUFFICIENT_EVIDENCE",
+      "providerCallExpected": false,
+      "request": {
+        "driverProfile": {
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "driverId": "driver-synthetic-001",
+          "organizationId": "org_synthetic_driver_intelligence",
+          "routeAssignmentId": "route-assignment-001",
+          "syntheticOnly": true
+        },
+        "snapshot": {
+          "activeWarnings": [],
+          "assignedRoute": {
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "routeCandidateId": "route-clear-pass"
+          },
+          "currentPosition": {
+            "latitude": 33.5005,
+            "longitude": -86.7995
+          },
+          "currentStop": null,
+          "driverProfile": {
+            "assignedVehicleId": "vehicle-box-12ft-6in",
+            "driverId": "driver-synthetic-001",
+            "organizationId": "org_synthetic_driver_intelligence",
+            "routeAssignmentId": "route-assignment-001",
+            "syntheticOnly": true
+          },
+          "driverState": "DRIVING",
+          "events": [
+            {
+              "eventType": "ROUTE_STARTED",
+              "observedAt": "2026-07-25T00:00:00.000Z",
+              "source": "synthetic.driver.fixture"
+            }
+          ],
+          "gpsAvailable": true,
+          "hazardAcknowledgements": [],
+          "offRouteDurationMinutes": 0,
+          "recentSpeedEvents": [],
+          "routePurpose": "THROUGH_ROUTE",
+          "snapshotId": "snapshot-speed-unknown",
+          "speedMph": null,
+          "speedObservedAt": "2026-07-24T23:59:00.000Z",
+          "upcomingBridges": [
+            {
+              "bridgeId": "bridge-clear-far",
+              "clearance": {
+                "unit": "ft",
+                "value": 15
+              },
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              }
+            }
+          ],
+          "upcomingRestrictions": [
+            {
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              },
+              "restrictionId": "residential-far",
+              "type": "RESIDENTIAL_AVOID"
+            }
+          ]
+        },
+        "tenantContext": {
+          "organizationId": "org_synthetic_driver_intelligence"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "unknown_location",
+      "employeeScoringExpected": false,
+      "expectedStatus": "INSUFFICIENT_EVIDENCE",
+      "providerCallExpected": false,
+      "request": {
+        "driverProfile": {
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "driverId": "driver-synthetic-001",
+          "organizationId": "org_synthetic_driver_intelligence",
+          "routeAssignmentId": "route-assignment-001",
+          "syntheticOnly": true
+        },
+        "snapshot": {
+          "activeWarnings": [],
+          "assignedRoute": {
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "routeCandidateId": "route-clear-pass"
+          },
+          "currentPosition": null,
+          "currentStop": null,
+          "driverProfile": {
+            "assignedVehicleId": "vehicle-box-12ft-6in",
+            "driverId": "driver-synthetic-001",
+            "organizationId": "org_synthetic_driver_intelligence",
+            "routeAssignmentId": "route-assignment-001",
+            "syntheticOnly": true
+          },
+          "driverState": "DRIVING",
+          "events": [
+            {
+              "eventType": "ROUTE_STARTED",
+              "observedAt": "2026-07-25T00:00:00.000Z",
+              "source": "synthetic.driver.fixture"
+            }
+          ],
+          "gpsAvailable": true,
+          "hazardAcknowledgements": [],
+          "offRouteDurationMinutes": 0,
+          "recentSpeedEvents": [],
+          "routePurpose": "THROUGH_ROUTE",
+          "snapshotId": "snapshot-location-unknown",
+          "speedMph": 45,
+          "speedObservedAt": "2026-07-24T23:59:00.000Z",
+          "upcomingBridges": [
+            {
+              "bridgeId": "bridge-clear-far",
+              "clearance": {
+                "unit": "ft",
+                "value": 15
+              },
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              }
+            }
+          ],
+          "upcomingRestrictions": [
+            {
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              },
+              "restrictionId": "residential-far",
+              "type": "RESIDENTIAL_AVOID"
+            }
+          ]
+        },
+        "tenantContext": {
+          "organizationId": "org_synthetic_driver_intelligence"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "evidence_conflict_unknown_state",
+      "employeeScoringExpected": false,
+      "expectedStatus": "ADVISORY",
+      "providerCallExpected": false,
+      "request": {
+        "driverProfile": {
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "driverId": "driver-synthetic-001",
+          "organizationId": "org_synthetic_driver_intelligence",
+          "routeAssignmentId": "route-assignment-001",
+          "syntheticOnly": true
+        },
+        "snapshot": {
+          "activeWarnings": [],
+          "assignedRoute": {
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "routeCandidateId": "route-clear-pass"
+          },
+          "currentPosition": {
+            "latitude": 33.5005,
+            "longitude": -86.7995
+          },
+          "currentStop": null,
+          "driverProfile": {
+            "assignedVehicleId": "vehicle-box-12ft-6in",
+            "driverId": "driver-synthetic-001",
+            "organizationId": "org_synthetic_driver_intelligence",
+            "routeAssignmentId": "route-assignment-001",
+            "syntheticOnly": true
+          },
+          "driverState": "UNKNOWN",
+          "events": [
+            {
+              "eventType": "UNKNOWN_EVENT",
+              "observedAt": "2026-07-25T00:00:00.000Z",
+              "source": "synthetic.driver.fixture"
+            }
+          ],
+          "gpsAvailable": true,
+          "hazardAcknowledgements": [],
+          "offRouteDurationMinutes": 0,
+          "recentSpeedEvents": [],
+          "routePurpose": "THROUGH_ROUTE",
+          "snapshotId": "snapshot-state-unknown",
+          "speedMph": 45,
+          "speedObservedAt": "2026-07-24T23:59:00.000Z",
+          "upcomingBridges": [
+            {
+              "bridgeId": "bridge-clear-far",
+              "clearance": {
+                "unit": "ft",
+                "value": 15
+              },
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              }
+            }
+          ],
+          "upcomingRestrictions": [
+            {
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              },
+              "restrictionId": "residential-far",
+              "type": "RESIDENTIAL_AVOID"
+            }
+          ]
+        },
+        "tenantContext": {
+          "organizationId": "org_synthetic_driver_intelligence"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "hazard_ack_missing",
+      "employeeScoringExpected": false,
+      "expectedStatus": "REVIEW_REQUIRED",
+      "providerCallExpected": false,
+      "request": {
+        "driverProfile": {
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "driverId": "driver-synthetic-001",
+          "organizationId": "org_synthetic_driver_intelligence",
+          "routeAssignmentId": "route-assignment-001",
+          "syntheticOnly": true
+        },
+        "snapshot": {
+          "activeWarnings": [
+            {
+              "requiresAcknowledgement": true,
+              "warningId": "warning-low-bridge"
+            }
+          ],
+          "assignedRoute": {
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "routeCandidateId": "route-clear-pass"
+          },
+          "currentPosition": {
+            "latitude": 33.5005,
+            "longitude": -86.7995
+          },
+          "currentStop": null,
+          "driverProfile": {
+            "assignedVehicleId": "vehicle-box-12ft-6in",
+            "driverId": "driver-synthetic-001",
+            "organizationId": "org_synthetic_driver_intelligence",
+            "routeAssignmentId": "route-assignment-001",
+            "syntheticOnly": true
+          },
+          "driverState": "DRIVING",
+          "events": [
+            {
+              "eventType": "ROUTE_STARTED",
+              "observedAt": "2026-07-25T00:00:00.000Z",
+              "source": "synthetic.driver.fixture"
+            }
+          ],
+          "gpsAvailable": true,
+          "hazardAcknowledgements": [],
+          "offRouteDurationMinutes": 0,
+          "recentSpeedEvents": [],
+          "routePurpose": "THROUGH_ROUTE",
+          "snapshotId": "snapshot-hazard-ack",
+          "speedMph": 45,
+          "speedObservedAt": "2026-07-24T23:59:00.000Z",
+          "upcomingBridges": [
+            {
+              "bridgeId": "bridge-clear-far",
+              "clearance": {
+                "unit": "ft",
+                "value": 15
+              },
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              }
+            }
+          ],
+          "upcomingRestrictions": [
+            {
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              },
+              "restrictionId": "residential-far",
+              "type": "RESIDENTIAL_AVOID"
+            }
+          ]
+        },
+        "tenantContext": {
+          "organizationId": "org_synthetic_driver_intelligence"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "manual_review_required",
+      "employeeScoringExpected": false,
+      "expectedStatus": "INSUFFICIENT_EVIDENCE",
+      "providerCallExpected": false,
+      "request": {
+        "driverProfile": {
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "driverId": "driver-synthetic-001",
+          "organizationId": "org_synthetic_driver_intelligence",
+          "routeAssignmentId": "route-assignment-001",
+          "syntheticOnly": true
+        },
+        "snapshot": {
+          "activeWarnings": [],
+          "assignedRoute": {
+            "geometry": {
+              "points": []
+            },
+            "routeCandidateId": "missing-route"
+          },
+          "currentPosition": {
+            "latitude": 33.5005,
+            "longitude": -86.7995
+          },
+          "currentStop": null,
+          "driverProfile": {
+            "assignedVehicleId": "vehicle-box-12ft-6in",
+            "driverId": "driver-synthetic-001",
+            "organizationId": "org_synthetic_driver_intelligence",
+            "routeAssignmentId": "route-assignment-001",
+            "syntheticOnly": true
+          },
+          "driverState": "DRIVING",
+          "events": [
+            {
+              "eventType": "ROUTE_STARTED",
+              "observedAt": "2026-07-25T00:00:00.000Z",
+              "source": "synthetic.driver.fixture"
+            }
+          ],
+          "gpsAvailable": true,
+          "hazardAcknowledgements": [],
+          "offRouteDurationMinutes": 0,
+          "recentSpeedEvents": [],
+          "routePurpose": "THROUGH_ROUTE",
+          "snapshotId": "snapshot-review",
+          "speedMph": 45,
+          "speedObservedAt": "2026-07-24T23:59:00.000Z",
+          "upcomingBridges": [
+            {
+              "bridgeId": "bridge-clear-far",
+              "clearance": {
+                "unit": "ft",
+                "value": 15
+              },
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              }
+            }
+          ],
+          "upcomingRestrictions": [
+            {
+              "confidence": 1,
+              "point": {
+                "latitude": 33.503,
+                "longitude": -86.797
+              },
+              "restrictionId": "residential-far",
+              "type": "RESIDENTIAL_AVOID"
+            }
+          ]
+        },
+        "tenantContext": {
+          "organizationId": "org_synthetic_driver_intelligence"
+        }
+      },
+      "syntheticOnly": true
+    }
+  ],
+  "generatedArtifact": true
+}

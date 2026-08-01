@@ -1,0 +1,49 @@
+{
+  "capabilities": [
+    {
+      "capabilityId": "driver.operational_state.assessment",
+      "displayName": "Driver Operational State Assessment",
+      "employeeScoring": false,
+      "executionStrategy": "DETERMINISTIC_RULES"
+    },
+    {
+      "capabilityId": "driver.route_adherence.assessment",
+      "displayName": "Driver Route Adherence Assessment",
+      "employeeScoring": false,
+      "executionStrategy": "DETERMINISTIC_RULES"
+    },
+    {
+      "capabilityId": "driver.safety_advisory.generation",
+      "displayName": "Driver Safety Advisory Generation",
+      "employeeScoring": false,
+      "executionStrategy": "DETERMINISTIC_RULES"
+    },
+    {
+      "capabilityId": "driver.evidence.explanation",
+      "displayName": "Driver Evidence Explanation",
+      "employeeScoring": false,
+      "executionStrategy": "DETERMINISTIC_RULES"
+    }
+  ],
+  "catalog": {
+    "benchmarkCaseCount": 26,
+    "capabilityCount": 4,
+    "catalogHash": "8c4111cfcc49cc7b621c1b983a20295eda8689d50bb771a3a67b93a5120a331b",
+    "directEnterpriseRegistryCapability": null,
+    "directRegistryCapabilityDeferred": true,
+    "employeeScoring": false,
+    "engineVersion": "driver.intelligence.foundation.engine.v1",
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "hostedAiInvoked": false,
+    "integratedWithCapabilityOrchestration": true,
+    "integratedWithEnterpriseRegistry": true,
+    "integratedWithLifecycleFramework": true,
+    "integratedWithRouteIntelligence": true,
+    "predictiveModelInvoked": false,
+    "productionApplicable": false,
+    "providerCallInvoked": false,
+    "schemaVersion": "driver.intelligence.foundation.v1",
+    "testOnly": true
+  },
+  "generatedArtifact": true
+}

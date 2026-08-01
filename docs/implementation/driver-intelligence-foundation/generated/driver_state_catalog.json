@@ -1,0 +1,14 @@
+{
+  "generatedArtifact": true,
+  "states": [
+    "OFF_DUTY",
+    "ON_DUTY",
+    "DRIVING",
+    "AT_STOP",
+    "DELIVERING",
+    "WAITING",
+    "RETURNING",
+    "ROUTE_COMPLETE",
+    "UNKNOWN"
+  ]
+}

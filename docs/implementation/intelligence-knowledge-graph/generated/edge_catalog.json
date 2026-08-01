@@ -331,6 +331,17 @@
       "testOnly": true
     },
     {
+      "edgeId": "edge:994f5ba7d5808c64ac52",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "2661d855a18d7e833bd4dc96fe62c7f4034987153ef3696343844a5bf418ecb1",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "IMPLEMENTS",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Service:intelligence-execution-platform",
+      "targetNodeId": "Repository Module:bridge-api/services/intelligenceExecution/driverIntelligence.js",
+      "testOnly": true
+    },
+    {
       "edgeId": "edge:8f4e6eca5481d836afe5",
       "relationshipConfidence": "DETERMINISTIC",
       "relationshipHash": "89d1b245679762e6a8fb32f7f48a96cda5eb38950ac66e70f2f8b99f6c546445",
@@ -7225,6 +7236,149 @@
       "relationshipVersion": "0.1.0",
       "sourceNodeId": "Documentation Page:docs/implementation/decision-history-and-governance/TEST_RESULTS.md",
       "targetNodeId": "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:dcab8784e8a2e785addb",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "4dbfa513899ae63b11dd1262b5a32e15513ed922ebcd3d809dcb321052db5231",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/driver-intelligence-foundation/generated/driver_advisory_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:832249cf27c0ba5e6355",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "10dc6386d01d7a4d863ac907f7f2561519d06ac2ff8762322266d295a352145c",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/driver-intelligence-foundation/generated/driver_assessment_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:db0bb9a0d28fce445730",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "7d23cb00223beabc35f88c6de5142ca2485d12e131bad173799f9e07e0706b93",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/driver-intelligence-foundation/generated/driver_benchmark_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:cbfdd0b301733201d063",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "2185fa28bcef9a34b951c1ee758946bdcdc3feaa900d433952a57b1cb6bec718",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/driver-intelligence-foundation/generated/driver_event_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:bf1248b76cabf4c42c15",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "93f7db94fd39aa7882f20379a23f2f23925ea4caaeab58f8650e2374946cce61",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/driver-intelligence-foundation/generated/driver_event_contract.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:8fea89f3577bf21f275a",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "2a2e439c2af1290a80f10c052b9343507354257cb69de276eaa18d1f6d4de8aa",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/driver-intelligence-foundation/generated/driver_evidence_completeness_report.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:fcb4638b8e4676bcd475",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "78dc833d7e26a93b408098ee6b119d031d3bcf8d84f5a8d5fcef8624a0e8c0a4",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/driver-intelligence-foundation/generated/driver_human_review_report.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:7a7e7bb6129f2b0629e6",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "fe1bca78d0c9a5d79e675b8e0489ec67585daba4a29b470a03a24a599d57aacc",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/driver-intelligence-foundation/generated/driver_intelligence_capability_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:c3e0efaa0ce13563ab3d",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "1b59d4e02d5f483f2a5c11d894c109efe3084d17cdafe3acc3f80c3a9240df7c",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/driver-intelligence-foundation/generated/driver_intelligence_readiness.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:8b6addeb2d487b4fadb5",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "4d77c468c33b834d718d0c9f387e31cac3d9af400bed314023ac835be7776316",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/driver-intelligence-foundation/generated/DRIVER_INTELLIGENCE_SUMMARY.md",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:7a2fe189b9d80e811680",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "a4066ca0c29f82bf5a4e15e7ef5f0beaebeb9e84233e94b407223f0e54b9a682",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/driver-intelligence-foundation/generated/driver_profile_contract.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:4fd721fedc0507aa574a",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "baa918544a639f048139bc562b0ce0c7446d3cc085190c607dce422786189811",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/driver-intelligence-foundation/generated/driver_reason_code_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:2af3ffc3f7c8111c6933",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "24d668d9b4526cc8254c13c7e0b2fa50a6666b72c1b0b6384e443c14d1200563",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/driver-intelligence-foundation/generated/driver_state_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
       "testOnly": true
     },
     {

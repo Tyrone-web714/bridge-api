@@ -3,8 +3,8 @@
   "generatedFrom": "bridge-api/intelligence-knowledge-graph",
   "statistics": {
     "cycleCount": 0,
-    "disconnectedCount": 357,
-    "edgeCount": 825,
+    "disconnectedCount": 387,
+    "edgeCount": 839,
     "edgeTypes": {
       "ALLOWS": 30,
       "BELONGS_TO": 3,
@@ -13,12 +13,12 @@
       "DOCUMENTS": 118,
       "EVALUATES": 3,
       "FALLBACK_TO": 6,
-      "GENERATED_FROM": 147,
+      "GENERATED_FROM": 160,
       "GOVERNS": 56,
       "HAS_HASH": 6,
       "HAS_POLICY": 12,
       "HAS_VERSION": 15,
-      "IMPLEMENTS": 37,
+      "IMPLEMENTS": 38,
       "INFLUENCES": 14,
       "PRODUCES": 185,
       "REPLAYS": 4,
@@ -27,8 +27,8 @@
       "TESTS": 19,
       "USES": 95
     },
-    "graphHash": "7633f35b79ed612edfd92f59393f187530d1e0ae2491c896ad08295773bf68ca",
-    "nodeCount": 972,
+    "graphHash": "33e6c3624a9b004723abe398ddb2511b5cbd13d4d1470d6f4494cc9f72774f97",
+    "nodeCount": 1016,
     "nodeTypes": {
       "Architecture Decision": 13,
       "Attestation": 4,
@@ -40,7 +40,7 @@
       "Cost Model Profile": 3,
       "Decision History Record": 4,
       "Decision Policy Profile": 8,
-      "Documentation Page": 430,
+      "Documentation Page": 460,
       "Evaluation Result": 60,
       "Evaluation Run": 3,
       "Exception Record": 1,
@@ -49,7 +49,7 @@
       "Execution Profile": 8,
       "Execution Strategy": 13,
       "Finding": 1,
-      "Generated Artifact": 147,
+      "Generated Artifact": 160,
       "Governance Event": 48,
       "Hash": 130,
       "Human Review Record": 1,
@@ -57,7 +57,7 @@
       "Owner Decision": 1,
       "Package": 1,
       "Pricing Catalog": 1,
-      "Repository Module": 30,
+      "Repository Module": 31,
       "Score Profile": 3,
       "Score Run": 3,
       "Script": 19,
@@ -65,6 +65,6 @@
       "Unknown": 6,
       "Version": 3
     },
-    "orphanCount": 589
+    "orphanCount": 632
   }
 }

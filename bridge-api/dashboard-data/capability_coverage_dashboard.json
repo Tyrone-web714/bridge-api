@@ -20,7 +20,7 @@
       "dashboard-data/capability_coverage_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "a7a214673a2d0257dac1a3e409a44b468b38dc08fe04329bd35ea5bb0efef519",
+    "generationHash": "39fa859a069f4ece2785f8b0fa2927b797b537a58918cb853d863e959c5f0e73",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -46,6 +46,7 @@
         "docs/implementation/dashboard-data-generation": 14,
         "docs/implementation/data-lifecycle-foundation": 25,
         "docs/implementation/decision-history-and-governance": 60,
+        "docs/implementation/driver-intelligence-foundation": 43,
         "docs/implementation/enterprise-identity-foundation": 32,
         "docs/implementation/enterprise-intelligence-capability-registry": 29,
         "docs/implementation/execution-decision-engine": 58,
@@ -75,7 +76,7 @@
         "docs/implementation/shared-safety-moderation-ui": 14,
         "docs/implementation/web-origin-private-media-hardening": 16
       },
-      "testScripts": 42
+      "testScripts": 43
     },
     "statusIndicators": [],
     "summary": {

@@ -17,7 +17,7 @@
       "dashboard-data/test_coverage_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "18eceaa53370955619ce651e7ac832c782b9ef3792b065aec780a296b8a6e1e0",
+    "generationHash": "cef5f93a472c52b2acb88c3a3b6fa028dc766f0dabcdbbdccedd68def5ca7383",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -57,6 +57,10 @@
         "decision-governance:project",
         "decision-governance:replay",
         "decision-governance:validate",
+        "driver-intelligence:benchmarks",
+        "driver-intelligence:check",
+        "driver-intelligence:generate",
+        "driver-intelligence:validate",
         "evaluation-engine:check",
         "evaluation-engine:generate",
         "evaluation-engine:replay",
@@ -98,6 +102,7 @@
         "test:dashboard",
         "test:dashboard-data",
         "test:decision-governance",
+        "test:driver-intelligence",
         "test:evaluation-engine",
         "test:execution-decisions",
         "test:fleet-intelligence-scoring",
@@ -115,7 +120,7 @@
     },
     "statusIndicators": [],
     "summary": {
-      "testScripts": 42
+      "testScripts": 43
     },
     "testOnly": true,
     "unknownValues": [],
