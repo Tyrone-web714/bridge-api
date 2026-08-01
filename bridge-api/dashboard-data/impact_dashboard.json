@@ -17,7 +17,7 @@
       "dashboard-data/impact_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "bc9a57af5570e662590dd215e0f2e1e76c61930bb8615bfe273ed00c1f52f550",
+    "generationHash": "62e008f668e03663f55443808ba68244e3524c7df1a3ed0b6e9fccac8019fae1",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -31,12 +31,12 @@
       "knowledge-graph"
     ],
     "statistics": {
-      "impactedNodes": 365,
+      "impactedNodes": 378,
       "unknownImpacts": 84
     },
     "statusIndicators": [],
     "summary": {
-      "matrixRows": 924
+      "matrixRows": 972
     },
     "testOnly": true,
     "unknownValues": [],

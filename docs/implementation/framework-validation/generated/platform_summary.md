@@ -9,7 +9,7 @@ Framework validation is repository-only, deterministic, offline, provider-neutra
 - Validation: valid
 - Subsystems: 9
 - Dashboards: 30
-- Graph hash: 48d503a799e33c7f39aa341d1f7ed7c8833e4f5565e65f31b4199dd2de934474
+- Graph hash: 7633f35b79ed612edfd92f59393f187530d1e0ae2491c896ad08295773bf68ca
 
 ## Readiness
 

@@ -17,7 +17,7 @@
       "dashboard-data/dependency_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "b5a6d4de851e5a570a45eb274283874b7f630fd2d8a7b23480b92dccb876246c",
+    "generationHash": "6ce47e6660d51e75bd3e6bd5213e4d6c1fbaa5c7ecde2504421096537483b510",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -36,7 +36,7 @@
     },
     "statusIndicators": [],
     "summary": {
-      "matrixRows": 924
+      "matrixRows": 972
     },
     "testOnly": true,
     "unknownValues": [],

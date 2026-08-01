@@ -5,9 +5,9 @@ The Intelligence Knowledge Graph is repository-only, deterministic, offline, pro
 
 - Schema version: intelligence.knowledge.graph.v1
 - Engine version: intelligence.knowledge.graph.engine.v1
-- Graph hash: 48d503a799e33c7f39aa341d1f7ed7c8833e4f5565e65f31b4199dd2de934474
-- Nodes: 924
-- Edges: 811
+- Graph hash: 7633f35b79ed612edfd92f59393f187530d1e0ae2491c896ad08295773bf68ca
+- Nodes: 972
+- Edges: 825
 - Cycles: 0
 - Validation: valid
 
@@ -19,7 +19,7 @@ The Intelligence Knowledge Graph is repository-only, deterministic, offline, pro
 | Service | 1 |
 | Execution Strategy | 13 |
 | Execution Profile | 8 |
-| Repository Module | 29 |
+| Repository Module | 30 |
 | Script | 19 |
 | Capability | 6 |
 | Capability Version | 6 |
@@ -45,8 +45,8 @@ The Intelligence Knowledge Graph is repository-only, deterministic, offline, pro
 | Human Review Record | 1 |
 | Exception Record | 1 |
 | Governance Event | 48 |
-| Documentation Page | 396 |
-| Generated Artifact | 134 |
+| Documentation Page | 430 |
+| Generated Artifact | 147 |
 | Owner Decision | 1 |
 | Architecture Decision | 13 |
 
@@ -54,7 +54,7 @@ The Intelligence Knowledge Graph is repository-only, deterministic, offline, pro
 
 | Relationship | Count |
 | --- | ---: |
-| IMPLEMENTS | 36 |
+| IMPLEMENTS | 37 |
 | ALLOWS | 30 |
 | TESTS | 19 |
 | HAS_VERSION | 15 |
@@ -71,6 +71,6 @@ The Intelligence Knowledge Graph is repository-only, deterministic, offline, pro
 | FALLBACK_TO | 6 |
 | REPLAYS | 4 |
 | REQUIRES | 1 |
-| GENERATED_FROM | 134 |
+| GENERATED_FROM | 147 |
 | DOCUMENTS | 118 |
 | INFLUENCES | 14 |

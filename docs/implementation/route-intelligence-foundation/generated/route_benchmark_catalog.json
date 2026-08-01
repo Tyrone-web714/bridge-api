@@ -1,0 +1,2385 @@
+{
+  "benchmarkCases": [
+    {
+      "caseId": "clearance_pass",
+      "deterministic": true,
+      "expectedPrimaryStatus": "ELIGIBLE",
+      "productionRouteEndpointMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "purpose": "THROUGH_ROUTE",
+        "routeCandidates": [
+          {
+            "clearanceEvidence": [
+              {
+                "clearance": {
+                  "confidence": 1,
+                  "source": "synthetic.bridge.catalog",
+                  "unit": "ft",
+                  "value": 14
+                },
+                "evidenceId": "bridge-14ft-0in-current",
+                "observedAt": "2026-07-20T00:00:00.000Z"
+              }
+            ],
+            "estimatedDistanceMiles": 12.4,
+            "estimatedDurationMinutes": 31,
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "hazards": [],
+            "restrictions": [],
+            "routeCandidateId": "route-clear-pass"
+          }
+        ],
+        "tenantContext": {
+          "organizationId": "org_synthetic_route_intelligence"
+        },
+        "vehicleProfile": {
+          "axleCount": 2,
+          "grossWeight": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "lb",
+            "value": 26000
+          },
+          "height": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 12.5
+          },
+          "length": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 26
+          },
+          "operationalRestrictions": [],
+          "trailerType": "NONE",
+          "vehicleClass": "BOX_TRUCK",
+          "vehicleId": "vehicle-box-12ft-6in",
+          "width": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "in",
+            "value": 96
+          }
+        }
+      }
+    },
+    {
+      "caseId": "low_clearance_fail_closed",
+      "deterministic": true,
+      "expectedPrimaryStatus": "UNSAFE",
+      "productionRouteEndpointMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "purpose": "THROUGH_ROUTE",
+        "routeCandidates": [
+          {
+            "clearanceEvidence": [
+              {
+                "clearance": {
+                  "confidence": 1,
+                  "source": "synthetic.bridge.catalog",
+                  "unit": "ft",
+                  "value": 13
+                },
+                "evidenceId": "bridge-13ft-0in-current",
+                "observedAt": "2026-07-20T00:00:00.000Z"
+              }
+            ],
+            "estimatedDistanceMiles": 10.1,
+            "estimatedDurationMinutes": 25,
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "hazards": [],
+            "restrictions": [],
+            "routeCandidateId": "route-low-clearance"
+          }
+        ],
+        "tenantContext": {
+          "organizationId": "org_synthetic_route_intelligence"
+        },
+        "vehicleProfile": {
+          "axleCount": 5,
+          "grossWeight": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "lb",
+            "value": 78000
+          },
+          "height": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 13.5
+          },
+          "length": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 53
+          },
+          "operationalRestrictions": [],
+          "trailerDimensions": {
+            "length": {
+              "confidence": 1,
+              "source": "synthetic.vehicle.profile",
+              "unit": "ft",
+              "value": 53
+            }
+          },
+          "trailerType": "DRY_VAN",
+          "vehicleClass": "TRACTOR_TRAILER",
+          "vehicleId": "vehicle-tractor-13ft-6in",
+          "width": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "in",
+            "value": 102
+          }
+        }
+      }
+    },
+    {
+      "caseId": "truck_prohibited_fail_closed",
+      "deterministic": true,
+      "expectedPrimaryStatus": "UNSAFE",
+      "productionRouteEndpointMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "purpose": "THROUGH_ROUTE",
+        "routeCandidates": [
+          {
+            "clearanceEvidence": [
+              {
+                "clearance": {
+                  "confidence": 1,
+                  "source": "synthetic.bridge.catalog",
+                  "unit": "ft",
+                  "value": 15
+                },
+                "evidenceId": "bridge-15ft-current",
+                "observedAt": "2026-07-20T00:00:00.000Z"
+              }
+            ],
+            "estimatedDistanceMiles": 11,
+            "estimatedDurationMinutes": 28,
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "hazards": [],
+            "restrictions": [
+              {
+                "restrictionId": "no-trucks-main",
+                "segmentId": "segment-main",
+                "type": "TRUCK_PROHIBITED"
+              }
+            ],
+            "routeCandidateId": "route-truck-prohibited"
+          }
+        ],
+        "tenantContext": {
+          "organizationId": "org_synthetic_route_intelligence"
+        },
+        "vehicleProfile": {
+          "axleCount": 2,
+          "grossWeight": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "lb",
+            "value": 26000
+          },
+          "height": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 12.5
+          },
+          "length": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 26
+          },
+          "operationalRestrictions": [],
+          "trailerType": "NONE",
+          "vehicleClass": "BOX_TRUCK",
+          "vehicleId": "vehicle-box-12ft-6in",
+          "width": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "in",
+            "value": 96
+          }
+        }
+      }
+    },
+    {
+      "caseId": "hazard_proximity_review",
+      "deterministic": true,
+      "expectedPrimaryStatus": "REVIEW_REQUIRED",
+      "productionRouteEndpointMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "purpose": "THROUGH_ROUTE",
+        "routeCandidates": [
+          {
+            "clearanceEvidence": [
+              {
+                "clearance": {
+                  "confidence": 1,
+                  "source": "synthetic.bridge.catalog",
+                  "unit": "ft",
+                  "value": 15
+                },
+                "evidenceId": "bridge-15ft-current",
+                "observedAt": "2026-07-20T00:00:00.000Z"
+              }
+            ],
+            "estimatedDistanceMiles": 13,
+            "estimatedDurationMinutes": 32,
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "hazards": [
+              {
+                "hazardId": "manual-hazard-near-route",
+                "point": {
+                  "latitude": 33.50062,
+                  "longitude": -86.7995
+                },
+                "safetyCritical": true,
+                "type": "LOW_WIRE"
+              }
+            ],
+            "restrictions": [],
+            "routeCandidateId": "route-near-hazard"
+          }
+        ],
+        "tenantContext": {
+          "organizationId": "org_synthetic_route_intelligence"
+        },
+        "vehicleProfile": {
+          "axleCount": 2,
+          "grossWeight": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "lb",
+            "value": 26000
+          },
+          "height": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 12.5
+          },
+          "length": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 26
+          },
+          "operationalRestrictions": [],
+          "trailerType": "NONE",
+          "vehicleClass": "BOX_TRUCK",
+          "vehicleId": "vehicle-box-12ft-6in",
+          "width": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "in",
+            "value": 96
+          }
+        }
+      }
+    },
+    {
+      "caseId": "missing_vehicle_height_insufficient",
+      "deterministic": true,
+      "expectedPrimaryStatus": "INSUFFICIENT_EVIDENCE",
+      "productionRouteEndpointMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "purpose": "THROUGH_ROUTE",
+        "routeCandidates": [
+          {
+            "clearanceEvidence": [
+              {
+                "clearance": {
+                  "confidence": 1,
+                  "source": "synthetic.bridge.catalog",
+                  "unit": "ft",
+                  "value": 14
+                },
+                "evidenceId": "bridge-14ft-0in-current",
+                "observedAt": "2026-07-20T00:00:00.000Z"
+              }
+            ],
+            "estimatedDistanceMiles": 12.4,
+            "estimatedDurationMinutes": 31,
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "hazards": [],
+            "restrictions": [],
+            "routeCandidateId": "route-clear-pass"
+          }
+        ],
+        "tenantContext": {
+          "organizationId": "org_synthetic_route_intelligence"
+        },
+        "vehicleProfile": {
+          "axleCount": 2,
+          "grossWeight": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "lb",
+            "value": 18000
+          },
+          "length": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 24
+          },
+          "operationalRestrictions": [],
+          "trailerType": "NONE",
+          "vehicleClass": "BOX_TRUCK",
+          "vehicleId": "vehicle-missing-height",
+          "width": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "in",
+            "value": 96
+          }
+        }
+      }
+    },
+    {
+      "caseId": "unsafe_not_selected",
+      "deterministic": true,
+      "expectedPrimaryStatus": "UNSAFE",
+      "productionRouteEndpointMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "purpose": "THROUGH_ROUTE",
+        "routeCandidates": [
+          {
+            "clearanceEvidence": [
+              {
+                "clearance": {
+                  "confidence": 1,
+                  "source": "synthetic.bridge.catalog",
+                  "unit": "ft",
+                  "value": 13
+                },
+                "evidenceId": "bridge-13ft-0in-current",
+                "observedAt": "2026-07-20T00:00:00.000Z"
+              }
+            ],
+            "estimatedDistanceMiles": 10.1,
+            "estimatedDurationMinutes": 25,
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "hazards": [],
+            "restrictions": [],
+            "routeCandidateId": "route-low-clearance"
+          },
+          {
+            "clearanceEvidence": [
+              {
+                "clearance": {
+                  "confidence": 1,
+                  "source": "synthetic.bridge.catalog",
+                  "unit": "ft",
+                  "value": 14
+                },
+                "evidenceId": "bridge-14ft-0in-current",
+                "observedAt": "2026-07-20T00:00:00.000Z"
+              }
+            ],
+            "estimatedDistanceMiles": 12.4,
+            "estimatedDurationMinutes": 31,
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "hazards": [],
+            "restrictions": [],
+            "routeCandidateId": "route-clear-pass"
+          }
+        ],
+        "tenantContext": {
+          "organizationId": "org_synthetic_route_intelligence"
+        },
+        "vehicleProfile": {
+          "axleCount": 2,
+          "grossWeight": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "lb",
+            "value": 26000
+          },
+          "height": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 12.5
+          },
+          "length": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 26
+          },
+          "operationalRestrictions": [],
+          "trailerType": "NONE",
+          "vehicleClass": "BOX_TRUCK",
+          "vehicleId": "vehicle-box-12ft-6in",
+          "width": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "in",
+            "value": 96
+          }
+        }
+      }
+    },
+    {
+      "caseId": "overheight_rejects",
+      "deterministic": true,
+      "expectedPrimaryStatus": "UNSAFE",
+      "productionRouteEndpointMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "purpose": "THROUGH_ROUTE",
+        "routeCandidates": [
+          {
+            "clearanceEvidence": [
+              {
+                "clearance": {
+                  "confidence": 1,
+                  "source": "synthetic.bridge.catalog",
+                  "unit": "ft",
+                  "value": 14
+                },
+                "evidenceId": "bridge-14ft-0in-current",
+                "observedAt": "2026-07-20T00:00:00.000Z"
+              }
+            ],
+            "estimatedDistanceMiles": 12.4,
+            "estimatedDurationMinutes": 31,
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "hazards": [],
+            "restrictions": [],
+            "routeCandidateId": "route-clear-pass"
+          }
+        ],
+        "tenantContext": {
+          "organizationId": "org_synthetic_route_intelligence"
+        },
+        "vehicleProfile": {
+          "axleCount": 5,
+          "grossWeight": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "lb",
+            "value": 76000
+          },
+          "height": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 14.2
+          },
+          "length": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 53
+          },
+          "operationalRestrictions": [],
+          "trailerType": "DRY_VAN",
+          "vehicleClass": "TRACTOR_TRAILER",
+          "vehicleId": "vehicle-overheight",
+          "width": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "in",
+            "value": 102
+          }
+        }
+      }
+    },
+    {
+      "caseId": "residential_advisory_review",
+      "deterministic": true,
+      "expectedPrimaryStatus": "REVIEW_REQUIRED",
+      "productionRouteEndpointMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "purpose": "THROUGH_ROUTE",
+        "routeCandidates": [
+          {
+            "clearanceEvidence": [
+              {
+                "clearance": {
+                  "confidence": 1,
+                  "source": "synthetic.bridge.catalog",
+                  "unit": "ft",
+                  "value": 14
+                },
+                "evidenceId": "bridge-14ft-0in-current",
+                "observedAt": "2026-07-20T00:00:00.000Z"
+              }
+            ],
+            "estimatedDistanceMiles": 12.4,
+            "estimatedDurationMinutes": 31,
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "hazards": [],
+            "restrictions": [
+              {
+                "restrictionId": "residential-avoid",
+                "type": "RESIDENTIAL_AVOID"
+              }
+            ],
+            "routeCandidateId": "route-residential-avoid"
+          }
+        ],
+        "tenantContext": {
+          "organizationId": "org_synthetic_route_intelligence"
+        },
+        "vehicleProfile": {
+          "axleCount": 2,
+          "grossWeight": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "lb",
+            "value": 26000
+          },
+          "height": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 12.5
+          },
+          "length": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 26
+          },
+          "operationalRestrictions": [],
+          "trailerType": "NONE",
+          "vehicleClass": "BOX_TRUCK",
+          "vehicleId": "vehicle-box-12ft-6in",
+          "width": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "in",
+            "value": 96
+          }
+        }
+      }
+    },
+    {
+      "caseId": "weight_limit_rejects",
+      "deterministic": true,
+      "expectedPrimaryStatus": "UNSAFE",
+      "productionRouteEndpointMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "purpose": "THROUGH_ROUTE",
+        "routeCandidates": [
+          {
+            "clearanceEvidence": [
+              {
+                "clearance": {
+                  "confidence": 1,
+                  "source": "synthetic.bridge.catalog",
+                  "unit": "ft",
+                  "value": 14
+                },
+                "evidenceId": "bridge-14ft-0in-current",
+                "observedAt": "2026-07-20T00:00:00.000Z"
+              }
+            ],
+            "estimatedDistanceMiles": 12.4,
+            "estimatedDurationMinutes": 31,
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "hazards": [],
+            "restrictions": [
+              {
+                "maxGrossWeight": {
+                  "unit": "tons",
+                  "value": 20
+                },
+                "restrictionId": "weight-limit",
+                "type": "WEIGHT_LIMIT"
+              }
+            ],
+            "routeCandidateId": "route-weight-limit"
+          }
+        ],
+        "tenantContext": {
+          "organizationId": "org_synthetic_route_intelligence"
+        },
+        "vehicleProfile": {
+          "axleCount": 5,
+          "grossWeight": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "lb",
+            "value": 78000
+          },
+          "height": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 13.5
+          },
+          "length": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 53
+          },
+          "operationalRestrictions": [],
+          "trailerDimensions": {
+            "length": {
+              "confidence": 1,
+              "source": "synthetic.vehicle.profile",
+              "unit": "ft",
+              "value": 53
+            }
+          },
+          "trailerType": "DRY_VAN",
+          "vehicleClass": "TRACTOR_TRAILER",
+          "vehicleId": "vehicle-tractor-13ft-6in",
+          "width": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "in",
+            "value": 102
+          }
+        }
+      }
+    },
+    {
+      "caseId": "no_through_truck_rejects",
+      "deterministic": true,
+      "expectedPrimaryStatus": "UNSAFE",
+      "productionRouteEndpointMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "purpose": "THROUGH_ROUTE",
+        "routeCandidates": [
+          {
+            "clearanceEvidence": [
+              {
+                "clearance": {
+                  "confidence": 1,
+                  "source": "synthetic.bridge.catalog",
+                  "unit": "ft",
+                  "value": 14
+                },
+                "evidenceId": "bridge-14ft-0in-current",
+                "observedAt": "2026-07-20T00:00:00.000Z"
+              }
+            ],
+            "estimatedDistanceMiles": 12.4,
+            "estimatedDurationMinutes": 31,
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "hazards": [],
+            "restrictions": [
+              {
+                "restrictionId": "no-through",
+                "type": "NO_THROUGH_TRUCKS"
+              }
+            ],
+            "routeCandidateId": "route-no-through"
+          }
+        ],
+        "tenantContext": {
+          "organizationId": "org_synthetic_route_intelligence"
+        },
+        "vehicleProfile": {
+          "axleCount": 2,
+          "grossWeight": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "lb",
+            "value": 26000
+          },
+          "height": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 12.5
+          },
+          "length": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 26
+          },
+          "operationalRestrictions": [],
+          "trailerType": "NONE",
+          "vehicleClass": "BOX_TRUCK",
+          "vehicleId": "vehicle-box-12ft-6in",
+          "width": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "in",
+            "value": 96
+          }
+        }
+      }
+    },
+    {
+      "caseId": "local_delivery_allows_no_through",
+      "deterministic": true,
+      "expectedPrimaryStatus": "ELIGIBLE",
+      "productionRouteEndpointMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "purpose": "LOCAL_DELIVERY",
+        "routeCandidates": [
+          {
+            "clearanceEvidence": [
+              {
+                "clearance": {
+                  "confidence": 1,
+                  "source": "synthetic.bridge.catalog",
+                  "unit": "ft",
+                  "value": 14
+                },
+                "evidenceId": "bridge-14ft-0in-current",
+                "observedAt": "2026-07-20T00:00:00.000Z"
+              }
+            ],
+            "estimatedDistanceMiles": 12.4,
+            "estimatedDurationMinutes": 31,
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "hazards": [],
+            "restrictions": [
+              {
+                "restrictionId": "no-through",
+                "type": "NO_THROUGH_TRUCKS"
+              }
+            ],
+            "routeCandidateId": "route-local-delivery"
+          }
+        ],
+        "tenantContext": {
+          "organizationId": "org_synthetic_route_intelligence"
+        },
+        "vehicleProfile": {
+          "axleCount": 2,
+          "grossWeight": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "lb",
+            "value": 26000
+          },
+          "height": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 12.5
+          },
+          "length": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 26
+          },
+          "operationalRestrictions": [],
+          "trailerType": "NONE",
+          "vehicleClass": "BOX_TRUCK",
+          "vehicleId": "vehicle-box-12ft-6in",
+          "width": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "in",
+            "value": 96
+          }
+        }
+      }
+    },
+    {
+      "caseId": "stale_clearance_review",
+      "deterministic": true,
+      "expectedPrimaryStatus": "REVIEW_REQUIRED",
+      "productionRouteEndpointMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "purpose": "THROUGH_ROUTE",
+        "routeCandidates": [
+          {
+            "clearanceEvidence": [
+              {
+                "clearance": {
+                  "confidence": 1,
+                  "source": "synthetic.bridge.catalog",
+                  "unit": "ft",
+                  "value": 15
+                },
+                "evidenceId": "old",
+                "observedAt": "2020-01-01T00:00:00.000Z"
+              }
+            ],
+            "estimatedDistanceMiles": 12.4,
+            "estimatedDurationMinutes": 31,
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "hazards": [],
+            "restrictions": [],
+            "routeCandidateId": "route-stale"
+          }
+        ],
+        "tenantContext": {
+          "organizationId": "org_synthetic_route_intelligence"
+        },
+        "vehicleProfile": {
+          "axleCount": 2,
+          "grossWeight": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "lb",
+            "value": 26000
+          },
+          "height": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 12.5
+          },
+          "length": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 26
+          },
+          "operationalRestrictions": [],
+          "trailerType": "NONE",
+          "vehicleClass": "BOX_TRUCK",
+          "vehicleId": "vehicle-box-12ft-6in",
+          "width": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "in",
+            "value": 96
+          }
+        }
+      }
+    },
+    {
+      "caseId": "exact_height_rejects",
+      "deterministic": true,
+      "expectedPrimaryStatus": "UNSAFE",
+      "productionRouteEndpointMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "purpose": "THROUGH_ROUTE",
+        "routeCandidates": [
+          {
+            "clearanceEvidence": [
+              {
+                "clearance": {
+                  "confidence": 1,
+                  "source": "synthetic.bridge.catalog",
+                  "unit": "ft",
+                  "value": 13
+                },
+                "evidenceId": "exact",
+                "observedAt": "2026-07-20T00:00:00.000Z"
+              }
+            ],
+            "estimatedDistanceMiles": 12.4,
+            "estimatedDurationMinutes": 31,
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "hazards": [],
+            "restrictions": [],
+            "routeCandidateId": "route-exact-height"
+          }
+        ],
+        "tenantContext": {
+          "organizationId": "org_synthetic_route_intelligence"
+        },
+        "vehicleProfile": {
+          "axleCount": 2,
+          "grossWeight": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "lb",
+            "value": 26000
+          },
+          "height": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 12.5
+          },
+          "length": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 26
+          },
+          "operationalRestrictions": [],
+          "trailerType": "NONE",
+          "vehicleClass": "BOX_TRUCK",
+          "vehicleId": "vehicle-box-12ft-6in",
+          "width": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "in",
+            "value": 96
+          }
+        }
+      }
+    },
+    {
+      "caseId": "safety_buffer_rejects",
+      "deterministic": true,
+      "expectedPrimaryStatus": "UNSAFE",
+      "productionRouteEndpointMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "purpose": "THROUGH_ROUTE",
+        "routeCandidates": [
+          {
+            "clearanceEvidence": [
+              {
+                "clearance": {
+                  "confidence": 1,
+                  "source": "synthetic.bridge.catalog",
+                  "unit": "ft",
+                  "value": 12.75
+                },
+                "evidenceId": "buffer",
+                "observedAt": "2026-07-20T00:00:00.000Z"
+              }
+            ],
+            "estimatedDistanceMiles": 12.4,
+            "estimatedDurationMinutes": 31,
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "hazards": [],
+            "restrictions": [],
+            "routeCandidateId": "route-buffer-fail"
+          }
+        ],
+        "tenantContext": {
+          "organizationId": "org_synthetic_route_intelligence"
+        },
+        "vehicleProfile": {
+          "axleCount": 2,
+          "grossWeight": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "lb",
+            "value": 26000
+          },
+          "height": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 12.5
+          },
+          "length": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 26
+          },
+          "operationalRestrictions": [],
+          "trailerType": "NONE",
+          "vehicleClass": "BOX_TRUCK",
+          "vehicleId": "vehicle-box-12ft-6in",
+          "width": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "in",
+            "value": 96
+          }
+        }
+      }
+    },
+    {
+      "caseId": "minimal_margin_review",
+      "deterministic": true,
+      "expectedPrimaryStatus": "REVIEW_REQUIRED",
+      "productionRouteEndpointMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "purpose": "THROUGH_ROUTE",
+        "routeCandidates": [
+          {
+            "clearanceEvidence": [
+              {
+                "clearance": {
+                  "confidence": 1,
+                  "source": "synthetic.bridge.catalog",
+                  "unit": "ft",
+                  "value": 13.125
+                },
+                "evidenceId": "minimal",
+                "observedAt": "2026-07-20T00:00:00.000Z"
+              }
+            ],
+            "estimatedDistanceMiles": 12.4,
+            "estimatedDurationMinutes": 31,
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "hazards": [],
+            "restrictions": [],
+            "routeCandidateId": "route-minimal-margin"
+          }
+        ],
+        "tenantContext": {
+          "organizationId": "org_synthetic_route_intelligence"
+        },
+        "vehicleProfile": {
+          "axleCount": 2,
+          "grossWeight": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "lb",
+            "value": 26000
+          },
+          "height": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 12.5
+          },
+          "length": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 26
+          },
+          "operationalRestrictions": [],
+          "trailerType": "NONE",
+          "vehicleClass": "BOX_TRUCK",
+          "vehicleId": "vehicle-box-12ft-6in",
+          "width": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "in",
+            "value": 96
+          }
+        }
+      }
+    },
+    {
+      "caseId": "unknown_clearance_insufficient",
+      "deterministic": true,
+      "expectedPrimaryStatus": "INSUFFICIENT_EVIDENCE",
+      "productionRouteEndpointMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "purpose": "THROUGH_ROUTE",
+        "routeCandidates": [
+          {
+            "clearanceEvidence": [
+              {
+                "evidenceId": "unknown",
+                "observedAt": "2026-07-20T00:00:00.000Z"
+              }
+            ],
+            "estimatedDistanceMiles": 12.4,
+            "estimatedDurationMinutes": 31,
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "hazards": [],
+            "restrictions": [],
+            "routeCandidateId": "route-unknown-clearance"
+          }
+        ],
+        "tenantContext": {
+          "organizationId": "org_synthetic_route_intelligence"
+        },
+        "vehicleProfile": {
+          "axleCount": 2,
+          "grossWeight": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "lb",
+            "value": 26000
+          },
+          "height": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 12.5
+          },
+          "length": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 26
+          },
+          "operationalRestrictions": [],
+          "trailerType": "NONE",
+          "vehicleClass": "BOX_TRUCK",
+          "vehicleId": "vehicle-box-12ft-6in",
+          "width": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "in",
+            "value": 96
+          }
+        }
+      }
+    },
+    {
+      "caseId": "conflicting_clearance_rejects",
+      "deterministic": true,
+      "expectedPrimaryStatus": "UNSAFE",
+      "productionRouteEndpointMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "purpose": "THROUGH_ROUTE",
+        "routeCandidates": [
+          {
+            "clearanceEvidence": [
+              {
+                "clearance": {
+                  "confidence": 1,
+                  "source": "synthetic.bridge.catalog",
+                  "unit": "ft",
+                  "value": 15
+                },
+                "conflict": true,
+                "evidenceId": "conflict",
+                "observedAt": "2026-07-20T00:00:00.000Z"
+              }
+            ],
+            "estimatedDistanceMiles": 12.4,
+            "estimatedDurationMinutes": 31,
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "hazards": [],
+            "restrictions": [],
+            "routeCandidateId": "route-conflict"
+          }
+        ],
+        "tenantContext": {
+          "organizationId": "org_synthetic_route_intelligence"
+        },
+        "vehicleProfile": {
+          "axleCount": 2,
+          "grossWeight": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "lb",
+            "value": 26000
+          },
+          "height": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 12.5
+          },
+          "length": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 26
+          },
+          "operationalRestrictions": [],
+          "trailerType": "NONE",
+          "vehicleClass": "BOX_TRUCK",
+          "vehicleId": "vehicle-box-12ft-6in",
+          "width": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "in",
+            "value": 96
+          }
+        }
+      }
+    },
+    {
+      "caseId": "width_limit_rejects",
+      "deterministic": true,
+      "expectedPrimaryStatus": "UNSAFE",
+      "productionRouteEndpointMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "purpose": "THROUGH_ROUTE",
+        "routeCandidates": [
+          {
+            "clearanceEvidence": [
+              {
+                "clearance": {
+                  "confidence": 1,
+                  "source": "synthetic.bridge.catalog",
+                  "unit": "ft",
+                  "value": 14
+                },
+                "evidenceId": "bridge-14ft-0in-current",
+                "observedAt": "2026-07-20T00:00:00.000Z"
+              }
+            ],
+            "estimatedDistanceMiles": 12.4,
+            "estimatedDurationMinutes": 31,
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "hazards": [],
+            "restrictions": [
+              {
+                "maxWidth": {
+                  "unit": "in",
+                  "value": 96
+                },
+                "restrictionId": "width-limit",
+                "type": "WIDTH_LIMIT"
+              }
+            ],
+            "routeCandidateId": "route-width-limit"
+          }
+        ],
+        "tenantContext": {
+          "organizationId": "org_synthetic_route_intelligence"
+        },
+        "vehicleProfile": {
+          "axleCount": 5,
+          "grossWeight": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "lb",
+            "value": 78000
+          },
+          "height": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 13.5
+          },
+          "length": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 53
+          },
+          "operationalRestrictions": [],
+          "trailerDimensions": {
+            "length": {
+              "confidence": 1,
+              "source": "synthetic.vehicle.profile",
+              "unit": "ft",
+              "value": 53
+            }
+          },
+          "trailerType": "DRY_VAN",
+          "vehicleClass": "TRACTOR_TRAILER",
+          "vehicleId": "vehicle-tractor-13ft-6in",
+          "width": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "in",
+            "value": 102
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length_limit_rejects",
+      "deterministic": true,
+      "expectedPrimaryStatus": "UNSAFE",
+      "productionRouteEndpointMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "purpose": "THROUGH_ROUTE",
+        "routeCandidates": [
+          {
+            "clearanceEvidence": [
+              {
+                "clearance": {
+                  "confidence": 1,
+                  "source": "synthetic.bridge.catalog",
+                  "unit": "ft",
+                  "value": 14
+                },
+                "evidenceId": "bridge-14ft-0in-current",
+                "observedAt": "2026-07-20T00:00:00.000Z"
+              }
+            ],
+            "estimatedDistanceMiles": 12.4,
+            "estimatedDurationMinutes": 31,
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "hazards": [],
+            "restrictions": [
+              {
+                "maxLength": {
+                  "unit": "ft",
+                  "value": 40
+                },
+                "restrictionId": "length-limit",
+                "type": "LENGTH_LIMIT"
+              }
+            ],
+            "routeCandidateId": "route-length-limit"
+          }
+        ],
+        "tenantContext": {
+          "organizationId": "org_synthetic_route_intelligence"
+        },
+        "vehicleProfile": {
+          "axleCount": 5,
+          "grossWeight": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "lb",
+            "value": 78000
+          },
+          "height": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 13.5
+          },
+          "length": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 53
+          },
+          "operationalRestrictions": [],
+          "trailerDimensions": {
+            "length": {
+              "confidence": 1,
+              "source": "synthetic.vehicle.profile",
+              "unit": "ft",
+              "value": 53
+            }
+          },
+          "trailerType": "DRY_VAN",
+          "vehicleClass": "TRACTOR_TRAILER",
+          "vehicleId": "vehicle-tractor-13ft-6in",
+          "width": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "in",
+            "value": 102
+          }
+        }
+      }
+    },
+    {
+      "caseId": "road_closure_rejects",
+      "deterministic": true,
+      "expectedPrimaryStatus": "UNSAFE",
+      "productionRouteEndpointMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "purpose": "THROUGH_ROUTE",
+        "routeCandidates": [
+          {
+            "clearanceEvidence": [
+              {
+                "clearance": {
+                  "confidence": 1,
+                  "source": "synthetic.bridge.catalog",
+                  "unit": "ft",
+                  "value": 14
+                },
+                "evidenceId": "bridge-14ft-0in-current",
+                "observedAt": "2026-07-20T00:00:00.000Z"
+              }
+            ],
+            "estimatedDistanceMiles": 12.4,
+            "estimatedDurationMinutes": 31,
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "hazards": [],
+            "restrictions": [
+              {
+                "restrictionId": "closure",
+                "type": "ROAD_CLOSED"
+              }
+            ],
+            "routeCandidateId": "route-road-closed"
+          }
+        ],
+        "tenantContext": {
+          "organizationId": "org_synthetic_route_intelligence"
+        },
+        "vehicleProfile": {
+          "axleCount": 2,
+          "grossWeight": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "lb",
+            "value": 26000
+          },
+          "height": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 12.5
+          },
+          "length": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 26
+          },
+          "operationalRestrictions": [],
+          "trailerType": "NONE",
+          "vehicleClass": "BOX_TRUCK",
+          "vehicleId": "vehicle-box-12ft-6in",
+          "width": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "in",
+            "value": 96
+          }
+        }
+      }
+    },
+    {
+      "caseId": "restricted_road_class_review",
+      "deterministic": true,
+      "expectedPrimaryStatus": "REVIEW_REQUIRED",
+      "productionRouteEndpointMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "purpose": "THROUGH_ROUTE",
+        "routeCandidates": [
+          {
+            "clearanceEvidence": [
+              {
+                "clearance": {
+                  "confidence": 1,
+                  "source": "synthetic.bridge.catalog",
+                  "unit": "ft",
+                  "value": 14
+                },
+                "evidenceId": "bridge-14ft-0in-current",
+                "observedAt": "2026-07-20T00:00:00.000Z"
+              }
+            ],
+            "estimatedDistanceMiles": 12.4,
+            "estimatedDurationMinutes": 31,
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "hazards": [],
+            "restrictions": [
+              {
+                "restrictionId": "class",
+                "type": "RESTRICTED_ROAD_CLASS"
+              }
+            ],
+            "routeCandidateId": "route-restricted-road-class"
+          }
+        ],
+        "tenantContext": {
+          "organizationId": "org_synthetic_route_intelligence"
+        },
+        "vehicleProfile": {
+          "axleCount": 2,
+          "grossWeight": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "lb",
+            "value": 26000
+          },
+          "height": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 12.5
+          },
+          "length": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 26
+          },
+          "operationalRestrictions": [],
+          "trailerType": "NONE",
+          "vehicleClass": "BOX_TRUCK",
+          "vehicleId": "vehicle-box-12ft-6in",
+          "width": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "in",
+            "value": 96
+          }
+        }
+      }
+    },
+    {
+      "caseId": "malformed_geometry_rejects",
+      "deterministic": true,
+      "expectedPrimaryStatus": "UNSAFE",
+      "productionRouteEndpointMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "purpose": "THROUGH_ROUTE",
+        "routeCandidates": [
+          {
+            "clearanceEvidence": [
+              {
+                "clearance": {
+                  "confidence": 1,
+                  "source": "synthetic.bridge.catalog",
+                  "unit": "ft",
+                  "value": 14
+                },
+                "evidenceId": "bridge-14ft-0in-current",
+                "observedAt": "2026-07-20T00:00:00.000Z"
+              }
+            ],
+            "estimatedDistanceMiles": 12.4,
+            "estimatedDurationMinutes": 31,
+            "geometry": {
+              "points": [
+                {
+                  "latitude": null,
+                  "longitude": -86.8
+                }
+              ]
+            },
+            "hazards": [],
+            "restrictions": [],
+            "routeCandidateId": "route-malformed-geometry"
+          }
+        ],
+        "tenantContext": {
+          "organizationId": "org_synthetic_route_intelligence"
+        },
+        "vehicleProfile": {
+          "axleCount": 2,
+          "grossWeight": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "lb",
+            "value": 26000
+          },
+          "height": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 12.5
+          },
+          "length": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 26
+          },
+          "operationalRestrictions": [],
+          "trailerType": "NONE",
+          "vehicleClass": "BOX_TRUCK",
+          "vehicleId": "vehicle-box-12ft-6in",
+          "width": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "in",
+            "value": 96
+          }
+        }
+      }
+    },
+    {
+      "caseId": "missing_geometry_insufficient",
+      "deterministic": true,
+      "expectedPrimaryStatus": "INSUFFICIENT_EVIDENCE",
+      "productionRouteEndpointMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "purpose": "THROUGH_ROUTE",
+        "routeCandidates": [
+          {
+            "clearanceEvidence": [
+              {
+                "clearance": {
+                  "confidence": 1,
+                  "source": "synthetic.bridge.catalog",
+                  "unit": "ft",
+                  "value": 14
+                },
+                "evidenceId": "bridge-14ft-0in-current",
+                "observedAt": "2026-07-20T00:00:00.000Z"
+              }
+            ],
+            "estimatedDistanceMiles": 12.4,
+            "estimatedDurationMinutes": 31,
+            "geometry": {
+              "points": []
+            },
+            "hazards": [],
+            "restrictions": [],
+            "routeCandidateId": "route-missing-geometry"
+          }
+        ],
+        "tenantContext": {
+          "organizationId": "org_synthetic_route_intelligence"
+        },
+        "vehicleProfile": {
+          "axleCount": 2,
+          "grossWeight": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "lb",
+            "value": 26000
+          },
+          "height": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 12.5
+          },
+          "length": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 26
+          },
+          "operationalRestrictions": [],
+          "trailerType": "NONE",
+          "vehicleClass": "BOX_TRUCK",
+          "vehicleId": "vehicle-box-12ft-6in",
+          "width": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "in",
+            "value": 96
+          }
+        }
+      }
+    },
+    {
+      "caseId": "intersecting_hazard_rejects",
+      "deterministic": true,
+      "expectedPrimaryStatus": "UNSAFE",
+      "productionRouteEndpointMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "purpose": "THROUGH_ROUTE",
+        "routeCandidates": [
+          {
+            "clearanceEvidence": [
+              {
+                "clearance": {
+                  "confidence": 1,
+                  "source": "synthetic.bridge.catalog",
+                  "unit": "ft",
+                  "value": 14
+                },
+                "evidenceId": "bridge-14ft-0in-current",
+                "observedAt": "2026-07-20T00:00:00.000Z"
+              }
+            ],
+            "estimatedDistanceMiles": 12.4,
+            "estimatedDurationMinutes": 31,
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "hazards": [
+              {
+                "hazardId": "intersection",
+                "point": {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                "safetyCritical": true,
+                "type": "LOW_WIRE"
+              }
+            ],
+            "restrictions": [],
+            "routeCandidateId": "route-intersecting-hazard"
+          }
+        ],
+        "tenantContext": {
+          "organizationId": "org_synthetic_route_intelligence"
+        },
+        "vehicleProfile": {
+          "axleCount": 2,
+          "grossWeight": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "lb",
+            "value": 26000
+          },
+          "height": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 12.5
+          },
+          "length": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 26
+          },
+          "operationalRestrictions": [],
+          "trailerType": "NONE",
+          "vehicleClass": "BOX_TRUCK",
+          "vehicleId": "vehicle-box-12ft-6in",
+          "width": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "in",
+            "value": 96
+          }
+        }
+      }
+    },
+    {
+      "caseId": "shorter_unsafe_not_selected",
+      "deterministic": true,
+      "expectedPrimaryStatus": "UNSAFE",
+      "productionRouteEndpointMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "purpose": "THROUGH_ROUTE",
+        "routeCandidates": [
+          {
+            "clearanceEvidence": [
+              {
+                "clearance": {
+                  "confidence": 1,
+                  "source": "synthetic.bridge.catalog",
+                  "unit": "ft",
+                  "value": 13
+                },
+                "evidenceId": "bridge-13ft-0in-current",
+                "observedAt": "2026-07-20T00:00:00.000Z"
+              }
+            ],
+            "estimatedDistanceMiles": 1,
+            "estimatedDurationMinutes": 2,
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "hazards": [],
+            "restrictions": [],
+            "routeCandidateId": "route-low-clearance"
+          },
+          {
+            "clearanceEvidence": [
+              {
+                "clearance": {
+                  "confidence": 1,
+                  "source": "synthetic.bridge.catalog",
+                  "unit": "ft",
+                  "value": 14
+                },
+                "evidenceId": "bridge-14ft-0in-current",
+                "observedAt": "2026-07-20T00:00:00.000Z"
+              }
+            ],
+            "estimatedDistanceMiles": 12.4,
+            "estimatedDurationMinutes": 31,
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "hazards": [],
+            "restrictions": [],
+            "routeCandidateId": "route-clear-pass"
+          }
+        ],
+        "tenantContext": {
+          "organizationId": "org_synthetic_route_intelligence"
+        },
+        "vehicleProfile": {
+          "axleCount": 2,
+          "grossWeight": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "lb",
+            "value": 26000
+          },
+          "height": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 12.5
+          },
+          "length": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 26
+          },
+          "operationalRestrictions": [],
+          "trailerType": "NONE",
+          "vehicleClass": "BOX_TRUCK",
+          "vehicleId": "vehicle-box-12ft-6in",
+          "width": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "in",
+            "value": 96
+          }
+        }
+      }
+    },
+    {
+      "caseId": "cheaper_unsafe_not_selected",
+      "deterministic": true,
+      "expectedPrimaryStatus": "UNSAFE",
+      "productionRouteEndpointMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "purpose": "THROUGH_ROUTE",
+        "routeCandidates": [
+          {
+            "clearanceEvidence": [
+              {
+                "clearance": {
+                  "confidence": 1,
+                  "source": "synthetic.bridge.catalog",
+                  "unit": "ft",
+                  "value": 13
+                },
+                "evidenceId": "bridge-13ft-0in-current",
+                "observedAt": "2026-07-20T00:00:00.000Z"
+              }
+            ],
+            "estimatedDistanceMiles": 1,
+            "estimatedDurationMinutes": 1,
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "hazards": [],
+            "restrictions": [],
+            "routeCandidateId": "route-low-clearance"
+          },
+          {
+            "clearanceEvidence": [
+              {
+                "clearance": {
+                  "confidence": 1,
+                  "source": "synthetic.bridge.catalog",
+                  "unit": "ft",
+                  "value": 14
+                },
+                "evidenceId": "bridge-14ft-0in-current",
+                "observedAt": "2026-07-20T00:00:00.000Z"
+              }
+            ],
+            "estimatedDistanceMiles": 12.4,
+            "estimatedDurationMinutes": 31,
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "hazards": [],
+            "restrictions": [],
+            "routeCandidateId": "route-clear-pass"
+          }
+        ],
+        "tenantContext": {
+          "organizationId": "org_synthetic_route_intelligence"
+        },
+        "vehicleProfile": {
+          "axleCount": 2,
+          "grossWeight": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "lb",
+            "value": 26000
+          },
+          "height": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 12.5
+          },
+          "length": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 26
+          },
+          "operationalRestrictions": [],
+          "trailerType": "NONE",
+          "vehicleClass": "BOX_TRUCK",
+          "vehicleId": "vehicle-box-12ft-6in",
+          "width": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "in",
+            "value": 96
+          }
+        }
+      }
+    },
+    {
+      "caseId": "human_review_required",
+      "deterministic": true,
+      "expectedPrimaryStatus": "REVIEW_REQUIRED",
+      "productionRouteEndpointMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "purpose": "THROUGH_ROUTE",
+        "routeCandidates": [
+          {
+            "clearanceEvidence": [
+              {
+                "clearance": {
+                  "confidence": 1,
+                  "source": "synthetic.bridge.catalog",
+                  "unit": "ft",
+                  "value": 15
+                },
+                "evidenceId": "bridge-15ft-current",
+                "observedAt": "2026-07-20T00:00:00.000Z"
+              }
+            ],
+            "estimatedDistanceMiles": 13,
+            "estimatedDurationMinutes": 32,
+            "geometry": {
+              "points": [
+                {
+                  "latitude": 33.5,
+                  "longitude": -86.8
+                },
+                {
+                  "latitude": 33.5005,
+                  "longitude": -86.7995
+                },
+                {
+                  "latitude": 33.501,
+                  "longitude": -86.799
+                }
+              ]
+            },
+            "hazards": [
+              {
+                "hazardId": "manual-hazard-near-route",
+                "point": {
+                  "latitude": 33.50062,
+                  "longitude": -86.7995
+                },
+                "safetyCritical": true,
+                "type": "LOW_WIRE"
+              }
+            ],
+            "restrictions": [],
+            "routeCandidateId": "route-near-hazard"
+          }
+        ],
+        "tenantContext": {
+          "organizationId": "org_synthetic_route_intelligence"
+        },
+        "vehicleProfile": {
+          "axleCount": 2,
+          "grossWeight": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "lb",
+            "value": 26000
+          },
+          "height": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 12.5
+          },
+          "length": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "ft",
+            "value": 26
+          },
+          "operationalRestrictions": [],
+          "trailerType": "NONE",
+          "vehicleClass": "BOX_TRUCK",
+          "vehicleId": "vehicle-box-12ft-6in",
+          "width": {
+            "confidence": 1,
+            "source": "synthetic.vehicle.profile",
+            "unit": "in",
+            "value": 96
+          }
+        }
+      }
+    }
+  ],
+  "generatedArtifact": true
+}

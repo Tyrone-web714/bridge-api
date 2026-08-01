@@ -1,0 +1,260 @@
+{
+  "gates": [
+    {
+      "caseId": "clearance_pass",
+      "reasonCodes": [
+        "CLEARANCE_PASS",
+        "HAZARD_PROXIMITY_PASS",
+        "ROUTE_SAFETY_PASS"
+      ],
+      "routeCandidateId": "route-clear-pass",
+      "status": "ELIGIBLE"
+    },
+    {
+      "caseId": "low_clearance_fail_closed",
+      "reasonCodes": [
+        "CLEARANCE_FAIL_CLOSED",
+        "HAZARD_PROXIMITY_PASS"
+      ],
+      "routeCandidateId": "route-low-clearance",
+      "status": "UNSAFE"
+    },
+    {
+      "caseId": "truck_prohibited_fail_closed",
+      "reasonCodes": [
+        "CLEARANCE_PASS",
+        "HAZARD_PROXIMITY_PASS",
+        "TRUCK_PROHIBITED"
+      ],
+      "routeCandidateId": "route-truck-prohibited",
+      "status": "UNSAFE"
+    },
+    {
+      "caseId": "hazard_proximity_review",
+      "reasonCodes": [
+        "CLEARANCE_PASS",
+        "HAZARD_PROXIMITY_REVIEW"
+      ],
+      "routeCandidateId": "route-near-hazard",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "caseId": "missing_vehicle_height_insufficient",
+      "reasonCodes": [
+        "HAZARD_PROXIMITY_PASS",
+        "VEHICLE_PROFILE_MISSING_HEIGHT"
+      ],
+      "routeCandidateId": "route-clear-pass",
+      "status": "INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "caseId": "unsafe_not_selected",
+      "reasonCodes": [
+        "CLEARANCE_FAIL_CLOSED",
+        "HAZARD_PROXIMITY_PASS"
+      ],
+      "routeCandidateId": "route-low-clearance",
+      "status": "UNSAFE"
+    },
+    {
+      "caseId": "overheight_rejects",
+      "reasonCodes": [
+        "CLEARANCE_FAIL_CLOSED",
+        "HAZARD_PROXIMITY_PASS"
+      ],
+      "routeCandidateId": "route-clear-pass",
+      "status": "UNSAFE"
+    },
+    {
+      "caseId": "residential_advisory_review",
+      "reasonCodes": [
+        "CLEARANCE_PASS",
+        "HAZARD_PROXIMITY_PASS",
+        "RESIDENTIAL_AVOIDANCE"
+      ],
+      "routeCandidateId": "route-residential-avoid",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "caseId": "weight_limit_rejects",
+      "reasonCodes": [
+        "CLEARANCE_FAIL_CLOSED",
+        "HAZARD_PROXIMITY_PASS",
+        "WEIGHT_RESTRICTED"
+      ],
+      "routeCandidateId": "route-weight-limit",
+      "status": "UNSAFE"
+    },
+    {
+      "caseId": "no_through_truck_rejects",
+      "reasonCodes": [
+        "CLEARANCE_PASS",
+        "HAZARD_PROXIMITY_PASS",
+        "NO_THROUGH_TRUCKS"
+      ],
+      "routeCandidateId": "route-no-through",
+      "status": "UNSAFE"
+    },
+    {
+      "caseId": "local_delivery_allows_no_through",
+      "reasonCodes": [
+        "CLEARANCE_PASS",
+        "HAZARD_PROXIMITY_PASS",
+        "ROUTE_SAFETY_PASS",
+        "TRUCK_ROUTE_PASS"
+      ],
+      "routeCandidateId": "route-local-delivery",
+      "status": "ELIGIBLE"
+    },
+    {
+      "caseId": "stale_clearance_review",
+      "reasonCodes": [
+        "CLEARANCE_STALE",
+        "HAZARD_PROXIMITY_PASS"
+      ],
+      "routeCandidateId": "route-stale",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "caseId": "exact_height_rejects",
+      "reasonCodes": [
+        "CLEARANCE_FAIL_CLOSED",
+        "HAZARD_PROXIMITY_PASS"
+      ],
+      "routeCandidateId": "route-exact-height",
+      "status": "UNSAFE"
+    },
+    {
+      "caseId": "safety_buffer_rejects",
+      "reasonCodes": [
+        "CLEARANCE_FAIL_CLOSED",
+        "HAZARD_PROXIMITY_PASS"
+      ],
+      "routeCandidateId": "route-buffer-fail",
+      "status": "UNSAFE"
+    },
+    {
+      "caseId": "minimal_margin_review",
+      "reasonCodes": [
+        "CLEARANCE_MINIMAL_MARGIN",
+        "HAZARD_PROXIMITY_PASS"
+      ],
+      "routeCandidateId": "route-minimal-margin",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "caseId": "unknown_clearance_insufficient",
+      "reasonCodes": [
+        "CLEARANCE_INSUFFICIENT",
+        "HAZARD_PROXIMITY_PASS"
+      ],
+      "routeCandidateId": "route-unknown-clearance",
+      "status": "INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "caseId": "conflicting_clearance_rejects",
+      "reasonCodes": [
+        "CLEARANCE_CONFLICT",
+        "HAZARD_PROXIMITY_PASS"
+      ],
+      "routeCandidateId": "route-conflict",
+      "status": "UNSAFE"
+    },
+    {
+      "caseId": "width_limit_rejects",
+      "reasonCodes": [
+        "CLEARANCE_FAIL_CLOSED",
+        "DIMENSION_RESTRICTED",
+        "HAZARD_PROXIMITY_PASS"
+      ],
+      "routeCandidateId": "route-width-limit",
+      "status": "UNSAFE"
+    },
+    {
+      "caseId": "length_limit_rejects",
+      "reasonCodes": [
+        "CLEARANCE_FAIL_CLOSED",
+        "DIMENSION_RESTRICTED",
+        "HAZARD_PROXIMITY_PASS"
+      ],
+      "routeCandidateId": "route-length-limit",
+      "status": "UNSAFE"
+    },
+    {
+      "caseId": "road_closure_rejects",
+      "reasonCodes": [
+        "CLEARANCE_PASS",
+        "HAZARD_PROXIMITY_PASS",
+        "ROAD_CLOSED"
+      ],
+      "routeCandidateId": "route-road-closed",
+      "status": "UNSAFE"
+    },
+    {
+      "caseId": "restricted_road_class_review",
+      "reasonCodes": [
+        "CLEARANCE_PASS",
+        "HAZARD_PROXIMITY_PASS",
+        "RESTRICTED_ROAD_CLASS"
+      ],
+      "routeCandidateId": "route-restricted-road-class",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "caseId": "malformed_geometry_rejects",
+      "reasonCodes": [
+        "CLEARANCE_PASS",
+        "HAZARD_GEOMETRY_INVALID"
+      ],
+      "routeCandidateId": "route-malformed-geometry",
+      "status": "UNSAFE"
+    },
+    {
+      "caseId": "missing_geometry_insufficient",
+      "reasonCodes": [
+        "CLEARANCE_INSUFFICIENT",
+        "CLEARANCE_PASS",
+        "HAZARD_GEOMETRY_INVALID"
+      ],
+      "routeCandidateId": "route-missing-geometry",
+      "status": "INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "caseId": "intersecting_hazard_rejects",
+      "reasonCodes": [
+        "CLEARANCE_PASS",
+        "HAZARD_INTERSECTION"
+      ],
+      "routeCandidateId": "route-intersecting-hazard",
+      "status": "UNSAFE"
+    },
+    {
+      "caseId": "shorter_unsafe_not_selected",
+      "reasonCodes": [
+        "CLEARANCE_FAIL_CLOSED",
+        "HAZARD_PROXIMITY_PASS"
+      ],
+      "routeCandidateId": "route-low-clearance",
+      "status": "UNSAFE"
+    },
+    {
+      "caseId": "cheaper_unsafe_not_selected",
+      "reasonCodes": [
+        "CLEARANCE_FAIL_CLOSED",
+        "HAZARD_PROXIMITY_PASS"
+      ],
+      "routeCandidateId": "route-low-clearance",
+      "status": "UNSAFE"
+    },
+    {
+      "caseId": "human_review_required",
+      "reasonCodes": [
+        "CLEARANCE_PASS",
+        "HAZARD_PROXIMITY_REVIEW"
+      ],
+      "routeCandidateId": "route-near-hazard",
+      "status": "REVIEW_REQUIRED"
+    }
+  ],
+  "generatedArtifact": true
+}

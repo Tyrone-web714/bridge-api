@@ -48,7 +48,7 @@
       "dashboardVersion": "0.1.0",
       "fileName": "capability_coverage_dashboard.json",
       "generatedAt": "2026-07-25T00:00:00.000Z",
-      "generationHash": "bf6377c8ad6e4a74d66d715e5025455eb530c75ed17e30df0ec75791e901fa7b",
+      "generationHash": "a7a214673a2d0257dac1a3e409a44b468b38dc08fe04329bd35ea5bb0efef519",
       "productionApplicable": false,
       "schemaVersion": "intelligence.dashboard.dataset.v1",
       "sourceSubsystems": [
@@ -136,7 +136,7 @@
       "dashboardVersion": "0.1.0",
       "fileName": "dependency_dashboard.json",
       "generatedAt": "2026-07-25T00:00:00.000Z",
-      "generationHash": "b5a6d4de851e5a570a45eb274283874b7f630fd2d8a7b23480b92dccb876246c",
+      "generationHash": "6ce47e6660d51e75bd3e6bd5213e4d6c1fbaa5c7ecde2504421096537483b510",
       "productionApplicable": false,
       "schemaVersion": "intelligence.dashboard.dataset.v1",
       "sourceSubsystems": [
@@ -150,7 +150,7 @@
       "dashboardVersion": "0.1.0",
       "fileName": "documentation_dashboard.json",
       "generatedAt": "2026-07-25T00:00:00.000Z",
-      "generationHash": "a0ce112865b8b369576a5d7ec8174a839e4060cc5acd10196eb73068c49cfbc6",
+      "generationHash": "338990270029250e447be97b3a8795f762645769771fcd714937255e3a4dfe25",
       "productionApplicable": false,
       "schemaVersion": "intelligence.dashboard.dataset.v1",
       "sourceSubsystems": [
@@ -221,7 +221,7 @@
       "dashboardVersion": "0.1.0",
       "fileName": "executive_dashboard.json",
       "generatedAt": "2026-07-25T00:00:00.000Z",
-      "generationHash": "ecc4aebbed563004bc5fc2ffe9a2566f795d95eae3d5686604568fb3b63a8ddf",
+      "generationHash": "5e2aa0e8e06065df7f7df21ffdc365a4125640767da6553a47e80a8500ac481b",
       "productionApplicable": false,
       "schemaVersion": "intelligence.dashboard.dataset.v1",
       "sourceSubsystems": [
@@ -256,7 +256,7 @@
       "dashboardVersion": "0.1.0",
       "fileName": "artifact_dashboard.json",
       "generatedAt": "2026-07-25T00:00:00.000Z",
-      "generationHash": "48260e71db03b865f361dc8ce24edf2333ca83115017bf8976d0ad5f34b57993",
+      "generationHash": "dbf41a6304d74ec5dec04f3123e0e8d6884bff7fa5dc5f40e86945358d3f0924",
       "productionApplicable": false,
       "schemaVersion": "intelligence.dashboard.dataset.v1",
       "sourceSubsystems": [
@@ -298,7 +298,7 @@
       "dashboardVersion": "0.1.0",
       "fileName": "impact_dashboard.json",
       "generatedAt": "2026-07-25T00:00:00.000Z",
-      "generationHash": "bc9a57af5570e662590dd215e0f2e1e76c61930bb8615bfe273ed00c1f52f550",
+      "generationHash": "62e008f668e03663f55443808ba68244e3524c7df1a3ed0b6e9fccac8019fae1",
       "productionApplicable": false,
       "schemaVersion": "intelligence.dashboard.dataset.v1",
       "sourceSubsystems": [
@@ -312,7 +312,7 @@
       "dashboardVersion": "0.1.0",
       "fileName": "knowledge_graph_dashboard.json",
       "generatedAt": "2026-07-25T00:00:00.000Z",
-      "generationHash": "aa1bea250e8b63a83f469bde4857af856adf1f5c4a53d7ef53fcac3f9a8c6167",
+      "generationHash": "e6bdd96eb0434b8bc9f0d3a230d0c92b08fada6677c0459c4e750346675b4ee8",
       "productionApplicable": false,
       "schemaVersion": "intelligence.dashboard.dataset.v1",
       "sourceSubsystems": [
@@ -326,7 +326,7 @@
       "dashboardVersion": "0.1.0",
       "fileName": "overall_platform_dashboard.json",
       "generatedAt": "2026-07-25T00:00:00.000Z",
-      "generationHash": "ca74905d4e2195932834d540014eabca293a63cefd17181ba01c28bf60698c56",
+      "generationHash": "468d39735b1b87cf0ba58b6181583f05e49172f2e8d2202619b05ab5acf99725",
       "productionApplicable": false,
       "schemaVersion": "intelligence.dashboard.dataset.v1",
       "sourceSubsystems": [
@@ -375,7 +375,7 @@
       "dashboardVersion": "0.1.0",
       "fileName": "repository_health_dashboard.json",
       "generatedAt": "2026-07-25T00:00:00.000Z",
-      "generationHash": "118d351b071681764f8874cab424230938bbbef8b61f74030ddc64e92b329e26",
+      "generationHash": "10bf07d21f8a0a77e8c4fd032f99a9473625a786aa47936b05646a943f2aeb46",
       "productionApplicable": false,
       "schemaVersion": "intelligence.dashboard.dataset.v1",
       "sourceSubsystems": [
@@ -404,7 +404,7 @@
       "dashboardVersion": "0.1.0",
       "fileName": "technical_debt_dashboard.json",
       "generatedAt": "2026-07-25T00:00:00.000Z",
-      "generationHash": "e44e593976d7fe915b28ebd318bbce5cacf35caa6c56a2be18ca966ebbef27fb",
+      "generationHash": "eb0a93f4d4605c9d63eacaf2488b8a9e91e3591db4f0f20aa07b8be7fbd0ed57",
       "productionApplicable": false,
       "schemaVersion": "intelligence.dashboard.dataset.v1",
       "sourceSubsystems": [
@@ -419,7 +419,7 @@
       "dashboardVersion": "0.1.0",
       "fileName": "test_coverage_dashboard.json",
       "generatedAt": "2026-07-25T00:00:00.000Z",
-      "generationHash": "6e224ed3ea355daaeef2f34f874748f8ef5a8ae918bf006daf7b2167d7e1c2bc",
+      "generationHash": "18eceaa53370955619ce651e7ac832c782b9ef3792b065aec780a296b8a6e1e0",
       "productionApplicable": false,
       "schemaVersion": "intelligence.dashboard.dataset.v1",
       "sourceSubsystems": [

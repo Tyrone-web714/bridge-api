@@ -94,6 +94,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -181,6 +182,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -239,6 +241,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -4563,6 +4566,92 @@
         "blockedImpacts": [],
         "directImpacts": [],
         "indirectImpacts": [],
+        "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
+        "potentialImpacts": [
+          "Service:intelligence-execution-platform",
+          "Package:bridge-api",
+          "Documentation Page:docs/implementation/execution-decision-engine/ARCHITECTURE.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/BOUNDARIES.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/BUDGET_GOVERNANCE.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/CANDIDATE_ENUMERATION.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/CHANGELOG.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/CLI_COMMANDS.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/CONFIDENCE_COMPLETENESS.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/COST_UTILITY.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/COUNTERFACTUALS.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/DECISION_RECORD_SCHEMA.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/DECISION_REQUEST_SCHEMA.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/EVIDENCE_LINEAGE.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/FALLBACK_PLANNING.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/FIXTURES.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/GATE_EVALUATION.md",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_abstention_report.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_candidate_index.csv",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_candidate_index.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/DECISION_CANDIDATE_INDEX.md",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_counterfactual_report.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_critical_gate_rejection_report.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_fallback_plan_index.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_human_review_report.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_insufficient_evidence_report.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_over_budget_report.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_policy_profile_index.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/DECISION_POLICY_PROFILE_INDEX.md",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_premium_restriction_report.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_record_index.csv",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_record_index.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_request_index.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_sensitivity_report.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/DECISION_SUMMARY.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/GENERATED_ARTIFACTS.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/HASHING_AND_REPLAY.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/HUMAN_REVIEW.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/LIMITATIONS.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/OPEN_ITEMS.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/OPERATIONS.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/POLICY_PROFILE_SCHEMA.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/POLICY_PROFILES.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/PREMIUM_RESTRICTIONS.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/PROCUREMENT_BOUNDARY.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/PRODUCTION_BOUNDARY.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/PROVIDER_NEUTRALITY.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/README.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/REQUESTS.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/ROLLBACK.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/RUNTIME_NON_INTEGRATION.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/SAFETY_MODEL.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/SECURITY_PRIVACY.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/SENSITIVITY_ANALYSIS.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/STRATEGY_TAXONOMY.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/TEMPLATES.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/TEST_PLAN.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/THRESHOLD_EVALUATION.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/TIE_BREAKING.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/VALIDATION_RULES.md",
+          "Owner Decision:OWNER_DECISION_REGISTER",
+          "Architecture Decision:docs/architecture/ADR/ADR-0001-Use-Organization-As-Tenant-Boundary.md",
+          "Architecture Decision:docs/architecture/ADR/ODR-019-Data-Lifecycle-Deletion-Retention-Anonymization-and-Referential-Integrity-Architecture.md",
+          "Architecture Decision:docs/architecture/ADR/ODR-020-Enterprise-SSO-and-Identity-Federation-Architecture.md",
+          "Architecture Decision:docs/architecture/ARCHITECTURE_GOVERNANCE_BASELINE_v1.0.md",
+          "Architecture Decision:docs/architecture/ARCHITECTURE_GOVERNANCE_BASELINE_v1.1.md",
+          "Architecture Decision:docs/architecture/ARCHITECTURE_INDEX.md",
+          "Architecture Decision:docs/architecture/data-lifecycle/TSR_DATA_LIFECYCLE_ARCHITECTURE.md",
+          "Architecture Decision:docs/architecture/data-lifecycle/TSR_DATA_SUBJECT_REQUEST_ARCHITECTURE.md",
+          "Architecture Decision:docs/architecture/data-lifecycle/TSR_LEGAL_HOLD_ARCHITECTURE.md",
+          "Architecture Decision:docs/architecture/diagrams/tenant-architecture.mmd",
+          "Architecture Decision:docs/architecture/enterprise-identity/ENTERPRISE_IDENTITY_ARCHITECTURE.md",
+          "Architecture Decision:docs/architecture/enterprise-identity/ENTERPRISE_IDENTITY_MOBILE_ARCHITECTURE.md",
+          "Architecture Decision:docs/architecture/Volume-I-Vision-and-Enterprise-Architecture.md"
+        ],
+        "unknownImpacts": []
+      },
+      "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
         "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
         "potentialImpacts": [
           "Service:intelligence-execution-platform",
@@ -5223,6 +5312,19 @@
           "Generated Artifact:docs/implementation/intelligence-lifecycle-framework/generated/readiness_matrix.json",
           "Generated Artifact:docs/implementation/intelligence-lifecycle-framework/generated/validation_readiness.json",
           "Generated Artifact:docs/implementation/intelligence-lifecycle-framework/generated/version_evolution_catalog.json",
+          "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_alternative_comparison_report.json",
+          "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_benchmark_catalog.json",
+          "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_candidate_contract.json",
+          "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_evidence_completeness_report.json",
+          "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_hazard_catalog.json",
+          "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_intelligence_capability_catalog.json",
+          "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_intelligence_readiness.json",
+          "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/ROUTE_INTELLIGENCE_SUMMARY.md",
+          "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_reason_code_catalog.json",
+          "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_restriction_catalog.json",
+          "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_safety_assessment_catalog.json",
+          "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_safety_gate_report.json",
+          "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/vehicle_profile_contract.json",
           "Generated Artifact:docs/implementation/scoring-engine/generated/candidate_score_index.json",
           "Generated Artifact:docs/implementation/scoring-engine/generated/capability_score_index.json",
           "Generated Artifact:docs/implementation/scoring-engine/generated/case_score_index.json",
@@ -22648,6 +22750,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -22739,6 +22842,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -22830,6 +22934,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -22921,6 +23026,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -23012,6 +23118,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -23103,6 +23210,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -23194,6 +23302,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -23285,6 +23394,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -23376,6 +23486,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -23467,6 +23578,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -23558,6 +23670,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -23649,6 +23762,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -23740,6 +23854,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -23831,6 +23946,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -23922,6 +24038,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -24015,6 +24132,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -24108,6 +24226,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -24201,6 +24320,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -24294,6 +24414,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -24387,6 +24508,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -24480,6 +24602,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -24573,6 +24696,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -24666,6 +24790,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -24759,6 +24884,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -24852,6 +24978,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -24945,6 +25072,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -25038,6 +25166,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -25131,6 +25260,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -25224,6 +25354,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -25317,6 +25448,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -25410,6 +25542,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -25503,6 +25636,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -25596,6 +25730,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -25687,6 +25822,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -25778,6 +25914,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -25869,6 +26006,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -25960,6 +26098,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -26051,6 +26190,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -26142,6 +26282,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -26233,6 +26374,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -26324,6 +26466,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -26415,6 +26558,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -26506,6 +26650,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -26597,6 +26742,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -26688,6 +26834,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -26779,6 +26926,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -26870,6 +27018,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -26961,6 +27110,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -27052,6 +27202,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -27143,6 +27294,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -27234,6 +27386,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -27325,6 +27478,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -27416,6 +27570,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -27507,6 +27662,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -27598,6 +27754,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -27689,6 +27846,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -27780,6 +27938,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -27871,6 +28030,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -30568,6 +30728,575 @@
         "blockedImpacts": [],
         "directImpacts": [],
         "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/ALTERNATIVE_COMPARISON.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/ALTERNATIVE_COMPARISON.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/ARCHITECTURE.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/ARCHITECTURE.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/BENCHMARK_DATASETS.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/BENCHMARK_DATASETS.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/CLEARANCE_ASSESSMENT.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/CLEARANCE_ASSESSMENT.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/COMMANDS.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/COMMANDS.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/DEFERRED_WORK.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/DEFERRED_WORK.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/EVIDENCE_COMPLETENESS.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/EVIDENCE_COMPLETENESS.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/EXPLANATION_MODEL.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/EXPLANATION_MODEL.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_alternative_comparison_report.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_alternative_comparison_report.json"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_benchmark_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_benchmark_catalog.json"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_candidate_contract.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_candidate_contract.json"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_evidence_completeness_report.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_evidence_completeness_report.json"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_hazard_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_hazard_catalog.json"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_intelligence_capability_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_intelligence_capability_catalog.json"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_intelligence_readiness.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_intelligence_readiness.json"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/ROUTE_INTELLIGENCE_SUMMARY.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/ROUTE_INTELLIGENCE_SUMMARY.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_reason_code_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_reason_code_catalog.json"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_restriction_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_restriction_catalog.json"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_safety_assessment_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_safety_assessment_catalog.json"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_safety_gate_report.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_safety_gate_report.json"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/vehicle_profile_contract.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/vehicle_profile_contract.json"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/GENERATED_ARTIFACTS.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/GENERATED_ARTIFACTS.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/HAZARD_CONTRACT.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/HAZARD_CONTRACT.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/HAZARD_PROXIMITY_RULES.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/HAZARD_PROXIMITY_RULES.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/HEIGHT_AND_DIMENSION_RULES.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/HEIGHT_AND_DIMENSION_RULES.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/INTEGRATION_WITH_DASHBOARD_DATA.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/INTEGRATION_WITH_DASHBOARD_DATA.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/INTEGRATION_WITH_FRAMEWORK_VALIDATION.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/INTEGRATION_WITH_FRAMEWORK_VALIDATION.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/INTEGRATION_WITH_IEP.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/INTEGRATION_WITH_IEP.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/INTEGRATION_WITH_KNOWLEDGE_GRAPH.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/INTEGRATION_WITH_KNOWLEDGE_GRAPH.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/NO_PRODUCTION_CHANGE_BOUNDARY.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/NO_PRODUCTION_CHANGE_BOUNDARY.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/NO_PROVIDER_CALL_BOUNDARY.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/NO_PROVIDER_CALL_BOUNDARY.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/READINESS.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/READINESS.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/README.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/README.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/RESIDENTIAL_RESTRICTION_RULES.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/RESIDENTIAL_RESTRICTION_RULES.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/RESTRICTION_CONTRACT.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/RESTRICTION_CONTRACT.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/ROLLBACK.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/ROLLBACK.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/ROUTE_CANDIDATE_CONTRACT.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/ROUTE_CANDIDATE_CONTRACT.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/SAFETY_AUTHORITY.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/SAFETY_AUTHORITY.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/SAFETY_GATE_ORDER.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/SAFETY_GATE_ORDER.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/SCOPE.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/SCOPE.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/SUCCESS_CRITERIA.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/SUCCESS_CRITERIA.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/SYNTHETIC_FIXTURES.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/SYNTHETIC_FIXTURES.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/TENANT_CONTEXT_BOUNDARY.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/TENANT_CONTEXT_BOUNDARY.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/TRUCK_RESTRICTION_RULES.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/TRUCK_RESTRICTION_RULES.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/VALIDATION_PLAN.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/VALIDATION_PLAN.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/VEHICLE_PROFILE_CONTRACT.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/VEHICLE_PROFILE_CONTRACT.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/WEIGHT_RULES.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/WEIGHT_RULES.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
         "nodeId": "Documentation Page:docs/implementation/scoring-engine/CANDIDATE_LEVEL_SCORING.md",
         "potentialImpacts": [],
         "unknownImpacts": []
@@ -31330,6 +32059,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -31421,6 +32151,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -31512,6 +32243,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -31603,6 +32335,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -31694,6 +32427,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -31785,6 +32519,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -31876,6 +32611,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -31967,6 +32703,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -32058,6 +32795,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -32149,6 +32887,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -32240,6 +32979,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -32331,6 +33071,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -32422,6 +33163,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
@@ -32513,6 +33255,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/profiles.js",
           "Repository Module:bridge-api/services/intelligenceExecution/promptRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",

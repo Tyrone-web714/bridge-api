@@ -1,0 +1,25 @@
+{
+  "contract": {
+    "authoritativeSources": [
+      "truck restriction data",
+      "low-clearance bridge data",
+      "hazard rules"
+    ],
+    "geometry": {
+      "points": [
+        "latitude",
+        "longitude"
+      ]
+    },
+    "productionRouteEndpointModified": false,
+    "required": [
+      "routeCandidateId",
+      "geometry",
+      "clearanceEvidence",
+      "restrictions",
+      "hazards"
+    ],
+    "schemaVersion": "route.candidate.contract.v1"
+  },
+  "generatedArtifact": true
+}

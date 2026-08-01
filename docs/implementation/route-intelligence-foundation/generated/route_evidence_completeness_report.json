@@ -1,0 +1,599 @@
+{
+  "completeness": [
+    {
+      "caseId": "clearance_pass",
+      "evidenceCompleteness": [
+        {
+          "name": "clearanceEvidence",
+          "present": true
+        },
+        {
+          "name": "restrictions",
+          "present": true
+        },
+        {
+          "name": "hazards",
+          "present": true
+        },
+        {
+          "name": "geometry",
+          "present": true
+        }
+      ],
+      "routeCandidateId": "route-clear-pass"
+    },
+    {
+      "caseId": "low_clearance_fail_closed",
+      "evidenceCompleteness": [
+        {
+          "name": "clearanceEvidence",
+          "present": true
+        },
+        {
+          "name": "restrictions",
+          "present": true
+        },
+        {
+          "name": "hazards",
+          "present": true
+        },
+        {
+          "name": "geometry",
+          "present": true
+        }
+      ],
+      "routeCandidateId": "route-low-clearance"
+    },
+    {
+      "caseId": "truck_prohibited_fail_closed",
+      "evidenceCompleteness": [
+        {
+          "name": "clearanceEvidence",
+          "present": true
+        },
+        {
+          "name": "restrictions",
+          "present": true
+        },
+        {
+          "name": "hazards",
+          "present": true
+        },
+        {
+          "name": "geometry",
+          "present": true
+        }
+      ],
+      "routeCandidateId": "route-truck-prohibited"
+    },
+    {
+      "caseId": "hazard_proximity_review",
+      "evidenceCompleteness": [
+        {
+          "name": "clearanceEvidence",
+          "present": true
+        },
+        {
+          "name": "restrictions",
+          "present": true
+        },
+        {
+          "name": "hazards",
+          "present": true
+        },
+        {
+          "name": "geometry",
+          "present": true
+        }
+      ],
+      "routeCandidateId": "route-near-hazard"
+    },
+    {
+      "caseId": "missing_vehicle_height_insufficient",
+      "evidenceCompleteness": [
+        {
+          "name": "clearanceEvidence",
+          "present": true
+        },
+        {
+          "name": "restrictions",
+          "present": true
+        },
+        {
+          "name": "hazards",
+          "present": true
+        },
+        {
+          "name": "geometry",
+          "present": true
+        }
+      ],
+      "routeCandidateId": "route-clear-pass"
+    },
+    {
+      "caseId": "unsafe_not_selected",
+      "evidenceCompleteness": [
+        {
+          "name": "clearanceEvidence",
+          "present": true
+        },
+        {
+          "name": "restrictions",
+          "present": true
+        },
+        {
+          "name": "hazards",
+          "present": true
+        },
+        {
+          "name": "geometry",
+          "present": true
+        }
+      ],
+      "routeCandidateId": "route-low-clearance"
+    },
+    {
+      "caseId": "overheight_rejects",
+      "evidenceCompleteness": [
+        {
+          "name": "clearanceEvidence",
+          "present": true
+        },
+        {
+          "name": "restrictions",
+          "present": true
+        },
+        {
+          "name": "hazards",
+          "present": true
+        },
+        {
+          "name": "geometry",
+          "present": true
+        }
+      ],
+      "routeCandidateId": "route-clear-pass"
+    },
+    {
+      "caseId": "residential_advisory_review",
+      "evidenceCompleteness": [
+        {
+          "name": "clearanceEvidence",
+          "present": true
+        },
+        {
+          "name": "restrictions",
+          "present": true
+        },
+        {
+          "name": "hazards",
+          "present": true
+        },
+        {
+          "name": "geometry",
+          "present": true
+        }
+      ],
+      "routeCandidateId": "route-residential-avoid"
+    },
+    {
+      "caseId": "weight_limit_rejects",
+      "evidenceCompleteness": [
+        {
+          "name": "clearanceEvidence",
+          "present": true
+        },
+        {
+          "name": "restrictions",
+          "present": true
+        },
+        {
+          "name": "hazards",
+          "present": true
+        },
+        {
+          "name": "geometry",
+          "present": true
+        }
+      ],
+      "routeCandidateId": "route-weight-limit"
+    },
+    {
+      "caseId": "no_through_truck_rejects",
+      "evidenceCompleteness": [
+        {
+          "name": "clearanceEvidence",
+          "present": true
+        },
+        {
+          "name": "restrictions",
+          "present": true
+        },
+        {
+          "name": "hazards",
+          "present": true
+        },
+        {
+          "name": "geometry",
+          "present": true
+        }
+      ],
+      "routeCandidateId": "route-no-through"
+    },
+    {
+      "caseId": "local_delivery_allows_no_through",
+      "evidenceCompleteness": [
+        {
+          "name": "clearanceEvidence",
+          "present": true
+        },
+        {
+          "name": "restrictions",
+          "present": true
+        },
+        {
+          "name": "hazards",
+          "present": true
+        },
+        {
+          "name": "geometry",
+          "present": true
+        }
+      ],
+      "routeCandidateId": "route-local-delivery"
+    },
+    {
+      "caseId": "stale_clearance_review",
+      "evidenceCompleteness": [
+        {
+          "name": "clearanceEvidence",
+          "present": true
+        },
+        {
+          "name": "restrictions",
+          "present": true
+        },
+        {
+          "name": "hazards",
+          "present": true
+        },
+        {
+          "name": "geometry",
+          "present": true
+        }
+      ],
+      "routeCandidateId": "route-stale"
+    },
+    {
+      "caseId": "exact_height_rejects",
+      "evidenceCompleteness": [
+        {
+          "name": "clearanceEvidence",
+          "present": true
+        },
+        {
+          "name": "restrictions",
+          "present": true
+        },
+        {
+          "name": "hazards",
+          "present": true
+        },
+        {
+          "name": "geometry",
+          "present": true
+        }
+      ],
+      "routeCandidateId": "route-exact-height"
+    },
+    {
+      "caseId": "safety_buffer_rejects",
+      "evidenceCompleteness": [
+        {
+          "name": "clearanceEvidence",
+          "present": true
+        },
+        {
+          "name": "restrictions",
+          "present": true
+        },
+        {
+          "name": "hazards",
+          "present": true
+        },
+        {
+          "name": "geometry",
+          "present": true
+        }
+      ],
+      "routeCandidateId": "route-buffer-fail"
+    },
+    {
+      "caseId": "minimal_margin_review",
+      "evidenceCompleteness": [
+        {
+          "name": "clearanceEvidence",
+          "present": true
+        },
+        {
+          "name": "restrictions",
+          "present": true
+        },
+        {
+          "name": "hazards",
+          "present": true
+        },
+        {
+          "name": "geometry",
+          "present": true
+        }
+      ],
+      "routeCandidateId": "route-minimal-margin"
+    },
+    {
+      "caseId": "unknown_clearance_insufficient",
+      "evidenceCompleteness": [
+        {
+          "name": "clearanceEvidence",
+          "present": true
+        },
+        {
+          "name": "restrictions",
+          "present": true
+        },
+        {
+          "name": "hazards",
+          "present": true
+        },
+        {
+          "name": "geometry",
+          "present": true
+        }
+      ],
+      "routeCandidateId": "route-unknown-clearance"
+    },
+    {
+      "caseId": "conflicting_clearance_rejects",
+      "evidenceCompleteness": [
+        {
+          "name": "clearanceEvidence",
+          "present": true
+        },
+        {
+          "name": "restrictions",
+          "present": true
+        },
+        {
+          "name": "hazards",
+          "present": true
+        },
+        {
+          "name": "geometry",
+          "present": true
+        }
+      ],
+      "routeCandidateId": "route-conflict"
+    },
+    {
+      "caseId": "width_limit_rejects",
+      "evidenceCompleteness": [
+        {
+          "name": "clearanceEvidence",
+          "present": true
+        },
+        {
+          "name": "restrictions",
+          "present": true
+        },
+        {
+          "name": "hazards",
+          "present": true
+        },
+        {
+          "name": "geometry",
+          "present": true
+        }
+      ],
+      "routeCandidateId": "route-width-limit"
+    },
+    {
+      "caseId": "length_limit_rejects",
+      "evidenceCompleteness": [
+        {
+          "name": "clearanceEvidence",
+          "present": true
+        },
+        {
+          "name": "restrictions",
+          "present": true
+        },
+        {
+          "name": "hazards",
+          "present": true
+        },
+        {
+          "name": "geometry",
+          "present": true
+        }
+      ],
+      "routeCandidateId": "route-length-limit"
+    },
+    {
+      "caseId": "road_closure_rejects",
+      "evidenceCompleteness": [
+        {
+          "name": "clearanceEvidence",
+          "present": true
+        },
+        {
+          "name": "restrictions",
+          "present": true
+        },
+        {
+          "name": "hazards",
+          "present": true
+        },
+        {
+          "name": "geometry",
+          "present": true
+        }
+      ],
+      "routeCandidateId": "route-road-closed"
+    },
+    {
+      "caseId": "restricted_road_class_review",
+      "evidenceCompleteness": [
+        {
+          "name": "clearanceEvidence",
+          "present": true
+        },
+        {
+          "name": "restrictions",
+          "present": true
+        },
+        {
+          "name": "hazards",
+          "present": true
+        },
+        {
+          "name": "geometry",
+          "present": true
+        }
+      ],
+      "routeCandidateId": "route-restricted-road-class"
+    },
+    {
+      "caseId": "malformed_geometry_rejects",
+      "evidenceCompleteness": [
+        {
+          "name": "clearanceEvidence",
+          "present": true
+        },
+        {
+          "name": "restrictions",
+          "present": true
+        },
+        {
+          "name": "hazards",
+          "present": true
+        },
+        {
+          "name": "geometry",
+          "present": true
+        }
+      ],
+      "routeCandidateId": "route-malformed-geometry"
+    },
+    {
+      "caseId": "missing_geometry_insufficient",
+      "evidenceCompleteness": [
+        {
+          "name": "clearanceEvidence",
+          "present": true
+        },
+        {
+          "name": "restrictions",
+          "present": true
+        },
+        {
+          "name": "hazards",
+          "present": true
+        },
+        {
+          "name": "geometry",
+          "present": false
+        }
+      ],
+      "routeCandidateId": "route-missing-geometry"
+    },
+    {
+      "caseId": "intersecting_hazard_rejects",
+      "evidenceCompleteness": [
+        {
+          "name": "clearanceEvidence",
+          "present": true
+        },
+        {
+          "name": "restrictions",
+          "present": true
+        },
+        {
+          "name": "hazards",
+          "present": true
+        },
+        {
+          "name": "geometry",
+          "present": true
+        }
+      ],
+      "routeCandidateId": "route-intersecting-hazard"
+    },
+    {
+      "caseId": "shorter_unsafe_not_selected",
+      "evidenceCompleteness": [
+        {
+          "name": "clearanceEvidence",
+          "present": true
+        },
+        {
+          "name": "restrictions",
+          "present": true
+        },
+        {
+          "name": "hazards",
+          "present": true
+        },
+        {
+          "name": "geometry",
+          "present": true
+        }
+      ],
+      "routeCandidateId": "route-low-clearance"
+    },
+    {
+      "caseId": "cheaper_unsafe_not_selected",
+      "evidenceCompleteness": [
+        {
+          "name": "clearanceEvidence",
+          "present": true
+        },
+        {
+          "name": "restrictions",
+          "present": true
+        },
+        {
+          "name": "hazards",
+          "present": true
+        },
+        {
+          "name": "geometry",
+          "present": true
+        }
+      ],
+      "routeCandidateId": "route-low-clearance"
+    },
+    {
+      "caseId": "human_review_required",
+      "evidenceCompleteness": [
+        {
+          "name": "clearanceEvidence",
+          "present": true
+        },
+        {
+          "name": "restrictions",
+          "present": true
+        },
+        {
+          "name": "hazards",
+          "present": true
+        },
+        {
+          "name": "geometry",
+          "present": true
+        }
+      ],
+      "routeCandidateId": "route-near-hazard"
+    }
+  ],
+  "generatedArtifact": true
+}

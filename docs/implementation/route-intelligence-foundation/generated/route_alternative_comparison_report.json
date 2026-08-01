@@ -1,0 +1,232 @@
+{
+  "comparison": {
+    "advisoryOnly": true,
+    "assessments": [
+      {
+        "advisoryOnly": true,
+        "assessmentHash": "abcea386b28810ccd54673b875113e71a3d1346119812bf26260329bc2b020da",
+        "confidence": {
+          "score": null,
+          "status": "NOT_SAFE_TO_CERTIFY"
+        },
+        "eligible": false,
+        "engineVersion": "route.intelligence.foundation.engine.v1",
+        "evidenceCompleteness": [
+          {
+            "name": "clearanceEvidence",
+            "present": true
+          },
+          {
+            "name": "restrictions",
+            "present": true
+          },
+          {
+            "name": "hazards",
+            "present": true
+          },
+          {
+            "name": "geometry",
+            "present": true
+          }
+        ],
+        "generatedAt": "2026-07-25T00:00:00.000Z",
+        "policy": {
+          "failClosedOnMissingVehicleDimensions": true,
+          "failClosedOnUnknownClearance": true,
+          "hazardProximityYards": 60,
+          "heightSafetyBufferInches": 6,
+          "maxEvidenceAgeDays": 365,
+          "minimumClearanceMarginInches": 3,
+          "residentialAvoidanceAdvisoryOnly": true
+        },
+        "productionApplicable": false,
+        "providerCallInvoked": false,
+        "reasonCodes": [
+          "CLEARANCE_FAIL_CLOSED",
+          "HAZARD_PROXIMITY_PASS"
+        ],
+        "routeCandidateId": "route-low-clearance",
+        "routeEndpointModified": false,
+        "ruleResults": [
+          {
+            "assessmentType": "CLEARANCE",
+            "evidenceId": "bridge-13ft-0in-current",
+            "facts": {
+              "clearanceConfidence": 1,
+              "clearanceInches": 156,
+              "clearanceSource": "synthetic.bridge.catalog",
+              "evidenceAgeDays": 5,
+              "marginInches": 0,
+              "safetyBufferInches": 6,
+              "vehicleEffectiveHeightInches": 156,
+              "vehiclePhysicalHeightInches": 150
+            },
+            "reasonCode": "CLEARANCE_FAIL_CLOSED",
+            "resultHash": "7719f89323274f067c883fafb4051b0711bce00edf92b53ada48da6d801393a2",
+            "safetyCritical": true,
+            "status": "FAIL_CLOSED"
+          },
+          {
+            "assessmentType": "HAZARD_PROXIMITY",
+            "facts": {
+              "hazardCount": 0
+            },
+            "reasonCode": "HAZARD_PROXIMITY_PASS",
+            "resultHash": "e763627faff663cc3342697e92fbb8effabf46dd2998b852d130419e70c022c9",
+            "safetyCritical": false,
+            "status": "PASS"
+          }
+        ],
+        "safeWithinKnownEvidence": false,
+        "schemaVersion": "route.intelligence.foundation.v1",
+        "sourceHashes": [
+          {
+            "assessmentType": "CLEARANCE",
+            "hash": "7719f89323274f067c883fafb4051b0711bce00edf92b53ada48da6d801393a2",
+            "id": "bridge-13ft-0in-current"
+          },
+          {
+            "assessmentType": "HAZARD_PROXIMITY",
+            "hash": "e763627faff663cc3342697e92fbb8effabf46dd2998b852d130419e70c022c9",
+            "id": null
+          }
+        ],
+        "status": "UNSAFE",
+        "tenantContext": {
+          "organizationId": "org_synthetic_route_intelligence"
+        }
+      },
+      {
+        "advisoryOnly": true,
+        "assessmentHash": "9d5a02db50dea60b3ad7fa8638cd83fdd60052353ffd3344e7a80fc0f86716f4",
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_EVIDENCE_ONLY"
+        },
+        "eligible": true,
+        "engineVersion": "route.intelligence.foundation.engine.v1",
+        "evidenceCompleteness": [
+          {
+            "name": "clearanceEvidence",
+            "present": true
+          },
+          {
+            "name": "restrictions",
+            "present": true
+          },
+          {
+            "name": "hazards",
+            "present": true
+          },
+          {
+            "name": "geometry",
+            "present": true
+          }
+        ],
+        "generatedAt": "2026-07-25T00:00:00.000Z",
+        "policy": {
+          "failClosedOnMissingVehicleDimensions": true,
+          "failClosedOnUnknownClearance": true,
+          "hazardProximityYards": 60,
+          "heightSafetyBufferInches": 6,
+          "maxEvidenceAgeDays": 365,
+          "minimumClearanceMarginInches": 3,
+          "residentialAvoidanceAdvisoryOnly": true
+        },
+        "productionApplicable": false,
+        "providerCallInvoked": false,
+        "reasonCodes": [
+          "CLEARANCE_PASS",
+          "HAZARD_PROXIMITY_PASS",
+          "ROUTE_SAFETY_PASS"
+        ],
+        "routeCandidateId": "route-clear-pass",
+        "routeEndpointModified": false,
+        "ruleResults": [
+          {
+            "assessmentType": "CLEARANCE",
+            "evidenceId": "bridge-14ft-0in-current",
+            "facts": {
+              "clearanceConfidence": 1,
+              "clearanceInches": 168,
+              "clearanceSource": "synthetic.bridge.catalog",
+              "evidenceAgeDays": 5,
+              "marginInches": 12,
+              "safetyBufferInches": 6,
+              "vehicleEffectiveHeightInches": 156,
+              "vehiclePhysicalHeightInches": 150
+            },
+            "reasonCode": "CLEARANCE_PASS",
+            "resultHash": "6d41430fe6c2f9abee3ebd3e22ab90509c5c614b9f59525d8589827b38a630c9",
+            "safetyCritical": true,
+            "status": "PASS"
+          },
+          {
+            "assessmentType": "HAZARD_PROXIMITY",
+            "facts": {
+              "hazardCount": 0
+            },
+            "reasonCode": "HAZARD_PROXIMITY_PASS",
+            "resultHash": "e763627faff663cc3342697e92fbb8effabf46dd2998b852d130419e70c022c9",
+            "safetyCritical": false,
+            "status": "PASS"
+          }
+        ],
+        "safeWithinKnownEvidence": true,
+        "schemaVersion": "route.intelligence.foundation.v1",
+        "sourceHashes": [
+          {
+            "assessmentType": "CLEARANCE",
+            "hash": "6d41430fe6c2f9abee3ebd3e22ab90509c5c614b9f59525d8589827b38a630c9",
+            "id": "bridge-14ft-0in-current"
+          },
+          {
+            "assessmentType": "HAZARD_PROXIMITY",
+            "hash": "e763627faff663cc3342697e92fbb8effabf46dd2998b852d130419e70c022c9",
+            "id": null
+          }
+        ],
+        "status": "ELIGIBLE",
+        "tenantContext": {
+          "organizationId": "org_synthetic_route_intelligence"
+        }
+      }
+    ],
+    "comparisonHash": "efdce40fddf28b94671bc563ebb8d303054e890d2f2051fa7d7d71ff57886e48",
+    "productionApplicable": false,
+    "providerCallInvoked": false,
+    "rankedAlternatives": [
+      {
+        "eligible": true,
+        "reasonCodes": [
+          "CLEARANCE_PASS",
+          "HAZARD_PROXIMITY_PASS",
+          "ROUTE_SAFETY_PASS"
+        ],
+        "routeCandidateId": "route-clear-pass",
+        "score": 12.917,
+        "status": "ELIGIBLE"
+      },
+      {
+        "eligible": false,
+        "reasonCodes": [
+          "CLEARANCE_FAIL_CLOSED",
+          "HAZARD_PROXIMITY_PASS"
+        ],
+        "routeCandidateId": "route-low-clearance",
+        "score": 1000010.517,
+        "status": "UNSAFE"
+      }
+    ],
+    "schemaVersion": "route.intelligence.foundation.v1",
+    "selectedRouteCandidateId": "route-clear-pass",
+    "selectedStatus": "ELIGIBLE",
+    "unsafeRoutesRejected": [
+      {
+        "reasonCode": "ALTERNATIVE_UNSAFE_REJECTED",
+        "routeCandidateId": "route-low-clearance"
+      }
+    ]
+  },
+  "generatedArtifact": true
+}

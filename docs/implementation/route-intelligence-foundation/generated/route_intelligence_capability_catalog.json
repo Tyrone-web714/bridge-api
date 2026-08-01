@@ -1,0 +1,49 @@
+{
+  "capabilities": [
+    {
+      "authoritative": true,
+      "capabilityId": "route.safety.assessment",
+      "description": "Deterministic assessment of vehicle profile compatibility with route restrictions and hazards.",
+      "displayName": "Route Safety Assessment",
+      "executionStrategy": "DETERMINISTIC_RULES"
+    },
+    {
+      "authoritative": true,
+      "capabilityId": "route.clearance.assessment",
+      "description": "Fail-closed low-clearance bridge assessment using vehicle height, safety buffer, and evidence freshness.",
+      "displayName": "Clearance Assessment",
+      "executionStrategy": "DETERMINISTIC_RULES"
+    },
+    {
+      "authoritative": false,
+      "capabilityId": "route.alternative.comparison",
+      "description": "Advisory comparison of route alternatives after all mandatory safety gates have run.",
+      "displayName": "Route Alternative Comparison",
+      "executionStrategy": "DETERMINISTIC_RULES"
+    },
+    {
+      "authoritative": false,
+      "capabilityId": "route.safety.explanation",
+      "description": "Plain-language explanation over deterministic route safety facts without provider inference.",
+      "displayName": "Route Safety Explanation",
+      "executionStrategy": "DETERMINISTIC_RULES"
+    }
+  ],
+  "catalog": {
+    "benchmarkCaseCount": 27,
+    "capabilityCount": 4,
+    "catalogHash": "66181b77a3617973bbc3148479b0ffb956da525e7b5c434705e1746f2fdb4f35",
+    "deterministicRulesAuthoritative": true,
+    "engineVersion": "route.intelligence.foundation.engine.v1",
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "integratedWithCapabilityOrchestration": true,
+    "integratedWithEnterpriseRegistry": true,
+    "integratedWithLifecycleFramework": true,
+    "productionApplicable": false,
+    "productionRouteEndpointModified": false,
+    "providerCallInvoked": false,
+    "schemaVersion": "route.intelligence.foundation.v1",
+    "testOnly": true
+  },
+  "generatedArtifact": true
+}

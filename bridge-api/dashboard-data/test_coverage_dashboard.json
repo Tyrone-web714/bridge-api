@@ -17,7 +17,7 @@
       "dashboard-data/test_coverage_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "6e224ed3ea355daaeef2f34f874748f8ef5a8ae918bf006daf7b2167d7e1c2bc",
+    "generationHash": "18eceaa53370955619ce651e7ac832c782b9ef3792b065aec780a296b8a6e1e0",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -81,6 +81,10 @@
         "knowledge-graph:generate",
         "knowledge-graph:impact",
         "knowledge-graph:validate",
+        "route-intelligence:benchmarks",
+        "route-intelligence:check",
+        "route-intelligence:generate",
+        "route-intelligence:validate",
         "scoring-engine:check",
         "scoring-engine:generate",
         "scoring-engine:run",
@@ -102,6 +106,7 @@
         "test:intelligence-orchestration",
         "test:knowledge-graph",
         "test:logistics-intelligence",
+        "test:route-intelligence",
         "test:scoring-engine",
         "test:supervisor-intelligence",
         "validate:fleet-intelligence-scoring",
@@ -110,7 +115,7 @@
     },
     "statusIndicators": [],
     "summary": {
-      "testScripts": 41
+      "testScripts": 42
     },
     "testOnly": true,
     "unknownValues": [],

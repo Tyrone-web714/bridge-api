@@ -1,0 +1,13 @@
+{
+  "generatedArtifact": true,
+  "readiness": {
+    "deterministicRulesAuthoritative": true,
+    "productionRouteEndpointModified": false,
+    "providerCallInvoked": false,
+    "repositoryOnly": true,
+    "validation": {
+      "errors": [],
+      "valid": true
+    }
+  }
+}

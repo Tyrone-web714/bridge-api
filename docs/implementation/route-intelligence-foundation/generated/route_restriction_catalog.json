@@ -1,0 +1,54 @@
+{
+  "generatedArtifact": true,
+  "restrictions": [
+    {
+      "restrictionId": "no-trucks-main",
+      "segmentId": "segment-main",
+      "type": "TRUCK_PROHIBITED"
+    },
+    {
+      "restrictionId": "residential-avoid",
+      "type": "RESIDENTIAL_AVOID"
+    },
+    {
+      "maxGrossWeight": {
+        "unit": "tons",
+        "value": 20
+      },
+      "restrictionId": "weight-limit",
+      "type": "WEIGHT_LIMIT"
+    },
+    {
+      "restrictionId": "no-through",
+      "type": "NO_THROUGH_TRUCKS"
+    },
+    {
+      "restrictionId": "no-through",
+      "type": "NO_THROUGH_TRUCKS"
+    },
+    {
+      "maxWidth": {
+        "unit": "in",
+        "value": 96
+      },
+      "restrictionId": "width-limit",
+      "type": "WIDTH_LIMIT"
+    },
+    {
+      "maxLength": {
+        "unit": "ft",
+        "value": 40
+      },
+      "restrictionId": "length-limit",
+      "type": "LENGTH_LIMIT"
+    },
+    {
+      "restrictionId": "closure",
+      "type": "ROAD_CLOSED"
+    },
+    {
+      "restrictionId": "class",
+      "type": "RESTRICTED_ROAD_CLASS"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "contract": {
+    "authoritativeFields": [
+      "height",
+      "grossWeight",
+      "legalRestrictions",
+      "clearanceEvidence"
+    ],
+    "callerProviderControlsAllowed": false,
+    "derivedFields": [
+      "effectiveRoutingHeight",
+      "safetyBuffer"
+    ],
+    "measurementMetadata": [
+      "unit",
+      "source",
+      "confidence"
+    ],
+    "optional": [
+      "width",
+      "length",
+      "axleCount",
+      "axleWeight",
+      "hazmat",
+      "trailerType",
+      "trailerDimensions",
+      "operationalRestrictions"
+    ],
+    "required": [
+      "vehicleId",
+      "vehicleClass",
+      "height",
+      "grossWeight"
+    ],
+    "schemaVersion": "route.vehicle.profile.contract.v1",
+    "tenantDerived": [
+      "organizationId"
+    ],
+    "testOnly": true,
+    "units": {
+      "length": [
+        "centimeter",
+        "centimeters",
+        "cm",
+        "feet",
+        "foot",
+        "ft",
+        "in",
+        "inch",
+        "inches",
+        "m",
+        "meter",
+        "meters",
+        "yard",
+        "yards",
+        "yd"
+      ],
+      "weight": [
+        "kg",
+        "lb",
+        "lbs",
+        "pound",
+        "pounds",
+        "ton",
+        "tons",
+        "us_ton"
+      ]
+    },
+    "unknownFields": [
+      "height",
+      "width",
+      "length",
+      "grossWeight",
+      "axleWeight",
+      "roadLimit"
+    ],
+    "validationStatus": [
+      "VALID",
+      "INSUFFICIENT_EVIDENCE",
+      "FAIL_CLOSED"
+    ]
+  },
+  "generatedArtifact": true
+}

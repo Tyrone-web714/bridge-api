@@ -568,6 +568,18 @@
         "testOnly": true
       },
       {
+        "edgeId": "edge:e8c60505b66f966f95b8",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "6e4c1d208d15bc50143406e6569d76357ed98b011af77195a53485256525144e",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "IMPLEMENTS",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Service:intelligence-execution-platform",
+        "targetNodeId": "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
+        "testOnly": true
+      },
+      {
         "edgeId": "edge:4d8099430fea0f50cac0",
         "metadata": {},
         "relationshipConfidence": "DETERMINISTIC",
@@ -9376,6 +9388,162 @@
         "testOnly": true
       },
       {
+        "edgeId": "edge:7457901277996b0da50f",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "410c60214ee181fa26efb6c23718617a6bafe0a55f24ecb1aaf32140d070525a",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_alternative_comparison_report.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:8fa2f11dac1a2eb36526",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "a43447c762dcf81c24bd613825f20dd0189ecb35f9077a4f8b2e96f11d084d3c",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_benchmark_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:a76200028a191a1e7b8b",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "ed5a9b94410b6bda36cf40f7c3da59070a32714a605ca290e3e68ebaee448491",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_candidate_contract.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:3ad9059d58587cc4e40c",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "052abcd05483806bc1c78e898b70b08aea6504b4814a89819a8db7ec82365649",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_evidence_completeness_report.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:3f19257d8fce8eadcf3f",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "b0ff242a62b5a5b037a1faf948087a3aee8c4f899d5c8916670a3b3a7ea115fb",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_hazard_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:dd1cb81e8fb49e621ce6",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "7c30e256642fdd78075f80baf4b338d75b8818497fc20d7109b95ad814c8dfa1",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_intelligence_capability_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:a6d3ef5c0d5d4617d98c",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "0866c722dc50cc03836cb2edb295ca6f0cf76fbae46d012adb25a594eb00b4a2",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_intelligence_readiness.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:f527313f82c7126db3a0",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "0602148934c5171fb4de503babf8273a5658414c2aa5886d59b934951634ba09",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/ROUTE_INTELLIGENCE_SUMMARY.md",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:a056f01b98475142de6d",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "7388fe6cbec0363915985dccd9325a41f4a10b8caeec36bdafa61f6d619a35ad",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_reason_code_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:1dc2eac72f69e5703392",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "4b69e5ba9059024e1dbb3ad9cd37cf5d2f87dc8bf03e5a04b7bae3487d1fabd5",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_restriction_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:d3a0c52090b8aec2a2e9",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "7c5854fe0fb311ca03c5eef0338c438a344e243de16ec84ca1e0f619244e494e",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_safety_assessment_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:4e05f7db319e53d7be86",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "8c516b6f9a56a709e9195ffebf9d43c1554b0c248686b71e6cbbc58a18ee0b09",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_safety_gate_report.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:e90a590e96663f974967",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "91b404c4eb1c00513050e79dabb48e91eaa39ede06d39e70317532e04637d8e5",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/vehicle_profile_contract.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
         "edgeId": "edge:110acd3cd79005f6a2bf",
         "metadata": {},
         "relationshipConfidence": "DETERMINISTIC",
@@ -9738,10 +9906,10 @@
     ],
     "engineVersion": "intelligence.knowledge.graph.engine.v1",
     "generatedFrom": "repository",
-    "graphHash": "48d503a799e33c7f39aa341d1f7ed7c8833e4f5565e65f31b4199dd2de934474",
+    "graphHash": "7633f35b79ed612edfd92f59393f187530d1e0ae2491c896ad08295773bf68ca",
     "nodes": [
       {
-        "hash": "cf2bbeb276750229c8b9e494b51a4b069729260b6b622925517ad2fe9968619b",
+        "hash": "3e03da133509be1876d23fa7bb3458b10add8527f7f9b807eb7c19a37a021167",
         "label": "bridge-api",
         "lifecycleState": null,
         "metadata": {},
@@ -10314,6 +10482,18 @@
         "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
         "productionApplicable": false,
         "source": "bridge-api/services/intelligenceExecution/providerAdapters.js",
+        "testOnly": true,
+        "type": "Repository Module",
+        "version": null
+      },
+      {
+        "hash": "1c349b250fe11ea8d63206d2e655d065cd92f867f02bba824e000b98934ad988",
+        "label": "bridge-api/services/intelligenceExecution/routeIntelligence.js",
+        "lifecycleState": null,
+        "metadata": {},
+        "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
+        "productionApplicable": false,
+        "source": "bridge-api/services/intelligenceExecution/routeIntelligence.js",
         "testOnly": true,
         "type": "Repository Module",
         "version": null
@@ -21607,6 +21787,664 @@
         "nodeId": "Documentation Page:docs/implementation/logistics-intelligence-foundation/TEST_RESULTS.md",
         "productionApplicable": false,
         "source": "docs/implementation/logistics-intelligence-foundation/TEST_RESULTS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "9f3b3584d5cf7e086b3aed623421771235fe4fb3fce325a0ebec1d541284184d",
+        "label": "docs/implementation/route-intelligence-foundation/ALTERNATIVE_COMPARISON.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "9f3b3584d5cf7e086b3aed623421771235fe4fb3fce325a0ebec1d541284184d"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/ALTERNATIVE_COMPARISON.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/ALTERNATIVE_COMPARISON.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "52e8ee89144c95253cfb4f6b2c9d0ae733b4deeb26bc909d5f80c7e9e105d16d",
+        "label": "docs/implementation/route-intelligence-foundation/ARCHITECTURE.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "52e8ee89144c95253cfb4f6b2c9d0ae733b4deeb26bc909d5f80c7e9e105d16d"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/ARCHITECTURE.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/ARCHITECTURE.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "93364df39c6e1d46ab205ec1ae701907c8438b9c03cefc3f1292331838829091",
+        "label": "docs/implementation/route-intelligence-foundation/BENCHMARK_DATASETS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "93364df39c6e1d46ab205ec1ae701907c8438b9c03cefc3f1292331838829091"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/BENCHMARK_DATASETS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/BENCHMARK_DATASETS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "7939718c81e0d34c9b4f096160c77c7c17ba4ecb06a53cd1162d89ad7cccbdc7",
+        "label": "docs/implementation/route-intelligence-foundation/CLEARANCE_ASSESSMENT.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "7939718c81e0d34c9b4f096160c77c7c17ba4ecb06a53cd1162d89ad7cccbdc7"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/CLEARANCE_ASSESSMENT.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/CLEARANCE_ASSESSMENT.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "1ba5c8cca265e62fb025e25d852706a9ba796270a4802a7804fda5ddc1e20421",
+        "label": "docs/implementation/route-intelligence-foundation/COMMANDS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "1ba5c8cca265e62fb025e25d852706a9ba796270a4802a7804fda5ddc1e20421"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/COMMANDS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/COMMANDS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "8a3ca91dfd64c4637c98f1b3be04682803efc97e80f90fbe0b6acd6e90c5d955",
+        "label": "docs/implementation/route-intelligence-foundation/DEFERRED_WORK.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "8a3ca91dfd64c4637c98f1b3be04682803efc97e80f90fbe0b6acd6e90c5d955"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/DEFERRED_WORK.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/DEFERRED_WORK.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "3c97af03f9dd1880c9cdf65f1971e69a4618c96419888ec8a7abbe316963f552",
+        "label": "docs/implementation/route-intelligence-foundation/EVIDENCE_COMPLETENESS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "3c97af03f9dd1880c9cdf65f1971e69a4618c96419888ec8a7abbe316963f552"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/EVIDENCE_COMPLETENESS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/EVIDENCE_COMPLETENESS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "b9ce72494f371869496a868fe36235f7f2489c9c77ee4089bccd8f2ecb7ab5b4",
+        "label": "docs/implementation/route-intelligence-foundation/EXPLANATION_MODEL.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "b9ce72494f371869496a868fe36235f7f2489c9c77ee4089bccd8f2ecb7ab5b4"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/EXPLANATION_MODEL.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/EXPLANATION_MODEL.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "70b56ba225a7a44f7587105d25ff9ea832b68461163e3260b952584bb03960d5",
+        "label": "docs/implementation/route-intelligence-foundation/generated/route_alternative_comparison_report.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_alternative_comparison_report.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/generated/route_alternative_comparison_report.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "0a41ad064d9c42d82a3497cf57c109cd3c776b5e585a43af13adc36eeb17a8cf",
+        "label": "docs/implementation/route-intelligence-foundation/generated/route_benchmark_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_benchmark_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/generated/route_benchmark_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "bfd6cabc67a3de333ddcfc99f7324e90e2adfe40d96b5fda46200dc71dc42d53",
+        "label": "docs/implementation/route-intelligence-foundation/generated/route_candidate_contract.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_candidate_contract.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/generated/route_candidate_contract.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "1f174b05e70e2a5ce0cc7ffaabe6fbaae5737214f22f2b237cfe2ddea7737120",
+        "label": "docs/implementation/route-intelligence-foundation/generated/route_evidence_completeness_report.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_evidence_completeness_report.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/generated/route_evidence_completeness_report.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "306c6adc7146faf25aef79bb6cdc9e46e7729dc7db4ce19fc101495daf7f798d",
+        "label": "docs/implementation/route-intelligence-foundation/generated/route_hazard_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_hazard_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/generated/route_hazard_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "d28c9ada47b806c516ec709dfd7c00bc33f1afa91bafe2ffb4eec0c736ede9d9",
+        "label": "docs/implementation/route-intelligence-foundation/generated/route_intelligence_capability_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_intelligence_capability_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/generated/route_intelligence_capability_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "9270a925a4b14554ed2016bc3dee314e48776bd0d7015bcad8620e381b66ce1c",
+        "label": "docs/implementation/route-intelligence-foundation/generated/route_intelligence_readiness.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_intelligence_readiness.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/generated/route_intelligence_readiness.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "35210835081b2cfb9e312bead2b05182f9a425b8693b0d917de236a41a000ffe",
+        "label": "docs/implementation/route-intelligence-foundation/generated/ROUTE_INTELLIGENCE_SUMMARY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/ROUTE_INTELLIGENCE_SUMMARY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/generated/ROUTE_INTELLIGENCE_SUMMARY.md",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "cbc28bd05325deceafdf47c2f3c6a846789e4a5e9f8c48603108064efb7313a8",
+        "label": "docs/implementation/route-intelligence-foundation/generated/route_reason_code_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_reason_code_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/generated/route_reason_code_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "35d29f60ab90a47a313c55a781fef5d24abfcae169735c9ffab09ede62c849b3",
+        "label": "docs/implementation/route-intelligence-foundation/generated/route_restriction_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_restriction_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/generated/route_restriction_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "919d58c8c6119a69dfdd02a94daffb9a96ab550de815964f54a051bfef29814c",
+        "label": "docs/implementation/route-intelligence-foundation/generated/route_safety_assessment_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_safety_assessment_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/generated/route_safety_assessment_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "54d6d4ac69096cf8e0b6da4ede1ed658d75576316b5220ccf1f09ba25312a38d",
+        "label": "docs/implementation/route-intelligence-foundation/generated/route_safety_gate_report.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/route_safety_gate_report.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/generated/route_safety_gate_report.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "38d976f7f61528165a445a9b772ba4ddc69049ff36a300178ae68122a226b60a",
+        "label": "docs/implementation/route-intelligence-foundation/generated/vehicle_profile_contract.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/vehicle_profile_contract.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/generated/vehicle_profile_contract.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "bad1c267abb00abbded793606b1d84fd9640572ac717225f9ec9cea353f53a9b",
+        "label": "docs/implementation/route-intelligence-foundation/GENERATED_ARTIFACTS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "bad1c267abb00abbded793606b1d84fd9640572ac717225f9ec9cea353f53a9b"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/GENERATED_ARTIFACTS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/GENERATED_ARTIFACTS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "2ff38d5851f1006d5cf353e40c5d2adc04900a0842e6dcd5e44bc3a6c91b2f16",
+        "label": "docs/implementation/route-intelligence-foundation/HAZARD_CONTRACT.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "2ff38d5851f1006d5cf353e40c5d2adc04900a0842e6dcd5e44bc3a6c91b2f16"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/HAZARD_CONTRACT.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/HAZARD_CONTRACT.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "a44a71838c835b58fb92252231a8ad114ce8f97608a1ee454d52ded768df6899",
+        "label": "docs/implementation/route-intelligence-foundation/HAZARD_PROXIMITY_RULES.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "a44a71838c835b58fb92252231a8ad114ce8f97608a1ee454d52ded768df6899"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/HAZARD_PROXIMITY_RULES.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/HAZARD_PROXIMITY_RULES.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "dff69d908107a09229eb60d3eda546233c21607ab38346c83b9804a5b5896fbf",
+        "label": "docs/implementation/route-intelligence-foundation/HEIGHT_AND_DIMENSION_RULES.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "dff69d908107a09229eb60d3eda546233c21607ab38346c83b9804a5b5896fbf"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/HEIGHT_AND_DIMENSION_RULES.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/HEIGHT_AND_DIMENSION_RULES.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "7cf4986f30b5f4caab84432190cbe0572122db555277a7948515f8f0c886d29d",
+        "label": "docs/implementation/route-intelligence-foundation/INTEGRATION_WITH_DASHBOARD_DATA.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "7cf4986f30b5f4caab84432190cbe0572122db555277a7948515f8f0c886d29d"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/INTEGRATION_WITH_DASHBOARD_DATA.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/INTEGRATION_WITH_DASHBOARD_DATA.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "2a38362d3b8de77e7a0dbc859ca5f9b4299446e0d3f9abc821ea3c5ae8fef10d",
+        "label": "docs/implementation/route-intelligence-foundation/INTEGRATION_WITH_FRAMEWORK_VALIDATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "2a38362d3b8de77e7a0dbc859ca5f9b4299446e0d3f9abc821ea3c5ae8fef10d"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/INTEGRATION_WITH_FRAMEWORK_VALIDATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/INTEGRATION_WITH_FRAMEWORK_VALIDATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "dec4ef3f947e8aee4c3587b31219547c6afa22027e67fc2bf4b974e65d43a9b1",
+        "label": "docs/implementation/route-intelligence-foundation/INTEGRATION_WITH_IEP.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "dec4ef3f947e8aee4c3587b31219547c6afa22027e67fc2bf4b974e65d43a9b1"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/INTEGRATION_WITH_IEP.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/INTEGRATION_WITH_IEP.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "f5808233db00b35c417162171ff32b7f95bb19b31544ecfe1eed779d224ffdb8",
+        "label": "docs/implementation/route-intelligence-foundation/INTEGRATION_WITH_KNOWLEDGE_GRAPH.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "f5808233db00b35c417162171ff32b7f95bb19b31544ecfe1eed779d224ffdb8"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/INTEGRATION_WITH_KNOWLEDGE_GRAPH.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/INTEGRATION_WITH_KNOWLEDGE_GRAPH.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "f18aa1c81bc88170cfdccf8043b89552fd79ce4220fc32c6780d01c600bc4a54",
+        "label": "docs/implementation/route-intelligence-foundation/NO_PRODUCTION_CHANGE_BOUNDARY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "f18aa1c81bc88170cfdccf8043b89552fd79ce4220fc32c6780d01c600bc4a54"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/NO_PRODUCTION_CHANGE_BOUNDARY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/NO_PRODUCTION_CHANGE_BOUNDARY.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "f5e63c3caeb02a1fa18ec5c716a912b27b06a6be6ec1521ccc63938ee5f1cb7f",
+        "label": "docs/implementation/route-intelligence-foundation/NO_PROVIDER_CALL_BOUNDARY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "f5e63c3caeb02a1fa18ec5c716a912b27b06a6be6ec1521ccc63938ee5f1cb7f"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/NO_PROVIDER_CALL_BOUNDARY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/NO_PROVIDER_CALL_BOUNDARY.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "352d4a87d590ad471412dc1f7407629dbb3ebff0ad53548cec2256131b0c2967",
+        "label": "docs/implementation/route-intelligence-foundation/READINESS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "352d4a87d590ad471412dc1f7407629dbb3ebff0ad53548cec2256131b0c2967"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/READINESS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/READINESS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "90239f1f45747503e6fe999a0b3c6d7ad30e05f3dd1caac3e47d340cdfb90f48",
+        "label": "docs/implementation/route-intelligence-foundation/README.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "90239f1f45747503e6fe999a0b3c6d7ad30e05f3dd1caac3e47d340cdfb90f48"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/README.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/README.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "aebc371a117fd41bb032e9b3a03bac12ff8f2dcd777a39430f58fb8e15618f35",
+        "label": "docs/implementation/route-intelligence-foundation/RESIDENTIAL_RESTRICTION_RULES.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "aebc371a117fd41bb032e9b3a03bac12ff8f2dcd777a39430f58fb8e15618f35"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/RESIDENTIAL_RESTRICTION_RULES.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/RESIDENTIAL_RESTRICTION_RULES.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "4b92bef9ba3a360b7463cdbf9076913d58012ff3e93b3033ce3d25aba10204f9",
+        "label": "docs/implementation/route-intelligence-foundation/RESTRICTION_CONTRACT.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "4b92bef9ba3a360b7463cdbf9076913d58012ff3e93b3033ce3d25aba10204f9"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/RESTRICTION_CONTRACT.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/RESTRICTION_CONTRACT.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "b8214f73c00478f1db74d5f4567ad0c8b89a08d63a8d6627e5db3dd86523bd68",
+        "label": "docs/implementation/route-intelligence-foundation/ROLLBACK.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "b8214f73c00478f1db74d5f4567ad0c8b89a08d63a8d6627e5db3dd86523bd68"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/ROLLBACK.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/ROLLBACK.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "cdb0dd97dad21d9f4cfe5af49592c58d99aa2db201c49b7c0ecccfa963617154",
+        "label": "docs/implementation/route-intelligence-foundation/ROUTE_CANDIDATE_CONTRACT.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "cdb0dd97dad21d9f4cfe5af49592c58d99aa2db201c49b7c0ecccfa963617154"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/ROUTE_CANDIDATE_CONTRACT.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/ROUTE_CANDIDATE_CONTRACT.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "d09541abbd91ab3653d98e1f8e2949b77275ef4870e79d8810008da6828e47e5",
+        "label": "docs/implementation/route-intelligence-foundation/SAFETY_AUTHORITY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "d09541abbd91ab3653d98e1f8e2949b77275ef4870e79d8810008da6828e47e5"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/SAFETY_AUTHORITY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/SAFETY_AUTHORITY.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "02c3f84e72a1ebfd18b3ce611cb647481593d502d07b72ea72fdf023f7522998",
+        "label": "docs/implementation/route-intelligence-foundation/SAFETY_GATE_ORDER.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "02c3f84e72a1ebfd18b3ce611cb647481593d502d07b72ea72fdf023f7522998"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/SAFETY_GATE_ORDER.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/SAFETY_GATE_ORDER.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "f7cf6c102be6bd97aa11501294a0aee500d55c2f00b098dee188a4c1e526619b",
+        "label": "docs/implementation/route-intelligence-foundation/SCOPE.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "f7cf6c102be6bd97aa11501294a0aee500d55c2f00b098dee188a4c1e526619b"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/SCOPE.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/SCOPE.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "d21d4fceb0090a163abb48631ba6ba64e0ede29f7ca32b6e515516a0e98dd1b0",
+        "label": "docs/implementation/route-intelligence-foundation/SUCCESS_CRITERIA.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "d21d4fceb0090a163abb48631ba6ba64e0ede29f7ca32b6e515516a0e98dd1b0"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/SUCCESS_CRITERIA.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/SUCCESS_CRITERIA.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "c44604601e87fff8e87f266972002432beec3767e0be6c52a4bbc8e9c8bc2ceb",
+        "label": "docs/implementation/route-intelligence-foundation/SYNTHETIC_FIXTURES.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "c44604601e87fff8e87f266972002432beec3767e0be6c52a4bbc8e9c8bc2ceb"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/SYNTHETIC_FIXTURES.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/SYNTHETIC_FIXTURES.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "303708574f17a8419c16fabee36d8e178ce2d63b04829305198249546de3cd09",
+        "label": "docs/implementation/route-intelligence-foundation/TENANT_CONTEXT_BOUNDARY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "303708574f17a8419c16fabee36d8e178ce2d63b04829305198249546de3cd09"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/TENANT_CONTEXT_BOUNDARY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/TENANT_CONTEXT_BOUNDARY.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "c4ab66d292eb3859d30d36108eee98fa753bf460b84509b49213954f4e03e813",
+        "label": "docs/implementation/route-intelligence-foundation/TRUCK_RESTRICTION_RULES.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "c4ab66d292eb3859d30d36108eee98fa753bf460b84509b49213954f4e03e813"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/TRUCK_RESTRICTION_RULES.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/TRUCK_RESTRICTION_RULES.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "0b73fd058600c9c5652875dec394c32b45f436fbe1cf4db9488bcb70cd79a2dd",
+        "label": "docs/implementation/route-intelligence-foundation/VALIDATION_PLAN.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "0b73fd058600c9c5652875dec394c32b45f436fbe1cf4db9488bcb70cd79a2dd"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/VALIDATION_PLAN.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/VALIDATION_PLAN.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "5b0b1c364ee2a29a1151850c5c81758579a30c8ded49af44bae0fa2bb2f5762c",
+        "label": "docs/implementation/route-intelligence-foundation/VEHICLE_PROFILE_CONTRACT.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "5b0b1c364ee2a29a1151850c5c81758579a30c8ded49af44bae0fa2bb2f5762c"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/VEHICLE_PROFILE_CONTRACT.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/VEHICLE_PROFILE_CONTRACT.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "dc4ad6b0cefeddc1693d2ebfc77ff32548701c131cecc64d55a3755a0ffcf885",
+        "label": "docs/implementation/route-intelligence-foundation/WEIGHT_RULES.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "dc4ad6b0cefeddc1693d2ebfc77ff32548701c131cecc64d55a3755a0ffcf885"
+        },
+        "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/WEIGHT_RULES.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/route-intelligence-foundation/WEIGHT_RULES.md",
         "testOnly": true,
         "type": "Documentation Page",
         "version": null

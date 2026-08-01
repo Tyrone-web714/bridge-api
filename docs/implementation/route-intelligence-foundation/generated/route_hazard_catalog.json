@@ -1,0 +1,32 @@
+{
+  "generatedArtifact": true,
+  "hazards": [
+    {
+      "hazardId": "manual-hazard-near-route",
+      "point": {
+        "latitude": 33.50062,
+        "longitude": -86.7995
+      },
+      "safetyCritical": true,
+      "type": "LOW_WIRE"
+    },
+    {
+      "hazardId": "intersection",
+      "point": {
+        "latitude": 33.5,
+        "longitude": -86.8
+      },
+      "safetyCritical": true,
+      "type": "LOW_WIRE"
+    },
+    {
+      "hazardId": "manual-hazard-near-route",
+      "point": {
+        "latitude": 33.50062,
+        "longitude": -86.7995
+      },
+      "safetyCritical": true,
+      "type": "LOW_WIRE"
+    }
+  ]
+}
