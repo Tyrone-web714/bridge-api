@@ -28,10 +28,10 @@ The machine-readable source of truth is `TSR_AI_MASTER_ROADMAP.json`. This Markd
 
 - Local branch: `legacy-public-url-final-cleanup`
 - Remote branch: `origin/legacy-public-url-final-cleanup`
-- Local HEAD before this workflow package: `43f8def86334e5cbe0b638b23f237797417e5383`
-- Remote HEAD after fetch: `e383a326bb41513e3aa77c05660bdb74042e7f0d`
-- Local branch ahead of remote by 2 commits.
-- Route Intelligence and Driver Intelligence are validated local commits, not pushed.
+- Local HEAD after source-control preservation: `983457ba6a6adceafbbc4423373e197cbd90fcf7`
+- Remote HEAD after fetch: `983457ba6a6adceafbbc4423373e197cbd90fcf7`
+- Local branch matches remote.
+- Route Intelligence, Driver Intelligence, and TSR-AI-WORKFLOW-001 are committed, validated, and pushed.
 
 ## Roadmap
 
@@ -41,9 +41,9 @@ AI-IEP-004A.1 through AI-IEP-005A.2 are pushed to the remote branch through `e38
 
 ### Core Operational Intelligence - Milestone 1
 
-- `AI-IEP-005B.1` Route Intelligence Foundation: `VALIDATED`, local commit `63a8491d1b7bb65f3fbaae7254ef0579cd57f532`, not pushed.
-- `AI-IEP-005B.2` Driver Intelligence Foundation: `VALIDATED`, local commit `43f8def86334e5cbe0b638b23f237797417e5383`, not pushed.
-- `SUPERVISOR_INTELLIGENCE`: `APPROVED` as the next business package only. Not started.
+- `AI-IEP-005B.1` Route Intelligence Foundation: `PUSHED`, commit `63a8491d1b7bb65f3fbaae7254ef0579cd57f532`, required validation passed, not deployed, not migrated, and not production-certified.
+- `AI-IEP-005B.2` Driver Intelligence Foundation: `PUSHED`, commit `43f8def86334e5cbe0b638b23f237797417e5383`, required validation passed, not deployed, not migrated, and not production-certified.
+- `SUPERVISOR_INTELLIGENCE`: `APPROVED` as the current/next business package only. Not started, no package number assigned.
 - `WAREHOUSE_INTELLIGENCE`: `PLANNED`.
 - `FLEET_INTELLIGENCE`: `PLANNED`.
 - `CUSTOMER_INTELLIGENCE`: `PLANNED`.
@@ -54,6 +54,6 @@ No Maintenance, Inventory, Financial, or Enterprise Intelligence package is part
 
 ### Development Workflow
 
-- `TSR-AI-WORKFLOW-001`: this package. Status is `IMPLEMENTED_UNCOMMITTED` after files are created and before controlled commit approval.
+- `TSR-AI-WORKFLOW-001`: `PUSHED`, commit `983457ba6a6adceafbbc4423373e197cbd90fcf7`, required validation passed, not deployed, and not migrated.
 
 Model selection and production orchestration remain gated and deferred.

@@ -1,83 +1,65 @@
 # Current AI Work Package
 
-Package ID: TSR-AI-WORKFLOW-001
+Package ID: SUPERVISOR_INTELLIGENCE
 
-Title: TSR AI Development Roadmap and Architect-Builder Handoff Protocol
+Title: Supervisor Intelligence
 
-Category: DEVELOPMENT_WORKFLOW
+Category: CORE_OPERATIONAL_INTELLIGENCE
 
-Status: IMPLEMENTED_UNCOMMITTED
+Status: APPROVED
 
 ## Objective
 
-Create repository-based workflow records that coordinate owner, ChatGPT, Codex, and GitHub without changing TSR application behavior.
+Prepare a future scoped implementation package for supervisor decision support without beginning implementation in this reconciliation package.
 
 ## Approved Scope
 
-- Roadmap documentation.
-- Machine-readable roadmap records.
-- Current work package records.
-- Standardized completion report template.
-- ChatGPT/Codex handoff rules.
-- Scope-control policy.
-- Scope-change proposal template.
-- Source-control policy.
-- Model-selection gate.
-- Production-orchestration gate.
-- Validation scripts.
-- Deterministic generated summaries.
-- Package scripts.
-- Documentation.
-- Tests.
+- Operational summaries.
+- Exception detection.
+- Route and driver operational awareness.
+- Supervisor decision support.
+- Resource and route progress visibility.
+- Structured alerts and explanations.
+- Integration with Route and Driver Intelligence.
+- Deterministic and evidence-based foundations first.
 
 ## Prohibited Scope
 
-- Supervisor Intelligence implementation.
-- New product features.
-- New intelligence domains.
-- Predictive logic.
-- LLM prompts.
+- Implementation in this reconciliation package.
+- Fabricating a package number.
+- Employee ranking.
+- Employee scoring.
+- Disciplinary recommendations.
+- Compensation decisions.
+- Termination recommendations.
+- Autonomous workforce decisions.
+- Surveillance expansion.
+- New AI infrastructure frameworks.
 - Model selection.
-- Provider calls.
-- Runtime API exposure.
-- Runtime behavior change.
+- Provider activation.
+- Production APIs.
 - Deployment.
-- Push.
 - Migration.
 
 ## Dependencies
 
+- AI-IEP-005B.1 Route Intelligence Foundation.
 - AI-IEP-005B.2 Driver Intelligence Foundation.
+- TSR-AI-WORKFLOW-001 repository workflow and handoff process.
 
 ## Acceptance Criteria
 
-- Approved roadmap exists in Markdown and JSON.
-- Exactly one current package exists.
-- Scope-control rules are explicit.
-- Completion reports are standardized.
-- GitHub workflow distinguishes local commit, push, and deployment state.
-- Model-selection and production-orchestration gates are explicit.
-- Validation tooling passes.
-- Generated summaries are deterministic.
-- Existing route, driver, security, and full npm tests pass.
-- Nothing is staged, committed, pushed, deployed, or migrated.
+- Future owner-approved implementation work package exists before implementation.
+- Future package follows the repository workflow handoff process.
+- Implementation has not begun in this reconciliation package.
 
 ## Required Tests
 
-- `node --check scripts/check-ai-development-roadmap.cjs`
-- `node --check scripts/generate-ai-development-roadmap-artifacts.cjs`
-- `npm.cmd run ai-roadmap:generate`
-- `npm.cmd run ai-roadmap:validate`
-- `npm.cmd run ai-roadmap:check`
-- `npm.cmd run test:ai-roadmap`
-- `npm.cmd run test:route-intelligence`
-- `npm.cmd run test:driver-intelligence`
-- `npm.cmd run test:security`
-- `npm.cmd test`
+- Not applicable until a future implementation package is approved.
 
 ## Source-Control Expectation
 
-Leave this workflow package unstaged and uncommitted. Do not push.
+Do not implement Supervisor Intelligence in this reconciliation package. Do not push this reconciliation commit unless separately authorized.
 
 ## Completion Report
 
@@ -85,14 +67,14 @@ Use `CODEX_COMPLETION_REPORT_TEMPLATE.md` sections A through AN.
 
 ## Recommended Commit Message
 
-Add TSR AI roadmap and architect-builder workflow
+Build Supervisor Intelligence foundation
 
 ## Next Approved Package
 
-Supervisor Intelligence is the next approved roadmap item only. Do not begin it in this package and do not fabricate a package number.
+No numbered Supervisor Intelligence implementation package is assigned by this record. A future scoped implementation prompt is required before work begins.
 
 ## Owner Decision Points
 
-- Approve controlled review and commit of this workflow package.
+- Approve a future scoped Supervisor Intelligence implementation prompt.
 - Approve any future push.
-- Approve any future Supervisor Intelligence package prompt.
+- Approve any future deployment or migration separately.

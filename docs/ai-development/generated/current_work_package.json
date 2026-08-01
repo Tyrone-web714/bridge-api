@@ -1,74 +1,56 @@
 {
   "acceptanceCriteria": [
-    "approved roadmap exists in Markdown and JSON",
-    "exactly one current package exists",
-    "scope-control rules are explicit",
-    "completion reports are standardized",
-    "GitHub workflow distinguishes local commit, push, and deployment state",
-    "model-selection and production-orchestration gates are explicit",
-    "validation tooling passes",
-    "generated summaries are deterministic",
-    "existing route, driver, security, and full npm tests pass",
-    "nothing is staged, committed, pushed, deployed, or migrated"
+    "future owner-approved implementation work package exists before implementation",
+    "future package follows the repository workflow handoff process",
+    "implementation has not begun in this reconciliation package"
   ],
   "approvedScope": [
-    "roadmap documentation",
-    "machine-readable roadmap records",
-    "current work package records",
-    "standardized completion report template",
-    "ChatGPT/Codex handoff rules",
-    "scope-control policy",
-    "scope-change proposal template",
-    "source-control policy",
-    "model-selection gate",
-    "production-orchestration gate",
-    "validation scripts",
-    "deterministic generated summaries",
-    "package scripts",
-    "documentation",
-    "tests"
+    "operational summaries",
+    "exception detection",
+    "route and driver operational awareness",
+    "supervisor decision support",
+    "resource and route progress visibility",
+    "structured alerts and explanations",
+    "integration with Route and Driver Intelligence",
+    "deterministic and evidence-based foundations first"
   ],
-  "category": "DEVELOPMENT_WORKFLOW",
+  "category": "CORE_OPERATIONAL_INTELLIGENCE",
   "dependencies": [
-    "AI-IEP-005B.2"
+    "AI-IEP-005B.1",
+    "AI-IEP-005B.2",
+    "TSR-AI-WORKFLOW-001"
   ],
   "expectedCompletionReportFormat": "Use docs/ai-development/CODEX_COMPLETION_REPORT_TEMPLATE.md sections A through AN.",
-  "nextApprovedPackage": "SUPERVISOR_INTELLIGENCE",
-  "objective": "Create repository-based workflow records that coordinate owner, ChatGPT, Codex, and GitHub without changing TSR application behavior.",
+  "nextApprovedPackage": null,
+  "objective": "Prepare a future scoped implementation package for supervisor decision support without beginning implementation in this reconciliation package.",
   "ownerDecisionPoints": [
-    "approve controlled review and commit of this workflow package",
+    "approve a future scoped Supervisor Intelligence implementation prompt",
     "approve any future push",
-    "approve any future Supervisor Intelligence package prompt"
+    "approve any future deployment or migration separately"
   ],
-  "packageId": "TSR-AI-WORKFLOW-001",
+  "packageId": "SUPERVISOR_INTELLIGENCE",
   "prohibitedScope": [
-    "Supervisor Intelligence implementation",
-    "new product features",
-    "new intelligence domains",
-    "predictive logic",
-    "LLM prompts",
+    "implementation in this reconciliation package",
+    "fabricating a package number",
+    "employee ranking",
+    "employee scoring",
+    "disciplinary recommendations",
+    "compensation decisions",
+    "termination recommendations",
+    "autonomous workforce decisions",
+    "surveillance expansion",
+    "new AI infrastructure frameworks",
     "model selection",
-    "provider calls",
-    "runtime API exposure",
-    "runtime behavior change",
+    "provider activation",
+    "production APIs",
     "deployment",
-    "push",
     "migration"
   ],
-  "recommendedCommitMessage": "Add TSR AI roadmap and architect-builder workflow",
+  "recommendedCommitMessage": "Build Supervisor Intelligence foundation",
   "requiredTests": [
-    "node --check scripts/check-ai-development-roadmap.cjs",
-    "node --check scripts/generate-ai-development-roadmap-artifacts.cjs",
-    "npm.cmd run ai-roadmap:generate",
-    "npm.cmd run ai-roadmap:validate",
-    "npm.cmd run ai-roadmap:check",
-    "npm.cmd run test:ai-roadmap",
-    "npm.cmd run test:route-intelligence",
-    "npm.cmd run test:driver-intelligence",
-    "npm.cmd run test:security",
-    "npm.cmd test"
+    "not applicable until a future implementation package is approved"
   ],
-  "sourceControlExpectation": "Leave this workflow package unstaged and uncommitted; do not push.",
-  "status": "IMPLEMENTED_UNCOMMITTED",
-  "title": "TSR AI Development Roadmap and Architect-Builder Handoff Protocol"
+  "sourceControlExpectation": "Do not implement Supervisor Intelligence in this reconciliation package. Do not push this reconciliation commit unless separately authorized.",
+  "status": "APPROVED",
+  "title": "Supervisor Intelligence"
 }

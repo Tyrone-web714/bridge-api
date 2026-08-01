@@ -2,11 +2,11 @@
 # TSR AI Roadmap Summary
 
 - Roadmap ID: TSR_AI_DEVELOPMENT_ROADMAP
-- Current package: TSR-AI-WORKFLOW-001 - TSR AI Development Roadmap and Architect-Builder Handoff Protocol
-- Current status: IMPLEMENTED_UNCOMMITTED
-- Next approved package: SUPERVISOR_INTELLIGENCE
-- Route Intelligence pushed: false
-- Driver Intelligence pushed: false
+- Current package: SUPERVISOR_INTELLIGENCE - Supervisor Intelligence
+- Current status: APPROVED
+- Next approved package: null
+- Route Intelligence pushed: true
+- Driver Intelligence pushed: true
 
 ## Package Counts By Category
 
@@ -21,7 +21,5 @@
 | Status | Count |
 | --- | ---: |
 | APPROVED | 1 |
-| IMPLEMENTED_UNCOMMITTED | 1 |
 | PLANNED | 5 |
-| PUSHED | 12 |
-| VALIDATED | 2 |
+| PUSHED | 15 |

@@ -8,10 +8,10 @@
       "nextApprovedPackage": "AI-IEP-005B.2",
       "ownerApprovalRequired": true,
       "packageId": "AI-IEP-005B.1",
-      "productionImpact": "NONE",
-      "pushed": false,
-      "remoteCommitVerified": false,
-      "status": "VALIDATED",
+      "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
+      "pushed": true,
+      "remoteCommitVerified": true,
+      "status": "PUSHED",
       "title": "Route Intelligence Foundation"
     },
     {
@@ -22,10 +22,10 @@
       "nextApprovedPackage": "SUPERVISOR_INTELLIGENCE",
       "ownerApprovalRequired": true,
       "packageId": "AI-IEP-005B.2",
-      "productionImpact": "NONE",
-      "pushed": false,
-      "remoteCommitVerified": false,
-      "status": "VALIDATED",
+      "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
+      "pushed": true,
+      "remoteCommitVerified": true,
+      "status": "PUSHED",
       "title": "Driver Intelligence Foundation"
     },
     {
@@ -36,7 +36,7 @@
       "nextApprovedPackage": null,
       "ownerApprovalRequired": true,
       "packageId": "SUPERVISOR_INTELLIGENCE",
-      "productionImpact": "UNKNOWN",
+      "productionImpact": "NONE",
       "pushed": false,
       "remoteCommitVerified": false,
       "status": "APPROVED",
@@ -114,6 +114,6 @@
     }
   ],
   "modelSelectionGateSatisfied": false,
-  "nextApprovedPackage": "SUPERVISOR_INTELLIGENCE",
+  "nextApprovedPackage": null,
   "productionOrchestrationGateSatisfied": false
 }
