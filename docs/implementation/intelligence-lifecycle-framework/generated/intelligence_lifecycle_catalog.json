@@ -1,0 +1,509 @@
+{
+  "catalog": {
+    "engineVersion": "intelligence.lifecycle.framework.engine.v1",
+    "generatedAt": "2026-07-25T00:00:00.000Z",
+    "learningPolicyCount": 12,
+    "lifecycleCount": 12,
+    "maturityCount": 12,
+    "productionApplicable": false,
+    "readinessCount": 12,
+    "schemaVersion": "intelligence.lifecycle.framework.v1",
+    "testOnly": true,
+    "versionEvolutionCount": 12
+  },
+  "generatedArtifact": true,
+  "lifecycleRecords": [
+    {
+      "capabilityId": "route.intelligence.optimization",
+      "currentState": "REGISTERED",
+      "documentationReferences": [
+        "docs/implementation/intelligence-lifecycle-framework/ARCHITECTURE.md",
+        "docs/implementation/intelligence-lifecycle-framework/DASHBOARD_INTEGRATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/DEFERRED_WORK.md",
+        "docs/implementation/intelligence-lifecycle-framework/generated/lifecycle_summary.md",
+        "docs/implementation/intelligence-lifecycle-framework/IMPLEMENTATION_REPORT.md",
+        "docs/implementation/intelligence-lifecycle-framework/KNOWLEDGE_GRAPH_INTEGRATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/LEARNING_POLICY.md",
+        "docs/implementation/intelligence-lifecycle-framework/LIFECYCLE_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/MATURITY_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/OWNER_DECISIONS.md",
+        "docs/implementation/intelligence-lifecycle-framework/READINESS_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/README.md",
+        "docs/implementation/intelligence-lifecycle-framework/ROLLBACK.md",
+        "docs/implementation/intelligence-lifecycle-framework/SECURITY_REVIEW.md",
+        "docs/implementation/intelligence-lifecycle-framework/TEST_RESULTS.md",
+        "docs/implementation/intelligence-lifecycle-framework/TRANSITION_RULES.md",
+        "docs/implementation/intelligence-lifecycle-framework/VALIDATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/VERSION_EVOLUTION.md"
+      ],
+      "legalNextStates": [
+        "VALIDATED",
+        "RESTRICTED",
+        "DEPRECATED"
+      ],
+      "lifecycleHash": "2d48d52b8a05b3eaa9e7eb6af04924feb7d9c16929f9cbefe9a36084a049a2e7",
+      "lifecycleId": "lifecycle.route.intelligence.optimization",
+      "previousState": "DESIGNED",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.lifecycle.framework.v1",
+      "testOnly": true,
+      "transitionMetadata": {
+        "actor": "repository.fixture",
+        "approvalRequiredForProduction": true,
+        "reasonCode": "CAPABILITY_REGISTERED_METADATA_ONLY",
+        "transitionedAt": "2026-07-25T00:00:00.000Z"
+      }
+    },
+    {
+      "capabilityId": "driver.intelligence.performance",
+      "currentState": "REGISTERED",
+      "documentationReferences": [
+        "docs/implementation/intelligence-lifecycle-framework/ARCHITECTURE.md",
+        "docs/implementation/intelligence-lifecycle-framework/DASHBOARD_INTEGRATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/DEFERRED_WORK.md",
+        "docs/implementation/intelligence-lifecycle-framework/generated/lifecycle_summary.md",
+        "docs/implementation/intelligence-lifecycle-framework/IMPLEMENTATION_REPORT.md",
+        "docs/implementation/intelligence-lifecycle-framework/KNOWLEDGE_GRAPH_INTEGRATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/LEARNING_POLICY.md",
+        "docs/implementation/intelligence-lifecycle-framework/LIFECYCLE_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/MATURITY_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/OWNER_DECISIONS.md",
+        "docs/implementation/intelligence-lifecycle-framework/READINESS_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/README.md",
+        "docs/implementation/intelligence-lifecycle-framework/ROLLBACK.md",
+        "docs/implementation/intelligence-lifecycle-framework/SECURITY_REVIEW.md",
+        "docs/implementation/intelligence-lifecycle-framework/TEST_RESULTS.md",
+        "docs/implementation/intelligence-lifecycle-framework/TRANSITION_RULES.md",
+        "docs/implementation/intelligence-lifecycle-framework/VALIDATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/VERSION_EVOLUTION.md"
+      ],
+      "legalNextStates": [
+        "VALIDATED",
+        "RESTRICTED",
+        "DEPRECATED"
+      ],
+      "lifecycleHash": "8b5e138d5dffda7148178756fb0ebe67ef99ea2ffbbdbed0ab76ebc2d7630a05",
+      "lifecycleId": "lifecycle.driver.intelligence.performance",
+      "previousState": "DESIGNED",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.lifecycle.framework.v1",
+      "testOnly": true,
+      "transitionMetadata": {
+        "actor": "repository.fixture",
+        "approvalRequiredForProduction": true,
+        "reasonCode": "CAPABILITY_REGISTERED_METADATA_ONLY",
+        "transitionedAt": "2026-07-25T00:00:00.000Z"
+      }
+    },
+    {
+      "capabilityId": "supervisor.intelligence.operations",
+      "currentState": "REGISTERED",
+      "documentationReferences": [
+        "docs/implementation/intelligence-lifecycle-framework/ARCHITECTURE.md",
+        "docs/implementation/intelligence-lifecycle-framework/DASHBOARD_INTEGRATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/DEFERRED_WORK.md",
+        "docs/implementation/intelligence-lifecycle-framework/generated/lifecycle_summary.md",
+        "docs/implementation/intelligence-lifecycle-framework/IMPLEMENTATION_REPORT.md",
+        "docs/implementation/intelligence-lifecycle-framework/KNOWLEDGE_GRAPH_INTEGRATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/LEARNING_POLICY.md",
+        "docs/implementation/intelligence-lifecycle-framework/LIFECYCLE_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/MATURITY_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/OWNER_DECISIONS.md",
+        "docs/implementation/intelligence-lifecycle-framework/READINESS_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/README.md",
+        "docs/implementation/intelligence-lifecycle-framework/ROLLBACK.md",
+        "docs/implementation/intelligence-lifecycle-framework/SECURITY_REVIEW.md",
+        "docs/implementation/intelligence-lifecycle-framework/TEST_RESULTS.md",
+        "docs/implementation/intelligence-lifecycle-framework/TRANSITION_RULES.md",
+        "docs/implementation/intelligence-lifecycle-framework/VALIDATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/VERSION_EVOLUTION.md"
+      ],
+      "legalNextStates": [
+        "VALIDATED",
+        "RESTRICTED",
+        "DEPRECATED"
+      ],
+      "lifecycleHash": "375532550cf595712ab84a2834182ab2df1bac2b6668c3a0b13ee1024e4bb43a",
+      "lifecycleId": "lifecycle.supervisor.intelligence.operations",
+      "previousState": "DESIGNED",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.lifecycle.framework.v1",
+      "testOnly": true,
+      "transitionMetadata": {
+        "actor": "repository.fixture",
+        "approvalRequiredForProduction": true,
+        "reasonCode": "CAPABILITY_REGISTERED_METADATA_ONLY",
+        "transitionedAt": "2026-07-25T00:00:00.000Z"
+      }
+    },
+    {
+      "capabilityId": "warehouse.intelligence.flow",
+      "currentState": "REGISTERED",
+      "documentationReferences": [
+        "docs/implementation/intelligence-lifecycle-framework/ARCHITECTURE.md",
+        "docs/implementation/intelligence-lifecycle-framework/DASHBOARD_INTEGRATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/DEFERRED_WORK.md",
+        "docs/implementation/intelligence-lifecycle-framework/generated/lifecycle_summary.md",
+        "docs/implementation/intelligence-lifecycle-framework/IMPLEMENTATION_REPORT.md",
+        "docs/implementation/intelligence-lifecycle-framework/KNOWLEDGE_GRAPH_INTEGRATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/LEARNING_POLICY.md",
+        "docs/implementation/intelligence-lifecycle-framework/LIFECYCLE_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/MATURITY_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/OWNER_DECISIONS.md",
+        "docs/implementation/intelligence-lifecycle-framework/READINESS_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/README.md",
+        "docs/implementation/intelligence-lifecycle-framework/ROLLBACK.md",
+        "docs/implementation/intelligence-lifecycle-framework/SECURITY_REVIEW.md",
+        "docs/implementation/intelligence-lifecycle-framework/TEST_RESULTS.md",
+        "docs/implementation/intelligence-lifecycle-framework/TRANSITION_RULES.md",
+        "docs/implementation/intelligence-lifecycle-framework/VALIDATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/VERSION_EVOLUTION.md"
+      ],
+      "legalNextStates": [
+        "VALIDATED",
+        "RESTRICTED",
+        "DEPRECATED"
+      ],
+      "lifecycleHash": "9dbf5e44a64c50fc9214620505e540ebaa385c4ef4773403800018b34c3ef366",
+      "lifecycleId": "lifecycle.warehouse.intelligence.flow",
+      "previousState": "DESIGNED",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.lifecycle.framework.v1",
+      "testOnly": true,
+      "transitionMetadata": {
+        "actor": "repository.fixture",
+        "approvalRequiredForProduction": true,
+        "reasonCode": "CAPABILITY_REGISTERED_METADATA_ONLY",
+        "transitionedAt": "2026-07-25T00:00:00.000Z"
+      }
+    },
+    {
+      "capabilityId": "customer.intelligence.account",
+      "currentState": "REGISTERED",
+      "documentationReferences": [
+        "docs/implementation/intelligence-lifecycle-framework/ARCHITECTURE.md",
+        "docs/implementation/intelligence-lifecycle-framework/DASHBOARD_INTEGRATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/DEFERRED_WORK.md",
+        "docs/implementation/intelligence-lifecycle-framework/generated/lifecycle_summary.md",
+        "docs/implementation/intelligence-lifecycle-framework/IMPLEMENTATION_REPORT.md",
+        "docs/implementation/intelligence-lifecycle-framework/KNOWLEDGE_GRAPH_INTEGRATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/LEARNING_POLICY.md",
+        "docs/implementation/intelligence-lifecycle-framework/LIFECYCLE_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/MATURITY_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/OWNER_DECISIONS.md",
+        "docs/implementation/intelligence-lifecycle-framework/READINESS_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/README.md",
+        "docs/implementation/intelligence-lifecycle-framework/ROLLBACK.md",
+        "docs/implementation/intelligence-lifecycle-framework/SECURITY_REVIEW.md",
+        "docs/implementation/intelligence-lifecycle-framework/TEST_RESULTS.md",
+        "docs/implementation/intelligence-lifecycle-framework/TRANSITION_RULES.md",
+        "docs/implementation/intelligence-lifecycle-framework/VALIDATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/VERSION_EVOLUTION.md"
+      ],
+      "legalNextStates": [
+        "VALIDATED",
+        "RESTRICTED",
+        "DEPRECATED"
+      ],
+      "lifecycleHash": "b1ba7db4c8579bbb40fe4155736fd3161ebca9e2992ae75f586ae11aaca484da",
+      "lifecycleId": "lifecycle.customer.intelligence.account",
+      "previousState": "DESIGNED",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.lifecycle.framework.v1",
+      "testOnly": true,
+      "transitionMetadata": {
+        "actor": "repository.fixture",
+        "approvalRequiredForProduction": true,
+        "reasonCode": "CAPABILITY_REGISTERED_METADATA_ONLY",
+        "transitionedAt": "2026-07-25T00:00:00.000Z"
+      }
+    },
+    {
+      "capabilityId": "fleet.intelligence.utilization",
+      "currentState": "REGISTERED",
+      "documentationReferences": [
+        "docs/implementation/intelligence-lifecycle-framework/ARCHITECTURE.md",
+        "docs/implementation/intelligence-lifecycle-framework/DASHBOARD_INTEGRATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/DEFERRED_WORK.md",
+        "docs/implementation/intelligence-lifecycle-framework/generated/lifecycle_summary.md",
+        "docs/implementation/intelligence-lifecycle-framework/IMPLEMENTATION_REPORT.md",
+        "docs/implementation/intelligence-lifecycle-framework/KNOWLEDGE_GRAPH_INTEGRATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/LEARNING_POLICY.md",
+        "docs/implementation/intelligence-lifecycle-framework/LIFECYCLE_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/MATURITY_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/OWNER_DECISIONS.md",
+        "docs/implementation/intelligence-lifecycle-framework/READINESS_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/README.md",
+        "docs/implementation/intelligence-lifecycle-framework/ROLLBACK.md",
+        "docs/implementation/intelligence-lifecycle-framework/SECURITY_REVIEW.md",
+        "docs/implementation/intelligence-lifecycle-framework/TEST_RESULTS.md",
+        "docs/implementation/intelligence-lifecycle-framework/TRANSITION_RULES.md",
+        "docs/implementation/intelligence-lifecycle-framework/VALIDATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/VERSION_EVOLUTION.md"
+      ],
+      "legalNextStates": [
+        "VALIDATED",
+        "RESTRICTED",
+        "DEPRECATED"
+      ],
+      "lifecycleHash": "0c90c4975d281b1ab76eddcd4dd350d2cc3db47ac88c5539901db7d9bed0368c",
+      "lifecycleId": "lifecycle.fleet.intelligence.utilization",
+      "previousState": "DESIGNED",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.lifecycle.framework.v1",
+      "testOnly": true,
+      "transitionMetadata": {
+        "actor": "repository.fixture",
+        "approvalRequiredForProduction": true,
+        "reasonCode": "CAPABILITY_REGISTERED_METADATA_ONLY",
+        "transitionedAt": "2026-07-25T00:00:00.000Z"
+      }
+    },
+    {
+      "capabilityId": "safety.intelligence.risk",
+      "currentState": "REGISTERED",
+      "documentationReferences": [
+        "docs/implementation/intelligence-lifecycle-framework/ARCHITECTURE.md",
+        "docs/implementation/intelligence-lifecycle-framework/DASHBOARD_INTEGRATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/DEFERRED_WORK.md",
+        "docs/implementation/intelligence-lifecycle-framework/generated/lifecycle_summary.md",
+        "docs/implementation/intelligence-lifecycle-framework/IMPLEMENTATION_REPORT.md",
+        "docs/implementation/intelligence-lifecycle-framework/KNOWLEDGE_GRAPH_INTEGRATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/LEARNING_POLICY.md",
+        "docs/implementation/intelligence-lifecycle-framework/LIFECYCLE_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/MATURITY_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/OWNER_DECISIONS.md",
+        "docs/implementation/intelligence-lifecycle-framework/READINESS_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/README.md",
+        "docs/implementation/intelligence-lifecycle-framework/ROLLBACK.md",
+        "docs/implementation/intelligence-lifecycle-framework/SECURITY_REVIEW.md",
+        "docs/implementation/intelligence-lifecycle-framework/TEST_RESULTS.md",
+        "docs/implementation/intelligence-lifecycle-framework/TRANSITION_RULES.md",
+        "docs/implementation/intelligence-lifecycle-framework/VALIDATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/VERSION_EVOLUTION.md"
+      ],
+      "legalNextStates": [
+        "VALIDATED",
+        "RESTRICTED",
+        "DEPRECATED"
+      ],
+      "lifecycleHash": "b84c603ee716969a23036217dd91d2e228cda4e11e25bf5160d4b2098b12f9c8",
+      "lifecycleId": "lifecycle.safety.intelligence.risk",
+      "previousState": "DESIGNED",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.lifecycle.framework.v1",
+      "testOnly": true,
+      "transitionMetadata": {
+        "actor": "repository.fixture",
+        "approvalRequiredForProduction": true,
+        "reasonCode": "CAPABILITY_REGISTERED_METADATA_ONLY",
+        "transitionedAt": "2026-07-25T00:00:00.000Z"
+      }
+    },
+    {
+      "capabilityId": "operations.intelligence.throughput",
+      "currentState": "REGISTERED",
+      "documentationReferences": [
+        "docs/implementation/intelligence-lifecycle-framework/ARCHITECTURE.md",
+        "docs/implementation/intelligence-lifecycle-framework/DASHBOARD_INTEGRATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/DEFERRED_WORK.md",
+        "docs/implementation/intelligence-lifecycle-framework/generated/lifecycle_summary.md",
+        "docs/implementation/intelligence-lifecycle-framework/IMPLEMENTATION_REPORT.md",
+        "docs/implementation/intelligence-lifecycle-framework/KNOWLEDGE_GRAPH_INTEGRATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/LEARNING_POLICY.md",
+        "docs/implementation/intelligence-lifecycle-framework/LIFECYCLE_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/MATURITY_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/OWNER_DECISIONS.md",
+        "docs/implementation/intelligence-lifecycle-framework/READINESS_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/README.md",
+        "docs/implementation/intelligence-lifecycle-framework/ROLLBACK.md",
+        "docs/implementation/intelligence-lifecycle-framework/SECURITY_REVIEW.md",
+        "docs/implementation/intelligence-lifecycle-framework/TEST_RESULTS.md",
+        "docs/implementation/intelligence-lifecycle-framework/TRANSITION_RULES.md",
+        "docs/implementation/intelligence-lifecycle-framework/VALIDATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/VERSION_EVOLUTION.md"
+      ],
+      "legalNextStates": [
+        "VALIDATED",
+        "RESTRICTED",
+        "DEPRECATED"
+      ],
+      "lifecycleHash": "b390d80d80bf4ca73e1725cef849cfc0562380839e077155cf50ec42088b5225",
+      "lifecycleId": "lifecycle.operations.intelligence.throughput",
+      "previousState": "DESIGNED",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.lifecycle.framework.v1",
+      "testOnly": true,
+      "transitionMetadata": {
+        "actor": "repository.fixture",
+        "approvalRequiredForProduction": true,
+        "reasonCode": "CAPABILITY_REGISTERED_METADATA_ONLY",
+        "transitionedAt": "2026-07-25T00:00:00.000Z"
+      }
+    },
+    {
+      "capabilityId": "maintenance.intelligence.health",
+      "currentState": "REGISTERED",
+      "documentationReferences": [
+        "docs/implementation/intelligence-lifecycle-framework/ARCHITECTURE.md",
+        "docs/implementation/intelligence-lifecycle-framework/DASHBOARD_INTEGRATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/DEFERRED_WORK.md",
+        "docs/implementation/intelligence-lifecycle-framework/generated/lifecycle_summary.md",
+        "docs/implementation/intelligence-lifecycle-framework/IMPLEMENTATION_REPORT.md",
+        "docs/implementation/intelligence-lifecycle-framework/KNOWLEDGE_GRAPH_INTEGRATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/LEARNING_POLICY.md",
+        "docs/implementation/intelligence-lifecycle-framework/LIFECYCLE_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/MATURITY_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/OWNER_DECISIONS.md",
+        "docs/implementation/intelligence-lifecycle-framework/READINESS_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/README.md",
+        "docs/implementation/intelligence-lifecycle-framework/ROLLBACK.md",
+        "docs/implementation/intelligence-lifecycle-framework/SECURITY_REVIEW.md",
+        "docs/implementation/intelligence-lifecycle-framework/TEST_RESULTS.md",
+        "docs/implementation/intelligence-lifecycle-framework/TRANSITION_RULES.md",
+        "docs/implementation/intelligence-lifecycle-framework/VALIDATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/VERSION_EVOLUTION.md"
+      ],
+      "legalNextStates": [
+        "VALIDATED",
+        "RESTRICTED",
+        "DEPRECATED"
+      ],
+      "lifecycleHash": "6126c2f747469540ac9078ea3cd1a802e51ca731085d6796bcdc5df1b4d98ef2",
+      "lifecycleId": "lifecycle.maintenance.intelligence.health",
+      "previousState": "DESIGNED",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.lifecycle.framework.v1",
+      "testOnly": true,
+      "transitionMetadata": {
+        "actor": "repository.fixture",
+        "approvalRequiredForProduction": true,
+        "reasonCode": "CAPABILITY_REGISTERED_METADATA_ONLY",
+        "transitionedAt": "2026-07-25T00:00:00.000Z"
+      }
+    },
+    {
+      "capabilityId": "inventory.intelligence.availability",
+      "currentState": "REGISTERED",
+      "documentationReferences": [
+        "docs/implementation/intelligence-lifecycle-framework/ARCHITECTURE.md",
+        "docs/implementation/intelligence-lifecycle-framework/DASHBOARD_INTEGRATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/DEFERRED_WORK.md",
+        "docs/implementation/intelligence-lifecycle-framework/generated/lifecycle_summary.md",
+        "docs/implementation/intelligence-lifecycle-framework/IMPLEMENTATION_REPORT.md",
+        "docs/implementation/intelligence-lifecycle-framework/KNOWLEDGE_GRAPH_INTEGRATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/LEARNING_POLICY.md",
+        "docs/implementation/intelligence-lifecycle-framework/LIFECYCLE_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/MATURITY_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/OWNER_DECISIONS.md",
+        "docs/implementation/intelligence-lifecycle-framework/READINESS_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/README.md",
+        "docs/implementation/intelligence-lifecycle-framework/ROLLBACK.md",
+        "docs/implementation/intelligence-lifecycle-framework/SECURITY_REVIEW.md",
+        "docs/implementation/intelligence-lifecycle-framework/TEST_RESULTS.md",
+        "docs/implementation/intelligence-lifecycle-framework/TRANSITION_RULES.md",
+        "docs/implementation/intelligence-lifecycle-framework/VALIDATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/VERSION_EVOLUTION.md"
+      ],
+      "legalNextStates": [
+        "VALIDATED",
+        "RESTRICTED",
+        "DEPRECATED"
+      ],
+      "lifecycleHash": "76882ce7621ac6126fcd38ea65049ccd548f654b00e7d5d71ce4de049ee368b0",
+      "lifecycleId": "lifecycle.inventory.intelligence.availability",
+      "previousState": "DESIGNED",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.lifecycle.framework.v1",
+      "testOnly": true,
+      "transitionMetadata": {
+        "actor": "repository.fixture",
+        "approvalRequiredForProduction": true,
+        "reasonCode": "CAPABILITY_REGISTERED_METADATA_ONLY",
+        "transitionedAt": "2026-07-25T00:00:00.000Z"
+      }
+    },
+    {
+      "capabilityId": "financial.intelligence.margin",
+      "currentState": "REGISTERED",
+      "documentationReferences": [
+        "docs/implementation/intelligence-lifecycle-framework/ARCHITECTURE.md",
+        "docs/implementation/intelligence-lifecycle-framework/DASHBOARD_INTEGRATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/DEFERRED_WORK.md",
+        "docs/implementation/intelligence-lifecycle-framework/generated/lifecycle_summary.md",
+        "docs/implementation/intelligence-lifecycle-framework/IMPLEMENTATION_REPORT.md",
+        "docs/implementation/intelligence-lifecycle-framework/KNOWLEDGE_GRAPH_INTEGRATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/LEARNING_POLICY.md",
+        "docs/implementation/intelligence-lifecycle-framework/LIFECYCLE_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/MATURITY_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/OWNER_DECISIONS.md",
+        "docs/implementation/intelligence-lifecycle-framework/READINESS_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/README.md",
+        "docs/implementation/intelligence-lifecycle-framework/ROLLBACK.md",
+        "docs/implementation/intelligence-lifecycle-framework/SECURITY_REVIEW.md",
+        "docs/implementation/intelligence-lifecycle-framework/TEST_RESULTS.md",
+        "docs/implementation/intelligence-lifecycle-framework/TRANSITION_RULES.md",
+        "docs/implementation/intelligence-lifecycle-framework/VALIDATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/VERSION_EVOLUTION.md"
+      ],
+      "legalNextStates": [
+        "VALIDATED",
+        "RESTRICTED",
+        "DEPRECATED"
+      ],
+      "lifecycleHash": "81b37e9191880cf30bdf6a391cc5c41763c75da6352675baed608ca36a2c3910",
+      "lifecycleId": "lifecycle.financial.intelligence.margin",
+      "previousState": "DESIGNED",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.lifecycle.framework.v1",
+      "testOnly": true,
+      "transitionMetadata": {
+        "actor": "repository.fixture",
+        "approvalRequiredForProduction": true,
+        "reasonCode": "CAPABILITY_REGISTERED_METADATA_ONLY",
+        "transitionedAt": "2026-07-25T00:00:00.000Z"
+      }
+    },
+    {
+      "capabilityId": "enterprise.intelligence.overview",
+      "currentState": "REGISTERED",
+      "documentationReferences": [
+        "docs/implementation/intelligence-lifecycle-framework/ARCHITECTURE.md",
+        "docs/implementation/intelligence-lifecycle-framework/DASHBOARD_INTEGRATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/DEFERRED_WORK.md",
+        "docs/implementation/intelligence-lifecycle-framework/generated/lifecycle_summary.md",
+        "docs/implementation/intelligence-lifecycle-framework/IMPLEMENTATION_REPORT.md",
+        "docs/implementation/intelligence-lifecycle-framework/KNOWLEDGE_GRAPH_INTEGRATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/LEARNING_POLICY.md",
+        "docs/implementation/intelligence-lifecycle-framework/LIFECYCLE_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/MATURITY_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/OWNER_DECISIONS.md",
+        "docs/implementation/intelligence-lifecycle-framework/READINESS_MODEL.md",
+        "docs/implementation/intelligence-lifecycle-framework/README.md",
+        "docs/implementation/intelligence-lifecycle-framework/ROLLBACK.md",
+        "docs/implementation/intelligence-lifecycle-framework/SECURITY_REVIEW.md",
+        "docs/implementation/intelligence-lifecycle-framework/TEST_RESULTS.md",
+        "docs/implementation/intelligence-lifecycle-framework/TRANSITION_RULES.md",
+        "docs/implementation/intelligence-lifecycle-framework/VALIDATION.md",
+        "docs/implementation/intelligence-lifecycle-framework/VERSION_EVOLUTION.md"
+      ],
+      "legalNextStates": [
+        "VALIDATED",
+        "RESTRICTED",
+        "DEPRECATED"
+      ],
+      "lifecycleHash": "e91e65087a1070f145874ebeb26c235f4453d477b96f5083262f3ecca0b04fc8",
+      "lifecycleId": "lifecycle.enterprise.intelligence.overview",
+      "previousState": "DESIGNED",
+      "productionApplicable": false,
+      "schemaVersion": "intelligence.lifecycle.framework.v1",
+      "testOnly": true,
+      "transitionMetadata": {
+        "actor": "repository.fixture",
+        "approvalRequiredForProduction": true,
+        "reasonCode": "CAPABILITY_REGISTERED_METADATA_ONLY",
+        "transitionedAt": "2026-07-25T00:00:00.000Z"
+      }
+    }
+  ]
+}

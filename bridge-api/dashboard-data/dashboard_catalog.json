@@ -48,7 +48,7 @@
       "dashboardVersion": "0.1.0",
       "fileName": "capability_coverage_dashboard.json",
       "generatedAt": "2026-07-25T00:00:00.000Z",
-      "generationHash": "e2f86fa0d136728af3abf6626a6269a8f7c7be51723890a7eb636b6462353d71",
+      "generationHash": "bf6377c8ad6e4a74d66d715e5025455eb530c75ed17e30df0ec75791e901fa7b",
       "productionApplicable": false,
       "schemaVersion": "intelligence.dashboard.dataset.v1",
       "sourceSubsystems": [
@@ -221,7 +221,7 @@
       "dashboardVersion": "0.1.0",
       "fileName": "executive_dashboard.json",
       "generatedAt": "2026-07-25T00:00:00.000Z",
-      "generationHash": "0c8658d65f4a65e782f6d2abc12a20da70682c9d8467b657d105bef870209e43",
+      "generationHash": "ecc4aebbed563004bc5fc2ffe9a2566f795d95eae3d5686604568fb3b63a8ddf",
       "productionApplicable": false,
       "schemaVersion": "intelligence.dashboard.dataset.v1",
       "sourceSubsystems": [
@@ -312,7 +312,7 @@
       "dashboardVersion": "0.1.0",
       "fileName": "knowledge_graph_dashboard.json",
       "generatedAt": "2026-07-25T00:00:00.000Z",
-      "generationHash": "2827e4b51c7c3c5659f70723752cf73fb2133a4cabf5cb9f0eadbbbdf6adcbef",
+      "generationHash": "aa1bea250e8b63a83f469bde4857af856adf1f5c4a53d7ef53fcac3f9a8c6167",
       "productionApplicable": false,
       "schemaVersion": "intelligence.dashboard.dataset.v1",
       "sourceSubsystems": [
@@ -375,7 +375,7 @@
       "dashboardVersion": "0.1.0",
       "fileName": "repository_health_dashboard.json",
       "generatedAt": "2026-07-25T00:00:00.000Z",
-      "generationHash": "5bc451fae3aa492d364c38ea98b63b75e553477e59843dfd49c2a1ae724de57c",
+      "generationHash": "118d351b071681764f8874cab424230938bbbef8b61f74030ddc64e92b329e26",
       "productionApplicable": false,
       "schemaVersion": "intelligence.dashboard.dataset.v1",
       "sourceSubsystems": [
@@ -419,7 +419,7 @@
       "dashboardVersion": "0.1.0",
       "fileName": "test_coverage_dashboard.json",
       "generatedAt": "2026-07-25T00:00:00.000Z",
-      "generationHash": "95d1541d35d227134a41430c0be0f892ae6eabc626fa7f6aef8a84ba31ee1be3",
+      "generationHash": "6e224ed3ea355daaeef2f34f874748f8ef5a8ae918bf006daf7b2167d7e1c2bc",
       "productionApplicable": false,
       "schemaVersion": "intelligence.dashboard.dataset.v1",
       "sourceSubsystems": [

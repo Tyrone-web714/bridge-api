@@ -1,0 +1,547 @@
+{
+  "generatedArtifact": true,
+  "readinessMatrix": [
+    {
+      "capabilityId": "route.intelligence.optimization",
+      "dataReadiness": {
+        "availableDatasets": [],
+        "confidence": 0.7,
+        "coverage": 100,
+        "freshness": "STATIC_REPOSITORY_FIXTURE",
+        "historicalDatasets": [],
+        "missingInputs": [],
+        "quality": "DEFINED_METADATA",
+        "requiredDatasets": [
+          "GPS",
+          "Routing",
+          "Bridge Database",
+          "Traffic",
+          "Weather"
+        ],
+        "syntheticDatasets": [
+          "GPS",
+          "Routing",
+          "Bridge Database",
+          "Traffic",
+          "Weather"
+        ]
+      },
+      "implementationReadiness": {
+        "Hosted LLM": "DEFERRED",
+        "Human-assisted": "AVAILABLE_METADATA",
+        "Hybrid": "DEFERRED",
+        "Local LLM": "DEFERRED",
+        "Machine Learning": "DEFERRED",
+        "Not Implemented": "AVAILABLE_METADATA",
+        "Optimization": "DEFERRED",
+        "Rule-based": "DEFERRED",
+        "Statistical": "DEFERRED"
+      },
+      "readinessHash": "04bbbe74e6d9b2f64dc13aaa2d39005a216327a7e007e9bd5bf3ef973857c3e6",
+      "readinessId": "readiness.route.intelligence.optimization",
+      "validationReadiness": {
+        "Architecture validation": "REPOSITORY_VALIDATED",
+        "Documentation validation": "REPOSITORY_VALIDATED",
+        "Governance validation": "REPOSITORY_VALIDATED",
+        "Integration validation": "REPOSITORY_VALIDATED",
+        "Regression validation": "REPOSITORY_VALIDATED",
+        "Security validation": "REPOSITORY_VALIDATED",
+        "Unit validation": "REPOSITORY_VALIDATED"
+      }
+    },
+    {
+      "capabilityId": "driver.intelligence.performance",
+      "dataReadiness": {
+        "availableDatasets": [],
+        "confidence": 0.7,
+        "coverage": 100,
+        "freshness": "STATIC_REPOSITORY_FIXTURE",
+        "historicalDatasets": [],
+        "missingInputs": [],
+        "quality": "DEFINED_METADATA",
+        "requiredDatasets": [
+          "Driver Activity",
+          "Safety Events",
+          "Supervisor Notes"
+        ],
+        "syntheticDatasets": [
+          "Driver Activity",
+          "Safety Events",
+          "Supervisor Notes"
+        ]
+      },
+      "implementationReadiness": {
+        "Hosted LLM": "DEFERRED",
+        "Human-assisted": "AVAILABLE_METADATA",
+        "Hybrid": "DEFERRED",
+        "Local LLM": "DEFERRED",
+        "Machine Learning": "DEFERRED",
+        "Not Implemented": "AVAILABLE_METADATA",
+        "Optimization": "DEFERRED",
+        "Rule-based": "DEFERRED",
+        "Statistical": "DEFERRED"
+      },
+      "readinessHash": "fef583d96f67f2a727cbb0fe68e25b27c495f9b83cf4c0c60434254838eef893",
+      "readinessId": "readiness.driver.intelligence.performance",
+      "validationReadiness": {
+        "Architecture validation": "REPOSITORY_VALIDATED",
+        "Documentation validation": "REPOSITORY_VALIDATED",
+        "Governance validation": "REPOSITORY_VALIDATED",
+        "Integration validation": "REPOSITORY_VALIDATED",
+        "Regression validation": "REPOSITORY_VALIDATED",
+        "Security validation": "REPOSITORY_VALIDATED",
+        "Unit validation": "REPOSITORY_VALIDATED"
+      }
+    },
+    {
+      "capabilityId": "supervisor.intelligence.operations",
+      "dataReadiness": {
+        "availableDatasets": [],
+        "confidence": 0.7,
+        "coverage": 100,
+        "freshness": "STATIC_REPOSITORY_FIXTURE",
+        "historicalDatasets": [],
+        "missingInputs": [],
+        "quality": "DEFINED_METADATA",
+        "requiredDatasets": [
+          "Supervisor Notes",
+          "Driver Activity",
+          "User Notes"
+        ],
+        "syntheticDatasets": [
+          "Supervisor Notes",
+          "Driver Activity",
+          "User Notes"
+        ]
+      },
+      "implementationReadiness": {
+        "Hosted LLM": "DEFERRED",
+        "Human-assisted": "AVAILABLE_METADATA",
+        "Hybrid": "DEFERRED",
+        "Local LLM": "DEFERRED",
+        "Machine Learning": "DEFERRED",
+        "Not Implemented": "AVAILABLE_METADATA",
+        "Optimization": "DEFERRED",
+        "Rule-based": "DEFERRED",
+        "Statistical": "DEFERRED"
+      },
+      "readinessHash": "e96b31c677cbe9f940d57887668f7b1827b9bb7fe49f7ebf5ac6a3ecefc3e331",
+      "readinessId": "readiness.supervisor.intelligence.operations",
+      "validationReadiness": {
+        "Architecture validation": "REPOSITORY_VALIDATED",
+        "Documentation validation": "REPOSITORY_VALIDATED",
+        "Governance validation": "REPOSITORY_VALIDATED",
+        "Integration validation": "REPOSITORY_VALIDATED",
+        "Regression validation": "REPOSITORY_VALIDATED",
+        "Security validation": "REPOSITORY_VALIDATED",
+        "Unit validation": "REPOSITORY_VALIDATED"
+      }
+    },
+    {
+      "capabilityId": "warehouse.intelligence.flow",
+      "dataReadiness": {
+        "availableDatasets": [],
+        "confidence": 0.7,
+        "coverage": 100,
+        "freshness": "STATIC_REPOSITORY_FIXTURE",
+        "historicalDatasets": [],
+        "missingInputs": [],
+        "quality": "DEFINED_METADATA",
+        "requiredDatasets": [
+          "Warehouse",
+          "Inventory",
+          "Products"
+        ],
+        "syntheticDatasets": [
+          "Warehouse",
+          "Inventory",
+          "Products"
+        ]
+      },
+      "implementationReadiness": {
+        "Hosted LLM": "DEFERRED",
+        "Human-assisted": "AVAILABLE_METADATA",
+        "Hybrid": "DEFERRED",
+        "Local LLM": "DEFERRED",
+        "Machine Learning": "DEFERRED",
+        "Not Implemented": "AVAILABLE_METADATA",
+        "Optimization": "DEFERRED",
+        "Rule-based": "DEFERRED",
+        "Statistical": "DEFERRED"
+      },
+      "readinessHash": "135243f54262cb20c2af92c1bc258d10188d3a0c18284662c2515674610c08e4",
+      "readinessId": "readiness.warehouse.intelligence.flow",
+      "validationReadiness": {
+        "Architecture validation": "REPOSITORY_VALIDATED",
+        "Documentation validation": "REPOSITORY_VALIDATED",
+        "Governance validation": "REPOSITORY_VALIDATED",
+        "Integration validation": "REPOSITORY_VALIDATED",
+        "Regression validation": "REPOSITORY_VALIDATED",
+        "Security validation": "REPOSITORY_VALIDATED",
+        "Unit validation": "REPOSITORY_VALIDATED"
+      }
+    },
+    {
+      "capabilityId": "customer.intelligence.account",
+      "dataReadiness": {
+        "availableDatasets": [],
+        "confidence": 0.7,
+        "coverage": 100,
+        "freshness": "STATIC_REPOSITORY_FIXTURE",
+        "historicalDatasets": [],
+        "missingInputs": [],
+        "quality": "DEFINED_METADATA",
+        "requiredDatasets": [
+          "Customer Accounts",
+          "Invoices",
+          "Sales History",
+          "Documents"
+        ],
+        "syntheticDatasets": [
+          "Customer Accounts",
+          "Invoices",
+          "Sales History",
+          "Documents"
+        ]
+      },
+      "implementationReadiness": {
+        "Hosted LLM": "DEFERRED",
+        "Human-assisted": "AVAILABLE_METADATA",
+        "Hybrid": "DEFERRED",
+        "Local LLM": "DEFERRED",
+        "Machine Learning": "DEFERRED",
+        "Not Implemented": "AVAILABLE_METADATA",
+        "Optimization": "DEFERRED",
+        "Rule-based": "DEFERRED",
+        "Statistical": "DEFERRED"
+      },
+      "readinessHash": "46a6f2a210709abfa65f4607a0519f92544f2fd99b94e654df4340ed48989fd2",
+      "readinessId": "readiness.customer.intelligence.account",
+      "validationReadiness": {
+        "Architecture validation": "REPOSITORY_VALIDATED",
+        "Documentation validation": "REPOSITORY_VALIDATED",
+        "Governance validation": "REPOSITORY_VALIDATED",
+        "Integration validation": "REPOSITORY_VALIDATED",
+        "Regression validation": "REPOSITORY_VALIDATED",
+        "Security validation": "REPOSITORY_VALIDATED",
+        "Unit validation": "REPOSITORY_VALIDATED"
+      }
+    },
+    {
+      "capabilityId": "fleet.intelligence.utilization",
+      "dataReadiness": {
+        "availableDatasets": [],
+        "confidence": 0.7,
+        "coverage": 100,
+        "freshness": "STATIC_REPOSITORY_FIXTURE",
+        "historicalDatasets": [],
+        "missingInputs": [],
+        "quality": "DEFINED_METADATA",
+        "requiredDatasets": [
+          "Vehicle Telemetry",
+          "GPS",
+          "Driver Activity"
+        ],
+        "syntheticDatasets": [
+          "Vehicle Telemetry",
+          "GPS",
+          "Driver Activity"
+        ]
+      },
+      "implementationReadiness": {
+        "Hosted LLM": "DEFERRED",
+        "Human-assisted": "AVAILABLE_METADATA",
+        "Hybrid": "DEFERRED",
+        "Local LLM": "DEFERRED",
+        "Machine Learning": "DEFERRED",
+        "Not Implemented": "AVAILABLE_METADATA",
+        "Optimization": "DEFERRED",
+        "Rule-based": "DEFERRED",
+        "Statistical": "DEFERRED"
+      },
+      "readinessHash": "a5f676aa3e8401f749a324e7152a1d176a0697e8af7dbf74aeeaac18992e370e",
+      "readinessId": "readiness.fleet.intelligence.utilization",
+      "validationReadiness": {
+        "Architecture validation": "REPOSITORY_VALIDATED",
+        "Documentation validation": "REPOSITORY_VALIDATED",
+        "Governance validation": "REPOSITORY_VALIDATED",
+        "Integration validation": "REPOSITORY_VALIDATED",
+        "Regression validation": "REPOSITORY_VALIDATED",
+        "Security validation": "REPOSITORY_VALIDATED",
+        "Unit validation": "REPOSITORY_VALIDATED"
+      }
+    },
+    {
+      "capabilityId": "safety.intelligence.risk",
+      "dataReadiness": {
+        "availableDatasets": [],
+        "confidence": 0.7,
+        "coverage": 100,
+        "freshness": "STATIC_REPOSITORY_FIXTURE",
+        "historicalDatasets": [],
+        "missingInputs": [],
+        "quality": "DEFINED_METADATA",
+        "requiredDatasets": [
+          "Safety Events",
+          "Routing",
+          "Bridge Database",
+          "Weather"
+        ],
+        "syntheticDatasets": [
+          "Safety Events",
+          "Routing",
+          "Bridge Database",
+          "Weather"
+        ]
+      },
+      "implementationReadiness": {
+        "Hosted LLM": "DEFERRED",
+        "Human-assisted": "AVAILABLE_METADATA",
+        "Hybrid": "DEFERRED",
+        "Local LLM": "DEFERRED",
+        "Machine Learning": "DEFERRED",
+        "Not Implemented": "AVAILABLE_METADATA",
+        "Optimization": "DEFERRED",
+        "Rule-based": "DEFERRED",
+        "Statistical": "DEFERRED"
+      },
+      "readinessHash": "0dd8af4ce60437559f9e18e64c5ceeed20830ef96d12c9b423dfd95cf3385157",
+      "readinessId": "readiness.safety.intelligence.risk",
+      "validationReadiness": {
+        "Architecture validation": "REPOSITORY_VALIDATED",
+        "Documentation validation": "REPOSITORY_VALIDATED",
+        "Governance validation": "REPOSITORY_VALIDATED",
+        "Integration validation": "REPOSITORY_VALIDATED",
+        "Regression validation": "REPOSITORY_VALIDATED",
+        "Security validation": "REPOSITORY_VALIDATED",
+        "Unit validation": "REPOSITORY_VALIDATED"
+      }
+    },
+    {
+      "capabilityId": "operations.intelligence.throughput",
+      "dataReadiness": {
+        "availableDatasets": [],
+        "confidence": 0.7,
+        "coverage": 100,
+        "freshness": "STATIC_REPOSITORY_FIXTURE",
+        "historicalDatasets": [],
+        "missingInputs": [],
+        "quality": "DEFINED_METADATA",
+        "requiredDatasets": [
+          "Routing",
+          "Warehouse",
+          "Driver Activity",
+          "Customer Accounts"
+        ],
+        "syntheticDatasets": [
+          "Routing",
+          "Warehouse",
+          "Driver Activity",
+          "Customer Accounts"
+        ]
+      },
+      "implementationReadiness": {
+        "Hosted LLM": "DEFERRED",
+        "Human-assisted": "AVAILABLE_METADATA",
+        "Hybrid": "DEFERRED",
+        "Local LLM": "DEFERRED",
+        "Machine Learning": "DEFERRED",
+        "Not Implemented": "AVAILABLE_METADATA",
+        "Optimization": "DEFERRED",
+        "Rule-based": "DEFERRED",
+        "Statistical": "DEFERRED"
+      },
+      "readinessHash": "f56dfdd3691405ea8ae3744f09f7a4f94d63ad17a88e530dc8bdf68c568de9d9",
+      "readinessId": "readiness.operations.intelligence.throughput",
+      "validationReadiness": {
+        "Architecture validation": "REPOSITORY_VALIDATED",
+        "Documentation validation": "REPOSITORY_VALIDATED",
+        "Governance validation": "REPOSITORY_VALIDATED",
+        "Integration validation": "REPOSITORY_VALIDATED",
+        "Regression validation": "REPOSITORY_VALIDATED",
+        "Security validation": "REPOSITORY_VALIDATED",
+        "Unit validation": "REPOSITORY_VALIDATED"
+      }
+    },
+    {
+      "capabilityId": "maintenance.intelligence.health",
+      "dataReadiness": {
+        "availableDatasets": [],
+        "confidence": 0.7,
+        "coverage": 100,
+        "freshness": "STATIC_REPOSITORY_FIXTURE",
+        "historicalDatasets": [],
+        "missingInputs": [],
+        "quality": "DEFINED_METADATA",
+        "requiredDatasets": [
+          "Vehicle Telemetry",
+          "Future Connectors",
+          "Driver Activity"
+        ],
+        "syntheticDatasets": [
+          "Vehicle Telemetry",
+          "Future Connectors",
+          "Driver Activity"
+        ]
+      },
+      "implementationReadiness": {
+        "Hosted LLM": "DEFERRED",
+        "Human-assisted": "AVAILABLE_METADATA",
+        "Hybrid": "DEFERRED",
+        "Local LLM": "DEFERRED",
+        "Machine Learning": "DEFERRED",
+        "Not Implemented": "AVAILABLE_METADATA",
+        "Optimization": "DEFERRED",
+        "Rule-based": "DEFERRED",
+        "Statistical": "DEFERRED"
+      },
+      "readinessHash": "c7551a0022d91c00d7e02511a8a035618ae1377503f31d12fa982c7da0a93bba",
+      "readinessId": "readiness.maintenance.intelligence.health",
+      "validationReadiness": {
+        "Architecture validation": "REPOSITORY_VALIDATED",
+        "Documentation validation": "REPOSITORY_VALIDATED",
+        "Governance validation": "REPOSITORY_VALIDATED",
+        "Integration validation": "REPOSITORY_VALIDATED",
+        "Regression validation": "REPOSITORY_VALIDATED",
+        "Security validation": "REPOSITORY_VALIDATED",
+        "Unit validation": "REPOSITORY_VALIDATED"
+      }
+    },
+    {
+      "capabilityId": "inventory.intelligence.availability",
+      "dataReadiness": {
+        "availableDatasets": [],
+        "confidence": 0.7,
+        "coverage": 100,
+        "freshness": "STATIC_REPOSITORY_FIXTURE",
+        "historicalDatasets": [],
+        "missingInputs": [],
+        "quality": "DEFINED_METADATA",
+        "requiredDatasets": [
+          "Inventory",
+          "Products",
+          "Warehouse",
+          "Sales History"
+        ],
+        "syntheticDatasets": [
+          "Inventory",
+          "Products",
+          "Warehouse",
+          "Sales History"
+        ]
+      },
+      "implementationReadiness": {
+        "Hosted LLM": "DEFERRED",
+        "Human-assisted": "AVAILABLE_METADATA",
+        "Hybrid": "DEFERRED",
+        "Local LLM": "DEFERRED",
+        "Machine Learning": "DEFERRED",
+        "Not Implemented": "AVAILABLE_METADATA",
+        "Optimization": "DEFERRED",
+        "Rule-based": "DEFERRED",
+        "Statistical": "DEFERRED"
+      },
+      "readinessHash": "f7f8e31e3dd9d6a30c95b8685680ca0e7b94f1fe29622d7a8ad0763d30cadd77",
+      "readinessId": "readiness.inventory.intelligence.availability",
+      "validationReadiness": {
+        "Architecture validation": "REPOSITORY_VALIDATED",
+        "Documentation validation": "REPOSITORY_VALIDATED",
+        "Governance validation": "REPOSITORY_VALIDATED",
+        "Integration validation": "REPOSITORY_VALIDATED",
+        "Regression validation": "REPOSITORY_VALIDATED",
+        "Security validation": "REPOSITORY_VALIDATED",
+        "Unit validation": "REPOSITORY_VALIDATED"
+      }
+    },
+    {
+      "capabilityId": "financial.intelligence.margin",
+      "dataReadiness": {
+        "availableDatasets": [],
+        "confidence": 0.7,
+        "coverage": 100,
+        "freshness": "STATIC_REPOSITORY_FIXTURE",
+        "historicalDatasets": [],
+        "missingInputs": [],
+        "quality": "DEFINED_METADATA",
+        "requiredDatasets": [
+          "Invoices",
+          "Sales History",
+          "Products",
+          "Customer Accounts"
+        ],
+        "syntheticDatasets": [
+          "Invoices",
+          "Sales History",
+          "Products",
+          "Customer Accounts"
+        ]
+      },
+      "implementationReadiness": {
+        "Hosted LLM": "DEFERRED",
+        "Human-assisted": "AVAILABLE_METADATA",
+        "Hybrid": "DEFERRED",
+        "Local LLM": "DEFERRED",
+        "Machine Learning": "DEFERRED",
+        "Not Implemented": "AVAILABLE_METADATA",
+        "Optimization": "DEFERRED",
+        "Rule-based": "DEFERRED",
+        "Statistical": "DEFERRED"
+      },
+      "readinessHash": "72d8376dbb7e350ef42309bbcaca98bdb4ea67a863e5676ec1848091c752b52a",
+      "readinessId": "readiness.financial.intelligence.margin",
+      "validationReadiness": {
+        "Architecture validation": "REPOSITORY_VALIDATED",
+        "Documentation validation": "REPOSITORY_VALIDATED",
+        "Governance validation": "REPOSITORY_VALIDATED",
+        "Integration validation": "REPOSITORY_VALIDATED",
+        "Regression validation": "REPOSITORY_VALIDATED",
+        "Security validation": "REPOSITORY_VALIDATED",
+        "Unit validation": "REPOSITORY_VALIDATED"
+      }
+    },
+    {
+      "capabilityId": "enterprise.intelligence.overview",
+      "dataReadiness": {
+        "availableDatasets": [],
+        "confidence": 0.7,
+        "coverage": 100,
+        "freshness": "STATIC_REPOSITORY_FIXTURE",
+        "historicalDatasets": [],
+        "missingInputs": [],
+        "quality": "DEFINED_METADATA",
+        "requiredDatasets": [
+          "Future Connectors",
+          "Documents",
+          "User Notes"
+        ],
+        "syntheticDatasets": [
+          "Future Connectors",
+          "Documents",
+          "User Notes"
+        ]
+      },
+      "implementationReadiness": {
+        "Hosted LLM": "DEFERRED",
+        "Human-assisted": "AVAILABLE_METADATA",
+        "Hybrid": "DEFERRED",
+        "Local LLM": "DEFERRED",
+        "Machine Learning": "DEFERRED",
+        "Not Implemented": "AVAILABLE_METADATA",
+        "Optimization": "DEFERRED",
+        "Rule-based": "DEFERRED",
+        "Statistical": "DEFERRED"
+      },
+      "readinessHash": "6d66e2720e30e0b3647ff2e5526f235303c4c7446b4186657f443473e0fef707",
+      "readinessId": "readiness.enterprise.intelligence.overview",
+      "validationReadiness": {
+        "Architecture validation": "REPOSITORY_VALIDATED",
+        "Documentation validation": "REPOSITORY_VALIDATED",
+        "Governance validation": "REPOSITORY_VALIDATED",
+        "Integration validation": "REPOSITORY_VALIDATED",
+        "Regression validation": "REPOSITORY_VALIDATED",
+        "Security validation": "REPOSITORY_VALIDATED",
+        "Unit validation": "REPOSITORY_VALIDATED"
+      }
+    }
+  ]
+}

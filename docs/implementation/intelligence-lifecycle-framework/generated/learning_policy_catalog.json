@@ -1,0 +1,209 @@
+{
+  "generatedArtifact": true,
+  "learningPolicies": [
+    {
+      "auditRequirements": [
+        "OWNER_APPROVAL_BEFORE_PRODUCTION",
+        "NO_AUTONOMOUS_LEARNING",
+        "NO_PROVIDER_TRAINING"
+      ],
+      "capabilityId": "route.intelligence.optimization",
+      "evidenceRetention": "REPOSITORY_ARTIFACTS_ONLY",
+      "humanApprovalRequired": true,
+      "learningAllowed": false,
+      "learningPolicyId": "learning.route.intelligence.optimization",
+      "learningProhibited": true,
+      "policyHash": "6f2ef8c4b2cb54debd0aff95f6b575ab65216c5e628b1e647bbf5882859a86e9",
+      "retrainingCadence": "NOT_APPLICABLE_METADATA_ONLY",
+      "rollbackPolicy": "SOURCE_CONTROL_REVERT",
+      "versionPolicy": "SEMVER_WITH_OWNER_APPROVAL"
+    },
+    {
+      "auditRequirements": [
+        "OWNER_APPROVAL_BEFORE_PRODUCTION",
+        "NO_AUTONOMOUS_LEARNING",
+        "NO_PROVIDER_TRAINING"
+      ],
+      "capabilityId": "driver.intelligence.performance",
+      "evidenceRetention": "REPOSITORY_ARTIFACTS_ONLY",
+      "humanApprovalRequired": true,
+      "learningAllowed": false,
+      "learningPolicyId": "learning.driver.intelligence.performance",
+      "learningProhibited": true,
+      "policyHash": "9b4da414a19332bd01a1b01bbfdd14c9fcd2642a319da234235d73b9c6abe296",
+      "retrainingCadence": "NOT_APPLICABLE_METADATA_ONLY",
+      "rollbackPolicy": "SOURCE_CONTROL_REVERT",
+      "versionPolicy": "SEMVER_WITH_OWNER_APPROVAL"
+    },
+    {
+      "auditRequirements": [
+        "OWNER_APPROVAL_BEFORE_PRODUCTION",
+        "NO_AUTONOMOUS_LEARNING",
+        "NO_PROVIDER_TRAINING"
+      ],
+      "capabilityId": "supervisor.intelligence.operations",
+      "evidenceRetention": "REPOSITORY_ARTIFACTS_ONLY",
+      "humanApprovalRequired": true,
+      "learningAllowed": false,
+      "learningPolicyId": "learning.supervisor.intelligence.operations",
+      "learningProhibited": true,
+      "policyHash": "ed3e37d301ceafb8d3a2ba9589350f4b96cf7b4d620f596202f3293c1502ffec",
+      "retrainingCadence": "NOT_APPLICABLE_METADATA_ONLY",
+      "rollbackPolicy": "SOURCE_CONTROL_REVERT",
+      "versionPolicy": "SEMVER_WITH_OWNER_APPROVAL"
+    },
+    {
+      "auditRequirements": [
+        "OWNER_APPROVAL_BEFORE_PRODUCTION",
+        "NO_AUTONOMOUS_LEARNING",
+        "NO_PROVIDER_TRAINING"
+      ],
+      "capabilityId": "warehouse.intelligence.flow",
+      "evidenceRetention": "REPOSITORY_ARTIFACTS_ONLY",
+      "humanApprovalRequired": true,
+      "learningAllowed": false,
+      "learningPolicyId": "learning.warehouse.intelligence.flow",
+      "learningProhibited": true,
+      "policyHash": "22241bc7f53e5263965bae669db724dedd9a564e14930bf63e001a29e0d3531c",
+      "retrainingCadence": "NOT_APPLICABLE_METADATA_ONLY",
+      "rollbackPolicy": "SOURCE_CONTROL_REVERT",
+      "versionPolicy": "SEMVER_WITH_OWNER_APPROVAL"
+    },
+    {
+      "auditRequirements": [
+        "OWNER_APPROVAL_BEFORE_PRODUCTION",
+        "NO_AUTONOMOUS_LEARNING",
+        "NO_PROVIDER_TRAINING"
+      ],
+      "capabilityId": "customer.intelligence.account",
+      "evidenceRetention": "REPOSITORY_ARTIFACTS_ONLY",
+      "humanApprovalRequired": true,
+      "learningAllowed": false,
+      "learningPolicyId": "learning.customer.intelligence.account",
+      "learningProhibited": true,
+      "policyHash": "e56760dcc687bf9a5bd660ea70500f59751a6bd3f707452ef5c47ca9f38e91a0",
+      "retrainingCadence": "NOT_APPLICABLE_METADATA_ONLY",
+      "rollbackPolicy": "SOURCE_CONTROL_REVERT",
+      "versionPolicy": "SEMVER_WITH_OWNER_APPROVAL"
+    },
+    {
+      "auditRequirements": [
+        "OWNER_APPROVAL_BEFORE_PRODUCTION",
+        "NO_AUTONOMOUS_LEARNING",
+        "NO_PROVIDER_TRAINING"
+      ],
+      "capabilityId": "fleet.intelligence.utilization",
+      "evidenceRetention": "REPOSITORY_ARTIFACTS_ONLY",
+      "humanApprovalRequired": true,
+      "learningAllowed": false,
+      "learningPolicyId": "learning.fleet.intelligence.utilization",
+      "learningProhibited": true,
+      "policyHash": "67b8c974a1815e5364f97b52f0d0d4f8da14cdd7d7bd2ad905d30ab02fc81e6e",
+      "retrainingCadence": "NOT_APPLICABLE_METADATA_ONLY",
+      "rollbackPolicy": "SOURCE_CONTROL_REVERT",
+      "versionPolicy": "SEMVER_WITH_OWNER_APPROVAL"
+    },
+    {
+      "auditRequirements": [
+        "OWNER_APPROVAL_BEFORE_PRODUCTION",
+        "NO_AUTONOMOUS_LEARNING",
+        "NO_PROVIDER_TRAINING"
+      ],
+      "capabilityId": "safety.intelligence.risk",
+      "evidenceRetention": "REPOSITORY_ARTIFACTS_ONLY",
+      "humanApprovalRequired": true,
+      "learningAllowed": false,
+      "learningPolicyId": "learning.safety.intelligence.risk",
+      "learningProhibited": true,
+      "policyHash": "ac695053d38e8b4c02067cfa93e1949ffd2dc72d6ebbe13317f4cf9a3d3bc9a1",
+      "retrainingCadence": "NOT_APPLICABLE_METADATA_ONLY",
+      "rollbackPolicy": "SOURCE_CONTROL_REVERT",
+      "versionPolicy": "SEMVER_WITH_OWNER_APPROVAL"
+    },
+    {
+      "auditRequirements": [
+        "OWNER_APPROVAL_BEFORE_PRODUCTION",
+        "NO_AUTONOMOUS_LEARNING",
+        "NO_PROVIDER_TRAINING"
+      ],
+      "capabilityId": "operations.intelligence.throughput",
+      "evidenceRetention": "REPOSITORY_ARTIFACTS_ONLY",
+      "humanApprovalRequired": true,
+      "learningAllowed": false,
+      "learningPolicyId": "learning.operations.intelligence.throughput",
+      "learningProhibited": true,
+      "policyHash": "7967ea5ac20250dc9dddb06123cf3f2e0cb149c9c69019255f25c2e99ee3d56b",
+      "retrainingCadence": "NOT_APPLICABLE_METADATA_ONLY",
+      "rollbackPolicy": "SOURCE_CONTROL_REVERT",
+      "versionPolicy": "SEMVER_WITH_OWNER_APPROVAL"
+    },
+    {
+      "auditRequirements": [
+        "OWNER_APPROVAL_BEFORE_PRODUCTION",
+        "NO_AUTONOMOUS_LEARNING",
+        "NO_PROVIDER_TRAINING"
+      ],
+      "capabilityId": "maintenance.intelligence.health",
+      "evidenceRetention": "REPOSITORY_ARTIFACTS_ONLY",
+      "humanApprovalRequired": true,
+      "learningAllowed": false,
+      "learningPolicyId": "learning.maintenance.intelligence.health",
+      "learningProhibited": true,
+      "policyHash": "32fdd4ec52c578c5fc599beaa9e2464911c5525b08bacd104a4d9a573c018272",
+      "retrainingCadence": "NOT_APPLICABLE_METADATA_ONLY",
+      "rollbackPolicy": "SOURCE_CONTROL_REVERT",
+      "versionPolicy": "SEMVER_WITH_OWNER_APPROVAL"
+    },
+    {
+      "auditRequirements": [
+        "OWNER_APPROVAL_BEFORE_PRODUCTION",
+        "NO_AUTONOMOUS_LEARNING",
+        "NO_PROVIDER_TRAINING"
+      ],
+      "capabilityId": "inventory.intelligence.availability",
+      "evidenceRetention": "REPOSITORY_ARTIFACTS_ONLY",
+      "humanApprovalRequired": true,
+      "learningAllowed": false,
+      "learningPolicyId": "learning.inventory.intelligence.availability",
+      "learningProhibited": true,
+      "policyHash": "c8eaef0b43f44975d4eb03db14b42498b0598eb613158f68aa42265e6a250855",
+      "retrainingCadence": "NOT_APPLICABLE_METADATA_ONLY",
+      "rollbackPolicy": "SOURCE_CONTROL_REVERT",
+      "versionPolicy": "SEMVER_WITH_OWNER_APPROVAL"
+    },
+    {
+      "auditRequirements": [
+        "OWNER_APPROVAL_BEFORE_PRODUCTION",
+        "NO_AUTONOMOUS_LEARNING",
+        "NO_PROVIDER_TRAINING"
+      ],
+      "capabilityId": "financial.intelligence.margin",
+      "evidenceRetention": "REPOSITORY_ARTIFACTS_ONLY",
+      "humanApprovalRequired": true,
+      "learningAllowed": false,
+      "learningPolicyId": "learning.financial.intelligence.margin",
+      "learningProhibited": true,
+      "policyHash": "729c92058d4d14c6b1d4f89c2423be81ff09167dd6b0815693ec77196b247eeb",
+      "retrainingCadence": "NOT_APPLICABLE_METADATA_ONLY",
+      "rollbackPolicy": "SOURCE_CONTROL_REVERT",
+      "versionPolicy": "SEMVER_WITH_OWNER_APPROVAL"
+    },
+    {
+      "auditRequirements": [
+        "OWNER_APPROVAL_BEFORE_PRODUCTION",
+        "NO_AUTONOMOUS_LEARNING",
+        "NO_PROVIDER_TRAINING"
+      ],
+      "capabilityId": "enterprise.intelligence.overview",
+      "evidenceRetention": "REPOSITORY_ARTIFACTS_ONLY",
+      "humanApprovalRequired": true,
+      "learningAllowed": false,
+      "learningPolicyId": "learning.enterprise.intelligence.overview",
+      "learningProhibited": true,
+      "policyHash": "42c6bf5e07de094db14cedbc3c718d2377fee696cb795d91cced63fbafe1688f",
+      "retrainingCadence": "NOT_APPLICABLE_METADATA_ONLY",
+      "rollbackPolicy": "SOURCE_CONTROL_REVERT",
+      "versionPolicy": "SEMVER_WITH_OWNER_APPROVAL"
+    }
+  ]
+}
