@@ -26,8 +26,8 @@
     "backendPath": "C:\\dev\\bridge-api\\bridge-api",
     "localBranch": "legacy-public-url-final-cleanup",
     "remoteBranch": "origin/legacy-public-url-final-cleanup",
-    "localHead": "1626aff46f7d8434186bac08293c4d4f83b2a387",
-    "remoteHead": "1626aff46f7d8434186bac08293c4d4f83b2a387",
+    "localHead": "9dfed02df38dc67240b089f4582926f14bbaae7d",
+    "remoteHead": "9dfed02df38dc67240b089f4582926f14bbaae7d",
     "localAheadBy": 0,
     "remoteVerificationPerformed": true,
     "pushPerformedByThisPackage": false
@@ -805,7 +805,7 @@
       "packageId": "FLEET_INTELLIGENCE",
       "title": "Fleet Intelligence",
       "category": "CORE_OPERATIONAL_INTELLIGENCE",
-      "status": "IMPLEMENTED_UNCOMMITTED",
+      "status": "PUSHED",
       "objective": "Prepare the approved repository-only Fleet Intelligence package for deterministic fleet/vehicle operational awareness and route/vehicle readiness analysis.",
       "approvedScope": [
         "fleet operational state",
@@ -856,10 +856,10 @@
         "TSR-AI-WORKFLOW-001"
       ],
       "acceptanceCriteria": [
-        "Fleet Intelligence exists locally as an unstaged and uncommitted repository-only foundation",
+        "Fleet Intelligence foundation is committed, validated, and pushed as repository-only work",
         "scope is limited to fleet/vehicle operational state and route/vehicle readiness evidence",
         "generated Fleet Intelligence artifacts are deterministic and validate against prohibited-scope mutation checks",
-        "predictive maintenance models, autonomous dispatch, autonomous purchasing, hardware, ELD, IoT, product expansion, production APIs, provider activation, deployment, migration, and Customer Intelligence remain prohibited unless separately approved",
+        "predictive maintenance models, autonomous dispatch, autonomous purchasing, hardware, ELD, IoT, product expansion, production APIs, provider activation, deployment, migration, and Customer Intelligence implementation remain prohibited unless separately approved",
         "model-selection and production-orchestration gates remain incomplete"
       ],
       "requiredTests": [
@@ -871,10 +871,10 @@
         "npm.cmd test"
       ],
       "documentationPath": "docs/implementation/fleet-intelligence-foundation",
-      "implementationCommit": null,
-      "localCommitVerified": false,
-      "remoteCommitVerified": false,
-      "pushed": false,
+      "implementationCommit": "9dfed02df38dc67240b089f4582926f14bbaae7d",
+      "localCommitVerified": true,
+      "remoteCommitVerified": true,
+      "pushed": true,
       "deployed": false,
       "deploymentVerified": false,
       "migrationRequired": false,
@@ -882,32 +882,73 @@
       "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
       "ownerApprovalRequired": true,
       "scopeChangeApprovalRequired": true,
-      "nextApprovedPackage": null,
-      "notes": "Fleet Intelligence exists locally as an unstaged and uncommitted repository-only foundation under bridge-api/services/intelligenceExecution/fleetIntelligence.js, scripts/check-fleet-intelligence.cjs, scripts/generate-fleet-intelligence-artifacts.cjs, and docs/implementation/fleet-intelligence-foundation. It is not staged, committed, pushed, deployed, migrated, production-certified, exposed through a production API, provider-activated, model-selected, or production-written. Predictive maintenance, autonomous dispatch, autonomous repair approval, autonomous purchasing, workforce scoring, telematics/ELD/IoT integration, fleet-management product expansion, and Customer Intelligence remain out of scope.",
-      "isCurrentPackage": true
+      "nextApprovedPackage": "CUSTOMER_INTELLIGENCE",
+      "notes": "Fleet Intelligence foundation commit 9dfed02df38dc67240b089f4582926f14bbaae7d is committed locally, fetched remote refs verify origin/legacy-public-url-final-cleanup contains it, and required validation passed. Not deployed, not migrated, and not production-certified. No production API, provider activation, model selection, database write, object mutation, driver scoring, workforce-impact recommendation, predictive maintenance model, autonomous dispatch, autonomous repair approval, autonomous purchasing, telematics/ELD/IoT integration, fleet-management product expansion, or Customer Intelligence implementation exists."
     },
     {
       "packageId": "CUSTOMER_INTELLIGENCE",
       "title": "Customer Intelligence",
       "category": "CORE_OPERATIONAL_INTELLIGENCE",
-      "status": "PLANNED",
-      "objective": "Future customer operational intelligence domain.",
+      "status": "APPROVED",
+      "objective": "Prepare the approved repository-only Customer Intelligence package for deterministic customer/account operational awareness and customer-specific route/stop context.",
       "approvedScope": [
-        "future package planning"
+        "customer/account operational context",
+        "delivery-account history awareness",
+        "product purchase history awareness",
+        "invoice/spend history awareness",
+        "delivery pattern awareness",
+        "deduction/exception awareness where existing data supports it",
+        "stop/account service-pattern awareness",
+        "customer-specific route/stop operational context",
+        "structured customer operational exceptions",
+        "deterministic summaries/explanations",
+        "evidence completeness/confidence",
+        "human-review flags",
+        "integration with Route, Driver, Supervisor, Warehouse, and Fleet Intelligence where relevant"
       ],
       "prohibitedScope": [
-        "implementation in this package",
+        "customer credit scoring",
+        "automated lending/credit decisions",
+        "discriminatory profiling",
+        "protected-class inference",
+        "personality inference",
+        "emotional-state inference",
+        "employee scoring",
+        "driver scoring",
+        "sales-rep scoring",
+        "autonomous pricing decisions",
+        "autonomous discounting decisions",
+        "autonomous contract decisions",
+        "autonomous customer prioritization",
+        "autonomous customer termination",
+        "autonomous sales outreach",
+        "marketing automation",
+        "new CRM platform scope",
+        "new payment-processing scope",
+        "new financial-accounting system scope",
         "model selection",
-        "production orchestration"
+        "provider activation",
+        "production APIs",
+        "deployment",
+        "migrations",
+        "new AI infrastructure"
       ],
       "dependencies": [
-        "FLEET_INTELLIGENCE"
+        "AI-IEP-005B.1",
+        "AI-IEP-005B.2",
+        "SUPERVISOR_INTELLIGENCE",
+        "WAREHOUSE_INTELLIGENCE",
+        "FLEET_INTELLIGENCE",
+        "TSR-AI-WORKFLOW-001"
       ],
       "acceptanceCriteria": [
-        "owner-approved package exists before implementation"
+        "Customer Intelligence remains approved as the next package but unimplemented until a separate implementation session begins",
+        "scope is limited to customer/account operational context, delivery/account/product/invoice history awareness, service-pattern evidence, customer-specific route/stop context, operational exceptions, deterministic explanations, evidence completeness/confidence, and human-review flags",
+        "credit scoring, protected-class inference, autonomous pricing/discounting/contract/customer/sales decisions, marketing automation, CRM/payment/accounting platform expansion, model selection, provider activation, production APIs, deployment, migrations, and new AI infrastructure remain prohibited",
+        "model-selection and production-orchestration gates remain incomplete"
       ],
       "requiredTests": [
-        "UNKNOWN"
+        "npm.cmd run test:ai-roadmap"
       ],
       "documentationPath": null,
       "implementationCommit": null,
@@ -916,13 +957,14 @@
       "pushed": false,
       "deployed": false,
       "deploymentVerified": false,
-      "migrationRequired": "UNKNOWN",
+      "migrationRequired": false,
       "migrationExecuted": false,
-      "productionImpact": "UNKNOWN",
+      "productionImpact": "NONE",
       "ownerApprovalRequired": true,
       "scopeChangeApprovalRequired": true,
       "nextApprovedPackage": null,
-      "notes": "Planned Milestone 1 domain; not started."
+      "notes": "Approved as the next current Milestone 1 package after Fleet Intelligence preservation. Implementation has not started, no package number has been fabricated, and no production API, provider activation, model selection, deployment, migration, credit scoring, protected-class inference, autonomous pricing/discounting, autonomous sales, CRM expansion, payment-processing scope, financial-accounting scope, or new AI infrastructure is authorized by this reconciliation.",
+      "isCurrentPackage": true
     },
     {
       "packageId": "OPERATIONS_INTELLIGENCE",

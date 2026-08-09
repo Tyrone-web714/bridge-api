@@ -82,7 +82,8 @@ const ALLOWED_MILESTONE_ONE = new Set([
 ]);
 const SUPERVISOR_COMMIT = 'e0a9502c9d6134c66c6a9e46926956282fa5d7ff';
 const WAREHOUSE_COMMIT = '4a2b2dc7e4a5c2d8bd9a4a0c9f0e407cdc8fd1bb';
-const REMOTE_VERIFIED_PACKAGES = ['AI-IEP-005B.1', 'AI-IEP-005B.2', 'SUPERVISOR_INTELLIGENCE', 'WAREHOUSE_INTELLIGENCE', 'TSR-AI-WORKFLOW-001'];
+const FLEET_COMMIT = '9dfed02df38dc67240b089f4582926f14bbaae7d';
+const REMOTE_VERIFIED_PACKAGES = ['AI-IEP-005B.1', 'AI-IEP-005B.2', 'SUPERVISOR_INTELLIGENCE', 'WAREHOUSE_INTELLIGENCE', 'FLEET_INTELLIGENCE', 'TSR-AI-WORKFLOW-001'];
 
 function read(name) {
   return fs.readFileSync(path.join(paths.docsRoot, name), 'utf8');
@@ -147,8 +148,8 @@ function validateRoadmap(roadmap, current, options = {}) {
   if (!currentRoadmap) failures.push({ rule: 'CURRENT_PACKAGE_NOT_IN_ROADMAP', packageId: current.packageId });
   if (currentRoadmap && currentRoadmap.title !== current.title) failures.push({ rule: 'CURRENT_PACKAGE_JSON_ROADMAP_MISMATCH', packageId: current.packageId });
   if (currentRoadmap && currentRoadmap.status !== current.status) failures.push({ rule: 'CURRENT_PACKAGE_STATUS_MISMATCH', packageId: current.packageId });
-  if (current.packageId !== 'FLEET_INTELLIGENCE') failures.push({ rule: 'CURRENT_PACKAGE_NOT_FLEET_INTELLIGENCE', packageId: current.packageId });
-  if (current.status !== 'IMPLEMENTED_UNCOMMITTED') failures.push({ rule: 'CURRENT_FLEET_STATUS_INVALID', status: current.status });
+  if (current.packageId !== 'CUSTOMER_INTELLIGENCE') failures.push({ rule: 'CURRENT_PACKAGE_NOT_CUSTOMER_INTELLIGENCE', packageId: current.packageId });
+  if (current.status !== 'APPROVED') failures.push({ rule: 'CURRENT_CUSTOMER_STATUS_INVALID', status: current.status });
   const currentMarkdown = read('CURRENT_AI_WORK_PACKAGE.md');
   if (!currentMarkdown.includes(`Package ID: ${current.packageId}`) || !currentMarkdown.includes(`Status: ${current.status}`)) failures.push({ rule: 'CURRENT_PACKAGE_MARKDOWN_JSON_MISMATCH' });
   for (const pkg of packages.filter((record) => record.category === 'CORE_OPERATIONAL_INTELLIGENCE')) {
@@ -178,8 +179,9 @@ function validateRoadmap(roadmap, current, options = {}) {
     if (pkg.title === 'Warehouse Intelligence' && pkg.packageId !== 'WAREHOUSE_INTELLIGENCE') failures.push({ rule: 'WAREHOUSE_PACKAGE_NUMBER_FABRICATED', packageId: pkg.packageId });
   }
   const fleet = packages.find((pkg) => pkg.packageId === 'FLEET_INTELLIGENCE');
-  if (fleet && fleet.status !== 'IMPLEMENTED_UNCOMMITTED') failures.push({ rule: 'FLEET_STATUS_INVALID', status: fleet.status });
-  if (fleet && (fleet.implementationCommit || fleet.localCommitVerified || fleet.remoteCommitVerified || fleet.pushed)) failures.push({ rule: 'FLEET_IMPLEMENTED_WITHOUT_EVIDENCE' });
+  if (fleet && fleet.status !== 'PUSHED') failures.push({ rule: 'FLEET_PUSHED_STATUS_INVALID', status: fleet.status });
+  if (fleet && fleet.implementationCommit !== FLEET_COMMIT) failures.push({ rule: 'FLEET_COMMIT_MISMATCH', implementationCommit: fleet.implementationCommit });
+  if (fleet && (fleet.localCommitVerified !== true || fleet.remoteCommitVerified !== true || fleet.pushed !== true)) failures.push({ rule: 'FLEET_PUSH_EVIDENCE_MISSING' });
   if (fleet && (fleet.deployed || fleet.deploymentVerified || fleet.migrationExecuted)) failures.push({ rule: 'FLEET_FALSE_PRODUCTION_STATE' });
   if (fleet && fleet.productionImpact !== 'REPOSITORY_ONLY_FOUNDATION') failures.push({ rule: 'FLEET_PRODUCTION_IMPACT_INVALID', productionImpact: fleet.productionImpact });
   if (fleet && fleet.documentationPath !== 'docs/implementation/fleet-intelligence-foundation') failures.push({ rule: 'FLEET_DOCUMENTATION_PATH_INVALID', documentationPath: fleet.documentationPath });
@@ -194,6 +196,21 @@ function validateRoadmap(roadmap, current, options = {}) {
   const fleetApprovedScope = (fleet?.approvedScope || []).join(' ').toLowerCase();
   if (fleetApprovedScope.includes('predictive maintenance')) failures.push({ rule: 'FLEET_PREDICTIVE_MAINTENANCE_SCOPE_UNAPPROVED' });
   if (fleetApprovedScope.includes('autonomous dispatch') || fleetApprovedScope.includes('autonomous vehicle dispatch') || fleetApprovedScope.includes('autonomous purchasing') || fleetApprovedScope.includes('autonomous parts purchasing')) failures.push({ rule: 'FLEET_AUTONOMOUS_SCOPE_UNAPPROVED' });
+  const customer = packages.find((pkg) => pkg.packageId === 'CUSTOMER_INTELLIGENCE');
+  if (!customer) failures.push({ rule: 'CUSTOMER_PACKAGE_MISSING' });
+  if (customer && customer.status !== 'APPROVED') failures.push({ rule: 'CUSTOMER_STATUS_INVALID', status: customer.status });
+  if (customer && (customer.implementationCommit || customer.localCommitVerified || customer.remoteCommitVerified || customer.pushed)) failures.push({ rule: 'CUSTOMER_IMPLEMENTED_WITHOUT_EVIDENCE' });
+  if (customer && (customer.deployed || customer.deploymentVerified || customer.migrationExecuted || customer.productionImpact !== 'NONE')) failures.push({ rule: 'CUSTOMER_FALSE_PRODUCTION_STATE' });
+  if (customer && customer.documentationPath !== null) failures.push({ rule: 'CUSTOMER_DOCUMENTATION_PATH_INVALID', documentationPath: customer.documentationPath });
+  if (customer && customer.packageId !== 'CUSTOMER_INTELLIGENCE') failures.push({ rule: 'CUSTOMER_PACKAGE_NUMBER_FABRICATED', packageId: customer.packageId });
+  for (const pkg of packages) {
+    if (pkg.title === 'Customer Intelligence' && pkg.packageId !== 'CUSTOMER_INTELLIGENCE') failures.push({ rule: 'CUSTOMER_PACKAGE_NUMBER_FABRICATED', packageId: pkg.packageId });
+  }
+  const customerApprovedScope = (customer?.approvedScope || []).join(' ').toLowerCase();
+  if (customerApprovedScope.includes('credit scoring') || customerApprovedScope.includes('credit decision') || customerApprovedScope.includes('lending')) failures.push({ rule: 'CUSTOMER_CREDIT_SCOPE_UNAPPROVED' });
+  if (customerApprovedScope.includes('protected-class') || customerApprovedScope.includes('protected class') || customerApprovedScope.includes('discriminatory profiling')) failures.push({ rule: 'CUSTOMER_PROTECTED_CLASS_SCOPE_UNAPPROVED' });
+  if (customerApprovedScope.includes('autonomous pricing') || customerApprovedScope.includes('autonomous discount')) failures.push({ rule: 'CUSTOMER_AUTONOMOUS_PRICING_SCOPE_UNAPPROVED' });
+  if (customerApprovedScope.includes('autonomous sales') || customerApprovedScope.includes('marketing automation') || customerApprovedScope.includes('crm platform')) failures.push({ rule: 'CUSTOMER_SALES_OR_CRM_SCOPE_UNAPPROVED' });
   const scopePolicy = read('SCOPE_CONTROL_POLICY.md');
   for (const phrase of ['No new feature enters implementation without owner approval', 'Supervisor Intelligence implementation requires an owner-approved work package', 'Roadmap status changes require evidence']) {
     if (!scopePolicy.includes(phrase)) failures.push({ rule: 'SCOPE_CONTROL_POLICY_INCOMPLETE', phrase });
@@ -264,14 +281,23 @@ function main() {
   }, 'WAREHOUSE_FALSE_PRODUCTION_STATE');
   assertValidationFails((roadmap) => {
     const fleet = roadmap.packages.find((pkg) => pkg.packageId === 'FLEET_INTELLIGENCE');
-    fleet.status = 'PUSHED';
-    fleet.implementationCommit = '1234567';
-  }, 'FLEET_IMPLEMENTED_WITHOUT_EVIDENCE');
-  assertValidationFails((roadmap, current) => {
+    fleet.status = 'IMPLEMENTED_UNCOMMITTED';
+    fleet.implementationCommit = null;
+    fleet.pushed = false;
+    fleet.remoteCommitVerified = false;
+  }, 'FLEET_PUSHED_STATUS_INVALID');
+  assertValidationFails((roadmap) => {
     const fleet = roadmap.packages.find((pkg) => pkg.packageId === 'FLEET_INTELLIGENCE');
-    fleet.packageId = 'AI-IEP-005B.3';
-    current.packageId = 'AI-IEP-005B.3';
-  }, 'FLEET_PACKAGE_NUMBER_FABRICATED');
+    fleet.deployed = true;
+    fleet.deploymentVerified = true;
+    fleet.productionImpact = 'DEPLOYMENT_VERIFIED';
+  }, 'FLEET_FALSE_PRODUCTION_STATE');
+  assertValidationFails((roadmap, current) => {
+    current.packageId = 'FLEET_INTELLIGENCE';
+    current.status = 'PUSHED';
+    roadmap.packages.find((pkg) => pkg.packageId === 'FLEET_INTELLIGENCE').isCurrentPackage = true;
+    roadmap.packages.find((pkg) => pkg.packageId === 'CUSTOMER_INTELLIGENCE').isCurrentPackage = true;
+  }, 'CURRENT_PACKAGE_COUNT');
   assertValidationFails((roadmap) => {
     const fleet = roadmap.packages.find((pkg) => pkg.packageId === 'FLEET_INTELLIGENCE');
     fleet.approvedScope.push('predictive maintenance models');
@@ -280,6 +306,35 @@ function main() {
     const fleet = roadmap.packages.find((pkg) => pkg.packageId === 'FLEET_INTELLIGENCE');
     fleet.approvedScope.push('autonomous dispatch and autonomous parts purchasing');
   }, 'FLEET_AUTONOMOUS_SCOPE_UNAPPROVED');
+  assertValidationFails((roadmap) => {
+    const customer = roadmap.packages.find((pkg) => pkg.packageId === 'CUSTOMER_INTELLIGENCE');
+    customer.status = 'PUSHED';
+    customer.implementationCommit = '1234567';
+    customer.localCommitVerified = true;
+    customer.remoteCommitVerified = true;
+    customer.pushed = true;
+  }, 'CUSTOMER_IMPLEMENTED_WITHOUT_EVIDENCE');
+  assertValidationFails((roadmap, current) => {
+    const customer = roadmap.packages.find((pkg) => pkg.packageId === 'CUSTOMER_INTELLIGENCE');
+    customer.packageId = 'AI-IEP-005B.6';
+    current.packageId = 'AI-IEP-005B.6';
+  }, 'CUSTOMER_PACKAGE_NUMBER_FABRICATED');
+  assertValidationFails((roadmap) => {
+    const customer = roadmap.packages.find((pkg) => pkg.packageId === 'CUSTOMER_INTELLIGENCE');
+    customer.approvedScope.push('customer credit scoring');
+  }, 'CUSTOMER_CREDIT_SCOPE_UNAPPROVED');
+  assertValidationFails((roadmap) => {
+    const customer = roadmap.packages.find((pkg) => pkg.packageId === 'CUSTOMER_INTELLIGENCE');
+    customer.approvedScope.push('protected-class inference');
+  }, 'CUSTOMER_PROTECTED_CLASS_SCOPE_UNAPPROVED');
+  assertValidationFails((roadmap) => {
+    const customer = roadmap.packages.find((pkg) => pkg.packageId === 'CUSTOMER_INTELLIGENCE');
+    customer.approvedScope.push('autonomous pricing and autonomous discounting');
+  }, 'CUSTOMER_AUTONOMOUS_PRICING_SCOPE_UNAPPROVED');
+  assertValidationFails((roadmap) => {
+    const customer = roadmap.packages.find((pkg) => pkg.packageId === 'CUSTOMER_INTELLIGENCE');
+    customer.approvedScope.push('autonomous sales outreach and CRM platform expansion');
+  }, 'CUSTOMER_SALES_OR_CRM_SCOPE_UNAPPROVED');
   assertValidationFails((roadmap) => { roadmap.gates.modelSelection.complete = true; roadmap.gates.modelSelection.status = 'APPROVED'; }, 'MODEL_SELECTION_GATE_FALSE_COMPLETE');
   assertValidationFails((roadmap) => { roadmap.gates.productionOrchestration.complete = true; roadmap.gates.productionOrchestration.status = 'IN_PROGRESS'; }, 'PRODUCTION_ORCHESTRATION_FALSE_ACTIVE');
   const before = fs.readdirSync(paths.generatedRoot).sort().map((name) => [name, fs.readFileSync(path.join(paths.generatedRoot, name), 'utf8')]);

@@ -1,53 +1,54 @@
 # Current AI Work Package
 
-Package ID: FLEET_INTELLIGENCE
+Package ID: CUSTOMER_INTELLIGENCE
 
-Title: Fleet Intelligence
+Title: Customer Intelligence
 
 Category: CORE_OPERATIONAL_INTELLIGENCE
 
-Status: IMPLEMENTED_UNCOMMITTED
+Status: APPROVED
 
 ## Objective
 
-Prepare the approved repository-only Fleet Intelligence package for deterministic fleet/vehicle operational awareness and route/vehicle readiness analysis.
+Prepare the approved repository-only Customer Intelligence package for deterministic customer/account operational awareness and customer-specific route/stop context.
 
 ## Approved Scope
 
-- Fleet operational state.
-- Vehicle assignment awareness.
-- Vehicle availability.
-- Vehicle readiness.
-- Route/vehicle compatibility evidence.
-- Fleet utilization awareness.
-- Vehicle exception detection.
-- Unresolved vehicle-operational issues.
-- Maintenance-status awareness where existing data already supports it.
-- Route-impact awareness caused by vehicle state.
-- Structured fleet alerts.
-- Supervisor fleet visibility.
-- Deterministic explanations.
+- Customer/account operational context.
+- Delivery-account history awareness.
+- Product purchase history awareness.
+- Invoice/spend history awareness.
+- Delivery pattern awareness.
+- Deduction/exception awareness where existing data supports it.
+- Stop/account service-pattern awareness.
+- Customer-specific route/stop operational context.
+- Structured customer operational exceptions.
+- Deterministic summaries/explanations.
 - Evidence completeness/confidence.
 - Human-review flags.
-- Integration with Route, Driver, Supervisor, and Warehouse Intelligence.
+- Integration with Route, Driver, Supervisor, Warehouse, and Fleet Intelligence where relevant.
 
 ## Prohibited Scope
 
+- Customer credit scoring.
+- Automated lending/credit decisions.
+- Discriminatory profiling.
+- Protected-class inference.
+- Personality inference.
+- Emotional-state inference.
+- Employee scoring.
 - Driver scoring.
-- Employee ranking.
-- Productivity scoring.
-- Discipline recommendations.
-- Termination recommendations.
-- Compensation decisions.
-- Autonomous workforce decisions.
-- Autonomous vehicle dispatch.
-- Autonomous maintenance authorization.
-- Autonomous parts purchasing.
-- Predictive maintenance models in this foundation unless separately approved.
-- New telematics hardware integration.
-- New ELD integration.
-- New vehicle IoT architecture.
-- New fleet-management-system product scope.
+- Sales-rep scoring.
+- Autonomous pricing decisions.
+- Autonomous discounting decisions.
+- Autonomous contract decisions.
+- Autonomous customer prioritization.
+- Autonomous customer termination.
+- Autonomous sales outreach.
+- Marketing automation.
+- New CRM platform scope.
+- New payment-processing scope.
+- New financial-accounting system scope.
 - Model selection.
 - Provider activation.
 - Production APIs.
@@ -61,43 +62,38 @@ Prepare the approved repository-only Fleet Intelligence package for deterministi
 - AI-IEP-005B.2 Driver Intelligence Foundation.
 - SUPERVISOR_INTELLIGENCE Supervisor Intelligence.
 - WAREHOUSE_INTELLIGENCE Warehouse Intelligence.
+- FLEET_INTELLIGENCE Fleet Intelligence.
 - TSR-AI-WORKFLOW-001 repository workflow and handoff process.
 
 ## Acceptance Criteria
 
-- Fleet Intelligence exists locally as an unstaged and uncommitted repository-only foundation.
-- Scope is limited to fleet/vehicle operational state and route/vehicle readiness evidence.
-- Generated Fleet Intelligence artifacts are deterministic and validate against prohibited-scope mutation checks.
-- Predictive maintenance models, autonomous dispatch, autonomous purchasing, hardware, ELD, IoT, product expansion, production APIs, provider activation, deployment, migration, and Customer Intelligence remain prohibited unless separately approved.
+- Customer Intelligence remains approved as the next package but unimplemented until a separate implementation session begins.
+- Scope is limited to customer/account operational context, delivery/account/product/invoice history awareness, service-pattern evidence, customer-specific route/stop context, operational exceptions, deterministic explanations, evidence completeness/confidence, and human-review flags.
+- Credit scoring, protected-class inference, autonomous pricing/discounting/contract/customer/sales decisions, marketing automation, CRM/payment/accounting platform expansion, model selection, provider activation, production APIs, deployment, migrations, and new AI infrastructure remain prohibited.
 - Model-selection and production-orchestration gates remain incomplete.
 
 ## Required Tests
 
-- `npm.cmd run fleet-intelligence:validate`
-- `npm.cmd run fleet-intelligence:check`
-- `npm.cmd run fleet-intelligence:benchmarks`
-- `npm.cmd run test:fleet-intelligence`
 - `npm.cmd run test:ai-roadmap`
-- `npm.cmd test`
 
 ## Source-Control Expectation
 
-Fleet Intelligence is implemented locally as unstaged and uncommitted repository-only work pending controlled review, validation, and source-control preservation. Do not stage, commit, push, deploy, run migrations, activate providers, select models, expose production APIs, or begin Customer Intelligence in this package.
+Customer Intelligence is approved as the next repository-only Milestone 1 package but implementation has not started. Do not stage runtime behavior, create production APIs, deploy, run migrations, activate providers, select models, modify production systems, fabricate an AI-IEP package number, or begin implementation outside a separately approved Customer Intelligence work package.
 
 ## Completion Report
 
-Use `CODEX_COMPLETION_REPORT_TEMPLATE.md` sections A through AN for the controlled review and preservation package.
+Use `CODEX_COMPLETION_REPORT_TEMPLATE.md` sections A through AN for the future controlled Customer Intelligence implementation package.
 
 ## Recommended Commit Message
 
-Build Fleet Intelligence foundation
+Build Customer Intelligence foundation
 
 ## Next Approved Package
 
-No subsequent business-domain package is approved by this record. Fleet Intelligence is the current implemented-uncommitted package.
+No subsequent business-domain package is approved by this record. Customer Intelligence is the current approved, unimplemented package.
 
 ## Owner Decision Points
 
-- Approve a separate controlled review, validation, commit, and source-control preservation package before staging or committing Fleet Intelligence.
-- Approve any future production runtime API, deployment, migration, provider expansion, model selection, production validation, predictive maintenance, autonomous dispatch, autonomous repair approval, autonomous purchasing, or Customer Intelligence package separately.
+- Approve a separate controlled Customer Intelligence implementation work package before creating runtime or documentation implementation artifacts.
+- Approve any future production runtime API, deployment, migration, provider expansion, model selection, production validation, credit decisioning, pricing/discounting, sales outreach, CRM expansion, payment-processing, or financial-accounting scope separately.
 - Keep model-selection and production-orchestration gates incomplete until all required Milestone 1 domains are complete and separately approved.

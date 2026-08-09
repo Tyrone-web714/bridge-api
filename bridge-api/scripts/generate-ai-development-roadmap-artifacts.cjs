@@ -95,6 +95,7 @@ function generate(options = {}) {
   const core = packages.filter((pkg) => pkg.category === 'CORE_OPERATIONAL_INTELLIGENCE');
   const warehouse = packages.find((pkg) => pkg.packageId === 'WAREHOUSE_INTELLIGENCE');
   const fleet = packages.find((pkg) => pkg.packageId === 'FLEET_INTELLIGENCE');
+  const customer = packages.find((pkg) => pkg.packageId === 'CUSTOMER_INTELLIGENCE');
   const outputs = {
     'ai_roadmap_summary.json': json({
       roadmapId: roadmap.roadmapId,
@@ -126,8 +127,11 @@ function generate(options = {}) {
       supervisorIntelligenceRemoteContained: Boolean(packages.find((pkg) => pkg.packageId === 'SUPERVISOR_INTELLIGENCE')?.pushed),
       warehouseIntelligenceRemoteContained: Boolean(warehouse?.pushed && warehouse?.remoteCommitVerified),
       warehouseImplementationStarted: Boolean(warehouse?.implementationCommit),
+      fleetIntelligenceRemoteContained: Boolean(fleet?.pushed && fleet?.remoteCommitVerified),
       fleetIntelligenceMayBegin: false,
-      fleetImplementationStarted: fleet?.status === 'IMPLEMENTED_UNCOMMITTED' || Boolean(fleet?.implementationCommit),
+      fleetImplementationStarted: Boolean(fleet?.implementationCommit),
+      customerIntelligenceApproved: current.packageId === 'CUSTOMER_INTELLIGENCE' && current.status === 'APPROVED',
+      customerImplementationStarted: Boolean(customer?.implementationCommit),
       unapprovedMilestoneOneDomainsAllowed: false,
       deterministicTruckSafetyControlsAuthoritative: true
     }),

@@ -2,8 +2,8 @@
 # TSR AI Roadmap Summary
 
 - Roadmap ID: TSR_AI_DEVELOPMENT_ROADMAP
-- Current package: FLEET_INTELLIGENCE - Fleet Intelligence
-- Current status: IMPLEMENTED_UNCOMMITTED
+- Current package: CUSTOMER_INTELLIGENCE - Customer Intelligence
+- Current status: APPROVED
 - Next approved package: null
 - Route Intelligence pushed: true
 - Driver Intelligence pushed: true
@@ -20,6 +20,6 @@
 
 | Status | Count |
 | --- | ---: |
-| IMPLEMENTED_UNCOMMITTED | 1 |
-| PLANNED | 3 |
-| PUSHED | 17 |
+| APPROVED | 1 |
+| PLANNED | 2 |
+| PUSHED | 18 |
