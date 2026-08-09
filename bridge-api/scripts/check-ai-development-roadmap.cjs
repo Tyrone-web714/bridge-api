@@ -146,7 +146,7 @@ function validateRoadmap(roadmap, current, options = {}) {
   if (currentRoadmap && currentRoadmap.title !== current.title) failures.push({ rule: 'CURRENT_PACKAGE_JSON_ROADMAP_MISMATCH', packageId: current.packageId });
   if (currentRoadmap && currentRoadmap.status !== current.status) failures.push({ rule: 'CURRENT_PACKAGE_STATUS_MISMATCH', packageId: current.packageId });
   if (current.packageId !== 'SUPERVISOR_INTELLIGENCE') failures.push({ rule: 'CURRENT_PACKAGE_NOT_SUPERVISOR_INTELLIGENCE', packageId: current.packageId });
-  if (current.status !== 'APPROVED') failures.push({ rule: 'CURRENT_SUPERVISOR_STATUS_NOT_APPROVED', status: current.status });
+  if (!['APPROVED','IMPLEMENTED_UNCOMMITTED'].includes(current.status)) failures.push({ rule: 'CURRENT_SUPERVISOR_STATUS_INVALID', status: current.status });
   const currentMarkdown = read('CURRENT_AI_WORK_PACKAGE.md');
   if (!currentMarkdown.includes(`Package ID: ${current.packageId}`) || !currentMarkdown.includes(`Status: ${current.status}`)) failures.push({ rule: 'CURRENT_PACKAGE_MARKDOWN_JSON_MISMATCH' });
   for (const pkg of packages.filter((record) => record.category === 'CORE_OPERATIONAL_INTELLIGENCE')) {
@@ -157,9 +157,10 @@ function validateRoadmap(roadmap, current, options = {}) {
   if (!read('PRODUCTION_ORCHESTRATION_GATE.md').includes('shadow-mode validation') || !read('PRODUCTION_ORCHESTRATION_GATE.md').includes('owner approval')) failures.push({ rule: 'PRODUCTION_ORCHESTRATION_GATE_MISSING' });
   if (roadmap.gates?.productionOrchestration?.complete !== false || roadmap.gates?.productionOrchestration?.status !== 'DEFERRED') failures.push({ rule: 'PRODUCTION_ORCHESTRATION_FALSE_ACTIVE' });
   const supervisor = packages.find((pkg) => pkg.packageId === 'SUPERVISOR_INTELLIGENCE');
-  if (supervisor && (supervisor.status !== 'APPROVED' || supervisor.implementationCommit || supervisor.localCommitVerified || supervisor.remoteCommitVerified || supervisor.pushed || supervisor.deployed || supervisor.migrationExecuted)) failures.push({ rule: 'SUPERVISOR_IMPLEMENTED_WITHOUT_EVIDENCE' });
+  if (supervisor && !['APPROVED','IMPLEMENTED_UNCOMMITTED'].includes(supervisor.status)) failures.push({ rule: 'SUPERVISOR_STATUS_INVALID', status: supervisor.status });
+  if (supervisor && (supervisor.implementationCommit || supervisor.localCommitVerified || supervisor.remoteCommitVerified || supervisor.pushed || supervisor.deployed || supervisor.migrationExecuted)) failures.push({ rule: 'SUPERVISOR_IMPLEMENTED_WITHOUT_EVIDENCE' });
   const scopePolicy = read('SCOPE_CONTROL_POLICY.md');
-  for (const phrase of ['No new feature enters implementation without owner approval', 'Supervisor Intelligence cannot begin until this workflow package is completed', 'Roadmap status changes require evidence']) {
+  for (const phrase of ['No new feature enters implementation without owner approval', 'Supervisor Intelligence implementation requires an owner-approved work package', 'Roadmap status changes require evidence']) {
     if (!scopePolicy.includes(phrase)) failures.push({ rule: 'SCOPE_CONTROL_POLICY_INCOMPLETE', phrase });
   }
   const proposal = read('SCOPE_CHANGE_PROPOSAL_TEMPLATE.md');
@@ -211,7 +212,7 @@ function main() {
   assertValidationFails((roadmap) => { const route = roadmap.packages.find((pkg) => pkg.packageId === 'AI-IEP-005B.1'); route.pushed = true; route.remoteCommitVerified = false; }, 'FALSE_PUSHED_STATE');
   assertValidationFails((roadmap) => { roadmap.packages[0].deployed = true; roadmap.packages[0].deploymentVerified = false; }, 'FALSE_DEPLOYED_STATE');
   assertValidationFails((roadmap) => { roadmap.packages.find((pkg) => pkg.packageId === 'TSR-AI-WORKFLOW-001').isCurrentPackage = true; }, 'CURRENT_PACKAGE_COUNT');
-  assertValidationFails((roadmap) => { const supervisor = roadmap.packages.find((pkg) => pkg.packageId === 'SUPERVISOR_INTELLIGENCE'); supervisor.status = 'IMPLEMENTED_UNCOMMITTED'; supervisor.implementationCommit = '1234567'; }, 'SUPERVISOR_IMPLEMENTED_WITHOUT_EVIDENCE');
+  assertValidationFails((roadmap) => { const supervisor = roadmap.packages.find((pkg) => pkg.packageId === 'SUPERVISOR_INTELLIGENCE'); supervisor.implementationCommit = '1234567'; }, 'SUPERVISOR_IMPLEMENTED_WITHOUT_EVIDENCE');
   assertValidationFails((roadmap) => { roadmap.gates.modelSelection.complete = true; roadmap.gates.modelSelection.status = 'APPROVED'; }, 'MODEL_SELECTION_GATE_FALSE_COMPLETE');
   assertValidationFails((roadmap) => { roadmap.gates.productionOrchestration.complete = true; roadmap.gates.productionOrchestration.status = 'IN_PROGRESS'; }, 'PRODUCTION_ORCHESTRATION_FALSE_ACTIVE');
   const before = fs.readdirSync(paths.generatedRoot).sort().map((name) => [name, fs.readFileSync(path.join(paths.generatedRoot, name), 'utf8')]);

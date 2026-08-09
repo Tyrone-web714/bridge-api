@@ -1,0 +1,2041 @@
+{
+  "generatedArtifact": true,
+  "portfolios": [
+    {
+      "caseId": "all_routes_normal",
+      "routes": [
+        {
+          "activeRouteHazards": [],
+          "actualStart": "2026-08-01T08:05:00.000Z",
+          "assignedDriverId": "driver-synthetic-001",
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "completedStopCount": 5,
+          "driverIntelligenceAssessment": null,
+          "evidenceCompleteness": {
+            "items": [
+              {
+                "field": "routeId",
+                "present": true
+              },
+              {
+                "field": "organizationId",
+                "present": true
+              },
+              {
+                "field": "scheduledStart",
+                "present": true
+              },
+              {
+                "field": "scheduledEnd",
+                "present": true
+              },
+              {
+                "field": "lastEvidenceTimestamp",
+                "present": true
+              }
+            ],
+            "score": 1,
+            "status": "COMPLETE"
+          },
+          "evidenceConfidence": {
+            "score": 1,
+            "status": "NOT_PERFORMANCE_SCORE"
+          },
+          "humanReviewRequired": false,
+          "lastEvidenceTimestamp": "2026-08-01T10:00:00.000Z",
+          "organizationId": "org_synthetic_supervisor_intelligence",
+          "portfolioItemHash": "58981a10a474b1769a43561449676a7523b6ae9d28fc379115ed27578049a3d4",
+          "remainingStopCount": 5,
+          "routeDeviationState": "NONE",
+          "routeEvidenceConflict": false,
+          "routeEvidenceStale": false,
+          "routeId": "route-normal",
+          "routeIntelligenceAssessment": null,
+          "routeProgressPercentage": 50,
+          "routeStatus": "IN_PROGRESS",
+          "scheduledEnd": "2026-08-01T16:00:00.000Z",
+          "scheduledStart": "2026-08-01T08:00:00.000Z",
+          "testOnly": true,
+          "unresolvedSafetyEvents": [],
+          "unresolvedStopCount": 0
+        }
+      ]
+    },
+    {
+      "caseId": "route_not_started_by_threshold",
+      "routes": [
+        {
+          "activeRouteHazards": [],
+          "actualStart": null,
+          "assignedDriverId": "driver-synthetic-001",
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "completedStopCount": 5,
+          "driverIntelligenceAssessment": null,
+          "evidenceCompleteness": {
+            "items": [
+              {
+                "field": "routeId",
+                "present": true
+              },
+              {
+                "field": "organizationId",
+                "present": true
+              },
+              {
+                "field": "scheduledStart",
+                "present": true
+              },
+              {
+                "field": "scheduledEnd",
+                "present": true
+              },
+              {
+                "field": "lastEvidenceTimestamp",
+                "present": true
+              }
+            ],
+            "score": 1,
+            "status": "COMPLETE"
+          },
+          "evidenceConfidence": {
+            "score": 1,
+            "status": "NOT_PERFORMANCE_SCORE"
+          },
+          "humanReviewRequired": false,
+          "lastEvidenceTimestamp": "2026-08-01T10:00:00.000Z",
+          "organizationId": "org_synthetic_supervisor_intelligence",
+          "portfolioItemHash": "8352c78f5cca1b1a2c4210c3e52c60f475c2cf687361da9b3fd324556a4bf49e",
+          "remainingStopCount": 5,
+          "routeDeviationState": "NONE",
+          "routeEvidenceConflict": false,
+          "routeEvidenceStale": false,
+          "routeId": "route-not-started",
+          "routeIntelligenceAssessment": null,
+          "routeProgressPercentage": 50,
+          "routeStatus": "DELAYED",
+          "scheduledEnd": "2026-08-01T16:00:00.000Z",
+          "scheduledStart": "2026-08-01T08:00:00.000Z",
+          "testOnly": true,
+          "unresolvedSafetyEvents": [],
+          "unresolvedStopCount": 0
+        }
+      ]
+    },
+    {
+      "caseId": "route_delayed",
+      "routes": [
+        {
+          "activeRouteHazards": [],
+          "actualStart": "2026-08-01T08:05:00.000Z",
+          "assignedDriverId": "driver-synthetic-001",
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "completedStopCount": 5,
+          "driverIntelligenceAssessment": null,
+          "evidenceCompleteness": {
+            "items": [
+              {
+                "field": "routeId",
+                "present": true
+              },
+              {
+                "field": "organizationId",
+                "present": true
+              },
+              {
+                "field": "scheduledStart",
+                "present": true
+              },
+              {
+                "field": "scheduledEnd",
+                "present": true
+              },
+              {
+                "field": "lastEvidenceTimestamp",
+                "present": true
+              }
+            ],
+            "score": 1,
+            "status": "COMPLETE"
+          },
+          "evidenceConfidence": {
+            "score": 1,
+            "status": "NOT_PERFORMANCE_SCORE"
+          },
+          "humanReviewRequired": false,
+          "lastEvidenceTimestamp": "2026-08-01T10:00:00.000Z",
+          "organizationId": "org_synthetic_supervisor_intelligence",
+          "portfolioItemHash": "5c8b6febdd876d01e7c05d0f01a17f78aac04184cc7904792fe6caedade7832e",
+          "remainingStopCount": 5,
+          "routeDeviationState": "NONE",
+          "routeEvidenceConflict": false,
+          "routeEvidenceStale": false,
+          "routeId": "route-delayed",
+          "routeIntelligenceAssessment": null,
+          "routeProgressPercentage": 50,
+          "routeStatus": "DELAYED",
+          "scheduledEnd": "2026-08-01T16:00:00.000Z",
+          "scheduledStart": "2026-08-01T08:00:00.000Z",
+          "testOnly": true,
+          "unresolvedSafetyEvents": [],
+          "unresolvedStopCount": 0
+        }
+      ]
+    },
+    {
+      "caseId": "route_blocked_low_bridge",
+      "routes": [
+        {
+          "activeRouteHazards": [],
+          "actualStart": "2026-08-01T08:05:00.000Z",
+          "assignedDriverId": "driver-synthetic-001",
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "completedStopCount": 5,
+          "driverIntelligenceAssessment": null,
+          "evidenceCompleteness": {
+            "items": [
+              {
+                "field": "routeId",
+                "present": true
+              },
+              {
+                "field": "organizationId",
+                "present": true
+              },
+              {
+                "field": "scheduledStart",
+                "present": true
+              },
+              {
+                "field": "scheduledEnd",
+                "present": true
+              },
+              {
+                "field": "lastEvidenceTimestamp",
+                "present": true
+              }
+            ],
+            "score": 1,
+            "status": "COMPLETE"
+          },
+          "evidenceConfidence": {
+            "score": 1,
+            "status": "NOT_PERFORMANCE_SCORE"
+          },
+          "humanReviewRequired": false,
+          "lastEvidenceTimestamp": "2026-08-01T10:00:00.000Z",
+          "organizationId": "org_synthetic_supervisor_intelligence",
+          "portfolioItemHash": "513d0d2218310cc3742c43623116082ad5f05a351eccd3499a262f256c09f2fc",
+          "remainingStopCount": 5,
+          "routeDeviationState": "NONE",
+          "routeEvidenceConflict": false,
+          "routeEvidenceStale": false,
+          "routeId": "route-low-bridge",
+          "routeIntelligenceAssessment": {
+            "advisoryOnly": true,
+            "assessmentHash": "0647c78b42b59401f1fd5744f9812cb27481c56cecce5acceca63ae537513703",
+            "confidence": {
+              "score": null,
+              "status": "NOT_SAFE_TO_CERTIFY"
+            },
+            "eligible": false,
+            "engineVersion": "route.intelligence.foundation.engine.v1",
+            "evidenceCompleteness": [
+              {
+                "name": "clearanceEvidence",
+                "present": true
+              },
+              {
+                "name": "restrictions",
+                "present": true
+              },
+              {
+                "name": "hazards",
+                "present": true
+              },
+              {
+                "name": "geometry",
+                "present": true
+              }
+            ],
+            "generatedAt": "2026-07-25T00:00:00.000Z",
+            "policy": {
+              "failClosedOnMissingVehicleDimensions": true,
+              "failClosedOnUnknownClearance": true,
+              "hazardProximityYards": 60,
+              "heightSafetyBufferInches": 6,
+              "maxEvidenceAgeDays": 365,
+              "minimumClearanceMarginInches": 3,
+              "residentialAvoidanceAdvisoryOnly": true
+            },
+            "productionApplicable": false,
+            "providerCallInvoked": false,
+            "reasonCodes": [
+              "CLEARANCE_FAIL_CLOSED",
+              "HAZARD_PROXIMITY_PASS"
+            ],
+            "routeCandidateId": "route-low-clearance",
+            "routeEndpointModified": false,
+            "ruleResults": [
+              {
+                "assessmentType": "CLEARANCE",
+                "evidenceId": "bridge-13ft-0in-current",
+                "facts": {
+                  "clearanceConfidence": 1,
+                  "clearanceInches": 156,
+                  "clearanceSource": "synthetic.bridge.catalog",
+                  "evidenceAgeDays": 5,
+                  "marginInches": -12,
+                  "safetyBufferInches": 6,
+                  "vehicleEffectiveHeightInches": 168,
+                  "vehiclePhysicalHeightInches": 162
+                },
+                "reasonCode": "CLEARANCE_FAIL_CLOSED",
+                "resultHash": "2b96c15d1418ae24ae14722a06ea290cc0b941240d48bc2d93a88926ea49c011",
+                "safetyCritical": true,
+                "status": "FAIL_CLOSED"
+              },
+              {
+                "assessmentType": "HAZARD_PROXIMITY",
+                "facts": {
+                  "hazardCount": 0
+                },
+                "reasonCode": "HAZARD_PROXIMITY_PASS",
+                "resultHash": "e763627faff663cc3342697e92fbb8effabf46dd2998b852d130419e70c022c9",
+                "safetyCritical": false,
+                "status": "PASS"
+              }
+            ],
+            "safeWithinKnownEvidence": false,
+            "schemaVersion": "route.intelligence.foundation.v1",
+            "sourceHashes": [
+              {
+                "assessmentType": "CLEARANCE",
+                "hash": "2b96c15d1418ae24ae14722a06ea290cc0b941240d48bc2d93a88926ea49c011",
+                "id": "bridge-13ft-0in-current"
+              },
+              {
+                "assessmentType": "HAZARD_PROXIMITY",
+                "hash": "e763627faff663cc3342697e92fbb8effabf46dd2998b852d130419e70c022c9",
+                "id": null
+              }
+            ],
+            "status": "UNSAFE",
+            "tenantContext": {
+              "organizationId": "org_synthetic_route_intelligence"
+            }
+          },
+          "routeProgressPercentage": 50,
+          "routeStatus": "BLOCKED",
+          "scheduledEnd": "2026-08-01T16:00:00.000Z",
+          "scheduledStart": "2026-08-01T08:00:00.000Z",
+          "testOnly": true,
+          "unresolvedSafetyEvents": [
+            {
+              "eventId": "evt-low-bridge",
+              "eventType": "LOW_BRIDGE"
+            }
+          ],
+          "unresolvedStopCount": 0
+        }
+      ]
+    },
+    {
+      "caseId": "route_blocked_road_closure",
+      "routes": [
+        {
+          "activeRouteHazards": [],
+          "actualStart": "2026-08-01T08:05:00.000Z",
+          "assignedDriverId": "driver-synthetic-001",
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "completedStopCount": 5,
+          "driverIntelligenceAssessment": null,
+          "evidenceCompleteness": {
+            "items": [
+              {
+                "field": "routeId",
+                "present": true
+              },
+              {
+                "field": "organizationId",
+                "present": true
+              },
+              {
+                "field": "scheduledStart",
+                "present": true
+              },
+              {
+                "field": "scheduledEnd",
+                "present": true
+              },
+              {
+                "field": "lastEvidenceTimestamp",
+                "present": true
+              }
+            ],
+            "score": 1,
+            "status": "COMPLETE"
+          },
+          "evidenceConfidence": {
+            "score": 1,
+            "status": "NOT_PERFORMANCE_SCORE"
+          },
+          "humanReviewRequired": false,
+          "lastEvidenceTimestamp": "2026-08-01T10:00:00.000Z",
+          "organizationId": "org_synthetic_supervisor_intelligence",
+          "portfolioItemHash": "1b54cfb2df5137038742213061bb51b7b6aa992c26ed88dc6ec9e0d51aeaaa14",
+          "remainingStopCount": 5,
+          "routeDeviationState": "NONE",
+          "routeEvidenceConflict": false,
+          "routeEvidenceStale": false,
+          "routeId": "route-road-closure",
+          "routeIntelligenceAssessment": null,
+          "routeProgressPercentage": 50,
+          "routeStatus": "IN_PROGRESS",
+          "scheduledEnd": "2026-08-01T16:00:00.000Z",
+          "scheduledStart": "2026-08-01T08:00:00.000Z",
+          "testOnly": true,
+          "unresolvedSafetyEvents": [
+            {
+              "eventId": "evt-road-closure",
+              "eventType": "ROAD_CLOSURE"
+            }
+          ],
+          "unresolvedStopCount": 0
+        }
+      ]
+    },
+    {
+      "caseId": "route_deviation_active",
+      "routes": [
+        {
+          "activeRouteHazards": [],
+          "actualStart": "2026-08-01T08:05:00.000Z",
+          "assignedDriverId": "driver-synthetic-001",
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "completedStopCount": 5,
+          "driverIntelligenceAssessment": null,
+          "evidenceCompleteness": {
+            "items": [
+              {
+                "field": "routeId",
+                "present": true
+              },
+              {
+                "field": "organizationId",
+                "present": true
+              },
+              {
+                "field": "scheduledStart",
+                "present": true
+              },
+              {
+                "field": "scheduledEnd",
+                "present": true
+              },
+              {
+                "field": "lastEvidenceTimestamp",
+                "present": true
+              }
+            ],
+            "score": 1,
+            "status": "COMPLETE"
+          },
+          "evidenceConfidence": {
+            "score": 1,
+            "status": "NOT_PERFORMANCE_SCORE"
+          },
+          "humanReviewRequired": false,
+          "lastEvidenceTimestamp": "2026-08-01T10:00:00.000Z",
+          "organizationId": "org_synthetic_supervisor_intelligence",
+          "portfolioItemHash": "b6594b7f8511adebfc12252584eac321a4e0fe06aa1b23f251f91614a0546fa4",
+          "remainingStopCount": 5,
+          "routeDeviationState": "ACTIVE",
+          "routeEvidenceConflict": false,
+          "routeEvidenceStale": false,
+          "routeId": "route-deviation",
+          "routeIntelligenceAssessment": null,
+          "routeProgressPercentage": 50,
+          "routeStatus": "IN_PROGRESS",
+          "scheduledEnd": "2026-08-01T16:00:00.000Z",
+          "scheduledStart": "2026-08-01T08:00:00.000Z",
+          "testOnly": true,
+          "unresolvedSafetyEvents": [],
+          "unresolvedStopCount": 0
+        }
+      ]
+    },
+    {
+      "caseId": "route_deviation_resolved",
+      "routes": [
+        {
+          "activeRouteHazards": [],
+          "actualStart": "2026-08-01T08:05:00.000Z",
+          "assignedDriverId": "driver-synthetic-001",
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "completedStopCount": 5,
+          "driverIntelligenceAssessment": null,
+          "evidenceCompleteness": {
+            "items": [
+              {
+                "field": "routeId",
+                "present": true
+              },
+              {
+                "field": "organizationId",
+                "present": true
+              },
+              {
+                "field": "scheduledStart",
+                "present": true
+              },
+              {
+                "field": "scheduledEnd",
+                "present": true
+              },
+              {
+                "field": "lastEvidenceTimestamp",
+                "present": true
+              }
+            ],
+            "score": 1,
+            "status": "COMPLETE"
+          },
+          "evidenceConfidence": {
+            "score": 1,
+            "status": "NOT_PERFORMANCE_SCORE"
+          },
+          "humanReviewRequired": false,
+          "lastEvidenceTimestamp": "2026-08-01T10:00:00.000Z",
+          "organizationId": "org_synthetic_supervisor_intelligence",
+          "portfolioItemHash": "4208f0eb63171155264a2ee4eb6a835ea56fcee766b138d25e34ea7b93d94585",
+          "remainingStopCount": 5,
+          "routeDeviationState": "RESOLVED",
+          "routeEvidenceConflict": false,
+          "routeEvidenceStale": false,
+          "routeId": "route-deviation-resolved",
+          "routeIntelligenceAssessment": null,
+          "routeProgressPercentage": 50,
+          "routeStatus": "IN_PROGRESS",
+          "scheduledEnd": "2026-08-01T16:00:00.000Z",
+          "scheduledStart": "2026-08-01T08:00:00.000Z",
+          "testOnly": true,
+          "unresolvedSafetyEvents": [],
+          "unresolvedStopCount": 0
+        }
+      ]
+    },
+    {
+      "caseId": "no_through_truck_event",
+      "routes": [
+        {
+          "activeRouteHazards": [],
+          "actualStart": "2026-08-01T08:05:00.000Z",
+          "assignedDriverId": "driver-synthetic-001",
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "completedStopCount": 5,
+          "driverIntelligenceAssessment": null,
+          "evidenceCompleteness": {
+            "items": [
+              {
+                "field": "routeId",
+                "present": true
+              },
+              {
+                "field": "organizationId",
+                "present": true
+              },
+              {
+                "field": "scheduledStart",
+                "present": true
+              },
+              {
+                "field": "scheduledEnd",
+                "present": true
+              },
+              {
+                "field": "lastEvidenceTimestamp",
+                "present": true
+              }
+            ],
+            "score": 1,
+            "status": "COMPLETE"
+          },
+          "evidenceConfidence": {
+            "score": 1,
+            "status": "NOT_PERFORMANCE_SCORE"
+          },
+          "humanReviewRequired": false,
+          "lastEvidenceTimestamp": "2026-08-01T10:00:00.000Z",
+          "organizationId": "org_synthetic_supervisor_intelligence",
+          "portfolioItemHash": "2d413f9bb5e63e9b89e872f0add9bd6153a16c9537df341d779fd59e99ceee95",
+          "remainingStopCount": 5,
+          "routeDeviationState": "NONE",
+          "routeEvidenceConflict": false,
+          "routeEvidenceStale": false,
+          "routeId": "route-no-through",
+          "routeIntelligenceAssessment": null,
+          "routeProgressPercentage": 50,
+          "routeStatus": "IN_PROGRESS",
+          "scheduledEnd": "2026-08-01T16:00:00.000Z",
+          "scheduledStart": "2026-08-01T08:00:00.000Z",
+          "testOnly": true,
+          "unresolvedSafetyEvents": [
+            {
+              "eventId": "evt-no-through",
+              "eventType": "NO_THROUGH_TRUCKS"
+            }
+          ],
+          "unresolvedStopCount": 0
+        }
+      ]
+    },
+    {
+      "caseId": "restricted_road_event",
+      "routes": [
+        {
+          "activeRouteHazards": [],
+          "actualStart": "2026-08-01T08:05:00.000Z",
+          "assignedDriverId": "driver-synthetic-001",
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "completedStopCount": 5,
+          "driverIntelligenceAssessment": null,
+          "evidenceCompleteness": {
+            "items": [
+              {
+                "field": "routeId",
+                "present": true
+              },
+              {
+                "field": "organizationId",
+                "present": true
+              },
+              {
+                "field": "scheduledStart",
+                "present": true
+              },
+              {
+                "field": "scheduledEnd",
+                "present": true
+              },
+              {
+                "field": "lastEvidenceTimestamp",
+                "present": true
+              }
+            ],
+            "score": 1,
+            "status": "COMPLETE"
+          },
+          "evidenceConfidence": {
+            "score": 1,
+            "status": "NOT_PERFORMANCE_SCORE"
+          },
+          "humanReviewRequired": false,
+          "lastEvidenceTimestamp": "2026-08-01T10:00:00.000Z",
+          "organizationId": "org_synthetic_supervisor_intelligence",
+          "portfolioItemHash": "c262d59b7aea4b2a0fac6f9a968e10277b0f840d3d95b18e16cf1eb94fefe3a9",
+          "remainingStopCount": 5,
+          "routeDeviationState": "NONE",
+          "routeEvidenceConflict": false,
+          "routeEvidenceStale": false,
+          "routeId": "route-restricted",
+          "routeIntelligenceAssessment": null,
+          "routeProgressPercentage": 50,
+          "routeStatus": "IN_PROGRESS",
+          "scheduledEnd": "2026-08-01T16:00:00.000Z",
+          "scheduledStart": "2026-08-01T08:00:00.000Z",
+          "testOnly": true,
+          "unresolvedSafetyEvents": [
+            {
+              "eventId": "evt-restricted",
+              "eventType": "RESTRICTED_ROAD"
+            }
+          ],
+          "unresolvedStopCount": 0
+        }
+      ]
+    },
+    {
+      "caseId": "driver_speed_advisory",
+      "routes": [
+        {
+          "activeRouteHazards": [],
+          "actualStart": "2026-08-01T08:05:00.000Z",
+          "assignedDriverId": "driver-synthetic-001",
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "completedStopCount": 5,
+          "driverIntelligenceAssessment": null,
+          "evidenceCompleteness": {
+            "items": [
+              {
+                "field": "routeId",
+                "present": true
+              },
+              {
+                "field": "organizationId",
+                "present": true
+              },
+              {
+                "field": "scheduledStart",
+                "present": true
+              },
+              {
+                "field": "scheduledEnd",
+                "present": true
+              },
+              {
+                "field": "lastEvidenceTimestamp",
+                "present": true
+              }
+            ],
+            "score": 1,
+            "status": "COMPLETE"
+          },
+          "evidenceConfidence": {
+            "score": 1,
+            "status": "NOT_PERFORMANCE_SCORE"
+          },
+          "humanReviewRequired": false,
+          "lastEvidenceTimestamp": "2026-08-01T10:00:00.000Z",
+          "organizationId": "org_synthetic_supervisor_intelligence",
+          "portfolioItemHash": "0281225cbcc1792c5b6e324da9ebe5fcef7bd602e637c008545f240dd4eac9c8",
+          "remainingStopCount": 5,
+          "routeDeviationState": "NONE",
+          "routeEvidenceConflict": false,
+          "routeEvidenceStale": false,
+          "routeId": "route-speed-advisory",
+          "routeIntelligenceAssessment": null,
+          "routeProgressPercentage": 50,
+          "routeStatus": "IN_PROGRESS",
+          "scheduledEnd": "2026-08-01T16:00:00.000Z",
+          "scheduledStart": "2026-08-01T08:00:00.000Z",
+          "testOnly": true,
+          "unresolvedSafetyEvents": [
+            {
+              "eventId": "evt-speed-advisory",
+              "eventType": "SPEED_ADVISORY"
+            }
+          ],
+          "unresolvedStopCount": 0
+        }
+      ]
+    },
+    {
+      "caseId": "driver_speed_warning",
+      "routes": [
+        {
+          "activeRouteHazards": [],
+          "actualStart": "2026-08-01T08:05:00.000Z",
+          "assignedDriverId": "driver-synthetic-001",
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "completedStopCount": 5,
+          "driverIntelligenceAssessment": {
+            "advisories": [
+              {
+                "advisoryHash": "e10e79acb6b7a361d27b3f45797cb0aebd1c3f23ce9d25b04bbee192f8de4ca7",
+                "advisoryId": "driver.advisory.driver_speed_compliance.speed_warning_65",
+                "advisoryType": "REDUCE_SPEED",
+                "employeeScoring": false,
+                "providerGenerated": false,
+                "reasonCode": "SPEED_WARNING_65",
+                "sourceAssessmentType": "DRIVER_SPEED_COMPLIANCE",
+                "structuredOnly": true
+              }
+            ],
+            "assessmentHash": "d1cc1d19985f46a141f2ac8622510b2d0f95f0e7020b30def7ab2a1cac6f611a",
+            "assessmentId": "driver.assessment.snapshot-speed-65",
+            "confidence": {
+              "score": null,
+              "status": "NOT_PERFORMANCE_SCORE"
+            },
+            "driverId": "driver-synthetic-001",
+            "driverState": "DRIVING",
+            "employeeScoring": false,
+            "engineVersion": "driver.intelligence.foundation.engine.v1",
+            "evidenceCompleteness": [
+              {
+                "name": "driverProfile",
+                "present": true
+              },
+              {
+                "name": "driverState",
+                "present": true
+              },
+              {
+                "name": "currentPosition",
+                "present": true
+              },
+              {
+                "name": "assignedRoute",
+                "present": true
+              },
+              {
+                "name": "speed",
+                "present": true
+              },
+              {
+                "name": "events",
+                "present": true
+              }
+            ],
+            "explanation": {
+              "assessmentId": "driver.assessment.snapshot-speed-65",
+              "employeeScoring": false,
+              "explanationHash": "798686a055d3f9d241f0ebd2d5dbd21fb40908dc31d4a05903541238d5a71949",
+              "insufficientEvidence": [],
+              "providerGenerated": false,
+              "reasonCodes": [
+                "DRIVER_STATE_VALID",
+                "HAZARD_ACKNOWLEDGED",
+                "ROUTE_ADHERENCE_PASS",
+                "SPEED_WARNING_65",
+                "STOP_PROGRESS_UNKNOWN"
+              ],
+              "reviewRequired": [
+                "SPEED_WARNING_65"
+              ],
+              "summary": "Driver advisory state was derived from deterministic evidence and reason codes."
+            },
+            "generatedAt": "2026-07-25T00:00:00.000Z",
+            "hostedAiInvoked": false,
+            "humanReviewFlags": [
+              {
+                "assessmentType": "DRIVER_SPEED_COMPLIANCE",
+                "reasonCode": "SPEED_WARNING_65"
+              }
+            ],
+            "policy": {
+              "approachThresholdYards": 60,
+              "deterministicNow": "2026-07-25T00:00:00.000Z",
+              "offRouteWarningMinutes": 5,
+              "repeatedSpeedingWindowEvents": 3,
+              "routeDeviationAdvisoryYards": 100,
+              "routeDeviationWarningYards": 300,
+              "speedAdvisoryMph": 60,
+              "speedEvidenceStaleMinutes": 5,
+              "speedWarningMph": 65,
+              "stopArrivalThresholdYards": 30,
+              "stopDepartureThresholdYards": 60
+            },
+            "predictiveModelInvoked": false,
+            "productionApplicable": false,
+            "providerCallInvoked": false,
+            "reasonCodes": [
+              "DRIVER_STATE_VALID",
+              "HAZARD_ACKNOWLEDGED",
+              "ROUTE_ADHERENCE_PASS",
+              "SPEED_WARNING_65",
+              "STOP_PROGRESS_UNKNOWN"
+            ],
+            "ruleResults": [
+              {
+                "assessmentType": "DRIVER_OPERATIONAL_STATE",
+                "driverState": "DRIVING",
+                "employeeScoring": false,
+                "eventTypes": [
+                  "ROUTE_STARTED"
+                ],
+                "facts": {
+                  "knownState": true,
+                  "unknownEvents": []
+                },
+                "reasonCode": "DRIVER_STATE_VALID",
+                "resultHash": "e53e71d8ee3dd47eb401ae4f3c3859fd2f4fb56891bb587c2bc097c590f447b3",
+                "status": "PASS"
+              },
+              {
+                "assessmentType": "DRIVER_ROUTE_ADHERENCE",
+                "employeeScoring": false,
+                "facts": {
+                  "contextualExplanationsRemainPossible": [
+                    "local delivery",
+                    "road closure",
+                    "safety reroute",
+                    "supervisor instruction"
+                  ],
+                  "distanceFromAssignedRouteYards": 0,
+                  "offRouteDurationMinutes": 0,
+                  "routePointCount": 3,
+                  "routeResumed": false
+                },
+                "humanReviewRequired": false,
+                "reasonCode": "ROUTE_ADHERENCE_PASS",
+                "resultHash": "42c855892d2280f9d1c1d1d242809d9ff96b26280a5e9926ab904b25bbd59cc2",
+                "status": "PASS"
+              },
+              {
+                "assessmentType": "DRIVER_STOP_PROGRESS",
+                "employeeScoring": false,
+                "facts": {
+                  "arrivalThresholdYards": 30,
+                  "arrived": false,
+                  "departed": false,
+                  "departureThresholdYards": 60,
+                  "distanceToStopYards": null,
+                  "driverState": "DRIVING",
+                  "latestStopEventType": null
+                },
+                "reasonCode": "STOP_PROGRESS_UNKNOWN",
+                "resultHash": "71a1317cd2617906368f46959e6988ffe37303ca9bafcf2769154dfb87380ca9",
+                "status": "NOT_APPLICABLE",
+                "stopId": null
+              },
+              {
+                "assessmentType": "DRIVER_SPEED_COMPLIANCE",
+                "employeeScoring": false,
+                "facts": {
+                  "advisoryMph": 60,
+                  "recentWarningCount": 0,
+                  "speedAgeMinutes": 1,
+                  "speedMph": 67,
+                  "speedUnit": "mph",
+                  "staleAfterMinutes": 5,
+                  "warningMphExclusive": 65
+                },
+                "humanReviewRequired": true,
+                "reasonCode": "SPEED_WARNING_65",
+                "resultHash": "b0ca4d69610b4eb1c10d9e78ec96dc4770fabce25c307ec974f12a8c9780c963",
+                "status": "WARNING"
+              },
+              {
+                "assessmentType": "DRIVER_LOW_BRIDGE_APPROACH",
+                "employeeScoring": false,
+                "facts": {
+                  "bridgeCount": 1,
+                  "nearest": {
+                    "bridgeId": "bridge-clear-far",
+                    "clearance": {
+                      "unit": "ft",
+                      "value": 15
+                    },
+                    "confidence": 1,
+                    "distanceYards": 394.9555447884436
+                  },
+                  "thresholdYards": 60
+                },
+                "humanReviewRequired": false,
+                "reasonCode": "ROUTE_ADHERENCE_PASS",
+                "resultHash": "393608667ceaa0dd88cea25c11f9e1ff4907640244d01c824ae76a36bb11765e",
+                "routeIntelligencePolicyVersion": "route.intelligence.foundation.v1",
+                "status": "PASS"
+              },
+              {
+                "assessmentType": "DRIVER_RESTRICTED_ROAD_APPROACH",
+                "employeeScoring": false,
+                "facts": {
+                  "nearest": {
+                    "confidence": 1,
+                    "distanceYards": 394.9555447884436,
+                    "point": {
+                      "latitude": 33.503,
+                      "longitude": -86.797
+                    },
+                    "restrictionId": "residential-far",
+                    "type": "RESIDENTIAL_AVOID"
+                  },
+                  "restrictionCount": 1,
+                  "routePurpose": "THROUGH_ROUTE",
+                  "thresholdYards": 60
+                },
+                "humanReviewRequired": false,
+                "reasonCode": "ROUTE_ADHERENCE_PASS",
+                "resultHash": "985a6c5029bf8bcb1299cc73a39b102f4778778e37bf8832fceb03cf119768b9",
+                "status": "PASS"
+              },
+              {
+                "assessmentType": "DRIVER_HAZARD_ACKNOWLEDGEMENT",
+                "employeeScoring": false,
+                "facts": {
+                  "missing": [],
+                  "required": []
+                },
+                "reasonCode": "HAZARD_ACKNOWLEDGED",
+                "resultHash": "52e5dc679a6d66b8fbb3dddb11726de9badc86d58cc1ca25dbe1943a2a64ea1f",
+                "status": "NOT_APPLICABLE"
+              }
+            ],
+            "schemaVersion": "driver.intelligence.foundation.v1",
+            "sourceHashes": [
+              {
+                "assessmentType": "DRIVER_OPERATIONAL_STATE",
+                "hash": "e53e71d8ee3dd47eb401ae4f3c3859fd2f4fb56891bb587c2bc097c590f447b3"
+              },
+              {
+                "assessmentType": "DRIVER_ROUTE_ADHERENCE",
+                "hash": "42c855892d2280f9d1c1d1d242809d9ff96b26280a5e9926ab904b25bbd59cc2"
+              },
+              {
+                "assessmentType": "DRIVER_STOP_PROGRESS",
+                "hash": "71a1317cd2617906368f46959e6988ffe37303ca9bafcf2769154dfb87380ca9"
+              },
+              {
+                "assessmentType": "DRIVER_SPEED_COMPLIANCE",
+                "hash": "b0ca4d69610b4eb1c10d9e78ec96dc4770fabce25c307ec974f12a8c9780c963"
+              },
+              {
+                "assessmentType": "DRIVER_LOW_BRIDGE_APPROACH",
+                "hash": "393608667ceaa0dd88cea25c11f9e1ff4907640244d01c824ae76a36bb11765e"
+              },
+              {
+                "assessmentType": "DRIVER_RESTRICTED_ROAD_APPROACH",
+                "hash": "985a6c5029bf8bcb1299cc73a39b102f4778778e37bf8832fceb03cf119768b9"
+              },
+              {
+                "assessmentType": "DRIVER_HAZARD_ACKNOWLEDGEMENT",
+                "hash": "52e5dc679a6d66b8fbb3dddb11726de9badc86d58cc1ca25dbe1943a2a64ea1f"
+              }
+            ],
+            "status": "REVIEW_REQUIRED",
+            "tenantContext": {
+              "organizationId": "org_synthetic_driver_intelligence"
+            },
+            "testOnly": true
+          },
+          "evidenceCompleteness": {
+            "items": [
+              {
+                "field": "routeId",
+                "present": true
+              },
+              {
+                "field": "organizationId",
+                "present": true
+              },
+              {
+                "field": "scheduledStart",
+                "present": true
+              },
+              {
+                "field": "scheduledEnd",
+                "present": true
+              },
+              {
+                "field": "lastEvidenceTimestamp",
+                "present": true
+              }
+            ],
+            "score": 1,
+            "status": "COMPLETE"
+          },
+          "evidenceConfidence": {
+            "score": 1,
+            "status": "NOT_PERFORMANCE_SCORE"
+          },
+          "humanReviewRequired": false,
+          "lastEvidenceTimestamp": "2026-08-01T10:00:00.000Z",
+          "organizationId": "org_synthetic_supervisor_intelligence",
+          "portfolioItemHash": "9d5430d810453f7368de3247a1828ce75394082167388990b50031649729d6bc",
+          "remainingStopCount": 5,
+          "routeDeviationState": "NONE",
+          "routeEvidenceConflict": false,
+          "routeEvidenceStale": false,
+          "routeId": "route-speed-warning",
+          "routeIntelligenceAssessment": null,
+          "routeProgressPercentage": 50,
+          "routeStatus": "IN_PROGRESS",
+          "scheduledEnd": "2026-08-01T16:00:00.000Z",
+          "scheduledStart": "2026-08-01T08:00:00.000Z",
+          "testOnly": true,
+          "unresolvedSafetyEvents": [
+            {
+              "eventId": "evt-speed-warning",
+              "eventType": "SPEED_WARNING"
+            }
+          ],
+          "unresolvedStopCount": 0
+        }
+      ]
+    },
+    {
+      "caseId": "gps_unavailable",
+      "routes": [
+        {
+          "activeRouteHazards": [],
+          "actualStart": "2026-08-01T08:05:00.000Z",
+          "assignedDriverId": "driver-synthetic-001",
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "completedStopCount": 5,
+          "driverIntelligenceAssessment": null,
+          "evidenceCompleteness": {
+            "items": [
+              {
+                "field": "routeId",
+                "present": true
+              },
+              {
+                "field": "organizationId",
+                "present": true
+              },
+              {
+                "field": "scheduledStart",
+                "present": true
+              },
+              {
+                "field": "scheduledEnd",
+                "present": true
+              },
+              {
+                "field": "lastEvidenceTimestamp",
+                "present": true
+              }
+            ],
+            "score": 1,
+            "status": "COMPLETE"
+          },
+          "evidenceConfidence": {
+            "score": 1,
+            "status": "NOT_PERFORMANCE_SCORE"
+          },
+          "humanReviewRequired": false,
+          "lastEvidenceTimestamp": "2026-08-01T10:00:00.000Z",
+          "organizationId": "org_synthetic_supervisor_intelligence",
+          "portfolioItemHash": "17c1535cca3dccc726776b7adaaa041e90bd880868ad27abfca20fdae20c5288",
+          "remainingStopCount": 5,
+          "routeDeviationState": "NONE",
+          "routeEvidenceConflict": false,
+          "routeEvidenceStale": false,
+          "routeId": "route-gps",
+          "routeIntelligenceAssessment": null,
+          "routeProgressPercentage": 50,
+          "routeStatus": "IN_PROGRESS",
+          "scheduledEnd": "2026-08-01T16:00:00.000Z",
+          "scheduledStart": "2026-08-01T08:00:00.000Z",
+          "testOnly": true,
+          "unresolvedSafetyEvents": [
+            {
+              "eventId": "evt-gps",
+              "eventType": "GPS_UNAVAILABLE"
+            }
+          ],
+          "unresolvedStopCount": 0
+        }
+      ]
+    },
+    {
+      "caseId": "stale_route_evidence",
+      "routes": [
+        {
+          "activeRouteHazards": [],
+          "actualStart": "2026-08-01T08:05:00.000Z",
+          "assignedDriverId": "driver-synthetic-001",
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "completedStopCount": 5,
+          "driverIntelligenceAssessment": null,
+          "evidenceCompleteness": {
+            "items": [
+              {
+                "field": "routeId",
+                "present": true
+              },
+              {
+                "field": "organizationId",
+                "present": true
+              },
+              {
+                "field": "scheduledStart",
+                "present": true
+              },
+              {
+                "field": "scheduledEnd",
+                "present": true
+              },
+              {
+                "field": "lastEvidenceTimestamp",
+                "present": true
+              }
+            ],
+            "score": 1,
+            "status": "COMPLETE"
+          },
+          "evidenceConfidence": {
+            "score": 1,
+            "status": "NOT_PERFORMANCE_SCORE"
+          },
+          "humanReviewRequired": false,
+          "lastEvidenceTimestamp": "2026-08-01T10:00:00.000Z",
+          "organizationId": "org_synthetic_supervisor_intelligence",
+          "portfolioItemHash": "a1a1639cfbb93127dd870ee76cb9ec211efb43aa057c26f95af6204583447d03",
+          "remainingStopCount": 5,
+          "routeDeviationState": "NONE",
+          "routeEvidenceConflict": false,
+          "routeEvidenceStale": true,
+          "routeId": "route-stale",
+          "routeIntelligenceAssessment": null,
+          "routeProgressPercentage": 50,
+          "routeStatus": "IN_PROGRESS",
+          "scheduledEnd": "2026-08-01T16:00:00.000Z",
+          "scheduledStart": "2026-08-01T08:00:00.000Z",
+          "testOnly": true,
+          "unresolvedSafetyEvents": [],
+          "unresolvedStopCount": 0
+        }
+      ]
+    },
+    {
+      "caseId": "conflicting_route_evidence",
+      "routes": [
+        {
+          "activeRouteHazards": [],
+          "actualStart": "2026-08-01T08:05:00.000Z",
+          "assignedDriverId": "driver-synthetic-001",
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "completedStopCount": 5,
+          "driverIntelligenceAssessment": null,
+          "evidenceCompleteness": {
+            "items": [
+              {
+                "field": "routeId",
+                "present": true
+              },
+              {
+                "field": "organizationId",
+                "present": true
+              },
+              {
+                "field": "scheduledStart",
+                "present": true
+              },
+              {
+                "field": "scheduledEnd",
+                "present": true
+              },
+              {
+                "field": "lastEvidenceTimestamp",
+                "present": true
+              }
+            ],
+            "score": 1,
+            "status": "COMPLETE"
+          },
+          "evidenceConfidence": {
+            "score": 1,
+            "status": "NOT_PERFORMANCE_SCORE"
+          },
+          "humanReviewRequired": false,
+          "lastEvidenceTimestamp": "2026-08-01T10:00:00.000Z",
+          "organizationId": "org_synthetic_supervisor_intelligence",
+          "portfolioItemHash": "13818dd3f81c4b8df61ea3447f0c7dce6e1d91387ae7b12136b6bed40e192788",
+          "remainingStopCount": 5,
+          "routeDeviationState": "NONE",
+          "routeEvidenceConflict": true,
+          "routeEvidenceStale": false,
+          "routeId": "route-conflict",
+          "routeIntelligenceAssessment": null,
+          "routeProgressPercentage": 50,
+          "routeStatus": "IN_PROGRESS",
+          "scheduledEnd": "2026-08-01T16:00:00.000Z",
+          "scheduledStart": "2026-08-01T08:00:00.000Z",
+          "testOnly": true,
+          "unresolvedSafetyEvents": [],
+          "unresolvedStopCount": 0
+        }
+      ]
+    },
+    {
+      "caseId": "stop_delayed",
+      "routes": [
+        {
+          "activeRouteHazards": [],
+          "actualStart": "2026-08-01T08:05:00.000Z",
+          "assignedDriverId": "driver-synthetic-001",
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "completedStopCount": 5,
+          "driverIntelligenceAssessment": null,
+          "evidenceCompleteness": {
+            "items": [
+              {
+                "field": "routeId",
+                "present": true
+              },
+              {
+                "field": "organizationId",
+                "present": true
+              },
+              {
+                "field": "scheduledStart",
+                "present": true
+              },
+              {
+                "field": "scheduledEnd",
+                "present": true
+              },
+              {
+                "field": "lastEvidenceTimestamp",
+                "present": true
+              }
+            ],
+            "score": 1,
+            "status": "COMPLETE"
+          },
+          "evidenceConfidence": {
+            "score": 1,
+            "status": "NOT_PERFORMANCE_SCORE"
+          },
+          "humanReviewRequired": false,
+          "lastEvidenceTimestamp": "2026-08-01T10:00:00.000Z",
+          "organizationId": "org_synthetic_supervisor_intelligence",
+          "portfolioItemHash": "23b1dd0acd01cabe2e2954f74213492fc633a8eef7747094861e5efc9c57866e",
+          "remainingStopCount": 5,
+          "routeDeviationState": "NONE",
+          "routeEvidenceConflict": false,
+          "routeEvidenceStale": false,
+          "routeId": "route-stop-delay",
+          "routeIntelligenceAssessment": null,
+          "routeProgressPercentage": 50,
+          "routeStatus": "IN_PROGRESS",
+          "scheduledEnd": "2026-08-01T16:00:00.000Z",
+          "scheduledStart": "2026-08-01T08:00:00.000Z",
+          "testOnly": true,
+          "unresolvedSafetyEvents": [],
+          "unresolvedStopCount": 0
+        }
+      ]
+    },
+    {
+      "caseId": "stop_skipped_unknown_reason",
+      "routes": [
+        {
+          "activeRouteHazards": [],
+          "actualStart": "2026-08-01T08:05:00.000Z",
+          "assignedDriverId": "driver-synthetic-001",
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "completedStopCount": 5,
+          "driverIntelligenceAssessment": null,
+          "evidenceCompleteness": {
+            "items": [
+              {
+                "field": "routeId",
+                "present": true
+              },
+              {
+                "field": "organizationId",
+                "present": true
+              },
+              {
+                "field": "scheduledStart",
+                "present": true
+              },
+              {
+                "field": "scheduledEnd",
+                "present": true
+              },
+              {
+                "field": "lastEvidenceTimestamp",
+                "present": true
+              }
+            ],
+            "score": 1,
+            "status": "COMPLETE"
+          },
+          "evidenceConfidence": {
+            "score": 1,
+            "status": "NOT_PERFORMANCE_SCORE"
+          },
+          "humanReviewRequired": false,
+          "lastEvidenceTimestamp": "2026-08-01T10:00:00.000Z",
+          "organizationId": "org_synthetic_supervisor_intelligence",
+          "portfolioItemHash": "6cd9d6aa1faab2a48e74c08bd4b7732666af8b43e8e11bf43957b4ab631edd4e",
+          "remainingStopCount": 5,
+          "routeDeviationState": "NONE",
+          "routeEvidenceConflict": false,
+          "routeEvidenceStale": false,
+          "routeId": "route-stop-skip",
+          "routeIntelligenceAssessment": null,
+          "routeProgressPercentage": 50,
+          "routeStatus": "IN_PROGRESS",
+          "scheduledEnd": "2026-08-01T16:00:00.000Z",
+          "scheduledStart": "2026-08-01T08:00:00.000Z",
+          "testOnly": true,
+          "unresolvedSafetyEvents": [],
+          "unresolvedStopCount": 0
+        }
+      ]
+    },
+    {
+      "caseId": "stop_unresolved",
+      "routes": [
+        {
+          "activeRouteHazards": [],
+          "actualStart": "2026-08-01T08:05:00.000Z",
+          "assignedDriverId": "driver-synthetic-001",
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "completedStopCount": 5,
+          "driverIntelligenceAssessment": null,
+          "evidenceCompleteness": {
+            "items": [
+              {
+                "field": "routeId",
+                "present": true
+              },
+              {
+                "field": "organizationId",
+                "present": true
+              },
+              {
+                "field": "scheduledStart",
+                "present": true
+              },
+              {
+                "field": "scheduledEnd",
+                "present": true
+              },
+              {
+                "field": "lastEvidenceTimestamp",
+                "present": true
+              }
+            ],
+            "score": 1,
+            "status": "COMPLETE"
+          },
+          "evidenceConfidence": {
+            "score": 1,
+            "status": "NOT_PERFORMANCE_SCORE"
+          },
+          "humanReviewRequired": false,
+          "lastEvidenceTimestamp": "2026-08-01T10:00:00.000Z",
+          "organizationId": "org_synthetic_supervisor_intelligence",
+          "portfolioItemHash": "0e97dbbaa808a4106d42b25c2da6bdae08b1a574d3b2456424a4d152439555be",
+          "remainingStopCount": 5,
+          "routeDeviationState": "NONE",
+          "routeEvidenceConflict": false,
+          "routeEvidenceStale": false,
+          "routeId": "route-stop-unresolved",
+          "routeIntelligenceAssessment": null,
+          "routeProgressPercentage": 50,
+          "routeStatus": "IN_PROGRESS",
+          "scheduledEnd": "2026-08-01T16:00:00.000Z",
+          "scheduledStart": "2026-08-01T08:00:00.000Z",
+          "testOnly": true,
+          "unresolvedSafetyEvents": [],
+          "unresolvedStopCount": 0
+        }
+      ]
+    },
+    {
+      "caseId": "delivery_evidence_missing",
+      "routes": [
+        {
+          "activeRouteHazards": [],
+          "actualStart": "2026-08-01T08:05:00.000Z",
+          "assignedDriverId": "driver-synthetic-001",
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "completedStopCount": 5,
+          "driverIntelligenceAssessment": null,
+          "evidenceCompleteness": {
+            "items": [
+              {
+                "field": "routeId",
+                "present": true
+              },
+              {
+                "field": "organizationId",
+                "present": true
+              },
+              {
+                "field": "scheduledStart",
+                "present": true
+              },
+              {
+                "field": "scheduledEnd",
+                "present": true
+              },
+              {
+                "field": "lastEvidenceTimestamp",
+                "present": true
+              }
+            ],
+            "score": 1,
+            "status": "COMPLETE"
+          },
+          "evidenceConfidence": {
+            "score": 1,
+            "status": "NOT_PERFORMANCE_SCORE"
+          },
+          "humanReviewRequired": false,
+          "lastEvidenceTimestamp": "2026-08-01T10:00:00.000Z",
+          "organizationId": "org_synthetic_supervisor_intelligence",
+          "portfolioItemHash": "3b1360094fd07c4b638513e96582bb1da152534948fcac9a9da0e10551a75e99",
+          "remainingStopCount": 5,
+          "routeDeviationState": "NONE",
+          "routeEvidenceConflict": false,
+          "routeEvidenceStale": false,
+          "routeId": "route-evidence-missing",
+          "routeIntelligenceAssessment": null,
+          "routeProgressPercentage": 50,
+          "routeStatus": "IN_PROGRESS",
+          "scheduledEnd": "2026-08-01T16:00:00.000Z",
+          "scheduledStart": "2026-08-01T08:00:00.000Z",
+          "testOnly": true,
+          "unresolvedSafetyEvents": [],
+          "unresolvedStopCount": 0
+        }
+      ]
+    },
+    {
+      "caseId": "multiple_simultaneous_exceptions",
+      "routes": [
+        {
+          "activeRouteHazards": [],
+          "actualStart": "2026-08-01T08:05:00.000Z",
+          "assignedDriverId": "driver-synthetic-001",
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "completedStopCount": 5,
+          "driverIntelligenceAssessment": null,
+          "evidenceCompleteness": {
+            "items": [
+              {
+                "field": "routeId",
+                "present": true
+              },
+              {
+                "field": "organizationId",
+                "present": true
+              },
+              {
+                "field": "scheduledStart",
+                "present": true
+              },
+              {
+                "field": "scheduledEnd",
+                "present": true
+              },
+              {
+                "field": "lastEvidenceTimestamp",
+                "present": true
+              }
+            ],
+            "score": 1,
+            "status": "COMPLETE"
+          },
+          "evidenceConfidence": {
+            "score": 1,
+            "status": "NOT_PERFORMANCE_SCORE"
+          },
+          "humanReviewRequired": false,
+          "lastEvidenceTimestamp": "2026-08-01T10:00:00.000Z",
+          "organizationId": "org_synthetic_supervisor_intelligence",
+          "portfolioItemHash": "21b473c1d67c00e1af120e14ba939da614d98d5db2fa099cb48ccf87d11c01da",
+          "remainingStopCount": 5,
+          "routeDeviationState": "ACTIVE",
+          "routeEvidenceConflict": false,
+          "routeEvidenceStale": false,
+          "routeId": "route-multiple",
+          "routeIntelligenceAssessment": null,
+          "routeProgressPercentage": 50,
+          "routeStatus": "DELAYED",
+          "scheduledEnd": "2026-08-01T16:00:00.000Z",
+          "scheduledStart": "2026-08-01T08:00:00.000Z",
+          "testOnly": true,
+          "unresolvedSafetyEvents": [
+            {
+              "eventId": "evt-speed-warning",
+              "eventType": "SPEED_WARNING"
+            }
+          ],
+          "unresolvedStopCount": 0
+        }
+      ]
+    },
+    {
+      "caseId": "safety_outranks_delay",
+      "routes": [
+        {
+          "activeRouteHazards": [],
+          "actualStart": "2026-08-01T08:05:00.000Z",
+          "assignedDriverId": "driver-synthetic-001",
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "completedStopCount": 5,
+          "driverIntelligenceAssessment": null,
+          "evidenceCompleteness": {
+            "items": [
+              {
+                "field": "routeId",
+                "present": true
+              },
+              {
+                "field": "organizationId",
+                "present": true
+              },
+              {
+                "field": "scheduledStart",
+                "present": true
+              },
+              {
+                "field": "scheduledEnd",
+                "present": true
+              },
+              {
+                "field": "lastEvidenceTimestamp",
+                "present": true
+              }
+            ],
+            "score": 1,
+            "status": "COMPLETE"
+          },
+          "evidenceConfidence": {
+            "score": 1,
+            "status": "NOT_PERFORMANCE_SCORE"
+          },
+          "humanReviewRequired": false,
+          "lastEvidenceTimestamp": "2026-08-01T10:00:00.000Z",
+          "organizationId": "org_synthetic_supervisor_intelligence",
+          "portfolioItemHash": "87ca7676099679480914366bef4b16d75abdfee2d7050e8046574882402dcd8d",
+          "remainingStopCount": 5,
+          "routeDeviationState": "NONE",
+          "routeEvidenceConflict": false,
+          "routeEvidenceStale": false,
+          "routeId": "route-safety-priority",
+          "routeIntelligenceAssessment": null,
+          "routeProgressPercentage": 50,
+          "routeStatus": "DELAYED",
+          "scheduledEnd": "2026-08-01T16:00:00.000Z",
+          "scheduledStart": "2026-08-01T08:00:00.000Z",
+          "testOnly": true,
+          "unresolvedSafetyEvents": [
+            {
+              "eventId": "evt-low-bridge",
+              "eventType": "LOW_BRIDGE"
+            }
+          ],
+          "unresolvedStopCount": 0
+        }
+      ]
+    },
+    {
+      "caseId": "unknown_severity",
+      "routes": [
+        {
+          "activeRouteHazards": [],
+          "actualStart": null,
+          "assignedDriverId": "driver-synthetic-001",
+          "assignedVehicleId": null,
+          "completedStopCount": null,
+          "driverIntelligenceAssessment": null,
+          "evidenceCompleteness": {
+            "items": [
+              {
+                "field": "routeId",
+                "present": true
+              },
+              {
+                "field": "organizationId",
+                "present": true
+              },
+              {
+                "field": "scheduledStart",
+                "present": false
+              },
+              {
+                "field": "scheduledEnd",
+                "present": false
+              },
+              {
+                "field": "lastEvidenceTimestamp",
+                "present": false
+              }
+            ],
+            "score": 0.4,
+            "status": "INSUFFICIENT"
+          },
+          "evidenceConfidence": {
+            "score": 0.3,
+            "status": "NOT_PERFORMANCE_SCORE"
+          },
+          "humanReviewRequired": true,
+          "lastEvidenceTimestamp": null,
+          "organizationId": "org_synthetic_supervisor_intelligence",
+          "portfolioItemHash": "0e36c0aae470ee06fe803206e91182920d63cb9f7cf2ebe8882754223290c1bf",
+          "remainingStopCount": null,
+          "routeDeviationState": "UNKNOWN",
+          "routeEvidenceConflict": false,
+          "routeEvidenceStale": false,
+          "routeId": "route-unknown",
+          "routeIntelligenceAssessment": null,
+          "routeProgressPercentage": null,
+          "routeStatus": "INSUFFICIENT_EVIDENCE",
+          "scheduledEnd": null,
+          "scheduledStart": null,
+          "testOnly": true,
+          "unresolvedSafetyEvents": [],
+          "unresolvedStopCount": null
+        }
+      ]
+    },
+    {
+      "caseId": "insufficient_evidence",
+      "routes": [
+        {
+          "activeRouteHazards": [],
+          "actualStart": null,
+          "assignedDriverId": null,
+          "assignedVehicleId": null,
+          "completedStopCount": null,
+          "driverIntelligenceAssessment": null,
+          "evidenceCompleteness": {
+            "items": [
+              {
+                "field": "routeId",
+                "present": true
+              },
+              {
+                "field": "organizationId",
+                "present": true
+              },
+              {
+                "field": "scheduledStart",
+                "present": false
+              },
+              {
+                "field": "scheduledEnd",
+                "present": false
+              },
+              {
+                "field": "lastEvidenceTimestamp",
+                "present": false
+              }
+            ],
+            "score": 0.4,
+            "status": "INSUFFICIENT"
+          },
+          "evidenceConfidence": {
+            "score": 0.3,
+            "status": "NOT_PERFORMANCE_SCORE"
+          },
+          "humanReviewRequired": true,
+          "lastEvidenceTimestamp": null,
+          "organizationId": "org_synthetic_supervisor_intelligence",
+          "portfolioItemHash": "070255a087e5dd6e961601a8edacfedc90aeb16410d71bdb248a05264744c957",
+          "remainingStopCount": null,
+          "routeDeviationState": "UNKNOWN",
+          "routeEvidenceConflict": false,
+          "routeEvidenceStale": false,
+          "routeId": "route-insufficient",
+          "routeIntelligenceAssessment": null,
+          "routeProgressPercentage": null,
+          "routeStatus": "INSUFFICIENT_EVIDENCE",
+          "scheduledEnd": null,
+          "scheduledStart": null,
+          "testOnly": true,
+          "unresolvedSafetyEvents": [],
+          "unresolvedStopCount": null
+        }
+      ]
+    },
+    {
+      "caseId": "human_review",
+      "routes": [
+        {
+          "activeRouteHazards": [],
+          "actualStart": "2026-08-01T08:05:00.000Z",
+          "assignedDriverId": "driver-synthetic-001",
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "completedStopCount": 5,
+          "driverIntelligenceAssessment": null,
+          "evidenceCompleteness": {
+            "items": [
+              {
+                "field": "routeId",
+                "present": true
+              },
+              {
+                "field": "organizationId",
+                "present": true
+              },
+              {
+                "field": "scheduledStart",
+                "present": true
+              },
+              {
+                "field": "scheduledEnd",
+                "present": true
+              },
+              {
+                "field": "lastEvidenceTimestamp",
+                "present": true
+              }
+            ],
+            "score": 1,
+            "status": "COMPLETE"
+          },
+          "evidenceConfidence": {
+            "score": 1,
+            "status": "NOT_PERFORMANCE_SCORE"
+          },
+          "humanReviewRequired": false,
+          "lastEvidenceTimestamp": "2026-08-01T10:00:00.000Z",
+          "organizationId": "org_synthetic_supervisor_intelligence",
+          "portfolioItemHash": "c2f2e0d0273b5a14324f05b1dd128fa1d1fd0ae7f90f0e7954214aeeba3a369e",
+          "remainingStopCount": 5,
+          "routeDeviationState": "NONE",
+          "routeEvidenceConflict": false,
+          "routeEvidenceStale": false,
+          "routeId": "route-review",
+          "routeIntelligenceAssessment": null,
+          "routeProgressPercentage": 50,
+          "routeStatus": "IN_PROGRESS",
+          "scheduledEnd": "2026-08-01T16:00:00.000Z",
+          "scheduledStart": "2026-08-01T08:00:00.000Z",
+          "testOnly": true,
+          "unresolvedSafetyEvents": [
+            {
+              "eventId": "evt-restricted",
+              "eventType": "RESTRICTED_ROAD"
+            }
+          ],
+          "unresolvedStopCount": 0
+        }
+      ]
+    },
+    {
+      "caseId": "alert_acknowledgement",
+      "routes": [
+        {
+          "activeRouteHazards": [],
+          "actualStart": "2026-08-01T08:05:00.000Z",
+          "assignedDriverId": "driver-synthetic-001",
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "completedStopCount": 5,
+          "driverIntelligenceAssessment": null,
+          "evidenceCompleteness": {
+            "items": [
+              {
+                "field": "routeId",
+                "present": true
+              },
+              {
+                "field": "organizationId",
+                "present": true
+              },
+              {
+                "field": "scheduledStart",
+                "present": true
+              },
+              {
+                "field": "scheduledEnd",
+                "present": true
+              },
+              {
+                "field": "lastEvidenceTimestamp",
+                "present": true
+              }
+            ],
+            "score": 1,
+            "status": "COMPLETE"
+          },
+          "evidenceConfidence": {
+            "score": 1,
+            "status": "NOT_PERFORMANCE_SCORE"
+          },
+          "humanReviewRequired": false,
+          "lastEvidenceTimestamp": "2026-08-01T10:00:00.000Z",
+          "organizationId": "org_synthetic_supervisor_intelligence",
+          "portfolioItemHash": "d90fd1937775eeaeb301a27d187ede358f9614f8f99632698025ba385b9fd385",
+          "remainingStopCount": 5,
+          "routeDeviationState": "ACTIVE",
+          "routeEvidenceConflict": false,
+          "routeEvidenceStale": false,
+          "routeId": "route-ack",
+          "routeIntelligenceAssessment": null,
+          "routeProgressPercentage": 50,
+          "routeStatus": "IN_PROGRESS",
+          "scheduledEnd": "2026-08-01T16:00:00.000Z",
+          "scheduledStart": "2026-08-01T08:00:00.000Z",
+          "testOnly": true,
+          "unresolvedSafetyEvents": [],
+          "unresolvedStopCount": 0
+        }
+      ]
+    },
+    {
+      "caseId": "alert_resolution",
+      "routes": [
+        {
+          "activeRouteHazards": [],
+          "actualStart": "2026-08-01T08:05:00.000Z",
+          "assignedDriverId": "driver-synthetic-001",
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "completedStopCount": 5,
+          "driverIntelligenceAssessment": null,
+          "evidenceCompleteness": {
+            "items": [
+              {
+                "field": "routeId",
+                "present": true
+              },
+              {
+                "field": "organizationId",
+                "present": true
+              },
+              {
+                "field": "scheduledStart",
+                "present": true
+              },
+              {
+                "field": "scheduledEnd",
+                "present": true
+              },
+              {
+                "field": "lastEvidenceTimestamp",
+                "present": true
+              }
+            ],
+            "score": 1,
+            "status": "COMPLETE"
+          },
+          "evidenceConfidence": {
+            "score": 1,
+            "status": "NOT_PERFORMANCE_SCORE"
+          },
+          "humanReviewRequired": false,
+          "lastEvidenceTimestamp": "2026-08-01T10:00:00.000Z",
+          "organizationId": "org_synthetic_supervisor_intelligence",
+          "portfolioItemHash": "e49910f504ab763a0c5c70662f3ad1ec2443f6ebf10b7a48c4ac70b10db90330",
+          "remainingStopCount": 5,
+          "routeDeviationState": "ACTIVE",
+          "routeEvidenceConflict": false,
+          "routeEvidenceStale": false,
+          "routeId": "route-resolve",
+          "routeIntelligenceAssessment": null,
+          "routeProgressPercentage": 50,
+          "routeStatus": "IN_PROGRESS",
+          "scheduledEnd": "2026-08-01T16:00:00.000Z",
+          "scheduledStart": "2026-08-01T08:00:00.000Z",
+          "testOnly": true,
+          "unresolvedSafetyEvents": [],
+          "unresolvedStopCount": 0
+        }
+      ]
+    },
+    {
+      "caseId": "new_evidence_invalidates_alert",
+      "routes": [
+        {
+          "activeRouteHazards": [],
+          "actualStart": "2026-08-01T08:05:00.000Z",
+          "assignedDriverId": "driver-synthetic-001",
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "completedStopCount": 5,
+          "driverIntelligenceAssessment": null,
+          "evidenceCompleteness": {
+            "items": [
+              {
+                "field": "routeId",
+                "present": true
+              },
+              {
+                "field": "organizationId",
+                "present": true
+              },
+              {
+                "field": "scheduledStart",
+                "present": true
+              },
+              {
+                "field": "scheduledEnd",
+                "present": true
+              },
+              {
+                "field": "lastEvidenceTimestamp",
+                "present": true
+              }
+            ],
+            "score": 1,
+            "status": "COMPLETE"
+          },
+          "evidenceConfidence": {
+            "score": 1,
+            "status": "NOT_PERFORMANCE_SCORE"
+          },
+          "humanReviewRequired": false,
+          "lastEvidenceTimestamp": "2026-08-01T10:00:00.000Z",
+          "organizationId": "org_synthetic_supervisor_intelligence",
+          "portfolioItemHash": "2e734195047164ef300af1161c30e3ed35a0ad6a52159cf1393a6ca3f090a5e2",
+          "remainingStopCount": 5,
+          "routeDeviationState": "ACTIVE",
+          "routeEvidenceConflict": false,
+          "routeEvidenceStale": false,
+          "routeId": "route-invalidated",
+          "routeIntelligenceAssessment": null,
+          "routeProgressPercentage": 50,
+          "routeStatus": "IN_PROGRESS",
+          "scheduledEnd": "2026-08-01T16:00:00.000Z",
+          "scheduledStart": "2026-08-01T08:00:00.000Z",
+          "testOnly": true,
+          "unresolvedSafetyEvents": [],
+          "unresolvedStopCount": 0
+        }
+      ]
+    },
+    {
+      "caseId": "no_exception_case",
+      "routes": [
+        {
+          "activeRouteHazards": [],
+          "actualStart": "2026-08-01T08:05:00.000Z",
+          "assignedDriverId": "driver-synthetic-001",
+          "assignedVehicleId": "vehicle-box-12ft-6in",
+          "completedStopCount": 5,
+          "driverIntelligenceAssessment": null,
+          "evidenceCompleteness": {
+            "items": [
+              {
+                "field": "routeId",
+                "present": true
+              },
+              {
+                "field": "organizationId",
+                "present": true
+              },
+              {
+                "field": "scheduledStart",
+                "present": true
+              },
+              {
+                "field": "scheduledEnd",
+                "present": true
+              },
+              {
+                "field": "lastEvidenceTimestamp",
+                "present": true
+              }
+            ],
+            "score": 1,
+            "status": "COMPLETE"
+          },
+          "evidenceConfidence": {
+            "score": 1,
+            "status": "NOT_PERFORMANCE_SCORE"
+          },
+          "humanReviewRequired": false,
+          "lastEvidenceTimestamp": "2026-08-01T10:00:00.000Z",
+          "organizationId": "org_synthetic_supervisor_intelligence",
+          "portfolioItemHash": "18abab0912ef9d3d2d9ea38b6eef488550ff33bdd8fb6e0db1753098a1e44170",
+          "remainingStopCount": 5,
+          "routeDeviationState": "NONE",
+          "routeEvidenceConflict": false,
+          "routeEvidenceStale": false,
+          "routeId": "route-no-exception",
+          "routeIntelligenceAssessment": null,
+          "routeProgressPercentage": 50,
+          "routeStatus": "IN_PROGRESS",
+          "scheduledEnd": "2026-08-01T16:00:00.000Z",
+          "scheduledStart": "2026-08-01T08:00:00.000Z",
+          "testOnly": true,
+          "unresolvedSafetyEvents": [],
+          "unresolvedStopCount": 0
+        }
+      ]
+    }
+  ],
+  "routeStates": [
+    "NOT_STARTED",
+    "STARTED",
+    "IN_PROGRESS",
+    "DELAYED",
+    "BLOCKED",
+    "RETURNING",
+    "COMPLETE",
+    "CANCELLED",
+    "INSUFFICIENT_EVIDENCE",
+    "UNKNOWN"
+  ]
+}

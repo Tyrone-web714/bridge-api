@@ -332,6 +332,11 @@
     },
     {
       "dependencies": [],
+      "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
       "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
       "reverseDependencies": []
     },
@@ -5570,6 +5575,231 @@
     {
       "dependencies": [],
       "nodeId": "Documentation Page:docs/implementation/scoring-engine/WEIGHT_MODEL.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/ALERT_LIFECYCLE.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/ALERT_PRIORITIZATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/BENCHMARK_DATASETS.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/CURRENT_SUPERVISOR_INTELLIGENCE_AUDIT.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/DASHBOARD_INTEGRATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/DEFERRED_WORK.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/DRIVER_INTELLIGENCE_INTEGRATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/DRIVER_OPERATIONAL_AWARENESS.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/EMPLOYMENT_IMPACT_GUARDRAILS.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/EVIDENCE_AND_CONFIDENCE.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/EXCEPTION_SEVERITY_MODEL.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/EXISTING_DAILY_REPORT_COMPATIBILITY.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/EXISTING_SERVICE_REUSE_DECISION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_alert_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_alert_priority_report.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_benchmark_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_context_contract.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_evidence_report.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_exception_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_intelligence_capability_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/SUPERVISOR_INTELLIGENCE_SUMMARY.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_readiness_report.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_reason_code_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_route_portfolio_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_summary_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/IMPLEMENTATION_REPORT.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/KNOWLEDGE_GRAPH_INTEGRATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/OPERATIONAL_EXCEPTION_MODEL.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/OWNER_DECISIONS_REQUIRED.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/PLATFORM_INTEGRATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/README.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/REASON_CODES.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/ROLLBACK_PLAN.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/ROUTE_INTELLIGENCE_INTEGRATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/ROUTE_PORTFOLIO_MODEL.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/ROUTE_PROGRESS_MODEL.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/SECURITY_AND_TENANT_REVIEW.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/STOP_PROGRESS_VISIBILITY.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/SUPERVISOR_ALERT_MODEL.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/SUPERVISOR_CONTEXT_CONTRACT.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/SUPERVISOR_EXPLANATION_FOUNDATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/SUPERVISOR_INTELLIGENCE_ARCHITECTURE.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/SUPERVISOR_SUMMARY_FOUNDATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/TEST_PLAN.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/TEST_RESULTS.md",
       "reverseDependencies": []
     },
     {

@@ -1,0 +1,706 @@
+{
+  "generatedArtifact": true,
+  "summaries": [
+    {
+      "caseId": "all_routes_normal",
+      "summary": {
+        "alertsBySeverity": {},
+        "blockedRoutes": 0,
+        "delayedRoutes": 0,
+        "evidenceGaps": 0,
+        "humanReviewItems": 0,
+        "limitations": [
+          "Repository-only synthetic foundation",
+          "No production notification",
+          "No employee scoring",
+          "No disciplinary recommendation",
+          "No autonomous workforce action"
+        ],
+        "routesCompleted": 0,
+        "routesInProgress": 1,
+        "routesInScope": 1,
+        "routesWithSafetyExceptions": 0,
+        "summaryHash": "7e83bc6d7befc49e977e31493ae323dc2577ebabd2c0f3963aba4d426191d5f9",
+        "unresolvedAlerts": 0,
+        "unresolvedStops": 0
+      }
+    },
+    {
+      "caseId": "route_not_started_by_threshold",
+      "summary": {
+        "alertsBySeverity": {
+          "INFORMATIONAL": 1
+        },
+        "blockedRoutes": 0,
+        "delayedRoutes": 1,
+        "evidenceGaps": 0,
+        "humanReviewItems": 0,
+        "limitations": [
+          "Repository-only synthetic foundation",
+          "No production notification",
+          "No employee scoring",
+          "No disciplinary recommendation",
+          "No autonomous workforce action"
+        ],
+        "routesCompleted": 0,
+        "routesInProgress": 0,
+        "routesInScope": 1,
+        "routesWithSafetyExceptions": 0,
+        "summaryHash": "e00cabba139980777341b1d19f5e839be2adc2e7498230312754f54fbebcba26",
+        "unresolvedAlerts": 1,
+        "unresolvedStops": 0
+      }
+    },
+    {
+      "caseId": "route_delayed",
+      "summary": {
+        "alertsBySeverity": {
+          "MODERATE": 1
+        },
+        "blockedRoutes": 0,
+        "delayedRoutes": 1,
+        "evidenceGaps": 0,
+        "humanReviewItems": 0,
+        "limitations": [
+          "Repository-only synthetic foundation",
+          "No production notification",
+          "No employee scoring",
+          "No disciplinary recommendation",
+          "No autonomous workforce action"
+        ],
+        "routesCompleted": 0,
+        "routesInProgress": 0,
+        "routesInScope": 1,
+        "routesWithSafetyExceptions": 0,
+        "summaryHash": "a65db56d5818e0ab7bdffc0360b24659f3fe26f0544f819c47b474fc32d5c7ba",
+        "unresolvedAlerts": 1,
+        "unresolvedStops": 0
+      }
+    },
+    {
+      "caseId": "route_blocked_low_bridge",
+      "summary": {
+        "alertsBySeverity": {
+          "CRITICAL": 2
+        },
+        "blockedRoutes": 1,
+        "delayedRoutes": 0,
+        "evidenceGaps": 0,
+        "humanReviewItems": 2,
+        "limitations": [
+          "Repository-only synthetic foundation",
+          "No production notification",
+          "No employee scoring",
+          "No disciplinary recommendation",
+          "No autonomous workforce action"
+        ],
+        "routesCompleted": 0,
+        "routesInProgress": 0,
+        "routesInScope": 1,
+        "routesWithSafetyExceptions": 2,
+        "summaryHash": "86f76839e5aeda702979a428816e1ff6f4b20f7bef15d7eb2c5a42e00f22696c",
+        "unresolvedAlerts": 2,
+        "unresolvedStops": 0
+      }
+    },
+    {
+      "caseId": "route_blocked_road_closure",
+      "summary": {
+        "alertsBySeverity": {
+          "HIGH": 1
+        },
+        "blockedRoutes": 0,
+        "delayedRoutes": 0,
+        "evidenceGaps": 0,
+        "humanReviewItems": 1,
+        "limitations": [
+          "Repository-only synthetic foundation",
+          "No production notification",
+          "No employee scoring",
+          "No disciplinary recommendation",
+          "No autonomous workforce action"
+        ],
+        "routesCompleted": 0,
+        "routesInProgress": 1,
+        "routesInScope": 1,
+        "routesWithSafetyExceptions": 1,
+        "summaryHash": "1821f5e06b99dd28fe28ef1fa8fb20c3fb5e118e5b317cf4841e7b1b1b4ec288",
+        "unresolvedAlerts": 1,
+        "unresolvedStops": 0
+      }
+    },
+    {
+      "caseId": "route_deviation_active",
+      "summary": {
+        "alertsBySeverity": {
+          "MODERATE": 1
+        },
+        "blockedRoutes": 0,
+        "delayedRoutes": 0,
+        "evidenceGaps": 0,
+        "humanReviewItems": 1,
+        "limitations": [
+          "Repository-only synthetic foundation",
+          "No production notification",
+          "No employee scoring",
+          "No disciplinary recommendation",
+          "No autonomous workforce action"
+        ],
+        "routesCompleted": 0,
+        "routesInProgress": 1,
+        "routesInScope": 1,
+        "routesWithSafetyExceptions": 0,
+        "summaryHash": "a452dcc3ff3cc76237fe8d3998c7585b68eb5db9912419019683a9a6bc7a94ab",
+        "unresolvedAlerts": 1,
+        "unresolvedStops": 0
+      }
+    },
+    {
+      "caseId": "route_deviation_resolved",
+      "summary": {
+        "alertsBySeverity": {
+          "INFORMATIONAL": 1
+        },
+        "blockedRoutes": 0,
+        "delayedRoutes": 0,
+        "evidenceGaps": 0,
+        "humanReviewItems": 0,
+        "limitations": [
+          "Repository-only synthetic foundation",
+          "No production notification",
+          "No employee scoring",
+          "No disciplinary recommendation",
+          "No autonomous workforce action"
+        ],
+        "routesCompleted": 0,
+        "routesInProgress": 1,
+        "routesInScope": 1,
+        "routesWithSafetyExceptions": 0,
+        "summaryHash": "9a62b4fc58e551bb08f1dab2004dba139bab6cdd1372aacccd2bd3ed2a9598ae",
+        "unresolvedAlerts": 1,
+        "unresolvedStops": 0
+      }
+    },
+    {
+      "caseId": "no_through_truck_event",
+      "summary": {
+        "alertsBySeverity": {
+          "HIGH": 1
+        },
+        "blockedRoutes": 0,
+        "delayedRoutes": 0,
+        "evidenceGaps": 0,
+        "humanReviewItems": 1,
+        "limitations": [
+          "Repository-only synthetic foundation",
+          "No production notification",
+          "No employee scoring",
+          "No disciplinary recommendation",
+          "No autonomous workforce action"
+        ],
+        "routesCompleted": 0,
+        "routesInProgress": 1,
+        "routesInScope": 1,
+        "routesWithSafetyExceptions": 1,
+        "summaryHash": "1821f5e06b99dd28fe28ef1fa8fb20c3fb5e118e5b317cf4841e7b1b1b4ec288",
+        "unresolvedAlerts": 1,
+        "unresolvedStops": 0
+      }
+    },
+    {
+      "caseId": "restricted_road_event",
+      "summary": {
+        "alertsBySeverity": {
+          "HIGH": 1
+        },
+        "blockedRoutes": 0,
+        "delayedRoutes": 0,
+        "evidenceGaps": 0,
+        "humanReviewItems": 1,
+        "limitations": [
+          "Repository-only synthetic foundation",
+          "No production notification",
+          "No employee scoring",
+          "No disciplinary recommendation",
+          "No autonomous workforce action"
+        ],
+        "routesCompleted": 0,
+        "routesInProgress": 1,
+        "routesInScope": 1,
+        "routesWithSafetyExceptions": 1,
+        "summaryHash": "1821f5e06b99dd28fe28ef1fa8fb20c3fb5e118e5b317cf4841e7b1b1b4ec288",
+        "unresolvedAlerts": 1,
+        "unresolvedStops": 0
+      }
+    },
+    {
+      "caseId": "driver_speed_advisory",
+      "summary": {
+        "alertsBySeverity": {
+          "INFORMATIONAL": 1
+        },
+        "blockedRoutes": 0,
+        "delayedRoutes": 0,
+        "evidenceGaps": 0,
+        "humanReviewItems": 1,
+        "limitations": [
+          "Repository-only synthetic foundation",
+          "No production notification",
+          "No employee scoring",
+          "No disciplinary recommendation",
+          "No autonomous workforce action"
+        ],
+        "routesCompleted": 0,
+        "routesInProgress": 1,
+        "routesInScope": 1,
+        "routesWithSafetyExceptions": 0,
+        "summaryHash": "d9cd6abf15ca7af571dc96de5aa61dad417bdae14bd68eb400da554e6d561230",
+        "unresolvedAlerts": 1,
+        "unresolvedStops": 0
+      }
+    },
+    {
+      "caseId": "driver_speed_warning",
+      "summary": {
+        "alertsBySeverity": {
+          "HIGH": 1
+        },
+        "blockedRoutes": 0,
+        "delayedRoutes": 0,
+        "evidenceGaps": 0,
+        "humanReviewItems": 1,
+        "limitations": [
+          "Repository-only synthetic foundation",
+          "No production notification",
+          "No employee scoring",
+          "No disciplinary recommendation",
+          "No autonomous workforce action"
+        ],
+        "routesCompleted": 0,
+        "routesInProgress": 1,
+        "routesInScope": 1,
+        "routesWithSafetyExceptions": 1,
+        "summaryHash": "1821f5e06b99dd28fe28ef1fa8fb20c3fb5e118e5b317cf4841e7b1b1b4ec288",
+        "unresolvedAlerts": 1,
+        "unresolvedStops": 0
+      }
+    },
+    {
+      "caseId": "gps_unavailable",
+      "summary": {
+        "alertsBySeverity": {
+          "LOW": 1
+        },
+        "blockedRoutes": 0,
+        "delayedRoutes": 0,
+        "evidenceGaps": 0,
+        "humanReviewItems": 1,
+        "limitations": [
+          "Repository-only synthetic foundation",
+          "No production notification",
+          "No employee scoring",
+          "No disciplinary recommendation",
+          "No autonomous workforce action"
+        ],
+        "routesCompleted": 0,
+        "routesInProgress": 1,
+        "routesInScope": 1,
+        "routesWithSafetyExceptions": 0,
+        "summaryHash": "c63b0dc8f9784c09f8764561b6f8a0981a8d8063ec2e9f02649072e8954891bc",
+        "unresolvedAlerts": 1,
+        "unresolvedStops": 0
+      }
+    },
+    {
+      "caseId": "stale_route_evidence",
+      "summary": {
+        "alertsBySeverity": {
+          "LOW": 1
+        },
+        "blockedRoutes": 0,
+        "delayedRoutes": 0,
+        "evidenceGaps": 0,
+        "humanReviewItems": 1,
+        "limitations": [
+          "Repository-only synthetic foundation",
+          "No production notification",
+          "No employee scoring",
+          "No disciplinary recommendation",
+          "No autonomous workforce action"
+        ],
+        "routesCompleted": 0,
+        "routesInProgress": 1,
+        "routesInScope": 1,
+        "routesWithSafetyExceptions": 0,
+        "summaryHash": "c63b0dc8f9784c09f8764561b6f8a0981a8d8063ec2e9f02649072e8954891bc",
+        "unresolvedAlerts": 1,
+        "unresolvedStops": 0
+      }
+    },
+    {
+      "caseId": "conflicting_route_evidence",
+      "summary": {
+        "alertsBySeverity": {
+          "LOW": 1
+        },
+        "blockedRoutes": 0,
+        "delayedRoutes": 0,
+        "evidenceGaps": 0,
+        "humanReviewItems": 1,
+        "limitations": [
+          "Repository-only synthetic foundation",
+          "No production notification",
+          "No employee scoring",
+          "No disciplinary recommendation",
+          "No autonomous workforce action"
+        ],
+        "routesCompleted": 0,
+        "routesInProgress": 1,
+        "routesInScope": 1,
+        "routesWithSafetyExceptions": 0,
+        "summaryHash": "c63b0dc8f9784c09f8764561b6f8a0981a8d8063ec2e9f02649072e8954891bc",
+        "unresolvedAlerts": 1,
+        "unresolvedStops": 0
+      }
+    },
+    {
+      "caseId": "stop_delayed",
+      "summary": {
+        "alertsBySeverity": {
+          "MODERATE": 1
+        },
+        "blockedRoutes": 0,
+        "delayedRoutes": 0,
+        "evidenceGaps": 0,
+        "humanReviewItems": 0,
+        "limitations": [
+          "Repository-only synthetic foundation",
+          "No production notification",
+          "No employee scoring",
+          "No disciplinary recommendation",
+          "No autonomous workforce action"
+        ],
+        "routesCompleted": 0,
+        "routesInProgress": 1,
+        "routesInScope": 1,
+        "routesWithSafetyExceptions": 0,
+        "summaryHash": "4fb040ca39bda413c51e6e8816ab37519b53d21b7210236934aaed5bef082f27",
+        "unresolvedAlerts": 1,
+        "unresolvedStops": 1
+      }
+    },
+    {
+      "caseId": "stop_skipped_unknown_reason",
+      "summary": {
+        "alertsBySeverity": {
+          "INFORMATIONAL": 1
+        },
+        "blockedRoutes": 0,
+        "delayedRoutes": 0,
+        "evidenceGaps": 0,
+        "humanReviewItems": 1,
+        "limitations": [
+          "Repository-only synthetic foundation",
+          "No production notification",
+          "No employee scoring",
+          "No disciplinary recommendation",
+          "No autonomous workforce action"
+        ],
+        "routesCompleted": 0,
+        "routesInProgress": 1,
+        "routesInScope": 1,
+        "routesWithSafetyExceptions": 0,
+        "summaryHash": "4d938c9fbf32125a70c3d129fa546b6c306c6f7a2d23bd10bc68df161acad269",
+        "unresolvedAlerts": 1,
+        "unresolvedStops": 1
+      }
+    },
+    {
+      "caseId": "stop_unresolved",
+      "summary": {
+        "alertsBySeverity": {
+          "INFORMATIONAL": 1
+        },
+        "blockedRoutes": 0,
+        "delayedRoutes": 0,
+        "evidenceGaps": 0,
+        "humanReviewItems": 1,
+        "limitations": [
+          "Repository-only synthetic foundation",
+          "No production notification",
+          "No employee scoring",
+          "No disciplinary recommendation",
+          "No autonomous workforce action"
+        ],
+        "routesCompleted": 0,
+        "routesInProgress": 1,
+        "routesInScope": 1,
+        "routesWithSafetyExceptions": 0,
+        "summaryHash": "4d938c9fbf32125a70c3d129fa546b6c306c6f7a2d23bd10bc68df161acad269",
+        "unresolvedAlerts": 1,
+        "unresolvedStops": 1
+      }
+    },
+    {
+      "caseId": "delivery_evidence_missing",
+      "summary": {
+        "alertsBySeverity": {
+          "INFORMATIONAL": 1
+        },
+        "blockedRoutes": 0,
+        "delayedRoutes": 0,
+        "evidenceGaps": 1,
+        "humanReviewItems": 1,
+        "limitations": [
+          "Repository-only synthetic foundation",
+          "No production notification",
+          "No employee scoring",
+          "No disciplinary recommendation",
+          "No autonomous workforce action"
+        ],
+        "routesCompleted": 0,
+        "routesInProgress": 1,
+        "routesInScope": 1,
+        "routesWithSafetyExceptions": 0,
+        "summaryHash": "eb6a0f0aac66d8315467c25e30a66d935530971fd38d6771ced17657b81e39c0",
+        "unresolvedAlerts": 1,
+        "unresolvedStops": 1
+      }
+    },
+    {
+      "caseId": "multiple_simultaneous_exceptions",
+      "summary": {
+        "alertsBySeverity": {
+          "HIGH": 1,
+          "INFORMATIONAL": 1,
+          "MODERATE": 2
+        },
+        "blockedRoutes": 0,
+        "delayedRoutes": 1,
+        "evidenceGaps": 1,
+        "humanReviewItems": 3,
+        "limitations": [
+          "Repository-only synthetic foundation",
+          "No production notification",
+          "No employee scoring",
+          "No disciplinary recommendation",
+          "No autonomous workforce action"
+        ],
+        "routesCompleted": 0,
+        "routesInProgress": 0,
+        "routesInScope": 1,
+        "routesWithSafetyExceptions": 1,
+        "summaryHash": "7089a1af4e6d1780d2b8eb9ec471703c81ac46ff59ca01c49c95c052c783e66c",
+        "unresolvedAlerts": 4,
+        "unresolvedStops": 1
+      }
+    },
+    {
+      "caseId": "safety_outranks_delay",
+      "summary": {
+        "alertsBySeverity": {
+          "CRITICAL": 1,
+          "MODERATE": 1
+        },
+        "blockedRoutes": 0,
+        "delayedRoutes": 1,
+        "evidenceGaps": 0,
+        "humanReviewItems": 1,
+        "limitations": [
+          "Repository-only synthetic foundation",
+          "No production notification",
+          "No employee scoring",
+          "No disciplinary recommendation",
+          "No autonomous workforce action"
+        ],
+        "routesCompleted": 0,
+        "routesInProgress": 0,
+        "routesInScope": 1,
+        "routesWithSafetyExceptions": 1,
+        "summaryHash": "38241b6400aac461bd282bb4587b3e55adf687eab607f094d70c4baa381f9db5",
+        "unresolvedAlerts": 2,
+        "unresolvedStops": 0
+      }
+    },
+    {
+      "caseId": "unknown_severity",
+      "summary": {
+        "alertsBySeverity": {
+          "UNKNOWN": 1
+        },
+        "blockedRoutes": 0,
+        "delayedRoutes": 0,
+        "evidenceGaps": 1,
+        "humanReviewItems": 1,
+        "limitations": [
+          "Repository-only synthetic foundation",
+          "No production notification",
+          "No employee scoring",
+          "No disciplinary recommendation",
+          "No autonomous workforce action"
+        ],
+        "routesCompleted": 0,
+        "routesInProgress": 0,
+        "routesInScope": 1,
+        "routesWithSafetyExceptions": 0,
+        "summaryHash": "69080608081ace0ec02a32c768a5d58962379c44b1e833727df35bf757ce7f14",
+        "unresolvedAlerts": 1,
+        "unresolvedStops": 0
+      }
+    },
+    {
+      "caseId": "insufficient_evidence",
+      "summary": {
+        "alertsBySeverity": {
+          "UNKNOWN": 1
+        },
+        "blockedRoutes": 0,
+        "delayedRoutes": 0,
+        "evidenceGaps": 1,
+        "humanReviewItems": 1,
+        "limitations": [
+          "Repository-only synthetic foundation",
+          "No production notification",
+          "No employee scoring",
+          "No disciplinary recommendation",
+          "No autonomous workforce action"
+        ],
+        "routesCompleted": 0,
+        "routesInProgress": 0,
+        "routesInScope": 1,
+        "routesWithSafetyExceptions": 0,
+        "summaryHash": "69080608081ace0ec02a32c768a5d58962379c44b1e833727df35bf757ce7f14",
+        "unresolvedAlerts": 1,
+        "unresolvedStops": 0
+      }
+    },
+    {
+      "caseId": "human_review",
+      "summary": {
+        "alertsBySeverity": {
+          "HIGH": 1
+        },
+        "blockedRoutes": 0,
+        "delayedRoutes": 0,
+        "evidenceGaps": 0,
+        "humanReviewItems": 1,
+        "limitations": [
+          "Repository-only synthetic foundation",
+          "No production notification",
+          "No employee scoring",
+          "No disciplinary recommendation",
+          "No autonomous workforce action"
+        ],
+        "routesCompleted": 0,
+        "routesInProgress": 1,
+        "routesInScope": 1,
+        "routesWithSafetyExceptions": 1,
+        "summaryHash": "1821f5e06b99dd28fe28ef1fa8fb20c3fb5e118e5b317cf4841e7b1b1b4ec288",
+        "unresolvedAlerts": 1,
+        "unresolvedStops": 0
+      }
+    },
+    {
+      "caseId": "alert_acknowledgement",
+      "summary": {
+        "alertsBySeverity": {
+          "MODERATE": 1
+        },
+        "blockedRoutes": 0,
+        "delayedRoutes": 0,
+        "evidenceGaps": 0,
+        "humanReviewItems": 1,
+        "limitations": [
+          "Repository-only synthetic foundation",
+          "No production notification",
+          "No employee scoring",
+          "No disciplinary recommendation",
+          "No autonomous workforce action"
+        ],
+        "routesCompleted": 0,
+        "routesInProgress": 1,
+        "routesInScope": 1,
+        "routesWithSafetyExceptions": 0,
+        "summaryHash": "a452dcc3ff3cc76237fe8d3998c7585b68eb5db9912419019683a9a6bc7a94ab",
+        "unresolvedAlerts": 1,
+        "unresolvedStops": 0
+      }
+    },
+    {
+      "caseId": "alert_resolution",
+      "summary": {
+        "alertsBySeverity": {
+          "MODERATE": 1
+        },
+        "blockedRoutes": 0,
+        "delayedRoutes": 0,
+        "evidenceGaps": 0,
+        "humanReviewItems": 1,
+        "limitations": [
+          "Repository-only synthetic foundation",
+          "No production notification",
+          "No employee scoring",
+          "No disciplinary recommendation",
+          "No autonomous workforce action"
+        ],
+        "routesCompleted": 0,
+        "routesInProgress": 1,
+        "routesInScope": 1,
+        "routesWithSafetyExceptions": 0,
+        "summaryHash": "a452dcc3ff3cc76237fe8d3998c7585b68eb5db9912419019683a9a6bc7a94ab",
+        "unresolvedAlerts": 1,
+        "unresolvedStops": 0
+      }
+    },
+    {
+      "caseId": "new_evidence_invalidates_alert",
+      "summary": {
+        "alertsBySeverity": {
+          "MODERATE": 1
+        },
+        "blockedRoutes": 0,
+        "delayedRoutes": 0,
+        "evidenceGaps": 0,
+        "humanReviewItems": 1,
+        "limitations": [
+          "Repository-only synthetic foundation",
+          "No production notification",
+          "No employee scoring",
+          "No disciplinary recommendation",
+          "No autonomous workforce action"
+        ],
+        "routesCompleted": 0,
+        "routesInProgress": 1,
+        "routesInScope": 1,
+        "routesWithSafetyExceptions": 0,
+        "summaryHash": "a452dcc3ff3cc76237fe8d3998c7585b68eb5db9912419019683a9a6bc7a94ab",
+        "unresolvedAlerts": 1,
+        "unresolvedStops": 0
+      }
+    },
+    {
+      "caseId": "no_exception_case",
+      "summary": {
+        "alertsBySeverity": {},
+        "blockedRoutes": 0,
+        "delayedRoutes": 0,
+        "evidenceGaps": 0,
+        "humanReviewItems": 0,
+        "limitations": [
+          "Repository-only synthetic foundation",
+          "No production notification",
+          "No employee scoring",
+          "No disciplinary recommendation",
+          "No autonomous workforce action"
+        ],
+        "routesCompleted": 0,
+        "routesInProgress": 1,
+        "routesInScope": 1,
+        "routesWithSafetyExceptions": 0,
+        "summaryHash": "7e83bc6d7befc49e977e31493ae323dc2577ebabd2c0f3963aba4d426191d5f9",
+        "unresolvedAlerts": 0,
+        "unresolvedStops": 0
+      }
+    }
+  ]
+}

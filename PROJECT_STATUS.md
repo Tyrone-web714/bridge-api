@@ -54,6 +54,12 @@ Current implementation and planned architecture must be kept separate:
 | Private R2 hardening | Complete | Private-media writer remediation is deployed, authenticated media delivery through `/api/media/:mediaId` is verified, unauthenticated media requests return HTTP 401, the bounded production cleanup removed the 5 obsolete `legacyPublicUrl` fields with no storage key, storage provider, lifecycle, organization, or media ID changes, and the owner-approved Cloudflare R2 Public Development URL shutdown is complete. Final smoke validation passed: `/health` HTTP 200, `/ready` HTTP 200, authenticated Delivery Notes media HTTP 200, unauthenticated media HTTP 401, and the former public R2 development endpoint HTTP 401 `This bucket cannot be viewed`. See `docs/PRIVATE_R2_HARDENING_FINAL_COMPLETION_REPORT.md`. |
 | Mobile authenticated private media | In-App Camera Rebuild Merged; Physical Validation Passed | The in-app TSR camera and durable note composer repair passed owner-reported physical validation and is part of the active readiness baseline. Mobile private-media rendering no longer depends on direct public R2 URLs for verified delivery-note media. |
 
+### Current Local AI Development Status
+
+- `SUPERVISOR_INTELLIGENCE` is implemented locally as an uncommitted repository-only foundation under `bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js` and `docs/implementation/supervisor-intelligence-foundation`.
+- Scope includes deterministic supervisor context validation, route portfolio visibility, operational exceptions, structured alerts, lifecycle helpers, summaries, explanations, synthetic benchmarks, generated artifacts, and compatibility checks for the existing daily supervisor report path.
+- Current source-control state is intentionally unstaged and uncommitted pending controlled review. The work is not pushed, not deployed, not migrated, not production-certified, and does not add production APIs, provider expansion, model selection, employee scoring, driver ranking, discipline recommendations, database or object mutations, or Cloudflare/R2 changes.
+
 ## 4. Repository Landscape
 
 ### Backend/API repository

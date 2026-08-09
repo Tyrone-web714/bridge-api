@@ -1,0 +1,32 @@
+{
+  "contract": {
+    "callerProviderControlsAllowed": false,
+    "optional": [
+      "shiftReference",
+      "routeAssignmentScope",
+      "driverAssignmentScope",
+      "operationalAreaReference",
+      "unknownFields"
+    ],
+    "required": [
+      "supervisorContextId",
+      "organizationId",
+      "supervisorUserId",
+      "authorizedRole",
+      "reportingWindow",
+      "sourceReferences",
+      "evidenceTimestamp",
+      "testOnly"
+    ],
+    "schemaVersion": "supervisor.context.contract.v1",
+    "serverDerivedInFutureRuntime": [
+      "organizationId",
+      "supervisorUserId",
+      "authorizedRole",
+      "routeAssignmentScope",
+      "driverAssignmentScope"
+    ],
+    "testOnly": true
+  },
+  "generatedArtifact": true
+}

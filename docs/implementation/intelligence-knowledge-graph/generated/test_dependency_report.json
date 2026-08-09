@@ -457,7 +457,19 @@
           "Generated Artifact:docs/implementation/scoring-engine/generated/scoring_profile_catalog.json",
           "Generated Artifact:docs/implementation/scoring-engine/generated/SCORING_PROFILE_CATALOG.md",
           "Generated Artifact:docs/implementation/scoring-engine/generated/scoring_sensitivity_report.json",
-          "Generated Artifact:docs/implementation/scoring-engine/generated/scoring_threshold_findings.json"
+          "Generated Artifact:docs/implementation/scoring-engine/generated/scoring_threshold_findings.json",
+          "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_alert_catalog.json",
+          "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_alert_priority_report.json",
+          "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_benchmark_catalog.json",
+          "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_context_contract.json",
+          "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_evidence_report.json",
+          "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_exception_catalog.json",
+          "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_intelligence_capability_catalog.json",
+          "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/SUPERVISOR_INTELLIGENCE_SUMMARY.md",
+          "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_readiness_report.json",
+          "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_reason_code_catalog.json",
+          "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_route_portfolio_catalog.json",
+          "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_summary_catalog.json"
         ],
         "unknownImpacts": []
       },

@@ -121,7 +121,7 @@ function generate(options = {}) {
     'scope_control_status.json': json({
       policyPath: 'docs/ai-development/SCOPE_CONTROL_POLICY.md',
       ownerApprovalRequiredForNewIdeas: true,
-      supervisorIntelligenceMayBegin: false,
+      supervisorIntelligenceMayBegin: current.packageId === 'SUPERVISOR_INTELLIGENCE' && ['IN_PROGRESS','IMPLEMENTED_UNCOMMITTED','COMMITTED_LOCAL','PUSHED','VALIDATED'].includes(current.status),
       unapprovedMilestoneOneDomainsAllowed: false,
       deterministicTruckSafetyControlsAuthoritative: true
     }),

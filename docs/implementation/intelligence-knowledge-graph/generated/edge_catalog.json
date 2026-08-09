@@ -573,6 +573,17 @@
       "testOnly": true
     },
     {
+      "edgeId": "edge:f6e6911a5f505ec7729f",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "55d65b591c4731602eb2eba4e9946621b45fb54fd5d56f3f6de7301d6902146f",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "IMPLEMENTS",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Service:intelligence-execution-platform",
+      "targetNodeId": "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
+      "testOnly": true
+    },
+    {
       "edgeId": "edge:92d31aa7834fb1773f58",
       "relationshipConfidence": "DETERMINISTIC",
       "relationshipHash": "a69abd811b491ee462fd12d14171932fd134f1fdab8d22e89690867113b41404",
@@ -9072,6 +9083,138 @@
       "relationshipType": "GENERATED_FROM",
       "relationshipVersion": "0.1.0",
       "sourceNodeId": "Generated Artifact:docs/implementation/scoring-engine/generated/scoring_threshold_findings.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:0272e3349aa28e344e92",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "cba5d8d3974c1878e9a0975eadd4a9b9afd4315c205a15018725ed25c16a1e5f",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_alert_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:6469d7aaa4d8565938f6",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "dc556019f600f7424157e56819f9ab4fc4e0fbe06e44e6364b3481c7aabbb9fc",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_alert_priority_report.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:b268ff9257f7bd7bdf2b",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "140070ca414306a66243a63f8be7d33e550fae4a73e4415abe94e15bc1c33011",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_benchmark_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:ba8aa37dd0f9365f77e0",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "3c4cfadc3f2b6de98f6ce63521b292698cd8609b03ad1e4c99bc23a952cf102c",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_context_contract.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:05b362fbc436360639f0",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "1d704066667a02ccdfa9ca1b19c6e56a030a84b7f660b892a8793499a5bf87dc",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_evidence_report.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:21356b5f4d5a69ced4a3",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "8a4cc6536581f9ab3a6ecb54c12952f35907d56e75f80a59991d94429d249ebf",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_exception_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:e23eaadff030f7cbf602",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "1fe80d17a68e66937df1dd6b577a5ef65c4d68e3373d56cb875b2a49f84f438b",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_intelligence_capability_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:e647d47ba0cf8bfb15ff",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "95126020703a4993a4908478f1ad30ffa63091eaf5459ee891005f912c052d47",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/SUPERVISOR_INTELLIGENCE_SUMMARY.md",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:03cb397e736b3b65fb12",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "70aa0fbd92dab87c77433a20697243987c9818ae87556243c9f12573ba863ffb",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_readiness_report.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:0bc3c6c33310a941b763",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "4ee2e4e8e2e29eafe584e2ba93cfa6639ddb572b1d7d8b3762b3049c34938b99",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_reason_code_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:2e523c219b342d85ef4f",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "6f2002d46701f3464ba78e141e05e0440f3987486c16c6116036dcbb5b30e52b",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_route_portfolio_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:3c9a356b01e1189fb745",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "ead981c1079ea34228281fa8164965a49e777a34dd930326377bb89d4acaf327",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_summary_catalog.json",
       "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
       "testOnly": true
     },

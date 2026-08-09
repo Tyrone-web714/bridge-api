@@ -1,0 +1,335 @@
+{
+  "generatedArtifact": true,
+  "priorities": [
+    {
+      "alertId": "supervisor.alert.77e0af8ae29e9896",
+      "priority": 20,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:20"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_ROUTE_STATUS",
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "alertId": "supervisor.alert.7c1520e1c40028df",
+      "priority": 60,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:60"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_ROUTE_STATUS",
+      "severity": "MODERATE"
+    },
+    {
+      "alertId": "supervisor.alert.a79ef05b54a4eaed",
+      "priority": 135,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:135"
+      ],
+      "recommendedOperationalNextStep": "ESCALATE_SAFETY_EVENT",
+      "severity": "CRITICAL"
+    },
+    {
+      "alertId": "supervisor.alert.b915d825aad76b43",
+      "priority": 120,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:120"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_ROUTE_STATUS",
+      "severity": "CRITICAL"
+    },
+    {
+      "alertId": "supervisor.alert.44cbb447f2fc52ae",
+      "priority": 115,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:115"
+      ],
+      "recommendedOperationalNextStep": "ESCALATE_SAFETY_EVENT",
+      "severity": "HIGH"
+    },
+    {
+      "alertId": "supervisor.alert.ab77d307b47a9827",
+      "priority": 60,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:60"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_ROUTE_DEVIATION",
+      "severity": "MODERATE"
+    },
+    {
+      "alertId": "supervisor.alert.2a6efe11eb9e4d93",
+      "priority": 20,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:20"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_ROUTE_STATUS",
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "alertId": "supervisor.alert.ea7d0c762326005e",
+      "priority": 115,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:115"
+      ],
+      "recommendedOperationalNextStep": "ESCALATE_SAFETY_EVENT",
+      "severity": "HIGH"
+    },
+    {
+      "alertId": "supervisor.alert.793644c7501f52e7",
+      "priority": 115,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:115"
+      ],
+      "recommendedOperationalNextStep": "ESCALATE_SAFETY_EVENT",
+      "severity": "HIGH"
+    },
+    {
+      "alertId": "supervisor.alert.543c4ee1e71e16a7",
+      "priority": 20,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:20"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_ROUTE_STATUS",
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "alertId": "supervisor.alert.99f01476081b048a",
+      "priority": 100,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:100"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_ROUTE_STATUS",
+      "severity": "HIGH"
+    },
+    {
+      "alertId": "supervisor.alert.60299c8b88d3a162",
+      "priority": 40,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:40"
+      ],
+      "recommendedOperationalNextStep": "CONTACT_DRIVER_FOR_OPERATIONAL_STATUS",
+      "severity": "LOW"
+    },
+    {
+      "alertId": "supervisor.alert.cabeda9fb1c719ae",
+      "priority": 40,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:40"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_ROUTE_STATUS",
+      "severity": "LOW"
+    },
+    {
+      "alertId": "supervisor.alert.acaa448a1d190dd8",
+      "priority": 40,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:40"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_ROUTE_STATUS",
+      "severity": "LOW"
+    },
+    {
+      "alertId": "supervisor.alert.71c6f43f710606f3",
+      "priority": 60,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:60"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_STOP_STATUS",
+      "severity": "MODERATE"
+    },
+    {
+      "alertId": "supervisor.alert.b1e00e060c5a6783",
+      "priority": 20,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:20"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_STOP_STATUS",
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "alertId": "supervisor.alert.75fbbdc0e3e2ecf7",
+      "priority": 20,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:20"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_STOP_STATUS",
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "alertId": "supervisor.alert.2e429a53ac930603",
+      "priority": 20,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:20"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_MISSING_EVIDENCE",
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "alertId": "supervisor.alert.7cce6485739f9f62",
+      "priority": 100,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:100"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_ROUTE_STATUS",
+      "severity": "HIGH"
+    },
+    {
+      "alertId": "supervisor.alert.1699c06b7113b041",
+      "priority": 60,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:60"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_ROUTE_STATUS",
+      "severity": "MODERATE"
+    },
+    {
+      "alertId": "supervisor.alert.45ea832e60b27c28",
+      "priority": 60,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:60"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_ROUTE_DEVIATION",
+      "severity": "MODERATE"
+    },
+    {
+      "alertId": "supervisor.alert.a25515ce85b3c166",
+      "priority": 20,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:20"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_MISSING_EVIDENCE",
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "alertId": "supervisor.alert.9692dfd9f9b38243",
+      "priority": 135,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:135"
+      ],
+      "recommendedOperationalNextStep": "ESCALATE_SAFETY_EVENT",
+      "severity": "CRITICAL"
+    },
+    {
+      "alertId": "supervisor.alert.0d5efcc0674bc79a",
+      "priority": 60,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:60"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_ROUTE_STATUS",
+      "severity": "MODERATE"
+    },
+    {
+      "alertId": "supervisor.alert.8fa90d5f50a6ee9f",
+      "priority": 50,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:50"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_MISSING_EVIDENCE",
+      "severity": "UNKNOWN"
+    },
+    {
+      "alertId": "supervisor.alert.836605597faced9d",
+      "priority": 50,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:50"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_MISSING_EVIDENCE",
+      "severity": "UNKNOWN"
+    },
+    {
+      "alertId": "supervisor.alert.c49284ae6edcf0d9",
+      "priority": 115,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:115"
+      ],
+      "recommendedOperationalNextStep": "ESCALATE_SAFETY_EVENT",
+      "severity": "HIGH"
+    },
+    {
+      "alertId": "supervisor.alert.28bbf4fc6e72b17d",
+      "priority": 60,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:60"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_ROUTE_DEVIATION",
+      "severity": "MODERATE"
+    },
+    {
+      "alertId": "supervisor.alert.6074d1b579fdf3e7",
+      "priority": 60,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:60"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_ROUTE_DEVIATION",
+      "severity": "MODERATE"
+    },
+    {
+      "alertId": "supervisor.alert.5869fc5268f44eaa",
+      "priority": 60,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:60"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_ROUTE_DEVIATION",
+      "severity": "MODERATE"
+    }
+  ]
+}

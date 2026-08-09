@@ -1,0 +1,16 @@
+{
+  "generatedArtifact": true,
+  "readiness": {
+    "deterministicRulesOnly": true,
+    "noAutonomousWorkforceAction": true,
+    "noDisciplineRecommendation": true,
+    "noEmployeeScoring": true,
+    "noProductionNotification": true,
+    "noProductionReadinessClaim": true,
+    "repositoryOnly": true,
+    "validation": {
+      "errors": [],
+      "valid": true
+    }
+  }
+}

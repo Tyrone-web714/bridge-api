@@ -17,7 +17,7 @@
       "dashboard-data/documentation_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "5947fef4a3732137a19e602e4cee9e659704b5db2ac58f0369dc1dc1d104b0df",
+    "generationHash": "f8226ec2916af3fbd8c0795055a95adbd322285eb7fb769e810f65d20c5b7205",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -68,13 +68,14 @@
         "docs/implementation/scoring-engine": 59,
         "docs/implementation/shared-safety-foundation": 18,
         "docs/implementation/shared-safety-moderation-ui": 14,
+        "docs/implementation/supervisor-intelligence-foundation": 45,
         "docs/implementation/web-origin-private-media-hardening": 16
       },
-      "generatedDocs": 172
+      "generatedDocs": 184
     },
     "statusIndicators": [],
     "summary": {
-      "documentationFiles": 966
+      "documentationFiles": 1011
     },
     "testOnly": true,
     "unknownValues": [],

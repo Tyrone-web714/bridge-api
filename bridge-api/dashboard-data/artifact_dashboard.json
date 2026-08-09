@@ -17,7 +17,7 @@
       "dashboard-data/artifact_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "9b406f5b3b977606a10ce600ee29bfdf5ee8534e18b804934cfa464c48fc55a1",
+    "generationHash": "5a994b5bf0cdf0729c829f9f846795b748699d969c162cc5796a155799165818",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -44,13 +44,14 @@
         "docs/implementation/intelligence-knowledge-graph/generated": 20,
         "docs/implementation/intelligence-lifecycle-framework/generated": 7,
         "docs/implementation/route-intelligence-foundation/generated": 13,
-        "docs/implementation/scoring-engine/generated": 16
+        "docs/implementation/scoring-engine/generated": 16,
+        "docs/implementation/supervisor-intelligence-foundation/generated": 12
       },
       "dashboardArtifacts": 23
     },
     "statusIndicators": [],
     "summary": {
-      "generatedArtifacts": 172
+      "generatedArtifacts": 184
     },
     "testOnly": true,
     "unknownValues": [],

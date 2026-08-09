@@ -17,7 +17,7 @@
       "dashboard-data/test_coverage_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "1f7a097fdd1479be5bb0561479c0de09129f5206accf8829463af40f3bf9787f",
+    "generationHash": "b389d656ab887e0b59b1dfb3008155234656b8c9cc6c012bb55a7d5dca34a9ea",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -98,6 +98,10 @@
         "scoring-engine:run",
         "scoring-engine:sensitivity",
         "scoring-engine:validate",
+        "supervisor-operational-intelligence:benchmarks",
+        "supervisor-operational-intelligence:check",
+        "supervisor-operational-intelligence:generate",
+        "supervisor-operational-intelligence:validate",
         "test:ai",
         "test:ai-architecture",
         "test:ai-roadmap",
@@ -119,13 +123,14 @@
         "test:route-intelligence",
         "test:scoring-engine",
         "test:supervisor-intelligence",
+        "test:supervisor-operational-intelligence",
         "validate:fleet-intelligence-scoring",
         "validate:logistics-intelligence"
       ]
     },
     "statusIndicators": [],
     "summary": {
-      "testScripts": 44
+      "testScripts": 45
     },
     "testOnly": true,
     "unknownValues": [],

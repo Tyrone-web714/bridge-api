@@ -2,20 +2,20 @@
   "packageId": "SUPERVISOR_INTELLIGENCE",
   "title": "Supervisor Intelligence",
   "category": "CORE_OPERATIONAL_INTELLIGENCE",
-  "status": "APPROVED",
-  "objective": "Prepare a future scoped implementation package for supervisor decision support without beginning implementation in this reconciliation package.",
+  "status": "IMPLEMENTED_UNCOMMITTED",
+  "objective": "Build the repository-only Supervisor Intelligence Foundation for deterministic supervisor operational decision support.",
   "approvedScope": [
-    "operational summaries",
-    "exception detection",
-    "route and driver operational awareness",
-    "supervisor decision support",
-    "resource and route progress visibility",
-    "structured alerts and explanations",
-    "integration with Route and Driver Intelligence",
-    "deterministic and evidence-based foundations first"
+    "trusted supervisor context validation",
+    "route portfolio visibility",
+    "route, driver, stop, hazard, and evidence exception detection",
+    "structured supervisor alerts and deterministic prioritization",
+    "alert acknowledgement, resolution, and invalidation lifecycle helpers",
+    "operational summaries and explanations",
+    "integration with Route Intelligence and Driver Intelligence",
+    "deterministic synthetic benchmarks and generated evidence artifacts",
+    "existing daily supervisor report compatibility"
   ],
   "prohibitedScope": [
-    "implementation in this reconciliation package",
     "fabricating a package number",
     "employee ranking",
     "employee scoring",
@@ -29,7 +29,10 @@
     "provider activation",
     "production APIs",
     "deployment",
-    "migration"
+    "migration",
+    "production writes",
+    "object storage mutations",
+    "Cloudflare configuration changes"
   ],
   "dependencies": [
     "AI-IEP-005B.1",
@@ -37,20 +40,28 @@
     "TSR-AI-WORKFLOW-001"
   ],
   "acceptanceCriteria": [
-    "future owner-approved implementation work package exists before implementation",
-    "future package follows the repository workflow handoff process",
-    "implementation has not begun in this reconciliation package"
+    "supervisor context validation is deterministic and rejects caller provider/model/tenant overrides",
+    "route portfolio, progress, exception, alert, lifecycle, summary, and explanation contracts validate",
+    "Route Intelligence and Driver Intelligence integration references validate",
+    "existing daily supervisor report compatibility remains intact",
+    "generated Supervisor Intelligence artifacts are deterministic",
+    "no production API, deployment, migration, provider expansion, employee scoring, or workforce-impact action is added"
   ],
   "requiredTests": [
-    "not applicable until a future implementation package is approved"
+    "npm.cmd run test:supervisor-operational-intelligence",
+    "npm.cmd run test:route-intelligence",
+    "npm.cmd run test:driver-intelligence",
+    "npm.cmd run test:ai-roadmap",
+    "npm.cmd run test:security",
+    "npm.cmd test"
   ],
-  "sourceControlExpectation": "Do not implement Supervisor Intelligence in this reconciliation package. Do not push this reconciliation commit unless separately authorized.",
+  "sourceControlExpectation": "Leave the Supervisor Intelligence Foundation uncommitted and unstaged for controlled review. Do not push, deploy, or run migrations unless separately authorized.",
   "expectedCompletionReportFormat": "Use docs/ai-development/CODEX_COMPLETION_REPORT_TEMPLATE.md sections A through AN.",
   "recommendedCommitMessage": "Build Supervisor Intelligence foundation",
   "nextApprovedPackage": null,
   "ownerDecisionPoints": [
-    "approve a future scoped Supervisor Intelligence implementation prompt",
-    "approve any future push",
-    "approve any future deployment or migration separately"
+    "approve review, commit, and push of the uncommitted Supervisor Intelligence Foundation",
+    "approve any future production runtime API, deployment, migration, provider expansion, or production validation separately",
+    "approve any future Warehouse Intelligence start separately"
   ]
 }

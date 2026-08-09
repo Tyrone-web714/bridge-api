@@ -1,0 +1,356 @@
+{
+  "evidence": [
+    {
+      "alertCount": 0,
+      "caseId": "all_routes_normal",
+      "contextValid": true,
+      "exceptionCount": 0,
+      "limitations": [
+        "Repository-only synthetic foundation",
+        "No production notification",
+        "No employee scoring",
+        "No disciplinary recommendation",
+        "No autonomous workforce action"
+      ]
+    },
+    {
+      "alertCount": 1,
+      "caseId": "route_not_started_by_threshold",
+      "contextValid": true,
+      "exceptionCount": 1,
+      "limitations": [
+        "Repository-only synthetic foundation",
+        "No production notification",
+        "No employee scoring",
+        "No disciplinary recommendation",
+        "No autonomous workforce action"
+      ]
+    },
+    {
+      "alertCount": 1,
+      "caseId": "route_delayed",
+      "contextValid": true,
+      "exceptionCount": 1,
+      "limitations": [
+        "Repository-only synthetic foundation",
+        "No production notification",
+        "No employee scoring",
+        "No disciplinary recommendation",
+        "No autonomous workforce action"
+      ]
+    },
+    {
+      "alertCount": 2,
+      "caseId": "route_blocked_low_bridge",
+      "contextValid": true,
+      "exceptionCount": 2,
+      "limitations": [
+        "Repository-only synthetic foundation",
+        "No production notification",
+        "No employee scoring",
+        "No disciplinary recommendation",
+        "No autonomous workforce action"
+      ]
+    },
+    {
+      "alertCount": 1,
+      "caseId": "route_blocked_road_closure",
+      "contextValid": true,
+      "exceptionCount": 1,
+      "limitations": [
+        "Repository-only synthetic foundation",
+        "No production notification",
+        "No employee scoring",
+        "No disciplinary recommendation",
+        "No autonomous workforce action"
+      ]
+    },
+    {
+      "alertCount": 1,
+      "caseId": "route_deviation_active",
+      "contextValid": true,
+      "exceptionCount": 1,
+      "limitations": [
+        "Repository-only synthetic foundation",
+        "No production notification",
+        "No employee scoring",
+        "No disciplinary recommendation",
+        "No autonomous workforce action"
+      ]
+    },
+    {
+      "alertCount": 1,
+      "caseId": "route_deviation_resolved",
+      "contextValid": true,
+      "exceptionCount": 1,
+      "limitations": [
+        "Repository-only synthetic foundation",
+        "No production notification",
+        "No employee scoring",
+        "No disciplinary recommendation",
+        "No autonomous workforce action"
+      ]
+    },
+    {
+      "alertCount": 1,
+      "caseId": "no_through_truck_event",
+      "contextValid": true,
+      "exceptionCount": 1,
+      "limitations": [
+        "Repository-only synthetic foundation",
+        "No production notification",
+        "No employee scoring",
+        "No disciplinary recommendation",
+        "No autonomous workforce action"
+      ]
+    },
+    {
+      "alertCount": 1,
+      "caseId": "restricted_road_event",
+      "contextValid": true,
+      "exceptionCount": 1,
+      "limitations": [
+        "Repository-only synthetic foundation",
+        "No production notification",
+        "No employee scoring",
+        "No disciplinary recommendation",
+        "No autonomous workforce action"
+      ]
+    },
+    {
+      "alertCount": 1,
+      "caseId": "driver_speed_advisory",
+      "contextValid": true,
+      "exceptionCount": 1,
+      "limitations": [
+        "Repository-only synthetic foundation",
+        "No production notification",
+        "No employee scoring",
+        "No disciplinary recommendation",
+        "No autonomous workforce action"
+      ]
+    },
+    {
+      "alertCount": 1,
+      "caseId": "driver_speed_warning",
+      "contextValid": true,
+      "exceptionCount": 1,
+      "limitations": [
+        "Repository-only synthetic foundation",
+        "No production notification",
+        "No employee scoring",
+        "No disciplinary recommendation",
+        "No autonomous workforce action"
+      ]
+    },
+    {
+      "alertCount": 1,
+      "caseId": "gps_unavailable",
+      "contextValid": true,
+      "exceptionCount": 1,
+      "limitations": [
+        "Repository-only synthetic foundation",
+        "No production notification",
+        "No employee scoring",
+        "No disciplinary recommendation",
+        "No autonomous workforce action"
+      ]
+    },
+    {
+      "alertCount": 1,
+      "caseId": "stale_route_evidence",
+      "contextValid": true,
+      "exceptionCount": 1,
+      "limitations": [
+        "Repository-only synthetic foundation",
+        "No production notification",
+        "No employee scoring",
+        "No disciplinary recommendation",
+        "No autonomous workforce action"
+      ]
+    },
+    {
+      "alertCount": 1,
+      "caseId": "conflicting_route_evidence",
+      "contextValid": true,
+      "exceptionCount": 1,
+      "limitations": [
+        "Repository-only synthetic foundation",
+        "No production notification",
+        "No employee scoring",
+        "No disciplinary recommendation",
+        "No autonomous workforce action"
+      ]
+    },
+    {
+      "alertCount": 1,
+      "caseId": "stop_delayed",
+      "contextValid": true,
+      "exceptionCount": 1,
+      "limitations": [
+        "Repository-only synthetic foundation",
+        "No production notification",
+        "No employee scoring",
+        "No disciplinary recommendation",
+        "No autonomous workforce action"
+      ]
+    },
+    {
+      "alertCount": 1,
+      "caseId": "stop_skipped_unknown_reason",
+      "contextValid": true,
+      "exceptionCount": 1,
+      "limitations": [
+        "Repository-only synthetic foundation",
+        "No production notification",
+        "No employee scoring",
+        "No disciplinary recommendation",
+        "No autonomous workforce action"
+      ]
+    },
+    {
+      "alertCount": 1,
+      "caseId": "stop_unresolved",
+      "contextValid": true,
+      "exceptionCount": 1,
+      "limitations": [
+        "Repository-only synthetic foundation",
+        "No production notification",
+        "No employee scoring",
+        "No disciplinary recommendation",
+        "No autonomous workforce action"
+      ]
+    },
+    {
+      "alertCount": 1,
+      "caseId": "delivery_evidence_missing",
+      "contextValid": true,
+      "exceptionCount": 1,
+      "limitations": [
+        "Repository-only synthetic foundation",
+        "No production notification",
+        "No employee scoring",
+        "No disciplinary recommendation",
+        "No autonomous workforce action"
+      ]
+    },
+    {
+      "alertCount": 4,
+      "caseId": "multiple_simultaneous_exceptions",
+      "contextValid": true,
+      "exceptionCount": 4,
+      "limitations": [
+        "Repository-only synthetic foundation",
+        "No production notification",
+        "No employee scoring",
+        "No disciplinary recommendation",
+        "No autonomous workforce action"
+      ]
+    },
+    {
+      "alertCount": 2,
+      "caseId": "safety_outranks_delay",
+      "contextValid": true,
+      "exceptionCount": 2,
+      "limitations": [
+        "Repository-only synthetic foundation",
+        "No production notification",
+        "No employee scoring",
+        "No disciplinary recommendation",
+        "No autonomous workforce action"
+      ]
+    },
+    {
+      "alertCount": 1,
+      "caseId": "unknown_severity",
+      "contextValid": true,
+      "exceptionCount": 1,
+      "limitations": [
+        "Repository-only synthetic foundation",
+        "No production notification",
+        "No employee scoring",
+        "No disciplinary recommendation",
+        "No autonomous workforce action"
+      ]
+    },
+    {
+      "alertCount": 1,
+      "caseId": "insufficient_evidence",
+      "contextValid": true,
+      "exceptionCount": 1,
+      "limitations": [
+        "Repository-only synthetic foundation",
+        "No production notification",
+        "No employee scoring",
+        "No disciplinary recommendation",
+        "No autonomous workforce action"
+      ]
+    },
+    {
+      "alertCount": 1,
+      "caseId": "human_review",
+      "contextValid": true,
+      "exceptionCount": 1,
+      "limitations": [
+        "Repository-only synthetic foundation",
+        "No production notification",
+        "No employee scoring",
+        "No disciplinary recommendation",
+        "No autonomous workforce action"
+      ]
+    },
+    {
+      "alertCount": 1,
+      "caseId": "alert_acknowledgement",
+      "contextValid": true,
+      "exceptionCount": 1,
+      "limitations": [
+        "Repository-only synthetic foundation",
+        "No production notification",
+        "No employee scoring",
+        "No disciplinary recommendation",
+        "No autonomous workforce action"
+      ]
+    },
+    {
+      "alertCount": 1,
+      "caseId": "alert_resolution",
+      "contextValid": true,
+      "exceptionCount": 1,
+      "limitations": [
+        "Repository-only synthetic foundation",
+        "No production notification",
+        "No employee scoring",
+        "No disciplinary recommendation",
+        "No autonomous workforce action"
+      ]
+    },
+    {
+      "alertCount": 1,
+      "caseId": "new_evidence_invalidates_alert",
+      "contextValid": true,
+      "exceptionCount": 1,
+      "limitations": [
+        "Repository-only synthetic foundation",
+        "No production notification",
+        "No employee scoring",
+        "No disciplinary recommendation",
+        "No autonomous workforce action"
+      ]
+    },
+    {
+      "alertCount": 0,
+      "caseId": "no_exception_case",
+      "contextValid": true,
+      "exceptionCount": 0,
+      "limitations": [
+        "Repository-only synthetic foundation",
+        "No production notification",
+        "No employee scoring",
+        "No disciplinary recommendation",
+        "No autonomous workforce action"
+      ]
+    }
+  ],
+  "generatedArtifact": true
+}

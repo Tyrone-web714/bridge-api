@@ -15,6 +15,6 @@
 13. Production orchestration waits for the approved production gate.
 14. Deterministic legal and physical truck-safety controls remain authoritative.
 15. AI, cost, scoring, prediction, explanation, or optimization cannot override those controls.
-16. Supervisor Intelligence cannot begin until this workflow package is completed and preserved.
+16. Supervisor Intelligence implementation requires an owner-approved work package.
 17. Roadmap status changes require evidence.
 18. A package cannot be marked complete solely from documentation claims.

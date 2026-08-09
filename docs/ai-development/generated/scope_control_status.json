@@ -2,6 +2,6 @@
   "deterministicTruckSafetyControlsAuthoritative": true,
   "ownerApprovalRequiredForNewIdeas": true,
   "policyPath": "docs/ai-development/SCOPE_CONTROL_POLICY.md",
-  "supervisorIntelligenceMayBegin": false,
+  "supervisorIntelligenceMayBegin": true,
   "unapprovedMilestoneOneDomainsAllowed": false
 }

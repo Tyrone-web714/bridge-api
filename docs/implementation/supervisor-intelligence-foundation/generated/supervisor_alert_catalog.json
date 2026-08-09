@@ -1,0 +1,1200 @@
+{
+  "alertStatuses": [
+    "OPEN",
+    "ACKNOWLEDGED",
+    "UNDER_REVIEW",
+    "RESOLVED",
+    "DISMISSED_AS_DUPLICATE",
+    "INVALIDATED_BY_NEW_EVIDENCE",
+    "UNKNOWN"
+  ],
+  "alerts": [
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "affectedRouteId": "route-not-started",
+      "affectedStopId": null,
+      "alertHash": "a227b3aa9f4c364f300b02641901d21632dd2b5daa04a11342f0d50f41ece33b",
+      "alertId": "supervisor.alert.77e0af8ae29e9896",
+      "alertType": "ROUTE_START_DELAY",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "route.schedule"
+      ],
+      "exceptionId": "supervisor.exception.route-not-started.route_start_delay.route_not_started_by_threshold",
+      "humanReviewRequired": false,
+      "limitations": [],
+      "priority": 20,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:20"
+      ],
+      "reasonCodes": [
+        "ROUTE_NOT_STARTED_BY_THRESHOLD"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_ROUTE_STATUS",
+      "requiredAttention": "SUPERVISOR_AWARENESS",
+      "resolutionState": "UNRESOLVED",
+      "severity": "INFORMATIONAL",
+      "structuredFacts": {
+        "driverId": "driver-synthetic-001",
+        "reasonCodes": [
+          "ROUTE_NOT_STARTED_BY_THRESHOLD"
+        ],
+        "routeId": "route-not-started",
+        "stopId": null
+      },
+      "testOnly": true,
+      "title": "route.start.delay"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "affectedRouteId": "route-delayed",
+      "affectedStopId": null,
+      "alertHash": "406e9b40c9ad068248318b3487937243bd40d0bc7687b01fdd58c51b64c299fb",
+      "alertId": "supervisor.alert.7c1520e1c40028df",
+      "alertType": "ROUTE_PROGRESS_DELAY",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "route.progress"
+      ],
+      "exceptionId": "supervisor.exception.route-delayed.route_progress_delay.route_behind_expected_progress",
+      "humanReviewRequired": false,
+      "limitations": [],
+      "priority": 60,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:60"
+      ],
+      "reasonCodes": [
+        "ROUTE_BEHIND_EXPECTED_PROGRESS"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_ROUTE_STATUS",
+      "requiredAttention": "SUPERVISOR_AWARENESS",
+      "resolutionState": "UNRESOLVED",
+      "severity": "MODERATE",
+      "structuredFacts": {
+        "driverId": "driver-synthetic-001",
+        "reasonCodes": [
+          "ROUTE_BEHIND_EXPECTED_PROGRESS"
+        ],
+        "routeId": "route-delayed",
+        "stopId": null
+      },
+      "testOnly": true,
+      "title": "route.progress.delay"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "affectedRouteId": "route-low-bridge",
+      "affectedStopId": null,
+      "alertHash": "8756bb622511b0bcc7aaee61b822f946b80742f1e443fb74c746d9ddd722b5ea",
+      "alertId": "supervisor.alert.a79ef05b54a4eaed",
+      "alertType": "LOW_BRIDGE_EVENT",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "evt-low-bridge"
+      ],
+      "exceptionId": "supervisor.exception.route-low-bridge.low_bridge_event.low_bridge_hazard_active",
+      "humanReviewRequired": true,
+      "limitations": [],
+      "priority": 135,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:135"
+      ],
+      "reasonCodes": [
+        "LOW_BRIDGE_HAZARD_ACTIVE"
+      ],
+      "recommendedOperationalNextStep": "ESCALATE_SAFETY_EVENT",
+      "requiredAttention": "HUMAN_REVIEW_REQUIRED",
+      "resolutionState": "UNRESOLVED",
+      "severity": "CRITICAL",
+      "structuredFacts": {
+        "driverId": "driver-synthetic-001",
+        "reasonCodes": [
+          "LOW_BRIDGE_HAZARD_ACTIVE"
+        ],
+        "routeId": "route-low-bridge",
+        "stopId": null
+      },
+      "testOnly": true,
+      "title": "low.bridge.event"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "affectedRouteId": "route-low-bridge",
+      "affectedStopId": null,
+      "alertHash": "7f30e2eba623640a79f12c07062d3b6c24168684282860f5f3f4b9304706b4cd",
+      "alertId": "supervisor.alert.b915d825aad76b43",
+      "alertType": "ROUTE_BLOCKED",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "route.intelligence"
+      ],
+      "exceptionId": "supervisor.exception.route-low-bridge.route_blocked.route_blocked_by_safety_rule",
+      "humanReviewRequired": true,
+      "limitations": [],
+      "priority": 120,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:120"
+      ],
+      "reasonCodes": [
+        "ROUTE_BLOCKED_BY_SAFETY_RULE"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_ROUTE_STATUS",
+      "requiredAttention": "HUMAN_REVIEW_REQUIRED",
+      "resolutionState": "UNRESOLVED",
+      "severity": "CRITICAL",
+      "structuredFacts": {
+        "driverId": "driver-synthetic-001",
+        "reasonCodes": [
+          "ROUTE_BLOCKED_BY_SAFETY_RULE"
+        ],
+        "routeId": "route-low-bridge",
+        "stopId": null
+      },
+      "testOnly": true,
+      "title": "route.blocked"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "affectedRouteId": "route-road-closure",
+      "affectedStopId": null,
+      "alertHash": "e28e06c5513da59985b08701a386a633d5dcea74df474b49a82b59b5fe9596c0",
+      "alertId": "supervisor.alert.44cbb447f2fc52ae",
+      "alertType": "ROAD_CLOSURE_EVENT",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "evt-road-closure"
+      ],
+      "exceptionId": "supervisor.exception.route-road-closure.road_closure_event.road_closure_active",
+      "humanReviewRequired": true,
+      "limitations": [],
+      "priority": 115,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:115"
+      ],
+      "reasonCodes": [
+        "ROAD_CLOSURE_ACTIVE"
+      ],
+      "recommendedOperationalNextStep": "ESCALATE_SAFETY_EVENT",
+      "requiredAttention": "HUMAN_REVIEW_REQUIRED",
+      "resolutionState": "UNRESOLVED",
+      "severity": "HIGH",
+      "structuredFacts": {
+        "driverId": "driver-synthetic-001",
+        "reasonCodes": [
+          "ROAD_CLOSURE_ACTIVE"
+        ],
+        "routeId": "route-road-closure",
+        "stopId": null
+      },
+      "testOnly": true,
+      "title": "road.closure.event"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "affectedRouteId": "route-deviation",
+      "affectedStopId": null,
+      "alertHash": "2afc8752cc9d78371799c69937af9a62329d83785409095b4584c4134e2a627a",
+      "alertId": "supervisor.alert.ab77d307b47a9827",
+      "alertType": "ROUTE_DEVIATION",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "driver.intelligence"
+      ],
+      "exceptionId": "supervisor.exception.route-deviation.route_deviation.route_deviation_active",
+      "humanReviewRequired": true,
+      "limitations": [],
+      "priority": 60,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:60"
+      ],
+      "reasonCodes": [
+        "ROUTE_DEVIATION_ACTIVE"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_ROUTE_DEVIATION",
+      "requiredAttention": "HUMAN_REVIEW_REQUIRED",
+      "resolutionState": "UNRESOLVED",
+      "severity": "MODERATE",
+      "structuredFacts": {
+        "driverId": "driver-synthetic-001",
+        "reasonCodes": [
+          "ROUTE_DEVIATION_ACTIVE"
+        ],
+        "routeId": "route-deviation",
+        "stopId": null
+      },
+      "testOnly": true,
+      "title": "route.deviation"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "affectedRouteId": "route-deviation-resolved",
+      "affectedStopId": null,
+      "alertHash": "13a7d33d5a58c034d70505bf617b4bee9e2428d0038f6f1ae920fdc5856afe3a",
+      "alertId": "supervisor.alert.2a6efe11eb9e4d93",
+      "alertType": "ROUTE_DEVIATION",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "driver.intelligence"
+      ],
+      "exceptionId": "supervisor.exception.route-deviation-resolved.route_deviation.route_deviation_resolved",
+      "humanReviewRequired": false,
+      "limitations": [],
+      "priority": 20,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:20"
+      ],
+      "reasonCodes": [
+        "ROUTE_DEVIATION_RESOLVED"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_ROUTE_STATUS",
+      "requiredAttention": "SUPERVISOR_AWARENESS",
+      "resolutionState": "UNRESOLVED",
+      "severity": "INFORMATIONAL",
+      "structuredFacts": {
+        "driverId": "driver-synthetic-001",
+        "reasonCodes": [
+          "ROUTE_DEVIATION_RESOLVED"
+        ],
+        "routeId": "route-deviation-resolved",
+        "stopId": null
+      },
+      "testOnly": true,
+      "title": "route.deviation"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "affectedRouteId": "route-no-through",
+      "affectedStopId": null,
+      "alertHash": "39cae2cd15d2bf7095701a447d827e30fee88ea55b02b4c8984ca3c4c4d6a565",
+      "alertId": "supervisor.alert.ea7d0c762326005e",
+      "alertType": "NO_THROUGH_TRUCK_EVENT",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "evt-no-through"
+      ],
+      "exceptionId": "supervisor.exception.route-no-through.no_through_truck_event.no_through_truck_hazard_active",
+      "humanReviewRequired": true,
+      "limitations": [],
+      "priority": 115,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:115"
+      ],
+      "reasonCodes": [
+        "NO_THROUGH_TRUCK_HAZARD_ACTIVE"
+      ],
+      "recommendedOperationalNextStep": "ESCALATE_SAFETY_EVENT",
+      "requiredAttention": "HUMAN_REVIEW_REQUIRED",
+      "resolutionState": "UNRESOLVED",
+      "severity": "HIGH",
+      "structuredFacts": {
+        "driverId": "driver-synthetic-001",
+        "reasonCodes": [
+          "NO_THROUGH_TRUCK_HAZARD_ACTIVE"
+        ],
+        "routeId": "route-no-through",
+        "stopId": null
+      },
+      "testOnly": true,
+      "title": "no.through.truck.event"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "affectedRouteId": "route-restricted",
+      "affectedStopId": null,
+      "alertHash": "a14d4c8064690be52fb0cb3e41cb63b19f932233e1ec0ce4c54c3541f92a16f4",
+      "alertId": "supervisor.alert.793644c7501f52e7",
+      "alertType": "RESTRICTED_ROAD_EVENT",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "evt-restricted"
+      ],
+      "exceptionId": "supervisor.exception.route-restricted.restricted_road_event.restricted_road_hazard_active",
+      "humanReviewRequired": true,
+      "limitations": [],
+      "priority": 115,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:115"
+      ],
+      "reasonCodes": [
+        "RESTRICTED_ROAD_HAZARD_ACTIVE"
+      ],
+      "recommendedOperationalNextStep": "ESCALATE_SAFETY_EVENT",
+      "requiredAttention": "HUMAN_REVIEW_REQUIRED",
+      "resolutionState": "UNRESOLVED",
+      "severity": "HIGH",
+      "structuredFacts": {
+        "driverId": "driver-synthetic-001",
+        "reasonCodes": [
+          "RESTRICTED_ROAD_HAZARD_ACTIVE"
+        ],
+        "routeId": "route-restricted",
+        "stopId": null
+      },
+      "testOnly": true,
+      "title": "restricted.road.event"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "affectedRouteId": "route-speed-advisory",
+      "affectedStopId": null,
+      "alertHash": "1e63d780fa11805658ddb00b95c2311437df0bd98b9a2a92b1e085192a5b121e",
+      "alertId": "supervisor.alert.543c4ee1e71e16a7",
+      "alertType": "SPEED_ADVISORY_EVENT",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "evt-speed-advisory"
+      ],
+      "exceptionId": "supervisor.exception.route-speed-advisory.speed_advisory_event.speed_advisory_active",
+      "humanReviewRequired": true,
+      "limitations": [],
+      "priority": 20,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:20"
+      ],
+      "reasonCodes": [
+        "SPEED_ADVISORY_ACTIVE"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_ROUTE_STATUS",
+      "requiredAttention": "HUMAN_REVIEW_REQUIRED",
+      "resolutionState": "UNRESOLVED",
+      "severity": "INFORMATIONAL",
+      "structuredFacts": {
+        "driverId": "driver-synthetic-001",
+        "reasonCodes": [
+          "SPEED_ADVISORY_ACTIVE"
+        ],
+        "routeId": "route-speed-advisory",
+        "stopId": null
+      },
+      "testOnly": true,
+      "title": "speed.advisory.event"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "affectedRouteId": "route-speed-warning",
+      "affectedStopId": null,
+      "alertHash": "8a17c85ca27341bff3896d798628e3609c5284b3b65ac74e6a1c371784c29f47",
+      "alertId": "supervisor.alert.99f01476081b048a",
+      "alertType": "SPEED_WARNING_EVENT",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "evt-speed-warning"
+      ],
+      "exceptionId": "supervisor.exception.route-speed-warning.speed_warning_event.speed_warning_active",
+      "humanReviewRequired": true,
+      "limitations": [],
+      "priority": 100,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:100"
+      ],
+      "reasonCodes": [
+        "SPEED_WARNING_ACTIVE"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_ROUTE_STATUS",
+      "requiredAttention": "HUMAN_REVIEW_REQUIRED",
+      "resolutionState": "UNRESOLVED",
+      "severity": "HIGH",
+      "structuredFacts": {
+        "driverId": "driver-synthetic-001",
+        "reasonCodes": [
+          "SPEED_WARNING_ACTIVE"
+        ],
+        "routeId": "route-speed-warning",
+        "stopId": null
+      },
+      "testOnly": true,
+      "title": "speed.warning.event"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "affectedRouteId": "route-gps",
+      "affectedStopId": null,
+      "alertHash": "40a0daad190eecd288f29f8c68f59427663e8841f9f4c058a18a71cd1b1b6193",
+      "alertId": "supervisor.alert.60299c8b88d3a162",
+      "alertType": "DRIVER_GPS_UNAVAILABLE",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "evt-gps"
+      ],
+      "exceptionId": "supervisor.exception.route-gps.driver_gps_unavailable.gps_evidence_unavailable",
+      "humanReviewRequired": true,
+      "limitations": [],
+      "priority": 40,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:40"
+      ],
+      "reasonCodes": [
+        "GPS_EVIDENCE_UNAVAILABLE"
+      ],
+      "recommendedOperationalNextStep": "CONTACT_DRIVER_FOR_OPERATIONAL_STATUS",
+      "requiredAttention": "HUMAN_REVIEW_REQUIRED",
+      "resolutionState": "UNRESOLVED",
+      "severity": "LOW",
+      "structuredFacts": {
+        "driverId": "driver-synthetic-001",
+        "reasonCodes": [
+          "GPS_EVIDENCE_UNAVAILABLE"
+        ],
+        "routeId": "route-gps",
+        "stopId": null
+      },
+      "testOnly": true,
+      "title": "driver.gps.unavailable"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "affectedRouteId": "route-stale",
+      "affectedStopId": null,
+      "alertHash": "9600783cd72863e34a9c2a793e2c8987a9b53da105baf6751bc881ec251ff487",
+      "alertId": "supervisor.alert.cabeda9fb1c719ae",
+      "alertType": "ROUTE_EVIDENCE_STALE",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "route.evidence"
+      ],
+      "exceptionId": "supervisor.exception.route-stale.route_evidence_stale.route_evidence_stale",
+      "humanReviewRequired": true,
+      "limitations": [],
+      "priority": 40,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:40"
+      ],
+      "reasonCodes": [
+        "ROUTE_EVIDENCE_STALE"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_ROUTE_STATUS",
+      "requiredAttention": "HUMAN_REVIEW_REQUIRED",
+      "resolutionState": "UNRESOLVED",
+      "severity": "LOW",
+      "structuredFacts": {
+        "driverId": "driver-synthetic-001",
+        "reasonCodes": [
+          "ROUTE_EVIDENCE_STALE"
+        ],
+        "routeId": "route-stale",
+        "stopId": null
+      },
+      "testOnly": true,
+      "title": "route.evidence.stale"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "affectedRouteId": "route-conflict",
+      "affectedStopId": null,
+      "alertHash": "3ba1ce37d00edd58498f72c520a21cf216b070cff98f2d58ca49c405a73429d0",
+      "alertId": "supervisor.alert.acaa448a1d190dd8",
+      "alertType": "ROUTE_EVIDENCE_CONFLICT",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "route.evidence"
+      ],
+      "exceptionId": "supervisor.exception.route-conflict.route_evidence_conflict.route_evidence_conflict",
+      "humanReviewRequired": true,
+      "limitations": [],
+      "priority": 40,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:40"
+      ],
+      "reasonCodes": [
+        "ROUTE_EVIDENCE_CONFLICT"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_ROUTE_STATUS",
+      "requiredAttention": "HUMAN_REVIEW_REQUIRED",
+      "resolutionState": "UNRESOLVED",
+      "severity": "LOW",
+      "structuredFacts": {
+        "driverId": "driver-synthetic-001",
+        "reasonCodes": [
+          "ROUTE_EVIDENCE_CONFLICT"
+        ],
+        "routeId": "route-conflict",
+        "stopId": null
+      },
+      "testOnly": true,
+      "title": "route.evidence.conflict"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "affectedRouteId": "route-stop-delay",
+      "affectedStopId": "stop-delay",
+      "alertHash": "160224d4f2c7c331ae7b0fa5a95f9a99ac7ad77d8d1ac9eb2374e2effae70574",
+      "alertId": "supervisor.alert.71c6f43f710606f3",
+      "alertType": "STOP_DELAY",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "stop-delay"
+      ],
+      "exceptionId": "supervisor.exception.route-stop-delay.stop_delay.stop_progress_delayed",
+      "humanReviewRequired": false,
+      "limitations": [],
+      "priority": 60,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:60"
+      ],
+      "reasonCodes": [
+        "STOP_PROGRESS_DELAYED"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_STOP_STATUS",
+      "requiredAttention": "SUPERVISOR_AWARENESS",
+      "resolutionState": "UNRESOLVED",
+      "severity": "MODERATE",
+      "structuredFacts": {
+        "driverId": "driver-synthetic-001",
+        "reasonCodes": [
+          "STOP_PROGRESS_DELAYED"
+        ],
+        "routeId": "route-stop-delay",
+        "stopId": "stop-delay"
+      },
+      "testOnly": true,
+      "title": "stop.delay"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "affectedRouteId": "route-stop-skip",
+      "affectedStopId": "stop-skip",
+      "alertHash": "5b2380dcf01b20d460671078edb3c8d13988d98fe78fcf800146a9820e5b5c85",
+      "alertId": "supervisor.alert.b1e00e060c5a6783",
+      "alertType": "STOP_SKIPPED",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "stop-skip"
+      ],
+      "exceptionId": "supervisor.exception.route-stop-skip.stop_skipped.stop_status_unresolved",
+      "humanReviewRequired": true,
+      "limitations": [],
+      "priority": 20,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:20"
+      ],
+      "reasonCodes": [
+        "STOP_STATUS_UNRESOLVED"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_STOP_STATUS",
+      "requiredAttention": "HUMAN_REVIEW_REQUIRED",
+      "resolutionState": "UNRESOLVED",
+      "severity": "INFORMATIONAL",
+      "structuredFacts": {
+        "driverId": "driver-synthetic-001",
+        "reasonCodes": [
+          "STOP_STATUS_UNRESOLVED"
+        ],
+        "routeId": "route-stop-skip",
+        "stopId": "stop-skip"
+      },
+      "testOnly": true,
+      "title": "stop.skipped"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "affectedRouteId": "route-stop-unresolved",
+      "affectedStopId": "stop-unresolved",
+      "alertHash": "5a6a3b30e85e6ae44cee9900df4279a4bc03f23c82aab1b4112dbf1a7a8e35cf",
+      "alertId": "supervisor.alert.75fbbdc0e3e2ecf7",
+      "alertType": "STOP_UNRESOLVED",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "stop-unresolved"
+      ],
+      "exceptionId": "supervisor.exception.route-stop-unresolved.stop_unresolved.stop_status_unresolved",
+      "humanReviewRequired": true,
+      "limitations": [],
+      "priority": 20,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:20"
+      ],
+      "reasonCodes": [
+        "STOP_STATUS_UNRESOLVED"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_STOP_STATUS",
+      "requiredAttention": "HUMAN_REVIEW_REQUIRED",
+      "resolutionState": "UNRESOLVED",
+      "severity": "INFORMATIONAL",
+      "structuredFacts": {
+        "driverId": "driver-synthetic-001",
+        "reasonCodes": [
+          "STOP_STATUS_UNRESOLVED"
+        ],
+        "routeId": "route-stop-unresolved",
+        "stopId": "stop-unresolved"
+      },
+      "testOnly": true,
+      "title": "stop.unresolved"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "affectedRouteId": "route-evidence-missing",
+      "affectedStopId": "stop-missing",
+      "alertHash": "62dfc01af52ec4966fc0c693e7b994d36e7b430886f9279b463b727c2d9f90e0",
+      "alertId": "supervisor.alert.2e429a53ac930603",
+      "alertType": "DELIVERY_EVIDENCE_MISSING",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "stop-missing"
+      ],
+      "exceptionId": "supervisor.exception.route-evidence-missing.delivery_evidence_missing.delivery_evidence_incomplete",
+      "humanReviewRequired": true,
+      "limitations": [],
+      "priority": 20,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:20"
+      ],
+      "reasonCodes": [
+        "DELIVERY_EVIDENCE_INCOMPLETE"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_MISSING_EVIDENCE",
+      "requiredAttention": "HUMAN_REVIEW_REQUIRED",
+      "resolutionState": "UNRESOLVED",
+      "severity": "INFORMATIONAL",
+      "structuredFacts": {
+        "driverId": "driver-synthetic-001",
+        "reasonCodes": [
+          "DELIVERY_EVIDENCE_INCOMPLETE"
+        ],
+        "routeId": "route-evidence-missing",
+        "stopId": "stop-missing"
+      },
+      "testOnly": true,
+      "title": "delivery.evidence.missing"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "affectedRouteId": "route-multiple",
+      "affectedStopId": null,
+      "alertHash": "4022835706addf27896d9f49d3fb042939867faf944a57de350ad509b30a8b38",
+      "alertId": "supervisor.alert.7cce6485739f9f62",
+      "alertType": "SPEED_WARNING_EVENT",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "evt-speed-warning"
+      ],
+      "exceptionId": "supervisor.exception.route-multiple.speed_warning_event.speed_warning_active",
+      "humanReviewRequired": true,
+      "limitations": [],
+      "priority": 100,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:100"
+      ],
+      "reasonCodes": [
+        "SPEED_WARNING_ACTIVE"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_ROUTE_STATUS",
+      "requiredAttention": "HUMAN_REVIEW_REQUIRED",
+      "resolutionState": "UNRESOLVED",
+      "severity": "HIGH",
+      "structuredFacts": {
+        "driverId": "driver-synthetic-001",
+        "reasonCodes": [
+          "SPEED_WARNING_ACTIVE"
+        ],
+        "routeId": "route-multiple",
+        "stopId": null
+      },
+      "testOnly": true,
+      "title": "speed.warning.event"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "affectedRouteId": "route-multiple",
+      "affectedStopId": null,
+      "alertHash": "ec03e16283405caae721150e9bcceab94e5712cb9f9daa533414c223e541234a",
+      "alertId": "supervisor.alert.1699c06b7113b041",
+      "alertType": "ROUTE_PROGRESS_DELAY",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "route.progress"
+      ],
+      "exceptionId": "supervisor.exception.route-multiple.route_progress_delay.route_behind_expected_progress",
+      "humanReviewRequired": false,
+      "limitations": [],
+      "priority": 60,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:60"
+      ],
+      "reasonCodes": [
+        "ROUTE_BEHIND_EXPECTED_PROGRESS"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_ROUTE_STATUS",
+      "requiredAttention": "SUPERVISOR_AWARENESS",
+      "resolutionState": "UNRESOLVED",
+      "severity": "MODERATE",
+      "structuredFacts": {
+        "driverId": "driver-synthetic-001",
+        "reasonCodes": [
+          "ROUTE_BEHIND_EXPECTED_PROGRESS"
+        ],
+        "routeId": "route-multiple",
+        "stopId": null
+      },
+      "testOnly": true,
+      "title": "route.progress.delay"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "affectedRouteId": "route-multiple",
+      "affectedStopId": null,
+      "alertHash": "d3a2d3e9fcfa67e2624d0e11ffdb19d907c4699f22c4569cfe325f96bb7b9c69",
+      "alertId": "supervisor.alert.45ea832e60b27c28",
+      "alertType": "ROUTE_DEVIATION",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "driver.intelligence"
+      ],
+      "exceptionId": "supervisor.exception.route-multiple.route_deviation.route_deviation_active",
+      "humanReviewRequired": true,
+      "limitations": [],
+      "priority": 60,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:60"
+      ],
+      "reasonCodes": [
+        "ROUTE_DEVIATION_ACTIVE"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_ROUTE_DEVIATION",
+      "requiredAttention": "HUMAN_REVIEW_REQUIRED",
+      "resolutionState": "UNRESOLVED",
+      "severity": "MODERATE",
+      "structuredFacts": {
+        "driverId": "driver-synthetic-001",
+        "reasonCodes": [
+          "ROUTE_DEVIATION_ACTIVE"
+        ],
+        "routeId": "route-multiple",
+        "stopId": null
+      },
+      "testOnly": true,
+      "title": "route.deviation"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "affectedRouteId": "route-multiple",
+      "affectedStopId": "stop-missing",
+      "alertHash": "b3793f7100031a3ca41833dc0ba5a96c916cfc7a0af5e0961735b5622b6830dc",
+      "alertId": "supervisor.alert.a25515ce85b3c166",
+      "alertType": "DELIVERY_EVIDENCE_MISSING",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "stop-missing"
+      ],
+      "exceptionId": "supervisor.exception.route-multiple.delivery_evidence_missing.delivery_evidence_incomplete",
+      "humanReviewRequired": true,
+      "limitations": [],
+      "priority": 20,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:20"
+      ],
+      "reasonCodes": [
+        "DELIVERY_EVIDENCE_INCOMPLETE"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_MISSING_EVIDENCE",
+      "requiredAttention": "HUMAN_REVIEW_REQUIRED",
+      "resolutionState": "UNRESOLVED",
+      "severity": "INFORMATIONAL",
+      "structuredFacts": {
+        "driverId": "driver-synthetic-001",
+        "reasonCodes": [
+          "DELIVERY_EVIDENCE_INCOMPLETE"
+        ],
+        "routeId": "route-multiple",
+        "stopId": "stop-missing"
+      },
+      "testOnly": true,
+      "title": "delivery.evidence.missing"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "affectedRouteId": "route-safety-priority",
+      "affectedStopId": null,
+      "alertHash": "49e9d971f7160505496dadcb5febe401ee166a6580ded25e5f9b6d6b9482f5bf",
+      "alertId": "supervisor.alert.9692dfd9f9b38243",
+      "alertType": "LOW_BRIDGE_EVENT",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "evt-low-bridge"
+      ],
+      "exceptionId": "supervisor.exception.route-safety-priority.low_bridge_event.low_bridge_hazard_active",
+      "humanReviewRequired": true,
+      "limitations": [],
+      "priority": 135,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:135"
+      ],
+      "reasonCodes": [
+        "LOW_BRIDGE_HAZARD_ACTIVE"
+      ],
+      "recommendedOperationalNextStep": "ESCALATE_SAFETY_EVENT",
+      "requiredAttention": "HUMAN_REVIEW_REQUIRED",
+      "resolutionState": "UNRESOLVED",
+      "severity": "CRITICAL",
+      "structuredFacts": {
+        "driverId": "driver-synthetic-001",
+        "reasonCodes": [
+          "LOW_BRIDGE_HAZARD_ACTIVE"
+        ],
+        "routeId": "route-safety-priority",
+        "stopId": null
+      },
+      "testOnly": true,
+      "title": "low.bridge.event"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "affectedRouteId": "route-safety-priority",
+      "affectedStopId": null,
+      "alertHash": "08e427758967a3559436b677f9c95f9ad80be0ce9ea99c171fa79643ade02101",
+      "alertId": "supervisor.alert.0d5efcc0674bc79a",
+      "alertType": "ROUTE_PROGRESS_DELAY",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "route.progress"
+      ],
+      "exceptionId": "supervisor.exception.route-safety-priority.route_progress_delay.route_behind_expected_progress",
+      "humanReviewRequired": false,
+      "limitations": [],
+      "priority": 60,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:60"
+      ],
+      "reasonCodes": [
+        "ROUTE_BEHIND_EXPECTED_PROGRESS"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_ROUTE_STATUS",
+      "requiredAttention": "SUPERVISOR_AWARENESS",
+      "resolutionState": "UNRESOLVED",
+      "severity": "MODERATE",
+      "structuredFacts": {
+        "driverId": "driver-synthetic-001",
+        "reasonCodes": [
+          "ROUTE_BEHIND_EXPECTED_PROGRESS"
+        ],
+        "routeId": "route-safety-priority",
+        "stopId": null
+      },
+      "testOnly": true,
+      "title": "route.progress.delay"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "affectedRouteId": "route-unknown",
+      "affectedStopId": null,
+      "alertHash": "66365c5a3c778c24c1e3879d5ee951465c1cb2a9813d7aa5ff74d881d5409a4d",
+      "alertId": "supervisor.alert.8fa90d5f50a6ee9f",
+      "alertType": "INSUFFICIENT_EVIDENCE",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "route.evidence"
+      ],
+      "exceptionId": "supervisor.exception.route-unknown.insufficient_evidence.evidence_insufficient",
+      "humanReviewRequired": true,
+      "limitations": [
+        "Evidence is incomplete; supervisor review is required before operational action."
+      ],
+      "priority": 50,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:50"
+      ],
+      "reasonCodes": [
+        "EVIDENCE_INSUFFICIENT"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_MISSING_EVIDENCE",
+      "requiredAttention": "HUMAN_REVIEW_REQUIRED",
+      "resolutionState": "UNRESOLVED",
+      "severity": "UNKNOWN",
+      "structuredFacts": {
+        "driverId": "driver-synthetic-001",
+        "reasonCodes": [
+          "EVIDENCE_INSUFFICIENT"
+        ],
+        "routeId": "route-unknown",
+        "stopId": null
+      },
+      "testOnly": true,
+      "title": "insufficient.evidence"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "affectedRouteId": "route-insufficient",
+      "affectedStopId": null,
+      "alertHash": "8f5d15496e433f04676ecda5812b2d7cf252cef00da130020e3af1b4141fead8",
+      "alertId": "supervisor.alert.836605597faced9d",
+      "alertType": "INSUFFICIENT_EVIDENCE",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "route.evidence"
+      ],
+      "exceptionId": "supervisor.exception.route-insufficient.insufficient_evidence.evidence_insufficient",
+      "humanReviewRequired": true,
+      "limitations": [
+        "Evidence is incomplete; supervisor review is required before operational action."
+      ],
+      "priority": 50,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:50"
+      ],
+      "reasonCodes": [
+        "EVIDENCE_INSUFFICIENT"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_MISSING_EVIDENCE",
+      "requiredAttention": "HUMAN_REVIEW_REQUIRED",
+      "resolutionState": "UNRESOLVED",
+      "severity": "UNKNOWN",
+      "structuredFacts": {
+        "driverId": null,
+        "reasonCodes": [
+          "EVIDENCE_INSUFFICIENT"
+        ],
+        "routeId": "route-insufficient",
+        "stopId": null
+      },
+      "testOnly": true,
+      "title": "insufficient.evidence"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "affectedRouteId": "route-review",
+      "affectedStopId": null,
+      "alertHash": "daae5ad2eb257851174b4098b90be94fe933b8cc29cbbc039e209efa1147c34b",
+      "alertId": "supervisor.alert.c49284ae6edcf0d9",
+      "alertType": "RESTRICTED_ROAD_EVENT",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "evt-restricted"
+      ],
+      "exceptionId": "supervisor.exception.route-review.restricted_road_event.restricted_road_hazard_active",
+      "humanReviewRequired": true,
+      "limitations": [],
+      "priority": 115,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:115"
+      ],
+      "reasonCodes": [
+        "RESTRICTED_ROAD_HAZARD_ACTIVE"
+      ],
+      "recommendedOperationalNextStep": "ESCALATE_SAFETY_EVENT",
+      "requiredAttention": "HUMAN_REVIEW_REQUIRED",
+      "resolutionState": "UNRESOLVED",
+      "severity": "HIGH",
+      "structuredFacts": {
+        "driverId": "driver-synthetic-001",
+        "reasonCodes": [
+          "RESTRICTED_ROAD_HAZARD_ACTIVE"
+        ],
+        "routeId": "route-review",
+        "stopId": null
+      },
+      "testOnly": true,
+      "title": "restricted.road.event"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "affectedRouteId": "route-ack",
+      "affectedStopId": null,
+      "alertHash": "861f4acaf19b667d10b7ca8e8b704fc484840f1e4e5b3ca78ec35ad6b06e4be4",
+      "alertId": "supervisor.alert.28bbf4fc6e72b17d",
+      "alertType": "ROUTE_DEVIATION",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "driver.intelligence"
+      ],
+      "exceptionId": "supervisor.exception.route-ack.route_deviation.route_deviation_active",
+      "humanReviewRequired": true,
+      "limitations": [],
+      "priority": 60,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:60"
+      ],
+      "reasonCodes": [
+        "ROUTE_DEVIATION_ACTIVE"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_ROUTE_DEVIATION",
+      "requiredAttention": "HUMAN_REVIEW_REQUIRED",
+      "resolutionState": "UNRESOLVED",
+      "severity": "MODERATE",
+      "structuredFacts": {
+        "driverId": "driver-synthetic-001",
+        "reasonCodes": [
+          "ROUTE_DEVIATION_ACTIVE"
+        ],
+        "routeId": "route-ack",
+        "stopId": null
+      },
+      "testOnly": true,
+      "title": "route.deviation"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "affectedRouteId": "route-resolve",
+      "affectedStopId": null,
+      "alertHash": "602443709e173e1125e920b24fa6019e237b46471310e9515f0b0156dd31910d",
+      "alertId": "supervisor.alert.6074d1b579fdf3e7",
+      "alertType": "ROUTE_DEVIATION",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "driver.intelligence"
+      ],
+      "exceptionId": "supervisor.exception.route-resolve.route_deviation.route_deviation_active",
+      "humanReviewRequired": true,
+      "limitations": [],
+      "priority": 60,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:60"
+      ],
+      "reasonCodes": [
+        "ROUTE_DEVIATION_ACTIVE"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_ROUTE_DEVIATION",
+      "requiredAttention": "HUMAN_REVIEW_REQUIRED",
+      "resolutionState": "UNRESOLVED",
+      "severity": "MODERATE",
+      "structuredFacts": {
+        "driverId": "driver-synthetic-001",
+        "reasonCodes": [
+          "ROUTE_DEVIATION_ACTIVE"
+        ],
+        "routeId": "route-resolve",
+        "stopId": null
+      },
+      "testOnly": true,
+      "title": "route.deviation"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "affectedRouteId": "route-invalidated",
+      "affectedStopId": null,
+      "alertHash": "ac72abcf7eab7734f19ee925e231032a6fedc456553e3516157f726f101c607f",
+      "alertId": "supervisor.alert.5869fc5268f44eaa",
+      "alertType": "ROUTE_DEVIATION",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "driver.intelligence"
+      ],
+      "exceptionId": "supervisor.exception.route-invalidated.route_deviation.route_deviation_active",
+      "humanReviewRequired": true,
+      "limitations": [],
+      "priority": 60,
+      "priorityTrace": [
+        "safety_first",
+        "legal_or_physical_restrictions_before_delay",
+        "score:60"
+      ],
+      "reasonCodes": [
+        "ROUTE_DEVIATION_ACTIVE"
+      ],
+      "recommendedOperationalNextStep": "REVIEW_ROUTE_DEVIATION",
+      "requiredAttention": "HUMAN_REVIEW_REQUIRED",
+      "resolutionState": "UNRESOLVED",
+      "severity": "MODERATE",
+      "structuredFacts": {
+        "driverId": "driver-synthetic-001",
+        "reasonCodes": [
+          "ROUTE_DEVIATION_ACTIVE"
+        ],
+        "routeId": "route-invalidated",
+        "stopId": null
+      },
+      "testOnly": true,
+      "title": "route.deviation"
+    }
+  ],
+  "generatedArtifact": true,
+  "nextSteps": [
+    "REVIEW_ROUTE_STATUS",
+    "CONTACT_DRIVER_FOR_OPERATIONAL_STATUS",
+    "REVIEW_ROUTE_DEVIATION",
+    "REVIEW_HAZARD",
+    "REVIEW_STOP_STATUS",
+    "REVIEW_MISSING_EVIDENCE",
+    "REVIEW_ROUTE_ALTERNATIVE",
+    "ESCALATE_SAFETY_EVENT",
+    "NO_ACTION_REQUIRED",
+    "UNABLE_TO_DETERMINE"
+  ]
+}

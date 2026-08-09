@@ -18,7 +18,7 @@
       "dashboard-data/technical_debt_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "787219a5855f2bc8b14abc6867597705a4e10811360140f856a9a8acf1f98eea",
+    "generationHash": "7115ad531451b4c6b12a1f22bc05428cb96b4b313e2160054a8096dcab690a2d",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -49,7 +49,8 @@
         "docs/implementation/intelligence-knowledge-graph/DEFERRED_WORK.md",
         "docs/implementation/intelligence-lifecycle-framework/DEFERRED_WORK.md",
         "docs/implementation/route-intelligence-foundation/DEFERRED_WORK.md",
-        "docs/implementation/scoring-engine/DEFERRED_WORK.md"
+        "docs/implementation/scoring-engine/DEFERRED_WORK.md",
+        "docs/implementation/supervisor-intelligence-foundation/DEFERRED_WORK.md"
       ],
       "missingIntegrations": [
         "runtime-dashboard-ui",

@@ -1,0 +1,1620 @@
+{
+  "exceptionTypes": [
+    "ROUTE_NOT_STARTED",
+    "ROUTE_START_DELAY",
+    "ROUTE_PROGRESS_DELAY",
+    "ROUTE_BLOCKED",
+    "ROUTE_DEVIATION",
+    "ROUTE_SAFETY_REJECTION",
+    "LOW_BRIDGE_EVENT",
+    "RESTRICTED_ROAD_EVENT",
+    "NO_THROUGH_TRUCK_EVENT",
+    "ROAD_CLOSURE_EVENT",
+    "SPEED_ADVISORY_EVENT",
+    "SPEED_WARNING_EVENT",
+    "DRIVER_GPS_UNAVAILABLE",
+    "ROUTE_EVIDENCE_STALE",
+    "ROUTE_EVIDENCE_CONFLICT",
+    "STOP_NOT_ARRIVED",
+    "STOP_DELAY",
+    "STOP_SKIPPED",
+    "STOP_UNRESOLVED",
+    "DELIVERY_EVIDENCE_MISSING",
+    "DRIVER_ASSISTANCE_MAY_BE_REQUIRED",
+    "HUMAN_REVIEW_REQUIRED",
+    "INSUFFICIENT_EVIDENCE"
+  ],
+  "exceptions": [
+    {
+      "detectedAt": "2026-08-01T00:00:00.000Z",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "scheduledStart",
+            "present": true
+          },
+          {
+            "field": "scheduledEnd",
+            "present": true
+          },
+          {
+            "field": "lastEvidenceTimestamp",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "evidenceConfidence": {
+        "score": 1,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "exceptionHash": "b339dad526744d88874a8c0d93cca3b9e524814fef774eaa05cb236a711e6a7d",
+      "exceptionId": "supervisor.exception.route-not-started.route_start_delay.route_not_started_by_threshold",
+      "exceptionType": "ROUTE_START_DELAY",
+      "humanReviewRequired": false,
+      "operationalImpact": "SUPERVISOR_REVIEW_MAY_BE_REQUIRED",
+      "organizationId": "org_synthetic_supervisor_intelligence",
+      "reasonCodes": [
+        "ROUTE_NOT_STARTED_BY_THRESHOLD"
+      ],
+      "routeId": "route-not-started",
+      "safetyImpact": "NO_KNOWN_IMMEDIATE_SAFETY_IMPACT",
+      "severity": "INFORMATIONAL",
+      "sourceEventReferences": [
+        "route.schedule"
+      ],
+      "status": "OPEN",
+      "stopId": null,
+      "testOnly": true
+    },
+    {
+      "detectedAt": "2026-08-01T00:00:00.000Z",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "scheduledStart",
+            "present": true
+          },
+          {
+            "field": "scheduledEnd",
+            "present": true
+          },
+          {
+            "field": "lastEvidenceTimestamp",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "evidenceConfidence": {
+        "score": 1,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "exceptionHash": "b3da75e1020643d8c3d1399bc0a470108ecc11e46e32705763284e3895e7b17d",
+      "exceptionId": "supervisor.exception.route-delayed.route_progress_delay.route_behind_expected_progress",
+      "exceptionType": "ROUTE_PROGRESS_DELAY",
+      "humanReviewRequired": false,
+      "operationalImpact": "SUPERVISOR_REVIEW_MAY_BE_REQUIRED",
+      "organizationId": "org_synthetic_supervisor_intelligence",
+      "reasonCodes": [
+        "ROUTE_BEHIND_EXPECTED_PROGRESS"
+      ],
+      "routeId": "route-delayed",
+      "safetyImpact": "NO_KNOWN_IMMEDIATE_SAFETY_IMPACT",
+      "severity": "MODERATE",
+      "sourceEventReferences": [
+        "route.progress"
+      ],
+      "status": "OPEN",
+      "stopId": null,
+      "testOnly": true
+    },
+    {
+      "detectedAt": "2026-08-01T00:00:00.000Z",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "scheduledStart",
+            "present": true
+          },
+          {
+            "field": "scheduledEnd",
+            "present": true
+          },
+          {
+            "field": "lastEvidenceTimestamp",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "evidenceConfidence": {
+        "score": 1,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "exceptionHash": "4232337cedae22fc867f071ed3ff0790a82673297667872a8aa9c7d446935c7b",
+      "exceptionId": "supervisor.exception.route-low-bridge.low_bridge_event.low_bridge_hazard_active",
+      "exceptionType": "LOW_BRIDGE_EVENT",
+      "humanReviewRequired": true,
+      "operationalImpact": "SUPERVISOR_REVIEW_MAY_BE_REQUIRED",
+      "organizationId": "org_synthetic_supervisor_intelligence",
+      "reasonCodes": [
+        "LOW_BRIDGE_HAZARD_ACTIVE"
+      ],
+      "routeId": "route-low-bridge",
+      "safetyImpact": "SAFETY_REVIEW_REQUIRED",
+      "severity": "CRITICAL",
+      "sourceEventReferences": [
+        "evt-low-bridge"
+      ],
+      "status": "OPEN",
+      "stopId": null,
+      "testOnly": true
+    },
+    {
+      "detectedAt": "2026-08-01T00:00:00.000Z",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "scheduledStart",
+            "present": true
+          },
+          {
+            "field": "scheduledEnd",
+            "present": true
+          },
+          {
+            "field": "lastEvidenceTimestamp",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "evidenceConfidence": {
+        "score": 1,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "exceptionHash": "7340cc8403c04d687fa19b909c5a88343ccc1477fd27f71570415eabdf9aa746",
+      "exceptionId": "supervisor.exception.route-low-bridge.route_blocked.route_blocked_by_safety_rule",
+      "exceptionType": "ROUTE_BLOCKED",
+      "humanReviewRequired": true,
+      "operationalImpact": "SUPERVISOR_REVIEW_MAY_BE_REQUIRED",
+      "organizationId": "org_synthetic_supervisor_intelligence",
+      "reasonCodes": [
+        "ROUTE_BLOCKED_BY_SAFETY_RULE"
+      ],
+      "routeId": "route-low-bridge",
+      "safetyImpact": "SAFETY_REVIEW_REQUIRED",
+      "severity": "CRITICAL",
+      "sourceEventReferences": [
+        "route.intelligence"
+      ],
+      "status": "OPEN",
+      "stopId": null,
+      "testOnly": true
+    },
+    {
+      "detectedAt": "2026-08-01T00:00:00.000Z",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "scheduledStart",
+            "present": true
+          },
+          {
+            "field": "scheduledEnd",
+            "present": true
+          },
+          {
+            "field": "lastEvidenceTimestamp",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "evidenceConfidence": {
+        "score": 1,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "exceptionHash": "777ba0e75864d1ee55302bfeade521bc4164f89387aae69e06a465d17dd31cde",
+      "exceptionId": "supervisor.exception.route-road-closure.road_closure_event.road_closure_active",
+      "exceptionType": "ROAD_CLOSURE_EVENT",
+      "humanReviewRequired": true,
+      "operationalImpact": "SUPERVISOR_REVIEW_MAY_BE_REQUIRED",
+      "organizationId": "org_synthetic_supervisor_intelligence",
+      "reasonCodes": [
+        "ROAD_CLOSURE_ACTIVE"
+      ],
+      "routeId": "route-road-closure",
+      "safetyImpact": "SAFETY_REVIEW_REQUIRED",
+      "severity": "HIGH",
+      "sourceEventReferences": [
+        "evt-road-closure"
+      ],
+      "status": "OPEN",
+      "stopId": null,
+      "testOnly": true
+    },
+    {
+      "detectedAt": "2026-08-01T00:00:00.000Z",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "scheduledStart",
+            "present": true
+          },
+          {
+            "field": "scheduledEnd",
+            "present": true
+          },
+          {
+            "field": "lastEvidenceTimestamp",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "evidenceConfidence": {
+        "score": 1,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "exceptionHash": "9c7eb916100968910703b43ccbf899266a13c8456a55a174102a1799266d2126",
+      "exceptionId": "supervisor.exception.route-deviation.route_deviation.route_deviation_active",
+      "exceptionType": "ROUTE_DEVIATION",
+      "humanReviewRequired": true,
+      "operationalImpact": "SUPERVISOR_REVIEW_MAY_BE_REQUIRED",
+      "organizationId": "org_synthetic_supervisor_intelligence",
+      "reasonCodes": [
+        "ROUTE_DEVIATION_ACTIVE"
+      ],
+      "routeId": "route-deviation",
+      "safetyImpact": "NO_KNOWN_IMMEDIATE_SAFETY_IMPACT",
+      "severity": "MODERATE",
+      "sourceEventReferences": [
+        "driver.intelligence"
+      ],
+      "status": "OPEN",
+      "stopId": null,
+      "testOnly": true
+    },
+    {
+      "detectedAt": "2026-08-01T00:00:00.000Z",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "scheduledStart",
+            "present": true
+          },
+          {
+            "field": "scheduledEnd",
+            "present": true
+          },
+          {
+            "field": "lastEvidenceTimestamp",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "evidenceConfidence": {
+        "score": 1,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "exceptionHash": "4a9da4c0806f5eb4c3b24619de69f139e3d91efa18f236a22bd23ce11e63a5c6",
+      "exceptionId": "supervisor.exception.route-deviation-resolved.route_deviation.route_deviation_resolved",
+      "exceptionType": "ROUTE_DEVIATION",
+      "humanReviewRequired": false,
+      "operationalImpact": "MONITOR_ONLY",
+      "organizationId": "org_synthetic_supervisor_intelligence",
+      "reasonCodes": [
+        "ROUTE_DEVIATION_RESOLVED"
+      ],
+      "routeId": "route-deviation-resolved",
+      "safetyImpact": "NO_KNOWN_IMMEDIATE_SAFETY_IMPACT",
+      "severity": "INFORMATIONAL",
+      "sourceEventReferences": [
+        "driver.intelligence"
+      ],
+      "status": "OPEN",
+      "stopId": null,
+      "testOnly": true
+    },
+    {
+      "detectedAt": "2026-08-01T00:00:00.000Z",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "scheduledStart",
+            "present": true
+          },
+          {
+            "field": "scheduledEnd",
+            "present": true
+          },
+          {
+            "field": "lastEvidenceTimestamp",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "evidenceConfidence": {
+        "score": 1,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "exceptionHash": "7b6b77520eed675d721b065b80eb49df6a13b28bdb155dff40cd370df7bb8495",
+      "exceptionId": "supervisor.exception.route-no-through.no_through_truck_event.no_through_truck_hazard_active",
+      "exceptionType": "NO_THROUGH_TRUCK_EVENT",
+      "humanReviewRequired": true,
+      "operationalImpact": "SUPERVISOR_REVIEW_MAY_BE_REQUIRED",
+      "organizationId": "org_synthetic_supervisor_intelligence",
+      "reasonCodes": [
+        "NO_THROUGH_TRUCK_HAZARD_ACTIVE"
+      ],
+      "routeId": "route-no-through",
+      "safetyImpact": "SAFETY_REVIEW_REQUIRED",
+      "severity": "HIGH",
+      "sourceEventReferences": [
+        "evt-no-through"
+      ],
+      "status": "OPEN",
+      "stopId": null,
+      "testOnly": true
+    },
+    {
+      "detectedAt": "2026-08-01T00:00:00.000Z",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "scheduledStart",
+            "present": true
+          },
+          {
+            "field": "scheduledEnd",
+            "present": true
+          },
+          {
+            "field": "lastEvidenceTimestamp",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "evidenceConfidence": {
+        "score": 1,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "exceptionHash": "d4f861254f39918e08882bb5d7bf43bad91a43aef02cf9a40462aff75ae3b0be",
+      "exceptionId": "supervisor.exception.route-restricted.restricted_road_event.restricted_road_hazard_active",
+      "exceptionType": "RESTRICTED_ROAD_EVENT",
+      "humanReviewRequired": true,
+      "operationalImpact": "SUPERVISOR_REVIEW_MAY_BE_REQUIRED",
+      "organizationId": "org_synthetic_supervisor_intelligence",
+      "reasonCodes": [
+        "RESTRICTED_ROAD_HAZARD_ACTIVE"
+      ],
+      "routeId": "route-restricted",
+      "safetyImpact": "SAFETY_REVIEW_REQUIRED",
+      "severity": "HIGH",
+      "sourceEventReferences": [
+        "evt-restricted"
+      ],
+      "status": "OPEN",
+      "stopId": null,
+      "testOnly": true
+    },
+    {
+      "detectedAt": "2026-08-01T00:00:00.000Z",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "scheduledStart",
+            "present": true
+          },
+          {
+            "field": "scheduledEnd",
+            "present": true
+          },
+          {
+            "field": "lastEvidenceTimestamp",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "evidenceConfidence": {
+        "score": 1,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "exceptionHash": "d9f36c2745ff598d86be1a19f5ba2f8b77696819d3b3c9de6499e492f7210f80",
+      "exceptionId": "supervisor.exception.route-speed-advisory.speed_advisory_event.speed_advisory_active",
+      "exceptionType": "SPEED_ADVISORY_EVENT",
+      "humanReviewRequired": true,
+      "operationalImpact": "SUPERVISOR_REVIEW_MAY_BE_REQUIRED",
+      "organizationId": "org_synthetic_supervisor_intelligence",
+      "reasonCodes": [
+        "SPEED_ADVISORY_ACTIVE"
+      ],
+      "routeId": "route-speed-advisory",
+      "safetyImpact": "NO_KNOWN_IMMEDIATE_SAFETY_IMPACT",
+      "severity": "INFORMATIONAL",
+      "sourceEventReferences": [
+        "evt-speed-advisory"
+      ],
+      "status": "OPEN",
+      "stopId": null,
+      "testOnly": true
+    },
+    {
+      "detectedAt": "2026-08-01T00:00:00.000Z",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "scheduledStart",
+            "present": true
+          },
+          {
+            "field": "scheduledEnd",
+            "present": true
+          },
+          {
+            "field": "lastEvidenceTimestamp",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "evidenceConfidence": {
+        "score": 1,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "exceptionHash": "ac5934771e371e44b5a695951c9dd273a9db2ca48bd64f8c2ad72d5567851bde",
+      "exceptionId": "supervisor.exception.route-speed-warning.speed_warning_event.speed_warning_active",
+      "exceptionType": "SPEED_WARNING_EVENT",
+      "humanReviewRequired": true,
+      "operationalImpact": "SUPERVISOR_REVIEW_MAY_BE_REQUIRED",
+      "organizationId": "org_synthetic_supervisor_intelligence",
+      "reasonCodes": [
+        "SPEED_WARNING_ACTIVE"
+      ],
+      "routeId": "route-speed-warning",
+      "safetyImpact": "SAFETY_REVIEW_REQUIRED",
+      "severity": "HIGH",
+      "sourceEventReferences": [
+        "evt-speed-warning"
+      ],
+      "status": "OPEN",
+      "stopId": null,
+      "testOnly": true
+    },
+    {
+      "detectedAt": "2026-08-01T00:00:00.000Z",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "scheduledStart",
+            "present": true
+          },
+          {
+            "field": "scheduledEnd",
+            "present": true
+          },
+          {
+            "field": "lastEvidenceTimestamp",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "evidenceConfidence": {
+        "score": 1,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "exceptionHash": "d04cbf5b8514348b028405680d799e328599d4414415997666bab0adc6f4ff04",
+      "exceptionId": "supervisor.exception.route-gps.driver_gps_unavailable.gps_evidence_unavailable",
+      "exceptionType": "DRIVER_GPS_UNAVAILABLE",
+      "humanReviewRequired": true,
+      "operationalImpact": "SUPERVISOR_REVIEW_MAY_BE_REQUIRED",
+      "organizationId": "org_synthetic_supervisor_intelligence",
+      "reasonCodes": [
+        "GPS_EVIDENCE_UNAVAILABLE"
+      ],
+      "routeId": "route-gps",
+      "safetyImpact": "NO_KNOWN_IMMEDIATE_SAFETY_IMPACT",
+      "severity": "LOW",
+      "sourceEventReferences": [
+        "evt-gps"
+      ],
+      "status": "OPEN",
+      "stopId": null,
+      "testOnly": true
+    },
+    {
+      "detectedAt": "2026-08-01T00:00:00.000Z",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "scheduledStart",
+            "present": true
+          },
+          {
+            "field": "scheduledEnd",
+            "present": true
+          },
+          {
+            "field": "lastEvidenceTimestamp",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "evidenceConfidence": {
+        "score": 1,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "exceptionHash": "1264514c05fe810e9e095027ac084cc66d7b1673cf8f37db2053499e07ba0cd8",
+      "exceptionId": "supervisor.exception.route-stale.route_evidence_stale.route_evidence_stale",
+      "exceptionType": "ROUTE_EVIDENCE_STALE",
+      "humanReviewRequired": true,
+      "operationalImpact": "SUPERVISOR_REVIEW_MAY_BE_REQUIRED",
+      "organizationId": "org_synthetic_supervisor_intelligence",
+      "reasonCodes": [
+        "ROUTE_EVIDENCE_STALE"
+      ],
+      "routeId": "route-stale",
+      "safetyImpact": "NO_KNOWN_IMMEDIATE_SAFETY_IMPACT",
+      "severity": "LOW",
+      "sourceEventReferences": [
+        "route.evidence"
+      ],
+      "status": "OPEN",
+      "stopId": null,
+      "testOnly": true
+    },
+    {
+      "detectedAt": "2026-08-01T00:00:00.000Z",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "scheduledStart",
+            "present": true
+          },
+          {
+            "field": "scheduledEnd",
+            "present": true
+          },
+          {
+            "field": "lastEvidenceTimestamp",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "evidenceConfidence": {
+        "score": 1,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "exceptionHash": "19987244741803da8716d301f1a1b73dceaf6432f7d954f2548444a1adca4565",
+      "exceptionId": "supervisor.exception.route-conflict.route_evidence_conflict.route_evidence_conflict",
+      "exceptionType": "ROUTE_EVIDENCE_CONFLICT",
+      "humanReviewRequired": true,
+      "operationalImpact": "SUPERVISOR_REVIEW_MAY_BE_REQUIRED",
+      "organizationId": "org_synthetic_supervisor_intelligence",
+      "reasonCodes": [
+        "ROUTE_EVIDENCE_CONFLICT"
+      ],
+      "routeId": "route-conflict",
+      "safetyImpact": "NO_KNOWN_IMMEDIATE_SAFETY_IMPACT",
+      "severity": "LOW",
+      "sourceEventReferences": [
+        "route.evidence"
+      ],
+      "status": "OPEN",
+      "stopId": null,
+      "testOnly": true
+    },
+    {
+      "detectedAt": "2026-08-01T00:00:00.000Z",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "scheduledStart",
+            "present": true
+          },
+          {
+            "field": "scheduledEnd",
+            "present": true
+          },
+          {
+            "field": "lastEvidenceTimestamp",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "evidenceConfidence": {
+        "score": 1,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "exceptionHash": "ae5e059bdf892d789dfdffb194f3076bac0d41035459c617c37e4fb7b096ff26",
+      "exceptionId": "supervisor.exception.route-stop-delay.stop_delay.stop_progress_delayed",
+      "exceptionType": "STOP_DELAY",
+      "humanReviewRequired": false,
+      "operationalImpact": "SUPERVISOR_REVIEW_MAY_BE_REQUIRED",
+      "organizationId": "org_synthetic_supervisor_intelligence",
+      "reasonCodes": [
+        "STOP_PROGRESS_DELAYED"
+      ],
+      "routeId": "route-stop-delay",
+      "safetyImpact": "NO_KNOWN_IMMEDIATE_SAFETY_IMPACT",
+      "severity": "MODERATE",
+      "sourceEventReferences": [
+        "stop-delay"
+      ],
+      "status": "OPEN",
+      "stopId": "stop-delay",
+      "testOnly": true
+    },
+    {
+      "detectedAt": "2026-08-01T00:00:00.000Z",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "scheduledStart",
+            "present": true
+          },
+          {
+            "field": "scheduledEnd",
+            "present": true
+          },
+          {
+            "field": "lastEvidenceTimestamp",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "evidenceConfidence": {
+        "score": 1,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "exceptionHash": "77488f574f75f56bda97f42933cb700bc012dd23933a03355666616b012e1ff9",
+      "exceptionId": "supervisor.exception.route-stop-skip.stop_skipped.stop_status_unresolved",
+      "exceptionType": "STOP_SKIPPED",
+      "humanReviewRequired": true,
+      "operationalImpact": "SUPERVISOR_REVIEW_MAY_BE_REQUIRED",
+      "organizationId": "org_synthetic_supervisor_intelligence",
+      "reasonCodes": [
+        "STOP_STATUS_UNRESOLVED"
+      ],
+      "routeId": "route-stop-skip",
+      "safetyImpact": "NO_KNOWN_IMMEDIATE_SAFETY_IMPACT",
+      "severity": "INFORMATIONAL",
+      "sourceEventReferences": [
+        "stop-skip"
+      ],
+      "status": "OPEN",
+      "stopId": "stop-skip",
+      "testOnly": true
+    },
+    {
+      "detectedAt": "2026-08-01T00:00:00.000Z",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "scheduledStart",
+            "present": true
+          },
+          {
+            "field": "scheduledEnd",
+            "present": true
+          },
+          {
+            "field": "lastEvidenceTimestamp",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "evidenceConfidence": {
+        "score": 1,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "exceptionHash": "da4836237bcc8b1c847581ad28e4d3792eae3ef49282e9152110b8965a222550",
+      "exceptionId": "supervisor.exception.route-stop-unresolved.stop_unresolved.stop_status_unresolved",
+      "exceptionType": "STOP_UNRESOLVED",
+      "humanReviewRequired": true,
+      "operationalImpact": "SUPERVISOR_REVIEW_MAY_BE_REQUIRED",
+      "organizationId": "org_synthetic_supervisor_intelligence",
+      "reasonCodes": [
+        "STOP_STATUS_UNRESOLVED"
+      ],
+      "routeId": "route-stop-unresolved",
+      "safetyImpact": "NO_KNOWN_IMMEDIATE_SAFETY_IMPACT",
+      "severity": "INFORMATIONAL",
+      "sourceEventReferences": [
+        "stop-unresolved"
+      ],
+      "status": "OPEN",
+      "stopId": "stop-unresolved",
+      "testOnly": true
+    },
+    {
+      "detectedAt": "2026-08-01T00:00:00.000Z",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "scheduledStart",
+            "present": true
+          },
+          {
+            "field": "scheduledEnd",
+            "present": true
+          },
+          {
+            "field": "lastEvidenceTimestamp",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "evidenceConfidence": {
+        "score": 1,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "exceptionHash": "b3c57e9cb485f12780abfc73ce156ab87eb4dca9677bdb528e85a51612ad83f4",
+      "exceptionId": "supervisor.exception.route-evidence-missing.delivery_evidence_missing.delivery_evidence_incomplete",
+      "exceptionType": "DELIVERY_EVIDENCE_MISSING",
+      "humanReviewRequired": true,
+      "operationalImpact": "SUPERVISOR_REVIEW_MAY_BE_REQUIRED",
+      "organizationId": "org_synthetic_supervisor_intelligence",
+      "reasonCodes": [
+        "DELIVERY_EVIDENCE_INCOMPLETE"
+      ],
+      "routeId": "route-evidence-missing",
+      "safetyImpact": "NO_KNOWN_IMMEDIATE_SAFETY_IMPACT",
+      "severity": "INFORMATIONAL",
+      "sourceEventReferences": [
+        "stop-missing"
+      ],
+      "status": "OPEN",
+      "stopId": "stop-missing",
+      "testOnly": true
+    },
+    {
+      "detectedAt": "2026-08-01T00:00:00.000Z",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "scheduledStart",
+            "present": true
+          },
+          {
+            "field": "scheduledEnd",
+            "present": true
+          },
+          {
+            "field": "lastEvidenceTimestamp",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "evidenceConfidence": {
+        "score": 1,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "exceptionHash": "4494ccc8daf41c1d7be77c26400292e31ca41671c2a221f6384994d8734ad88b",
+      "exceptionId": "supervisor.exception.route-multiple.delivery_evidence_missing.delivery_evidence_incomplete",
+      "exceptionType": "DELIVERY_EVIDENCE_MISSING",
+      "humanReviewRequired": true,
+      "operationalImpact": "SUPERVISOR_REVIEW_MAY_BE_REQUIRED",
+      "organizationId": "org_synthetic_supervisor_intelligence",
+      "reasonCodes": [
+        "DELIVERY_EVIDENCE_INCOMPLETE"
+      ],
+      "routeId": "route-multiple",
+      "safetyImpact": "NO_KNOWN_IMMEDIATE_SAFETY_IMPACT",
+      "severity": "INFORMATIONAL",
+      "sourceEventReferences": [
+        "stop-missing"
+      ],
+      "status": "OPEN",
+      "stopId": "stop-missing",
+      "testOnly": true
+    },
+    {
+      "detectedAt": "2026-08-01T00:00:00.000Z",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "scheduledStart",
+            "present": true
+          },
+          {
+            "field": "scheduledEnd",
+            "present": true
+          },
+          {
+            "field": "lastEvidenceTimestamp",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "evidenceConfidence": {
+        "score": 1,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "exceptionHash": "48d66eea4f2ccbc477515536dd87a6fa9dff5593efad5b462c96542c67be6165",
+      "exceptionId": "supervisor.exception.route-multiple.route_deviation.route_deviation_active",
+      "exceptionType": "ROUTE_DEVIATION",
+      "humanReviewRequired": true,
+      "operationalImpact": "SUPERVISOR_REVIEW_MAY_BE_REQUIRED",
+      "organizationId": "org_synthetic_supervisor_intelligence",
+      "reasonCodes": [
+        "ROUTE_DEVIATION_ACTIVE"
+      ],
+      "routeId": "route-multiple",
+      "safetyImpact": "NO_KNOWN_IMMEDIATE_SAFETY_IMPACT",
+      "severity": "MODERATE",
+      "sourceEventReferences": [
+        "driver.intelligence"
+      ],
+      "status": "OPEN",
+      "stopId": null,
+      "testOnly": true
+    },
+    {
+      "detectedAt": "2026-08-01T00:00:00.000Z",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "scheduledStart",
+            "present": true
+          },
+          {
+            "field": "scheduledEnd",
+            "present": true
+          },
+          {
+            "field": "lastEvidenceTimestamp",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "evidenceConfidence": {
+        "score": 1,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "exceptionHash": "9092f928ccb7190a4e6d948c9dcac0a6a4b2efac2d93f392b498e43029bda65e",
+      "exceptionId": "supervisor.exception.route-multiple.route_progress_delay.route_behind_expected_progress",
+      "exceptionType": "ROUTE_PROGRESS_DELAY",
+      "humanReviewRequired": false,
+      "operationalImpact": "SUPERVISOR_REVIEW_MAY_BE_REQUIRED",
+      "organizationId": "org_synthetic_supervisor_intelligence",
+      "reasonCodes": [
+        "ROUTE_BEHIND_EXPECTED_PROGRESS"
+      ],
+      "routeId": "route-multiple",
+      "safetyImpact": "NO_KNOWN_IMMEDIATE_SAFETY_IMPACT",
+      "severity": "MODERATE",
+      "sourceEventReferences": [
+        "route.progress"
+      ],
+      "status": "OPEN",
+      "stopId": null,
+      "testOnly": true
+    },
+    {
+      "detectedAt": "2026-08-01T00:00:00.000Z",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "scheduledStart",
+            "present": true
+          },
+          {
+            "field": "scheduledEnd",
+            "present": true
+          },
+          {
+            "field": "lastEvidenceTimestamp",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "evidenceConfidence": {
+        "score": 1,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "exceptionHash": "be3a58da2a175cd35b4a283ce5eea6dd83b45a17d3de02e00f32ffd81cf17a8c",
+      "exceptionId": "supervisor.exception.route-multiple.speed_warning_event.speed_warning_active",
+      "exceptionType": "SPEED_WARNING_EVENT",
+      "humanReviewRequired": true,
+      "operationalImpact": "SUPERVISOR_REVIEW_MAY_BE_REQUIRED",
+      "organizationId": "org_synthetic_supervisor_intelligence",
+      "reasonCodes": [
+        "SPEED_WARNING_ACTIVE"
+      ],
+      "routeId": "route-multiple",
+      "safetyImpact": "SAFETY_REVIEW_REQUIRED",
+      "severity": "HIGH",
+      "sourceEventReferences": [
+        "evt-speed-warning"
+      ],
+      "status": "OPEN",
+      "stopId": null,
+      "testOnly": true
+    },
+    {
+      "detectedAt": "2026-08-01T00:00:00.000Z",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "scheduledStart",
+            "present": true
+          },
+          {
+            "field": "scheduledEnd",
+            "present": true
+          },
+          {
+            "field": "lastEvidenceTimestamp",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "evidenceConfidence": {
+        "score": 1,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "exceptionHash": "1dc12bb2a029c531f921e7749992a18a819ccc173407fd5af38c1a3f181466cb",
+      "exceptionId": "supervisor.exception.route-safety-priority.low_bridge_event.low_bridge_hazard_active",
+      "exceptionType": "LOW_BRIDGE_EVENT",
+      "humanReviewRequired": true,
+      "operationalImpact": "SUPERVISOR_REVIEW_MAY_BE_REQUIRED",
+      "organizationId": "org_synthetic_supervisor_intelligence",
+      "reasonCodes": [
+        "LOW_BRIDGE_HAZARD_ACTIVE"
+      ],
+      "routeId": "route-safety-priority",
+      "safetyImpact": "SAFETY_REVIEW_REQUIRED",
+      "severity": "CRITICAL",
+      "sourceEventReferences": [
+        "evt-low-bridge"
+      ],
+      "status": "OPEN",
+      "stopId": null,
+      "testOnly": true
+    },
+    {
+      "detectedAt": "2026-08-01T00:00:00.000Z",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "scheduledStart",
+            "present": true
+          },
+          {
+            "field": "scheduledEnd",
+            "present": true
+          },
+          {
+            "field": "lastEvidenceTimestamp",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "evidenceConfidence": {
+        "score": 1,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "exceptionHash": "afdb90ccb4ff2abb62ca651d6ecd230e93fde4580f884738a6434b3a36dc38c5",
+      "exceptionId": "supervisor.exception.route-safety-priority.route_progress_delay.route_behind_expected_progress",
+      "exceptionType": "ROUTE_PROGRESS_DELAY",
+      "humanReviewRequired": false,
+      "operationalImpact": "SUPERVISOR_REVIEW_MAY_BE_REQUIRED",
+      "organizationId": "org_synthetic_supervisor_intelligence",
+      "reasonCodes": [
+        "ROUTE_BEHIND_EXPECTED_PROGRESS"
+      ],
+      "routeId": "route-safety-priority",
+      "safetyImpact": "NO_KNOWN_IMMEDIATE_SAFETY_IMPACT",
+      "severity": "MODERATE",
+      "sourceEventReferences": [
+        "route.progress"
+      ],
+      "status": "OPEN",
+      "stopId": null,
+      "testOnly": true
+    },
+    {
+      "detectedAt": "2026-08-01T00:00:00.000Z",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "scheduledStart",
+            "present": false
+          },
+          {
+            "field": "scheduledEnd",
+            "present": false
+          },
+          {
+            "field": "lastEvidenceTimestamp",
+            "present": false
+          }
+        ],
+        "score": 0.4,
+        "status": "INSUFFICIENT"
+      },
+      "evidenceConfidence": {
+        "score": 0.3,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "exceptionHash": "ed54d3fa9d1005398391cbc9a73e675956997f4860849a8024b19b316a35d4a4",
+      "exceptionId": "supervisor.exception.route-unknown.insufficient_evidence.evidence_insufficient",
+      "exceptionType": "INSUFFICIENT_EVIDENCE",
+      "humanReviewRequired": true,
+      "operationalImpact": "SUPERVISOR_REVIEW_MAY_BE_REQUIRED",
+      "organizationId": "org_synthetic_supervisor_intelligence",
+      "reasonCodes": [
+        "EVIDENCE_INSUFFICIENT"
+      ],
+      "routeId": "route-unknown",
+      "safetyImpact": "NO_KNOWN_IMMEDIATE_SAFETY_IMPACT",
+      "severity": "UNKNOWN",
+      "sourceEventReferences": [
+        "route.evidence"
+      ],
+      "status": "OPEN",
+      "stopId": null,
+      "testOnly": true
+    },
+    {
+      "detectedAt": "2026-08-01T00:00:00.000Z",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "scheduledStart",
+            "present": false
+          },
+          {
+            "field": "scheduledEnd",
+            "present": false
+          },
+          {
+            "field": "lastEvidenceTimestamp",
+            "present": false
+          }
+        ],
+        "score": 0.4,
+        "status": "INSUFFICIENT"
+      },
+      "evidenceConfidence": {
+        "score": 0.3,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "exceptionHash": "dba2a02bba8f0968f520957ffba99ec018944429e112fea58ab97c01cb17180e",
+      "exceptionId": "supervisor.exception.route-insufficient.insufficient_evidence.evidence_insufficient",
+      "exceptionType": "INSUFFICIENT_EVIDENCE",
+      "humanReviewRequired": true,
+      "operationalImpact": "SUPERVISOR_REVIEW_MAY_BE_REQUIRED",
+      "organizationId": "org_synthetic_supervisor_intelligence",
+      "reasonCodes": [
+        "EVIDENCE_INSUFFICIENT"
+      ],
+      "routeId": "route-insufficient",
+      "safetyImpact": "NO_KNOWN_IMMEDIATE_SAFETY_IMPACT",
+      "severity": "UNKNOWN",
+      "sourceEventReferences": [
+        "route.evidence"
+      ],
+      "status": "OPEN",
+      "stopId": null,
+      "testOnly": true
+    },
+    {
+      "detectedAt": "2026-08-01T00:00:00.000Z",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "scheduledStart",
+            "present": true
+          },
+          {
+            "field": "scheduledEnd",
+            "present": true
+          },
+          {
+            "field": "lastEvidenceTimestamp",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "evidenceConfidence": {
+        "score": 1,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "exceptionHash": "2a31faa5ef3dfde3a1f7d9fd9bc9cd1af3c0e91724eea2b77ca265bf48cb23ba",
+      "exceptionId": "supervisor.exception.route-review.restricted_road_event.restricted_road_hazard_active",
+      "exceptionType": "RESTRICTED_ROAD_EVENT",
+      "humanReviewRequired": true,
+      "operationalImpact": "SUPERVISOR_REVIEW_MAY_BE_REQUIRED",
+      "organizationId": "org_synthetic_supervisor_intelligence",
+      "reasonCodes": [
+        "RESTRICTED_ROAD_HAZARD_ACTIVE"
+      ],
+      "routeId": "route-review",
+      "safetyImpact": "SAFETY_REVIEW_REQUIRED",
+      "severity": "HIGH",
+      "sourceEventReferences": [
+        "evt-restricted"
+      ],
+      "status": "OPEN",
+      "stopId": null,
+      "testOnly": true
+    },
+    {
+      "detectedAt": "2026-08-01T00:00:00.000Z",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "scheduledStart",
+            "present": true
+          },
+          {
+            "field": "scheduledEnd",
+            "present": true
+          },
+          {
+            "field": "lastEvidenceTimestamp",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "evidenceConfidence": {
+        "score": 1,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "exceptionHash": "99b30767eb1731c3fe97bd31ab804364153b6247473132b616068d27e7374527",
+      "exceptionId": "supervisor.exception.route-ack.route_deviation.route_deviation_active",
+      "exceptionType": "ROUTE_DEVIATION",
+      "humanReviewRequired": true,
+      "operationalImpact": "SUPERVISOR_REVIEW_MAY_BE_REQUIRED",
+      "organizationId": "org_synthetic_supervisor_intelligence",
+      "reasonCodes": [
+        "ROUTE_DEVIATION_ACTIVE"
+      ],
+      "routeId": "route-ack",
+      "safetyImpact": "NO_KNOWN_IMMEDIATE_SAFETY_IMPACT",
+      "severity": "MODERATE",
+      "sourceEventReferences": [
+        "driver.intelligence"
+      ],
+      "status": "OPEN",
+      "stopId": null,
+      "testOnly": true
+    },
+    {
+      "detectedAt": "2026-08-01T00:00:00.000Z",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "scheduledStart",
+            "present": true
+          },
+          {
+            "field": "scheduledEnd",
+            "present": true
+          },
+          {
+            "field": "lastEvidenceTimestamp",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "evidenceConfidence": {
+        "score": 1,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "exceptionHash": "474ebcd265feff3966af86f9890b983e443237ae4a5b4c05e3f2790bb7d4fb33",
+      "exceptionId": "supervisor.exception.route-resolve.route_deviation.route_deviation_active",
+      "exceptionType": "ROUTE_DEVIATION",
+      "humanReviewRequired": true,
+      "operationalImpact": "SUPERVISOR_REVIEW_MAY_BE_REQUIRED",
+      "organizationId": "org_synthetic_supervisor_intelligence",
+      "reasonCodes": [
+        "ROUTE_DEVIATION_ACTIVE"
+      ],
+      "routeId": "route-resolve",
+      "safetyImpact": "NO_KNOWN_IMMEDIATE_SAFETY_IMPACT",
+      "severity": "MODERATE",
+      "sourceEventReferences": [
+        "driver.intelligence"
+      ],
+      "status": "OPEN",
+      "stopId": null,
+      "testOnly": true
+    },
+    {
+      "detectedAt": "2026-08-01T00:00:00.000Z",
+      "driverId": "driver-synthetic-001",
+      "employmentImpactProhibited": true,
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "scheduledStart",
+            "present": true
+          },
+          {
+            "field": "scheduledEnd",
+            "present": true
+          },
+          {
+            "field": "lastEvidenceTimestamp",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "evidenceConfidence": {
+        "score": 1,
+        "status": "NOT_PERFORMANCE_SCORE"
+      },
+      "exceptionHash": "6359591f618d4a2d03fda59550eb3664c3206657a05416f777a5ab0fd6be375b",
+      "exceptionId": "supervisor.exception.route-invalidated.route_deviation.route_deviation_active",
+      "exceptionType": "ROUTE_DEVIATION",
+      "humanReviewRequired": true,
+      "operationalImpact": "SUPERVISOR_REVIEW_MAY_BE_REQUIRED",
+      "organizationId": "org_synthetic_supervisor_intelligence",
+      "reasonCodes": [
+        "ROUTE_DEVIATION_ACTIVE"
+      ],
+      "routeId": "route-invalidated",
+      "safetyImpact": "NO_KNOWN_IMMEDIATE_SAFETY_IMPACT",
+      "severity": "MODERATE",
+      "sourceEventReferences": [
+        "driver.intelligence"
+      ],
+      "status": "OPEN",
+      "stopId": null,
+      "testOnly": true
+    }
+  ],
+  "generatedArtifact": true
+}

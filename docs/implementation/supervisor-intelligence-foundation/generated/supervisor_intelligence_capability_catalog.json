@@ -1,0 +1,61 @@
+{
+  "capabilities": [
+    {
+      "capabilityId": "supervisor.operational_context.validation",
+      "displayName": "Supervisor Operational Context Validation",
+      "employeeScoring": false,
+      "executionStrategy": "DETERMINISTIC_RULES"
+    },
+    {
+      "capabilityId": "supervisor.route_portfolio.assessment",
+      "displayName": "Supervisor Route Portfolio Assessment",
+      "employeeScoring": false,
+      "executionStrategy": "DETERMINISTIC_RULES"
+    },
+    {
+      "capabilityId": "supervisor.exception.detection",
+      "displayName": "Supervisor Operational Exception Detection",
+      "employeeScoring": false,
+      "executionStrategy": "DETERMINISTIC_RULES"
+    },
+    {
+      "capabilityId": "supervisor.alert.prioritization",
+      "displayName": "Supervisor Alert Prioritization",
+      "employeeScoring": false,
+      "executionStrategy": "DETERMINISTIC_RULES"
+    },
+    {
+      "capabilityId": "supervisor.summary.explanation",
+      "displayName": "Supervisor Summary and Explanation",
+      "employeeScoring": false,
+      "executionStrategy": "DETERMINISTIC_RULES"
+    }
+  ],
+  "catalog": {
+    "autonomousWorkforceAction": false,
+    "benchmarkCaseCount": 27,
+    "capabilityCount": 5,
+    "catalogHash": "7d27d3a707346590cb502f3ea65da4d63f7bce12586b72abe8af9330023ddff9",
+    "deploymentExecuted": false,
+    "disciplineAdviceGenerated": false,
+    "employeeScoring": false,
+    "engineVersion": "supervisor.intelligence.foundation.engine.v1",
+    "existingDailyReportCompatibilityPreserved": true,
+    "generatedAt": "2026-08-01T00:00:00.000Z",
+    "hostedAiExpanded": false,
+    "integratedWithCapabilityOrchestration": true,
+    "integratedWithDriverIntelligence": true,
+    "integratedWithEnterpriseRegistry": true,
+    "integratedWithLifecycleFramework": true,
+    "integratedWithRouteIntelligence": true,
+    "migrationExecuted": false,
+    "predictiveModelInvoked": false,
+    "productionApiExposed": false,
+    "productionApplicable": false,
+    "productionNotificationSent": false,
+    "providerCallInvoked": false,
+    "schemaVersion": "supervisor.intelligence.foundation.v1",
+    "testOnly": true
+  },
+  "generatedArtifact": true
+}
