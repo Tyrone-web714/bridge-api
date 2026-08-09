@@ -1,0 +1,235 @@
+{
+  "generatedArtifact": true,
+  "readinessByCase": [
+    {
+      "caseId": "available_unassigned_vehicle",
+      "hash": "759802b78e24110adf3f0cbebd1682b72452e4f59e5469bfdead33a4eaa0acdd",
+      "readiness": "READY",
+      "routeImpact": "UNKNOWN"
+    },
+    {
+      "caseId": "assigned_vehicle",
+      "hash": "759802b78e24110adf3f0cbebd1682b72452e4f59e5469bfdead33a4eaa0acdd",
+      "readiness": "READY",
+      "routeImpact": "NO_KNOWN_IMPACT"
+    },
+    {
+      "caseId": "vehicle_in_use",
+      "hash": "759802b78e24110adf3f0cbebd1682b72452e4f59e5469bfdead33a4eaa0acdd",
+      "readiness": "READY",
+      "routeImpact": "NO_KNOWN_IMPACT"
+    },
+    {
+      "caseId": "unavailable_vehicle",
+      "hash": "a98ccf1b4782dc7badbd1ae80f63b7a846deb98e859ef5d922368c76f1e78377",
+      "readiness": "NOT_READY",
+      "routeImpact": "ROUTE_AT_RISK"
+    },
+    {
+      "caseId": "out_of_service_vehicle",
+      "hash": "e4820e616a13e1e6c82e82255ef38ce791d4e629fef0696302d9eba59d554457",
+      "readiness": "BLOCKED",
+      "routeImpact": "ROUTE_BLOCKED"
+    },
+    {
+      "caseId": "assignment_match",
+      "hash": "759802b78e24110adf3f0cbebd1682b72452e4f59e5469bfdead33a4eaa0acdd",
+      "readiness": "READY",
+      "routeImpact": "NO_KNOWN_IMPACT"
+    },
+    {
+      "caseId": "assignment_mismatch",
+      "hash": "a98ccf1b4782dc7badbd1ae80f63b7a846deb98e859ef5d922368c76f1e78377",
+      "readiness": "NOT_READY",
+      "routeImpact": "NO_KNOWN_IMPACT"
+    },
+    {
+      "caseId": "vehicle_profile_present",
+      "hash": "759802b78e24110adf3f0cbebd1682b72452e4f59e5469bfdead33a4eaa0acdd",
+      "readiness": "READY",
+      "routeImpact": "UNKNOWN"
+    },
+    {
+      "caseId": "vehicle_profile_missing",
+      "hash": "1c993c34303ae6628284ff11fd2ccd086d2988579ea4829b04a2cefc19f525dd",
+      "readiness": "INSUFFICIENT_EVIDENCE",
+      "routeImpact": "UNKNOWN"
+    },
+    {
+      "caseId": "route_compatible_vehicle",
+      "hash": "759802b78e24110adf3f0cbebd1682b72452e4f59e5469bfdead33a4eaa0acdd",
+      "readiness": "READY",
+      "routeImpact": "NO_KNOWN_IMPACT"
+    },
+    {
+      "caseId": "route_incompatible_vehicle",
+      "hash": "e4820e616a13e1e6c82e82255ef38ce791d4e629fef0696302d9eba59d554457",
+      "readiness": "BLOCKED",
+      "routeImpact": "ROUTE_BLOCKED"
+    },
+    {
+      "caseId": "route_compatibility_review",
+      "hash": "fbd8ec4d2556501aa3fa4f036ddd39306ea1a5ebdcec57b07b95aeef9baccc98",
+      "readiness": "READY_WITH_REVIEW",
+      "routeImpact": "REVIEW_REQUIRED"
+    },
+    {
+      "caseId": "maintenance_known",
+      "hash": "759802b78e24110adf3f0cbebd1682b72452e4f59e5469bfdead33a4eaa0acdd",
+      "readiness": "READY",
+      "routeImpact": "UNKNOWN"
+    },
+    {
+      "caseId": "maintenance_due",
+      "hash": "fbd8ec4d2556501aa3fa4f036ddd39306ea1a5ebdcec57b07b95aeef9baccc98",
+      "readiness": "READY_WITH_REVIEW",
+      "routeImpact": "UNKNOWN"
+    },
+    {
+      "caseId": "maintenance_overdue",
+      "hash": "a98ccf1b4782dc7badbd1ae80f63b7a846deb98e859ef5d922368c76f1e78377",
+      "readiness": "NOT_READY",
+      "routeImpact": "ROUTE_AT_RISK"
+    },
+    {
+      "caseId": "critical_issue_open",
+      "hash": "e4820e616a13e1e6c82e82255ef38ce791d4e629fef0696302d9eba59d554457",
+      "readiness": "BLOCKED",
+      "routeImpact": "ROUTE_BLOCKED"
+    },
+    {
+      "caseId": "maintenance_status_unknown",
+      "hash": "fbd8ec4d2556501aa3fa4f036ddd39306ea1a5ebdcec57b07b95aeef9baccc98",
+      "readiness": "READY_WITH_REVIEW",
+      "routeImpact": "UNKNOWN"
+    },
+    {
+      "caseId": "stale_evidence",
+      "hash": "fbd8ec4d2556501aa3fa4f036ddd39306ea1a5ebdcec57b07b95aeef9baccc98",
+      "readiness": "READY_WITH_REVIEW",
+      "routeImpact": "UNKNOWN"
+    },
+    {
+      "caseId": "conflicting_evidence",
+      "hash": "fbd8ec4d2556501aa3fa4f036ddd39306ea1a5ebdcec57b07b95aeef9baccc98",
+      "readiness": "READY_WITH_REVIEW",
+      "routeImpact": "UNKNOWN"
+    },
+    {
+      "caseId": "ready_vehicle",
+      "hash": "759802b78e24110adf3f0cbebd1682b72452e4f59e5469bfdead33a4eaa0acdd",
+      "readiness": "READY",
+      "routeImpact": "UNKNOWN"
+    },
+    {
+      "caseId": "ready_with_review",
+      "hash": "fbd8ec4d2556501aa3fa4f036ddd39306ea1a5ebdcec57b07b95aeef9baccc98",
+      "readiness": "READY_WITH_REVIEW",
+      "routeImpact": "UNKNOWN"
+    },
+    {
+      "caseId": "not_ready_vehicle",
+      "hash": "a98ccf1b4782dc7badbd1ae80f63b7a846deb98e859ef5d922368c76f1e78377",
+      "readiness": "NOT_READY",
+      "routeImpact": "UNKNOWN"
+    },
+    {
+      "caseId": "blocked_vehicle",
+      "hash": "e4820e616a13e1e6c82e82255ef38ce791d4e629fef0696302d9eba59d554457",
+      "readiness": "BLOCKED",
+      "routeImpact": "ROUTE_BLOCKED"
+    },
+    {
+      "caseId": "route_impacted_by_unavailable_vehicle",
+      "hash": "a98ccf1b4782dc7badbd1ae80f63b7a846deb98e859ef5d922368c76f1e78377",
+      "readiness": "NOT_READY",
+      "routeImpact": "ROUTE_AT_RISK"
+    },
+    {
+      "caseId": "route_blocked_by_incompatible_vehicle",
+      "hash": "e4820e616a13e1e6c82e82255ef38ce791d4e629fef0696302d9eba59d554457",
+      "readiness": "BLOCKED",
+      "routeImpact": "ROUTE_BLOCKED"
+    },
+    {
+      "caseId": "substitute_vehicle_review",
+      "hash": "fbd8ec4d2556501aa3fa4f036ddd39306ea1a5ebdcec57b07b95aeef9baccc98",
+      "readiness": "READY_WITH_REVIEW",
+      "routeImpact": "REVIEW_REQUIRED"
+    },
+    {
+      "caseId": "insufficient_evidence",
+      "hash": "1c993c34303ae6628284ff11fd2ccd086d2988579ea4829b04a2cefc19f525dd",
+      "readiness": "INSUFFICIENT_EVIDENCE",
+      "routeImpact": "UNKNOWN"
+    },
+    {
+      "caseId": "unknown_state",
+      "hash": "1c993c34303ae6628284ff11fd2ccd086d2988579ea4829b04a2cefc19f525dd",
+      "readiness": "INSUFFICIENT_EVIDENCE",
+      "routeImpact": "UNKNOWN"
+    },
+    {
+      "caseId": "supervisor_review",
+      "hash": "fbd8ec4d2556501aa3fa4f036ddd39306ea1a5ebdcec57b07b95aeef9baccc98",
+      "readiness": "READY_WITH_REVIEW",
+      "routeImpact": "UNKNOWN"
+    },
+    {
+      "caseId": "alert_acknowledgement",
+      "hash": "a98ccf1b4782dc7badbd1ae80f63b7a846deb98e859ef5d922368c76f1e78377",
+      "readiness": "NOT_READY",
+      "routeImpact": "UNKNOWN"
+    },
+    {
+      "caseId": "alert_resolution",
+      "hash": "a98ccf1b4782dc7badbd1ae80f63b7a846deb98e859ef5d922368c76f1e78377",
+      "readiness": "NOT_READY",
+      "routeImpact": "UNKNOWN"
+    },
+    {
+      "caseId": "new_evidence_invalidates_prior_issue",
+      "hash": "fbd8ec4d2556501aa3fa4f036ddd39306ea1a5ebdcec57b07b95aeef9baccc98",
+      "readiness": "READY_WITH_REVIEW",
+      "routeImpact": "UNKNOWN"
+    },
+    {
+      "caseId": "no_exception_case",
+      "hash": "759802b78e24110adf3f0cbebd1682b72452e4f59e5469bfdead33a4eaa0acdd",
+      "readiness": "READY",
+      "routeImpact": "UNKNOWN"
+    },
+    {
+      "caseId": "cross_organization_vehicle",
+      "hash": "1c993c34303ae6628284ff11fd2ccd086d2988579ea4829b04a2cefc19f525dd",
+      "readiness": "INSUFFICIENT_EVIDENCE",
+      "routeImpact": "UNKNOWN"
+    }
+  ],
+  "summary": {
+    "assignedVehicles": 11,
+    "availableVehicles": 14,
+    "inUseVehicles": 1,
+    "limitations": [
+      "Repository-only synthetic foundation",
+      "No predictive maintenance",
+      "No autonomous dispatch",
+      "No workforce scoring",
+      "No production API"
+    ],
+    "outOfServiceVehicles": 1,
+    "routeImpacts": {
+      "INSUFFICIENT_EVIDENCE": 0,
+      "NO_KNOWN_IMPACT": 5,
+      "REVIEW_REQUIRED": 2,
+      "ROUTE_AT_RISK": 3,
+      "ROUTE_BLOCKED": 5,
+      "UNKNOWN": 19
+    },
+    "summaryHash": "469c9c8539254719d4d48a0dd4fd50617229a1d0f4c7b3da444dfffe73ef0b69",
+    "totalVehicles": 34,
+    "unavailableVehicles": 5,
+    "vehiclesRequiringReview": 25,
+    "vehiclesWithInsufficientEvidence": 4
+  }
+}

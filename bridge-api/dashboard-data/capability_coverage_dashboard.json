@@ -20,7 +20,7 @@
       "dashboard-data/capability_coverage_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "2aae11d7cac892ce08aef2713f35c6a586f744312d6395ccad83a98f45b2323a",
+    "generationHash": "ec709142b28c770c2788c16d4fa98a0fc16585a2a0e8ff836f55eb35e40ee589",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -51,6 +51,7 @@
         "docs/implementation/enterprise-intelligence-capability-registry": 29,
         "docs/implementation/execution-decision-engine": 58,
         "docs/implementation/execution-strategy-evaluation-engine": 50,
+        "docs/implementation/fleet-intelligence-foundation": 54,
         "docs/implementation/fleet-intelligence-scoring-foundation": 13,
         "docs/implementation/framework-validation": 25,
         "docs/implementation/intelligence-capability-orchestration": 19,
@@ -78,7 +79,7 @@
         "docs/implementation/warehouse-intelligence-foundation": 51,
         "docs/implementation/web-origin-private-media-hardening": 16
       },
-      "testScripts": 46
+      "testScripts": 47
     },
     "statusIndicators": [],
     "summary": {

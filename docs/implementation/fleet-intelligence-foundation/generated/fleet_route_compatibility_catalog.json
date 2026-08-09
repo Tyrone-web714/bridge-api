@@ -1,0 +1,352 @@
+{
+  "compatibility": [
+    {
+      "compatibilityHash": "05e7f00c1565404c3aa4be4459c56e5b917020a3d3b63409f6bf9984ec896320",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_COMPATIBLE",
+      "routeAssessmentStatus": "ELIGIBLE",
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "COMPATIBLE",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "05e7f00c1565404c3aa4be4459c56e5b917020a3d3b63409f6bf9984ec896320",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_COMPATIBLE",
+      "routeAssessmentStatus": "ELIGIBLE",
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "COMPATIBLE",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "05e7f00c1565404c3aa4be4459c56e5b917020a3d3b63409f6bf9984ec896320",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_COMPATIBLE",
+      "routeAssessmentStatus": "ELIGIBLE",
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "COMPATIBLE",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "05e7f00c1565404c3aa4be4459c56e5b917020a3d3b63409f6bf9984ec896320",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_COMPATIBLE",
+      "routeAssessmentStatus": "ELIGIBLE",
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "COMPATIBLE",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "05e7f00c1565404c3aa4be4459c56e5b917020a3d3b63409f6bf9984ec896320",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_COMPATIBLE",
+      "routeAssessmentStatus": "ELIGIBLE",
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "COMPATIBLE",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "05e7f00c1565404c3aa4be4459c56e5b917020a3d3b63409f6bf9984ec896320",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_COMPATIBLE",
+      "routeAssessmentStatus": "ELIGIBLE",
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "COMPATIBLE",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "05e7f00c1565404c3aa4be4459c56e5b917020a3d3b63409f6bf9984ec896320",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_COMPATIBLE",
+      "routeAssessmentStatus": "ELIGIBLE",
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "COMPATIBLE",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "05e7f00c1565404c3aa4be4459c56e5b917020a3d3b63409f6bf9984ec896320",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_COMPATIBLE",
+      "routeAssessmentStatus": "ELIGIBLE",
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "COMPATIBLE",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "05e7f00c1565404c3aa4be4459c56e5b917020a3d3b63409f6bf9984ec896320",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_COMPATIBLE",
+      "routeAssessmentStatus": "ELIGIBLE",
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "COMPATIBLE",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "05e7f00c1565404c3aa4be4459c56e5b917020a3d3b63409f6bf9984ec896320",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_COMPATIBLE",
+      "routeAssessmentStatus": "ELIGIBLE",
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "COMPATIBLE",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "872523535108669bc3d63995615755a9eec4042a0f698732c12a0f3df7250a18",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_INCOMPATIBLE",
+      "routeAssessmentStatus": "UNSAFE",
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "INCOMPATIBLE",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "1d0c28f5049ea7054859ea04861719be40316346ae17d24108a0d20393e4c10b",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_REVIEW_REQUIRED",
+      "routeAssessmentStatus": "REVIEW_REQUIRED",
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "REVIEW_REQUIRED",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "05e7f00c1565404c3aa4be4459c56e5b917020a3d3b63409f6bf9984ec896320",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_COMPATIBLE",
+      "routeAssessmentStatus": "ELIGIBLE",
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "COMPATIBLE",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "05e7f00c1565404c3aa4be4459c56e5b917020a3d3b63409f6bf9984ec896320",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_COMPATIBLE",
+      "routeAssessmentStatus": "ELIGIBLE",
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "COMPATIBLE",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "05e7f00c1565404c3aa4be4459c56e5b917020a3d3b63409f6bf9984ec896320",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_COMPATIBLE",
+      "routeAssessmentStatus": "ELIGIBLE",
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "COMPATIBLE",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "05e7f00c1565404c3aa4be4459c56e5b917020a3d3b63409f6bf9984ec896320",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_COMPATIBLE",
+      "routeAssessmentStatus": "ELIGIBLE",
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "COMPATIBLE",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "05e7f00c1565404c3aa4be4459c56e5b917020a3d3b63409f6bf9984ec896320",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_COMPATIBLE",
+      "routeAssessmentStatus": "ELIGIBLE",
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "COMPATIBLE",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "05e7f00c1565404c3aa4be4459c56e5b917020a3d3b63409f6bf9984ec896320",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_COMPATIBLE",
+      "routeAssessmentStatus": "ELIGIBLE",
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "COMPATIBLE",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "05e7f00c1565404c3aa4be4459c56e5b917020a3d3b63409f6bf9984ec896320",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_COMPATIBLE",
+      "routeAssessmentStatus": "ELIGIBLE",
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "COMPATIBLE",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "05e7f00c1565404c3aa4be4459c56e5b917020a3d3b63409f6bf9984ec896320",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_COMPATIBLE",
+      "routeAssessmentStatus": "ELIGIBLE",
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "COMPATIBLE",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "05e7f00c1565404c3aa4be4459c56e5b917020a3d3b63409f6bf9984ec896320",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_COMPATIBLE",
+      "routeAssessmentStatus": "ELIGIBLE",
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "COMPATIBLE",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "05e7f00c1565404c3aa4be4459c56e5b917020a3d3b63409f6bf9984ec896320",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_COMPATIBLE",
+      "routeAssessmentStatus": "ELIGIBLE",
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "COMPATIBLE",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "872523535108669bc3d63995615755a9eec4042a0f698732c12a0f3df7250a18",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_INCOMPATIBLE",
+      "routeAssessmentStatus": "UNSAFE",
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "INCOMPATIBLE",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "05e7f00c1565404c3aa4be4459c56e5b917020a3d3b63409f6bf9984ec896320",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_COMPATIBLE",
+      "routeAssessmentStatus": "ELIGIBLE",
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "COMPATIBLE",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "872523535108669bc3d63995615755a9eec4042a0f698732c12a0f3df7250a18",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_INCOMPATIBLE",
+      "routeAssessmentStatus": "UNSAFE",
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "INCOMPATIBLE",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "05e7f00c1565404c3aa4be4459c56e5b917020a3d3b63409f6bf9984ec896320",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_COMPATIBLE",
+      "routeAssessmentStatus": "ELIGIBLE",
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "COMPATIBLE",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "baec9683e268136569258837528fdf8cc2aa3592a2331a985b1becf319b0959a",
+      "deterministic": true,
+      "reasonCode": "EVIDENCE_INSUFFICIENT",
+      "routeAssessmentStatus": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "INSUFFICIENT_EVIDENCE",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "fbc51806fa17048673c14809740b0720b72b00238f0867275d548ec391186d8f",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_REVIEW_REQUIRED",
+      "routeAssessmentStatus": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "UNKNOWN",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "05e7f00c1565404c3aa4be4459c56e5b917020a3d3b63409f6bf9984ec896320",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_COMPATIBLE",
+      "routeAssessmentStatus": "ELIGIBLE",
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "COMPATIBLE",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "05e7f00c1565404c3aa4be4459c56e5b917020a3d3b63409f6bf9984ec896320",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_COMPATIBLE",
+      "routeAssessmentStatus": "ELIGIBLE",
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "COMPATIBLE",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "05e7f00c1565404c3aa4be4459c56e5b917020a3d3b63409f6bf9984ec896320",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_COMPATIBLE",
+      "routeAssessmentStatus": "ELIGIBLE",
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "COMPATIBLE",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "05e7f00c1565404c3aa4be4459c56e5b917020a3d3b63409f6bf9984ec896320",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_COMPATIBLE",
+      "routeAssessmentStatus": "ELIGIBLE",
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "COMPATIBLE",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "05e7f00c1565404c3aa4be4459c56e5b917020a3d3b63409f6bf9984ec896320",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_COMPATIBLE",
+      "routeAssessmentStatus": "ELIGIBLE",
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "COMPATIBLE",
+      "testOnly": true
+    },
+    {
+      "compatibilityHash": "05e7f00c1565404c3aa4be4459c56e5b917020a3d3b63409f6bf9984ec896320",
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_COMPATIBLE",
+      "routeAssessmentStatus": "ELIGIBLE",
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverrideAttempted": false,
+      "state": "COMPATIBLE",
+      "testOnly": true
+    }
+  ],
+  "generatedArtifact": true,
+  "states": [
+    "COMPATIBLE",
+    "INCOMPATIBLE",
+    "REVIEW_REQUIRED",
+    "INSUFFICIENT_EVIDENCE",
+    "UNKNOWN"
+  ]
+}

@@ -1,9 +1,9 @@
 {
   "localAheadBy": 0,
   "localBranch": "legacy-public-url-final-cleanup",
-  "localHead": "4a2b2dc7e4a5c2d8bd9a4a0c9f0e407cdc8fd1bb",
+  "localHead": "1626aff46f7d8434186bac08293c4d4f83b2a387",
   "pushedStatusRequiresRemoteContainment": true,
   "remoteBranch": "origin/legacy-public-url-final-cleanup",
-  "remoteHead": "4a2b2dc7e4a5c2d8bd9a4a0c9f0e407cdc8fd1bb",
+  "remoteHead": "1626aff46f7d8434186bac08293c4d4f83b2a387",
   "remoteVerificationPerformed": true
 }

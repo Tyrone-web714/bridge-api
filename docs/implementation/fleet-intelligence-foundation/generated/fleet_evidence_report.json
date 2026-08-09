@@ -1,0 +1,2117 @@
+{
+  "catalog": {
+    "autonomousDispatchPerformed": false,
+    "autonomousPartsPurchasePerformed": false,
+    "autonomousRepairApprovalPerformed": false,
+    "benchmarkCaseCount": 34,
+    "capabilityCount": 5,
+    "catalogHash": "a67cd73dd42f4694a10f5ee03294c918b790242d458242f8aa11674460f39fe1",
+    "deploymentExecuted": false,
+    "directEnterpriseRegistryCapability": null,
+    "directRegistryCapabilityDeferred": true,
+    "disciplineAdviceGenerated": false,
+    "driverScoring": false,
+    "employeeScoring": false,
+    "engineVersion": "fleet.intelligence.foundation.engine.v1",
+    "existingFleetScoringBoundaryPreserved": true,
+    "generatedAt": "2026-08-08T00:00:00.000Z",
+    "hostedAiInvoked": false,
+    "integratedWithCapabilityOrchestration": true,
+    "integratedWithDriverIntelligence": true,
+    "integratedWithEnterpriseRegistry": true,
+    "integratedWithLifecycleFramework": true,
+    "integratedWithRouteIntelligence": true,
+    "integratedWithSupervisorIntelligence": true,
+    "integratedWithWarehouseIntelligence": true,
+    "migrationExecuted": false,
+    "modelSelectionActivated": false,
+    "predictiveMaintenanceInvoked": false,
+    "productionApiExposed": false,
+    "productionApplicable": false,
+    "productivityRanking": false,
+    "providerCallInvoked": false,
+    "schemaVersion": "fleet.intelligence.foundation.v1",
+    "testOnly": true
+  },
+  "evidence": [
+    {
+      "assessmentHash": "dc59f65c7c1b60d163ad8142d06c33f5e33a441ae84bb1647ebdbc0b2cbd1472",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "7214218bbae3764b7d69f17ce2861c155ec325538fd754a9723423d635706bb3",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "6aa32436fc20246fd98addc865b82a7c13c3fe836ee196e8e96f83859f1edb21",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-available"
+    },
+    {
+      "assessmentHash": "894a93f356d0912ca95087a4c1aedf8bbf655e08c97dba1328c2b398661e15c8",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "4d832019c38f199c179cd1c02df7e3066ff25baec795a988ee67e09399cd6d3c",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "b84074408687c700aa6b65d57336c170eb494b0937a096021ffb7d28a1cd18f4",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-assigned"
+    },
+    {
+      "assessmentHash": "98477f965eb026a90590f7a7f340e934c2a7a0d25f3546199dce842dcd2df3be",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "2ca32e4881d965a81ea849551647e3a6c05a200f74c407412fc8756f1b5f8b36",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "0ddacdb1f4762496ee66261f347efd0ebbdbf9e9a90bd2e0c62bfeb7efa2179b",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-in-use"
+    },
+    {
+      "assessmentHash": "853f4cf60ca36a02778c0695e115d5c8b25ff5efd0a1cdcb28f75150587c2da9",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "562d1c6881d20c427717d940827a60f8205711ec2837e94f0d67175d68f7bb0b",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "ef240b89714f9462b6697528d621192eef7d253266f238cde8669c1232b9a5fe",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-unavailable"
+    },
+    {
+      "assessmentHash": "e841ccb67616ca785e8b918b41ed8fc4a8b4b799a051fcc249103ffde73ffbfa",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "b20ab19934859ba4c33dcd66b1b189fcc1d4204a2c83db0c0a37ca4c04cc425e",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "03e62006e55a44c5ee19206585007965836731b126561f67ff6e1b47eba45b79",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-oos"
+    },
+    {
+      "assessmentHash": "8184a44914f2738e478fc2ea9a0dfcb6a465659b68066e569908fca568886498",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "1eee86409f7ac91205daf026e9d220f238ee54610d2c7a1af31090d2350fdcc9",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "aac003f8d0e1868911ea9d7a1690b636e9d44ac4d0874c0e74f5610feb4a61b5",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-match"
+    },
+    {
+      "assessmentHash": "532e4a718292ad796160b79f24ed2b86a0fe294e4af06a116ec94c4f7a1c7614",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "d8ed895c8b1693dbda4970ccecaf615e1370a2b45c03d4dbf1ef5e7f4ec65c4d",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "394ac0fbfb2f06fd8904d1901023359982c5b07a89d31984e87014ff20d0fdbb",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-mismatch"
+    },
+    {
+      "assessmentHash": "9548d08cbd4586851cd96ababd7e6885351e72b732e83a564b06d4317943f040",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "7a77fa182e0747deef7037ece917876457d9953d195df9c09e3ae8af8d75e699",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "869fb99adc4d1d2ca226e39deb75d42c4d3b03506294a6fa0e7ba00871c6b0c3",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-profile-present"
+    },
+    {
+      "assessmentHash": "7f47d103a7520b79ccd6fc829e0dccf1e6a0e72526552c146e4f1a5060edd346",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": false
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 0.833,
+          "status": "PARTIAL"
+        },
+        "confidence": {
+          "score": 0.6,
+          "status": "PARTIAL_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "9bcfd8fbbd82a4a33f9e35b9f0ee2ca1bec4bab1e42c963905f5c906e19e54cc",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "ae6d7734703a4f17fae0fbda7c8f399e2627de84ac4be53ffdd0ccd04c7aad4d",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-profile-missing"
+    },
+    {
+      "assessmentHash": "5918789e26adff5bdf5fbf675d9d9d9a4ca99c80c0ce9f06f33c8384df9c0568",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "ce293f31d4ce129ff189cc78cd61a5857dedf9eb1f918b7385dd4885f5ad60eb",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "41c772a982bae2e76425e500ef29996fcb3ebcf296eafbae5e5eb0342139f877",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-compatible"
+    },
+    {
+      "assessmentHash": "9189f9b75cbdf06172233e9372876c4d0ada2fc1a9b70d125c2d1429feea31f2",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "a59b1c9501f516638962a20a4f5953a69ead075aa463a1efa670e32400e1dea6",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "5064283f23c9bd0b92f72df1d89a8897ff1143e57b35c6b9296021543bc262b3",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-incompatible"
+    },
+    {
+      "assessmentHash": "49f5414afa49d85bac322958e7f0a38e29173949f1f2d1c4423d2480a46cf0b5",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "fe13d64be9615e28b8ac4e94e3656605842749f94b0d4aeb8f81609579834f45",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "d0dbda76f9d7b53a0ff0e28810cf269dbd0da11b5227b57726fb02557f6fd0e6",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-review-route"
+    },
+    {
+      "assessmentHash": "13117c6f00c5505a49cf7c2c6309c0a8b2f043138992eecb332da95574baeff1",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "36990b34324d79bcd8176b6f12ed1e3883ab609de340d4e508eacb8f7338f405",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "4673eafff4633eed580c93b374874e8cb3b6aaf2cfb5486dbf9a463d3d7e2723",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-maintenance-known"
+    },
+    {
+      "assessmentHash": "4937de90163c16b47a2ccf1b99b370c905cea7cd93896c6045ab6d45f5da8a2a",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "f99d8e9d3f2dd365a9a662de5c18f02516a63dc9d95b140b75536b0f87277f10",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "206299922aecdd986a0ebfab1c8be62a1c3ee1989847a8930957104fb48f12c8",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-maintenance-due"
+    },
+    {
+      "assessmentHash": "e19f8c1a79b0cfe11d5a36f6e175d5d8bcacc7abe190dbbb4914bec88f50b3b9",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "5ddab78c596126f83dce1e65095e9152fee2784b09196edff12d8c5ee9259935",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "5dbc8f4967852022442fae971572cd6f004d116d0234a9828f5a33ab9b3fd15b",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-maintenance-overdue"
+    },
+    {
+      "assessmentHash": "cdac16d2d6ba6a23337f922f646bc910702a344b2b3d3015b6884d80504fe291",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "621680dadcd995ba907c84365c148ea5a7a6464efaf53ddb4a2a6033fda9cd6e",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "dee7df1997fccf567666036c31ceb5ad2c6235a57559b7e297d04a58f1ad324a",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-critical-issue"
+    },
+    {
+      "assessmentHash": "0f851980ae8f391a27bd0e93547f10f9e2646db1e63b4b33a290521c3211cec7",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "6c77f6e25229028cfd40538799982df392d3bbd0428dddef466cc6c94e745f4f",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "055a4ef50c20a79edd7f4d4c303eb727a038f54b3583b27892dba48a345824dc",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-maint-unknown"
+    },
+    {
+      "assessmentHash": "d570083a0017022d412d8234df309e4e504c0eb433a417fb4dc102af2e35cf54",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 0.4,
+          "status": "STALE_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "89734d79ebb1c317395c692f1a1c741eb61773d0cf99efdebd1740429febda88",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "29cebacf43069a4a0884e974e9994c3e3600d10035a1379b951d6132ec5f14d3",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": true,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-stale"
+    },
+    {
+      "assessmentHash": "5490d0f492eec191c2895796e1b27aa0f6d2c39e36e6c37d9ac535fdcb47a6f3",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 0.2,
+          "status": "CONFLICTING_EVIDENCE"
+        },
+        "conflict": true,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "379586604b75641afdfc0c31955b1126464b626d303b910c8601d868374a0615",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "5a63ff27a04d4dedacfeafd5b3c397646771762aec054f3a600cbf07e5c88247",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-conflict"
+    },
+    {
+      "assessmentHash": "2c7678b1e03ccd062007428945a91728dc7c60cc552b421175b17e3984e323de",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "d97b0da916a74b7ab2233778da996fa22726e5d114355e718a4e503fcf6630d3",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "697ef0e1d9fb95c9f173445e042767e5a14a86372a3d96e2c51ed3440b5d9315",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-ready"
+    },
+    {
+      "assessmentHash": "dc9c26e9a4ba1e4169c1064f5942313b14f3d7327de1b9e3e266b30f797258f3",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "d7591f67bbcf2cdaa47dd9f3c058ba4a1bfb1541b5a41a2d27a7da140efbdae4",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "93f1441d04126316a53733cf03b35937ef3a8c85ca577df55e72a58c016e96ac",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-ready-review"
+    },
+    {
+      "assessmentHash": "71249a5d8bed115216f8718a7d0324fe10470e45a3f05051d26cc10492cf5439",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "66626ddf9191e2d8b0d34dce8f71b5d6e803e0b89290efc13675473850b75789",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "2d3eded3d99c21804c3f89abe7ee8ac3db42ee2591f9b6256b095c24a435c417",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-not-ready"
+    },
+    {
+      "assessmentHash": "e6b74e73b9f1221bb233b97c46bd8d1f172913679c407579eebe57b551a3b9a1",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "d4c420c58dbf22aaac0687bbd56361dbfbc2b5ffbc5478d724dd13ca6b8e49d0",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "e1069e507ed3bebc6cc43c333db55e40214dc5d884350f21bf279e90914f5ebc",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-blocked"
+    },
+    {
+      "assessmentHash": "7140da5066f20c558206f32590ebcd3ad534cb5fede7663f0b2438cade3fb1d4",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "f7d2069579a73e4de19f2958f5ec4a99af167cde3c6a2d484dce6687a6a36803",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "dec0ee063668d6edb859a715f35f750e0ca8e6a6012a882a4d6b485fa5dd5d09",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-route-risk"
+    },
+    {
+      "assessmentHash": "29d10f3cc24fe03b728f5febc78fde9198c897027fc4769c7d66b45dbd66b0c5",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "daeac06e93df6337d41d32e3901d290f3dbc5b26906850b7c492af8598924583",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "0bfe4bdd47027b5f41b0305a62c7cf24e001247fd0e4985845800fdd112c05b0",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-route-blocked"
+    },
+    {
+      "assessmentHash": "4200ceab70c8a4e55eea3f20b1b147f931fd860002d6e23d918ebdc4ded19895",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "fbb520bfbdb912accfbf3f4b41f72ea99892cc3acce4dab0338a96b59323ab4a",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "3fe5ab8af0cf97f52c92d222bd5b03e9db86803a08ca5f1884b591438f3b9903",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-sub-review"
+    },
+    {
+      "assessmentHash": "2f2973b6eacd056a4164e7c36027955ec3db84e467f88de453f3877c44156e8a",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": false
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": false
+            }
+          ],
+          "score": 0.667,
+          "status": "PARTIAL"
+        },
+        "confidence": {
+          "score": 0.6,
+          "status": "PARTIAL_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "23fea123806d287fe153ebd437330716b11d327f7017508b01700edf6ae4e72f",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "a35315dd5b16f8a6d742877e53d0f66df591e5d2973b7363144da1033e7029b1",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-insufficient"
+    },
+    {
+      "assessmentHash": "81571b18d1d470b80dffb3d2b5b1b5060baa3ea3bf9131b18231fb4dbec548a8",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": false
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 0.833,
+          "status": "PARTIAL"
+        },
+        "confidence": {
+          "score": 0.6,
+          "status": "PARTIAL_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "9381af194699c55bd10a14c063bc2a0734a0f9b8976bfb0470354e1fe4f6b4d3",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "cd4518b59be1926deda4e788d951951a572edc9d5632fda90f0dd2d51a42ebc7",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-unknown"
+    },
+    {
+      "assessmentHash": "dda9462e3edef8fd7d3d7fb5a60b7edaa79f24a7210157640eb045cd71c688a5",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "3ee8086ba4b66ae24bd9faeb42d48205ce38f5a23376631fd99b2a14afe823ce",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "debdcfa2d12067f9a375524c21765bac11e69b73131383bb7d4fed1d96bb2ad0",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-supervisor-review"
+    },
+    {
+      "assessmentHash": "d2b1c61bdb3180492c664b62cdbdfa738e82585fee9a832da82e36d50b276e72",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "8e74c2e93fa2983d013e5ba99e254b1b2f7619d69232225514430fa73d3cbc57",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "56943173644ec671e56113ffd29ec9069ec5e3ee778dd5603461e6d1e4757b01",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-alert-ack"
+    },
+    {
+      "assessmentHash": "6e8f6732dfd320daab14e47cff768fad04cd2613843b4c22376d0b3cd6146156",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "197ee59199ed0a3cce882e763d418535802aa7dc9b3e970a22d4358da27ccf18",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "8d9654daf267a85a62a72bab71fcfc213918044ab1405b12936aae42cc0ffdcf",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-alert-resolve"
+    },
+    {
+      "assessmentHash": "bb20e15b3a4468c1a81516c0d337010a3c235ec3a6f3cf4866f153844f17c681",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 0.4,
+          "status": "STALE_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "75ae4f0ccc3f616b9c42134bc2a333301f92328d7d5243054675eb2080ad6887",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "761e3fa36d9fc119d334d7700133f9c882feb503d9cb6e89352b1f9caf5c347f",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": true,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-alert-invalidated"
+    },
+    {
+      "assessmentHash": "b0c2e257559104aaf48c5f5d7254ed0478111e8a0ffdde4f5a1e3ce892deb63b",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "91dd6c73d7ee61faee9ec4bacd1bc920d48f0e46becfbfabca1206408d94f35c",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "51c8593bf432b83b4fd3d5a9803fd76c0cb44feb6bcf345c72d47194e2bd179d",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-no-exception"
+    },
+    {
+      "assessmentHash": "02522a5e9d575a11b60456dcb6c472b693c3ff5708fc577568a36a162fdbac7c",
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "391ecb80ac63dc57ca373066a731b59b7957876852ebaa9d0f3dae30e1a3c27c",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "e506930deaf30102e7c82383e4dd36fc441f254f0567a49b3f2360d1aa1ebbcf",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "vehicleId": "vehicle-cross-org"
+    }
+  ],
+  "generatedArtifact": true,
+  "validation": {
+    "errors": [],
+    "valid": true
+  }
+}

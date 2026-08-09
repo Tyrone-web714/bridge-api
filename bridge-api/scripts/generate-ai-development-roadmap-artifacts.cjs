@@ -126,8 +126,8 @@ function generate(options = {}) {
       supervisorIntelligenceRemoteContained: Boolean(packages.find((pkg) => pkg.packageId === 'SUPERVISOR_INTELLIGENCE')?.pushed),
       warehouseIntelligenceRemoteContained: Boolean(warehouse?.pushed && warehouse?.remoteCommitVerified),
       warehouseImplementationStarted: Boolean(warehouse?.implementationCommit),
-      fleetIntelligenceMayBegin: current.packageId === 'FLEET_INTELLIGENCE' && current.status === 'APPROVED',
-      fleetImplementationStarted: Boolean(fleet?.implementationCommit),
+      fleetIntelligenceMayBegin: false,
+      fleetImplementationStarted: fleet?.status === 'IMPLEMENTED_UNCOMMITTED' || Boolean(fleet?.implementationCommit),
       unapprovedMilestoneOneDomainsAllowed: false,
       deterministicTruckSafetyControlsAuthoritative: true
     }),

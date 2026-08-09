@@ -1,0 +1,353 @@
+{
+  "generatedArtifact": true,
+  "routeImpacts": [
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_IMPACT_NONE",
+      "routeId": null,
+      "routeImpactHash": "b0e6ae4cbbffeb33094fefe47cbc5c4d9467e58644c2a914ac0d6f9405233441",
+      "state": "UNKNOWN",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_IMPACT_NONE",
+      "routeId": "route-001",
+      "routeImpactHash": "0535fcdc4e26cdb0f1e8405cd4a6681835a679f5eb34720b40390132ee5bf9d6",
+      "state": "NO_KNOWN_IMPACT",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_IMPACT_NONE",
+      "routeId": "route-002",
+      "routeImpactHash": "0b8f7745a6b5e78178b9ad30e6d8af015189054ee417837ed5ed74328a2f7b90",
+      "state": "NO_KNOWN_IMPACT",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_IMPACT_AT_RISK",
+      "routeId": "route-003",
+      "routeImpactHash": "57deecf69d5842fa2b55b0f71a6d3c42c640d8e6649b5344a1fb02a7745eaf53",
+      "state": "ROUTE_AT_RISK",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_IMPACT_BLOCKED",
+      "routeId": "route-004",
+      "routeImpactHash": "08cbfb5cfa7d75d8ed6b122043e75fcd5af674efac8846f2248ace836b682de0",
+      "state": "ROUTE_BLOCKED",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_IMPACT_NONE",
+      "routeId": "route-match",
+      "routeImpactHash": "4737fb51088772349276a6a05c303754092bdb8f8d9022a33f637e86358963f8",
+      "state": "NO_KNOWN_IMPACT",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_IMPACT_NONE",
+      "routeId": "route-mismatch",
+      "routeImpactHash": "ea9b50d9f69eff8d01cbcfd01a0dea8a057db0c97122fd932c54a908761b1534",
+      "state": "NO_KNOWN_IMPACT",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_IMPACT_NONE",
+      "routeId": null,
+      "routeImpactHash": "b0e6ae4cbbffeb33094fefe47cbc5c4d9467e58644c2a914ac0d6f9405233441",
+      "state": "UNKNOWN",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_IMPACT_NONE",
+      "routeId": null,
+      "routeImpactHash": "b0e6ae4cbbffeb33094fefe47cbc5c4d9467e58644c2a914ac0d6f9405233441",
+      "state": "UNKNOWN",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_IMPACT_NONE",
+      "routeId": "route-compatible",
+      "routeImpactHash": "c2ddda286ce328f5ae64e431ae78b4eb1208b6696d2b53c963258f9e5e640687",
+      "state": "NO_KNOWN_IMPACT",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_IMPACT_BLOCKED",
+      "routeId": "route-incompatible",
+      "routeImpactHash": "c34dae097c929836e02d399ea94343e4a2bfd3e1047c738d5bd1e8170bdaee59",
+      "state": "ROUTE_BLOCKED",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_REVIEW_REQUIRED",
+      "routeId": "route-review",
+      "routeImpactHash": "6bbfa02748074e38651d183c521d2a7db465d12ae5488866c8939ddc400ef7bf",
+      "state": "REVIEW_REQUIRED",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_IMPACT_NONE",
+      "routeId": null,
+      "routeImpactHash": "b0e6ae4cbbffeb33094fefe47cbc5c4d9467e58644c2a914ac0d6f9405233441",
+      "state": "UNKNOWN",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_IMPACT_NONE",
+      "routeId": null,
+      "routeImpactHash": "b0e6ae4cbbffeb33094fefe47cbc5c4d9467e58644c2a914ac0d6f9405233441",
+      "state": "UNKNOWN",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_IMPACT_AT_RISK",
+      "routeId": "route-maint-overdue",
+      "routeImpactHash": "e51b714095adcdefbaf072f1a40cfd956746b7d572f851ac20dd8468b4e536a1",
+      "state": "ROUTE_AT_RISK",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_IMPACT_BLOCKED",
+      "routeId": "route-critical",
+      "routeImpactHash": "6951bd7369ce2139ff489ae24d925692f35b2dccf1bdbf323621ef1bb9ba6f12",
+      "state": "ROUTE_BLOCKED",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_IMPACT_NONE",
+      "routeId": null,
+      "routeImpactHash": "b0e6ae4cbbffeb33094fefe47cbc5c4d9467e58644c2a914ac0d6f9405233441",
+      "state": "UNKNOWN",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_IMPACT_NONE",
+      "routeId": null,
+      "routeImpactHash": "b0e6ae4cbbffeb33094fefe47cbc5c4d9467e58644c2a914ac0d6f9405233441",
+      "state": "UNKNOWN",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_IMPACT_NONE",
+      "routeId": null,
+      "routeImpactHash": "b0e6ae4cbbffeb33094fefe47cbc5c4d9467e58644c2a914ac0d6f9405233441",
+      "state": "UNKNOWN",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_IMPACT_NONE",
+      "routeId": null,
+      "routeImpactHash": "b0e6ae4cbbffeb33094fefe47cbc5c4d9467e58644c2a914ac0d6f9405233441",
+      "state": "UNKNOWN",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_IMPACT_NONE",
+      "routeId": null,
+      "routeImpactHash": "b0e6ae4cbbffeb33094fefe47cbc5c4d9467e58644c2a914ac0d6f9405233441",
+      "state": "UNKNOWN",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_IMPACT_NONE",
+      "routeId": null,
+      "routeImpactHash": "b0e6ae4cbbffeb33094fefe47cbc5c4d9467e58644c2a914ac0d6f9405233441",
+      "state": "UNKNOWN",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_IMPACT_BLOCKED",
+      "routeId": "route-blocked",
+      "routeImpactHash": "08965a78407e6ee9f0fadf88391829e0a5730bb60083fabb0d50874381d576be",
+      "state": "ROUTE_BLOCKED",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_IMPACT_AT_RISK",
+      "routeId": "route-risk",
+      "routeImpactHash": "16c27c207ce6d8b6ac21e6f69a80c878227265e4da7552926ce10ad474957abf",
+      "state": "ROUTE_AT_RISK",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_IMPACT_BLOCKED",
+      "routeId": "route-blocked",
+      "routeImpactHash": "08965a78407e6ee9f0fadf88391829e0a5730bb60083fabb0d50874381d576be",
+      "state": "ROUTE_BLOCKED",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_VEHICLE_REVIEW_REQUIRED",
+      "routeId": "route-substitute",
+      "routeImpactHash": "eb8c7296c4ce2207656692c8d608e96f80c97a9256d65d8296c7ab16a0822d77",
+      "state": "REVIEW_REQUIRED",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_IMPACT_NONE",
+      "routeId": null,
+      "routeImpactHash": "b0e6ae4cbbffeb33094fefe47cbc5c4d9467e58644c2a914ac0d6f9405233441",
+      "state": "UNKNOWN",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_IMPACT_NONE",
+      "routeId": null,
+      "routeImpactHash": "b0e6ae4cbbffeb33094fefe47cbc5c4d9467e58644c2a914ac0d6f9405233441",
+      "state": "UNKNOWN",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_IMPACT_NONE",
+      "routeId": null,
+      "routeImpactHash": "b0e6ae4cbbffeb33094fefe47cbc5c4d9467e58644c2a914ac0d6f9405233441",
+      "state": "UNKNOWN",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_IMPACT_NONE",
+      "routeId": null,
+      "routeImpactHash": "b0e6ae4cbbffeb33094fefe47cbc5c4d9467e58644c2a914ac0d6f9405233441",
+      "state": "UNKNOWN",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_IMPACT_NONE",
+      "routeId": null,
+      "routeImpactHash": "b0e6ae4cbbffeb33094fefe47cbc5c4d9467e58644c2a914ac0d6f9405233441",
+      "state": "UNKNOWN",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_IMPACT_NONE",
+      "routeId": null,
+      "routeImpactHash": "b0e6ae4cbbffeb33094fefe47cbc5c4d9467e58644c2a914ac0d6f9405233441",
+      "state": "UNKNOWN",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_IMPACT_NONE",
+      "routeId": null,
+      "routeImpactHash": "b0e6ae4cbbffeb33094fefe47cbc5c4d9467e58644c2a914ac0d6f9405233441",
+      "state": "UNKNOWN",
+      "testOnly": true
+    },
+    {
+      "autonomousDispatchPerformed": false,
+      "autonomousSubstituteAssigned": false,
+      "deterministic": true,
+      "reasonCode": "ROUTE_IMPACT_NONE",
+      "routeId": null,
+      "routeImpactHash": "b0e6ae4cbbffeb33094fefe47cbc5c4d9467e58644c2a914ac0d6f9405233441",
+      "state": "UNKNOWN",
+      "testOnly": true
+    }
+  ],
+  "states": [
+    "NO_KNOWN_IMPACT",
+    "ROUTE_AT_RISK",
+    "ROUTE_BLOCKED",
+    "REVIEW_REQUIRED",
+    "INSUFFICIENT_EVIDENCE",
+    "UNKNOWN"
+  ]
+}

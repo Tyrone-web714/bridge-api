@@ -26,8 +26,8 @@
     "backendPath": "C:\\dev\\bridge-api\\bridge-api",
     "localBranch": "legacy-public-url-final-cleanup",
     "remoteBranch": "origin/legacy-public-url-final-cleanup",
-    "localHead": "4a2b2dc7e4a5c2d8bd9a4a0c9f0e407cdc8fd1bb",
-    "remoteHead": "4a2b2dc7e4a5c2d8bd9a4a0c9f0e407cdc8fd1bb",
+    "localHead": "1626aff46f7d8434186bac08293c4d4f83b2a387",
+    "remoteHead": "1626aff46f7d8434186bac08293c4d4f83b2a387",
     "localAheadBy": 0,
     "remoteVerificationPerformed": true,
     "pushPerformedByThisPackage": false
@@ -805,7 +805,7 @@
       "packageId": "FLEET_INTELLIGENCE",
       "title": "Fleet Intelligence",
       "category": "CORE_OPERATIONAL_INTELLIGENCE",
-      "status": "APPROVED",
+      "status": "IMPLEMENTED_UNCOMMITTED",
       "objective": "Prepare the approved repository-only Fleet Intelligence package for deterministic fleet/vehicle operational awareness and route/vehicle readiness analysis.",
       "approvedScope": [
         "fleet operational state",
@@ -856,15 +856,21 @@
         "TSR-AI-WORKFLOW-001"
       ],
       "acceptanceCriteria": [
-        "Fleet Intelligence remains approved but unimplemented until a separate implementation package begins",
+        "Fleet Intelligence exists locally as an unstaged and uncommitted repository-only foundation",
         "scope is limited to fleet/vehicle operational state and route/vehicle readiness evidence",
-        "predictive maintenance models, autonomous dispatch, autonomous purchasing, hardware, ELD, IoT, and product expansion remain prohibited unless separately approved",
+        "generated Fleet Intelligence artifacts are deterministic and validate against prohibited-scope mutation checks",
+        "predictive maintenance models, autonomous dispatch, autonomous purchasing, hardware, ELD, IoT, product expansion, production APIs, provider activation, deployment, migration, and Customer Intelligence remain prohibited unless separately approved",
         "model-selection and production-orchestration gates remain incomplete"
       ],
       "requiredTests": [
-        "npm.cmd run test:ai-roadmap"
+        "npm.cmd run fleet-intelligence:validate",
+        "npm.cmd run fleet-intelligence:check",
+        "npm.cmd run fleet-intelligence:benchmarks",
+        "npm.cmd run test:fleet-intelligence",
+        "npm.cmd run test:ai-roadmap",
+        "npm.cmd test"
       ],
-      "documentationPath": null,
+      "documentationPath": "docs/implementation/fleet-intelligence-foundation",
       "implementationCommit": null,
       "localCommitVerified": false,
       "remoteCommitVerified": false,
@@ -873,11 +879,11 @@
       "deploymentVerified": false,
       "migrationRequired": false,
       "migrationExecuted": false,
-      "productionImpact": "NONE",
+      "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
       "ownerApprovalRequired": true,
       "scopeChangeApprovalRequired": true,
       "nextApprovedPackage": null,
-      "notes": "Fleet Intelligence is approved as the current next Milestone 1 package after Warehouse remote preservation. Implementation has not started; no deployment, migration, API, provider activation, production certification, predictive maintenance model, autonomous dispatch, autonomous purchasing, telematics/ELD/IoT integration, or fleet-management product expansion exists.",
+      "notes": "Fleet Intelligence exists locally as an unstaged and uncommitted repository-only foundation under bridge-api/services/intelligenceExecution/fleetIntelligence.js, scripts/check-fleet-intelligence.cjs, scripts/generate-fleet-intelligence-artifacts.cjs, and docs/implementation/fleet-intelligence-foundation. It is not staged, committed, pushed, deployed, migrated, production-certified, exposed through a production API, provider-activated, model-selected, or production-written. Predictive maintenance, autonomous dispatch, autonomous repair approval, autonomous purchasing, workforce scoring, telematics/ELD/IoT integration, fleet-management product expansion, and Customer Intelligence remain out of scope.",
       "isCurrentPackage": true
     },
     {

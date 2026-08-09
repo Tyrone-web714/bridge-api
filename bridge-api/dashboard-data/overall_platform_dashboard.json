@@ -17,7 +17,7 @@
       "dashboard-data/overall_platform_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "ec57ab580a4f515e086b9934b229f63de71bcc65bfcabf316f5a5458a20bbb5f",
+    "generationHash": "35328662a81589e58ffb4e16798ad3644ca8061dfe160a05f4ca795053bb3193",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -37,8 +37,8 @@
       "decisions": 4,
       "evaluations": 3,
       "governanceRecords": 4,
-      "graphEdges": 866,
-      "graphNodes": 1114,
+      "graphEdges": 880,
+      "graphNodes": 1169,
       "scores": 3
     },
     "statusIndicators": [],

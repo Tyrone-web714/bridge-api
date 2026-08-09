@@ -1,0 +1,28 @@
+{
+  "callerProviderControlsAllowed": false,
+  "optional": [
+    "depotReference"
+  ],
+  "required": [
+    "fleetContextId",
+    "organizationId",
+    "operationalAreaReference",
+    "workPeriodRef",
+    "vehicleScope",
+    "routeScope",
+    "driverScope",
+    "evidenceSources",
+    "evidenceTimestamps",
+    "sourceHashes",
+    "unknownFields",
+    "testOnly"
+  ],
+  "schemaVersion": "fleet.context.contract.v1",
+  "serverDerivedInFutureRuntime": [
+    "organizationId",
+    "vehicleScope",
+    "routeScope",
+    "driverScope"
+  ],
+  "testOnly": true
+}

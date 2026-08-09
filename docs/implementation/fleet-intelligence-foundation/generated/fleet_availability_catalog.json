@@ -1,0 +1,253 @@
+{
+  "availability": [
+    {
+      "availabilityHash": "a57c6ecb2648dbeed56ca3a6aa7daa2a16b39a49d1e2476b2de66ba8107cdacb",
+      "deterministic": true,
+      "reasonCode": "VEHICLE_AVAILABLE",
+      "state": "AVAILABLE",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "8e877a146e48b2782c46f819cb946b0b35611373bdce9c56f18ac4f83b5c74c1",
+      "deterministic": true,
+      "reasonCode": "VEHICLE_ASSIGNED",
+      "state": "ASSIGNED",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "86c82bc88234dae288aaae52a0e6d6d4071cb66abe2f68f7385f033122cbc478",
+      "deterministic": true,
+      "reasonCode": "VEHICLE_IN_USE",
+      "state": "IN_USE",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "38bbcb280ab26ba073ac2e3bcc1aa2142892aa9e54b45697c8484bda9ee9f267",
+      "deterministic": true,
+      "reasonCode": "VEHICLE_UNAVAILABLE",
+      "state": "UNAVAILABLE",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "21a42f0aebc715a1570e7218e525541a6c687d4aae951b9729000bfcac7812cc",
+      "deterministic": true,
+      "reasonCode": "VEHICLE_OUT_OF_SERVICE",
+      "state": "OUT_OF_SERVICE",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "8e877a146e48b2782c46f819cb946b0b35611373bdce9c56f18ac4f83b5c74c1",
+      "deterministic": true,
+      "reasonCode": "VEHICLE_ASSIGNED",
+      "state": "ASSIGNED",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "8e877a146e48b2782c46f819cb946b0b35611373bdce9c56f18ac4f83b5c74c1",
+      "deterministic": true,
+      "reasonCode": "VEHICLE_ASSIGNED",
+      "state": "ASSIGNED",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "a57c6ecb2648dbeed56ca3a6aa7daa2a16b39a49d1e2476b2de66ba8107cdacb",
+      "deterministic": true,
+      "reasonCode": "VEHICLE_AVAILABLE",
+      "state": "AVAILABLE",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "a57c6ecb2648dbeed56ca3a6aa7daa2a16b39a49d1e2476b2de66ba8107cdacb",
+      "deterministic": true,
+      "reasonCode": "VEHICLE_AVAILABLE",
+      "state": "AVAILABLE",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "8e877a146e48b2782c46f819cb946b0b35611373bdce9c56f18ac4f83b5c74c1",
+      "deterministic": true,
+      "reasonCode": "VEHICLE_ASSIGNED",
+      "state": "ASSIGNED",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "8e877a146e48b2782c46f819cb946b0b35611373bdce9c56f18ac4f83b5c74c1",
+      "deterministic": true,
+      "reasonCode": "VEHICLE_ASSIGNED",
+      "state": "ASSIGNED",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "8e877a146e48b2782c46f819cb946b0b35611373bdce9c56f18ac4f83b5c74c1",
+      "deterministic": true,
+      "reasonCode": "VEHICLE_ASSIGNED",
+      "state": "ASSIGNED",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "a57c6ecb2648dbeed56ca3a6aa7daa2a16b39a49d1e2476b2de66ba8107cdacb",
+      "deterministic": true,
+      "reasonCode": "VEHICLE_AVAILABLE",
+      "state": "AVAILABLE",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "a57c6ecb2648dbeed56ca3a6aa7daa2a16b39a49d1e2476b2de66ba8107cdacb",
+      "deterministic": true,
+      "reasonCode": "VEHICLE_AVAILABLE",
+      "state": "AVAILABLE",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "8e877a146e48b2782c46f819cb946b0b35611373bdce9c56f18ac4f83b5c74c1",
+      "deterministic": true,
+      "reasonCode": "VEHICLE_ASSIGNED",
+      "state": "ASSIGNED",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "8e877a146e48b2782c46f819cb946b0b35611373bdce9c56f18ac4f83b5c74c1",
+      "deterministic": true,
+      "reasonCode": "VEHICLE_ASSIGNED",
+      "state": "ASSIGNED",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "a57c6ecb2648dbeed56ca3a6aa7daa2a16b39a49d1e2476b2de66ba8107cdacb",
+      "deterministic": true,
+      "reasonCode": "VEHICLE_AVAILABLE",
+      "state": "AVAILABLE",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "a57c6ecb2648dbeed56ca3a6aa7daa2a16b39a49d1e2476b2de66ba8107cdacb",
+      "deterministic": true,
+      "reasonCode": "VEHICLE_AVAILABLE",
+      "state": "AVAILABLE",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "a57c6ecb2648dbeed56ca3a6aa7daa2a16b39a49d1e2476b2de66ba8107cdacb",
+      "deterministic": true,
+      "reasonCode": "VEHICLE_AVAILABLE",
+      "state": "AVAILABLE",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "a57c6ecb2648dbeed56ca3a6aa7daa2a16b39a49d1e2476b2de66ba8107cdacb",
+      "deterministic": true,
+      "reasonCode": "VEHICLE_AVAILABLE",
+      "state": "AVAILABLE",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "a57c6ecb2648dbeed56ca3a6aa7daa2a16b39a49d1e2476b2de66ba8107cdacb",
+      "deterministic": true,
+      "reasonCode": "VEHICLE_AVAILABLE",
+      "state": "AVAILABLE",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "38bbcb280ab26ba073ac2e3bcc1aa2142892aa9e54b45697c8484bda9ee9f267",
+      "deterministic": true,
+      "reasonCode": "VEHICLE_UNAVAILABLE",
+      "state": "UNAVAILABLE",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "8e877a146e48b2782c46f819cb946b0b35611373bdce9c56f18ac4f83b5c74c1",
+      "deterministic": true,
+      "reasonCode": "VEHICLE_ASSIGNED",
+      "state": "ASSIGNED",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "38bbcb280ab26ba073ac2e3bcc1aa2142892aa9e54b45697c8484bda9ee9f267",
+      "deterministic": true,
+      "reasonCode": "VEHICLE_UNAVAILABLE",
+      "state": "UNAVAILABLE",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "8e877a146e48b2782c46f819cb946b0b35611373bdce9c56f18ac4f83b5c74c1",
+      "deterministic": true,
+      "reasonCode": "VEHICLE_ASSIGNED",
+      "state": "ASSIGNED",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "8e877a146e48b2782c46f819cb946b0b35611373bdce9c56f18ac4f83b5c74c1",
+      "deterministic": true,
+      "reasonCode": "VEHICLE_ASSIGNED",
+      "state": "ASSIGNED",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "a57c6ecb2648dbeed56ca3a6aa7daa2a16b39a49d1e2476b2de66ba8107cdacb",
+      "deterministic": true,
+      "reasonCode": "VEHICLE_AVAILABLE",
+      "state": "AVAILABLE",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "81c11507f9f6bec463f483dc4ae0678246b4bb28f7f3bd3119f899ae3bc48083",
+      "deterministic": true,
+      "reasonCode": "EVIDENCE_INSUFFICIENT",
+      "state": "UNKNOWN",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "a57c6ecb2648dbeed56ca3a6aa7daa2a16b39a49d1e2476b2de66ba8107cdacb",
+      "deterministic": true,
+      "reasonCode": "VEHICLE_AVAILABLE",
+      "state": "AVAILABLE",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "38bbcb280ab26ba073ac2e3bcc1aa2142892aa9e54b45697c8484bda9ee9f267",
+      "deterministic": true,
+      "reasonCode": "VEHICLE_UNAVAILABLE",
+      "state": "UNAVAILABLE",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "38bbcb280ab26ba073ac2e3bcc1aa2142892aa9e54b45697c8484bda9ee9f267",
+      "deterministic": true,
+      "reasonCode": "VEHICLE_UNAVAILABLE",
+      "state": "UNAVAILABLE",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "a57c6ecb2648dbeed56ca3a6aa7daa2a16b39a49d1e2476b2de66ba8107cdacb",
+      "deterministic": true,
+      "reasonCode": "VEHICLE_AVAILABLE",
+      "state": "AVAILABLE",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "a57c6ecb2648dbeed56ca3a6aa7daa2a16b39a49d1e2476b2de66ba8107cdacb",
+      "deterministic": true,
+      "reasonCode": "VEHICLE_AVAILABLE",
+      "state": "AVAILABLE",
+      "testOnly": true
+    },
+    {
+      "availabilityHash": "742345f2196def4d9aaf0792035991ee7d302f8e8c058054a52131f959cd4008",
+      "deterministic": true,
+      "reasonCode": "EVIDENCE_INSUFFICIENT",
+      "state": "INSUFFICIENT_EVIDENCE",
+      "testOnly": true
+    }
+  ],
+  "generatedArtifact": true,
+  "states": [
+    "AVAILABLE",
+    "ASSIGNED",
+    "IN_USE",
+    "UNAVAILABLE",
+    "OUT_OF_SERVICE",
+    "RESERVED",
+    "INSUFFICIENT_EVIDENCE",
+    "UNKNOWN"
+  ]
+}

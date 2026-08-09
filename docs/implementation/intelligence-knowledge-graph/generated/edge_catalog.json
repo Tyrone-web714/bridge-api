@@ -386,6 +386,17 @@
       "testOnly": true
     },
     {
+      "edgeId": "edge:e81c71e85f7d5f977f89",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "2314aaaf91e0d4830b857495b22c4c3825090efa9ee2c0f0e67d694975cf1428",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "IMPLEMENTS",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Service:intelligence-execution-platform",
+      "targetNodeId": "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
+      "testOnly": true
+    },
+    {
       "edgeId": "edge:77d9ea66098f9a1040b8",
       "relationshipConfidence": "DETERMINISTIC",
       "relationshipHash": "23034b4f4318e40e2b527cfb58bea4134d98b0db3c14aa5be7303e00d0e48630",
@@ -8412,6 +8423,149 @@
       "relationshipType": "GENERATED_FROM",
       "relationshipVersion": "0.1.0",
       "sourceNodeId": "Generated Artifact:docs/implementation/execution-strategy-evaluation-engine/generated/evaluation_safety_findings.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:931a016397a620ff2000",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "4933ea83532a08de37dba69ea5bc1aac71d3a8542b5d6286f174d07f11eb7a50",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_alert_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:7c53069b87fbf34b1b70",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "5253168d11bf35cbcb82fa72342c4de0adac2a672a5271cdc002d4b1bd0559a6",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_availability_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:798bc6d4412d7e08eb7a",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "72289ad7d4b9bf46f8c9871ff737e132561c7954fc3d3342dd5922b13f92fee0",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_benchmark_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:5e7ce4d32b006e5df636",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "5b901e22c367dcb39ce5268080fc6659b258b3d5b40b41b7fa20931afb75267e",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_context_contract.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:a3791a446d8106b49c55",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "b1fac394aa59946f3ff984e1ce8bb966372ad084461c3d6b0760d16174cda550",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_evidence_report.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:4233251212b304eef48d",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "f80051d68fd9c2450bd75f7a9876aa50554de49e14c9e6662acfb78bdb5cdd60",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/FLEET_INTELLIGENCE_SUMMARY.md",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:00f8f67504c9f40a5844",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "35fa23a8c4dc1b17fdf3e5b022c460e1748cf9494d53aa1237989750189c3b97",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_issue_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:215e122ccc1db5b57732",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "28c6e8ada964d28f85bec2adc4e4f552db330a22da50140f4930a18b9c5cb108",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_readiness_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:221b9e920b9d643320a8",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "f8f3bc2c002568e2950808dcf447d8262a56b7afc3bdbff654df20b53876389c",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_reason_code_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:923ebc164d087d456df5",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "8721b5287ff621091ac23aeecc84420e35df3754fe8c9fe069463e05e3b7359b",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_route_compatibility_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:4c79ef0ee34a2f7d12f3",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "279131ddf9ab801d07c6dcdc5bf3e6a85f3947abfbdce9fda12298d4fa3b7c0a",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_route_impact_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:2a54a322b3916f4653fe",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "0ac47d6ba8974122bed38b9151853482ffe2a25a275a1b1e7181101c36c798bd",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_summary_report.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:cb4fb4777ba961fa67a8",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "4237cbfc9a88ca86d8f749a1d83c6d8b0ea3ee50818ede0d9924b3619e815a07",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_vehicle_context_catalog.json",
       "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
       "testOnly": true
     },

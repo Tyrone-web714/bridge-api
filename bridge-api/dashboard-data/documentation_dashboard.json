@@ -17,7 +17,7 @@
       "dashboard-data/documentation_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "57fe9ff24aa2becc9ec58132166a70d7568542521a33daa7656ac5781c541ab4",
+    "generationHash": "dde92c7f4acf85d1598a5694fdc6b17381e9ba4a1bb2641370fc0feafcc28f75",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -45,6 +45,7 @@
         "docs/implementation/enterprise-intelligence-capability-registry": 29,
         "docs/implementation/execution-decision-engine": 58,
         "docs/implementation/execution-strategy-evaluation-engine": 50,
+        "docs/implementation/fleet-intelligence-foundation": 54,
         "docs/implementation/fleet-intelligence-scoring-foundation": 13,
         "docs/implementation/framework-validation": 25,
         "docs/implementation/intelligence-capability-orchestration": 19,
@@ -72,11 +73,11 @@
         "docs/implementation/warehouse-intelligence-foundation": 51,
         "docs/implementation/web-origin-private-media-hardening": 16
       },
-      "generatedDocs": 197
+      "generatedDocs": 210
     },
     "statusIndicators": [],
     "summary": {
-      "documentationFiles": 1062
+      "documentationFiles": 1116
     },
     "testOnly": true,
     "unknownValues": [],

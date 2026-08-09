@@ -1,0 +1,285 @@
+{
+  "generatedArtifact": true,
+  "readiness": [
+    {
+      "deterministic": true,
+      "humanReviewRequired": false,
+      "readinessHash": "759802b78e24110adf3f0cbebd1682b72452e4f59e5469bfdead33a4eaa0acdd",
+      "reasonCode": "VEHICLE_READY",
+      "state": "READY",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": false,
+      "readinessHash": "759802b78e24110adf3f0cbebd1682b72452e4f59e5469bfdead33a4eaa0acdd",
+      "reasonCode": "VEHICLE_READY",
+      "state": "READY",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": false,
+      "readinessHash": "759802b78e24110adf3f0cbebd1682b72452e4f59e5469bfdead33a4eaa0acdd",
+      "reasonCode": "VEHICLE_READY",
+      "state": "READY",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": false,
+      "readinessHash": "a98ccf1b4782dc7badbd1ae80f63b7a846deb98e859ef5d922368c76f1e78377",
+      "reasonCode": "VEHICLE_NOT_READY",
+      "state": "NOT_READY",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": false,
+      "readinessHash": "e4820e616a13e1e6c82e82255ef38ce791d4e629fef0696302d9eba59d554457",
+      "reasonCode": "VEHICLE_BLOCKED",
+      "state": "BLOCKED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": false,
+      "readinessHash": "759802b78e24110adf3f0cbebd1682b72452e4f59e5469bfdead33a4eaa0acdd",
+      "reasonCode": "VEHICLE_READY",
+      "state": "READY",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": false,
+      "readinessHash": "a98ccf1b4782dc7badbd1ae80f63b7a846deb98e859ef5d922368c76f1e78377",
+      "reasonCode": "VEHICLE_NOT_READY",
+      "state": "NOT_READY",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": false,
+      "readinessHash": "759802b78e24110adf3f0cbebd1682b72452e4f59e5469bfdead33a4eaa0acdd",
+      "reasonCode": "VEHICLE_READY",
+      "state": "READY",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": true,
+      "readinessHash": "1c993c34303ae6628284ff11fd2ccd086d2988579ea4829b04a2cefc19f525dd",
+      "reasonCode": "EVIDENCE_INSUFFICIENT",
+      "state": "INSUFFICIENT_EVIDENCE",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": false,
+      "readinessHash": "759802b78e24110adf3f0cbebd1682b72452e4f59e5469bfdead33a4eaa0acdd",
+      "reasonCode": "VEHICLE_READY",
+      "state": "READY",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": false,
+      "readinessHash": "e4820e616a13e1e6c82e82255ef38ce791d4e629fef0696302d9eba59d554457",
+      "reasonCode": "VEHICLE_BLOCKED",
+      "state": "BLOCKED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": true,
+      "readinessHash": "fbd8ec4d2556501aa3fa4f036ddd39306ea1a5ebdcec57b07b95aeef9baccc98",
+      "reasonCode": "VEHICLE_READY_WITH_REVIEW",
+      "state": "READY_WITH_REVIEW",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": false,
+      "readinessHash": "759802b78e24110adf3f0cbebd1682b72452e4f59e5469bfdead33a4eaa0acdd",
+      "reasonCode": "VEHICLE_READY",
+      "state": "READY",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": true,
+      "readinessHash": "fbd8ec4d2556501aa3fa4f036ddd39306ea1a5ebdcec57b07b95aeef9baccc98",
+      "reasonCode": "VEHICLE_READY_WITH_REVIEW",
+      "state": "READY_WITH_REVIEW",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": false,
+      "readinessHash": "a98ccf1b4782dc7badbd1ae80f63b7a846deb98e859ef5d922368c76f1e78377",
+      "reasonCode": "VEHICLE_NOT_READY",
+      "state": "NOT_READY",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": false,
+      "readinessHash": "e4820e616a13e1e6c82e82255ef38ce791d4e629fef0696302d9eba59d554457",
+      "reasonCode": "VEHICLE_BLOCKED",
+      "state": "BLOCKED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": true,
+      "readinessHash": "fbd8ec4d2556501aa3fa4f036ddd39306ea1a5ebdcec57b07b95aeef9baccc98",
+      "reasonCode": "VEHICLE_READY_WITH_REVIEW",
+      "state": "READY_WITH_REVIEW",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": true,
+      "readinessHash": "fbd8ec4d2556501aa3fa4f036ddd39306ea1a5ebdcec57b07b95aeef9baccc98",
+      "reasonCode": "VEHICLE_READY_WITH_REVIEW",
+      "state": "READY_WITH_REVIEW",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": true,
+      "readinessHash": "fbd8ec4d2556501aa3fa4f036ddd39306ea1a5ebdcec57b07b95aeef9baccc98",
+      "reasonCode": "VEHICLE_READY_WITH_REVIEW",
+      "state": "READY_WITH_REVIEW",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": false,
+      "readinessHash": "759802b78e24110adf3f0cbebd1682b72452e4f59e5469bfdead33a4eaa0acdd",
+      "reasonCode": "VEHICLE_READY",
+      "state": "READY",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": true,
+      "readinessHash": "fbd8ec4d2556501aa3fa4f036ddd39306ea1a5ebdcec57b07b95aeef9baccc98",
+      "reasonCode": "VEHICLE_READY_WITH_REVIEW",
+      "state": "READY_WITH_REVIEW",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": false,
+      "readinessHash": "a98ccf1b4782dc7badbd1ae80f63b7a846deb98e859ef5d922368c76f1e78377",
+      "reasonCode": "VEHICLE_NOT_READY",
+      "state": "NOT_READY",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": false,
+      "readinessHash": "e4820e616a13e1e6c82e82255ef38ce791d4e629fef0696302d9eba59d554457",
+      "reasonCode": "VEHICLE_BLOCKED",
+      "state": "BLOCKED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": false,
+      "readinessHash": "a98ccf1b4782dc7badbd1ae80f63b7a846deb98e859ef5d922368c76f1e78377",
+      "reasonCode": "VEHICLE_NOT_READY",
+      "state": "NOT_READY",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": false,
+      "readinessHash": "e4820e616a13e1e6c82e82255ef38ce791d4e629fef0696302d9eba59d554457",
+      "reasonCode": "VEHICLE_BLOCKED",
+      "state": "BLOCKED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": true,
+      "readinessHash": "fbd8ec4d2556501aa3fa4f036ddd39306ea1a5ebdcec57b07b95aeef9baccc98",
+      "reasonCode": "VEHICLE_READY_WITH_REVIEW",
+      "state": "READY_WITH_REVIEW",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": true,
+      "readinessHash": "1c993c34303ae6628284ff11fd2ccd086d2988579ea4829b04a2cefc19f525dd",
+      "reasonCode": "EVIDENCE_INSUFFICIENT",
+      "state": "INSUFFICIENT_EVIDENCE",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": true,
+      "readinessHash": "1c993c34303ae6628284ff11fd2ccd086d2988579ea4829b04a2cefc19f525dd",
+      "reasonCode": "EVIDENCE_INSUFFICIENT",
+      "state": "INSUFFICIENT_EVIDENCE",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": true,
+      "readinessHash": "fbd8ec4d2556501aa3fa4f036ddd39306ea1a5ebdcec57b07b95aeef9baccc98",
+      "reasonCode": "VEHICLE_READY_WITH_REVIEW",
+      "state": "READY_WITH_REVIEW",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": false,
+      "readinessHash": "a98ccf1b4782dc7badbd1ae80f63b7a846deb98e859ef5d922368c76f1e78377",
+      "reasonCode": "VEHICLE_NOT_READY",
+      "state": "NOT_READY",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": false,
+      "readinessHash": "a98ccf1b4782dc7badbd1ae80f63b7a846deb98e859ef5d922368c76f1e78377",
+      "reasonCode": "VEHICLE_NOT_READY",
+      "state": "NOT_READY",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": true,
+      "readinessHash": "fbd8ec4d2556501aa3fa4f036ddd39306ea1a5ebdcec57b07b95aeef9baccc98",
+      "reasonCode": "VEHICLE_READY_WITH_REVIEW",
+      "state": "READY_WITH_REVIEW",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": false,
+      "readinessHash": "759802b78e24110adf3f0cbebd1682b72452e4f59e5469bfdead33a4eaa0acdd",
+      "reasonCode": "VEHICLE_READY",
+      "state": "READY",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "humanReviewRequired": true,
+      "readinessHash": "1c993c34303ae6628284ff11fd2ccd086d2988579ea4829b04a2cefc19f525dd",
+      "reasonCode": "EVIDENCE_INSUFFICIENT",
+      "state": "INSUFFICIENT_EVIDENCE",
+      "testOnly": true
+    }
+  ],
+  "states": [
+    "READY",
+    "READY_WITH_REVIEW",
+    "NOT_READY",
+    "BLOCKED",
+    "INSUFFICIENT_EVIDENCE",
+    "UNKNOWN"
+  ]
+}

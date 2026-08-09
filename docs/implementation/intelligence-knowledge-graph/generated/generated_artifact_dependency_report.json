@@ -1818,6 +1818,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
           "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
           "Repository Module:bridge-api/services/intelligenceExecution/index.js",
           "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -1906,6 +1907,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
         "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
         "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
         "Repository Module:bridge-api/services/intelligenceExecution/index.js",
         "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -2006,6 +2008,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
           "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
           "Repository Module:bridge-api/services/intelligenceExecution/index.js",
           "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -2094,6 +2097,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
         "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
         "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
         "Repository Module:bridge-api/services/intelligenceExecution/index.js",
         "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -2194,6 +2198,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
           "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
           "Repository Module:bridge-api/services/intelligenceExecution/index.js",
           "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -2282,6 +2287,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
         "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
         "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
         "Repository Module:bridge-api/services/intelligenceExecution/index.js",
         "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -2382,6 +2388,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
           "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
           "Repository Module:bridge-api/services/intelligenceExecution/index.js",
           "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -2470,6 +2477,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
         "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
         "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
         "Repository Module:bridge-api/services/intelligenceExecution/index.js",
         "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -2570,6 +2578,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
           "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
           "Repository Module:bridge-api/services/intelligenceExecution/index.js",
           "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -2658,6 +2667,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
         "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
         "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
         "Repository Module:bridge-api/services/intelligenceExecution/index.js",
         "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -2758,6 +2768,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
           "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
           "Repository Module:bridge-api/services/intelligenceExecution/index.js",
           "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -2846,6 +2857,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
         "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
         "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
         "Repository Module:bridge-api/services/intelligenceExecution/index.js",
         "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -2946,6 +2958,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
           "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
           "Repository Module:bridge-api/services/intelligenceExecution/index.js",
           "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -3034,6 +3047,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
         "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
         "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
         "Repository Module:bridge-api/services/intelligenceExecution/index.js",
         "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -3134,6 +3148,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
           "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
           "Repository Module:bridge-api/services/intelligenceExecution/index.js",
           "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -3222,6 +3237,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
         "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
         "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
         "Repository Module:bridge-api/services/intelligenceExecution/index.js",
         "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -3322,6 +3338,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
           "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
           "Repository Module:bridge-api/services/intelligenceExecution/index.js",
           "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -3410,6 +3427,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
         "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
         "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
         "Repository Module:bridge-api/services/intelligenceExecution/index.js",
         "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -3510,6 +3528,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
           "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
           "Repository Module:bridge-api/services/intelligenceExecution/index.js",
           "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -3598,6 +3617,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
         "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
         "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
         "Repository Module:bridge-api/services/intelligenceExecution/index.js",
         "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -3698,6 +3718,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
           "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
           "Repository Module:bridge-api/services/intelligenceExecution/index.js",
           "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -3786,6 +3807,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
         "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
         "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
         "Repository Module:bridge-api/services/intelligenceExecution/index.js",
         "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -3886,6 +3908,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
           "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
           "Repository Module:bridge-api/services/intelligenceExecution/index.js",
           "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -3974,6 +3997,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
         "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
         "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
         "Repository Module:bridge-api/services/intelligenceExecution/index.js",
         "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -4074,6 +4098,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
           "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
           "Repository Module:bridge-api/services/intelligenceExecution/index.js",
           "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -4162,6 +4187,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
         "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
         "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
         "Repository Module:bridge-api/services/intelligenceExecution/index.js",
         "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -4262,6 +4288,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
           "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
           "Repository Module:bridge-api/services/intelligenceExecution/index.js",
           "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -4350,6 +4377,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
         "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
         "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
         "Repository Module:bridge-api/services/intelligenceExecution/index.js",
         "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -4450,6 +4478,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
           "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
           "Repository Module:bridge-api/services/intelligenceExecution/index.js",
           "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -4538,6 +4567,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
         "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
         "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
         "Repository Module:bridge-api/services/intelligenceExecution/index.js",
         "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -4638,6 +4668,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
           "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
           "Repository Module:bridge-api/services/intelligenceExecution/index.js",
           "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -4726,6 +4757,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
         "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
         "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
         "Repository Module:bridge-api/services/intelligenceExecution/index.js",
         "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -4826,6 +4858,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
           "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
           "Repository Module:bridge-api/services/intelligenceExecution/index.js",
           "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -4914,6 +4947,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
         "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
         "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
         "Repository Module:bridge-api/services/intelligenceExecution/index.js",
         "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -5014,6 +5048,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
           "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
           "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
           "Repository Module:bridge-api/services/intelligenceExecution/index.js",
           "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -5102,6 +5137,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/errors.js",
         "Repository Module:bridge-api/services/intelligenceExecution/evaluationEngine.js",
         "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
         "Repository Module:bridge-api/services/intelligenceExecution/index.js",
         "Repository Module:bridge-api/services/intelligenceExecution/intelligenceCapabilityOrchestration.js",
@@ -5450,6 +5486,331 @@
         "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
       ],
       "nodeId": "Generated Artifact:docs/implementation/execution-strategy-evaluation-engine/generated/evaluation_safety_findings.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_alert_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_alert_catalog.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_availability_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_availability_catalog.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_benchmark_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_benchmark_catalog.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_context_contract.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_context_contract.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_evidence_report.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_evidence_report.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/FLEET_INTELLIGENCE_SUMMARY.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/FLEET_INTELLIGENCE_SUMMARY.md",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_issue_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_issue_catalog.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_readiness_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_readiness_catalog.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_reason_code_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_reason_code_catalog.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_route_compatibility_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_route_compatibility_catalog.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_route_impact_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_route_impact_catalog.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_summary_report.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_summary_report.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_vehicle_context_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_vehicle_context_catalog.json",
       "reverseDependencies": [],
       "testsToRerun": [
         "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"

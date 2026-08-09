@@ -424,6 +424,18 @@
         "testOnly": true
       },
       {
+        "edgeId": "edge:e81c71e85f7d5f977f89",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "2314aaaf91e0d4830b857495b22c4c3825090efa9ee2c0f0e67d694975cf1428",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "IMPLEMENTS",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Service:intelligence-execution-platform",
+        "targetNodeId": "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
+        "testOnly": true
+      },
+      {
         "edgeId": "edge:77d9ea66098f9a1040b8",
         "metadata": {},
         "relationshipConfidence": "DETERMINISTIC",
@@ -9184,6 +9196,162 @@
         "testOnly": true
       },
       {
+        "edgeId": "edge:931a016397a620ff2000",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "4933ea83532a08de37dba69ea5bc1aac71d3a8542b5d6286f174d07f11eb7a50",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_alert_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:7c53069b87fbf34b1b70",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "5253168d11bf35cbcb82fa72342c4de0adac2a672a5271cdc002d4b1bd0559a6",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_availability_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:798bc6d4412d7e08eb7a",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "72289ad7d4b9bf46f8c9871ff737e132561c7954fc3d3342dd5922b13f92fee0",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_benchmark_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:5e7ce4d32b006e5df636",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "5b901e22c367dcb39ce5268080fc6659b258b3d5b40b41b7fa20931afb75267e",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_context_contract.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:a3791a446d8106b49c55",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "b1fac394aa59946f3ff984e1ce8bb966372ad084461c3d6b0760d16174cda550",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_evidence_report.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:4233251212b304eef48d",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "f80051d68fd9c2450bd75f7a9876aa50554de49e14c9e6662acfb78bdb5cdd60",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/FLEET_INTELLIGENCE_SUMMARY.md",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:00f8f67504c9f40a5844",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "35fa23a8c4dc1b17fdf3e5b022c460e1748cf9494d53aa1237989750189c3b97",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_issue_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:215e122ccc1db5b57732",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "28c6e8ada964d28f85bec2adc4e4f552db330a22da50140f4930a18b9c5cb108",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_readiness_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:221b9e920b9d643320a8",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "f8f3bc2c002568e2950808dcf447d8262a56b7afc3bdbff654df20b53876389c",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_reason_code_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:923ebc164d087d456df5",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "8721b5287ff621091ac23aeecc84420e35df3754fe8c9fe069463e05e3b7359b",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_route_compatibility_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:4c79ef0ee34a2f7d12f3",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "279131ddf9ab801d07c6dcdc5bf3e6a85f3947abfbdce9fda12298d4fa3b7c0a",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_route_impact_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:2a54a322b3916f4653fe",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "0ac47d6ba8974122bed38b9151853482ffe2a25a275a1b1e7181101c36c798bd",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_summary_report.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:cb4fb4777ba961fa67a8",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "4237cbfc9a88ca86d8f749a1d83c6d8b0ea3ee50818ede0d9924b3619e815a07",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_vehicle_context_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
         "edgeId": "edge:421a63761c7609ee4c5d",
         "metadata": {},
         "relationshipConfidence": "DETERMINISTIC",
@@ -10398,10 +10566,10 @@
     ],
     "engineVersion": "intelligence.knowledge.graph.engine.v1",
     "generatedFrom": "repository",
-    "graphHash": "a7f731b414fcab55ad62d56c720113ffe482cff9f8dc17c2ef67c9894bc5623a",
+    "graphHash": "cce53c24921e63d40462f0c9edbcf6f8d444100572c31827b5e0aad1ecefd84c",
     "nodes": [
       {
-        "hash": "f0571a5d2bcfa9004ea6ac6762b3107a372f3779e81c58eb59f3d04866b48bce",
+        "hash": "6fe07a22b35225fa33fea97de66a9280dfbed5f870247b57f0f106631d7481ea",
         "label": "bridge-api",
         "lifecycleState": null,
         "metadata": {},
@@ -10830,6 +10998,18 @@
         "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
         "productionApplicable": false,
         "source": "bridge-api/services/intelligenceExecution/executionDecisionEngine.js",
+        "testOnly": true,
+        "type": "Repository Module",
+        "version": null
+      },
+      {
+        "hash": "04121f2761363aa6bc5970e97ed216ac974f1c47c23c11f5e26859651903ba1f",
+        "label": "bridge-api/services/intelligenceExecution/fleetIntelligence.js",
+        "lifecycleState": null,
+        "metadata": {},
+        "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
+        "productionApplicable": false,
+        "source": "bridge-api/services/intelligenceExecution/fleetIntelligence.js",
         "testOnly": true,
         "type": "Repository Module",
         "version": null
@@ -20467,6 +20647,762 @@
         "nodeId": "Documentation Page:docs/implementation/execution-strategy-evaluation-engine/TIMING_AND_RESOURCE_OBSERVATIONS.md",
         "productionApplicable": false,
         "source": "docs/implementation/execution-strategy-evaluation-engine/TIMING_AND_RESOURCE_OBSERVATIONS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "bc5c8bfe76053d9dcf7ba59e7394e7b435819e51e246c7f7fa3bdfebcd27d965",
+        "label": "docs/implementation/fleet-intelligence-foundation/ALERT_LIFECYCLE.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "bc5c8bfe76053d9dcf7ba59e7394e7b435819e51e246c7f7fa3bdfebcd27d965"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/ALERT_LIFECYCLE.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/ALERT_LIFECYCLE.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "268f66dab7db88b6dec49ce3da8d1ba13a441c93c56de93160943393c8719a5b",
+        "label": "docs/implementation/fleet-intelligence-foundation/AUTHORITATIVE_DATA_BOUNDARIES.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "268f66dab7db88b6dec49ce3da8d1ba13a441c93c56de93160943393c8719a5b"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/AUTHORITATIVE_DATA_BOUNDARIES.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/AUTHORITATIVE_DATA_BOUNDARIES.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "4d6e5d77933e40f181d043e5f85683142ebe0e852eda3a32bce9fd5ee876b940",
+        "label": "docs/implementation/fleet-intelligence-foundation/AUTONOMOUS_ACTION_BOUNDARY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "4d6e5d77933e40f181d043e5f85683142ebe0e852eda3a32bce9fd5ee876b940"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/AUTONOMOUS_ACTION_BOUNDARY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/AUTONOMOUS_ACTION_BOUNDARY.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "74b909a28adf26fddeab1e771a0133c9e13ba8178021c33b997fe264d9366d9e",
+        "label": "docs/implementation/fleet-intelligence-foundation/BENCHMARK_DATASETS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "74b909a28adf26fddeab1e771a0133c9e13ba8178021c33b997fe264d9366d9e"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/BENCHMARK_DATASETS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/BENCHMARK_DATASETS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "ea3171010c735e802314619fec56a2b29a62c1a97651106a719acb1f18ac471c",
+        "label": "docs/implementation/fleet-intelligence-foundation/CURRENT_FLEET_FUNCTIONALITY_AUDIT.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "ea3171010c735e802314619fec56a2b29a62c1a97651106a719acb1f18ac471c"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/CURRENT_FLEET_FUNCTIONALITY_AUDIT.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/CURRENT_FLEET_FUNCTIONALITY_AUDIT.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "beb9f81447ffbc52576f6ee42f1d93946003f1b81063451ff36a9bc56636ca64",
+        "label": "docs/implementation/fleet-intelligence-foundation/DASHBOARD_INTEGRATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "beb9f81447ffbc52576f6ee42f1d93946003f1b81063451ff36a9bc56636ca64"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/DASHBOARD_INTEGRATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/DASHBOARD_INTEGRATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "1ab3cc90e89685b76ec63bc57d0975206c3da8c2a3fb1ead79c83862780ddfdc",
+        "label": "docs/implementation/fleet-intelligence-foundation/DEFERRED_WORK.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "1ab3cc90e89685b76ec63bc57d0975206c3da8c2a3fb1ead79c83862780ddfdc"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/DEFERRED_WORK.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/DEFERRED_WORK.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "ab2c775fe6b6621bbc8bc0fd6aec16455872c7643da388fb2422200f6c036866",
+        "label": "docs/implementation/fleet-intelligence-foundation/DETERMINISTIC_EXPLANATIONS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "ab2c775fe6b6621bbc8bc0fd6aec16455872c7643da388fb2422200f6c036866"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/DETERMINISTIC_EXPLANATIONS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/DETERMINISTIC_EXPLANATIONS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "c121028ba387a8c731dc766c60bac9bf5a50b11de5af39a8f31238f9c890f9ca",
+        "label": "docs/implementation/fleet-intelligence-foundation/DRIVER_INTELLIGENCE_INTEGRATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "c121028ba387a8c731dc766c60bac9bf5a50b11de5af39a8f31238f9c890f9ca"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/DRIVER_INTELLIGENCE_INTEGRATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/DRIVER_INTELLIGENCE_INTEGRATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "8ba93c3aeef68f8b06de8b02199502eddb291093d08411e65ae077e0a6caec17",
+        "label": "docs/implementation/fleet-intelligence-foundation/EMPLOYMENT_IMPACT_GUARDRAILS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "8ba93c3aeef68f8b06de8b02199502eddb291093d08411e65ae077e0a6caec17"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/EMPLOYMENT_IMPACT_GUARDRAILS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/EMPLOYMENT_IMPACT_GUARDRAILS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "b8f62b7216078229a0367de97a86b78fdf0dcad982841b7155e9897862464fff",
+        "label": "docs/implementation/fleet-intelligence-foundation/EVIDENCE_AND_CONFIDENCE.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "b8f62b7216078229a0367de97a86b78fdf0dcad982841b7155e9897862464fff"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/EVIDENCE_AND_CONFIDENCE.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/EVIDENCE_AND_CONFIDENCE.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "49876c046fd28c4f78691b7bfc7345a4a8e102a9e28398d974a6b59e009e5037",
+        "label": "docs/implementation/fleet-intelligence-foundation/EXCEPTION_SEVERITY_MODEL.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "49876c046fd28c4f78691b7bfc7345a4a8e102a9e28398d974a6b59e009e5037"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/EXCEPTION_SEVERITY_MODEL.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/EXCEPTION_SEVERITY_MODEL.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "9daf6c25213c522d980fe2ee72d64e730237ad3e9347e49d62f5bd21224d5893",
+        "label": "docs/implementation/fleet-intelligence-foundation/EXISTING_FLEET_SCORING_BOUNDARY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "9daf6c25213c522d980fe2ee72d64e730237ad3e9347e49d62f5bd21224d5893"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/EXISTING_FLEET_SCORING_BOUNDARY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/EXISTING_FLEET_SCORING_BOUNDARY.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "89bab5937a9130f7d9872e7e4e015142ccfd54141aef08f46e79bd2546b377f5",
+        "label": "docs/implementation/fleet-intelligence-foundation/EXISTING_SERVICE_REUSE_DECISION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "89bab5937a9130f7d9872e7e4e015142ccfd54141aef08f46e79bd2546b377f5"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/EXISTING_SERVICE_REUSE_DECISION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/EXISTING_SERVICE_REUSE_DECISION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "94469e61d77adc20a99dbf3c7d65b245ab4ba75bce15a4a047477d5f75c74a9b",
+        "label": "docs/implementation/fleet-intelligence-foundation/FLEET_ALERT_MODEL.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "94469e61d77adc20a99dbf3c7d65b245ab4ba75bce15a4a047477d5f75c74a9b"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/FLEET_ALERT_MODEL.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/FLEET_ALERT_MODEL.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "1732a5f594f4d3909712f45a32aeb508d6e9a0b82e49af1a4f838f191719ab4e",
+        "label": "docs/implementation/fleet-intelligence-foundation/FLEET_CONTEXT_CONTRACT.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "1732a5f594f4d3909712f45a32aeb508d6e9a0b82e49af1a4f838f191719ab4e"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/FLEET_CONTEXT_CONTRACT.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/FLEET_CONTEXT_CONTRACT.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "0d0c366ee94119645c2f178dadcf8c4ad92cf19521ad5ec78b53179590a09d68",
+        "label": "docs/implementation/fleet-intelligence-foundation/FLEET_EXCEPTION_MODEL.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "0d0c366ee94119645c2f178dadcf8c4ad92cf19521ad5ec78b53179590a09d68"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/FLEET_EXCEPTION_MODEL.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/FLEET_EXCEPTION_MODEL.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "99f76e33e3aa775736eebd628fec8258f765d61c19ba149143c6cf148e963a7a",
+        "label": "docs/implementation/fleet-intelligence-foundation/FLEET_INTELLIGENCE_ARCHITECTURE.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "99f76e33e3aa775736eebd628fec8258f765d61c19ba149143c6cf148e963a7a"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/FLEET_INTELLIGENCE_ARCHITECTURE.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/FLEET_INTELLIGENCE_ARCHITECTURE.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "fa6c9c88e5393dbfb356b6b487393562eaf1be765e6797fc7b6ebf0e77e40a7c",
+        "label": "docs/implementation/fleet-intelligence-foundation/FLEET_UTILIZATION_AWARENESS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "fa6c9c88e5393dbfb356b6b487393562eaf1be765e6797fc7b6ebf0e77e40a7c"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/FLEET_UTILIZATION_AWARENESS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/FLEET_UTILIZATION_AWARENESS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "2088bf1657cb935a5526e5e134460bad783b523b4a805ec37d0820cf0f0539f7",
+        "label": "docs/implementation/fleet-intelligence-foundation/generated/fleet_alert_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_alert_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/generated/fleet_alert_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "97b0f218bd623c0b43ada8850980dfeaecfe3618bfd4e9401cfd126e238d80f8",
+        "label": "docs/implementation/fleet-intelligence-foundation/generated/fleet_availability_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_availability_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/generated/fleet_availability_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "804f8350c450cf2cdf159edc4f8223c1e89366d97cfbed7446889a91eaf77ebc",
+        "label": "docs/implementation/fleet-intelligence-foundation/generated/fleet_benchmark_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_benchmark_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/generated/fleet_benchmark_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "e09c2e74c5bfd5ee6b64274c6e2ef304fb904c782a91452778d8aef6f3d62574",
+        "label": "docs/implementation/fleet-intelligence-foundation/generated/fleet_context_contract.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_context_contract.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/generated/fleet_context_contract.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "f2398dfd65643ff62c6f6bb2bf77344d33f361fa66746fb9eac8e06437c08cbf",
+        "label": "docs/implementation/fleet-intelligence-foundation/generated/fleet_evidence_report.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_evidence_report.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/generated/fleet_evidence_report.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "954e70e23495f86b9d3639d6d69e7439aca93b9a63b45a4c8428757194999df3",
+        "label": "docs/implementation/fleet-intelligence-foundation/generated/FLEET_INTELLIGENCE_SUMMARY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/FLEET_INTELLIGENCE_SUMMARY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/generated/FLEET_INTELLIGENCE_SUMMARY.md",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "edf9c3074bdd22d7da038677b30186cf988166d97d90369e989e6ca99f1d3116",
+        "label": "docs/implementation/fleet-intelligence-foundation/generated/fleet_issue_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_issue_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/generated/fleet_issue_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "75d10d23ec28d8e2729e4216f5a68776e0d4548d8abdef357d562f701be44039",
+        "label": "docs/implementation/fleet-intelligence-foundation/generated/fleet_readiness_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_readiness_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/generated/fleet_readiness_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "dce364baee91e4352bb2dceb1bce7a8bcf545071fd34f9ff9f00856872f289d6",
+        "label": "docs/implementation/fleet-intelligence-foundation/generated/fleet_reason_code_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_reason_code_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/generated/fleet_reason_code_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "7c48b613e4efce2825f60d46d3531532a930c479e0a1f17d15cc03ec5d5720e4",
+        "label": "docs/implementation/fleet-intelligence-foundation/generated/fleet_route_compatibility_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_route_compatibility_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/generated/fleet_route_compatibility_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "29fe98d54d3b4034d841ed422620db95c1eec44c042d248fb439a17c2a7df0bd",
+        "label": "docs/implementation/fleet-intelligence-foundation/generated/fleet_route_impact_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_route_impact_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/generated/fleet_route_impact_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "14dac50156dd0915918373af58d1117c69384ce69ba755ebae32ef5c4e19d80f",
+        "label": "docs/implementation/fleet-intelligence-foundation/generated/fleet_summary_report.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_summary_report.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/generated/fleet_summary_report.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "1c29e666f6fe69ea464985482818aae0d962f26b7f7e73fb5d03a478c9bff0f8",
+        "label": "docs/implementation/fleet-intelligence-foundation/generated/fleet_vehicle_context_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_vehicle_context_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/generated/fleet_vehicle_context_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "f0203f7f201f2da59c3db9dea59baf074a57547eec118657527e1b6e08338670",
+        "label": "docs/implementation/fleet-intelligence-foundation/IMPLEMENTATION_REPORT.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "f0203f7f201f2da59c3db9dea59baf074a57547eec118657527e1b6e08338670"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/IMPLEMENTATION_REPORT.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/IMPLEMENTATION_REPORT.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "57b3462518827871e32bad13a191aefec9b62bbc2ecb7f74dcbd899aa4e68e25",
+        "label": "docs/implementation/fleet-intelligence-foundation/KNOWLEDGE_GRAPH_INTEGRATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "57b3462518827871e32bad13a191aefec9b62bbc2ecb7f74dcbd899aa4e68e25"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/KNOWLEDGE_GRAPH_INTEGRATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/KNOWLEDGE_GRAPH_INTEGRATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "9a05f868c50b36eb1fb99276ce0d16753eedf7a10ed39d07f8636f149e6e1b98",
+        "label": "docs/implementation/fleet-intelligence-foundation/MAINTENANCE_STATUS_AWARENESS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "9a05f868c50b36eb1fb99276ce0d16753eedf7a10ed39d07f8636f149e6e1b98"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/MAINTENANCE_STATUS_AWARENESS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/MAINTENANCE_STATUS_AWARENESS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "9774d46f12382ccec11a49c6a2c8b709369235102e183d7cf6b346df65ff4db4",
+        "label": "docs/implementation/fleet-intelligence-foundation/OWNER_DECISIONS_REQUIRED.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "9774d46f12382ccec11a49c6a2c8b709369235102e183d7cf6b346df65ff4db4"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/OWNER_DECISIONS_REQUIRED.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/OWNER_DECISIONS_REQUIRED.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "567b4dec386d49905d675e95cca4778f6bc280f0dceac998a1bd45075d2f8ef7",
+        "label": "docs/implementation/fleet-intelligence-foundation/PLATFORM_INTEGRATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "567b4dec386d49905d675e95cca4778f6bc280f0dceac998a1bd45075d2f8ef7"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/PLATFORM_INTEGRATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/PLATFORM_INTEGRATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "c13d0ba7c5ddef5b81260d5ced09bb7465b78e7424cf7c1ac089538e87c4b4d0",
+        "label": "docs/implementation/fleet-intelligence-foundation/PREDICTIVE_MAINTENANCE_BOUNDARY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "c13d0ba7c5ddef5b81260d5ced09bb7465b78e7424cf7c1ac089538e87c4b4d0"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/PREDICTIVE_MAINTENANCE_BOUNDARY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/PREDICTIVE_MAINTENANCE_BOUNDARY.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "516c895ec9210d1f8386d5d60eb0200911b50a31d0b805942807b3e9d561a6a0",
+        "label": "docs/implementation/fleet-intelligence-foundation/README.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "516c895ec9210d1f8386d5d60eb0200911b50a31d0b805942807b3e9d561a6a0"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/README.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/README.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "eabc2ada3f48b35f4541878b4edafe3845b543ebe198a5b10ec0bb349cce92f1",
+        "label": "docs/implementation/fleet-intelligence-foundation/REASON_CODES.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "eabc2ada3f48b35f4541878b4edafe3845b543ebe198a5b10ec0bb349cce92f1"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/REASON_CODES.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/REASON_CODES.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "eb29b173dfea451bc91559234d27b12537e4e4a30cbe9892313ad40619d6ceed",
+        "label": "docs/implementation/fleet-intelligence-foundation/ROLLBACK_PLAN.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "eb29b173dfea451bc91559234d27b12537e4e4a30cbe9892313ad40619d6ceed"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/ROLLBACK_PLAN.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/ROLLBACK_PLAN.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "739ee7d6c250f079fba4064446b1b318a77a88186a477b12c7f74569276e0060",
+        "label": "docs/implementation/fleet-intelligence-foundation/ROUTE_IMPACT_MODEL.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "739ee7d6c250f079fba4064446b1b318a77a88186a477b12c7f74569276e0060"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/ROUTE_IMPACT_MODEL.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/ROUTE_IMPACT_MODEL.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "c19db62953720c2cf2495b5005f7a6532fab97f5efec939c0018f2885c7e0666",
+        "label": "docs/implementation/fleet-intelligence-foundation/ROUTE_INTELLIGENCE_INTEGRATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "c19db62953720c2cf2495b5005f7a6532fab97f5efec939c0018f2885c7e0666"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/ROUTE_INTELLIGENCE_INTEGRATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/ROUTE_INTELLIGENCE_INTEGRATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "7f0b1e7855dbc1b1c5569203022b176be92220e51992b779be7c56a4a128ce95",
+        "label": "docs/implementation/fleet-intelligence-foundation/ROUTE_VEHICLE_COMPATIBILITY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "7f0b1e7855dbc1b1c5569203022b176be92220e51992b779be7c56a4a128ce95"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/ROUTE_VEHICLE_COMPATIBILITY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/ROUTE_VEHICLE_COMPATIBILITY.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "0c2d4f0a772a3a1c107f536c9308dccca42ae205d39e6184258621676b7d78fa",
+        "label": "docs/implementation/fleet-intelligence-foundation/SECURITY_AND_TENANT_REVIEW.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "0c2d4f0a772a3a1c107f536c9308dccca42ae205d39e6184258621676b7d78fa"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/SECURITY_AND_TENANT_REVIEW.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/SECURITY_AND_TENANT_REVIEW.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "676d626221f292dca9c40ad8ac502365e5bd91c50579efa5816353cd97b009fc",
+        "label": "docs/implementation/fleet-intelligence-foundation/SUPERVISOR_FLEET_VISIBILITY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "676d626221f292dca9c40ad8ac502365e5bd91c50579efa5816353cd97b009fc"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/SUPERVISOR_FLEET_VISIBILITY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/SUPERVISOR_FLEET_VISIBILITY.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "4221b84dd5077d232f688b4ff73a9c99bd4e38f1f9fc48d3534eb1331bef5632",
+        "label": "docs/implementation/fleet-intelligence-foundation/SUPERVISOR_INTELLIGENCE_INTEGRATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "4221b84dd5077d232f688b4ff73a9c99bd4e38f1f9fc48d3534eb1331bef5632"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/SUPERVISOR_INTELLIGENCE_INTEGRATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/SUPERVISOR_INTELLIGENCE_INTEGRATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "0f9f8393c4ccec87e9225966f99a4c4146c1291ab6ad7ff17c65e841a57f6f0a",
+        "label": "docs/implementation/fleet-intelligence-foundation/TEST_PLAN.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "0f9f8393c4ccec87e9225966f99a4c4146c1291ab6ad7ff17c65e841a57f6f0a"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/TEST_PLAN.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/TEST_PLAN.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "1798266b95dae0fa576502e9205f53c20d73564659ec0685e5c919a7b43a9b4e",
+        "label": "docs/implementation/fleet-intelligence-foundation/TEST_RESULTS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "1798266b95dae0fa576502e9205f53c20d73564659ec0685e5c919a7b43a9b4e"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/TEST_RESULTS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/TEST_RESULTS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "20a030a68f4e811e6307c1c4ec3364a43f73d6e970ddeb9bcee9178425c606fd",
+        "label": "docs/implementation/fleet-intelligence-foundation/UNRESOLVED_VEHICLE_ISSUES.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "20a030a68f4e811e6307c1c4ec3364a43f73d6e970ddeb9bcee9178425c606fd"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/UNRESOLVED_VEHICLE_ISSUES.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/UNRESOLVED_VEHICLE_ISSUES.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "1e39256c01c799a0fc49586c11e1a535ff8f90246bb7960194edf7017bf11472",
+        "label": "docs/implementation/fleet-intelligence-foundation/VEHICLE_AVAILABILITY_MODEL.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "1e39256c01c799a0fc49586c11e1a535ff8f90246bb7960194edf7017bf11472"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/VEHICLE_AVAILABILITY_MODEL.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/VEHICLE_AVAILABILITY_MODEL.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "c6e33bd3825dc4c16ad18680f73e59487a4beaa100e82c4d78892968c65eb2a0",
+        "label": "docs/implementation/fleet-intelligence-foundation/VEHICLE_OPERATIONAL_CONTEXT.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "c6e33bd3825dc4c16ad18680f73e59487a4beaa100e82c4d78892968c65eb2a0"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/VEHICLE_OPERATIONAL_CONTEXT.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/VEHICLE_OPERATIONAL_CONTEXT.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "aee007d8a4b503596295fdaa58fcd05975c6068fe3659acef64fc27241eafa59",
+        "label": "docs/implementation/fleet-intelligence-foundation/VEHICLE_READINESS_MODEL.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "aee007d8a4b503596295fdaa58fcd05975c6068fe3659acef64fc27241eafa59"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/VEHICLE_READINESS_MODEL.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/VEHICLE_READINESS_MODEL.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "10d5f60466e789de7afc33f7528588d3642980f96155d13e3a4ddf56273c1201",
+        "label": "docs/implementation/fleet-intelligence-foundation/WAREHOUSE_INTELLIGENCE_INTEGRATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "10d5f60466e789de7afc33f7528588d3642980f96155d13e3a4ddf56273c1201"
+        },
+        "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/WAREHOUSE_INTELLIGENCE_INTEGRATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/fleet-intelligence-foundation/WAREHOUSE_INTELLIGENCE_INTEGRATION.md",
         "testOnly": true,
         "type": "Documentation Page",
         "version": null

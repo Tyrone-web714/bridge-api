@@ -1,7 +1,7 @@
 {
   "deterministicTruckSafetyControlsAuthoritative": true,
-  "fleetImplementationStarted": false,
-  "fleetIntelligenceMayBegin": true,
+  "fleetImplementationStarted": true,
+  "fleetIntelligenceMayBegin": false,
   "ownerApprovalRequiredForNewIdeas": true,
   "policyPath": "docs/ai-development/SCOPE_CONTROL_POLICY.md",
   "supervisorIntelligenceRemoteContained": true,

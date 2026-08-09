@@ -17,7 +17,7 @@
       "dashboard-data/artifact_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "706f7f635b4cb476d175a64b7a0b17d32e5fd8fa7fd90fc087075cc6528c9af8",
+    "generationHash": "6c5786ec0bb7f10994d3057ea8738913f718493600fd9e9b001963f4fb0bb193",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -39,6 +39,7 @@
         "docs/implementation/enterprise-intelligence-capability-registry/generated": 4,
         "docs/implementation/execution-decision-engine/generated": 18,
         "docs/implementation/execution-strategy-evaluation-engine/generated": 12,
+        "docs/implementation/fleet-intelligence-foundation/generated": 13,
         "docs/implementation/framework-validation/generated": 12,
         "docs/implementation/intelligence-capability-orchestration/generated": 6,
         "docs/implementation/intelligence-knowledge-graph/generated": 20,
@@ -52,7 +53,7 @@
     },
     "statusIndicators": [],
     "summary": {
-      "generatedArtifacts": 197
+      "generatedArtifacts": 210
     },
     "testOnly": true,
     "unknownValues": [],

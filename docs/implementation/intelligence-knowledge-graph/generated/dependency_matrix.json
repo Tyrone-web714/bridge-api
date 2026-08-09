@@ -247,6 +247,11 @@
     },
     {
       "dependencies": [],
+      "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/fleetIntelligence.js",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
       "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/frameworkValidation.js",
       "reverseDependencies": []
     },
@@ -4175,6 +4180,276 @@
     {
       "dependencies": [],
       "nodeId": "Documentation Page:docs/implementation/execution-strategy-evaluation-engine/TIMING_AND_RESOURCE_OBSERVATIONS.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/ALERT_LIFECYCLE.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/AUTHORITATIVE_DATA_BOUNDARIES.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/AUTONOMOUS_ACTION_BOUNDARY.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/BENCHMARK_DATASETS.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/CURRENT_FLEET_FUNCTIONALITY_AUDIT.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/DASHBOARD_INTEGRATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/DEFERRED_WORK.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/DETERMINISTIC_EXPLANATIONS.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/DRIVER_INTELLIGENCE_INTEGRATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/EMPLOYMENT_IMPACT_GUARDRAILS.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/EVIDENCE_AND_CONFIDENCE.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/EXCEPTION_SEVERITY_MODEL.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/EXISTING_FLEET_SCORING_BOUNDARY.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/EXISTING_SERVICE_REUSE_DECISION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/FLEET_ALERT_MODEL.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/FLEET_CONTEXT_CONTRACT.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/FLEET_EXCEPTION_MODEL.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/FLEET_INTELLIGENCE_ARCHITECTURE.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/FLEET_UTILIZATION_AWARENESS.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_alert_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_availability_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_benchmark_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_context_contract.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_evidence_report.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/FLEET_INTELLIGENCE_SUMMARY.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_issue_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_readiness_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_reason_code_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_route_compatibility_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_route_impact_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_summary_report.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/fleet-intelligence-foundation/generated/fleet_vehicle_context_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/IMPLEMENTATION_REPORT.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/KNOWLEDGE_GRAPH_INTEGRATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/MAINTENANCE_STATUS_AWARENESS.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/OWNER_DECISIONS_REQUIRED.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/PLATFORM_INTEGRATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/PREDICTIVE_MAINTENANCE_BOUNDARY.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/README.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/REASON_CODES.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/ROLLBACK_PLAN.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/ROUTE_IMPACT_MODEL.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/ROUTE_INTELLIGENCE_INTEGRATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/ROUTE_VEHICLE_COMPATIBILITY.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/SECURITY_AND_TENANT_REVIEW.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/SUPERVISOR_FLEET_VISIBILITY.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/SUPERVISOR_INTELLIGENCE_INTEGRATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/TEST_PLAN.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/TEST_RESULTS.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/UNRESOLVED_VEHICLE_ISSUES.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/VEHICLE_AVAILABILITY_MODEL.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/VEHICLE_OPERATIONAL_CONTEXT.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/VEHICLE_READINESS_MODEL.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/fleet-intelligence-foundation/WAREHOUSE_INTELLIGENCE_INTEGRATION.md",
       "reverseDependencies": []
     },
     {

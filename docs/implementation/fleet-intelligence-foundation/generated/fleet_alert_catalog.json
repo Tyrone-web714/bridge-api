@@ -1,0 +1,3176 @@
+{
+  "alertStatuses": [
+    "OPEN",
+    "ACKNOWLEDGED",
+    "UNDER_REVIEW",
+    "RESOLVED",
+    "DISMISSED_AS_DUPLICATE",
+    "INVALIDATED_BY_NEW_EVIDENCE",
+    "UNKNOWN"
+  ],
+  "alerts": [
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "beaf94ab2878f83073f19ae2870875f2d1e01177d74ab031db6667e39015d5d8",
+      "alertId": "fleet.alert.377fd91800b08123",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "562d1c6881d20c427717d940827a60f8205711ec2837e94f0d67175d68f7bb0b",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "ef240b89714f9462b6697528d621192eef7d253266f238cde8669c1232b9a5fe",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-unavailable.vehicle_unavailable.vehicle_unavailable",
+      "limitations": [],
+      "operationalNextStep": "REVIEW_VEHICLE_STATUS",
+      "priority": 80,
+      "reasonCodes": [
+        "VEHICLE_UNAVAILABLE"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": "route-003",
+      "severity": "HIGH",
+      "structuredFacts": {
+        "issueType": "VEHICLE_UNAVAILABLE",
+        "reasonCodes": [
+          "VEHICLE_UNAVAILABLE"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-unavailable"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "3eb526c4d885006bcc646b94252d7b14a7a57a5f1a515085ed5426155e593f53",
+      "alertId": "fleet.alert.6b17a0966d1af70a",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "562d1c6881d20c427717d940827a60f8205711ec2837e94f0d67175d68f7bb0b",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "ef240b89714f9462b6697528d621192eef7d253266f238cde8669c1232b9a5fe",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-unavailable.route_impacted_by_vehicle_state.route_impact_at_risk",
+      "limitations": [],
+      "operationalNextStep": "CONTACT_SUPERVISOR",
+      "priority": 80,
+      "reasonCodes": [
+        "ROUTE_IMPACT_AT_RISK"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": "route-003",
+      "severity": "HIGH",
+      "structuredFacts": {
+        "issueType": "ROUTE_IMPACTED_BY_VEHICLE_STATE",
+        "reasonCodes": [
+          "ROUTE_IMPACT_AT_RISK"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-unavailable"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "cccfbe654cee0c34d0fbbc5fc97b6baa09e06399de4d1f0163becea98997269d",
+      "alertId": "fleet.alert.eb2b1bff259932f9",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "b20ab19934859ba4c33dcd66b1b189fcc1d4204a2c83db0c0a37ca4c04cc425e",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "03e62006e55a44c5ee19206585007965836731b126561f67ff6e1b47eba45b79",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-oos.vehicle_out_of_service.vehicle_out_of_service",
+      "limitations": [],
+      "operationalNextStep": "REVIEW_VEHICLE_STATUS",
+      "priority": 100,
+      "reasonCodes": [
+        "VEHICLE_OUT_OF_SERVICE"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": "route-004",
+      "severity": "CRITICAL",
+      "structuredFacts": {
+        "issueType": "VEHICLE_OUT_OF_SERVICE",
+        "reasonCodes": [
+          "VEHICLE_OUT_OF_SERVICE"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-oos"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "475fd34eeac375b835dabbd2727b04b42f0229662f964a6fca68b1aad081cf50",
+      "alertId": "fleet.alert.1df16b6e3ff25b0b",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "b20ab19934859ba4c33dcd66b1b189fcc1d4204a2c83db0c0a37ca4c04cc425e",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "03e62006e55a44c5ee19206585007965836731b126561f67ff6e1b47eba45b79",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-oos.route_impacted_by_vehicle_state.route_impact_blocked",
+      "limitations": [],
+      "operationalNextStep": "CONTACT_SUPERVISOR",
+      "priority": 80,
+      "reasonCodes": [
+        "ROUTE_IMPACT_BLOCKED"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": "route-004",
+      "severity": "HIGH",
+      "structuredFacts": {
+        "issueType": "ROUTE_IMPACTED_BY_VEHICLE_STATE",
+        "reasonCodes": [
+          "ROUTE_IMPACT_BLOCKED"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-oos"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "f7980b6e89f9b37a521a3c465faec796d93d853177b527a0673ef2727ddd092b",
+      "alertId": "fleet.alert.b01293640f7c035f",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "d8ed895c8b1693dbda4970ccecaf615e1370a2b45c03d4dbf1ef5e7f4ec65c4d",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "394ac0fbfb2f06fd8904d1901023359982c5b07a89d31984e87014ff20d0fdbb",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-mismatch.vehicle_assignment_mismatch.vehicle_assignment_mismatch",
+      "limitations": [],
+      "operationalNextStep": "REVIEW_ASSIGNMENT",
+      "priority": 80,
+      "reasonCodes": [
+        "VEHICLE_ASSIGNMENT_MISMATCH"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": "route-mismatch",
+      "severity": "HIGH",
+      "structuredFacts": {
+        "issueType": "VEHICLE_ASSIGNMENT_MISMATCH",
+        "reasonCodes": [
+          "VEHICLE_ASSIGNMENT_MISMATCH"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-mismatch"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "c8d62c1d7bd223fb35b4588dc11655285a1f275f108f753d49521fb861cb178a",
+      "alertId": "fleet.alert.9b04ea4434adc55c",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": false
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 0.833,
+          "status": "PARTIAL"
+        },
+        "confidence": {
+          "score": 0.6,
+          "status": "PARTIAL_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "9bcfd8fbbd82a4a33f9e35b9f0ee2ca1bec4bab1e42c963905f5c906e19e54cc",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "ae6d7734703a4f17fae0fbda7c8f399e2627de84ac4be53ffdd0ccd04c7aad4d",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-profile-missing.human_review_required.human_review_required",
+      "limitations": [
+        "Evidence is incomplete; supervisor review is required before operational action."
+      ],
+      "operationalNextStep": "CONTACT_SUPERVISOR",
+      "priority": 60,
+      "reasonCodes": [
+        "HUMAN_REVIEW_REQUIRED"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": null,
+      "severity": "MODERATE",
+      "structuredFacts": {
+        "issueType": "HUMAN_REVIEW_REQUIRED",
+        "reasonCodes": [
+          "HUMAN_REVIEW_REQUIRED"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-profile-missing"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "ee42ffaad4242130ef8f77cf97acac113790e8fe822f76824b665366abd7f02f",
+      "alertId": "fleet.alert.70907730fa74d835",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": false
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 0.833,
+          "status": "PARTIAL"
+        },
+        "confidence": {
+          "score": 0.6,
+          "status": "PARTIAL_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "9bcfd8fbbd82a4a33f9e35b9f0ee2ca1bec4bab1e42c963905f5c906e19e54cc",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "ae6d7734703a4f17fae0fbda7c8f399e2627de84ac4be53ffdd0ccd04c7aad4d",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-profile-missing.vehicle_profile_missing.vehicle_profile_missing",
+      "limitations": [
+        "Evidence is incomplete; supervisor review is required before operational action."
+      ],
+      "operationalNextStep": "CONTACT_SUPERVISOR",
+      "priority": 20,
+      "reasonCodes": [
+        "VEHICLE_PROFILE_MISSING"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": null,
+      "severity": "INFORMATIONAL",
+      "structuredFacts": {
+        "issueType": "VEHICLE_PROFILE_MISSING",
+        "reasonCodes": [
+          "VEHICLE_PROFILE_MISSING"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-profile-missing"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "afb51aee013e19d122553feaa67587370e104a423029bc7830ff55afb37d523e",
+      "alertId": "fleet.alert.4f07953f573df756",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "a59b1c9501f516638962a20a4f5953a69ead075aa463a1efa670e32400e1dea6",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "5064283f23c9bd0b92f72df1d89a8897ff1143e57b35c6b9296021543bc262b3",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-incompatible.route_vehicle_incompatible.route_vehicle_incompatible",
+      "limitations": [],
+      "operationalNextStep": "REVIEW_ROUTE_COMPATIBILITY",
+      "priority": 100,
+      "reasonCodes": [
+        "ROUTE_VEHICLE_INCOMPATIBLE"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": "route-incompatible",
+      "severity": "CRITICAL",
+      "structuredFacts": {
+        "issueType": "ROUTE_VEHICLE_INCOMPATIBLE",
+        "reasonCodes": [
+          "ROUTE_VEHICLE_INCOMPATIBLE"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-incompatible"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "62716b8f1fd8f2bc34cf5d373fe542c4c9af5021406e4ef05b881a06f180fe5c",
+      "alertId": "fleet.alert.68908fd7c187639b",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "a59b1c9501f516638962a20a4f5953a69ead075aa463a1efa670e32400e1dea6",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "5064283f23c9bd0b92f72df1d89a8897ff1143e57b35c6b9296021543bc262b3",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-incompatible.route_impacted_by_vehicle_state.route_impact_blocked",
+      "limitations": [],
+      "operationalNextStep": "CONTACT_SUPERVISOR",
+      "priority": 80,
+      "reasonCodes": [
+        "ROUTE_IMPACT_BLOCKED"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": "route-incompatible",
+      "severity": "HIGH",
+      "structuredFacts": {
+        "issueType": "ROUTE_IMPACTED_BY_VEHICLE_STATE",
+        "reasonCodes": [
+          "ROUTE_IMPACT_BLOCKED"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-incompatible"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "eef560b02cd11834acedd831ee1b43fab2827c44f46358db713e3ca643f310a8",
+      "alertId": "fleet.alert.675664ba24e751f1",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "fe13d64be9615e28b8ac4e94e3656605842749f94b0d4aeb8f81609579834f45",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "d0dbda76f9d7b53a0ff0e28810cf269dbd0da11b5227b57726fb02557f6fd0e6",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-review-route.route_impacted_by_vehicle_state.route_vehicle_review_required",
+      "limitations": [],
+      "operationalNextStep": "CONTACT_SUPERVISOR",
+      "priority": 80,
+      "reasonCodes": [
+        "ROUTE_VEHICLE_REVIEW_REQUIRED"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": "route-review",
+      "severity": "HIGH",
+      "structuredFacts": {
+        "issueType": "ROUTE_IMPACTED_BY_VEHICLE_STATE",
+        "reasonCodes": [
+          "ROUTE_VEHICLE_REVIEW_REQUIRED"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-review-route"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "bdc6a222848efb5ff399a5aba286cf0120cdbf9dd5833546290f8af424b789f9",
+      "alertId": "fleet.alert.6b02ef93f6741690",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "f99d8e9d3f2dd365a9a662de5c18f02516a63dc9d95b140b75536b0f87277f10",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "206299922aecdd986a0ebfab1c8be62a1c3ee1989847a8930957104fb48f12c8",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": false,
+      "issueId": "fleet.issue.vehicle-maintenance-due.maintenance_due.maintenance_due",
+      "limitations": [],
+      "operationalNextStep": "REVIEW_MAINTENANCE_STATUS",
+      "priority": 40,
+      "reasonCodes": [
+        "MAINTENANCE_DUE"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": null,
+      "severity": "LOW",
+      "structuredFacts": {
+        "issueType": "MAINTENANCE_DUE",
+        "reasonCodes": [
+          "MAINTENANCE_DUE"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-maintenance-due"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "5d182b6029b1811d2d8b1a9944983563230a84cfd8aeecdfb399b389f48fd2ac",
+      "alertId": "fleet.alert.e5f0fc3b8dd50842",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "5ddab78c596126f83dce1e65095e9152fee2784b09196edff12d8c5ee9259935",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "5dbc8f4967852022442fae971572cd6f004d116d0234a9828f5a33ab9b3fd15b",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-maintenance-overdue.route_impacted_by_vehicle_state.route_impact_at_risk",
+      "limitations": [],
+      "operationalNextStep": "CONTACT_SUPERVISOR",
+      "priority": 80,
+      "reasonCodes": [
+        "ROUTE_IMPACT_AT_RISK"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": "route-maint-overdue",
+      "severity": "HIGH",
+      "structuredFacts": {
+        "issueType": "ROUTE_IMPACTED_BY_VEHICLE_STATE",
+        "reasonCodes": [
+          "ROUTE_IMPACT_AT_RISK"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-maintenance-overdue"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "84bf25483a59ac45a075c157d2d7f1ce53c5b6161b417d1be8aa64a16d55fe42",
+      "alertId": "fleet.alert.8ec35dc83506d6f6",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "5ddab78c596126f83dce1e65095e9152fee2784b09196edff12d8c5ee9259935",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "5dbc8f4967852022442fae971572cd6f004d116d0234a9828f5a33ab9b3fd15b",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-maintenance-overdue.maintenance_overdue.maintenance_overdue",
+      "limitations": [],
+      "operationalNextStep": "REVIEW_MAINTENANCE_STATUS",
+      "priority": 60,
+      "reasonCodes": [
+        "MAINTENANCE_OVERDUE"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": "route-maint-overdue",
+      "severity": "MODERATE",
+      "structuredFacts": {
+        "issueType": "MAINTENANCE_OVERDUE",
+        "reasonCodes": [
+          "MAINTENANCE_OVERDUE"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-maintenance-overdue"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "f835a2cbe3ca146b489662968d144a2cb51ddc8cbbc840f2ed7e6db71f13b384",
+      "alertId": "fleet.alert.cbdfa084c3da692f",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "621680dadcd995ba907c84365c148ea5a7a6464efaf53ddb4a2a6033fda9cd6e",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "dee7df1997fccf567666036c31ceb5ad2c6235a57559b7e297d04a58f1ad324a",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-critical-issue.critical_vehicle_issue_open.critical_vehicle_issue_open",
+      "limitations": [],
+      "operationalNextStep": "REVIEW_MAINTENANCE_STATUS",
+      "priority": 100,
+      "reasonCodes": [
+        "CRITICAL_VEHICLE_ISSUE_OPEN"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": "route-critical",
+      "severity": "CRITICAL",
+      "structuredFacts": {
+        "issueType": "CRITICAL_VEHICLE_ISSUE_OPEN",
+        "reasonCodes": [
+          "CRITICAL_VEHICLE_ISSUE_OPEN"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-critical-issue"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "6dedc7331b431ecdf63a0d52d00ad44ff18e2443060aedce519acb79f0a119b4",
+      "alertId": "fleet.alert.333a9eb53425547c",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "621680dadcd995ba907c84365c148ea5a7a6464efaf53ddb4a2a6033fda9cd6e",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "dee7df1997fccf567666036c31ceb5ad2c6235a57559b7e297d04a58f1ad324a",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-critical-issue.route_impacted_by_vehicle_state.route_impact_blocked",
+      "limitations": [],
+      "operationalNextStep": "CONTACT_SUPERVISOR",
+      "priority": 80,
+      "reasonCodes": [
+        "ROUTE_IMPACT_BLOCKED"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": "route-critical",
+      "severity": "HIGH",
+      "structuredFacts": {
+        "issueType": "ROUTE_IMPACTED_BY_VEHICLE_STATE",
+        "reasonCodes": [
+          "ROUTE_IMPACT_BLOCKED"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-critical-issue"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "9a5bf8c7fc3b5dddb5680f16a96f56d73a76184bd42af95bb1ef99bd743d81d5",
+      "alertId": "fleet.alert.f0f67c0277c47296",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "6c77f6e25229028cfd40538799982df392d3bbd0428dddef466cc6c94e745f4f",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "055a4ef50c20a79edd7f4d4c303eb727a038f54b3583b27892dba48a345824dc",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": false,
+      "issueId": "fleet.issue.vehicle-maint-unknown.maintenance_status_unknown.maintenance_status_unknown",
+      "limitations": [],
+      "operationalNextStep": "REVIEW_MAINTENANCE_STATUS",
+      "priority": 20,
+      "reasonCodes": [
+        "MAINTENANCE_STATUS_UNKNOWN"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": null,
+      "severity": "INFORMATIONAL",
+      "structuredFacts": {
+        "issueType": "MAINTENANCE_STATUS_UNKNOWN",
+        "reasonCodes": [
+          "MAINTENANCE_STATUS_UNKNOWN"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-maint-unknown"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "c86ab8c1e30ad83ef1dd82529c397dd1503833818ede99409d6416124b49aaf5",
+      "alertId": "fleet.alert.7c781aa3189e5b12",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 0.4,
+          "status": "STALE_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "89734d79ebb1c317395c692f1a1c741eb61773d0cf99efdebd1740429febda88",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "29cebacf43069a4a0884e974e9994c3e3600d10035a1379b951d6132ec5f14d3",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": true,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-stale.human_review_required.human_review_required",
+      "limitations": [],
+      "operationalNextStep": "CONTACT_SUPERVISOR",
+      "priority": 60,
+      "reasonCodes": [
+        "HUMAN_REVIEW_REQUIRED"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": null,
+      "severity": "MODERATE",
+      "structuredFacts": {
+        "issueType": "HUMAN_REVIEW_REQUIRED",
+        "reasonCodes": [
+          "HUMAN_REVIEW_REQUIRED"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-stale"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "78fc95e2d426240c40550be97a06297548a8f92f64384f86f41db1b84e1099c7",
+      "alertId": "fleet.alert.b28cc53625c2ece1",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 0.4,
+          "status": "STALE_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "89734d79ebb1c317395c692f1a1c741eb61773d0cf99efdebd1740429febda88",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "29cebacf43069a4a0884e974e9994c3e3600d10035a1379b951d6132ec5f14d3",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": true,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": false,
+      "issueId": "fleet.issue.vehicle-stale.vehicle_evidence_stale.vehicle_evidence_stale",
+      "limitations": [],
+      "operationalNextStep": "CONTACT_SUPERVISOR",
+      "priority": 40,
+      "reasonCodes": [
+        "VEHICLE_EVIDENCE_STALE"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": null,
+      "severity": "LOW",
+      "structuredFacts": {
+        "issueType": "VEHICLE_EVIDENCE_STALE",
+        "reasonCodes": [
+          "VEHICLE_EVIDENCE_STALE"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-stale"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "92680d26f8ea64d5c3a131958618b502d4869fc653d384a662818f60c6f805fe",
+      "alertId": "fleet.alert.53e6063c143fedba",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 0.2,
+          "status": "CONFLICTING_EVIDENCE"
+        },
+        "conflict": true,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "379586604b75641afdfc0c31955b1126464b626d303b910c8601d868374a0615",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "5a63ff27a04d4dedacfeafd5b3c397646771762aec054f3a600cbf07e5c88247",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-conflict.human_review_required.human_review_required",
+      "limitations": [],
+      "operationalNextStep": "CONTACT_SUPERVISOR",
+      "priority": 60,
+      "reasonCodes": [
+        "HUMAN_REVIEW_REQUIRED"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": null,
+      "severity": "MODERATE",
+      "structuredFacts": {
+        "issueType": "HUMAN_REVIEW_REQUIRED",
+        "reasonCodes": [
+          "HUMAN_REVIEW_REQUIRED"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-conflict"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "78a537583e790d17d54ab953c8ce80bb404f94375d58a66e649ef39564946dec",
+      "alertId": "fleet.alert.1cd9c9133d90155f",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 0.2,
+          "status": "CONFLICTING_EVIDENCE"
+        },
+        "conflict": true,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "379586604b75641afdfc0c31955b1126464b626d303b910c8601d868374a0615",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "5a63ff27a04d4dedacfeafd5b3c397646771762aec054f3a600cbf07e5c88247",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-conflict.vehicle_evidence_conflict.vehicle_evidence_conflict",
+      "limitations": [],
+      "operationalNextStep": "CONTACT_SUPERVISOR",
+      "priority": 40,
+      "reasonCodes": [
+        "VEHICLE_EVIDENCE_CONFLICT"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": null,
+      "severity": "LOW",
+      "structuredFacts": {
+        "issueType": "VEHICLE_EVIDENCE_CONFLICT",
+        "reasonCodes": [
+          "VEHICLE_EVIDENCE_CONFLICT"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-conflict"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "c533cfd0d6d389c44813390658f40ab9b92456ddbf73ca3cb69e348b3ad2386a",
+      "alertId": "fleet.alert.2bea604b3d526790",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "d7591f67bbcf2cdaa47dd9f3c058ba4a1bfb1541b5a41a2d27a7da140efbdae4",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "93f1441d04126316a53733cf03b35937ef3a8c85ca577df55e72a58c016e96ac",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-ready-review.human_review_required.human_review_required",
+      "limitations": [],
+      "operationalNextStep": "CONTACT_SUPERVISOR",
+      "priority": 60,
+      "reasonCodes": [
+        "HUMAN_REVIEW_REQUIRED"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": null,
+      "severity": "MODERATE",
+      "structuredFacts": {
+        "issueType": "HUMAN_REVIEW_REQUIRED",
+        "reasonCodes": [
+          "HUMAN_REVIEW_REQUIRED"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-ready-review"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "fbb46ad9687e10116113d259ff5662c1b86f61bb1315541edcfba4b7b179d91b",
+      "alertId": "fleet.alert.9aad3dd790ac1f41",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "66626ddf9191e2d8b0d34dce8f71b5d6e803e0b89290efc13675473850b75789",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "2d3eded3d99c21804c3f89abe7ee8ac3db42ee2591f9b6256b095c24a435c417",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-not-ready.vehicle_unavailable.vehicle_unavailable",
+      "limitations": [],
+      "operationalNextStep": "REVIEW_VEHICLE_STATUS",
+      "priority": 80,
+      "reasonCodes": [
+        "VEHICLE_UNAVAILABLE"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": null,
+      "severity": "HIGH",
+      "structuredFacts": {
+        "issueType": "VEHICLE_UNAVAILABLE",
+        "reasonCodes": [
+          "VEHICLE_UNAVAILABLE"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-not-ready"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "e5fc5da717448a2e6e8c4e1d61e97990dbcb7ca21548ccde6f0056930cbd3cf8",
+      "alertId": "fleet.alert.f576da847c8278e8",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "d4c420c58dbf22aaac0687bbd56361dbfbc2b5ffbc5478d724dd13ca6b8e49d0",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "e1069e507ed3bebc6cc43c333db55e40214dc5d884350f21bf279e90914f5ebc",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-blocked.route_vehicle_incompatible.route_vehicle_incompatible",
+      "limitations": [],
+      "operationalNextStep": "REVIEW_ROUTE_COMPATIBILITY",
+      "priority": 100,
+      "reasonCodes": [
+        "ROUTE_VEHICLE_INCOMPATIBLE"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": "route-blocked",
+      "severity": "CRITICAL",
+      "structuredFacts": {
+        "issueType": "ROUTE_VEHICLE_INCOMPATIBLE",
+        "reasonCodes": [
+          "ROUTE_VEHICLE_INCOMPATIBLE"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-blocked"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "57e0db8d0cb81b9bf3577aadab67d0d27f053f4019edd901eadf63c6e8e7883a",
+      "alertId": "fleet.alert.00f34f6718bd0b31",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "d4c420c58dbf22aaac0687bbd56361dbfbc2b5ffbc5478d724dd13ca6b8e49d0",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "e1069e507ed3bebc6cc43c333db55e40214dc5d884350f21bf279e90914f5ebc",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-blocked.route_impacted_by_vehicle_state.route_impact_blocked",
+      "limitations": [],
+      "operationalNextStep": "CONTACT_SUPERVISOR",
+      "priority": 80,
+      "reasonCodes": [
+        "ROUTE_IMPACT_BLOCKED"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": "route-blocked",
+      "severity": "HIGH",
+      "structuredFacts": {
+        "issueType": "ROUTE_IMPACTED_BY_VEHICLE_STATE",
+        "reasonCodes": [
+          "ROUTE_IMPACT_BLOCKED"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-blocked"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "4d16cb8c7806eb16612b840da48b11169755492e09d40d5998ba4244206aad2e",
+      "alertId": "fleet.alert.0b88a61f2ff40630",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "f7d2069579a73e4de19f2958f5ec4a99af167cde3c6a2d484dce6687a6a36803",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "dec0ee063668d6edb859a715f35f750e0ca8e6a6012a882a4d6b485fa5dd5d09",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-route-risk.route_impacted_by_vehicle_state.route_impact_at_risk",
+      "limitations": [],
+      "operationalNextStep": "CONTACT_SUPERVISOR",
+      "priority": 80,
+      "reasonCodes": [
+        "ROUTE_IMPACT_AT_RISK"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": "route-risk",
+      "severity": "HIGH",
+      "structuredFacts": {
+        "issueType": "ROUTE_IMPACTED_BY_VEHICLE_STATE",
+        "reasonCodes": [
+          "ROUTE_IMPACT_AT_RISK"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-route-risk"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "b0121d7ac97a65fcb533dd1d19361ef49d5d1ab4c06ffde14894ecd667f33f05",
+      "alertId": "fleet.alert.c365b978a0a8def5",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "f7d2069579a73e4de19f2958f5ec4a99af167cde3c6a2d484dce6687a6a36803",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "dec0ee063668d6edb859a715f35f750e0ca8e6a6012a882a4d6b485fa5dd5d09",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-route-risk.vehicle_unavailable.vehicle_unavailable",
+      "limitations": [],
+      "operationalNextStep": "REVIEW_VEHICLE_STATUS",
+      "priority": 80,
+      "reasonCodes": [
+        "VEHICLE_UNAVAILABLE"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": "route-risk",
+      "severity": "HIGH",
+      "structuredFacts": {
+        "issueType": "VEHICLE_UNAVAILABLE",
+        "reasonCodes": [
+          "VEHICLE_UNAVAILABLE"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-route-risk"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "996262b308eeb49f5018fe67b84037f581c2a4977533cf2c4f65e126aeabb286",
+      "alertId": "fleet.alert.e0aa5093bd6ace29",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "daeac06e93df6337d41d32e3901d290f3dbc5b26906850b7c492af8598924583",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "0bfe4bdd47027b5f41b0305a62c7cf24e001247fd0e4985845800fdd112c05b0",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-route-blocked.route_vehicle_incompatible.route_vehicle_incompatible",
+      "limitations": [],
+      "operationalNextStep": "REVIEW_ROUTE_COMPATIBILITY",
+      "priority": 100,
+      "reasonCodes": [
+        "ROUTE_VEHICLE_INCOMPATIBLE"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": "route-blocked",
+      "severity": "CRITICAL",
+      "structuredFacts": {
+        "issueType": "ROUTE_VEHICLE_INCOMPATIBLE",
+        "reasonCodes": [
+          "ROUTE_VEHICLE_INCOMPATIBLE"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-route-blocked"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "cb239477cf7cdd1766480aab6f23889e65f7a90096fd67aeb713d4b43a80a19e",
+      "alertId": "fleet.alert.b88b892328ec6c0b",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "daeac06e93df6337d41d32e3901d290f3dbc5b26906850b7c492af8598924583",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "0bfe4bdd47027b5f41b0305a62c7cf24e001247fd0e4985845800fdd112c05b0",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-route-blocked.route_impacted_by_vehicle_state.route_impact_blocked",
+      "limitations": [],
+      "operationalNextStep": "CONTACT_SUPERVISOR",
+      "priority": 80,
+      "reasonCodes": [
+        "ROUTE_IMPACT_BLOCKED"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": "route-blocked",
+      "severity": "HIGH",
+      "structuredFacts": {
+        "issueType": "ROUTE_IMPACTED_BY_VEHICLE_STATE",
+        "reasonCodes": [
+          "ROUTE_IMPACT_BLOCKED"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-route-blocked"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "3cfedf99998b174bcfa9bfb3c0b9471251133105000b912e6a2a267a80d2e5a2",
+      "alertId": "fleet.alert.01524f116039f85f",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "fbb520bfbdb912accfbf3f4b41f72ea99892cc3acce4dab0338a96b59323ab4a",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "3fe5ab8af0cf97f52c92d222bd5b03e9db86803a08ca5f1884b591438f3b9903",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-sub-review.route_impacted_by_vehicle_state.route_vehicle_review_required",
+      "limitations": [],
+      "operationalNextStep": "CONTACT_SUPERVISOR",
+      "priority": 80,
+      "reasonCodes": [
+        "ROUTE_VEHICLE_REVIEW_REQUIRED"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": "route-substitute",
+      "severity": "HIGH",
+      "structuredFacts": {
+        "issueType": "ROUTE_IMPACTED_BY_VEHICLE_STATE",
+        "reasonCodes": [
+          "ROUTE_VEHICLE_REVIEW_REQUIRED"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-sub-review"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "c60e0653cc60e2dfff898abf397df425db1a7dcd7d74322910e1b4b314e4f0e7",
+      "alertId": "fleet.alert.86c118ea901b25bb",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "fbb520bfbdb912accfbf3f4b41f72ea99892cc3acce4dab0338a96b59323ab4a",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "3fe5ab8af0cf97f52c92d222bd5b03e9db86803a08ca5f1884b591438f3b9903",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-sub-review.human_review_required.human_review_required",
+      "limitations": [],
+      "operationalNextStep": "CONTACT_SUPERVISOR",
+      "priority": 60,
+      "reasonCodes": [
+        "HUMAN_REVIEW_REQUIRED"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": "route-substitute",
+      "severity": "MODERATE",
+      "structuredFacts": {
+        "issueType": "HUMAN_REVIEW_REQUIRED",
+        "reasonCodes": [
+          "HUMAN_REVIEW_REQUIRED"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-sub-review"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "9747b854a6ccdac87555572341970ea72743de5f7c78f15045fa675bff766ebc",
+      "alertId": "fleet.alert.87aa9cf473e4e873",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": false
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": false
+            }
+          ],
+          "score": 0.667,
+          "status": "PARTIAL"
+        },
+        "confidence": {
+          "score": 0.6,
+          "status": "PARTIAL_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "23fea123806d287fe153ebd437330716b11d327f7017508b01700edf6ae4e72f",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "a35315dd5b16f8a6d742877e53d0f66df591e5d2973b7363144da1033e7029b1",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-insufficient.human_review_required.human_review_required",
+      "limitations": [
+        "Evidence is incomplete; supervisor review is required before operational action."
+      ],
+      "operationalNextStep": "CONTACT_SUPERVISOR",
+      "priority": 60,
+      "reasonCodes": [
+        "HUMAN_REVIEW_REQUIRED"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": null,
+      "severity": "MODERATE",
+      "structuredFacts": {
+        "issueType": "HUMAN_REVIEW_REQUIRED",
+        "reasonCodes": [
+          "HUMAN_REVIEW_REQUIRED"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-insufficient"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "15edacdcf6853be6d4378c32084c136351a669e9a168927452f8d20bb55cc68a",
+      "alertId": "fleet.alert.c042a27a9d30b70d",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": false
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 0.833,
+          "status": "PARTIAL"
+        },
+        "confidence": {
+          "score": 0.6,
+          "status": "PARTIAL_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "9381af194699c55bd10a14c063bc2a0734a0f9b8976bfb0470354e1fe4f6b4d3",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "cd4518b59be1926deda4e788d951951a572edc9d5632fda90f0dd2d51a42ebc7",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-unknown.human_review_required.human_review_required",
+      "limitations": [
+        "Evidence is incomplete; supervisor review is required before operational action."
+      ],
+      "operationalNextStep": "CONTACT_SUPERVISOR",
+      "priority": 60,
+      "reasonCodes": [
+        "HUMAN_REVIEW_REQUIRED"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": null,
+      "severity": "MODERATE",
+      "structuredFacts": {
+        "issueType": "HUMAN_REVIEW_REQUIRED",
+        "reasonCodes": [
+          "HUMAN_REVIEW_REQUIRED"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-unknown"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "68b1f06ab9c386664f0f0393c92ce959aac9a14270011aee3f47ee61b049beeb",
+      "alertId": "fleet.alert.665cc3c65089c65a",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "3ee8086ba4b66ae24bd9faeb42d48205ce38f5a23376631fd99b2a14afe823ce",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "debdcfa2d12067f9a375524c21765bac11e69b73131383bb7d4fed1d96bb2ad0",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-supervisor-review.human_review_required.human_review_required",
+      "limitations": [],
+      "operationalNextStep": "CONTACT_SUPERVISOR",
+      "priority": 60,
+      "reasonCodes": [
+        "HUMAN_REVIEW_REQUIRED"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": null,
+      "severity": "MODERATE",
+      "structuredFacts": {
+        "issueType": "HUMAN_REVIEW_REQUIRED",
+        "reasonCodes": [
+          "HUMAN_REVIEW_REQUIRED"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-supervisor-review"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "8495ddb6fdfb54056ad6444267193d7d4043640f6105f084fdc50ee65be6413b",
+      "alertId": "fleet.alert.07342c13b3ae2192",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "8e74c2e93fa2983d013e5ba99e254b1b2f7619d69232225514430fa73d3cbc57",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "56943173644ec671e56113ffd29ec9069ec5e3ee778dd5603461e6d1e4757b01",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-alert-ack.vehicle_unavailable.vehicle_unavailable",
+      "limitations": [],
+      "operationalNextStep": "REVIEW_VEHICLE_STATUS",
+      "priority": 80,
+      "reasonCodes": [
+        "VEHICLE_UNAVAILABLE"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": null,
+      "severity": "HIGH",
+      "structuredFacts": {
+        "issueType": "VEHICLE_UNAVAILABLE",
+        "reasonCodes": [
+          "VEHICLE_UNAVAILABLE"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-alert-ack"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "a0b0b617fca33ee46cb23fbe7ff5cd4659101acca990871e2cba41cfd04e4c29",
+      "alertId": "fleet.alert.79e4fa590a8d264e",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "197ee59199ed0a3cce882e763d418535802aa7dc9b3e970a22d4358da27ccf18",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "8d9654daf267a85a62a72bab71fcfc213918044ab1405b12936aae42cc0ffdcf",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-alert-resolve.vehicle_unavailable.vehicle_unavailable",
+      "limitations": [],
+      "operationalNextStep": "REVIEW_VEHICLE_STATUS",
+      "priority": 80,
+      "reasonCodes": [
+        "VEHICLE_UNAVAILABLE"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": null,
+      "severity": "HIGH",
+      "structuredFacts": {
+        "issueType": "VEHICLE_UNAVAILABLE",
+        "reasonCodes": [
+          "VEHICLE_UNAVAILABLE"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-alert-resolve"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "1b3bfb9b10b884f26850669a744837ea57ad7d403f8c46895fff0b627793b3fa",
+      "alertId": "fleet.alert.cc09d701f8d4ef68",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 0.4,
+          "status": "STALE_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "75ae4f0ccc3f616b9c42134bc2a333301f92328d7d5243054675eb2080ad6887",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "761e3fa36d9fc119d334d7700133f9c882feb503d9cb6e89352b1f9caf5c347f",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": true,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-alert-invalidated.human_review_required.human_review_required",
+      "limitations": [],
+      "operationalNextStep": "CONTACT_SUPERVISOR",
+      "priority": 60,
+      "reasonCodes": [
+        "HUMAN_REVIEW_REQUIRED"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": null,
+      "severity": "MODERATE",
+      "structuredFacts": {
+        "issueType": "HUMAN_REVIEW_REQUIRED",
+        "reasonCodes": [
+          "HUMAN_REVIEW_REQUIRED"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-alert-invalidated"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "f9385b2b351bb8b03d3c14647269bcb4ddb7c83e9e4fedb7a5d38c808a9e459f",
+      "alertId": "fleet.alert.009377173e3b7e1c",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 0.4,
+          "status": "STALE_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "75ae4f0ccc3f616b9c42134bc2a333301f92328d7d5243054675eb2080ad6887",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "761e3fa36d9fc119d334d7700133f9c882feb503d9cb6e89352b1f9caf5c347f",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": true,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": false,
+      "issueId": "fleet.issue.vehicle-alert-invalidated.vehicle_evidence_stale.vehicle_evidence_stale",
+      "limitations": [],
+      "operationalNextStep": "CONTACT_SUPERVISOR",
+      "priority": 40,
+      "reasonCodes": [
+        "VEHICLE_EVIDENCE_STALE"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": null,
+      "severity": "LOW",
+      "structuredFacts": {
+        "issueType": "VEHICLE_EVIDENCE_STALE",
+        "reasonCodes": [
+          "VEHICLE_EVIDENCE_STALE"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-alert-invalidated"
+    },
+    {
+      "acknowledgementState": "NOT_ACKNOWLEDGED",
+      "alertHash": "0334a4e5595ad3bb235aac46333936e814f1d3eee07a4dee64df463d467c36c5",
+      "alertId": "fleet.alert.2bcdc99455cf5f94",
+      "driverId": null,
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "completeness": {
+          "items": [
+            {
+              "field": "vehicleId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "vehicleProfile",
+              "present": true
+            },
+            {
+              "field": "assignmentEvidence",
+              "present": true
+            },
+            {
+              "field": "readinessEvidence",
+              "present": true
+            },
+            {
+              "field": "routeCompatibilityEvidence",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "confidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "conflict": false,
+        "evidenceSources": [
+          "synthetic.vehicle_record",
+          "synthetic.assignment"
+        ],
+        "evidenceTimestamps": [
+          "2026-08-08T00:00:00.000Z"
+        ],
+        "sourceHashes": [
+          {
+            "hash": "391ecb80ac63dc57ca373066a731b59b7957876852ebaa9d0f3dae30e1a3c27c",
+            "source": "synthetic.vehicle_record"
+          },
+          {
+            "hash": "e506930deaf30102e7c82383e4dd36fc441f254f0567a49b3f2360d1aa1ebbcf",
+            "source": "synthetic.assignment"
+          }
+        ],
+        "stale": false,
+        "syntheticOnly": true,
+        "unknownFields": []
+      },
+      "humanReviewRequired": true,
+      "issueId": "fleet.issue.vehicle-cross-org.human_review_required.human_review_required",
+      "limitations": [],
+      "operationalNextStep": "CONTACT_SUPERVISOR",
+      "priority": 60,
+      "reasonCodes": [
+        "HUMAN_REVIEW_REQUIRED"
+      ],
+      "resolutionState": "UNRESOLVED",
+      "routeId": null,
+      "severity": "MODERATE",
+      "structuredFacts": {
+        "issueType": "HUMAN_REVIEW_REQUIRED",
+        "reasonCodes": [
+          "HUMAN_REVIEW_REQUIRED"
+        ]
+      },
+      "testOnly": true,
+      "vehicleId": "vehicle-cross-org"
+    }
+  ],
+  "generatedArtifact": true
+}

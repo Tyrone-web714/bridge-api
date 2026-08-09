@@ -148,7 +148,7 @@ function validateRoadmap(roadmap, current, options = {}) {
   if (currentRoadmap && currentRoadmap.title !== current.title) failures.push({ rule: 'CURRENT_PACKAGE_JSON_ROADMAP_MISMATCH', packageId: current.packageId });
   if (currentRoadmap && currentRoadmap.status !== current.status) failures.push({ rule: 'CURRENT_PACKAGE_STATUS_MISMATCH', packageId: current.packageId });
   if (current.packageId !== 'FLEET_INTELLIGENCE') failures.push({ rule: 'CURRENT_PACKAGE_NOT_FLEET_INTELLIGENCE', packageId: current.packageId });
-  if (current.status !== 'APPROVED') failures.push({ rule: 'CURRENT_FLEET_STATUS_INVALID', status: current.status });
+  if (current.status !== 'IMPLEMENTED_UNCOMMITTED') failures.push({ rule: 'CURRENT_FLEET_STATUS_INVALID', status: current.status });
   const currentMarkdown = read('CURRENT_AI_WORK_PACKAGE.md');
   if (!currentMarkdown.includes(`Package ID: ${current.packageId}`) || !currentMarkdown.includes(`Status: ${current.status}`)) failures.push({ rule: 'CURRENT_PACKAGE_MARKDOWN_JSON_MISMATCH' });
   for (const pkg of packages.filter((record) => record.category === 'CORE_OPERATIONAL_INTELLIGENCE')) {
@@ -178,9 +178,15 @@ function validateRoadmap(roadmap, current, options = {}) {
     if (pkg.title === 'Warehouse Intelligence' && pkg.packageId !== 'WAREHOUSE_INTELLIGENCE') failures.push({ rule: 'WAREHOUSE_PACKAGE_NUMBER_FABRICATED', packageId: pkg.packageId });
   }
   const fleet = packages.find((pkg) => pkg.packageId === 'FLEET_INTELLIGENCE');
-  if (fleet && fleet.status !== 'APPROVED') failures.push({ rule: 'FLEET_STATUS_INVALID', status: fleet.status });
-  if (fleet && (fleet.implementationCommit || fleet.localCommitVerified || fleet.remoteCommitVerified || fleet.pushed || fleet.deployed || fleet.deploymentVerified || fleet.migrationExecuted)) failures.push({ rule: 'FLEET_IMPLEMENTED_WITHOUT_EVIDENCE' });
-  if (fleet && fleet.productionImpact !== 'NONE') failures.push({ rule: 'FLEET_PRODUCTION_IMPACT_INVALID', productionImpact: fleet.productionImpact });
+  if (fleet && fleet.status !== 'IMPLEMENTED_UNCOMMITTED') failures.push({ rule: 'FLEET_STATUS_INVALID', status: fleet.status });
+  if (fleet && (fleet.implementationCommit || fleet.localCommitVerified || fleet.remoteCommitVerified || fleet.pushed)) failures.push({ rule: 'FLEET_IMPLEMENTED_WITHOUT_EVIDENCE' });
+  if (fleet && (fleet.deployed || fleet.deploymentVerified || fleet.migrationExecuted)) failures.push({ rule: 'FLEET_FALSE_PRODUCTION_STATE' });
+  if (fleet && fleet.productionImpact !== 'REPOSITORY_ONLY_FOUNDATION') failures.push({ rule: 'FLEET_PRODUCTION_IMPACT_INVALID', productionImpact: fleet.productionImpact });
+  if (fleet && fleet.documentationPath !== 'docs/implementation/fleet-intelligence-foundation') failures.push({ rule: 'FLEET_DOCUMENTATION_PATH_INVALID', documentationPath: fleet.documentationPath });
+  if (fleet && !fs.existsSync(path.join(paths.repoRoot, 'bridge-api', 'services', 'intelligenceExecution', 'fleetIntelligence.js'))) failures.push({ rule: 'FLEET_IMPLEMENTATION_EVIDENCE_MISSING' });
+  if (fleet && !fs.existsSync(path.join(paths.repoRoot, 'bridge-api', 'scripts', 'check-fleet-intelligence.cjs'))) failures.push({ rule: 'FLEET_IMPLEMENTATION_EVIDENCE_MISSING' });
+  if (fleet && !fs.existsSync(path.join(paths.repoRoot, 'bridge-api', 'scripts', 'generate-fleet-intelligence-artifacts.cjs'))) failures.push({ rule: 'FLEET_IMPLEMENTATION_EVIDENCE_MISSING' });
+  if (fleet && !fs.existsSync(path.join(paths.repoRoot, 'docs', 'implementation', 'fleet-intelligence-foundation', 'README.md'))) failures.push({ rule: 'FLEET_IMPLEMENTATION_EVIDENCE_MISSING' });
   if (fleet && fleet.packageId !== 'FLEET_INTELLIGENCE') failures.push({ rule: 'FLEET_PACKAGE_NUMBER_FABRICATED', packageId: fleet.packageId });
   for (const pkg of packages) {
     if (pkg.title === 'Fleet Intelligence' && pkg.packageId !== 'FLEET_INTELLIGENCE') failures.push({ rule: 'FLEET_PACKAGE_NUMBER_FABRICATED', packageId: pkg.packageId });

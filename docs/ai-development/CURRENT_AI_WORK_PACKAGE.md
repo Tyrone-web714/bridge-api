@@ -6,7 +6,7 @@ Title: Fleet Intelligence
 
 Category: CORE_OPERATIONAL_INTELLIGENCE
 
-Status: APPROVED
+Status: IMPLEMENTED_UNCOMMITTED
 
 ## Objective
 
@@ -65,22 +65,28 @@ Prepare the approved repository-only Fleet Intelligence package for deterministi
 
 ## Acceptance Criteria
 
-- Fleet Intelligence remains approved but unimplemented until a separate implementation package begins.
+- Fleet Intelligence exists locally as an unstaged and uncommitted repository-only foundation.
 - Scope is limited to fleet/vehicle operational state and route/vehicle readiness evidence.
-- Predictive maintenance models, autonomous dispatch, autonomous purchasing, hardware, ELD, IoT, and product expansion remain prohibited unless separately approved.
+- Generated Fleet Intelligence artifacts are deterministic and validate against prohibited-scope mutation checks.
+- Predictive maintenance models, autonomous dispatch, autonomous purchasing, hardware, ELD, IoT, product expansion, production APIs, provider activation, deployment, migration, and Customer Intelligence remain prohibited unless separately approved.
 - Model-selection and production-orchestration gates remain incomplete.
 
 ## Required Tests
 
+- `npm.cmd run fleet-intelligence:validate`
+- `npm.cmd run fleet-intelligence:check`
+- `npm.cmd run fleet-intelligence:benchmarks`
+- `npm.cmd run test:fleet-intelligence`
 - `npm.cmd run test:ai-roadmap`
+- `npm.cmd test`
 
 ## Source-Control Expectation
 
-Fleet Intelligence is approved as the next current package, but implementation must not begin in this reconciliation package. Do not stage product/runtime changes, deploy, run migrations, activate providers, select models, or push without a separately approved implementation and source-control package.
+Fleet Intelligence is implemented locally as unstaged and uncommitted repository-only work pending controlled review, validation, and source-control preservation. Do not stage, commit, push, deploy, run migrations, activate providers, select models, expose production APIs, or begin Customer Intelligence in this package.
 
 ## Completion Report
 
-Use `CODEX_COMPLETION_REPORT_TEMPLATE.md` sections A through AN for any future implementation package.
+Use `CODEX_COMPLETION_REPORT_TEMPLATE.md` sections A through AN for the controlled review and preservation package.
 
 ## Recommended Commit Message
 
@@ -88,10 +94,10 @@ Build Fleet Intelligence foundation
 
 ## Next Approved Package
 
-No subsequent business-domain package is approved by this record. Fleet Intelligence is the current approved but unstarted package.
+No subsequent business-domain package is approved by this record. Fleet Intelligence is the current implemented-uncommitted package.
 
 ## Owner Decision Points
 
-- Approve a separate Fleet Intelligence implementation package before any code or product behavior changes.
-- Approve any future production runtime API, deployment, migration, provider expansion, model selection, or production validation separately.
+- Approve a separate controlled review, validation, commit, and source-control preservation package before staging or committing Fleet Intelligence.
+- Approve any future production runtime API, deployment, migration, provider expansion, model selection, production validation, predictive maintenance, autonomous dispatch, autonomous repair approval, autonomous purchasing, or Customer Intelligence package separately.
 - Keep model-selection and production-orchestration gates incomplete until all required Milestone 1 domains are complete and separately approved.
