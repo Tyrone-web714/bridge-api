@@ -1,0 +1,269 @@
+{
+  "assessments": [
+    {
+      "deterministic": true,
+      "evidenceRef": "staged-ready",
+      "reasonCode": "STAGING_COMPLETE",
+      "stagingStateHash": "0ac50fbabbe308212e109f677c04dc32b1e538b5d75b2fd9a605614c3f9dacc0",
+      "state": "STAGED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "staged-ready",
+      "reasonCode": "STAGING_COMPLETE",
+      "stagingStateHash": "0ac50fbabbe308212e109f677c04dc32b1e538b5d75b2fd9a605614c3f9dacc0",
+      "state": "STAGED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "stage-not-started",
+      "reasonCode": "STAGING_NOT_STARTED",
+      "stagingStateHash": "24152ab81c1ed4945ca2f8548c03eb2e4507c7a0e745ddd7be28d7c192d17046",
+      "state": "NOT_STAGED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "stage-progress",
+      "reasonCode": "STAGING_IN_PROGRESS",
+      "stagingStateHash": "fa1cae70a1526c7a051d564df8a891217f68604fcf80377ad3747e82d26276c2",
+      "state": "STAGING",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "staged-ready",
+      "reasonCode": "STAGING_COMPLETE",
+      "stagingStateHash": "0ac50fbabbe308212e109f677c04dc32b1e538b5d75b2fd9a605614c3f9dacc0",
+      "state": "STAGED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "stage-blocked",
+      "reasonCode": "STAGING_BLOCKED",
+      "stagingStateHash": "19b099d2f322245673058908b5c6dbff0732899fca8e3ec63fd13a740aaf2a19",
+      "state": "STAGING_BLOCKED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "staged-ready",
+      "reasonCode": "STAGING_COMPLETE",
+      "stagingStateHash": "0ac50fbabbe308212e109f677c04dc32b1e538b5d75b2fd9a605614c3f9dacc0",
+      "state": "STAGED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "staged-ready",
+      "reasonCode": "STAGING_COMPLETE",
+      "stagingStateHash": "0ac50fbabbe308212e109f677c04dc32b1e538b5d75b2fd9a605614c3f9dacc0",
+      "state": "STAGED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "staged-ready",
+      "reasonCode": "STAGING_COMPLETE",
+      "stagingStateHash": "0ac50fbabbe308212e109f677c04dc32b1e538b5d75b2fd9a605614c3f9dacc0",
+      "state": "STAGED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "staged-ready",
+      "reasonCode": "STAGING_COMPLETE",
+      "stagingStateHash": "0ac50fbabbe308212e109f677c04dc32b1e538b5d75b2fd9a605614c3f9dacc0",
+      "state": "STAGED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "staged-ready",
+      "reasonCode": "STAGING_COMPLETE",
+      "stagingStateHash": "0ac50fbabbe308212e109f677c04dc32b1e538b5d75b2fd9a605614c3f9dacc0",
+      "state": "STAGED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "staged-ready",
+      "reasonCode": "STAGING_COMPLETE",
+      "stagingStateHash": "0ac50fbabbe308212e109f677c04dc32b1e538b5d75b2fd9a605614c3f9dacc0",
+      "state": "STAGED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "staged-ready",
+      "reasonCode": "STAGING_COMPLETE",
+      "stagingStateHash": "0ac50fbabbe308212e109f677c04dc32b1e538b5d75b2fd9a605614c3f9dacc0",
+      "state": "STAGED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "staged-ready",
+      "reasonCode": "STAGING_COMPLETE",
+      "stagingStateHash": "0ac50fbabbe308212e109f677c04dc32b1e538b5d75b2fd9a605614c3f9dacc0",
+      "state": "STAGED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "staged-ready",
+      "reasonCode": "STAGING_COMPLETE",
+      "stagingStateHash": "0ac50fbabbe308212e109f677c04dc32b1e538b5d75b2fd9a605614c3f9dacc0",
+      "state": "STAGED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "staged-ready",
+      "reasonCode": "STAGING_COMPLETE",
+      "stagingStateHash": "0ac50fbabbe308212e109f677c04dc32b1e538b5d75b2fd9a605614c3f9dacc0",
+      "state": "STAGED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "staged-ready",
+      "reasonCode": "STAGING_COMPLETE",
+      "stagingStateHash": "0ac50fbabbe308212e109f677c04dc32b1e538b5d75b2fd9a605614c3f9dacc0",
+      "state": "STAGED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "staged-ready",
+      "reasonCode": "STAGING_COMPLETE",
+      "stagingStateHash": "0ac50fbabbe308212e109f677c04dc32b1e538b5d75b2fd9a605614c3f9dacc0",
+      "state": "STAGED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "staged-ready",
+      "reasonCode": "STAGING_COMPLETE",
+      "stagingStateHash": "0ac50fbabbe308212e109f677c04dc32b1e538b5d75b2fd9a605614c3f9dacc0",
+      "state": "STAGED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "staged-ready",
+      "reasonCode": "STAGING_COMPLETE",
+      "stagingStateHash": "0ac50fbabbe308212e109f677c04dc32b1e538b5d75b2fd9a605614c3f9dacc0",
+      "state": "STAGED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "staged-ready",
+      "reasonCode": "STAGING_COMPLETE",
+      "stagingStateHash": "0ac50fbabbe308212e109f677c04dc32b1e538b5d75b2fd9a605614c3f9dacc0",
+      "state": "STAGED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": null,
+      "reasonCode": "STAGING_BLOCKED",
+      "stagingStateHash": "3952584c2fa6330878a3a75eb8d836bc8b414230dfd6a068a5e40c85267f164d",
+      "state": "STAGING_BLOCKED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "staged-ready",
+      "reasonCode": "STAGING_COMPLETE",
+      "stagingStateHash": "0ac50fbabbe308212e109f677c04dc32b1e538b5d75b2fd9a605614c3f9dacc0",
+      "state": "STAGED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "stage-unknown",
+      "reasonCode": "EVIDENCE_INSUFFICIENT",
+      "stagingStateHash": "e22b2f7ffea52dab9dfbc6e3645e5e3a12b60694fbabd968f048a69e68c0d86f",
+      "state": "UNKNOWN",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "staged-ready",
+      "reasonCode": "STAGING_COMPLETE",
+      "stagingStateHash": "0ac50fbabbe308212e109f677c04dc32b1e538b5d75b2fd9a605614c3f9dacc0",
+      "state": "STAGED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "staged-ready",
+      "reasonCode": "STAGING_COMPLETE",
+      "stagingStateHash": "0ac50fbabbe308212e109f677c04dc32b1e538b5d75b2fd9a605614c3f9dacc0",
+      "state": "STAGED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "staged-ready",
+      "reasonCode": "STAGING_COMPLETE",
+      "stagingStateHash": "0ac50fbabbe308212e109f677c04dc32b1e538b5d75b2fd9a605614c3f9dacc0",
+      "state": "STAGED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "staged-ready",
+      "reasonCode": "STAGING_COMPLETE",
+      "stagingStateHash": "0ac50fbabbe308212e109f677c04dc32b1e538b5d75b2fd9a605614c3f9dacc0",
+      "state": "STAGED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "staged-ready",
+      "reasonCode": "STAGING_COMPLETE",
+      "stagingStateHash": "0ac50fbabbe308212e109f677c04dc32b1e538b5d75b2fd9a605614c3f9dacc0",
+      "state": "STAGED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "staged-ready",
+      "reasonCode": "STAGING_COMPLETE",
+      "stagingStateHash": "0ac50fbabbe308212e109f677c04dc32b1e538b5d75b2fd9a605614c3f9dacc0",
+      "state": "STAGED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "staged-ready",
+      "reasonCode": "STAGING_COMPLETE",
+      "stagingStateHash": "0ac50fbabbe308212e109f677c04dc32b1e538b5d75b2fd9a605614c3f9dacc0",
+      "state": "STAGED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "staged-ready",
+      "reasonCode": "STAGING_COMPLETE",
+      "stagingStateHash": "0ac50fbabbe308212e109f677c04dc32b1e538b5d75b2fd9a605614c3f9dacc0",
+      "state": "STAGED",
+      "testOnly": true
+    }
+  ],
+  "generatedArtifact": true,
+  "states": [
+    "NOT_STAGED",
+    "STAGING",
+    "STAGED",
+    "STAGING_BLOCKED",
+    "INSUFFICIENT_EVIDENCE",
+    "UNKNOWN"
+  ]
+}

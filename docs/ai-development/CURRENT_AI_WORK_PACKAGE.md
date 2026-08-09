@@ -6,7 +6,7 @@ Title: Warehouse Intelligence
 
 Category: CORE_OPERATIONAL_INTELLIGENCE
 
-Status: APPROVED
+Status: IMPLEMENTED_UNCOMMITTED
 
 ## Objective
 
@@ -60,18 +60,23 @@ Prepare the approved repository-only Warehouse Intelligence package for determin
 
 ## Acceptance Criteria
 
-- Warehouse Intelligence remains approved but unimplemented until a separate work package begins.
+- Warehouse Intelligence foundation exists locally as repository-only uncommitted work.
 - Scope is limited to route/load/staging/readiness exceptions and deterministic explanations.
 - Employment-impact, model-selection, provider, production API, deployment, migration, hardware, robotics, and speculative automation scope remains prohibited.
 - Model-selection and production-orchestration gates remain incomplete.
 
 ## Required Tests
 
+- `npm.cmd run warehouse-intelligence:validate`
+- `npm.cmd run warehouse-intelligence:check`
+- `npm.cmd run warehouse-intelligence:benchmarks`
+- `npm.cmd run test:warehouse-intelligence`
 - `npm.cmd run test:ai-roadmap`
+- `npm.cmd test`
 
 ## Source-Control Expectation
 
-Do not begin Warehouse Intelligence implementation in this reconciliation package. Keep the package approved but unstarted until a separate controlled implementation work package is authorized.
+Warehouse Intelligence implementation is intentionally unstaged and uncommitted pending controlled review, validation, and source-control preservation. Do not stage, commit, push, deploy, run migrations, or begin Fleet Intelligence in this implementation work package.
 
 ## Completion Report
 
@@ -83,10 +88,10 @@ Build Warehouse Intelligence foundation
 
 ## Next Approved Package
 
-No subsequent business-domain package is approved by this record. Warehouse Intelligence is the current approved but unstarted package.
+No subsequent business-domain package is approved by this record. Warehouse Intelligence is the current implemented-uncommitted package.
 
 ## Owner Decision Points
 
-- Approve a separate Warehouse Intelligence implementation work package before any code or product behavior changes.
+- Approve controlled review, validation, and source-control preservation for the uncommitted Warehouse Intelligence implementation.
 - Approve any future production runtime API, deployment, migration, provider expansion, or production validation separately.
 - Keep model-selection and production-orchestration gates incomplete until all required Milestone 1 domains are complete and separately approved.

@@ -18,7 +18,7 @@
       "dashboard-data/repository_health_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "d09c1279c0dd37cee68f453aacbb344be1529780e4bd46ae85c3e9baa069b3ca",
+    "generationHash": "1ebeb0b4a1dc2e95a91bbd6ae75868754322f4e5f4e51a9e4d3f7c568d36dcf6",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -34,11 +34,11 @@
     ],
     "statistics": {
       "dependencyCount": 8,
-      "scriptCount": 154
+      "scriptCount": 159
     },
     "statusIndicators": [],
     "summary": {
-      "filesIndexed": 9996,
+      "filesIndexed": 10050,
       "packageName": "bridge-api",
       "packageVersion": "1.0.0"
     },

@@ -101,6 +101,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -191,6 +192,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -252,6 +254,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -5174,6 +5177,92 @@
         "blockedImpacts": [],
         "directImpacts": [],
         "indirectImpacts": [],
+        "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
+        "potentialImpacts": [
+          "Service:intelligence-execution-platform",
+          "Package:bridge-api",
+          "Documentation Page:docs/implementation/execution-decision-engine/ARCHITECTURE.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/BOUNDARIES.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/BUDGET_GOVERNANCE.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/CANDIDATE_ENUMERATION.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/CHANGELOG.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/CLI_COMMANDS.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/CONFIDENCE_COMPLETENESS.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/COST_UTILITY.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/COUNTERFACTUALS.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/DECISION_RECORD_SCHEMA.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/DECISION_REQUEST_SCHEMA.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/EVIDENCE_LINEAGE.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/FALLBACK_PLANNING.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/FIXTURES.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/GATE_EVALUATION.md",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_abstention_report.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_candidate_index.csv",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_candidate_index.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/DECISION_CANDIDATE_INDEX.md",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_counterfactual_report.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_critical_gate_rejection_report.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_fallback_plan_index.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_human_review_report.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_insufficient_evidence_report.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_over_budget_report.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_policy_profile_index.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/DECISION_POLICY_PROFILE_INDEX.md",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_premium_restriction_report.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_record_index.csv",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_record_index.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_request_index.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/decision_sensitivity_report.json",
+          "Generated Artifact:docs/implementation/execution-decision-engine/generated/DECISION_SUMMARY.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/GENERATED_ARTIFACTS.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/HASHING_AND_REPLAY.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/HUMAN_REVIEW.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/LIMITATIONS.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/OPEN_ITEMS.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/OPERATIONS.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/POLICY_PROFILE_SCHEMA.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/POLICY_PROFILES.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/PREMIUM_RESTRICTIONS.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/PROCUREMENT_BOUNDARY.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/PRODUCTION_BOUNDARY.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/PROVIDER_NEUTRALITY.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/README.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/REQUESTS.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/ROLLBACK.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/RUNTIME_NON_INTEGRATION.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/SAFETY_MODEL.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/SECURITY_PRIVACY.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/SENSITIVITY_ANALYSIS.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/STRATEGY_TAXONOMY.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/TEMPLATES.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/TEST_PLAN.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/THRESHOLD_EVALUATION.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/TIE_BREAKING.md",
+          "Documentation Page:docs/implementation/execution-decision-engine/VALIDATION_RULES.md",
+          "Owner Decision:OWNER_DECISION_REGISTER",
+          "Architecture Decision:docs/architecture/ADR/ADR-0001-Use-Organization-As-Tenant-Boundary.md",
+          "Architecture Decision:docs/architecture/ADR/ODR-019-Data-Lifecycle-Deletion-Retention-Anonymization-and-Referential-Integrity-Architecture.md",
+          "Architecture Decision:docs/architecture/ADR/ODR-020-Enterprise-SSO-and-Identity-Federation-Architecture.md",
+          "Architecture Decision:docs/architecture/ARCHITECTURE_GOVERNANCE_BASELINE_v1.0.md",
+          "Architecture Decision:docs/architecture/ARCHITECTURE_GOVERNANCE_BASELINE_v1.1.md",
+          "Architecture Decision:docs/architecture/ARCHITECTURE_INDEX.md",
+          "Architecture Decision:docs/architecture/data-lifecycle/TSR_DATA_LIFECYCLE_ARCHITECTURE.md",
+          "Architecture Decision:docs/architecture/data-lifecycle/TSR_DATA_SUBJECT_REQUEST_ARCHITECTURE.md",
+          "Architecture Decision:docs/architecture/data-lifecycle/TSR_LEGAL_HOLD_ARCHITECTURE.md",
+          "Architecture Decision:docs/architecture/diagrams/tenant-architecture.mmd",
+          "Architecture Decision:docs/architecture/enterprise-identity/ENTERPRISE_IDENTITY_ARCHITECTURE.md",
+          "Architecture Decision:docs/architecture/enterprise-identity/ENTERPRISE_IDENTITY_MOBILE_ARCHITECTURE.md",
+          "Architecture Decision:docs/architecture/Volume-I-Vision-and-Enterprise-Architecture.md"
+        ],
+        "unknownImpacts": []
+      },
+      "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
         "nodeId": "Script:bridge-api/scripts/check-benchmark-datasets.cjs",
         "potentialImpacts": [
           "Package:bridge-api"
@@ -5543,7 +5632,20 @@
           "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_readiness_report.json",
           "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_reason_code_catalog.json",
           "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_route_portfolio_catalog.json",
-          "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_summary_catalog.json"
+          "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_summary_catalog.json",
+          "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_alert_catalog.json",
+          "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_benchmark_catalog.json",
+          "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_context_contract.json",
+          "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_departure_readiness_catalog.json",
+          "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_discrepancy_catalog.json",
+          "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_evidence_report.json",
+          "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_exception_catalog.json",
+          "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/WAREHOUSE_INTELLIGENCE_SUMMARY.md",
+          "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_loading_state_catalog.json",
+          "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_readiness_report.json",
+          "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_reason_code_catalog.json",
+          "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_route_load_catalog.json",
+          "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_staging_state_catalog.json"
         ],
         "unknownImpacts": []
       },
@@ -23485,6 +23587,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -23579,6 +23682,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -23673,6 +23777,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -23767,6 +23872,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -23861,6 +23967,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -23955,6 +24062,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -24049,6 +24157,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -24143,6 +24252,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -24237,6 +24347,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -24331,6 +24442,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -24425,6 +24537,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -24519,6 +24632,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -24613,6 +24727,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -24707,6 +24822,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -24801,6 +24917,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -24897,6 +25014,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -24993,6 +25111,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -25089,6 +25208,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -25185,6 +25305,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -25281,6 +25402,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -25377,6 +25499,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -25473,6 +25596,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -25569,6 +25693,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -25665,6 +25790,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -25761,6 +25887,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -25857,6 +25984,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -25953,6 +26081,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -26049,6 +26178,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -26145,6 +26275,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -26241,6 +26372,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -26337,6 +26469,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -26433,6 +26566,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -26529,6 +26663,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -26623,6 +26758,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -26717,6 +26853,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -26811,6 +26948,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -26905,6 +27043,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -26999,6 +27138,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -27093,6 +27233,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -27187,6 +27328,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -27281,6 +27423,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -27375,6 +27518,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -27469,6 +27613,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -27563,6 +27708,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -27657,6 +27803,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -27751,6 +27898,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -27845,6 +27993,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -27939,6 +28088,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -28033,6 +28183,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -28127,6 +28278,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -28221,6 +28373,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -28315,6 +28468,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -28409,6 +28563,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -28503,6 +28658,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -28597,6 +28753,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -28691,6 +28848,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -28785,6 +28943,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -28879,6 +29038,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -33395,6 +33555,619 @@
     {
       "impact": {
         "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/ALERT_LIFECYCLE.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/ALERT_LIFECYCLE.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/AUTHORITATIVE_DATA_BOUNDARIES.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/AUTHORITATIVE_DATA_BOUNDARIES.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/BENCHMARK_DATASETS.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/BENCHMARK_DATASETS.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/CURRENT_WAREHOUSE_FUNCTIONALITY_AUDIT.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/CURRENT_WAREHOUSE_FUNCTIONALITY_AUDIT.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/DASHBOARD_INTEGRATION.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/DASHBOARD_INTEGRATION.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/DEFERRED_WORK.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/DEFERRED_WORK.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/DEPARTURE_READINESS_MODEL.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/DEPARTURE_READINESS_MODEL.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/DETERMINISTIC_EXPLANATIONS.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/DETERMINISTIC_EXPLANATIONS.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/DRIVER_INTELLIGENCE_INTEGRATION.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/DRIVER_INTELLIGENCE_INTEGRATION.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/EMPLOYMENT_IMPACT_GUARDRAILS.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/EMPLOYMENT_IMPACT_GUARDRAILS.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/EVIDENCE_AND_CONFIDENCE.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/EVIDENCE_AND_CONFIDENCE.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/EXCEPTION_SEVERITY_MODEL.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/EXCEPTION_SEVERITY_MODEL.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/EXISTING_SERVICE_REUSE_DECISION.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/EXISTING_SERVICE_REUSE_DECISION.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_alert_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_alert_catalog.json"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_benchmark_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_benchmark_catalog.json"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_context_contract.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_context_contract.json"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_departure_readiness_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_departure_readiness_catalog.json"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_discrepancy_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_discrepancy_catalog.json"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_evidence_report.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_evidence_report.json"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_exception_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_exception_catalog.json"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/WAREHOUSE_INTELLIGENCE_SUMMARY.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/WAREHOUSE_INTELLIGENCE_SUMMARY.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_loading_state_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_loading_state_catalog.json"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_readiness_report.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_readiness_report.json"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_reason_code_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_reason_code_catalog.json"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_route_load_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_route_load_catalog.json"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_staging_state_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_staging_state_catalog.json"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/IMPLEMENTATION_REPORT.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/IMPLEMENTATION_REPORT.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/KNOWLEDGE_GRAPH_INTEGRATION.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/KNOWLEDGE_GRAPH_INTEGRATION.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/LOAD_ASSIGNMENT_VERIFICATION.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/LOAD_ASSIGNMENT_VERIFICATION.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/LOAD_COMPLETENESS_MODEL.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/LOAD_COMPLETENESS_MODEL.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/OWNER_DECISIONS_REQUIRED.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/OWNER_DECISIONS_REQUIRED.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/PLATFORM_INTEGRATION.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/PLATFORM_INTEGRATION.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/PRODUCT_LOAD_DISCREPANCIES.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/PRODUCT_LOAD_DISCREPANCIES.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/READINESS_RULE_HIERARCHY.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/READINESS_RULE_HIERARCHY.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/README.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/README.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/REASON_CODES.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/REASON_CODES.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/ROLLBACK_PLAN.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/ROLLBACK_PLAN.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/ROUTE_INTELLIGENCE_INTEGRATION.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/ROUTE_INTELLIGENCE_INTEGRATION.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/ROUTE_LOAD_CONTEXT.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/ROUTE_LOAD_CONTEXT.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/ROUTE_LOADING_MODEL.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/ROUTE_LOADING_MODEL.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/ROUTE_STAGING_MODEL.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/ROUTE_STAGING_MODEL.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/SECURITY_AND_TENANT_REVIEW.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/SECURITY_AND_TENANT_REVIEW.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/SUPERVISOR_INTELLIGENCE_INTEGRATION.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/SUPERVISOR_INTELLIGENCE_INTEGRATION.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/SUPERVISOR_WAREHOUSE_COORDINATION.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/SUPERVISOR_WAREHOUSE_COORDINATION.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/TEST_PLAN.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/TEST_PLAN.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/TEST_RESULTS.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/TEST_RESULTS.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/WAREHOUSE_ALERT_MODEL.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/WAREHOUSE_ALERT_MODEL.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/WAREHOUSE_CONTEXT_CONTRACT.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/WAREHOUSE_CONTEXT_CONTRACT.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/WAREHOUSE_EXCEPTION_MODEL.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/WAREHOUSE_EXCEPTION_MODEL.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/WAREHOUSE_INTELLIGENCE_ARCHITECTURE.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/WAREHOUSE_INTELLIGENCE_ARCHITECTURE.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/WAREHOUSE_SECURITY_MFA_BOUNDARY.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/WAREHOUSE_SECURITY_MFA_BOUNDARY.md"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
         "directImpacts": [
           "Service:intelligence-execution-platform"
         ],
@@ -33453,6 +34226,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -33547,6 +34321,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -33641,6 +34416,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -33735,6 +34511,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -33829,6 +34606,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -33923,6 +34701,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -34017,6 +34796,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -34111,6 +34891,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -34205,6 +34986,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -34299,6 +35081,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -34393,6 +35176,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -34487,6 +35271,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -34581,6 +35366,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",
@@ -34675,6 +35461,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/supervisorOperationalIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
           "Capability:text.cleanup",
           "Capability:legacy.ai.structured_response",
           "Capability:supervisor.daily_operations_report",

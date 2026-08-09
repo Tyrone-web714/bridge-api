@@ -1,0 +1,1178 @@
+{
+  "discrepancies": [
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "expectedLines",
+            "present": true
+          },
+          {
+            "field": "observedLines",
+            "present": true
+          },
+          {
+            "field": "loadAssignmentEvidence",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": 1,
+        "status": "KNOWN_SYNTHETIC_EVIDENCE"
+      },
+      "discrepancyHash": "f01d1ce2337b0137349fd048f2db76dde4957ebb0dad9b1c0738aa46d81be9dc",
+      "discrepancyId": "warehouse.discrepancy.route-wrong-load.load_assignment_mismatch.333a21a846ea",
+      "discrepancyType": "LOAD_ASSIGNMENT_MISMATCH",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "evidenceTimestamps": [
+        "2026-08-08T00:00:00.000Z"
+      ],
+      "expectedValue": "load-a",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "observedValue": "load-b",
+      "operationalImpact": "HOLD_DEPARTURE_FOR_REVIEW",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "ROUTE_LOAD_ASSIGNMENT_MISMATCH"
+      ],
+      "routeId": "route-wrong-load",
+      "testOnly": true
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "expectedLines",
+            "present": true
+          },
+          {
+            "field": "observedLines",
+            "present": true
+          },
+          {
+            "field": "loadAssignmentEvidence",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": 1,
+        "status": "KNOWN_SYNTHETIC_EVIDENCE"
+      },
+      "discrepancyHash": "7482c73ed6f0225204178fa1ad52385029df10d7421e95936c8da0c1841fb40e",
+      "discrepancyId": "warehouse.discrepancy.route-load-not-started.loading_not_complete.f7fda5b639c9",
+      "discrepancyType": "LOADING_NOT_COMPLETE",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "evidenceTimestamps": [
+        "2026-08-08T00:00:00.000Z"
+      ],
+      "expectedValue": null,
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "observedValue": null,
+      "operationalImpact": "HOLD_DEPARTURE_FOR_REVIEW",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "LOADING_INCOMPLETE"
+      ],
+      "routeId": "route-load-not-started",
+      "testOnly": true
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "expectedLines",
+            "present": true
+          },
+          {
+            "field": "observedLines",
+            "present": true
+          },
+          {
+            "field": "loadAssignmentEvidence",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": 1,
+        "status": "KNOWN_SYNTHETIC_EVIDENCE"
+      },
+      "discrepancyHash": "ec54968c3ac4ad7b16879f9f47fbb13399292cebdfc052b89b0c4b4f5f6b787e",
+      "discrepancyId": "warehouse.discrepancy.route-load-partial.loading_not_complete.f7fda5b639c9",
+      "discrepancyType": "LOADING_NOT_COMPLETE",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "evidenceTimestamps": [
+        "2026-08-08T00:00:00.000Z"
+      ],
+      "expectedValue": null,
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "observedValue": null,
+      "operationalImpact": "HOLD_DEPARTURE_FOR_REVIEW",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "LOADING_INCOMPLETE"
+      ],
+      "routeId": "route-load-partial",
+      "testOnly": true
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "expectedLines",
+            "present": true
+          },
+          {
+            "field": "observedLines",
+            "present": true
+          },
+          {
+            "field": "loadAssignmentEvidence",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": 1,
+        "status": "KNOWN_SYNTHETIC_EVIDENCE"
+      },
+      "discrepancyHash": "a62fd382b6ef3fd8b9f43a9b87cb443938c25c6e9324116328ac00fe4a0e4e6e",
+      "discrepancyId": "warehouse.discrepancy.route-missing-product.product_missing.5d77023bfeae",
+      "discrepancyType": "PRODUCT_MISSING",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "evidenceTimestamps": [
+        "2026-08-08T00:00:00.000Z"
+      ],
+      "expectedValue": 8,
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "observedValue": null,
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": "sku-water-24pk",
+      "reasonCodes": [
+        "PRODUCT_EXPECTED_NOT_OBSERVED"
+      ],
+      "routeId": "route-missing-product",
+      "testOnly": true
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "expectedLines",
+            "present": true
+          },
+          {
+            "field": "observedLines",
+            "present": true
+          },
+          {
+            "field": "loadAssignmentEvidence",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": 1,
+        "status": "KNOWN_SYNTHETIC_EVIDENCE"
+      },
+      "discrepancyHash": "9f8df840f95a281f2bda7833ab797b7e3e409bd70b9f79d2fd6a3036073b3f82",
+      "discrepancyId": "warehouse.discrepancy.route-unexpected-product.product_unexpected.79f5a2b0e85a",
+      "discrepancyType": "PRODUCT_UNEXPECTED",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "evidenceTimestamps": [
+        "2026-08-08T00:00:00.000Z"
+      ],
+      "expectedValue": null,
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "observedValue": 1,
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": "sku-tea-6pk",
+      "reasonCodes": [
+        "PRODUCT_UNEXPECTED"
+      ],
+      "routeId": "route-unexpected-product",
+      "testOnly": true
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "expectedLines",
+            "present": true
+          },
+          {
+            "field": "observedLines",
+            "present": true
+          },
+          {
+            "field": "loadAssignmentEvidence",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": 1,
+        "status": "KNOWN_SYNTHETIC_EVIDENCE"
+      },
+      "discrepancyHash": "c9a7a3a1148eb63e63bc25a860f4e43b3a9a312e0b3c7d952d6f8523c9436275",
+      "discrepancyId": "warehouse.discrepancy.route-short.quantity_short.851ef922e385",
+      "discrepancyType": "QUANTITY_SHORT",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "evidenceTimestamps": [
+        "2026-08-08T00:00:00.000Z"
+      ],
+      "expectedValue": 10,
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "observedValue": 9,
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": "sku-cola-12pk",
+      "reasonCodes": [
+        "QUANTITY_BELOW_EXPECTED"
+      ],
+      "routeId": "route-short",
+      "testOnly": true
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "expectedLines",
+            "present": true
+          },
+          {
+            "field": "observedLines",
+            "present": true
+          },
+          {
+            "field": "loadAssignmentEvidence",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": 1,
+        "status": "KNOWN_SYNTHETIC_EVIDENCE"
+      },
+      "discrepancyHash": "ce955a2ec6d0282f5904dc2d233930a9b69a23d031cdaec5b4cc8a32271c0691",
+      "discrepancyId": "warehouse.discrepancy.route-over.quantity_over.acc2bf6e3d13",
+      "discrepancyType": "QUANTITY_OVER",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "evidenceTimestamps": [
+        "2026-08-08T00:00:00.000Z"
+      ],
+      "expectedValue": 10,
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "observedValue": 11,
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": "sku-cola-12pk",
+      "reasonCodes": [
+        "QUANTITY_ABOVE_EXPECTED"
+      ],
+      "routeId": "route-over",
+      "testOnly": true
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "expectedLines",
+            "present": true
+          },
+          {
+            "field": "observedLines",
+            "present": true
+          },
+          {
+            "field": "loadAssignmentEvidence",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": 1,
+        "status": "KNOWN_SYNTHETIC_EVIDENCE"
+      },
+      "discrepancyHash": "b78a375dcc5f6b6810ce7234e142b8210f75e3596ad3ae6147a5646c36763c2c",
+      "discrepancyId": "warehouse.discrepancy.route-duplicate.duplicate_product_evidence.1e0a1a68c829",
+      "discrepancyType": "DUPLICATE_PRODUCT_EVIDENCE",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "evidenceTimestamps": [
+        "2026-08-08T00:00:00.000Z"
+      ],
+      "expectedValue": null,
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "observedValue": null,
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": "sku-cola-12pk",
+      "reasonCodes": [
+        "LOAD_EVIDENCE_CONFLICT"
+      ],
+      "routeId": "route-duplicate",
+      "testOnly": true
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "expectedLines",
+            "present": true
+          },
+          {
+            "field": "observedLines",
+            "present": true
+          },
+          {
+            "field": "loadAssignmentEvidence",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": 1,
+        "status": "KNOWN_SYNTHETIC_EVIDENCE"
+      },
+      "discrepancyHash": "dceba5b912a1f0a352c1c830bfe96912fc5f8bb2a69c77eae2fde5da3f636e3d",
+      "discrepancyId": "warehouse.discrepancy.route-duplicate.quantity_over.7927c7e3e7b9",
+      "discrepancyType": "QUANTITY_OVER",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "evidenceTimestamps": [
+        "2026-08-08T00:00:00.000Z"
+      ],
+      "expectedValue": 10,
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "observedValue": 20,
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": "sku-cola-12pk",
+      "reasonCodes": [
+        "QUANTITY_ABOVE_EXPECTED"
+      ],
+      "routeId": "route-duplicate",
+      "testOnly": true
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "expectedLines",
+            "present": false
+          },
+          {
+            "field": "observedLines",
+            "present": true
+          },
+          {
+            "field": "loadAssignmentEvidence",
+            "present": true
+          }
+        ],
+        "score": 0.8,
+        "status": "PARTIAL"
+      },
+      "confidence": {
+        "score": 0.6,
+        "status": "PARTIAL_SYNTHETIC_EVIDENCE"
+      },
+      "discrepancyHash": "12ea93d642143dc196799072032efa25ece8c37d8ee3998a3f6bf7a964968496",
+      "discrepancyId": "warehouse.discrepancy.route-manifest-missing.manifest_evidence_missing.d3684ee35aa1",
+      "discrepancyType": "MANIFEST_EVIDENCE_MISSING",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "evidenceTimestamps": [
+        "2026-08-08T00:00:00.000Z"
+      ],
+      "expectedValue": null,
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "observedValue": null,
+      "operationalImpact": "UNABLE_TO_DETERMINE",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "MANIFEST_EVIDENCE_UNAVAILABLE"
+      ],
+      "routeId": "route-manifest-missing",
+      "testOnly": true
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "expectedLines",
+            "present": true
+          },
+          {
+            "field": "observedLines",
+            "present": false
+          },
+          {
+            "field": "loadAssignmentEvidence",
+            "present": true
+          }
+        ],
+        "score": 0.8,
+        "status": "PARTIAL"
+      },
+      "confidence": {
+        "score": 0.6,
+        "status": "PARTIAL_SYNTHETIC_EVIDENCE"
+      },
+      "discrepancyHash": "138dfc2e7edf537d1a887feeb9e60a11671ba2abeb5755c317f6fb06bb0da451",
+      "discrepancyId": "warehouse.discrepancy.route-load-missing.load_evidence_missing.d3684ee35aa1",
+      "discrepancyType": "LOAD_EVIDENCE_MISSING",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "evidenceTimestamps": [
+        "2026-08-08T00:00:00.000Z"
+      ],
+      "expectedValue": null,
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "observedValue": null,
+      "operationalImpact": "UNABLE_TO_DETERMINE",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "LOAD_EVIDENCE_UNAVAILABLE"
+      ],
+      "routeId": "route-load-missing",
+      "testOnly": true
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "expectedLines",
+            "present": true
+          },
+          {
+            "field": "observedLines",
+            "present": true
+          },
+          {
+            "field": "loadAssignmentEvidence",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": 0.4,
+        "status": "STALE_EVIDENCE"
+      },
+      "discrepancyHash": "2dac8fd02c6620cfd14a50c6d25be0c80408c3e975abca48bdf462a425bb6393",
+      "discrepancyId": "warehouse.discrepancy.route-stale.load_evidence_stale.a6ebebb4ca06",
+      "discrepancyType": "LOAD_EVIDENCE_STALE",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "evidenceTimestamps": [
+        "2026-08-08T00:00:00.000Z"
+      ],
+      "expectedValue": null,
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "observedValue": null,
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "LOAD_EVIDENCE_STALE"
+      ],
+      "routeId": "route-stale",
+      "testOnly": true
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "expectedLines",
+            "present": true
+          },
+          {
+            "field": "observedLines",
+            "present": true
+          },
+          {
+            "field": "loadAssignmentEvidence",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": 0.2,
+        "status": "CONFLICTING_EVIDENCE"
+      },
+      "discrepancyHash": "eec2088a974a7055db688616469a8b3e1e11dde5d900294d3aea850530fda2bf",
+      "discrepancyId": "warehouse.discrepancy.route-conflict.load_evidence_conflict.a6ebebb4ca06",
+      "discrepancyType": "LOAD_EVIDENCE_CONFLICT",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "evidenceTimestamps": [
+        "2026-08-08T00:00:00.000Z"
+      ],
+      "expectedValue": null,
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "observedValue": null,
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "LOAD_EVIDENCE_CONFLICT"
+      ],
+      "routeId": "route-conflict",
+      "testOnly": true
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "expectedLines",
+            "present": true
+          },
+          {
+            "field": "observedLines",
+            "present": true
+          },
+          {
+            "field": "loadAssignmentEvidence",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": 1,
+        "status": "KNOWN_SYNTHETIC_EVIDENCE"
+      },
+      "discrepancyHash": "cc90bb90da9a0a7372d8ad5e13bc31509c2eae8dad091d7a01be6edb0491bbcc",
+      "discrepancyId": "warehouse.discrepancy.route-departure-blocked.loading_not_complete.f7fda5b639c9",
+      "discrepancyType": "LOADING_NOT_COMPLETE",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "evidenceTimestamps": [
+        "2026-08-08T00:00:00.000Z"
+      ],
+      "expectedValue": null,
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "observedValue": null,
+      "operationalImpact": "HOLD_DEPARTURE_FOR_REVIEW",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "LOADING_INCOMPLETE"
+      ],
+      "routeId": "route-departure-blocked",
+      "testOnly": true
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "expectedLines",
+            "present": true
+          },
+          {
+            "field": "observedLines",
+            "present": true
+          },
+          {
+            "field": "loadAssignmentEvidence",
+            "present": false
+          }
+        ],
+        "score": 0.8,
+        "status": "PARTIAL"
+      },
+      "confidence": {
+        "score": 0.6,
+        "status": "PARTIAL_SYNTHETIC_EVIDENCE"
+      },
+      "discrepancyHash": "f96fdc8184bef2f1967e946e02bba1b7c07920bef8553c81e1782ea2992e36f9",
+      "discrepancyId": "warehouse.discrepancy.route-insufficient.insufficient_evidence.d3684ee35aa1",
+      "discrepancyType": "INSUFFICIENT_EVIDENCE",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "evidenceTimestamps": [
+        "2026-08-08T00:00:00.000Z"
+      ],
+      "expectedValue": null,
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "observedValue": null,
+      "operationalImpact": "UNABLE_TO_DETERMINE",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "EVIDENCE_INSUFFICIENT"
+      ],
+      "routeId": "route-insufficient",
+      "testOnly": true
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "expectedLines",
+            "present": true
+          },
+          {
+            "field": "observedLines",
+            "present": true
+          },
+          {
+            "field": "loadAssignmentEvidence",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": 1,
+        "status": "KNOWN_SYNTHETIC_EVIDENCE"
+      },
+      "discrepancyHash": "a92b2db63514fc665da4637e407bdf75083db4889963e7f7e861ba0beab8ed3a",
+      "discrepancyId": "warehouse.discrepancy.route-unknown.loading_not_complete.f7fda5b639c9",
+      "discrepancyType": "LOADING_NOT_COMPLETE",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "evidenceTimestamps": [
+        "2026-08-08T00:00:00.000Z"
+      ],
+      "expectedValue": null,
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "observedValue": null,
+      "operationalImpact": "HOLD_DEPARTURE_FOR_REVIEW",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "LOADING_INCOMPLETE"
+      ],
+      "routeId": "route-unknown",
+      "testOnly": true
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "expectedLines",
+            "present": true
+          },
+          {
+            "field": "observedLines",
+            "present": true
+          },
+          {
+            "field": "loadAssignmentEvidence",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": 0.4,
+        "status": "STALE_EVIDENCE"
+      },
+      "discrepancyHash": "755494d342b0b711cf1c718f4057bc85771c0e8f2784858696a0649609f03199",
+      "discrepancyId": "warehouse.discrepancy.route-warehouse-review.load_evidence_stale.a6ebebb4ca06",
+      "discrepancyType": "LOAD_EVIDENCE_STALE",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "evidenceTimestamps": [
+        "2026-08-08T00:00:00.000Z"
+      ],
+      "expectedValue": null,
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "observedValue": null,
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "LOAD_EVIDENCE_STALE"
+      ],
+      "routeId": "route-warehouse-review",
+      "testOnly": true
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "expectedLines",
+            "present": true
+          },
+          {
+            "field": "observedLines",
+            "present": true
+          },
+          {
+            "field": "loadAssignmentEvidence",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": 1,
+        "status": "KNOWN_SYNTHETIC_EVIDENCE"
+      },
+      "discrepancyHash": "c768ab8b53f10321c64c5e05ae76dd3c3d7684ba8b54c5ccb14cdb6dd00cd827",
+      "discrepancyId": "warehouse.discrepancy.route-alert-ack.product_missing.5d77023bfeae",
+      "discrepancyType": "PRODUCT_MISSING",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "evidenceTimestamps": [
+        "2026-08-08T00:00:00.000Z"
+      ],
+      "expectedValue": 8,
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "observedValue": null,
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": "sku-water-24pk",
+      "reasonCodes": [
+        "PRODUCT_EXPECTED_NOT_OBSERVED"
+      ],
+      "routeId": "route-alert-ack",
+      "testOnly": true
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "expectedLines",
+            "present": true
+          },
+          {
+            "field": "observedLines",
+            "present": true
+          },
+          {
+            "field": "loadAssignmentEvidence",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": 1,
+        "status": "KNOWN_SYNTHETIC_EVIDENCE"
+      },
+      "discrepancyHash": "4ec404f1e227fc2ec3aadf9548c86a14d36f7ca0bf0d521c0c62e8b2b0c9f62b",
+      "discrepancyId": "warehouse.discrepancy.route-alert-resolve.product_missing.5d77023bfeae",
+      "discrepancyType": "PRODUCT_MISSING",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "evidenceTimestamps": [
+        "2026-08-08T00:00:00.000Z"
+      ],
+      "expectedValue": 8,
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "observedValue": null,
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": "sku-water-24pk",
+      "reasonCodes": [
+        "PRODUCT_EXPECTED_NOT_OBSERVED"
+      ],
+      "routeId": "route-alert-resolve",
+      "testOnly": true
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "expectedLines",
+            "present": true
+          },
+          {
+            "field": "observedLines",
+            "present": true
+          },
+          {
+            "field": "loadAssignmentEvidence",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": 1,
+        "status": "KNOWN_SYNTHETIC_EVIDENCE"
+      },
+      "discrepancyHash": "9c3dcd78c89d5e2526e86188b104618e64abb118983726911354ad42b705a7e3",
+      "discrepancyId": "warehouse.discrepancy.route-alert-invalidated.product_missing.5d77023bfeae",
+      "discrepancyType": "PRODUCT_MISSING",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "evidenceTimestamps": [
+        "2026-08-08T00:00:00.000Z"
+      ],
+      "expectedValue": 8,
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "observedValue": null,
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": "sku-water-24pk",
+      "reasonCodes": [
+        "PRODUCT_EXPECTED_NOT_OBSERVED"
+      ],
+      "routeId": "route-alert-invalidated",
+      "testOnly": true
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "routeId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "expectedLines",
+            "present": true
+          },
+          {
+            "field": "observedLines",
+            "present": true
+          },
+          {
+            "field": "loadAssignmentEvidence",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": 1,
+        "status": "KNOWN_SYNTHETIC_EVIDENCE"
+      },
+      "discrepancyHash": "39de131dd7de6bd6e3b1e25e00e01437856c1f5812941fb9b353ea9525b89909",
+      "discrepancyId": "warehouse.discrepancy.route-unknown-quantity.load_evidence_missing.d3684ee35aa1",
+      "discrepancyType": "LOAD_EVIDENCE_MISSING",
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "evidenceTimestamps": [
+        "2026-08-08T00:00:00.000Z"
+      ],
+      "expectedValue": null,
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "observedValue": null,
+      "operationalImpact": "UNABLE_TO_DETERMINE",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "EVIDENCE_INSUFFICIENT"
+      ],
+      "routeId": "route-unknown-quantity",
+      "testOnly": true
+    }
+  ],
+  "discrepancyTypes": [
+    "LOAD_ASSIGNMENT_MISMATCH",
+    "ROUTE_LOAD_MISMATCH",
+    "PRODUCT_MISSING",
+    "PRODUCT_UNEXPECTED",
+    "QUANTITY_SHORT",
+    "QUANTITY_OVER",
+    "DUPLICATE_PRODUCT_EVIDENCE",
+    "MANIFEST_EVIDENCE_MISSING",
+    "LOAD_EVIDENCE_MISSING",
+    "LOAD_EVIDENCE_STALE",
+    "LOAD_EVIDENCE_CONFLICT",
+    "STAGING_EVIDENCE_MISSING",
+    "LOADING_NOT_COMPLETE",
+    "ROUTE_NOT_READY_FOR_DEPARTURE",
+    "HUMAN_REVIEW_REQUIRED",
+    "INSUFFICIENT_EVIDENCE"
+  ],
+  "generatedArtifact": true
+}

@@ -1,0 +1,271 @@
+{
+  "assessments": [
+    {
+      "deterministic": true,
+      "evidenceRef": "loaded-ready",
+      "loadingStateHash": "85bb7c385bf02ce627caab0b18f31a3d2da9c17ec964672154396dfabc454b8f",
+      "reasonCode": "LOADING_COMPLETE",
+      "state": "LOADED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "loaded-ready",
+      "loadingStateHash": "85bb7c385bf02ce627caab0b18f31a3d2da9c17ec964672154396dfabc454b8f",
+      "reasonCode": "LOADING_COMPLETE",
+      "state": "LOADED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "loaded-ready",
+      "loadingStateHash": "85bb7c385bf02ce627caab0b18f31a3d2da9c17ec964672154396dfabc454b8f",
+      "reasonCode": "LOADING_COMPLETE",
+      "state": "LOADED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "loaded-ready",
+      "loadingStateHash": "85bb7c385bf02ce627caab0b18f31a3d2da9c17ec964672154396dfabc454b8f",
+      "reasonCode": "LOADING_COMPLETE",
+      "state": "LOADED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "loaded-ready",
+      "loadingStateHash": "85bb7c385bf02ce627caab0b18f31a3d2da9c17ec964672154396dfabc454b8f",
+      "reasonCode": "LOADING_COMPLETE",
+      "state": "LOADED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "loaded-ready",
+      "loadingStateHash": "85bb7c385bf02ce627caab0b18f31a3d2da9c17ec964672154396dfabc454b8f",
+      "reasonCode": "LOADING_COMPLETE",
+      "state": "LOADED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "load-not-started",
+      "loadingStateHash": "ae12d62d6876c204ffb9698360d369b351ea82df2d62a81ea63aaf58eca9fd98",
+      "reasonCode": "LOADING_NOT_STARTED",
+      "state": "NOT_STARTED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "load-partial",
+      "loadingStateHash": "45ca3fa7c0882054e42d53061185162a69bd98039d7251b7ad8e550e6be8ecd7",
+      "reasonCode": "LOADING_INCOMPLETE",
+      "state": "PARTIALLY_LOADED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "loaded-ready",
+      "loadingStateHash": "85bb7c385bf02ce627caab0b18f31a3d2da9c17ec964672154396dfabc454b8f",
+      "reasonCode": "LOADING_COMPLETE",
+      "state": "LOADED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "loaded-ready",
+      "loadingStateHash": "85bb7c385bf02ce627caab0b18f31a3d2da9c17ec964672154396dfabc454b8f",
+      "reasonCode": "LOADING_COMPLETE",
+      "state": "LOADED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "loaded-ready",
+      "loadingStateHash": "85bb7c385bf02ce627caab0b18f31a3d2da9c17ec964672154396dfabc454b8f",
+      "reasonCode": "LOADING_COMPLETE",
+      "state": "LOADED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "loaded-ready",
+      "loadingStateHash": "85bb7c385bf02ce627caab0b18f31a3d2da9c17ec964672154396dfabc454b8f",
+      "reasonCode": "LOADING_COMPLETE",
+      "state": "LOADED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "loaded-ready",
+      "loadingStateHash": "85bb7c385bf02ce627caab0b18f31a3d2da9c17ec964672154396dfabc454b8f",
+      "reasonCode": "LOADING_COMPLETE",
+      "state": "LOADED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "loaded-ready",
+      "loadingStateHash": "85bb7c385bf02ce627caab0b18f31a3d2da9c17ec964672154396dfabc454b8f",
+      "reasonCode": "LOADING_COMPLETE",
+      "state": "LOADED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "loaded-ready",
+      "loadingStateHash": "85bb7c385bf02ce627caab0b18f31a3d2da9c17ec964672154396dfabc454b8f",
+      "reasonCode": "LOADING_COMPLETE",
+      "state": "LOADED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "complete-ready",
+      "loadingStateHash": "6a3abad1ef705890204355c3da1074cef93396211a7054dce10a89fc0dbe4014",
+      "reasonCode": "LOADING_COMPLETE",
+      "state": "LOADED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "loaded-ready",
+      "loadingStateHash": "85bb7c385bf02ce627caab0b18f31a3d2da9c17ec964672154396dfabc454b8f",
+      "reasonCode": "LOADING_COMPLETE",
+      "state": "LOADED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "loaded-ready",
+      "loadingStateHash": "85bb7c385bf02ce627caab0b18f31a3d2da9c17ec964672154396dfabc454b8f",
+      "reasonCode": "LOADING_COMPLETE",
+      "state": "LOADED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "loaded-ready",
+      "loadingStateHash": "85bb7c385bf02ce627caab0b18f31a3d2da9c17ec964672154396dfabc454b8f",
+      "reasonCode": "LOADING_COMPLETE",
+      "state": "LOADED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "loaded-ready",
+      "loadingStateHash": "85bb7c385bf02ce627caab0b18f31a3d2da9c17ec964672154396dfabc454b8f",
+      "reasonCode": "LOADING_COMPLETE",
+      "state": "LOADED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "loaded-ready",
+      "loadingStateHash": "85bb7c385bf02ce627caab0b18f31a3d2da9c17ec964672154396dfabc454b8f",
+      "reasonCode": "LOADING_COMPLETE",
+      "state": "LOADED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": null,
+      "loadingStateHash": "aa4ff2ecdaed2f354f0853ed2a031335d24291ad66010f6b1c4e7f8b92793a0b",
+      "reasonCode": "LOADING_INCOMPLETE",
+      "state": "LOAD_BLOCKED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "loaded-ready",
+      "loadingStateHash": "85bb7c385bf02ce627caab0b18f31a3d2da9c17ec964672154396dfabc454b8f",
+      "reasonCode": "LOADING_COMPLETE",
+      "state": "LOADED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "load-unknown",
+      "loadingStateHash": "8d334507c16703b284da305b4d8dcfc0a63a2be4ba4797f3f05bd5563c5ba166",
+      "reasonCode": "EVIDENCE_INSUFFICIENT",
+      "state": "UNKNOWN",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "loaded-ready",
+      "loadingStateHash": "85bb7c385bf02ce627caab0b18f31a3d2da9c17ec964672154396dfabc454b8f",
+      "reasonCode": "LOADING_COMPLETE",
+      "state": "LOADED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "loaded-ready",
+      "loadingStateHash": "85bb7c385bf02ce627caab0b18f31a3d2da9c17ec964672154396dfabc454b8f",
+      "reasonCode": "LOADING_COMPLETE",
+      "state": "LOADED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "loaded-ready",
+      "loadingStateHash": "85bb7c385bf02ce627caab0b18f31a3d2da9c17ec964672154396dfabc454b8f",
+      "reasonCode": "LOADING_COMPLETE",
+      "state": "LOADED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "loaded-ready",
+      "loadingStateHash": "85bb7c385bf02ce627caab0b18f31a3d2da9c17ec964672154396dfabc454b8f",
+      "reasonCode": "LOADING_COMPLETE",
+      "state": "LOADED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "loaded-ready",
+      "loadingStateHash": "85bb7c385bf02ce627caab0b18f31a3d2da9c17ec964672154396dfabc454b8f",
+      "reasonCode": "LOADING_COMPLETE",
+      "state": "LOADED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "loaded-ready",
+      "loadingStateHash": "85bb7c385bf02ce627caab0b18f31a3d2da9c17ec964672154396dfabc454b8f",
+      "reasonCode": "LOADING_COMPLETE",
+      "state": "LOADED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "loaded-ready",
+      "loadingStateHash": "85bb7c385bf02ce627caab0b18f31a3d2da9c17ec964672154396dfabc454b8f",
+      "reasonCode": "LOADING_COMPLETE",
+      "state": "LOADED",
+      "testOnly": true
+    },
+    {
+      "deterministic": true,
+      "evidenceRef": "loaded-ready",
+      "loadingStateHash": "85bb7c385bf02ce627caab0b18f31a3d2da9c17ec964672154396dfabc454b8f",
+      "reasonCode": "LOADING_COMPLETE",
+      "state": "LOADED",
+      "testOnly": true
+    }
+  ],
+  "generatedArtifact": true,
+  "states": [
+    "NOT_STARTED",
+    "LOADING",
+    "PARTIALLY_LOADED",
+    "LOADED",
+    "LOAD_BLOCKED",
+    "LOAD_DISCREPANCY",
+    "INSUFFICIENT_EVIDENCE",
+    "UNKNOWN"
+  ]
+}

@@ -595,6 +595,17 @@
       "testOnly": true
     },
     {
+      "edgeId": "edge:18e12e50be43a9b6e3b1",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "ce5877a13150694c1e160db311afa2bf8108dff26314a1a0e1fd99dd79a84b2d",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "IMPLEMENTS",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Service:intelligence-execution-platform",
+      "targetNodeId": "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
+      "testOnly": true
+    },
+    {
       "edgeId": "edge:4a3ca0d28db0602da5c9",
       "relationshipConfidence": "DETERMINISTIC",
       "relationshipHash": "efa27eb4894868c1d32ad045b5695231734e795fa0507967e81d588fbb4d71fb",
@@ -9215,6 +9226,149 @@
       "relationshipType": "GENERATED_FROM",
       "relationshipVersion": "0.1.0",
       "sourceNodeId": "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_summary_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:ba339cca76e36571d336",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "0903a8622f065f63226c13af2d655ad77ba4d206f98b962f325105a387c3a810",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_alert_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:7676647607b240fffbc7",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "3b5b32dc5fa268fd673f2aad65c261eaa8b720d766371b99d25eb67601575caf",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_benchmark_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:58d6c9ab2ffe2a9423bf",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "bca643517e93b41c08133e89934d955d5abe8c2b8c540ed388aca43d6664188f",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_context_contract.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:0c5a9c324910a5186ec6",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "825892446ecf4d93c6900da4a7934e590f477ecd11700499558f7fe02c2a2f3f",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_departure_readiness_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:091cb2909b936b5aa2a8",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "6dbf8b163a6e3a616418ed0b0e5f040aba167bddf894427b22b088e04c29535d",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_discrepancy_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:fe7b55066f028df05ee5",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "1e1152a8dcd1ab56cf35f01a4f5c1abff29d78c4504d03cff3feb192bd05544e",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_evidence_report.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:81759e51360013b2af0a",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "e4273ee52336ff31c6ce46253ac57b88cc9ce73bc422ddaf7cc3180b67ad67ba",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_exception_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:ee640b526aef83754457",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "edb45868dac296eb4274f8750d065dd83396b4459edee05cb6bdea8f988b4815",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/WAREHOUSE_INTELLIGENCE_SUMMARY.md",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:2ed74b55ef5ce3776d6b",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "2d87e099b6b8689fae2a20fd6d7b80615ff5ab7cbd41ab8a30cdef7c372eb791",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_loading_state_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:f356869c1042cb03efd3",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "ceddc29be0ee7ad04594eacbcff70f641a0f1ac1e34d468c587a23dad275a534",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_readiness_report.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:221cb75335f205ea8ddc",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "eba64ed5ec11d362266beae236092055a4b3e91ae506632d479626a86fcfdf61",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_reason_code_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:46f651723dc325776203",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "c4429e2e48da0175e03b0d442dfdff5dc59fae3024dc3a74b0f31448283344c1",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_route_load_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:056426ebd911524abf9a",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "2cdcde8cbc4c84404db662ef1d205a9763f0f04ed4a3596496e386fcc3155b10",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_staging_state_catalog.json",
       "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
       "testOnly": true
     },

@@ -342,6 +342,11 @@
     },
     {
       "dependencies": [],
+      "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
       "nodeId": "Script:bridge-api/scripts/check-benchmark-datasets.cjs",
       "reverseDependencies": []
     },
@@ -5800,6 +5805,261 @@
     {
       "dependencies": [],
       "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/TEST_RESULTS.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/ALERT_LIFECYCLE.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/AUTHORITATIVE_DATA_BOUNDARIES.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/BENCHMARK_DATASETS.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/CURRENT_WAREHOUSE_FUNCTIONALITY_AUDIT.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/DASHBOARD_INTEGRATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/DEFERRED_WORK.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/DEPARTURE_READINESS_MODEL.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/DETERMINISTIC_EXPLANATIONS.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/DRIVER_INTELLIGENCE_INTEGRATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/EMPLOYMENT_IMPACT_GUARDRAILS.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/EVIDENCE_AND_CONFIDENCE.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/EXCEPTION_SEVERITY_MODEL.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/EXISTING_SERVICE_REUSE_DECISION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_alert_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_benchmark_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_context_contract.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_departure_readiness_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_discrepancy_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_evidence_report.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_exception_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/WAREHOUSE_INTELLIGENCE_SUMMARY.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_loading_state_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_readiness_report.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_reason_code_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_route_load_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_staging_state_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/IMPLEMENTATION_REPORT.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/KNOWLEDGE_GRAPH_INTEGRATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/LOAD_ASSIGNMENT_VERIFICATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/LOAD_COMPLETENESS_MODEL.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/OWNER_DECISIONS_REQUIRED.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/PLATFORM_INTEGRATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/PRODUCT_LOAD_DISCREPANCIES.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/READINESS_RULE_HIERARCHY.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/README.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/REASON_CODES.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/ROLLBACK_PLAN.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/ROUTE_INTELLIGENCE_INTEGRATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/ROUTE_LOAD_CONTEXT.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/ROUTE_LOADING_MODEL.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/ROUTE_STAGING_MODEL.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/SECURITY_AND_TENANT_REVIEW.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/SUPERVISOR_INTELLIGENCE_INTEGRATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/SUPERVISOR_WAREHOUSE_COORDINATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/TEST_PLAN.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/TEST_RESULTS.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/WAREHOUSE_ALERT_MODEL.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/WAREHOUSE_CONTEXT_CONTRACT.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/WAREHOUSE_EXCEPTION_MODEL.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/WAREHOUSE_INTELLIGENCE_ARCHITECTURE.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/WAREHOUSE_SECURITY_MFA_BOUNDARY.md",
       "reverseDependencies": []
     },
     {

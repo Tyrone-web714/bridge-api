@@ -652,6 +652,18 @@
         "testOnly": true
       },
       {
+        "edgeId": "edge:18e12e50be43a9b6e3b1",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "ce5877a13150694c1e160db311afa2bf8108dff26314a1a0e1fd99dd79a84b2d",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "IMPLEMENTS",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Service:intelligence-execution-platform",
+        "targetNodeId": "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
+        "testOnly": true
+      },
+      {
         "edgeId": "edge:4a3ca0d28db0602da5c9",
         "metadata": {},
         "relationshipConfidence": "DETERMINISTIC",
@@ -10060,6 +10072,162 @@
         "testOnly": true
       },
       {
+        "edgeId": "edge:ba339cca76e36571d336",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "0903a8622f065f63226c13af2d655ad77ba4d206f98b962f325105a387c3a810",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_alert_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:7676647607b240fffbc7",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "3b5b32dc5fa268fd673f2aad65c261eaa8b720d766371b99d25eb67601575caf",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_benchmark_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:58d6c9ab2ffe2a9423bf",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "bca643517e93b41c08133e89934d955d5abe8c2b8c540ed388aca43d6664188f",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_context_contract.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:0c5a9c324910a5186ec6",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "825892446ecf4d93c6900da4a7934e590f477ecd11700499558f7fe02c2a2f3f",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_departure_readiness_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:091cb2909b936b5aa2a8",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "6dbf8b163a6e3a616418ed0b0e5f040aba167bddf894427b22b088e04c29535d",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_discrepancy_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:fe7b55066f028df05ee5",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "1e1152a8dcd1ab56cf35f01a4f5c1abff29d78c4504d03cff3feb192bd05544e",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_evidence_report.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:81759e51360013b2af0a",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "e4273ee52336ff31c6ce46253ac57b88cc9ce73bc422ddaf7cc3180b67ad67ba",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_exception_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:ee640b526aef83754457",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "edb45868dac296eb4274f8750d065dd83396b4459edee05cb6bdea8f988b4815",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/WAREHOUSE_INTELLIGENCE_SUMMARY.md",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:2ed74b55ef5ce3776d6b",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "2d87e099b6b8689fae2a20fd6d7b80615ff5ab7cbd41ab8a30cdef7c372eb791",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_loading_state_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:f356869c1042cb03efd3",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "ceddc29be0ee7ad04594eacbcff70f641a0f1ac1e34d468c587a23dad275a534",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_readiness_report.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:221cb75335f205ea8ddc",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "eba64ed5ec11d362266beae236092055a4b3e91ae506632d479626a86fcfdf61",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_reason_code_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:46f651723dc325776203",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "c4429e2e48da0175e03b0d442dfdff5dc59fae3024dc3a74b0f31448283344c1",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_route_load_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:056426ebd911524abf9a",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "2cdcde8cbc4c84404db662ef1d205a9763f0f04ed4a3596496e386fcc3155b10",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_staging_state_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
         "edgeId": "edge:292ba9190712ab20d6d6",
         "metadata": {},
         "relationshipConfidence": "DETERMINISTIC",
@@ -10230,10 +10398,10 @@
     ],
     "engineVersion": "intelligence.knowledge.graph.engine.v1",
     "generatedFrom": "repository",
-    "graphHash": "5b85d8550f22f4614013968a729978d7fde8685675af9441ac5ebaed75630688",
+    "graphHash": "a7f731b414fcab55ad62d56c720113ffe482cff9f8dc17c2ef67c9894bc5623a",
     "nodes": [
       {
-        "hash": "a7449bd342d875b63c967d50c59c9ab4b5ccb4521360494dbddad4ceac143c7a",
+        "hash": "f0571a5d2bcfa9004ea6ac6762b3107a372f3779e81c58eb59f3d04866b48bce",
         "label": "bridge-api",
         "lifecycleState": null,
         "metadata": {},
@@ -10890,6 +11058,18 @@
         "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/telemetry.js",
         "productionApplicable": false,
         "source": "bridge-api/services/intelligenceExecution/telemetry.js",
+        "testOnly": true,
+        "type": "Repository Module",
+        "version": null
+      },
+      {
+        "hash": "6954ad504d6898af3ebf818205e68a66c90b181f3ad2d2784b10b0bba26a4aff",
+        "label": "bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
+        "lifecycleState": null,
+        "metadata": {},
+        "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
+        "productionApplicable": false,
+        "source": "bridge-api/services/intelligenceExecution/warehouseIntelligence.js",
         "testOnly": true,
         "type": "Repository Module",
         "version": null
@@ -24851,6 +25031,720 @@
         "nodeId": "Documentation Page:docs/implementation/supervisor-intelligence-foundation/TEST_RESULTS.md",
         "productionApplicable": false,
         "source": "docs/implementation/supervisor-intelligence-foundation/TEST_RESULTS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "bc5c8bfe76053d9dcf7ba59e7394e7b435819e51e246c7f7fa3bdfebcd27d965",
+        "label": "docs/implementation/warehouse-intelligence-foundation/ALERT_LIFECYCLE.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "bc5c8bfe76053d9dcf7ba59e7394e7b435819e51e246c7f7fa3bdfebcd27d965"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/ALERT_LIFECYCLE.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/ALERT_LIFECYCLE.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "28421428e346c5b4ae713c2ed3bb832d5b7909b759b4d622de1e9f6d4f7e9d55",
+        "label": "docs/implementation/warehouse-intelligence-foundation/AUTHORITATIVE_DATA_BOUNDARIES.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "28421428e346c5b4ae713c2ed3bb832d5b7909b759b4d622de1e9f6d4f7e9d55"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/AUTHORITATIVE_DATA_BOUNDARIES.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/AUTHORITATIVE_DATA_BOUNDARIES.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "c23d841bc33acab7f48df7c52e786d675c87af7dd8a0354fc7020865549df054",
+        "label": "docs/implementation/warehouse-intelligence-foundation/BENCHMARK_DATASETS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "c23d841bc33acab7f48df7c52e786d675c87af7dd8a0354fc7020865549df054"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/BENCHMARK_DATASETS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/BENCHMARK_DATASETS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "08af6ad784543b19e41cd0d9b63563d68ec6103026831f7e69652174bd5e08bf",
+        "label": "docs/implementation/warehouse-intelligence-foundation/CURRENT_WAREHOUSE_FUNCTIONALITY_AUDIT.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "08af6ad784543b19e41cd0d9b63563d68ec6103026831f7e69652174bd5e08bf"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/CURRENT_WAREHOUSE_FUNCTIONALITY_AUDIT.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/CURRENT_WAREHOUSE_FUNCTIONALITY_AUDIT.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "a47cf9fd98eed721edd35d21f03bab751acd6c89d2c185461ea8caab3a9c6aab",
+        "label": "docs/implementation/warehouse-intelligence-foundation/DASHBOARD_INTEGRATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "a47cf9fd98eed721edd35d21f03bab751acd6c89d2c185461ea8caab3a9c6aab"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/DASHBOARD_INTEGRATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/DASHBOARD_INTEGRATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "571472d7c809f74e2d9351684b6bd0dad8760a64635efd52241cfb2cb6196c6b",
+        "label": "docs/implementation/warehouse-intelligence-foundation/DEFERRED_WORK.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "571472d7c809f74e2d9351684b6bd0dad8760a64635efd52241cfb2cb6196c6b"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/DEFERRED_WORK.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/DEFERRED_WORK.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "462b3a1d4c927f27318568f3d1d8978e8aef7d4df635a19573dbeafa603ce101",
+        "label": "docs/implementation/warehouse-intelligence-foundation/DEPARTURE_READINESS_MODEL.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "462b3a1d4c927f27318568f3d1d8978e8aef7d4df635a19573dbeafa603ce101"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/DEPARTURE_READINESS_MODEL.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/DEPARTURE_READINESS_MODEL.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "25c1002d4f9dc9ab27adb62c72d1d1745760ba8e90aab7437c8c535934510ae5",
+        "label": "docs/implementation/warehouse-intelligence-foundation/DETERMINISTIC_EXPLANATIONS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "25c1002d4f9dc9ab27adb62c72d1d1745760ba8e90aab7437c8c535934510ae5"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/DETERMINISTIC_EXPLANATIONS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/DETERMINISTIC_EXPLANATIONS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "378ec317c704ebc9f7c25a3b50b98a3f25b367cfc52d43a9a173c4919733ff09",
+        "label": "docs/implementation/warehouse-intelligence-foundation/DRIVER_INTELLIGENCE_INTEGRATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "378ec317c704ebc9f7c25a3b50b98a3f25b367cfc52d43a9a173c4919733ff09"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/DRIVER_INTELLIGENCE_INTEGRATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/DRIVER_INTELLIGENCE_INTEGRATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "052d436e95a9328f5f00f026083c0581b0e4827f58c87a87048042d86126233b",
+        "label": "docs/implementation/warehouse-intelligence-foundation/EMPLOYMENT_IMPACT_GUARDRAILS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "052d436e95a9328f5f00f026083c0581b0e4827f58c87a87048042d86126233b"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/EMPLOYMENT_IMPACT_GUARDRAILS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/EMPLOYMENT_IMPACT_GUARDRAILS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "c4c42dd35f5fbbe0433e5b3150e581a2360c4fa2e4b272063a45fde955e0f42f",
+        "label": "docs/implementation/warehouse-intelligence-foundation/EVIDENCE_AND_CONFIDENCE.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "c4c42dd35f5fbbe0433e5b3150e581a2360c4fa2e4b272063a45fde955e0f42f"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/EVIDENCE_AND_CONFIDENCE.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/EVIDENCE_AND_CONFIDENCE.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "ac6220c36b41ce67efc60eefc77d0a7bccd3ff8d781eb78481c2ec3ab01a8f4d",
+        "label": "docs/implementation/warehouse-intelligence-foundation/EXCEPTION_SEVERITY_MODEL.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "ac6220c36b41ce67efc60eefc77d0a7bccd3ff8d781eb78481c2ec3ab01a8f4d"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/EXCEPTION_SEVERITY_MODEL.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/EXCEPTION_SEVERITY_MODEL.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "942c6450aafbc1ea4a4a1994eadb6f3ff70991f671e305a7c1fae0fa827f94d0",
+        "label": "docs/implementation/warehouse-intelligence-foundation/EXISTING_SERVICE_REUSE_DECISION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "942c6450aafbc1ea4a4a1994eadb6f3ff70991f671e305a7c1fae0fa827f94d0"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/EXISTING_SERVICE_REUSE_DECISION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/EXISTING_SERVICE_REUSE_DECISION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "80206fae7e95163025e31491173d618a560880964bf77ea0247405f418997235",
+        "label": "docs/implementation/warehouse-intelligence-foundation/generated/warehouse_alert_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_alert_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/generated/warehouse_alert_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "878155d97cc042370fabec910eeb93ee4e58ba1980048fd8c8ea81aeae033809",
+        "label": "docs/implementation/warehouse-intelligence-foundation/generated/warehouse_benchmark_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_benchmark_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/generated/warehouse_benchmark_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "c72b8c099bf1d5d16e934a0409a754cf73cb69fa4c3e0c2a83bf972ffc73f3a6",
+        "label": "docs/implementation/warehouse-intelligence-foundation/generated/warehouse_context_contract.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_context_contract.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/generated/warehouse_context_contract.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "221557bccf535d49bff0f29a2c02c5899c48ec4a137233f27d254b2d8f2eba67",
+        "label": "docs/implementation/warehouse-intelligence-foundation/generated/warehouse_departure_readiness_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_departure_readiness_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/generated/warehouse_departure_readiness_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "7808ac6492b85352a56050a8134dda9f386d3f251b29d6aa45c841c925581a77",
+        "label": "docs/implementation/warehouse-intelligence-foundation/generated/warehouse_discrepancy_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_discrepancy_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/generated/warehouse_discrepancy_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "e2b43ae91cb4478585971002b52d00e2344158833d7ba67fc76b6cda8f266abc",
+        "label": "docs/implementation/warehouse-intelligence-foundation/generated/warehouse_evidence_report.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_evidence_report.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/generated/warehouse_evidence_report.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "61a6832731c2abd02e0604c9c388e7f7f5558f4d00868a932888da3ebba827c7",
+        "label": "docs/implementation/warehouse-intelligence-foundation/generated/warehouse_exception_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_exception_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/generated/warehouse_exception_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "b010f4da0960bb7c11b68e90b3568d0b8abadb043cb7b95cfa9bc244dd44f8b4",
+        "label": "docs/implementation/warehouse-intelligence-foundation/generated/WAREHOUSE_INTELLIGENCE_SUMMARY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/WAREHOUSE_INTELLIGENCE_SUMMARY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/generated/WAREHOUSE_INTELLIGENCE_SUMMARY.md",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "929c878caf517f785f55d92b9caf8797f932e4c6d6035e735dcd67256ed2ca75",
+        "label": "docs/implementation/warehouse-intelligence-foundation/generated/warehouse_loading_state_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_loading_state_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/generated/warehouse_loading_state_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "8d29dd013fff23a0a9e0280a3d1ae54176edd4ed467cd1852a4e340ae36a5c7e",
+        "label": "docs/implementation/warehouse-intelligence-foundation/generated/warehouse_readiness_report.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_readiness_report.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/generated/warehouse_readiness_report.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "68cb2ebedc571c5c4b9ff414f2fdfa857def4c878d73fafa3855088e3db8b175",
+        "label": "docs/implementation/warehouse-intelligence-foundation/generated/warehouse_reason_code_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_reason_code_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/generated/warehouse_reason_code_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "67d2d628e5692621863fb4b870666abf52f8658b3dfd77d273435b8e3ad5747f",
+        "label": "docs/implementation/warehouse-intelligence-foundation/generated/warehouse_route_load_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_route_load_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/generated/warehouse_route_load_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "84145810b525b414894e981a05e622b1ff51090683cfd0fc32424e50d27de430",
+        "label": "docs/implementation/warehouse-intelligence-foundation/generated/warehouse_staging_state_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_staging_state_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/generated/warehouse_staging_state_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "3ec5493f4d6d57b62f96280c353af564a08827a1b4c5dc51976511f3b6de92ce",
+        "label": "docs/implementation/warehouse-intelligence-foundation/IMPLEMENTATION_REPORT.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "3ec5493f4d6d57b62f96280c353af564a08827a1b4c5dc51976511f3b6de92ce"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/IMPLEMENTATION_REPORT.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/IMPLEMENTATION_REPORT.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "57b3462518827871e32bad13a191aefec9b62bbc2ecb7f74dcbd899aa4e68e25",
+        "label": "docs/implementation/warehouse-intelligence-foundation/KNOWLEDGE_GRAPH_INTEGRATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "57b3462518827871e32bad13a191aefec9b62bbc2ecb7f74dcbd899aa4e68e25"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/KNOWLEDGE_GRAPH_INTEGRATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/KNOWLEDGE_GRAPH_INTEGRATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "258e70467430f6ad92543f3c0308ded2617608069bd1767aca62f31cbc7ebfba",
+        "label": "docs/implementation/warehouse-intelligence-foundation/LOAD_ASSIGNMENT_VERIFICATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "258e70467430f6ad92543f3c0308ded2617608069bd1767aca62f31cbc7ebfba"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/LOAD_ASSIGNMENT_VERIFICATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/LOAD_ASSIGNMENT_VERIFICATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "09d6ae98e7931efe9d26e4ffa84dcb0f663da97e39c637846c8933ac5ff591ce",
+        "label": "docs/implementation/warehouse-intelligence-foundation/LOAD_COMPLETENESS_MODEL.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "09d6ae98e7931efe9d26e4ffa84dcb0f663da97e39c637846c8933ac5ff591ce"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/LOAD_COMPLETENESS_MODEL.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/LOAD_COMPLETENESS_MODEL.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "12818ac3ad0ae21e84873d247c47c5243fe5344853b41198f2fb3079664677c6",
+        "label": "docs/implementation/warehouse-intelligence-foundation/OWNER_DECISIONS_REQUIRED.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "12818ac3ad0ae21e84873d247c47c5243fe5344853b41198f2fb3079664677c6"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/OWNER_DECISIONS_REQUIRED.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/OWNER_DECISIONS_REQUIRED.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "ef8246fb842cdc08f503dc434fa82241716782940471d05655cc26f26796a709",
+        "label": "docs/implementation/warehouse-intelligence-foundation/PLATFORM_INTEGRATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "ef8246fb842cdc08f503dc434fa82241716782940471d05655cc26f26796a709"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/PLATFORM_INTEGRATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/PLATFORM_INTEGRATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "8d6520b8c2c5e3e7d0e479b9757ed58be414fc333207d4cf12a2580d84daedb4",
+        "label": "docs/implementation/warehouse-intelligence-foundation/PRODUCT_LOAD_DISCREPANCIES.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "8d6520b8c2c5e3e7d0e479b9757ed58be414fc333207d4cf12a2580d84daedb4"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/PRODUCT_LOAD_DISCREPANCIES.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/PRODUCT_LOAD_DISCREPANCIES.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "8e115d6b9e7a6acd79fda35bdd9447c0d13274d32aaa95be8679718bdce04daa",
+        "label": "docs/implementation/warehouse-intelligence-foundation/READINESS_RULE_HIERARCHY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "8e115d6b9e7a6acd79fda35bdd9447c0d13274d32aaa95be8679718bdce04daa"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/READINESS_RULE_HIERARCHY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/READINESS_RULE_HIERARCHY.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "2934789f5d3229f41cd02feafd9f5475cabe620278a51576b7385e790fc932a4",
+        "label": "docs/implementation/warehouse-intelligence-foundation/README.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "2934789f5d3229f41cd02feafd9f5475cabe620278a51576b7385e790fc932a4"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/README.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/README.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "615ac0b2f7afae6c1ef2fb4007c178ffb9d05214475cf5a160a3a6840f50eeae",
+        "label": "docs/implementation/warehouse-intelligence-foundation/REASON_CODES.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "615ac0b2f7afae6c1ef2fb4007c178ffb9d05214475cf5a160a3a6840f50eeae"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/REASON_CODES.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/REASON_CODES.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "eb29b173dfea451bc91559234d27b12537e4e4a30cbe9892313ad40619d6ceed",
+        "label": "docs/implementation/warehouse-intelligence-foundation/ROLLBACK_PLAN.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "eb29b173dfea451bc91559234d27b12537e4e4a30cbe9892313ad40619d6ceed"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/ROLLBACK_PLAN.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/ROLLBACK_PLAN.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "b66083a6804327b966c30b6ce1bba5704ef5cb5380f105504a9dfc173dbeb043",
+        "label": "docs/implementation/warehouse-intelligence-foundation/ROUTE_INTELLIGENCE_INTEGRATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "b66083a6804327b966c30b6ce1bba5704ef5cb5380f105504a9dfc173dbeb043"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/ROUTE_INTELLIGENCE_INTEGRATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/ROUTE_INTELLIGENCE_INTEGRATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "fe5857c269dce9555b137016cf16454d4b117fce29872b81e5b852246a125a77",
+        "label": "docs/implementation/warehouse-intelligence-foundation/ROUTE_LOAD_CONTEXT.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "fe5857c269dce9555b137016cf16454d4b117fce29872b81e5b852246a125a77"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/ROUTE_LOAD_CONTEXT.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/ROUTE_LOAD_CONTEXT.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "cc1a825b722d6354ef5f4ca52ebdd404db3b0e6a851f2998ff310a999a909e50",
+        "label": "docs/implementation/warehouse-intelligence-foundation/ROUTE_LOADING_MODEL.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "cc1a825b722d6354ef5f4ca52ebdd404db3b0e6a851f2998ff310a999a909e50"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/ROUTE_LOADING_MODEL.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/ROUTE_LOADING_MODEL.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "aca6a39f8b5e3516b202b985d24472d5c6a8890e4f0c940fcef26b7238008178",
+        "label": "docs/implementation/warehouse-intelligence-foundation/ROUTE_STAGING_MODEL.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "aca6a39f8b5e3516b202b985d24472d5c6a8890e4f0c940fcef26b7238008178"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/ROUTE_STAGING_MODEL.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/ROUTE_STAGING_MODEL.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "eee175137d4e64194b056101d2023aa90d4966ee81dfbf4e1e009e9575ade47b",
+        "label": "docs/implementation/warehouse-intelligence-foundation/SECURITY_AND_TENANT_REVIEW.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "eee175137d4e64194b056101d2023aa90d4966ee81dfbf4e1e009e9575ade47b"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/SECURITY_AND_TENANT_REVIEW.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/SECURITY_AND_TENANT_REVIEW.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "5a966c0dc2639179632d68edccb02a14f516207c1960f23809acd5f5b3c06964",
+        "label": "docs/implementation/warehouse-intelligence-foundation/SUPERVISOR_INTELLIGENCE_INTEGRATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "5a966c0dc2639179632d68edccb02a14f516207c1960f23809acd5f5b3c06964"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/SUPERVISOR_INTELLIGENCE_INTEGRATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/SUPERVISOR_INTELLIGENCE_INTEGRATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "81380009b6737865a3acbff8e25f0d653011baa32f9708764c7a188b29fe3fbc",
+        "label": "docs/implementation/warehouse-intelligence-foundation/SUPERVISOR_WAREHOUSE_COORDINATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "81380009b6737865a3acbff8e25f0d653011baa32f9708764c7a188b29fe3fbc"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/SUPERVISOR_WAREHOUSE_COORDINATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/SUPERVISOR_WAREHOUSE_COORDINATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "1ff3f52294e660bdd8ce5b2491c3a2b9f6611476a39c2c78e6f1dcb215b76248",
+        "label": "docs/implementation/warehouse-intelligence-foundation/TEST_PLAN.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "1ff3f52294e660bdd8ce5b2491c3a2b9f6611476a39c2c78e6f1dcb215b76248"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/TEST_PLAN.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/TEST_PLAN.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "ec7fc0f3fb4fbf6f28d93f9a431fa03c9129f46054a1c9140c1d40f08e49e581",
+        "label": "docs/implementation/warehouse-intelligence-foundation/TEST_RESULTS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "ec7fc0f3fb4fbf6f28d93f9a431fa03c9129f46054a1c9140c1d40f08e49e581"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/TEST_RESULTS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/TEST_RESULTS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "2733857c988b94636a8588655e116ece8ee5b9ff8b4bb51561fb7cc6b5e11e11",
+        "label": "docs/implementation/warehouse-intelligence-foundation/WAREHOUSE_ALERT_MODEL.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "2733857c988b94636a8588655e116ece8ee5b9ff8b4bb51561fb7cc6b5e11e11"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/WAREHOUSE_ALERT_MODEL.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/WAREHOUSE_ALERT_MODEL.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "30a33ad15ce8b5c6252b5313f15e4850f857f5c42900a02176d2251a325bf7b5",
+        "label": "docs/implementation/warehouse-intelligence-foundation/WAREHOUSE_CONTEXT_CONTRACT.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "30a33ad15ce8b5c6252b5313f15e4850f857f5c42900a02176d2251a325bf7b5"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/WAREHOUSE_CONTEXT_CONTRACT.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/WAREHOUSE_CONTEXT_CONTRACT.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "46307cba61d005f47c1cd7197d9bc1adc985bfde22270b10a00be9c52fc609eb",
+        "label": "docs/implementation/warehouse-intelligence-foundation/WAREHOUSE_EXCEPTION_MODEL.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "46307cba61d005f47c1cd7197d9bc1adc985bfde22270b10a00be9c52fc609eb"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/WAREHOUSE_EXCEPTION_MODEL.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/WAREHOUSE_EXCEPTION_MODEL.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "e2d2b3d8130796aae3f8a5a0f18ae2673662c41dca5691d014f160ebc463d514",
+        "label": "docs/implementation/warehouse-intelligence-foundation/WAREHOUSE_INTELLIGENCE_ARCHITECTURE.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "e2d2b3d8130796aae3f8a5a0f18ae2673662c41dca5691d014f160ebc463d514"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/WAREHOUSE_INTELLIGENCE_ARCHITECTURE.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/WAREHOUSE_INTELLIGENCE_ARCHITECTURE.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "1e775cdace7e2c2ced7a68e546a6769c1005841a686ae1736aad043a0baa94cb",
+        "label": "docs/implementation/warehouse-intelligence-foundation/WAREHOUSE_SECURITY_MFA_BOUNDARY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "1e775cdace7e2c2ced7a68e546a6769c1005841a686ae1736aad043a0baa94cb"
+        },
+        "nodeId": "Documentation Page:docs/implementation/warehouse-intelligence-foundation/WAREHOUSE_SECURITY_MFA_BOUNDARY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/warehouse-intelligence-foundation/WAREHOUSE_SECURITY_MFA_BOUNDARY.md",
         "testOnly": true,
         "type": "Documentation Page",
         "version": null

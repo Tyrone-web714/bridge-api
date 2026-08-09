@@ -728,7 +728,7 @@
       "packageId": "WAREHOUSE_INTELLIGENCE",
       "title": "Warehouse Intelligence",
       "category": "CORE_OPERATIONAL_INTELLIGENCE",
-      "status": "APPROVED",
+      "status": "IMPLEMENTED_UNCOMMITTED",
       "objective": "Prepare the approved repository-only Warehouse Intelligence package for deterministic warehouse operational awareness and route departure readiness analysis.",
       "approvedScope": [
         "route loading awareness",
@@ -773,15 +773,20 @@
         "TSR-AI-WORKFLOW-001"
       ],
       "acceptanceCriteria": [
-        "Warehouse Intelligence remains approved but unimplemented until a separate work package begins",
+        "Warehouse Intelligence foundation exists locally as repository-only uncommitted work",
         "scope is limited to route/load/staging/readiness exceptions and deterministic explanations",
         "employment-impact, model-selection, provider, production API, deployment, migration, hardware, robotics, and speculative automation scope remains prohibited",
         "model-selection and production-orchestration gates remain incomplete"
       ],
       "requiredTests": [
-        "npm.cmd run test:ai-roadmap"
+        "npm.cmd run warehouse-intelligence:validate",
+        "npm.cmd run warehouse-intelligence:check",
+        "npm.cmd run warehouse-intelligence:benchmarks",
+        "npm.cmd run test:warehouse-intelligence",
+        "npm.cmd run test:ai-roadmap",
+        "npm.cmd test"
       ],
-      "documentationPath": null,
+      "documentationPath": "docs/implementation/warehouse-intelligence-foundation",
       "implementationCommit": null,
       "localCommitVerified": false,
       "remoteCommitVerified": false,
@@ -790,11 +795,11 @@
       "deploymentVerified": false,
       "migrationRequired": false,
       "migrationExecuted": false,
-      "productionImpact": "NONE",
+      "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
       "ownerApprovalRequired": true,
       "scopeChangeApprovalRequired": true,
       "nextApprovedPackage": null,
-      "notes": "Approved as the next current Milestone 1 package after Supervisor Intelligence source-control preservation. Implementation has not started; no deployment, migration, production API, provider activation, or production certification exists.",
+      "notes": "Warehouse Intelligence foundation exists locally as repository-only uncommitted work under bridge-api/services/intelligenceExecution/warehouseIntelligence.js and docs/implementation/warehouse-intelligence-foundation. Not staged, not committed, not pushed, not deployed, not migrated, and not production-certified. No production API, provider activation, model selection, database write, object mutation, employee scoring, workforce-impact recommendation, autonomous purchasing, robotics, or Fleet Intelligence implementation exists.",
       "isCurrentPackage": true
     },
     {

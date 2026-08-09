@@ -147,7 +147,7 @@ function validateRoadmap(roadmap, current, options = {}) {
   if (currentRoadmap && currentRoadmap.title !== current.title) failures.push({ rule: 'CURRENT_PACKAGE_JSON_ROADMAP_MISMATCH', packageId: current.packageId });
   if (currentRoadmap && currentRoadmap.status !== current.status) failures.push({ rule: 'CURRENT_PACKAGE_STATUS_MISMATCH', packageId: current.packageId });
   if (current.packageId !== 'WAREHOUSE_INTELLIGENCE') failures.push({ rule: 'CURRENT_PACKAGE_NOT_WAREHOUSE_INTELLIGENCE', packageId: current.packageId });
-  if (current.status !== 'APPROVED') failures.push({ rule: 'CURRENT_WAREHOUSE_STATUS_INVALID', status: current.status });
+  if (current.status !== 'IMPLEMENTED_UNCOMMITTED') failures.push({ rule: 'CURRENT_WAREHOUSE_STATUS_INVALID', status: current.status });
   const currentMarkdown = read('CURRENT_AI_WORK_PACKAGE.md');
   if (!currentMarkdown.includes(`Package ID: ${current.packageId}`) || !currentMarkdown.includes(`Status: ${current.status}`)) failures.push({ rule: 'CURRENT_PACKAGE_MARKDOWN_JSON_MISMATCH' });
   for (const pkg of packages.filter((record) => record.category === 'CORE_OPERATIONAL_INTELLIGENCE')) {
@@ -163,8 +163,13 @@ function validateRoadmap(roadmap, current, options = {}) {
   if (supervisor && (supervisor.localCommitVerified !== true || supervisor.remoteCommitVerified !== true || supervisor.pushed !== true)) failures.push({ rule: 'SUPERVISOR_PUSH_EVIDENCE_MISSING' });
   if (supervisor && (supervisor.deployed || supervisor.deploymentVerified || supervisor.migrationExecuted || supervisor.productionImpact !== 'REPOSITORY_ONLY_FOUNDATION')) failures.push({ rule: 'SUPERVISOR_FALSE_PRODUCTION_STATE' });
   const warehouse = packages.find((pkg) => pkg.packageId === 'WAREHOUSE_INTELLIGENCE');
-  if (warehouse && warehouse.status !== 'APPROVED') failures.push({ rule: 'WAREHOUSE_STATUS_INVALID', status: warehouse.status });
-  if (warehouse && (['IMPLEMENTED_UNCOMMITTED','COMMITTED_LOCAL','PUSHED','VALIDATED'].includes(warehouse.status) || warehouse.implementationCommit || warehouse.localCommitVerified || warehouse.remoteCommitVerified || warehouse.pushed || warehouse.deployed || warehouse.migrationExecuted)) failures.push({ rule: 'WAREHOUSE_IMPLEMENTED_WITHOUT_EVIDENCE' });
+  if (warehouse && warehouse.status !== 'IMPLEMENTED_UNCOMMITTED') failures.push({ rule: 'WAREHOUSE_STATUS_INVALID', status: warehouse.status });
+  if (warehouse && (warehouse.implementationCommit || warehouse.localCommitVerified || warehouse.remoteCommitVerified || warehouse.pushed || warehouse.deployed || warehouse.deploymentVerified || warehouse.migrationExecuted)) failures.push({ rule: 'WAREHOUSE_IMPLEMENTED_WITHOUT_EVIDENCE' });
+  if (warehouse && warehouse.productionImpact !== 'REPOSITORY_ONLY_FOUNDATION') failures.push({ rule: 'WAREHOUSE_PRODUCTION_IMPACT_INVALID', productionImpact: warehouse.productionImpact });
+  if (warehouse && warehouse.documentationPath !== 'docs/implementation/warehouse-intelligence-foundation') failures.push({ rule: 'WAREHOUSE_DOCUMENTATION_PATH_INVALID', documentationPath: warehouse.documentationPath });
+  if (warehouse && !fs.existsSync(path.join(paths.repoRoot, 'bridge-api', 'services', 'intelligenceExecution', 'warehouseIntelligence.js'))) failures.push({ rule: 'WAREHOUSE_IMPLEMENTATION_EVIDENCE_MISSING' });
+  if (warehouse && !fs.existsSync(path.join(paths.repoRoot, 'docs', 'implementation', 'warehouse-intelligence-foundation', 'README.md'))) failures.push({ rule: 'WAREHOUSE_IMPLEMENTATION_EVIDENCE_MISSING' });
+  if (warehouse && !fs.existsSync(path.join(paths.repoRoot, 'bridge-api', 'scripts', 'check-warehouse-intelligence.cjs'))) failures.push({ rule: 'WAREHOUSE_IMPLEMENTATION_EVIDENCE_MISSING' });
   if (warehouse && warehouse.packageId !== 'WAREHOUSE_INTELLIGENCE') failures.push({ rule: 'WAREHOUSE_PACKAGE_NUMBER_FABRICATED', packageId: warehouse.packageId });
   for (const pkg of packages) {
     if (pkg.title === 'Warehouse Intelligence' && pkg.packageId !== 'WAREHOUSE_INTELLIGENCE') failures.push({ rule: 'WAREHOUSE_PACKAGE_NUMBER_FABRICATED', packageId: pkg.packageId });

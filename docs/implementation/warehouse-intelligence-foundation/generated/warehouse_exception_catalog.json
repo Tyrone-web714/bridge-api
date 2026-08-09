@@ -1,0 +1,1012 @@
+{
+  "exceptionTypes": [
+    "ROUTE_NOT_STAGED",
+    "ROUTE_STAGING_BLOCKED",
+    "LOAD_NOT_STARTED",
+    "LOAD_INCOMPLETE",
+    "LOAD_BLOCKED",
+    "LOAD_ASSIGNMENT_MISMATCH",
+    "PRODUCT_MISSING",
+    "PRODUCT_UNEXPECTED",
+    "QUANTITY_SHORT",
+    "QUANTITY_OVER",
+    "LOAD_EVIDENCE_MISSING",
+    "LOAD_EVIDENCE_STALE",
+    "LOAD_EVIDENCE_CONFLICT",
+    "ROUTE_DEPARTURE_NOT_READY",
+    "ROUTE_DEPARTURE_BLOCKED",
+    "SUPERVISOR_REVIEW_REQUIRED",
+    "WAREHOUSE_REVIEW_REQUIRED",
+    "INSUFFICIENT_EVIDENCE"
+  ],
+  "exceptions": [
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "ca7650a67982a25f9900e16fabf638f3f562e3797d9710ec94d03d38a9c56475",
+      "exceptionId": "warehouse.exception.route-wrong-load.load_assignment_mismatch.921bb33b7aa3",
+      "exceptionType": "LOAD_ASSIGNMENT_MISMATCH",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "HOLD_DEPARTURE_FOR_REVIEW",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "ROUTE_LOAD_ASSIGNMENT_MISMATCH"
+      ],
+      "routeId": "route-wrong-load",
+      "severity": "CRITICAL",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "35873f9ea3490fa41d142ff04de11b1753e3479ad0f6c357bc788a82bb1ba88e",
+      "exceptionId": "warehouse.exception.route-wrong-load.route_departure_blocked.df11b4039d77",
+      "exceptionType": "ROUTE_DEPARTURE_BLOCKED",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "HOLD_DEPARTURE_FOR_REVIEW",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "ROUTE_LOAD_ASSIGNMENT_MISMATCH"
+      ],
+      "routeId": "route-wrong-load",
+      "severity": "CRITICAL",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "1f01dcfd5a876143fa28253344528f187f6e24cec2c3579aeff9a5f1434d349d",
+      "exceptionId": "warehouse.exception.route-not-staged.route_departure_not_ready.ed12c3c4aa88",
+      "exceptionType": "ROUTE_DEPARTURE_NOT_READY",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "STAGING_NOT_STARTED"
+      ],
+      "routeId": "route-not-staged",
+      "severity": "MODERATE",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "61354c3a7c7d2947f72d8a7c153cd3eed2bb166b53c25c93abc89769c9e3b26a",
+      "exceptionId": "warehouse.exception.route-staging.route_departure_not_ready.c9d6753fe6a3",
+      "exceptionType": "ROUTE_DEPARTURE_NOT_READY",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "STAGING_IN_PROGRESS"
+      ],
+      "routeId": "route-staging",
+      "severity": "MODERATE",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "af2346dc44ee83a30732fd3cf88763f5f8c400453b3bbe14465a60ac4088fd90",
+      "exceptionId": "warehouse.exception.route-stage-blocked.route_departure_blocked.5c93112f014d",
+      "exceptionType": "ROUTE_DEPARTURE_BLOCKED",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "HOLD_DEPARTURE_FOR_REVIEW",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "STAGING_BLOCKED"
+      ],
+      "routeId": "route-stage-blocked",
+      "severity": "CRITICAL",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "3eb2487cfe77a2fd27b0dc4fc417dd1008820ea8437895d657eef008f0c9bf17",
+      "exceptionId": "warehouse.exception.route-load-not-started.load_incomplete.26c7107986f4",
+      "exceptionType": "LOAD_INCOMPLETE",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "HOLD_DEPARTURE_FOR_REVIEW",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "LOADING_INCOMPLETE"
+      ],
+      "routeId": "route-load-not-started",
+      "severity": "MODERATE",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "e9d45ad195aca7add9cf073aa46204896d61a05a95c8a98c7e01a17156d683a6",
+      "exceptionId": "warehouse.exception.route-load-not-started.route_departure_not_ready.4f7a6fb887e9",
+      "exceptionType": "ROUTE_DEPARTURE_NOT_READY",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "LOADING_INCOMPLETE"
+      ],
+      "routeId": "route-load-not-started",
+      "severity": "MODERATE",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "fa9d7479574075d99d7c5129fdee60fb5caad31ef98414d0bf61516805adaf23",
+      "exceptionId": "warehouse.exception.route-load-partial.load_incomplete.fa5829719290",
+      "exceptionType": "LOAD_INCOMPLETE",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "HOLD_DEPARTURE_FOR_REVIEW",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "LOADING_INCOMPLETE"
+      ],
+      "routeId": "route-load-partial",
+      "severity": "MODERATE",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "ecf5b95d4803c5cfc5c63ff4aaf5d1526d10afc5455377c7d69b9c5893d90730",
+      "exceptionId": "warehouse.exception.route-load-partial.route_departure_not_ready.4d1a13a53cc9",
+      "exceptionType": "ROUTE_DEPARTURE_NOT_READY",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "LOADING_INCOMPLETE"
+      ],
+      "routeId": "route-load-partial",
+      "severity": "MODERATE",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "13b26fea3f46764178659c828c7436e51ed0fbbd75930b03450780724a527384",
+      "exceptionId": "warehouse.exception.route-missing-product.product_missing.03f4cce3e237",
+      "exceptionType": "PRODUCT_MISSING",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": "sku-water-24pk",
+      "reasonCodes": [
+        "PRODUCT_EXPECTED_NOT_OBSERVED"
+      ],
+      "routeId": "route-missing-product",
+      "severity": "CRITICAL",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "053a5d5c9d9c13cdeca647d6f216532b42f93a346d74aa1a3aeb1f3ac5749399",
+      "exceptionId": "warehouse.exception.route-missing-product.route_departure_blocked.f5adae93eb1e",
+      "exceptionType": "ROUTE_DEPARTURE_BLOCKED",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "HOLD_DEPARTURE_FOR_REVIEW",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "DEPARTURE_BLOCKED"
+      ],
+      "routeId": "route-missing-product",
+      "severity": "CRITICAL",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "e12927913a17147e3d3f14a727dc3fa7478f3c7da4889e02f8fe0f03d04527e7",
+      "exceptionId": "warehouse.exception.route-unexpected-product.product_unexpected.f9ac514da930",
+      "exceptionType": "PRODUCT_UNEXPECTED",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": "sku-tea-6pk",
+      "reasonCodes": [
+        "PRODUCT_UNEXPECTED"
+      ],
+      "routeId": "route-unexpected-product",
+      "severity": "MODERATE",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "da2256f5ca2ad2e788055d3132263565c9bf6422eb3bbb49d9f9c58bea65dae2",
+      "exceptionId": "warehouse.exception.route-unexpected-product.route_departure_not_ready.644c3ddfd075",
+      "exceptionType": "ROUTE_DEPARTURE_NOT_READY",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "DEPARTURE_READY_WITH_REVIEW"
+      ],
+      "routeId": "route-unexpected-product",
+      "severity": "MODERATE",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "7809e72283b5c80eea58a6f9883ac90b97e7cdacc93da5234ce1d99377b7cd8a",
+      "exceptionId": "warehouse.exception.route-short.quantity_short.172fd0646b06",
+      "exceptionType": "QUANTITY_SHORT",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": "sku-cola-12pk",
+      "reasonCodes": [
+        "QUANTITY_BELOW_EXPECTED"
+      ],
+      "routeId": "route-short",
+      "severity": "CRITICAL",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "7b8469c65967b3540a41fa25171dab7e48fb43ad7b4e113b85dc51efe1b8fad9",
+      "exceptionId": "warehouse.exception.route-short.route_departure_blocked.88435e55c3e3",
+      "exceptionType": "ROUTE_DEPARTURE_BLOCKED",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "HOLD_DEPARTURE_FOR_REVIEW",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "DEPARTURE_BLOCKED"
+      ],
+      "routeId": "route-short",
+      "severity": "CRITICAL",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "8eb360579be44a6956a958cebd1fc6dbee45e9e66e4fb0187b6074a8a31398dc",
+      "exceptionId": "warehouse.exception.route-over.quantity_over.17d548c1af56",
+      "exceptionType": "QUANTITY_OVER",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": "sku-cola-12pk",
+      "reasonCodes": [
+        "QUANTITY_ABOVE_EXPECTED"
+      ],
+      "routeId": "route-over",
+      "severity": "MODERATE",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "699ec58da6c8dde4ac281902c8415d79b9e6c0e285016f481381210718ab167a",
+      "exceptionId": "warehouse.exception.route-over.route_departure_not_ready.072c921b209c",
+      "exceptionType": "ROUTE_DEPARTURE_NOT_READY",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "DEPARTURE_READY_WITH_REVIEW"
+      ],
+      "routeId": "route-over",
+      "severity": "MODERATE",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "2b8dadc99b7eda7376dd7e7b26c9f7c4150634b976556aa6991c7b7eb1fc080c",
+      "exceptionId": "warehouse.exception.route-duplicate.route_departure_not_ready.abcc24769865",
+      "exceptionType": "ROUTE_DEPARTURE_NOT_READY",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": "sku-cola-12pk",
+      "reasonCodes": [
+        "LOAD_EVIDENCE_CONFLICT"
+      ],
+      "routeId": "route-duplicate",
+      "severity": "MODERATE",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "f46778d150df584767f8a4dfc576628dda8a346d45633b0531527ff75b43cf36",
+      "exceptionId": "warehouse.exception.route-duplicate.quantity_over.563b74d4daa4",
+      "exceptionType": "QUANTITY_OVER",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": "sku-cola-12pk",
+      "reasonCodes": [
+        "QUANTITY_ABOVE_EXPECTED"
+      ],
+      "routeId": "route-duplicate",
+      "severity": "MODERATE",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "e202a765efd60a70aa723ec36f02af62c7efe038eb2294371bc2e10a4d5abcb8",
+      "exceptionId": "warehouse.exception.route-manifest-missing.load_evidence_missing.4efaf162427c",
+      "exceptionType": "LOAD_EVIDENCE_MISSING",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "UNABLE_TO_DETERMINE",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "MANIFEST_EVIDENCE_UNAVAILABLE"
+      ],
+      "routeId": "route-manifest-missing",
+      "severity": "UNKNOWN",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "0f003636903c57ca3fb2fdba2e9ac76b58abfea0601556f2d1583880c8162567",
+      "exceptionId": "warehouse.exception.route-manifest-missing.route_departure_not_ready.83ea6d04dfed",
+      "exceptionType": "ROUTE_DEPARTURE_NOT_READY",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "EVIDENCE_INSUFFICIENT"
+      ],
+      "routeId": "route-manifest-missing",
+      "severity": "MODERATE",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "716579fea6b06fe02f81717cdee869b97438709caa42b036cbab100e27a01dba",
+      "exceptionId": "warehouse.exception.route-load-missing.load_evidence_missing.47485f67cc6d",
+      "exceptionType": "LOAD_EVIDENCE_MISSING",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "UNABLE_TO_DETERMINE",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "LOAD_EVIDENCE_UNAVAILABLE"
+      ],
+      "routeId": "route-load-missing",
+      "severity": "UNKNOWN",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "6fa3123313642cde52abe910fb86df88cd9d1ea9ee3bf4b83f8e5f696c156822",
+      "exceptionId": "warehouse.exception.route-load-missing.route_departure_not_ready.96c2acb1b621",
+      "exceptionType": "ROUTE_DEPARTURE_NOT_READY",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "EVIDENCE_INSUFFICIENT"
+      ],
+      "routeId": "route-load-missing",
+      "severity": "MODERATE",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "7bcfc5bde2bbedec42d5a9f0f81bc6d289ccc9b9fd3b32988bb956896edf7e03",
+      "exceptionId": "warehouse.exception.route-stale.load_evidence_stale.ec475b70817d",
+      "exceptionType": "LOAD_EVIDENCE_STALE",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "LOAD_EVIDENCE_STALE"
+      ],
+      "routeId": "route-stale",
+      "severity": "UNKNOWN",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "b01c4739aa3905618fa9877a9100f636eb156bf83c240f8cc09f793554e1c010",
+      "exceptionId": "warehouse.exception.route-stale.route_departure_not_ready.65c6a7ebeb16",
+      "exceptionType": "ROUTE_DEPARTURE_NOT_READY",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "DEPARTURE_READY_WITH_REVIEW"
+      ],
+      "routeId": "route-stale",
+      "severity": "MODERATE",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "4d7e9bc6bdfb7eb192f147f22d14821908d3f8e8c0aa9b714e773dc7b1bbcdaa",
+      "exceptionId": "warehouse.exception.route-conflict.load_evidence_conflict.9520ee3bda7c",
+      "exceptionType": "LOAD_EVIDENCE_CONFLICT",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "LOAD_EVIDENCE_CONFLICT"
+      ],
+      "routeId": "route-conflict",
+      "severity": "CRITICAL",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "dd2ae9e5e2f68b25b740fef8de595f01a3c8b8fb15ad49e8893e88a612509c01",
+      "exceptionId": "warehouse.exception.route-conflict.route_departure_blocked.e84401007e2e",
+      "exceptionType": "ROUTE_DEPARTURE_BLOCKED",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "HOLD_DEPARTURE_FOR_REVIEW",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "DEPARTURE_BLOCKED"
+      ],
+      "routeId": "route-conflict",
+      "severity": "CRITICAL",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "942512ec86e6372fd580546a3a790288224359d32d1fac47c5186b0490697dcb",
+      "exceptionId": "warehouse.exception.route-safety-blocked.route_departure_blocked.f4b4df8686c5",
+      "exceptionType": "ROUTE_DEPARTURE_BLOCKED",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "HOLD_DEPARTURE_FOR_REVIEW",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "DEPARTURE_BLOCKED"
+      ],
+      "routeId": "route-safety-blocked",
+      "severity": "CRITICAL",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "c921e329a754fdee4026f5a5f10d58f66308bb8ba6f5a770b9c005be769dbfe0",
+      "exceptionId": "warehouse.exception.route-review.route_departure_not_ready.c7aa3225698b",
+      "exceptionType": "ROUTE_DEPARTURE_NOT_READY",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "DEPARTURE_READY_WITH_REVIEW"
+      ],
+      "routeId": "route-review",
+      "severity": "MODERATE",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "1e16bed008d9f28065d3f3878fc8ae62f5a4f1f3f2cb9c22d5e016c18d5a80c7",
+      "exceptionId": "warehouse.exception.route-departure-blocked.load_incomplete.ad40413c5925",
+      "exceptionType": "LOAD_INCOMPLETE",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "HOLD_DEPARTURE_FOR_REVIEW",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "LOADING_INCOMPLETE"
+      ],
+      "routeId": "route-departure-blocked",
+      "severity": "CRITICAL",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "0631755047afc4dc6f30d5b407eb8f0a88b7434d3abbd3a882dac70c7de55c8c",
+      "exceptionId": "warehouse.exception.route-departure-blocked.route_departure_blocked.5de568336d46",
+      "exceptionType": "ROUTE_DEPARTURE_BLOCKED",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "HOLD_DEPARTURE_FOR_REVIEW",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "DEPARTURE_BLOCKED"
+      ],
+      "routeId": "route-departure-blocked",
+      "severity": "CRITICAL",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "37f1c23b69f635649a01f07abaf36aa3fc5ce8108fe747f6f9db589a17cdb0d2",
+      "exceptionId": "warehouse.exception.route-insufficient.insufficient_evidence.14eec342ed06",
+      "exceptionType": "INSUFFICIENT_EVIDENCE",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "UNABLE_TO_DETERMINE",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "EVIDENCE_INSUFFICIENT"
+      ],
+      "routeId": "route-insufficient",
+      "severity": "UNKNOWN",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "d017403be2e1794260c79ef276376175ac3642511aca90e2aecc847472030522",
+      "exceptionId": "warehouse.exception.route-insufficient.route_departure_not_ready.606d24fd899d",
+      "exceptionType": "ROUTE_DEPARTURE_NOT_READY",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "EVIDENCE_INSUFFICIENT"
+      ],
+      "routeId": "route-insufficient",
+      "severity": "MODERATE",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "963207fa8146c0326b27b9413103a08e29d713c8361012e30080db5a57ab6453",
+      "exceptionId": "warehouse.exception.route-unknown.load_incomplete.5c1057f32ce2",
+      "exceptionType": "LOAD_INCOMPLETE",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "HOLD_DEPARTURE_FOR_REVIEW",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "LOADING_INCOMPLETE"
+      ],
+      "routeId": "route-unknown",
+      "severity": "MODERATE",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "ab7f614c2e1636baab7680685cb75831bb4eeda7d73eccc6ffc9e8e8a733a54e",
+      "exceptionId": "warehouse.exception.route-unknown.route_departure_not_ready.7bd31392f29b",
+      "exceptionType": "ROUTE_DEPARTURE_NOT_READY",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "LOADING_INCOMPLETE"
+      ],
+      "routeId": "route-unknown",
+      "severity": "MODERATE",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "1e374b564ce3cd651bfb1b0421765f0403b1e444688f7323c6531079b781606d",
+      "exceptionId": "warehouse.exception.route-supervisor-review.route_departure_not_ready.ea210749eeed",
+      "exceptionType": "ROUTE_DEPARTURE_NOT_READY",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "DEPARTURE_READY_WITH_REVIEW"
+      ],
+      "routeId": "route-supervisor-review",
+      "severity": "MODERATE",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "38e6bec894849627d48a3f6bd3f5113277143c18e6f0df24e83b89a7341a5bd7",
+      "exceptionId": "warehouse.exception.route-warehouse-review.load_evidence_stale.1e97a05a8bdf",
+      "exceptionType": "LOAD_EVIDENCE_STALE",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "LOAD_EVIDENCE_STALE"
+      ],
+      "routeId": "route-warehouse-review",
+      "severity": "UNKNOWN",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "97b7d4da6300907e17c91790fd24df1a1b5143b3bdb3e1e573de741702af6eeb",
+      "exceptionId": "warehouse.exception.route-warehouse-review.route_departure_not_ready.3fc771e2670d",
+      "exceptionType": "ROUTE_DEPARTURE_NOT_READY",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "DEPARTURE_READY_WITH_REVIEW"
+      ],
+      "routeId": "route-warehouse-review",
+      "severity": "MODERATE",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "d64143f3068dc652ae7f0fb4455a395612cf30bdfe2af905a8844ff35808c4b5",
+      "exceptionId": "warehouse.exception.route-alert-ack.product_missing.4dbe0d55df3c",
+      "exceptionType": "PRODUCT_MISSING",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": "sku-water-24pk",
+      "reasonCodes": [
+        "PRODUCT_EXPECTED_NOT_OBSERVED"
+      ],
+      "routeId": "route-alert-ack",
+      "severity": "CRITICAL",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "3de5af1d516a8d262ffdcfed961ed02263a4fe56e7fe7c15950d26702e74f16f",
+      "exceptionId": "warehouse.exception.route-alert-ack.route_departure_blocked.5ddbabf176e4",
+      "exceptionType": "ROUTE_DEPARTURE_BLOCKED",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "HOLD_DEPARTURE_FOR_REVIEW",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "DEPARTURE_BLOCKED"
+      ],
+      "routeId": "route-alert-ack",
+      "severity": "CRITICAL",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "d7905b5bcb962d4672bb03a5739c0e64c562dc2744463996984b81addaca6c33",
+      "exceptionId": "warehouse.exception.route-alert-resolve.product_missing.97fe818dd5b9",
+      "exceptionType": "PRODUCT_MISSING",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": "sku-water-24pk",
+      "reasonCodes": [
+        "PRODUCT_EXPECTED_NOT_OBSERVED"
+      ],
+      "routeId": "route-alert-resolve",
+      "severity": "CRITICAL",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "e7095bed4e75000acb726ee7637cff589d912a9d5d696329e7f26d9d1e396b2f",
+      "exceptionId": "warehouse.exception.route-alert-resolve.route_departure_blocked.35814511c2fb",
+      "exceptionType": "ROUTE_DEPARTURE_BLOCKED",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "HOLD_DEPARTURE_FOR_REVIEW",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "DEPARTURE_BLOCKED"
+      ],
+      "routeId": "route-alert-resolve",
+      "severity": "CRITICAL",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "036cefc5b8926c22cdaae6b362af8b6f2551372f9a7bd43a6924eafd5ce4a512",
+      "exceptionId": "warehouse.exception.route-alert-invalidated.product_missing.56b3507270f7",
+      "exceptionType": "PRODUCT_MISSING",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": "sku-water-24pk",
+      "reasonCodes": [
+        "PRODUCT_EXPECTED_NOT_OBSERVED"
+      ],
+      "routeId": "route-alert-invalidated",
+      "severity": "CRITICAL",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "f873e0db664cd6daef5e0eb89868cb1cc91acaefe4bf1c30233662448074b959",
+      "exceptionId": "warehouse.exception.route-alert-invalidated.route_departure_blocked.82d95ef72ab1",
+      "exceptionType": "ROUTE_DEPARTURE_BLOCKED",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "HOLD_DEPARTURE_FOR_REVIEW",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "DEPARTURE_BLOCKED"
+      ],
+      "routeId": "route-alert-invalidated",
+      "severity": "CRITICAL",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "5efd995f32cb10ad795045af9ded26f8a7c869d34743b25032fd6cfc17b8f07e",
+      "exceptionId": "warehouse.exception.route-unknown-quantity.load_evidence_missing.05d323cc8559",
+      "exceptionType": "LOAD_EVIDENCE_MISSING",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "UNABLE_TO_DETERMINE",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "EVIDENCE_INSUFFICIENT"
+      ],
+      "routeId": "route-unknown-quantity",
+      "severity": "UNKNOWN",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "0d36c3e7622dac953f9513a592453cbddbc0eef3ddade96a8d164b9b5afca692",
+      "exceptionId": "warehouse.exception.route-unknown-quantity.route_departure_not_ready.464ecd9fa210",
+      "exceptionType": "ROUTE_DEPARTURE_NOT_READY",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": "org_synthetic_warehouse_intelligence",
+      "productRef": null,
+      "reasonCodes": [
+        "EVIDENCE_INSUFFICIENT"
+      ],
+      "routeId": "route-unknown-quantity",
+      "severity": "MODERATE",
+      "testOnly": true
+    },
+    {
+      "employmentImpactProhibited": true,
+      "evidenceReferences": [
+        "synthetic.route_manifest",
+        "synthetic.load_scan"
+      ],
+      "exceptionHash": "79830a8f49a18711b908b741c18298e10cb18442077692f6b8f43ffee493acad",
+      "exceptionId": "warehouse.exception.route-cross-org.route_departure_not_ready.a8072262ade9",
+      "exceptionType": "ROUTE_DEPARTURE_NOT_READY",
+      "humanReviewRequired": true,
+      "loadRef": "load-ready",
+      "operationalImpact": "WAREHOUSE_REVIEW_REQUIRED",
+      "organizationId": null,
+      "productRef": null,
+      "reasonCodes": [
+        "EVIDENCE_INSUFFICIENT"
+      ],
+      "routeId": "route-cross-org",
+      "severity": "MODERATE",
+      "testOnly": true
+    }
+  ],
+  "generatedArtifact": true
+}

@@ -469,7 +469,20 @@
           "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_readiness_report.json",
           "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_reason_code_catalog.json",
           "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_route_portfolio_catalog.json",
-          "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_summary_catalog.json"
+          "Generated Artifact:docs/implementation/supervisor-intelligence-foundation/generated/supervisor_summary_catalog.json",
+          "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_alert_catalog.json",
+          "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_benchmark_catalog.json",
+          "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_context_contract.json",
+          "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_departure_readiness_catalog.json",
+          "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_discrepancy_catalog.json",
+          "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_evidence_report.json",
+          "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_exception_catalog.json",
+          "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/WAREHOUSE_INTELLIGENCE_SUMMARY.md",
+          "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_loading_state_catalog.json",
+          "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_readiness_report.json",
+          "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_reason_code_catalog.json",
+          "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_route_load_catalog.json",
+          "Generated Artifact:docs/implementation/warehouse-intelligence-foundation/generated/warehouse_staging_state_catalog.json"
         ],
         "unknownImpacts": []
       },

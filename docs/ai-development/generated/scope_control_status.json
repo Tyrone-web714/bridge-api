@@ -5,5 +5,5 @@
   "supervisorIntelligenceRemoteContained": true,
   "unapprovedMilestoneOneDomainsAllowed": false,
   "warehouseImplementationStarted": false,
-  "warehouseIntelligenceMayBegin": true
+  "warehouseIntelligenceMayBegin": false
 }

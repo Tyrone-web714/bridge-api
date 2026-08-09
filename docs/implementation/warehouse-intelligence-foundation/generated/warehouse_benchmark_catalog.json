@@ -1,0 +1,3727 @@
+{
+  "benchmarks": [
+    {
+      "caseId": "correct_assignment",
+      "employeeScoringExpected": false,
+      "expectedReadiness": "READY",
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "routeLoad": {
+          "assignedDriverRef": "driver-synthetic-001",
+          "assignedVehicleRef": "vehicle-box-12ft-6in",
+          "driverOperationalAssessment": null,
+          "evidenceConflict": false,
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.load_scan"
+          ],
+          "evidenceStale": false,
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "expectedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "expectedLoadId": "load-ready",
+          "expectedRouteId": "route-ready",
+          "humanReviewRequired": false,
+          "loadAssignmentEvidence": {
+            "evidenceId": "assignment-ready",
+            "source": "synthetic.route_manifest"
+          },
+          "loadCompletionEvidence": {
+            "complete": true,
+            "evidenceId": "complete-ready"
+          },
+          "loadId": "load-ready",
+          "loadingEvidence": {
+            "complete": true,
+            "evidenceId": "loaded-ready",
+            "status": "LOADED"
+          },
+          "manifestRef": "manifest-ready",
+          "observedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "observedLoadId": "load-ready",
+          "observedRouteId": "route-ready",
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeId": "route-ready",
+          "routeSafetyAssessment": null,
+          "stagingAreaRef": "dock-a",
+          "stagingEvidence": {
+            "evidenceId": "staged-ready",
+            "staged": true,
+            "status": "STAGED"
+          },
+          "supervisorReference": {
+            "supervisorContextId": "supervisor.context.synthetic.001"
+          },
+          "testOnly": true,
+          "unknownFields": []
+        },
+        "warehouseContext": {
+          "authorizedActorRef": "warehouse.employee.synthetic.001",
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.route_inventory",
+            "synthetic.warehouse_confirmation"
+          ],
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "loadScope": [
+            "load-ready",
+            "load-short",
+            "load-safety-blocked"
+          ],
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeScope": [
+            "route-ready",
+            "route-missing-product",
+            "route-safety-blocked"
+          ],
+          "sourceHashes": [
+            {
+              "hash": "d758e58536d5dffb473dc637de134140b87bb2408378fac998cc3232140cd6a0",
+              "source": "synthetic.route_manifest"
+            }
+          ],
+          "testOnly": true,
+          "unknownFields": [],
+          "warehouseContextId": "warehouse.context.synthetic.001",
+          "warehouseReference": "depot.synthetic.birmingham",
+          "workPeriodRef": "warehouse.shift.synthetic.day"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "wrong_route_load_assignment",
+      "employeeScoringExpected": false,
+      "expectedReadiness": "BLOCKED",
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "routeLoad": {
+          "assignedDriverRef": "driver-synthetic-001",
+          "assignedVehicleRef": "vehicle-box-12ft-6in",
+          "driverOperationalAssessment": null,
+          "evidenceConflict": false,
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.load_scan"
+          ],
+          "evidenceStale": false,
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "expectedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "expectedLoadId": "load-a",
+          "expectedRouteId": "route-wrong-load",
+          "humanReviewRequired": false,
+          "loadAssignmentEvidence": {
+            "evidenceId": "assignment-ready",
+            "source": "synthetic.route_manifest"
+          },
+          "loadCompletionEvidence": {
+            "complete": true,
+            "evidenceId": "complete-ready"
+          },
+          "loadId": "load-ready",
+          "loadingEvidence": {
+            "complete": true,
+            "evidenceId": "loaded-ready",
+            "status": "LOADED"
+          },
+          "manifestRef": "manifest-ready",
+          "observedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "observedLoadId": "load-b",
+          "observedRouteId": "route-other",
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeId": "route-wrong-load",
+          "routeSafetyAssessment": null,
+          "stagingAreaRef": "dock-a",
+          "stagingEvidence": {
+            "evidenceId": "staged-ready",
+            "staged": true,
+            "status": "STAGED"
+          },
+          "supervisorReference": {
+            "supervisorContextId": "supervisor.context.synthetic.001"
+          },
+          "testOnly": true,
+          "unknownFields": []
+        },
+        "warehouseContext": {
+          "authorizedActorRef": "warehouse.employee.synthetic.001",
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.route_inventory",
+            "synthetic.warehouse_confirmation"
+          ],
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "loadScope": [
+            "load-ready",
+            "load-short",
+            "load-safety-blocked"
+          ],
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeScope": [
+            "route-ready",
+            "route-missing-product",
+            "route-safety-blocked"
+          ],
+          "sourceHashes": [
+            {
+              "hash": "d758e58536d5dffb473dc637de134140b87bb2408378fac998cc3232140cd6a0",
+              "source": "synthetic.route_manifest"
+            }
+          ],
+          "testOnly": true,
+          "unknownFields": [],
+          "warehouseContextId": "warehouse.context.synthetic.001",
+          "warehouseReference": "depot.synthetic.birmingham",
+          "workPeriodRef": "warehouse.shift.synthetic.day"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "route_not_staged",
+      "employeeScoringExpected": false,
+      "expectedReadiness": "NOT_READY",
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "routeLoad": {
+          "assignedDriverRef": "driver-synthetic-001",
+          "assignedVehicleRef": "vehicle-box-12ft-6in",
+          "driverOperationalAssessment": null,
+          "evidenceConflict": false,
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.load_scan"
+          ],
+          "evidenceStale": false,
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "expectedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "expectedLoadId": "load-ready",
+          "expectedRouteId": "route-ready",
+          "humanReviewRequired": false,
+          "loadAssignmentEvidence": {
+            "evidenceId": "assignment-ready",
+            "source": "synthetic.route_manifest"
+          },
+          "loadCompletionEvidence": {
+            "complete": true,
+            "evidenceId": "complete-ready"
+          },
+          "loadId": "load-ready",
+          "loadingEvidence": {
+            "complete": true,
+            "evidenceId": "loaded-ready",
+            "status": "LOADED"
+          },
+          "manifestRef": "manifest-ready",
+          "observedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "observedLoadId": "load-ready",
+          "observedRouteId": "route-ready",
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeId": "route-not-staged",
+          "routeSafetyAssessment": null,
+          "stagingAreaRef": "dock-a",
+          "stagingEvidence": {
+            "evidenceId": "stage-not-started",
+            "status": "NOT_STAGED"
+          },
+          "supervisorReference": {
+            "supervisorContextId": "supervisor.context.synthetic.001"
+          },
+          "testOnly": true,
+          "unknownFields": []
+        },
+        "warehouseContext": {
+          "authorizedActorRef": "warehouse.employee.synthetic.001",
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.route_inventory",
+            "synthetic.warehouse_confirmation"
+          ],
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "loadScope": [
+            "load-ready",
+            "load-short",
+            "load-safety-blocked"
+          ],
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeScope": [
+            "route-ready",
+            "route-missing-product",
+            "route-safety-blocked"
+          ],
+          "sourceHashes": [
+            {
+              "hash": "d758e58536d5dffb473dc637de134140b87bb2408378fac998cc3232140cd6a0",
+              "source": "synthetic.route_manifest"
+            }
+          ],
+          "testOnly": true,
+          "unknownFields": [],
+          "warehouseContextId": "warehouse.context.synthetic.001",
+          "warehouseReference": "depot.synthetic.birmingham",
+          "workPeriodRef": "warehouse.shift.synthetic.day"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "staging_in_progress",
+      "employeeScoringExpected": false,
+      "expectedReadiness": "NOT_READY",
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "routeLoad": {
+          "assignedDriverRef": "driver-synthetic-001",
+          "assignedVehicleRef": "vehicle-box-12ft-6in",
+          "driverOperationalAssessment": null,
+          "evidenceConflict": false,
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.load_scan"
+          ],
+          "evidenceStale": false,
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "expectedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "expectedLoadId": "load-ready",
+          "expectedRouteId": "route-ready",
+          "humanReviewRequired": false,
+          "loadAssignmentEvidence": {
+            "evidenceId": "assignment-ready",
+            "source": "synthetic.route_manifest"
+          },
+          "loadCompletionEvidence": {
+            "complete": true,
+            "evidenceId": "complete-ready"
+          },
+          "loadId": "load-ready",
+          "loadingEvidence": {
+            "complete": true,
+            "evidenceId": "loaded-ready",
+            "status": "LOADED"
+          },
+          "manifestRef": "manifest-ready",
+          "observedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "observedLoadId": "load-ready",
+          "observedRouteId": "route-ready",
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeId": "route-staging",
+          "routeSafetyAssessment": null,
+          "stagingAreaRef": "dock-a",
+          "stagingEvidence": {
+            "evidenceId": "stage-progress",
+            "status": "STAGING"
+          },
+          "supervisorReference": {
+            "supervisorContextId": "supervisor.context.synthetic.001"
+          },
+          "testOnly": true,
+          "unknownFields": []
+        },
+        "warehouseContext": {
+          "authorizedActorRef": "warehouse.employee.synthetic.001",
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.route_inventory",
+            "synthetic.warehouse_confirmation"
+          ],
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "loadScope": [
+            "load-ready",
+            "load-short",
+            "load-safety-blocked"
+          ],
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeScope": [
+            "route-ready",
+            "route-missing-product",
+            "route-safety-blocked"
+          ],
+          "sourceHashes": [
+            {
+              "hash": "d758e58536d5dffb473dc637de134140b87bb2408378fac998cc3232140cd6a0",
+              "source": "synthetic.route_manifest"
+            }
+          ],
+          "testOnly": true,
+          "unknownFields": [],
+          "warehouseContextId": "warehouse.context.synthetic.001",
+          "warehouseReference": "depot.synthetic.birmingham",
+          "workPeriodRef": "warehouse.shift.synthetic.day"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "route_fully_staged",
+      "employeeScoringExpected": false,
+      "expectedReadiness": "READY",
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "routeLoad": {
+          "assignedDriverRef": "driver-synthetic-001",
+          "assignedVehicleRef": "vehicle-box-12ft-6in",
+          "driverOperationalAssessment": null,
+          "evidenceConflict": false,
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.load_scan"
+          ],
+          "evidenceStale": false,
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "expectedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "expectedLoadId": "load-ready",
+          "expectedRouteId": "route-ready",
+          "humanReviewRequired": false,
+          "loadAssignmentEvidence": {
+            "evidenceId": "assignment-ready",
+            "source": "synthetic.route_manifest"
+          },
+          "loadCompletionEvidence": {
+            "complete": true,
+            "evidenceId": "complete-ready"
+          },
+          "loadId": "load-ready",
+          "loadingEvidence": {
+            "complete": true,
+            "evidenceId": "loaded-ready",
+            "status": "LOADED"
+          },
+          "manifestRef": "manifest-ready",
+          "observedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "observedLoadId": "load-ready",
+          "observedRouteId": "route-ready",
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeId": "route-staged",
+          "routeSafetyAssessment": null,
+          "stagingAreaRef": "dock-a",
+          "stagingEvidence": {
+            "evidenceId": "staged-ready",
+            "staged": true,
+            "status": "STAGED"
+          },
+          "supervisorReference": {
+            "supervisorContextId": "supervisor.context.synthetic.001"
+          },
+          "testOnly": true,
+          "unknownFields": []
+        },
+        "warehouseContext": {
+          "authorizedActorRef": "warehouse.employee.synthetic.001",
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.route_inventory",
+            "synthetic.warehouse_confirmation"
+          ],
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "loadScope": [
+            "load-ready",
+            "load-short",
+            "load-safety-blocked"
+          ],
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeScope": [
+            "route-ready",
+            "route-missing-product",
+            "route-safety-blocked"
+          ],
+          "sourceHashes": [
+            {
+              "hash": "d758e58536d5dffb473dc637de134140b87bb2408378fac998cc3232140cd6a0",
+              "source": "synthetic.route_manifest"
+            }
+          ],
+          "testOnly": true,
+          "unknownFields": [],
+          "warehouseContextId": "warehouse.context.synthetic.001",
+          "warehouseReference": "depot.synthetic.birmingham",
+          "workPeriodRef": "warehouse.shift.synthetic.day"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "staging_blocked",
+      "employeeScoringExpected": false,
+      "expectedReadiness": "BLOCKED",
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "routeLoad": {
+          "assignedDriverRef": "driver-synthetic-001",
+          "assignedVehicleRef": "vehicle-box-12ft-6in",
+          "driverOperationalAssessment": null,
+          "evidenceConflict": false,
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.load_scan"
+          ],
+          "evidenceStale": false,
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "expectedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "expectedLoadId": "load-ready",
+          "expectedRouteId": "route-ready",
+          "humanReviewRequired": false,
+          "loadAssignmentEvidence": {
+            "evidenceId": "assignment-ready",
+            "source": "synthetic.route_manifest"
+          },
+          "loadCompletionEvidence": {
+            "complete": true,
+            "evidenceId": "complete-ready"
+          },
+          "loadId": "load-ready",
+          "loadingEvidence": {
+            "complete": true,
+            "evidenceId": "loaded-ready",
+            "status": "LOADED"
+          },
+          "manifestRef": "manifest-ready",
+          "observedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "observedLoadId": "load-ready",
+          "observedRouteId": "route-ready",
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeId": "route-stage-blocked",
+          "routeSafetyAssessment": null,
+          "stagingAreaRef": "dock-a",
+          "stagingEvidence": {
+            "blocked": true,
+            "evidenceId": "stage-blocked"
+          },
+          "supervisorReference": {
+            "supervisorContextId": "supervisor.context.synthetic.001"
+          },
+          "testOnly": true,
+          "unknownFields": []
+        },
+        "warehouseContext": {
+          "authorizedActorRef": "warehouse.employee.synthetic.001",
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.route_inventory",
+            "synthetic.warehouse_confirmation"
+          ],
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "loadScope": [
+            "load-ready",
+            "load-short",
+            "load-safety-blocked"
+          ],
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeScope": [
+            "route-ready",
+            "route-missing-product",
+            "route-safety-blocked"
+          ],
+          "sourceHashes": [
+            {
+              "hash": "d758e58536d5dffb473dc637de134140b87bb2408378fac998cc3232140cd6a0",
+              "source": "synthetic.route_manifest"
+            }
+          ],
+          "testOnly": true,
+          "unknownFields": [],
+          "warehouseContextId": "warehouse.context.synthetic.001",
+          "warehouseReference": "depot.synthetic.birmingham",
+          "workPeriodRef": "warehouse.shift.synthetic.day"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "loading_not_started",
+      "employeeScoringExpected": false,
+      "expectedReadiness": "NOT_READY",
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "routeLoad": {
+          "assignedDriverRef": "driver-synthetic-001",
+          "assignedVehicleRef": "vehicle-box-12ft-6in",
+          "driverOperationalAssessment": null,
+          "evidenceConflict": false,
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.load_scan"
+          ],
+          "evidenceStale": false,
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "expectedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "expectedLoadId": "load-ready",
+          "expectedRouteId": "route-ready",
+          "humanReviewRequired": false,
+          "loadAssignmentEvidence": {
+            "evidenceId": "assignment-ready",
+            "source": "synthetic.route_manifest"
+          },
+          "loadCompletionEvidence": {
+            "complete": true,
+            "evidenceId": "complete-ready"
+          },
+          "loadId": "load-ready",
+          "loadingEvidence": {
+            "evidenceId": "load-not-started",
+            "status": "NOT_STARTED"
+          },
+          "manifestRef": "manifest-ready",
+          "observedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "observedLoadId": "load-ready",
+          "observedRouteId": "route-ready",
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeId": "route-load-not-started",
+          "routeSafetyAssessment": null,
+          "stagingAreaRef": "dock-a",
+          "stagingEvidence": {
+            "evidenceId": "staged-ready",
+            "staged": true,
+            "status": "STAGED"
+          },
+          "supervisorReference": {
+            "supervisorContextId": "supervisor.context.synthetic.001"
+          },
+          "testOnly": true,
+          "unknownFields": []
+        },
+        "warehouseContext": {
+          "authorizedActorRef": "warehouse.employee.synthetic.001",
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.route_inventory",
+            "synthetic.warehouse_confirmation"
+          ],
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "loadScope": [
+            "load-ready",
+            "load-short",
+            "load-safety-blocked"
+          ],
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeScope": [
+            "route-ready",
+            "route-missing-product",
+            "route-safety-blocked"
+          ],
+          "sourceHashes": [
+            {
+              "hash": "d758e58536d5dffb473dc637de134140b87bb2408378fac998cc3232140cd6a0",
+              "source": "synthetic.route_manifest"
+            }
+          ],
+          "testOnly": true,
+          "unknownFields": [],
+          "warehouseContextId": "warehouse.context.synthetic.001",
+          "warehouseReference": "depot.synthetic.birmingham",
+          "workPeriodRef": "warehouse.shift.synthetic.day"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "loading_partial",
+      "employeeScoringExpected": false,
+      "expectedReadiness": "NOT_READY",
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "routeLoad": {
+          "assignedDriverRef": "driver-synthetic-001",
+          "assignedVehicleRef": "vehicle-box-12ft-6in",
+          "driverOperationalAssessment": null,
+          "evidenceConflict": false,
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.load_scan"
+          ],
+          "evidenceStale": false,
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "expectedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "expectedLoadId": "load-ready",
+          "expectedRouteId": "route-ready",
+          "humanReviewRequired": false,
+          "loadAssignmentEvidence": {
+            "evidenceId": "assignment-ready",
+            "source": "synthetic.route_manifest"
+          },
+          "loadCompletionEvidence": {
+            "complete": true,
+            "evidenceId": "complete-ready"
+          },
+          "loadId": "load-ready",
+          "loadingEvidence": {
+            "evidenceId": "load-partial",
+            "status": "PARTIALLY_LOADED"
+          },
+          "manifestRef": "manifest-ready",
+          "observedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "observedLoadId": "load-ready",
+          "observedRouteId": "route-ready",
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeId": "route-load-partial",
+          "routeSafetyAssessment": null,
+          "stagingAreaRef": "dock-a",
+          "stagingEvidence": {
+            "evidenceId": "staged-ready",
+            "staged": true,
+            "status": "STAGED"
+          },
+          "supervisorReference": {
+            "supervisorContextId": "supervisor.context.synthetic.001"
+          },
+          "testOnly": true,
+          "unknownFields": []
+        },
+        "warehouseContext": {
+          "authorizedActorRef": "warehouse.employee.synthetic.001",
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.route_inventory",
+            "synthetic.warehouse_confirmation"
+          ],
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "loadScope": [
+            "load-ready",
+            "load-short",
+            "load-safety-blocked"
+          ],
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeScope": [
+            "route-ready",
+            "route-missing-product",
+            "route-safety-blocked"
+          ],
+          "sourceHashes": [
+            {
+              "hash": "d758e58536d5dffb473dc637de134140b87bb2408378fac998cc3232140cd6a0",
+              "source": "synthetic.route_manifest"
+            }
+          ],
+          "testOnly": true,
+          "unknownFields": [],
+          "warehouseContextId": "warehouse.context.synthetic.001",
+          "warehouseReference": "depot.synthetic.birmingham",
+          "workPeriodRef": "warehouse.shift.synthetic.day"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "loading_complete",
+      "employeeScoringExpected": false,
+      "expectedReadiness": "READY",
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "routeLoad": {
+          "assignedDriverRef": "driver-synthetic-001",
+          "assignedVehicleRef": "vehicle-box-12ft-6in",
+          "driverOperationalAssessment": null,
+          "evidenceConflict": false,
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.load_scan"
+          ],
+          "evidenceStale": false,
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "expectedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "expectedLoadId": "load-ready",
+          "expectedRouteId": "route-ready",
+          "humanReviewRequired": false,
+          "loadAssignmentEvidence": {
+            "evidenceId": "assignment-ready",
+            "source": "synthetic.route_manifest"
+          },
+          "loadCompletionEvidence": {
+            "complete": true,
+            "evidenceId": "complete-ready"
+          },
+          "loadId": "load-ready",
+          "loadingEvidence": {
+            "complete": true,
+            "evidenceId": "loaded-ready",
+            "status": "LOADED"
+          },
+          "manifestRef": "manifest-ready",
+          "observedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "observedLoadId": "load-ready",
+          "observedRouteId": "route-ready",
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeId": "route-loaded",
+          "routeSafetyAssessment": null,
+          "stagingAreaRef": "dock-a",
+          "stagingEvidence": {
+            "evidenceId": "staged-ready",
+            "staged": true,
+            "status": "STAGED"
+          },
+          "supervisorReference": {
+            "supervisorContextId": "supervisor.context.synthetic.001"
+          },
+          "testOnly": true,
+          "unknownFields": []
+        },
+        "warehouseContext": {
+          "authorizedActorRef": "warehouse.employee.synthetic.001",
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.route_inventory",
+            "synthetic.warehouse_confirmation"
+          ],
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "loadScope": [
+            "load-ready",
+            "load-short",
+            "load-safety-blocked"
+          ],
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeScope": [
+            "route-ready",
+            "route-missing-product",
+            "route-safety-blocked"
+          ],
+          "sourceHashes": [
+            {
+              "hash": "d758e58536d5dffb473dc637de134140b87bb2408378fac998cc3232140cd6a0",
+              "source": "synthetic.route_manifest"
+            }
+          ],
+          "testOnly": true,
+          "unknownFields": [],
+          "warehouseContextId": "warehouse.context.synthetic.001",
+          "warehouseReference": "depot.synthetic.birmingham",
+          "workPeriodRef": "warehouse.shift.synthetic.day"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "missing_product",
+      "employeeScoringExpected": false,
+      "expectedReadiness": "BLOCKED",
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "routeLoad": {
+          "assignedDriverRef": "driver-synthetic-001",
+          "assignedVehicleRef": "vehicle-box-12ft-6in",
+          "driverOperationalAssessment": null,
+          "evidenceConflict": false,
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.load_scan"
+          ],
+          "evidenceStale": false,
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "expectedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "expectedLoadId": "load-ready",
+          "expectedRouteId": "route-ready",
+          "humanReviewRequired": false,
+          "loadAssignmentEvidence": {
+            "evidenceId": "assignment-ready",
+            "source": "synthetic.route_manifest"
+          },
+          "loadCompletionEvidence": {
+            "complete": true,
+            "evidenceId": "complete-ready"
+          },
+          "loadId": "load-ready",
+          "loadingEvidence": {
+            "complete": true,
+            "evidenceId": "loaded-ready",
+            "status": "LOADED"
+          },
+          "manifestRef": "manifest-ready",
+          "observedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            }
+          ],
+          "observedLoadId": "load-ready",
+          "observedRouteId": "route-ready",
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeId": "route-missing-product",
+          "routeSafetyAssessment": null,
+          "stagingAreaRef": "dock-a",
+          "stagingEvidence": {
+            "evidenceId": "staged-ready",
+            "staged": true,
+            "status": "STAGED"
+          },
+          "supervisorReference": {
+            "supervisorContextId": "supervisor.context.synthetic.001"
+          },
+          "testOnly": true,
+          "unknownFields": []
+        },
+        "warehouseContext": {
+          "authorizedActorRef": "warehouse.employee.synthetic.001",
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.route_inventory",
+            "synthetic.warehouse_confirmation"
+          ],
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "loadScope": [
+            "load-ready",
+            "load-short",
+            "load-safety-blocked"
+          ],
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeScope": [
+            "route-ready",
+            "route-missing-product",
+            "route-safety-blocked"
+          ],
+          "sourceHashes": [
+            {
+              "hash": "d758e58536d5dffb473dc637de134140b87bb2408378fac998cc3232140cd6a0",
+              "source": "synthetic.route_manifest"
+            }
+          ],
+          "testOnly": true,
+          "unknownFields": [],
+          "warehouseContextId": "warehouse.context.synthetic.001",
+          "warehouseReference": "depot.synthetic.birmingham",
+          "workPeriodRef": "warehouse.shift.synthetic.day"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "unexpected_product",
+      "employeeScoringExpected": false,
+      "expectedReadiness": "READY_WITH_REVIEW",
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "routeLoad": {
+          "assignedDriverRef": "driver-synthetic-001",
+          "assignedVehicleRef": "vehicle-box-12ft-6in",
+          "driverOperationalAssessment": null,
+          "evidenceConflict": false,
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.load_scan"
+          ],
+          "evidenceStale": false,
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "expectedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "expectedLoadId": "load-ready",
+          "expectedRouteId": "route-ready",
+          "humanReviewRequired": false,
+          "loadAssignmentEvidence": {
+            "evidenceId": "assignment-ready",
+            "source": "synthetic.route_manifest"
+          },
+          "loadCompletionEvidence": {
+            "complete": true,
+            "evidenceId": "complete-ready"
+          },
+          "loadId": "load-ready",
+          "loadingEvidence": {
+            "complete": true,
+            "evidenceId": "loaded-ready",
+            "status": "LOADED"
+          },
+          "manifestRef": "manifest-ready",
+          "observedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            },
+            {
+              "productName": "Tea 6pk",
+              "quantity": 1,
+              "sku": "SKU-TEA-6PK"
+            }
+          ],
+          "observedLoadId": "load-ready",
+          "observedRouteId": "route-ready",
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeId": "route-unexpected-product",
+          "routeSafetyAssessment": null,
+          "stagingAreaRef": "dock-a",
+          "stagingEvidence": {
+            "evidenceId": "staged-ready",
+            "staged": true,
+            "status": "STAGED"
+          },
+          "supervisorReference": {
+            "supervisorContextId": "supervisor.context.synthetic.001"
+          },
+          "testOnly": true,
+          "unknownFields": []
+        },
+        "warehouseContext": {
+          "authorizedActorRef": "warehouse.employee.synthetic.001",
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.route_inventory",
+            "synthetic.warehouse_confirmation"
+          ],
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "loadScope": [
+            "load-ready",
+            "load-short",
+            "load-safety-blocked"
+          ],
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeScope": [
+            "route-ready",
+            "route-missing-product",
+            "route-safety-blocked"
+          ],
+          "sourceHashes": [
+            {
+              "hash": "d758e58536d5dffb473dc637de134140b87bb2408378fac998cc3232140cd6a0",
+              "source": "synthetic.route_manifest"
+            }
+          ],
+          "testOnly": true,
+          "unknownFields": [],
+          "warehouseContextId": "warehouse.context.synthetic.001",
+          "warehouseReference": "depot.synthetic.birmingham",
+          "workPeriodRef": "warehouse.shift.synthetic.day"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "quantity_short",
+      "employeeScoringExpected": false,
+      "expectedReadiness": "BLOCKED",
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "routeLoad": {
+          "assignedDriverRef": "driver-synthetic-001",
+          "assignedVehicleRef": "vehicle-box-12ft-6in",
+          "driverOperationalAssessment": null,
+          "evidenceConflict": false,
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.load_scan"
+          ],
+          "evidenceStale": false,
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "expectedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "expectedLoadId": "load-ready",
+          "expectedRouteId": "route-ready",
+          "humanReviewRequired": false,
+          "loadAssignmentEvidence": {
+            "evidenceId": "assignment-ready",
+            "source": "synthetic.route_manifest"
+          },
+          "loadCompletionEvidence": {
+            "complete": true,
+            "evidenceId": "complete-ready"
+          },
+          "loadId": "load-ready",
+          "loadingEvidence": {
+            "complete": true,
+            "evidenceId": "loaded-ready",
+            "status": "LOADED"
+          },
+          "manifestRef": "manifest-ready",
+          "observedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 9,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "observedLoadId": "load-ready",
+          "observedRouteId": "route-ready",
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeId": "route-short",
+          "routeSafetyAssessment": null,
+          "stagingAreaRef": "dock-a",
+          "stagingEvidence": {
+            "evidenceId": "staged-ready",
+            "staged": true,
+            "status": "STAGED"
+          },
+          "supervisorReference": {
+            "supervisorContextId": "supervisor.context.synthetic.001"
+          },
+          "testOnly": true,
+          "unknownFields": []
+        },
+        "warehouseContext": {
+          "authorizedActorRef": "warehouse.employee.synthetic.001",
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.route_inventory",
+            "synthetic.warehouse_confirmation"
+          ],
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "loadScope": [
+            "load-ready",
+            "load-short",
+            "load-safety-blocked"
+          ],
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeScope": [
+            "route-ready",
+            "route-missing-product",
+            "route-safety-blocked"
+          ],
+          "sourceHashes": [
+            {
+              "hash": "d758e58536d5dffb473dc637de134140b87bb2408378fac998cc3232140cd6a0",
+              "source": "synthetic.route_manifest"
+            }
+          ],
+          "testOnly": true,
+          "unknownFields": [],
+          "warehouseContextId": "warehouse.context.synthetic.001",
+          "warehouseReference": "depot.synthetic.birmingham",
+          "workPeriodRef": "warehouse.shift.synthetic.day"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "quantity_over",
+      "employeeScoringExpected": false,
+      "expectedReadiness": "READY_WITH_REVIEW",
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "routeLoad": {
+          "assignedDriverRef": "driver-synthetic-001",
+          "assignedVehicleRef": "vehicle-box-12ft-6in",
+          "driverOperationalAssessment": null,
+          "evidenceConflict": false,
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.load_scan"
+          ],
+          "evidenceStale": false,
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "expectedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "expectedLoadId": "load-ready",
+          "expectedRouteId": "route-ready",
+          "humanReviewRequired": false,
+          "loadAssignmentEvidence": {
+            "evidenceId": "assignment-ready",
+            "source": "synthetic.route_manifest"
+          },
+          "loadCompletionEvidence": {
+            "complete": true,
+            "evidenceId": "complete-ready"
+          },
+          "loadId": "load-ready",
+          "loadingEvidence": {
+            "complete": true,
+            "evidenceId": "loaded-ready",
+            "status": "LOADED"
+          },
+          "manifestRef": "manifest-ready",
+          "observedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 11,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "observedLoadId": "load-ready",
+          "observedRouteId": "route-ready",
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeId": "route-over",
+          "routeSafetyAssessment": null,
+          "stagingAreaRef": "dock-a",
+          "stagingEvidence": {
+            "evidenceId": "staged-ready",
+            "staged": true,
+            "status": "STAGED"
+          },
+          "supervisorReference": {
+            "supervisorContextId": "supervisor.context.synthetic.001"
+          },
+          "testOnly": true,
+          "unknownFields": []
+        },
+        "warehouseContext": {
+          "authorizedActorRef": "warehouse.employee.synthetic.001",
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.route_inventory",
+            "synthetic.warehouse_confirmation"
+          ],
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "loadScope": [
+            "load-ready",
+            "load-short",
+            "load-safety-blocked"
+          ],
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeScope": [
+            "route-ready",
+            "route-missing-product",
+            "route-safety-blocked"
+          ],
+          "sourceHashes": [
+            {
+              "hash": "d758e58536d5dffb473dc637de134140b87bb2408378fac998cc3232140cd6a0",
+              "source": "synthetic.route_manifest"
+            }
+          ],
+          "testOnly": true,
+          "unknownFields": [],
+          "warehouseContextId": "warehouse.context.synthetic.001",
+          "warehouseReference": "depot.synthetic.birmingham",
+          "workPeriodRef": "warehouse.shift.synthetic.day"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "duplicate_evidence",
+      "employeeScoringExpected": false,
+      "expectedReadiness": "READY_WITH_REVIEW",
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "routeLoad": {
+          "assignedDriverRef": "driver-synthetic-001",
+          "assignedVehicleRef": "vehicle-box-12ft-6in",
+          "driverOperationalAssessment": null,
+          "evidenceConflict": false,
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.load_scan"
+          ],
+          "evidenceStale": false,
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "expectedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "expectedLoadId": "load-ready",
+          "expectedRouteId": "route-ready",
+          "humanReviewRequired": false,
+          "loadAssignmentEvidence": {
+            "evidenceId": "assignment-ready",
+            "source": "synthetic.route_manifest"
+          },
+          "loadCompletionEvidence": {
+            "complete": true,
+            "evidenceId": "complete-ready"
+          },
+          "loadId": "load-ready",
+          "loadingEvidence": {
+            "complete": true,
+            "evidenceId": "loaded-ready",
+            "status": "LOADED"
+          },
+          "manifestRef": "manifest-ready",
+          "observedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "observedLoadId": "load-ready",
+          "observedRouteId": "route-ready",
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeId": "route-duplicate",
+          "routeSafetyAssessment": null,
+          "stagingAreaRef": "dock-a",
+          "stagingEvidence": {
+            "evidenceId": "staged-ready",
+            "staged": true,
+            "status": "STAGED"
+          },
+          "supervisorReference": {
+            "supervisorContextId": "supervisor.context.synthetic.001"
+          },
+          "testOnly": true,
+          "unknownFields": []
+        },
+        "warehouseContext": {
+          "authorizedActorRef": "warehouse.employee.synthetic.001",
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.route_inventory",
+            "synthetic.warehouse_confirmation"
+          ],
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "loadScope": [
+            "load-ready",
+            "load-short",
+            "load-safety-blocked"
+          ],
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeScope": [
+            "route-ready",
+            "route-missing-product",
+            "route-safety-blocked"
+          ],
+          "sourceHashes": [
+            {
+              "hash": "d758e58536d5dffb473dc637de134140b87bb2408378fac998cc3232140cd6a0",
+              "source": "synthetic.route_manifest"
+            }
+          ],
+          "testOnly": true,
+          "unknownFields": [],
+          "warehouseContextId": "warehouse.context.synthetic.001",
+          "warehouseReference": "depot.synthetic.birmingham",
+          "workPeriodRef": "warehouse.shift.synthetic.day"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "manifest_unavailable",
+      "employeeScoringExpected": false,
+      "expectedReadiness": "INSUFFICIENT_EVIDENCE",
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "routeLoad": {
+          "assignedDriverRef": "driver-synthetic-001",
+          "assignedVehicleRef": "vehicle-box-12ft-6in",
+          "driverOperationalAssessment": null,
+          "evidenceConflict": false,
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.load_scan"
+          ],
+          "evidenceStale": false,
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "expectedLines": null,
+          "expectedLoadId": "load-ready",
+          "expectedRouteId": "route-ready",
+          "humanReviewRequired": false,
+          "loadAssignmentEvidence": {
+            "evidenceId": "assignment-ready",
+            "source": "synthetic.route_manifest"
+          },
+          "loadCompletionEvidence": {
+            "complete": true,
+            "evidenceId": "complete-ready"
+          },
+          "loadId": "load-ready",
+          "loadingEvidence": {
+            "complete": true,
+            "evidenceId": "loaded-ready",
+            "status": "LOADED"
+          },
+          "manifestRef": "manifest-ready",
+          "observedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "observedLoadId": "load-ready",
+          "observedRouteId": "route-ready",
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeId": "route-manifest-missing",
+          "routeSafetyAssessment": null,
+          "stagingAreaRef": "dock-a",
+          "stagingEvidence": {
+            "evidenceId": "staged-ready",
+            "staged": true,
+            "status": "STAGED"
+          },
+          "supervisorReference": {
+            "supervisorContextId": "supervisor.context.synthetic.001"
+          },
+          "testOnly": true,
+          "unknownFields": []
+        },
+        "warehouseContext": {
+          "authorizedActorRef": "warehouse.employee.synthetic.001",
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.route_inventory",
+            "synthetic.warehouse_confirmation"
+          ],
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "loadScope": [
+            "load-ready",
+            "load-short",
+            "load-safety-blocked"
+          ],
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeScope": [
+            "route-ready",
+            "route-missing-product",
+            "route-safety-blocked"
+          ],
+          "sourceHashes": [
+            {
+              "hash": "d758e58536d5dffb473dc637de134140b87bb2408378fac998cc3232140cd6a0",
+              "source": "synthetic.route_manifest"
+            }
+          ],
+          "testOnly": true,
+          "unknownFields": [],
+          "warehouseContextId": "warehouse.context.synthetic.001",
+          "warehouseReference": "depot.synthetic.birmingham",
+          "workPeriodRef": "warehouse.shift.synthetic.day"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "load_evidence_unavailable",
+      "employeeScoringExpected": false,
+      "expectedReadiness": "INSUFFICIENT_EVIDENCE",
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "routeLoad": {
+          "assignedDriverRef": "driver-synthetic-001",
+          "assignedVehicleRef": "vehicle-box-12ft-6in",
+          "driverOperationalAssessment": null,
+          "evidenceConflict": false,
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.load_scan"
+          ],
+          "evidenceStale": false,
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "expectedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "expectedLoadId": "load-ready",
+          "expectedRouteId": "route-ready",
+          "humanReviewRequired": false,
+          "loadAssignmentEvidence": {
+            "evidenceId": "assignment-ready",
+            "source": "synthetic.route_manifest"
+          },
+          "loadCompletionEvidence": {
+            "complete": true,
+            "evidenceId": "complete-ready"
+          },
+          "loadId": "load-ready",
+          "loadingEvidence": null,
+          "manifestRef": "manifest-ready",
+          "observedLines": null,
+          "observedLoadId": "load-ready",
+          "observedRouteId": "route-ready",
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeId": "route-load-missing",
+          "routeSafetyAssessment": null,
+          "stagingAreaRef": "dock-a",
+          "stagingEvidence": {
+            "evidenceId": "staged-ready",
+            "staged": true,
+            "status": "STAGED"
+          },
+          "supervisorReference": {
+            "supervisorContextId": "supervisor.context.synthetic.001"
+          },
+          "testOnly": true,
+          "unknownFields": []
+        },
+        "warehouseContext": {
+          "authorizedActorRef": "warehouse.employee.synthetic.001",
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.route_inventory",
+            "synthetic.warehouse_confirmation"
+          ],
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "loadScope": [
+            "load-ready",
+            "load-short",
+            "load-safety-blocked"
+          ],
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeScope": [
+            "route-ready",
+            "route-missing-product",
+            "route-safety-blocked"
+          ],
+          "sourceHashes": [
+            {
+              "hash": "d758e58536d5dffb473dc637de134140b87bb2408378fac998cc3232140cd6a0",
+              "source": "synthetic.route_manifest"
+            }
+          ],
+          "testOnly": true,
+          "unknownFields": [],
+          "warehouseContextId": "warehouse.context.synthetic.001",
+          "warehouseReference": "depot.synthetic.birmingham",
+          "workPeriodRef": "warehouse.shift.synthetic.day"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "stale_evidence",
+      "employeeScoringExpected": false,
+      "expectedReadiness": "READY_WITH_REVIEW",
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "routeLoad": {
+          "assignedDriverRef": "driver-synthetic-001",
+          "assignedVehicleRef": "vehicle-box-12ft-6in",
+          "driverOperationalAssessment": null,
+          "evidenceConflict": false,
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.load_scan"
+          ],
+          "evidenceStale": true,
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "expectedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "expectedLoadId": "load-ready",
+          "expectedRouteId": "route-ready",
+          "humanReviewRequired": false,
+          "loadAssignmentEvidence": {
+            "evidenceId": "assignment-ready",
+            "source": "synthetic.route_manifest"
+          },
+          "loadCompletionEvidence": {
+            "complete": true,
+            "evidenceId": "complete-ready"
+          },
+          "loadId": "load-ready",
+          "loadingEvidence": {
+            "complete": true,
+            "evidenceId": "loaded-ready",
+            "status": "LOADED"
+          },
+          "manifestRef": "manifest-ready",
+          "observedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "observedLoadId": "load-ready",
+          "observedRouteId": "route-ready",
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeId": "route-stale",
+          "routeSafetyAssessment": null,
+          "stagingAreaRef": "dock-a",
+          "stagingEvidence": {
+            "evidenceId": "staged-ready",
+            "staged": true,
+            "status": "STAGED"
+          },
+          "supervisorReference": {
+            "supervisorContextId": "supervisor.context.synthetic.001"
+          },
+          "testOnly": true,
+          "unknownFields": []
+        },
+        "warehouseContext": {
+          "authorizedActorRef": "warehouse.employee.synthetic.001",
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.route_inventory",
+            "synthetic.warehouse_confirmation"
+          ],
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "loadScope": [
+            "load-ready",
+            "load-short",
+            "load-safety-blocked"
+          ],
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeScope": [
+            "route-ready",
+            "route-missing-product",
+            "route-safety-blocked"
+          ],
+          "sourceHashes": [
+            {
+              "hash": "d758e58536d5dffb473dc637de134140b87bb2408378fac998cc3232140cd6a0",
+              "source": "synthetic.route_manifest"
+            }
+          ],
+          "testOnly": true,
+          "unknownFields": [],
+          "warehouseContextId": "warehouse.context.synthetic.001",
+          "warehouseReference": "depot.synthetic.birmingham",
+          "workPeriodRef": "warehouse.shift.synthetic.day"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "conflicting_evidence",
+      "employeeScoringExpected": false,
+      "expectedReadiness": "BLOCKED",
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "routeLoad": {
+          "assignedDriverRef": "driver-synthetic-001",
+          "assignedVehicleRef": "vehicle-box-12ft-6in",
+          "driverOperationalAssessment": null,
+          "evidenceConflict": true,
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.load_scan"
+          ],
+          "evidenceStale": false,
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "expectedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "expectedLoadId": "load-ready",
+          "expectedRouteId": "route-ready",
+          "humanReviewRequired": false,
+          "loadAssignmentEvidence": {
+            "evidenceId": "assignment-ready",
+            "source": "synthetic.route_manifest"
+          },
+          "loadCompletionEvidence": {
+            "complete": true,
+            "evidenceId": "complete-ready"
+          },
+          "loadId": "load-ready",
+          "loadingEvidence": {
+            "complete": true,
+            "evidenceId": "loaded-ready",
+            "status": "LOADED"
+          },
+          "manifestRef": "manifest-ready",
+          "observedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "observedLoadId": "load-ready",
+          "observedRouteId": "route-ready",
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeId": "route-conflict",
+          "routeSafetyAssessment": null,
+          "stagingAreaRef": "dock-a",
+          "stagingEvidence": {
+            "evidenceId": "staged-ready",
+            "staged": true,
+            "status": "STAGED"
+          },
+          "supervisorReference": {
+            "supervisorContextId": "supervisor.context.synthetic.001"
+          },
+          "testOnly": true,
+          "unknownFields": []
+        },
+        "warehouseContext": {
+          "authorizedActorRef": "warehouse.employee.synthetic.001",
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.route_inventory",
+            "synthetic.warehouse_confirmation"
+          ],
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "loadScope": [
+            "load-ready",
+            "load-short",
+            "load-safety-blocked"
+          ],
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeScope": [
+            "route-ready",
+            "route-missing-product",
+            "route-safety-blocked"
+          ],
+          "sourceHashes": [
+            {
+              "hash": "d758e58536d5dffb473dc637de134140b87bb2408378fac998cc3232140cd6a0",
+              "source": "synthetic.route_manifest"
+            }
+          ],
+          "testOnly": true,
+          "unknownFields": [],
+          "warehouseContextId": "warehouse.context.synthetic.001",
+          "warehouseReference": "depot.synthetic.birmingham",
+          "workPeriodRef": "warehouse.shift.synthetic.day"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "all_evidence_ready",
+      "employeeScoringExpected": false,
+      "expectedReadiness": "READY",
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "routeLoad": {
+          "assignedDriverRef": "driver-synthetic-001",
+          "assignedVehicleRef": "vehicle-box-12ft-6in",
+          "driverOperationalAssessment": null,
+          "evidenceConflict": false,
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.load_scan"
+          ],
+          "evidenceStale": false,
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "expectedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "expectedLoadId": "load-ready",
+          "expectedRouteId": "route-ready",
+          "humanReviewRequired": false,
+          "loadAssignmentEvidence": {
+            "evidenceId": "assignment-ready",
+            "source": "synthetic.route_manifest"
+          },
+          "loadCompletionEvidence": {
+            "complete": true,
+            "evidenceId": "complete-ready"
+          },
+          "loadId": "load-ready",
+          "loadingEvidence": {
+            "complete": true,
+            "evidenceId": "loaded-ready",
+            "status": "LOADED"
+          },
+          "manifestRef": "manifest-ready",
+          "observedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "observedLoadId": "load-ready",
+          "observedRouteId": "route-ready",
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeId": "route-all-ready",
+          "routeSafetyAssessment": null,
+          "stagingAreaRef": "dock-a",
+          "stagingEvidence": {
+            "evidenceId": "staged-ready",
+            "staged": true,
+            "status": "STAGED"
+          },
+          "supervisorReference": {
+            "supervisorContextId": "supervisor.context.synthetic.001"
+          },
+          "testOnly": true,
+          "unknownFields": []
+        },
+        "warehouseContext": {
+          "authorizedActorRef": "warehouse.employee.synthetic.001",
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.route_inventory",
+            "synthetic.warehouse_confirmation"
+          ],
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "loadScope": [
+            "load-ready",
+            "load-short",
+            "load-safety-blocked"
+          ],
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeScope": [
+            "route-ready",
+            "route-missing-product",
+            "route-safety-blocked"
+          ],
+          "sourceHashes": [
+            {
+              "hash": "d758e58536d5dffb473dc637de134140b87bb2408378fac998cc3232140cd6a0",
+              "source": "synthetic.route_manifest"
+            }
+          ],
+          "testOnly": true,
+          "unknownFields": [],
+          "warehouseContextId": "warehouse.context.synthetic.001",
+          "warehouseReference": "depot.synthetic.birmingham",
+          "workPeriodRef": "warehouse.shift.synthetic.day"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "load_complete_route_safety_blocked",
+      "employeeScoringExpected": false,
+      "expectedReadiness": "BLOCKED",
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "routeLoad": {
+          "assignedDriverRef": "driver-synthetic-001",
+          "assignedVehicleRef": "vehicle-box-12ft-6in",
+          "driverOperationalAssessment": null,
+          "evidenceConflict": false,
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.load_scan"
+          ],
+          "evidenceStale": false,
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "expectedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "expectedLoadId": "load-ready",
+          "expectedRouteId": "route-ready",
+          "humanReviewRequired": false,
+          "loadAssignmentEvidence": {
+            "evidenceId": "assignment-ready",
+            "source": "synthetic.route_manifest"
+          },
+          "loadCompletionEvidence": {
+            "complete": true,
+            "evidenceId": "complete-ready"
+          },
+          "loadId": "load-ready",
+          "loadingEvidence": {
+            "complete": true,
+            "evidenceId": "loaded-ready",
+            "status": "LOADED"
+          },
+          "manifestRef": "manifest-ready",
+          "observedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "observedLoadId": "load-ready",
+          "observedRouteId": "route-ready",
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeId": "route-safety-blocked",
+          "routeSafetyAssessment": {
+            "advisoryOnly": true,
+            "assessmentHash": "0647c78b42b59401f1fd5744f9812cb27481c56cecce5acceca63ae537513703",
+            "confidence": {
+              "score": null,
+              "status": "NOT_SAFE_TO_CERTIFY"
+            },
+            "eligible": false,
+            "engineVersion": "route.intelligence.foundation.engine.v1",
+            "evidenceCompleteness": [
+              {
+                "name": "clearanceEvidence",
+                "present": true
+              },
+              {
+                "name": "restrictions",
+                "present": true
+              },
+              {
+                "name": "hazards",
+                "present": true
+              },
+              {
+                "name": "geometry",
+                "present": true
+              }
+            ],
+            "generatedAt": "2026-07-25T00:00:00.000Z",
+            "policy": {
+              "failClosedOnMissingVehicleDimensions": true,
+              "failClosedOnUnknownClearance": true,
+              "hazardProximityYards": 60,
+              "heightSafetyBufferInches": 6,
+              "maxEvidenceAgeDays": 365,
+              "minimumClearanceMarginInches": 3,
+              "residentialAvoidanceAdvisoryOnly": true
+            },
+            "productionApplicable": false,
+            "providerCallInvoked": false,
+            "reasonCodes": [
+              "CLEARANCE_FAIL_CLOSED",
+              "HAZARD_PROXIMITY_PASS"
+            ],
+            "routeCandidateId": "route-low-clearance",
+            "routeEndpointModified": false,
+            "ruleResults": [
+              {
+                "assessmentType": "CLEARANCE",
+                "evidenceId": "bridge-13ft-0in-current",
+                "facts": {
+                  "clearanceConfidence": 1,
+                  "clearanceInches": 156,
+                  "clearanceSource": "synthetic.bridge.catalog",
+                  "evidenceAgeDays": 5,
+                  "marginInches": -12,
+                  "safetyBufferInches": 6,
+                  "vehicleEffectiveHeightInches": 168,
+                  "vehiclePhysicalHeightInches": 162
+                },
+                "reasonCode": "CLEARANCE_FAIL_CLOSED",
+                "resultHash": "2b96c15d1418ae24ae14722a06ea290cc0b941240d48bc2d93a88926ea49c011",
+                "safetyCritical": true,
+                "status": "FAIL_CLOSED"
+              },
+              {
+                "assessmentType": "HAZARD_PROXIMITY",
+                "facts": {
+                  "hazardCount": 0
+                },
+                "reasonCode": "HAZARD_PROXIMITY_PASS",
+                "resultHash": "e763627faff663cc3342697e92fbb8effabf46dd2998b852d130419e70c022c9",
+                "safetyCritical": false,
+                "status": "PASS"
+              }
+            ],
+            "safeWithinKnownEvidence": false,
+            "schemaVersion": "route.intelligence.foundation.v1",
+            "sourceHashes": [
+              {
+                "assessmentType": "CLEARANCE",
+                "hash": "2b96c15d1418ae24ae14722a06ea290cc0b941240d48bc2d93a88926ea49c011",
+                "id": "bridge-13ft-0in-current"
+              },
+              {
+                "assessmentType": "HAZARD_PROXIMITY",
+                "hash": "e763627faff663cc3342697e92fbb8effabf46dd2998b852d130419e70c022c9",
+                "id": null
+              }
+            ],
+            "status": "UNSAFE",
+            "tenantContext": {
+              "organizationId": "org_synthetic_route_intelligence"
+            }
+          },
+          "stagingAreaRef": "dock-a",
+          "stagingEvidence": {
+            "evidenceId": "staged-ready",
+            "staged": true,
+            "status": "STAGED"
+          },
+          "supervisorReference": {
+            "supervisorContextId": "supervisor.context.synthetic.001"
+          },
+          "testOnly": true,
+          "unknownFields": []
+        },
+        "warehouseContext": {
+          "authorizedActorRef": "warehouse.employee.synthetic.001",
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.route_inventory",
+            "synthetic.warehouse_confirmation"
+          ],
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "loadScope": [
+            "load-ready",
+            "load-short",
+            "load-safety-blocked"
+          ],
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeScope": [
+            "route-ready",
+            "route-missing-product",
+            "route-safety-blocked"
+          ],
+          "sourceHashes": [
+            {
+              "hash": "d758e58536d5dffb473dc637de134140b87bb2408378fac998cc3232140cd6a0",
+              "source": "synthetic.route_manifest"
+            }
+          ],
+          "testOnly": true,
+          "unknownFields": [],
+          "warehouseContextId": "warehouse.context.synthetic.001",
+          "warehouseReference": "depot.synthetic.birmingham",
+          "workPeriodRef": "warehouse.shift.synthetic.day"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "route_ready_with_human_review",
+      "employeeScoringExpected": false,
+      "expectedReadiness": "READY_WITH_REVIEW",
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "routeLoad": {
+          "assignedDriverRef": "driver-synthetic-001",
+          "assignedVehicleRef": "vehicle-box-12ft-6in",
+          "driverOperationalAssessment": null,
+          "evidenceConflict": false,
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.load_scan"
+          ],
+          "evidenceStale": false,
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "expectedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "expectedLoadId": "load-ready",
+          "expectedRouteId": "route-ready",
+          "humanReviewRequired": true,
+          "loadAssignmentEvidence": {
+            "evidenceId": "assignment-ready",
+            "source": "synthetic.route_manifest"
+          },
+          "loadCompletionEvidence": {
+            "complete": true,
+            "evidenceId": "complete-ready"
+          },
+          "loadId": "load-ready",
+          "loadingEvidence": {
+            "complete": true,
+            "evidenceId": "loaded-ready",
+            "status": "LOADED"
+          },
+          "manifestRef": "manifest-ready",
+          "observedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "observedLoadId": "load-ready",
+          "observedRouteId": "route-ready",
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeId": "route-review",
+          "routeSafetyAssessment": null,
+          "stagingAreaRef": "dock-a",
+          "stagingEvidence": {
+            "evidenceId": "staged-ready",
+            "staged": true,
+            "status": "STAGED"
+          },
+          "supervisorReference": {
+            "supervisorContextId": "supervisor.context.synthetic.001"
+          },
+          "testOnly": true,
+          "unknownFields": []
+        },
+        "warehouseContext": {
+          "authorizedActorRef": "warehouse.employee.synthetic.001",
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.route_inventory",
+            "synthetic.warehouse_confirmation"
+          ],
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "loadScope": [
+            "load-ready",
+            "load-short",
+            "load-safety-blocked"
+          ],
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeScope": [
+            "route-ready",
+            "route-missing-product",
+            "route-safety-blocked"
+          ],
+          "sourceHashes": [
+            {
+              "hash": "d758e58536d5dffb473dc637de134140b87bb2408378fac998cc3232140cd6a0",
+              "source": "synthetic.route_manifest"
+            }
+          ],
+          "testOnly": true,
+          "unknownFields": [],
+          "warehouseContextId": "warehouse.context.synthetic.001",
+          "warehouseReference": "depot.synthetic.birmingham",
+          "workPeriodRef": "warehouse.shift.synthetic.day"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "departure_blocked",
+      "employeeScoringExpected": false,
+      "expectedReadiness": "BLOCKED",
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "routeLoad": {
+          "assignedDriverRef": "driver-synthetic-001",
+          "assignedVehicleRef": "vehicle-box-12ft-6in",
+          "driverOperationalAssessment": null,
+          "evidenceConflict": false,
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.load_scan"
+          ],
+          "evidenceStale": false,
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "expectedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "expectedLoadId": "load-ready",
+          "expectedRouteId": "route-ready",
+          "humanReviewRequired": false,
+          "loadAssignmentEvidence": {
+            "evidenceId": "assignment-ready",
+            "source": "synthetic.route_manifest"
+          },
+          "loadCompletionEvidence": {
+            "complete": true,
+            "evidenceId": "complete-ready"
+          },
+          "loadId": "load-ready",
+          "loadingEvidence": {
+            "blocked": true
+          },
+          "manifestRef": "manifest-ready",
+          "observedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "observedLoadId": "load-ready",
+          "observedRouteId": "route-ready",
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeId": "route-departure-blocked",
+          "routeSafetyAssessment": null,
+          "stagingAreaRef": "dock-a",
+          "stagingEvidence": {
+            "blocked": true
+          },
+          "supervisorReference": {
+            "supervisorContextId": "supervisor.context.synthetic.001"
+          },
+          "testOnly": true,
+          "unknownFields": []
+        },
+        "warehouseContext": {
+          "authorizedActorRef": "warehouse.employee.synthetic.001",
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.route_inventory",
+            "synthetic.warehouse_confirmation"
+          ],
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "loadScope": [
+            "load-ready",
+            "load-short",
+            "load-safety-blocked"
+          ],
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeScope": [
+            "route-ready",
+            "route-missing-product",
+            "route-safety-blocked"
+          ],
+          "sourceHashes": [
+            {
+              "hash": "d758e58536d5dffb473dc637de134140b87bb2408378fac998cc3232140cd6a0",
+              "source": "synthetic.route_manifest"
+            }
+          ],
+          "testOnly": true,
+          "unknownFields": [],
+          "warehouseContextId": "warehouse.context.synthetic.001",
+          "warehouseReference": "depot.synthetic.birmingham",
+          "workPeriodRef": "warehouse.shift.synthetic.day"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "insufficient_evidence",
+      "employeeScoringExpected": false,
+      "expectedReadiness": "INSUFFICIENT_EVIDENCE",
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "routeLoad": {
+          "assignedDriverRef": "driver-synthetic-001",
+          "assignedVehicleRef": "vehicle-box-12ft-6in",
+          "driverOperationalAssessment": null,
+          "evidenceConflict": false,
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.load_scan"
+          ],
+          "evidenceStale": false,
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "expectedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "expectedLoadId": null,
+          "expectedRouteId": "route-ready",
+          "humanReviewRequired": false,
+          "loadAssignmentEvidence": null,
+          "loadCompletionEvidence": {
+            "complete": true,
+            "evidenceId": "complete-ready"
+          },
+          "loadId": "load-ready",
+          "loadingEvidence": {
+            "complete": true,
+            "evidenceId": "loaded-ready",
+            "status": "LOADED"
+          },
+          "manifestRef": "manifest-ready",
+          "observedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "observedLoadId": "load-ready",
+          "observedRouteId": "route-ready",
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeId": "route-insufficient",
+          "routeSafetyAssessment": null,
+          "stagingAreaRef": "dock-a",
+          "stagingEvidence": {
+            "evidenceId": "staged-ready",
+            "staged": true,
+            "status": "STAGED"
+          },
+          "supervisorReference": {
+            "supervisorContextId": "supervisor.context.synthetic.001"
+          },
+          "testOnly": true,
+          "unknownFields": []
+        },
+        "warehouseContext": {
+          "authorizedActorRef": "warehouse.employee.synthetic.001",
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.route_inventory",
+            "synthetic.warehouse_confirmation"
+          ],
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "loadScope": [
+            "load-ready",
+            "load-short",
+            "load-safety-blocked"
+          ],
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeScope": [
+            "route-ready",
+            "route-missing-product",
+            "route-safety-blocked"
+          ],
+          "sourceHashes": [
+            {
+              "hash": "d758e58536d5dffb473dc637de134140b87bb2408378fac998cc3232140cd6a0",
+              "source": "synthetic.route_manifest"
+            }
+          ],
+          "testOnly": true,
+          "unknownFields": [],
+          "warehouseContextId": "warehouse.context.synthetic.001",
+          "warehouseReference": "depot.synthetic.birmingham",
+          "workPeriodRef": "warehouse.shift.synthetic.day"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "unknown_state",
+      "employeeScoringExpected": false,
+      "expectedReadiness": "NOT_READY",
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "routeLoad": {
+          "assignedDriverRef": "driver-synthetic-001",
+          "assignedVehicleRef": "vehicle-box-12ft-6in",
+          "driverOperationalAssessment": null,
+          "evidenceConflict": false,
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.load_scan"
+          ],
+          "evidenceStale": false,
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "expectedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "expectedLoadId": "load-ready",
+          "expectedRouteId": "route-ready",
+          "humanReviewRequired": false,
+          "loadAssignmentEvidence": {
+            "evidenceId": "assignment-ready",
+            "source": "synthetic.route_manifest"
+          },
+          "loadCompletionEvidence": {
+            "complete": true,
+            "evidenceId": "complete-ready"
+          },
+          "loadId": "load-ready",
+          "loadingEvidence": {
+            "evidenceId": "load-unknown"
+          },
+          "manifestRef": "manifest-ready",
+          "observedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "observedLoadId": "load-ready",
+          "observedRouteId": "route-ready",
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeId": "route-unknown",
+          "routeSafetyAssessment": null,
+          "stagingAreaRef": "dock-a",
+          "stagingEvidence": {
+            "evidenceId": "stage-unknown"
+          },
+          "supervisorReference": {
+            "supervisorContextId": "supervisor.context.synthetic.001"
+          },
+          "testOnly": true,
+          "unknownFields": []
+        },
+        "warehouseContext": {
+          "authorizedActorRef": "warehouse.employee.synthetic.001",
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.route_inventory",
+            "synthetic.warehouse_confirmation"
+          ],
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "loadScope": [
+            "load-ready",
+            "load-short",
+            "load-safety-blocked"
+          ],
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeScope": [
+            "route-ready",
+            "route-missing-product",
+            "route-safety-blocked"
+          ],
+          "sourceHashes": [
+            {
+              "hash": "d758e58536d5dffb473dc637de134140b87bb2408378fac998cc3232140cd6a0",
+              "source": "synthetic.route_manifest"
+            }
+          ],
+          "testOnly": true,
+          "unknownFields": [],
+          "warehouseContextId": "warehouse.context.synthetic.001",
+          "warehouseReference": "depot.synthetic.birmingham",
+          "workPeriodRef": "warehouse.shift.synthetic.day"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "supervisor_review",
+      "employeeScoringExpected": false,
+      "expectedReadiness": "READY_WITH_REVIEW",
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "routeLoad": {
+          "assignedDriverRef": "driver-synthetic-001",
+          "assignedVehicleRef": "vehicle-box-12ft-6in",
+          "driverOperationalAssessment": null,
+          "evidenceConflict": false,
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.load_scan"
+          ],
+          "evidenceStale": false,
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "expectedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "expectedLoadId": "load-ready",
+          "expectedRouteId": "route-ready",
+          "humanReviewRequired": true,
+          "loadAssignmentEvidence": {
+            "evidenceId": "assignment-ready",
+            "source": "synthetic.route_manifest"
+          },
+          "loadCompletionEvidence": {
+            "complete": true,
+            "evidenceId": "complete-ready"
+          },
+          "loadId": "load-ready",
+          "loadingEvidence": {
+            "complete": true,
+            "evidenceId": "loaded-ready",
+            "status": "LOADED"
+          },
+          "manifestRef": "manifest-ready",
+          "observedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "observedLoadId": "load-ready",
+          "observedRouteId": "route-ready",
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeId": "route-supervisor-review",
+          "routeSafetyAssessment": null,
+          "stagingAreaRef": "dock-a",
+          "stagingEvidence": {
+            "evidenceId": "staged-ready",
+            "staged": true,
+            "status": "STAGED"
+          },
+          "supervisorReference": {
+            "supervisorContextId": "supervisor.context.synthetic.001",
+            "visibilityRequired": true
+          },
+          "testOnly": true,
+          "unknownFields": []
+        },
+        "warehouseContext": {
+          "authorizedActorRef": "warehouse.employee.synthetic.001",
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.route_inventory",
+            "synthetic.warehouse_confirmation"
+          ],
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "loadScope": [
+            "load-ready",
+            "load-short",
+            "load-safety-blocked"
+          ],
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeScope": [
+            "route-ready",
+            "route-missing-product",
+            "route-safety-blocked"
+          ],
+          "sourceHashes": [
+            {
+              "hash": "d758e58536d5dffb473dc637de134140b87bb2408378fac998cc3232140cd6a0",
+              "source": "synthetic.route_manifest"
+            }
+          ],
+          "testOnly": true,
+          "unknownFields": [],
+          "warehouseContextId": "warehouse.context.synthetic.001",
+          "warehouseReference": "depot.synthetic.birmingham",
+          "workPeriodRef": "warehouse.shift.synthetic.day"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "warehouse_review",
+      "employeeScoringExpected": false,
+      "expectedReadiness": "READY_WITH_REVIEW",
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "routeLoad": {
+          "assignedDriverRef": "driver-synthetic-001",
+          "assignedVehicleRef": "vehicle-box-12ft-6in",
+          "driverOperationalAssessment": null,
+          "evidenceConflict": false,
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.load_scan"
+          ],
+          "evidenceStale": true,
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "expectedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "expectedLoadId": "load-ready",
+          "expectedRouteId": "route-ready",
+          "humanReviewRequired": false,
+          "loadAssignmentEvidence": {
+            "evidenceId": "assignment-ready",
+            "source": "synthetic.route_manifest"
+          },
+          "loadCompletionEvidence": {
+            "complete": true,
+            "evidenceId": "complete-ready"
+          },
+          "loadId": "load-ready",
+          "loadingEvidence": {
+            "complete": true,
+            "evidenceId": "loaded-ready",
+            "status": "LOADED"
+          },
+          "manifestRef": "manifest-ready",
+          "observedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "observedLoadId": "load-ready",
+          "observedRouteId": "route-ready",
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeId": "route-warehouse-review",
+          "routeSafetyAssessment": null,
+          "stagingAreaRef": "dock-a",
+          "stagingEvidence": {
+            "evidenceId": "staged-ready",
+            "staged": true,
+            "status": "STAGED"
+          },
+          "supervisorReference": {
+            "supervisorContextId": "supervisor.context.synthetic.001"
+          },
+          "testOnly": true,
+          "unknownFields": []
+        },
+        "warehouseContext": {
+          "authorizedActorRef": "warehouse.employee.synthetic.001",
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.route_inventory",
+            "synthetic.warehouse_confirmation"
+          ],
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "loadScope": [
+            "load-ready",
+            "load-short",
+            "load-safety-blocked"
+          ],
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeScope": [
+            "route-ready",
+            "route-missing-product",
+            "route-safety-blocked"
+          ],
+          "sourceHashes": [
+            {
+              "hash": "d758e58536d5dffb473dc637de134140b87bb2408378fac998cc3232140cd6a0",
+              "source": "synthetic.route_manifest"
+            }
+          ],
+          "testOnly": true,
+          "unknownFields": [],
+          "warehouseContextId": "warehouse.context.synthetic.001",
+          "warehouseReference": "depot.synthetic.birmingham",
+          "workPeriodRef": "warehouse.shift.synthetic.day"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "alert_acknowledgement",
+      "employeeScoringExpected": false,
+      "expectedReadiness": "BLOCKED",
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "routeLoad": {
+          "assignedDriverRef": "driver-synthetic-001",
+          "assignedVehicleRef": "vehicle-box-12ft-6in",
+          "driverOperationalAssessment": null,
+          "evidenceConflict": false,
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.load_scan"
+          ],
+          "evidenceStale": false,
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "expectedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "expectedLoadId": "load-ready",
+          "expectedRouteId": "route-ready",
+          "humanReviewRequired": false,
+          "loadAssignmentEvidence": {
+            "evidenceId": "assignment-ready",
+            "source": "synthetic.route_manifest"
+          },
+          "loadCompletionEvidence": {
+            "complete": true,
+            "evidenceId": "complete-ready"
+          },
+          "loadId": "load-ready",
+          "loadingEvidence": {
+            "complete": true,
+            "evidenceId": "loaded-ready",
+            "status": "LOADED"
+          },
+          "manifestRef": "manifest-ready",
+          "observedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            }
+          ],
+          "observedLoadId": "load-ready",
+          "observedRouteId": "route-ready",
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeId": "route-alert-ack",
+          "routeSafetyAssessment": null,
+          "stagingAreaRef": "dock-a",
+          "stagingEvidence": {
+            "evidenceId": "staged-ready",
+            "staged": true,
+            "status": "STAGED"
+          },
+          "supervisorReference": {
+            "supervisorContextId": "supervisor.context.synthetic.001"
+          },
+          "testOnly": true,
+          "unknownFields": []
+        },
+        "warehouseContext": {
+          "authorizedActorRef": "warehouse.employee.synthetic.001",
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.route_inventory",
+            "synthetic.warehouse_confirmation"
+          ],
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "loadScope": [
+            "load-ready",
+            "load-short",
+            "load-safety-blocked"
+          ],
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeScope": [
+            "route-ready",
+            "route-missing-product",
+            "route-safety-blocked"
+          ],
+          "sourceHashes": [
+            {
+              "hash": "d758e58536d5dffb473dc637de134140b87bb2408378fac998cc3232140cd6a0",
+              "source": "synthetic.route_manifest"
+            }
+          ],
+          "testOnly": true,
+          "unknownFields": [],
+          "warehouseContextId": "warehouse.context.synthetic.001",
+          "warehouseReference": "depot.synthetic.birmingham",
+          "workPeriodRef": "warehouse.shift.synthetic.day"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "alert_resolution",
+      "employeeScoringExpected": false,
+      "expectedReadiness": "BLOCKED",
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "routeLoad": {
+          "assignedDriverRef": "driver-synthetic-001",
+          "assignedVehicleRef": "vehicle-box-12ft-6in",
+          "driverOperationalAssessment": null,
+          "evidenceConflict": false,
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.load_scan"
+          ],
+          "evidenceStale": false,
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "expectedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "expectedLoadId": "load-ready",
+          "expectedRouteId": "route-ready",
+          "humanReviewRequired": false,
+          "loadAssignmentEvidence": {
+            "evidenceId": "assignment-ready",
+            "source": "synthetic.route_manifest"
+          },
+          "loadCompletionEvidence": {
+            "complete": true,
+            "evidenceId": "complete-ready"
+          },
+          "loadId": "load-ready",
+          "loadingEvidence": {
+            "complete": true,
+            "evidenceId": "loaded-ready",
+            "status": "LOADED"
+          },
+          "manifestRef": "manifest-ready",
+          "observedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            }
+          ],
+          "observedLoadId": "load-ready",
+          "observedRouteId": "route-ready",
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeId": "route-alert-resolve",
+          "routeSafetyAssessment": null,
+          "stagingAreaRef": "dock-a",
+          "stagingEvidence": {
+            "evidenceId": "staged-ready",
+            "staged": true,
+            "status": "STAGED"
+          },
+          "supervisorReference": {
+            "supervisorContextId": "supervisor.context.synthetic.001"
+          },
+          "testOnly": true,
+          "unknownFields": []
+        },
+        "warehouseContext": {
+          "authorizedActorRef": "warehouse.employee.synthetic.001",
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.route_inventory",
+            "synthetic.warehouse_confirmation"
+          ],
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "loadScope": [
+            "load-ready",
+            "load-short",
+            "load-safety-blocked"
+          ],
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeScope": [
+            "route-ready",
+            "route-missing-product",
+            "route-safety-blocked"
+          ],
+          "sourceHashes": [
+            {
+              "hash": "d758e58536d5dffb473dc637de134140b87bb2408378fac998cc3232140cd6a0",
+              "source": "synthetic.route_manifest"
+            }
+          ],
+          "testOnly": true,
+          "unknownFields": [],
+          "warehouseContextId": "warehouse.context.synthetic.001",
+          "warehouseReference": "depot.synthetic.birmingham",
+          "workPeriodRef": "warehouse.shift.synthetic.day"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "new_evidence_invalidates_discrepancy",
+      "employeeScoringExpected": false,
+      "expectedReadiness": "BLOCKED",
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "routeLoad": {
+          "assignedDriverRef": "driver-synthetic-001",
+          "assignedVehicleRef": "vehicle-box-12ft-6in",
+          "driverOperationalAssessment": null,
+          "evidenceConflict": false,
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.load_scan"
+          ],
+          "evidenceStale": false,
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "expectedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "expectedLoadId": "load-ready",
+          "expectedRouteId": "route-ready",
+          "humanReviewRequired": false,
+          "loadAssignmentEvidence": {
+            "evidenceId": "assignment-ready",
+            "source": "synthetic.route_manifest"
+          },
+          "loadCompletionEvidence": {
+            "complete": true,
+            "evidenceId": "complete-ready"
+          },
+          "loadId": "load-ready",
+          "loadingEvidence": {
+            "complete": true,
+            "evidenceId": "loaded-ready",
+            "status": "LOADED"
+          },
+          "manifestRef": "manifest-ready",
+          "observedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            }
+          ],
+          "observedLoadId": "load-ready",
+          "observedRouteId": "route-ready",
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeId": "route-alert-invalidated",
+          "routeSafetyAssessment": null,
+          "stagingAreaRef": "dock-a",
+          "stagingEvidence": {
+            "evidenceId": "staged-ready",
+            "staged": true,
+            "status": "STAGED"
+          },
+          "supervisorReference": {
+            "supervisorContextId": "supervisor.context.synthetic.001"
+          },
+          "testOnly": true,
+          "unknownFields": []
+        },
+        "warehouseContext": {
+          "authorizedActorRef": "warehouse.employee.synthetic.001",
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.route_inventory",
+            "synthetic.warehouse_confirmation"
+          ],
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "loadScope": [
+            "load-ready",
+            "load-short",
+            "load-safety-blocked"
+          ],
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeScope": [
+            "route-ready",
+            "route-missing-product",
+            "route-safety-blocked"
+          ],
+          "sourceHashes": [
+            {
+              "hash": "d758e58536d5dffb473dc637de134140b87bb2408378fac998cc3232140cd6a0",
+              "source": "synthetic.route_manifest"
+            }
+          ],
+          "testOnly": true,
+          "unknownFields": [],
+          "warehouseContextId": "warehouse.context.synthetic.001",
+          "warehouseReference": "depot.synthetic.birmingham",
+          "workPeriodRef": "warehouse.shift.synthetic.day"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "no_exception_case",
+      "employeeScoringExpected": false,
+      "expectedReadiness": "READY",
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "routeLoad": {
+          "assignedDriverRef": "driver-synthetic-001",
+          "assignedVehicleRef": "vehicle-box-12ft-6in",
+          "driverOperationalAssessment": null,
+          "evidenceConflict": false,
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.load_scan"
+          ],
+          "evidenceStale": false,
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "expectedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "expectedLoadId": "load-ready",
+          "expectedRouteId": "route-ready",
+          "humanReviewRequired": false,
+          "loadAssignmentEvidence": {
+            "evidenceId": "assignment-ready",
+            "source": "synthetic.route_manifest"
+          },
+          "loadCompletionEvidence": {
+            "complete": true,
+            "evidenceId": "complete-ready"
+          },
+          "loadId": "load-ready",
+          "loadingEvidence": {
+            "complete": true,
+            "evidenceId": "loaded-ready",
+            "status": "LOADED"
+          },
+          "manifestRef": "manifest-ready",
+          "observedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "observedLoadId": "load-ready",
+          "observedRouteId": "route-ready",
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeId": "route-no-exception",
+          "routeSafetyAssessment": null,
+          "stagingAreaRef": "dock-a",
+          "stagingEvidence": {
+            "evidenceId": "staged-ready",
+            "staged": true,
+            "status": "STAGED"
+          },
+          "supervisorReference": {
+            "supervisorContextId": "supervisor.context.synthetic.001"
+          },
+          "testOnly": true,
+          "unknownFields": []
+        },
+        "warehouseContext": {
+          "authorizedActorRef": "warehouse.employee.synthetic.001",
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.route_inventory",
+            "synthetic.warehouse_confirmation"
+          ],
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "loadScope": [
+            "load-ready",
+            "load-short",
+            "load-safety-blocked"
+          ],
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeScope": [
+            "route-ready",
+            "route-missing-product",
+            "route-safety-blocked"
+          ],
+          "sourceHashes": [
+            {
+              "hash": "d758e58536d5dffb473dc637de134140b87bb2408378fac998cc3232140cd6a0",
+              "source": "synthetic.route_manifest"
+            }
+          ],
+          "testOnly": true,
+          "unknownFields": [],
+          "warehouseContextId": "warehouse.context.synthetic.001",
+          "warehouseReference": "depot.synthetic.birmingham",
+          "workPeriodRef": "warehouse.shift.synthetic.day"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "unknown_quantity",
+      "employeeScoringExpected": false,
+      "expectedReadiness": "INSUFFICIENT_EVIDENCE",
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "routeLoad": {
+          "assignedDriverRef": "driver-synthetic-001",
+          "assignedVehicleRef": "vehicle-box-12ft-6in",
+          "driverOperationalAssessment": null,
+          "evidenceConflict": false,
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.load_scan"
+          ],
+          "evidenceStale": false,
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "expectedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "expectedLoadId": "load-ready",
+          "expectedRouteId": "route-ready",
+          "humanReviewRequired": false,
+          "loadAssignmentEvidence": {
+            "evidenceId": "assignment-ready",
+            "source": "synthetic.route_manifest"
+          },
+          "loadCompletionEvidence": {
+            "complete": true,
+            "evidenceId": "complete-ready"
+          },
+          "loadId": "load-ready",
+          "loadingEvidence": {
+            "complete": true,
+            "evidenceId": "loaded-ready",
+            "status": "LOADED"
+          },
+          "manifestRef": "manifest-ready",
+          "observedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": null,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "observedLoadId": "load-ready",
+          "observedRouteId": "route-ready",
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeId": "route-unknown-quantity",
+          "routeSafetyAssessment": null,
+          "stagingAreaRef": "dock-a",
+          "stagingEvidence": {
+            "evidenceId": "staged-ready",
+            "staged": true,
+            "status": "STAGED"
+          },
+          "supervisorReference": {
+            "supervisorContextId": "supervisor.context.synthetic.001"
+          },
+          "testOnly": true,
+          "unknownFields": []
+        },
+        "warehouseContext": {
+          "authorizedActorRef": "warehouse.employee.synthetic.001",
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.route_inventory",
+            "synthetic.warehouse_confirmation"
+          ],
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "loadScope": [
+            "load-ready",
+            "load-short",
+            "load-safety-blocked"
+          ],
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeScope": [
+            "route-ready",
+            "route-missing-product",
+            "route-safety-blocked"
+          ],
+          "sourceHashes": [
+            {
+              "hash": "d758e58536d5dffb473dc637de134140b87bb2408378fac998cc3232140cd6a0",
+              "source": "synthetic.route_manifest"
+            }
+          ],
+          "testOnly": true,
+          "unknownFields": [],
+          "warehouseContextId": "warehouse.context.synthetic.001",
+          "warehouseReference": "depot.synthetic.birmingham",
+          "workPeriodRef": "warehouse.shift.synthetic.day"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "cross_organization_evidence",
+      "employeeScoringExpected": false,
+      "expectedReadiness": "INSUFFICIENT_EVIDENCE",
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "routeLoad": {
+          "assignedDriverRef": "driver-synthetic-001",
+          "assignedVehicleRef": "vehicle-box-12ft-6in",
+          "driverOperationalAssessment": null,
+          "evidenceConflict": false,
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.load_scan"
+          ],
+          "evidenceStale": false,
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "expectedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "expectedLoadId": "load-ready",
+          "expectedRouteId": "route-ready",
+          "humanReviewRequired": false,
+          "loadAssignmentEvidence": {
+            "evidenceId": "assignment-ready",
+            "source": "synthetic.route_manifest"
+          },
+          "loadCompletionEvidence": {
+            "complete": true,
+            "evidenceId": "complete-ready"
+          },
+          "loadId": "load-ready",
+          "loadingEvidence": {
+            "complete": true,
+            "evidenceId": "loaded-ready",
+            "status": "LOADED"
+          },
+          "manifestRef": "manifest-ready",
+          "observedLines": [
+            {
+              "productName": "Cola 12pk",
+              "quantity": 10,
+              "sku": "SKU-COLA-12PK"
+            },
+            {
+              "productName": "Water 24pk",
+              "quantity": 8,
+              "sku": "SKU-WATER-24PK"
+            }
+          ],
+          "observedLoadId": "load-ready",
+          "observedRouteId": "route-ready",
+          "organizationId": "org_other",
+          "routeId": "route-cross-org",
+          "routeSafetyAssessment": null,
+          "stagingAreaRef": "dock-a",
+          "stagingEvidence": {
+            "evidenceId": "staged-ready",
+            "staged": true,
+            "status": "STAGED"
+          },
+          "supervisorReference": {
+            "supervisorContextId": "supervisor.context.synthetic.001"
+          },
+          "testOnly": true,
+          "unknownFields": []
+        },
+        "warehouseContext": {
+          "authorizedActorRef": "warehouse.employee.synthetic.001",
+          "evidenceSources": [
+            "synthetic.route_manifest",
+            "synthetic.route_inventory",
+            "synthetic.warehouse_confirmation"
+          ],
+          "evidenceTimestamps": [
+            "2026-08-08T00:00:00.000Z"
+          ],
+          "loadScope": [
+            "load-ready",
+            "load-short",
+            "load-safety-blocked"
+          ],
+          "organizationId": "org_synthetic_warehouse_intelligence",
+          "routeScope": [
+            "route-ready",
+            "route-missing-product",
+            "route-safety-blocked"
+          ],
+          "sourceHashes": [
+            {
+              "hash": "d758e58536d5dffb473dc637de134140b87bb2408378fac998cc3232140cd6a0",
+              "source": "synthetic.route_manifest"
+            }
+          ],
+          "testOnly": true,
+          "unknownFields": [],
+          "warehouseContextId": "warehouse.context.synthetic.001",
+          "warehouseReference": "depot.synthetic.birmingham",
+          "workPeriodRef": "warehouse.shift.synthetic.day"
+        }
+      },
+      "syntheticOnly": true
+    }
+  ],
+  "generatedArtifact": true
+}

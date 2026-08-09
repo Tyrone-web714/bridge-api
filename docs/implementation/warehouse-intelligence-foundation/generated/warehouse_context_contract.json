@@ -1,0 +1,28 @@
+{
+  "callerProviderControlsAllowed": false,
+  "optional": [
+    "unknownFields",
+    "systemActorRef"
+  ],
+  "required": [
+    "warehouseContextId",
+    "organizationId",
+    "warehouseReference",
+    "authorizedActorRef",
+    "workPeriodRef",
+    "routeScope",
+    "loadScope",
+    "evidenceSources",
+    "evidenceTimestamps",
+    "sourceHashes",
+    "testOnly"
+  ],
+  "schemaVersion": "warehouse.context.contract.v1",
+  "serverDerivedInFutureRuntime": [
+    "organizationId",
+    "authorizedActorRef",
+    "warehouseReference"
+  ],
+  "testOnly": true,
+  "warehouseMfaRequiredInFutureRuntime": true
+}

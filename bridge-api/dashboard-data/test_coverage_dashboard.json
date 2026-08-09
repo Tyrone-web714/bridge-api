@@ -17,7 +17,7 @@
       "dashboard-data/test_coverage_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "b389d656ab887e0b59b1dfb3008155234656b8c9cc6c012bb55a7d5dca34a9ea",
+    "generationHash": "db2e9ae9813b6791e0c2df07877a2975dc9db939e32539ca1622d73000365c52",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -124,13 +124,18 @@
         "test:scoring-engine",
         "test:supervisor-intelligence",
         "test:supervisor-operational-intelligence",
+        "test:warehouse-intelligence",
         "validate:fleet-intelligence-scoring",
-        "validate:logistics-intelligence"
+        "validate:logistics-intelligence",
+        "warehouse-intelligence:benchmarks",
+        "warehouse-intelligence:check",
+        "warehouse-intelligence:generate",
+        "warehouse-intelligence:validate"
       ]
     },
     "statusIndicators": [],
     "summary": {
-      "testScripts": 45
+      "testScripts": 46
     },
     "testOnly": true,
     "unknownValues": [],

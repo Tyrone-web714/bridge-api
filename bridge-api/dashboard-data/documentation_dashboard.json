@@ -17,7 +17,7 @@
       "dashboard-data/documentation_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "f8226ec2916af3fbd8c0795055a95adbd322285eb7fb769e810f65d20c5b7205",
+    "generationHash": "57fe9ff24aa2becc9ec58132166a70d7568542521a33daa7656ac5781c541ab4",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -69,13 +69,14 @@
         "docs/implementation/shared-safety-foundation": 18,
         "docs/implementation/shared-safety-moderation-ui": 14,
         "docs/implementation/supervisor-intelligence-foundation": 45,
+        "docs/implementation/warehouse-intelligence-foundation": 51,
         "docs/implementation/web-origin-private-media-hardening": 16
       },
-      "generatedDocs": 184
+      "generatedDocs": 197
     },
     "statusIndicators": [],
     "summary": {
-      "documentationFiles": 1011
+      "documentationFiles": 1062
     },
     "testOnly": true,
     "unknownValues": [],
