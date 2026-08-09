@@ -1,67 +1,67 @@
 {
-  "packageId": "SUPERVISOR_INTELLIGENCE",
-  "title": "Supervisor Intelligence",
+  "packageId": "WAREHOUSE_INTELLIGENCE",
+  "title": "Warehouse Intelligence",
   "category": "CORE_OPERATIONAL_INTELLIGENCE",
-  "status": "IMPLEMENTED_UNCOMMITTED",
-  "objective": "Build the repository-only Supervisor Intelligence Foundation for deterministic supervisor operational decision support.",
+  "status": "APPROVED",
+  "objective": "Prepare the approved repository-only Warehouse Intelligence package for deterministic warehouse operational awareness and route departure readiness analysis.",
   "approvedScope": [
-    "trusted supervisor context validation",
-    "route portfolio visibility",
-    "route, driver, stop, hazard, and evidence exception detection",
-    "structured supervisor alerts and deterministic prioritization",
-    "alert acknowledgement, resolution, and invalidation lifecycle helpers",
-    "operational summaries and explanations",
-    "integration with Route Intelligence and Driver Intelligence",
-    "deterministic synthetic benchmarks and generated evidence artifacts",
-    "existing daily supervisor report compatibility"
+    "route loading awareness",
+    "route staging awareness",
+    "warehouse route-readiness status",
+    "route/load assignment verification",
+    "delivery load completeness",
+    "product/load discrepancy detection",
+    "missing-load evidence",
+    "warehouse operational exceptions",
+    "structured warehouse alerts",
+    "supervisor/warehouse coordination evidence",
+    "route departure readiness",
+    "deterministic explanations",
+    "human-review flags",
+    "integration with route and operational data already supported by TSR"
   ],
   "prohibitedScope": [
-    "fabricating a package number",
-    "employee ranking",
     "employee scoring",
-    "disciplinary recommendations",
-    "compensation decisions",
+    "warehouse employee ranking",
+    "productivity ratings",
+    "discipline recommendations",
     "termination recommendations",
+    "compensation decisions",
     "autonomous workforce decisions",
-    "surveillance expansion",
-    "new AI infrastructure frameworks",
+    "new AI infrastructure",
     "model selection",
     "provider activation",
     "production APIs",
     "deployment",
-    "migration",
-    "production writes",
-    "object storage mutations",
-    "Cloudflare configuration changes"
+    "migrations",
+    "speculative warehouse automation",
+    "robotics",
+    "autonomous inventory purchasing",
+    "new hardware integrations",
+    "unrelated warehouse-management-system expansion"
   ],
   "dependencies": [
     "AI-IEP-005B.1",
     "AI-IEP-005B.2",
+    "SUPERVISOR_INTELLIGENCE",
     "TSR-AI-WORKFLOW-001"
   ],
   "acceptanceCriteria": [
-    "supervisor context validation is deterministic and rejects caller provider/model/tenant overrides",
-    "route portfolio, progress, exception, alert, lifecycle, summary, and explanation contracts validate",
-    "Route Intelligence and Driver Intelligence integration references validate",
-    "existing daily supervisor report compatibility remains intact",
-    "generated Supervisor Intelligence artifacts are deterministic",
-    "no production API, deployment, migration, provider expansion, employee scoring, or workforce-impact action is added"
+    "Warehouse Intelligence remains approved but unimplemented until a separate work package begins",
+    "scope is limited to route/load/staging/readiness exceptions and deterministic explanations",
+    "employment-impact, model-selection, provider, production API, deployment, migration, hardware, robotics, and speculative automation scope remains prohibited",
+    "model-selection and production-orchestration gates remain incomplete"
   ],
   "requiredTests": [
-    "npm.cmd run test:supervisor-operational-intelligence",
-    "npm.cmd run test:route-intelligence",
-    "npm.cmd run test:driver-intelligence",
-    "npm.cmd run test:ai-roadmap",
-    "npm.cmd run test:security",
-    "npm.cmd test"
+    "npm.cmd run test:ai-roadmap"
   ],
-  "sourceControlExpectation": "Leave the Supervisor Intelligence Foundation uncommitted and unstaged for controlled review. Do not push, deploy, or run migrations unless separately authorized.",
-  "expectedCompletionReportFormat": "Use docs/ai-development/CODEX_COMPLETION_REPORT_TEMPLATE.md sections A through AN.",
-  "recommendedCommitMessage": "Build Supervisor Intelligence foundation",
+  "sourceControlExpectation": "Do not begin Warehouse Intelligence implementation in this reconciliation package. Keep the package approved but unstarted until a separate controlled implementation work package is authorized.",
+  "expectedCompletionReportFormat": "Use docs/ai-development/CODEX_COMPLETION_REPORT_TEMPLATE.md sections A through AN for any future implementation package.",
+  "recommendedCommitMessage": "Build Warehouse Intelligence foundation",
   "nextApprovedPackage": null,
   "ownerDecisionPoints": [
-    "approve review, commit, and push of the uncommitted Supervisor Intelligence Foundation",
+    "approve a separate Warehouse Intelligence implementation work package before any code or product behavior changes",
     "approve any future production runtime API, deployment, migration, provider expansion, or production validation separately",
-    "approve any future Warehouse Intelligence start separately"
+    "keep model-selection and production-orchestration gates incomplete until all required Milestone 1 domains are complete and separately approved"
   ]
 }

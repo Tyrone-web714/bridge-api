@@ -121,7 +121,9 @@ function generate(options = {}) {
     'scope_control_status.json': json({
       policyPath: 'docs/ai-development/SCOPE_CONTROL_POLICY.md',
       ownerApprovalRequiredForNewIdeas: true,
-      supervisorIntelligenceMayBegin: current.packageId === 'SUPERVISOR_INTELLIGENCE' && ['IN_PROGRESS','IMPLEMENTED_UNCOMMITTED','COMMITTED_LOCAL','PUSHED','VALIDATED'].includes(current.status),
+      supervisorIntelligenceRemoteContained: Boolean(packages.find((pkg) => pkg.packageId === 'SUPERVISOR_INTELLIGENCE')?.pushed),
+      warehouseIntelligenceMayBegin: current.packageId === 'WAREHOUSE_INTELLIGENCE' && current.status === 'APPROVED',
+      warehouseImplementationStarted: Boolean(packages.find((pkg) => pkg.packageId === 'WAREHOUSE_INTELLIGENCE')?.implementationCommit),
       unapprovedMilestoneOneDomainsAllowed: false,
       deterministicTruckSafetyControlsAuthoritative: true
     }),

@@ -80,7 +80,8 @@ const ALLOWED_MILESTONE_ONE = new Set([
   'OPERATIONS_INTELLIGENCE',
   'SAFETY_INTELLIGENCE'
 ]);
-const REMOTE_VERIFIED_PACKAGES = ['AI-IEP-005B.1', 'AI-IEP-005B.2', 'TSR-AI-WORKFLOW-001'];
+const SUPERVISOR_COMMIT = 'e0a9502c9d6134c66c6a9e46926956282fa5d7ff';
+const REMOTE_VERIFIED_PACKAGES = ['AI-IEP-005B.1', 'AI-IEP-005B.2', 'SUPERVISOR_INTELLIGENCE', 'TSR-AI-WORKFLOW-001'];
 
 function read(name) {
   return fs.readFileSync(path.join(paths.docsRoot, name), 'utf8');
@@ -145,8 +146,8 @@ function validateRoadmap(roadmap, current, options = {}) {
   if (!currentRoadmap) failures.push({ rule: 'CURRENT_PACKAGE_NOT_IN_ROADMAP', packageId: current.packageId });
   if (currentRoadmap && currentRoadmap.title !== current.title) failures.push({ rule: 'CURRENT_PACKAGE_JSON_ROADMAP_MISMATCH', packageId: current.packageId });
   if (currentRoadmap && currentRoadmap.status !== current.status) failures.push({ rule: 'CURRENT_PACKAGE_STATUS_MISMATCH', packageId: current.packageId });
-  if (current.packageId !== 'SUPERVISOR_INTELLIGENCE') failures.push({ rule: 'CURRENT_PACKAGE_NOT_SUPERVISOR_INTELLIGENCE', packageId: current.packageId });
-  if (!['APPROVED','IMPLEMENTED_UNCOMMITTED'].includes(current.status)) failures.push({ rule: 'CURRENT_SUPERVISOR_STATUS_INVALID', status: current.status });
+  if (current.packageId !== 'WAREHOUSE_INTELLIGENCE') failures.push({ rule: 'CURRENT_PACKAGE_NOT_WAREHOUSE_INTELLIGENCE', packageId: current.packageId });
+  if (current.status !== 'APPROVED') failures.push({ rule: 'CURRENT_WAREHOUSE_STATUS_INVALID', status: current.status });
   const currentMarkdown = read('CURRENT_AI_WORK_PACKAGE.md');
   if (!currentMarkdown.includes(`Package ID: ${current.packageId}`) || !currentMarkdown.includes(`Status: ${current.status}`)) failures.push({ rule: 'CURRENT_PACKAGE_MARKDOWN_JSON_MISMATCH' });
   for (const pkg of packages.filter((record) => record.category === 'CORE_OPERATIONAL_INTELLIGENCE')) {
@@ -157,8 +158,17 @@ function validateRoadmap(roadmap, current, options = {}) {
   if (!read('PRODUCTION_ORCHESTRATION_GATE.md').includes('shadow-mode validation') || !read('PRODUCTION_ORCHESTRATION_GATE.md').includes('owner approval')) failures.push({ rule: 'PRODUCTION_ORCHESTRATION_GATE_MISSING' });
   if (roadmap.gates?.productionOrchestration?.complete !== false || roadmap.gates?.productionOrchestration?.status !== 'DEFERRED') failures.push({ rule: 'PRODUCTION_ORCHESTRATION_FALSE_ACTIVE' });
   const supervisor = packages.find((pkg) => pkg.packageId === 'SUPERVISOR_INTELLIGENCE');
-  if (supervisor && !['APPROVED','IMPLEMENTED_UNCOMMITTED'].includes(supervisor.status)) failures.push({ rule: 'SUPERVISOR_STATUS_INVALID', status: supervisor.status });
-  if (supervisor && (supervisor.implementationCommit || supervisor.localCommitVerified || supervisor.remoteCommitVerified || supervisor.pushed || supervisor.deployed || supervisor.migrationExecuted)) failures.push({ rule: 'SUPERVISOR_IMPLEMENTED_WITHOUT_EVIDENCE' });
+  if (supervisor && supervisor.status !== 'PUSHED') failures.push({ rule: 'SUPERVISOR_PUSHED_MARKED_UNCOMMITTED', status: supervisor.status });
+  if (supervisor && supervisor.implementationCommit !== SUPERVISOR_COMMIT) failures.push({ rule: 'SUPERVISOR_COMMIT_MISMATCH', implementationCommit: supervisor.implementationCommit });
+  if (supervisor && (supervisor.localCommitVerified !== true || supervisor.remoteCommitVerified !== true || supervisor.pushed !== true)) failures.push({ rule: 'SUPERVISOR_PUSH_EVIDENCE_MISSING' });
+  if (supervisor && (supervisor.deployed || supervisor.deploymentVerified || supervisor.migrationExecuted || supervisor.productionImpact !== 'REPOSITORY_ONLY_FOUNDATION')) failures.push({ rule: 'SUPERVISOR_FALSE_PRODUCTION_STATE' });
+  const warehouse = packages.find((pkg) => pkg.packageId === 'WAREHOUSE_INTELLIGENCE');
+  if (warehouse && warehouse.status !== 'APPROVED') failures.push({ rule: 'WAREHOUSE_STATUS_INVALID', status: warehouse.status });
+  if (warehouse && (['IMPLEMENTED_UNCOMMITTED','COMMITTED_LOCAL','PUSHED','VALIDATED'].includes(warehouse.status) || warehouse.implementationCommit || warehouse.localCommitVerified || warehouse.remoteCommitVerified || warehouse.pushed || warehouse.deployed || warehouse.migrationExecuted)) failures.push({ rule: 'WAREHOUSE_IMPLEMENTED_WITHOUT_EVIDENCE' });
+  if (warehouse && warehouse.packageId !== 'WAREHOUSE_INTELLIGENCE') failures.push({ rule: 'WAREHOUSE_PACKAGE_NUMBER_FABRICATED', packageId: warehouse.packageId });
+  for (const pkg of packages) {
+    if (pkg.title === 'Warehouse Intelligence' && pkg.packageId !== 'WAREHOUSE_INTELLIGENCE') failures.push({ rule: 'WAREHOUSE_PACKAGE_NUMBER_FABRICATED', packageId: pkg.packageId });
+  }
   const scopePolicy = read('SCOPE_CONTROL_POLICY.md');
   for (const phrase of ['No new feature enters implementation without owner approval', 'Supervisor Intelligence implementation requires an owner-approved work package', 'Roadmap status changes require evidence']) {
     if (!scopePolicy.includes(phrase)) failures.push({ rule: 'SCOPE_CONTROL_POLICY_INCOMPLETE', phrase });
@@ -212,7 +222,14 @@ function main() {
   assertValidationFails((roadmap) => { const route = roadmap.packages.find((pkg) => pkg.packageId === 'AI-IEP-005B.1'); route.pushed = true; route.remoteCommitVerified = false; }, 'FALSE_PUSHED_STATE');
   assertValidationFails((roadmap) => { roadmap.packages[0].deployed = true; roadmap.packages[0].deploymentVerified = false; }, 'FALSE_DEPLOYED_STATE');
   assertValidationFails((roadmap) => { roadmap.packages.find((pkg) => pkg.packageId === 'TSR-AI-WORKFLOW-001').isCurrentPackage = true; }, 'CURRENT_PACKAGE_COUNT');
-  assertValidationFails((roadmap) => { const supervisor = roadmap.packages.find((pkg) => pkg.packageId === 'SUPERVISOR_INTELLIGENCE'); supervisor.implementationCommit = '1234567'; }, 'SUPERVISOR_IMPLEMENTED_WITHOUT_EVIDENCE');
+  assertValidationFails((roadmap) => { const supervisor = roadmap.packages.find((pkg) => pkg.packageId === 'SUPERVISOR_INTELLIGENCE'); supervisor.status = 'IMPLEMENTED_UNCOMMITTED'; }, 'SUPERVISOR_PUSHED_MARKED_UNCOMMITTED');
+  assertValidationFails((roadmap) => { const supervisor = roadmap.packages.find((pkg) => pkg.packageId === 'SUPERVISOR_INTELLIGENCE'); supervisor.deployed = true; supervisor.deploymentVerified = true; supervisor.productionImpact = 'DEPLOYMENT_VERIFIED'; }, 'SUPERVISOR_FALSE_PRODUCTION_STATE');
+  assertValidationFails((roadmap) => { const warehouse = roadmap.packages.find((pkg) => pkg.packageId === 'WAREHOUSE_INTELLIGENCE'); warehouse.status = 'PUSHED'; warehouse.implementationCommit = '1234567'; }, 'WAREHOUSE_IMPLEMENTED_WITHOUT_EVIDENCE');
+  assertValidationFails((roadmap, current) => {
+    const warehouse = roadmap.packages.find((pkg) => pkg.packageId === 'WAREHOUSE_INTELLIGENCE');
+    warehouse.packageId = 'AI-IEP-005B.3';
+    current.packageId = 'AI-IEP-005B.3';
+  }, 'WAREHOUSE_PACKAGE_NUMBER_FABRICATED');
   assertValidationFails((roadmap) => { roadmap.gates.modelSelection.complete = true; roadmap.gates.modelSelection.status = 'APPROVED'; }, 'MODEL_SELECTION_GATE_FALSE_COMPLETE');
   assertValidationFails((roadmap) => { roadmap.gates.productionOrchestration.complete = true; roadmap.gates.productionOrchestration.status = 'IN_PROGRESS'; }, 'PRODUCTION_ORCHESTRATION_FALSE_ACTIVE');
   const before = fs.readdirSync(paths.generatedRoot).sort().map((name) => [name, fs.readFileSync(path.join(paths.generatedRoot, name), 'utf8')]);

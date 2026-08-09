@@ -31,15 +31,15 @@
     {
       "category": "CORE_OPERATIONAL_INTELLIGENCE",
       "deployed": false,
-      "implementationCommit": null,
-      "localCommitVerified": false,
-      "nextApprovedPackage": null,
+      "implementationCommit": "e0a9502c9d6134c66c6a9e46926956282fa5d7ff",
+      "localCommitVerified": true,
+      "nextApprovedPackage": "WAREHOUSE_INTELLIGENCE",
       "ownerApprovalRequired": true,
       "packageId": "SUPERVISOR_INTELLIGENCE",
       "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
-      "pushed": false,
-      "remoteCommitVerified": false,
-      "status": "IMPLEMENTED_UNCOMMITTED",
+      "pushed": true,
+      "remoteCommitVerified": true,
+      "status": "PUSHED",
       "title": "Supervisor Intelligence"
     },
     {
@@ -50,10 +50,10 @@
       "nextApprovedPackage": null,
       "ownerApprovalRequired": true,
       "packageId": "WAREHOUSE_INTELLIGENCE",
-      "productionImpact": "UNKNOWN",
+      "productionImpact": "NONE",
       "pushed": false,
       "remoteCommitVerified": false,
-      "status": "PLANNED",
+      "status": "APPROVED",
       "title": "Warehouse Intelligence"
     },
     {

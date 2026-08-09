@@ -26,8 +26,8 @@
     "backendPath": "C:\\dev\\bridge-api\\bridge-api",
     "localBranch": "legacy-public-url-final-cleanup",
     "remoteBranch": "origin/legacy-public-url-final-cleanup",
-    "localHead": "42851f0791d02623d6cbf9442d6c96f1ffeeb7ba",
-    "remoteHead": "42851f0791d02623d6cbf9442d6c96f1ffeeb7ba",
+    "localHead": "e0a9502c9d6134c66c6a9e46926956282fa5d7ff",
+    "remoteHead": "e0a9502c9d6134c66c6a9e46926956282fa5d7ff",
     "localAheadBy": 0,
     "remoteVerificationPerformed": true,
     "pushPerformedByThisPackage": false
@@ -82,11 +82,24 @@
       "category": "AI_PLATFORM_FOUNDATION",
       "status": "PUSHED",
       "objective": "Create the enterprise intelligence capability registry source of truth.",
-      "approvedScope": ["registry metadata", "validation", "generated artifacts"],
-      "prohibitedScope": ["production deployment", "provider selection", "runtime orchestration"],
+      "approvedScope": [
+        "registry metadata",
+        "validation",
+        "generated artifacts"
+      ],
+      "prohibitedScope": [
+        "production deployment",
+        "provider selection",
+        "runtime orchestration"
+      ],
       "dependencies": [],
-      "acceptanceCriteria": ["registry validates", "generated artifacts are deterministic"],
-      "requiredTests": ["npm.cmd run test:capability-registry"],
+      "acceptanceCriteria": [
+        "registry validates",
+        "generated artifacts are deterministic"
+      ],
+      "requiredTests": [
+        "npm.cmd run test:capability-registry"
+      ],
       "documentationPath": "docs/implementation/enterprise-intelligence-capability-registry",
       "implementationCommit": "UNKNOWN",
       "localCommitVerified": true,
@@ -108,11 +121,26 @@
       "category": "AI_PLATFORM_FOUNDATION",
       "status": "PUSHED",
       "objective": "Create repository-native benchmark dataset records.",
-      "approvedScope": ["synthetic datasets", "coverage reports", "validation"],
-      "prohibitedScope": ["live benchmark execution", "provider ranking", "production recommendation"],
-      "dependencies": ["AI-IEP-004A.1"],
-      "acceptanceCriteria": ["dataset contracts validate", "coverage artifacts generate deterministically"],
-      "requiredTests": ["npm.cmd run test:benchmark-datasets"],
+      "approvedScope": [
+        "synthetic datasets",
+        "coverage reports",
+        "validation"
+      ],
+      "prohibitedScope": [
+        "live benchmark execution",
+        "provider ranking",
+        "production recommendation"
+      ],
+      "dependencies": [
+        "AI-IEP-004A.1"
+      ],
+      "acceptanceCriteria": [
+        "dataset contracts validate",
+        "coverage artifacts generate deterministically"
+      ],
+      "requiredTests": [
+        "npm.cmd run test:benchmark-datasets"
+      ],
       "documentationPath": "docs/implementation/benchmark-dataset-framework",
       "implementationCommit": "UNKNOWN",
       "localCommitVerified": true,
@@ -134,11 +162,25 @@
       "category": "AI_PLATFORM_FOUNDATION",
       "status": "PUSHED",
       "objective": "Create repository-native offline/mock execution strategy evaluation.",
-      "approvedScope": ["offline/mock fixtures", "observations", "replay artifacts"],
-      "prohibitedScope": ["live model execution", "production strategy selection"],
-      "dependencies": ["AI-IEP-004A.2"],
-      "acceptanceCriteria": ["mock evaluation validates", "artifacts are deterministic"],
-      "requiredTests": ["npm.cmd run test:evaluation-engine"],
+      "approvedScope": [
+        "offline/mock fixtures",
+        "observations",
+        "replay artifacts"
+      ],
+      "prohibitedScope": [
+        "live model execution",
+        "production strategy selection"
+      ],
+      "dependencies": [
+        "AI-IEP-004A.2"
+      ],
+      "acceptanceCriteria": [
+        "mock evaluation validates",
+        "artifacts are deterministic"
+      ],
+      "requiredTests": [
+        "npm.cmd run test:evaluation-engine"
+      ],
       "documentationPath": "docs/implementation/execution-evaluation-engine",
       "implementationCommit": "UNKNOWN",
       "localCommitVerified": true,
@@ -160,11 +202,26 @@
       "category": "AI_PLATFORM_FOUNDATION",
       "status": "PUSHED",
       "objective": "Create repository-native scoring profiles and synthetic score artifacts.",
-      "approvedScope": ["test-only profiles", "dimension mappings", "confidence/completeness records"],
-      "prohibitedScope": ["provider ranking", "employment scoring", "production recommendation"],
-      "dependencies": ["AI-IEP-004A.3"],
-      "acceptanceCriteria": ["score records validate", "sensitivity artifacts generate deterministically"],
-      "requiredTests": ["npm.cmd run test:scoring-engine"],
+      "approvedScope": [
+        "test-only profiles",
+        "dimension mappings",
+        "confidence/completeness records"
+      ],
+      "prohibitedScope": [
+        "provider ranking",
+        "employment scoring",
+        "production recommendation"
+      ],
+      "dependencies": [
+        "AI-IEP-004A.3"
+      ],
+      "acceptanceCriteria": [
+        "score records validate",
+        "sensitivity artifacts generate deterministically"
+      ],
+      "requiredTests": [
+        "npm.cmd run test:scoring-engine"
+      ],
       "documentationPath": "docs/implementation/scoring-engine",
       "implementationCommit": "UNKNOWN",
       "localCommitVerified": true,
@@ -186,11 +243,25 @@
       "category": "AI_PLATFORM_FOUNDATION",
       "status": "PUSHED",
       "objective": "Create repository-native cost model and budget simulation records.",
-      "approvedScope": ["synthetic pricing", "budget simulations", "cost records"],
-      "prohibitedScope": ["procurement recommendation", "production budget enforcement"],
-      "dependencies": ["AI-IEP-004A.4"],
-      "acceptanceCriteria": ["cost records validate", "budget simulations are deterministic"],
-      "requiredTests": ["npm.cmd run test:cost-governance"],
+      "approvedScope": [
+        "synthetic pricing",
+        "budget simulations",
+        "cost records"
+      ],
+      "prohibitedScope": [
+        "procurement recommendation",
+        "production budget enforcement"
+      ],
+      "dependencies": [
+        "AI-IEP-004A.4"
+      ],
+      "acceptanceCriteria": [
+        "cost records validate",
+        "budget simulations are deterministic"
+      ],
+      "requiredTests": [
+        "npm.cmd run test:cost-governance"
+      ],
       "documentationPath": "docs/implementation/cost-governance",
       "implementationCommit": "UNKNOWN",
       "localCommitVerified": true,
@@ -212,11 +283,27 @@
       "category": "AI_PLATFORM_FOUNDATION",
       "status": "PUSHED",
       "objective": "Create repository-native advisory decision profiles and fallback planning.",
-      "approvedScope": ["policy profiles", "candidate enumeration", "counterfactuals", "fallback metadata"],
-      "prohibitedScope": ["production routing", "autonomous execution", "procurement decision"],
-      "dependencies": ["AI-IEP-004A.5"],
-      "acceptanceCriteria": ["decision records validate", "fallback artifacts are deterministic"],
-      "requiredTests": ["npm.cmd run test:execution-decisions"],
+      "approvedScope": [
+        "policy profiles",
+        "candidate enumeration",
+        "counterfactuals",
+        "fallback metadata"
+      ],
+      "prohibitedScope": [
+        "production routing",
+        "autonomous execution",
+        "procurement decision"
+      ],
+      "dependencies": [
+        "AI-IEP-004A.5"
+      ],
+      "acceptanceCriteria": [
+        "decision records validate",
+        "fallback artifacts are deterministic"
+      ],
+      "requiredTests": [
+        "npm.cmd run test:execution-decisions"
+      ],
       "documentationPath": "docs/implementation/execution-decision-engine",
       "implementationCommit": "UNKNOWN",
       "localCommitVerified": true,
@@ -238,11 +325,25 @@
       "category": "AI_PLATFORM_FOUNDATION",
       "status": "PUSHED",
       "objective": "Create repository-native decision history and governance event records.",
-      "approvedScope": ["immutable snapshots", "governance events", "review/approval metadata"],
-      "prohibitedScope": ["production audit database", "runtime enforcement"],
-      "dependencies": ["AI-IEP-004A.6"],
-      "acceptanceCriteria": ["governance records validate", "replay artifacts are deterministic"],
-      "requiredTests": ["npm.cmd run test:decision-governance"],
+      "approvedScope": [
+        "immutable snapshots",
+        "governance events",
+        "review/approval metadata"
+      ],
+      "prohibitedScope": [
+        "production audit database",
+        "runtime enforcement"
+      ],
+      "dependencies": [
+        "AI-IEP-004A.6"
+      ],
+      "acceptanceCriteria": [
+        "governance records validate",
+        "replay artifacts are deterministic"
+      ],
+      "requiredTests": [
+        "npm.cmd run test:decision-governance"
+      ],
       "documentationPath": "docs/implementation/decision-governance",
       "implementationCommit": "UNKNOWN",
       "localCommitVerified": true,
@@ -264,11 +365,25 @@
       "category": "AI_PLATFORM_FOUNDATION",
       "status": "PUSHED",
       "objective": "Create repository-native intelligence knowledge graph records.",
-      "approvedScope": ["typed nodes", "typed edges", "dependency and impact analysis"],
-      "prohibitedScope": ["runtime graph service", "production decision routing"],
-      "dependencies": ["AI-IEP-004A.7"],
-      "acceptanceCriteria": ["graph validates", "cycle and impact reports generate deterministically"],
-      "requiredTests": ["npm.cmd run test:knowledge-graph"],
+      "approvedScope": [
+        "typed nodes",
+        "typed edges",
+        "dependency and impact analysis"
+      ],
+      "prohibitedScope": [
+        "runtime graph service",
+        "production decision routing"
+      ],
+      "dependencies": [
+        "AI-IEP-004A.7"
+      ],
+      "acceptanceCriteria": [
+        "graph validates",
+        "cycle and impact reports generate deterministically"
+      ],
+      "requiredTests": [
+        "npm.cmd run test:knowledge-graph"
+      ],
       "documentationPath": "docs/implementation/intelligence-knowledge-graph",
       "implementationCommit": "UNKNOWN",
       "localCommitVerified": true,
@@ -290,11 +405,25 @@
       "category": "AI_PLATFORM_FOUNDATION",
       "status": "PUSHED",
       "objective": "Create repository-only deterministic dashboard datasets.",
-      "approvedScope": ["dashboard datasets", "catalogs", "hash reports"],
-      "prohibitedScope": ["production dashboard runtime changes", "new UI feature"],
-      "dependencies": ["AI-IEP-004A.8"],
-      "acceptanceCriteria": ["dashboard datasets validate", "artifacts are deterministic"],
-      "requiredTests": ["npm.cmd run test:dashboard-data"],
+      "approvedScope": [
+        "dashboard datasets",
+        "catalogs",
+        "hash reports"
+      ],
+      "prohibitedScope": [
+        "production dashboard runtime changes",
+        "new UI feature"
+      ],
+      "dependencies": [
+        "AI-IEP-004A.8"
+      ],
+      "acceptanceCriteria": [
+        "dashboard datasets validate",
+        "artifacts are deterministic"
+      ],
+      "requiredTests": [
+        "npm.cmd run test:dashboard-data"
+      ],
       "documentationPath": "bridge-api/dashboard-data",
       "implementationCommit": "UNKNOWN",
       "localCommitVerified": true,
@@ -316,11 +445,25 @@
       "category": "AI_PLATFORM_FOUNDATION",
       "status": "PUSHED",
       "objective": "Create repository-only framework validation and enterprise integration reports.",
-      "approvedScope": ["subsystem inventory", "integration matrix", "quality scorecards"],
-      "prohibitedScope": ["production readiness approval", "deployment authorization"],
-      "dependencies": ["AI-IEP-004A.9"],
-      "acceptanceCriteria": ["framework reports validate", "cross-reference artifacts are deterministic"],
-      "requiredTests": ["npm.cmd run test:framework-validation"],
+      "approvedScope": [
+        "subsystem inventory",
+        "integration matrix",
+        "quality scorecards"
+      ],
+      "prohibitedScope": [
+        "production readiness approval",
+        "deployment authorization"
+      ],
+      "dependencies": [
+        "AI-IEP-004A.9"
+      ],
+      "acceptanceCriteria": [
+        "framework reports validate",
+        "cross-reference artifacts are deterministic"
+      ],
+      "requiredTests": [
+        "npm.cmd run test:framework-validation"
+      ],
       "documentationPath": "docs/implementation/framework-validation",
       "implementationCommit": "4d44ac3",
       "localCommitVerified": true,
@@ -342,11 +485,26 @@
       "category": "AI_PLATFORM_FOUNDATION",
       "status": "PUSHED",
       "objective": "Create repository-only enterprise intelligence capability orchestration metadata.",
-      "approvedScope": ["metadata-only domain capabilities", "execution contracts", "plan templates"],
-      "prohibitedScope": ["runtime orchestration", "provider routing", "production execution"],
-      "dependencies": ["AI-IEP-004A.10"],
-      "acceptanceCriteria": ["orchestration metadata validates", "artifacts are deterministic"],
-      "requiredTests": ["npm.cmd run test:intelligence-orchestration"],
+      "approvedScope": [
+        "metadata-only domain capabilities",
+        "execution contracts",
+        "plan templates"
+      ],
+      "prohibitedScope": [
+        "runtime orchestration",
+        "provider routing",
+        "production execution"
+      ],
+      "dependencies": [
+        "AI-IEP-004A.10"
+      ],
+      "acceptanceCriteria": [
+        "orchestration metadata validates",
+        "artifacts are deterministic"
+      ],
+      "requiredTests": [
+        "npm.cmd run test:intelligence-orchestration"
+      ],
       "documentationPath": "docs/implementation/intelligence-capability-orchestration",
       "implementationCommit": "fbe07f9",
       "localCommitVerified": true,
@@ -368,11 +526,25 @@
       "category": "AI_PLATFORM_FOUNDATION",
       "status": "PUSHED",
       "objective": "Create repository-only enterprise intelligence lifecycle framework metadata.",
-      "approvedScope": ["lifecycle records", "maturity/readiness metadata", "learning-policy metadata"],
-      "prohibitedScope": ["production lifecycle enforcement", "model deployment approval"],
-      "dependencies": ["AI-IEP-005A.1"],
-      "acceptanceCriteria": ["lifecycle metadata validates", "artifacts are deterministic"],
-      "requiredTests": ["npm.cmd run test:intelligence-lifecycle"],
+      "approvedScope": [
+        "lifecycle records",
+        "maturity/readiness metadata",
+        "learning-policy metadata"
+      ],
+      "prohibitedScope": [
+        "production lifecycle enforcement",
+        "model deployment approval"
+      ],
+      "dependencies": [
+        "AI-IEP-005A.1"
+      ],
+      "acceptanceCriteria": [
+        "lifecycle metadata validates",
+        "artifacts are deterministic"
+      ],
+      "requiredTests": [
+        "npm.cmd run test:intelligence-lifecycle"
+      ],
       "documentationPath": "docs/implementation/intelligence-lifecycle-framework",
       "implementationCommit": "e383a326bb41513e3aa77c05660bdb74042e7f0d",
       "localCommitVerified": true,
@@ -394,11 +566,28 @@
       "category": "CORE_OPERATIONAL_INTELLIGENCE",
       "status": "PUSHED",
       "objective": "Create repository-only deterministic route intelligence foundation.",
-      "approvedScope": ["vehicle/route/hazard/restriction contracts", "deterministic truck-safety rules", "synthetic route benchmarks"],
-      "prohibitedScope": ["production routing endpoint changes", "provider calls", "deployment", "production safety certification"],
-      "dependencies": ["AI-IEP-005A.2"],
-      "acceptanceCriteria": ["route intelligence tests pass", "full npm test passed for the committed tree"],
-      "requiredTests": ["npm.cmd run test:route-intelligence", "npm.cmd test"],
+      "approvedScope": [
+        "vehicle/route/hazard/restriction contracts",
+        "deterministic truck-safety rules",
+        "synthetic route benchmarks"
+      ],
+      "prohibitedScope": [
+        "production routing endpoint changes",
+        "provider calls",
+        "deployment",
+        "production safety certification"
+      ],
+      "dependencies": [
+        "AI-IEP-005A.2"
+      ],
+      "acceptanceCriteria": [
+        "route intelligence tests pass",
+        "full npm test passed for the committed tree"
+      ],
+      "requiredTests": [
+        "npm.cmd run test:route-intelligence",
+        "npm.cmd test"
+      ],
       "documentationPath": "docs/implementation/route-intelligence-foundation",
       "implementationCommit": "63a8491d1b7bb65f3fbaae7254ef0579cd57f532",
       "localCommitVerified": true,
@@ -420,11 +609,34 @@
       "category": "CORE_OPERATIONAL_INTELLIGENCE",
       "status": "PUSHED",
       "objective": "Create repository-only deterministic driver intelligence foundation.",
-      "approvedScope": ["driver profile/state/event contracts", "route adherence/deviation", "stop progress", "speed compliance", "hazard approach and acknowledgement", "synthetic driver benchmarks"],
-      "prohibitedScope": ["production APIs", "hosted AI", "provider calls", "employee scoring", "discipline recommendations", "deployment", "migration"],
-      "dependencies": ["AI-IEP-005B.1"],
-      "acceptanceCriteria": ["driver intelligence tests pass", "full npm test passed for the committed tree"],
-      "requiredTests": ["npm.cmd run test:driver-intelligence", "npm.cmd test"],
+      "approvedScope": [
+        "driver profile/state/event contracts",
+        "route adherence/deviation",
+        "stop progress",
+        "speed compliance",
+        "hazard approach and acknowledgement",
+        "synthetic driver benchmarks"
+      ],
+      "prohibitedScope": [
+        "production APIs",
+        "hosted AI",
+        "provider calls",
+        "employee scoring",
+        "discipline recommendations",
+        "deployment",
+        "migration"
+      ],
+      "dependencies": [
+        "AI-IEP-005B.1"
+      ],
+      "acceptanceCriteria": [
+        "driver intelligence tests pass",
+        "full npm test passed for the committed tree"
+      ],
+      "requiredTests": [
+        "npm.cmd run test:driver-intelligence",
+        "npm.cmd test"
+      ],
       "documentationPath": "docs/implementation/driver-intelligence-foundation",
       "implementationCommit": "43f8def86334e5cbe0b638b23f237797417e5383",
       "localCommitVerified": true,
@@ -444,14 +656,132 @@
       "packageId": "SUPERVISOR_INTELLIGENCE",
       "title": "Supervisor Intelligence",
       "category": "CORE_OPERATIONAL_INTELLIGENCE",
-      "status": "IMPLEMENTED_UNCOMMITTED",
+      "status": "PUSHED",
       "objective": "Build the repository-only Supervisor Intelligence Foundation for deterministic supervisor operational decision support.",
-      "approvedScope": ["trusted supervisor context validation", "route portfolio visibility", "route, driver, stop, hazard, and evidence exception detection", "structured supervisor alerts and deterministic prioritization", "alert acknowledgement, resolution, and invalidation lifecycle helpers", "operational summaries and explanations", "integration with Route Intelligence and Driver Intelligence", "deterministic synthetic benchmarks and generated evidence artifacts", "existing daily supervisor report compatibility"],
-      "prohibitedScope": ["package-number fabrication", "employee ranking", "employee scoring", "disciplinary recommendations", "compensation decisions", "termination recommendations", "autonomous workforce decisions", "surveillance expansion", "new AI infrastructure frameworks", "model selection", "provider activation", "production APIs", "deployment", "migration", "production writes", "object storage mutations", "Cloudflare configuration changes"],
-      "dependencies": ["AI-IEP-005B.1", "AI-IEP-005B.2", "TSR-AI-WORKFLOW-001"],
-      "acceptanceCriteria": ["supervisor context validation is deterministic and rejects caller provider/model/tenant overrides", "route portfolio, progress, exception, alert, lifecycle, summary, and explanation contracts validate", "Route Intelligence and Driver Intelligence integration references validate", "existing daily supervisor report compatibility remains intact", "generated Supervisor Intelligence artifacts are deterministic", "no production API, deployment, migration, provider expansion, employee scoring, or workforce-impact action is added"],
-      "requiredTests": ["npm.cmd run test:supervisor-operational-intelligence", "npm.cmd run test:route-intelligence", "npm.cmd run test:driver-intelligence", "npm.cmd run test:ai-roadmap", "npm.cmd run test:security", "npm.cmd test"],
+      "approvedScope": [
+        "trusted supervisor context validation",
+        "route portfolio visibility",
+        "route, driver, stop, hazard, and evidence exception detection",
+        "structured supervisor alerts and deterministic prioritization",
+        "alert acknowledgement, resolution, and invalidation lifecycle helpers",
+        "operational summaries and explanations",
+        "integration with Route Intelligence and Driver Intelligence",
+        "deterministic synthetic benchmarks and generated evidence artifacts",
+        "existing daily supervisor report compatibility"
+      ],
+      "prohibitedScope": [
+        "package-number fabrication",
+        "employee ranking",
+        "employee scoring",
+        "disciplinary recommendations",
+        "compensation decisions",
+        "termination recommendations",
+        "autonomous workforce decisions",
+        "surveillance expansion",
+        "new AI infrastructure frameworks",
+        "model selection",
+        "provider activation",
+        "production APIs",
+        "deployment",
+        "migration",
+        "production writes",
+        "object storage mutations",
+        "Cloudflare configuration changes"
+      ],
+      "dependencies": [
+        "AI-IEP-005B.1",
+        "AI-IEP-005B.2",
+        "TSR-AI-WORKFLOW-001"
+      ],
+      "acceptanceCriteria": [
+        "supervisor context validation is deterministic and rejects caller provider/model/tenant overrides",
+        "route portfolio, progress, exception, alert, lifecycle, summary, and explanation contracts validate",
+        "Route Intelligence and Driver Intelligence integration references validate",
+        "existing daily supervisor report compatibility remains intact",
+        "generated Supervisor Intelligence artifacts are deterministic",
+        "no production API, deployment, migration, provider expansion, employee scoring, or workforce-impact action is added"
+      ],
+      "requiredTests": [
+        "npm.cmd run test:supervisor-operational-intelligence",
+        "npm.cmd run test:route-intelligence",
+        "npm.cmd run test:driver-intelligence",
+        "npm.cmd run test:ai-roadmap",
+        "npm.cmd run test:security",
+        "npm.cmd test"
+      ],
       "documentationPath": "docs/implementation/supervisor-intelligence-foundation",
+      "implementationCommit": "e0a9502c9d6134c66c6a9e46926956282fa5d7ff",
+      "localCommitVerified": true,
+      "remoteCommitVerified": true,
+      "pushed": true,
+      "deployed": false,
+      "deploymentVerified": false,
+      "migrationRequired": false,
+      "migrationExecuted": false,
+      "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
+      "ownerApprovalRequired": true,
+      "scopeChangeApprovalRequired": true,
+      "nextApprovedPackage": "WAREHOUSE_INTELLIGENCE",
+      "notes": "Supervisor Intelligence Foundation commit e0a9502c9d6134c66c6a9e46926956282fa5d7ff is committed locally, fetched remote refs verify origin/legacy-public-url-final-cleanup contains it, and required validation passed. Not deployed, not migrated, and not production-certified."
+    },
+    {
+      "packageId": "WAREHOUSE_INTELLIGENCE",
+      "title": "Warehouse Intelligence",
+      "category": "CORE_OPERATIONAL_INTELLIGENCE",
+      "status": "APPROVED",
+      "objective": "Prepare the approved repository-only Warehouse Intelligence package for deterministic warehouse operational awareness and route departure readiness analysis.",
+      "approvedScope": [
+        "route loading awareness",
+        "route staging awareness",
+        "warehouse route-readiness status",
+        "route/load assignment verification",
+        "delivery load completeness",
+        "product/load discrepancy detection",
+        "missing-load evidence",
+        "warehouse operational exceptions",
+        "structured warehouse alerts",
+        "supervisor/warehouse coordination evidence",
+        "route departure readiness",
+        "deterministic explanations",
+        "human-review flags",
+        "integration with route and operational data already supported by TSR"
+      ],
+      "prohibitedScope": [
+        "employee scoring",
+        "warehouse employee ranking",
+        "productivity ratings",
+        "discipline recommendations",
+        "termination recommendations",
+        "compensation decisions",
+        "autonomous workforce decisions",
+        "new AI infrastructure",
+        "model selection",
+        "provider activation",
+        "production APIs",
+        "deployment",
+        "migrations",
+        "speculative warehouse automation",
+        "robotics",
+        "autonomous inventory purchasing",
+        "new hardware integrations",
+        "unrelated warehouse-management-system expansion"
+      ],
+      "dependencies": [
+        "AI-IEP-005B.1",
+        "AI-IEP-005B.2",
+        "SUPERVISOR_INTELLIGENCE",
+        "TSR-AI-WORKFLOW-001"
+      ],
+      "acceptanceCriteria": [
+        "Warehouse Intelligence remains approved but unimplemented until a separate work package begins",
+        "scope is limited to route/load/staging/readiness exceptions and deterministic explanations",
+        "employment-impact, model-selection, provider, production API, deployment, migration, hardware, robotics, and speculative automation scope remains prohibited",
+        "model-selection and production-orchestration gates remain incomplete"
+      ],
+      "requiredTests": [
+        "npm.cmd run test:ai-roadmap"
+      ],
+      "documentationPath": null,
       "implementationCommit": null,
       "localCommitVerified": false,
       "remoteCommitVerified": false,
@@ -460,38 +790,12 @@
       "deploymentVerified": false,
       "migrationRequired": false,
       "migrationExecuted": false,
-      "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
+      "productionImpact": "NONE",
       "ownerApprovalRequired": true,
       "scopeChangeApprovalRequired": true,
       "nextApprovedPackage": null,
-      "notes": "Repository-only Supervisor Intelligence Foundation exists locally with unstaged/uncommitted changes. Not pushed, not deployed, not migrated, and not production-certified.",
+      "notes": "Approved as the next current Milestone 1 package after Supervisor Intelligence source-control preservation. Implementation has not started; no deployment, migration, production API, provider activation, or production certification exists.",
       "isCurrentPackage": true
-    },
-    {
-      "packageId": "WAREHOUSE_INTELLIGENCE",
-      "title": "Warehouse Intelligence",
-      "category": "CORE_OPERATIONAL_INTELLIGENCE",
-      "status": "PLANNED",
-      "objective": "Future warehouse operational intelligence domain.",
-      "approvedScope": ["future package planning"],
-      "prohibitedScope": ["implementation in this package", "model selection", "production orchestration"],
-      "dependencies": ["SUPERVISOR_INTELLIGENCE"],
-      "acceptanceCriteria": ["owner-approved package exists before implementation"],
-      "requiredTests": ["UNKNOWN"],
-      "documentationPath": null,
-      "implementationCommit": null,
-      "localCommitVerified": false,
-      "remoteCommitVerified": false,
-      "pushed": false,
-      "deployed": false,
-      "deploymentVerified": false,
-      "migrationRequired": "UNKNOWN",
-      "migrationExecuted": false,
-      "productionImpact": "UNKNOWN",
-      "ownerApprovalRequired": true,
-      "scopeChangeApprovalRequired": true,
-      "nextApprovedPackage": null,
-      "notes": "Planned Milestone 1 domain; not started."
     },
     {
       "packageId": "FLEET_INTELLIGENCE",
@@ -499,11 +803,23 @@
       "category": "CORE_OPERATIONAL_INTELLIGENCE",
       "status": "PLANNED",
       "objective": "Future fleet operational intelligence domain.",
-      "approvedScope": ["future package planning"],
-      "prohibitedScope": ["implementation in this package", "model selection", "production orchestration"],
-      "dependencies": ["WAREHOUSE_INTELLIGENCE"],
-      "acceptanceCriteria": ["owner-approved package exists before implementation"],
-      "requiredTests": ["UNKNOWN"],
+      "approvedScope": [
+        "future package planning"
+      ],
+      "prohibitedScope": [
+        "implementation in this package",
+        "model selection",
+        "production orchestration"
+      ],
+      "dependencies": [
+        "WAREHOUSE_INTELLIGENCE"
+      ],
+      "acceptanceCriteria": [
+        "owner-approved package exists before implementation"
+      ],
+      "requiredTests": [
+        "UNKNOWN"
+      ],
       "documentationPath": null,
       "implementationCommit": null,
       "localCommitVerified": false,
@@ -525,11 +841,23 @@
       "category": "CORE_OPERATIONAL_INTELLIGENCE",
       "status": "PLANNED",
       "objective": "Future customer operational intelligence domain.",
-      "approvedScope": ["future package planning"],
-      "prohibitedScope": ["implementation in this package", "model selection", "production orchestration"],
-      "dependencies": ["FLEET_INTELLIGENCE"],
-      "acceptanceCriteria": ["owner-approved package exists before implementation"],
-      "requiredTests": ["UNKNOWN"],
+      "approvedScope": [
+        "future package planning"
+      ],
+      "prohibitedScope": [
+        "implementation in this package",
+        "model selection",
+        "production orchestration"
+      ],
+      "dependencies": [
+        "FLEET_INTELLIGENCE"
+      ],
+      "acceptanceCriteria": [
+        "owner-approved package exists before implementation"
+      ],
+      "requiredTests": [
+        "UNKNOWN"
+      ],
       "documentationPath": null,
       "implementationCommit": null,
       "localCommitVerified": false,
@@ -551,11 +879,23 @@
       "category": "CORE_OPERATIONAL_INTELLIGENCE",
       "status": "PLANNED",
       "objective": "Future operations intelligence domain.",
-      "approvedScope": ["future package planning"],
-      "prohibitedScope": ["implementation in this package", "model selection", "production orchestration"],
-      "dependencies": ["CUSTOMER_INTELLIGENCE"],
-      "acceptanceCriteria": ["owner-approved package exists before implementation"],
-      "requiredTests": ["UNKNOWN"],
+      "approvedScope": [
+        "future package planning"
+      ],
+      "prohibitedScope": [
+        "implementation in this package",
+        "model selection",
+        "production orchestration"
+      ],
+      "dependencies": [
+        "CUSTOMER_INTELLIGENCE"
+      ],
+      "acceptanceCriteria": [
+        "owner-approved package exists before implementation"
+      ],
+      "requiredTests": [
+        "UNKNOWN"
+      ],
       "documentationPath": null,
       "implementationCommit": null,
       "localCommitVerified": false,
@@ -577,11 +917,24 @@
       "category": "CORE_OPERATIONAL_INTELLIGENCE",
       "status": "PLANNED",
       "objective": "Future safety intelligence domain.",
-      "approvedScope": ["future package planning"],
-      "prohibitedScope": ["implementation in this package", "model selection", "production orchestration", "override deterministic truck-safety controls"],
-      "dependencies": ["OPERATIONS_INTELLIGENCE"],
-      "acceptanceCriteria": ["owner-approved package exists before implementation"],
-      "requiredTests": ["UNKNOWN"],
+      "approvedScope": [
+        "future package planning"
+      ],
+      "prohibitedScope": [
+        "implementation in this package",
+        "model selection",
+        "production orchestration",
+        "override deterministic truck-safety controls"
+      ],
+      "dependencies": [
+        "OPERATIONS_INTELLIGENCE"
+      ],
+      "acceptanceCriteria": [
+        "owner-approved package exists before implementation"
+      ],
+      "requiredTests": [
+        "UNKNOWN"
+      ],
       "documentationPath": null,
       "implementationCommit": null,
       "localCommitVerified": false,
@@ -603,11 +956,40 @@
       "category": "DEVELOPMENT_WORKFLOW",
       "status": "PUSHED",
       "objective": "Create repository-based roadmap, current-work-package, scope-control, handoff, gate, source-control, validation, and generated-summary infrastructure.",
-      "approvedScope": ["roadmap documentation", "machine-readable roadmap records", "handoff rules", "scope-control policy", "gates", "validation scripts", "generated summaries"],
-      "prohibitedScope": ["Supervisor Intelligence implementation", "product features", "runtime APIs", "provider calls", "deployment", "migration", "push"],
-      "dependencies": ["AI-IEP-005B.2"],
-      "acceptanceCriteria": ["roadmap validates", "generated summaries are deterministic", "existing route and driver tests pass", "full npm test passes"],
-      "requiredTests": ["npm.cmd run test:ai-roadmap", "npm.cmd run test:route-intelligence", "npm.cmd run test:driver-intelligence", "npm.cmd run test:security", "npm.cmd test"],
+      "approvedScope": [
+        "roadmap documentation",
+        "machine-readable roadmap records",
+        "handoff rules",
+        "scope-control policy",
+        "gates",
+        "validation scripts",
+        "generated summaries"
+      ],
+      "prohibitedScope": [
+        "Supervisor Intelligence implementation",
+        "product features",
+        "runtime APIs",
+        "provider calls",
+        "deployment",
+        "migration",
+        "push"
+      ],
+      "dependencies": [
+        "AI-IEP-005B.2"
+      ],
+      "acceptanceCriteria": [
+        "roadmap validates",
+        "generated summaries are deterministic",
+        "existing route and driver tests pass",
+        "full npm test passes"
+      ],
+      "requiredTests": [
+        "npm.cmd run test:ai-roadmap",
+        "npm.cmd run test:route-intelligence",
+        "npm.cmd run test:driver-intelligence",
+        "npm.cmd run test:security",
+        "npm.cmd test"
+      ],
       "documentationPath": "docs/ai-development",
       "implementationCommit": "983457ba6a6adceafbbc4423373e197cbd90fcf7",
       "localCommitVerified": true,
