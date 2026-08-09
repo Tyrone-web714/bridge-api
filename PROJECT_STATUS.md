@@ -56,9 +56,9 @@ Current implementation and planned architecture must be kept separate:
 
 ### Current Local AI Development Status
 
-- `WAREHOUSE_INTELLIGENCE` is implemented locally as an uncommitted repository-only foundation under `bridge-api/services/intelligenceExecution/warehouseIntelligence.js` and `docs/implementation/warehouse-intelligence-foundation`.
+- `WAREHOUSE_INTELLIGENCE` is committed, validated, and pushed as a repository-only foundation through commit `4a2b2dc7e4a5c2d8bd9a4a0c9f0e407cdc8fd1bb`.
 - Scope includes deterministic warehouse context validation, route/load assignment checks, staging and loading state models, load completeness and discrepancy detection, departure readiness, structured warehouse exceptions and alerts, lifecycle helpers, explanations, evidence/confidence records, synthetic benchmarks, generated artifacts, and references to existing route, driver, supervisor, route manifest, warehouse authentication, and operational data boundaries.
-- Current source-control state is intentionally unstaged and uncommitted pending controlled review. The work is not pushed, not deployed, not migrated, not production-certified, and does not add production APIs, provider expansion, model selection, employee scoring, warehouse employee ranking, productivity ratings, discipline recommendations, autonomous purchasing, robotics, database or object mutations, or Cloudflare/R2 changes. Fleet Intelligence remains planned and unstarted.
+- Warehouse Intelligence is not deployed, not migrated, not production-certified, and does not add production APIs, provider expansion, model selection, employee scoring, warehouse employee ranking, productivity ratings, discipline recommendations, autonomous purchasing, robotics, database or object mutations, or Cloudflare/R2 changes. `FLEET_INTELLIGENCE` is the current approved but unstarted Milestone 1 package; no Fleet implementation has begun.
 
 ## 4. Repository Landscape
 

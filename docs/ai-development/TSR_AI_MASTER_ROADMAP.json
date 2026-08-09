@@ -26,8 +26,8 @@
     "backendPath": "C:\\dev\\bridge-api\\bridge-api",
     "localBranch": "legacy-public-url-final-cleanup",
     "remoteBranch": "origin/legacy-public-url-final-cleanup",
-    "localHead": "e0a9502c9d6134c66c6a9e46926956282fa5d7ff",
-    "remoteHead": "e0a9502c9d6134c66c6a9e46926956282fa5d7ff",
+    "localHead": "4a2b2dc7e4a5c2d8bd9a4a0c9f0e407cdc8fd1bb",
+    "remoteHead": "4a2b2dc7e4a5c2d8bd9a4a0c9f0e407cdc8fd1bb",
     "localAheadBy": 0,
     "remoteVerificationPerformed": true,
     "pushPerformedByThisPackage": false
@@ -728,7 +728,7 @@
       "packageId": "WAREHOUSE_INTELLIGENCE",
       "title": "Warehouse Intelligence",
       "category": "CORE_OPERATIONAL_INTELLIGENCE",
-      "status": "IMPLEMENTED_UNCOMMITTED",
+      "status": "PUSHED",
       "objective": "Prepare the approved repository-only Warehouse Intelligence package for deterministic warehouse operational awareness and route departure readiness analysis.",
       "approvedScope": [
         "route loading awareness",
@@ -773,9 +773,9 @@
         "TSR-AI-WORKFLOW-001"
       ],
       "acceptanceCriteria": [
-        "Warehouse Intelligence foundation exists locally as repository-only uncommitted work",
+        "Warehouse Intelligence foundation is committed, validated, and pushed as repository-only work",
         "scope is limited to route/load/staging/readiness exceptions and deterministic explanations",
-        "employment-impact, model-selection, provider, production API, deployment, migration, hardware, robotics, and speculative automation scope remains prohibited",
+        "employment-impact, model-selection, provider, production API, deployment, migration, hardware, robotics, speculative automation, and autonomous purchasing scope remains prohibited",
         "model-selection and production-orchestration gates remain incomplete"
       ],
       "requiredTests": [
@@ -787,10 +787,10 @@
         "npm.cmd test"
       ],
       "documentationPath": "docs/implementation/warehouse-intelligence-foundation",
-      "implementationCommit": null,
-      "localCommitVerified": false,
-      "remoteCommitVerified": false,
-      "pushed": false,
+      "implementationCommit": "4a2b2dc7e4a5c2d8bd9a4a0c9f0e407cdc8fd1bb",
+      "localCommitVerified": true,
+      "remoteCommitVerified": true,
+      "pushed": true,
       "deployed": false,
       "deploymentVerified": false,
       "migrationRequired": false,
@@ -798,32 +798,71 @@
       "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
       "ownerApprovalRequired": true,
       "scopeChangeApprovalRequired": true,
-      "nextApprovedPackage": null,
-      "notes": "Warehouse Intelligence foundation exists locally as repository-only uncommitted work under bridge-api/services/intelligenceExecution/warehouseIntelligence.js and docs/implementation/warehouse-intelligence-foundation. Not staged, not committed, not pushed, not deployed, not migrated, and not production-certified. No production API, provider activation, model selection, database write, object mutation, employee scoring, workforce-impact recommendation, autonomous purchasing, robotics, or Fleet Intelligence implementation exists.",
-      "isCurrentPackage": true
+      "nextApprovedPackage": "FLEET_INTELLIGENCE",
+      "notes": "Warehouse Intelligence foundation commit 4a2b2dc7e4a5c2d8bd9a4a0c9f0e407cdc8fd1bb is committed locally, fetched remote refs verify origin/legacy-public-url-final-cleanup contains it, and required validation passed. Not deployed, not migrated, and not production-certified. No production API, provider activation, model selection, database write, object mutation, employee scoring, workforce-impact recommendation, autonomous purchasing, robotics, or Fleet Intelligence implementation exists."
     },
     {
       "packageId": "FLEET_INTELLIGENCE",
       "title": "Fleet Intelligence",
       "category": "CORE_OPERATIONAL_INTELLIGENCE",
-      "status": "PLANNED",
-      "objective": "Future fleet operational intelligence domain.",
+      "status": "APPROVED",
+      "objective": "Prepare the approved repository-only Fleet Intelligence package for deterministic fleet/vehicle operational awareness and route/vehicle readiness analysis.",
       "approvedScope": [
-        "future package planning"
+        "fleet operational state",
+        "vehicle assignment awareness",
+        "vehicle availability",
+        "vehicle readiness",
+        "route/vehicle compatibility evidence",
+        "fleet utilization awareness",
+        "vehicle exception detection",
+        "unresolved vehicle-operational issues",
+        "maintenance-status awareness where existing data already supports it",
+        "route-impact awareness caused by vehicle state",
+        "structured fleet alerts",
+        "supervisor fleet visibility",
+        "deterministic explanations",
+        "evidence completeness/confidence",
+        "human-review flags",
+        "integration with Route, Driver, Supervisor, and Warehouse Intelligence"
       ],
       "prohibitedScope": [
-        "implementation in this package",
+        "driver scoring",
+        "employee ranking",
+        "productivity scoring",
+        "discipline recommendations",
+        "termination recommendations",
+        "compensation decisions",
+        "autonomous workforce decisions",
+        "autonomous vehicle dispatch",
+        "autonomous maintenance authorization",
+        "autonomous parts purchasing",
+        "predictive maintenance models in this foundation unless separately approved",
+        "new telematics hardware integration",
+        "new ELD integration",
+        "new vehicle IoT architecture",
+        "new fleet-management-system product scope",
         "model selection",
-        "production orchestration"
+        "provider activation",
+        "production APIs",
+        "deployment",
+        "migrations",
+        "new AI infrastructure"
       ],
       "dependencies": [
-        "WAREHOUSE_INTELLIGENCE"
+        "AI-IEP-005B.1",
+        "AI-IEP-005B.2",
+        "SUPERVISOR_INTELLIGENCE",
+        "WAREHOUSE_INTELLIGENCE",
+        "TSR-AI-WORKFLOW-001"
       ],
       "acceptanceCriteria": [
-        "owner-approved package exists before implementation"
+        "Fleet Intelligence remains approved but unimplemented until a separate implementation package begins",
+        "scope is limited to fleet/vehicle operational state and route/vehicle readiness evidence",
+        "predictive maintenance models, autonomous dispatch, autonomous purchasing, hardware, ELD, IoT, and product expansion remain prohibited unless separately approved",
+        "model-selection and production-orchestration gates remain incomplete"
       ],
       "requiredTests": [
-        "UNKNOWN"
+        "npm.cmd run test:ai-roadmap"
       ],
       "documentationPath": null,
       "implementationCommit": null,
@@ -832,13 +871,14 @@
       "pushed": false,
       "deployed": false,
       "deploymentVerified": false,
-      "migrationRequired": "UNKNOWN",
+      "migrationRequired": false,
       "migrationExecuted": false,
-      "productionImpact": "UNKNOWN",
+      "productionImpact": "NONE",
       "ownerApprovalRequired": true,
       "scopeChangeApprovalRequired": true,
       "nextApprovedPackage": null,
-      "notes": "Planned Milestone 1 domain; not started."
+      "notes": "Fleet Intelligence is approved as the current next Milestone 1 package after Warehouse remote preservation. Implementation has not started; no deployment, migration, API, provider activation, production certification, predictive maintenance model, autonomous dispatch, autonomous purchasing, telematics/ELD/IoT integration, or fleet-management product expansion exists.",
+      "isCurrentPackage": true
     },
     {
       "packageId": "CUSTOMER_INTELLIGENCE",

@@ -234,15 +234,15 @@
     {
       "category": "CORE_OPERATIONAL_INTELLIGENCE",
       "deployed": false,
-      "implementationCommit": null,
-      "localCommitVerified": false,
-      "nextApprovedPackage": null,
+      "implementationCommit": "4a2b2dc7e4a5c2d8bd9a4a0c9f0e407cdc8fd1bb",
+      "localCommitVerified": true,
+      "nextApprovedPackage": "FLEET_INTELLIGENCE",
       "ownerApprovalRequired": true,
       "packageId": "WAREHOUSE_INTELLIGENCE",
       "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
-      "pushed": false,
-      "remoteCommitVerified": false,
-      "status": "IMPLEMENTED_UNCOMMITTED",
+      "pushed": true,
+      "remoteCommitVerified": true,
+      "status": "PUSHED",
       "title": "Warehouse Intelligence"
     },
     {
@@ -253,10 +253,10 @@
       "nextApprovedPackage": null,
       "ownerApprovalRequired": true,
       "packageId": "FLEET_INTELLIGENCE",
-      "productionImpact": "UNKNOWN",
+      "productionImpact": "NONE",
       "pushed": false,
       "remoteCommitVerified": false,
-      "status": "PLANNED",
+      "status": "APPROVED",
       "title": "Fleet Intelligence"
     },
     {

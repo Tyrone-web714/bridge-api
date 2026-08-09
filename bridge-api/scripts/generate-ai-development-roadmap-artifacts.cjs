@@ -93,6 +93,8 @@ function generate(options = {}) {
   const current = readJson('CURRENT_AI_WORK_PACKAGE.json');
   const packages = roadmap.packages || [];
   const core = packages.filter((pkg) => pkg.category === 'CORE_OPERATIONAL_INTELLIGENCE');
+  const warehouse = packages.find((pkg) => pkg.packageId === 'WAREHOUSE_INTELLIGENCE');
+  const fleet = packages.find((pkg) => pkg.packageId === 'FLEET_INTELLIGENCE');
   const outputs = {
     'ai_roadmap_summary.json': json({
       roadmapId: roadmap.roadmapId,
@@ -122,8 +124,10 @@ function generate(options = {}) {
       policyPath: 'docs/ai-development/SCOPE_CONTROL_POLICY.md',
       ownerApprovalRequiredForNewIdeas: true,
       supervisorIntelligenceRemoteContained: Boolean(packages.find((pkg) => pkg.packageId === 'SUPERVISOR_INTELLIGENCE')?.pushed),
-      warehouseIntelligenceMayBegin: current.packageId === 'WAREHOUSE_INTELLIGENCE' && current.status === 'APPROVED',
-      warehouseImplementationStarted: Boolean(packages.find((pkg) => pkg.packageId === 'WAREHOUSE_INTELLIGENCE')?.implementationCommit),
+      warehouseIntelligenceRemoteContained: Boolean(warehouse?.pushed && warehouse?.remoteCommitVerified),
+      warehouseImplementationStarted: Boolean(warehouse?.implementationCommit),
+      fleetIntelligenceMayBegin: current.packageId === 'FLEET_INTELLIGENCE' && current.status === 'APPROVED',
+      fleetImplementationStarted: Boolean(fleet?.implementationCommit),
       unapprovedMilestoneOneDomainsAllowed: false,
       deterministicTruckSafetyControlsAuthoritative: true
     }),

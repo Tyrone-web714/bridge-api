@@ -81,7 +81,8 @@ const ALLOWED_MILESTONE_ONE = new Set([
   'SAFETY_INTELLIGENCE'
 ]);
 const SUPERVISOR_COMMIT = 'e0a9502c9d6134c66c6a9e46926956282fa5d7ff';
-const REMOTE_VERIFIED_PACKAGES = ['AI-IEP-005B.1', 'AI-IEP-005B.2', 'SUPERVISOR_INTELLIGENCE', 'TSR-AI-WORKFLOW-001'];
+const WAREHOUSE_COMMIT = '4a2b2dc7e4a5c2d8bd9a4a0c9f0e407cdc8fd1bb';
+const REMOTE_VERIFIED_PACKAGES = ['AI-IEP-005B.1', 'AI-IEP-005B.2', 'SUPERVISOR_INTELLIGENCE', 'WAREHOUSE_INTELLIGENCE', 'TSR-AI-WORKFLOW-001'];
 
 function read(name) {
   return fs.readFileSync(path.join(paths.docsRoot, name), 'utf8');
@@ -146,8 +147,8 @@ function validateRoadmap(roadmap, current, options = {}) {
   if (!currentRoadmap) failures.push({ rule: 'CURRENT_PACKAGE_NOT_IN_ROADMAP', packageId: current.packageId });
   if (currentRoadmap && currentRoadmap.title !== current.title) failures.push({ rule: 'CURRENT_PACKAGE_JSON_ROADMAP_MISMATCH', packageId: current.packageId });
   if (currentRoadmap && currentRoadmap.status !== current.status) failures.push({ rule: 'CURRENT_PACKAGE_STATUS_MISMATCH', packageId: current.packageId });
-  if (current.packageId !== 'WAREHOUSE_INTELLIGENCE') failures.push({ rule: 'CURRENT_PACKAGE_NOT_WAREHOUSE_INTELLIGENCE', packageId: current.packageId });
-  if (current.status !== 'IMPLEMENTED_UNCOMMITTED') failures.push({ rule: 'CURRENT_WAREHOUSE_STATUS_INVALID', status: current.status });
+  if (current.packageId !== 'FLEET_INTELLIGENCE') failures.push({ rule: 'CURRENT_PACKAGE_NOT_FLEET_INTELLIGENCE', packageId: current.packageId });
+  if (current.status !== 'APPROVED') failures.push({ rule: 'CURRENT_FLEET_STATUS_INVALID', status: current.status });
   const currentMarkdown = read('CURRENT_AI_WORK_PACKAGE.md');
   if (!currentMarkdown.includes(`Package ID: ${current.packageId}`) || !currentMarkdown.includes(`Status: ${current.status}`)) failures.push({ rule: 'CURRENT_PACKAGE_MARKDOWN_JSON_MISMATCH' });
   for (const pkg of packages.filter((record) => record.category === 'CORE_OPERATIONAL_INTELLIGENCE')) {
@@ -163,8 +164,10 @@ function validateRoadmap(roadmap, current, options = {}) {
   if (supervisor && (supervisor.localCommitVerified !== true || supervisor.remoteCommitVerified !== true || supervisor.pushed !== true)) failures.push({ rule: 'SUPERVISOR_PUSH_EVIDENCE_MISSING' });
   if (supervisor && (supervisor.deployed || supervisor.deploymentVerified || supervisor.migrationExecuted || supervisor.productionImpact !== 'REPOSITORY_ONLY_FOUNDATION')) failures.push({ rule: 'SUPERVISOR_FALSE_PRODUCTION_STATE' });
   const warehouse = packages.find((pkg) => pkg.packageId === 'WAREHOUSE_INTELLIGENCE');
-  if (warehouse && warehouse.status !== 'IMPLEMENTED_UNCOMMITTED') failures.push({ rule: 'WAREHOUSE_STATUS_INVALID', status: warehouse.status });
-  if (warehouse && (warehouse.implementationCommit || warehouse.localCommitVerified || warehouse.remoteCommitVerified || warehouse.pushed || warehouse.deployed || warehouse.deploymentVerified || warehouse.migrationExecuted)) failures.push({ rule: 'WAREHOUSE_IMPLEMENTED_WITHOUT_EVIDENCE' });
+  if (warehouse && warehouse.status !== 'PUSHED') failures.push({ rule: 'WAREHOUSE_PUSHED_STATUS_INVALID', status: warehouse.status });
+  if (warehouse && warehouse.implementationCommit !== WAREHOUSE_COMMIT) failures.push({ rule: 'WAREHOUSE_COMMIT_MISMATCH', implementationCommit: warehouse.implementationCommit });
+  if (warehouse && (warehouse.localCommitVerified !== true || warehouse.remoteCommitVerified !== true || warehouse.pushed !== true)) failures.push({ rule: 'WAREHOUSE_PUSH_EVIDENCE_MISSING' });
+  if (warehouse && (warehouse.deployed || warehouse.deploymentVerified || warehouse.migrationExecuted || warehouse.productionImpact !== 'REPOSITORY_ONLY_FOUNDATION')) failures.push({ rule: 'WAREHOUSE_FALSE_PRODUCTION_STATE' });
   if (warehouse && warehouse.productionImpact !== 'REPOSITORY_ONLY_FOUNDATION') failures.push({ rule: 'WAREHOUSE_PRODUCTION_IMPACT_INVALID', productionImpact: warehouse.productionImpact });
   if (warehouse && warehouse.documentationPath !== 'docs/implementation/warehouse-intelligence-foundation') failures.push({ rule: 'WAREHOUSE_DOCUMENTATION_PATH_INVALID', documentationPath: warehouse.documentationPath });
   if (warehouse && !fs.existsSync(path.join(paths.repoRoot, 'bridge-api', 'services', 'intelligenceExecution', 'warehouseIntelligence.js'))) failures.push({ rule: 'WAREHOUSE_IMPLEMENTATION_EVIDENCE_MISSING' });
@@ -174,6 +177,17 @@ function validateRoadmap(roadmap, current, options = {}) {
   for (const pkg of packages) {
     if (pkg.title === 'Warehouse Intelligence' && pkg.packageId !== 'WAREHOUSE_INTELLIGENCE') failures.push({ rule: 'WAREHOUSE_PACKAGE_NUMBER_FABRICATED', packageId: pkg.packageId });
   }
+  const fleet = packages.find((pkg) => pkg.packageId === 'FLEET_INTELLIGENCE');
+  if (fleet && fleet.status !== 'APPROVED') failures.push({ rule: 'FLEET_STATUS_INVALID', status: fleet.status });
+  if (fleet && (fleet.implementationCommit || fleet.localCommitVerified || fleet.remoteCommitVerified || fleet.pushed || fleet.deployed || fleet.deploymentVerified || fleet.migrationExecuted)) failures.push({ rule: 'FLEET_IMPLEMENTED_WITHOUT_EVIDENCE' });
+  if (fleet && fleet.productionImpact !== 'NONE') failures.push({ rule: 'FLEET_PRODUCTION_IMPACT_INVALID', productionImpact: fleet.productionImpact });
+  if (fleet && fleet.packageId !== 'FLEET_INTELLIGENCE') failures.push({ rule: 'FLEET_PACKAGE_NUMBER_FABRICATED', packageId: fleet.packageId });
+  for (const pkg of packages) {
+    if (pkg.title === 'Fleet Intelligence' && pkg.packageId !== 'FLEET_INTELLIGENCE') failures.push({ rule: 'FLEET_PACKAGE_NUMBER_FABRICATED', packageId: pkg.packageId });
+  }
+  const fleetApprovedScope = (fleet?.approvedScope || []).join(' ').toLowerCase();
+  if (fleetApprovedScope.includes('predictive maintenance')) failures.push({ rule: 'FLEET_PREDICTIVE_MAINTENANCE_SCOPE_UNAPPROVED' });
+  if (fleetApprovedScope.includes('autonomous dispatch') || fleetApprovedScope.includes('autonomous vehicle dispatch') || fleetApprovedScope.includes('autonomous purchasing') || fleetApprovedScope.includes('autonomous parts purchasing')) failures.push({ rule: 'FLEET_AUTONOMOUS_SCOPE_UNAPPROVED' });
   const scopePolicy = read('SCOPE_CONTROL_POLICY.md');
   for (const phrase of ['No new feature enters implementation without owner approval', 'Supervisor Intelligence implementation requires an owner-approved work package', 'Roadmap status changes require evidence']) {
     if (!scopePolicy.includes(phrase)) failures.push({ rule: 'SCOPE_CONTROL_POLICY_INCOMPLETE', phrase });
@@ -229,12 +243,37 @@ function main() {
   assertValidationFails((roadmap) => { roadmap.packages.find((pkg) => pkg.packageId === 'TSR-AI-WORKFLOW-001').isCurrentPackage = true; }, 'CURRENT_PACKAGE_COUNT');
   assertValidationFails((roadmap) => { const supervisor = roadmap.packages.find((pkg) => pkg.packageId === 'SUPERVISOR_INTELLIGENCE'); supervisor.status = 'IMPLEMENTED_UNCOMMITTED'; }, 'SUPERVISOR_PUSHED_MARKED_UNCOMMITTED');
   assertValidationFails((roadmap) => { const supervisor = roadmap.packages.find((pkg) => pkg.packageId === 'SUPERVISOR_INTELLIGENCE'); supervisor.deployed = true; supervisor.deploymentVerified = true; supervisor.productionImpact = 'DEPLOYMENT_VERIFIED'; }, 'SUPERVISOR_FALSE_PRODUCTION_STATE');
-  assertValidationFails((roadmap) => { const warehouse = roadmap.packages.find((pkg) => pkg.packageId === 'WAREHOUSE_INTELLIGENCE'); warehouse.status = 'PUSHED'; warehouse.implementationCommit = '1234567'; }, 'WAREHOUSE_IMPLEMENTED_WITHOUT_EVIDENCE');
-  assertValidationFails((roadmap, current) => {
+  assertValidationFails((roadmap) => {
     const warehouse = roadmap.packages.find((pkg) => pkg.packageId === 'WAREHOUSE_INTELLIGENCE');
-    warehouse.packageId = 'AI-IEP-005B.3';
+    warehouse.status = 'IMPLEMENTED_UNCOMMITTED';
+    warehouse.implementationCommit = null;
+    warehouse.pushed = false;
+    warehouse.remoteCommitVerified = false;
+  }, 'WAREHOUSE_PUSHED_STATUS_INVALID');
+  assertValidationFails((roadmap) => {
+    const warehouse = roadmap.packages.find((pkg) => pkg.packageId === 'WAREHOUSE_INTELLIGENCE');
+    warehouse.deployed = true;
+    warehouse.deploymentVerified = true;
+    warehouse.productionImpact = 'DEPLOYMENT_VERIFIED';
+  }, 'WAREHOUSE_FALSE_PRODUCTION_STATE');
+  assertValidationFails((roadmap) => {
+    const fleet = roadmap.packages.find((pkg) => pkg.packageId === 'FLEET_INTELLIGENCE');
+    fleet.status = 'PUSHED';
+    fleet.implementationCommit = '1234567';
+  }, 'FLEET_IMPLEMENTED_WITHOUT_EVIDENCE');
+  assertValidationFails((roadmap, current) => {
+    const fleet = roadmap.packages.find((pkg) => pkg.packageId === 'FLEET_INTELLIGENCE');
+    fleet.packageId = 'AI-IEP-005B.3';
     current.packageId = 'AI-IEP-005B.3';
-  }, 'WAREHOUSE_PACKAGE_NUMBER_FABRICATED');
+  }, 'FLEET_PACKAGE_NUMBER_FABRICATED');
+  assertValidationFails((roadmap) => {
+    const fleet = roadmap.packages.find((pkg) => pkg.packageId === 'FLEET_INTELLIGENCE');
+    fleet.approvedScope.push('predictive maintenance models');
+  }, 'FLEET_PREDICTIVE_MAINTENANCE_SCOPE_UNAPPROVED');
+  assertValidationFails((roadmap) => {
+    const fleet = roadmap.packages.find((pkg) => pkg.packageId === 'FLEET_INTELLIGENCE');
+    fleet.approvedScope.push('autonomous dispatch and autonomous parts purchasing');
+  }, 'FLEET_AUTONOMOUS_SCOPE_UNAPPROVED');
   assertValidationFails((roadmap) => { roadmap.gates.modelSelection.complete = true; roadmap.gates.modelSelection.status = 'APPROVED'; }, 'MODEL_SELECTION_GATE_FALSE_COMPLETE');
   assertValidationFails((roadmap) => { roadmap.gates.productionOrchestration.complete = true; roadmap.gates.productionOrchestration.status = 'IN_PROGRESS'; }, 'PRODUCTION_ORCHESTRATION_FALSE_ACTIVE');
   const before = fs.readdirSync(paths.generatedRoot).sort().map((name) => [name, fs.readFileSync(path.join(paths.generatedRoot, name), 'utf8')]);
