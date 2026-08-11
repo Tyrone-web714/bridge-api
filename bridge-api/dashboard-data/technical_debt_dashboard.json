@@ -18,7 +18,7 @@
       "dashboard-data/technical_debt_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "2f8c381ad1a755df6b5f25760629b9cded420d8687959d19235123eaf48c0157",
+    "generationHash": "1ef79f9a5c65ee15df69d9611f685ae2edeb18adde721fd6ede3eb15171d9ad2",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -36,6 +36,7 @@
       "deferredWorkDocs": [
         "docs/implementation/benchmark-dataset-framework/DEFERRED_WORK.md",
         "docs/implementation/cost-governance/DEFERRED_WORK.md",
+        "docs/implementation/customer-intelligence-foundation/DEFERRED_WORK.md",
         "docs/implementation/dashboard-data-generation/DEFERRED_WORK.md",
         "docs/implementation/decision-history-and-governance/DEFERRED_WORK.md",
         "docs/implementation/driver-intelligence-foundation/DEFERRED_WORK.md",
@@ -66,7 +67,7 @@
     },
     "statusIndicators": [],
     "summary": {
-      "todoReferences": 44
+      "todoReferences": 46
     },
     "testOnly": true,
     "unknownValues": [],

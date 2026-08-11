@@ -1,0 +1,1575 @@
+{
+  "deliveryHistories": [
+    {
+      "completedDeliveryCount": 2,
+      "conflict": false,
+      "customerId": "cust-synthetic-001",
+      "deliveryCount": 2,
+      "deliveryReferences": [
+        "delivery-syn-001",
+        "delivery-syn-002"
+      ],
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "customerId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "deliveryCount",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "historyHash": "c025240c21bc78c5ec0cd6129076b34314e5d464ee6e595363b9bcf689ffe859",
+      "knownServiceDates": [
+        "2026-01-09",
+        "2026-01-23"
+      ],
+      "mostRecentKnownServiceDate": "2026-01-23",
+      "nextDeliveryPredicted": false,
+      "noCustomerFaultInferred": true,
+      "noDriverFaultInferred": true,
+      "observedIntervalsDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeReferences": [
+        "route-syn-001",
+        "route-syn-001"
+      ],
+      "stale": false,
+      "stopReferences": [
+        "stop-syn-001",
+        "stop-syn-002"
+      ],
+      "testOnly": true,
+      "unresolvedDeliveryCount": 0
+    },
+    {
+      "completedDeliveryCount": 2,
+      "conflict": false,
+      "customerId": null,
+      "deliveryCount": 2,
+      "deliveryReferences": [
+        "delivery-syn-001",
+        "delivery-syn-002"
+      ],
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "customerId",
+            "present": false
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "deliveryCount",
+            "present": true
+          }
+        ],
+        "score": 0.667,
+        "status": "PARTIAL"
+      },
+      "historyHash": "90aa587bca09d985dc913c830b35a0bfb8d48dfebded15d443ff9761b834b28c",
+      "knownServiceDates": [
+        "2026-01-09",
+        "2026-01-23"
+      ],
+      "mostRecentKnownServiceDate": "2026-01-23",
+      "nextDeliveryPredicted": false,
+      "noCustomerFaultInferred": true,
+      "noDriverFaultInferred": true,
+      "observedIntervalsDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeReferences": [
+        "route-syn-001",
+        "route-syn-001"
+      ],
+      "stale": false,
+      "stopReferences": [
+        "stop-syn-001",
+        "stop-syn-002"
+      ],
+      "testOnly": true,
+      "unresolvedDeliveryCount": 0
+    },
+    {
+      "completedDeliveryCount": 2,
+      "conflict": false,
+      "customerId": "cust-synthetic-001",
+      "deliveryCount": 2,
+      "deliveryReferences": [
+        "delivery-syn-001",
+        "delivery-syn-002"
+      ],
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "customerId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "deliveryCount",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "historyHash": "c025240c21bc78c5ec0cd6129076b34314e5d464ee6e595363b9bcf689ffe859",
+      "knownServiceDates": [
+        "2026-01-09",
+        "2026-01-23"
+      ],
+      "mostRecentKnownServiceDate": "2026-01-23",
+      "nextDeliveryPredicted": false,
+      "noCustomerFaultInferred": true,
+      "noDriverFaultInferred": true,
+      "observedIntervalsDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeReferences": [
+        "route-syn-001",
+        "route-syn-001"
+      ],
+      "stale": false,
+      "stopReferences": [
+        "stop-syn-001",
+        "stop-syn-002"
+      ],
+      "testOnly": true,
+      "unresolvedDeliveryCount": 0
+    },
+    {
+      "completedDeliveryCount": 2,
+      "conflict": false,
+      "customerId": "cust-synthetic-001",
+      "deliveryCount": 2,
+      "deliveryReferences": [
+        "delivery-syn-001",
+        "delivery-syn-002"
+      ],
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "customerId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "deliveryCount",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "historyHash": "c025240c21bc78c5ec0cd6129076b34314e5d464ee6e595363b9bcf689ffe859",
+      "knownServiceDates": [
+        "2026-01-09",
+        "2026-01-23"
+      ],
+      "mostRecentKnownServiceDate": "2026-01-23",
+      "nextDeliveryPredicted": false,
+      "noCustomerFaultInferred": true,
+      "noDriverFaultInferred": true,
+      "observedIntervalsDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeReferences": [
+        "route-syn-001",
+        "route-syn-001"
+      ],
+      "stale": false,
+      "stopReferences": [
+        "stop-syn-001",
+        "stop-syn-002"
+      ],
+      "testOnly": true,
+      "unresolvedDeliveryCount": 0
+    },
+    {
+      "completedDeliveryCount": 2,
+      "conflict": false,
+      "customerId": "cust-synthetic-001",
+      "deliveryCount": 2,
+      "deliveryReferences": [
+        "delivery-syn-001",
+        "delivery-syn-002"
+      ],
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "customerId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "deliveryCount",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "historyHash": "c025240c21bc78c5ec0cd6129076b34314e5d464ee6e595363b9bcf689ffe859",
+      "knownServiceDates": [
+        "2026-01-09",
+        "2026-01-23"
+      ],
+      "mostRecentKnownServiceDate": "2026-01-23",
+      "nextDeliveryPredicted": false,
+      "noCustomerFaultInferred": true,
+      "noDriverFaultInferred": true,
+      "observedIntervalsDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeReferences": [
+        "route-syn-001",
+        "route-syn-001"
+      ],
+      "stale": false,
+      "stopReferences": [
+        "stop-syn-001",
+        "stop-syn-002"
+      ],
+      "testOnly": true,
+      "unresolvedDeliveryCount": 0
+    },
+    {
+      "completedDeliveryCount": 2,
+      "conflict": false,
+      "customerId": "cust-synthetic-001",
+      "deliveryCount": 2,
+      "deliveryReferences": [
+        "delivery-syn-001",
+        "delivery-syn-002"
+      ],
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "customerId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "deliveryCount",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "historyHash": "c025240c21bc78c5ec0cd6129076b34314e5d464ee6e595363b9bcf689ffe859",
+      "knownServiceDates": [
+        "2026-01-09",
+        "2026-01-23"
+      ],
+      "mostRecentKnownServiceDate": "2026-01-23",
+      "nextDeliveryPredicted": false,
+      "noCustomerFaultInferred": true,
+      "noDriverFaultInferred": true,
+      "observedIntervalsDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeReferences": [
+        "route-syn-001",
+        "route-syn-001"
+      ],
+      "stale": false,
+      "stopReferences": [
+        "stop-syn-001",
+        "stop-syn-002"
+      ],
+      "testOnly": true,
+      "unresolvedDeliveryCount": 0
+    },
+    {
+      "completedDeliveryCount": 2,
+      "conflict": false,
+      "customerId": "cust-synthetic-001",
+      "deliveryCount": 2,
+      "deliveryReferences": [
+        "delivery-syn-001",
+        "delivery-syn-002"
+      ],
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "customerId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "deliveryCount",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "historyHash": "c025240c21bc78c5ec0cd6129076b34314e5d464ee6e595363b9bcf689ffe859",
+      "knownServiceDates": [
+        "2026-01-09",
+        "2026-01-23"
+      ],
+      "mostRecentKnownServiceDate": "2026-01-23",
+      "nextDeliveryPredicted": false,
+      "noCustomerFaultInferred": true,
+      "noDriverFaultInferred": true,
+      "observedIntervalsDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeReferences": [
+        "route-syn-001",
+        "route-syn-001"
+      ],
+      "stale": false,
+      "stopReferences": [
+        "stop-syn-001",
+        "stop-syn-002"
+      ],
+      "testOnly": true,
+      "unresolvedDeliveryCount": 0
+    },
+    {
+      "completedDeliveryCount": 0,
+      "conflict": false,
+      "customerId": "cust-synthetic-001",
+      "deliveryCount": 0,
+      "deliveryReferences": [],
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "customerId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "deliveryCount",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "historyHash": "b72e178f9969e071e22213d49e1437ba439ff3fe67d67ed4245078dc60a8359c",
+      "knownServiceDates": [],
+      "mostRecentKnownServiceDate": null,
+      "nextDeliveryPredicted": false,
+      "noCustomerFaultInferred": true,
+      "noDriverFaultInferred": true,
+      "observedIntervalsDays": [],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeReferences": [],
+      "stale": false,
+      "stopReferences": [],
+      "testOnly": true,
+      "unresolvedDeliveryCount": 0
+    },
+    {
+      "completedDeliveryCount": 1,
+      "conflict": false,
+      "customerId": "cust-synthetic-001",
+      "deliveryCount": 1,
+      "deliveryReferences": [
+        "delivery-syn-001"
+      ],
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "customerId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "deliveryCount",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "historyHash": "4836514022c0d858d7edaa1a8cabc8d9535c99218f97acc1ce146af903d99330",
+      "knownServiceDates": [
+        "2026-01-09"
+      ],
+      "mostRecentKnownServiceDate": "2026-01-09",
+      "nextDeliveryPredicted": false,
+      "noCustomerFaultInferred": true,
+      "noDriverFaultInferred": true,
+      "observedIntervalsDays": [],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeReferences": [
+        "route-syn-001"
+      ],
+      "stale": true,
+      "stopReferences": [
+        "stop-syn-001"
+      ],
+      "testOnly": true,
+      "unresolvedDeliveryCount": 0
+    },
+    {
+      "completedDeliveryCount": 1,
+      "conflict": true,
+      "customerId": "cust-synthetic-001",
+      "deliveryCount": 1,
+      "deliveryReferences": [
+        "delivery-syn-001"
+      ],
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "customerId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "deliveryCount",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "historyHash": "29818fa5396d1c702bd78aa7385819ecb03d9feb990eb163404e7f46a2754fa1",
+      "knownServiceDates": [
+        "2026-01-09"
+      ],
+      "mostRecentKnownServiceDate": "2026-01-09",
+      "nextDeliveryPredicted": false,
+      "noCustomerFaultInferred": true,
+      "noDriverFaultInferred": true,
+      "observedIntervalsDays": [],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeReferences": [
+        "route-syn-001"
+      ],
+      "stale": false,
+      "stopReferences": [
+        "stop-syn-001"
+      ],
+      "testOnly": true,
+      "unresolvedDeliveryCount": 0
+    },
+    {
+      "completedDeliveryCount": 3,
+      "conflict": false,
+      "customerId": "cust-synthetic-001",
+      "deliveryCount": 3,
+      "deliveryReferences": [
+        "delivery-syn-001",
+        "delivery-repeat-002",
+        "delivery-repeat-003"
+      ],
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "customerId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "deliveryCount",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "historyHash": "ed2338376edfbab4f2bad93102689e50d4b194d57bc9efd745b0a63c86678792",
+      "knownServiceDates": [
+        "2026-01-09",
+        "2026-01-16",
+        "2026-01-23"
+      ],
+      "mostRecentKnownServiceDate": "2026-01-23",
+      "nextDeliveryPredicted": false,
+      "noCustomerFaultInferred": true,
+      "noDriverFaultInferred": true,
+      "observedIntervalsDays": [
+        7,
+        7
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeReferences": [
+        "route-syn-001",
+        "route-syn-001",
+        "route-syn-001"
+      ],
+      "stale": false,
+      "stopReferences": [
+        "stop-syn-001",
+        "stop-syn-001",
+        "stop-syn-001"
+      ],
+      "testOnly": true,
+      "unresolvedDeliveryCount": 0
+    },
+    {
+      "completedDeliveryCount": 2,
+      "conflict": false,
+      "customerId": "cust-synthetic-001",
+      "deliveryCount": 2,
+      "deliveryReferences": [
+        "delivery-syn-001",
+        "delivery-syn-002"
+      ],
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "customerId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "deliveryCount",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "historyHash": "c025240c21bc78c5ec0cd6129076b34314e5d464ee6e595363b9bcf689ffe859",
+      "knownServiceDates": [
+        "2026-01-09",
+        "2026-01-23"
+      ],
+      "mostRecentKnownServiceDate": "2026-01-23",
+      "nextDeliveryPredicted": false,
+      "noCustomerFaultInferred": true,
+      "noDriverFaultInferred": true,
+      "observedIntervalsDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeReferences": [
+        "route-syn-001",
+        "route-syn-001"
+      ],
+      "stale": false,
+      "stopReferences": [
+        "stop-syn-001",
+        "stop-syn-002"
+      ],
+      "testOnly": true,
+      "unresolvedDeliveryCount": 0
+    },
+    {
+      "completedDeliveryCount": 2,
+      "conflict": false,
+      "customerId": "cust-synthetic-001",
+      "deliveryCount": 2,
+      "deliveryReferences": [
+        "delivery-syn-001",
+        "delivery-syn-002"
+      ],
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "customerId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "deliveryCount",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "historyHash": "c025240c21bc78c5ec0cd6129076b34314e5d464ee6e595363b9bcf689ffe859",
+      "knownServiceDates": [
+        "2026-01-09",
+        "2026-01-23"
+      ],
+      "mostRecentKnownServiceDate": "2026-01-23",
+      "nextDeliveryPredicted": false,
+      "noCustomerFaultInferred": true,
+      "noDriverFaultInferred": true,
+      "observedIntervalsDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeReferences": [
+        "route-syn-001",
+        "route-syn-001"
+      ],
+      "stale": false,
+      "stopReferences": [
+        "stop-syn-001",
+        "stop-syn-002"
+      ],
+      "testOnly": true,
+      "unresolvedDeliveryCount": 0
+    },
+    {
+      "completedDeliveryCount": 2,
+      "conflict": false,
+      "customerId": "cust-synthetic-001",
+      "deliveryCount": 2,
+      "deliveryReferences": [
+        "delivery-syn-001",
+        "delivery-syn-002"
+      ],
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "customerId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "deliveryCount",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "historyHash": "c025240c21bc78c5ec0cd6129076b34314e5d464ee6e595363b9bcf689ffe859",
+      "knownServiceDates": [
+        "2026-01-09",
+        "2026-01-23"
+      ],
+      "mostRecentKnownServiceDate": "2026-01-23",
+      "nextDeliveryPredicted": false,
+      "noCustomerFaultInferred": true,
+      "noDriverFaultInferred": true,
+      "observedIntervalsDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeReferences": [
+        "route-syn-001",
+        "route-syn-001"
+      ],
+      "stale": false,
+      "stopReferences": [
+        "stop-syn-001",
+        "stop-syn-002"
+      ],
+      "testOnly": true,
+      "unresolvedDeliveryCount": 0
+    },
+    {
+      "completedDeliveryCount": 2,
+      "conflict": false,
+      "customerId": "cust-synthetic-001",
+      "deliveryCount": 2,
+      "deliveryReferences": [
+        "delivery-syn-001",
+        "delivery-syn-002"
+      ],
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "customerId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "deliveryCount",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "historyHash": "c025240c21bc78c5ec0cd6129076b34314e5d464ee6e595363b9bcf689ffe859",
+      "knownServiceDates": [
+        "2026-01-09",
+        "2026-01-23"
+      ],
+      "mostRecentKnownServiceDate": "2026-01-23",
+      "nextDeliveryPredicted": false,
+      "noCustomerFaultInferred": true,
+      "noDriverFaultInferred": true,
+      "observedIntervalsDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeReferences": [
+        "route-syn-001",
+        "route-syn-001"
+      ],
+      "stale": false,
+      "stopReferences": [
+        "stop-syn-001",
+        "stop-syn-002"
+      ],
+      "testOnly": true,
+      "unresolvedDeliveryCount": 0
+    },
+    {
+      "completedDeliveryCount": 2,
+      "conflict": false,
+      "customerId": "cust-synthetic-001",
+      "deliveryCount": 2,
+      "deliveryReferences": [
+        "delivery-syn-001",
+        "delivery-syn-002"
+      ],
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "customerId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "deliveryCount",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "historyHash": "c025240c21bc78c5ec0cd6129076b34314e5d464ee6e595363b9bcf689ffe859",
+      "knownServiceDates": [
+        "2026-01-09",
+        "2026-01-23"
+      ],
+      "mostRecentKnownServiceDate": "2026-01-23",
+      "nextDeliveryPredicted": false,
+      "noCustomerFaultInferred": true,
+      "noDriverFaultInferred": true,
+      "observedIntervalsDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeReferences": [
+        "route-syn-001",
+        "route-syn-001"
+      ],
+      "stale": false,
+      "stopReferences": [
+        "stop-syn-001",
+        "stop-syn-002"
+      ],
+      "testOnly": true,
+      "unresolvedDeliveryCount": 0
+    },
+    {
+      "completedDeliveryCount": 2,
+      "conflict": false,
+      "customerId": "cust-synthetic-001",
+      "deliveryCount": 2,
+      "deliveryReferences": [
+        "delivery-syn-001",
+        "delivery-syn-002"
+      ],
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "customerId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "deliveryCount",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "historyHash": "c025240c21bc78c5ec0cd6129076b34314e5d464ee6e595363b9bcf689ffe859",
+      "knownServiceDates": [
+        "2026-01-09",
+        "2026-01-23"
+      ],
+      "mostRecentKnownServiceDate": "2026-01-23",
+      "nextDeliveryPredicted": false,
+      "noCustomerFaultInferred": true,
+      "noDriverFaultInferred": true,
+      "observedIntervalsDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeReferences": [
+        "route-syn-001",
+        "route-syn-001"
+      ],
+      "stale": false,
+      "stopReferences": [
+        "stop-syn-001",
+        "stop-syn-002"
+      ],
+      "testOnly": true,
+      "unresolvedDeliveryCount": 0
+    },
+    {
+      "completedDeliveryCount": 2,
+      "conflict": false,
+      "customerId": "cust-synthetic-001",
+      "deliveryCount": 2,
+      "deliveryReferences": [
+        "delivery-syn-001",
+        "delivery-syn-002"
+      ],
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "customerId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "deliveryCount",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "historyHash": "c025240c21bc78c5ec0cd6129076b34314e5d464ee6e595363b9bcf689ffe859",
+      "knownServiceDates": [
+        "2026-01-09",
+        "2026-01-23"
+      ],
+      "mostRecentKnownServiceDate": "2026-01-23",
+      "nextDeliveryPredicted": false,
+      "noCustomerFaultInferred": true,
+      "noDriverFaultInferred": true,
+      "observedIntervalsDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeReferences": [
+        "route-syn-001",
+        "route-syn-001"
+      ],
+      "stale": false,
+      "stopReferences": [
+        "stop-syn-001",
+        "stop-syn-002"
+      ],
+      "testOnly": true,
+      "unresolvedDeliveryCount": 0
+    },
+    {
+      "completedDeliveryCount": 2,
+      "conflict": false,
+      "customerId": "cust-synthetic-001",
+      "deliveryCount": 2,
+      "deliveryReferences": [
+        "delivery-syn-001",
+        "delivery-syn-002"
+      ],
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "customerId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "deliveryCount",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "historyHash": "c025240c21bc78c5ec0cd6129076b34314e5d464ee6e595363b9bcf689ffe859",
+      "knownServiceDates": [
+        "2026-01-09",
+        "2026-01-23"
+      ],
+      "mostRecentKnownServiceDate": "2026-01-23",
+      "nextDeliveryPredicted": false,
+      "noCustomerFaultInferred": true,
+      "noDriverFaultInferred": true,
+      "observedIntervalsDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeReferences": [
+        "route-syn-001",
+        "route-syn-001"
+      ],
+      "stale": false,
+      "stopReferences": [
+        "stop-syn-001",
+        "stop-syn-002"
+      ],
+      "testOnly": true,
+      "unresolvedDeliveryCount": 0
+    },
+    {
+      "completedDeliveryCount": 2,
+      "conflict": false,
+      "customerId": "cust-synthetic-001",
+      "deliveryCount": 2,
+      "deliveryReferences": [
+        "delivery-syn-001",
+        "delivery-syn-002"
+      ],
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "customerId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "deliveryCount",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "historyHash": "c025240c21bc78c5ec0cd6129076b34314e5d464ee6e595363b9bcf689ffe859",
+      "knownServiceDates": [
+        "2026-01-09",
+        "2026-01-23"
+      ],
+      "mostRecentKnownServiceDate": "2026-01-23",
+      "nextDeliveryPredicted": false,
+      "noCustomerFaultInferred": true,
+      "noDriverFaultInferred": true,
+      "observedIntervalsDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeReferences": [
+        "route-syn-001",
+        "route-syn-001"
+      ],
+      "stale": false,
+      "stopReferences": [
+        "stop-syn-001",
+        "stop-syn-002"
+      ],
+      "testOnly": true,
+      "unresolvedDeliveryCount": 0
+    },
+    {
+      "completedDeliveryCount": 2,
+      "conflict": false,
+      "customerId": "cust-synthetic-001",
+      "deliveryCount": 2,
+      "deliveryReferences": [
+        "delivery-syn-001",
+        "delivery-syn-002"
+      ],
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "customerId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "deliveryCount",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "historyHash": "c025240c21bc78c5ec0cd6129076b34314e5d464ee6e595363b9bcf689ffe859",
+      "knownServiceDates": [
+        "2026-01-09",
+        "2026-01-23"
+      ],
+      "mostRecentKnownServiceDate": "2026-01-23",
+      "nextDeliveryPredicted": false,
+      "noCustomerFaultInferred": true,
+      "noDriverFaultInferred": true,
+      "observedIntervalsDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeReferences": [
+        "route-syn-001",
+        "route-syn-001"
+      ],
+      "stale": false,
+      "stopReferences": [
+        "stop-syn-001",
+        "stop-syn-002"
+      ],
+      "testOnly": true,
+      "unresolvedDeliveryCount": 0
+    },
+    {
+      "completedDeliveryCount": 2,
+      "conflict": false,
+      "customerId": "cust-synthetic-001",
+      "deliveryCount": 2,
+      "deliveryReferences": [
+        "delivery-syn-001",
+        "delivery-syn-002"
+      ],
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "customerId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "deliveryCount",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "historyHash": "c025240c21bc78c5ec0cd6129076b34314e5d464ee6e595363b9bcf689ffe859",
+      "knownServiceDates": [
+        "2026-01-09",
+        "2026-01-23"
+      ],
+      "mostRecentKnownServiceDate": "2026-01-23",
+      "nextDeliveryPredicted": false,
+      "noCustomerFaultInferred": true,
+      "noDriverFaultInferred": true,
+      "observedIntervalsDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeReferences": [
+        "route-syn-001",
+        "route-syn-001"
+      ],
+      "stale": false,
+      "stopReferences": [
+        "stop-syn-001",
+        "stop-syn-002"
+      ],
+      "testOnly": true,
+      "unresolvedDeliveryCount": 0
+    },
+    {
+      "completedDeliveryCount": 2,
+      "conflict": false,
+      "customerId": "cust-synthetic-001",
+      "deliveryCount": 2,
+      "deliveryReferences": [
+        "delivery-syn-001",
+        "delivery-syn-002"
+      ],
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "customerId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "deliveryCount",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "historyHash": "c025240c21bc78c5ec0cd6129076b34314e5d464ee6e595363b9bcf689ffe859",
+      "knownServiceDates": [
+        "2026-01-09",
+        "2026-01-23"
+      ],
+      "mostRecentKnownServiceDate": "2026-01-23",
+      "nextDeliveryPredicted": false,
+      "noCustomerFaultInferred": true,
+      "noDriverFaultInferred": true,
+      "observedIntervalsDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeReferences": [
+        "route-syn-001",
+        "route-syn-001"
+      ],
+      "stale": false,
+      "stopReferences": [
+        "stop-syn-001",
+        "stop-syn-002"
+      ],
+      "testOnly": true,
+      "unresolvedDeliveryCount": 0
+    },
+    {
+      "completedDeliveryCount": 2,
+      "conflict": false,
+      "customerId": "cust-synthetic-001",
+      "deliveryCount": 2,
+      "deliveryReferences": [
+        "delivery-syn-001",
+        "delivery-syn-002"
+      ],
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "customerId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "deliveryCount",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "historyHash": "c025240c21bc78c5ec0cd6129076b34314e5d464ee6e595363b9bcf689ffe859",
+      "knownServiceDates": [
+        "2026-01-09",
+        "2026-01-23"
+      ],
+      "mostRecentKnownServiceDate": "2026-01-23",
+      "nextDeliveryPredicted": false,
+      "noCustomerFaultInferred": true,
+      "noDriverFaultInferred": true,
+      "observedIntervalsDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeReferences": [
+        "route-syn-001",
+        "route-syn-001"
+      ],
+      "stale": false,
+      "stopReferences": [
+        "stop-syn-001",
+        "stop-syn-002"
+      ],
+      "testOnly": true,
+      "unresolvedDeliveryCount": 0
+    },
+    {
+      "completedDeliveryCount": 2,
+      "conflict": false,
+      "customerId": "cust-synthetic-001",
+      "deliveryCount": 2,
+      "deliveryReferences": [
+        "delivery-syn-001",
+        "delivery-syn-002"
+      ],
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "customerId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "deliveryCount",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "historyHash": "c025240c21bc78c5ec0cd6129076b34314e5d464ee6e595363b9bcf689ffe859",
+      "knownServiceDates": [
+        "2026-01-09",
+        "2026-01-23"
+      ],
+      "mostRecentKnownServiceDate": "2026-01-23",
+      "nextDeliveryPredicted": false,
+      "noCustomerFaultInferred": true,
+      "noDriverFaultInferred": true,
+      "observedIntervalsDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeReferences": [
+        "route-syn-001",
+        "route-syn-001"
+      ],
+      "stale": false,
+      "stopReferences": [
+        "stop-syn-001",
+        "stop-syn-002"
+      ],
+      "testOnly": true,
+      "unresolvedDeliveryCount": 0
+    },
+    {
+      "completedDeliveryCount": 3,
+      "conflict": false,
+      "customerId": "cust-synthetic-001",
+      "deliveryCount": 3,
+      "deliveryReferences": [
+        "delivery-syn-001",
+        "delivery-cadence-002",
+        "delivery-cadence-003"
+      ],
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "customerId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "deliveryCount",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "historyHash": "19ca7418049728f0d8a580faceb79c7b98d0611f83e75732671ad1186cfae283",
+      "knownServiceDates": [
+        "2026-01-03",
+        "2026-01-10",
+        "2026-01-17"
+      ],
+      "mostRecentKnownServiceDate": "2026-01-17",
+      "nextDeliveryPredicted": false,
+      "noCustomerFaultInferred": true,
+      "noDriverFaultInferred": true,
+      "observedIntervalsDays": [
+        7,
+        7
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeReferences": [
+        "route-syn-001",
+        "route-syn-001",
+        "route-syn-001"
+      ],
+      "stale": false,
+      "stopReferences": [
+        "stop-syn-001",
+        "stop-syn-001",
+        "stop-syn-001"
+      ],
+      "testOnly": true,
+      "unresolvedDeliveryCount": 0
+    },
+    {
+      "completedDeliveryCount": 1,
+      "conflict": false,
+      "customerId": "cust-synthetic-001",
+      "deliveryCount": 1,
+      "deliveryReferences": [
+        "delivery-syn-001"
+      ],
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "customerId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "deliveryCount",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "historyHash": "ea8826f8b2d5c0746922f4281aff1b892480d3c92707a0b4f20ef177a06cb9be",
+      "knownServiceDates": [
+        "2026-01-09"
+      ],
+      "mostRecentKnownServiceDate": "2026-01-09",
+      "nextDeliveryPredicted": false,
+      "noCustomerFaultInferred": true,
+      "noDriverFaultInferred": true,
+      "observedIntervalsDays": [],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeReferences": [
+        "route-syn-001"
+      ],
+      "stale": false,
+      "stopReferences": [
+        "stop-syn-001"
+      ],
+      "testOnly": true,
+      "unresolvedDeliveryCount": 0
+    },
+    {
+      "completedDeliveryCount": 0,
+      "conflict": false,
+      "customerId": "cust-synthetic-001",
+      "deliveryCount": 0,
+      "deliveryReferences": [],
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "customerId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "deliveryCount",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "historyHash": "b72e178f9969e071e22213d49e1437ba439ff3fe67d67ed4245078dc60a8359c",
+      "knownServiceDates": [],
+      "mostRecentKnownServiceDate": null,
+      "nextDeliveryPredicted": false,
+      "noCustomerFaultInferred": true,
+      "noDriverFaultInferred": true,
+      "observedIntervalsDays": [],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeReferences": [],
+      "stale": false,
+      "stopReferences": [],
+      "testOnly": true,
+      "unresolvedDeliveryCount": 0
+    },
+    {
+      "completedDeliveryCount": 2,
+      "conflict": false,
+      "customerId": "cust-synthetic-001",
+      "deliveryCount": 2,
+      "deliveryReferences": [
+        "delivery-syn-001",
+        "delivery-syn-002"
+      ],
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "customerId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": false
+          },
+          {
+            "field": "deliveryCount",
+            "present": true
+          }
+        ],
+        "score": 0.667,
+        "status": "PARTIAL"
+      },
+      "historyHash": "12351f85b889510d64ea837bb0751c648c36dfe287f9baf5a64856fc65cde564",
+      "knownServiceDates": [
+        "2026-01-09",
+        "2026-01-23"
+      ],
+      "mostRecentKnownServiceDate": "2026-01-23",
+      "nextDeliveryPredicted": false,
+      "noCustomerFaultInferred": true,
+      "noDriverFaultInferred": true,
+      "observedIntervalsDays": [
+        14
+      ],
+      "organizationId": null,
+      "routeReferences": [
+        "route-syn-001",
+        "route-syn-001"
+      ],
+      "stale": false,
+      "stopReferences": [
+        "stop-syn-001",
+        "stop-syn-002"
+      ],
+      "testOnly": true,
+      "unresolvedDeliveryCount": 0
+    },
+    {
+      "completedDeliveryCount": 1,
+      "conflict": true,
+      "customerId": "cust-synthetic-001",
+      "deliveryCount": 1,
+      "deliveryReferences": [
+        "delivery-syn-001"
+      ],
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "customerId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "deliveryCount",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "historyHash": "29818fa5396d1c702bd78aa7385819ecb03d9feb990eb163404e7f46a2754fa1",
+      "knownServiceDates": [
+        "2026-01-09"
+      ],
+      "mostRecentKnownServiceDate": "2026-01-09",
+      "nextDeliveryPredicted": false,
+      "noCustomerFaultInferred": true,
+      "noDriverFaultInferred": true,
+      "observedIntervalsDays": [],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeReferences": [
+        "route-syn-001"
+      ],
+      "stale": false,
+      "stopReferences": [
+        "stop-syn-001"
+      ],
+      "testOnly": true,
+      "unresolvedDeliveryCount": 0
+    },
+    {
+      "completedDeliveryCount": 2,
+      "conflict": false,
+      "customerId": "cust-synthetic-001",
+      "deliveryCount": 2,
+      "deliveryReferences": [
+        "delivery-syn-001",
+        "delivery-syn-002"
+      ],
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "customerId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "deliveryCount",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "historyHash": "c025240c21bc78c5ec0cd6129076b34314e5d464ee6e595363b9bcf689ffe859",
+      "knownServiceDates": [
+        "2026-01-09",
+        "2026-01-23"
+      ],
+      "mostRecentKnownServiceDate": "2026-01-23",
+      "nextDeliveryPredicted": false,
+      "noCustomerFaultInferred": true,
+      "noDriverFaultInferred": true,
+      "observedIntervalsDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeReferences": [
+        "route-syn-001",
+        "route-syn-001"
+      ],
+      "stale": false,
+      "stopReferences": [
+        "stop-syn-001",
+        "stop-syn-002"
+      ],
+      "testOnly": true,
+      "unresolvedDeliveryCount": 0
+    }
+  ],
+  "generatedArtifact": true
+}

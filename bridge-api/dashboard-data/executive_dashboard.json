@@ -24,7 +24,7 @@
       "dashboard-data/executive_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "a09fe80934f6dcfcb2edc10012fef3a2b8ee246b4c757dcbd82de923aef6b39d",
+    "generationHash": "7a4b79c036099f30f895bd6a2c5e741652389567c55c4a58758af953de1c0318",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -92,7 +92,7 @@
     "summary": {
       "capabilities": 6,
       "dashboards": 30,
-      "graphHash": "cce53c24921e63d40462f0c9edbcf6f8d444100572c31827b5e0aad1ecefd84c"
+      "graphHash": "d629c590bb0738a53ed9d94a5b48fe9756f88fd2e9794d0896465a0c40b4afae"
     },
     "testOnly": true,
     "unknownValues": [],

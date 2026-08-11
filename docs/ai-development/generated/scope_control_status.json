@@ -1,6 +1,6 @@
 {
   "customerImplementationStarted": false,
-  "customerIntelligenceApproved": true,
+  "customerIntelligenceApproved": false,
   "deterministicTruckSafetyControlsAuthoritative": true,
   "fleetImplementationStarted": true,
   "fleetIntelligenceMayBegin": false,

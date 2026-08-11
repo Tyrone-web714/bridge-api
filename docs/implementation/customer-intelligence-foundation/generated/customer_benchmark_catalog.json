@@ -1,0 +1,4401 @@
+{
+  "benchmarks": [
+    {
+      "caseId": "customer_record_present",
+      "expectedException": "NO_EXCEPTION_OR_INFORMATIONAL",
+      "predictionExpected": false,
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "caseId": "customer_record_present",
+        "currency": "USD",
+        "customer": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerId": "cust-synthetic-001",
+          "organizationId": "org_synthetic_customer_intelligence"
+        },
+        "customerContext": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerContextId": "customer.context.synthetic.001",
+          "customerId": "cust-synthetic-001",
+          "historyWindow": {
+            "endDate": "2026-03-31",
+            "startDate": "2026-01-01"
+          },
+          "organizationId": "org_synthetic_customer_intelligence",
+          "testOnly": true
+        },
+        "deductions": [],
+        "deliveries": [
+          {
+            "deliveryId": "delivery-syn-001",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-001",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-09",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          },
+          {
+            "deliveryId": "delivery-syn-002",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-002",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-23",
+            "status": "completed",
+            "stopId": "stop-syn-002",
+            "testOnly": true
+          }
+        ],
+        "evidenceConflict": false,
+        "evidenceStale": false,
+        "orders": [
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-09",
+            "evidenceConflict": false,
+            "id": "order-syn-001",
+            "invoiceNumber": "INV-SYN-001",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-001-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-001-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-08",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          },
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-23",
+            "evidenceConflict": false,
+            "id": "order-syn-002",
+            "invoiceNumber": "INV-SYN-002",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-002-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-002-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-22",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-002",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          }
+        ],
+        "routeEvidence": {
+          "historicalRouteAccountRelationship": [
+            "route-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "routeSafetyStatus": "ELIGIBLE",
+          "stopId": "stop-syn-001",
+          "stopSequence": 1
+        },
+        "stopEvidence": {
+          "actualArrivalAt": "2026-01-09T10:00:00.000Z",
+          "actualDepartureAt": "2026-01-09T10:15:00.000Z",
+          "authorizedDriverNoteReferences": [
+            "note-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "status": "completed",
+          "stopId": "stop-syn-001"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "customer_record_missing",
+      "expectedException": "CUSTOMER_RECORD_MISSING",
+      "predictionExpected": false,
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "caseId": "customer_record_missing",
+        "currency": "USD",
+        "customer": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": null,
+          "customerId": null,
+          "organizationId": "org_synthetic_customer_intelligence"
+        },
+        "customerContext": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": null,
+          "customerContextId": "customer.context.synthetic.001",
+          "customerId": null,
+          "historyWindow": {
+            "endDate": "2026-03-31",
+            "startDate": "2026-01-01"
+          },
+          "organizationId": "org_synthetic_customer_intelligence",
+          "testOnly": true
+        },
+        "deductions": [],
+        "deliveries": [
+          {
+            "deliveryId": "delivery-syn-001",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-001",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-09",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          },
+          {
+            "deliveryId": "delivery-syn-002",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-002",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-23",
+            "status": "completed",
+            "stopId": "stop-syn-002",
+            "testOnly": true
+          }
+        ],
+        "evidenceConflict": false,
+        "evidenceStale": false,
+        "orders": [
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-09",
+            "evidenceConflict": false,
+            "id": "order-syn-001",
+            "invoiceNumber": "INV-SYN-001",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-001-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-001-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-08",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          },
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-23",
+            "evidenceConflict": false,
+            "id": "order-syn-002",
+            "invoiceNumber": "INV-SYN-002",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-002-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-002-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-22",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-002",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          }
+        ],
+        "routeEvidence": {
+          "historicalRouteAccountRelationship": [
+            "route-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "routeSafetyStatus": "ELIGIBLE",
+          "stopId": "stop-syn-001",
+          "stopSequence": 1
+        },
+        "stopEvidence": {
+          "actualArrivalAt": "2026-01-09T10:00:00.000Z",
+          "actualDepartureAt": "2026-01-09T10:15:00.000Z",
+          "authorizedDriverNoteReferences": [
+            "note-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "status": "completed",
+          "stopId": "stop-syn-001"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "conflicting_customer_evidence",
+      "expectedException": "CUSTOMER_RECORD_CONFLICT",
+      "predictionExpected": false,
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "caseId": "conflicting_customer_evidence",
+        "currency": "USD",
+        "customer": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerId": "cust-synthetic-001",
+          "evidenceConflict": true,
+          "organizationId": "org_synthetic_customer_intelligence"
+        },
+        "customerContext": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerContextId": "customer.context.synthetic.001",
+          "customerId": "cust-synthetic-001",
+          "historyWindow": {
+            "endDate": "2026-03-31",
+            "startDate": "2026-01-01"
+          },
+          "organizationId": "org_synthetic_customer_intelligence",
+          "testOnly": true
+        },
+        "deductions": [],
+        "deliveries": [
+          {
+            "deliveryId": "delivery-syn-001",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-001",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-09",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          },
+          {
+            "deliveryId": "delivery-syn-002",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-002",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-23",
+            "status": "completed",
+            "stopId": "stop-syn-002",
+            "testOnly": true
+          }
+        ],
+        "evidenceConflict": true,
+        "evidenceStale": false,
+        "orders": [
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-09",
+            "evidenceConflict": false,
+            "id": "order-syn-001",
+            "invoiceNumber": "INV-SYN-001",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-001-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-001-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-08",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          },
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-23",
+            "evidenceConflict": false,
+            "id": "order-syn-002",
+            "invoiceNumber": "INV-SYN-002",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-002-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-002-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-22",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-002",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          }
+        ],
+        "routeEvidence": {
+          "historicalRouteAccountRelationship": [
+            "route-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "routeSafetyStatus": "ELIGIBLE",
+          "stopId": "stop-syn-001",
+          "stopSequence": 1
+        },
+        "stopEvidence": {
+          "actualArrivalAt": "2026-01-09T10:00:00.000Z",
+          "actualDepartureAt": "2026-01-09T10:15:00.000Z",
+          "authorizedDriverNoteReferences": [
+            "note-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "status": "completed",
+          "stopId": "stop-syn-001"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "route_account_relationship_present",
+      "expectedException": "NO_EXCEPTION_OR_INFORMATIONAL",
+      "predictionExpected": false,
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "caseId": "route_account_relationship_present",
+        "currency": "USD",
+        "customer": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerId": "cust-synthetic-001",
+          "organizationId": "org_synthetic_customer_intelligence"
+        },
+        "customerContext": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerContextId": "customer.context.synthetic.001",
+          "customerId": "cust-synthetic-001",
+          "historyWindow": {
+            "endDate": "2026-03-31",
+            "startDate": "2026-01-01"
+          },
+          "organizationId": "org_synthetic_customer_intelligence",
+          "testOnly": true
+        },
+        "deductions": [],
+        "deliveries": [
+          {
+            "deliveryId": "delivery-syn-001",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-001",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-09",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          },
+          {
+            "deliveryId": "delivery-syn-002",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-002",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-23",
+            "status": "completed",
+            "stopId": "stop-syn-002",
+            "testOnly": true
+          }
+        ],
+        "evidenceConflict": false,
+        "evidenceStale": false,
+        "orders": [
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-09",
+            "evidenceConflict": false,
+            "id": "order-syn-001",
+            "invoiceNumber": "INV-SYN-001",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-001-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-001-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-08",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          },
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-23",
+            "evidenceConflict": false,
+            "id": "order-syn-002",
+            "invoiceNumber": "INV-SYN-002",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-002-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-002-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-22",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-002",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          }
+        ],
+        "routeEvidence": {
+          "historicalRouteAccountRelationship": [
+            "route-syn-002"
+          ],
+          "routeId": "route-syn-002",
+          "routeSafetyStatus": "ELIGIBLE",
+          "stopId": "stop-syn-002",
+          "stopSequence": 2
+        },
+        "stopEvidence": {
+          "actualArrivalAt": "2026-01-09T10:00:00.000Z",
+          "actualDepartureAt": "2026-01-09T10:15:00.000Z",
+          "authorizedDriverNoteReferences": [
+            "note-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "status": "completed",
+          "stopId": "stop-syn-001"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "route_account_relationship_missing",
+      "expectedException": "ACCOUNT_ROUTE_REFERENCE_MISSING",
+      "predictionExpected": false,
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "caseId": "route_account_relationship_missing",
+        "currency": "USD",
+        "customer": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerId": "cust-synthetic-001",
+          "organizationId": "org_synthetic_customer_intelligence"
+        },
+        "customerContext": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerContextId": "customer.context.synthetic.001",
+          "customerId": "cust-synthetic-001",
+          "historyWindow": {
+            "endDate": "2026-03-31",
+            "startDate": "2026-01-01"
+          },
+          "organizationId": "org_synthetic_customer_intelligence",
+          "testOnly": true
+        },
+        "deductions": [],
+        "deliveries": [
+          {
+            "deliveryId": "delivery-syn-001",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-001",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-09",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          },
+          {
+            "deliveryId": "delivery-syn-002",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-002",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-23",
+            "status": "completed",
+            "stopId": "stop-syn-002",
+            "testOnly": true
+          }
+        ],
+        "evidenceConflict": false,
+        "evidenceStale": false,
+        "orders": [
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-09",
+            "evidenceConflict": false,
+            "id": "order-syn-001",
+            "invoiceNumber": "INV-SYN-001",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-001-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-001-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-08",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          },
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-23",
+            "evidenceConflict": false,
+            "id": "order-syn-002",
+            "invoiceNumber": "INV-SYN-002",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-002-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-002-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-22",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-002",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          }
+        ],
+        "routeEvidence": {},
+        "stopEvidence": {
+          "actualArrivalAt": "2026-01-09T10:00:00.000Z",
+          "actualDepartureAt": "2026-01-09T10:15:00.000Z",
+          "authorizedDriverNoteReferences": [
+            "note-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "status": "completed",
+          "stopId": "stop-syn-001"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "stop_account_relationship_present",
+      "expectedException": "NO_EXCEPTION_OR_INFORMATIONAL",
+      "predictionExpected": false,
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "caseId": "stop_account_relationship_present",
+        "currency": "USD",
+        "customer": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerId": "cust-synthetic-001",
+          "organizationId": "org_synthetic_customer_intelligence"
+        },
+        "customerContext": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerContextId": "customer.context.synthetic.001",
+          "customerId": "cust-synthetic-001",
+          "historyWindow": {
+            "endDate": "2026-03-31",
+            "startDate": "2026-01-01"
+          },
+          "organizationId": "org_synthetic_customer_intelligence",
+          "testOnly": true
+        },
+        "deductions": [],
+        "deliveries": [
+          {
+            "deliveryId": "delivery-syn-001",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-001",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-09",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          },
+          {
+            "deliveryId": "delivery-syn-002",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-002",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-23",
+            "status": "completed",
+            "stopId": "stop-syn-002",
+            "testOnly": true
+          }
+        ],
+        "evidenceConflict": false,
+        "evidenceStale": false,
+        "orders": [
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-09",
+            "evidenceConflict": false,
+            "id": "order-syn-001",
+            "invoiceNumber": "INV-SYN-001",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-001-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-001-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-08",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          },
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-23",
+            "evidenceConflict": false,
+            "id": "order-syn-002",
+            "invoiceNumber": "INV-SYN-002",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-002-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-002-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-22",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-002",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          }
+        ],
+        "routeEvidence": {
+          "historicalRouteAccountRelationship": [
+            "route-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "routeSafetyStatus": "ELIGIBLE",
+          "stopId": "stop-syn-001",
+          "stopSequence": 1
+        },
+        "stopEvidence": {
+          "routeId": "route-syn-003",
+          "status": "completed",
+          "stopId": "stop-syn-003"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "delivery_history_present",
+      "expectedException": "NO_EXCEPTION_OR_INFORMATIONAL",
+      "predictionExpected": false,
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "caseId": "delivery_history_present",
+        "currency": "USD",
+        "customer": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerId": "cust-synthetic-001",
+          "organizationId": "org_synthetic_customer_intelligence"
+        },
+        "customerContext": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerContextId": "customer.context.synthetic.001",
+          "customerId": "cust-synthetic-001",
+          "historyWindow": {
+            "endDate": "2026-03-31",
+            "startDate": "2026-01-01"
+          },
+          "organizationId": "org_synthetic_customer_intelligence",
+          "testOnly": true
+        },
+        "deductions": [],
+        "deliveries": [
+          {
+            "deliveryId": "delivery-syn-001",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-001",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-09",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          },
+          {
+            "deliveryId": "delivery-syn-002",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-002",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-23",
+            "status": "completed",
+            "stopId": "stop-syn-002",
+            "testOnly": true
+          }
+        ],
+        "evidenceConflict": false,
+        "evidenceStale": false,
+        "orders": [
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-09",
+            "evidenceConflict": false,
+            "id": "order-syn-001",
+            "invoiceNumber": "INV-SYN-001",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-001-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-001-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-08",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          },
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-23",
+            "evidenceConflict": false,
+            "id": "order-syn-002",
+            "invoiceNumber": "INV-SYN-002",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-002-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-002-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-22",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-002",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          }
+        ],
+        "routeEvidence": {
+          "historicalRouteAccountRelationship": [
+            "route-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "routeSafetyStatus": "ELIGIBLE",
+          "stopId": "stop-syn-001",
+          "stopSequence": 1
+        },
+        "stopEvidence": {
+          "actualArrivalAt": "2026-01-09T10:00:00.000Z",
+          "actualDepartureAt": "2026-01-09T10:15:00.000Z",
+          "authorizedDriverNoteReferences": [
+            "note-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "status": "completed",
+          "stopId": "stop-syn-001"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "delivery_history_missing",
+      "expectedException": "DELIVERY_HISTORY_MISSING",
+      "predictionExpected": false,
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "caseId": "delivery_history_missing",
+        "currency": "USD",
+        "customer": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerId": "cust-synthetic-001",
+          "organizationId": "org_synthetic_customer_intelligence"
+        },
+        "customerContext": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerContextId": "customer.context.synthetic.001",
+          "customerId": "cust-synthetic-001",
+          "historyWindow": {
+            "endDate": "2026-03-31",
+            "startDate": "2026-01-01"
+          },
+          "organizationId": "org_synthetic_customer_intelligence",
+          "testOnly": true
+        },
+        "deductions": [],
+        "deliveries": [],
+        "evidenceConflict": false,
+        "evidenceStale": false,
+        "orders": [
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-09",
+            "evidenceConflict": false,
+            "id": "order-syn-001",
+            "invoiceNumber": "INV-SYN-001",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-001-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-001-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-08",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          },
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-23",
+            "evidenceConflict": false,
+            "id": "order-syn-002",
+            "invoiceNumber": "INV-SYN-002",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-002-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-002-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-22",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-002",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          }
+        ],
+        "routeEvidence": {
+          "historicalRouteAccountRelationship": [
+            "route-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "routeSafetyStatus": "ELIGIBLE",
+          "stopId": "stop-syn-001",
+          "stopSequence": 1
+        },
+        "stopEvidence": {
+          "actualArrivalAt": "2026-01-09T10:00:00.000Z",
+          "actualDepartureAt": "2026-01-09T10:15:00.000Z",
+          "authorizedDriverNoteReferences": [
+            "note-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "status": "completed",
+          "stopId": "stop-syn-001"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "stale_delivery_evidence",
+      "expectedException": "DELIVERY_HISTORY_STALE",
+      "predictionExpected": false,
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "caseId": "stale_delivery_evidence",
+        "currency": "USD",
+        "customer": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerId": "cust-synthetic-001",
+          "organizationId": "org_synthetic_customer_intelligence"
+        },
+        "customerContext": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerContextId": "customer.context.synthetic.001",
+          "customerId": "cust-synthetic-001",
+          "historyWindow": {
+            "endDate": "2026-03-31",
+            "startDate": "2026-01-01"
+          },
+          "organizationId": "org_synthetic_customer_intelligence",
+          "testOnly": true
+        },
+        "deductions": [],
+        "deliveries": [
+          {
+            "deliveryId": "delivery-syn-001",
+            "evidenceConflict": false,
+            "evidenceStale": true,
+            "id": "delivery-syn-001",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-09",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          }
+        ],
+        "evidenceConflict": false,
+        "evidenceStale": false,
+        "orders": [
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-09",
+            "evidenceConflict": false,
+            "id": "order-syn-001",
+            "invoiceNumber": "INV-SYN-001",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-001-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-001-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-08",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          },
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-23",
+            "evidenceConflict": false,
+            "id": "order-syn-002",
+            "invoiceNumber": "INV-SYN-002",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-002-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-002-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-22",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-002",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          }
+        ],
+        "routeEvidence": {
+          "historicalRouteAccountRelationship": [
+            "route-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "routeSafetyStatus": "ELIGIBLE",
+          "stopId": "stop-syn-001",
+          "stopSequence": 1
+        },
+        "stopEvidence": {
+          "actualArrivalAt": "2026-01-09T10:00:00.000Z",
+          "actualDepartureAt": "2026-01-09T10:15:00.000Z",
+          "authorizedDriverNoteReferences": [
+            "note-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "status": "completed",
+          "stopId": "stop-syn-001"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "conflicting_delivery_evidence",
+      "expectedException": "DELIVERY_HISTORY_CONFLICT",
+      "predictionExpected": false,
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "caseId": "conflicting_delivery_evidence",
+        "currency": "USD",
+        "customer": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerId": "cust-synthetic-001",
+          "organizationId": "org_synthetic_customer_intelligence"
+        },
+        "customerContext": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerContextId": "customer.context.synthetic.001",
+          "customerId": "cust-synthetic-001",
+          "historyWindow": {
+            "endDate": "2026-03-31",
+            "startDate": "2026-01-01"
+          },
+          "organizationId": "org_synthetic_customer_intelligence",
+          "testOnly": true
+        },
+        "deductions": [],
+        "deliveries": [
+          {
+            "deliveryId": "delivery-syn-001",
+            "evidenceConflict": true,
+            "evidenceStale": false,
+            "id": "delivery-syn-001",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-09",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          }
+        ],
+        "evidenceConflict": false,
+        "evidenceStale": false,
+        "orders": [
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-09",
+            "evidenceConflict": false,
+            "id": "order-syn-001",
+            "invoiceNumber": "INV-SYN-001",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-001-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-001-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-08",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          },
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-23",
+            "evidenceConflict": false,
+            "id": "order-syn-002",
+            "invoiceNumber": "INV-SYN-002",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-002-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-002-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-22",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-002",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          }
+        ],
+        "routeEvidence": {
+          "historicalRouteAccountRelationship": [
+            "route-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "routeSafetyStatus": "ELIGIBLE",
+          "stopId": "stop-syn-001",
+          "stopSequence": 1
+        },
+        "stopEvidence": {
+          "actualArrivalAt": "2026-01-09T10:00:00.000Z",
+          "actualDepartureAt": "2026-01-09T10:15:00.000Z",
+          "authorizedDriverNoteReferences": [
+            "note-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "status": "completed",
+          "stopId": "stop-syn-001"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "repeated_delivery_history",
+      "expectedException": "NO_EXCEPTION_OR_INFORMATIONAL",
+      "predictionExpected": false,
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "caseId": "repeated_delivery_history",
+        "currency": "USD",
+        "customer": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerId": "cust-synthetic-001",
+          "organizationId": "org_synthetic_customer_intelligence"
+        },
+        "customerContext": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerContextId": "customer.context.synthetic.001",
+          "customerId": "cust-synthetic-001",
+          "historyWindow": {
+            "endDate": "2026-03-31",
+            "startDate": "2026-01-01"
+          },
+          "organizationId": "org_synthetic_customer_intelligence",
+          "testOnly": true
+        },
+        "deductions": [],
+        "deliveries": [
+          {
+            "deliveryId": "delivery-syn-001",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-001",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-09",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          },
+          {
+            "deliveryId": "delivery-repeat-002",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-repeat-002",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-16",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          },
+          {
+            "deliveryId": "delivery-repeat-003",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-repeat-003",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-23",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          }
+        ],
+        "evidenceConflict": false,
+        "evidenceStale": false,
+        "orders": [
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-09",
+            "evidenceConflict": false,
+            "id": "order-syn-001",
+            "invoiceNumber": "INV-SYN-001",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-001-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-001-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-08",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          },
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-23",
+            "evidenceConflict": false,
+            "id": "order-syn-002",
+            "invoiceNumber": "INV-SYN-002",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-002-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-002-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-22",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-002",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          }
+        ],
+        "routeEvidence": {
+          "historicalRouteAccountRelationship": [
+            "route-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "routeSafetyStatus": "ELIGIBLE",
+          "stopId": "stop-syn-001",
+          "stopSequence": 1
+        },
+        "stopEvidence": {
+          "actualArrivalAt": "2026-01-09T10:00:00.000Z",
+          "actualDepartureAt": "2026-01-09T10:15:00.000Z",
+          "authorizedDriverNoteReferences": [
+            "note-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "status": "completed",
+          "stopId": "stop-syn-001"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "product_history_present",
+      "expectedException": "NO_EXCEPTION_OR_INFORMATIONAL",
+      "predictionExpected": false,
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "caseId": "product_history_present",
+        "currency": "USD",
+        "customer": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerId": "cust-synthetic-001",
+          "organizationId": "org_synthetic_customer_intelligence"
+        },
+        "customerContext": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerContextId": "customer.context.synthetic.001",
+          "customerId": "cust-synthetic-001",
+          "historyWindow": {
+            "endDate": "2026-03-31",
+            "startDate": "2026-01-01"
+          },
+          "organizationId": "org_synthetic_customer_intelligence",
+          "testOnly": true
+        },
+        "deductions": [],
+        "deliveries": [
+          {
+            "deliveryId": "delivery-syn-001",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-001",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-09",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          },
+          {
+            "deliveryId": "delivery-syn-002",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-002",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-23",
+            "status": "completed",
+            "stopId": "stop-syn-002",
+            "testOnly": true
+          }
+        ],
+        "evidenceConflict": false,
+        "evidenceStale": false,
+        "orders": [
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-09",
+            "evidenceConflict": false,
+            "id": "order-syn-001",
+            "invoiceNumber": "INV-SYN-001",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-001-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-001-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-08",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          },
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-23",
+            "evidenceConflict": false,
+            "id": "order-syn-002",
+            "invoiceNumber": "INV-SYN-002",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-002-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-002-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-22",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-002",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          }
+        ],
+        "routeEvidence": {
+          "historicalRouteAccountRelationship": [
+            "route-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "routeSafetyStatus": "ELIGIBLE",
+          "stopId": "stop-syn-001",
+          "stopSequence": 1
+        },
+        "stopEvidence": {
+          "actualArrivalAt": "2026-01-09T10:00:00.000Z",
+          "actualDepartureAt": "2026-01-09T10:15:00.000Z",
+          "authorizedDriverNoteReferences": [
+            "note-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "status": "completed",
+          "stopId": "stop-syn-001"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "product_history_missing",
+      "expectedException": "PRODUCT_HISTORY_MISSING",
+      "predictionExpected": false,
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "caseId": "product_history_missing",
+        "currency": "USD",
+        "customer": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerId": "cust-synthetic-001",
+          "organizationId": "org_synthetic_customer_intelligence"
+        },
+        "customerContext": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerContextId": "customer.context.synthetic.001",
+          "customerId": "cust-synthetic-001",
+          "historyWindow": {
+            "endDate": "2026-03-31",
+            "startDate": "2026-01-01"
+          },
+          "organizationId": "org_synthetic_customer_intelligence",
+          "testOnly": true
+        },
+        "deductions": [],
+        "deliveries": [
+          {
+            "deliveryId": "delivery-syn-001",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-001",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-09",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          },
+          {
+            "deliveryId": "delivery-syn-002",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-002",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-23",
+            "status": "completed",
+            "stopId": "stop-syn-002",
+            "testOnly": true
+          }
+        ],
+        "evidenceConflict": false,
+        "evidenceStale": false,
+        "orders": [],
+        "routeEvidence": {
+          "historicalRouteAccountRelationship": [
+            "route-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "routeSafetyStatus": "ELIGIBLE",
+          "stopId": "stop-syn-001",
+          "stopSequence": 1
+        },
+        "stopEvidence": {
+          "actualArrivalAt": "2026-01-09T10:00:00.000Z",
+          "actualDepartureAt": "2026-01-09T10:15:00.000Z",
+          "authorizedDriverNoteReferences": [
+            "note-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "status": "completed",
+          "stopId": "stop-syn-001"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "historical_quantity_aggregation",
+      "expectedException": "NO_EXCEPTION_OR_INFORMATIONAL",
+      "predictionExpected": false,
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "caseId": "historical_quantity_aggregation",
+        "currency": "USD",
+        "customer": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerId": "cust-synthetic-001",
+          "organizationId": "org_synthetic_customer_intelligence"
+        },
+        "customerContext": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerContextId": "customer.context.synthetic.001",
+          "customerId": "cust-synthetic-001",
+          "historyWindow": {
+            "endDate": "2026-03-31",
+            "startDate": "2026-01-01"
+          },
+          "organizationId": "org_synthetic_customer_intelligence",
+          "testOnly": true
+        },
+        "deductions": [],
+        "deliveries": [
+          {
+            "deliveryId": "delivery-syn-001",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-001",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-09",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          },
+          {
+            "deliveryId": "delivery-syn-002",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-002",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-23",
+            "status": "completed",
+            "stopId": "stop-syn-002",
+            "testOnly": true
+          }
+        ],
+        "evidenceConflict": false,
+        "evidenceStale": false,
+        "orders": [
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-09",
+            "evidenceConflict": false,
+            "id": "order-syn-001",
+            "invoiceNumber": "INV-SYN-001",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-001-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-001-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-08",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          },
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-09",
+            "evidenceConflict": false,
+            "id": "order-qty-002",
+            "invoiceNumber": "INV-QTY-002",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-qty-002-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-qty-002-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-08",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          }
+        ],
+        "routeEvidence": {
+          "historicalRouteAccountRelationship": [
+            "route-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "routeSafetyStatus": "ELIGIBLE",
+          "stopId": "stop-syn-001",
+          "stopSequence": 1
+        },
+        "stopEvidence": {
+          "actualArrivalAt": "2026-01-09T10:00:00.000Z",
+          "actualDepartureAt": "2026-01-09T10:15:00.000Z",
+          "authorizedDriverNoteReferences": [
+            "note-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "status": "completed",
+          "stopId": "stop-syn-001"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "unknown_quantity",
+      "expectedException": "NO_EXCEPTION_OR_INFORMATIONAL",
+      "predictionExpected": false,
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "caseId": "unknown_quantity",
+        "currency": "USD",
+        "customer": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerId": "cust-synthetic-001",
+          "organizationId": "org_synthetic_customer_intelligence"
+        },
+        "customerContext": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerContextId": "customer.context.synthetic.001",
+          "customerId": "cust-synthetic-001",
+          "historyWindow": {
+            "endDate": "2026-03-31",
+            "startDate": "2026-01-01"
+          },
+          "organizationId": "org_synthetic_customer_intelligence",
+          "testOnly": true
+        },
+        "deductions": [],
+        "deliveries": [
+          {
+            "deliveryId": "delivery-syn-001",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-001",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-09",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          },
+          {
+            "deliveryId": "delivery-syn-002",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-002",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-23",
+            "status": "completed",
+            "stopId": "stop-syn-002",
+            "testOnly": true
+          }
+        ],
+        "evidenceConflict": false,
+        "evidenceStale": false,
+        "orders": [
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-09",
+            "evidenceConflict": false,
+            "id": "order-unknown-qty",
+            "invoiceNumber": "INV-SYN-001",
+            "items": [
+              {
+                "grossAmount": null,
+                "id": "item-unknown-qty",
+                "netAmount": null,
+                "productName": "Synthetic Unknown Quantity",
+                "quantity": null,
+                "sku": "SKU-UNKNOWN",
+                "unitPrice": 9
+              }
+            ],
+            "netAmount": 0,
+            "orderDate": "2026-01-08",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "status": "completed",
+            "subtotalAmount": 0,
+            "testOnly": true
+          }
+        ],
+        "routeEvidence": {
+          "historicalRouteAccountRelationship": [
+            "route-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "routeSafetyStatus": "ELIGIBLE",
+          "stopId": "stop-syn-001",
+          "stopSequence": 1
+        },
+        "stopEvidence": {
+          "actualArrivalAt": "2026-01-09T10:00:00.000Z",
+          "actualDepartureAt": "2026-01-09T10:15:00.000Z",
+          "authorizedDriverNoteReferences": [
+            "note-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "status": "completed",
+          "stopId": "stop-syn-001"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "invoice_history_present",
+      "expectedException": "NO_EXCEPTION_OR_INFORMATIONAL",
+      "predictionExpected": false,
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "caseId": "invoice_history_present",
+        "currency": "USD",
+        "customer": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerId": "cust-synthetic-001",
+          "organizationId": "org_synthetic_customer_intelligence"
+        },
+        "customerContext": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerContextId": "customer.context.synthetic.001",
+          "customerId": "cust-synthetic-001",
+          "historyWindow": {
+            "endDate": "2026-03-31",
+            "startDate": "2026-01-01"
+          },
+          "organizationId": "org_synthetic_customer_intelligence",
+          "testOnly": true
+        },
+        "deductions": [],
+        "deliveries": [
+          {
+            "deliveryId": "delivery-syn-001",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-001",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-09",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          },
+          {
+            "deliveryId": "delivery-syn-002",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-002",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-23",
+            "status": "completed",
+            "stopId": "stop-syn-002",
+            "testOnly": true
+          }
+        ],
+        "evidenceConflict": false,
+        "evidenceStale": false,
+        "orders": [
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-09",
+            "evidenceConflict": false,
+            "id": "order-syn-001",
+            "invoiceNumber": "INV-SYN-001",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-001-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-001-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-08",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          },
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-23",
+            "evidenceConflict": false,
+            "id": "order-syn-002",
+            "invoiceNumber": "INV-SYN-002",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-002-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-002-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-22",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-002",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          }
+        ],
+        "routeEvidence": {
+          "historicalRouteAccountRelationship": [
+            "route-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "routeSafetyStatus": "ELIGIBLE",
+          "stopId": "stop-syn-001",
+          "stopSequence": 1
+        },
+        "stopEvidence": {
+          "actualArrivalAt": "2026-01-09T10:00:00.000Z",
+          "actualDepartureAt": "2026-01-09T10:15:00.000Z",
+          "authorizedDriverNoteReferences": [
+            "note-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "status": "completed",
+          "stopId": "stop-syn-001"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "invoice_history_missing",
+      "expectedException": "INVOICE_HISTORY_MISSING",
+      "predictionExpected": false,
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "caseId": "invoice_history_missing",
+        "currency": "USD",
+        "customer": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerId": "cust-synthetic-001",
+          "organizationId": "org_synthetic_customer_intelligence"
+        },
+        "customerContext": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerContextId": "customer.context.synthetic.001",
+          "customerId": "cust-synthetic-001",
+          "historyWindow": {
+            "endDate": "2026-03-31",
+            "startDate": "2026-01-01"
+          },
+          "organizationId": "org_synthetic_customer_intelligence",
+          "testOnly": true
+        },
+        "deductions": [],
+        "deliveries": [
+          {
+            "deliveryId": "delivery-syn-001",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-001",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-09",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          },
+          {
+            "deliveryId": "delivery-syn-002",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-002",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-23",
+            "status": "completed",
+            "stopId": "stop-syn-002",
+            "testOnly": true
+          }
+        ],
+        "evidenceConflict": false,
+        "evidenceStale": false,
+        "orders": [],
+        "routeEvidence": {
+          "historicalRouteAccountRelationship": [
+            "route-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "routeSafetyStatus": "ELIGIBLE",
+          "stopId": "stop-syn-001",
+          "stopSequence": 1
+        },
+        "stopEvidence": {
+          "actualArrivalAt": "2026-01-09T10:00:00.000Z",
+          "actualDepartureAt": "2026-01-09T10:15:00.000Z",
+          "authorizedDriverNoteReferences": [
+            "note-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "status": "completed",
+          "stopId": "stop-syn-001"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "invoice_conflict",
+      "expectedException": "INVOICE_HISTORY_CONFLICT",
+      "predictionExpected": false,
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "caseId": "invoice_conflict",
+        "currency": "USD",
+        "customer": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerId": "cust-synthetic-001",
+          "organizationId": "org_synthetic_customer_intelligence"
+        },
+        "customerContext": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerContextId": "customer.context.synthetic.001",
+          "customerId": "cust-synthetic-001",
+          "historyWindow": {
+            "endDate": "2026-03-31",
+            "startDate": "2026-01-01"
+          },
+          "organizationId": "org_synthetic_customer_intelligence",
+          "testOnly": true
+        },
+        "deductions": [],
+        "deliveries": [
+          {
+            "deliveryId": "delivery-syn-001",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-001",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-09",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          },
+          {
+            "deliveryId": "delivery-syn-002",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-002",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-23",
+            "status": "completed",
+            "stopId": "stop-syn-002",
+            "testOnly": true
+          }
+        ],
+        "evidenceConflict": false,
+        "evidenceStale": false,
+        "orders": [
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-09",
+            "evidenceConflict": true,
+            "id": "order-syn-001",
+            "invoiceNumber": "INV-SYN-001",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-001-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-001-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-08",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          }
+        ],
+        "routeEvidence": {
+          "historicalRouteAccountRelationship": [
+            "route-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "routeSafetyStatus": "ELIGIBLE",
+          "stopId": "stop-syn-001",
+          "stopSequence": 1
+        },
+        "stopEvidence": {
+          "actualArrivalAt": "2026-01-09T10:00:00.000Z",
+          "actualDepartureAt": "2026-01-09T10:15:00.000Z",
+          "authorizedDriverNoteReferences": [
+            "note-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "status": "completed",
+          "stopId": "stop-syn-001"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "historical_spend_aggregation",
+      "expectedException": "NO_EXCEPTION_OR_INFORMATIONAL",
+      "predictionExpected": false,
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "caseId": "historical_spend_aggregation",
+        "currency": "USD",
+        "customer": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerId": "cust-synthetic-001",
+          "organizationId": "org_synthetic_customer_intelligence"
+        },
+        "customerContext": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerContextId": "customer.context.synthetic.001",
+          "customerId": "cust-synthetic-001",
+          "historyWindow": {
+            "endDate": "2026-03-31",
+            "startDate": "2026-01-01"
+          },
+          "organizationId": "org_synthetic_customer_intelligence",
+          "testOnly": true
+        },
+        "deductions": [],
+        "deliveries": [
+          {
+            "deliveryId": "delivery-syn-001",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-001",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-09",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          },
+          {
+            "deliveryId": "delivery-syn-002",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-002",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-23",
+            "status": "completed",
+            "stopId": "stop-syn-002",
+            "testOnly": true
+          }
+        ],
+        "evidenceConflict": false,
+        "evidenceStale": false,
+        "orders": [
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-09",
+            "evidenceConflict": false,
+            "id": "order-syn-001",
+            "invoiceNumber": "INV-SYN-001",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-001-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-001-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-08",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          },
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-23",
+            "evidenceConflict": false,
+            "id": "order-syn-002",
+            "invoiceNumber": "INV-SYN-002",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-002-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-002-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-22",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-002",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          }
+        ],
+        "routeEvidence": {
+          "historicalRouteAccountRelationship": [
+            "route-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "routeSafetyStatus": "ELIGIBLE",
+          "stopId": "stop-syn-001",
+          "stopSequence": 1
+        },
+        "stopEvidence": {
+          "actualArrivalAt": "2026-01-09T10:00:00.000Z",
+          "actualDepartureAt": "2026-01-09T10:15:00.000Z",
+          "authorizedDriverNoteReferences": [
+            "note-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "status": "completed",
+          "stopId": "stop-syn-001"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "unknown_spend",
+      "expectedException": "SPEND_EVIDENCE_INCOMPLETE",
+      "predictionExpected": false,
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "caseId": "unknown_spend",
+        "currency": "USD",
+        "customer": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerId": "cust-synthetic-001",
+          "organizationId": "org_synthetic_customer_intelligence"
+        },
+        "customerContext": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerContextId": "customer.context.synthetic.001",
+          "customerId": "cust-synthetic-001",
+          "historyWindow": {
+            "endDate": "2026-03-31",
+            "startDate": "2026-01-01"
+          },
+          "organizationId": "org_synthetic_customer_intelligence",
+          "testOnly": true
+        },
+        "deductions": [],
+        "deliveries": [
+          {
+            "deliveryId": "delivery-syn-001",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-001",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-09",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          },
+          {
+            "deliveryId": "delivery-syn-002",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-002",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-23",
+            "status": "completed",
+            "stopId": "stop-syn-002",
+            "testOnly": true
+          }
+        ],
+        "evidenceConflict": false,
+        "evidenceStale": false,
+        "orders": [
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-09",
+            "evidenceConflict": false,
+            "id": "order-unknown-spend",
+            "invoiceNumber": "INV-SYN-001",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-unknown-spend-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-unknown-spend-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": null,
+            "orderDate": "2026-01-08",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "status": "completed",
+            "subtotalAmount": null,
+            "testOnly": true
+          }
+        ],
+        "routeEvidence": {
+          "historicalRouteAccountRelationship": [
+            "route-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "routeSafetyStatus": "ELIGIBLE",
+          "stopId": "stop-syn-001",
+          "stopSequence": 1
+        },
+        "stopEvidence": {
+          "actualArrivalAt": "2026-01-09T10:00:00.000Z",
+          "actualDepartureAt": "2026-01-09T10:15:00.000Z",
+          "authorizedDriverNoteReferences": [
+            "note-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "status": "completed",
+          "stopId": "stop-syn-001"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "multi_period_historical_spend",
+      "expectedException": "NO_EXCEPTION_OR_INFORMATIONAL",
+      "predictionExpected": false,
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "caseId": "multi_period_historical_spend",
+        "currency": "USD",
+        "customer": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerId": "cust-synthetic-001",
+          "organizationId": "org_synthetic_customer_intelligence"
+        },
+        "customerContext": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerContextId": "customer.context.synthetic.001",
+          "customerId": "cust-synthetic-001",
+          "historyWindow": {
+            "endDate": "2026-03-31",
+            "startDate": "2026-01-01"
+          },
+          "organizationId": "org_synthetic_customer_intelligence",
+          "testOnly": true
+        },
+        "deductions": [],
+        "deliveries": [
+          {
+            "deliveryId": "delivery-syn-001",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-001",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-09",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          },
+          {
+            "deliveryId": "delivery-syn-002",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-002",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-23",
+            "status": "completed",
+            "stopId": "stop-syn-002",
+            "testOnly": true
+          }
+        ],
+        "evidenceConflict": false,
+        "evidenceStale": false,
+        "orders": [
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-06",
+            "evidenceConflict": false,
+            "id": "order-syn-001",
+            "invoiceNumber": "INV-SYN-001",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-001-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-001-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-05",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          },
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-02-06",
+            "evidenceConflict": false,
+            "id": "order-period-002",
+            "invoiceNumber": "INV-PER-002",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-period-002-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-period-002-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-02-05",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          }
+        ],
+        "routeEvidence": {
+          "historicalRouteAccountRelationship": [
+            "route-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "routeSafetyStatus": "ELIGIBLE",
+          "stopId": "stop-syn-001",
+          "stopSequence": 1
+        },
+        "stopEvidence": {
+          "actualArrivalAt": "2026-01-09T10:00:00.000Z",
+          "actualDepartureAt": "2026-01-09T10:15:00.000Z",
+          "authorizedDriverNoteReferences": [
+            "note-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "status": "completed",
+          "stopId": "stop-syn-001"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "deduction_absent",
+      "expectedException": "NO_EXCEPTION_OR_INFORMATIONAL",
+      "predictionExpected": false,
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "caseId": "deduction_absent",
+        "currency": "USD",
+        "customer": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerId": "cust-synthetic-001",
+          "organizationId": "org_synthetic_customer_intelligence"
+        },
+        "customerContext": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerContextId": "customer.context.synthetic.001",
+          "customerId": "cust-synthetic-001",
+          "historyWindow": {
+            "endDate": "2026-03-31",
+            "startDate": "2026-01-01"
+          },
+          "organizationId": "org_synthetic_customer_intelligence",
+          "testOnly": true
+        },
+        "deductions": [],
+        "deliveries": [
+          {
+            "deliveryId": "delivery-syn-001",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-001",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-09",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          },
+          {
+            "deliveryId": "delivery-syn-002",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-002",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-23",
+            "status": "completed",
+            "stopId": "stop-syn-002",
+            "testOnly": true
+          }
+        ],
+        "evidenceConflict": false,
+        "evidenceStale": false,
+        "orders": [
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-09",
+            "evidenceConflict": false,
+            "id": "order-syn-001",
+            "invoiceNumber": "INV-SYN-001",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-001-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-001-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-08",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          },
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-23",
+            "evidenceConflict": false,
+            "id": "order-syn-002",
+            "invoiceNumber": "INV-SYN-002",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-002-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-002-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-22",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-002",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          }
+        ],
+        "routeEvidence": {
+          "historicalRouteAccountRelationship": [
+            "route-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "routeSafetyStatus": "ELIGIBLE",
+          "stopId": "stop-syn-001",
+          "stopSequence": 1
+        },
+        "stopEvidence": {
+          "actualArrivalAt": "2026-01-09T10:00:00.000Z",
+          "actualDepartureAt": "2026-01-09T10:15:00.000Z",
+          "authorizedDriverNoteReferences": [
+            "note-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "status": "completed",
+          "stopId": "stop-syn-001"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "deduction_recorded",
+      "expectedException": "DEDUCTION_RECORDED",
+      "predictionExpected": false,
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "caseId": "deduction_recorded",
+        "currency": "USD",
+        "customer": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerId": "cust-synthetic-001",
+          "organizationId": "org_synthetic_customer_intelligence"
+        },
+        "customerContext": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerContextId": "customer.context.synthetic.001",
+          "customerId": "cust-synthetic-001",
+          "historyWindow": {
+            "endDate": "2026-03-31",
+            "startDate": "2026-01-01"
+          },
+          "organizationId": "org_synthetic_customer_intelligence",
+          "testOnly": true
+        },
+        "deductions": [
+          {
+            "accountNumber": "ACCT-SYN-001",
+            "amount": 10,
+            "createdAt": "2026-01-10T00:00:00.000Z",
+            "evidenceConflict": false,
+            "id": "deduction-syn-001",
+            "orderId": "order-syn-001",
+            "orderItemId": "order-syn-001-item-cola",
+            "productName": "Synthetic Cola Case",
+            "quantity": 1,
+            "reason": "damaged_product",
+            "routeStopId": "stop-syn-001",
+            "sku": "SKU-COLA",
+            "status": "recorded",
+            "testOnly": true
+          }
+        ],
+        "deliveries": [
+          {
+            "deliveryId": "delivery-syn-001",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-001",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-09",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          },
+          {
+            "deliveryId": "delivery-syn-002",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-002",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-23",
+            "status": "completed",
+            "stopId": "stop-syn-002",
+            "testOnly": true
+          }
+        ],
+        "evidenceConflict": false,
+        "evidenceStale": false,
+        "orders": [
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-09",
+            "evidenceConflict": false,
+            "id": "order-syn-001",
+            "invoiceNumber": "INV-SYN-001",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-001-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-001-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-08",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          },
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-23",
+            "evidenceConflict": false,
+            "id": "order-syn-002",
+            "invoiceNumber": "INV-SYN-002",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-002-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-002-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-22",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-002",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          }
+        ],
+        "routeEvidence": {
+          "historicalRouteAccountRelationship": [
+            "route-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "routeSafetyStatus": "ELIGIBLE",
+          "stopId": "stop-syn-001",
+          "stopSequence": 1
+        },
+        "stopEvidence": {
+          "actualArrivalAt": "2026-01-09T10:00:00.000Z",
+          "actualDepartureAt": "2026-01-09T10:15:00.000Z",
+          "authorizedDriverNoteReferences": [
+            "note-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "status": "completed",
+          "stopId": "stop-syn-001"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "unresolved_deduction",
+      "expectedException": "DEDUCTION_UNRESOLVED",
+      "predictionExpected": false,
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "caseId": "unresolved_deduction",
+        "currency": "USD",
+        "customer": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerId": "cust-synthetic-001",
+          "organizationId": "org_synthetic_customer_intelligence"
+        },
+        "customerContext": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerContextId": "customer.context.synthetic.001",
+          "customerId": "cust-synthetic-001",
+          "historyWindow": {
+            "endDate": "2026-03-31",
+            "startDate": "2026-01-01"
+          },
+          "organizationId": "org_synthetic_customer_intelligence",
+          "testOnly": true
+        },
+        "deductions": [
+          {
+            "accountNumber": "ACCT-SYN-001",
+            "amount": 10,
+            "createdAt": "2026-01-10T00:00:00.000Z",
+            "evidenceConflict": false,
+            "id": "deduction-syn-001",
+            "orderId": "order-syn-001",
+            "orderItemId": "order-syn-001-item-cola",
+            "productName": "Synthetic Cola Case",
+            "quantity": 1,
+            "reason": "damaged_product",
+            "routeStopId": "stop-syn-001",
+            "sku": "SKU-COLA",
+            "status": "unresolved",
+            "testOnly": true
+          }
+        ],
+        "deliveries": [
+          {
+            "deliveryId": "delivery-syn-001",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-001",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-09",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          },
+          {
+            "deliveryId": "delivery-syn-002",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-002",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-23",
+            "status": "completed",
+            "stopId": "stop-syn-002",
+            "testOnly": true
+          }
+        ],
+        "evidenceConflict": false,
+        "evidenceStale": false,
+        "orders": [
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-09",
+            "evidenceConflict": false,
+            "id": "order-syn-001",
+            "invoiceNumber": "INV-SYN-001",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-001-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-001-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-08",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          },
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-23",
+            "evidenceConflict": false,
+            "id": "order-syn-002",
+            "invoiceNumber": "INV-SYN-002",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-002-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-002-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-22",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-002",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          }
+        ],
+        "routeEvidence": {
+          "historicalRouteAccountRelationship": [
+            "route-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "routeSafetyStatus": "ELIGIBLE",
+          "stopId": "stop-syn-001",
+          "stopSequence": 1
+        },
+        "stopEvidence": {
+          "actualArrivalAt": "2026-01-09T10:00:00.000Z",
+          "actualDepartureAt": "2026-01-09T10:15:00.000Z",
+          "authorizedDriverNoteReferences": [
+            "note-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "status": "completed",
+          "stopId": "stop-syn-001"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "conflicting_deduction_evidence",
+      "expectedException": "DEDUCTION_EVIDENCE_CONFLICT",
+      "predictionExpected": false,
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "caseId": "conflicting_deduction_evidence",
+        "currency": "USD",
+        "customer": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerId": "cust-synthetic-001",
+          "organizationId": "org_synthetic_customer_intelligence"
+        },
+        "customerContext": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerContextId": "customer.context.synthetic.001",
+          "customerId": "cust-synthetic-001",
+          "historyWindow": {
+            "endDate": "2026-03-31",
+            "startDate": "2026-01-01"
+          },
+          "organizationId": "org_synthetic_customer_intelligence",
+          "testOnly": true
+        },
+        "deductions": [
+          {
+            "accountNumber": "ACCT-SYN-001",
+            "amount": 10,
+            "createdAt": "2026-01-10T00:00:00.000Z",
+            "evidenceConflict": true,
+            "id": "deduction-syn-001",
+            "orderId": "order-syn-001",
+            "orderItemId": "order-syn-001-item-cola",
+            "productName": "Synthetic Cola Case",
+            "quantity": 1,
+            "reason": "damaged_product",
+            "routeStopId": "stop-syn-001",
+            "sku": "SKU-COLA",
+            "status": "recorded",
+            "testOnly": true
+          }
+        ],
+        "deliveries": [
+          {
+            "deliveryId": "delivery-syn-001",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-001",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-09",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          },
+          {
+            "deliveryId": "delivery-syn-002",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-002",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-23",
+            "status": "completed",
+            "stopId": "stop-syn-002",
+            "testOnly": true
+          }
+        ],
+        "evidenceConflict": false,
+        "evidenceStale": false,
+        "orders": [
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-09",
+            "evidenceConflict": false,
+            "id": "order-syn-001",
+            "invoiceNumber": "INV-SYN-001",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-001-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-001-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-08",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          },
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-23",
+            "evidenceConflict": false,
+            "id": "order-syn-002",
+            "invoiceNumber": "INV-SYN-002",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-002-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-002-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-22",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-002",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          }
+        ],
+        "routeEvidence": {
+          "historicalRouteAccountRelationship": [
+            "route-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "routeSafetyStatus": "ELIGIBLE",
+          "stopId": "stop-syn-001",
+          "stopSequence": 1
+        },
+        "stopEvidence": {
+          "actualArrivalAt": "2026-01-09T10:00:00.000Z",
+          "actualDepartureAt": "2026-01-09T10:15:00.000Z",
+          "authorizedDriverNoteReferences": [
+            "note-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "status": "completed",
+          "stopId": "stop-syn-001"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "observed_historical_service_cadence",
+      "expectedException": "NO_EXCEPTION_OR_INFORMATIONAL",
+      "predictionExpected": false,
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "caseId": "observed_historical_service_cadence",
+        "currency": "USD",
+        "customer": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerId": "cust-synthetic-001",
+          "organizationId": "org_synthetic_customer_intelligence"
+        },
+        "customerContext": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerContextId": "customer.context.synthetic.001",
+          "customerId": "cust-synthetic-001",
+          "historyWindow": {
+            "endDate": "2026-03-31",
+            "startDate": "2026-01-01"
+          },
+          "organizationId": "org_synthetic_customer_intelligence",
+          "testOnly": true
+        },
+        "deductions": [],
+        "deliveries": [
+          {
+            "deliveryId": "delivery-syn-001",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-001",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-03",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          },
+          {
+            "deliveryId": "delivery-cadence-002",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-cadence-002",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-10",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          },
+          {
+            "deliveryId": "delivery-cadence-003",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-cadence-003",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-17",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          }
+        ],
+        "evidenceConflict": false,
+        "evidenceStale": false,
+        "orders": [
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-09",
+            "evidenceConflict": false,
+            "id": "order-syn-001",
+            "invoiceNumber": "INV-SYN-001",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-001-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-001-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-08",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          },
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-23",
+            "evidenceConflict": false,
+            "id": "order-syn-002",
+            "invoiceNumber": "INV-SYN-002",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-002-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-002-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-22",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-002",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          }
+        ],
+        "routeEvidence": {
+          "historicalRouteAccountRelationship": [
+            "route-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "routeSafetyStatus": "ELIGIBLE",
+          "stopId": "stop-syn-001",
+          "stopSequence": 1
+        },
+        "stopEvidence": {
+          "actualArrivalAt": "2026-01-09T10:00:00.000Z",
+          "actualDepartureAt": "2026-01-09T10:15:00.000Z",
+          "authorizedDriverNoteReferences": [
+            "note-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "status": "completed",
+          "stopId": "stop-syn-001"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "sparse_history",
+      "expectedException": "NO_EXCEPTION_OR_INFORMATIONAL",
+      "predictionExpected": false,
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "caseId": "sparse_history",
+        "currency": "USD",
+        "customer": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerId": "cust-synthetic-001",
+          "organizationId": "org_synthetic_customer_intelligence"
+        },
+        "customerContext": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerContextId": "customer.context.synthetic.001",
+          "customerId": "cust-synthetic-001",
+          "historyWindow": {
+            "endDate": "2026-03-31",
+            "startDate": "2026-01-01"
+          },
+          "organizationId": "org_synthetic_customer_intelligence",
+          "testOnly": true
+        },
+        "deductions": [],
+        "deliveries": [
+          {
+            "deliveryId": "delivery-syn-001",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-001",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-09",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          }
+        ],
+        "evidenceConflict": false,
+        "evidenceStale": false,
+        "orders": [
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-09",
+            "evidenceConflict": false,
+            "id": "order-syn-001",
+            "invoiceNumber": "INV-SYN-001",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-001-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-001-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-08",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          }
+        ],
+        "routeEvidence": {
+          "historicalRouteAccountRelationship": [
+            "route-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "routeSafetyStatus": "ELIGIBLE",
+          "stopId": "stop-syn-001",
+          "stopSequence": 1
+        },
+        "stopEvidence": {
+          "actualArrivalAt": "2026-01-09T10:00:00.000Z",
+          "actualDepartureAt": "2026-01-09T10:15:00.000Z",
+          "authorizedDriverNoteReferences": [
+            "note-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "status": "completed",
+          "stopId": "stop-syn-001"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "insufficient_evidence",
+      "expectedException": "INSUFFICIENT_EVIDENCE",
+      "predictionExpected": false,
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "caseId": "insufficient_evidence",
+        "currency": "USD",
+        "customer": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": null,
+          "customerId": null,
+          "organizationId": "org_synthetic_customer_intelligence"
+        },
+        "customerContext": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerContextId": "customer.context.synthetic.001",
+          "customerId": "cust-synthetic-001",
+          "historyWindow": {
+            "endDate": "2026-03-31",
+            "startDate": "2026-01-01"
+          },
+          "organizationId": "org_synthetic_customer_intelligence",
+          "testOnly": true
+        },
+        "deductions": [],
+        "deliveries": [],
+        "evidenceConflict": false,
+        "evidenceStale": false,
+        "orders": [],
+        "routeEvidence": {},
+        "stopEvidence": {}
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "cross_organization_customer_mismatch",
+      "expectedException": "CUSTOMER_RECORD_CONFLICT",
+      "predictionExpected": false,
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "caseId": "cross_organization_customer_mismatch",
+        "currency": "USD",
+        "customer": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerId": "cust-synthetic-001",
+          "organizationId": "org_other_customer"
+        },
+        "customerContext": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerContextId": "customer.context.synthetic.001",
+          "customerId": "cust-synthetic-001",
+          "historyWindow": {
+            "endDate": "2026-03-31",
+            "startDate": "2026-01-01"
+          },
+          "organizationId": "org_synthetic_customer_intelligence",
+          "testOnly": true
+        },
+        "deductions": [],
+        "deliveries": [
+          {
+            "deliveryId": "delivery-syn-001",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-001",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-09",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          },
+          {
+            "deliveryId": "delivery-syn-002",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-002",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-23",
+            "status": "completed",
+            "stopId": "stop-syn-002",
+            "testOnly": true
+          }
+        ],
+        "evidenceConflict": false,
+        "evidenceStale": false,
+        "orders": [
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-09",
+            "evidenceConflict": false,
+            "id": "order-syn-001",
+            "invoiceNumber": "INV-SYN-001",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-001-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-001-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-08",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          },
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-23",
+            "evidenceConflict": false,
+            "id": "order-syn-002",
+            "invoiceNumber": "INV-SYN-002",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-002-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-002-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-22",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-002",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          }
+        ],
+        "routeEvidence": {
+          "historicalRouteAccountRelationship": [
+            "route-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "routeSafetyStatus": "ELIGIBLE",
+          "stopId": "stop-syn-001",
+          "stopSequence": 1
+        },
+        "stopEvidence": {
+          "actualArrivalAt": "2026-01-09T10:00:00.000Z",
+          "actualDepartureAt": "2026-01-09T10:15:00.000Z",
+          "authorizedDriverNoteReferences": [
+            "note-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "status": "completed",
+          "stopId": "stop-syn-001"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "human_review",
+      "expectedException": "HUMAN_REVIEW_REQUIRED",
+      "predictionExpected": false,
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "caseId": "human_review",
+        "currency": "USD",
+        "customer": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerId": "cust-synthetic-001",
+          "organizationId": "org_synthetic_customer_intelligence"
+        },
+        "customerContext": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerContextId": "customer.context.synthetic.001",
+          "customerId": "cust-synthetic-001",
+          "historyWindow": {
+            "endDate": "2026-03-31",
+            "startDate": "2026-01-01"
+          },
+          "organizationId": "org_synthetic_customer_intelligence",
+          "testOnly": true
+        },
+        "deductions": [],
+        "deliveries": [
+          {
+            "deliveryId": "delivery-syn-001",
+            "evidenceConflict": true,
+            "evidenceStale": false,
+            "id": "delivery-syn-001",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-09",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          }
+        ],
+        "evidenceConflict": false,
+        "evidenceStale": false,
+        "orders": [
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-09",
+            "evidenceConflict": false,
+            "id": "order-syn-001",
+            "invoiceNumber": "INV-SYN-001",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-001-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-001-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-08",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          },
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-23",
+            "evidenceConflict": false,
+            "id": "order-syn-002",
+            "invoiceNumber": "INV-SYN-002",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-002-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-002-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-22",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-002",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          }
+        ],
+        "routeEvidence": {
+          "historicalRouteAccountRelationship": [
+            "route-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "routeSafetyStatus": "ELIGIBLE",
+          "stopId": "stop-syn-001",
+          "stopSequence": 1
+        },
+        "stopEvidence": {
+          "actualArrivalAt": "2026-01-09T10:00:00.000Z",
+          "actualDepartureAt": "2026-01-09T10:15:00.000Z",
+          "authorizedDriverNoteReferences": [
+            "note-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "status": "completed",
+          "stopId": "stop-syn-001"
+        }
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "no_exception_case",
+      "expectedException": "NO_EXCEPTION_OR_INFORMATIONAL",
+      "predictionExpected": false,
+      "productionActivationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "caseId": "no_exception_case",
+        "currency": "USD",
+        "customer": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerId": "cust-synthetic-001",
+          "organizationId": "org_synthetic_customer_intelligence"
+        },
+        "customerContext": {
+          "accountName": "Synthetic Market One",
+          "accountNumber": "ACCT-SYN-001",
+          "customerContextId": "customer.context.synthetic.001",
+          "customerId": "cust-synthetic-001",
+          "historyWindow": {
+            "endDate": "2026-03-31",
+            "startDate": "2026-01-01"
+          },
+          "organizationId": "org_synthetic_customer_intelligence",
+          "testOnly": true
+        },
+        "deductions": [],
+        "deliveries": [
+          {
+            "deliveryId": "delivery-syn-001",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-001",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-09",
+            "status": "completed",
+            "stopId": "stop-syn-001",
+            "testOnly": true
+          },
+          {
+            "deliveryId": "delivery-syn-002",
+            "evidenceConflict": false,
+            "evidenceStale": false,
+            "id": "delivery-syn-002",
+            "routeId": "route-syn-001",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "serviceDate": "2026-01-23",
+            "status": "completed",
+            "stopId": "stop-syn-002",
+            "testOnly": true
+          }
+        ],
+        "evidenceConflict": false,
+        "evidenceStale": false,
+        "orders": [
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-09",
+            "evidenceConflict": false,
+            "id": "order-syn-001",
+            "invoiceNumber": "INV-SYN-001",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-001-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-001-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-08",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-001",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          },
+          {
+            "accountName": "Synthetic Market One",
+            "accountNumber": "ACCT-SYN-001",
+            "deductionAmount": 0,
+            "deductions": [],
+            "deliveryDate": "2026-01-23",
+            "evidenceConflict": false,
+            "id": "order-syn-002",
+            "invoiceNumber": "INV-SYN-002",
+            "items": [
+              {
+                "grossAmount": 120,
+                "id": "order-syn-002-item-cola",
+                "netAmount": 120,
+                "productName": "Synthetic Cola Case",
+                "quantity": 12,
+                "sku": "SKU-COLA",
+                "unitPrice": 10
+              },
+              {
+                "grossAmount": 40,
+                "id": "order-syn-002-item-water",
+                "netAmount": 40,
+                "productName": "Synthetic Water Case",
+                "quantity": 8,
+                "sku": "SKU-WATER",
+                "unitPrice": 5
+              }
+            ],
+            "netAmount": 160,
+            "orderDate": "2026-01-22",
+            "routeManifestId": "route-syn-001",
+            "routeStopId": "stop-syn-002",
+            "status": "completed",
+            "subtotalAmount": 160,
+            "testOnly": true
+          }
+        ],
+        "routeEvidence": {
+          "historicalRouteAccountRelationship": [
+            "route-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "routeSafetyStatus": "ELIGIBLE",
+          "stopId": "stop-syn-001",
+          "stopSequence": 1
+        },
+        "stopEvidence": {
+          "actualArrivalAt": "2026-01-09T10:00:00.000Z",
+          "actualDepartureAt": "2026-01-09T10:15:00.000Z",
+          "authorizedDriverNoteReferences": [
+            "note-syn-001"
+          ],
+          "routeId": "route-syn-001",
+          "status": "completed",
+          "stopId": "stop-syn-001"
+        }
+      },
+      "syntheticOnly": true
+    }
+  ],
+  "generatedArtifact": true
+}

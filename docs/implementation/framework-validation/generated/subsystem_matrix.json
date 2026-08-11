@@ -72,11 +72,11 @@
       "validationState": "COMPLETE"
     },
     {
-      "hash": "d3d366559ba17d01597f88ed8033fac50710ae708f7b13e526f3563181613fc3",
+      "hash": "f358dbffabc773d2a3993065ebbc17ee93515c74f0dbfa50d5eb2d50762c2fab",
       "present": true,
       "primaryNodeType": "Repository Graph",
       "productionApplicable": false,
-      "recordCount": 1169,
+      "recordCount": 1227,
       "subsystemId": "knowledge-graph",
       "testOnly": true,
       "validationState": "COMPLETE"

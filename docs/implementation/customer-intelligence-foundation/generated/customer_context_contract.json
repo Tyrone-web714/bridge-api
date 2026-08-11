@@ -1,0 +1,37 @@
+{
+  "crossOrganizationAggregationProhibited": true,
+  "customerNameNotRelationalIdentifier": true,
+  "identityFields": [
+    "organizationId",
+    "customerId",
+    "accountNumber",
+    "accountReference"
+  ],
+  "productionRuntimeDeferred": true,
+  "providerModelControlsRejected": true,
+  "referenceFields": [
+    "routeReferences",
+    "stopReferences",
+    "deliveryReferences",
+    "invoiceReferences",
+    "productReferences",
+    "deductionReferences"
+  ],
+  "requiredFields": [
+    "customerContextId",
+    "organizationId",
+    "customerId",
+    "accountReference",
+    "historyWindow",
+    "sourceReferences",
+    "evidenceTimestamps",
+    "sourceHashes",
+    "evidenceCompleteness",
+    "evidenceConfidence",
+    "unknownFields",
+    "humanReviewRequired",
+    "testOnly"
+  ],
+  "schemaVersion": "customer.context.contract.v1",
+  "stableIdentityRequired": true
+}

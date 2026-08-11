@@ -328,6 +328,18 @@
         "testOnly": true
       },
       {
+        "edgeId": "edge:7c2393d510ee40359d48",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "9e49097de94a202419498d331c791fe1d3a68fe6ff8b7dc7a62dd91798740dd0",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "IMPLEMENTS",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Service:intelligence-execution-platform",
+        "targetNodeId": "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
+        "testOnly": true
+      },
+      {
         "edgeId": "edge:7d11d2107cb595480bc1",
         "metadata": {},
         "relationshipConfidence": "DETERMINISTIC",
@@ -6940,6 +6952,162 @@
         "testOnly": true
       },
       {
+        "edgeId": "edge:05b0a5f2cffa94aae2ee",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "014969eb3457043d204561cfc29a2a3799e29dd77befa561e287819bd3182b5d",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_benchmark_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:28e50189380747ab5493",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "b434738ed23a06870da9bbffa27628d3dd1348b5cf38ee39822446fbf1854abe",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_context_contract.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:6b75e89c33fbaabe2623",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "b1fb6209da15fcf4375318e829deeb9627ab3ebceb5158d26ae3af1ab7ae6a1e",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_deduction_history_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:7e2914100cad1a3719ba",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "f00c98a7b2779e1431e64966f139eb54589c14f90b5db5eeb33121c1b0a1d08e",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_delivery_history_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:acfd46fc319384eed89c",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "0ad532b356f274f45788bb2a9b794856ee430e81faa0c7867952c502c6dc4a61",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_evidence_report.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:ee02c59b784485daac93",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "85fbaaf484aed8bb037b824c441c0293c7ecb2f6dda794357a32de342917e249",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_exception_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:e5ebe28705477857ce1b",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "be24c67b502e1385ea945331cd864fb1ca2a91c7e753ce8d696be276380b2f87",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_historical_spend_report.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:ce57f446c087b9f4a3be",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "969b0438d132131cd68734abe3b32717e96f9b2c05040583e1bcbdab10643b9e",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/CUSTOMER_INTELLIGENCE_SUMMARY.md",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:9f925fa25779e79ef26e",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "dbab84c34c1754bda07bfd9517bcd7e35999d3d4b326f18cd7e79b03a7bdef77",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_invoice_history_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:ac0c7ad0eb9c14127a0f",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "a1e1e639df304ecc1292a673522e272e946b93863be6a422b89ceb1ab6810006",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_product_history_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:778a25e5d110212ac9e6",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "842dff9d146dad01a0995dc88e4ef08ac6c1c443b1f8f6d2d7bb56a4ff88d120",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_route_context_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:b44bea249f59c977629c",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "4ffb0dc98261200711d4a143e565b0b1b5dc0874ec84276f5bd9204e8230eeb6",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_service_pattern_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:554f515365356da00070",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "d86ea39d156a4fa7fcca560f5d498831594fe83ef5764c487d5219cc881c698f",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_stop_context_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
         "edgeId": "edge:7f903ca8c63f834d6930",
         "metadata": {},
         "relationshipConfidence": "DETERMINISTIC",
@@ -10566,10 +10734,10 @@
     ],
     "engineVersion": "intelligence.knowledge.graph.engine.v1",
     "generatedFrom": "repository",
-    "graphHash": "cce53c24921e63d40462f0c9edbcf6f8d444100572c31827b5e0aad1ecefd84c",
+    "graphHash": "d629c590bb0738a53ed9d94a5b48fe9756f88fd2e9794d0896465a0c40b4afae",
     "nodes": [
       {
-        "hash": "6fe07a22b35225fa33fea97de66a9280dfbed5f870247b57f0f106631d7481ea",
+        "hash": "a523c4c066a68fdbd4b3f6506ff8fe722aae914a00085dbe3fd71d172a6cfe68",
         "label": "bridge-api",
         "lifecycleState": null,
         "metadata": {},
@@ -10902,6 +11070,18 @@
         "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
         "productionApplicable": false,
         "source": "bridge-api/services/intelligenceExecution/costGovernance.js",
+        "testOnly": true,
+        "type": "Repository Module",
+        "version": null
+      },
+      {
+        "hash": "81a2e34e3860b9322cbdca97d1122c5868f9f2893aa67a01784c789c36aeee92",
+        "label": "bridge-api/services/intelligenceExecution/customerIntelligence.js",
+        "lifecycleState": null,
+        "metadata": {},
+        "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
+        "productionApplicable": false,
+        "source": "bridge-api/services/intelligenceExecution/customerIntelligence.js",
         "testOnly": true,
         "type": "Repository Module",
         "version": null
@@ -17287,6 +17467,804 @@
         "nodeId": "Documentation Page:docs/implementation/cost-governance/USAGE_UNIT_MODEL.md",
         "productionApplicable": false,
         "source": "docs/implementation/cost-governance/USAGE_UNIT_MODEL.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "5fbb081204fe722fe0427461487ff62c3ccf7e9f1ce1ea13e0aecdb1bc55b5ce",
+        "label": "docs/implementation/customer-intelligence-foundation/AUTHORITATIVE_DATA_BOUNDARIES.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "5fbb081204fe722fe0427461487ff62c3ccf7e9f1ce1ea13e0aecdb1bc55b5ce"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/AUTHORITATIVE_DATA_BOUNDARIES.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/AUTHORITATIVE_DATA_BOUNDARIES.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "2973430b1d943984327ff92b1f185510faae0d186b8e27638377e8633f8143a7",
+        "label": "docs/implementation/customer-intelligence-foundation/BENCHMARK_DATASETS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "2973430b1d943984327ff92b1f185510faae0d186b8e27638377e8633f8143a7"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/BENCHMARK_DATASETS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/BENCHMARK_DATASETS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "4cd8f536afca5ac438d4e881f3f27dc4ce660902bf4807d31da2a9ca19e53bbb",
+        "label": "docs/implementation/customer-intelligence-foundation/CREDIT_FINANCIAL_DECISION_BOUNDARY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "4cd8f536afca5ac438d4e881f3f27dc4ce660902bf4807d31da2a9ca19e53bbb"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/CREDIT_FINANCIAL_DECISION_BOUNDARY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/CREDIT_FINANCIAL_DECISION_BOUNDARY.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "88c3447f71545cec404f8a30b9445b576406bdacd8d60267ece0e55a40475aad",
+        "label": "docs/implementation/customer-intelligence-foundation/CURRENT_CUSTOMER_FUNCTIONALITY_AUDIT.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "88c3447f71545cec404f8a30b9445b576406bdacd8d60267ece0e55a40475aad"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/CURRENT_CUSTOMER_FUNCTIONALITY_AUDIT.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/CURRENT_CUSTOMER_FUNCTIONALITY_AUDIT.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "3d20afb933b1d8d20b47ce5ce6ab32a66c65c17af0cfa280ceee842054ca2b89",
+        "label": "docs/implementation/customer-intelligence-foundation/CUSTOMER_CONTEXT_CONTRACT.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "3d20afb933b1d8d20b47ce5ce6ab32a66c65c17af0cfa280ceee842054ca2b89"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/CUSTOMER_CONTEXT_CONTRACT.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/CUSTOMER_CONTEXT_CONTRACT.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "e404fdcd23a76f32a985b0b60942a62e9e408619531c255176fb070f07ef5ae2",
+        "label": "docs/implementation/customer-intelligence-foundation/CUSTOMER_IDENTITY_MODEL.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "e404fdcd23a76f32a985b0b60942a62e9e408619531c255176fb070f07ef5ae2"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/CUSTOMER_IDENTITY_MODEL.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/CUSTOMER_IDENTITY_MODEL.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "55a95638e9a0931d67d91cb6d3a1c9f9192d401acbf8d2887ab17cb9ad94ebad",
+        "label": "docs/implementation/customer-intelligence-foundation/CUSTOMER_INTELLIGENCE_ARCHITECTURE.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "55a95638e9a0931d67d91cb6d3a1c9f9192d401acbf8d2887ab17cb9ad94ebad"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/CUSTOMER_INTELLIGENCE_ARCHITECTURE.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/CUSTOMER_INTELLIGENCE_ARCHITECTURE.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "5f03675ed4c109fdd8723b889c7be7ee5a106fb34a9e8c15f125e1a2648aa0cf",
+        "label": "docs/implementation/customer-intelligence-foundation/CUSTOMER_OPERATIONAL_EXCEPTIONS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "5f03675ed4c109fdd8723b889c7be7ee5a106fb34a9e8c15f125e1a2648aa0cf"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/CUSTOMER_OPERATIONAL_EXCEPTIONS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/CUSTOMER_OPERATIONAL_EXCEPTIONS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "c826d77fffede5c503689dcd225869dc95b4774981211b700de0284846cd5954",
+        "label": "docs/implementation/customer-intelligence-foundation/CUSTOMER_ROUTE_CONTEXT.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "c826d77fffede5c503689dcd225869dc95b4774981211b700de0284846cd5954"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/CUSTOMER_ROUTE_CONTEXT.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/CUSTOMER_ROUTE_CONTEXT.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "b236653750428279cf79f823f42d5c28fc02c19075b79bd2f321091c6e3c22ee",
+        "label": "docs/implementation/customer-intelligence-foundation/CUSTOMER_STOP_CONTEXT.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "b236653750428279cf79f823f42d5c28fc02c19075b79bd2f321091c6e3c22ee"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/CUSTOMER_STOP_CONTEXT.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/CUSTOMER_STOP_CONTEXT.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "3ced79631fe322cbeecb9d2dbfcd35f839889218e19f96481e2820d9799c5d5b",
+        "label": "docs/implementation/customer-intelligence-foundation/CUSTOMER_SUMMARY_MODEL.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "3ced79631fe322cbeecb9d2dbfcd35f839889218e19f96481e2820d9799c5d5b"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/CUSTOMER_SUMMARY_MODEL.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/CUSTOMER_SUMMARY_MODEL.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "a3ac6fea54dd363bca2b1e07996c60b4ca76c553973c1eafe93f0bf6c10122cc",
+        "label": "docs/implementation/customer-intelligence-foundation/DASHBOARD_INTEGRATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "a3ac6fea54dd363bca2b1e07996c60b4ca76c553973c1eafe93f0bf6c10122cc"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/DASHBOARD_INTEGRATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/DASHBOARD_INTEGRATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "1a83d88c053a8c7cc4ed5352699088e50e45278022e708ab2495a30478f0d5cc",
+        "label": "docs/implementation/customer-intelligence-foundation/DATA_LIFECYCLE_REVIEW.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "1a83d88c053a8c7cc4ed5352699088e50e45278022e708ab2495a30478f0d5cc"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/DATA_LIFECYCLE_REVIEW.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/DATA_LIFECYCLE_REVIEW.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "6c5be7f2369488edb64d9e1cb5ea44905e97a7290ab2795eef2fff28620f1ad1",
+        "label": "docs/implementation/customer-intelligence-foundation/DEDUCTION_EXCEPTION_HISTORY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "6c5be7f2369488edb64d9e1cb5ea44905e97a7290ab2795eef2fff28620f1ad1"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/DEDUCTION_EXCEPTION_HISTORY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/DEDUCTION_EXCEPTION_HISTORY.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "eb3a5682af736cab43ace9e508ab768886fe26b9866cc1c8329084e1c6bc339f",
+        "label": "docs/implementation/customer-intelligence-foundation/DEFERRED_WORK.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "eb3a5682af736cab43ace9e508ab768886fe26b9866cc1c8329084e1c6bc339f"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/DEFERRED_WORK.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/DEFERRED_WORK.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "5cbd809ff21d1d65af0d5eb33359e4f6439da014c38f9213c2eebbbedd96b4e8",
+        "label": "docs/implementation/customer-intelligence-foundation/DELIVERY_HISTORY_AWARENESS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "5cbd809ff21d1d65af0d5eb33359e4f6439da014c38f9213c2eebbbedd96b4e8"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/DELIVERY_HISTORY_AWARENESS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/DELIVERY_HISTORY_AWARENESS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "a86c4077d0a9395534f194bbb65ecb45ec9b2ff72302f0e802898b4cfbde26a9",
+        "label": "docs/implementation/customer-intelligence-foundation/DETERMINISTIC_EXPLANATIONS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "a86c4077d0a9395534f194bbb65ecb45ec9b2ff72302f0e802898b4cfbde26a9"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/DETERMINISTIC_EXPLANATIONS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/DETERMINISTIC_EXPLANATIONS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "e77925b111b820a7d745b1c876b44de6935d5eef078d3934e2a8bfdfe2ebd53f",
+        "label": "docs/implementation/customer-intelligence-foundation/DRIVER_INTELLIGENCE_INTEGRATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "e77925b111b820a7d745b1c876b44de6935d5eef078d3934e2a8bfdfe2ebd53f"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/DRIVER_INTELLIGENCE_INTEGRATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/DRIVER_INTELLIGENCE_INTEGRATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "0218ecb5a5d72fe010ddec705b1373d72bd527bfbc5c0434d6b01c3e922e42ba",
+        "label": "docs/implementation/customer-intelligence-foundation/EVIDENCE_AND_CONFIDENCE.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "0218ecb5a5d72fe010ddec705b1373d72bd527bfbc5c0434d6b01c3e922e42ba"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/EVIDENCE_AND_CONFIDENCE.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/EVIDENCE_AND_CONFIDENCE.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "31afba57778c598ccb2c32f088c21de8648076131b68bbcc9f1c9d9bbbe9fb04",
+        "label": "docs/implementation/customer-intelligence-foundation/EXCEPTION_SEVERITY_MODEL.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "31afba57778c598ccb2c32f088c21de8648076131b68bbcc9f1c9d9bbbe9fb04"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/EXCEPTION_SEVERITY_MODEL.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/EXCEPTION_SEVERITY_MODEL.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "040dc0f65e0f4031e22a7e2b1345b221240184fdeb0948cf248488334f00f806",
+        "label": "docs/implementation/customer-intelligence-foundation/EXISTING_PREDICTION_LOGISTICS_BOUNDARY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "040dc0f65e0f4031e22a7e2b1345b221240184fdeb0948cf248488334f00f806"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/EXISTING_PREDICTION_LOGISTICS_BOUNDARY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/EXISTING_PREDICTION_LOGISTICS_BOUNDARY.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "4ed3ba6dcff53339024d1673897ffe9bf07d80981bd461337583fac454aa069a",
+        "label": "docs/implementation/customer-intelligence-foundation/EXISTING_SERVICE_REUSE_DECISION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "4ed3ba6dcff53339024d1673897ffe9bf07d80981bd461337583fac454aa069a"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/EXISTING_SERVICE_REUSE_DECISION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/EXISTING_SERVICE_REUSE_DECISION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "4279a57a5a77ac5ce2aad43f136abd488ac66b76508e724c3603e3f2fe4a0b23",
+        "label": "docs/implementation/customer-intelligence-foundation/FLEET_INTELLIGENCE_INTEGRATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "4279a57a5a77ac5ce2aad43f136abd488ac66b76508e724c3603e3f2fe4a0b23"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/FLEET_INTELLIGENCE_INTEGRATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/FLEET_INTELLIGENCE_INTEGRATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "3553f6169ad349d88c7a9931e0cb9099b143429d4eec3f22eab39268d6aa864e",
+        "label": "docs/implementation/customer-intelligence-foundation/FUTURE_PREDICTIVE_INTELLIGENCE_BOUNDARY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "3553f6169ad349d88c7a9931e0cb9099b143429d4eec3f22eab39268d6aa864e"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/FUTURE_PREDICTIVE_INTELLIGENCE_BOUNDARY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/FUTURE_PREDICTIVE_INTELLIGENCE_BOUNDARY.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "ce8fa1287d2907f929b6d26b969c3113c73572cc87f886fecec6af3f8d5cf2e1",
+        "label": "docs/implementation/customer-intelligence-foundation/generated/customer_benchmark_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_benchmark_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/generated/customer_benchmark_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "f97290ad5d081d8e533c0bacca01b14185e2b78125f20b35430ec8dbb5c3bfb5",
+        "label": "docs/implementation/customer-intelligence-foundation/generated/customer_context_contract.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_context_contract.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/generated/customer_context_contract.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "1bacf4defe8a7f3cdb3a09552ed0b8eed537a043ca9e70d8869e18474ef246de",
+        "label": "docs/implementation/customer-intelligence-foundation/generated/customer_deduction_history_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_deduction_history_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/generated/customer_deduction_history_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "c25bdca7fc31b2cd906ae7f1e62bcd7fdec49464b068f57907f2f9462f026ded",
+        "label": "docs/implementation/customer-intelligence-foundation/generated/customer_delivery_history_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_delivery_history_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/generated/customer_delivery_history_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "dd36a2481105ecf6abe5b51b790817c1516a62d4b0fc9d3849528fba549f8107",
+        "label": "docs/implementation/customer-intelligence-foundation/generated/customer_evidence_report.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_evidence_report.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/generated/customer_evidence_report.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "acf76284a43b8d79d322a28a830b50ee36c2376816e5f80129b6504b5c578a1b",
+        "label": "docs/implementation/customer-intelligence-foundation/generated/customer_exception_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_exception_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/generated/customer_exception_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "b2719dbc5f9cbb6ef470c782d58466d9de64fc3a7afc002b8c562d718e829e45",
+        "label": "docs/implementation/customer-intelligence-foundation/generated/customer_historical_spend_report.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_historical_spend_report.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/generated/customer_historical_spend_report.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "f6e0a948de3650331311c1cf3cf3336d15b7abdecbd67e85bb8048807e26ddc6",
+        "label": "docs/implementation/customer-intelligence-foundation/generated/CUSTOMER_INTELLIGENCE_SUMMARY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/CUSTOMER_INTELLIGENCE_SUMMARY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/generated/CUSTOMER_INTELLIGENCE_SUMMARY.md",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "fd70e56031b91ca3aed711707d8ea93248522505c3fa14d4af3c000a5ec4419a",
+        "label": "docs/implementation/customer-intelligence-foundation/generated/customer_invoice_history_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_invoice_history_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/generated/customer_invoice_history_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "8c322ba13ab1904171342f797df69d93a1849c9159140a6e50ed2297dfbb079a",
+        "label": "docs/implementation/customer-intelligence-foundation/generated/customer_product_history_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_product_history_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/generated/customer_product_history_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "8b8edf73a0dc2afde9d884a171d40cd8f4294dc79794fb71ea70eed41e90ea59",
+        "label": "docs/implementation/customer-intelligence-foundation/generated/customer_route_context_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_route_context_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/generated/customer_route_context_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "1ff4bbfcc20b4dad632e121d99215ff68cdc808247892b116a1adc1a0aeb8e52",
+        "label": "docs/implementation/customer-intelligence-foundation/generated/customer_service_pattern_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_service_pattern_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/generated/customer_service_pattern_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "0b0f01637343995bae963664757cb8dee9f651f96325f09c5db4c823029286d1",
+        "label": "docs/implementation/customer-intelligence-foundation/generated/customer_stop_context_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_stop_context_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/generated/customer_stop_context_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "b05931dd20d8b1705e2a5dc948fd8a4f332f24f6194d15955e856869fd6fde66",
+        "label": "docs/implementation/customer-intelligence-foundation/GENERATED_ARTIFACTS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "b05931dd20d8b1705e2a5dc948fd8a4f332f24f6194d15955e856869fd6fde66"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/GENERATED_ARTIFACTS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/GENERATED_ARTIFACTS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "a4e8dfa686e1bb53cf42755ca73c9796178b4b7adbad8cb0a53b3ab9c50773e3",
+        "label": "docs/implementation/customer-intelligence-foundation/HISTORICAL_METRIC_TRACEABILITY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "a4e8dfa686e1bb53cf42755ca73c9796178b4b7adbad8cb0a53b3ab9c50773e3"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/HISTORICAL_METRIC_TRACEABILITY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/HISTORICAL_METRIC_TRACEABILITY.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "23ed4a01b5a4d03c99ada89d349a4b0f992031782dcf5ef2f6bff5b011d4f132",
+        "label": "docs/implementation/customer-intelligence-foundation/HISTORICAL_SPEND_AWARENESS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "23ed4a01b5a4d03c99ada89d349a4b0f992031782dcf5ef2f6bff5b011d4f132"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/HISTORICAL_SPEND_AWARENESS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/HISTORICAL_SPEND_AWARENESS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "a5f070035ecf76a7437df02a93dbdee77b6fdd5107f8bdf2c5a4444ca69cd11e",
+        "label": "docs/implementation/customer-intelligence-foundation/IMPLEMENTATION_REPORT.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "a5f070035ecf76a7437df02a93dbdee77b6fdd5107f8bdf2c5a4444ca69cd11e"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/IMPLEMENTATION_REPORT.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/IMPLEMENTATION_REPORT.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "a923c7e715fcbceb4a807b6981313d7da9174df0ce2debc3340a3d4003e36b64",
+        "label": "docs/implementation/customer-intelligence-foundation/INVOICE_HISTORY_AWARENESS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "a923c7e715fcbceb4a807b6981313d7da9174df0ce2debc3340a3d4003e36b64"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/INVOICE_HISTORY_AWARENESS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/INVOICE_HISTORY_AWARENESS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "ffbfcc2edeff6b4cc214ee78f2b05c8400688c0a5bc48cd5d0801ce4afc3e9ca",
+        "label": "docs/implementation/customer-intelligence-foundation/KNOWLEDGE_GRAPH_INTEGRATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "ffbfcc2edeff6b4cc214ee78f2b05c8400688c0a5bc48cd5d0801ce4afc3e9ca"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/KNOWLEDGE_GRAPH_INTEGRATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/KNOWLEDGE_GRAPH_INTEGRATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "ebcaf6ac7bcacead3a6a4fd8fc74a91fdc3754d9098fea7bc281cb78898b7d27",
+        "label": "docs/implementation/customer-intelligence-foundation/OWNER_DECISIONS_REQUIRED.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "ebcaf6ac7bcacead3a6a4fd8fc74a91fdc3754d9098fea7bc281cb78898b7d27"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/OWNER_DECISIONS_REQUIRED.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/OWNER_DECISIONS_REQUIRED.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "7a7b00657879191991f07079f1c27a8b8fee2f93bbf6bb8e853c0825201ff5aa",
+        "label": "docs/implementation/customer-intelligence-foundation/PLATFORM_INTEGRATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "7a7b00657879191991f07079f1c27a8b8fee2f93bbf6bb8e853c0825201ff5aa"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/PLATFORM_INTEGRATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/PLATFORM_INTEGRATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "93cd38412b5b1eb8c8035a8423e2e91f0f882257651f676478a41cebad2d4c93",
+        "label": "docs/implementation/customer-intelligence-foundation/PRIVACY_AND_SENSITIVE_INFERENCE_BOUNDARY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "93cd38412b5b1eb8c8035a8423e2e91f0f882257651f676478a41cebad2d4c93"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/PRIVACY_AND_SENSITIVE_INFERENCE_BOUNDARY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/PRIVACY_AND_SENSITIVE_INFERENCE_BOUNDARY.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "79e52285bbdc4d6e209e08763cabb339e3ac89ca5ebfd63fd2a6005dd7573b2f",
+        "label": "docs/implementation/customer-intelligence-foundation/PRODUCT_HISTORY_AWARENESS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "79e52285bbdc4d6e209e08763cabb339e3ac89ca5ebfd63fd2a6005dd7573b2f"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/PRODUCT_HISTORY_AWARENESS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/PRODUCT_HISTORY_AWARENESS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "f580abf07cd47148650e0274b453f8dd5b32c036f817ecedd9a41c2722df5116",
+        "label": "docs/implementation/customer-intelligence-foundation/README.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "f580abf07cd47148650e0274b453f8dd5b32c036f817ecedd9a41c2722df5116"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/README.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/README.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "ce7b2f41bc8ffd09c8878396301c9675faec2575574671361560bfcaae66904f",
+        "label": "docs/implementation/customer-intelligence-foundation/ROLLBACK_PLAN.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "ce7b2f41bc8ffd09c8878396301c9675faec2575574671361560bfcaae66904f"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/ROLLBACK_PLAN.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/ROLLBACK_PLAN.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "4b9587042be93df1f05a8cc0327acf73eb1814cea5d0738d6f086d578764c54b",
+        "label": "docs/implementation/customer-intelligence-foundation/ROUTE_INTELLIGENCE_INTEGRATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "4b9587042be93df1f05a8cc0327acf73eb1814cea5d0738d6f086d578764c54b"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/ROUTE_INTELLIGENCE_INTEGRATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/ROUTE_INTELLIGENCE_INTEGRATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "9b206f0bbdf9344a8ee4abbe735a74e1b594ee92f51df48d4da3540a01fb1900",
+        "label": "docs/implementation/customer-intelligence-foundation/SALES_PRICING_CRM_BOUNDARY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "9b206f0bbdf9344a8ee4abbe735a74e1b594ee92f51df48d4da3540a01fb1900"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/SALES_PRICING_CRM_BOUNDARY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/SALES_PRICING_CRM_BOUNDARY.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "f418f0867ffe5ef6bfec44c5d0224257af670e1cc8148fd41ad9f1106f20b5d9",
+        "label": "docs/implementation/customer-intelligence-foundation/SECURITY_AND_TENANT_REVIEW.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "f418f0867ffe5ef6bfec44c5d0224257af670e1cc8148fd41ad9f1106f20b5d9"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/SECURITY_AND_TENANT_REVIEW.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/SECURITY_AND_TENANT_REVIEW.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "e144fff02b36d9918ad193c03c6db86cabb28f9b61b41989bc566b615e96ef63",
+        "label": "docs/implementation/customer-intelligence-foundation/SERVICE_PATTERN_EVIDENCE.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "e144fff02b36d9918ad193c03c6db86cabb28f9b61b41989bc566b615e96ef63"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/SERVICE_PATTERN_EVIDENCE.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/SERVICE_PATTERN_EVIDENCE.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "da6112e3ff7d1c2fc336b3637b4a9d7deb4e9a2133a11367f535522ea24e33b3",
+        "label": "docs/implementation/customer-intelligence-foundation/SUPERVISOR_INTELLIGENCE_INTEGRATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "da6112e3ff7d1c2fc336b3637b4a9d7deb4e9a2133a11367f535522ea24e33b3"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/SUPERVISOR_INTELLIGENCE_INTEGRATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/SUPERVISOR_INTELLIGENCE_INTEGRATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "e8dcdee3cdc619cf15a869bbd497169d1faacf0f6f7349054c52cf3056e83226",
+        "label": "docs/implementation/customer-intelligence-foundation/TEST_PLAN.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "e8dcdee3cdc619cf15a869bbd497169d1faacf0f6f7349054c52cf3056e83226"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/TEST_PLAN.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/TEST_PLAN.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "5b032b6566a6e26c024c2fab568f5c9bbe7c287f19c2ee5aef3050161d03a803",
+        "label": "docs/implementation/customer-intelligence-foundation/TEST_RESULTS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "5b032b6566a6e26c024c2fab568f5c9bbe7c287f19c2ee5aef3050161d03a803"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/TEST_RESULTS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/TEST_RESULTS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "68a9cbbe1ab3f2094de2c9250347478fbc9d43f3a9c3f6447202a08488315cc1",
+        "label": "docs/implementation/customer-intelligence-foundation/WAREHOUSE_INTELLIGENCE_INTEGRATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "68a9cbbe1ab3f2094de2c9250347478fbc9d43f3a9c3f6447202a08488315cc1"
+        },
+        "nodeId": "Documentation Page:docs/implementation/customer-intelligence-foundation/WAREHOUSE_INTELLIGENCE_INTEGRATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/customer-intelligence-foundation/WAREHOUSE_INTELLIGENCE_INTEGRATION.md",
         "testOnly": true,
         "type": "Documentation Page",
         "version": null

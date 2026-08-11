@@ -1,0 +1,897 @@
+{
+  "exceptionTypes": [
+    "CUSTOMER_RECORD_MISSING",
+    "CUSTOMER_RECORD_CONFLICT",
+    "ACCOUNT_ROUTE_REFERENCE_MISSING",
+    "ACCOUNT_STOP_REFERENCE_MISSING",
+    "DELIVERY_HISTORY_MISSING",
+    "DELIVERY_HISTORY_STALE",
+    "DELIVERY_HISTORY_CONFLICT",
+    "PRODUCT_HISTORY_MISSING",
+    "PRODUCT_HISTORY_CONFLICT",
+    "INVOICE_HISTORY_MISSING",
+    "INVOICE_HISTORY_CONFLICT",
+    "SPEND_EVIDENCE_INCOMPLETE",
+    "DEDUCTION_RECORDED",
+    "DEDUCTION_UNRESOLVED",
+    "DEDUCTION_EVIDENCE_CONFLICT",
+    "CUSTOMER_STOP_UNRESOLVED",
+    "CUSTOMER_SERVICE_EVIDENCE_INCOMPLETE",
+    "HUMAN_REVIEW_REQUIRED",
+    "INSUFFICIENT_EVIDENCE"
+  ],
+  "exceptions": [
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [],
+      "exceptionHash": "923c62a2cc5d27ff805e93abd7dd35a777cffe4ef8cd0740653cb98b4d2eb275",
+      "exceptionId": "customer.exception.cust-synthetic-001.insufficient_evidence",
+      "exceptionType": "INSUFFICIENT_EVIDENCE",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    },
+    {
+      "accountNumber": null,
+      "customerFaultInferred": false,
+      "customerId": null,
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "customer_accounts"
+      ],
+      "exceptionHash": "bad52055c261d8355569d9f1d51bdca508b411d7e7f2db5aba8f9057045717a5",
+      "exceptionId": "customer.exception.unknown.customer_record_missing",
+      "exceptionType": "CUSTOMER_RECORD_MISSING",
+      "humanReviewRequired": true,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "MODERATE",
+      "testOnly": true
+    },
+    {
+      "accountNumber": null,
+      "customerFaultInferred": false,
+      "customerId": null,
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "customer.context"
+      ],
+      "exceptionHash": "dd68220a284b835550735a88b381998b37ed356cc920d384a9111fe97ecf4e22",
+      "exceptionId": "customer.exception.unknown.customer_service_evidence_incomplete",
+      "exceptionType": "CUSTOMER_SERVICE_EVIDENCE_INCOMPLETE",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "LOW",
+      "testOnly": true
+    },
+    {
+      "accountNumber": null,
+      "customerFaultInferred": false,
+      "customerId": null,
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "customer.exceptions"
+      ],
+      "exceptionHash": "d65ccc5eaa601d3e8bf65ef22893867733b2bd5811874d0a6130269a49016704",
+      "exceptionId": "customer.exception.unknown.human_review_required",
+      "exceptionType": "HUMAN_REVIEW_REQUIRED",
+      "humanReviewRequired": true,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "customer_accounts"
+      ],
+      "exceptionHash": "3c0e73ad7b974788208f25905e6c449673818ffeba3b46f2dc2243c71d83894d",
+      "exceptionId": "customer.exception.cust-synthetic-001.customer_record_conflict",
+      "exceptionType": "CUSTOMER_RECORD_CONFLICT",
+      "humanReviewRequired": true,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "HIGH",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "customer.exceptions"
+      ],
+      "exceptionHash": "2b6d7d99f22064d0d5014e93d687962a93122442dd38781d7404efffebeba03e",
+      "exceptionId": "customer.exception.cust-synthetic-001.human_review_required",
+      "exceptionType": "HUMAN_REVIEW_REQUIRED",
+      "humanReviewRequired": true,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [],
+      "exceptionHash": "923c62a2cc5d27ff805e93abd7dd35a777cffe4ef8cd0740653cb98b4d2eb275",
+      "exceptionId": "customer.exception.cust-synthetic-001.insufficient_evidence",
+      "exceptionType": "INSUFFICIENT_EVIDENCE",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "daily_route_manifests"
+      ],
+      "exceptionHash": "e486cb800b37fbd80d3e7a773a2cb10cca4e60eaa74a86b541886f789c952cbc",
+      "exceptionId": "customer.exception.cust-synthetic-001.account_route_reference_missing",
+      "exceptionType": "ACCOUNT_ROUTE_REFERENCE_MISSING",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "MODERATE",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [],
+      "exceptionHash": "923c62a2cc5d27ff805e93abd7dd35a777cffe4ef8cd0740653cb98b4d2eb275",
+      "exceptionId": "customer.exception.cust-synthetic-001.insufficient_evidence",
+      "exceptionType": "INSUFFICIENT_EVIDENCE",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [],
+      "exceptionHash": "923c62a2cc5d27ff805e93abd7dd35a777cffe4ef8cd0740653cb98b4d2eb275",
+      "exceptionId": "customer.exception.cust-synthetic-001.insufficient_evidence",
+      "exceptionType": "INSUFFICIENT_EVIDENCE",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "daily_route_stops"
+      ],
+      "exceptionHash": "fe41404c802ebe06686c961c2ac08e36eacbd1c72d6c6417c43ec3301af1bff3",
+      "exceptionId": "customer.exception.cust-synthetic-001.delivery_history_missing",
+      "exceptionType": "DELIVERY_HISTORY_MISSING",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "daily_route_stops"
+      ],
+      "exceptionHash": "88f5580e20727cd7ca8570ca2d293641fc4859210b6b675c55ce775a93a3d8fc",
+      "exceptionId": "customer.exception.cust-synthetic-001.delivery_history_stale",
+      "exceptionType": "DELIVERY_HISTORY_STALE",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "daily_route_stops"
+      ],
+      "exceptionHash": "d9b50197f962e228e95717c25209e06c82791757d608141bd1677b97a0c5f898",
+      "exceptionId": "customer.exception.cust-synthetic-001.delivery_history_conflict",
+      "exceptionType": "DELIVERY_HISTORY_CONFLICT",
+      "humanReviewRequired": true,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "HIGH",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "customer.exceptions"
+      ],
+      "exceptionHash": "2b6d7d99f22064d0d5014e93d687962a93122442dd38781d7404efffebeba03e",
+      "exceptionId": "customer.exception.cust-synthetic-001.human_review_required",
+      "exceptionType": "HUMAN_REVIEW_REQUIRED",
+      "humanReviewRequired": true,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [],
+      "exceptionHash": "923c62a2cc5d27ff805e93abd7dd35a777cffe4ef8cd0740653cb98b4d2eb275",
+      "exceptionId": "customer.exception.cust-synthetic-001.insufficient_evidence",
+      "exceptionType": "INSUFFICIENT_EVIDENCE",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [],
+      "exceptionHash": "923c62a2cc5d27ff805e93abd7dd35a777cffe4ef8cd0740653cb98b4d2eb275",
+      "exceptionId": "customer.exception.cust-synthetic-001.insufficient_evidence",
+      "exceptionType": "INSUFFICIENT_EVIDENCE",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "account_order_items"
+      ],
+      "exceptionHash": "55dae9fdfb15d0d32e08b69852da2badc927cda45866711c8b61aeb5a8c091c2",
+      "exceptionId": "customer.exception.cust-synthetic-001.product_history_missing",
+      "exceptionType": "PRODUCT_HISTORY_MISSING",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "account_orders"
+      ],
+      "exceptionHash": "34a438c38ca96f5b77df6250c90a249f482398e7579ecd1c704a633dc2cf67b1",
+      "exceptionId": "customer.exception.cust-synthetic-001.invoice_history_missing",
+      "exceptionType": "INVOICE_HISTORY_MISSING",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "account_orders"
+      ],
+      "exceptionHash": "eced635747a114d55873f32eb199fcfcb69ea26918f698efad57f622eb3819ee",
+      "exceptionId": "customer.exception.cust-synthetic-001.spend_evidence_incomplete",
+      "exceptionType": "SPEND_EVIDENCE_INCOMPLETE",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "LOW",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [],
+      "exceptionHash": "923c62a2cc5d27ff805e93abd7dd35a777cffe4ef8cd0740653cb98b4d2eb275",
+      "exceptionId": "customer.exception.cust-synthetic-001.insufficient_evidence",
+      "exceptionType": "INSUFFICIENT_EVIDENCE",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [],
+      "exceptionHash": "923c62a2cc5d27ff805e93abd7dd35a777cffe4ef8cd0740653cb98b4d2eb275",
+      "exceptionId": "customer.exception.cust-synthetic-001.insufficient_evidence",
+      "exceptionType": "INSUFFICIENT_EVIDENCE",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [],
+      "exceptionHash": "923c62a2cc5d27ff805e93abd7dd35a777cffe4ef8cd0740653cb98b4d2eb275",
+      "exceptionId": "customer.exception.cust-synthetic-001.insufficient_evidence",
+      "exceptionType": "INSUFFICIENT_EVIDENCE",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "account_order_items"
+      ],
+      "exceptionHash": "55dae9fdfb15d0d32e08b69852da2badc927cda45866711c8b61aeb5a8c091c2",
+      "exceptionId": "customer.exception.cust-synthetic-001.product_history_missing",
+      "exceptionType": "PRODUCT_HISTORY_MISSING",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "account_orders"
+      ],
+      "exceptionHash": "34a438c38ca96f5b77df6250c90a249f482398e7579ecd1c704a633dc2cf67b1",
+      "exceptionId": "customer.exception.cust-synthetic-001.invoice_history_missing",
+      "exceptionType": "INVOICE_HISTORY_MISSING",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "account_orders"
+      ],
+      "exceptionHash": "eced635747a114d55873f32eb199fcfcb69ea26918f698efad57f622eb3819ee",
+      "exceptionId": "customer.exception.cust-synthetic-001.spend_evidence_incomplete",
+      "exceptionType": "SPEND_EVIDENCE_INCOMPLETE",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "LOW",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "account_orders"
+      ],
+      "exceptionHash": "ed85e2a97cf270750c4ef944fa02345c00b6de83a7aa991974123224b44dfebb",
+      "exceptionId": "customer.exception.cust-synthetic-001.invoice_history_conflict",
+      "exceptionType": "INVOICE_HISTORY_CONFLICT",
+      "humanReviewRequired": true,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "HIGH",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "customer.exceptions"
+      ],
+      "exceptionHash": "2b6d7d99f22064d0d5014e93d687962a93122442dd38781d7404efffebeba03e",
+      "exceptionId": "customer.exception.cust-synthetic-001.human_review_required",
+      "exceptionType": "HUMAN_REVIEW_REQUIRED",
+      "humanReviewRequired": true,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [],
+      "exceptionHash": "923c62a2cc5d27ff805e93abd7dd35a777cffe4ef8cd0740653cb98b4d2eb275",
+      "exceptionId": "customer.exception.cust-synthetic-001.insufficient_evidence",
+      "exceptionType": "INSUFFICIENT_EVIDENCE",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "account_orders"
+      ],
+      "exceptionHash": "eced635747a114d55873f32eb199fcfcb69ea26918f698efad57f622eb3819ee",
+      "exceptionId": "customer.exception.cust-synthetic-001.spend_evidence_incomplete",
+      "exceptionType": "SPEND_EVIDENCE_INCOMPLETE",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "LOW",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [],
+      "exceptionHash": "923c62a2cc5d27ff805e93abd7dd35a777cffe4ef8cd0740653cb98b4d2eb275",
+      "exceptionId": "customer.exception.cust-synthetic-001.insufficient_evidence",
+      "exceptionType": "INSUFFICIENT_EVIDENCE",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [],
+      "exceptionHash": "923c62a2cc5d27ff805e93abd7dd35a777cffe4ef8cd0740653cb98b4d2eb275",
+      "exceptionId": "customer.exception.cust-synthetic-001.insufficient_evidence",
+      "exceptionType": "INSUFFICIENT_EVIDENCE",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "delivery_deductions"
+      ],
+      "exceptionHash": "088e49416ee8f3aab0dd5f9061c9d608bfd7ccbccfefe251062911cb38aa647f",
+      "exceptionId": "customer.exception.cust-synthetic-001.deduction_recorded",
+      "exceptionType": "DEDUCTION_RECORDED",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "LOW",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "delivery_deductions"
+      ],
+      "exceptionHash": "bbd19fd824143b3c00b01e4511f6c57c357f98d03588262bd6b400f75df5837e",
+      "exceptionId": "customer.exception.cust-synthetic-001.deduction_unresolved",
+      "exceptionType": "DEDUCTION_UNRESOLVED",
+      "humanReviewRequired": true,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "LOW",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "customer.exceptions"
+      ],
+      "exceptionHash": "2b6d7d99f22064d0d5014e93d687962a93122442dd38781d7404efffebeba03e",
+      "exceptionId": "customer.exception.cust-synthetic-001.human_review_required",
+      "exceptionType": "HUMAN_REVIEW_REQUIRED",
+      "humanReviewRequired": true,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "delivery_deductions"
+      ],
+      "exceptionHash": "efb0864a753a8c89a9a18db8795b22196e2f8d6c03e7b4a14d37b47906cf4542",
+      "exceptionId": "customer.exception.cust-synthetic-001.deduction_evidence_conflict",
+      "exceptionType": "DEDUCTION_EVIDENCE_CONFLICT",
+      "humanReviewRequired": true,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "HIGH",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "customer.exceptions"
+      ],
+      "exceptionHash": "2b6d7d99f22064d0d5014e93d687962a93122442dd38781d7404efffebeba03e",
+      "exceptionId": "customer.exception.cust-synthetic-001.human_review_required",
+      "exceptionType": "HUMAN_REVIEW_REQUIRED",
+      "humanReviewRequired": true,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [],
+      "exceptionHash": "923c62a2cc5d27ff805e93abd7dd35a777cffe4ef8cd0740653cb98b4d2eb275",
+      "exceptionId": "customer.exception.cust-synthetic-001.insufficient_evidence",
+      "exceptionType": "INSUFFICIENT_EVIDENCE",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [],
+      "exceptionHash": "923c62a2cc5d27ff805e93abd7dd35a777cffe4ef8cd0740653cb98b4d2eb275",
+      "exceptionId": "customer.exception.cust-synthetic-001.insufficient_evidence",
+      "exceptionType": "INSUFFICIENT_EVIDENCE",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "daily_route_manifests"
+      ],
+      "exceptionHash": "e486cb800b37fbd80d3e7a773a2cb10cca4e60eaa74a86b541886f789c952cbc",
+      "exceptionId": "customer.exception.cust-synthetic-001.account_route_reference_missing",
+      "exceptionType": "ACCOUNT_ROUTE_REFERENCE_MISSING",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "MODERATE",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "daily_route_stops"
+      ],
+      "exceptionHash": "d9c1dba51ff9b6229b47ad0e63d3d17a3ce12d165fbe17bf6fee8c972bd80f85",
+      "exceptionId": "customer.exception.cust-synthetic-001.account_stop_reference_missing",
+      "exceptionType": "ACCOUNT_STOP_REFERENCE_MISSING",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "MODERATE",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "daily_route_stops"
+      ],
+      "exceptionHash": "fe41404c802ebe06686c961c2ac08e36eacbd1c72d6c6417c43ec3301af1bff3",
+      "exceptionId": "customer.exception.cust-synthetic-001.delivery_history_missing",
+      "exceptionType": "DELIVERY_HISTORY_MISSING",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "account_order_items"
+      ],
+      "exceptionHash": "55dae9fdfb15d0d32e08b69852da2badc927cda45866711c8b61aeb5a8c091c2",
+      "exceptionId": "customer.exception.cust-synthetic-001.product_history_missing",
+      "exceptionType": "PRODUCT_HISTORY_MISSING",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "account_orders"
+      ],
+      "exceptionHash": "34a438c38ca96f5b77df6250c90a249f482398e7579ecd1c704a633dc2cf67b1",
+      "exceptionId": "customer.exception.cust-synthetic-001.invoice_history_missing",
+      "exceptionType": "INVOICE_HISTORY_MISSING",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "account_orders"
+      ],
+      "exceptionHash": "eced635747a114d55873f32eb199fcfcb69ea26918f698efad57f622eb3819ee",
+      "exceptionId": "customer.exception.cust-synthetic-001.spend_evidence_incomplete",
+      "exceptionType": "SPEND_EVIDENCE_INCOMPLETE",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "LOW",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "daily_route_stops"
+      ],
+      "exceptionHash": "0f7ad61c00984f591a8ffa654d46960da14ab558e59ce48b57dd3d940bc55450",
+      "exceptionId": "customer.exception.cust-synthetic-001.customer_stop_unresolved",
+      "exceptionType": "CUSTOMER_STOP_UNRESOLVED",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "MODERATE",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "customer.context"
+      ],
+      "exceptionHash": "c06e3072a20d62d481d54979bb92db8f1713b83580804b33c64b9f5a55c6360d",
+      "exceptionId": "customer.exception.cust-synthetic-001.insufficient_evidence",
+      "exceptionType": "INSUFFICIENT_EVIDENCE",
+      "humanReviewRequired": true,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "UNKNOWN",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "customer.exceptions"
+      ],
+      "exceptionHash": "2b6d7d99f22064d0d5014e93d687962a93122442dd38781d7404efffebeba03e",
+      "exceptionId": "customer.exception.cust-synthetic-001.human_review_required",
+      "exceptionType": "HUMAN_REVIEW_REQUIRED",
+      "humanReviewRequired": true,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "customer_accounts"
+      ],
+      "exceptionHash": "1f232b7410028a08b0fd795e906b3c0c4c80d2c14cb1230f2f1ade3262e6b2e9",
+      "exceptionId": "customer.exception.cust-synthetic-001.customer_record_conflict",
+      "exceptionType": "CUSTOMER_RECORD_CONFLICT",
+      "humanReviewRequired": true,
+      "operationalImpactOnly": true,
+      "organizationId": null,
+      "severity": "HIGH",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "customer.context"
+      ],
+      "exceptionHash": "8dfaaad762bbd73dc9707471e7ff0ca7b602a87d2577e4e51c3bafe0311d3942",
+      "exceptionId": "customer.exception.cust-synthetic-001.customer_service_evidence_incomplete",
+      "exceptionType": "CUSTOMER_SERVICE_EVIDENCE_INCOMPLETE",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": null,
+      "severity": "LOW",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "customer.exceptions"
+      ],
+      "exceptionHash": "83e7abdb362484374d33fbc3c85c5af5ef70ea04e0435b12196acd5cf58895c5",
+      "exceptionId": "customer.exception.cust-synthetic-001.human_review_required",
+      "exceptionType": "HUMAN_REVIEW_REQUIRED",
+      "humanReviewRequired": true,
+      "operationalImpactOnly": true,
+      "organizationId": null,
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "daily_route_stops"
+      ],
+      "exceptionHash": "d9b50197f962e228e95717c25209e06c82791757d608141bd1677b97a0c5f898",
+      "exceptionId": "customer.exception.cust-synthetic-001.delivery_history_conflict",
+      "exceptionType": "DELIVERY_HISTORY_CONFLICT",
+      "humanReviewRequired": true,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "HIGH",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [
+        "customer.exceptions"
+      ],
+      "exceptionHash": "2b6d7d99f22064d0d5014e93d687962a93122442dd38781d7404efffebeba03e",
+      "exceptionId": "customer.exception.cust-synthetic-001.human_review_required",
+      "exceptionType": "HUMAN_REVIEW_REQUIRED",
+      "humanReviewRequired": true,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "customerFaultInferred": false,
+      "customerId": "cust-synthetic-001",
+      "employeeFaultInferred": false,
+      "evidenceReferences": [],
+      "exceptionHash": "923c62a2cc5d27ff805e93abd7dd35a777cffe4ef8cd0740653cb98b4d2eb275",
+      "exceptionId": "customer.exception.cust-synthetic-001.insufficient_evidence",
+      "exceptionType": "INSUFFICIENT_EVIDENCE",
+      "humanReviewRequired": false,
+      "operationalImpactOnly": true,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "severity": "INFORMATIONAL",
+      "testOnly": true
+    }
+  ],
+  "generatedArtifact": true
+}

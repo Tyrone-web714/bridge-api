@@ -1,0 +1,1508 @@
+{
+  "generatedArtifact": true,
+  "productHistories": [
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "91196cce8e7804b510bb92b2c77a9cb55d78813210175d31501ce0451d2b4b58",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "productCount": 2,
+      "products": [
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 24,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-COLA",
+          "productName": "Synthetic Cola Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-COLA",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        },
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 16,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-WATER",
+          "productName": "Synthetic Water Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-WATER",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        }
+      ],
+      "testOnly": true,
+      "unknownQuantityPreserved": false
+    },
+    {
+      "customerId": null,
+      "historyHash": "91196cce8e7804b510bb92b2c77a9cb55d78813210175d31501ce0451d2b4b58",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "productCount": 2,
+      "products": [
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 24,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-COLA",
+          "productName": "Synthetic Cola Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-COLA",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        },
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 16,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-WATER",
+          "productName": "Synthetic Water Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-WATER",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        }
+      ],
+      "testOnly": true,
+      "unknownQuantityPreserved": false
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "91196cce8e7804b510bb92b2c77a9cb55d78813210175d31501ce0451d2b4b58",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "productCount": 2,
+      "products": [
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 24,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-COLA",
+          "productName": "Synthetic Cola Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-COLA",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        },
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 16,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-WATER",
+          "productName": "Synthetic Water Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-WATER",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        }
+      ],
+      "testOnly": true,
+      "unknownQuantityPreserved": false
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "91196cce8e7804b510bb92b2c77a9cb55d78813210175d31501ce0451d2b4b58",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "productCount": 2,
+      "products": [
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 24,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-COLA",
+          "productName": "Synthetic Cola Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-COLA",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        },
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 16,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-WATER",
+          "productName": "Synthetic Water Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-WATER",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        }
+      ],
+      "testOnly": true,
+      "unknownQuantityPreserved": false
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "91196cce8e7804b510bb92b2c77a9cb55d78813210175d31501ce0451d2b4b58",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "productCount": 2,
+      "products": [
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 24,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-COLA",
+          "productName": "Synthetic Cola Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-COLA",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        },
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 16,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-WATER",
+          "productName": "Synthetic Water Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-WATER",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        }
+      ],
+      "testOnly": true,
+      "unknownQuantityPreserved": false
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "91196cce8e7804b510bb92b2c77a9cb55d78813210175d31501ce0451d2b4b58",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "productCount": 2,
+      "products": [
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 24,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-COLA",
+          "productName": "Synthetic Cola Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-COLA",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        },
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 16,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-WATER",
+          "productName": "Synthetic Water Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-WATER",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        }
+      ],
+      "testOnly": true,
+      "unknownQuantityPreserved": false
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "91196cce8e7804b510bb92b2c77a9cb55d78813210175d31501ce0451d2b4b58",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "productCount": 2,
+      "products": [
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 24,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-COLA",
+          "productName": "Synthetic Cola Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-COLA",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        },
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 16,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-WATER",
+          "productName": "Synthetic Water Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-WATER",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        }
+      ],
+      "testOnly": true,
+      "unknownQuantityPreserved": false
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "91196cce8e7804b510bb92b2c77a9cb55d78813210175d31501ce0451d2b4b58",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "productCount": 2,
+      "products": [
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 24,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-COLA",
+          "productName": "Synthetic Cola Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-COLA",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        },
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 16,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-WATER",
+          "productName": "Synthetic Water Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-WATER",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        }
+      ],
+      "testOnly": true,
+      "unknownQuantityPreserved": false
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "91196cce8e7804b510bb92b2c77a9cb55d78813210175d31501ce0451d2b4b58",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "productCount": 2,
+      "products": [
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 24,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-COLA",
+          "productName": "Synthetic Cola Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-COLA",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        },
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 16,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-WATER",
+          "productName": "Synthetic Water Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-WATER",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        }
+      ],
+      "testOnly": true,
+      "unknownQuantityPreserved": false
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "91196cce8e7804b510bb92b2c77a9cb55d78813210175d31501ce0451d2b4b58",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "productCount": 2,
+      "products": [
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 24,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-COLA",
+          "productName": "Synthetic Cola Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-COLA",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        },
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 16,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-WATER",
+          "productName": "Synthetic Water Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-WATER",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        }
+      ],
+      "testOnly": true,
+      "unknownQuantityPreserved": false
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "91196cce8e7804b510bb92b2c77a9cb55d78813210175d31501ce0451d2b4b58",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "productCount": 2,
+      "products": [
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 24,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-COLA",
+          "productName": "Synthetic Cola Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-COLA",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        },
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 16,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-WATER",
+          "productName": "Synthetic Water Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-WATER",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        }
+      ],
+      "testOnly": true,
+      "unknownQuantityPreserved": false
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "91196cce8e7804b510bb92b2c77a9cb55d78813210175d31501ce0451d2b4b58",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "productCount": 2,
+      "products": [
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 24,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-COLA",
+          "productName": "Synthetic Cola Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-COLA",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        },
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 16,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-WATER",
+          "productName": "Synthetic Water Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-WATER",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        }
+      ],
+      "testOnly": true,
+      "unknownQuantityPreserved": false
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "productCount": 0,
+      "products": [],
+      "testOnly": true,
+      "unknownQuantityPreserved": false
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "b43bedeb9b0a0e7cc85d53ec6ee5d2c6f0dd22fe85161268022215e3292f323a",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "productCount": 2,
+      "products": [
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-QTY-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 24,
+          "mostRecentKnownOccurrence": "2026-01-09",
+          "observedHistoricalCadenceDays": 0,
+          "productId": "SKU-COLA",
+          "productName": "Synthetic Cola Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-COLA",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-09"
+          ]
+        },
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-QTY-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 16,
+          "mostRecentKnownOccurrence": "2026-01-09",
+          "observedHistoricalCadenceDays": 0,
+          "productId": "SKU-WATER",
+          "productName": "Synthetic Water Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-WATER",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-09"
+          ]
+        }
+      ],
+      "testOnly": true,
+      "unknownQuantityPreserved": false
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "852d69da89a2bc16bbd763b38bc90206f246dd11b68b777a265b2b79bd0f489a",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "productCount": 1,
+      "products": [
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 1,
+          "historicalQuantity": null,
+          "mostRecentKnownOccurrence": "2026-01-09",
+          "observedHistoricalCadenceDays": null,
+          "productId": "SKU-UNKNOWN",
+          "productName": "Synthetic Unknown Quantity",
+          "recommendationGenerated": false,
+          "sku": "SKU-UNKNOWN",
+          "transactionDates": [
+            "2026-01-09"
+          ]
+        }
+      ],
+      "testOnly": true,
+      "unknownQuantityPreserved": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "91196cce8e7804b510bb92b2c77a9cb55d78813210175d31501ce0451d2b4b58",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "productCount": 2,
+      "products": [
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 24,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-COLA",
+          "productName": "Synthetic Cola Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-COLA",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        },
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 16,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-WATER",
+          "productName": "Synthetic Water Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-WATER",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        }
+      ],
+      "testOnly": true,
+      "unknownQuantityPreserved": false
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "productCount": 0,
+      "products": [],
+      "testOnly": true,
+      "unknownQuantityPreserved": false
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "0aa60a09ffdcd54befc7f114962fc9017166a2452ac5266e82fde671f3150454",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "productCount": 2,
+      "products": [
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 1,
+          "historicalQuantity": 12,
+          "mostRecentKnownOccurrence": "2026-01-09",
+          "observedHistoricalCadenceDays": null,
+          "productId": "SKU-COLA",
+          "productName": "Synthetic Cola Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-COLA",
+          "transactionDates": [
+            "2026-01-09"
+          ]
+        },
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 1,
+          "historicalQuantity": 8,
+          "mostRecentKnownOccurrence": "2026-01-09",
+          "observedHistoricalCadenceDays": null,
+          "productId": "SKU-WATER",
+          "productName": "Synthetic Water Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-WATER",
+          "transactionDates": [
+            "2026-01-09"
+          ]
+        }
+      ],
+      "testOnly": true,
+      "unknownQuantityPreserved": false
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "91196cce8e7804b510bb92b2c77a9cb55d78813210175d31501ce0451d2b4b58",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "productCount": 2,
+      "products": [
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 24,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-COLA",
+          "productName": "Synthetic Cola Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-COLA",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        },
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 16,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-WATER",
+          "productName": "Synthetic Water Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-WATER",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        }
+      ],
+      "testOnly": true,
+      "unknownQuantityPreserved": false
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "0aa60a09ffdcd54befc7f114962fc9017166a2452ac5266e82fde671f3150454",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "productCount": 2,
+      "products": [
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 1,
+          "historicalQuantity": 12,
+          "mostRecentKnownOccurrence": "2026-01-09",
+          "observedHistoricalCadenceDays": null,
+          "productId": "SKU-COLA",
+          "productName": "Synthetic Cola Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-COLA",
+          "transactionDates": [
+            "2026-01-09"
+          ]
+        },
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 1,
+          "historicalQuantity": 8,
+          "mostRecentKnownOccurrence": "2026-01-09",
+          "observedHistoricalCadenceDays": null,
+          "productId": "SKU-WATER",
+          "productName": "Synthetic Water Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-WATER",
+          "transactionDates": [
+            "2026-01-09"
+          ]
+        }
+      ],
+      "testOnly": true,
+      "unknownQuantityPreserved": false
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "21802de674504cd30a8aaa9a0f5631b155cb31dd4c6f42457f3a13e16ce52dd9",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "productCount": 2,
+      "products": [
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-PER-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-06",
+          "frequencyCount": 2,
+          "historicalQuantity": 24,
+          "mostRecentKnownOccurrence": "2026-02-06",
+          "observedHistoricalCadenceDays": 31,
+          "productId": "SKU-COLA",
+          "productName": "Synthetic Cola Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-COLA",
+          "transactionDates": [
+            "2026-01-06",
+            "2026-02-06"
+          ]
+        },
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-PER-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-06",
+          "frequencyCount": 2,
+          "historicalQuantity": 16,
+          "mostRecentKnownOccurrence": "2026-02-06",
+          "observedHistoricalCadenceDays": 31,
+          "productId": "SKU-WATER",
+          "productName": "Synthetic Water Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-WATER",
+          "transactionDates": [
+            "2026-01-06",
+            "2026-02-06"
+          ]
+        }
+      ],
+      "testOnly": true,
+      "unknownQuantityPreserved": false
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "91196cce8e7804b510bb92b2c77a9cb55d78813210175d31501ce0451d2b4b58",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "productCount": 2,
+      "products": [
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 24,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-COLA",
+          "productName": "Synthetic Cola Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-COLA",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        },
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 16,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-WATER",
+          "productName": "Synthetic Water Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-WATER",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        }
+      ],
+      "testOnly": true,
+      "unknownQuantityPreserved": false
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "91196cce8e7804b510bb92b2c77a9cb55d78813210175d31501ce0451d2b4b58",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "productCount": 2,
+      "products": [
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 24,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-COLA",
+          "productName": "Synthetic Cola Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-COLA",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        },
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 16,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-WATER",
+          "productName": "Synthetic Water Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-WATER",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        }
+      ],
+      "testOnly": true,
+      "unknownQuantityPreserved": false
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "91196cce8e7804b510bb92b2c77a9cb55d78813210175d31501ce0451d2b4b58",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "productCount": 2,
+      "products": [
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 24,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-COLA",
+          "productName": "Synthetic Cola Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-COLA",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        },
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 16,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-WATER",
+          "productName": "Synthetic Water Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-WATER",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        }
+      ],
+      "testOnly": true,
+      "unknownQuantityPreserved": false
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "91196cce8e7804b510bb92b2c77a9cb55d78813210175d31501ce0451d2b4b58",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "productCount": 2,
+      "products": [
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 24,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-COLA",
+          "productName": "Synthetic Cola Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-COLA",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        },
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 16,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-WATER",
+          "productName": "Synthetic Water Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-WATER",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        }
+      ],
+      "testOnly": true,
+      "unknownQuantityPreserved": false
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "91196cce8e7804b510bb92b2c77a9cb55d78813210175d31501ce0451d2b4b58",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "productCount": 2,
+      "products": [
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 24,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-COLA",
+          "productName": "Synthetic Cola Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-COLA",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        },
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 16,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-WATER",
+          "productName": "Synthetic Water Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-WATER",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        }
+      ],
+      "testOnly": true,
+      "unknownQuantityPreserved": false
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "0aa60a09ffdcd54befc7f114962fc9017166a2452ac5266e82fde671f3150454",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "productCount": 2,
+      "products": [
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 1,
+          "historicalQuantity": 12,
+          "mostRecentKnownOccurrence": "2026-01-09",
+          "observedHistoricalCadenceDays": null,
+          "productId": "SKU-COLA",
+          "productName": "Synthetic Cola Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-COLA",
+          "transactionDates": [
+            "2026-01-09"
+          ]
+        },
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 1,
+          "historicalQuantity": 8,
+          "mostRecentKnownOccurrence": "2026-01-09",
+          "observedHistoricalCadenceDays": null,
+          "productId": "SKU-WATER",
+          "productName": "Synthetic Water Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-WATER",
+          "transactionDates": [
+            "2026-01-09"
+          ]
+        }
+      ],
+      "testOnly": true,
+      "unknownQuantityPreserved": false
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "productCount": 0,
+      "products": [],
+      "testOnly": true,
+      "unknownQuantityPreserved": false
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "91196cce8e7804b510bb92b2c77a9cb55d78813210175d31501ce0451d2b4b58",
+      "organizationId": null,
+      "productCount": 2,
+      "products": [
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 24,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-COLA",
+          "productName": "Synthetic Cola Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-COLA",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        },
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 16,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-WATER",
+          "productName": "Synthetic Water Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-WATER",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        }
+      ],
+      "testOnly": true,
+      "unknownQuantityPreserved": false
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "91196cce8e7804b510bb92b2c77a9cb55d78813210175d31501ce0451d2b4b58",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "productCount": 2,
+      "products": [
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 24,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-COLA",
+          "productName": "Synthetic Cola Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-COLA",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        },
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 16,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-WATER",
+          "productName": "Synthetic Water Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-WATER",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        }
+      ],
+      "testOnly": true,
+      "unknownQuantityPreserved": false
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "91196cce8e7804b510bb92b2c77a9cb55d78813210175d31501ce0451d2b4b58",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "productCount": 2,
+      "products": [
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 24,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-COLA",
+          "productName": "Synthetic Cola Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-COLA",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        },
+        {
+          "conflictingRecords": [],
+          "deliveryOrInvoiceReferences": [
+            "INV-SYN-001",
+            "INV-SYN-002"
+          ],
+          "demandPredicted": false,
+          "evidenceCompleteness": "COMPLETE",
+          "firstKnownOccurrence": "2026-01-09",
+          "frequencyCount": 2,
+          "historicalQuantity": 16,
+          "mostRecentKnownOccurrence": "2026-01-23",
+          "observedHistoricalCadenceDays": 14,
+          "productId": "SKU-WATER",
+          "productName": "Synthetic Water Case",
+          "recommendationGenerated": false,
+          "sku": "SKU-WATER",
+          "transactionDates": [
+            "2026-01-09",
+            "2026-01-23"
+          ]
+        }
+      ],
+      "testOnly": true,
+      "unknownQuantityPreserved": false
+    }
+  ]
+}

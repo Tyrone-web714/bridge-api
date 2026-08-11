@@ -20,7 +20,7 @@
       "dashboard-data/capability_coverage_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "ec709142b28c770c2788c16d4fa98a0fc16585a2a0e8ff836f55eb35e40ee589",
+    "generationHash": "159ccfe52fe87cdecfe91c0f2228a70113a76dea2e10941d957a33fbddfdc5fb",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -43,6 +43,7 @@
         "docs/implementation/benchmark-dataset-framework": 37,
         "docs/implementation/bi-kpi-foundation": 19,
         "docs/implementation/cost-governance": 62,
+        "docs/implementation/customer-intelligence-foundation": 57,
         "docs/implementation/dashboard-data-generation": 14,
         "docs/implementation/data-lifecycle-foundation": 25,
         "docs/implementation/decision-history-and-governance": 60,
@@ -79,7 +80,7 @@
         "docs/implementation/warehouse-intelligence-foundation": 51,
         "docs/implementation/web-origin-private-media-hardening": 16
       },
-      "testScripts": 47
+      "testScripts": 48
     },
     "statusIndicators": [],
     "summary": {

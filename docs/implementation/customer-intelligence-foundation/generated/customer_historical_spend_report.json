@@ -1,0 +1,1366 @@
+{
+  "generatedArtifact": true,
+  "spendReports": [
+    {
+      "byProduct": [
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-cola",
+            "order-syn-002-item-cola"
+          ],
+          "knownSpend": 240,
+          "productId": "SKU-COLA"
+        },
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-water",
+            "order-syn-002-item-water"
+          ],
+          "knownSpend": 80,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "metric": {
+        "calculationHash": "53c9d032852ac98748661f8ff52164a4e4945a9da10d9d11977a06352fdfa4ed",
+        "calculationVersion": "customer.intelligence.foundation.engine.v1",
+        "contributingRecordIds": [
+          "order-syn-001",
+          "order-syn-002"
+        ],
+        "currency": "USD",
+        "customerId": "cust-synthetic-001",
+        "forecastGenerated": false,
+        "knownRecordCount": 2,
+        "metricId": "customer.spend.cust-synthetic-001",
+        "metricType": "KNOWN_HISTORICAL_SPEND",
+        "missingCoverage": [],
+        "organizationId": "org_synthetic_customer_intelligence",
+        "result": 320,
+        "testOnly": true,
+        "timeWindow": {
+          "endDate": "2026-03-31",
+          "startDate": "2026-01-01"
+        },
+        "unit": "USD",
+        "unknownOrMissingCount": 0,
+        "unknownSpendPreserved": false
+      },
+      "traceable": true,
+      "unknownSpendConvertedToZero": false
+    },
+    {
+      "byProduct": [
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-cola",
+            "order-syn-002-item-cola"
+          ],
+          "knownSpend": 240,
+          "productId": "SKU-COLA"
+        },
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-water",
+            "order-syn-002-item-water"
+          ],
+          "knownSpend": 80,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "metric": {
+        "calculationHash": "88f42da129b2f216820fc3f89f0077164e62fbc037819fbaf16b853e4a13fc13",
+        "calculationVersion": "customer.intelligence.foundation.engine.v1",
+        "contributingRecordIds": [
+          "order-syn-001",
+          "order-syn-002"
+        ],
+        "currency": "USD",
+        "customerId": null,
+        "forecastGenerated": false,
+        "knownRecordCount": 2,
+        "metricId": "customer.spend.unknown",
+        "metricType": "KNOWN_HISTORICAL_SPEND",
+        "missingCoverage": [],
+        "organizationId": "org_synthetic_customer_intelligence",
+        "result": 320,
+        "testOnly": true,
+        "timeWindow": {
+          "endDate": "2026-03-31",
+          "startDate": "2026-01-01"
+        },
+        "unit": "USD",
+        "unknownOrMissingCount": 0,
+        "unknownSpendPreserved": false
+      },
+      "traceable": true,
+      "unknownSpendConvertedToZero": false
+    },
+    {
+      "byProduct": [
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-cola",
+            "order-syn-002-item-cola"
+          ],
+          "knownSpend": 240,
+          "productId": "SKU-COLA"
+        },
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-water",
+            "order-syn-002-item-water"
+          ],
+          "knownSpend": 80,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "metric": {
+        "calculationHash": "53c9d032852ac98748661f8ff52164a4e4945a9da10d9d11977a06352fdfa4ed",
+        "calculationVersion": "customer.intelligence.foundation.engine.v1",
+        "contributingRecordIds": [
+          "order-syn-001",
+          "order-syn-002"
+        ],
+        "currency": "USD",
+        "customerId": "cust-synthetic-001",
+        "forecastGenerated": false,
+        "knownRecordCount": 2,
+        "metricId": "customer.spend.cust-synthetic-001",
+        "metricType": "KNOWN_HISTORICAL_SPEND",
+        "missingCoverage": [],
+        "organizationId": "org_synthetic_customer_intelligence",
+        "result": 320,
+        "testOnly": true,
+        "timeWindow": {
+          "endDate": "2026-03-31",
+          "startDate": "2026-01-01"
+        },
+        "unit": "USD",
+        "unknownOrMissingCount": 0,
+        "unknownSpendPreserved": false
+      },
+      "traceable": true,
+      "unknownSpendConvertedToZero": false
+    },
+    {
+      "byProduct": [
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-cola",
+            "order-syn-002-item-cola"
+          ],
+          "knownSpend": 240,
+          "productId": "SKU-COLA"
+        },
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-water",
+            "order-syn-002-item-water"
+          ],
+          "knownSpend": 80,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "metric": {
+        "calculationHash": "53c9d032852ac98748661f8ff52164a4e4945a9da10d9d11977a06352fdfa4ed",
+        "calculationVersion": "customer.intelligence.foundation.engine.v1",
+        "contributingRecordIds": [
+          "order-syn-001",
+          "order-syn-002"
+        ],
+        "currency": "USD",
+        "customerId": "cust-synthetic-001",
+        "forecastGenerated": false,
+        "knownRecordCount": 2,
+        "metricId": "customer.spend.cust-synthetic-001",
+        "metricType": "KNOWN_HISTORICAL_SPEND",
+        "missingCoverage": [],
+        "organizationId": "org_synthetic_customer_intelligence",
+        "result": 320,
+        "testOnly": true,
+        "timeWindow": {
+          "endDate": "2026-03-31",
+          "startDate": "2026-01-01"
+        },
+        "unit": "USD",
+        "unknownOrMissingCount": 0,
+        "unknownSpendPreserved": false
+      },
+      "traceable": true,
+      "unknownSpendConvertedToZero": false
+    },
+    {
+      "byProduct": [
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-cola",
+            "order-syn-002-item-cola"
+          ],
+          "knownSpend": 240,
+          "productId": "SKU-COLA"
+        },
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-water",
+            "order-syn-002-item-water"
+          ],
+          "knownSpend": 80,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "metric": {
+        "calculationHash": "53c9d032852ac98748661f8ff52164a4e4945a9da10d9d11977a06352fdfa4ed",
+        "calculationVersion": "customer.intelligence.foundation.engine.v1",
+        "contributingRecordIds": [
+          "order-syn-001",
+          "order-syn-002"
+        ],
+        "currency": "USD",
+        "customerId": "cust-synthetic-001",
+        "forecastGenerated": false,
+        "knownRecordCount": 2,
+        "metricId": "customer.spend.cust-synthetic-001",
+        "metricType": "KNOWN_HISTORICAL_SPEND",
+        "missingCoverage": [],
+        "organizationId": "org_synthetic_customer_intelligence",
+        "result": 320,
+        "testOnly": true,
+        "timeWindow": {
+          "endDate": "2026-03-31",
+          "startDate": "2026-01-01"
+        },
+        "unit": "USD",
+        "unknownOrMissingCount": 0,
+        "unknownSpendPreserved": false
+      },
+      "traceable": true,
+      "unknownSpendConvertedToZero": false
+    },
+    {
+      "byProduct": [
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-cola",
+            "order-syn-002-item-cola"
+          ],
+          "knownSpend": 240,
+          "productId": "SKU-COLA"
+        },
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-water",
+            "order-syn-002-item-water"
+          ],
+          "knownSpend": 80,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "metric": {
+        "calculationHash": "53c9d032852ac98748661f8ff52164a4e4945a9da10d9d11977a06352fdfa4ed",
+        "calculationVersion": "customer.intelligence.foundation.engine.v1",
+        "contributingRecordIds": [
+          "order-syn-001",
+          "order-syn-002"
+        ],
+        "currency": "USD",
+        "customerId": "cust-synthetic-001",
+        "forecastGenerated": false,
+        "knownRecordCount": 2,
+        "metricId": "customer.spend.cust-synthetic-001",
+        "metricType": "KNOWN_HISTORICAL_SPEND",
+        "missingCoverage": [],
+        "organizationId": "org_synthetic_customer_intelligence",
+        "result": 320,
+        "testOnly": true,
+        "timeWindow": {
+          "endDate": "2026-03-31",
+          "startDate": "2026-01-01"
+        },
+        "unit": "USD",
+        "unknownOrMissingCount": 0,
+        "unknownSpendPreserved": false
+      },
+      "traceable": true,
+      "unknownSpendConvertedToZero": false
+    },
+    {
+      "byProduct": [
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-cola",
+            "order-syn-002-item-cola"
+          ],
+          "knownSpend": 240,
+          "productId": "SKU-COLA"
+        },
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-water",
+            "order-syn-002-item-water"
+          ],
+          "knownSpend": 80,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "metric": {
+        "calculationHash": "53c9d032852ac98748661f8ff52164a4e4945a9da10d9d11977a06352fdfa4ed",
+        "calculationVersion": "customer.intelligence.foundation.engine.v1",
+        "contributingRecordIds": [
+          "order-syn-001",
+          "order-syn-002"
+        ],
+        "currency": "USD",
+        "customerId": "cust-synthetic-001",
+        "forecastGenerated": false,
+        "knownRecordCount": 2,
+        "metricId": "customer.spend.cust-synthetic-001",
+        "metricType": "KNOWN_HISTORICAL_SPEND",
+        "missingCoverage": [],
+        "organizationId": "org_synthetic_customer_intelligence",
+        "result": 320,
+        "testOnly": true,
+        "timeWindow": {
+          "endDate": "2026-03-31",
+          "startDate": "2026-01-01"
+        },
+        "unit": "USD",
+        "unknownOrMissingCount": 0,
+        "unknownSpendPreserved": false
+      },
+      "traceable": true,
+      "unknownSpendConvertedToZero": false
+    },
+    {
+      "byProduct": [
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-cola",
+            "order-syn-002-item-cola"
+          ],
+          "knownSpend": 240,
+          "productId": "SKU-COLA"
+        },
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-water",
+            "order-syn-002-item-water"
+          ],
+          "knownSpend": 80,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "metric": {
+        "calculationHash": "53c9d032852ac98748661f8ff52164a4e4945a9da10d9d11977a06352fdfa4ed",
+        "calculationVersion": "customer.intelligence.foundation.engine.v1",
+        "contributingRecordIds": [
+          "order-syn-001",
+          "order-syn-002"
+        ],
+        "currency": "USD",
+        "customerId": "cust-synthetic-001",
+        "forecastGenerated": false,
+        "knownRecordCount": 2,
+        "metricId": "customer.spend.cust-synthetic-001",
+        "metricType": "KNOWN_HISTORICAL_SPEND",
+        "missingCoverage": [],
+        "organizationId": "org_synthetic_customer_intelligence",
+        "result": 320,
+        "testOnly": true,
+        "timeWindow": {
+          "endDate": "2026-03-31",
+          "startDate": "2026-01-01"
+        },
+        "unit": "USD",
+        "unknownOrMissingCount": 0,
+        "unknownSpendPreserved": false
+      },
+      "traceable": true,
+      "unknownSpendConvertedToZero": false
+    },
+    {
+      "byProduct": [
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-cola",
+            "order-syn-002-item-cola"
+          ],
+          "knownSpend": 240,
+          "productId": "SKU-COLA"
+        },
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-water",
+            "order-syn-002-item-water"
+          ],
+          "knownSpend": 80,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "metric": {
+        "calculationHash": "53c9d032852ac98748661f8ff52164a4e4945a9da10d9d11977a06352fdfa4ed",
+        "calculationVersion": "customer.intelligence.foundation.engine.v1",
+        "contributingRecordIds": [
+          "order-syn-001",
+          "order-syn-002"
+        ],
+        "currency": "USD",
+        "customerId": "cust-synthetic-001",
+        "forecastGenerated": false,
+        "knownRecordCount": 2,
+        "metricId": "customer.spend.cust-synthetic-001",
+        "metricType": "KNOWN_HISTORICAL_SPEND",
+        "missingCoverage": [],
+        "organizationId": "org_synthetic_customer_intelligence",
+        "result": 320,
+        "testOnly": true,
+        "timeWindow": {
+          "endDate": "2026-03-31",
+          "startDate": "2026-01-01"
+        },
+        "unit": "USD",
+        "unknownOrMissingCount": 0,
+        "unknownSpendPreserved": false
+      },
+      "traceable": true,
+      "unknownSpendConvertedToZero": false
+    },
+    {
+      "byProduct": [
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-cola",
+            "order-syn-002-item-cola"
+          ],
+          "knownSpend": 240,
+          "productId": "SKU-COLA"
+        },
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-water",
+            "order-syn-002-item-water"
+          ],
+          "knownSpend": 80,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "metric": {
+        "calculationHash": "53c9d032852ac98748661f8ff52164a4e4945a9da10d9d11977a06352fdfa4ed",
+        "calculationVersion": "customer.intelligence.foundation.engine.v1",
+        "contributingRecordIds": [
+          "order-syn-001",
+          "order-syn-002"
+        ],
+        "currency": "USD",
+        "customerId": "cust-synthetic-001",
+        "forecastGenerated": false,
+        "knownRecordCount": 2,
+        "metricId": "customer.spend.cust-synthetic-001",
+        "metricType": "KNOWN_HISTORICAL_SPEND",
+        "missingCoverage": [],
+        "organizationId": "org_synthetic_customer_intelligence",
+        "result": 320,
+        "testOnly": true,
+        "timeWindow": {
+          "endDate": "2026-03-31",
+          "startDate": "2026-01-01"
+        },
+        "unit": "USD",
+        "unknownOrMissingCount": 0,
+        "unknownSpendPreserved": false
+      },
+      "traceable": true,
+      "unknownSpendConvertedToZero": false
+    },
+    {
+      "byProduct": [
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-cola",
+            "order-syn-002-item-cola"
+          ],
+          "knownSpend": 240,
+          "productId": "SKU-COLA"
+        },
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-water",
+            "order-syn-002-item-water"
+          ],
+          "knownSpend": 80,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "metric": {
+        "calculationHash": "53c9d032852ac98748661f8ff52164a4e4945a9da10d9d11977a06352fdfa4ed",
+        "calculationVersion": "customer.intelligence.foundation.engine.v1",
+        "contributingRecordIds": [
+          "order-syn-001",
+          "order-syn-002"
+        ],
+        "currency": "USD",
+        "customerId": "cust-synthetic-001",
+        "forecastGenerated": false,
+        "knownRecordCount": 2,
+        "metricId": "customer.spend.cust-synthetic-001",
+        "metricType": "KNOWN_HISTORICAL_SPEND",
+        "missingCoverage": [],
+        "organizationId": "org_synthetic_customer_intelligence",
+        "result": 320,
+        "testOnly": true,
+        "timeWindow": {
+          "endDate": "2026-03-31",
+          "startDate": "2026-01-01"
+        },
+        "unit": "USD",
+        "unknownOrMissingCount": 0,
+        "unknownSpendPreserved": false
+      },
+      "traceable": true,
+      "unknownSpendConvertedToZero": false
+    },
+    {
+      "byProduct": [
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-cola",
+            "order-syn-002-item-cola"
+          ],
+          "knownSpend": 240,
+          "productId": "SKU-COLA"
+        },
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-water",
+            "order-syn-002-item-water"
+          ],
+          "knownSpend": 80,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "metric": {
+        "calculationHash": "53c9d032852ac98748661f8ff52164a4e4945a9da10d9d11977a06352fdfa4ed",
+        "calculationVersion": "customer.intelligence.foundation.engine.v1",
+        "contributingRecordIds": [
+          "order-syn-001",
+          "order-syn-002"
+        ],
+        "currency": "USD",
+        "customerId": "cust-synthetic-001",
+        "forecastGenerated": false,
+        "knownRecordCount": 2,
+        "metricId": "customer.spend.cust-synthetic-001",
+        "metricType": "KNOWN_HISTORICAL_SPEND",
+        "missingCoverage": [],
+        "organizationId": "org_synthetic_customer_intelligence",
+        "result": 320,
+        "testOnly": true,
+        "timeWindow": {
+          "endDate": "2026-03-31",
+          "startDate": "2026-01-01"
+        },
+        "unit": "USD",
+        "unknownOrMissingCount": 0,
+        "unknownSpendPreserved": false
+      },
+      "traceable": true,
+      "unknownSpendConvertedToZero": false
+    },
+    {
+      "byProduct": [],
+      "metric": {
+        "calculationHash": "acad46ca5b156fdc00efddf260381898ab7b35c69d1f37130fb3ec2019452486",
+        "calculationVersion": "customer.intelligence.foundation.engine.v1",
+        "contributingRecordIds": [],
+        "currency": "USD",
+        "customerId": "cust-synthetic-001",
+        "forecastGenerated": false,
+        "knownRecordCount": 0,
+        "metricId": "customer.spend.cust-synthetic-001",
+        "metricType": "KNOWN_HISTORICAL_SPEND",
+        "missingCoverage": [],
+        "organizationId": "org_synthetic_customer_intelligence",
+        "result": null,
+        "testOnly": true,
+        "timeWindow": {
+          "endDate": "2026-03-31",
+          "startDate": "2026-01-01"
+        },
+        "unit": "USD",
+        "unknownOrMissingCount": 0,
+        "unknownSpendPreserved": false
+      },
+      "traceable": true,
+      "unknownSpendConvertedToZero": false
+    },
+    {
+      "byProduct": [
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-cola",
+            "order-qty-002-item-cola"
+          ],
+          "knownSpend": 240,
+          "productId": "SKU-COLA"
+        },
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-water",
+            "order-qty-002-item-water"
+          ],
+          "knownSpend": 80,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "metric": {
+        "calculationHash": "70a60e197e2e0216488bb54522723ae7c1dce5f34bab0844b4c65e2048d8603d",
+        "calculationVersion": "customer.intelligence.foundation.engine.v1",
+        "contributingRecordIds": [
+          "order-syn-001",
+          "order-qty-002"
+        ],
+        "currency": "USD",
+        "customerId": "cust-synthetic-001",
+        "forecastGenerated": false,
+        "knownRecordCount": 2,
+        "metricId": "customer.spend.cust-synthetic-001",
+        "metricType": "KNOWN_HISTORICAL_SPEND",
+        "missingCoverage": [],
+        "organizationId": "org_synthetic_customer_intelligence",
+        "result": 320,
+        "testOnly": true,
+        "timeWindow": {
+          "endDate": "2026-03-31",
+          "startDate": "2026-01-01"
+        },
+        "unit": "USD",
+        "unknownOrMissingCount": 0,
+        "unknownSpendPreserved": false
+      },
+      "traceable": true,
+      "unknownSpendConvertedToZero": false
+    },
+    {
+      "byProduct": [
+        {
+          "contributingRecordIds": [],
+          "knownSpend": 0,
+          "productId": "SKU-UNKNOWN"
+        }
+      ],
+      "metric": {
+        "calculationHash": "39316d1a3180e8d5eeb2ba80491dc2f9df4c00e69e370b4dcb378aefd7ee292e",
+        "calculationVersion": "customer.intelligence.foundation.engine.v1",
+        "contributingRecordIds": [
+          "order-unknown-qty"
+        ],
+        "currency": "USD",
+        "customerId": "cust-synthetic-001",
+        "forecastGenerated": false,
+        "knownRecordCount": 1,
+        "metricId": "customer.spend.cust-synthetic-001",
+        "metricType": "KNOWN_HISTORICAL_SPEND",
+        "missingCoverage": [],
+        "organizationId": "org_synthetic_customer_intelligence",
+        "result": 0,
+        "testOnly": true,
+        "timeWindow": {
+          "endDate": "2026-03-31",
+          "startDate": "2026-01-01"
+        },
+        "unit": "USD",
+        "unknownOrMissingCount": 0,
+        "unknownSpendPreserved": false
+      },
+      "traceable": true,
+      "unknownSpendConvertedToZero": false
+    },
+    {
+      "byProduct": [
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-cola",
+            "order-syn-002-item-cola"
+          ],
+          "knownSpend": 240,
+          "productId": "SKU-COLA"
+        },
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-water",
+            "order-syn-002-item-water"
+          ],
+          "knownSpend": 80,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "metric": {
+        "calculationHash": "53c9d032852ac98748661f8ff52164a4e4945a9da10d9d11977a06352fdfa4ed",
+        "calculationVersion": "customer.intelligence.foundation.engine.v1",
+        "contributingRecordIds": [
+          "order-syn-001",
+          "order-syn-002"
+        ],
+        "currency": "USD",
+        "customerId": "cust-synthetic-001",
+        "forecastGenerated": false,
+        "knownRecordCount": 2,
+        "metricId": "customer.spend.cust-synthetic-001",
+        "metricType": "KNOWN_HISTORICAL_SPEND",
+        "missingCoverage": [],
+        "organizationId": "org_synthetic_customer_intelligence",
+        "result": 320,
+        "testOnly": true,
+        "timeWindow": {
+          "endDate": "2026-03-31",
+          "startDate": "2026-01-01"
+        },
+        "unit": "USD",
+        "unknownOrMissingCount": 0,
+        "unknownSpendPreserved": false
+      },
+      "traceable": true,
+      "unknownSpendConvertedToZero": false
+    },
+    {
+      "byProduct": [],
+      "metric": {
+        "calculationHash": "acad46ca5b156fdc00efddf260381898ab7b35c69d1f37130fb3ec2019452486",
+        "calculationVersion": "customer.intelligence.foundation.engine.v1",
+        "contributingRecordIds": [],
+        "currency": "USD",
+        "customerId": "cust-synthetic-001",
+        "forecastGenerated": false,
+        "knownRecordCount": 0,
+        "metricId": "customer.spend.cust-synthetic-001",
+        "metricType": "KNOWN_HISTORICAL_SPEND",
+        "missingCoverage": [],
+        "organizationId": "org_synthetic_customer_intelligence",
+        "result": null,
+        "testOnly": true,
+        "timeWindow": {
+          "endDate": "2026-03-31",
+          "startDate": "2026-01-01"
+        },
+        "unit": "USD",
+        "unknownOrMissingCount": 0,
+        "unknownSpendPreserved": false
+      },
+      "traceable": true,
+      "unknownSpendConvertedToZero": false
+    },
+    {
+      "byProduct": [
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-cola"
+          ],
+          "knownSpend": 120,
+          "productId": "SKU-COLA"
+        },
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-water"
+          ],
+          "knownSpend": 40,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "metric": {
+        "calculationHash": "04fa064c9b8861d40f287f02a4e81a56dae40aa4473097f997c0d0f8072757b1",
+        "calculationVersion": "customer.intelligence.foundation.engine.v1",
+        "contributingRecordIds": [
+          "order-syn-001"
+        ],
+        "currency": "USD",
+        "customerId": "cust-synthetic-001",
+        "forecastGenerated": false,
+        "knownRecordCount": 1,
+        "metricId": "customer.spend.cust-synthetic-001",
+        "metricType": "KNOWN_HISTORICAL_SPEND",
+        "missingCoverage": [],
+        "organizationId": "org_synthetic_customer_intelligence",
+        "result": 160,
+        "testOnly": true,
+        "timeWindow": {
+          "endDate": "2026-03-31",
+          "startDate": "2026-01-01"
+        },
+        "unit": "USD",
+        "unknownOrMissingCount": 0,
+        "unknownSpendPreserved": false
+      },
+      "traceable": true,
+      "unknownSpendConvertedToZero": false
+    },
+    {
+      "byProduct": [
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-cola",
+            "order-syn-002-item-cola"
+          ],
+          "knownSpend": 240,
+          "productId": "SKU-COLA"
+        },
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-water",
+            "order-syn-002-item-water"
+          ],
+          "knownSpend": 80,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "metric": {
+        "calculationHash": "53c9d032852ac98748661f8ff52164a4e4945a9da10d9d11977a06352fdfa4ed",
+        "calculationVersion": "customer.intelligence.foundation.engine.v1",
+        "contributingRecordIds": [
+          "order-syn-001",
+          "order-syn-002"
+        ],
+        "currency": "USD",
+        "customerId": "cust-synthetic-001",
+        "forecastGenerated": false,
+        "knownRecordCount": 2,
+        "metricId": "customer.spend.cust-synthetic-001",
+        "metricType": "KNOWN_HISTORICAL_SPEND",
+        "missingCoverage": [],
+        "organizationId": "org_synthetic_customer_intelligence",
+        "result": 320,
+        "testOnly": true,
+        "timeWindow": {
+          "endDate": "2026-03-31",
+          "startDate": "2026-01-01"
+        },
+        "unit": "USD",
+        "unknownOrMissingCount": 0,
+        "unknownSpendPreserved": false
+      },
+      "traceable": true,
+      "unknownSpendConvertedToZero": false
+    },
+    {
+      "byProduct": [],
+      "metric": {
+        "calculationHash": "8e00e3eb063ee66e252c99813887bc5a773760bc808cc3c8402762b8535e75cc",
+        "calculationVersion": "customer.intelligence.foundation.engine.v1",
+        "contributingRecordIds": [],
+        "currency": "USD",
+        "customerId": "cust-synthetic-001",
+        "forecastGenerated": false,
+        "knownRecordCount": 0,
+        "metricId": "customer.spend.cust-synthetic-001",
+        "metricType": "KNOWN_HISTORICAL_SPEND",
+        "missingCoverage": [
+          "order-unknown-spend"
+        ],
+        "organizationId": "org_synthetic_customer_intelligence",
+        "result": null,
+        "testOnly": true,
+        "timeWindow": {
+          "endDate": "2026-03-31",
+          "startDate": "2026-01-01"
+        },
+        "unit": "USD",
+        "unknownOrMissingCount": 1,
+        "unknownSpendPreserved": true
+      },
+      "traceable": true,
+      "unknownSpendConvertedToZero": false
+    },
+    {
+      "byProduct": [
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-cola",
+            "order-period-002-item-cola"
+          ],
+          "knownSpend": 240,
+          "productId": "SKU-COLA"
+        },
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-water",
+            "order-period-002-item-water"
+          ],
+          "knownSpend": 80,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "metric": {
+        "calculationHash": "275d17f8107cf14a33e0615c2b6f07ce9460b9dad6ae0fe34df4cb97f2be9be8",
+        "calculationVersion": "customer.intelligence.foundation.engine.v1",
+        "contributingRecordIds": [
+          "order-syn-001",
+          "order-period-002"
+        ],
+        "currency": "USD",
+        "customerId": "cust-synthetic-001",
+        "forecastGenerated": false,
+        "knownRecordCount": 2,
+        "metricId": "customer.spend.cust-synthetic-001",
+        "metricType": "KNOWN_HISTORICAL_SPEND",
+        "missingCoverage": [],
+        "organizationId": "org_synthetic_customer_intelligence",
+        "result": 320,
+        "testOnly": true,
+        "timeWindow": {
+          "endDate": "2026-03-31",
+          "startDate": "2026-01-01"
+        },
+        "unit": "USD",
+        "unknownOrMissingCount": 0,
+        "unknownSpendPreserved": false
+      },
+      "traceable": true,
+      "unknownSpendConvertedToZero": false
+    },
+    {
+      "byProduct": [
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-cola",
+            "order-syn-002-item-cola"
+          ],
+          "knownSpend": 240,
+          "productId": "SKU-COLA"
+        },
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-water",
+            "order-syn-002-item-water"
+          ],
+          "knownSpend": 80,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "metric": {
+        "calculationHash": "53c9d032852ac98748661f8ff52164a4e4945a9da10d9d11977a06352fdfa4ed",
+        "calculationVersion": "customer.intelligence.foundation.engine.v1",
+        "contributingRecordIds": [
+          "order-syn-001",
+          "order-syn-002"
+        ],
+        "currency": "USD",
+        "customerId": "cust-synthetic-001",
+        "forecastGenerated": false,
+        "knownRecordCount": 2,
+        "metricId": "customer.spend.cust-synthetic-001",
+        "metricType": "KNOWN_HISTORICAL_SPEND",
+        "missingCoverage": [],
+        "organizationId": "org_synthetic_customer_intelligence",
+        "result": 320,
+        "testOnly": true,
+        "timeWindow": {
+          "endDate": "2026-03-31",
+          "startDate": "2026-01-01"
+        },
+        "unit": "USD",
+        "unknownOrMissingCount": 0,
+        "unknownSpendPreserved": false
+      },
+      "traceable": true,
+      "unknownSpendConvertedToZero": false
+    },
+    {
+      "byProduct": [
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-cola",
+            "order-syn-002-item-cola"
+          ],
+          "knownSpend": 240,
+          "productId": "SKU-COLA"
+        },
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-water",
+            "order-syn-002-item-water"
+          ],
+          "knownSpend": 80,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "metric": {
+        "calculationHash": "53c9d032852ac98748661f8ff52164a4e4945a9da10d9d11977a06352fdfa4ed",
+        "calculationVersion": "customer.intelligence.foundation.engine.v1",
+        "contributingRecordIds": [
+          "order-syn-001",
+          "order-syn-002"
+        ],
+        "currency": "USD",
+        "customerId": "cust-synthetic-001",
+        "forecastGenerated": false,
+        "knownRecordCount": 2,
+        "metricId": "customer.spend.cust-synthetic-001",
+        "metricType": "KNOWN_HISTORICAL_SPEND",
+        "missingCoverage": [],
+        "organizationId": "org_synthetic_customer_intelligence",
+        "result": 320,
+        "testOnly": true,
+        "timeWindow": {
+          "endDate": "2026-03-31",
+          "startDate": "2026-01-01"
+        },
+        "unit": "USD",
+        "unknownOrMissingCount": 0,
+        "unknownSpendPreserved": false
+      },
+      "traceable": true,
+      "unknownSpendConvertedToZero": false
+    },
+    {
+      "byProduct": [
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-cola",
+            "order-syn-002-item-cola"
+          ],
+          "knownSpend": 240,
+          "productId": "SKU-COLA"
+        },
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-water",
+            "order-syn-002-item-water"
+          ],
+          "knownSpend": 80,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "metric": {
+        "calculationHash": "53c9d032852ac98748661f8ff52164a4e4945a9da10d9d11977a06352fdfa4ed",
+        "calculationVersion": "customer.intelligence.foundation.engine.v1",
+        "contributingRecordIds": [
+          "order-syn-001",
+          "order-syn-002"
+        ],
+        "currency": "USD",
+        "customerId": "cust-synthetic-001",
+        "forecastGenerated": false,
+        "knownRecordCount": 2,
+        "metricId": "customer.spend.cust-synthetic-001",
+        "metricType": "KNOWN_HISTORICAL_SPEND",
+        "missingCoverage": [],
+        "organizationId": "org_synthetic_customer_intelligence",
+        "result": 320,
+        "testOnly": true,
+        "timeWindow": {
+          "endDate": "2026-03-31",
+          "startDate": "2026-01-01"
+        },
+        "unit": "USD",
+        "unknownOrMissingCount": 0,
+        "unknownSpendPreserved": false
+      },
+      "traceable": true,
+      "unknownSpendConvertedToZero": false
+    },
+    {
+      "byProduct": [
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-cola",
+            "order-syn-002-item-cola"
+          ],
+          "knownSpend": 240,
+          "productId": "SKU-COLA"
+        },
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-water",
+            "order-syn-002-item-water"
+          ],
+          "knownSpend": 80,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "metric": {
+        "calculationHash": "53c9d032852ac98748661f8ff52164a4e4945a9da10d9d11977a06352fdfa4ed",
+        "calculationVersion": "customer.intelligence.foundation.engine.v1",
+        "contributingRecordIds": [
+          "order-syn-001",
+          "order-syn-002"
+        ],
+        "currency": "USD",
+        "customerId": "cust-synthetic-001",
+        "forecastGenerated": false,
+        "knownRecordCount": 2,
+        "metricId": "customer.spend.cust-synthetic-001",
+        "metricType": "KNOWN_HISTORICAL_SPEND",
+        "missingCoverage": [],
+        "organizationId": "org_synthetic_customer_intelligence",
+        "result": 320,
+        "testOnly": true,
+        "timeWindow": {
+          "endDate": "2026-03-31",
+          "startDate": "2026-01-01"
+        },
+        "unit": "USD",
+        "unknownOrMissingCount": 0,
+        "unknownSpendPreserved": false
+      },
+      "traceable": true,
+      "unknownSpendConvertedToZero": false
+    },
+    {
+      "byProduct": [
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-cola",
+            "order-syn-002-item-cola"
+          ],
+          "knownSpend": 240,
+          "productId": "SKU-COLA"
+        },
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-water",
+            "order-syn-002-item-water"
+          ],
+          "knownSpend": 80,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "metric": {
+        "calculationHash": "53c9d032852ac98748661f8ff52164a4e4945a9da10d9d11977a06352fdfa4ed",
+        "calculationVersion": "customer.intelligence.foundation.engine.v1",
+        "contributingRecordIds": [
+          "order-syn-001",
+          "order-syn-002"
+        ],
+        "currency": "USD",
+        "customerId": "cust-synthetic-001",
+        "forecastGenerated": false,
+        "knownRecordCount": 2,
+        "metricId": "customer.spend.cust-synthetic-001",
+        "metricType": "KNOWN_HISTORICAL_SPEND",
+        "missingCoverage": [],
+        "organizationId": "org_synthetic_customer_intelligence",
+        "result": 320,
+        "testOnly": true,
+        "timeWindow": {
+          "endDate": "2026-03-31",
+          "startDate": "2026-01-01"
+        },
+        "unit": "USD",
+        "unknownOrMissingCount": 0,
+        "unknownSpendPreserved": false
+      },
+      "traceable": true,
+      "unknownSpendConvertedToZero": false
+    },
+    {
+      "byProduct": [
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-cola"
+          ],
+          "knownSpend": 120,
+          "productId": "SKU-COLA"
+        },
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-water"
+          ],
+          "knownSpend": 40,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "metric": {
+        "calculationHash": "04fa064c9b8861d40f287f02a4e81a56dae40aa4473097f997c0d0f8072757b1",
+        "calculationVersion": "customer.intelligence.foundation.engine.v1",
+        "contributingRecordIds": [
+          "order-syn-001"
+        ],
+        "currency": "USD",
+        "customerId": "cust-synthetic-001",
+        "forecastGenerated": false,
+        "knownRecordCount": 1,
+        "metricId": "customer.spend.cust-synthetic-001",
+        "metricType": "KNOWN_HISTORICAL_SPEND",
+        "missingCoverage": [],
+        "organizationId": "org_synthetic_customer_intelligence",
+        "result": 160,
+        "testOnly": true,
+        "timeWindow": {
+          "endDate": "2026-03-31",
+          "startDate": "2026-01-01"
+        },
+        "unit": "USD",
+        "unknownOrMissingCount": 0,
+        "unknownSpendPreserved": false
+      },
+      "traceable": true,
+      "unknownSpendConvertedToZero": false
+    },
+    {
+      "byProduct": [],
+      "metric": {
+        "calculationHash": "acad46ca5b156fdc00efddf260381898ab7b35c69d1f37130fb3ec2019452486",
+        "calculationVersion": "customer.intelligence.foundation.engine.v1",
+        "contributingRecordIds": [],
+        "currency": "USD",
+        "customerId": "cust-synthetic-001",
+        "forecastGenerated": false,
+        "knownRecordCount": 0,
+        "metricId": "customer.spend.cust-synthetic-001",
+        "metricType": "KNOWN_HISTORICAL_SPEND",
+        "missingCoverage": [],
+        "organizationId": "org_synthetic_customer_intelligence",
+        "result": null,
+        "testOnly": true,
+        "timeWindow": {
+          "endDate": "2026-03-31",
+          "startDate": "2026-01-01"
+        },
+        "unit": "USD",
+        "unknownOrMissingCount": 0,
+        "unknownSpendPreserved": false
+      },
+      "traceable": true,
+      "unknownSpendConvertedToZero": false
+    },
+    {
+      "byProduct": [
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-cola",
+            "order-syn-002-item-cola"
+          ],
+          "knownSpend": 240,
+          "productId": "SKU-COLA"
+        },
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-water",
+            "order-syn-002-item-water"
+          ],
+          "knownSpend": 80,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "metric": {
+        "calculationHash": "56cb47f6f29ba6d09cbd7c5082337736a4221aa2963abbf7aa755fa6eaa32edb",
+        "calculationVersion": "customer.intelligence.foundation.engine.v1",
+        "contributingRecordIds": [
+          "order-syn-001",
+          "order-syn-002"
+        ],
+        "currency": "USD",
+        "customerId": "cust-synthetic-001",
+        "forecastGenerated": false,
+        "knownRecordCount": 2,
+        "metricId": "customer.spend.cust-synthetic-001",
+        "metricType": "KNOWN_HISTORICAL_SPEND",
+        "missingCoverage": [],
+        "organizationId": null,
+        "result": 320,
+        "testOnly": true,
+        "timeWindow": {
+          "endDate": "2026-03-31",
+          "startDate": "2026-01-01"
+        },
+        "unit": "USD",
+        "unknownOrMissingCount": 0,
+        "unknownSpendPreserved": false
+      },
+      "traceable": true,
+      "unknownSpendConvertedToZero": false
+    },
+    {
+      "byProduct": [
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-cola",
+            "order-syn-002-item-cola"
+          ],
+          "knownSpend": 240,
+          "productId": "SKU-COLA"
+        },
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-water",
+            "order-syn-002-item-water"
+          ],
+          "knownSpend": 80,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "metric": {
+        "calculationHash": "53c9d032852ac98748661f8ff52164a4e4945a9da10d9d11977a06352fdfa4ed",
+        "calculationVersion": "customer.intelligence.foundation.engine.v1",
+        "contributingRecordIds": [
+          "order-syn-001",
+          "order-syn-002"
+        ],
+        "currency": "USD",
+        "customerId": "cust-synthetic-001",
+        "forecastGenerated": false,
+        "knownRecordCount": 2,
+        "metricId": "customer.spend.cust-synthetic-001",
+        "metricType": "KNOWN_HISTORICAL_SPEND",
+        "missingCoverage": [],
+        "organizationId": "org_synthetic_customer_intelligence",
+        "result": 320,
+        "testOnly": true,
+        "timeWindow": {
+          "endDate": "2026-03-31",
+          "startDate": "2026-01-01"
+        },
+        "unit": "USD",
+        "unknownOrMissingCount": 0,
+        "unknownSpendPreserved": false
+      },
+      "traceable": true,
+      "unknownSpendConvertedToZero": false
+    },
+    {
+      "byProduct": [
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-cola",
+            "order-syn-002-item-cola"
+          ],
+          "knownSpend": 240,
+          "productId": "SKU-COLA"
+        },
+        {
+          "contributingRecordIds": [
+            "order-syn-001-item-water",
+            "order-syn-002-item-water"
+          ],
+          "knownSpend": 80,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "metric": {
+        "calculationHash": "53c9d032852ac98748661f8ff52164a4e4945a9da10d9d11977a06352fdfa4ed",
+        "calculationVersion": "customer.intelligence.foundation.engine.v1",
+        "contributingRecordIds": [
+          "order-syn-001",
+          "order-syn-002"
+        ],
+        "currency": "USD",
+        "customerId": "cust-synthetic-001",
+        "forecastGenerated": false,
+        "knownRecordCount": 2,
+        "metricId": "customer.spend.cust-synthetic-001",
+        "metricType": "KNOWN_HISTORICAL_SPEND",
+        "missingCoverage": [],
+        "organizationId": "org_synthetic_customer_intelligence",
+        "result": 320,
+        "testOnly": true,
+        "timeWindow": {
+          "endDate": "2026-03-31",
+          "startDate": "2026-01-01"
+        },
+        "unit": "USD",
+        "unknownOrMissingCount": 0,
+        "unknownSpendPreserved": false
+      },
+      "traceable": true,
+      "unknownSpendConvertedToZero": false
+    }
+  ]
+}

@@ -1,0 +1,1299 @@
+{
+  "generatedArtifact": true,
+  "invoiceHistories": [
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "9bd97ba2f0ca2497bab089f146a52170ff63b840f9eaaa9db45e1845dd22c486",
+      "invoiceCount": 2,
+      "invoices": [
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-09",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-08",
+          "invoiceId": "INV-SYN-001",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-001-item-cola",
+            "order-syn-001-item-water"
+          ],
+          "orderId": "order-syn-001",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        },
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-23",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-22",
+          "invoiceId": "INV-SYN-002",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-002-item-cola",
+            "order-syn-002-item-water"
+          ],
+          "orderId": "order-syn-002",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        }
+      ],
+      "missingInvoiceDataIsZero": false,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "testOnly": true
+    },
+    {
+      "customerId": null,
+      "historyHash": "5eea5d0063ab4109d9876ea9e8ed0d775b888ea955891c123b4bbf31be9807da",
+      "invoiceCount": 2,
+      "invoices": [
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": null,
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-09",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-08",
+          "invoiceId": "INV-SYN-001",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-001-item-cola",
+            "order-syn-001-item-water"
+          ],
+          "orderId": "order-syn-001",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        },
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": null,
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-23",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-22",
+          "invoiceId": "INV-SYN-002",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-002-item-cola",
+            "order-syn-002-item-water"
+          ],
+          "orderId": "order-syn-002",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        }
+      ],
+      "missingInvoiceDataIsZero": false,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "9bd97ba2f0ca2497bab089f146a52170ff63b840f9eaaa9db45e1845dd22c486",
+      "invoiceCount": 2,
+      "invoices": [
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-09",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-08",
+          "invoiceId": "INV-SYN-001",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-001-item-cola",
+            "order-syn-001-item-water"
+          ],
+          "orderId": "order-syn-001",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        },
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-23",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-22",
+          "invoiceId": "INV-SYN-002",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-002-item-cola",
+            "order-syn-002-item-water"
+          ],
+          "orderId": "order-syn-002",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        }
+      ],
+      "missingInvoiceDataIsZero": false,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "9bd97ba2f0ca2497bab089f146a52170ff63b840f9eaaa9db45e1845dd22c486",
+      "invoiceCount": 2,
+      "invoices": [
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-09",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-08",
+          "invoiceId": "INV-SYN-001",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-001-item-cola",
+            "order-syn-001-item-water"
+          ],
+          "orderId": "order-syn-001",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        },
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-23",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-22",
+          "invoiceId": "INV-SYN-002",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-002-item-cola",
+            "order-syn-002-item-water"
+          ],
+          "orderId": "order-syn-002",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        }
+      ],
+      "missingInvoiceDataIsZero": false,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "9bd97ba2f0ca2497bab089f146a52170ff63b840f9eaaa9db45e1845dd22c486",
+      "invoiceCount": 2,
+      "invoices": [
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-09",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-08",
+          "invoiceId": "INV-SYN-001",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-001-item-cola",
+            "order-syn-001-item-water"
+          ],
+          "orderId": "order-syn-001",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        },
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-23",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-22",
+          "invoiceId": "INV-SYN-002",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-002-item-cola",
+            "order-syn-002-item-water"
+          ],
+          "orderId": "order-syn-002",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        }
+      ],
+      "missingInvoiceDataIsZero": false,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "9bd97ba2f0ca2497bab089f146a52170ff63b840f9eaaa9db45e1845dd22c486",
+      "invoiceCount": 2,
+      "invoices": [
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-09",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-08",
+          "invoiceId": "INV-SYN-001",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-001-item-cola",
+            "order-syn-001-item-water"
+          ],
+          "orderId": "order-syn-001",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        },
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-23",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-22",
+          "invoiceId": "INV-SYN-002",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-002-item-cola",
+            "order-syn-002-item-water"
+          ],
+          "orderId": "order-syn-002",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        }
+      ],
+      "missingInvoiceDataIsZero": false,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "9bd97ba2f0ca2497bab089f146a52170ff63b840f9eaaa9db45e1845dd22c486",
+      "invoiceCount": 2,
+      "invoices": [
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-09",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-08",
+          "invoiceId": "INV-SYN-001",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-001-item-cola",
+            "order-syn-001-item-water"
+          ],
+          "orderId": "order-syn-001",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        },
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-23",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-22",
+          "invoiceId": "INV-SYN-002",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-002-item-cola",
+            "order-syn-002-item-water"
+          ],
+          "orderId": "order-syn-002",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        }
+      ],
+      "missingInvoiceDataIsZero": false,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "9bd97ba2f0ca2497bab089f146a52170ff63b840f9eaaa9db45e1845dd22c486",
+      "invoiceCount": 2,
+      "invoices": [
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-09",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-08",
+          "invoiceId": "INV-SYN-001",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-001-item-cola",
+            "order-syn-001-item-water"
+          ],
+          "orderId": "order-syn-001",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        },
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-23",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-22",
+          "invoiceId": "INV-SYN-002",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-002-item-cola",
+            "order-syn-002-item-water"
+          ],
+          "orderId": "order-syn-002",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        }
+      ],
+      "missingInvoiceDataIsZero": false,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "9bd97ba2f0ca2497bab089f146a52170ff63b840f9eaaa9db45e1845dd22c486",
+      "invoiceCount": 2,
+      "invoices": [
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-09",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-08",
+          "invoiceId": "INV-SYN-001",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-001-item-cola",
+            "order-syn-001-item-water"
+          ],
+          "orderId": "order-syn-001",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        },
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-23",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-22",
+          "invoiceId": "INV-SYN-002",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-002-item-cola",
+            "order-syn-002-item-water"
+          ],
+          "orderId": "order-syn-002",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        }
+      ],
+      "missingInvoiceDataIsZero": false,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "9bd97ba2f0ca2497bab089f146a52170ff63b840f9eaaa9db45e1845dd22c486",
+      "invoiceCount": 2,
+      "invoices": [
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-09",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-08",
+          "invoiceId": "INV-SYN-001",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-001-item-cola",
+            "order-syn-001-item-water"
+          ],
+          "orderId": "order-syn-001",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        },
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-23",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-22",
+          "invoiceId": "INV-SYN-002",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-002-item-cola",
+            "order-syn-002-item-water"
+          ],
+          "orderId": "order-syn-002",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        }
+      ],
+      "missingInvoiceDataIsZero": false,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "9bd97ba2f0ca2497bab089f146a52170ff63b840f9eaaa9db45e1845dd22c486",
+      "invoiceCount": 2,
+      "invoices": [
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-09",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-08",
+          "invoiceId": "INV-SYN-001",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-001-item-cola",
+            "order-syn-001-item-water"
+          ],
+          "orderId": "order-syn-001",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        },
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-23",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-22",
+          "invoiceId": "INV-SYN-002",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-002-item-cola",
+            "order-syn-002-item-water"
+          ],
+          "orderId": "order-syn-002",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        }
+      ],
+      "missingInvoiceDataIsZero": false,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "9bd97ba2f0ca2497bab089f146a52170ff63b840f9eaaa9db45e1845dd22c486",
+      "invoiceCount": 2,
+      "invoices": [
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-09",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-08",
+          "invoiceId": "INV-SYN-001",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-001-item-cola",
+            "order-syn-001-item-water"
+          ],
+          "orderId": "order-syn-001",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        },
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-23",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-22",
+          "invoiceId": "INV-SYN-002",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-002-item-cola",
+            "order-syn-002-item-water"
+          ],
+          "orderId": "order-syn-002",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        }
+      ],
+      "missingInvoiceDataIsZero": false,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "invoiceCount": 0,
+      "invoices": [],
+      "missingInvoiceDataIsZero": false,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "e36599ccc80921a73a80d9fb9993b3881f31bad5be45e27966c2b647ccf263d4",
+      "invoiceCount": 2,
+      "invoices": [
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-09",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-08",
+          "invoiceId": "INV-SYN-001",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-001-item-cola",
+            "order-syn-001-item-water"
+          ],
+          "orderId": "order-syn-001",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        },
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-09",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-08",
+          "invoiceId": "INV-QTY-002",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-qty-002-item-cola",
+            "order-qty-002-item-water"
+          ],
+          "orderId": "order-qty-002",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        }
+      ],
+      "missingInvoiceDataIsZero": false,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "c5216118bae07376798634c0e134af23d71ba6b963b0d280e8cd4f77568eb044",
+      "invoiceCount": 1,
+      "invoices": [
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-09",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-08",
+          "invoiceId": "INV-SYN-001",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "item-unknown-qty"
+          ],
+          "orderId": "order-unknown-qty",
+          "source": "synthetic.account_orders",
+          "subtotal": 0,
+          "total": 0
+        }
+      ],
+      "missingInvoiceDataIsZero": false,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "9bd97ba2f0ca2497bab089f146a52170ff63b840f9eaaa9db45e1845dd22c486",
+      "invoiceCount": 2,
+      "invoices": [
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-09",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-08",
+          "invoiceId": "INV-SYN-001",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-001-item-cola",
+            "order-syn-001-item-water"
+          ],
+          "orderId": "order-syn-001",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        },
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-23",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-22",
+          "invoiceId": "INV-SYN-002",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-002-item-cola",
+            "order-syn-002-item-water"
+          ],
+          "orderId": "order-syn-002",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        }
+      ],
+      "missingInvoiceDataIsZero": false,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "invoiceCount": 0,
+      "invoices": [],
+      "missingInvoiceDataIsZero": false,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "d7a21f7fe8e2d53a60782bd381da590658bbf15c46d86ea94eec95dd1fc706c8",
+      "invoiceCount": 1,
+      "invoices": [
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-09",
+          "evidenceState": "CONFLICTING",
+          "invoiceDate": "2026-01-08",
+          "invoiceId": "INV-SYN-001",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-001-item-cola",
+            "order-syn-001-item-water"
+          ],
+          "orderId": "order-syn-001",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        }
+      ],
+      "missingInvoiceDataIsZero": false,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "9bd97ba2f0ca2497bab089f146a52170ff63b840f9eaaa9db45e1845dd22c486",
+      "invoiceCount": 2,
+      "invoices": [
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-09",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-08",
+          "invoiceId": "INV-SYN-001",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-001-item-cola",
+            "order-syn-001-item-water"
+          ],
+          "orderId": "order-syn-001",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        },
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-23",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-22",
+          "invoiceId": "INV-SYN-002",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-002-item-cola",
+            "order-syn-002-item-water"
+          ],
+          "orderId": "order-syn-002",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        }
+      ],
+      "missingInvoiceDataIsZero": false,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "c50176babc363aed3cbc3dbcd3bbc9cd01c20b513697ac585474df5b4e3920e1",
+      "invoiceCount": 1,
+      "invoices": [
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-09",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-08",
+          "invoiceId": "INV-SYN-001",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-unknown-spend-item-cola",
+            "order-unknown-spend-item-water"
+          ],
+          "orderId": "order-unknown-spend",
+          "source": "synthetic.account_orders",
+          "subtotal": null,
+          "total": null
+        }
+      ],
+      "missingInvoiceDataIsZero": false,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "da203c5e30814a3c1c46a27d830bfea37e646cdffdb37f3d8a6c526e3e3c4652",
+      "invoiceCount": 2,
+      "invoices": [
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-06",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-05",
+          "invoiceId": "INV-SYN-001",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-001-item-cola",
+            "order-syn-001-item-water"
+          ],
+          "orderId": "order-syn-001",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        },
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-02-06",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-02-05",
+          "invoiceId": "INV-PER-002",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-period-002-item-cola",
+            "order-period-002-item-water"
+          ],
+          "orderId": "order-period-002",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        }
+      ],
+      "missingInvoiceDataIsZero": false,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "9bd97ba2f0ca2497bab089f146a52170ff63b840f9eaaa9db45e1845dd22c486",
+      "invoiceCount": 2,
+      "invoices": [
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-09",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-08",
+          "invoiceId": "INV-SYN-001",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-001-item-cola",
+            "order-syn-001-item-water"
+          ],
+          "orderId": "order-syn-001",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        },
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-23",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-22",
+          "invoiceId": "INV-SYN-002",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-002-item-cola",
+            "order-syn-002-item-water"
+          ],
+          "orderId": "order-syn-002",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        }
+      ],
+      "missingInvoiceDataIsZero": false,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "9bd97ba2f0ca2497bab089f146a52170ff63b840f9eaaa9db45e1845dd22c486",
+      "invoiceCount": 2,
+      "invoices": [
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-09",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-08",
+          "invoiceId": "INV-SYN-001",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-001-item-cola",
+            "order-syn-001-item-water"
+          ],
+          "orderId": "order-syn-001",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        },
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-23",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-22",
+          "invoiceId": "INV-SYN-002",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-002-item-cola",
+            "order-syn-002-item-water"
+          ],
+          "orderId": "order-syn-002",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        }
+      ],
+      "missingInvoiceDataIsZero": false,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "9bd97ba2f0ca2497bab089f146a52170ff63b840f9eaaa9db45e1845dd22c486",
+      "invoiceCount": 2,
+      "invoices": [
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-09",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-08",
+          "invoiceId": "INV-SYN-001",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-001-item-cola",
+            "order-syn-001-item-water"
+          ],
+          "orderId": "order-syn-001",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        },
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-23",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-22",
+          "invoiceId": "INV-SYN-002",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-002-item-cola",
+            "order-syn-002-item-water"
+          ],
+          "orderId": "order-syn-002",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        }
+      ],
+      "missingInvoiceDataIsZero": false,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "9bd97ba2f0ca2497bab089f146a52170ff63b840f9eaaa9db45e1845dd22c486",
+      "invoiceCount": 2,
+      "invoices": [
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-09",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-08",
+          "invoiceId": "INV-SYN-001",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-001-item-cola",
+            "order-syn-001-item-water"
+          ],
+          "orderId": "order-syn-001",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        },
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-23",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-22",
+          "invoiceId": "INV-SYN-002",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-002-item-cola",
+            "order-syn-002-item-water"
+          ],
+          "orderId": "order-syn-002",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        }
+      ],
+      "missingInvoiceDataIsZero": false,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "9bd97ba2f0ca2497bab089f146a52170ff63b840f9eaaa9db45e1845dd22c486",
+      "invoiceCount": 2,
+      "invoices": [
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-09",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-08",
+          "invoiceId": "INV-SYN-001",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-001-item-cola",
+            "order-syn-001-item-water"
+          ],
+          "orderId": "order-syn-001",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        },
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-23",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-22",
+          "invoiceId": "INV-SYN-002",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-002-item-cola",
+            "order-syn-002-item-water"
+          ],
+          "orderId": "order-syn-002",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        }
+      ],
+      "missingInvoiceDataIsZero": false,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "f211e80b5fa6c42d1e163d9ecaad44f0325a43d5b262586a34b01315afbd2a1c",
+      "invoiceCount": 1,
+      "invoices": [
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-09",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-08",
+          "invoiceId": "INV-SYN-001",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-001-item-cola",
+            "order-syn-001-item-water"
+          ],
+          "orderId": "order-syn-001",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        }
+      ],
+      "missingInvoiceDataIsZero": false,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "invoiceCount": 0,
+      "invoices": [],
+      "missingInvoiceDataIsZero": false,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "9bd97ba2f0ca2497bab089f146a52170ff63b840f9eaaa9db45e1845dd22c486",
+      "invoiceCount": 2,
+      "invoices": [
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-09",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-08",
+          "invoiceId": "INV-SYN-001",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-001-item-cola",
+            "order-syn-001-item-water"
+          ],
+          "orderId": "order-syn-001",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        },
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-23",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-22",
+          "invoiceId": "INV-SYN-002",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-002-item-cola",
+            "order-syn-002-item-water"
+          ],
+          "orderId": "order-syn-002",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        }
+      ],
+      "missingInvoiceDataIsZero": false,
+      "organizationId": null,
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "9bd97ba2f0ca2497bab089f146a52170ff63b840f9eaaa9db45e1845dd22c486",
+      "invoiceCount": 2,
+      "invoices": [
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-09",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-08",
+          "invoiceId": "INV-SYN-001",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-001-item-cola",
+            "order-syn-001-item-water"
+          ],
+          "orderId": "order-syn-001",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        },
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-23",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-22",
+          "invoiceId": "INV-SYN-002",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-002-item-cola",
+            "order-syn-002-item-water"
+          ],
+          "orderId": "order-syn-002",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        }
+      ],
+      "missingInvoiceDataIsZero": false,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "historyHash": "9bd97ba2f0ca2497bab089f146a52170ff63b840f9eaaa9db45e1845dd22c486",
+      "invoiceCount": 2,
+      "invoices": [
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-09",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-08",
+          "invoiceId": "INV-SYN-001",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-001-item-cola",
+            "order-syn-001-item-water"
+          ],
+          "orderId": "order-syn-001",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        },
+        {
+          "accountNumber": "ACCT-SYN-001",
+          "accountingConclusionGenerated": false,
+          "customerId": "cust-synthetic-001",
+          "deductionReferences": [],
+          "deliveryDate": "2026-01-23",
+          "evidenceState": "COMPLETE",
+          "invoiceDate": "2026-01-22",
+          "invoiceId": "INV-SYN-002",
+          "invoiceStatus": "completed",
+          "lineReferences": [
+            "order-syn-002-item-cola",
+            "order-syn-002-item-water"
+          ],
+          "orderId": "order-syn-002",
+          "source": "synthetic.account_orders",
+          "subtotal": 160,
+          "total": 160
+        }
+      ],
+      "missingInvoiceDataIsZero": false,
+      "organizationId": "org_synthetic_customer_intelligence",
+      "testOnly": true
+    }
+  ]
+}

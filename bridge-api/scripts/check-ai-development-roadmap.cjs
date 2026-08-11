@@ -149,7 +149,7 @@ function validateRoadmap(roadmap, current, options = {}) {
   if (currentRoadmap && currentRoadmap.title !== current.title) failures.push({ rule: 'CURRENT_PACKAGE_JSON_ROADMAP_MISMATCH', packageId: current.packageId });
   if (currentRoadmap && currentRoadmap.status !== current.status) failures.push({ rule: 'CURRENT_PACKAGE_STATUS_MISMATCH', packageId: current.packageId });
   if (current.packageId !== 'CUSTOMER_INTELLIGENCE') failures.push({ rule: 'CURRENT_PACKAGE_NOT_CUSTOMER_INTELLIGENCE', packageId: current.packageId });
-  if (current.status !== 'APPROVED') failures.push({ rule: 'CURRENT_CUSTOMER_STATUS_INVALID', status: current.status });
+  if (current.status !== 'IMPLEMENTED_UNCOMMITTED') failures.push({ rule: 'CURRENT_CUSTOMER_STATUS_INVALID', status: current.status });
   const currentMarkdown = read('CURRENT_AI_WORK_PACKAGE.md');
   if (!currentMarkdown.includes(`Package ID: ${current.packageId}`) || !currentMarkdown.includes(`Status: ${current.status}`)) failures.push({ rule: 'CURRENT_PACKAGE_MARKDOWN_JSON_MISMATCH' });
   for (const pkg of packages.filter((record) => record.category === 'CORE_OPERATIONAL_INTELLIGENCE')) {
@@ -198,10 +198,13 @@ function validateRoadmap(roadmap, current, options = {}) {
   if (fleetApprovedScope.includes('autonomous dispatch') || fleetApprovedScope.includes('autonomous vehicle dispatch') || fleetApprovedScope.includes('autonomous purchasing') || fleetApprovedScope.includes('autonomous parts purchasing')) failures.push({ rule: 'FLEET_AUTONOMOUS_SCOPE_UNAPPROVED' });
   const customer = packages.find((pkg) => pkg.packageId === 'CUSTOMER_INTELLIGENCE');
   if (!customer) failures.push({ rule: 'CUSTOMER_PACKAGE_MISSING' });
-  if (customer && customer.status !== 'APPROVED') failures.push({ rule: 'CUSTOMER_STATUS_INVALID', status: customer.status });
-  if (customer && (customer.implementationCommit || customer.localCommitVerified || customer.remoteCommitVerified || customer.pushed)) failures.push({ rule: 'CUSTOMER_IMPLEMENTED_WITHOUT_EVIDENCE' });
-  if (customer && (customer.deployed || customer.deploymentVerified || customer.migrationExecuted || customer.productionImpact !== 'NONE')) failures.push({ rule: 'CUSTOMER_FALSE_PRODUCTION_STATE' });
-  if (customer && customer.documentationPath !== null) failures.push({ rule: 'CUSTOMER_DOCUMENTATION_PATH_INVALID', documentationPath: customer.documentationPath });
+  if (customer && customer.status !== 'IMPLEMENTED_UNCOMMITTED') failures.push({ rule: 'CUSTOMER_STATUS_INVALID', status: customer.status });
+  if (customer && (customer.implementationCommit || customer.localCommitVerified || customer.remoteCommitVerified || customer.pushed)) failures.push({ rule: 'CUSTOMER_FALSE_REMOTE_STATE' });
+  if (customer && (customer.deployed || customer.deploymentVerified || customer.migrationExecuted || customer.productionImpact !== 'REPOSITORY_ONLY_FOUNDATION')) failures.push({ rule: 'CUSTOMER_FALSE_PRODUCTION_STATE' });
+  if (customer && customer.documentationPath !== 'docs/implementation/customer-intelligence-foundation') failures.push({ rule: 'CUSTOMER_DOCUMENTATION_PATH_INVALID', documentationPath: customer.documentationPath });
+  if (!fs.existsSync(path.join(paths.backendRoot, 'services', 'intelligenceExecution', 'customerIntelligence.js'))) failures.push({ rule: 'CUSTOMER_IMPLEMENTATION_FILE_MISSING' });
+  if (!fs.existsSync(path.join(paths.backendRoot, 'scripts', 'check-customer-intelligence.cjs'))) failures.push({ rule: 'CUSTOMER_VALIDATION_SCRIPT_MISSING' });
+  if (!fs.existsSync(path.join(paths.repoRoot, 'docs', 'implementation', 'customer-intelligence-foundation', 'README.md'))) failures.push({ rule: 'CUSTOMER_DOCUMENTATION_MISSING' });
   if (customer && customer.packageId !== 'CUSTOMER_INTELLIGENCE') failures.push({ rule: 'CUSTOMER_PACKAGE_NUMBER_FABRICATED', packageId: customer.packageId });
   for (const pkg of packages) {
     if (pkg.title === 'Customer Intelligence' && pkg.packageId !== 'CUSTOMER_INTELLIGENCE') failures.push({ rule: 'CUSTOMER_PACKAGE_NUMBER_FABRICATED', packageId: pkg.packageId });
@@ -309,11 +312,14 @@ function main() {
   assertValidationFails((roadmap) => {
     const customer = roadmap.packages.find((pkg) => pkg.packageId === 'CUSTOMER_INTELLIGENCE');
     customer.status = 'PUSHED';
+  }, 'CUSTOMER_STATUS_INVALID');
+  assertValidationFails((roadmap) => {
+    const customer = roadmap.packages.find((pkg) => pkg.packageId === 'CUSTOMER_INTELLIGENCE');
     customer.implementationCommit = '1234567';
     customer.localCommitVerified = true;
     customer.remoteCommitVerified = true;
     customer.pushed = true;
-  }, 'CUSTOMER_IMPLEMENTED_WITHOUT_EVIDENCE');
+  }, 'CUSTOMER_FALSE_REMOTE_STATE');
   assertValidationFails((roadmap, current) => {
     const customer = roadmap.packages.find((pkg) => pkg.packageId === 'CUSTOMER_INTELLIGENCE');
     customer.packageId = 'AI-IEP-005B.6';

@@ -78,10 +78,10 @@
       "nextApprovedPackage": null,
       "ownerApprovalRequired": true,
       "packageId": "CUSTOMER_INTELLIGENCE",
-      "productionImpact": "NONE",
+      "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
       "pushed": false,
       "remoteCommitVerified": false,
-      "status": "APPROVED",
+      "status": "IMPLEMENTED_UNCOMMITTED",
       "title": "Customer Intelligence"
     },
     {

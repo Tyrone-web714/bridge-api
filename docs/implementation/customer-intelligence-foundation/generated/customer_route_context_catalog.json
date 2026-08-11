@@ -1,0 +1,466 @@
+{
+  "generatedArtifact": true,
+  "routeContexts": [
+    {
+      "assignedRoute": "route-syn-001",
+      "customerId": "cust-synthetic-001",
+      "customerStop": "stop-syn-001",
+      "historicalRouteAccountRelationship": [
+        "route-syn-001"
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeExceptionAffectingService": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverridden": false,
+      "routeSafetyStatus": "ELIGIBLE",
+      "stopSequence": 1,
+      "testOnly": true
+    },
+    {
+      "assignedRoute": "route-syn-001",
+      "customerId": null,
+      "customerStop": "stop-syn-001",
+      "historicalRouteAccountRelationship": [
+        "route-syn-001"
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeExceptionAffectingService": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverridden": false,
+      "routeSafetyStatus": "ELIGIBLE",
+      "stopSequence": 1,
+      "testOnly": true
+    },
+    {
+      "assignedRoute": "route-syn-001",
+      "customerId": "cust-synthetic-001",
+      "customerStop": "stop-syn-001",
+      "historicalRouteAccountRelationship": [
+        "route-syn-001"
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeExceptionAffectingService": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverridden": false,
+      "routeSafetyStatus": "ELIGIBLE",
+      "stopSequence": 1,
+      "testOnly": true
+    },
+    {
+      "assignedRoute": "route-syn-002",
+      "customerId": "cust-synthetic-001",
+      "customerStop": "stop-syn-002",
+      "historicalRouteAccountRelationship": [
+        "route-syn-002"
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeExceptionAffectingService": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverridden": false,
+      "routeSafetyStatus": "ELIGIBLE",
+      "stopSequence": 2,
+      "testOnly": true
+    },
+    {
+      "assignedRoute": null,
+      "customerId": "cust-synthetic-001",
+      "customerStop": null,
+      "historicalRouteAccountRelationship": [],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeExceptionAffectingService": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverridden": false,
+      "routeSafetyStatus": "UNKNOWN",
+      "stopSequence": null,
+      "testOnly": true
+    },
+    {
+      "assignedRoute": "route-syn-001",
+      "customerId": "cust-synthetic-001",
+      "customerStop": "stop-syn-001",
+      "historicalRouteAccountRelationship": [
+        "route-syn-001"
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeExceptionAffectingService": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverridden": false,
+      "routeSafetyStatus": "ELIGIBLE",
+      "stopSequence": 1,
+      "testOnly": true
+    },
+    {
+      "assignedRoute": "route-syn-001",
+      "customerId": "cust-synthetic-001",
+      "customerStop": "stop-syn-001",
+      "historicalRouteAccountRelationship": [
+        "route-syn-001"
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeExceptionAffectingService": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverridden": false,
+      "routeSafetyStatus": "ELIGIBLE",
+      "stopSequence": 1,
+      "testOnly": true
+    },
+    {
+      "assignedRoute": "route-syn-001",
+      "customerId": "cust-synthetic-001",
+      "customerStop": "stop-syn-001",
+      "historicalRouteAccountRelationship": [
+        "route-syn-001"
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeExceptionAffectingService": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverridden": false,
+      "routeSafetyStatus": "ELIGIBLE",
+      "stopSequence": 1,
+      "testOnly": true
+    },
+    {
+      "assignedRoute": "route-syn-001",
+      "customerId": "cust-synthetic-001",
+      "customerStop": "stop-syn-001",
+      "historicalRouteAccountRelationship": [
+        "route-syn-001"
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeExceptionAffectingService": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverridden": false,
+      "routeSafetyStatus": "ELIGIBLE",
+      "stopSequence": 1,
+      "testOnly": true
+    },
+    {
+      "assignedRoute": "route-syn-001",
+      "customerId": "cust-synthetic-001",
+      "customerStop": "stop-syn-001",
+      "historicalRouteAccountRelationship": [
+        "route-syn-001"
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeExceptionAffectingService": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverridden": false,
+      "routeSafetyStatus": "ELIGIBLE",
+      "stopSequence": 1,
+      "testOnly": true
+    },
+    {
+      "assignedRoute": "route-syn-001",
+      "customerId": "cust-synthetic-001",
+      "customerStop": "stop-syn-001",
+      "historicalRouteAccountRelationship": [
+        "route-syn-001"
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeExceptionAffectingService": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverridden": false,
+      "routeSafetyStatus": "ELIGIBLE",
+      "stopSequence": 1,
+      "testOnly": true
+    },
+    {
+      "assignedRoute": "route-syn-001",
+      "customerId": "cust-synthetic-001",
+      "customerStop": "stop-syn-001",
+      "historicalRouteAccountRelationship": [
+        "route-syn-001"
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeExceptionAffectingService": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverridden": false,
+      "routeSafetyStatus": "ELIGIBLE",
+      "stopSequence": 1,
+      "testOnly": true
+    },
+    {
+      "assignedRoute": "route-syn-001",
+      "customerId": "cust-synthetic-001",
+      "customerStop": "stop-syn-001",
+      "historicalRouteAccountRelationship": [
+        "route-syn-001"
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeExceptionAffectingService": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverridden": false,
+      "routeSafetyStatus": "ELIGIBLE",
+      "stopSequence": 1,
+      "testOnly": true
+    },
+    {
+      "assignedRoute": "route-syn-001",
+      "customerId": "cust-synthetic-001",
+      "customerStop": "stop-syn-001",
+      "historicalRouteAccountRelationship": [
+        "route-syn-001"
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeExceptionAffectingService": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverridden": false,
+      "routeSafetyStatus": "ELIGIBLE",
+      "stopSequence": 1,
+      "testOnly": true
+    },
+    {
+      "assignedRoute": "route-syn-001",
+      "customerId": "cust-synthetic-001",
+      "customerStop": "stop-syn-001",
+      "historicalRouteAccountRelationship": [
+        "route-syn-001"
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeExceptionAffectingService": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverridden": false,
+      "routeSafetyStatus": "ELIGIBLE",
+      "stopSequence": 1,
+      "testOnly": true
+    },
+    {
+      "assignedRoute": "route-syn-001",
+      "customerId": "cust-synthetic-001",
+      "customerStop": "stop-syn-001",
+      "historicalRouteAccountRelationship": [
+        "route-syn-001"
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeExceptionAffectingService": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverridden": false,
+      "routeSafetyStatus": "ELIGIBLE",
+      "stopSequence": 1,
+      "testOnly": true
+    },
+    {
+      "assignedRoute": "route-syn-001",
+      "customerId": "cust-synthetic-001",
+      "customerStop": "stop-syn-001",
+      "historicalRouteAccountRelationship": [
+        "route-syn-001"
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeExceptionAffectingService": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverridden": false,
+      "routeSafetyStatus": "ELIGIBLE",
+      "stopSequence": 1,
+      "testOnly": true
+    },
+    {
+      "assignedRoute": "route-syn-001",
+      "customerId": "cust-synthetic-001",
+      "customerStop": "stop-syn-001",
+      "historicalRouteAccountRelationship": [
+        "route-syn-001"
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeExceptionAffectingService": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverridden": false,
+      "routeSafetyStatus": "ELIGIBLE",
+      "stopSequence": 1,
+      "testOnly": true
+    },
+    {
+      "assignedRoute": "route-syn-001",
+      "customerId": "cust-synthetic-001",
+      "customerStop": "stop-syn-001",
+      "historicalRouteAccountRelationship": [
+        "route-syn-001"
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeExceptionAffectingService": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverridden": false,
+      "routeSafetyStatus": "ELIGIBLE",
+      "stopSequence": 1,
+      "testOnly": true
+    },
+    {
+      "assignedRoute": "route-syn-001",
+      "customerId": "cust-synthetic-001",
+      "customerStop": "stop-syn-001",
+      "historicalRouteAccountRelationship": [
+        "route-syn-001"
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeExceptionAffectingService": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverridden": false,
+      "routeSafetyStatus": "ELIGIBLE",
+      "stopSequence": 1,
+      "testOnly": true
+    },
+    {
+      "assignedRoute": "route-syn-001",
+      "customerId": "cust-synthetic-001",
+      "customerStop": "stop-syn-001",
+      "historicalRouteAccountRelationship": [
+        "route-syn-001"
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeExceptionAffectingService": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverridden": false,
+      "routeSafetyStatus": "ELIGIBLE",
+      "stopSequence": 1,
+      "testOnly": true
+    },
+    {
+      "assignedRoute": "route-syn-001",
+      "customerId": "cust-synthetic-001",
+      "customerStop": "stop-syn-001",
+      "historicalRouteAccountRelationship": [
+        "route-syn-001"
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeExceptionAffectingService": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverridden": false,
+      "routeSafetyStatus": "ELIGIBLE",
+      "stopSequence": 1,
+      "testOnly": true
+    },
+    {
+      "assignedRoute": "route-syn-001",
+      "customerId": "cust-synthetic-001",
+      "customerStop": "stop-syn-001",
+      "historicalRouteAccountRelationship": [
+        "route-syn-001"
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeExceptionAffectingService": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverridden": false,
+      "routeSafetyStatus": "ELIGIBLE",
+      "stopSequence": 1,
+      "testOnly": true
+    },
+    {
+      "assignedRoute": "route-syn-001",
+      "customerId": "cust-synthetic-001",
+      "customerStop": "stop-syn-001",
+      "historicalRouteAccountRelationship": [
+        "route-syn-001"
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeExceptionAffectingService": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverridden": false,
+      "routeSafetyStatus": "ELIGIBLE",
+      "stopSequence": 1,
+      "testOnly": true
+    },
+    {
+      "assignedRoute": "route-syn-001",
+      "customerId": "cust-synthetic-001",
+      "customerStop": "stop-syn-001",
+      "historicalRouteAccountRelationship": [
+        "route-syn-001"
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeExceptionAffectingService": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverridden": false,
+      "routeSafetyStatus": "ELIGIBLE",
+      "stopSequence": 1,
+      "testOnly": true
+    },
+    {
+      "assignedRoute": "route-syn-001",
+      "customerId": "cust-synthetic-001",
+      "customerStop": "stop-syn-001",
+      "historicalRouteAccountRelationship": [
+        "route-syn-001"
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeExceptionAffectingService": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverridden": false,
+      "routeSafetyStatus": "ELIGIBLE",
+      "stopSequence": 1,
+      "testOnly": true
+    },
+    {
+      "assignedRoute": "route-syn-001",
+      "customerId": "cust-synthetic-001",
+      "customerStop": "stop-syn-001",
+      "historicalRouteAccountRelationship": [
+        "route-syn-001"
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeExceptionAffectingService": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverridden": false,
+      "routeSafetyStatus": "ELIGIBLE",
+      "stopSequence": 1,
+      "testOnly": true
+    },
+    {
+      "assignedRoute": null,
+      "customerId": "cust-synthetic-001",
+      "customerStop": null,
+      "historicalRouteAccountRelationship": [],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeExceptionAffectingService": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverridden": false,
+      "routeSafetyStatus": "UNKNOWN",
+      "stopSequence": null,
+      "testOnly": true
+    },
+    {
+      "assignedRoute": "route-syn-001",
+      "customerId": "cust-synthetic-001",
+      "customerStop": "stop-syn-001",
+      "historicalRouteAccountRelationship": [
+        "route-syn-001"
+      ],
+      "organizationId": null,
+      "routeExceptionAffectingService": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverridden": false,
+      "routeSafetyStatus": "ELIGIBLE",
+      "stopSequence": 1,
+      "testOnly": true
+    },
+    {
+      "assignedRoute": "route-syn-001",
+      "customerId": "cust-synthetic-001",
+      "customerStop": "stop-syn-001",
+      "historicalRouteAccountRelationship": [
+        "route-syn-001"
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeExceptionAffectingService": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverridden": false,
+      "routeSafetyStatus": "ELIGIBLE",
+      "stopSequence": 1,
+      "testOnly": true
+    },
+    {
+      "assignedRoute": "route-syn-001",
+      "customerId": "cust-synthetic-001",
+      "customerStop": "stop-syn-001",
+      "historicalRouteAccountRelationship": [
+        "route-syn-001"
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "routeExceptionAffectingService": null,
+      "routeIntelligenceAuthoritative": true,
+      "routeSafetyOverridden": false,
+      "routeSafetyStatus": "ELIGIBLE",
+      "stopSequence": 1,
+      "testOnly": true
+    }
+  ]
+}

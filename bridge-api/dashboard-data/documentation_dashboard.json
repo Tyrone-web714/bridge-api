@@ -17,7 +17,7 @@
       "dashboard-data/documentation_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "dde92c7f4acf85d1598a5694fdc6b17381e9ba4a1bb2641370fc0feafcc28f75",
+    "generationHash": "bc7aab7012e266fd02c7aa28f2a74c7353977371e5dd3483085c1a3ed3381e6e",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -37,6 +37,7 @@
         "docs/implementation/benchmark-dataset-framework": 37,
         "docs/implementation/bi-kpi-foundation": 19,
         "docs/implementation/cost-governance": 62,
+        "docs/implementation/customer-intelligence-foundation": 57,
         "docs/implementation/dashboard-data-generation": 14,
         "docs/implementation/data-lifecycle-foundation": 25,
         "docs/implementation/decision-history-and-governance": 60,
@@ -73,11 +74,11 @@
         "docs/implementation/warehouse-intelligence-foundation": 51,
         "docs/implementation/web-origin-private-media-hardening": 16
       },
-      "generatedDocs": 210
+      "generatedDocs": 223
     },
     "statusIndicators": [],
     "summary": {
-      "documentationFiles": 1116
+      "documentationFiles": 1173
     },
     "testOnly": true,
     "unknownValues": [],

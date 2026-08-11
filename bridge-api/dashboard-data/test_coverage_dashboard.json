@@ -17,7 +17,7 @@
       "dashboard-data/test_coverage_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "2b7f724a157d9d5d7ccb2a27c665bd3ff455b6f1ef566b9d86bb3a6d70204466",
+    "generationHash": "3b8b8bbfcba666fdab571bd4719b77c81f783a3dcfa0a9e73e1ac62df2fd36ce",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -50,6 +50,10 @@
         "cost-governance:sensitivity",
         "cost-governance:simulate-budget",
         "cost-governance:validate",
+        "customer-intelligence:benchmarks",
+        "customer-intelligence:check",
+        "customer-intelligence:generate",
+        "customer-intelligence:validate",
         "dashboard-data:catalog",
         "dashboard-data:check",
         "dashboard-data:generate",
@@ -112,6 +116,7 @@
         "test:benchmark-datasets",
         "test:capability-registry",
         "test:cost-governance",
+        "test:customer-intelligence",
         "test:dashboard",
         "test:dashboard-data",
         "test:decision-governance",
@@ -140,7 +145,7 @@
     },
     "statusIndicators": [],
     "summary": {
-      "testScripts": 47
+      "testScripts": 48
     },
     "testOnly": true,
     "unknownValues": [],

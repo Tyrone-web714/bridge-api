@@ -709,6 +709,331 @@
       "impact": {
         "blockedImpacts": [],
         "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_benchmark_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_benchmark_catalog.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_context_contract.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_context_contract.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_deduction_history_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_deduction_history_catalog.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_delivery_history_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_delivery_history_catalog.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_evidence_report.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_evidence_report.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_exception_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_exception_catalog.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_historical_spend_report.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_historical_spend_report.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/CUSTOMER_INTELLIGENCE_SUMMARY.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/CUSTOMER_INTELLIGENCE_SUMMARY.md",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_invoice_history_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_invoice_history_catalog.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_product_history_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_product_history_catalog.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_route_context_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_route_context_catalog.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_service_pattern_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_service_pattern_catalog.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_stop_context_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/customer-intelligence-foundation/generated/customer_stop_context_catalog.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
           "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
           "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
         ],
@@ -1810,6 +2135,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
           "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
           "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
           "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
           "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -1899,6 +2225,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
         "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
         "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
         "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
         "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -2000,6 +2327,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
           "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
           "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
           "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
           "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -2089,6 +2417,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
         "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
         "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
         "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
         "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -2190,6 +2519,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
           "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
           "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
           "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
           "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -2279,6 +2609,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
         "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
         "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
         "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
         "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -2380,6 +2711,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
           "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
           "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
           "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
           "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -2469,6 +2801,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
         "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
         "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
         "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
         "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -2570,6 +2903,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
           "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
           "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
           "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
           "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -2659,6 +2993,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
         "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
         "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
         "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
         "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -2760,6 +3095,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
           "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
           "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
           "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
           "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -2849,6 +3185,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
         "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
         "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
         "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
         "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -2950,6 +3287,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
           "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
           "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
           "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
           "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -3039,6 +3377,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
         "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
         "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
         "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
         "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -3140,6 +3479,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
           "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
           "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
           "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
           "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -3229,6 +3569,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
         "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
         "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
         "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
         "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -3330,6 +3671,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
           "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
           "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
           "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
           "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -3419,6 +3761,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
         "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
         "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
         "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
         "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -3520,6 +3863,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
           "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
           "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
           "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
           "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -3609,6 +3953,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
         "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
         "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
         "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
         "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -3710,6 +4055,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
           "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
           "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
           "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
           "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -3799,6 +4145,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
         "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
         "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
         "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
         "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -3900,6 +4247,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
           "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
           "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
           "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
           "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -3989,6 +4337,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
         "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
         "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
         "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
         "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -4090,6 +4439,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
           "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
           "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
           "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
           "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -4179,6 +4529,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
         "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
         "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
         "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
         "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -4280,6 +4631,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
           "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
           "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
           "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
           "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -4369,6 +4721,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
         "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
         "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
         "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
         "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -4470,6 +4823,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
           "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
           "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
           "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
           "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -4559,6 +4913,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
         "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
         "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
         "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
         "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -4660,6 +5015,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
           "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
           "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
           "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
           "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -4749,6 +5105,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
         "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
         "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
         "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
         "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -4850,6 +5207,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
           "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
           "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
           "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
           "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -4939,6 +5297,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
         "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
         "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
         "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
         "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -5040,6 +5399,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
           "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
           "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
           "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
           "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",
@@ -5129,6 +5489,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/constants.js",
         "Repository Module:bridge-api/services/intelligenceExecution/contracts.js",
         "Repository Module:bridge-api/services/intelligenceExecution/costGovernance.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/customerIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/dashboardDataGeneration.js",
         "Repository Module:bridge-api/services/intelligenceExecution/decisionGovernance.js",
         "Repository Module:bridge-api/services/intelligenceExecution/deterministicExecutor.js",

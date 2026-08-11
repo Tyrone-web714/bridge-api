@@ -1,0 +1,828 @@
+{
+  "generatedArtifact": true,
+  "servicePatterns": [
+    {
+      "customerId": "cust-synthetic-001",
+      "evidenceLanguage": "OBSERVED_HISTORICAL_RECORDED_KNOWN",
+      "historicalInvoiceFrequency": 2,
+      "historicalProductFrequency": [
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-COLA"
+        },
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "historyCoverage": "PARTIAL_OR_COMPLETE",
+      "observedDaysOfWeek": [
+        "Friday"
+      ],
+      "observedDeliveryCount": 2,
+      "observedIntervalsBetweenDeliveriesDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "patternHash": "8919bd56dde0b2f0c13bf4b3b99ffff4010f8caad9962dddec2bc682096ad852",
+      "predictionGenerated": false,
+      "repeatAccountRouteRelationship": true,
+      "testOnly": true
+    },
+    {
+      "customerId": null,
+      "evidenceLanguage": "OBSERVED_HISTORICAL_RECORDED_KNOWN",
+      "historicalInvoiceFrequency": 2,
+      "historicalProductFrequency": [
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-COLA"
+        },
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "historyCoverage": "PARTIAL_OR_COMPLETE",
+      "observedDaysOfWeek": [
+        "Friday"
+      ],
+      "observedDeliveryCount": 2,
+      "observedIntervalsBetweenDeliveriesDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "patternHash": "e7e8896dde76283352b3afabbe3a1f41150e18d0d37faeb7e35eda294ac078f7",
+      "predictionGenerated": false,
+      "repeatAccountRouteRelationship": true,
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "evidenceLanguage": "OBSERVED_HISTORICAL_RECORDED_KNOWN",
+      "historicalInvoiceFrequency": 2,
+      "historicalProductFrequency": [
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-COLA"
+        },
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "historyCoverage": "PARTIAL_OR_COMPLETE",
+      "observedDaysOfWeek": [
+        "Friday"
+      ],
+      "observedDeliveryCount": 2,
+      "observedIntervalsBetweenDeliveriesDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "patternHash": "8919bd56dde0b2f0c13bf4b3b99ffff4010f8caad9962dddec2bc682096ad852",
+      "predictionGenerated": false,
+      "repeatAccountRouteRelationship": true,
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "evidenceLanguage": "OBSERVED_HISTORICAL_RECORDED_KNOWN",
+      "historicalInvoiceFrequency": 2,
+      "historicalProductFrequency": [
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-COLA"
+        },
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "historyCoverage": "PARTIAL_OR_COMPLETE",
+      "observedDaysOfWeek": [
+        "Friday"
+      ],
+      "observedDeliveryCount": 2,
+      "observedIntervalsBetweenDeliveriesDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "patternHash": "8919bd56dde0b2f0c13bf4b3b99ffff4010f8caad9962dddec2bc682096ad852",
+      "predictionGenerated": false,
+      "repeatAccountRouteRelationship": true,
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "evidenceLanguage": "OBSERVED_HISTORICAL_RECORDED_KNOWN",
+      "historicalInvoiceFrequency": 2,
+      "historicalProductFrequency": [
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-COLA"
+        },
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "historyCoverage": "PARTIAL_OR_COMPLETE",
+      "observedDaysOfWeek": [
+        "Friday"
+      ],
+      "observedDeliveryCount": 2,
+      "observedIntervalsBetweenDeliveriesDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "patternHash": "8919bd56dde0b2f0c13bf4b3b99ffff4010f8caad9962dddec2bc682096ad852",
+      "predictionGenerated": false,
+      "repeatAccountRouteRelationship": true,
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "evidenceLanguage": "OBSERVED_HISTORICAL_RECORDED_KNOWN",
+      "historicalInvoiceFrequency": 2,
+      "historicalProductFrequency": [
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-COLA"
+        },
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "historyCoverage": "PARTIAL_OR_COMPLETE",
+      "observedDaysOfWeek": [
+        "Friday"
+      ],
+      "observedDeliveryCount": 2,
+      "observedIntervalsBetweenDeliveriesDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "patternHash": "8919bd56dde0b2f0c13bf4b3b99ffff4010f8caad9962dddec2bc682096ad852",
+      "predictionGenerated": false,
+      "repeatAccountRouteRelationship": true,
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "evidenceLanguage": "OBSERVED_HISTORICAL_RECORDED_KNOWN",
+      "historicalInvoiceFrequency": 2,
+      "historicalProductFrequency": [
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-COLA"
+        },
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "historyCoverage": "PARTIAL_OR_COMPLETE",
+      "observedDaysOfWeek": [
+        "Friday"
+      ],
+      "observedDeliveryCount": 2,
+      "observedIntervalsBetweenDeliveriesDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "patternHash": "8919bd56dde0b2f0c13bf4b3b99ffff4010f8caad9962dddec2bc682096ad852",
+      "predictionGenerated": false,
+      "repeatAccountRouteRelationship": true,
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "evidenceLanguage": "OBSERVED_HISTORICAL_RECORDED_KNOWN",
+      "historicalInvoiceFrequency": 2,
+      "historicalProductFrequency": [
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-COLA"
+        },
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "historyCoverage": "INSUFFICIENT",
+      "observedDaysOfWeek": [],
+      "observedDeliveryCount": 0,
+      "observedIntervalsBetweenDeliveriesDays": [],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "patternHash": "3d777844372a10ce27aafe61df9b3140a05de8330c3a3cda1b8e65ad8d51f695",
+      "predictionGenerated": false,
+      "repeatAccountRouteRelationship": false,
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "evidenceLanguage": "OBSERVED_HISTORICAL_RECORDED_KNOWN",
+      "historicalInvoiceFrequency": 2,
+      "historicalProductFrequency": [
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-COLA"
+        },
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "historyCoverage": "PARTIAL_OR_COMPLETE",
+      "observedDaysOfWeek": [
+        "Friday"
+      ],
+      "observedDeliveryCount": 1,
+      "observedIntervalsBetweenDeliveriesDays": [],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "patternHash": "bfe25946a17f731c1c9c2026e46d57b616d52395675a4cde21f7414918107e29",
+      "predictionGenerated": false,
+      "repeatAccountRouteRelationship": false,
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "evidenceLanguage": "OBSERVED_HISTORICAL_RECORDED_KNOWN",
+      "historicalInvoiceFrequency": 2,
+      "historicalProductFrequency": [
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-COLA"
+        },
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "historyCoverage": "PARTIAL_OR_COMPLETE",
+      "observedDaysOfWeek": [
+        "Friday"
+      ],
+      "observedDeliveryCount": 1,
+      "observedIntervalsBetweenDeliveriesDays": [],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "patternHash": "bfe25946a17f731c1c9c2026e46d57b616d52395675a4cde21f7414918107e29",
+      "predictionGenerated": false,
+      "repeatAccountRouteRelationship": false,
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "evidenceLanguage": "OBSERVED_HISTORICAL_RECORDED_KNOWN",
+      "historicalInvoiceFrequency": 2,
+      "historicalProductFrequency": [
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-COLA"
+        },
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "historyCoverage": "PARTIAL_OR_COMPLETE",
+      "observedDaysOfWeek": [
+        "Friday"
+      ],
+      "observedDeliveryCount": 3,
+      "observedIntervalsBetweenDeliveriesDays": [
+        7,
+        7
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "patternHash": "468bb8955fa702f05a7cc1c5012a7f6638608c6c51dd222e5c62145b1e387b15",
+      "predictionGenerated": false,
+      "repeatAccountRouteRelationship": true,
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "evidenceLanguage": "OBSERVED_HISTORICAL_RECORDED_KNOWN",
+      "historicalInvoiceFrequency": 2,
+      "historicalProductFrequency": [
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-COLA"
+        },
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "historyCoverage": "PARTIAL_OR_COMPLETE",
+      "observedDaysOfWeek": [
+        "Friday"
+      ],
+      "observedDeliveryCount": 2,
+      "observedIntervalsBetweenDeliveriesDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "patternHash": "8919bd56dde0b2f0c13bf4b3b99ffff4010f8caad9962dddec2bc682096ad852",
+      "predictionGenerated": false,
+      "repeatAccountRouteRelationship": true,
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "evidenceLanguage": "OBSERVED_HISTORICAL_RECORDED_KNOWN",
+      "historicalInvoiceFrequency": 0,
+      "historicalProductFrequency": [],
+      "historyCoverage": "PARTIAL_OR_COMPLETE",
+      "observedDaysOfWeek": [
+        "Friday"
+      ],
+      "observedDeliveryCount": 2,
+      "observedIntervalsBetweenDeliveriesDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "patternHash": "1df5c88086b57f3a9d735ea8fb19cfb1a6da4dad27db8fddf71528f612793668",
+      "predictionGenerated": false,
+      "repeatAccountRouteRelationship": true,
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "evidenceLanguage": "OBSERVED_HISTORICAL_RECORDED_KNOWN",
+      "historicalInvoiceFrequency": 2,
+      "historicalProductFrequency": [
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-COLA"
+        },
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "historyCoverage": "PARTIAL_OR_COMPLETE",
+      "observedDaysOfWeek": [
+        "Friday"
+      ],
+      "observedDeliveryCount": 2,
+      "observedIntervalsBetweenDeliveriesDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "patternHash": "8919bd56dde0b2f0c13bf4b3b99ffff4010f8caad9962dddec2bc682096ad852",
+      "predictionGenerated": false,
+      "repeatAccountRouteRelationship": true,
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "evidenceLanguage": "OBSERVED_HISTORICAL_RECORDED_KNOWN",
+      "historicalInvoiceFrequency": 1,
+      "historicalProductFrequency": [
+        {
+          "frequencyCount": 1,
+          "productId": "SKU-UNKNOWN"
+        }
+      ],
+      "historyCoverage": "PARTIAL_OR_COMPLETE",
+      "observedDaysOfWeek": [
+        "Friday"
+      ],
+      "observedDeliveryCount": 2,
+      "observedIntervalsBetweenDeliveriesDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "patternHash": "7f6123684a48d1fe29df5f37124c1f12714b72bc2ac7e53fd2e977bef444c605",
+      "predictionGenerated": false,
+      "repeatAccountRouteRelationship": true,
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "evidenceLanguage": "OBSERVED_HISTORICAL_RECORDED_KNOWN",
+      "historicalInvoiceFrequency": 2,
+      "historicalProductFrequency": [
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-COLA"
+        },
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "historyCoverage": "PARTIAL_OR_COMPLETE",
+      "observedDaysOfWeek": [
+        "Friday"
+      ],
+      "observedDeliveryCount": 2,
+      "observedIntervalsBetweenDeliveriesDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "patternHash": "8919bd56dde0b2f0c13bf4b3b99ffff4010f8caad9962dddec2bc682096ad852",
+      "predictionGenerated": false,
+      "repeatAccountRouteRelationship": true,
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "evidenceLanguage": "OBSERVED_HISTORICAL_RECORDED_KNOWN",
+      "historicalInvoiceFrequency": 0,
+      "historicalProductFrequency": [],
+      "historyCoverage": "PARTIAL_OR_COMPLETE",
+      "observedDaysOfWeek": [
+        "Friday"
+      ],
+      "observedDeliveryCount": 2,
+      "observedIntervalsBetweenDeliveriesDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "patternHash": "1df5c88086b57f3a9d735ea8fb19cfb1a6da4dad27db8fddf71528f612793668",
+      "predictionGenerated": false,
+      "repeatAccountRouteRelationship": true,
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "evidenceLanguage": "OBSERVED_HISTORICAL_RECORDED_KNOWN",
+      "historicalInvoiceFrequency": 1,
+      "historicalProductFrequency": [
+        {
+          "frequencyCount": 1,
+          "productId": "SKU-COLA"
+        },
+        {
+          "frequencyCount": 1,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "historyCoverage": "PARTIAL_OR_COMPLETE",
+      "observedDaysOfWeek": [
+        "Friday"
+      ],
+      "observedDeliveryCount": 2,
+      "observedIntervalsBetweenDeliveriesDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "patternHash": "ed7094a921583ffb3c59a335cab69ee8cf29b28eff9b07728bead15b7d5ba740",
+      "predictionGenerated": false,
+      "repeatAccountRouteRelationship": true,
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "evidenceLanguage": "OBSERVED_HISTORICAL_RECORDED_KNOWN",
+      "historicalInvoiceFrequency": 2,
+      "historicalProductFrequency": [
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-COLA"
+        },
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "historyCoverage": "PARTIAL_OR_COMPLETE",
+      "observedDaysOfWeek": [
+        "Friday"
+      ],
+      "observedDeliveryCount": 2,
+      "observedIntervalsBetweenDeliveriesDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "patternHash": "8919bd56dde0b2f0c13bf4b3b99ffff4010f8caad9962dddec2bc682096ad852",
+      "predictionGenerated": false,
+      "repeatAccountRouteRelationship": true,
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "evidenceLanguage": "OBSERVED_HISTORICAL_RECORDED_KNOWN",
+      "historicalInvoiceFrequency": 1,
+      "historicalProductFrequency": [
+        {
+          "frequencyCount": 1,
+          "productId": "SKU-COLA"
+        },
+        {
+          "frequencyCount": 1,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "historyCoverage": "PARTIAL_OR_COMPLETE",
+      "observedDaysOfWeek": [
+        "Friday"
+      ],
+      "observedDeliveryCount": 2,
+      "observedIntervalsBetweenDeliveriesDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "patternHash": "ed7094a921583ffb3c59a335cab69ee8cf29b28eff9b07728bead15b7d5ba740",
+      "predictionGenerated": false,
+      "repeatAccountRouteRelationship": true,
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "evidenceLanguage": "OBSERVED_HISTORICAL_RECORDED_KNOWN",
+      "historicalInvoiceFrequency": 2,
+      "historicalProductFrequency": [
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-COLA"
+        },
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "historyCoverage": "PARTIAL_OR_COMPLETE",
+      "observedDaysOfWeek": [
+        "Friday"
+      ],
+      "observedDeliveryCount": 2,
+      "observedIntervalsBetweenDeliveriesDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "patternHash": "8919bd56dde0b2f0c13bf4b3b99ffff4010f8caad9962dddec2bc682096ad852",
+      "predictionGenerated": false,
+      "repeatAccountRouteRelationship": true,
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "evidenceLanguage": "OBSERVED_HISTORICAL_RECORDED_KNOWN",
+      "historicalInvoiceFrequency": 2,
+      "historicalProductFrequency": [
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-COLA"
+        },
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "historyCoverage": "PARTIAL_OR_COMPLETE",
+      "observedDaysOfWeek": [
+        "Friday"
+      ],
+      "observedDeliveryCount": 2,
+      "observedIntervalsBetweenDeliveriesDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "patternHash": "8919bd56dde0b2f0c13bf4b3b99ffff4010f8caad9962dddec2bc682096ad852",
+      "predictionGenerated": false,
+      "repeatAccountRouteRelationship": true,
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "evidenceLanguage": "OBSERVED_HISTORICAL_RECORDED_KNOWN",
+      "historicalInvoiceFrequency": 2,
+      "historicalProductFrequency": [
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-COLA"
+        },
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "historyCoverage": "PARTIAL_OR_COMPLETE",
+      "observedDaysOfWeek": [
+        "Friday"
+      ],
+      "observedDeliveryCount": 2,
+      "observedIntervalsBetweenDeliveriesDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "patternHash": "8919bd56dde0b2f0c13bf4b3b99ffff4010f8caad9962dddec2bc682096ad852",
+      "predictionGenerated": false,
+      "repeatAccountRouteRelationship": true,
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "evidenceLanguage": "OBSERVED_HISTORICAL_RECORDED_KNOWN",
+      "historicalInvoiceFrequency": 2,
+      "historicalProductFrequency": [
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-COLA"
+        },
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "historyCoverage": "PARTIAL_OR_COMPLETE",
+      "observedDaysOfWeek": [
+        "Friday"
+      ],
+      "observedDeliveryCount": 2,
+      "observedIntervalsBetweenDeliveriesDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "patternHash": "8919bd56dde0b2f0c13bf4b3b99ffff4010f8caad9962dddec2bc682096ad852",
+      "predictionGenerated": false,
+      "repeatAccountRouteRelationship": true,
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "evidenceLanguage": "OBSERVED_HISTORICAL_RECORDED_KNOWN",
+      "historicalInvoiceFrequency": 2,
+      "historicalProductFrequency": [
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-COLA"
+        },
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "historyCoverage": "PARTIAL_OR_COMPLETE",
+      "observedDaysOfWeek": [
+        "Friday"
+      ],
+      "observedDeliveryCount": 2,
+      "observedIntervalsBetweenDeliveriesDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "patternHash": "8919bd56dde0b2f0c13bf4b3b99ffff4010f8caad9962dddec2bc682096ad852",
+      "predictionGenerated": false,
+      "repeatAccountRouteRelationship": true,
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "evidenceLanguage": "OBSERVED_HISTORICAL_RECORDED_KNOWN",
+      "historicalInvoiceFrequency": 2,
+      "historicalProductFrequency": [
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-COLA"
+        },
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "historyCoverage": "PARTIAL_OR_COMPLETE",
+      "observedDaysOfWeek": [
+        "Saturday"
+      ],
+      "observedDeliveryCount": 3,
+      "observedIntervalsBetweenDeliveriesDays": [
+        7,
+        7
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "patternHash": "e0a2f1eb351638c3673c03cd69a5bdde10a7dcbd3b81d607cb6ae8a2cce512fb",
+      "predictionGenerated": false,
+      "repeatAccountRouteRelationship": true,
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "evidenceLanguage": "OBSERVED_HISTORICAL_RECORDED_KNOWN",
+      "historicalInvoiceFrequency": 1,
+      "historicalProductFrequency": [
+        {
+          "frequencyCount": 1,
+          "productId": "SKU-COLA"
+        },
+        {
+          "frequencyCount": 1,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "historyCoverage": "PARTIAL_OR_COMPLETE",
+      "observedDaysOfWeek": [
+        "Friday"
+      ],
+      "observedDeliveryCount": 1,
+      "observedIntervalsBetweenDeliveriesDays": [],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "patternHash": "857b2fa646250aac3b30bcd0a9f5dc5cc4147a4018d940f9d1f1050e4f3c16af",
+      "predictionGenerated": false,
+      "repeatAccountRouteRelationship": false,
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "evidenceLanguage": "OBSERVED_HISTORICAL_RECORDED_KNOWN",
+      "historicalInvoiceFrequency": 0,
+      "historicalProductFrequency": [],
+      "historyCoverage": "INSUFFICIENT",
+      "observedDaysOfWeek": [],
+      "observedDeliveryCount": 0,
+      "observedIntervalsBetweenDeliveriesDays": [],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "patternHash": "d582da6a4e7c7c216a42461903c80d72cf62b88be6f5ad23cd50874c29043a4e",
+      "predictionGenerated": false,
+      "repeatAccountRouteRelationship": false,
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "evidenceLanguage": "OBSERVED_HISTORICAL_RECORDED_KNOWN",
+      "historicalInvoiceFrequency": 2,
+      "historicalProductFrequency": [
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-COLA"
+        },
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "historyCoverage": "PARTIAL_OR_COMPLETE",
+      "observedDaysOfWeek": [
+        "Friday"
+      ],
+      "observedDeliveryCount": 2,
+      "observedIntervalsBetweenDeliveriesDays": [
+        14
+      ],
+      "organizationId": null,
+      "patternHash": "7f24ea91a6e12a8ba762dc88822ffbedfba2f2aa6f110d00699ee60576b18a62",
+      "predictionGenerated": false,
+      "repeatAccountRouteRelationship": true,
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "evidenceLanguage": "OBSERVED_HISTORICAL_RECORDED_KNOWN",
+      "historicalInvoiceFrequency": 2,
+      "historicalProductFrequency": [
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-COLA"
+        },
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "historyCoverage": "PARTIAL_OR_COMPLETE",
+      "observedDaysOfWeek": [
+        "Friday"
+      ],
+      "observedDeliveryCount": 1,
+      "observedIntervalsBetweenDeliveriesDays": [],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "patternHash": "bfe25946a17f731c1c9c2026e46d57b616d52395675a4cde21f7414918107e29",
+      "predictionGenerated": false,
+      "repeatAccountRouteRelationship": false,
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "evidenceLanguage": "OBSERVED_HISTORICAL_RECORDED_KNOWN",
+      "historicalInvoiceFrequency": 2,
+      "historicalProductFrequency": [
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-COLA"
+        },
+        {
+          "frequencyCount": 2,
+          "productId": "SKU-WATER"
+        }
+      ],
+      "historyCoverage": "PARTIAL_OR_COMPLETE",
+      "observedDaysOfWeek": [
+        "Friday"
+      ],
+      "observedDeliveryCount": 2,
+      "observedIntervalsBetweenDeliveriesDays": [
+        14
+      ],
+      "organizationId": "org_synthetic_customer_intelligence",
+      "patternHash": "8919bd56dde0b2f0c13bf4b3b99ffff4010f8caad9962dddec2bc682096ad852",
+      "predictionGenerated": false,
+      "repeatAccountRouteRelationship": true,
+      "testOnly": true
+    }
+  ]
+}

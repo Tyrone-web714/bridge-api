@@ -1,0 +1,528 @@
+{
+  "generatedArtifact": true,
+  "stopContexts": [
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "arrivalEvidence": "2026-01-09T10:00:00.000Z",
+      "authorizedDriverNoteReferences": [
+        "note-syn-001"
+      ],
+      "crossOrganizationNotesExposed": false,
+      "customerId": "cust-synthetic-001",
+      "departureEvidence": "2026-01-09T10:15:00.000Z",
+      "driverStopAuthorityPreserved": true,
+      "knownDeliveryStatus": "completed",
+      "operationalInstructionReferences": [],
+      "routeId": "route-syn-001",
+      "stopId": "stop-syn-001",
+      "stopInstructionReferences": [],
+      "testOnly": true
+    },
+    {
+      "accountNumber": null,
+      "arrivalEvidence": "2026-01-09T10:00:00.000Z",
+      "authorizedDriverNoteReferences": [
+        "note-syn-001"
+      ],
+      "crossOrganizationNotesExposed": false,
+      "customerId": null,
+      "departureEvidence": "2026-01-09T10:15:00.000Z",
+      "driverStopAuthorityPreserved": true,
+      "knownDeliveryStatus": "completed",
+      "operationalInstructionReferences": [],
+      "routeId": "route-syn-001",
+      "stopId": "stop-syn-001",
+      "stopInstructionReferences": [],
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "arrivalEvidence": "2026-01-09T10:00:00.000Z",
+      "authorizedDriverNoteReferences": [
+        "note-syn-001"
+      ],
+      "crossOrganizationNotesExposed": false,
+      "customerId": "cust-synthetic-001",
+      "departureEvidence": "2026-01-09T10:15:00.000Z",
+      "driverStopAuthorityPreserved": true,
+      "knownDeliveryStatus": "completed",
+      "operationalInstructionReferences": [],
+      "routeId": "route-syn-001",
+      "stopId": "stop-syn-001",
+      "stopInstructionReferences": [],
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "arrivalEvidence": "2026-01-09T10:00:00.000Z",
+      "authorizedDriverNoteReferences": [
+        "note-syn-001"
+      ],
+      "crossOrganizationNotesExposed": false,
+      "customerId": "cust-synthetic-001",
+      "departureEvidence": "2026-01-09T10:15:00.000Z",
+      "driverStopAuthorityPreserved": true,
+      "knownDeliveryStatus": "completed",
+      "operationalInstructionReferences": [],
+      "routeId": "route-syn-001",
+      "stopId": "stop-syn-001",
+      "stopInstructionReferences": [],
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "arrivalEvidence": "2026-01-09T10:00:00.000Z",
+      "authorizedDriverNoteReferences": [
+        "note-syn-001"
+      ],
+      "crossOrganizationNotesExposed": false,
+      "customerId": "cust-synthetic-001",
+      "departureEvidence": "2026-01-09T10:15:00.000Z",
+      "driverStopAuthorityPreserved": true,
+      "knownDeliveryStatus": "completed",
+      "operationalInstructionReferences": [],
+      "routeId": "route-syn-001",
+      "stopId": "stop-syn-001",
+      "stopInstructionReferences": [],
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "arrivalEvidence": null,
+      "authorizedDriverNoteReferences": [],
+      "crossOrganizationNotesExposed": false,
+      "customerId": "cust-synthetic-001",
+      "departureEvidence": null,
+      "driverStopAuthorityPreserved": true,
+      "knownDeliveryStatus": "completed",
+      "operationalInstructionReferences": [],
+      "routeId": "route-syn-003",
+      "stopId": "stop-syn-003",
+      "stopInstructionReferences": [],
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "arrivalEvidence": "2026-01-09T10:00:00.000Z",
+      "authorizedDriverNoteReferences": [
+        "note-syn-001"
+      ],
+      "crossOrganizationNotesExposed": false,
+      "customerId": "cust-synthetic-001",
+      "departureEvidence": "2026-01-09T10:15:00.000Z",
+      "driverStopAuthorityPreserved": true,
+      "knownDeliveryStatus": "completed",
+      "operationalInstructionReferences": [],
+      "routeId": "route-syn-001",
+      "stopId": "stop-syn-001",
+      "stopInstructionReferences": [],
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "arrivalEvidence": "2026-01-09T10:00:00.000Z",
+      "authorizedDriverNoteReferences": [
+        "note-syn-001"
+      ],
+      "crossOrganizationNotesExposed": false,
+      "customerId": "cust-synthetic-001",
+      "departureEvidence": "2026-01-09T10:15:00.000Z",
+      "driverStopAuthorityPreserved": true,
+      "knownDeliveryStatus": "completed",
+      "operationalInstructionReferences": [],
+      "routeId": "route-syn-001",
+      "stopId": "stop-syn-001",
+      "stopInstructionReferences": [],
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "arrivalEvidence": "2026-01-09T10:00:00.000Z",
+      "authorizedDriverNoteReferences": [
+        "note-syn-001"
+      ],
+      "crossOrganizationNotesExposed": false,
+      "customerId": "cust-synthetic-001",
+      "departureEvidence": "2026-01-09T10:15:00.000Z",
+      "driverStopAuthorityPreserved": true,
+      "knownDeliveryStatus": "completed",
+      "operationalInstructionReferences": [],
+      "routeId": "route-syn-001",
+      "stopId": "stop-syn-001",
+      "stopInstructionReferences": [],
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "arrivalEvidence": "2026-01-09T10:00:00.000Z",
+      "authorizedDriverNoteReferences": [
+        "note-syn-001"
+      ],
+      "crossOrganizationNotesExposed": false,
+      "customerId": "cust-synthetic-001",
+      "departureEvidence": "2026-01-09T10:15:00.000Z",
+      "driverStopAuthorityPreserved": true,
+      "knownDeliveryStatus": "completed",
+      "operationalInstructionReferences": [],
+      "routeId": "route-syn-001",
+      "stopId": "stop-syn-001",
+      "stopInstructionReferences": [],
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "arrivalEvidence": "2026-01-09T10:00:00.000Z",
+      "authorizedDriverNoteReferences": [
+        "note-syn-001"
+      ],
+      "crossOrganizationNotesExposed": false,
+      "customerId": "cust-synthetic-001",
+      "departureEvidence": "2026-01-09T10:15:00.000Z",
+      "driverStopAuthorityPreserved": true,
+      "knownDeliveryStatus": "completed",
+      "operationalInstructionReferences": [],
+      "routeId": "route-syn-001",
+      "stopId": "stop-syn-001",
+      "stopInstructionReferences": [],
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "arrivalEvidence": "2026-01-09T10:00:00.000Z",
+      "authorizedDriverNoteReferences": [
+        "note-syn-001"
+      ],
+      "crossOrganizationNotesExposed": false,
+      "customerId": "cust-synthetic-001",
+      "departureEvidence": "2026-01-09T10:15:00.000Z",
+      "driverStopAuthorityPreserved": true,
+      "knownDeliveryStatus": "completed",
+      "operationalInstructionReferences": [],
+      "routeId": "route-syn-001",
+      "stopId": "stop-syn-001",
+      "stopInstructionReferences": [],
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "arrivalEvidence": "2026-01-09T10:00:00.000Z",
+      "authorizedDriverNoteReferences": [
+        "note-syn-001"
+      ],
+      "crossOrganizationNotesExposed": false,
+      "customerId": "cust-synthetic-001",
+      "departureEvidence": "2026-01-09T10:15:00.000Z",
+      "driverStopAuthorityPreserved": true,
+      "knownDeliveryStatus": "completed",
+      "operationalInstructionReferences": [],
+      "routeId": "route-syn-001",
+      "stopId": "stop-syn-001",
+      "stopInstructionReferences": [],
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "arrivalEvidence": "2026-01-09T10:00:00.000Z",
+      "authorizedDriverNoteReferences": [
+        "note-syn-001"
+      ],
+      "crossOrganizationNotesExposed": false,
+      "customerId": "cust-synthetic-001",
+      "departureEvidence": "2026-01-09T10:15:00.000Z",
+      "driverStopAuthorityPreserved": true,
+      "knownDeliveryStatus": "completed",
+      "operationalInstructionReferences": [],
+      "routeId": "route-syn-001",
+      "stopId": "stop-syn-001",
+      "stopInstructionReferences": [],
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "arrivalEvidence": "2026-01-09T10:00:00.000Z",
+      "authorizedDriverNoteReferences": [
+        "note-syn-001"
+      ],
+      "crossOrganizationNotesExposed": false,
+      "customerId": "cust-synthetic-001",
+      "departureEvidence": "2026-01-09T10:15:00.000Z",
+      "driverStopAuthorityPreserved": true,
+      "knownDeliveryStatus": "completed",
+      "operationalInstructionReferences": [],
+      "routeId": "route-syn-001",
+      "stopId": "stop-syn-001",
+      "stopInstructionReferences": [],
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "arrivalEvidence": "2026-01-09T10:00:00.000Z",
+      "authorizedDriverNoteReferences": [
+        "note-syn-001"
+      ],
+      "crossOrganizationNotesExposed": false,
+      "customerId": "cust-synthetic-001",
+      "departureEvidence": "2026-01-09T10:15:00.000Z",
+      "driverStopAuthorityPreserved": true,
+      "knownDeliveryStatus": "completed",
+      "operationalInstructionReferences": [],
+      "routeId": "route-syn-001",
+      "stopId": "stop-syn-001",
+      "stopInstructionReferences": [],
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "arrivalEvidence": "2026-01-09T10:00:00.000Z",
+      "authorizedDriverNoteReferences": [
+        "note-syn-001"
+      ],
+      "crossOrganizationNotesExposed": false,
+      "customerId": "cust-synthetic-001",
+      "departureEvidence": "2026-01-09T10:15:00.000Z",
+      "driverStopAuthorityPreserved": true,
+      "knownDeliveryStatus": "completed",
+      "operationalInstructionReferences": [],
+      "routeId": "route-syn-001",
+      "stopId": "stop-syn-001",
+      "stopInstructionReferences": [],
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "arrivalEvidence": "2026-01-09T10:00:00.000Z",
+      "authorizedDriverNoteReferences": [
+        "note-syn-001"
+      ],
+      "crossOrganizationNotesExposed": false,
+      "customerId": "cust-synthetic-001",
+      "departureEvidence": "2026-01-09T10:15:00.000Z",
+      "driverStopAuthorityPreserved": true,
+      "knownDeliveryStatus": "completed",
+      "operationalInstructionReferences": [],
+      "routeId": "route-syn-001",
+      "stopId": "stop-syn-001",
+      "stopInstructionReferences": [],
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "arrivalEvidence": "2026-01-09T10:00:00.000Z",
+      "authorizedDriverNoteReferences": [
+        "note-syn-001"
+      ],
+      "crossOrganizationNotesExposed": false,
+      "customerId": "cust-synthetic-001",
+      "departureEvidence": "2026-01-09T10:15:00.000Z",
+      "driverStopAuthorityPreserved": true,
+      "knownDeliveryStatus": "completed",
+      "operationalInstructionReferences": [],
+      "routeId": "route-syn-001",
+      "stopId": "stop-syn-001",
+      "stopInstructionReferences": [],
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "arrivalEvidence": "2026-01-09T10:00:00.000Z",
+      "authorizedDriverNoteReferences": [
+        "note-syn-001"
+      ],
+      "crossOrganizationNotesExposed": false,
+      "customerId": "cust-synthetic-001",
+      "departureEvidence": "2026-01-09T10:15:00.000Z",
+      "driverStopAuthorityPreserved": true,
+      "knownDeliveryStatus": "completed",
+      "operationalInstructionReferences": [],
+      "routeId": "route-syn-001",
+      "stopId": "stop-syn-001",
+      "stopInstructionReferences": [],
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "arrivalEvidence": "2026-01-09T10:00:00.000Z",
+      "authorizedDriverNoteReferences": [
+        "note-syn-001"
+      ],
+      "crossOrganizationNotesExposed": false,
+      "customerId": "cust-synthetic-001",
+      "departureEvidence": "2026-01-09T10:15:00.000Z",
+      "driverStopAuthorityPreserved": true,
+      "knownDeliveryStatus": "completed",
+      "operationalInstructionReferences": [],
+      "routeId": "route-syn-001",
+      "stopId": "stop-syn-001",
+      "stopInstructionReferences": [],
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "arrivalEvidence": "2026-01-09T10:00:00.000Z",
+      "authorizedDriverNoteReferences": [
+        "note-syn-001"
+      ],
+      "crossOrganizationNotesExposed": false,
+      "customerId": "cust-synthetic-001",
+      "departureEvidence": "2026-01-09T10:15:00.000Z",
+      "driverStopAuthorityPreserved": true,
+      "knownDeliveryStatus": "completed",
+      "operationalInstructionReferences": [],
+      "routeId": "route-syn-001",
+      "stopId": "stop-syn-001",
+      "stopInstructionReferences": [],
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "arrivalEvidence": "2026-01-09T10:00:00.000Z",
+      "authorizedDriverNoteReferences": [
+        "note-syn-001"
+      ],
+      "crossOrganizationNotesExposed": false,
+      "customerId": "cust-synthetic-001",
+      "departureEvidence": "2026-01-09T10:15:00.000Z",
+      "driverStopAuthorityPreserved": true,
+      "knownDeliveryStatus": "completed",
+      "operationalInstructionReferences": [],
+      "routeId": "route-syn-001",
+      "stopId": "stop-syn-001",
+      "stopInstructionReferences": [],
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "arrivalEvidence": "2026-01-09T10:00:00.000Z",
+      "authorizedDriverNoteReferences": [
+        "note-syn-001"
+      ],
+      "crossOrganizationNotesExposed": false,
+      "customerId": "cust-synthetic-001",
+      "departureEvidence": "2026-01-09T10:15:00.000Z",
+      "driverStopAuthorityPreserved": true,
+      "knownDeliveryStatus": "completed",
+      "operationalInstructionReferences": [],
+      "routeId": "route-syn-001",
+      "stopId": "stop-syn-001",
+      "stopInstructionReferences": [],
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "arrivalEvidence": "2026-01-09T10:00:00.000Z",
+      "authorizedDriverNoteReferences": [
+        "note-syn-001"
+      ],
+      "crossOrganizationNotesExposed": false,
+      "customerId": "cust-synthetic-001",
+      "departureEvidence": "2026-01-09T10:15:00.000Z",
+      "driverStopAuthorityPreserved": true,
+      "knownDeliveryStatus": "completed",
+      "operationalInstructionReferences": [],
+      "routeId": "route-syn-001",
+      "stopId": "stop-syn-001",
+      "stopInstructionReferences": [],
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "arrivalEvidence": "2026-01-09T10:00:00.000Z",
+      "authorizedDriverNoteReferences": [
+        "note-syn-001"
+      ],
+      "crossOrganizationNotesExposed": false,
+      "customerId": "cust-synthetic-001",
+      "departureEvidence": "2026-01-09T10:15:00.000Z",
+      "driverStopAuthorityPreserved": true,
+      "knownDeliveryStatus": "completed",
+      "operationalInstructionReferences": [],
+      "routeId": "route-syn-001",
+      "stopId": "stop-syn-001",
+      "stopInstructionReferences": [],
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "arrivalEvidence": "2026-01-09T10:00:00.000Z",
+      "authorizedDriverNoteReferences": [
+        "note-syn-001"
+      ],
+      "crossOrganizationNotesExposed": false,
+      "customerId": "cust-synthetic-001",
+      "departureEvidence": "2026-01-09T10:15:00.000Z",
+      "driverStopAuthorityPreserved": true,
+      "knownDeliveryStatus": "completed",
+      "operationalInstructionReferences": [],
+      "routeId": "route-syn-001",
+      "stopId": "stop-syn-001",
+      "stopInstructionReferences": [],
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "arrivalEvidence": null,
+      "authorizedDriverNoteReferences": [],
+      "crossOrganizationNotesExposed": false,
+      "customerId": "cust-synthetic-001",
+      "departureEvidence": null,
+      "driverStopAuthorityPreserved": true,
+      "knownDeliveryStatus": "UNKNOWN",
+      "operationalInstructionReferences": [],
+      "routeId": null,
+      "stopId": null,
+      "stopInstructionReferences": [],
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "arrivalEvidence": "2026-01-09T10:00:00.000Z",
+      "authorizedDriverNoteReferences": [
+        "note-syn-001"
+      ],
+      "crossOrganizationNotesExposed": false,
+      "customerId": "cust-synthetic-001",
+      "departureEvidence": "2026-01-09T10:15:00.000Z",
+      "driverStopAuthorityPreserved": true,
+      "knownDeliveryStatus": "completed",
+      "operationalInstructionReferences": [],
+      "routeId": "route-syn-001",
+      "stopId": "stop-syn-001",
+      "stopInstructionReferences": [],
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "arrivalEvidence": "2026-01-09T10:00:00.000Z",
+      "authorizedDriverNoteReferences": [
+        "note-syn-001"
+      ],
+      "crossOrganizationNotesExposed": false,
+      "customerId": "cust-synthetic-001",
+      "departureEvidence": "2026-01-09T10:15:00.000Z",
+      "driverStopAuthorityPreserved": true,
+      "knownDeliveryStatus": "completed",
+      "operationalInstructionReferences": [],
+      "routeId": "route-syn-001",
+      "stopId": "stop-syn-001",
+      "stopInstructionReferences": [],
+      "testOnly": true
+    },
+    {
+      "accountNumber": "ACCT-SYN-001",
+      "arrivalEvidence": "2026-01-09T10:00:00.000Z",
+      "authorizedDriverNoteReferences": [
+        "note-syn-001"
+      ],
+      "crossOrganizationNotesExposed": false,
+      "customerId": "cust-synthetic-001",
+      "departureEvidence": "2026-01-09T10:15:00.000Z",
+      "driverStopAuthorityPreserved": true,
+      "knownDeliveryStatus": "completed",
+      "operationalInstructionReferences": [],
+      "routeId": "route-syn-001",
+      "stopId": "stop-syn-001",
+      "stopInstructionReferences": [],
+      "testOnly": true
+    }
+  ]
+}

@@ -9,10 +9,10 @@
       "graphValidationIntegrity": 100
     },
     "deferredCounts": {
-      "deferredWorkDocs": 19
+      "deferredWorkDocs": 20
     },
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "hash": "6fe8247e18d38de484b8619295e1943e337291a86d308ffdca130b502b26f9b2",
+    "hash": "4db8a993bb5816855f82cd49aad57f433aaa99f8ef9b05f9b359190c6a4491de",
     "integrityPercentages": {
       "crossReferences": 100,
       "integration": 100
@@ -23,18 +23,18 @@
       "budgetProfiles": 2,
       "capabilities": 6,
       "dashboardDatasets": 30,
-      "documentationPages": 1116,
+      "documentationPages": 1173,
       "evaluations": 3,
       "executionDecisions": 4,
-      "generatedArtifacts": 244,
+      "generatedArtifacts": 257,
       "governanceEvents": 48,
-      "graphEdges": 880,
-      "graphNodes": 1169,
+      "graphEdges": 894,
+      "graphNodes": 1227,
       "historyRecords": 4,
       "pricingCatalogs": 1,
       "scoreRuns": 3,
       "templates": 0,
-      "tests": 47,
+      "tests": 48,
       "validationRules": 9
     },
     "unknownCounts": {

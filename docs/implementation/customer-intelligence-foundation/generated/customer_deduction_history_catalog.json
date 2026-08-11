@@ -1,0 +1,338 @@
+{
+  "deductionHistories": [
+    {
+      "customerId": "cust-synthetic-001",
+      "deductionCount": 0,
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "records": [],
+      "state": "NO_KNOWN_DEDUCTION",
+      "testOnly": true
+    },
+    {
+      "customerId": null,
+      "deductionCount": 0,
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "records": [],
+      "state": "NO_KNOWN_DEDUCTION",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "deductionCount": 0,
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "records": [],
+      "state": "NO_KNOWN_DEDUCTION",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "deductionCount": 0,
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "records": [],
+      "state": "NO_KNOWN_DEDUCTION",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "deductionCount": 0,
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "records": [],
+      "state": "NO_KNOWN_DEDUCTION",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "deductionCount": 0,
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "records": [],
+      "state": "NO_KNOWN_DEDUCTION",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "deductionCount": 0,
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "records": [],
+      "state": "NO_KNOWN_DEDUCTION",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "deductionCount": 0,
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "records": [],
+      "state": "NO_KNOWN_DEDUCTION",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "deductionCount": 0,
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "records": [],
+      "state": "NO_KNOWN_DEDUCTION",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "deductionCount": 0,
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "records": [],
+      "state": "NO_KNOWN_DEDUCTION",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "deductionCount": 0,
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "records": [],
+      "state": "NO_KNOWN_DEDUCTION",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "deductionCount": 0,
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "records": [],
+      "state": "NO_KNOWN_DEDUCTION",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "deductionCount": 0,
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "records": [],
+      "state": "NO_KNOWN_DEDUCTION",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "deductionCount": 0,
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "records": [],
+      "state": "NO_KNOWN_DEDUCTION",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "deductionCount": 0,
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "records": [],
+      "state": "NO_KNOWN_DEDUCTION",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "deductionCount": 0,
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "records": [],
+      "state": "NO_KNOWN_DEDUCTION",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "deductionCount": 0,
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "records": [],
+      "state": "NO_KNOWN_DEDUCTION",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "deductionCount": 0,
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "records": [],
+      "state": "NO_KNOWN_DEDUCTION",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "deductionCount": 0,
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "records": [],
+      "state": "NO_KNOWN_DEDUCTION",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "deductionCount": 0,
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "records": [],
+      "state": "NO_KNOWN_DEDUCTION",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "deductionCount": 0,
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "records": [],
+      "state": "NO_KNOWN_DEDUCTION",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "deductionCount": 0,
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "records": [],
+      "state": "NO_KNOWN_DEDUCTION",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "deductionCount": 1,
+      "historyHash": "e00ffed416813e3950094ca89aae8e8f0ff8fde42de07b3090a2ff5b7df33412",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "records": [
+        {
+          "customerIntentInferred": false,
+          "deductionReference": "deduction-syn-001",
+          "deliveryReference": "stop-syn-001",
+          "employeeFaultInferred": false,
+          "fraudInferred": false,
+          "invoiceReference": "order-syn-001",
+          "recordedAmount": 10,
+          "recordedQuantity": 1,
+          "recordedReason": "damaged_product",
+          "resolutionStatus": "recorded",
+          "source": "synthetic.delivery_deductions",
+          "timestamp": "2026-01-10T00:00:00.000Z"
+        }
+      ],
+      "state": "DEDUCTION_RECORDED",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "deductionCount": 1,
+      "historyHash": "a10ed6661d57c20ce8bb6489bcaf9f58fc30967b32eb7e96cf4d85afb538ca6b",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "records": [
+        {
+          "customerIntentInferred": false,
+          "deductionReference": "deduction-syn-001",
+          "deliveryReference": "stop-syn-001",
+          "employeeFaultInferred": false,
+          "fraudInferred": false,
+          "invoiceReference": "order-syn-001",
+          "recordedAmount": 10,
+          "recordedQuantity": 1,
+          "recordedReason": "damaged_product",
+          "resolutionStatus": "unresolved",
+          "source": "synthetic.delivery_deductions",
+          "timestamp": "2026-01-10T00:00:00.000Z"
+        }
+      ],
+      "state": "DEDUCTION_UNRESOLVED",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "deductionCount": 1,
+      "historyHash": "e00ffed416813e3950094ca89aae8e8f0ff8fde42de07b3090a2ff5b7df33412",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "records": [
+        {
+          "customerIntentInferred": false,
+          "deductionReference": "deduction-syn-001",
+          "deliveryReference": "stop-syn-001",
+          "employeeFaultInferred": false,
+          "fraudInferred": false,
+          "invoiceReference": "order-syn-001",
+          "recordedAmount": 10,
+          "recordedQuantity": 1,
+          "recordedReason": "damaged_product",
+          "resolutionStatus": "recorded",
+          "source": "synthetic.delivery_deductions",
+          "timestamp": "2026-01-10T00:00:00.000Z"
+        }
+      ],
+      "state": "DEDUCTION_EVIDENCE_CONFLICT",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "deductionCount": 0,
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "records": [],
+      "state": "NO_KNOWN_DEDUCTION",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "deductionCount": 0,
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "records": [],
+      "state": "NO_KNOWN_DEDUCTION",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "deductionCount": 0,
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "records": [],
+      "state": "NO_KNOWN_DEDUCTION",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "deductionCount": 0,
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "organizationId": null,
+      "records": [],
+      "state": "NO_KNOWN_DEDUCTION",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "deductionCount": 0,
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "records": [],
+      "state": "NO_KNOWN_DEDUCTION",
+      "testOnly": true
+    },
+    {
+      "customerId": "cust-synthetic-001",
+      "deductionCount": 0,
+      "historyHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "organizationId": "org_synthetic_customer_intelligence",
+      "records": [],
+      "state": "NO_KNOWN_DEDUCTION",
+      "testOnly": true
+    }
+  ],
+  "deductionStates": [
+    "NO_KNOWN_DEDUCTION",
+    "DEDUCTION_RECORDED",
+    "MULTIPLE_DEDUCTIONS_RECORDED",
+    "DEDUCTION_UNRESOLVED",
+    "DEDUCTION_EVIDENCE_CONFLICT",
+    "INSUFFICIENT_EVIDENCE",
+    "UNKNOWN"
+  ],
+  "generatedArtifact": true
+}
