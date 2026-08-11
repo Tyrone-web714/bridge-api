@@ -73,15 +73,15 @@
     {
       "category": "CORE_OPERATIONAL_INTELLIGENCE",
       "deployed": false,
-      "implementationCommit": null,
-      "localCommitVerified": false,
-      "nextApprovedPackage": null,
+      "implementationCommit": "c975a65e977469629cbce1d8d1136a039cd1f549",
+      "localCommitVerified": true,
+      "nextApprovedPackage": "OPERATIONS_INTELLIGENCE",
       "ownerApprovalRequired": true,
       "packageId": "CUSTOMER_INTELLIGENCE",
       "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
-      "pushed": false,
-      "remoteCommitVerified": false,
-      "status": "IMPLEMENTED_UNCOMMITTED",
+      "pushed": true,
+      "remoteCommitVerified": true,
+      "status": "PUSHED",
       "title": "Customer Intelligence"
     },
     {
@@ -92,10 +92,10 @@
       "nextApprovedPackage": null,
       "ownerApprovalRequired": true,
       "packageId": "OPERATIONS_INTELLIGENCE",
-      "productionImpact": "UNKNOWN",
+      "productionImpact": "NONE",
       "pushed": false,
       "remoteCommitVerified": false,
-      "status": "PLANNED",
+      "status": "APPROVED",
       "title": "Operations Intelligence"
     },
     {
@@ -106,7 +106,7 @@
       "nextApprovedPackage": null,
       "ownerApprovalRequired": true,
       "packageId": "SAFETY_INTELLIGENCE",
-      "productionImpact": "UNKNOWN",
+      "productionImpact": "NONE",
       "pushed": false,
       "remoteCommitVerified": false,
       "status": "PLANNED",

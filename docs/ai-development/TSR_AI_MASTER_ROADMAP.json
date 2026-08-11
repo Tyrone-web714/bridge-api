@@ -26,8 +26,8 @@
     "backendPath": "C:\\dev\\bridge-api\\bridge-api",
     "localBranch": "legacy-public-url-final-cleanup",
     "remoteBranch": "origin/legacy-public-url-final-cleanup",
-    "localHead": "37a34effcff46ade14953ec97ccd7b46e4e326d5",
-    "remoteHead": "37a34effcff46ade14953ec97ccd7b46e4e326d5",
+    "localHead": "c975a65e977469629cbce1d8d1136a039cd1f549",
+    "remoteHead": "c975a65e977469629cbce1d8d1136a039cd1f549",
     "localAheadBy": 0,
     "remoteVerificationPerformed": true,
     "pushPerformedByThisPackage": false
@@ -72,7 +72,8 @@
         "advisory-mode validation",
         "canary authorization",
         "owner approval"
-      ]
+      ],
+      "active": false
     }
   },
   "packages": [
@@ -889,7 +890,7 @@
       "packageId": "CUSTOMER_INTELLIGENCE",
       "title": "Customer Intelligence",
       "category": "CORE_OPERATIONAL_INTELLIGENCE",
-      "status": "IMPLEMENTED_UNCOMMITTED",
+      "status": "PUSHED",
       "objective": "Record the locally implemented repository-only Customer Intelligence package for deterministic customer/account operational awareness and customer-specific route/stop context.",
       "approvedScope": [
         "customer/account operational context",
@@ -942,10 +943,12 @@
         "TSR-AI-WORKFLOW-001"
       ],
       "acceptanceCriteria": [
-        "Customer Intelligence foundation is implemented locally as repository-only work and remains unstaged, uncommitted, unpushed, undeployed, and unmigrated pending controlled review",
-        "scope is limited to customer/account operational context, delivery/account/product/invoice history awareness, service-pattern evidence, customer-specific route/stop context, operational exceptions, deterministic explanations, evidence completeness/confidence, and human-review flags",
+        "Customer Intelligence foundation is committed, validated, and pushed as repository-only work",
+        "Customer Intelligence is not deployed, not migrated, and not production-certified",
+        "scope remains limited to customer/account operational context, delivery/account/product/invoice history awareness, service-pattern evidence, customer-specific route/stop context, operational exceptions, deterministic explanations, evidence completeness/confidence, and human-review flags",
         "credit scoring, protected-class inference, autonomous pricing/discounting/contract/customer/sales decisions, marketing automation, CRM/payment/accounting platform expansion, model selection, provider activation, production APIs, deployment, migrations, and new AI infrastructure remain prohibited",
-        "Operations Intelligence and Safety Intelligence remain planned and have not begun",
+        "Operations Intelligence is the next approved current package and remains unimplemented",
+        "Safety Intelligence remains planned and has not begun",
         "model-selection and production-orchestration gates remain incomplete"
       ],
       "requiredTests": [
@@ -974,10 +977,10 @@
         "npm.cmd test"
       ],
       "documentationPath": "docs/implementation/customer-intelligence-foundation",
-      "implementationCommit": null,
-      "localCommitVerified": false,
-      "remoteCommitVerified": false,
-      "pushed": false,
+      "implementationCommit": "c975a65e977469629cbce1d8d1136a039cd1f549",
+      "localCommitVerified": true,
+      "remoteCommitVerified": true,
+      "pushed": true,
       "deployed": false,
       "deploymentVerified": false,
       "migrationRequired": false,
@@ -985,32 +988,73 @@
       "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
       "ownerApprovalRequired": true,
       "scopeChangeApprovalRequired": true,
-      "nextApprovedPackage": null,
-      "notes": "Customer Intelligence foundation is implemented locally as repository-only deterministic evidence under bridge-api/services/intelligenceExecution/customerIntelligence.js, bridge-api/scripts/check-customer-intelligence.cjs, bridge-api/scripts/generate-customer-intelligence-artifacts.cjs, package scripts, and docs/implementation/customer-intelligence-foundation. The work is unstaged, uncommitted, unpushed, not deployed, not migrated, and not production-certified. No production API, provider activation, model selection, database write, object mutation, Cloudflare/R2 change, customer credit scoring, protected-class inference, autonomous pricing/discounting, autonomous sales, CRM expansion, payment-processing scope, financial-accounting scope, Operations Intelligence implementation, Safety Intelligence implementation, or new AI infrastructure exists.",
-      "isCurrentPackage": true
+      "nextApprovedPackage": "OPERATIONS_INTELLIGENCE",
+      "notes": "Customer Intelligence foundation commit c975a65e977469629cbce1d8d1136a039cd1f549 is committed locally, fetched remote refs verify origin/legacy-public-url-final-cleanup contains it, and required validation passed. Not deployed, not migrated, and not production-certified. No production API, provider activation, model selection, database write, object mutation, credit decision, pricing automation, sales automation, CRM/payment/accounting expansion, Operations Intelligence implementation, or Safety Intelligence implementation exists.",
+      "isCurrentPackage": false
     },
     {
       "packageId": "OPERATIONS_INTELLIGENCE",
       "title": "Operations Intelligence",
       "category": "CORE_OPERATIONAL_INTELLIGENCE",
-      "status": "PLANNED",
-      "objective": "Future operations intelligence domain.",
+      "status": "APPROVED",
+      "objective": "Provide deterministic organization-level operational awareness by aggregating existing TSR operational evidence without replacing the authoritative intelligence domains.",
       "approvedScope": [
-        "future package planning"
+        "operational context",
+        "cross-domain operational awareness",
+        "deterministic operational exceptions",
+        "deterministic summaries/explanations",
+        "evidence completeness/confidence",
+        "human review"
       ],
       "prohibitedScope": [
-        "implementation in this package",
+        "employee scoring",
+        "driver ranking",
+        "warehouse employee ranking",
+        "productivity scoring",
+        "discipline recommendations",
+        "compensation decisions",
+        "termination recommendations",
+        "autonomous dispatch",
+        "autonomous route reassignment",
+        "autonomous workforce scheduling",
+        "autonomous purchasing decisions",
+        "autonomous customer decisions",
+        "autonomous pricing decisions",
+        "predictive operational models",
+        "demand forecasting",
+        "ERP product scope",
+        "TMS product scope",
+        "WMS product scope",
+        "CRM product scope",
+        "fleet-management product scope",
+        "hardware integrations",
         "model selection",
-        "production orchestration"
+        "provider activation",
+        "model activation",
+        "production orchestration",
+        "production APIs",
+        "deployment",
+        "migrations",
+        "new AI infrastructure"
       ],
       "dependencies": [
-        "CUSTOMER_INTELLIGENCE"
+        "AI-IEP-005B.1",
+        "AI-IEP-005B.2",
+        "SUPERVISOR_INTELLIGENCE",
+        "WAREHOUSE_INTELLIGENCE",
+        "FLEET_INTELLIGENCE",
+        "CUSTOMER_INTELLIGENCE",
+        "TSR-AI-WORKFLOW-001"
       ],
       "acceptanceCriteria": [
-        "owner-approved package exists before implementation"
+        "Operations Intelligence is approved as the next Milestone 1 package but remains unimplemented",
+        "approved scope is limited to deterministic organization-level operational awareness using existing TSR operational evidence",
+        "Operations Intelligence does not replace Route, Driver, Supervisor, Warehouse, Fleet, or Customer Intelligence as authoritative domain records",
+        "employee scoring, ranking, productivity scoring, autonomous decisions, predictive operational models, ERP/TMS/WMS/CRM/fleet-management product scope, hardware integrations, provider/model activation, production orchestration, production APIs, deployment, migrations, and new AI infrastructure remain prohibited",
+        "model-selection and production-orchestration gates remain incomplete"
       ],
       "requiredTests": [
-        "UNKNOWN"
+        "npm.cmd run test:ai-roadmap"
       ],
       "documentationPath": null,
       "implementationCommit": null,
@@ -1019,13 +1063,14 @@
       "pushed": false,
       "deployed": false,
       "deploymentVerified": false,
-      "migrationRequired": "UNKNOWN",
+      "migrationRequired": false,
       "migrationExecuted": false,
-      "productionImpact": "UNKNOWN",
+      "productionImpact": "NONE",
       "ownerApprovalRequired": true,
       "scopeChangeApprovalRequired": true,
       "nextApprovedPackage": null,
-      "notes": "Planned Milestone 1 domain; not started."
+      "notes": "Current approved Milestone 1 package. Not started, not implemented, not committed, not pushed, not deployed, not migrated, and not production-certified. Detailed implementation requires a future approved work package and repository audit.",
+      "isCurrentPackage": true
     },
     {
       "packageId": "SAFETY_INTELLIGENCE",
@@ -1058,13 +1103,13 @@
       "pushed": false,
       "deployed": false,
       "deploymentVerified": false,
-      "migrationRequired": "UNKNOWN",
+      "migrationRequired": false,
       "migrationExecuted": false,
-      "productionImpact": "UNKNOWN",
+      "productionImpact": "NONE",
       "ownerApprovalRequired": true,
       "scopeChangeApprovalRequired": true,
       "nextApprovedPackage": null,
-      "notes": "Planned Milestone 1 domain; not started."
+      "notes": "Planned Milestone 1 domain; not started and not approved for implementation by this reconciliation."
     },
     {
       "packageId": "TSR-AI-WORKFLOW-001",
