@@ -276,15 +276,15 @@
     {
       "category": "CORE_OPERATIONAL_INTELLIGENCE",
       "deployed": false,
-      "implementationCommit": null,
-      "localCommitVerified": false,
-      "nextApprovedPackage": null,
+      "implementationCommit": "eb6975a9b59f769311cf9073c9df0abd0fdb90f7",
+      "localCommitVerified": true,
+      "nextApprovedPackage": "SAFETY_INTELLIGENCE",
       "ownerApprovalRequired": true,
       "packageId": "OPERATIONS_INTELLIGENCE",
       "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
-      "pushed": false,
-      "remoteCommitVerified": false,
-      "status": "IMPLEMENTED_UNCOMMITTED",
+      "pushed": true,
+      "remoteCommitVerified": true,
+      "status": "PUSHED",
       "title": "Operations Intelligence"
     },
     {
@@ -298,7 +298,7 @@
       "productionImpact": "NONE",
       "pushed": false,
       "remoteCommitVerified": false,
-      "status": "PLANNED",
+      "status": "APPROVED",
       "title": "Safety Intelligence"
     },
     {

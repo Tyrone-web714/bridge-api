@@ -97,6 +97,7 @@ function generate(options = {}) {
   const fleet = packages.find((pkg) => pkg.packageId === 'FLEET_INTELLIGENCE');
   const customer = packages.find((pkg) => pkg.packageId === 'CUSTOMER_INTELLIGENCE');
   const operations = packages.find((pkg) => pkg.packageId === 'OPERATIONS_INTELLIGENCE');
+  const safety = packages.find((pkg) => pkg.packageId === 'SAFETY_INTELLIGENCE');
   const outputs = {
     'ai_roadmap_summary.json': json({
       roadmapId: roadmap.roadmapId,
@@ -133,8 +134,10 @@ function generate(options = {}) {
       fleetImplementationStarted: Boolean(fleet?.implementationCommit),
       customerIntelligenceRemoteContained: Boolean(customer?.pushed && customer?.remoteCommitVerified),
       customerImplementationStarted: Boolean(customer?.implementationCommit),
-      operationsIntelligenceApproved: current.packageId === 'OPERATIONS_INTELLIGENCE' && current.status === 'APPROVED',
+      operationsIntelligenceRemoteContained: Boolean(operations?.pushed && operations?.remoteCommitVerified),
       operationsImplementationStarted: Boolean(operations?.implementationCommit),
+      safetyIntelligenceApproved: current.packageId === 'SAFETY_INTELLIGENCE' && current.status === 'APPROVED',
+      safetyImplementationStarted: Boolean(safety?.implementationCommit),
       unapprovedMilestoneOneDomainsAllowed: false,
       deterministicTruckSafetyControlsAuthoritative: true
     }),

@@ -2,8 +2,8 @@
 # TSR AI Roadmap Summary
 
 - Roadmap ID: TSR_AI_DEVELOPMENT_ROADMAP
-- Current package: OPERATIONS_INTELLIGENCE - Operations Intelligence
-- Current status: IMPLEMENTED_UNCOMMITTED
+- Current package: SAFETY_INTELLIGENCE - Safety Intelligence
+- Current status: APPROVED
 - Next approved package: null
 - Route Intelligence pushed: true
 - Driver Intelligence pushed: true
@@ -20,6 +20,5 @@
 
 | Status | Count |
 | --- | ---: |
-| IMPLEMENTED_UNCOMMITTED | 1 |
-| PLANNED | 1 |
-| PUSHED | 19 |
+| APPROVED | 1 |
+| PUSHED | 20 |

@@ -26,8 +26,8 @@
     "backendPath": "C:\\dev\\bridge-api\\bridge-api",
     "localBranch": "legacy-public-url-final-cleanup",
     "remoteBranch": "origin/legacy-public-url-final-cleanup",
-    "localHead": "05749037ccb984c51d6512733bfaf3c8d9a6440d",
-    "remoteHead": "05749037ccb984c51d6512733bfaf3c8d9a6440d",
+    "localHead": "eb6975a9b59f769311cf9073c9df0abd0fdb90f7",
+    "remoteHead": "eb6975a9b59f769311cf9073c9df0abd0fdb90f7",
     "localAheadBy": 0,
     "remoteVerificationPerformed": true,
     "pushPerformedByThisPackage": false
@@ -996,7 +996,7 @@
       "packageId": "OPERATIONS_INTELLIGENCE",
       "title": "Operations Intelligence",
       "category": "CORE_OPERATIONAL_INTELLIGENCE",
-      "status": "IMPLEMENTED_UNCOMMITTED",
+      "status": "PUSHED",
       "objective": "Provide deterministic organization-level operational awareness by aggregating existing TSR operational evidence without replacing the authoritative intelligence domains.",
       "approvedScope": [
         "operational context",
@@ -1047,12 +1047,13 @@
         "TSR-AI-WORKFLOW-001"
       ],
       "acceptanceCriteria": [
-        "Operations Intelligence foundation is implemented locally as repository-only work and remains unstaged, uncommitted, unpushed, undeployed, and unmigrated pending controlled review",
+        "Operations Intelligence foundation is committed, validated, and pushed as repository-only work",
+        "Operations Intelligence is not deployed, not migrated, and not production-certified",
         "existing operations/logistics functionality audit is documented before implementation conclusions",
-        "scope is limited to deterministic organization-level aggregation of existing TSR operational evidence with lower domains remaining authoritative",
+        "scope remains limited to deterministic organization-level aggregation of existing TSR operational evidence with lower domains remaining authoritative",
         "cross-domain snapshot, correlation, operations exceptions, severity, priority, structured alerts, alert lifecycle, summary, explanations, evidence freshness, confidence, completeness, and authority traceability exist",
-        "employee scoring, ranking, productivity scoring, autonomous decisions, predictive operational models, ERP/TMS/WMS/CRM/fleet-management product scope, hardware integrations, provider/model activation, production orchestration, production APIs, deployment, migrations, and new AI infrastructure remain prohibited",
-        "Safety Intelligence remains planned and has not begun",
+        "employee scoring, ranking, productivity scoring, autonomous decisions, predictive operational models, ERP/TMS/WMS/CRM/fleet-management product scope, hardware integrations, provider/model activation, production orchestration, production APIs, deployment, migrations, new AI infrastructure, and Safety Intelligence implementation remain prohibited",
+        "Safety Intelligence is the next approved current package and remains not started",
         "model-selection and production-orchestration gates remain incomplete"
       ],
       "requiredTests": [
@@ -1082,10 +1083,10 @@
         "npm.cmd test"
       ],
       "documentationPath": "docs/implementation/operations-intelligence-foundation",
-      "implementationCommit": null,
-      "localCommitVerified": false,
-      "remoteCommitVerified": false,
-      "pushed": false,
+      "implementationCommit": "eb6975a9b59f769311cf9073c9df0abd0fdb90f7",
+      "localCommitVerified": true,
+      "remoteCommitVerified": true,
+      "pushed": true,
       "deployed": false,
       "deploymentVerified": false,
       "migrationRequired": false,
@@ -1093,33 +1094,91 @@
       "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
       "ownerApprovalRequired": true,
       "scopeChangeApprovalRequired": true,
-      "nextApprovedPackage": null,
-      "notes": "Operations Intelligence foundation is implemented locally as repository-only work and remains unstaged, uncommitted, unpushed, undeployed, unmigrated, and not production-certified. It adds deterministic organization-level aggregation only; lower domains remain authoritative. No public API, provider/model activation, production orchestration, deployment, migration, autonomous action, predictive model, workforce scoring, ERP/TMS/WMS/CRM/fleet-management expansion, or Safety Intelligence implementation exists.",
-      "isCurrentPackage": true
+      "nextApprovedPackage": "SAFETY_INTELLIGENCE",
+      "notes": "Operations Intelligence foundation commit eb6975a9b59f769311cf9073c9df0abd0fdb90f7 is committed locally, fetched remote refs and direct remote-head verification confirm origin/legacy-public-url-final-cleanup contains it, and required validation passed. Not deployed, not migrated, and not production-certified. No production API, provider/model activation, production orchestration, database write, object mutation, autonomous action, predictive model, workforce scoring, ERP/TMS/WMS/CRM/fleet-management expansion, or Safety Intelligence implementation exists.",
+      "isCurrentPackage": false
     },
     {
       "packageId": "SAFETY_INTELLIGENCE",
       "title": "Safety Intelligence",
       "category": "CORE_OPERATIONAL_INTELLIGENCE",
-      "status": "PLANNED",
-      "objective": "Future safety intelligence domain.",
+      "status": "APPROVED",
+      "objective": "Provide deterministic organization-level safety awareness by aggregating and preserving existing TSR safety evidence without overriding authoritative Route, Driver, Supervisor, Warehouse, Fleet, Customer, or Operations Intelligence determinations.",
       "approvedScope": [
-        "future package planning"
+        "low-clearance hazards",
+        "route safety blockers",
+        "truck restrictions",
+        "no-through-truck restrictions",
+        "road closures",
+        "residential restriction evidence",
+        "driver safety advisories",
+        "speed warnings",
+        "route safety exceptions",
+        "warehouse blockers with safety implications",
+        "route/vehicle incompatibility",
+        "safety-related Operations exceptions",
+        "existing Shared Safety Intelligence",
+        "evidence completeness",
+        "evidence confidence",
+        "evidence freshness",
+        "human review"
       ],
       "prohibitedScope": [
-        "implementation in this package",
+        "driver safety scoring",
+        "employee safety ranking",
+        "employee risk scoring",
+        "negligence determination",
+        "misconduct determination",
+        "discipline recommendation",
+        "termination recommendation",
+        "compensation decision",
+        "insurance eligibility",
+        "legal-liability determination",
+        "autonomous route shutdown",
+        "autonomous driver lockout",
+        "autonomous vehicle lockout",
+        "autonomous dispatch",
+        "autonomous workforce action",
+        "crash prediction",
+        "accident prediction",
+        "fatigue prediction",
+        "driver-behavior prediction",
+        "injury prediction",
+        "insurance-risk prediction",
+        "criminal-risk prediction",
+        "new telematics hardware",
+        "new ELD functionality",
+        "camera/computer-vision monitoring",
+        "biometric monitoring",
+        "generalized OSHA platform scope",
+        "generalized DOT-compliance platform scope",
+        "insurance platform scope",
         "model selection",
+        "provider activation",
+        "hosted AI activation",
         "production orchestration",
-        "override deterministic truck-safety controls"
+        "production APIs",
+        "deployment",
+        "migrations",
+        "new AI infrastructure"
       ],
       "dependencies": [
         "OPERATIONS_INTELLIGENCE"
       ],
       "acceptanceCriteria": [
-        "owner-approved package exists before implementation"
+        "Safety Intelligence is approved as the single current package but remains not started",
+        "scope is limited to deterministic organization-level safety awareness that aggregates and preserves existing TSR safety evidence",
+        "authoritative Route, Driver, Supervisor, Warehouse, Fleet, Customer, and Operations Intelligence determinations are not overridden",
+        "driver safety scoring, employee safety ranking, negligence or misconduct determination, autonomous safety action, crash/fatigue/behavior prediction, monitoring hardware, computer vision, biometrics, OSHA/DOT/insurance product expansion, provider/model activation, deployment, migrations, and production APIs remain prohibited",
+        "model-selection and production-orchestration gates remain incomplete"
       ],
       "requiredTests": [
-        "UNKNOWN"
+        "npm.cmd run test:shared-safety",
+        "npm.cmd run test:route-intelligence",
+        "npm.cmd run test:driver-intelligence",
+        "npm.cmd run test:operations-intelligence",
+        "npm.cmd run test:security",
+        "npm.cmd run test:ai-roadmap"
       ],
       "documentationPath": null,
       "implementationCommit": null,
@@ -1134,7 +1193,8 @@
       "ownerApprovalRequired": true,
       "scopeChangeApprovalRequired": true,
       "nextApprovedPackage": null,
-      "notes": "Planned Milestone 1 domain; not started and not approved for implementation by this Operations package."
+      "notes": "Safety Intelligence is approved as the next Milestone 1 current package but is not implemented, committed, pushed, deployed, migrated, production-certified, provider-enabled, or model-enabled. This roadmap approval is not authorization for driver scoring, employee ranking, negligence or misconduct conclusions, autonomous safety action, predictive crash/fatigue/behavior modeling, monitoring hardware, computer vision, biometrics, OSHA/DOT/insurance platform expansion, production APIs, deployment, migrations, or new AI infrastructure.",
+      "isCurrentPackage": true
     },
     {
       "packageId": "TSR-AI-WORKFLOW-001",
