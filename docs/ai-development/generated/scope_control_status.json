@@ -6,7 +6,7 @@
   "fleetIntelligenceMayBegin": false,
   "fleetIntelligenceRemoteContained": true,
   "operationsImplementationStarted": false,
-  "operationsIntelligenceApproved": true,
+  "operationsIntelligenceApproved": false,
   "ownerApprovalRequiredForNewIdeas": true,
   "policyPath": "docs/ai-development/SCOPE_CONTROL_POLICY.md",
   "supervisorIntelligenceRemoteContained": true,

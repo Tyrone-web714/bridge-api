@@ -532,6 +532,18 @@
         "testOnly": true
       },
       {
+        "edgeId": "edge:cae3ea0e5b662be5d39f",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "c426bcb383dda45e321af894a17ceca1aff7bc25c6d6ad51e87167479843cea2",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "IMPLEMENTS",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Service:intelligence-execution-platform",
+        "targetNodeId": "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
+        "testOnly": true
+      },
+      {
         "edgeId": "edge:83b4c2753a90c0344544",
         "metadata": {},
         "relationshipConfidence": "DETERMINISTIC",
@@ -9916,6 +9928,138 @@
         "testOnly": true
       },
       {
+        "edgeId": "edge:bf28a59e66eab6610306",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "a1276821574c5863180fd52d08c922dc2c465ff2ee34334e0ddcb4b1ecdebcf4",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_alert_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:5235329f8d339ebe836b",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "b7e0a8ac5b72d2f6671ba5ec1c56741c040cd10e686991a4d43d8c3a4dd7c2aa",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_benchmark_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:7e4f396b3a8dc60a08de",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "a70fc5a185eb3bac15805073e8d2b228f4765606d7af0f24313c4c1af04e45ba",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_context_contract.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:193550aa602d5ab77350",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "889573e89be681ba941ab7685786ec0e2e92c1436070e0b4f7b4f0a4bbd9e289",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_cross_domain_evidence.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:aa9e1f8e00afe58eb22c",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "36dec49c62fc77dec330ead32ebe866e07636f65b67a59267f62e538905d7642",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_evidence_report.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:f432478b7ec2ed811015",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "53ef4ae52a58889e5b9c21bb17d83c5d98a6aa79b584742181c04b1f550653aa",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_exception_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:e78874784b7b80c50a8d",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "503564519d372d2be86d681ddcabb5a561896a55bb9e8d38aaa4779bc3c2c900",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/OPERATIONS_INTELLIGENCE_SUMMARY.md",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:eaf4ee62acd42f18d051",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "8536dc5fc0932fb830d06acc46d21f5e75fcb6c2acbb000e596b41f3170d19d6",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_reason_code_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:79e802b069e444e916ea",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "eddccac78bede345ad5230d4dfb6e802e54385f5d7db1c15f4cc619dc128b437",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_severity_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:5b8dad24e9a25416f339",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "e1c9cc6bcfc81d621727ecdf03455090206deda94ec835c36e115be6fbff6f00",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_snapshot_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:1041621b2a4e4f9cfd10",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "a9036d77a6d899fe643f24cad109563d49d31e93333a36de74ba6b282adadf28",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_summary_report.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
         "edgeId": "edge:7457901277996b0da50f",
         "metadata": {},
         "relationshipConfidence": "DETERMINISTIC",
@@ -10734,10 +10878,10 @@
     ],
     "engineVersion": "intelligence.knowledge.graph.engine.v1",
     "generatedFrom": "repository",
-    "graphHash": "d629c590bb0738a53ed9d94a5b48fe9756f88fd2e9794d0896465a0c40b4afae",
+    "graphHash": "1d1e8e32af272be345fd5d2c42b5bdf3e97c766430c136f3f7e2f86c17a9e34e",
     "nodes": [
       {
-        "hash": "a523c4c066a68fdbd4b3f6506ff8fe722aae914a00085dbe3fd71d172a6cfe68",
+        "hash": "c1ed7fda52ca9e170e63433116773014634d51aa3a4d54e086ec6a1740b4b99b",
         "label": "bridge-api",
         "lifecycleState": null,
         "metadata": {},
@@ -11274,6 +11418,18 @@
         "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/money.js",
         "productionApplicable": false,
         "source": "bridge-api/services/intelligenceExecution/money.js",
+        "testOnly": true,
+        "type": "Repository Module",
+        "version": null
+      },
+      {
+        "hash": "fb686a15a5e9ca64c92bc37b888de738f2521b3fa796ae202cf578471da67523",
+        "label": "bridge-api/services/intelligenceExecution/operationsIntelligence.js",
+        "lifecycleState": null,
+        "metadata": {},
+        "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
+        "productionApplicable": false,
+        "source": "bridge-api/services/intelligenceExecution/operationsIntelligence.js",
         "testOnly": true,
         "type": "Repository Module",
         "version": null
@@ -24831,6 +24987,748 @@
         "nodeId": "Documentation Page:docs/implementation/logistics-intelligence-foundation/TEST_RESULTS.md",
         "productionApplicable": false,
         "source": "docs/implementation/logistics-intelligence-foundation/TEST_RESULTS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "fe7942bf85c58c91d9abf10cd0564bb1b5175884d7bf12095bcb5c7e48e1baa1",
+        "label": "docs/implementation/operations-intelligence-foundation/ALERT_LIFECYCLE.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "fe7942bf85c58c91d9abf10cd0564bb1b5175884d7bf12095bcb5c7e48e1baa1"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/ALERT_LIFECYCLE.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/ALERT_LIFECYCLE.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "74343d4b053f9608d9043099f1d1d93fcf776090b4df2df27cdaf6b3c1c34724",
+        "label": "docs/implementation/operations-intelligence-foundation/AUTHORITATIVE_DOMAIN_BOUNDARIES.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "74343d4b053f9608d9043099f1d1d93fcf776090b4df2df27cdaf6b3c1c34724"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/AUTHORITATIVE_DOMAIN_BOUNDARIES.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/AUTHORITATIVE_DOMAIN_BOUNDARIES.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "2aed52df3a8a1623618755197e61e3b7090b154a7bd598f51caa035f45882114",
+        "label": "docs/implementation/operations-intelligence-foundation/AUTONOMOUS_ACTION_BOUNDARY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "2aed52df3a8a1623618755197e61e3b7090b154a7bd598f51caa035f45882114"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/AUTONOMOUS_ACTION_BOUNDARY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/AUTONOMOUS_ACTION_BOUNDARY.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "1a0950b5c4a1cc863847f98c88bb9bb1a51cb19126b2d3efc89c9598ee4b2312",
+        "label": "docs/implementation/operations-intelligence-foundation/BENCHMARK_DATASETS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "1a0950b5c4a1cc863847f98c88bb9bb1a51cb19126b2d3efc89c9598ee4b2312"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/BENCHMARK_DATASETS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/BENCHMARK_DATASETS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "a07d7bc9c6fe527ca706887e18a8caa006f8758e26c8476ae90fcc0396396880",
+        "label": "docs/implementation/operations-intelligence-foundation/CROSS_DOMAIN_AUTHORITY_TRACE.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "a07d7bc9c6fe527ca706887e18a8caa006f8758e26c8476ae90fcc0396396880"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/CROSS_DOMAIN_AUTHORITY_TRACE.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/CROSS_DOMAIN_AUTHORITY_TRACE.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "f5076d572bb225e2169d5fcdcfbd235688d293672869a343b8a9d2606faba359",
+        "label": "docs/implementation/operations-intelligence-foundation/CROSS_DOMAIN_CORRELATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "f5076d572bb225e2169d5fcdcfbd235688d293672869a343b8a9d2606faba359"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/CROSS_DOMAIN_CORRELATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/CROSS_DOMAIN_CORRELATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "70a3723cb0004ff4bf92514442c7a5e33d1c3493875589e7fffe4a28242a7d99",
+        "label": "docs/implementation/operations-intelligence-foundation/CROSS_DOMAIN_OPERATIONAL_SNAPSHOT.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "70a3723cb0004ff4bf92514442c7a5e33d1c3493875589e7fffe4a28242a7d99"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/CROSS_DOMAIN_OPERATIONAL_SNAPSHOT.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/CROSS_DOMAIN_OPERATIONAL_SNAPSHOT.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "cafbfa2099fb8f66ed70e5b536cec0fbbb0aed1bd0fca14d1b72ac9063fd76cf",
+        "label": "docs/implementation/operations-intelligence-foundation/CURRENT_OPERATIONS_FUNCTIONALITY_AUDIT.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "cafbfa2099fb8f66ed70e5b536cec0fbbb0aed1bd0fca14d1b72ac9063fd76cf"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/CURRENT_OPERATIONS_FUNCTIONALITY_AUDIT.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/CURRENT_OPERATIONS_FUNCTIONALITY_AUDIT.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "ac2116e84d19f5dade86f9ac04611c9cb4d098107006bd0d8f13d8ba71bf5480",
+        "label": "docs/implementation/operations-intelligence-foundation/CUSTOMER_OPERATIONAL_AGGREGATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "ac2116e84d19f5dade86f9ac04611c9cb4d098107006bd0d8f13d8ba71bf5480"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/CUSTOMER_OPERATIONAL_AGGREGATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/CUSTOMER_OPERATIONAL_AGGREGATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "b934c0c47446f2a02a7152d8f06d376d8378314494baa78c69d2310e0c437c19",
+        "label": "docs/implementation/operations-intelligence-foundation/DASHBOARD_INTEGRATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "b934c0c47446f2a02a7152d8f06d376d8378314494baa78c69d2310e0c437c19"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/DASHBOARD_INTEGRATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/DASHBOARD_INTEGRATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "78df5ba3342b3eca51ea6ee4d1781e13c5a1794d17ea83c84c71764fe2f5ed36",
+        "label": "docs/implementation/operations-intelligence-foundation/DATA_LIFECYCLE_REVIEW.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "78df5ba3342b3eca51ea6ee4d1781e13c5a1794d17ea83c84c71764fe2f5ed36"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/DATA_LIFECYCLE_REVIEW.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/DATA_LIFECYCLE_REVIEW.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "6e5b4bd8e90d23ee8bcd47a07cc0a0f629e4c886bf3a957f6ff4bd52b60a4b54",
+        "label": "docs/implementation/operations-intelligence-foundation/DEFERRED_WORK.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "6e5b4bd8e90d23ee8bcd47a07cc0a0f629e4c886bf3a957f6ff4bd52b60a4b54"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/DEFERRED_WORK.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/DEFERRED_WORK.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "fdb3546b0ecf599ac23133385eb940bec6c5d655b9c547a912c5882650747158",
+        "label": "docs/implementation/operations-intelligence-foundation/DETERMINISTIC_EXPLANATIONS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "fdb3546b0ecf599ac23133385eb940bec6c5d655b9c547a912c5882650747158"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/DETERMINISTIC_EXPLANATIONS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/DETERMINISTIC_EXPLANATIONS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "1421ec38a1f53dcdcb1b4e5aeb33fe6077fa6a644856972845bd4365b0309218",
+        "label": "docs/implementation/operations-intelligence-foundation/DRIVER_OPERATIONAL_AGGREGATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "1421ec38a1f53dcdcb1b4e5aeb33fe6077fa6a644856972845bd4365b0309218"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/DRIVER_OPERATIONAL_AGGREGATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/DRIVER_OPERATIONAL_AGGREGATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "ba9d3e955f8bc885decff56c18a366c8d4969467cfea3c3836a045109a515803",
+        "label": "docs/implementation/operations-intelligence-foundation/EMPLOYMENT_IMPACT_GUARDRAILS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "ba9d3e955f8bc885decff56c18a366c8d4969467cfea3c3836a045109a515803"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/EMPLOYMENT_IMPACT_GUARDRAILS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/EMPLOYMENT_IMPACT_GUARDRAILS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "4e768c46500c42387cd67e87def35a7a1cca298b8aecede116df95c087e3d8a8",
+        "label": "docs/implementation/operations-intelligence-foundation/EVIDENCE_COMPLETENESS_CONFIDENCE.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "4e768c46500c42387cd67e87def35a7a1cca298b8aecede116df95c087e3d8a8"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/EVIDENCE_COMPLETENESS_CONFIDENCE.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/EVIDENCE_COMPLETENESS_CONFIDENCE.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "69d7a58b93e989a08dec3a000fb269defcfcb8d7c630ca04773f2f9628614e0c",
+        "label": "docs/implementation/operations-intelligence-foundation/EVIDENCE_FRESHNESS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "69d7a58b93e989a08dec3a000fb269defcfcb8d7c630ca04773f2f9628614e0c"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/EVIDENCE_FRESHNESS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/EVIDENCE_FRESHNESS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "85a19d34cd366ff4c2a62118553db2c2bb6eca22403d60b8846b4159075445e1",
+        "label": "docs/implementation/operations-intelligence-foundation/EXISTING_SERVICE_REUSE_DECISION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "85a19d34cd366ff4c2a62118553db2c2bb6eca22403d60b8846b4159075445e1"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/EXISTING_SERVICE_REUSE_DECISION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/EXISTING_SERVICE_REUSE_DECISION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "c72f0fb8a0a0b046e80695ff84fb667f003cc17bc404cdb06d0885c9fb94eff4",
+        "label": "docs/implementation/operations-intelligence-foundation/FLEET_OPERATIONAL_AGGREGATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "c72f0fb8a0a0b046e80695ff84fb667f003cc17bc404cdb06d0885c9fb94eff4"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/FLEET_OPERATIONAL_AGGREGATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/FLEET_OPERATIONAL_AGGREGATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "d0b28f3c43fa61e2b38b562d41105fbce86f1bfbac0b20b1818ca63e321a8b1d",
+        "label": "docs/implementation/operations-intelligence-foundation/generated/operations_alert_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_alert_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/generated/operations_alert_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "836ea01d00a622c28980000b6b6c241215fa5ee2f068535eef3b9ff30bf6ad47",
+        "label": "docs/implementation/operations-intelligence-foundation/generated/operations_benchmark_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_benchmark_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/generated/operations_benchmark_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "13f9764c1fb9010db5b27e6fc8982bd13da6c8c0d534ded10343279740cdaf29",
+        "label": "docs/implementation/operations-intelligence-foundation/generated/operations_context_contract.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_context_contract.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/generated/operations_context_contract.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "b83c0faf19212d18bae8ad8c0ada6617fb6aad96537abeb1c6342115165b96f8",
+        "label": "docs/implementation/operations-intelligence-foundation/generated/operations_cross_domain_evidence.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_cross_domain_evidence.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/generated/operations_cross_domain_evidence.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "5852ee9a09e045e805cfcce5ffca8f5755e21601b71a76e7a4dc13572cab0c5a",
+        "label": "docs/implementation/operations-intelligence-foundation/generated/operations_evidence_report.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_evidence_report.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/generated/operations_evidence_report.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "2d02379c6a63e9ec207e05f88c7d75a1564d870493eae8c1370708d72e58f2e1",
+        "label": "docs/implementation/operations-intelligence-foundation/generated/operations_exception_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_exception_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/generated/operations_exception_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "1084e6076d08c9806b375e9098c077a0bbb6179f1b14e2cc7366e237f6ad0174",
+        "label": "docs/implementation/operations-intelligence-foundation/generated/OPERATIONS_INTELLIGENCE_SUMMARY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/OPERATIONS_INTELLIGENCE_SUMMARY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/generated/OPERATIONS_INTELLIGENCE_SUMMARY.md",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "f959366f8dfc047bbb545a211d1eb6ffa1642420e598ff2f0f681183f1cd1596",
+        "label": "docs/implementation/operations-intelligence-foundation/generated/operations_reason_code_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_reason_code_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/generated/operations_reason_code_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "5e596df1b73d5a714b0294b24fc81459491ef6a42248b970ed0c19fd886ce202",
+        "label": "docs/implementation/operations-intelligence-foundation/generated/operations_severity_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_severity_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/generated/operations_severity_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "4790f644a8de8dfe147f9ec3a2b56c0fd6f44dfd916d67471e3d03afab98f03d",
+        "label": "docs/implementation/operations-intelligence-foundation/generated/operations_snapshot_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_snapshot_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/generated/operations_snapshot_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "ab2a89f19823c794f2906b2b626e3325c239409a052e2f6d59bb30b725c11d7a",
+        "label": "docs/implementation/operations-intelligence-foundation/generated/operations_summary_report.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_summary_report.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/generated/operations_summary_report.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "03275ad8784400d503a1c76f6ece4895129e1f27c796091650419555e46c147b",
+        "label": "docs/implementation/operations-intelligence-foundation/GENERATED_ARTIFACTS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "03275ad8784400d503a1c76f6ece4895129e1f27c796091650419555e46c147b"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/GENERATED_ARTIFACTS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/GENERATED_ARTIFACTS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "c4979590a427ba7135c61641f22d6083a7ce13148bcddad412fd9669e843cf14",
+        "label": "docs/implementation/operations-intelligence-foundation/IMPLEMENTATION_REPORT.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "c4979590a427ba7135c61641f22d6083a7ce13148bcddad412fd9669e843cf14"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/IMPLEMENTATION_REPORT.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/IMPLEMENTATION_REPORT.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "1adb9ab6e4855adc889e6f32989882c4000b035249a269808fc2a06212392bb3",
+        "label": "docs/implementation/operations-intelligence-foundation/KNOWLEDGE_GRAPH_INTEGRATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "1adb9ab6e4855adc889e6f32989882c4000b035249a269808fc2a06212392bb3"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/KNOWLEDGE_GRAPH_INTEGRATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/KNOWLEDGE_GRAPH_INTEGRATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "436c2e69fedce7e4e028ed38f5d7de68a146995df9223b11bdb50e75730d1c55",
+        "label": "docs/implementation/operations-intelligence-foundation/OPERATIONS_ALERT_MODEL.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "436c2e69fedce7e4e028ed38f5d7de68a146995df9223b11bdb50e75730d1c55"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/OPERATIONS_ALERT_MODEL.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/OPERATIONS_ALERT_MODEL.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "8841f2d7eb9b842aab3272cdda23b8b8d668f0254b22783fb0e05b9b394aa1e4",
+        "label": "docs/implementation/operations-intelligence-foundation/OPERATIONS_EXCEPTION_MODEL.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "8841f2d7eb9b842aab3272cdda23b8b8d668f0254b22783fb0e05b9b394aa1e4"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/OPERATIONS_EXCEPTION_MODEL.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/OPERATIONS_EXCEPTION_MODEL.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "5a28de84cfddad80c1dc0140f63bb5f033560ceab02065baa47c735c375390ef",
+        "label": "docs/implementation/operations-intelligence-foundation/OPERATIONS_INTELLIGENCE_ARCHITECTURE.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "5a28de84cfddad80c1dc0140f63bb5f033560ceab02065baa47c735c375390ef"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/OPERATIONS_INTELLIGENCE_ARCHITECTURE.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/OPERATIONS_INTELLIGENCE_ARCHITECTURE.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "af867280fb593af48eb0b872d5d0da622864f3c567a214718b47a3d5c2cbf34a",
+        "label": "docs/implementation/operations-intelligence-foundation/OPERATIONS_PRIORITY_MODEL.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "af867280fb593af48eb0b872d5d0da622864f3c567a214718b47a3d5c2cbf34a"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/OPERATIONS_PRIORITY_MODEL.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/OPERATIONS_PRIORITY_MODEL.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "27e962d995e9b3ff482c058665cd4ed33a367dfdc2ea074b512b130134c2fc2f",
+        "label": "docs/implementation/operations-intelligence-foundation/OPERATIONS_SEVERITY_MODEL.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "27e962d995e9b3ff482c058665cd4ed33a367dfdc2ea074b512b130134c2fc2f"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/OPERATIONS_SEVERITY_MODEL.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/OPERATIONS_SEVERITY_MODEL.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "0a2f2052d59140d0efb9dedc2005320fa567adf46f29afb8982edb11ae7bc8d0",
+        "label": "docs/implementation/operations-intelligence-foundation/OPERATIONS_SUMMARY_MODEL.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "0a2f2052d59140d0efb9dedc2005320fa567adf46f29afb8982edb11ae7bc8d0"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/OPERATIONS_SUMMARY_MODEL.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/OPERATIONS_SUMMARY_MODEL.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "40e9245ca043c715f31ee87022a22855b04057a16a134d9093d43fa15404a3ab",
+        "label": "docs/implementation/operations-intelligence-foundation/ORGANIZATION_OPERATIONS_CONTEXT.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "40e9245ca043c715f31ee87022a22855b04057a16a134d9093d43fa15404a3ab"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/ORGANIZATION_OPERATIONS_CONTEXT.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/ORGANIZATION_OPERATIONS_CONTEXT.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "e1b69c6fb79832142011836e91a7fc9c92889517ea06f679f4fe565ee0c92ccc",
+        "label": "docs/implementation/operations-intelligence-foundation/OWNER_DECISIONS_REQUIRED.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "e1b69c6fb79832142011836e91a7fc9c92889517ea06f679f4fe565ee0c92ccc"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/OWNER_DECISIONS_REQUIRED.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/OWNER_DECISIONS_REQUIRED.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "5711278b4bf4a09344cc03fcc9dd7b2c58ccc5f4de1fe53788a9438f3b742ccd",
+        "label": "docs/implementation/operations-intelligence-foundation/PLATFORM_INTEGRATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "5711278b4bf4a09344cc03fcc9dd7b2c58ccc5f4de1fe53788a9438f3b742ccd"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/PLATFORM_INTEGRATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/PLATFORM_INTEGRATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "7299202f24dca217963c16905b9ed2fd3d6156e7704cc325d01d38316eb70255",
+        "label": "docs/implementation/operations-intelligence-foundation/PREDICTIVE_MODEL_BOUNDARY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "7299202f24dca217963c16905b9ed2fd3d6156e7704cc325d01d38316eb70255"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/PREDICTIVE_MODEL_BOUNDARY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/PREDICTIVE_MODEL_BOUNDARY.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "df640c63dc0f4840dc6d9cca6cc618a9243e5dcf4fdcb9ad82bc0e2b4b856209",
+        "label": "docs/implementation/operations-intelligence-foundation/PRODUCT_SCOPE_BOUNDARY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "df640c63dc0f4840dc6d9cca6cc618a9243e5dcf4fdcb9ad82bc0e2b4b856209"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/PRODUCT_SCOPE_BOUNDARY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/PRODUCT_SCOPE_BOUNDARY.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "b46c6d526a261ccc0a86132be6104d8f78b91c2df024cd89a9f4506fd63176e4",
+        "label": "docs/implementation/operations-intelligence-foundation/README.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "b46c6d526a261ccc0a86132be6104d8f78b91c2df024cd89a9f4506fd63176e4"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/README.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/README.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "ce7b2f41bc8ffd09c8878396301c9675faec2575574671361560bfcaae66904f",
+        "label": "docs/implementation/operations-intelligence-foundation/ROLLBACK_PLAN.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "ce7b2f41bc8ffd09c8878396301c9675faec2575574671361560bfcaae66904f"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/ROLLBACK_PLAN.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/ROLLBACK_PLAN.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "1db19e398d62e1ade988ea0645e611bce33450e8735cac2bcab93edd2a0b39b7",
+        "label": "docs/implementation/operations-intelligence-foundation/ROUTE_OPERATIONAL_AGGREGATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "1db19e398d62e1ade988ea0645e611bce33450e8735cac2bcab93edd2a0b39b7"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/ROUTE_OPERATIONAL_AGGREGATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/ROUTE_OPERATIONAL_AGGREGATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "f3be57fe6f5a082bf7da39b6badc664622bf6de16cc2e0f8b40c13061cc08afd",
+        "label": "docs/implementation/operations-intelligence-foundation/SECURITY_AND_TENANT_REVIEW.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "f3be57fe6f5a082bf7da39b6badc664622bf6de16cc2e0f8b40c13061cc08afd"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/SECURITY_AND_TENANT_REVIEW.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/SECURITY_AND_TENANT_REVIEW.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "41d2275e169447afb38fd41c461c3de5ea72738bb22171f188110790a9f3e7dc",
+        "label": "docs/implementation/operations-intelligence-foundation/SUPERVISOR_OPERATIONAL_AGGREGATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "41d2275e169447afb38fd41c461c3de5ea72738bb22171f188110790a9f3e7dc"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/SUPERVISOR_OPERATIONAL_AGGREGATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/SUPERVISOR_OPERATIONAL_AGGREGATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "3c419a8205891ee0e9d06d25cb007bb31622dc0a38b81d72ca47ce7046aae669",
+        "label": "docs/implementation/operations-intelligence-foundation/TEST_PLAN.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "3c419a8205891ee0e9d06d25cb007bb31622dc0a38b81d72ca47ce7046aae669"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/TEST_PLAN.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/TEST_PLAN.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "9c54b0601b384dfefd124b3c2c672f6222448adf29d3806944854451e6d689b0",
+        "label": "docs/implementation/operations-intelligence-foundation/TEST_RESULTS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "9c54b0601b384dfefd124b3c2c672f6222448adf29d3806944854451e6d689b0"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/TEST_RESULTS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/TEST_RESULTS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "d51076808716b5b666a346024548ef674b9c542a4682a2bb936f3649d85017c4",
+        "label": "docs/implementation/operations-intelligence-foundation/UNAPPROVED_IDEAS_FOR_OWNER_REVIEW.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "d51076808716b5b666a346024548ef674b9c542a4682a2bb936f3649d85017c4"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/UNAPPROVED_IDEAS_FOR_OWNER_REVIEW.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/UNAPPROVED_IDEAS_FOR_OWNER_REVIEW.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "a204d7dca4ec931da7bdd4fb1fcf751a3367935a8bb281efd85b2734a9ad9d2c",
+        "label": "docs/implementation/operations-intelligence-foundation/WAREHOUSE_OPERATIONAL_AGGREGATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "a204d7dca4ec931da7bdd4fb1fcf751a3367935a8bb281efd85b2734a9ad9d2c"
+        },
+        "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/WAREHOUSE_OPERATIONAL_AGGREGATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/operations-intelligence-foundation/WAREHOUSE_OPERATIONAL_AGGREGATION.md",
         "testOnly": true,
         "type": "Documentation Page",
         "version": null

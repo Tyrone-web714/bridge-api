@@ -1,0 +1,38 @@
+{
+  "crossOrganizationAggregationProhibited": true,
+  "lowerDomainsRemainAuthoritative": true,
+  "productionRuntimeDeferred": true,
+  "providerModelControlsRejected": true,
+  "requiredFields": [
+    "operationsContextId",
+    "organizationId",
+    "workPeriod",
+    "reportingWindow",
+    "routeScope",
+    "driverScope",
+    "supervisorScope",
+    "warehouseScope",
+    "vehicleScope",
+    "customerScope",
+    "sourceDomainReferences",
+    "sourceEvidenceHashes",
+    "evidenceTimestamps",
+    "evidenceCompleteness",
+    "evidenceConfidence",
+    "staleEvidenceIndicators",
+    "conflictIndicators",
+    "unknownFields",
+    "humanReviewRequired",
+    "testOnly"
+  ],
+  "schemaVersion": "operations.context.contract.v1",
+  "trustedServerDerivedFutureRuntime": [
+    "organizationId",
+    "routeScope",
+    "driverScope",
+    "supervisorScope",
+    "warehouseScope",
+    "vehicleScope",
+    "customerScope"
+  ]
+}

@@ -17,7 +17,7 @@
       "dashboard-data/knowledge_graph_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "aac4df523f05583aec842d24553f0edaa970314becea01c3fbd5a79ed5741fb9",
+    "generationHash": "8824eafe6f26a269f5765d6cce13c1d2a291b0a58e85d1f3d33fecc60011dd33",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -32,8 +32,8 @@
     ],
     "statistics": {
       "cycleCount": 0,
-      "disconnectedCount": 543,
-      "edgeCount": 894,
+      "disconnectedCount": 585,
+      "edgeCount": 906,
       "edgeTypes": {
         "ALLOWS": 30,
         "BELONGS_TO": 3,
@@ -42,12 +42,12 @@
         "DOCUMENTS": 118,
         "EVALUATES": 3,
         "FALLBACK_TO": 6,
-        "GENERATED_FROM": 211,
+        "GENERATED_FROM": 222,
         "GOVERNS": 56,
         "HAS_HASH": 6,
         "HAS_POLICY": 12,
         "HAS_VERSION": 15,
-        "IMPLEMENTS": 42,
+        "IMPLEMENTS": 43,
         "INFLUENCES": 14,
         "PRODUCES": 185,
         "REPLAYS": 4,
@@ -56,9 +56,9 @@
         "TESTS": 19,
         "USES": 95
       },
-      "graphDensity": 0.00059381,
-      "graphHash": "d629c590bb0738a53ed9d94a5b48fe9756f88fd2e9794d0896465a0c40b4afae",
-      "nodeCount": 1227,
+      "graphDensity": 0.00055212,
+      "graphHash": "1d1e8e32af272be345fd5d2c42b5bdf3e97c766430c136f3f7e2f86c17a9e34e",
+      "nodeCount": 1281,
       "nodeTypes": {
         "Architecture Decision": 13,
         "Attestation": 4,
@@ -70,7 +70,7 @@
         "Cost Model Profile": 3,
         "Decision History Record": 4,
         "Decision Policy Profile": 8,
-        "Documentation Page": 616,
+        "Documentation Page": 658,
         "Evaluation Result": 60,
         "Evaluation Run": 3,
         "Exception Record": 1,
@@ -79,7 +79,7 @@
         "Execution Profile": 8,
         "Execution Strategy": 13,
         "Finding": 1,
-        "Generated Artifact": 211,
+        "Generated Artifact": 222,
         "Governance Event": 48,
         "Hash": 130,
         "Human Review Record": 1,
@@ -87,7 +87,7 @@
         "Owner Decision": 1,
         "Package": 1,
         "Pricing Catalog": 1,
-        "Repository Module": 35,
+        "Repository Module": 36,
         "Score Profile": 3,
         "Score Run": 3,
         "Script": 19,
@@ -95,13 +95,13 @@
         "Unknown": 6,
         "Version": 3
       },
-      "orphanCount": 839
+      "orphanCount": 892
     },
     "statusIndicators": [],
     "summary": {
-      "edges": 894,
-      "graphHash": "d629c590bb0738a53ed9d94a5b48fe9756f88fd2e9794d0896465a0c40b4afae",
-      "nodes": 1227,
+      "edges": 906,
+      "graphHash": "1d1e8e32af272be345fd5d2c42b5bdf3e97c766430c136f3f7e2f86c17a9e34e",
+      "nodes": 1281,
       "valid": true
     },
     "testOnly": true,

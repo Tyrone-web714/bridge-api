@@ -1,0 +1,3184 @@
+{
+  "exceptionTypes": [
+    "ROUTE_OPERATION_EXCEPTION",
+    "MULTIPLE_ROUTE_EXCEPTIONS",
+    "ROUTE_SAFETY_BLOCKER_ACTIVE",
+    "WAREHOUSE_DEPARTURE_BLOCKER_ACTIVE",
+    "VEHICLE_ROUTE_BLOCKER_ACTIVE",
+    "CUSTOMER_SERVICE_EXCEPTION_ACTIVE",
+    "DRIVER_OPERATIONAL_EVIDENCE_UNAVAILABLE",
+    "SUPERVISOR_ALERT_UNRESOLVED",
+    "CROSS_DOMAIN_OPERATIONAL_CONFLICT",
+    "OPERATIONAL_EVIDENCE_STALE",
+    "OPERATIONAL_EVIDENCE_CONFLICT",
+    "OPERATIONAL_EVIDENCE_INCOMPLETE",
+    "HUMAN_REVIEW_REQUIRED",
+    "INSUFFICIENT_EVIDENCE"
+  ],
+  "exceptions": [
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "ROUTE",
+          "sourceHash": "dabb338e09760b63eea3f3ca91054884628b4584f3baf47570f0037a534a95b9",
+          "sourceRecordId": "route.delayed",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "73500f71f3ae97ac657bfa0298f3b4a9932927c6fd77d0da5026cdaa90c2f623",
+      "exceptionId": "operations.exception.route_operation_exception.1",
+      "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "reasonCodes": [
+        "ROUTE_DELAYED"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "sourceRecordIds": [
+        "route.delayed"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "ROUTE",
+          "sourceHash": "fcc581ea9ba482e4ee15d76a02f3e1b94ca5606487835b1eb8fb407d74c53643",
+          "sourceRecordId": "route.delayed.1",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "165f4541dee14cf08aa2a445e7fa20cf7897a1901ed143b281b5617a537018ec",
+      "exceptionId": "operations.exception.route_operation_exception.1",
+      "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "reasonCodes": [
+        "ROUTE_DELAYED"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "sourceRecordIds": [
+        "route.delayed.1"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "ROUTE",
+          "sourceHash": "282d3f7235c266aa7a884c01940d1c90f34118e6cbc65b9edf09e17e0bf46d67",
+          "sourceRecordId": "route.delayed.2",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "037d7a2578cee08034db220a117ea5c06430456d01f3b00827c21bb6968f822f",
+      "exceptionId": "operations.exception.route_operation_exception.2",
+      "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "reasonCodes": [
+        "ROUTE_DELAYED"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-002"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "sourceRecordIds": [
+        "route.delayed.2"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "ROUTE",
+          "sourceHash": "fcc581ea9ba482e4ee15d76a02f3e1b94ca5606487835b1eb8fb407d74c53643",
+          "sourceRecordId": "route.delayed.1",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        },
+        {
+          "sourceDomain": "ROUTE",
+          "sourceHash": "282d3f7235c266aa7a884c01940d1c90f34118e6cbc65b9edf09e17e0bf46d67",
+          "sourceRecordId": "route.delayed.2",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "69c6fbac28c7aabe73289f9b14488bb26f2c0af8ba44b1f6eca75f74b565fed6",
+      "exceptionId": "operations.exception.multiple_route_exceptions.3",
+      "exceptionType": "MULTIPLE_ROUTE_EXCEPTIONS",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 64
+      },
+      "reasonCodes": [
+        "ROUTE_DELAYED",
+        "CROSS_DOMAIN_CORRELATION"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001",
+        "route-002"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "sourceRecordIds": [
+        "route.delayed.1",
+        "route.delayed.2"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z",
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "ROUTE",
+          "sourceHash": "933017a37d433b247752e443ca84d4df4c395285399574ff0a8d8c7f58df09ae",
+          "sourceRecordId": "route.safety",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "fd06ad160fef0850de21e73c85df9f2427c3f9595ef44cd60b406cc8e0de2bd4",
+      "exceptionId": "operations.exception.route_safety_blocker_active.1",
+      "exceptionType": "ROUTE_SAFETY_BLOCKER_ACTIVE",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P1",
+        "score": 102
+      },
+      "reasonCodes": [
+        "ROUTE_SAFETY_BLOCKER_ACTIVE"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "CRITICAL",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "sourceRecordIds": [
+        "route.safety"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "WAREHOUSE",
+          "sourceHash": "cf9170554c5321ffb95d8f6efa65bedeea9ac8f917ececba9757cf316087961d",
+          "sourceRecordId": "warehouse.blocker",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "f6ba687e1b449c433040a4b0f1e0878c159483c9299caaeb57fabe6dbdd6a472",
+      "exceptionId": "operations.exception.warehouse_departure_blocker_active.1",
+      "exceptionType": "WAREHOUSE_DEPARTURE_BLOCKER_ACTIVE",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P2",
+        "score": 82
+      },
+      "reasonCodes": [
+        "WAREHOUSE_DEPARTURE_BLOCKER_ACTIVE"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "HIGH",
+      "sourceDomains": [
+        "WAREHOUSE"
+      ],
+      "sourceRecordIds": [
+        "warehouse.blocker"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "FLEET",
+          "sourceHash": "320d05baa350ba4e5f0a622ccb120d2c72dcb9341efa5f5c8e41cad5a58e7bc2",
+          "sourceRecordId": "fleet.blocker",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "f28d84a26b46250feb9c850b69321c51123ef508ea02ed39371ef5070bbeb34a",
+      "exceptionId": "operations.exception.vehicle_route_blocker_active.1",
+      "exceptionType": "VEHICLE_ROUTE_BLOCKER_ACTIVE",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P2",
+        "score": 82
+      },
+      "reasonCodes": [
+        "VEHICLE_ROUTE_BLOCKER_ACTIVE"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [
+        "vehicle-001"
+      ],
+      "severity": "HIGH",
+      "sourceDomains": [
+        "FLEET"
+      ],
+      "sourceRecordIds": [
+        "fleet.blocker"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "CUSTOMER",
+          "sourceHash": "108ee3b91d26f90306fd64d491ecd57b3fea558a181416687a59a7719221adbd",
+          "sourceRecordId": "customer.exception",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "afd43efb4b94b80e11ac146b695efde136bf7c2aabbc462c93c0c014fe927dfe",
+      "exceptionId": "operations.exception.customer_service_exception_active.1",
+      "exceptionType": "CUSTOMER_SERVICE_EXCEPTION_ACTIVE",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "reasonCodes": [
+        "CUSTOMER_SERVICE_EXCEPTION_ACTIVE"
+      ],
+      "relatedCustomerIds": [
+        "customer-001"
+      ],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "CUSTOMER"
+      ],
+      "sourceRecordIds": [
+        "customer.exception"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "DRIVER",
+          "sourceHash": "a93c1ed341c9c3d0f3cbf6da214917069af4b5c045643a3d1929b6309d00b76a",
+          "sourceRecordId": "driver.route-001",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "3193dadeed04f37b9e0fb029834b33a76e7ade67fdfece5e3a587c65bdae2311",
+      "exceptionId": "operations.exception.driver_operational_evidence_unavailable.1",
+      "exceptionType": "DRIVER_OPERATIONAL_EVIDENCE_UNAVAILABLE",
+      "humanReviewRequired": true,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P4",
+        "score": 47
+      },
+      "reasonCodes": [
+        "DRIVER_EVIDENCE_MISSING"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [
+        "driver-001"
+      ],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "LOW",
+      "sourceDomains": [
+        "DRIVER"
+      ],
+      "sourceRecordIds": [
+        "driver.route-001"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "DRIVER",
+          "sourceHash": "a93c1ed341c9c3d0f3cbf6da214917069af4b5c045643a3d1929b6309d00b76a",
+          "sourceRecordId": "driver.route-001",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "8e2c75cb23598cc9f5988fdaa9e6778d6e1ba9c1db038762624fd959be517d36",
+      "exceptionId": "operations.exception.insufficient_evidence.2",
+      "exceptionType": "INSUFFICIENT_EVIDENCE",
+      "humanReviewRequired": true,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P4",
+        "score": 47
+      },
+      "reasonCodes": [
+        "EVIDENCE_INCOMPLETE"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [
+        "driver-001"
+      ],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "LOW",
+      "sourceDomains": [
+        "DRIVER"
+      ],
+      "sourceRecordIds": [
+        "driver.route-001"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "DRIVER",
+          "sourceHash": "a93c1ed341c9c3d0f3cbf6da214917069af4b5c045643a3d1929b6309d00b76a",
+          "sourceRecordId": "driver.route-001",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "46d9605e5eb1eee5d35ad5a754aa1e6dc957cef72a556c23e0430aa65d1ebef9",
+      "exceptionId": "operations.exception.multiple_route_exceptions.3",
+      "exceptionType": "MULTIPLE_ROUTE_EXCEPTIONS",
+      "humanReviewRequired": true,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 67
+      },
+      "reasonCodes": [
+        "ROUTE_DELAYED",
+        "CROSS_DOMAIN_CORRELATION"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [
+        "driver-001"
+      ],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "DRIVER"
+      ],
+      "sourceRecordIds": [
+        "driver.route-001"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "DRIVER",
+          "sourceHash": "a93c1ed341c9c3d0f3cbf6da214917069af4b5c045643a3d1929b6309d00b76a",
+          "sourceRecordId": "driver.route-001",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "b9a4dfbb840b83371910a9bba113e7d9adca430c851bd01e6e2df9793179eb76",
+      "exceptionId": "operations.exception.human_review_required.4",
+      "exceptionType": "HUMAN_REVIEW_REQUIRED",
+      "humanReviewRequired": true,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P4",
+        "score": 47
+      },
+      "reasonCodes": [
+        "HUMAN_REVIEW"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [
+        "driver-001"
+      ],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "LOW",
+      "sourceDomains": [
+        "DRIVER"
+      ],
+      "sourceRecordIds": [
+        "driver.route-001"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "SUPERVISOR",
+          "sourceHash": "a94dd0d731bfc4886f0fe5bd91d1e6a7b50da37b035b507a66b7d736dd9ad645",
+          "sourceRecordId": "supervisor.alert",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "73e7eff1f4dc7932dd0c4e7ed05c9139e53b4af2b45c941270fe92733ac124e1",
+      "exceptionId": "operations.exception.supervisor_alert_unresolved.1",
+      "exceptionType": "SUPERVISOR_ALERT_UNRESOLVED",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "reasonCodes": [
+        "SUPERVISOR_ALERT_OPEN"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "SUPERVISOR"
+      ],
+      "sourceRecordIds": [
+        "supervisor.alert"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "ROUTE",
+          "sourceHash": "c8b6fa66cdb165cbf7998f5376fa7d43d595d76351f7119927cc1fe7de9b9621",
+          "sourceRecordId": "route.blocked",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "7ee02dac59126d1ca26ce93aea318c35e1bf2bfbf785404890da3cf99191e3b5",
+      "exceptionId": "operations.exception.route_operation_exception.1",
+      "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "reasonCodes": [
+        "ROUTE_DELAYED"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "sourceRecordIds": [
+        "route.blocked"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "WAREHOUSE",
+          "sourceHash": "496fb6e1bae507b0a2352be7605a6dd59cdd2053922af8185f914e4cb501bb64",
+          "sourceRecordId": "warehouse.blocked",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "185d6e15870c4ff48d9da1180729d3fe3e4d7693b9a37b15bae7b9ecabe28eeb",
+      "exceptionId": "operations.exception.warehouse_departure_blocker_active.2",
+      "exceptionType": "WAREHOUSE_DEPARTURE_BLOCKER_ACTIVE",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P2",
+        "score": 82
+      },
+      "reasonCodes": [
+        "WAREHOUSE_DEPARTURE_BLOCKER_ACTIVE"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "HIGH",
+      "sourceDomains": [
+        "WAREHOUSE"
+      ],
+      "sourceRecordIds": [
+        "warehouse.blocked"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "FLEET",
+          "sourceHash": "e644cccbdc17bc99dc2ebb771e1d1e0e60353c335e5c890ef6c27fbbde51d111",
+          "sourceRecordId": "fleet.blocked",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "eb8b9220b55906e685435ff613f401198cfd9852b18b88bcb2ab6abadace4aa8",
+      "exceptionId": "operations.exception.vehicle_route_blocker_active.3",
+      "exceptionType": "VEHICLE_ROUTE_BLOCKER_ACTIVE",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P2",
+        "score": 82
+      },
+      "reasonCodes": [
+        "VEHICLE_ROUTE_BLOCKER_ACTIVE"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "HIGH",
+      "sourceDomains": [
+        "FLEET"
+      ],
+      "sourceRecordIds": [
+        "fleet.blocked"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "ROUTE",
+          "sourceHash": "c8b6fa66cdb165cbf7998f5376fa7d43d595d76351f7119927cc1fe7de9b9621",
+          "sourceRecordId": "route.blocked",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        },
+        {
+          "sourceDomain": "WAREHOUSE",
+          "sourceHash": "496fb6e1bae507b0a2352be7605a6dd59cdd2053922af8185f914e4cb501bb64",
+          "sourceRecordId": "warehouse.blocked",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        },
+        {
+          "sourceDomain": "FLEET",
+          "sourceHash": "e644cccbdc17bc99dc2ebb771e1d1e0e60353c335e5c890ef6c27fbbde51d111",
+          "sourceRecordId": "fleet.blocked",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "fb81c521d9ad94789bea84f235545a3ac5153f5ba5aa8404638ad9940da9a0d0",
+      "exceptionId": "operations.exception.multiple_route_exceptions.4",
+      "exceptionType": "MULTIPLE_ROUTE_EXCEPTIONS",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "reasonCodes": [
+        "ROUTE_DELAYED",
+        "CROSS_DOMAIN_CORRELATION"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "FLEET",
+        "ROUTE",
+        "WAREHOUSE"
+      ],
+      "sourceRecordIds": [
+        "fleet.blocked",
+        "route.blocked",
+        "warehouse.blocked"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z",
+        "2026-08-11T00:00:00.000Z",
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "ROUTE",
+          "sourceHash": "c8b6fa66cdb165cbf7998f5376fa7d43d595d76351f7119927cc1fe7de9b9621",
+          "sourceRecordId": "route.blocked",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        },
+        {
+          "sourceDomain": "WAREHOUSE",
+          "sourceHash": "496fb6e1bae507b0a2352be7605a6dd59cdd2053922af8185f914e4cb501bb64",
+          "sourceRecordId": "warehouse.blocked",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        },
+        {
+          "sourceDomain": "FLEET",
+          "sourceHash": "e644cccbdc17bc99dc2ebb771e1d1e0e60353c335e5c890ef6c27fbbde51d111",
+          "sourceRecordId": "fleet.blocked",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "29df66abd9b18786ebb3957ee1b4f34ff5a095bf5b9c99f4125896ce7fc066bb",
+      "exceptionId": "operations.exception.cross_domain_operational_conflict.5",
+      "exceptionType": "CROSS_DOMAIN_OPERATIONAL_CONFLICT",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P5",
+        "score": 22
+      },
+      "reasonCodes": [
+        "CROSS_DOMAIN_CORRELATION"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "INFORMATIONAL",
+      "sourceDomains": [
+        "FLEET",
+        "ROUTE",
+        "WAREHOUSE"
+      ],
+      "sourceRecordIds": [
+        "fleet.blocked",
+        "route.blocked",
+        "warehouse.blocked"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z",
+        "2026-08-11T00:00:00.000Z",
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "ROUTE",
+          "sourceHash": "66b6829780c758dc1ace51837dba771e6cc71122ba163538557bb8be8a6bb9ec",
+          "sourceRecordId": "route.delay",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "af10df56710821e6f4a5a3fb3a66c44ad67d4892a332ee3e1630039f1c39a310",
+      "exceptionId": "operations.exception.route_operation_exception.1",
+      "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "reasonCodes": [
+        "ROUTE_DELAYED"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "sourceRecordIds": [
+        "route.delay"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "ROUTE",
+          "sourceHash": "8130b5cab86f086d174105b19e0b81db90c256a81e2c03589c4494b9b51f29c9",
+          "sourceRecordId": "route.safety.critical",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "ef1bc5ddadb21105399a56751cd0358f13aba2c1e1f6ac493d937ced5e545661",
+      "exceptionId": "operations.exception.route_safety_blocker_active.2",
+      "exceptionType": "ROUTE_SAFETY_BLOCKER_ACTIVE",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P1",
+        "score": 102
+      },
+      "reasonCodes": [
+        "ROUTE_SAFETY_BLOCKER_ACTIVE"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-002"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "CRITICAL",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "sourceRecordIds": [
+        "route.safety.critical"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "ROUTE",
+          "sourceHash": "66b6829780c758dc1ace51837dba771e6cc71122ba163538557bb8be8a6bb9ec",
+          "sourceRecordId": "route.delay",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        },
+        {
+          "sourceDomain": "ROUTE",
+          "sourceHash": "8130b5cab86f086d174105b19e0b81db90c256a81e2c03589c4494b9b51f29c9",
+          "sourceRecordId": "route.safety.critical",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "747d46e8ba9bd61cb459de5b9dbf5a36c3b490b9a91e3330616903dcd0a79a33",
+      "exceptionId": "operations.exception.multiple_route_exceptions.3",
+      "exceptionType": "MULTIPLE_ROUTE_EXCEPTIONS",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 64
+      },
+      "reasonCodes": [
+        "ROUTE_DELAYED",
+        "CROSS_DOMAIN_CORRELATION"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001",
+        "route-002"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "sourceRecordIds": [
+        "route.delay",
+        "route.safety.critical"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z",
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "WAREHOUSE",
+          "sourceHash": "49d71daa4c0f593a894aa85bfc6f480d7d8b3d48afe12244d2a43ea79f9333c7",
+          "sourceRecordId": "warehouse.route1",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "ec10ae8a5c5378718a7b11d85ddc063ece31f8baec16f59c00e2f17aff4610c7",
+      "exceptionId": "operations.exception.warehouse_departure_blocker_active.1",
+      "exceptionType": "WAREHOUSE_DEPARTURE_BLOCKER_ACTIVE",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P2",
+        "score": 82
+      },
+      "reasonCodes": [
+        "WAREHOUSE_DEPARTURE_BLOCKER_ACTIVE"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "HIGH",
+      "sourceDomains": [
+        "WAREHOUSE"
+      ],
+      "sourceRecordIds": [
+        "warehouse.route1"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "FLEET",
+          "sourceHash": "7f5b98a9b4252a9462a073bc5948d27f3bcdd82836d603958394458552f708e2",
+          "sourceRecordId": "fleet.route2",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "d84a3e37d152ff524e8e87bbecb18098ab24c0f45c82dc4b69335e869c688e2e",
+      "exceptionId": "operations.exception.vehicle_route_blocker_active.2",
+      "exceptionType": "VEHICLE_ROUTE_BLOCKER_ACTIVE",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P2",
+        "score": 82
+      },
+      "reasonCodes": [
+        "VEHICLE_ROUTE_BLOCKER_ACTIVE"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-002"
+      ],
+      "relatedVehicleIds": [
+        "vehicle-002"
+      ],
+      "severity": "HIGH",
+      "sourceDomains": [
+        "FLEET"
+      ],
+      "sourceRecordIds": [
+        "fleet.route2"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "WAREHOUSE",
+          "sourceHash": "49d71daa4c0f593a894aa85bfc6f480d7d8b3d48afe12244d2a43ea79f9333c7",
+          "sourceRecordId": "warehouse.route1",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        },
+        {
+          "sourceDomain": "FLEET",
+          "sourceHash": "7f5b98a9b4252a9462a073bc5948d27f3bcdd82836d603958394458552f708e2",
+          "sourceRecordId": "fleet.route2",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "c1984699a80114349c3e0dae5dd315a7e75198985df61b8dc8214e8ed4d185af",
+      "exceptionId": "operations.exception.multiple_route_exceptions.3",
+      "exceptionType": "MULTIPLE_ROUTE_EXCEPTIONS",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 64
+      },
+      "reasonCodes": [
+        "ROUTE_DELAYED",
+        "CROSS_DOMAIN_CORRELATION"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001",
+        "route-002"
+      ],
+      "relatedVehicleIds": [
+        "vehicle-002"
+      ],
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "FLEET",
+        "WAREHOUSE"
+      ],
+      "sourceRecordIds": [
+        "fleet.route2",
+        "warehouse.route1"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z",
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "ROUTE",
+          "sourceHash": "581a0301f1dc4c6ae24434d36f114c2b3b50767abae6cc1918e4e75733e33bf9",
+          "sourceRecordId": "route.delay.corr",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "a357649ae4fac57f56f0733f7524fcb3314dd48d3f246da78289e57905e52137",
+      "exceptionId": "operations.exception.route_operation_exception.1",
+      "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "reasonCodes": [
+        "ROUTE_DELAYED"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "sourceRecordIds": [
+        "route.delay.corr"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "WAREHOUSE",
+          "sourceHash": "47751b1ee4d11ec3c3e2f3ddc0c01c551c28d487ed45dfe8da2c9b277d2bf6cb",
+          "sourceRecordId": "warehouse.delay.corr",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "8a54d8aab114651b19b6a14681a8dfbd520778093dff6af44737470553ca9b12",
+      "exceptionId": "operations.exception.warehouse_departure_blocker_active.2",
+      "exceptionType": "WAREHOUSE_DEPARTURE_BLOCKER_ACTIVE",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P2",
+        "score": 82
+      },
+      "reasonCodes": [
+        "WAREHOUSE_DEPARTURE_BLOCKER_ACTIVE"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "HIGH",
+      "sourceDomains": [
+        "WAREHOUSE"
+      ],
+      "sourceRecordIds": [
+        "warehouse.delay.corr"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "ROUTE",
+          "sourceHash": "581a0301f1dc4c6ae24434d36f114c2b3b50767abae6cc1918e4e75733e33bf9",
+          "sourceRecordId": "route.delay.corr",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        },
+        {
+          "sourceDomain": "WAREHOUSE",
+          "sourceHash": "47751b1ee4d11ec3c3e2f3ddc0c01c551c28d487ed45dfe8da2c9b277d2bf6cb",
+          "sourceRecordId": "warehouse.delay.corr",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "b076091c6991963c7f9a2fbf2f0458f04cd9593507ffecace37dc4b207bfcbd0",
+      "exceptionId": "operations.exception.multiple_route_exceptions.3",
+      "exceptionType": "MULTIPLE_ROUTE_EXCEPTIONS",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "reasonCodes": [
+        "ROUTE_DELAYED",
+        "CROSS_DOMAIN_CORRELATION"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "ROUTE",
+        "WAREHOUSE"
+      ],
+      "sourceRecordIds": [
+        "route.delay.corr",
+        "warehouse.delay.corr"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z",
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "ROUTE",
+          "sourceHash": "581a0301f1dc4c6ae24434d36f114c2b3b50767abae6cc1918e4e75733e33bf9",
+          "sourceRecordId": "route.delay.corr",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        },
+        {
+          "sourceDomain": "WAREHOUSE",
+          "sourceHash": "47751b1ee4d11ec3c3e2f3ddc0c01c551c28d487ed45dfe8da2c9b277d2bf6cb",
+          "sourceRecordId": "warehouse.delay.corr",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "d1949285c5698aa61b958228d1248003c9231661750002f6c6aff7d06b8610cd",
+      "exceptionId": "operations.exception.cross_domain_operational_conflict.4",
+      "exceptionType": "CROSS_DOMAIN_OPERATIONAL_CONFLICT",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P5",
+        "score": 22
+      },
+      "reasonCodes": [
+        "CROSS_DOMAIN_CORRELATION"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "INFORMATIONAL",
+      "sourceDomains": [
+        "ROUTE",
+        "WAREHOUSE"
+      ],
+      "sourceRecordIds": [
+        "route.delay.corr",
+        "warehouse.delay.corr"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z",
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "ROUTE",
+          "sourceHash": "907bf5fffa9770616baf63c2be9f9c76841db5bfc441c194d047dba799210540",
+          "sourceRecordId": "route.vehicle.corr",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "8ce98f6fe836d640a1b069ce9d4edc921e507eb0c643d525a37d0bf4a85ea215",
+      "exceptionId": "operations.exception.route_operation_exception.1",
+      "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "reasonCodes": [
+        "ROUTE_DELAYED"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "sourceRecordIds": [
+        "route.vehicle.corr"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "FLEET",
+          "sourceHash": "c44c6300795ada3e0e845364928582dc3b09b3ec44a1bad954b2e8ef6883c602",
+          "sourceRecordId": "fleet.vehicle.corr",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "4b28ccd52ba18d58afb96ab7868390220b8ee6fa78fde82c28e71f6312fe8503",
+      "exceptionId": "operations.exception.vehicle_route_blocker_active.2",
+      "exceptionType": "VEHICLE_ROUTE_BLOCKER_ACTIVE",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P2",
+        "score": 82
+      },
+      "reasonCodes": [
+        "VEHICLE_ROUTE_BLOCKER_ACTIVE"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [
+        "vehicle-001"
+      ],
+      "severity": "HIGH",
+      "sourceDomains": [
+        "FLEET"
+      ],
+      "sourceRecordIds": [
+        "fleet.vehicle.corr"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "ROUTE",
+          "sourceHash": "907bf5fffa9770616baf63c2be9f9c76841db5bfc441c194d047dba799210540",
+          "sourceRecordId": "route.vehicle.corr",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        },
+        {
+          "sourceDomain": "FLEET",
+          "sourceHash": "c44c6300795ada3e0e845364928582dc3b09b3ec44a1bad954b2e8ef6883c602",
+          "sourceRecordId": "fleet.vehicle.corr",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "31970a8060ddc9f17bb1426479181fc9a1c3aecc28a893fc4599e88c9527786f",
+      "exceptionId": "operations.exception.multiple_route_exceptions.3",
+      "exceptionType": "MULTIPLE_ROUTE_EXCEPTIONS",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "reasonCodes": [
+        "ROUTE_DELAYED",
+        "CROSS_DOMAIN_CORRELATION"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [
+        "vehicle-001"
+      ],
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "FLEET",
+        "ROUTE"
+      ],
+      "sourceRecordIds": [
+        "fleet.vehicle.corr",
+        "route.vehicle.corr"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z",
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "ROUTE",
+          "sourceHash": "907bf5fffa9770616baf63c2be9f9c76841db5bfc441c194d047dba799210540",
+          "sourceRecordId": "route.vehicle.corr",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        },
+        {
+          "sourceDomain": "FLEET",
+          "sourceHash": "c44c6300795ada3e0e845364928582dc3b09b3ec44a1bad954b2e8ef6883c602",
+          "sourceRecordId": "fleet.vehicle.corr",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "a73d2e573d73899befe3c95cced48425442c250abd3935a84f4a6a538e00d68d",
+      "exceptionId": "operations.exception.cross_domain_operational_conflict.4",
+      "exceptionType": "CROSS_DOMAIN_OPERATIONAL_CONFLICT",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P5",
+        "score": 22
+      },
+      "reasonCodes": [
+        "CROSS_DOMAIN_CORRELATION"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [
+        "vehicle-001"
+      ],
+      "severity": "INFORMATIONAL",
+      "sourceDomains": [
+        "FLEET",
+        "ROUTE"
+      ],
+      "sourceRecordIds": [
+        "fleet.vehicle.corr",
+        "route.vehicle.corr"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z",
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "ROUTE",
+          "sourceHash": "0d7f0a4a4acfcb8568167251d186b116deb48f01e9771f962fb5f77f88bbeed5",
+          "sourceRecordId": "route.customer.corr",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "0115e2fb27b9f9796d70556e6e2335675a966cfb78b3086ccbe050dcf97fd6b7",
+      "exceptionId": "operations.exception.route_operation_exception.1",
+      "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "reasonCodes": [
+        "ROUTE_DELAYED"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "sourceRecordIds": [
+        "route.customer.corr"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "CUSTOMER",
+          "sourceHash": "886c854f5ecc02551010803d2fcccd8618948a8942c4f21c892f31acc95b9fce",
+          "sourceRecordId": "customer.route.corr",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "e50f83056769a2962e25b88c28570c07d885457a23b5a2ac61137214afff297c",
+      "exceptionId": "operations.exception.customer_service_exception_active.2",
+      "exceptionType": "CUSTOMER_SERVICE_EXCEPTION_ACTIVE",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "reasonCodes": [
+        "CUSTOMER_SERVICE_EXCEPTION_ACTIVE"
+      ],
+      "relatedCustomerIds": [
+        "customer-001"
+      ],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "CUSTOMER"
+      ],
+      "sourceRecordIds": [
+        "customer.route.corr"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "ROUTE",
+          "sourceHash": "0d7f0a4a4acfcb8568167251d186b116deb48f01e9771f962fb5f77f88bbeed5",
+          "sourceRecordId": "route.customer.corr",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        },
+        {
+          "sourceDomain": "CUSTOMER",
+          "sourceHash": "886c854f5ecc02551010803d2fcccd8618948a8942c4f21c892f31acc95b9fce",
+          "sourceRecordId": "customer.route.corr",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "822617155ebdf830e021ce5717d04c68a742ed6646a00d9f4a935c15ff932e59",
+      "exceptionId": "operations.exception.multiple_route_exceptions.3",
+      "exceptionType": "MULTIPLE_ROUTE_EXCEPTIONS",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "reasonCodes": [
+        "ROUTE_DELAYED",
+        "CROSS_DOMAIN_CORRELATION"
+      ],
+      "relatedCustomerIds": [
+        "customer-001"
+      ],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "CUSTOMER",
+        "ROUTE"
+      ],
+      "sourceRecordIds": [
+        "customer.route.corr",
+        "route.customer.corr"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z",
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "ROUTE",
+          "sourceHash": "0d7f0a4a4acfcb8568167251d186b116deb48f01e9771f962fb5f77f88bbeed5",
+          "sourceRecordId": "route.customer.corr",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        },
+        {
+          "sourceDomain": "CUSTOMER",
+          "sourceHash": "886c854f5ecc02551010803d2fcccd8618948a8942c4f21c892f31acc95b9fce",
+          "sourceRecordId": "customer.route.corr",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "d5f06e1bbb4a731b377fe6a17fac6afba9ec79c07c4ce103c2e6fb0ef936e33c",
+      "exceptionId": "operations.exception.cross_domain_operational_conflict.4",
+      "exceptionType": "CROSS_DOMAIN_OPERATIONAL_CONFLICT",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P5",
+        "score": 22
+      },
+      "reasonCodes": [
+        "CROSS_DOMAIN_CORRELATION"
+      ],
+      "relatedCustomerIds": [
+        "customer-001"
+      ],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "INFORMATIONAL",
+      "sourceDomains": [
+        "CUSTOMER",
+        "ROUTE"
+      ],
+      "sourceRecordIds": [
+        "customer.route.corr",
+        "route.customer.corr"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z",
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": 0.4,
+        "status": "STALE_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "ROUTE",
+          "sourceHash": "358fcabd5b9f464de67cfb4b606ea6a4a4e17e24625fe299b21f9691b61ff97c",
+          "sourceRecordId": "route.stale",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "258f6c06ef265cc17fd9d569521dca5c80b8951045852cf61feb90d3855e17a5",
+      "exceptionId": "operations.exception.operational_evidence_stale.1",
+      "exceptionType": "OPERATIONAL_EVIDENCE_STALE",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P5",
+        "score": 37
+      },
+      "reasonCodes": [
+        "EVIDENCE_STALE"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "LOW",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "sourceRecordIds": [
+        "route.stale"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": 0.4,
+        "status": "STALE_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "ROUTE",
+          "sourceHash": "358fcabd5b9f464de67cfb4b606ea6a4a4e17e24625fe299b21f9691b61ff97c",
+          "sourceRecordId": "route.stale",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "6b883e48cb629418bf6fa77f73de19d211db5bd1d53777bc32b75a5b4c8b9526",
+      "exceptionId": "operations.exception.human_review_required.2",
+      "exceptionType": "HUMAN_REVIEW_REQUIRED",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P4",
+        "score": 42
+      },
+      "reasonCodes": [
+        "HUMAN_REVIEW"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "LOW",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "sourceRecordIds": [
+        "route.stale"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": 0.2,
+        "status": "CONFLICTING_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "WAREHOUSE",
+          "sourceHash": "5966cb1f7ce7b0c92ef210c2adf8705e7e2218c9e491902c2c82a01d2ea454f8",
+          "sourceRecordId": "warehouse.conflict",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "50847354ad092fdfca330e8310f4a0b48b420cb822a1fe41318b3a45286d2451",
+      "exceptionId": "operations.exception.operational_evidence_conflict.1",
+      "exceptionType": "OPERATIONAL_EVIDENCE_CONFLICT",
+      "humanReviewRequired": true,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P4",
+        "score": 47
+      },
+      "reasonCodes": [
+        "EVIDENCE_CONFLICT"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "LOW",
+      "sourceDomains": [
+        "WAREHOUSE"
+      ],
+      "sourceRecordIds": [
+        "warehouse.conflict"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": 0.2,
+        "status": "CONFLICTING_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "WAREHOUSE",
+          "sourceHash": "5966cb1f7ce7b0c92ef210c2adf8705e7e2218c9e491902c2c82a01d2ea454f8",
+          "sourceRecordId": "warehouse.conflict",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "3c271fefccd1a664c6f84e70aa28676e8fbb8cb2da09759d551f48d2520a1d02",
+      "exceptionId": "operations.exception.human_review_required.2",
+      "exceptionType": "HUMAN_REVIEW_REQUIRED",
+      "humanReviewRequired": true,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P4",
+        "score": 47
+      },
+      "reasonCodes": [
+        "HUMAN_REVIEW"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "LOW",
+      "sourceDomains": [
+        "WAREHOUSE"
+      ],
+      "sourceRecordIds": [
+        "warehouse.conflict"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "ROUTE",
+          "sourceHash": "0a4ee1c9f76e221eebe45334deed782bfc4798694aa34635bff963915401b70e",
+          "sourceRecordId": "route.route-001",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "f7ac463e4da935211993cc2e853e1d2e7d109c9475e9398cea1f3a00e0f8f96f",
+      "exceptionId": "operations.exception.insufficient_evidence.1",
+      "exceptionType": "INSUFFICIENT_EVIDENCE",
+      "humanReviewRequired": true,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P4",
+        "score": 47
+      },
+      "reasonCodes": [
+        "EVIDENCE_INCOMPLETE"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "LOW",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "sourceRecordIds": [
+        "route.route-001"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "ROUTE",
+          "sourceHash": "0a4ee1c9f76e221eebe45334deed782bfc4798694aa34635bff963915401b70e",
+          "sourceRecordId": "route.route-001",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "84af174e94c97337028049ffc82cfef07635644317ccf8169e5802b95c9fc1e2",
+      "exceptionId": "operations.exception.human_review_required.2",
+      "exceptionType": "HUMAN_REVIEW_REQUIRED",
+      "humanReviewRequired": true,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P4",
+        "score": 47
+      },
+      "reasonCodes": [
+        "HUMAN_REVIEW"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "LOW",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "sourceRecordIds": [
+        "route.route-001"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "ROUTE",
+          "sourceHash": "159d9b66252cf85362dc54e4c4b86589b2e2bd9c5c7ed82ed0b9b14edc631fe6",
+          "sourceRecordId": "route.crossorg",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "0506ae44b3cfeae4228405c983846a01a69b2520d577eedbf3766c6b462cca5f",
+      "exceptionId": "operations.exception.route_operation_exception.1",
+      "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "reasonCodes": [
+        "ROUTE_DELAYED"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "sourceRecordIds": [
+        "route.crossorg"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": false
+          }
+        ],
+        "score": 0,
+        "status": "INSUFFICIENT"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [],
+      "exceptionHash": "d27d347afef5bfe835613f5c8337a42f3db8c3969a09407c97c53c196a20634a",
+      "exceptionId": "operations.exception.human_review_required.2",
+      "exceptionType": "HUMAN_REVIEW_REQUIRED",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P4",
+        "score": 40
+      },
+      "reasonCodes": [
+        "HUMAN_REVIEW"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [],
+      "relatedVehicleIds": [],
+      "severity": "LOW",
+      "sourceDomains": [],
+      "sourceRecordIds": [],
+      "testOnly": true,
+      "timestamps": []
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "SUPERVISOR",
+          "sourceHash": "0a1cb17c74af82f535bbb083d26adbbc00190e45c97ef0f3a686a7a705c53410",
+          "sourceRecordId": "supervisor.review",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "02fadb9ce2ff6e07ce5806716e667f6969351769120d2010791a5f850de8ca53",
+      "exceptionId": "operations.exception.human_review_required.1",
+      "exceptionType": "HUMAN_REVIEW_REQUIRED",
+      "humanReviewRequired": true,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P4",
+        "score": 47
+      },
+      "reasonCodes": [
+        "HUMAN_REVIEW"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "LOW",
+      "sourceDomains": [
+        "SUPERVISOR"
+      ],
+      "sourceRecordIds": [
+        "supervisor.review"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "SUPERVISOR",
+          "sourceHash": "5460ba8fbbd7d2b3c64a76f1e67091730e860a81599718cf5dd5e92e852f0b4c",
+          "sourceRecordId": "supervisor.ack",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "8866f1c011694bf57be7bb747071da3faf30968ab5aa3e4178b65a50d37776dd",
+      "exceptionId": "operations.exception.supervisor_alert_unresolved.1",
+      "exceptionType": "SUPERVISOR_ALERT_UNRESOLVED",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "reasonCodes": [
+        "SUPERVISOR_ALERT_OPEN"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "SUPERVISOR"
+      ],
+      "sourceRecordIds": [
+        "supervisor.ack"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "ROUTE",
+          "sourceHash": "2b30eafbdf4b4084ce2d6abe802a9ccbc9ae4532a6dd94c001771678b3e5adb1",
+          "sourceRecordId": "route.resolve",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "f61851874bdd8e9258e4460d78276e1e3cb84d86659857f2f90ab2d411f3362d",
+      "exceptionId": "operations.exception.route_operation_exception.1",
+      "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "reasonCodes": [
+        "ROUTE_DELAYED"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "sourceRecordIds": [
+        "route.resolve"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceRecordIds",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": null,
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "employmentImpactProhibited": true,
+      "evidence": [
+        {
+          "sourceDomain": "ROUTE",
+          "sourceHash": "2548d3fe00e6a9c36fe13e71c68b3cd63a0ee63457deb8412038c52dbfead609",
+          "sourceRecordId": "route.invalidate",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z"
+        }
+      ],
+      "exceptionHash": "8f779f3dce97fa61ee1abb50a57fac31b59a13cb666f3bc1d9a579a19df1bdbb",
+      "exceptionId": "operations.exception.route_operation_exception.1",
+      "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+      "humanReviewRequired": false,
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "reasonCodes": [
+        "ROUTE_DELAYED"
+      ],
+      "relatedCustomerIds": [],
+      "relatedDriverIds": [],
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relatedVehicleIds": [],
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "sourceRecordIds": [
+        "route.invalidate"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-11T00:00:00.000Z"
+      ]
+    }
+  ],
+  "generatedArtifact": true
+}

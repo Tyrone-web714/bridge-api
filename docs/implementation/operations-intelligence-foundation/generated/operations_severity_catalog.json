@@ -1,0 +1,877 @@
+{
+  "exceptions": [
+    {
+      "exceptionId": "operations.exception.route_operation_exception.1",
+      "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "operations.exception.route_operation_exception.1",
+      "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "operations.exception.route_operation_exception.2",
+      "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "operations.exception.multiple_route_exceptions.3",
+      "exceptionType": "MULTIPLE_ROUTE_EXCEPTIONS",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 64
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "operations.exception.route_safety_blocker_active.1",
+      "exceptionType": "ROUTE_SAFETY_BLOCKER_ACTIVE",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P1",
+        "score": 102
+      },
+      "severity": "CRITICAL"
+    },
+    {
+      "exceptionId": "operations.exception.warehouse_departure_blocker_active.1",
+      "exceptionType": "WAREHOUSE_DEPARTURE_BLOCKER_ACTIVE",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P2",
+        "score": 82
+      },
+      "severity": "HIGH"
+    },
+    {
+      "exceptionId": "operations.exception.vehicle_route_blocker_active.1",
+      "exceptionType": "VEHICLE_ROUTE_BLOCKER_ACTIVE",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P2",
+        "score": 82
+      },
+      "severity": "HIGH"
+    },
+    {
+      "exceptionId": "operations.exception.customer_service_exception_active.1",
+      "exceptionType": "CUSTOMER_SERVICE_EXCEPTION_ACTIVE",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "operations.exception.driver_operational_evidence_unavailable.1",
+      "exceptionType": "DRIVER_OPERATIONAL_EVIDENCE_UNAVAILABLE",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P4",
+        "score": 47
+      },
+      "severity": "LOW"
+    },
+    {
+      "exceptionId": "operations.exception.insufficient_evidence.2",
+      "exceptionType": "INSUFFICIENT_EVIDENCE",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P4",
+        "score": 47
+      },
+      "severity": "LOW"
+    },
+    {
+      "exceptionId": "operations.exception.multiple_route_exceptions.3",
+      "exceptionType": "MULTIPLE_ROUTE_EXCEPTIONS",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 67
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "operations.exception.human_review_required.4",
+      "exceptionType": "HUMAN_REVIEW_REQUIRED",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P4",
+        "score": 47
+      },
+      "severity": "LOW"
+    },
+    {
+      "exceptionId": "operations.exception.supervisor_alert_unresolved.1",
+      "exceptionType": "SUPERVISOR_ALERT_UNRESOLVED",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "operations.exception.route_operation_exception.1",
+      "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "operations.exception.warehouse_departure_blocker_active.2",
+      "exceptionType": "WAREHOUSE_DEPARTURE_BLOCKER_ACTIVE",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P2",
+        "score": 82
+      },
+      "severity": "HIGH"
+    },
+    {
+      "exceptionId": "operations.exception.vehicle_route_blocker_active.3",
+      "exceptionType": "VEHICLE_ROUTE_BLOCKER_ACTIVE",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P2",
+        "score": 82
+      },
+      "severity": "HIGH"
+    },
+    {
+      "exceptionId": "operations.exception.multiple_route_exceptions.4",
+      "exceptionType": "MULTIPLE_ROUTE_EXCEPTIONS",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "operations.exception.cross_domain_operational_conflict.5",
+      "exceptionType": "CROSS_DOMAIN_OPERATIONAL_CONFLICT",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P5",
+        "score": 22
+      },
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "exceptionId": "operations.exception.route_operation_exception.1",
+      "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "operations.exception.route_safety_blocker_active.2",
+      "exceptionType": "ROUTE_SAFETY_BLOCKER_ACTIVE",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P1",
+        "score": 102
+      },
+      "severity": "CRITICAL"
+    },
+    {
+      "exceptionId": "operations.exception.multiple_route_exceptions.3",
+      "exceptionType": "MULTIPLE_ROUTE_EXCEPTIONS",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 64
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "operations.exception.warehouse_departure_blocker_active.1",
+      "exceptionType": "WAREHOUSE_DEPARTURE_BLOCKER_ACTIVE",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P2",
+        "score": 82
+      },
+      "severity": "HIGH"
+    },
+    {
+      "exceptionId": "operations.exception.vehicle_route_blocker_active.2",
+      "exceptionType": "VEHICLE_ROUTE_BLOCKER_ACTIVE",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P2",
+        "score": 82
+      },
+      "severity": "HIGH"
+    },
+    {
+      "exceptionId": "operations.exception.multiple_route_exceptions.3",
+      "exceptionType": "MULTIPLE_ROUTE_EXCEPTIONS",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 64
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "operations.exception.route_operation_exception.1",
+      "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "operations.exception.warehouse_departure_blocker_active.2",
+      "exceptionType": "WAREHOUSE_DEPARTURE_BLOCKER_ACTIVE",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P2",
+        "score": 82
+      },
+      "severity": "HIGH"
+    },
+    {
+      "exceptionId": "operations.exception.multiple_route_exceptions.3",
+      "exceptionType": "MULTIPLE_ROUTE_EXCEPTIONS",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "operations.exception.cross_domain_operational_conflict.4",
+      "exceptionType": "CROSS_DOMAIN_OPERATIONAL_CONFLICT",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P5",
+        "score": 22
+      },
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "exceptionId": "operations.exception.route_operation_exception.1",
+      "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "operations.exception.vehicle_route_blocker_active.2",
+      "exceptionType": "VEHICLE_ROUTE_BLOCKER_ACTIVE",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P2",
+        "score": 82
+      },
+      "severity": "HIGH"
+    },
+    {
+      "exceptionId": "operations.exception.multiple_route_exceptions.3",
+      "exceptionType": "MULTIPLE_ROUTE_EXCEPTIONS",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "operations.exception.cross_domain_operational_conflict.4",
+      "exceptionType": "CROSS_DOMAIN_OPERATIONAL_CONFLICT",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P5",
+        "score": 22
+      },
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "exceptionId": "operations.exception.route_operation_exception.1",
+      "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "operations.exception.customer_service_exception_active.2",
+      "exceptionType": "CUSTOMER_SERVICE_EXCEPTION_ACTIVE",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "operations.exception.multiple_route_exceptions.3",
+      "exceptionType": "MULTIPLE_ROUTE_EXCEPTIONS",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "operations.exception.cross_domain_operational_conflict.4",
+      "exceptionType": "CROSS_DOMAIN_OPERATIONAL_CONFLICT",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P5",
+        "score": 22
+      },
+      "severity": "INFORMATIONAL"
+    },
+    {
+      "exceptionId": "operations.exception.operational_evidence_stale.1",
+      "exceptionType": "OPERATIONAL_EVIDENCE_STALE",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P5",
+        "score": 37
+      },
+      "severity": "LOW"
+    },
+    {
+      "exceptionId": "operations.exception.human_review_required.2",
+      "exceptionType": "HUMAN_REVIEW_REQUIRED",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P4",
+        "score": 42
+      },
+      "severity": "LOW"
+    },
+    {
+      "exceptionId": "operations.exception.operational_evidence_conflict.1",
+      "exceptionType": "OPERATIONAL_EVIDENCE_CONFLICT",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P4",
+        "score": 47
+      },
+      "severity": "LOW"
+    },
+    {
+      "exceptionId": "operations.exception.human_review_required.2",
+      "exceptionType": "HUMAN_REVIEW_REQUIRED",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P4",
+        "score": 47
+      },
+      "severity": "LOW"
+    },
+    {
+      "exceptionId": "operations.exception.insufficient_evidence.1",
+      "exceptionType": "INSUFFICIENT_EVIDENCE",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P4",
+        "score": 47
+      },
+      "severity": "LOW"
+    },
+    {
+      "exceptionId": "operations.exception.human_review_required.2",
+      "exceptionType": "HUMAN_REVIEW_REQUIRED",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P4",
+        "score": 47
+      },
+      "severity": "LOW"
+    },
+    {
+      "exceptionId": "operations.exception.route_operation_exception.1",
+      "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "operations.exception.human_review_required.2",
+      "exceptionType": "HUMAN_REVIEW_REQUIRED",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P4",
+        "score": 40
+      },
+      "severity": "LOW"
+    },
+    {
+      "exceptionId": "operations.exception.human_review_required.1",
+      "exceptionType": "HUMAN_REVIEW_REQUIRED",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P4",
+        "score": 47
+      },
+      "severity": "LOW"
+    },
+    {
+      "exceptionId": "operations.exception.supervisor_alert_unresolved.1",
+      "exceptionType": "SUPERVISOR_ALERT_UNRESOLVED",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "operations.exception.route_operation_exception.1",
+      "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "operations.exception.route_operation_exception.1",
+      "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+      "priority": {
+        "calculationTrace": [
+          "severity",
+          "affected operational records",
+          "human review",
+          "evidence freshness"
+        ],
+        "deterministic": true,
+        "noCustomerProfitabilityUsed": true,
+        "noEmployeeValueUsed": true,
+        "priority": "P3",
+        "score": 62
+      },
+      "severity": "MODERATE"
+    }
+  ],
+  "generatedArtifact": true,
+  "severities": [
+    "INFORMATIONAL",
+    "LOW",
+    "MODERATE",
+    "HIGH",
+    "CRITICAL",
+    "UNKNOWN"
+  ]
+}

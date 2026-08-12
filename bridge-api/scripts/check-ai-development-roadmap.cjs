@@ -189,7 +189,7 @@ function validateRoadmap(roadmap, current, options = {}) {
   if (currentRoadmap && currentRoadmap.title !== current.title) failures.push({ rule: 'CURRENT_PACKAGE_JSON_ROADMAP_MISMATCH', packageId: current.packageId });
   if (currentRoadmap && currentRoadmap.status !== current.status) failures.push({ rule: 'CURRENT_PACKAGE_STATUS_MISMATCH', packageId: current.packageId });
   if (current.packageId !== 'OPERATIONS_INTELLIGENCE') failures.push({ rule: 'CURRENT_PACKAGE_NOT_OPERATIONS_INTELLIGENCE', packageId: current.packageId });
-  if (current.status !== 'APPROVED') failures.push({ rule: 'CURRENT_OPERATIONS_STATUS_INVALID', status: current.status });
+  if (current.status !== 'IMPLEMENTED_UNCOMMITTED') failures.push({ rule: 'CURRENT_OPERATIONS_STATUS_INVALID', status: current.status });
   const currentMarkdown = read('CURRENT_AI_WORK_PACKAGE.md');
   if (!currentMarkdown.includes(`Package ID: ${current.packageId}`) || !currentMarkdown.includes(`Status: ${current.status}`)) failures.push({ rule: 'CURRENT_PACKAGE_MARKDOWN_JSON_MISMATCH' });
   for (const pkg of packages.filter((record) => record.category === 'CORE_OPERATIONAL_INTELLIGENCE')) {
@@ -257,14 +257,20 @@ function validateRoadmap(roadmap, current, options = {}) {
   if (customerApprovedScope.includes('autonomous sales') || customerApprovedScope.includes('marketing automation') || customerApprovedScope.includes('crm platform')) failures.push({ rule: 'CUSTOMER_SALES_OR_CRM_SCOPE_UNAPPROVED' });
   const operations = packages.find((pkg) => pkg.packageId === 'OPERATIONS_INTELLIGENCE');
   if (!operations) failures.push({ rule: 'OPERATIONS_PACKAGE_MISSING' });
-  if (operations && operations.status !== 'APPROVED') failures.push({ rule: 'OPERATIONS_STATUS_INVALID', status: operations.status });
+  if (operations && operations.status !== 'IMPLEMENTED_UNCOMMITTED') failures.push({ rule: 'OPERATIONS_STATUS_INVALID', status: operations.status });
   if (operations && operations.packageId !== 'OPERATIONS_INTELLIGENCE') failures.push({ rule: 'OPERATIONS_PACKAGE_NUMBER_FABRICATED', packageId: operations.packageId });
   for (const pkg of packages) {
     if (pkg.title === 'Operations Intelligence' && pkg.packageId !== 'OPERATIONS_INTELLIGENCE') failures.push({ rule: 'OPERATIONS_PACKAGE_NUMBER_FABRICATED', packageId: pkg.packageId });
   }
   if (operations && operations.objective !== OPERATIONS_OBJECTIVE) failures.push({ rule: 'OPERATIONS_OBJECTIVE_INVALID', objective: operations.objective });
   if (operations && JSON.stringify(operations.approvedScope) !== JSON.stringify(OPERATIONS_APPROVED_SCOPE)) failures.push({ rule: 'OPERATIONS_APPROVED_SCOPE_INVALID', approvedScope: operations.approvedScope });
-  if (operations && (operations.implementationCommit || operations.localCommitVerified || operations.remoteCommitVerified || operations.pushed || operations.deployed || operations.deploymentVerified || operations.migrationExecuted || operations.documentationPath || operations.productionImpact !== 'NONE')) failures.push({ rule: 'OPERATIONS_IMPLEMENTED_WITHOUT_EVIDENCE' });
+  if (operations && (operations.implementationCommit || operations.localCommitVerified || operations.remoteCommitVerified || operations.pushed)) failures.push({ rule: 'OPERATIONS_IMPLEMENTED_WITHOUT_EVIDENCE' });
+  if (operations && (operations.deployed || operations.deploymentVerified || operations.migrationExecuted || operations.productionImpact !== 'REPOSITORY_ONLY_FOUNDATION')) failures.push({ rule: 'OPERATIONS_FALSE_PRODUCTION_STATE' });
+  if (operations && operations.documentationPath !== 'docs/implementation/operations-intelligence-foundation') failures.push({ rule: 'OPERATIONS_DOCUMENTATION_PATH_INVALID', documentationPath: operations.documentationPath });
+  if (!fs.existsSync(path.join(paths.backendRoot, 'services', 'intelligenceExecution', 'operationsIntelligence.js'))) failures.push({ rule: 'OPERATIONS_IMPLEMENTATION_EVIDENCE_MISSING' });
+  if (!fs.existsSync(path.join(paths.backendRoot, 'scripts', 'check-operations-intelligence.cjs'))) failures.push({ rule: 'OPERATIONS_IMPLEMENTATION_EVIDENCE_MISSING' });
+  if (!fs.existsSync(path.join(paths.backendRoot, 'scripts', 'generate-operations-intelligence-artifacts.cjs'))) failures.push({ rule: 'OPERATIONS_IMPLEMENTATION_EVIDENCE_MISSING' });
+  if (!fs.existsSync(path.join(paths.repoRoot, 'docs', 'implementation', 'operations-intelligence-foundation', 'README.md'))) failures.push({ rule: 'OPERATIONS_IMPLEMENTATION_EVIDENCE_MISSING' });
   const operationsScope = `${(operations?.approvedScope || []).join(' ')} ${(operations?.prohibitedScope || []).join(' ')}`.toLowerCase();
   for (const phrase of OPERATIONS_PROHIBITED_PHRASES) {
     if (!operationsScope.includes(phrase)) failures.push({ rule: 'OPERATIONS_PROHIBITED_SCOPE_INCOMPLETE', phrase });

@@ -1,0 +1,3 @@
+# Operations Exception Model
+
+Exception types: ROUTE_OPERATION_EXCEPTION, MULTIPLE_ROUTE_EXCEPTIONS, ROUTE_SAFETY_BLOCKER_ACTIVE, WAREHOUSE_DEPARTURE_BLOCKER_ACTIVE, VEHICLE_ROUTE_BLOCKER_ACTIVE, CUSTOMER_SERVICE_EXCEPTION_ACTIVE, DRIVER_OPERATIONAL_EVIDENCE_UNAVAILABLE, SUPERVISOR_ALERT_UNRESOLVED, CROSS_DOMAIN_OPERATIONAL_CONFLICT, OPERATIONAL_EVIDENCE_STALE, OPERATIONAL_EVIDENCE_CONFLICT, OPERATIONAL_EVIDENCE_INCOMPLETE, HUMAN_REVIEW_REQUIRED, INSUFFICIENT_EVIDENCE. Exceptions preserve organization, source domain, source record IDs, route/vehicle/customer/driver references where operationally necessary, reason codes, severity, priority, evidence, timestamps, completeness, confidence, human-review flag, employment-impact prohibition, and test-only marker.

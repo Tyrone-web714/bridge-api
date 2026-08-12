@@ -1,0 +1,727 @@
+{
+  "authorityTraces": [
+    {
+      "contextHash": "a16016adb5d584a2994eaa46bcf700164f81b52f7b41c3c51c997acae23561aa",
+      "crossOrganizationAggregationRejected": false,
+      "lowerDomainsRemainAuthoritative": true,
+      "sourceDomainEvidence": [
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "4d45eeff9bcd85c580f156b421ea007e494e75a6efc8c5a530a89d9080118971",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "4d45eeff9bcd85c580f156b421ea007e494e75a6efc8c5a530a89d9080118971",
+          "sourceRecordId": "route.normal",
+          "sourceStatus": "COMPLETED",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        },
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "acfe01aa8ae3eb4f7dd07cebbe6386b67cb4599da24cff20cd03f12fbe940fda",
+          "sourceDomain": "WAREHOUSE",
+          "sourceHash": "acfe01aa8ae3eb4f7dd07cebbe6386b67cb4599da24cff20cd03f12fbe940fda",
+          "sourceRecordId": "warehouse.ready",
+          "sourceStatus": "READY",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        },
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "57cbe27ad84d7c56ac59ea0bb4dfa150cc4dd26b838604e40ceec373a609142b",
+          "sourceDomain": "FLEET",
+          "sourceHash": "57cbe27ad84d7c56ac59ea0bb4dfa150cc4dd26b838604e40ceec373a609142b",
+          "sourceRecordId": "fleet.ready",
+          "sourceStatus": "AVAILABLE",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        },
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "8d7d91c002a8f70f8d2658ad8b9e70ef3193aa30603971bee132ad39db53b200",
+          "sourceDomain": "CUSTOMER",
+          "sourceHash": "8d7d91c002a8f70f8d2658ad8b9e70ef3193aa30603971bee132ad39db53b200",
+          "sourceRecordId": "customer.normal",
+          "sourceStatus": "NORMAL",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "contextHash": "9b9f0e26fcbea31502121015a9aed6d99774d55c81f5981fc8bdf8da741fafb0",
+      "crossOrganizationAggregationRejected": false,
+      "lowerDomainsRemainAuthoritative": true,
+      "sourceDomainEvidence": [
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "dabb338e09760b63eea3f3ca91054884628b4584f3baf47570f0037a534a95b9",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "dabb338e09760b63eea3f3ca91054884628b4584f3baf47570f0037a534a95b9",
+          "sourceRecordId": "route.delayed",
+          "sourceStatus": "DELAYED",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "contextHash": "6d2afb0bc037c9cbfca3a380abe6db51a781c273eda365a8ac625d0bed4a7f96",
+      "crossOrganizationAggregationRejected": false,
+      "lowerDomainsRemainAuthoritative": true,
+      "sourceDomainEvidence": [
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "fcc581ea9ba482e4ee15d76a02f3e1b94ca5606487835b1eb8fb407d74c53643",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "fcc581ea9ba482e4ee15d76a02f3e1b94ca5606487835b1eb8fb407d74c53643",
+          "sourceRecordId": "route.delayed.1",
+          "sourceStatus": "DELAYED",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        },
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "282d3f7235c266aa7a884c01940d1c90f34118e6cbc65b9edf09e17e0bf46d67",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "282d3f7235c266aa7a884c01940d1c90f34118e6cbc65b9edf09e17e0bf46d67",
+          "sourceRecordId": "route.delayed.2",
+          "sourceStatus": "DELAYED",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "contextHash": "799dfe6f8959d1c590a58ce08b8f4fcdd1df577e81783003ecb0edb7a3400414",
+      "crossOrganizationAggregationRejected": false,
+      "lowerDomainsRemainAuthoritative": true,
+      "sourceDomainEvidence": [
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "933017a37d433b247752e443ca84d4df4c395285399574ff0a8d8c7f58df09ae",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "933017a37d433b247752e443ca84d4df4c395285399574ff0a8d8c7f58df09ae",
+          "sourceRecordId": "route.safety",
+          "sourceStatus": "BLOCKED",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "contextHash": "d31e0a7f2fa2a65f96e5fa98a934f8d5bb22b40f9919e8ee9a2ca1e6b389f756",
+      "crossOrganizationAggregationRejected": false,
+      "lowerDomainsRemainAuthoritative": true,
+      "sourceDomainEvidence": [
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "cf9170554c5321ffb95d8f6efa65bedeea9ac8f917ececba9757cf316087961d",
+          "sourceDomain": "WAREHOUSE",
+          "sourceHash": "cf9170554c5321ffb95d8f6efa65bedeea9ac8f917ececba9757cf316087961d",
+          "sourceRecordId": "warehouse.blocker",
+          "sourceStatus": "BLOCKED",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "contextHash": "6fde77c387da0b969df5c9db68478884fad61af66374ff35cb83e2013688f568",
+      "crossOrganizationAggregationRejected": false,
+      "lowerDomainsRemainAuthoritative": true,
+      "sourceDomainEvidence": [
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "320d05baa350ba4e5f0a622ccb120d2c72dcb9341efa5f5c8e41cad5a58e7bc2",
+          "sourceDomain": "FLEET",
+          "sourceHash": "320d05baa350ba4e5f0a622ccb120d2c72dcb9341efa5f5c8e41cad5a58e7bc2",
+          "sourceRecordId": "fleet.blocker",
+          "sourceStatus": "OUT_OF_SERVICE",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "contextHash": "5c817941788dac125de8a16289ef6d8f939eb25645e7c7609b59fbfaefbfe7b5",
+      "crossOrganizationAggregationRejected": false,
+      "lowerDomainsRemainAuthoritative": true,
+      "sourceDomainEvidence": [
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "108ee3b91d26f90306fd64d491ecd57b3fea558a181416687a59a7719221adbd",
+          "sourceDomain": "CUSTOMER",
+          "sourceHash": "108ee3b91d26f90306fd64d491ecd57b3fea558a181416687a59a7719221adbd",
+          "sourceRecordId": "customer.exception",
+          "sourceStatus": "UNRESOLVED",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "contextHash": "51facfaf8d137e2eea798ab21f3b99930be305b2d832ef92303af6da6fd84698",
+      "crossOrganizationAggregationRejected": false,
+      "lowerDomainsRemainAuthoritative": true,
+      "sourceDomainEvidence": [
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "a93c1ed341c9c3d0f3cbf6da214917069af4b5c045643a3d1929b6309d00b76a",
+          "sourceDomain": "DRIVER",
+          "sourceHash": "a93c1ed341c9c3d0f3cbf6da214917069af4b5c045643a3d1929b6309d00b76a",
+          "sourceRecordId": "driver.route-001",
+          "sourceStatus": "INSUFFICIENT_EVIDENCE",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "contextHash": "ea329c9cbed7f79caff7bd75c6807d2755c7464f66b91bd2d291cb998779c939",
+      "crossOrganizationAggregationRejected": false,
+      "lowerDomainsRemainAuthoritative": true,
+      "sourceDomainEvidence": [
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "a94dd0d731bfc4886f0fe5bd91d1e6a7b50da37b035b507a66b7d736dd9ad645",
+          "sourceDomain": "SUPERVISOR",
+          "sourceHash": "a94dd0d731bfc4886f0fe5bd91d1e6a7b50da37b035b507a66b7d736dd9ad645",
+          "sourceRecordId": "supervisor.alert",
+          "sourceStatus": "OPEN",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "contextHash": "fa6ac083d362b96b8534b7f77c41dc7911cdf50814b69ddf8e5caf5eaa598b15",
+      "crossOrganizationAggregationRejected": false,
+      "lowerDomainsRemainAuthoritative": true,
+      "sourceDomainEvidence": [
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "c8b6fa66cdb165cbf7998f5376fa7d43d595d76351f7119927cc1fe7de9b9621",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "c8b6fa66cdb165cbf7998f5376fa7d43d595d76351f7119927cc1fe7de9b9621",
+          "sourceRecordId": "route.blocked",
+          "sourceStatus": "BLOCKED",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        },
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "496fb6e1bae507b0a2352be7605a6dd59cdd2053922af8185f914e4cb501bb64",
+          "sourceDomain": "WAREHOUSE",
+          "sourceHash": "496fb6e1bae507b0a2352be7605a6dd59cdd2053922af8185f914e4cb501bb64",
+          "sourceRecordId": "warehouse.blocked",
+          "sourceStatus": "BLOCKED",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        },
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "e644cccbdc17bc99dc2ebb771e1d1e0e60353c335e5c890ef6c27fbbde51d111",
+          "sourceDomain": "FLEET",
+          "sourceHash": "e644cccbdc17bc99dc2ebb771e1d1e0e60353c335e5c890ef6c27fbbde51d111",
+          "sourceRecordId": "fleet.blocked",
+          "sourceStatus": "OUT_OF_SERVICE",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "contextHash": "dd826231682a68f6e50c2b14750366e597c7224696a80af7548dc47e212c6752",
+      "crossOrganizationAggregationRejected": false,
+      "lowerDomainsRemainAuthoritative": true,
+      "sourceDomainEvidence": [
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "66b6829780c758dc1ace51837dba771e6cc71122ba163538557bb8be8a6bb9ec",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "66b6829780c758dc1ace51837dba771e6cc71122ba163538557bb8be8a6bb9ec",
+          "sourceRecordId": "route.delay",
+          "sourceStatus": "DELAYED",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        },
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "8130b5cab86f086d174105b19e0b81db90c256a81e2c03589c4494b9b51f29c9",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "8130b5cab86f086d174105b19e0b81db90c256a81e2c03589c4494b9b51f29c9",
+          "sourceRecordId": "route.safety.critical",
+          "sourceStatus": "BLOCKED",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "contextHash": "93a5c4e49fac59f6a7313a0a6df942b6aae51c9636fe4d090f19c3a3e3bfde63",
+      "crossOrganizationAggregationRejected": false,
+      "lowerDomainsRemainAuthoritative": true,
+      "sourceDomainEvidence": [
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "49d71daa4c0f593a894aa85bfc6f480d7d8b3d48afe12244d2a43ea79f9333c7",
+          "sourceDomain": "WAREHOUSE",
+          "sourceHash": "49d71daa4c0f593a894aa85bfc6f480d7d8b3d48afe12244d2a43ea79f9333c7",
+          "sourceRecordId": "warehouse.route1",
+          "sourceStatus": "NORMAL",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        },
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "7f5b98a9b4252a9462a073bc5948d27f3bcdd82836d603958394458552f708e2",
+          "sourceDomain": "FLEET",
+          "sourceHash": "7f5b98a9b4252a9462a073bc5948d27f3bcdd82836d603958394458552f708e2",
+          "sourceRecordId": "fleet.route2",
+          "sourceStatus": "NORMAL",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "contextHash": "bf6bcb5657dde7c2e908d4f5b4e2e45cf2e446ad7747dd3561d45fc8badd9067",
+      "crossOrganizationAggregationRejected": false,
+      "lowerDomainsRemainAuthoritative": true,
+      "sourceDomainEvidence": [
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "581a0301f1dc4c6ae24434d36f114c2b3b50767abae6cc1918e4e75733e33bf9",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "581a0301f1dc4c6ae24434d36f114c2b3b50767abae6cc1918e4e75733e33bf9",
+          "sourceRecordId": "route.delay.corr",
+          "sourceStatus": "DELAYED",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        },
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "47751b1ee4d11ec3c3e2f3ddc0c01c551c28d487ed45dfe8da2c9b277d2bf6cb",
+          "sourceDomain": "WAREHOUSE",
+          "sourceHash": "47751b1ee4d11ec3c3e2f3ddc0c01c551c28d487ed45dfe8da2c9b277d2bf6cb",
+          "sourceRecordId": "warehouse.delay.corr",
+          "sourceStatus": "NORMAL",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "contextHash": "4e8e7a04370d010538feb0fcd12aadf7c25b2bd665b03c021e60e09405d51b0d",
+      "crossOrganizationAggregationRejected": false,
+      "lowerDomainsRemainAuthoritative": true,
+      "sourceDomainEvidence": [
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "907bf5fffa9770616baf63c2be9f9c76841db5bfc441c194d047dba799210540",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "907bf5fffa9770616baf63c2be9f9c76841db5bfc441c194d047dba799210540",
+          "sourceRecordId": "route.vehicle.corr",
+          "sourceStatus": "BLOCKED",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        },
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "c44c6300795ada3e0e845364928582dc3b09b3ec44a1bad954b2e8ef6883c602",
+          "sourceDomain": "FLEET",
+          "sourceHash": "c44c6300795ada3e0e845364928582dc3b09b3ec44a1bad954b2e8ef6883c602",
+          "sourceRecordId": "fleet.vehicle.corr",
+          "sourceStatus": "NORMAL",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "contextHash": "553477b06268eab412da13601837d8b98f2c9698d936ea530b8a2dbcfb0577d6",
+      "crossOrganizationAggregationRejected": false,
+      "lowerDomainsRemainAuthoritative": true,
+      "sourceDomainEvidence": [
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "0d7f0a4a4acfcb8568167251d186b116deb48f01e9771f962fb5f77f88bbeed5",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "0d7f0a4a4acfcb8568167251d186b116deb48f01e9771f962fb5f77f88bbeed5",
+          "sourceRecordId": "route.customer.corr",
+          "sourceStatus": "DELAYED",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        },
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "886c854f5ecc02551010803d2fcccd8618948a8942c4f21c892f31acc95b9fce",
+          "sourceDomain": "CUSTOMER",
+          "sourceHash": "886c854f5ecc02551010803d2fcccd8618948a8942c4f21c892f31acc95b9fce",
+          "sourceRecordId": "customer.route.corr",
+          "sourceStatus": "NORMAL",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "contextHash": "ed30673d1b50fd28448ee8a8d3a513569349518e579e30ceeb425746cec35b35",
+      "crossOrganizationAggregationRejected": false,
+      "lowerDomainsRemainAuthoritative": true,
+      "sourceDomainEvidence": [
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "358fcabd5b9f464de67cfb4b606ea6a4a4e17e24625fe299b21f9691b61ff97c",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "358fcabd5b9f464de67cfb4b606ea6a4a4e17e24625fe299b21f9691b61ff97c",
+          "sourceRecordId": "route.stale",
+          "sourceStatus": "NORMAL",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "contextHash": "4b8d46c191c238ac9e2c33b221cd871c4e9f591945a63eee47d2a22275a1d05e",
+      "crossOrganizationAggregationRejected": false,
+      "lowerDomainsRemainAuthoritative": true,
+      "sourceDomainEvidence": [
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "5966cb1f7ce7b0c92ef210c2adf8705e7e2218c9e491902c2c82a01d2ea454f8",
+          "sourceDomain": "WAREHOUSE",
+          "sourceHash": "5966cb1f7ce7b0c92ef210c2adf8705e7e2218c9e491902c2c82a01d2ea454f8",
+          "sourceRecordId": "warehouse.conflict",
+          "sourceStatus": "NORMAL",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "contextHash": "0199b17b8c8bcd03a69cee28e8504176532dbea530f4b64a6f4411a43f5af041",
+      "crossOrganizationAggregationRejected": false,
+      "lowerDomainsRemainAuthoritative": true,
+      "sourceDomainEvidence": [
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "0a4ee1c9f76e221eebe45334deed782bfc4798694aa34635bff963915401b70e",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "0a4ee1c9f76e221eebe45334deed782bfc4798694aa34635bff963915401b70e",
+          "sourceRecordId": "route.route-001",
+          "sourceStatus": "INSUFFICIENT_EVIDENCE",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "contextHash": "548c62e6cd1eeb2db7b725f6f81d0f017b05c3f1143875712447cb2a9916e7b5",
+      "crossOrganizationAggregationRejected": true,
+      "lowerDomainsRemainAuthoritative": true,
+      "sourceDomainEvidence": [
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "159d9b66252cf85362dc54e4c4b86589b2e2bd9c5c7ed82ed0b9b14edc631fe6",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "159d9b66252cf85362dc54e4c4b86589b2e2bd9c5c7ed82ed0b9b14edc631fe6",
+          "sourceRecordId": "route.crossorg",
+          "sourceStatus": "DELAYED",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "contextHash": "e128e8dd540edb87e50bb2f0578eceea27a7a3988985ca4243677e9013f4ce2c",
+      "crossOrganizationAggregationRejected": false,
+      "lowerDomainsRemainAuthoritative": true,
+      "sourceDomainEvidence": [
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "0a1cb17c74af82f535bbb083d26adbbc00190e45c97ef0f3a686a7a705c53410",
+          "sourceDomain": "SUPERVISOR",
+          "sourceHash": "0a1cb17c74af82f535bbb083d26adbbc00190e45c97ef0f3a686a7a705c53410",
+          "sourceRecordId": "supervisor.review",
+          "sourceStatus": "NORMAL",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "contextHash": "c0b80ac1971609db54d9ecbe3b731eccd48728c19edece3e7e7faf84a12e8b44",
+      "crossOrganizationAggregationRejected": false,
+      "lowerDomainsRemainAuthoritative": true,
+      "sourceDomainEvidence": [
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "5460ba8fbbd7d2b3c64a76f1e67091730e860a81599718cf5dd5e92e852f0b4c",
+          "sourceDomain": "SUPERVISOR",
+          "sourceHash": "5460ba8fbbd7d2b3c64a76f1e67091730e860a81599718cf5dd5e92e852f0b4c",
+          "sourceRecordId": "supervisor.ack",
+          "sourceStatus": "OPEN",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "contextHash": "9aa579f98ec525b1624570e9382092d97539644e5178b9b155fdbfba30256e6e",
+      "crossOrganizationAggregationRejected": false,
+      "lowerDomainsRemainAuthoritative": true,
+      "sourceDomainEvidence": [
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "2b30eafbdf4b4084ce2d6abe802a9ccbc9ae4532a6dd94c001771678b3e5adb1",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "2b30eafbdf4b4084ce2d6abe802a9ccbc9ae4532a6dd94c001771678b3e5adb1",
+          "sourceRecordId": "route.resolve",
+          "sourceStatus": "DELAYED",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "contextHash": "156b2c7f2beae5750621683775b044200a112ba15282a53ef553028b39d53482",
+      "crossOrganizationAggregationRejected": false,
+      "lowerDomainsRemainAuthoritative": true,
+      "sourceDomainEvidence": [
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "2548d3fe00e6a9c36fe13e71c68b3cd63a0ee63457deb8412038c52dbfead609",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "2548d3fe00e6a9c36fe13e71c68b3cd63a0ee63457deb8412038c52dbfead609",
+          "sourceRecordId": "route.invalidate",
+          "sourceStatus": "DELAYED",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "contextHash": "46b565a884f356b2c8cfed0331ccfcceef162abdb3ea57f08f893c2ba4ffc12f",
+      "crossOrganizationAggregationRejected": false,
+      "lowerDomainsRemainAuthoritative": true,
+      "sourceDomainEvidence": [
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "009b96e857252b1c9b28d2cc2c0c5ca890ad948ec6f284dab52f1ac2528876c7",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "009b96e857252b1c9b28d2cc2c0c5ca890ad948ec6f284dab52f1ac2528876c7",
+          "sourceRecordId": "route.ok",
+          "sourceStatus": "COMPLETED",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        },
+        {
+          "aggregationRule": "operations.aggregate.by-domain-and-route.v1",
+          "aggregationVersion": "operations.intelligence.foundation.engine.v1",
+          "resultHash": "4ab1dcc8d5d1ff98d098e02387d81b9ba4ca7bc29a10e586aa8921716bf16381",
+          "sourceDomain": "DRIVER",
+          "sourceHash": "4ab1dcc8d5d1ff98d098e02387d81b9ba4ca7bc29a10e586aa8921716bf16381",
+          "sourceRecordId": "driver.ok",
+          "sourceStatus": "ACTIVE",
+          "sourceTimestamp": "2026-08-11T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    }
+  ],
+  "correlations": [
+    {
+      "causationClaimed": false,
+      "correlationHash": "abecf05d4a82a34df4028da11d077eff02ae3ae55cc03170a4989fff2cdc8c11",
+      "correlationId": "operations.correlation.route-001",
+      "correlationMeaning": "known facts co-occur within the supported operational relationship",
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relationshipKey": "route-001",
+      "sourceDomains": [
+        "CUSTOMER",
+        "FLEET",
+        "ROUTE",
+        "WAREHOUSE"
+      ],
+      "sourceRecordIds": [
+        "customer.normal",
+        "fleet.ready",
+        "route.normal",
+        "warehouse.ready"
+      ],
+      "testOnly": true
+    },
+    {
+      "causationClaimed": false,
+      "correlationHash": "6a72bc75b1c91ef029e97876db96395f1c90f0bf2069556c90996fc4a0c60d63",
+      "correlationId": "operations.correlation.route-001",
+      "correlationMeaning": "known facts co-occur within the supported operational relationship",
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relationshipKey": "route-001",
+      "sourceDomains": [
+        "FLEET",
+        "ROUTE",
+        "WAREHOUSE"
+      ],
+      "sourceRecordIds": [
+        "fleet.blocked",
+        "route.blocked",
+        "warehouse.blocked"
+      ],
+      "testOnly": true
+    },
+    {
+      "causationClaimed": false,
+      "correlationHash": "bbb7000ae9b260055ed0b7296d312ee04fa8398643f63df16331597aed1108e3",
+      "correlationId": "operations.correlation.route-001",
+      "correlationMeaning": "known facts co-occur within the supported operational relationship",
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relationshipKey": "route-001",
+      "sourceDomains": [
+        "ROUTE",
+        "WAREHOUSE"
+      ],
+      "sourceRecordIds": [
+        "route.delay.corr",
+        "warehouse.delay.corr"
+      ],
+      "testOnly": true
+    },
+    {
+      "causationClaimed": false,
+      "correlationHash": "dbe92f1fa9726945f7d825394e6cd01c93ee34caebb1fb887ab48b3cf3ed6f24",
+      "correlationId": "operations.correlation.route-001",
+      "correlationMeaning": "known facts co-occur within the supported operational relationship",
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relationshipKey": "route-001",
+      "sourceDomains": [
+        "FLEET",
+        "ROUTE"
+      ],
+      "sourceRecordIds": [
+        "fleet.vehicle.corr",
+        "route.vehicle.corr"
+      ],
+      "testOnly": true
+    },
+    {
+      "causationClaimed": false,
+      "correlationHash": "fb6ff524d0a15e824c110d03ec98925c6c783bf604686f3971964b469a80b045",
+      "correlationId": "operations.correlation.route-001",
+      "correlationMeaning": "known facts co-occur within the supported operational relationship",
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "relatedRouteIds": [
+        "route-001"
+      ],
+      "relationshipKey": "route-001",
+      "sourceDomains": [
+        "CUSTOMER",
+        "ROUTE"
+      ],
+      "sourceRecordIds": [
+        "customer.route.corr",
+        "route.customer.corr"
+      ],
+      "testOnly": true
+    },
+    {
+      "causationClaimed": false,
+      "correlationHash": "c97c09f454f2481644dc4e9573a009c61733f3693186585458124f6787781a40",
+      "correlationId": "operations.correlation.route-003",
+      "correlationMeaning": "known facts co-occur within the supported operational relationship",
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "relatedRouteIds": [
+        "route-003"
+      ],
+      "relationshipKey": "route-003",
+      "sourceDomains": [
+        "DRIVER",
+        "ROUTE"
+      ],
+      "sourceRecordIds": [
+        "driver.ok",
+        "route.ok"
+      ],
+      "testOnly": true
+    }
+  ],
+  "generatedArtifact": true
+}

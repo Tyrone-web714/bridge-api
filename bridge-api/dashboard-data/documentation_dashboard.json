@@ -17,7 +17,7 @@
       "dashboard-data/documentation_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "bc7aab7012e266fd02c7aa28f2a74c7353977371e5dd3483085c1a3ed3381e6e",
+    "generationHash": "0864412a059a133d320002ed49e11de4c08beae3eb5cb4b6ccdb5d15da4c242e",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -61,6 +61,7 @@
         "docs/implementation/mobile-tenant-context": 14,
         "docs/implementation/multi-tenant-foundation": 12,
         "docs/implementation/operational-readiness-verification": 17,
+        "docs/implementation/operations-intelligence-foundation": 53,
         "docs/implementation/pilot-integration-hardening": 26,
         "docs/implementation/platform-integration-verification": 10,
         "docs/implementation/private-r2-final-shutdown-validation": 19,
@@ -74,11 +75,11 @@
         "docs/implementation/warehouse-intelligence-foundation": 51,
         "docs/implementation/web-origin-private-media-hardening": 16
       },
-      "generatedDocs": 223
+      "generatedDocs": 234
     },
     "statusIndicators": [],
     "summary": {
-      "documentationFiles": 1173
+      "documentationFiles": 1226
     },
     "testOnly": true,
     "unknownValues": [],

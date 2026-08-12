@@ -20,7 +20,7 @@
       "dashboard-data/capability_coverage_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "159ccfe52fe87cdecfe91c0f2228a70113a76dea2e10941d957a33fbddfdc5fb",
+    "generationHash": "4f9bf8cce1e099820420a82118178e48363be974837b2df5bdc4ecac930abd53",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -67,6 +67,7 @@
         "docs/implementation/mobile-tenant-context": 14,
         "docs/implementation/multi-tenant-foundation": 12,
         "docs/implementation/operational-readiness-verification": 17,
+        "docs/implementation/operations-intelligence-foundation": 53,
         "docs/implementation/pilot-integration-hardening": 26,
         "docs/implementation/platform-integration-verification": 10,
         "docs/implementation/private-r2-final-shutdown-validation": 19,
@@ -80,7 +81,7 @@
         "docs/implementation/warehouse-intelligence-foundation": 51,
         "docs/implementation/web-origin-private-media-hardening": 16
       },
-      "testScripts": 48
+      "testScripts": 49
     },
     "statusIndicators": [],
     "summary": {

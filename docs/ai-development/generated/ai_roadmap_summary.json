@@ -281,10 +281,10 @@
       "nextApprovedPackage": null,
       "ownerApprovalRequired": true,
       "packageId": "OPERATIONS_INTELLIGENCE",
-      "productionImpact": "NONE",
+      "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
       "pushed": false,
       "remoteCommitVerified": false,
-      "status": "APPROVED",
+      "status": "IMPLEMENTED_UNCOMMITTED",
       "title": "Operations Intelligence"
     },
     {

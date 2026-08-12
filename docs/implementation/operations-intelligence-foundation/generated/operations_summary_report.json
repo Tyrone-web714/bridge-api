@@ -1,0 +1,1685 @@
+{
+  "explanations": [
+    {
+      "causationInferredWithoutEvidence": false,
+      "conflictingEvidence": [],
+      "contributingDomains": [
+        "CUSTOMER",
+        "FLEET",
+        "ROUTE",
+        "WAREHOUSE"
+      ],
+      "correlations": [
+        {
+          "causationClaimed": false,
+          "correlationId": "operations.correlation.route-001",
+          "sourceDomains": [
+            "CUSTOMER",
+            "FLEET",
+            "ROUTE",
+            "WAREHOUSE"
+          ]
+        }
+      ],
+      "employeeIntentInferred": false,
+      "exceptionReasons": [],
+      "explanationHash": "716a7884dd6f7c60ddc0d692a0c2db99adf70a98d9a4a382eb67a5a310c4bf8e",
+      "futureOutcomePredicted": false,
+      "humanReviewReasons": [],
+      "knownState": "Operations snapshot aggregates 4 lower-domain evidence records.",
+      "missingEvidence": [],
+      "negligenceInferred": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "staleEvidence": [],
+      "testOnly": true
+    },
+    {
+      "causationInferredWithoutEvidence": false,
+      "conflictingEvidence": [],
+      "contributingDomains": [
+        "ROUTE"
+      ],
+      "correlations": [],
+      "employeeIntentInferred": false,
+      "exceptionReasons": [
+        {
+          "exceptionId": "operations.exception.route_operation_exception.1",
+          "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+          "priority": "P3",
+          "reasonCodes": [
+            "ROUTE_DELAYED"
+          ],
+          "severity": "MODERATE"
+        }
+      ],
+      "explanationHash": "ef04f1168038f5f74f10d14f2dd2f36ccee10c9baeee9ad868c16e0fc35a5126",
+      "futureOutcomePredicted": false,
+      "humanReviewReasons": [],
+      "knownState": "Operations snapshot aggregates 1 lower-domain evidence records.",
+      "missingEvidence": [],
+      "negligenceInferred": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "staleEvidence": [],
+      "testOnly": true
+    },
+    {
+      "causationInferredWithoutEvidence": false,
+      "conflictingEvidence": [],
+      "contributingDomains": [
+        "ROUTE"
+      ],
+      "correlations": [],
+      "employeeIntentInferred": false,
+      "exceptionReasons": [
+        {
+          "exceptionId": "operations.exception.route_operation_exception.1",
+          "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+          "priority": "P3",
+          "reasonCodes": [
+            "ROUTE_DELAYED"
+          ],
+          "severity": "MODERATE"
+        },
+        {
+          "exceptionId": "operations.exception.route_operation_exception.2",
+          "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+          "priority": "P3",
+          "reasonCodes": [
+            "ROUTE_DELAYED"
+          ],
+          "severity": "MODERATE"
+        },
+        {
+          "exceptionId": "operations.exception.multiple_route_exceptions.3",
+          "exceptionType": "MULTIPLE_ROUTE_EXCEPTIONS",
+          "priority": "P3",
+          "reasonCodes": [
+            "ROUTE_DELAYED",
+            "CROSS_DOMAIN_CORRELATION"
+          ],
+          "severity": "MODERATE"
+        }
+      ],
+      "explanationHash": "a7be3b0e10ddf26d0620710d32dbe4f71b593439db97b1d06b2a59cc29eee888",
+      "futureOutcomePredicted": false,
+      "humanReviewReasons": [],
+      "knownState": "Operations snapshot aggregates 2 lower-domain evidence records.",
+      "missingEvidence": [],
+      "negligenceInferred": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "staleEvidence": [],
+      "testOnly": true
+    },
+    {
+      "causationInferredWithoutEvidence": false,
+      "conflictingEvidence": [],
+      "contributingDomains": [
+        "ROUTE"
+      ],
+      "correlations": [],
+      "employeeIntentInferred": false,
+      "exceptionReasons": [
+        {
+          "exceptionId": "operations.exception.route_safety_blocker_active.1",
+          "exceptionType": "ROUTE_SAFETY_BLOCKER_ACTIVE",
+          "priority": "P1",
+          "reasonCodes": [
+            "ROUTE_SAFETY_BLOCKER_ACTIVE"
+          ],
+          "severity": "CRITICAL"
+        }
+      ],
+      "explanationHash": "a2ec87ef1191257875ff919118a53bf32883d0088b25639faa5ac7b52ddcf810",
+      "futureOutcomePredicted": false,
+      "humanReviewReasons": [],
+      "knownState": "Operations snapshot aggregates 1 lower-domain evidence records.",
+      "missingEvidence": [],
+      "negligenceInferred": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "staleEvidence": [],
+      "testOnly": true
+    },
+    {
+      "causationInferredWithoutEvidence": false,
+      "conflictingEvidence": [],
+      "contributingDomains": [
+        "WAREHOUSE"
+      ],
+      "correlations": [],
+      "employeeIntentInferred": false,
+      "exceptionReasons": [
+        {
+          "exceptionId": "operations.exception.warehouse_departure_blocker_active.1",
+          "exceptionType": "WAREHOUSE_DEPARTURE_BLOCKER_ACTIVE",
+          "priority": "P2",
+          "reasonCodes": [
+            "WAREHOUSE_DEPARTURE_BLOCKER_ACTIVE"
+          ],
+          "severity": "HIGH"
+        }
+      ],
+      "explanationHash": "49c1225dd048f356102a3814624586cb7fd3d992346f45fd38268a0e5d744b2f",
+      "futureOutcomePredicted": false,
+      "humanReviewReasons": [],
+      "knownState": "Operations snapshot aggregates 1 lower-domain evidence records.",
+      "missingEvidence": [],
+      "negligenceInferred": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "staleEvidence": [],
+      "testOnly": true
+    },
+    {
+      "causationInferredWithoutEvidence": false,
+      "conflictingEvidence": [],
+      "contributingDomains": [
+        "FLEET"
+      ],
+      "correlations": [],
+      "employeeIntentInferred": false,
+      "exceptionReasons": [
+        {
+          "exceptionId": "operations.exception.vehicle_route_blocker_active.1",
+          "exceptionType": "VEHICLE_ROUTE_BLOCKER_ACTIVE",
+          "priority": "P2",
+          "reasonCodes": [
+            "VEHICLE_ROUTE_BLOCKER_ACTIVE"
+          ],
+          "severity": "HIGH"
+        }
+      ],
+      "explanationHash": "dfad050d9731fc0356513f52099a8bbe2897c32f040f4c855316db2a43ab711f",
+      "futureOutcomePredicted": false,
+      "humanReviewReasons": [],
+      "knownState": "Operations snapshot aggregates 1 lower-domain evidence records.",
+      "missingEvidence": [],
+      "negligenceInferred": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "staleEvidence": [],
+      "testOnly": true
+    },
+    {
+      "causationInferredWithoutEvidence": false,
+      "conflictingEvidence": [],
+      "contributingDomains": [
+        "CUSTOMER"
+      ],
+      "correlations": [],
+      "employeeIntentInferred": false,
+      "exceptionReasons": [
+        {
+          "exceptionId": "operations.exception.customer_service_exception_active.1",
+          "exceptionType": "CUSTOMER_SERVICE_EXCEPTION_ACTIVE",
+          "priority": "P3",
+          "reasonCodes": [
+            "CUSTOMER_SERVICE_EXCEPTION_ACTIVE"
+          ],
+          "severity": "MODERATE"
+        }
+      ],
+      "explanationHash": "8733119b451c9e6086f64bcf7760a7ced5ecc2174233d25cbe73f30c6ff29fa3",
+      "futureOutcomePredicted": false,
+      "humanReviewReasons": [],
+      "knownState": "Operations snapshot aggregates 1 lower-domain evidence records.",
+      "missingEvidence": [],
+      "negligenceInferred": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "staleEvidence": [],
+      "testOnly": true
+    },
+    {
+      "causationInferredWithoutEvidence": false,
+      "conflictingEvidence": [],
+      "contributingDomains": [
+        "DRIVER"
+      ],
+      "correlations": [],
+      "employeeIntentInferred": false,
+      "exceptionReasons": [
+        {
+          "exceptionId": "operations.exception.driver_operational_evidence_unavailable.1",
+          "exceptionType": "DRIVER_OPERATIONAL_EVIDENCE_UNAVAILABLE",
+          "priority": "P4",
+          "reasonCodes": [
+            "DRIVER_EVIDENCE_MISSING"
+          ],
+          "severity": "LOW"
+        },
+        {
+          "exceptionId": "operations.exception.insufficient_evidence.2",
+          "exceptionType": "INSUFFICIENT_EVIDENCE",
+          "priority": "P4",
+          "reasonCodes": [
+            "EVIDENCE_INCOMPLETE"
+          ],
+          "severity": "LOW"
+        },
+        {
+          "exceptionId": "operations.exception.multiple_route_exceptions.3",
+          "exceptionType": "MULTIPLE_ROUTE_EXCEPTIONS",
+          "priority": "P3",
+          "reasonCodes": [
+            "ROUTE_DELAYED",
+            "CROSS_DOMAIN_CORRELATION"
+          ],
+          "severity": "MODERATE"
+        },
+        {
+          "exceptionId": "operations.exception.human_review_required.4",
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "priority": "P4",
+          "reasonCodes": [
+            "HUMAN_REVIEW"
+          ],
+          "severity": "LOW"
+        }
+      ],
+      "explanationHash": "338f2a0a754947b34eb94bcdc4cf20ef603c5e0c7f13a330134c9cac077999de",
+      "futureOutcomePredicted": false,
+      "humanReviewReasons": [
+        "DRIVER_OPERATIONAL_EVIDENCE_UNAVAILABLE",
+        "INSUFFICIENT_EVIDENCE",
+        "MULTIPLE_ROUTE_EXCEPTIONS",
+        "HUMAN_REVIEW_REQUIRED"
+      ],
+      "knownState": "Operations snapshot aggregates 1 lower-domain evidence records.",
+      "missingEvidence": [
+        "driver.route-001"
+      ],
+      "negligenceInferred": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "staleEvidence": [],
+      "testOnly": true
+    },
+    {
+      "causationInferredWithoutEvidence": false,
+      "conflictingEvidence": [],
+      "contributingDomains": [
+        "SUPERVISOR"
+      ],
+      "correlations": [],
+      "employeeIntentInferred": false,
+      "exceptionReasons": [
+        {
+          "exceptionId": "operations.exception.supervisor_alert_unresolved.1",
+          "exceptionType": "SUPERVISOR_ALERT_UNRESOLVED",
+          "priority": "P3",
+          "reasonCodes": [
+            "SUPERVISOR_ALERT_OPEN"
+          ],
+          "severity": "MODERATE"
+        }
+      ],
+      "explanationHash": "51dff97f42bf4a2b877111f16781f315b456bb43c4b4bf1f131e46761346a5aa",
+      "futureOutcomePredicted": false,
+      "humanReviewReasons": [],
+      "knownState": "Operations snapshot aggregates 1 lower-domain evidence records.",
+      "missingEvidence": [],
+      "negligenceInferred": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "staleEvidence": [],
+      "testOnly": true
+    },
+    {
+      "causationInferredWithoutEvidence": false,
+      "conflictingEvidence": [],
+      "contributingDomains": [
+        "FLEET",
+        "ROUTE",
+        "WAREHOUSE"
+      ],
+      "correlations": [
+        {
+          "causationClaimed": false,
+          "correlationId": "operations.correlation.route-001",
+          "sourceDomains": [
+            "FLEET",
+            "ROUTE",
+            "WAREHOUSE"
+          ]
+        }
+      ],
+      "employeeIntentInferred": false,
+      "exceptionReasons": [
+        {
+          "exceptionId": "operations.exception.route_operation_exception.1",
+          "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+          "priority": "P3",
+          "reasonCodes": [
+            "ROUTE_DELAYED"
+          ],
+          "severity": "MODERATE"
+        },
+        {
+          "exceptionId": "operations.exception.warehouse_departure_blocker_active.2",
+          "exceptionType": "WAREHOUSE_DEPARTURE_BLOCKER_ACTIVE",
+          "priority": "P2",
+          "reasonCodes": [
+            "WAREHOUSE_DEPARTURE_BLOCKER_ACTIVE"
+          ],
+          "severity": "HIGH"
+        },
+        {
+          "exceptionId": "operations.exception.vehicle_route_blocker_active.3",
+          "exceptionType": "VEHICLE_ROUTE_BLOCKER_ACTIVE",
+          "priority": "P2",
+          "reasonCodes": [
+            "VEHICLE_ROUTE_BLOCKER_ACTIVE"
+          ],
+          "severity": "HIGH"
+        },
+        {
+          "exceptionId": "operations.exception.multiple_route_exceptions.4",
+          "exceptionType": "MULTIPLE_ROUTE_EXCEPTIONS",
+          "priority": "P3",
+          "reasonCodes": [
+            "ROUTE_DELAYED",
+            "CROSS_DOMAIN_CORRELATION"
+          ],
+          "severity": "MODERATE"
+        },
+        {
+          "exceptionId": "operations.exception.cross_domain_operational_conflict.5",
+          "exceptionType": "CROSS_DOMAIN_OPERATIONAL_CONFLICT",
+          "priority": "P5",
+          "reasonCodes": [
+            "CROSS_DOMAIN_CORRELATION"
+          ],
+          "severity": "INFORMATIONAL"
+        }
+      ],
+      "explanationHash": "e34d6473bb9d058f8890605f669b8c9466e5cf5cdef69150794911494078069c",
+      "futureOutcomePredicted": false,
+      "humanReviewReasons": [],
+      "knownState": "Operations snapshot aggregates 3 lower-domain evidence records.",
+      "missingEvidence": [],
+      "negligenceInferred": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "staleEvidence": [],
+      "testOnly": true
+    },
+    {
+      "causationInferredWithoutEvidence": false,
+      "conflictingEvidence": [],
+      "contributingDomains": [
+        "ROUTE"
+      ],
+      "correlations": [],
+      "employeeIntentInferred": false,
+      "exceptionReasons": [
+        {
+          "exceptionId": "operations.exception.route_operation_exception.1",
+          "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+          "priority": "P3",
+          "reasonCodes": [
+            "ROUTE_DELAYED"
+          ],
+          "severity": "MODERATE"
+        },
+        {
+          "exceptionId": "operations.exception.route_safety_blocker_active.2",
+          "exceptionType": "ROUTE_SAFETY_BLOCKER_ACTIVE",
+          "priority": "P1",
+          "reasonCodes": [
+            "ROUTE_SAFETY_BLOCKER_ACTIVE"
+          ],
+          "severity": "CRITICAL"
+        },
+        {
+          "exceptionId": "operations.exception.multiple_route_exceptions.3",
+          "exceptionType": "MULTIPLE_ROUTE_EXCEPTIONS",
+          "priority": "P3",
+          "reasonCodes": [
+            "ROUTE_DELAYED",
+            "CROSS_DOMAIN_CORRELATION"
+          ],
+          "severity": "MODERATE"
+        }
+      ],
+      "explanationHash": "cfcecb4b6b6a7d826bfa790bf62958bbaf5e05a21386515550ce7ebc58033aee",
+      "futureOutcomePredicted": false,
+      "humanReviewReasons": [],
+      "knownState": "Operations snapshot aggregates 2 lower-domain evidence records.",
+      "missingEvidence": [],
+      "negligenceInferred": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "staleEvidence": [],
+      "testOnly": true
+    },
+    {
+      "causationInferredWithoutEvidence": false,
+      "conflictingEvidence": [],
+      "contributingDomains": [
+        "FLEET",
+        "WAREHOUSE"
+      ],
+      "correlations": [],
+      "employeeIntentInferred": false,
+      "exceptionReasons": [
+        {
+          "exceptionId": "operations.exception.warehouse_departure_blocker_active.1",
+          "exceptionType": "WAREHOUSE_DEPARTURE_BLOCKER_ACTIVE",
+          "priority": "P2",
+          "reasonCodes": [
+            "WAREHOUSE_DEPARTURE_BLOCKER_ACTIVE"
+          ],
+          "severity": "HIGH"
+        },
+        {
+          "exceptionId": "operations.exception.vehicle_route_blocker_active.2",
+          "exceptionType": "VEHICLE_ROUTE_BLOCKER_ACTIVE",
+          "priority": "P2",
+          "reasonCodes": [
+            "VEHICLE_ROUTE_BLOCKER_ACTIVE"
+          ],
+          "severity": "HIGH"
+        },
+        {
+          "exceptionId": "operations.exception.multiple_route_exceptions.3",
+          "exceptionType": "MULTIPLE_ROUTE_EXCEPTIONS",
+          "priority": "P3",
+          "reasonCodes": [
+            "ROUTE_DELAYED",
+            "CROSS_DOMAIN_CORRELATION"
+          ],
+          "severity": "MODERATE"
+        }
+      ],
+      "explanationHash": "c5e36bead62c03068e616fc59b082dce64c017cd83c82d1dffc6317f6fde024c",
+      "futureOutcomePredicted": false,
+      "humanReviewReasons": [],
+      "knownState": "Operations snapshot aggregates 2 lower-domain evidence records.",
+      "missingEvidence": [],
+      "negligenceInferred": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "staleEvidence": [],
+      "testOnly": true
+    },
+    {
+      "causationInferredWithoutEvidence": false,
+      "conflictingEvidence": [],
+      "contributingDomains": [
+        "ROUTE",
+        "WAREHOUSE"
+      ],
+      "correlations": [
+        {
+          "causationClaimed": false,
+          "correlationId": "operations.correlation.route-001",
+          "sourceDomains": [
+            "ROUTE",
+            "WAREHOUSE"
+          ]
+        }
+      ],
+      "employeeIntentInferred": false,
+      "exceptionReasons": [
+        {
+          "exceptionId": "operations.exception.route_operation_exception.1",
+          "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+          "priority": "P3",
+          "reasonCodes": [
+            "ROUTE_DELAYED"
+          ],
+          "severity": "MODERATE"
+        },
+        {
+          "exceptionId": "operations.exception.warehouse_departure_blocker_active.2",
+          "exceptionType": "WAREHOUSE_DEPARTURE_BLOCKER_ACTIVE",
+          "priority": "P2",
+          "reasonCodes": [
+            "WAREHOUSE_DEPARTURE_BLOCKER_ACTIVE"
+          ],
+          "severity": "HIGH"
+        },
+        {
+          "exceptionId": "operations.exception.multiple_route_exceptions.3",
+          "exceptionType": "MULTIPLE_ROUTE_EXCEPTIONS",
+          "priority": "P3",
+          "reasonCodes": [
+            "ROUTE_DELAYED",
+            "CROSS_DOMAIN_CORRELATION"
+          ],
+          "severity": "MODERATE"
+        },
+        {
+          "exceptionId": "operations.exception.cross_domain_operational_conflict.4",
+          "exceptionType": "CROSS_DOMAIN_OPERATIONAL_CONFLICT",
+          "priority": "P5",
+          "reasonCodes": [
+            "CROSS_DOMAIN_CORRELATION"
+          ],
+          "severity": "INFORMATIONAL"
+        }
+      ],
+      "explanationHash": "3725821af14199974418bb7253c56d2ce64f127b40d39940d1b0c0a1f9a347d0",
+      "futureOutcomePredicted": false,
+      "humanReviewReasons": [],
+      "knownState": "Operations snapshot aggregates 2 lower-domain evidence records.",
+      "missingEvidence": [],
+      "negligenceInferred": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "staleEvidence": [],
+      "testOnly": true
+    },
+    {
+      "causationInferredWithoutEvidence": false,
+      "conflictingEvidence": [],
+      "contributingDomains": [
+        "FLEET",
+        "ROUTE"
+      ],
+      "correlations": [
+        {
+          "causationClaimed": false,
+          "correlationId": "operations.correlation.route-001",
+          "sourceDomains": [
+            "FLEET",
+            "ROUTE"
+          ]
+        }
+      ],
+      "employeeIntentInferred": false,
+      "exceptionReasons": [
+        {
+          "exceptionId": "operations.exception.route_operation_exception.1",
+          "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+          "priority": "P3",
+          "reasonCodes": [
+            "ROUTE_DELAYED"
+          ],
+          "severity": "MODERATE"
+        },
+        {
+          "exceptionId": "operations.exception.vehicle_route_blocker_active.2",
+          "exceptionType": "VEHICLE_ROUTE_BLOCKER_ACTIVE",
+          "priority": "P2",
+          "reasonCodes": [
+            "VEHICLE_ROUTE_BLOCKER_ACTIVE"
+          ],
+          "severity": "HIGH"
+        },
+        {
+          "exceptionId": "operations.exception.multiple_route_exceptions.3",
+          "exceptionType": "MULTIPLE_ROUTE_EXCEPTIONS",
+          "priority": "P3",
+          "reasonCodes": [
+            "ROUTE_DELAYED",
+            "CROSS_DOMAIN_CORRELATION"
+          ],
+          "severity": "MODERATE"
+        },
+        {
+          "exceptionId": "operations.exception.cross_domain_operational_conflict.4",
+          "exceptionType": "CROSS_DOMAIN_OPERATIONAL_CONFLICT",
+          "priority": "P5",
+          "reasonCodes": [
+            "CROSS_DOMAIN_CORRELATION"
+          ],
+          "severity": "INFORMATIONAL"
+        }
+      ],
+      "explanationHash": "1dff1b1590b5bc7ee24aaa0ec329e86e50bde111d984f932891394d4e675a538",
+      "futureOutcomePredicted": false,
+      "humanReviewReasons": [],
+      "knownState": "Operations snapshot aggregates 2 lower-domain evidence records.",
+      "missingEvidence": [],
+      "negligenceInferred": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "staleEvidence": [],
+      "testOnly": true
+    },
+    {
+      "causationInferredWithoutEvidence": false,
+      "conflictingEvidence": [],
+      "contributingDomains": [
+        "CUSTOMER",
+        "ROUTE"
+      ],
+      "correlations": [
+        {
+          "causationClaimed": false,
+          "correlationId": "operations.correlation.route-001",
+          "sourceDomains": [
+            "CUSTOMER",
+            "ROUTE"
+          ]
+        }
+      ],
+      "employeeIntentInferred": false,
+      "exceptionReasons": [
+        {
+          "exceptionId": "operations.exception.route_operation_exception.1",
+          "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+          "priority": "P3",
+          "reasonCodes": [
+            "ROUTE_DELAYED"
+          ],
+          "severity": "MODERATE"
+        },
+        {
+          "exceptionId": "operations.exception.customer_service_exception_active.2",
+          "exceptionType": "CUSTOMER_SERVICE_EXCEPTION_ACTIVE",
+          "priority": "P3",
+          "reasonCodes": [
+            "CUSTOMER_SERVICE_EXCEPTION_ACTIVE"
+          ],
+          "severity": "MODERATE"
+        },
+        {
+          "exceptionId": "operations.exception.multiple_route_exceptions.3",
+          "exceptionType": "MULTIPLE_ROUTE_EXCEPTIONS",
+          "priority": "P3",
+          "reasonCodes": [
+            "ROUTE_DELAYED",
+            "CROSS_DOMAIN_CORRELATION"
+          ],
+          "severity": "MODERATE"
+        },
+        {
+          "exceptionId": "operations.exception.cross_domain_operational_conflict.4",
+          "exceptionType": "CROSS_DOMAIN_OPERATIONAL_CONFLICT",
+          "priority": "P5",
+          "reasonCodes": [
+            "CROSS_DOMAIN_CORRELATION"
+          ],
+          "severity": "INFORMATIONAL"
+        }
+      ],
+      "explanationHash": "adef47fb9dd4087f5f02e77d9ff3cbdb8d38da22fc371f88c78a0832ab5e9d74",
+      "futureOutcomePredicted": false,
+      "humanReviewReasons": [],
+      "knownState": "Operations snapshot aggregates 2 lower-domain evidence records.",
+      "missingEvidence": [],
+      "negligenceInferred": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "staleEvidence": [],
+      "testOnly": true
+    },
+    {
+      "causationInferredWithoutEvidence": false,
+      "conflictingEvidence": [],
+      "contributingDomains": [
+        "ROUTE"
+      ],
+      "correlations": [],
+      "employeeIntentInferred": false,
+      "exceptionReasons": [
+        {
+          "exceptionId": "operations.exception.operational_evidence_stale.1",
+          "exceptionType": "OPERATIONAL_EVIDENCE_STALE",
+          "priority": "P5",
+          "reasonCodes": [
+            "EVIDENCE_STALE"
+          ],
+          "severity": "LOW"
+        },
+        {
+          "exceptionId": "operations.exception.human_review_required.2",
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "priority": "P4",
+          "reasonCodes": [
+            "HUMAN_REVIEW"
+          ],
+          "severity": "LOW"
+        }
+      ],
+      "explanationHash": "6e9ff0ea66e67427add71b568830fda4d8a3bbe0216d2ad21e2a2585cc03e7c2",
+      "futureOutcomePredicted": false,
+      "humanReviewReasons": [],
+      "knownState": "Operations snapshot aggregates 1 lower-domain evidence records.",
+      "missingEvidence": [],
+      "negligenceInferred": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "staleEvidence": [
+        "route.stale"
+      ],
+      "testOnly": true
+    },
+    {
+      "causationInferredWithoutEvidence": false,
+      "conflictingEvidence": [
+        "warehouse.conflict"
+      ],
+      "contributingDomains": [
+        "WAREHOUSE"
+      ],
+      "correlations": [],
+      "employeeIntentInferred": false,
+      "exceptionReasons": [
+        {
+          "exceptionId": "operations.exception.operational_evidence_conflict.1",
+          "exceptionType": "OPERATIONAL_EVIDENCE_CONFLICT",
+          "priority": "P4",
+          "reasonCodes": [
+            "EVIDENCE_CONFLICT"
+          ],
+          "severity": "LOW"
+        },
+        {
+          "exceptionId": "operations.exception.human_review_required.2",
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "priority": "P4",
+          "reasonCodes": [
+            "HUMAN_REVIEW"
+          ],
+          "severity": "LOW"
+        }
+      ],
+      "explanationHash": "48f519b8d50d25d4bcbc95a2f66bb81b116c43ba650e5564a160359175e89890",
+      "futureOutcomePredicted": false,
+      "humanReviewReasons": [
+        "OPERATIONAL_EVIDENCE_CONFLICT",
+        "HUMAN_REVIEW_REQUIRED"
+      ],
+      "knownState": "Operations snapshot aggregates 1 lower-domain evidence records.",
+      "missingEvidence": [],
+      "negligenceInferred": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "staleEvidence": [],
+      "testOnly": true
+    },
+    {
+      "causationInferredWithoutEvidence": false,
+      "conflictingEvidence": [],
+      "contributingDomains": [
+        "ROUTE"
+      ],
+      "correlations": [],
+      "employeeIntentInferred": false,
+      "exceptionReasons": [
+        {
+          "exceptionId": "operations.exception.insufficient_evidence.1",
+          "exceptionType": "INSUFFICIENT_EVIDENCE",
+          "priority": "P4",
+          "reasonCodes": [
+            "EVIDENCE_INCOMPLETE"
+          ],
+          "severity": "LOW"
+        },
+        {
+          "exceptionId": "operations.exception.human_review_required.2",
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "priority": "P4",
+          "reasonCodes": [
+            "HUMAN_REVIEW"
+          ],
+          "severity": "LOW"
+        }
+      ],
+      "explanationHash": "c81d42ca5c574da1ce2f76af9082f022e1a638ab18c0412f072daa6d5072526a",
+      "futureOutcomePredicted": false,
+      "humanReviewReasons": [
+        "INSUFFICIENT_EVIDENCE",
+        "HUMAN_REVIEW_REQUIRED"
+      ],
+      "knownState": "Operations snapshot aggregates 1 lower-domain evidence records.",
+      "missingEvidence": [
+        "route.route-001"
+      ],
+      "negligenceInferred": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "staleEvidence": [],
+      "testOnly": true
+    },
+    {
+      "causationInferredWithoutEvidence": false,
+      "conflictingEvidence": [],
+      "contributingDomains": [
+        "ROUTE"
+      ],
+      "correlations": [],
+      "employeeIntentInferred": false,
+      "exceptionReasons": [
+        {
+          "exceptionId": "operations.exception.route_operation_exception.1",
+          "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+          "priority": "P3",
+          "reasonCodes": [
+            "ROUTE_DELAYED"
+          ],
+          "severity": "MODERATE"
+        },
+        {
+          "exceptionId": "operations.exception.human_review_required.2",
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "priority": "P4",
+          "reasonCodes": [
+            "HUMAN_REVIEW"
+          ],
+          "severity": "LOW"
+        }
+      ],
+      "explanationHash": "6dde1ea304577e628420a8ef5866f89b5c6a8910eb43175a4af3eefbdbb9f78e",
+      "futureOutcomePredicted": false,
+      "humanReviewReasons": [],
+      "knownState": "Operations snapshot aggregates 1 lower-domain evidence records.",
+      "missingEvidence": [],
+      "negligenceInferred": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "staleEvidence": [],
+      "testOnly": true
+    },
+    {
+      "causationInferredWithoutEvidence": false,
+      "conflictingEvidence": [],
+      "contributingDomains": [
+        "SUPERVISOR"
+      ],
+      "correlations": [],
+      "employeeIntentInferred": false,
+      "exceptionReasons": [
+        {
+          "exceptionId": "operations.exception.human_review_required.1",
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "priority": "P4",
+          "reasonCodes": [
+            "HUMAN_REVIEW"
+          ],
+          "severity": "LOW"
+        }
+      ],
+      "explanationHash": "59ad06ba0b5195546f3176b61b33462e918a9288f6699f343f7bd1d9a8cccdea",
+      "futureOutcomePredicted": false,
+      "humanReviewReasons": [
+        "HUMAN_REVIEW_REQUIRED"
+      ],
+      "knownState": "Operations snapshot aggregates 1 lower-domain evidence records.",
+      "missingEvidence": [],
+      "negligenceInferred": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "staleEvidence": [],
+      "testOnly": true
+    },
+    {
+      "causationInferredWithoutEvidence": false,
+      "conflictingEvidence": [],
+      "contributingDomains": [
+        "SUPERVISOR"
+      ],
+      "correlations": [],
+      "employeeIntentInferred": false,
+      "exceptionReasons": [
+        {
+          "exceptionId": "operations.exception.supervisor_alert_unresolved.1",
+          "exceptionType": "SUPERVISOR_ALERT_UNRESOLVED",
+          "priority": "P3",
+          "reasonCodes": [
+            "SUPERVISOR_ALERT_OPEN"
+          ],
+          "severity": "MODERATE"
+        }
+      ],
+      "explanationHash": "51dff97f42bf4a2b877111f16781f315b456bb43c4b4bf1f131e46761346a5aa",
+      "futureOutcomePredicted": false,
+      "humanReviewReasons": [],
+      "knownState": "Operations snapshot aggregates 1 lower-domain evidence records.",
+      "missingEvidence": [],
+      "negligenceInferred": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "staleEvidence": [],
+      "testOnly": true
+    },
+    {
+      "causationInferredWithoutEvidence": false,
+      "conflictingEvidence": [],
+      "contributingDomains": [
+        "ROUTE"
+      ],
+      "correlations": [],
+      "employeeIntentInferred": false,
+      "exceptionReasons": [
+        {
+          "exceptionId": "operations.exception.route_operation_exception.1",
+          "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+          "priority": "P3",
+          "reasonCodes": [
+            "ROUTE_DELAYED"
+          ],
+          "severity": "MODERATE"
+        }
+      ],
+      "explanationHash": "ef04f1168038f5f74f10d14f2dd2f36ccee10c9baeee9ad868c16e0fc35a5126",
+      "futureOutcomePredicted": false,
+      "humanReviewReasons": [],
+      "knownState": "Operations snapshot aggregates 1 lower-domain evidence records.",
+      "missingEvidence": [],
+      "negligenceInferred": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "staleEvidence": [],
+      "testOnly": true
+    },
+    {
+      "causationInferredWithoutEvidence": false,
+      "conflictingEvidence": [],
+      "contributingDomains": [
+        "ROUTE"
+      ],
+      "correlations": [],
+      "employeeIntentInferred": false,
+      "exceptionReasons": [
+        {
+          "exceptionId": "operations.exception.route_operation_exception.1",
+          "exceptionType": "ROUTE_OPERATION_EXCEPTION",
+          "priority": "P3",
+          "reasonCodes": [
+            "ROUTE_DELAYED"
+          ],
+          "severity": "MODERATE"
+        }
+      ],
+      "explanationHash": "ef04f1168038f5f74f10d14f2dd2f36ccee10c9baeee9ad868c16e0fc35a5126",
+      "futureOutcomePredicted": false,
+      "humanReviewReasons": [],
+      "knownState": "Operations snapshot aggregates 1 lower-domain evidence records.",
+      "missingEvidence": [],
+      "negligenceInferred": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "staleEvidence": [],
+      "testOnly": true
+    },
+    {
+      "causationInferredWithoutEvidence": false,
+      "conflictingEvidence": [],
+      "contributingDomains": [
+        "DRIVER",
+        "ROUTE"
+      ],
+      "correlations": [
+        {
+          "causationClaimed": false,
+          "correlationId": "operations.correlation.route-003",
+          "sourceDomains": [
+            "DRIVER",
+            "ROUTE"
+          ]
+        }
+      ],
+      "employeeIntentInferred": false,
+      "exceptionReasons": [],
+      "explanationHash": "0b450e79320133f8d848477dbd01c600dc0b43d895bf31149adc146aec48f16e",
+      "futureOutcomePredicted": false,
+      "humanReviewReasons": [],
+      "knownState": "Operations snapshot aggregates 2 lower-domain evidence records.",
+      "missingEvidence": [],
+      "negligenceInferred": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "staleEvidence": [],
+      "testOnly": true
+    }
+  ],
+  "generatedArtifact": true,
+  "summaries": [
+    {
+      "activeRoutes": 0,
+      "blockedRoutes": 0,
+      "completedRoutes": 1,
+      "customerServiceExceptions": 0,
+      "delayedRoutes": 0,
+      "humanReviewCount": 0,
+      "insufficientEvidence": 0,
+      "knownOperationalLimitations": [
+        "Synthetic repository-only evidence",
+        "No production freshness threshold",
+        "No causation inferred from correlation",
+        "Lower domains remain authoritative"
+      ],
+      "noPredictionGenerated": true,
+      "noRecommendationEngineGenerated": true,
+      "organizationId": "org-001",
+      "routesInScope": 1,
+      "routesWithSafetyBlockers": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "staleEvidence": 0,
+      "summaryHash": "3092c81d0e254d9312863fdd20780dc7f7b9008b84d954a3fc9920706bac7388",
+      "testOnly": true,
+      "unresolvedAlerts": 0,
+      "unresolvedCrossDomainConflicts": 0
+    },
+    {
+      "activeRoutes": 0,
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "customerServiceExceptions": 0,
+      "delayedRoutes": 1,
+      "humanReviewCount": 0,
+      "insufficientEvidence": 0,
+      "knownOperationalLimitations": [
+        "Synthetic repository-only evidence",
+        "No production freshness threshold",
+        "No causation inferred from correlation",
+        "Lower domains remain authoritative"
+      ],
+      "noPredictionGenerated": true,
+      "noRecommendationEngineGenerated": true,
+      "organizationId": "org-001",
+      "routesInScope": 1,
+      "routesWithSafetyBlockers": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "staleEvidence": 0,
+      "summaryHash": "80fdffd06a38ff5d6f7006f4a0efd46d30e0e826c5e784920967112bbc617c59",
+      "testOnly": true,
+      "unresolvedAlerts": 0,
+      "unresolvedCrossDomainConflicts": 0
+    },
+    {
+      "activeRoutes": 0,
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "customerServiceExceptions": 0,
+      "delayedRoutes": 2,
+      "humanReviewCount": 0,
+      "insufficientEvidence": 0,
+      "knownOperationalLimitations": [
+        "Synthetic repository-only evidence",
+        "No production freshness threshold",
+        "No causation inferred from correlation",
+        "Lower domains remain authoritative"
+      ],
+      "noPredictionGenerated": true,
+      "noRecommendationEngineGenerated": true,
+      "organizationId": "org-001",
+      "routesInScope": 2,
+      "routesWithSafetyBlockers": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "staleEvidence": 0,
+      "summaryHash": "778bf63e4e94830eb7e641ebc7ce28bf82e059721574886aeb75e67d8e630f9e",
+      "testOnly": true,
+      "unresolvedAlerts": 0,
+      "unresolvedCrossDomainConflicts": 0
+    },
+    {
+      "activeRoutes": 0,
+      "blockedRoutes": 1,
+      "completedRoutes": 0,
+      "customerServiceExceptions": 0,
+      "delayedRoutes": 0,
+      "humanReviewCount": 0,
+      "insufficientEvidence": 0,
+      "knownOperationalLimitations": [
+        "Synthetic repository-only evidence",
+        "No production freshness threshold",
+        "No causation inferred from correlation",
+        "Lower domains remain authoritative"
+      ],
+      "noPredictionGenerated": true,
+      "noRecommendationEngineGenerated": true,
+      "organizationId": "org-001",
+      "routesInScope": 1,
+      "routesWithSafetyBlockers": 1,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "staleEvidence": 0,
+      "summaryHash": "67396e6e9475a2ab03dc8f6c2611d124c3370d58c63ce2ae97714605609cb724",
+      "testOnly": true,
+      "unresolvedAlerts": 0,
+      "unresolvedCrossDomainConflicts": 0
+    },
+    {
+      "activeRoutes": 0,
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "customerServiceExceptions": 0,
+      "delayedRoutes": 0,
+      "humanReviewCount": 0,
+      "insufficientEvidence": 0,
+      "knownOperationalLimitations": [
+        "Synthetic repository-only evidence",
+        "No production freshness threshold",
+        "No causation inferred from correlation",
+        "Lower domains remain authoritative"
+      ],
+      "noPredictionGenerated": true,
+      "noRecommendationEngineGenerated": true,
+      "organizationId": "org-001",
+      "routesInScope": 0,
+      "routesWithSafetyBlockers": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 1,
+      "staleEvidence": 0,
+      "summaryHash": "e0f963c946df2ff2b15eb9fef4714e745da682da04b5b8e5aad8c2c5cea92b9c",
+      "testOnly": true,
+      "unresolvedAlerts": 0,
+      "unresolvedCrossDomainConflicts": 0
+    },
+    {
+      "activeRoutes": 0,
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "customerServiceExceptions": 0,
+      "delayedRoutes": 0,
+      "humanReviewCount": 0,
+      "insufficientEvidence": 0,
+      "knownOperationalLimitations": [
+        "Synthetic repository-only evidence",
+        "No production freshness threshold",
+        "No causation inferred from correlation",
+        "Lower domains remain authoritative"
+      ],
+      "noPredictionGenerated": true,
+      "noRecommendationEngineGenerated": true,
+      "organizationId": "org-001",
+      "routesInScope": 0,
+      "routesWithSafetyBlockers": 0,
+      "routesWithVehicleBlockers": 1,
+      "routesWithWarehouseBlockers": 0,
+      "staleEvidence": 0,
+      "summaryHash": "b7ea0f5ee58864aa4d6414d6dbfb45d3b50fa6dcdc4b295916a5aeea45185772",
+      "testOnly": true,
+      "unresolvedAlerts": 0,
+      "unresolvedCrossDomainConflicts": 0
+    },
+    {
+      "activeRoutes": 0,
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "customerServiceExceptions": 1,
+      "delayedRoutes": 0,
+      "humanReviewCount": 0,
+      "insufficientEvidence": 0,
+      "knownOperationalLimitations": [
+        "Synthetic repository-only evidence",
+        "No production freshness threshold",
+        "No causation inferred from correlation",
+        "Lower domains remain authoritative"
+      ],
+      "noPredictionGenerated": true,
+      "noRecommendationEngineGenerated": true,
+      "organizationId": "org-001",
+      "routesInScope": 0,
+      "routesWithSafetyBlockers": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "staleEvidence": 0,
+      "summaryHash": "ffa228de0f3eb87f8c75b3d1fad974a33b467f66090ff50da7eb69ebad8a1615",
+      "testOnly": true,
+      "unresolvedAlerts": 0,
+      "unresolvedCrossDomainConflicts": 0
+    },
+    {
+      "activeRoutes": 0,
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "customerServiceExceptions": 0,
+      "delayedRoutes": 0,
+      "humanReviewCount": 4,
+      "insufficientEvidence": 1,
+      "knownOperationalLimitations": [
+        "Synthetic repository-only evidence",
+        "No production freshness threshold",
+        "No causation inferred from correlation",
+        "Lower domains remain authoritative"
+      ],
+      "noPredictionGenerated": true,
+      "noRecommendationEngineGenerated": true,
+      "organizationId": "org-001",
+      "routesInScope": 0,
+      "routesWithSafetyBlockers": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "staleEvidence": 0,
+      "summaryHash": "b40cb8d18f1858f6cb41a5870ed00083593e6f595755ed70fe6caa340c408852",
+      "testOnly": true,
+      "unresolvedAlerts": 0,
+      "unresolvedCrossDomainConflicts": 0
+    },
+    {
+      "activeRoutes": 0,
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "customerServiceExceptions": 0,
+      "delayedRoutes": 0,
+      "humanReviewCount": 0,
+      "insufficientEvidence": 0,
+      "knownOperationalLimitations": [
+        "Synthetic repository-only evidence",
+        "No production freshness threshold",
+        "No causation inferred from correlation",
+        "Lower domains remain authoritative"
+      ],
+      "noPredictionGenerated": true,
+      "noRecommendationEngineGenerated": true,
+      "organizationId": "org-001",
+      "routesInScope": 0,
+      "routesWithSafetyBlockers": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "staleEvidence": 0,
+      "summaryHash": "9d4b8106a38a1936f8f758f2917d1639bae773d0e8d1ce4404b9c73c48fbb1ca",
+      "testOnly": true,
+      "unresolvedAlerts": 1,
+      "unresolvedCrossDomainConflicts": 0
+    },
+    {
+      "activeRoutes": 0,
+      "blockedRoutes": 1,
+      "completedRoutes": 0,
+      "customerServiceExceptions": 0,
+      "delayedRoutes": 0,
+      "humanReviewCount": 0,
+      "insufficientEvidence": 0,
+      "knownOperationalLimitations": [
+        "Synthetic repository-only evidence",
+        "No production freshness threshold",
+        "No causation inferred from correlation",
+        "Lower domains remain authoritative"
+      ],
+      "noPredictionGenerated": true,
+      "noRecommendationEngineGenerated": true,
+      "organizationId": "org-001",
+      "routesInScope": 1,
+      "routesWithSafetyBlockers": 0,
+      "routesWithVehicleBlockers": 1,
+      "routesWithWarehouseBlockers": 1,
+      "staleEvidence": 0,
+      "summaryHash": "a975434a4d46dcf63169f9a8c5b7c779f01410fb6922df0dc304231abdf0c9f5",
+      "testOnly": true,
+      "unresolvedAlerts": 0,
+      "unresolvedCrossDomainConflicts": 1
+    },
+    {
+      "activeRoutes": 0,
+      "blockedRoutes": 1,
+      "completedRoutes": 0,
+      "customerServiceExceptions": 0,
+      "delayedRoutes": 1,
+      "humanReviewCount": 0,
+      "insufficientEvidence": 0,
+      "knownOperationalLimitations": [
+        "Synthetic repository-only evidence",
+        "No production freshness threshold",
+        "No causation inferred from correlation",
+        "Lower domains remain authoritative"
+      ],
+      "noPredictionGenerated": true,
+      "noRecommendationEngineGenerated": true,
+      "organizationId": "org-001",
+      "routesInScope": 2,
+      "routesWithSafetyBlockers": 1,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "staleEvidence": 0,
+      "summaryHash": "cdd026b4e4c84800cde47b357c60befaede96ceb581a02756a0938dece24d0ab",
+      "testOnly": true,
+      "unresolvedAlerts": 0,
+      "unresolvedCrossDomainConflicts": 0
+    },
+    {
+      "activeRoutes": 0,
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "customerServiceExceptions": 0,
+      "delayedRoutes": 0,
+      "humanReviewCount": 0,
+      "insufficientEvidence": 0,
+      "knownOperationalLimitations": [
+        "Synthetic repository-only evidence",
+        "No production freshness threshold",
+        "No causation inferred from correlation",
+        "Lower domains remain authoritative"
+      ],
+      "noPredictionGenerated": true,
+      "noRecommendationEngineGenerated": true,
+      "organizationId": "org-001",
+      "routesInScope": 0,
+      "routesWithSafetyBlockers": 0,
+      "routesWithVehicleBlockers": 1,
+      "routesWithWarehouseBlockers": 1,
+      "staleEvidence": 0,
+      "summaryHash": "0bef96de56e3e6649e55fc1e256feb0e90cf47ff1d29ee5f14fe8c2b1325c311",
+      "testOnly": true,
+      "unresolvedAlerts": 0,
+      "unresolvedCrossDomainConflicts": 0
+    },
+    {
+      "activeRoutes": 0,
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "customerServiceExceptions": 0,
+      "delayedRoutes": 1,
+      "humanReviewCount": 0,
+      "insufficientEvidence": 0,
+      "knownOperationalLimitations": [
+        "Synthetic repository-only evidence",
+        "No production freshness threshold",
+        "No causation inferred from correlation",
+        "Lower domains remain authoritative"
+      ],
+      "noPredictionGenerated": true,
+      "noRecommendationEngineGenerated": true,
+      "organizationId": "org-001",
+      "routesInScope": 1,
+      "routesWithSafetyBlockers": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 1,
+      "staleEvidence": 0,
+      "summaryHash": "0f437d74c3f30b949e8322b2b85b556fdf4f7ca3176ab081d2beb7280452abac",
+      "testOnly": true,
+      "unresolvedAlerts": 0,
+      "unresolvedCrossDomainConflicts": 1
+    },
+    {
+      "activeRoutes": 0,
+      "blockedRoutes": 1,
+      "completedRoutes": 0,
+      "customerServiceExceptions": 0,
+      "delayedRoutes": 0,
+      "humanReviewCount": 0,
+      "insufficientEvidence": 0,
+      "knownOperationalLimitations": [
+        "Synthetic repository-only evidence",
+        "No production freshness threshold",
+        "No causation inferred from correlation",
+        "Lower domains remain authoritative"
+      ],
+      "noPredictionGenerated": true,
+      "noRecommendationEngineGenerated": true,
+      "organizationId": "org-001",
+      "routesInScope": 1,
+      "routesWithSafetyBlockers": 0,
+      "routesWithVehicleBlockers": 1,
+      "routesWithWarehouseBlockers": 0,
+      "staleEvidence": 0,
+      "summaryHash": "d7f3f56ea47b0dd0188c283b3b1b5d192ae8cd37c27475a0c4496a33297eb86b",
+      "testOnly": true,
+      "unresolvedAlerts": 0,
+      "unresolvedCrossDomainConflicts": 1
+    },
+    {
+      "activeRoutes": 0,
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "customerServiceExceptions": 1,
+      "delayedRoutes": 1,
+      "humanReviewCount": 0,
+      "insufficientEvidence": 0,
+      "knownOperationalLimitations": [
+        "Synthetic repository-only evidence",
+        "No production freshness threshold",
+        "No causation inferred from correlation",
+        "Lower domains remain authoritative"
+      ],
+      "noPredictionGenerated": true,
+      "noRecommendationEngineGenerated": true,
+      "organizationId": "org-001",
+      "routesInScope": 1,
+      "routesWithSafetyBlockers": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "staleEvidence": 0,
+      "summaryHash": "fd9c2d1210a1a1b8113ac44383d26d01a4556e1d8897de3e017084c6ad4fbd1d",
+      "testOnly": true,
+      "unresolvedAlerts": 0,
+      "unresolvedCrossDomainConflicts": 1
+    },
+    {
+      "activeRoutes": 0,
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "customerServiceExceptions": 0,
+      "delayedRoutes": 0,
+      "humanReviewCount": 0,
+      "insufficientEvidence": 0,
+      "knownOperationalLimitations": [
+        "Synthetic repository-only evidence",
+        "No production freshness threshold",
+        "No causation inferred from correlation",
+        "Lower domains remain authoritative"
+      ],
+      "noPredictionGenerated": true,
+      "noRecommendationEngineGenerated": true,
+      "organizationId": "org-001",
+      "routesInScope": 1,
+      "routesWithSafetyBlockers": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "staleEvidence": 1,
+      "summaryHash": "19b82de8aed0cebc973e0a0f1ace10f35cc40af5be093bcb5f3ab13edba7ef04",
+      "testOnly": true,
+      "unresolvedAlerts": 0,
+      "unresolvedCrossDomainConflicts": 0
+    },
+    {
+      "activeRoutes": 0,
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "customerServiceExceptions": 0,
+      "delayedRoutes": 0,
+      "humanReviewCount": 2,
+      "insufficientEvidence": 0,
+      "knownOperationalLimitations": [
+        "Synthetic repository-only evidence",
+        "No production freshness threshold",
+        "No causation inferred from correlation",
+        "Lower domains remain authoritative"
+      ],
+      "noPredictionGenerated": true,
+      "noRecommendationEngineGenerated": true,
+      "organizationId": "org-001",
+      "routesInScope": 0,
+      "routesWithSafetyBlockers": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "staleEvidence": 0,
+      "summaryHash": "cd791881756d84116b19c4bc6b05c3ba19cd6fc02e09fbd8278739e32c9819d8",
+      "testOnly": true,
+      "unresolvedAlerts": 0,
+      "unresolvedCrossDomainConflicts": 0
+    },
+    {
+      "activeRoutes": 0,
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "customerServiceExceptions": 0,
+      "delayedRoutes": 0,
+      "humanReviewCount": 2,
+      "insufficientEvidence": 1,
+      "knownOperationalLimitations": [
+        "Synthetic repository-only evidence",
+        "No production freshness threshold",
+        "No causation inferred from correlation",
+        "Lower domains remain authoritative"
+      ],
+      "noPredictionGenerated": true,
+      "noRecommendationEngineGenerated": true,
+      "organizationId": "org-001",
+      "routesInScope": 1,
+      "routesWithSafetyBlockers": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "staleEvidence": 0,
+      "summaryHash": "92e4f331b3b41a7f5180423f34a5fb1e13c695e9a41f00e0b39fd1286c691eca",
+      "testOnly": true,
+      "unresolvedAlerts": 0,
+      "unresolvedCrossDomainConflicts": 0
+    },
+    {
+      "activeRoutes": 0,
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "customerServiceExceptions": 0,
+      "delayedRoutes": 1,
+      "humanReviewCount": 0,
+      "insufficientEvidence": 0,
+      "knownOperationalLimitations": [
+        "Synthetic repository-only evidence",
+        "No production freshness threshold",
+        "No causation inferred from correlation",
+        "Lower domains remain authoritative"
+      ],
+      "noPredictionGenerated": true,
+      "noRecommendationEngineGenerated": true,
+      "organizationId": "org-001",
+      "routesInScope": 1,
+      "routesWithSafetyBlockers": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "staleEvidence": 0,
+      "summaryHash": "80fdffd06a38ff5d6f7006f4a0efd46d30e0e826c5e784920967112bbc617c59",
+      "testOnly": true,
+      "unresolvedAlerts": 0,
+      "unresolvedCrossDomainConflicts": 0
+    },
+    {
+      "activeRoutes": 0,
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "customerServiceExceptions": 0,
+      "delayedRoutes": 0,
+      "humanReviewCount": 1,
+      "insufficientEvidence": 0,
+      "knownOperationalLimitations": [
+        "Synthetic repository-only evidence",
+        "No production freshness threshold",
+        "No causation inferred from correlation",
+        "Lower domains remain authoritative"
+      ],
+      "noPredictionGenerated": true,
+      "noRecommendationEngineGenerated": true,
+      "organizationId": "org-001",
+      "routesInScope": 0,
+      "routesWithSafetyBlockers": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "staleEvidence": 0,
+      "summaryHash": "f55bea2fb6d45c55e7b160a425fb0d20f97119f5e4ded6165ac15117023525ae",
+      "testOnly": true,
+      "unresolvedAlerts": 0,
+      "unresolvedCrossDomainConflicts": 0
+    },
+    {
+      "activeRoutes": 0,
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "customerServiceExceptions": 0,
+      "delayedRoutes": 0,
+      "humanReviewCount": 0,
+      "insufficientEvidence": 0,
+      "knownOperationalLimitations": [
+        "Synthetic repository-only evidence",
+        "No production freshness threshold",
+        "No causation inferred from correlation",
+        "Lower domains remain authoritative"
+      ],
+      "noPredictionGenerated": true,
+      "noRecommendationEngineGenerated": true,
+      "organizationId": "org-001",
+      "routesInScope": 0,
+      "routesWithSafetyBlockers": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "staleEvidence": 0,
+      "summaryHash": "9d4b8106a38a1936f8f758f2917d1639bae773d0e8d1ce4404b9c73c48fbb1ca",
+      "testOnly": true,
+      "unresolvedAlerts": 1,
+      "unresolvedCrossDomainConflicts": 0
+    },
+    {
+      "activeRoutes": 0,
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "customerServiceExceptions": 0,
+      "delayedRoutes": 1,
+      "humanReviewCount": 0,
+      "insufficientEvidence": 0,
+      "knownOperationalLimitations": [
+        "Synthetic repository-only evidence",
+        "No production freshness threshold",
+        "No causation inferred from correlation",
+        "Lower domains remain authoritative"
+      ],
+      "noPredictionGenerated": true,
+      "noRecommendationEngineGenerated": true,
+      "organizationId": "org-001",
+      "routesInScope": 1,
+      "routesWithSafetyBlockers": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "staleEvidence": 0,
+      "summaryHash": "80fdffd06a38ff5d6f7006f4a0efd46d30e0e826c5e784920967112bbc617c59",
+      "testOnly": true,
+      "unresolvedAlerts": 0,
+      "unresolvedCrossDomainConflicts": 0
+    },
+    {
+      "activeRoutes": 0,
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "customerServiceExceptions": 0,
+      "delayedRoutes": 1,
+      "humanReviewCount": 0,
+      "insufficientEvidence": 0,
+      "knownOperationalLimitations": [
+        "Synthetic repository-only evidence",
+        "No production freshness threshold",
+        "No causation inferred from correlation",
+        "Lower domains remain authoritative"
+      ],
+      "noPredictionGenerated": true,
+      "noRecommendationEngineGenerated": true,
+      "organizationId": "org-001",
+      "routesInScope": 1,
+      "routesWithSafetyBlockers": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "staleEvidence": 0,
+      "summaryHash": "80fdffd06a38ff5d6f7006f4a0efd46d30e0e826c5e784920967112bbc617c59",
+      "testOnly": true,
+      "unresolvedAlerts": 0,
+      "unresolvedCrossDomainConflicts": 0
+    },
+    {
+      "activeRoutes": 0,
+      "blockedRoutes": 0,
+      "completedRoutes": 1,
+      "customerServiceExceptions": 0,
+      "delayedRoutes": 0,
+      "humanReviewCount": 0,
+      "insufficientEvidence": 0,
+      "knownOperationalLimitations": [
+        "Synthetic repository-only evidence",
+        "No production freshness threshold",
+        "No causation inferred from correlation",
+        "Lower domains remain authoritative"
+      ],
+      "noPredictionGenerated": true,
+      "noRecommendationEngineGenerated": true,
+      "organizationId": "org-001",
+      "routesInScope": 1,
+      "routesWithSafetyBlockers": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "staleEvidence": 0,
+      "summaryHash": "3092c81d0e254d9312863fdd20780dc7f7b9008b84d954a3fc9920706bac7388",
+      "testOnly": true,
+      "unresolvedAlerts": 0,
+      "unresolvedCrossDomainConflicts": 0
+    }
+  ]
+}

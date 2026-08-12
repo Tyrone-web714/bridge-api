@@ -1,0 +1,1397 @@
+{
+  "generatedArtifact": true,
+  "snapshots": [
+    {
+      "blockedRoutes": 0,
+      "completedRoutes": 1,
+      "delayedRoutes": 0,
+      "domainCoverage": [
+        {
+          "authoritative": true,
+          "evidenceCount": 1,
+          "sourceDomain": "ROUTE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "DRIVER"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "SUPERVISOR"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 1,
+          "sourceDomain": "WAREHOUSE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 1,
+          "sourceDomain": "FLEET"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 1,
+          "sourceDomain": "CUSTOMER"
+        }
+      ],
+      "driversCurrentlyOperatingKnown": 0,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": 0,
+      "lowerDomainsRemainAuthoritative": true,
+      "missingCountsInvented": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "routeCount": 1,
+      "routesInProgress": 0,
+      "routesWithSafetyBlockers": 0,
+      "routesWithUnresolvedCustomerServiceIssues": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "schemaVersion": "operations.cross_domain.snapshot.v1",
+      "snapshotHash": "56f62cbe0e199775ec4ea2df10a26bb33cdae4d2a824f1983f7cc461f751ef17",
+      "testOnly": true,
+      "unavailableOrOutOfServiceVehicles": 0,
+      "unresolvedCustomerOperationalExceptions": 0,
+      "unresolvedRoutes": 0,
+      "unresolvedSupervisorAlerts": 0,
+      "warehouseReadinessExceptions": 0
+    },
+    {
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "delayedRoutes": 1,
+      "domainCoverage": [
+        {
+          "authoritative": true,
+          "evidenceCount": 1,
+          "sourceDomain": "ROUTE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "DRIVER"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "SUPERVISOR"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "WAREHOUSE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "FLEET"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "CUSTOMER"
+        }
+      ],
+      "driversCurrentlyOperatingKnown": 0,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": 0,
+      "lowerDomainsRemainAuthoritative": true,
+      "missingCountsInvented": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "routeCount": 1,
+      "routesInProgress": 0,
+      "routesWithSafetyBlockers": 0,
+      "routesWithUnresolvedCustomerServiceIssues": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "schemaVersion": "operations.cross_domain.snapshot.v1",
+      "snapshotHash": "47ff47e753494c4fb8f84e49da65ede470fcc13df8478e6926cf118907ad21cb",
+      "testOnly": true,
+      "unavailableOrOutOfServiceVehicles": 0,
+      "unresolvedCustomerOperationalExceptions": 0,
+      "unresolvedRoutes": 0,
+      "unresolvedSupervisorAlerts": 0,
+      "warehouseReadinessExceptions": 0
+    },
+    {
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "delayedRoutes": 2,
+      "domainCoverage": [
+        {
+          "authoritative": true,
+          "evidenceCount": 2,
+          "sourceDomain": "ROUTE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "DRIVER"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "SUPERVISOR"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "WAREHOUSE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "FLEET"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "CUSTOMER"
+        }
+      ],
+      "driversCurrentlyOperatingKnown": 0,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": 0,
+      "lowerDomainsRemainAuthoritative": true,
+      "missingCountsInvented": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "routeCount": 2,
+      "routesInProgress": 0,
+      "routesWithSafetyBlockers": 0,
+      "routesWithUnresolvedCustomerServiceIssues": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "schemaVersion": "operations.cross_domain.snapshot.v1",
+      "snapshotHash": "c5eae78cc7ee79950e9d7d45fee7fa86b64a6d56fa094b4f16af70a488bdeef6",
+      "testOnly": true,
+      "unavailableOrOutOfServiceVehicles": 0,
+      "unresolvedCustomerOperationalExceptions": 0,
+      "unresolvedRoutes": 0,
+      "unresolvedSupervisorAlerts": 0,
+      "warehouseReadinessExceptions": 0
+    },
+    {
+      "blockedRoutes": 1,
+      "completedRoutes": 0,
+      "delayedRoutes": 0,
+      "domainCoverage": [
+        {
+          "authoritative": true,
+          "evidenceCount": 1,
+          "sourceDomain": "ROUTE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "DRIVER"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "SUPERVISOR"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "WAREHOUSE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "FLEET"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "CUSTOMER"
+        }
+      ],
+      "driversCurrentlyOperatingKnown": 0,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": 0,
+      "lowerDomainsRemainAuthoritative": true,
+      "missingCountsInvented": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "routeCount": 1,
+      "routesInProgress": 0,
+      "routesWithSafetyBlockers": 1,
+      "routesWithUnresolvedCustomerServiceIssues": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "schemaVersion": "operations.cross_domain.snapshot.v1",
+      "snapshotHash": "903f81c8b6ed175b55f473a94b93dd2745f7009590f16f5973dded028e7d4691",
+      "testOnly": true,
+      "unavailableOrOutOfServiceVehicles": 0,
+      "unresolvedCustomerOperationalExceptions": 0,
+      "unresolvedRoutes": 0,
+      "unresolvedSupervisorAlerts": 0,
+      "warehouseReadinessExceptions": 0
+    },
+    {
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "delayedRoutes": 0,
+      "domainCoverage": [
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "ROUTE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "DRIVER"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "SUPERVISOR"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 1,
+          "sourceDomain": "WAREHOUSE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "FLEET"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "CUSTOMER"
+        }
+      ],
+      "driversCurrentlyOperatingKnown": 0,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": 0,
+      "lowerDomainsRemainAuthoritative": true,
+      "missingCountsInvented": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "routeCount": 0,
+      "routesInProgress": 0,
+      "routesWithSafetyBlockers": 0,
+      "routesWithUnresolvedCustomerServiceIssues": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 1,
+      "schemaVersion": "operations.cross_domain.snapshot.v1",
+      "snapshotHash": "790f61b7f2f04dfe084ae177d256897ba94c717b86f8901cee343025cfd032a4",
+      "testOnly": true,
+      "unavailableOrOutOfServiceVehicles": 0,
+      "unresolvedCustomerOperationalExceptions": 0,
+      "unresolvedRoutes": 0,
+      "unresolvedSupervisorAlerts": 0,
+      "warehouseReadinessExceptions": 1
+    },
+    {
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "delayedRoutes": 0,
+      "domainCoverage": [
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "ROUTE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "DRIVER"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "SUPERVISOR"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "WAREHOUSE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 1,
+          "sourceDomain": "FLEET"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "CUSTOMER"
+        }
+      ],
+      "driversCurrentlyOperatingKnown": 0,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": 0,
+      "lowerDomainsRemainAuthoritative": true,
+      "missingCountsInvented": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "routeCount": 0,
+      "routesInProgress": 0,
+      "routesWithSafetyBlockers": 0,
+      "routesWithUnresolvedCustomerServiceIssues": 0,
+      "routesWithVehicleBlockers": 1,
+      "routesWithWarehouseBlockers": 0,
+      "schemaVersion": "operations.cross_domain.snapshot.v1",
+      "snapshotHash": "fe641efe04147f5ec6bd928bd2a49eb71c44feba781e3b2eec9fd113baeab997",
+      "testOnly": true,
+      "unavailableOrOutOfServiceVehicles": 1,
+      "unresolvedCustomerOperationalExceptions": 0,
+      "unresolvedRoutes": 0,
+      "unresolvedSupervisorAlerts": 0,
+      "warehouseReadinessExceptions": 0
+    },
+    {
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "delayedRoutes": 0,
+      "domainCoverage": [
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "ROUTE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "DRIVER"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "SUPERVISOR"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "WAREHOUSE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "FLEET"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 1,
+          "sourceDomain": "CUSTOMER"
+        }
+      ],
+      "driversCurrentlyOperatingKnown": 0,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": 0,
+      "lowerDomainsRemainAuthoritative": true,
+      "missingCountsInvented": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "routeCount": 0,
+      "routesInProgress": 0,
+      "routesWithSafetyBlockers": 0,
+      "routesWithUnresolvedCustomerServiceIssues": 1,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "schemaVersion": "operations.cross_domain.snapshot.v1",
+      "snapshotHash": "bc7f80eff6325c9eeb807b03c7c80ec0bf11a76d850cb1677ff67a5f91895076",
+      "testOnly": true,
+      "unavailableOrOutOfServiceVehicles": 0,
+      "unresolvedCustomerOperationalExceptions": 1,
+      "unresolvedRoutes": 0,
+      "unresolvedSupervisorAlerts": 0,
+      "warehouseReadinessExceptions": 0
+    },
+    {
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "delayedRoutes": 0,
+      "domainCoverage": [
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "ROUTE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 1,
+          "sourceDomain": "DRIVER"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "SUPERVISOR"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "WAREHOUSE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "FLEET"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "CUSTOMER"
+        }
+      ],
+      "driversCurrentlyOperatingKnown": 0,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": 1,
+      "lowerDomainsRemainAuthoritative": true,
+      "missingCountsInvented": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "routeCount": 0,
+      "routesInProgress": 0,
+      "routesWithSafetyBlockers": 0,
+      "routesWithUnresolvedCustomerServiceIssues": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "schemaVersion": "operations.cross_domain.snapshot.v1",
+      "snapshotHash": "d7621cc0d8b7a9ca99f813e5763b2a8a4851c5e363e147e682d3bb4bec905dd1",
+      "testOnly": true,
+      "unavailableOrOutOfServiceVehicles": 0,
+      "unresolvedCustomerOperationalExceptions": 0,
+      "unresolvedRoutes": 0,
+      "unresolvedSupervisorAlerts": 0,
+      "warehouseReadinessExceptions": 0
+    },
+    {
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "delayedRoutes": 0,
+      "domainCoverage": [
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "ROUTE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "DRIVER"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 1,
+          "sourceDomain": "SUPERVISOR"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "WAREHOUSE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "FLEET"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "CUSTOMER"
+        }
+      ],
+      "driversCurrentlyOperatingKnown": 0,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": 0,
+      "lowerDomainsRemainAuthoritative": true,
+      "missingCountsInvented": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "routeCount": 0,
+      "routesInProgress": 0,
+      "routesWithSafetyBlockers": 0,
+      "routesWithUnresolvedCustomerServiceIssues": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "schemaVersion": "operations.cross_domain.snapshot.v1",
+      "snapshotHash": "6260b6ef3885072cdcac0cc181c03db0ee854d42b20dc2b98daa9d66f38950df",
+      "testOnly": true,
+      "unavailableOrOutOfServiceVehicles": 0,
+      "unresolvedCustomerOperationalExceptions": 0,
+      "unresolvedRoutes": 0,
+      "unresolvedSupervisorAlerts": 1,
+      "warehouseReadinessExceptions": 0
+    },
+    {
+      "blockedRoutes": 1,
+      "completedRoutes": 0,
+      "delayedRoutes": 0,
+      "domainCoverage": [
+        {
+          "authoritative": true,
+          "evidenceCount": 1,
+          "sourceDomain": "ROUTE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "DRIVER"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "SUPERVISOR"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 1,
+          "sourceDomain": "WAREHOUSE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 1,
+          "sourceDomain": "FLEET"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "CUSTOMER"
+        }
+      ],
+      "driversCurrentlyOperatingKnown": 0,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": 0,
+      "lowerDomainsRemainAuthoritative": true,
+      "missingCountsInvented": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "routeCount": 1,
+      "routesInProgress": 0,
+      "routesWithSafetyBlockers": 0,
+      "routesWithUnresolvedCustomerServiceIssues": 0,
+      "routesWithVehicleBlockers": 1,
+      "routesWithWarehouseBlockers": 1,
+      "schemaVersion": "operations.cross_domain.snapshot.v1",
+      "snapshotHash": "ab4842c4c6e8d5219064ea003275536171f79f87ae2057f6e590aa4c115bc5e4",
+      "testOnly": true,
+      "unavailableOrOutOfServiceVehicles": 1,
+      "unresolvedCustomerOperationalExceptions": 0,
+      "unresolvedRoutes": 0,
+      "unresolvedSupervisorAlerts": 0,
+      "warehouseReadinessExceptions": 1
+    },
+    {
+      "blockedRoutes": 1,
+      "completedRoutes": 0,
+      "delayedRoutes": 1,
+      "domainCoverage": [
+        {
+          "authoritative": true,
+          "evidenceCount": 2,
+          "sourceDomain": "ROUTE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "DRIVER"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "SUPERVISOR"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "WAREHOUSE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "FLEET"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "CUSTOMER"
+        }
+      ],
+      "driversCurrentlyOperatingKnown": 0,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": 0,
+      "lowerDomainsRemainAuthoritative": true,
+      "missingCountsInvented": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "routeCount": 2,
+      "routesInProgress": 0,
+      "routesWithSafetyBlockers": 1,
+      "routesWithUnresolvedCustomerServiceIssues": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "schemaVersion": "operations.cross_domain.snapshot.v1",
+      "snapshotHash": "a28795782271368b758458fe70d4732d893c76178428f6c1da76c65082c34418",
+      "testOnly": true,
+      "unavailableOrOutOfServiceVehicles": 0,
+      "unresolvedCustomerOperationalExceptions": 0,
+      "unresolvedRoutes": 0,
+      "unresolvedSupervisorAlerts": 0,
+      "warehouseReadinessExceptions": 0
+    },
+    {
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "delayedRoutes": 0,
+      "domainCoverage": [
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "ROUTE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "DRIVER"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "SUPERVISOR"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 1,
+          "sourceDomain": "WAREHOUSE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 1,
+          "sourceDomain": "FLEET"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "CUSTOMER"
+        }
+      ],
+      "driversCurrentlyOperatingKnown": 0,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": 0,
+      "lowerDomainsRemainAuthoritative": true,
+      "missingCountsInvented": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "routeCount": 0,
+      "routesInProgress": 0,
+      "routesWithSafetyBlockers": 0,
+      "routesWithUnresolvedCustomerServiceIssues": 0,
+      "routesWithVehicleBlockers": 1,
+      "routesWithWarehouseBlockers": 1,
+      "schemaVersion": "operations.cross_domain.snapshot.v1",
+      "snapshotHash": "edbe31cb8399f945e79ab4db8bdea6747c2e02028304e6085e8c57c0aa18f35e",
+      "testOnly": true,
+      "unavailableOrOutOfServiceVehicles": 0,
+      "unresolvedCustomerOperationalExceptions": 0,
+      "unresolvedRoutes": 0,
+      "unresolvedSupervisorAlerts": 0,
+      "warehouseReadinessExceptions": 1
+    },
+    {
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "delayedRoutes": 1,
+      "domainCoverage": [
+        {
+          "authoritative": true,
+          "evidenceCount": 1,
+          "sourceDomain": "ROUTE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "DRIVER"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "SUPERVISOR"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 1,
+          "sourceDomain": "WAREHOUSE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "FLEET"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "CUSTOMER"
+        }
+      ],
+      "driversCurrentlyOperatingKnown": 0,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": 0,
+      "lowerDomainsRemainAuthoritative": true,
+      "missingCountsInvented": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "routeCount": 1,
+      "routesInProgress": 0,
+      "routesWithSafetyBlockers": 0,
+      "routesWithUnresolvedCustomerServiceIssues": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 1,
+      "schemaVersion": "operations.cross_domain.snapshot.v1",
+      "snapshotHash": "36fbc74aea0670879264add6702ae6d0935f27c554a51638da692069c0786f30",
+      "testOnly": true,
+      "unavailableOrOutOfServiceVehicles": 0,
+      "unresolvedCustomerOperationalExceptions": 0,
+      "unresolvedRoutes": 0,
+      "unresolvedSupervisorAlerts": 0,
+      "warehouseReadinessExceptions": 1
+    },
+    {
+      "blockedRoutes": 1,
+      "completedRoutes": 0,
+      "delayedRoutes": 0,
+      "domainCoverage": [
+        {
+          "authoritative": true,
+          "evidenceCount": 1,
+          "sourceDomain": "ROUTE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "DRIVER"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "SUPERVISOR"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "WAREHOUSE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 1,
+          "sourceDomain": "FLEET"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "CUSTOMER"
+        }
+      ],
+      "driversCurrentlyOperatingKnown": 0,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": 0,
+      "lowerDomainsRemainAuthoritative": true,
+      "missingCountsInvented": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "routeCount": 1,
+      "routesInProgress": 0,
+      "routesWithSafetyBlockers": 0,
+      "routesWithUnresolvedCustomerServiceIssues": 0,
+      "routesWithVehicleBlockers": 1,
+      "routesWithWarehouseBlockers": 0,
+      "schemaVersion": "operations.cross_domain.snapshot.v1",
+      "snapshotHash": "975833c1ebcd6ad312ac36b12d59e9e19c078dafc0e80600fa023cc64c2e6435",
+      "testOnly": true,
+      "unavailableOrOutOfServiceVehicles": 0,
+      "unresolvedCustomerOperationalExceptions": 0,
+      "unresolvedRoutes": 0,
+      "unresolvedSupervisorAlerts": 0,
+      "warehouseReadinessExceptions": 0
+    },
+    {
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "delayedRoutes": 1,
+      "domainCoverage": [
+        {
+          "authoritative": true,
+          "evidenceCount": 1,
+          "sourceDomain": "ROUTE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "DRIVER"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "SUPERVISOR"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "WAREHOUSE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "FLEET"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 1,
+          "sourceDomain": "CUSTOMER"
+        }
+      ],
+      "driversCurrentlyOperatingKnown": 0,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": 0,
+      "lowerDomainsRemainAuthoritative": true,
+      "missingCountsInvented": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "routeCount": 1,
+      "routesInProgress": 0,
+      "routesWithSafetyBlockers": 0,
+      "routesWithUnresolvedCustomerServiceIssues": 1,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "schemaVersion": "operations.cross_domain.snapshot.v1",
+      "snapshotHash": "840e143c27f638dfbd1bee07462bcc63c8a32b86675143ded1b283ad3e1d0bdc",
+      "testOnly": true,
+      "unavailableOrOutOfServiceVehicles": 0,
+      "unresolvedCustomerOperationalExceptions": 1,
+      "unresolvedRoutes": 0,
+      "unresolvedSupervisorAlerts": 0,
+      "warehouseReadinessExceptions": 0
+    },
+    {
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "delayedRoutes": 0,
+      "domainCoverage": [
+        {
+          "authoritative": true,
+          "evidenceCount": 1,
+          "sourceDomain": "ROUTE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "DRIVER"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "SUPERVISOR"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "WAREHOUSE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "FLEET"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "CUSTOMER"
+        }
+      ],
+      "driversCurrentlyOperatingKnown": 0,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": 0,
+      "lowerDomainsRemainAuthoritative": true,
+      "missingCountsInvented": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "routeCount": 1,
+      "routesInProgress": 0,
+      "routesWithSafetyBlockers": 0,
+      "routesWithUnresolvedCustomerServiceIssues": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "schemaVersion": "operations.cross_domain.snapshot.v1",
+      "snapshotHash": "b01eba60f4b765d29eee1a5c9ff8b5b5a2f2e764de55c51edeaf9708a53a5791",
+      "testOnly": true,
+      "unavailableOrOutOfServiceVehicles": 0,
+      "unresolvedCustomerOperationalExceptions": 0,
+      "unresolvedRoutes": 0,
+      "unresolvedSupervisorAlerts": 0,
+      "warehouseReadinessExceptions": 0
+    },
+    {
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "delayedRoutes": 0,
+      "domainCoverage": [
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "ROUTE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "DRIVER"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "SUPERVISOR"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 1,
+          "sourceDomain": "WAREHOUSE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "FLEET"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "CUSTOMER"
+        }
+      ],
+      "driversCurrentlyOperatingKnown": 0,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": 0,
+      "lowerDomainsRemainAuthoritative": true,
+      "missingCountsInvented": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "routeCount": 0,
+      "routesInProgress": 0,
+      "routesWithSafetyBlockers": 0,
+      "routesWithUnresolvedCustomerServiceIssues": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "schemaVersion": "operations.cross_domain.snapshot.v1",
+      "snapshotHash": "4520a04e158ed2091a60873a9f59934cc8261790e791933fbc602e6bf2de5d11",
+      "testOnly": true,
+      "unavailableOrOutOfServiceVehicles": 0,
+      "unresolvedCustomerOperationalExceptions": 0,
+      "unresolvedRoutes": 0,
+      "unresolvedSupervisorAlerts": 0,
+      "warehouseReadinessExceptions": 0
+    },
+    {
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "delayedRoutes": 0,
+      "domainCoverage": [
+        {
+          "authoritative": true,
+          "evidenceCount": 1,
+          "sourceDomain": "ROUTE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "DRIVER"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "SUPERVISOR"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "WAREHOUSE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "FLEET"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "CUSTOMER"
+        }
+      ],
+      "driversCurrentlyOperatingKnown": 0,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": 1,
+      "lowerDomainsRemainAuthoritative": true,
+      "missingCountsInvented": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "routeCount": 1,
+      "routesInProgress": 0,
+      "routesWithSafetyBlockers": 0,
+      "routesWithUnresolvedCustomerServiceIssues": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "schemaVersion": "operations.cross_domain.snapshot.v1",
+      "snapshotHash": "695fd67f5c0dfa93d3ca8c05a1d93f1ff537ecb8e0a4f5258df609e8b05968b3",
+      "testOnly": true,
+      "unavailableOrOutOfServiceVehicles": 0,
+      "unresolvedCustomerOperationalExceptions": 0,
+      "unresolvedRoutes": 0,
+      "unresolvedSupervisorAlerts": 0,
+      "warehouseReadinessExceptions": 0
+    },
+    {
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "delayedRoutes": 1,
+      "domainCoverage": [
+        {
+          "authoritative": true,
+          "evidenceCount": 1,
+          "sourceDomain": "ROUTE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "DRIVER"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "SUPERVISOR"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "WAREHOUSE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "FLEET"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "CUSTOMER"
+        }
+      ],
+      "driversCurrentlyOperatingKnown": 0,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": 0,
+      "lowerDomainsRemainAuthoritative": true,
+      "missingCountsInvented": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "routeCount": 1,
+      "routesInProgress": 0,
+      "routesWithSafetyBlockers": 0,
+      "routesWithUnresolvedCustomerServiceIssues": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "schemaVersion": "operations.cross_domain.snapshot.v1",
+      "snapshotHash": "47ff47e753494c4fb8f84e49da65ede470fcc13df8478e6926cf118907ad21cb",
+      "testOnly": true,
+      "unavailableOrOutOfServiceVehicles": 0,
+      "unresolvedCustomerOperationalExceptions": 0,
+      "unresolvedRoutes": 0,
+      "unresolvedSupervisorAlerts": 0,
+      "warehouseReadinessExceptions": 0
+    },
+    {
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "delayedRoutes": 0,
+      "domainCoverage": [
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "ROUTE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "DRIVER"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 1,
+          "sourceDomain": "SUPERVISOR"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "WAREHOUSE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "FLEET"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "CUSTOMER"
+        }
+      ],
+      "driversCurrentlyOperatingKnown": 0,
+      "humanReviewItems": 1,
+      "insufficientEvidenceItems": 0,
+      "lowerDomainsRemainAuthoritative": true,
+      "missingCountsInvented": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "routeCount": 0,
+      "routesInProgress": 0,
+      "routesWithSafetyBlockers": 0,
+      "routesWithUnresolvedCustomerServiceIssues": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "schemaVersion": "operations.cross_domain.snapshot.v1",
+      "snapshotHash": "42b0d8cf4839a97faba5dbb8bcd271f4e628c19ee9343b5e12ca8b56695d4542",
+      "testOnly": true,
+      "unavailableOrOutOfServiceVehicles": 0,
+      "unresolvedCustomerOperationalExceptions": 0,
+      "unresolvedRoutes": 0,
+      "unresolvedSupervisorAlerts": 0,
+      "warehouseReadinessExceptions": 0
+    },
+    {
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "delayedRoutes": 0,
+      "domainCoverage": [
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "ROUTE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "DRIVER"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 1,
+          "sourceDomain": "SUPERVISOR"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "WAREHOUSE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "FLEET"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "CUSTOMER"
+        }
+      ],
+      "driversCurrentlyOperatingKnown": 0,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": 0,
+      "lowerDomainsRemainAuthoritative": true,
+      "missingCountsInvented": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "routeCount": 0,
+      "routesInProgress": 0,
+      "routesWithSafetyBlockers": 0,
+      "routesWithUnresolvedCustomerServiceIssues": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "schemaVersion": "operations.cross_domain.snapshot.v1",
+      "snapshotHash": "6260b6ef3885072cdcac0cc181c03db0ee854d42b20dc2b98daa9d66f38950df",
+      "testOnly": true,
+      "unavailableOrOutOfServiceVehicles": 0,
+      "unresolvedCustomerOperationalExceptions": 0,
+      "unresolvedRoutes": 0,
+      "unresolvedSupervisorAlerts": 1,
+      "warehouseReadinessExceptions": 0
+    },
+    {
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "delayedRoutes": 1,
+      "domainCoverage": [
+        {
+          "authoritative": true,
+          "evidenceCount": 1,
+          "sourceDomain": "ROUTE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "DRIVER"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "SUPERVISOR"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "WAREHOUSE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "FLEET"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "CUSTOMER"
+        }
+      ],
+      "driversCurrentlyOperatingKnown": 0,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": 0,
+      "lowerDomainsRemainAuthoritative": true,
+      "missingCountsInvented": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "routeCount": 1,
+      "routesInProgress": 0,
+      "routesWithSafetyBlockers": 0,
+      "routesWithUnresolvedCustomerServiceIssues": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "schemaVersion": "operations.cross_domain.snapshot.v1",
+      "snapshotHash": "47ff47e753494c4fb8f84e49da65ede470fcc13df8478e6926cf118907ad21cb",
+      "testOnly": true,
+      "unavailableOrOutOfServiceVehicles": 0,
+      "unresolvedCustomerOperationalExceptions": 0,
+      "unresolvedRoutes": 0,
+      "unresolvedSupervisorAlerts": 0,
+      "warehouseReadinessExceptions": 0
+    },
+    {
+      "blockedRoutes": 0,
+      "completedRoutes": 0,
+      "delayedRoutes": 1,
+      "domainCoverage": [
+        {
+          "authoritative": true,
+          "evidenceCount": 1,
+          "sourceDomain": "ROUTE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "DRIVER"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "SUPERVISOR"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "WAREHOUSE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "FLEET"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "CUSTOMER"
+        }
+      ],
+      "driversCurrentlyOperatingKnown": 0,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": 0,
+      "lowerDomainsRemainAuthoritative": true,
+      "missingCountsInvented": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "routeCount": 1,
+      "routesInProgress": 0,
+      "routesWithSafetyBlockers": 0,
+      "routesWithUnresolvedCustomerServiceIssues": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "schemaVersion": "operations.cross_domain.snapshot.v1",
+      "snapshotHash": "47ff47e753494c4fb8f84e49da65ede470fcc13df8478e6926cf118907ad21cb",
+      "testOnly": true,
+      "unavailableOrOutOfServiceVehicles": 0,
+      "unresolvedCustomerOperationalExceptions": 0,
+      "unresolvedRoutes": 0,
+      "unresolvedSupervisorAlerts": 0,
+      "warehouseReadinessExceptions": 0
+    },
+    {
+      "blockedRoutes": 0,
+      "completedRoutes": 1,
+      "delayedRoutes": 0,
+      "domainCoverage": [
+        {
+          "authoritative": true,
+          "evidenceCount": 1,
+          "sourceDomain": "ROUTE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 1,
+          "sourceDomain": "DRIVER"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "SUPERVISOR"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "WAREHOUSE"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "FLEET"
+        },
+        {
+          "authoritative": true,
+          "evidenceCount": 0,
+          "sourceDomain": "CUSTOMER"
+        }
+      ],
+      "driversCurrentlyOperatingKnown": 1,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": 0,
+      "lowerDomainsRemainAuthoritative": true,
+      "missingCountsInvented": false,
+      "operationsContextId": "operations.context.org-001.morning",
+      "organizationId": "org-001",
+      "routeCount": 1,
+      "routesInProgress": 0,
+      "routesWithSafetyBlockers": 0,
+      "routesWithUnresolvedCustomerServiceIssues": 0,
+      "routesWithVehicleBlockers": 0,
+      "routesWithWarehouseBlockers": 0,
+      "schemaVersion": "operations.cross_domain.snapshot.v1",
+      "snapshotHash": "e693f8060c7a95608e17b1dfbc75ad5df0c8b4daa5a5dbeac094bd506ff6d4c1",
+      "testOnly": true,
+      "unavailableOrOutOfServiceVehicles": 0,
+      "unresolvedCustomerOperationalExceptions": 0,
+      "unresolvedRoutes": 0,
+      "unresolvedSupervisorAlerts": 0,
+      "warehouseReadinessExceptions": 0
+    }
+  ]
+}

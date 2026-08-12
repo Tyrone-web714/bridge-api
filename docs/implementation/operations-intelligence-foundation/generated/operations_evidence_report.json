@@ -1,0 +1,816 @@
+{
+  "catalog": {
+    "autonomousActionGenerated": false,
+    "benchmarkCaseCount": 24,
+    "capabilityCount": 5,
+    "catalogHash": "4f64078256d627ff7ed6d89a684e14286b94e6be079f7e182fbd7dc97ce7ad0c",
+    "causationInferredFromCorrelation": false,
+    "currentOperationsFunctionalityAuditComplete": true,
+    "demandForecastGenerated": false,
+    "deploymentExecuted": false,
+    "directEnterpriseRegistryCapability": null,
+    "directRegistryCapabilityDeferred": true,
+    "driverRankingGenerated": false,
+    "employeeScoringGenerated": false,
+    "engineVersion": "operations.intelligence.foundation.engine.v1",
+    "generatedAt": "2026-08-11T00:00:00.000Z",
+    "hostedAiInvoked": false,
+    "integratedWithCapabilityOrchestration": true,
+    "integratedWithCustomerIntelligence": true,
+    "integratedWithDriverIntelligence": true,
+    "integratedWithEnterpriseRegistry": true,
+    "integratedWithFleetIntelligence": true,
+    "integratedWithLifecycleFramework": true,
+    "integratedWithRouteIntelligence": true,
+    "integratedWithSupervisorIntelligence": true,
+    "integratedWithWarehouseIntelligence": true,
+    "lowerDomainOverrideGenerated": false,
+    "migrationExecuted": false,
+    "modelSelectionActivated": false,
+    "predictionGenerated": false,
+    "productSuiteExpansionGenerated": false,
+    "productionApiExposed": false,
+    "productionApplicable": false,
+    "productionOrchestrationActivated": false,
+    "providerCallInvoked": false,
+    "safetyIntelligenceStarted": false,
+    "schemaVersion": "operations.intelligence.foundation.v1",
+    "serviceReuseDecisionDocumented": true,
+    "testOnly": true
+  },
+  "domainCoverage": [
+    [
+      {
+        "authoritative": true,
+        "evidenceCount": 1,
+        "sourceDomain": "ROUTE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "DRIVER"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "SUPERVISOR"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 1,
+        "sourceDomain": "WAREHOUSE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 1,
+        "sourceDomain": "FLEET"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 1,
+        "sourceDomain": "CUSTOMER"
+      }
+    ],
+    [
+      {
+        "authoritative": true,
+        "evidenceCount": 1,
+        "sourceDomain": "ROUTE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "DRIVER"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "SUPERVISOR"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "WAREHOUSE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "FLEET"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "CUSTOMER"
+      }
+    ],
+    [
+      {
+        "authoritative": true,
+        "evidenceCount": 2,
+        "sourceDomain": "ROUTE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "DRIVER"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "SUPERVISOR"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "WAREHOUSE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "FLEET"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "CUSTOMER"
+      }
+    ],
+    [
+      {
+        "authoritative": true,
+        "evidenceCount": 1,
+        "sourceDomain": "ROUTE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "DRIVER"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "SUPERVISOR"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "WAREHOUSE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "FLEET"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "CUSTOMER"
+      }
+    ],
+    [
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "ROUTE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "DRIVER"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "SUPERVISOR"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 1,
+        "sourceDomain": "WAREHOUSE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "FLEET"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "CUSTOMER"
+      }
+    ],
+    [
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "ROUTE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "DRIVER"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "SUPERVISOR"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "WAREHOUSE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 1,
+        "sourceDomain": "FLEET"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "CUSTOMER"
+      }
+    ],
+    [
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "ROUTE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "DRIVER"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "SUPERVISOR"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "WAREHOUSE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "FLEET"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 1,
+        "sourceDomain": "CUSTOMER"
+      }
+    ],
+    [
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "ROUTE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 1,
+        "sourceDomain": "DRIVER"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "SUPERVISOR"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "WAREHOUSE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "FLEET"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "CUSTOMER"
+      }
+    ],
+    [
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "ROUTE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "DRIVER"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 1,
+        "sourceDomain": "SUPERVISOR"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "WAREHOUSE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "FLEET"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "CUSTOMER"
+      }
+    ],
+    [
+      {
+        "authoritative": true,
+        "evidenceCount": 1,
+        "sourceDomain": "ROUTE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "DRIVER"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "SUPERVISOR"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 1,
+        "sourceDomain": "WAREHOUSE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 1,
+        "sourceDomain": "FLEET"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "CUSTOMER"
+      }
+    ],
+    [
+      {
+        "authoritative": true,
+        "evidenceCount": 2,
+        "sourceDomain": "ROUTE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "DRIVER"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "SUPERVISOR"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "WAREHOUSE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "FLEET"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "CUSTOMER"
+      }
+    ],
+    [
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "ROUTE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "DRIVER"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "SUPERVISOR"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 1,
+        "sourceDomain": "WAREHOUSE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 1,
+        "sourceDomain": "FLEET"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "CUSTOMER"
+      }
+    ],
+    [
+      {
+        "authoritative": true,
+        "evidenceCount": 1,
+        "sourceDomain": "ROUTE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "DRIVER"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "SUPERVISOR"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 1,
+        "sourceDomain": "WAREHOUSE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "FLEET"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "CUSTOMER"
+      }
+    ],
+    [
+      {
+        "authoritative": true,
+        "evidenceCount": 1,
+        "sourceDomain": "ROUTE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "DRIVER"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "SUPERVISOR"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "WAREHOUSE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 1,
+        "sourceDomain": "FLEET"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "CUSTOMER"
+      }
+    ],
+    [
+      {
+        "authoritative": true,
+        "evidenceCount": 1,
+        "sourceDomain": "ROUTE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "DRIVER"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "SUPERVISOR"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "WAREHOUSE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "FLEET"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 1,
+        "sourceDomain": "CUSTOMER"
+      }
+    ],
+    [
+      {
+        "authoritative": true,
+        "evidenceCount": 1,
+        "sourceDomain": "ROUTE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "DRIVER"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "SUPERVISOR"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "WAREHOUSE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "FLEET"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "CUSTOMER"
+      }
+    ],
+    [
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "ROUTE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "DRIVER"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "SUPERVISOR"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 1,
+        "sourceDomain": "WAREHOUSE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "FLEET"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "CUSTOMER"
+      }
+    ],
+    [
+      {
+        "authoritative": true,
+        "evidenceCount": 1,
+        "sourceDomain": "ROUTE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "DRIVER"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "SUPERVISOR"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "WAREHOUSE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "FLEET"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "CUSTOMER"
+      }
+    ],
+    [
+      {
+        "authoritative": true,
+        "evidenceCount": 1,
+        "sourceDomain": "ROUTE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "DRIVER"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "SUPERVISOR"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "WAREHOUSE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "FLEET"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "CUSTOMER"
+      }
+    ],
+    [
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "ROUTE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "DRIVER"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 1,
+        "sourceDomain": "SUPERVISOR"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "WAREHOUSE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "FLEET"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "CUSTOMER"
+      }
+    ],
+    [
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "ROUTE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "DRIVER"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 1,
+        "sourceDomain": "SUPERVISOR"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "WAREHOUSE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "FLEET"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "CUSTOMER"
+      }
+    ],
+    [
+      {
+        "authoritative": true,
+        "evidenceCount": 1,
+        "sourceDomain": "ROUTE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "DRIVER"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "SUPERVISOR"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "WAREHOUSE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "FLEET"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "CUSTOMER"
+      }
+    ],
+    [
+      {
+        "authoritative": true,
+        "evidenceCount": 1,
+        "sourceDomain": "ROUTE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "DRIVER"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "SUPERVISOR"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "WAREHOUSE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "FLEET"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "CUSTOMER"
+      }
+    ],
+    [
+      {
+        "authoritative": true,
+        "evidenceCount": 1,
+        "sourceDomain": "ROUTE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 1,
+        "sourceDomain": "DRIVER"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "SUPERVISOR"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "WAREHOUSE"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "FLEET"
+      },
+      {
+        "authoritative": true,
+        "evidenceCount": 0,
+        "sourceDomain": "CUSTOMER"
+      }
+    ]
+  ],
+  "generatedArtifact": true,
+  "validation": {
+    "errors": [],
+    "valid": true
+  }
+}

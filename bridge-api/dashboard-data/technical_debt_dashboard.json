@@ -18,7 +18,7 @@
       "dashboard-data/technical_debt_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "1ef79f9a5c65ee15df69d9611f685ae2edeb18adde721fd6ede3eb15171d9ad2",
+    "generationHash": "1adbadaa36b1fd5ecb1c110d5b74e85698d08a524b8c4bdea2fa9a6e5be77a29",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -50,6 +50,7 @@
         "docs/implementation/intelligence-execution-platform-supervisor-migration/DEFERRED_WORK.md",
         "docs/implementation/intelligence-knowledge-graph/DEFERRED_WORK.md",
         "docs/implementation/intelligence-lifecycle-framework/DEFERRED_WORK.md",
+        "docs/implementation/operations-intelligence-foundation/DEFERRED_WORK.md",
         "docs/implementation/route-intelligence-foundation/DEFERRED_WORK.md",
         "docs/implementation/scoring-engine/DEFERRED_WORK.md",
         "docs/implementation/supervisor-intelligence-foundation/DEFERRED_WORK.md",
@@ -67,7 +68,7 @@
     },
     "statusIndicators": [],
     "summary": {
-      "todoReferences": 46
+      "todoReferences": 48
     },
     "testOnly": true,
     "unknownValues": [],

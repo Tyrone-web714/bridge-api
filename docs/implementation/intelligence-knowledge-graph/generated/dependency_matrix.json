@@ -292,6 +292,11 @@
     },
     {
       "dependencies": [],
+      "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
       "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
       "reverseDependencies": []
     },
@@ -5615,6 +5620,271 @@
     {
       "dependencies": [],
       "nodeId": "Documentation Page:docs/implementation/logistics-intelligence-foundation/TEST_RESULTS.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/ALERT_LIFECYCLE.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/AUTHORITATIVE_DOMAIN_BOUNDARIES.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/AUTONOMOUS_ACTION_BOUNDARY.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/BENCHMARK_DATASETS.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/CROSS_DOMAIN_AUTHORITY_TRACE.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/CROSS_DOMAIN_CORRELATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/CROSS_DOMAIN_OPERATIONAL_SNAPSHOT.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/CURRENT_OPERATIONS_FUNCTIONALITY_AUDIT.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/CUSTOMER_OPERATIONAL_AGGREGATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/DASHBOARD_INTEGRATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/DATA_LIFECYCLE_REVIEW.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/DEFERRED_WORK.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/DETERMINISTIC_EXPLANATIONS.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/DRIVER_OPERATIONAL_AGGREGATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/EMPLOYMENT_IMPACT_GUARDRAILS.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/EVIDENCE_COMPLETENESS_CONFIDENCE.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/EVIDENCE_FRESHNESS.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/EXISTING_SERVICE_REUSE_DECISION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/FLEET_OPERATIONAL_AGGREGATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_alert_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_benchmark_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_context_contract.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_cross_domain_evidence.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_evidence_report.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_exception_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/OPERATIONS_INTELLIGENCE_SUMMARY.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_reason_code_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_severity_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_snapshot_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_summary_report.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/GENERATED_ARTIFACTS.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/IMPLEMENTATION_REPORT.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/KNOWLEDGE_GRAPH_INTEGRATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/OPERATIONS_ALERT_MODEL.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/OPERATIONS_EXCEPTION_MODEL.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/OPERATIONS_INTELLIGENCE_ARCHITECTURE.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/OPERATIONS_PRIORITY_MODEL.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/OPERATIONS_SEVERITY_MODEL.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/OPERATIONS_SUMMARY_MODEL.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/ORGANIZATION_OPERATIONS_CONTEXT.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/OWNER_DECISIONS_REQUIRED.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/PLATFORM_INTEGRATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/PREDICTIVE_MODEL_BOUNDARY.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/PRODUCT_SCOPE_BOUNDARY.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/README.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/ROLLBACK_PLAN.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/ROUTE_OPERATIONAL_AGGREGATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/SECURITY_AND_TENANT_REVIEW.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/SUPERVISOR_OPERATIONAL_AGGREGATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/TEST_PLAN.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/TEST_RESULTS.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/UNAPPROVED_IDEAS_FOR_OWNER_REVIEW.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/operations-intelligence-foundation/WAREHOUSE_OPERATIONAL_AGGREGATION.md",
       "reverseDependencies": []
     },
     {

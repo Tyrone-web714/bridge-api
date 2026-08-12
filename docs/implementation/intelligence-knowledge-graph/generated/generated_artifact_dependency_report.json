@@ -2152,6 +2152,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
           "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
           "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
           "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -2242,6 +2243,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
         "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
         "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
         "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
         "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -2344,6 +2346,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
           "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
           "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
           "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -2434,6 +2437,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
         "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
         "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
         "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
         "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -2536,6 +2540,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
           "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
           "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
           "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -2626,6 +2631,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
         "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
         "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
         "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
         "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -2728,6 +2734,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
           "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
           "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
           "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -2818,6 +2825,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
         "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
         "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
         "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
         "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -2920,6 +2928,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
           "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
           "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
           "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -3010,6 +3019,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
         "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
         "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
         "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
         "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -3112,6 +3122,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
           "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
           "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
           "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -3202,6 +3213,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
         "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
         "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
         "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
         "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -3304,6 +3316,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
           "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
           "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
           "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -3394,6 +3407,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
         "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
         "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
         "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
         "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -3496,6 +3510,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
           "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
           "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
           "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -3586,6 +3601,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
         "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
         "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
         "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
         "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -3688,6 +3704,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
           "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
           "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
           "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -3778,6 +3795,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
         "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
         "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
         "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
         "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -3880,6 +3898,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
           "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
           "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
           "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -3970,6 +3989,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
         "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
         "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
         "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
         "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -4072,6 +4092,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
           "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
           "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
           "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -4162,6 +4183,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
         "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
         "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
         "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
         "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -4264,6 +4286,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
           "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
           "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
           "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -4354,6 +4377,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
         "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
         "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
         "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
         "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -4456,6 +4480,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
           "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
           "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
           "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -4546,6 +4571,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
         "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
         "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
         "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
         "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -4648,6 +4674,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
           "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
           "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
           "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -4738,6 +4765,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
         "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
         "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
         "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
         "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -4840,6 +4868,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
           "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
           "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
           "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -4930,6 +4959,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
         "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
         "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
         "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
         "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -5032,6 +5062,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
           "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
           "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
           "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -5122,6 +5153,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
         "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
         "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
         "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
         "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -5224,6 +5256,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
           "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
           "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
           "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -5314,6 +5347,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
         "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
         "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
         "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
         "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -5416,6 +5450,7 @@
           "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
           "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
           "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+          "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
           "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
           "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
           "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -5506,6 +5541,7 @@
         "Repository Module:bridge-api/services/intelligenceExecution/knowledgeGraph.js",
         "Repository Module:bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
         "Repository Module:bridge-api/services/intelligenceExecution/money.js",
+        "Repository Module:bridge-api/services/intelligenceExecution/operationsIntelligence.js",
         "Repository Module:bridge-api/services/intelligenceExecution/outputValidator.js",
         "Repository Module:bridge-api/services/intelligenceExecution/planner.js",
         "Repository Module:bridge-api/services/intelligenceExecution/policyEngine.js",
@@ -6997,6 +7033,281 @@
         "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
       ],
       "nodeId": "Generated Artifact:docs/implementation/intelligence-lifecycle-framework/generated/version_evolution_catalog.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_alert_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_alert_catalog.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_benchmark_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_benchmark_catalog.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_context_contract.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_context_contract.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_cross_domain_evidence.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_cross_domain_evidence.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_evidence_report.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_evidence_report.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_exception_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_exception_catalog.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/OPERATIONS_INTELLIGENCE_SUMMARY.md",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/OPERATIONS_INTELLIGENCE_SUMMARY.md",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_reason_code_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_reason_code_catalog.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_severity_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_severity_catalog.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_snapshot_catalog.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_snapshot_catalog.json",
+      "reverseDependencies": [],
+      "testsToRerun": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ]
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "indirectImpacts": [
+          "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+        ],
+        "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_summary_report.json",
+        "potentialImpacts": [],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [
+        "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+      ],
+      "nodeId": "Generated Artifact:docs/implementation/operations-intelligence-foundation/generated/operations_summary_report.json",
       "reverseDependencies": [],
       "testsToRerun": [
         "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
