@@ -1,0 +1,3207 @@
+{
+  "explanations": [
+    {
+      "conditionFacts": [],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "257c3ce50b3e330d14e4ef2dae539e1ae67fb39ec546b8deb8d36de71f8f64b2",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "No known safety exception exists within supplied synthetic evidence.",
+      "humanReviewRequired": false,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [],
+      "staleEvidence": [],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "ELIGIBLE",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "a741483c344ac922140855255f342c6a4422ce9c823b8d9eaaa044e1a09d9be0",
+          "sourceRecordId": "route.safe",
+          "sourceStatus": "ELIGIBLE",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [
+        {
+          "exceptionType": "ROUTE_SAFETY_BLOCKER_ACTIVE",
+          "reasonCodes": [
+            "ROUTE_BLOCKED"
+          ],
+          "sourceDomain": "ROUTE",
+          "sourceRecordIds": [
+            "route.blocked"
+          ]
+        }
+      ],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "512bf60505fe81bbe1bf4e1b1972c6287da8b00e9dc5e373cd206c2dcbe6b9b0",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "Known safety conditions require review using authoritative source-domain evidence.",
+      "humanReviewRequired": true,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [
+        {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "exceptionType": "ROUTE_SAFETY_BLOCKER_ACTIVE",
+          "priority": "P0"
+        }
+      ],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [
+        {
+          "exceptionType": "ROUTE_SAFETY_BLOCKER_ACTIVE",
+          "severity": "CRITICAL"
+        }
+      ],
+      "staleEvidence": [],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "BLOCKED",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "5bdf2b7d3d03b73cfc52acbfe6f26636ee2f665b8f95ddfaaaba93f237ba915d",
+          "sourceRecordId": "route.blocked",
+          "sourceStatus": "BLOCKED",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [
+        {
+          "exceptionType": "LOW_CLEARANCE_HAZARD_ACTIVE",
+          "reasonCodes": [
+            "LOW_CLEARANCE"
+          ],
+          "sourceDomain": "ROUTE",
+          "sourceRecordIds": [
+            "route.low.clearance"
+          ]
+        }
+      ],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "a23c813a04bc95293560789590b06169eb75cd68cb375276e66581884334375d",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "Known safety conditions require review using authoritative source-domain evidence.",
+      "humanReviewRequired": true,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [
+        {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "exceptionType": "LOW_CLEARANCE_HAZARD_ACTIVE",
+          "priority": "P0"
+        }
+      ],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [
+        {
+          "exceptionType": "LOW_CLEARANCE_HAZARD_ACTIVE",
+          "severity": "CRITICAL"
+        }
+      ],
+      "staleEvidence": [],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "UNSAFE",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "a29f369da6c286e86ef33e75eca4d28cd13c5ffc50599fcc2a7f23f52a000473",
+          "sourceRecordId": "route.low.clearance",
+          "sourceStatus": "UNSAFE",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [
+        {
+          "exceptionType": "LOW_CLEARANCE_HAZARD_ACTIVE",
+          "reasonCodes": [
+            "LOW_CLEARANCE_REVIEW"
+          ],
+          "sourceDomain": "ROUTE",
+          "sourceRecordIds": [
+            "route.low.review"
+          ]
+        }
+      ],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "e4f0873e4148ea2fb4b2966d640a27077cea86370e52875ee87f220cd4c0ea05",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "Known safety conditions require review using authoritative source-domain evidence.",
+      "humanReviewRequired": true,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [
+        {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "exceptionType": "LOW_CLEARANCE_HAZARD_ACTIVE",
+          "priority": "P0"
+        }
+      ],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [
+        {
+          "exceptionType": "LOW_CLEARANCE_HAZARD_ACTIVE",
+          "severity": "CRITICAL"
+        }
+      ],
+      "staleEvidence": [],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "REVIEW_REQUIRED",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "70aea646b75bebd2dd4cbae113466421f47a98e8c64d9d7ced13c403ddd079dc",
+          "sourceRecordId": "route.low.review",
+          "sourceStatus": "REVIEW_REQUIRED",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [
+        {
+          "exceptionType": "TRUCK_RESTRICTION_ACTIVE",
+          "reasonCodes": [
+            "TRUCK_PROHIBITED"
+          ],
+          "sourceDomain": "ROUTE",
+          "sourceRecordIds": [
+            "route.truck.prohibited"
+          ]
+        }
+      ],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "6bfdd2534ff64fdb77a737f05e55d411003265fdea685325c2f342dc9c999049",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "Known safety conditions require review using authoritative source-domain evidence.",
+      "humanReviewRequired": true,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [
+        {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "exceptionType": "TRUCK_RESTRICTION_ACTIVE",
+          "priority": "P0"
+        }
+      ],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [
+        {
+          "exceptionType": "TRUCK_RESTRICTION_ACTIVE",
+          "severity": "CRITICAL"
+        }
+      ],
+      "staleEvidence": [],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "UNSAFE",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "d466245c5042c5a282e55aecf8320e125a64e831ce5319084ee78083f1f1eb8b",
+          "sourceRecordId": "route.truck.prohibited",
+          "sourceStatus": "UNSAFE",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [
+        {
+          "exceptionType": "NO_THROUGH_TRUCK_RESTRICTION_ACTIVE",
+          "reasonCodes": [
+            "NO_THROUGH_TRUCK"
+          ],
+          "sourceDomain": "ROUTE",
+          "sourceRecordIds": [
+            "route.no.through"
+          ]
+        }
+      ],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "14707854f84dd0d5e74af42a28d0f10ce8750a363e526d8402ef0ab7f7261df3",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "Known safety conditions require review using authoritative source-domain evidence.",
+      "humanReviewRequired": true,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [
+        {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "exceptionType": "NO_THROUGH_TRUCK_RESTRICTION_ACTIVE",
+          "priority": "P0"
+        }
+      ],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [
+        {
+          "exceptionType": "NO_THROUGH_TRUCK_RESTRICTION_ACTIVE",
+          "severity": "CRITICAL"
+        }
+      ],
+      "staleEvidence": [],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "UNSAFE",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "c60b5218e8072e75f6cc787e325eb69151876567da1d9112bef37ad5a3f0ecab",
+          "sourceRecordId": "route.no.through",
+          "sourceStatus": "UNSAFE",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "10df5f4614dfc3a756d205b25468994303dfb93b3df2d46f806e8993843cf63e",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "No known safety exception exists within supplied synthetic evidence.",
+      "humanReviewRequired": false,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [],
+      "staleEvidence": [],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "ELIGIBLE",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "d4b826147949ecbc5a734e41fa35875d49784ed9775e7cc8f53f9a159d180a62",
+          "sourceRecordId": "route.local.delivery",
+          "sourceStatus": "ELIGIBLE",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [
+        {
+          "exceptionType": "ROAD_CLOSURE_ACTIVE",
+          "reasonCodes": [
+            "ROAD_CLOSURE"
+          ],
+          "sourceDomain": "ROUTE",
+          "sourceRecordIds": [
+            "route.closed"
+          ]
+        }
+      ],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "1a4671864b08643aecb657c2cd522eb482d3f8bac7a08af4c2025159ffdf2eb2",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "Known safety conditions require review using authoritative source-domain evidence.",
+      "humanReviewRequired": true,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [
+        {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "exceptionType": "ROAD_CLOSURE_ACTIVE",
+          "priority": "P0"
+        }
+      ],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [
+        {
+          "exceptionType": "ROAD_CLOSURE_ACTIVE",
+          "severity": "CRITICAL"
+        }
+      ],
+      "staleEvidence": [],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "UNSAFE",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "3a766b16f09ec873e440eb54496a89f78d74195b3c65fefc30e0143bab6d576b",
+          "sourceRecordId": "route.closed",
+          "sourceStatus": "UNSAFE",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [
+        {
+          "exceptionType": "RESIDENTIAL_RESTRICTION_ACTIVE",
+          "reasonCodes": [
+            "RESIDENTIAL_RESTRICTION"
+          ],
+          "sourceDomain": "ROUTE",
+          "sourceRecordIds": [
+            "route.residential.block"
+          ]
+        }
+      ],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "0bdc7a36312d6003f4782317b4d8b7c748976e0671f126314de810e2f76b18d7",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "Known safety conditions require review using authoritative source-domain evidence.",
+      "humanReviewRequired": false,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [
+        {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "exceptionType": "RESIDENTIAL_RESTRICTION_ACTIVE",
+          "priority": "P3"
+        }
+      ],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [
+        {
+          "exceptionType": "RESIDENTIAL_RESTRICTION_ACTIVE",
+          "severity": "MODERATE"
+        }
+      ],
+      "staleEvidence": [],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "UNSAFE",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "5ff869623f43e441ecdc7cbeaa4373b55c2e98d1033143015d6ca363589f8ff4",
+          "sourceRecordId": "route.residential.block",
+          "sourceStatus": "UNSAFE",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [
+        {
+          "exceptionType": "RESIDENTIAL_RESTRICTION_ACTIVE",
+          "reasonCodes": [
+            "RESIDENTIAL_ADVISORY"
+          ],
+          "sourceDomain": "ROUTE",
+          "sourceRecordIds": [
+            "route.residential.advisory"
+          ]
+        }
+      ],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "8eafa95543bc4fa9767fce5f09dde9afd31087a0daf874797f643de45bbb4d81",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "Known safety conditions require review using authoritative source-domain evidence.",
+      "humanReviewRequired": false,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [
+        {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "exceptionType": "RESIDENTIAL_RESTRICTION_ACTIVE",
+          "priority": "P3"
+        }
+      ],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [
+        {
+          "exceptionType": "RESIDENTIAL_RESTRICTION_ACTIVE",
+          "severity": "MODERATE"
+        }
+      ],
+      "staleEvidence": [],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "REVIEW_REQUIRED",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "4142dea5ed73c8e97a662474a9a60041eb9a1f6ccb0690d5a28dd78e8ea8ae1c",
+          "sourceRecordId": "route.residential.advisory",
+          "sourceStatus": "REVIEW_REQUIRED",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [
+        {
+          "exceptionType": "ROUTE_VEHICLE_INCOMPATIBLE",
+          "reasonCodes": [
+            "ROUTE_VEHICLE_INCOMPATIBLE"
+          ],
+          "sourceDomain": "FLEET",
+          "sourceRecordIds": [
+            "fleet.incompatible"
+          ]
+        }
+      ],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "2a3a1896ec6bacccb55f94d975a74701959375cda7349b91e9b39daba9378394",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "Known safety conditions require review using authoritative source-domain evidence.",
+      "humanReviewRequired": true,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [
+        {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "HIGH"
+          },
+          "exceptionType": "ROUTE_VEHICLE_INCOMPATIBLE",
+          "priority": "P1"
+        }
+      ],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [
+        {
+          "exceptionType": "ROUTE_VEHICLE_INCOMPATIBLE",
+          "severity": "HIGH"
+        }
+      ],
+      "staleEvidence": [],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "BLOCKED",
+          "sourceDomain": "FLEET",
+          "sourceHash": "f1d08b3b7be0ac88632ead263da7d58a53bc07af4b96771dadaf790c584ad932",
+          "sourceRecordId": "fleet.incompatible",
+          "sourceStatus": "BLOCKED",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [
+        {
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "reasonCodes": [
+            "ROUTE_VEHICLE_REVIEW_REQUIRED"
+          ],
+          "sourceDomain": "FLEET",
+          "sourceRecordIds": [
+            "fleet.review"
+          ]
+        }
+      ],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "c178ffcbf14928efad9724d59f057e78a0cd31e801aa918403bc18bb1ecd935a",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "Known safety conditions require review using authoritative source-domain evidence.",
+      "humanReviewRequired": true,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [
+        {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "priority": "P2"
+        }
+      ],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [
+        {
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "severity": "MODERATE"
+        }
+      ],
+      "staleEvidence": [],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "REVIEW_REQUIRED",
+          "sourceDomain": "FLEET",
+          "sourceHash": "beed594d8adc9967029bf4f3d372dfbe7c8ddd90fc827a2db8ff296cb16f570b",
+          "sourceRecordId": "fleet.review",
+          "sourceStatus": "REVIEW_REQUIRED",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [
+        {
+          "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+          "reasonCodes": [
+            "DRIVER_LOW_BRIDGE_ADVISORY"
+          ],
+          "sourceDomain": "DRIVER",
+          "sourceRecordIds": [
+            "driver.low.bridge"
+          ]
+        }
+      ],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "da58a69234617891dcef8d61cd433f125e1e47f1d0b8b68cf5d06205af8f2009",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "Known safety conditions require review using authoritative source-domain evidence.",
+      "humanReviewRequired": false,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [
+        {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+          "priority": "P3"
+        }
+      ],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [
+        {
+          "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+          "severity": "MODERATE"
+        }
+      ],
+      "staleEvidence": [],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "WARNING",
+          "sourceDomain": "DRIVER",
+          "sourceHash": "c981d9cc4bdb44b0ae1919ecf75956803268b714a28aa188f8fcc3e30824392c",
+          "sourceRecordId": "driver.low.bridge",
+          "sourceStatus": "WARNING",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [
+        {
+          "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+          "reasonCodes": [
+            "RESTRICTED_ROAD_ADVISORY"
+          ],
+          "sourceDomain": "DRIVER",
+          "sourceRecordIds": [
+            "driver.restricted"
+          ]
+        }
+      ],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "b709892c353df025e3f5a75364f68e880b8787e5716349622f7be4a07cd876ba",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "Known safety conditions require review using authoritative source-domain evidence.",
+      "humanReviewRequired": false,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [
+        {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+          "priority": "P3"
+        }
+      ],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [
+        {
+          "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+          "severity": "MODERATE"
+        }
+      ],
+      "staleEvidence": [],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "WARNING",
+          "sourceDomain": "DRIVER",
+          "sourceHash": "35915cdfb8848e654ef9816568d0c36ef80dccbf03a80c37b622ef62b5130c34",
+          "sourceRecordId": "driver.restricted",
+          "sourceStatus": "WARNING",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [
+        {
+          "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+          "reasonCodes": [
+            "NO_THROUGH_TRUCK_ADVISORY"
+          ],
+          "sourceDomain": "DRIVER",
+          "sourceRecordIds": [
+            "driver.no.through"
+          ]
+        }
+      ],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "527442dbf2ce254ede9df077eff6a24d9daac8f109436e136885e8d9ae279164",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "Known safety conditions require review using authoritative source-domain evidence.",
+      "humanReviewRequired": false,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [
+        {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+          "priority": "P3"
+        }
+      ],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [
+        {
+          "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+          "severity": "MODERATE"
+        }
+      ],
+      "staleEvidence": [],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "WARNING",
+          "sourceDomain": "DRIVER",
+          "sourceHash": "d9c38eba776fa9ca8fb9e54ab8ee6b16cbbe14e073d5052eafe5cad17833c701",
+          "sourceRecordId": "driver.no.through",
+          "sourceStatus": "WARNING",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [
+        {
+          "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+          "reasonCodes": [
+            "SPEED_ADVISORY"
+          ],
+          "sourceDomain": "DRIVER",
+          "sourceRecordIds": [
+            "driver.speed.advisory"
+          ]
+        }
+      ],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "e62947dc7062417f929ec500bc70fb26322637c1a86f12b3ba28bf0363f8c9d2",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "Known safety conditions require review using authoritative source-domain evidence.",
+      "humanReviewRequired": false,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [
+        {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+          "priority": "P3"
+        }
+      ],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [
+        {
+          "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+          "severity": "MODERATE"
+        }
+      ],
+      "staleEvidence": [],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "ADVISORY",
+          "sourceDomain": "DRIVER",
+          "sourceHash": "55db7e1e5148399333946d0afe84a13f8723785e8341cfe211c6736172c58721",
+          "sourceRecordId": "driver.speed.advisory",
+          "sourceStatus": "ADVISORY",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [
+        {
+          "exceptionType": "DRIVER_SPEED_WARNING_ACTIVE",
+          "reasonCodes": [
+            "SPEED_WARNING"
+          ],
+          "sourceDomain": "DRIVER",
+          "sourceRecordIds": [
+            "driver.speed.warning"
+          ]
+        }
+      ],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "20f1bbffbfe9847056973916ba7e35f9d3927737ef74c9d3fd8fd37fefd54041",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "Known safety conditions require review using authoritative source-domain evidence.",
+      "humanReviewRequired": false,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [
+        {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "exceptionType": "DRIVER_SPEED_WARNING_ACTIVE",
+          "priority": "P3"
+        }
+      ],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [
+        {
+          "exceptionType": "DRIVER_SPEED_WARNING_ACTIVE",
+          "severity": "MODERATE"
+        }
+      ],
+      "staleEvidence": [],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "WARNING",
+          "sourceDomain": "DRIVER",
+          "sourceHash": "bcd47e6bc5a433d2bcad4489b5a0a63da4df253b1b3a7689d762a3e95700122c",
+          "sourceRecordId": "driver.speed.warning",
+          "sourceStatus": "WARNING",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [
+        {
+          "exceptionType": "SAFETY_EVIDENCE_STALE",
+          "reasonCodes": [
+            "SPEED_EVIDENCE_STALE"
+          ],
+          "sourceDomain": "DRIVER",
+          "sourceRecordIds": [
+            "driver.speed.stale"
+          ]
+        }
+      ],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "5ac31b472fb5e246e406e5fb84595a06b3d5e8b3fe2ae099e1fa2f66609dc41a",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "Known safety conditions require review using authoritative source-domain evidence.",
+      "humanReviewRequired": false,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [
+        {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "STALE",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "LOW"
+          },
+          "exceptionType": "SAFETY_EVIDENCE_STALE",
+          "priority": "P4"
+        }
+      ],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [
+        {
+          "exceptionType": "SAFETY_EVIDENCE_STALE",
+          "severity": "LOW"
+        }
+      ],
+      "staleEvidence": [
+        "driver.speed.stale"
+      ],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "INSUFFICIENT_EVIDENCE",
+          "sourceDomain": "DRIVER",
+          "sourceHash": "75d78928f285cd9f7ca2ce6308d5a4f902dedde915a00df59b79aa1316af3019",
+          "sourceRecordId": "driver.speed.stale",
+          "sourceStatus": "INSUFFICIENT_EVIDENCE",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [
+        {
+          "exceptionType": "SAFETY_EVIDENCE_INCOMPLETE",
+          "reasonCodes": [
+            "MISSING_SAFETY_EVIDENCE"
+          ],
+          "sourceDomain": "ROUTE",
+          "sourceRecordIds": []
+        }
+      ],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "58c2d6f78fe6b6a972bd801cb25af2d67cfc142187f51c04bc5320a554361700",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "Known safety conditions require review using authoritative source-domain evidence.",
+      "humanReviewRequired": true,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [
+        "unknown-source-record"
+      ],
+      "priorityFacts": [
+        {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "UNKNOWN",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "LOW"
+          },
+          "exceptionType": "SAFETY_EVIDENCE_INCOMPLETE",
+          "priority": "P4"
+        }
+      ],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [
+        {
+          "exceptionType": "SAFETY_EVIDENCE_INCOMPLETE",
+          "severity": "LOW"
+        }
+      ],
+      "staleEvidence": [],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "INSUFFICIENT_EVIDENCE",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "3d6ddfd5f6236e1d28a90a6e8d186719a84d5987d260c7b006e4d5902baf55e9",
+          "sourceRecordId": null,
+          "sourceStatus": "INSUFFICIENT_EVIDENCE",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [
+        {
+          "exceptionType": "SAFETY_EVIDENCE_CONFLICT",
+          "reasonCodes": [
+            "CONFLICTING_SAFETY_EVIDENCE"
+          ],
+          "sourceDomain": "ROUTE",
+          "sourceRecordIds": [
+            "route.conflict"
+          ]
+        }
+      ],
+      "conflictingEvidence": [
+        "route.conflict"
+      ],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "44c62d518bc98201bb0a63c23bd0709d62efb0f86bc57a5ea12684a4d72d74c0",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "Known safety conditions require review using authoritative source-domain evidence.",
+      "humanReviewRequired": true,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [
+        {
+          "calculationTrace": {
+            "conflict": true,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "exceptionType": "SAFETY_EVIDENCE_CONFLICT",
+          "priority": "P2"
+        }
+      ],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [
+        {
+          "exceptionType": "SAFETY_EVIDENCE_CONFLICT",
+          "severity": "MODERATE"
+        }
+      ],
+      "staleEvidence": [],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "REVIEW_REQUIRED",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "18351a4d80fb7cc1b595e2025c1bdd7ade7c79fe3bb4e2f695e4a0a40d426315",
+          "sourceRecordId": "route.conflict",
+          "sourceStatus": "REVIEW_REQUIRED",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [
+        {
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "reasonCodes": [
+            "WAREHOUSE_SAFETY_BLOCKER"
+          ],
+          "sourceDomain": "WAREHOUSE",
+          "sourceRecordIds": [
+            "warehouse.safety.blocker"
+          ]
+        }
+      ],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "4f67db9a853499ec1220fea4885416fdb71b6a84f0e27163997941b2589e30e2",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "Known safety conditions require review using authoritative source-domain evidence.",
+      "humanReviewRequired": true,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [
+        {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "priority": "P2"
+        }
+      ],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [
+        {
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "severity": "MODERATE"
+        }
+      ],
+      "staleEvidence": [],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "BLOCKED",
+          "sourceDomain": "WAREHOUSE",
+          "sourceHash": "5f81d75bc6939049f339f09664388af72d4f2282bad35a7960fbe8e2a4dd335a",
+          "sourceRecordId": "warehouse.safety.blocker",
+          "sourceStatus": "BLOCKED",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "91805f92ee2dc273def927b167880179428b3e17556a3494f2f9c90b4e5e6a1a",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "No known safety exception exists within supplied synthetic evidence.",
+      "humanReviewRequired": false,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [],
+      "staleEvidence": [],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "DELAYED",
+          "sourceDomain": "WAREHOUSE",
+          "sourceHash": "b50f24565441a614c85aa123a5c75a1548633ecdfb1131aaf8c879145b48039c",
+          "sourceRecordId": "warehouse.delay",
+          "sourceStatus": "DELAYED",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [
+        {
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "reasonCodes": [
+            "OPERATIONS_SAFETY_EXCEPTION"
+          ],
+          "sourceDomain": "OPERATIONS",
+          "sourceRecordIds": [
+            "operations.safety"
+          ]
+        }
+      ],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "6bdd0ec802ae3f23520edc578a94395bde096b9d2cf714c17c79314e3764257e",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "Known safety conditions require review using authoritative source-domain evidence.",
+      "humanReviewRequired": true,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [
+        {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "priority": "P2"
+        }
+      ],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [
+        {
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "severity": "MODERATE"
+        }
+      ],
+      "staleEvidence": [],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "OPEN",
+          "sourceDomain": "OPERATIONS",
+          "sourceHash": "fba858375384057a244363216c49c091df6a9529450782f1ac21d53ece39e07f",
+          "sourceRecordId": "operations.safety",
+          "sourceStatus": "OPEN",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "fe0d7bba9134a125a35464b213f54b75cc8d796729289ea8aaeb5e2b40ad68d7",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "No known safety exception exists within supplied synthetic evidence.",
+      "humanReviewRequired": false,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [],
+      "staleEvidence": [],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "OPEN",
+          "sourceDomain": "OPERATIONS",
+          "sourceHash": "2ed85572d5effccd5e7931cfa6f7231e2755d7a6225f0f745d65e49e82a1ecd3",
+          "sourceRecordId": "operations.delay",
+          "sourceStatus": "OPEN",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "e14d28e6787e6ac4538bd9fd12588bdf39b29e0d884f384a113909e810414a41",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "No known safety exception exists within supplied synthetic evidence.",
+      "humanReviewRequired": false,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [],
+      "staleEvidence": [],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "ACCEPTED",
+          "sourceDomain": "SHARED_SAFETY",
+          "sourceHash": "4bed3964a4382a3f7ab9938e9de47551526310a53be31692d8a43782f97c8a2e",
+          "sourceRecordId": "shared.accepted",
+          "sourceStatus": "ACCEPTED",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [
+        {
+          "exceptionType": "SHARED_SAFETY_REVIEW_REQUIRED",
+          "reasonCodes": [
+            "SHARED_SAFETY_REVIEW"
+          ],
+          "sourceDomain": "SHARED_SAFETY",
+          "sourceRecordIds": [
+            "shared.review"
+          ]
+        }
+      ],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "fc80e167f923a3fc7b467eae79149ad7047167301c9482551e34d7b524710e48",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "Known safety conditions require review using authoritative source-domain evidence.",
+      "humanReviewRequired": true,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [
+        {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "exceptionType": "SHARED_SAFETY_REVIEW_REQUIRED",
+          "priority": "P2"
+        }
+      ],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [
+        {
+          "exceptionType": "SHARED_SAFETY_REVIEW_REQUIRED",
+          "severity": "MODERATE"
+        }
+      ],
+      "staleEvidence": [],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "PENDING_REVIEW",
+          "sourceDomain": "SHARED_SAFETY",
+          "sourceHash": "bcbd64592f78643d2366d97c41590e8abca940c380ced303c178ae10353de260",
+          "sourceRecordId": "shared.review",
+          "sourceStatus": "PENDING_REVIEW",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [
+        {
+          "exceptionType": "LOW_CLEARANCE_HAZARD_ACTIVE",
+          "reasonCodes": [
+            "LOW_CLEARANCE"
+          ],
+          "sourceDomain": "ROUTE",
+          "sourceRecordIds": [
+            "route.low"
+          ]
+        },
+        {
+          "exceptionType": "DRIVER_SPEED_WARNING_ACTIVE",
+          "reasonCodes": [
+            "SPEED_WARNING"
+          ],
+          "sourceDomain": "DRIVER",
+          "sourceRecordIds": [
+            "driver.speed"
+          ]
+        },
+        {
+          "exceptionType": "MULTIPLE_SAFETY_EXCEPTIONS",
+          "reasonCodes": [
+            "LOW_CLEARANCE"
+          ],
+          "sourceDomain": "ROUTE",
+          "sourceRecordIds": [
+            "route.low"
+          ]
+        }
+      ],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "2cf857401b5834bdb2af4eda0b88c329a9166135fd00f2cd2baf29fe27b09637",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "Known safety conditions require review using authoritative source-domain evidence.",
+      "humanReviewRequired": true,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [
+        {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "exceptionType": "LOW_CLEARANCE_HAZARD_ACTIVE",
+          "priority": "P0"
+        },
+        {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "exceptionType": "DRIVER_SPEED_WARNING_ACTIVE",
+          "priority": "P3"
+        },
+        {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "exceptionType": "MULTIPLE_SAFETY_EXCEPTIONS",
+          "priority": "P3"
+        }
+      ],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [
+        {
+          "exceptionType": "LOW_CLEARANCE_HAZARD_ACTIVE",
+          "severity": "CRITICAL"
+        },
+        {
+          "exceptionType": "DRIVER_SPEED_WARNING_ACTIVE",
+          "severity": "MODERATE"
+        },
+        {
+          "exceptionType": "MULTIPLE_SAFETY_EXCEPTIONS",
+          "severity": "MODERATE"
+        }
+      ],
+      "staleEvidence": [],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "NORMAL",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "d681c2d4cb87a79e405be82645a10d3b062b4c37cbb827d283057fd0d12275d6",
+          "sourceRecordId": "route.low",
+          "sourceStatus": "NORMAL",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        },
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "NORMAL",
+          "sourceDomain": "DRIVER",
+          "sourceHash": "1f44da85ac07fa9ea53e6c3a54f48ce68d7385af2ac60ff3d066622b45e8a80d",
+          "sourceRecordId": "driver.speed",
+          "sourceStatus": "NORMAL",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [
+        {
+          "exceptionType": "ROAD_CLOSURE_ACTIVE",
+          "reasonCodes": [
+            "ROAD_CLOSURE"
+          ],
+          "sourceDomain": "ROUTE",
+          "sourceRecordIds": [
+            "route.closed.high"
+          ]
+        },
+        {
+          "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+          "reasonCodes": [
+            "SPEED_ADVISORY"
+          ],
+          "sourceDomain": "DRIVER",
+          "sourceRecordIds": [
+            "driver.advisory.low"
+          ]
+        },
+        {
+          "exceptionType": "MULTIPLE_SAFETY_EXCEPTIONS",
+          "reasonCodes": [
+            "ROAD_CLOSURE"
+          ],
+          "sourceDomain": "ROUTE",
+          "sourceRecordIds": [
+            "route.closed.high"
+          ]
+        }
+      ],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "def77ebd2555b2f8e721f40df1e66188f950ad47a14455991087570ed35a9dd4",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "Known safety conditions require review using authoritative source-domain evidence.",
+      "humanReviewRequired": true,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [
+        {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "exceptionType": "ROAD_CLOSURE_ACTIVE",
+          "priority": "P0"
+        },
+        {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+          "priority": "P3"
+        },
+        {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "exceptionType": "MULTIPLE_SAFETY_EXCEPTIONS",
+          "priority": "P3"
+        }
+      ],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [
+        {
+          "exceptionType": "ROAD_CLOSURE_ACTIVE",
+          "severity": "CRITICAL"
+        },
+        {
+          "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+          "severity": "MODERATE"
+        },
+        {
+          "exceptionType": "MULTIPLE_SAFETY_EXCEPTIONS",
+          "severity": "MODERATE"
+        }
+      ],
+      "staleEvidence": [],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "NORMAL",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "bcc54489d77aaa54986ee003695342822a3a30c7b81217cc78cd2bea07f37c70",
+          "sourceRecordId": "route.closed.high",
+          "sourceStatus": "NORMAL",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        },
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "NORMAL",
+          "sourceDomain": "DRIVER",
+          "sourceHash": "195bf6d9233c574a26b293395e7c8e5a9339bab52f84a0fd12d8b707eeca9fba",
+          "sourceRecordId": "driver.advisory.low",
+          "sourceStatus": "NORMAL",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [
+        {
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "reasonCodes": [
+            "HUMAN_REVIEW"
+          ],
+          "sourceDomain": "ROUTE",
+          "sourceRecordIds": [
+            "route.other.org"
+          ]
+        },
+        {
+          "exceptionType": "ROUTE_SAFETY_BLOCKER_ACTIVE",
+          "reasonCodes": [
+            "ROUTE_BLOCKED"
+          ],
+          "sourceDomain": "ROUTE",
+          "sourceRecordIds": [
+            "route.other.org"
+          ]
+        }
+      ],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "488305ab82600d05b8ab75daca185b86679fd00d94fdd1f79d3cdc590a0ed2b2",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "Known safety conditions require review using authoritative source-domain evidence.",
+      "humanReviewRequired": true,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [
+        {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "priority": "P2"
+        },
+        {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "exceptionType": "ROUTE_SAFETY_BLOCKER_ACTIVE",
+          "priority": "P0"
+        }
+      ],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [
+        {
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "severity": "MODERATE"
+        },
+        {
+          "exceptionType": "ROUTE_SAFETY_BLOCKER_ACTIVE",
+          "severity": "CRITICAL"
+        }
+      ],
+      "staleEvidence": [],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "NORMAL",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "afc17de218e1b86020ed30fb894aa03f831db579c7a8f74f966833fbba1dd22c",
+          "sourceRecordId": "route.other.org",
+          "sourceStatus": "NORMAL",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [
+        {
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "reasonCodes": [
+            "HUMAN_REVIEW"
+          ],
+          "sourceDomain": "SUPERVISOR",
+          "sourceRecordIds": [
+            "supervisor.review"
+          ]
+        }
+      ],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "305ea1b35526250ddaf69769ab331688499716dad21a09bf24e7989ccdd77616",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "Known safety conditions require review using authoritative source-domain evidence.",
+      "humanReviewRequired": true,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [
+        {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "priority": "P2"
+        }
+      ],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [
+        {
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "severity": "MODERATE"
+        }
+      ],
+      "staleEvidence": [],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "OPEN",
+          "sourceDomain": "SUPERVISOR",
+          "sourceHash": "04a993ea66dc603e025cb802c91f02a925006044aab68fefa69b730dc6f4341b",
+          "sourceRecordId": "supervisor.review",
+          "sourceStatus": "OPEN",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [
+        {
+          "exceptionType": "LOW_CLEARANCE_HAZARD_ACTIVE",
+          "reasonCodes": [
+            "LOW_CLEARANCE"
+          ],
+          "sourceDomain": "ROUTE",
+          "sourceRecordIds": [
+            "route.ack"
+          ]
+        }
+      ],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "4f4a13d99527da95228021308861557e8d20d7c41640e4d6a04169050806c54a",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "Known safety conditions require review using authoritative source-domain evidence.",
+      "humanReviewRequired": true,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [
+        {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "exceptionType": "LOW_CLEARANCE_HAZARD_ACTIVE",
+          "priority": "P0"
+        }
+      ],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [
+        {
+          "exceptionType": "LOW_CLEARANCE_HAZARD_ACTIVE",
+          "severity": "CRITICAL"
+        }
+      ],
+      "staleEvidence": [],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "NORMAL",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "5b0e73764b38b65a9b0156bad4160ffbef8bf67057cb47c78a7bdb6cf1beda46",
+          "sourceRecordId": "route.ack",
+          "sourceStatus": "NORMAL",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [
+        {
+          "exceptionType": "TRUCK_RESTRICTION_ACTIVE",
+          "reasonCodes": [
+            "TRUCK_PROHIBITED"
+          ],
+          "sourceDomain": "ROUTE",
+          "sourceRecordIds": [
+            "route.resolve"
+          ]
+        }
+      ],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "a738bda56c4e727cf01389c900183feff347e92006bca021b024c4e9ddb7572a",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "Known safety conditions require review using authoritative source-domain evidence.",
+      "humanReviewRequired": true,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [
+        {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "exceptionType": "TRUCK_RESTRICTION_ACTIVE",
+          "priority": "P0"
+        }
+      ],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [
+        {
+          "exceptionType": "TRUCK_RESTRICTION_ACTIVE",
+          "severity": "CRITICAL"
+        }
+      ],
+      "staleEvidence": [],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "NORMAL",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "f16a7b1f10a8996b1ebc241c0b8db21a01616b14487cee44314233892d1cfc21",
+          "sourceRecordId": "route.resolve",
+          "sourceStatus": "NORMAL",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [
+        {
+          "exceptionType": "SAFETY_EVIDENCE_STALE",
+          "reasonCodes": [
+            "SPEED_EVIDENCE_STALE"
+          ],
+          "sourceDomain": "ROUTE",
+          "sourceRecordIds": [
+            "route.invalidate"
+          ]
+        }
+      ],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "a65e0c8abbc7dfe2e764206bdfb74c5261a0996b1847403f9f074dd490553809",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "Known safety conditions require review using authoritative source-domain evidence.",
+      "humanReviewRequired": false,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [
+        {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "STALE",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "LOW"
+          },
+          "exceptionType": "SAFETY_EVIDENCE_STALE",
+          "priority": "P4"
+        }
+      ],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [
+        {
+          "exceptionType": "SAFETY_EVIDENCE_STALE",
+          "severity": "LOW"
+        }
+      ],
+      "staleEvidence": [
+        "route.invalidate"
+      ],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "NORMAL",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "589a81f12999225917308782db70e539933278d8b78df65a5faf7031e06d72b6",
+          "sourceRecordId": "route.invalidate",
+          "sourceStatus": "NORMAL",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    },
+    {
+      "conditionFacts": [],
+      "conflictingEvidence": [],
+      "driverIntentInferred": false,
+      "employeeNegligenceInferred": false,
+      "explanationHash": "f0784a1b8b32a18e01010a8654fb80e9749239b6a6bee12130d24ac2bb4a2417",
+      "fatiguePredicted": false,
+      "futureCrashPredicted": false,
+      "futureInjuryPredicted": false,
+      "headline": "No known safety exception exists within supplied synthetic evidence.",
+      "humanReviewRequired": false,
+      "legalLiabilityInferred": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative",
+        "no safety score",
+        "no prediction",
+        "no autonomous action"
+      ],
+      "misconductInferred": false,
+      "missingEvidence": [],
+      "priorityFacts": [],
+      "schemaVersion": "safety.explanation.v1",
+      "severityFacts": [],
+      "staleEvidence": [],
+      "supportingEvidence": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "ELIGIBLE",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "c7d2be689edc1a81d64b8eda29d3190f207bc2b788715d4544bc79e510bfc408",
+          "sourceRecordId": "route.ok",
+          "sourceStatus": "ELIGIBLE",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        },
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "NORMAL",
+          "sourceDomain": "DRIVER",
+          "sourceHash": "81537e989e3ee98221158057d7de22d086a484846a8245c1d9ee3b89dbf8191d",
+          "sourceRecordId": "driver.ok",
+          "sourceStatus": "NORMAL",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "testOnly": true
+    }
+  ],
+  "generatedArtifact": true,
+  "summaries": [
+    {
+      "activeDriverAdvisories": 0,
+      "activeSafetyBlockers": 0,
+      "activeSpeedWarnings": 0,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 0,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 0,
+      "roadClosures": 0,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [],
+      "summaryHash": "5aee6951e0569c3151af688e715ae647f9634f44fa8ee6a6e8ed715c6a4f5246",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    },
+    {
+      "activeDriverAdvisories": 0,
+      "activeSafetyBlockers": 1,
+      "activeSpeedWarnings": 0,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 1,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 0,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 0,
+      "roadClosures": 0,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [],
+      "summaryHash": "38475495775b8c4cc2d9db99431a1743dc87566d62d96dfceaf9990d96bf4165",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    },
+    {
+      "activeDriverAdvisories": 0,
+      "activeSafetyBlockers": 1,
+      "activeSpeedWarnings": 0,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 1,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 1,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 0,
+      "roadClosures": 0,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [],
+      "summaryHash": "ce58e37fe3507f08329d2940672cad26b468c41d206cf23659bc332c58af7d03",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    },
+    {
+      "activeDriverAdvisories": 0,
+      "activeSafetyBlockers": 1,
+      "activeSpeedWarnings": 0,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 1,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 1,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 0,
+      "roadClosures": 0,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [],
+      "summaryHash": "ce58e37fe3507f08329d2940672cad26b468c41d206cf23659bc332c58af7d03",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    },
+    {
+      "activeDriverAdvisories": 0,
+      "activeSafetyBlockers": 1,
+      "activeSpeedWarnings": 0,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 1,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 0,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 1,
+      "roadClosures": 0,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [],
+      "summaryHash": "b8128757761374ba480949f01563d18186f020b148501f7eedc1076145e42ff9",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    },
+    {
+      "activeDriverAdvisories": 0,
+      "activeSafetyBlockers": 1,
+      "activeSpeedWarnings": 0,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 1,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 0,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 1,
+      "roadClosures": 0,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [],
+      "summaryHash": "b8128757761374ba480949f01563d18186f020b148501f7eedc1076145e42ff9",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    },
+    {
+      "activeDriverAdvisories": 0,
+      "activeSafetyBlockers": 0,
+      "activeSpeedWarnings": 0,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 0,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 0,
+      "roadClosures": 0,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [],
+      "summaryHash": "5aee6951e0569c3151af688e715ae647f9634f44fa8ee6a6e8ed715c6a4f5246",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    },
+    {
+      "activeDriverAdvisories": 0,
+      "activeSafetyBlockers": 1,
+      "activeSpeedWarnings": 0,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 1,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 0,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 0,
+      "roadClosures": 1,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [],
+      "summaryHash": "504bc25c6be3414b8079ee1e5b1e9054112607ea612fc9ff98929c967980cbac",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    },
+    {
+      "activeDriverAdvisories": 0,
+      "activeSafetyBlockers": 0,
+      "activeSpeedWarnings": 0,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 0,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 1,
+      "roadClosures": 0,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [],
+      "summaryHash": "64f1e09b7b97c6c9ef7a6be1dd98a1b505a67e570ecb73087f1b5ab4ae8c94b6",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    },
+    {
+      "activeDriverAdvisories": 0,
+      "activeSafetyBlockers": 0,
+      "activeSpeedWarnings": 0,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 0,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 1,
+      "roadClosures": 0,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [],
+      "summaryHash": "64f1e09b7b97c6c9ef7a6be1dd98a1b505a67e570ecb73087f1b5ab4ae8c94b6",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    },
+    {
+      "activeDriverAdvisories": 0,
+      "activeSafetyBlockers": 1,
+      "activeSpeedWarnings": 0,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 1,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 0,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 0,
+      "roadClosures": 0,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [],
+      "summaryHash": "38475495775b8c4cc2d9db99431a1743dc87566d62d96dfceaf9990d96bf4165",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    },
+    {
+      "activeDriverAdvisories": 0,
+      "activeSafetyBlockers": 0,
+      "activeSpeedWarnings": 0,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 1,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 0,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 0,
+      "roadClosures": 0,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [],
+      "summaryHash": "1f98c17ec1c264171dab65f08bd6562f9df0b292017ffb54accb0ddb0f7ccfab",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    },
+    {
+      "activeDriverAdvisories": 1,
+      "activeSafetyBlockers": 0,
+      "activeSpeedWarnings": 0,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 0,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 0,
+      "roadClosures": 0,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [],
+      "summaryHash": "22d3411b80503db1321d4446f260ee4cd9d02309696a8c59c12182a526513dc8",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    },
+    {
+      "activeDriverAdvisories": 1,
+      "activeSafetyBlockers": 0,
+      "activeSpeedWarnings": 0,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 0,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 0,
+      "roadClosures": 0,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [],
+      "summaryHash": "22d3411b80503db1321d4446f260ee4cd9d02309696a8c59c12182a526513dc8",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    },
+    {
+      "activeDriverAdvisories": 1,
+      "activeSafetyBlockers": 0,
+      "activeSpeedWarnings": 0,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 0,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 0,
+      "roadClosures": 0,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [],
+      "summaryHash": "22d3411b80503db1321d4446f260ee4cd9d02309696a8c59c12182a526513dc8",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    },
+    {
+      "activeDriverAdvisories": 1,
+      "activeSafetyBlockers": 0,
+      "activeSpeedWarnings": 0,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 0,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 0,
+      "roadClosures": 0,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [],
+      "summaryHash": "22d3411b80503db1321d4446f260ee4cd9d02309696a8c59c12182a526513dc8",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    },
+    {
+      "activeDriverAdvisories": 0,
+      "activeSafetyBlockers": 0,
+      "activeSpeedWarnings": 1,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 0,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 0,
+      "roadClosures": 0,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [],
+      "summaryHash": "2eae972fd22a036389405704b739955e7865358f335369d8e0b0e9bcff3a1c3c",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    },
+    {
+      "activeDriverAdvisories": 0,
+      "activeSafetyBlockers": 0,
+      "activeSpeedWarnings": 0,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 0,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 0,
+      "roadClosures": 0,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [
+        "driver.speed.stale"
+      ],
+      "summaryHash": "f1cd93519b824bdfbd2716c5c3beaccd57535cb7a149186fb92a634770d71d01",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    },
+    {
+      "activeDriverAdvisories": 0,
+      "activeSafetyBlockers": 0,
+      "activeSpeedWarnings": 0,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 1,
+      "insufficientEvidenceItems": [
+        "unknown-source-record"
+      ],
+      "lowClearanceHazards": 0,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 0,
+      "roadClosures": 0,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [],
+      "summaryHash": "eeeaa8f7b988ec96c380568912c699dce40cd8777795f2c9fdd5e2f11f246064",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    },
+    {
+      "activeDriverAdvisories": 0,
+      "activeSafetyBlockers": 0,
+      "activeSpeedWarnings": 0,
+      "conflictingSafetyEvidence": [
+        "route.conflict"
+      ],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 1,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 0,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 0,
+      "roadClosures": 0,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [],
+      "summaryHash": "3aaa2cba6c063588eca8e32afdeb75300b71bcae2dbe7a6f3f29a218245f9909",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    },
+    {
+      "activeDriverAdvisories": 0,
+      "activeSafetyBlockers": 0,
+      "activeSpeedWarnings": 0,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 1,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 0,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 0,
+      "roadClosures": 0,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [],
+      "summaryHash": "1f98c17ec1c264171dab65f08bd6562f9df0b292017ffb54accb0ddb0f7ccfab",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    },
+    {
+      "activeDriverAdvisories": 0,
+      "activeSafetyBlockers": 0,
+      "activeSpeedWarnings": 0,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 0,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 0,
+      "roadClosures": 0,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [],
+      "summaryHash": "5aee6951e0569c3151af688e715ae647f9634f44fa8ee6a6e8ed715c6a4f5246",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    },
+    {
+      "activeDriverAdvisories": 0,
+      "activeSafetyBlockers": 0,
+      "activeSpeedWarnings": 0,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 1,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 0,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 0,
+      "roadClosures": 0,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [],
+      "summaryHash": "1f98c17ec1c264171dab65f08bd6562f9df0b292017ffb54accb0ddb0f7ccfab",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    },
+    {
+      "activeDriverAdvisories": 0,
+      "activeSafetyBlockers": 0,
+      "activeSpeedWarnings": 0,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 0,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 0,
+      "roadClosures": 0,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [],
+      "summaryHash": "5aee6951e0569c3151af688e715ae647f9634f44fa8ee6a6e8ed715c6a4f5246",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    },
+    {
+      "activeDriverAdvisories": 0,
+      "activeSafetyBlockers": 0,
+      "activeSpeedWarnings": 0,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 0,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 0,
+      "roadClosures": 0,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [],
+      "summaryHash": "5aee6951e0569c3151af688e715ae647f9634f44fa8ee6a6e8ed715c6a4f5246",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    },
+    {
+      "activeDriverAdvisories": 0,
+      "activeSafetyBlockers": 0,
+      "activeSpeedWarnings": 0,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 1,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 0,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 0,
+      "roadClosures": 0,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [],
+      "summaryHash": "9632416ae1c9dfbe3760f1125872b3ac1aa6dfbd6640181cd71d23df638e50c6",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 1
+    },
+    {
+      "activeDriverAdvisories": 0,
+      "activeSafetyBlockers": 1,
+      "activeSpeedWarnings": 1,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 1,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 1,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 0,
+      "roadClosures": 0,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [],
+      "summaryHash": "5fe4e3155687d81f5607dc7a03b3ad16cd0194f77613aaf55ef441e37973b1da",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    },
+    {
+      "activeDriverAdvisories": 1,
+      "activeSafetyBlockers": 1,
+      "activeSpeedWarnings": 0,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 1,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 0,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 0,
+      "roadClosures": 1,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [],
+      "summaryHash": "e8f2a2bbaba580a303f96b35acc53a287527b13070fe6a78ccf2eb8d3f53154b",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    },
+    {
+      "activeDriverAdvisories": 0,
+      "activeSafetyBlockers": 1,
+      "activeSpeedWarnings": 0,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 2,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 0,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 0,
+      "roadClosures": 0,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [],
+      "summaryHash": "c65979180d9c972265b65e7b371ff557a5a5ca4af1d5ce0f922ea9772f44b31b",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    },
+    {
+      "activeDriverAdvisories": 0,
+      "activeSafetyBlockers": 0,
+      "activeSpeedWarnings": 0,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 1,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 0,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 0,
+      "roadClosures": 0,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [],
+      "summaryHash": "1f98c17ec1c264171dab65f08bd6562f9df0b292017ffb54accb0ddb0f7ccfab",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    },
+    {
+      "activeDriverAdvisories": 0,
+      "activeSafetyBlockers": 1,
+      "activeSpeedWarnings": 0,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 1,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 1,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 0,
+      "roadClosures": 0,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [],
+      "summaryHash": "ce58e37fe3507f08329d2940672cad26b468c41d206cf23659bc332c58af7d03",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    },
+    {
+      "activeDriverAdvisories": 0,
+      "activeSafetyBlockers": 1,
+      "activeSpeedWarnings": 0,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 1,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 0,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 1,
+      "roadClosures": 0,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [],
+      "summaryHash": "b8128757761374ba480949f01563d18186f020b148501f7eedc1076145e42ff9",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    },
+    {
+      "activeDriverAdvisories": 0,
+      "activeSafetyBlockers": 0,
+      "activeSpeedWarnings": 0,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 0,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 0,
+      "roadClosures": 0,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [
+        "route.invalidate"
+      ],
+      "summaryHash": "58eab771900abd476ae08f9f6c7435a982c5536e7d6bc156f05bcca1c67d1e80",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    },
+    {
+      "activeDriverAdvisories": 0,
+      "activeSafetyBlockers": 0,
+      "activeSpeedWarnings": 0,
+      "conflictingSafetyEvidence": [],
+      "employeeRankingGenerated": false,
+      "humanReviewItems": 0,
+      "insufficientEvidenceItems": [],
+      "lowClearanceHazards": 0,
+      "organizationId": "org-001",
+      "predictionGenerated": false,
+      "restrictionHazards": 0,
+      "roadClosures": 0,
+      "routesInScope": 3,
+      "safetyContextId": "safety.context.org-001.morning",
+      "safetyScoreGenerated": false,
+      "schemaVersion": "safety.summary.v1",
+      "staleSafetyEvidence": [],
+      "summaryHash": "5aee6951e0569c3151af688e715ae647f9634f44fa8ee6a6e8ed715c6a4f5246",
+      "testOnly": true,
+      "unresolvedSharedSafetyReviews": 0
+    }
+  ]
+}

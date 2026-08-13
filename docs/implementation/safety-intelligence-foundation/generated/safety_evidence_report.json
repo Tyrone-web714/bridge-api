@@ -1,0 +1,832 @@
+{
+  "authorityTraces": [
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "ELIGIBLE",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "a741483c344ac922140855255f342c6a4422ce9c823b8d9eaaa044e1a09d9be0",
+          "sourceRecordId": "route.safe",
+          "sourceStatus": "ELIGIBLE",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "a556b0b66f462b10d842b3583913dce7e5e7c7b6cb34b8ff638c6d55ed64585e",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "BLOCKED",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "5bdf2b7d3d03b73cfc52acbfe6f26636ee2f665b8f95ddfaaaba93f237ba915d",
+          "sourceRecordId": "route.blocked",
+          "sourceStatus": "BLOCKED",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "b5a8e11c52832cd1ae39ca7a3eb6a6c764642749b1ebb7437e70abf27f23364b",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "UNSAFE",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "a29f369da6c286e86ef33e75eca4d28cd13c5ffc50599fcc2a7f23f52a000473",
+          "sourceRecordId": "route.low.clearance",
+          "sourceStatus": "UNSAFE",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "558483dc764261d0fc100f2d9c7c4617151e38c81132eac3f3d2d86c1e6a92e1",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "REVIEW_REQUIRED",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "70aea646b75bebd2dd4cbae113466421f47a98e8c64d9d7ced13c403ddd079dc",
+          "sourceRecordId": "route.low.review",
+          "sourceStatus": "REVIEW_REQUIRED",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "6a30b3ed1de09467d00ed138171b2b9d353aacb461e7dface0ef5d07e4e6d43d",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "UNSAFE",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "d466245c5042c5a282e55aecf8320e125a64e831ce5319084ee78083f1f1eb8b",
+          "sourceRecordId": "route.truck.prohibited",
+          "sourceStatus": "UNSAFE",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "23046b1091301451bcfe18ff805018645ff63815edc8cdbe090e0dc89831768c",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "UNSAFE",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "c60b5218e8072e75f6cc787e325eb69151876567da1d9112bef37ad5a3f0ecab",
+          "sourceRecordId": "route.no.through",
+          "sourceStatus": "UNSAFE",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "de66dbc0d92971cf69f9e5738c70dba19cae002810f781a8355fb4a4f77c527c",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "ELIGIBLE",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "d4b826147949ecbc5a734e41fa35875d49784ed9775e7cc8f53f9a159d180a62",
+          "sourceRecordId": "route.local.delivery",
+          "sourceStatus": "ELIGIBLE",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "84a4a2634dacd9be1be6efa715b7455ceeaa6bf69afb43b2ae552f9a87ddd2c5",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "UNSAFE",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "3a766b16f09ec873e440eb54496a89f78d74195b3c65fefc30e0143bab6d576b",
+          "sourceRecordId": "route.closed",
+          "sourceStatus": "UNSAFE",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "0df82edd2e0ef27577b8cdafa7402716ba8a300c0fa3294277bea21e635e414a",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "UNSAFE",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "5ff869623f43e441ecdc7cbeaa4373b55c2e98d1033143015d6ca363589f8ff4",
+          "sourceRecordId": "route.residential.block",
+          "sourceStatus": "UNSAFE",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "37eb2a255aff39dfcbfc0be2c938d89c61efcaa558c3499681fce15f12be2ddc",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "REVIEW_REQUIRED",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "4142dea5ed73c8e97a662474a9a60041eb9a1f6ccb0690d5a28dd78e8ea8ae1c",
+          "sourceRecordId": "route.residential.advisory",
+          "sourceStatus": "REVIEW_REQUIRED",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "d6eeb72b30058042c2477047dade3f080130e62535c21237548059bf8f0b36d3",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "BLOCKED",
+          "sourceDomain": "FLEET",
+          "sourceHash": "f1d08b3b7be0ac88632ead263da7d58a53bc07af4b96771dadaf790c584ad932",
+          "sourceRecordId": "fleet.incompatible",
+          "sourceStatus": "BLOCKED",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "d34653923edacc15bebed907641f444601afb226da43ac6fb6f67a0014cfc0ac",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "REVIEW_REQUIRED",
+          "sourceDomain": "FLEET",
+          "sourceHash": "beed594d8adc9967029bf4f3d372dfbe7c8ddd90fc827a2db8ff296cb16f570b",
+          "sourceRecordId": "fleet.review",
+          "sourceStatus": "REVIEW_REQUIRED",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "2892b07ba998f623d9cfe71a061b8da711ee12199b41b16bdc686b278e5b21c0",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "WARNING",
+          "sourceDomain": "DRIVER",
+          "sourceHash": "c981d9cc4bdb44b0ae1919ecf75956803268b714a28aa188f8fcc3e30824392c",
+          "sourceRecordId": "driver.low.bridge",
+          "sourceStatus": "WARNING",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "7b4dc01ff85dfa0d5c8788544954543a9535a4d1ff697ea9f7e4becffdb1a7d8",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "WARNING",
+          "sourceDomain": "DRIVER",
+          "sourceHash": "35915cdfb8848e654ef9816568d0c36ef80dccbf03a80c37b622ef62b5130c34",
+          "sourceRecordId": "driver.restricted",
+          "sourceStatus": "WARNING",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "a0bff54bd66f0525fa8cc4c16507b3324b7be5e33fd6f81d4bf1c341edb56d52",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "WARNING",
+          "sourceDomain": "DRIVER",
+          "sourceHash": "d9c38eba776fa9ca8fb9e54ab8ee6b16cbbe14e073d5052eafe5cad17833c701",
+          "sourceRecordId": "driver.no.through",
+          "sourceStatus": "WARNING",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "3a21fc7b53803914a97e1af99597bea0aed48752969ff6e482cb084ecffd823a",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "ADVISORY",
+          "sourceDomain": "DRIVER",
+          "sourceHash": "55db7e1e5148399333946d0afe84a13f8723785e8341cfe211c6736172c58721",
+          "sourceRecordId": "driver.speed.advisory",
+          "sourceStatus": "ADVISORY",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "f8f3a180c1d67b51abfca559167668a527383d90a054b650f01a51c1f838c2c5",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "WARNING",
+          "sourceDomain": "DRIVER",
+          "sourceHash": "bcd47e6bc5a433d2bcad4489b5a0a63da4df253b1b3a7689d762a3e95700122c",
+          "sourceRecordId": "driver.speed.warning",
+          "sourceStatus": "WARNING",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "e8ac125f07d4911ba4becea30b8bfca607410c18963607ba518c632a49439458",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "INSUFFICIENT_EVIDENCE",
+          "sourceDomain": "DRIVER",
+          "sourceHash": "75d78928f285cd9f7ca2ce6308d5a4f902dedde915a00df59b79aa1316af3019",
+          "sourceRecordId": "driver.speed.stale",
+          "sourceStatus": "INSUFFICIENT_EVIDENCE",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "8d5eb57c7a417d010a5ad8d7f133ac711cc8e20c9181f430268a168fa86cb5a5",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "INSUFFICIENT_EVIDENCE",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "3d6ddfd5f6236e1d28a90a6e8d186719a84d5987d260c7b006e4d5902baf55e9",
+          "sourceRecordId": null,
+          "sourceStatus": "INSUFFICIENT_EVIDENCE",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "4e87ad0fd2d6c5e3ebc0595dddaac5cf7a06e165a1c822c744b453512c86fd76",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "REVIEW_REQUIRED",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "18351a4d80fb7cc1b595e2025c1bdd7ade7c79fe3bb4e2f695e4a0a40d426315",
+          "sourceRecordId": "route.conflict",
+          "sourceStatus": "REVIEW_REQUIRED",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "eb2a5ea72bab12fdc3f1fffbdcdee24186c33ad0be07e4efb9c80e65a37de04c",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "BLOCKED",
+          "sourceDomain": "WAREHOUSE",
+          "sourceHash": "5f81d75bc6939049f339f09664388af72d4f2282bad35a7960fbe8e2a4dd335a",
+          "sourceRecordId": "warehouse.safety.blocker",
+          "sourceStatus": "BLOCKED",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "904db740be72160b507da1f9972aa5af5044539d1b9fd79d3ade84dc98250343",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "DELAYED",
+          "sourceDomain": "WAREHOUSE",
+          "sourceHash": "b50f24565441a614c85aa123a5c75a1548633ecdfb1131aaf8c879145b48039c",
+          "sourceRecordId": "warehouse.delay",
+          "sourceStatus": "DELAYED",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "03ec9983de6862bf588397bbc6b6e9b78aa98ed5c583a329e5319da0d1ed848a",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "OPEN",
+          "sourceDomain": "OPERATIONS",
+          "sourceHash": "fba858375384057a244363216c49c091df6a9529450782f1ac21d53ece39e07f",
+          "sourceRecordId": "operations.safety",
+          "sourceStatus": "OPEN",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "354ebaf56cb5fcfdb0d6618d656781bd6da3d1dc0ef88ae76792d35c51913822",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "OPEN",
+          "sourceDomain": "OPERATIONS",
+          "sourceHash": "2ed85572d5effccd5e7931cfa6f7231e2755d7a6225f0f745d65e49e82a1ecd3",
+          "sourceRecordId": "operations.delay",
+          "sourceStatus": "OPEN",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "7d40fa60098c95cf850c101f40185c31e843e6eb6c9da5ece652fe8f89ecf472",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "ACCEPTED",
+          "sourceDomain": "SHARED_SAFETY",
+          "sourceHash": "4bed3964a4382a3f7ab9938e9de47551526310a53be31692d8a43782f97c8a2e",
+          "sourceRecordId": "shared.accepted",
+          "sourceStatus": "ACCEPTED",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "1b0a480b86312d690151e929167ed4626283e7727ae8a18e98dde3f81971665d",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "PENDING_REVIEW",
+          "sourceDomain": "SHARED_SAFETY",
+          "sourceHash": "bcbd64592f78643d2366d97c41590e8abca940c380ced303c178ae10353de260",
+          "sourceRecordId": "shared.review",
+          "sourceStatus": "PENDING_REVIEW",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "f176e2b0a92c38520ff15227e466ed5c2f15c974d6370345745be88aa7f0488f",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "NORMAL",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "d681c2d4cb87a79e405be82645a10d3b062b4c37cbb827d283057fd0d12275d6",
+          "sourceRecordId": "route.low",
+          "sourceStatus": "NORMAL",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        },
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "NORMAL",
+          "sourceDomain": "DRIVER",
+          "sourceHash": "1f44da85ac07fa9ea53e6c3a54f48ce68d7385af2ac60ff3d066622b45e8a80d",
+          "sourceRecordId": "driver.speed",
+          "sourceStatus": "NORMAL",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "cddd68cd53ba4c9cc7806afa49fdb5f2e7e504d72f26fd2ce750910267821b8b",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "NORMAL",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "bcc54489d77aaa54986ee003695342822a3a30c7b81217cc78cd2bea07f37c70",
+          "sourceRecordId": "route.closed.high",
+          "sourceStatus": "NORMAL",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        },
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "NORMAL",
+          "sourceDomain": "DRIVER",
+          "sourceHash": "195bf6d9233c574a26b293395e7c8e5a9339bab52f84a0fd12d8b707eeca9fba",
+          "sourceRecordId": "driver.advisory.low",
+          "sourceStatus": "NORMAL",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "eed672dcb830df2b05d88516613de47ee692b978a1a69ef7abbca24d757f13a8",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "NORMAL",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "afc17de218e1b86020ed30fb894aa03f831db579c7a8f74f966833fbba1dd22c",
+          "sourceRecordId": "route.other.org",
+          "sourceStatus": "NORMAL",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "0831291bd9ba4e86dde1fd96141db0a73a576a03d996328bc42b72e138e53171",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "OPEN",
+          "sourceDomain": "SUPERVISOR",
+          "sourceHash": "04a993ea66dc603e025cb802c91f02a925006044aab68fefa69b730dc6f4341b",
+          "sourceRecordId": "supervisor.review",
+          "sourceStatus": "OPEN",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "b849a620d6bd07633e363e326019eca73c32336aace64bf9967e5dffcb0bb130",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "NORMAL",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "5b0e73764b38b65a9b0156bad4160ffbef8bf67057cb47c78a7bdb6cf1beda46",
+          "sourceRecordId": "route.ack",
+          "sourceStatus": "NORMAL",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "ea02c4482d51aeeb033c4daaf79b829a091fbf19ace14a3933a9e72b408fa699",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "NORMAL",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "f16a7b1f10a8996b1ebc241c0b8db21a01616b14487cee44314233892d1cfc21",
+          "sourceRecordId": "route.resolve",
+          "sourceStatus": "NORMAL",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "5115aa6124a557944892a65428767058b94299799093aff64a970083226086fb",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "NORMAL",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "589a81f12999225917308782db70e539933278d8b78df65a5faf7031e06d72b6",
+          "sourceRecordId": "route.invalidate",
+          "sourceStatus": "NORMAL",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "2a321e6136389db4e5aa353a0d8bcd1d5a723488a9df34130c459d07b4057366",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    },
+    {
+      "lowerDomainsRemainAuthoritative": true,
+      "organizationId": "org-001",
+      "records": [
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "ELIGIBLE",
+          "sourceDomain": "ROUTE",
+          "sourceHash": "c7d2be689edc1a81d64b8eda29d3190f207bc2b788715d4544bc79e510bfc408",
+          "sourceRecordId": "route.ok",
+          "sourceStatus": "ELIGIBLE",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        },
+        {
+          "aggregationRule": "safety.aggregate.preserve_authority.v1",
+          "aggregationVersion": "safety.intelligence.foundation.engine.v1",
+          "lowerDomainAuthoritative": true,
+          "lowerDomainConclusion": "NORMAL",
+          "sourceDomain": "DRIVER",
+          "sourceHash": "81537e989e3ee98221158057d7de22d086a484846a8245c1d9ee3b89dbf8191d",
+          "sourceRecordId": "driver.ok",
+          "sourceStatus": "NORMAL",
+          "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+          "sourceVersion": "synthetic.v1"
+        }
+      ],
+      "resultHash": "6578ec572acc9e16f8d185c21d508cacfef25b5034cc23c83f73a91c97711470",
+      "safetyContextId": "safety.context.org-001.morning",
+      "schemaVersion": "safety.authority.trace.v1",
+      "testOnly": true
+    }
+  ],
+  "catalog": {
+    "autonomousActionGenerated": false,
+    "benchmarkCaseCount": 34,
+    "capabilityCount": 5,
+    "catalogHash": "749ac5c49f7bad1fd76a80783fcaded08fbf10edc4a2edcc532f36289b17c25a",
+    "complianceProductExpanded": false,
+    "currentSafetyFunctionalityAuditComplete": true,
+    "deploymentExecuted": false,
+    "directEnterpriseRegistryCapability": null,
+    "directRegistryCapabilityDeferred": true,
+    "employeeRankingGenerated": false,
+    "engineVersion": "safety.intelligence.foundation.engine.v1",
+    "generatedAt": "2026-08-12T00:00:00.000Z",
+    "hostedAiInvoked": false,
+    "integratedWithCapabilityOrchestration": true,
+    "integratedWithDriverIntelligence": true,
+    "integratedWithEnterpriseRegistry": true,
+    "integratedWithFleetIntelligence": true,
+    "integratedWithLifecycleFramework": true,
+    "integratedWithOperationsIntelligence": true,
+    "integratedWithRouteIntelligence": true,
+    "integratedWithSharedSafety": true,
+    "integratedWithWarehouseIntelligence": true,
+    "lowerDomainOverrideGenerated": false,
+    "migrationExecuted": false,
+    "modelSelectionActivated": false,
+    "monitoringHardwareIntroduced": false,
+    "negligenceConclusionGenerated": false,
+    "newAiInfrastructureCreated": false,
+    "predictionGenerated": false,
+    "productionApiExposed": false,
+    "productionApplicable": false,
+    "productionOrchestrationActivated": false,
+    "providerCallInvoked": false,
+    "safetyScoreGenerated": false,
+    "schemaVersion": "safety.intelligence.foundation.v1",
+    "serviceReuseDecisionDocumented": true,
+    "testOnly": true
+  },
+  "generatedArtifact": true,
+  "validation": {
+    "errors": [],
+    "valid": true
+  }
+}

@@ -628,6 +628,18 @@
         "testOnly": true
       },
       {
+        "edgeId": "edge:f986f3d81efafa459225",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "245dc84a88e52220ac3cb24ec1aba3ee11486e9eec976882ee8dc2b6efb20f51",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "IMPLEMENTS",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Service:intelligence-execution-platform",
+        "targetNodeId": "Repository Module:bridge-api/services/intelligenceExecution/safetyIntelligence.js",
+        "testOnly": true
+      },
+      {
         "edgeId": "edge:4d8099430fea0f50cac0",
         "metadata": {},
         "relationshipConfidence": "DETERMINISTIC",
@@ -10216,6 +10228,162 @@
         "testOnly": true
       },
       {
+        "edgeId": "edge:6172c7f0e714e2b430cd",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "bc65eee67851fa4142526b62956b9e3b9adac6f220b82d6ea28822916ad2efba",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_alert_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:70c0f004f8f3d934276c",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "52b66dae1f7c7275c32740b59cafb752740ee35c6a29e7a73b43b11ea43cfa96",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_benchmark_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:106a5f89b05a5d1873a7",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "02bd500327d8951f1784476e59e3ec085f00638fdac1392da1070fd2ff312499",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_context_contract.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:8df75fb4d0992deb2a66",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "9777b3fa336abe8803699333b15d08535fa6bebf6a3013f12d4008599b8fb5d2",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_driver_advisory_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:10f76710fad2578f6d25",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "20ea89a66c80055ca9046c5d6d7eee06ea7fbb8ce6364b55580ddf3b8297874b",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_evidence_report.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:d83f1236bc076c9bad83",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "aa4010854d9b482d8f85785f2e09651f7244877190cb3acb88eb83e200492e07",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_exception_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:b93bb7145fbd15d1e8ab",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "ed7f27afc117007bae969cfa2b9faa29585bfdf2c6970d9747f03095910360e7",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_hazard_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:71cbdf41376488f1f692",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "061647a477b57bb96f3b82c9f5ab594bec760d7e48c30d32d175aae81134a13d",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/SAFETY_INTELLIGENCE_SUMMARY.md",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:3401169427c5dc7e4370",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "d681a3ea0315491a0e4d7967e6ec9d7adc58ac3b9907dae4abb2fb633d28101c",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_reason_code_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:b7dc08cfe51c3459dad5",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "5add90f846961f0be3bb7d256c370c4ccb8a041dd429f265e2c0cba2869c3a8a",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_route_portfolio.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:c0cadc3aefe1b1c11777",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "977e851c42dd015a73ecdadcaca6992ffe11b5b9ab2c02b6b3a18e72fb1cb199",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_severity_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:e56758ba1beb97a40a06",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "0b6041ba4489fedab29a7ea11531bed891f7871ae0918a358e64fbe146dd902a",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_shared_intelligence_catalog.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:2276213e5d2d4589fa25",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "fce7492c16ed6d8efbbfe9e2745b41f8978e936aaa70e0a511d560626ba3b2ad",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "GENERATED_FROM",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_summary_report.json",
+        "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
         "edgeId": "edge:110acd3cd79005f6a2bf",
         "metadata": {},
         "relationshipConfidence": "DETERMINISTIC",
@@ -10878,10 +11046,10 @@
     ],
     "engineVersion": "intelligence.knowledge.graph.engine.v1",
     "generatedFrom": "repository",
-    "graphHash": "1d1e8e32af272be345fd5d2c42b5bdf3e97c766430c136f3f7e2f86c17a9e34e",
+    "graphHash": "b9f7c7e7fca27530935f0720059fcd63c7480abbfba9770d57cbe479cac55ba5",
     "nodes": [
       {
-        "hash": "c1ed7fda52ca9e170e63433116773014634d51aa3a4d54e086ec6a1740b4b99b",
+        "hash": "77e314a0c3f5d281fc50f475cffc3dd2cb6dab937c681f35dddb5b6ad07837d6",
         "label": "bridge-api",
         "lifecycleState": null,
         "metadata": {},
@@ -11514,6 +11682,18 @@
         "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/routeIntelligence.js",
         "productionApplicable": false,
         "source": "bridge-api/services/intelligenceExecution/routeIntelligence.js",
+        "testOnly": true,
+        "type": "Repository Module",
+        "version": null
+      },
+      {
+        "hash": "3fbd3e8c1a11a2d94e8236dda3d7766da878c0f40cb35c304ba22a19ab81b3a2",
+        "label": "bridge-api/services/intelligenceExecution/safetyIntelligence.js",
+        "lifecycleState": null,
+        "metadata": {},
+        "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/safetyIntelligence.js",
+        "productionApplicable": false,
+        "source": "bridge-api/services/intelligenceExecution/safetyIntelligence.js",
         "testOnly": true,
         "type": "Repository Module",
         "version": null
@@ -26387,6 +26567,832 @@
         "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/WEIGHT_RULES.md",
         "productionApplicable": false,
         "source": "docs/implementation/route-intelligence-foundation/WEIGHT_RULES.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "f051dfa2810504ad4589a7de947ff2a93203a1a6968d58dfee765025b9223333",
+        "label": "docs/implementation/safety-intelligence-foundation/ALERT_LIFECYCLE.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "f051dfa2810504ad4589a7de947ff2a93203a1a6968d58dfee765025b9223333"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/ALERT_LIFECYCLE.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/ALERT_LIFECYCLE.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "c6896be767250870f52f19358ea8cc1c5cc7cdb856d5aafafbe16f14e2e704c8",
+        "label": "docs/implementation/safety-intelligence-foundation/AUTHORITATIVE_SAFETY_BOUNDARIES.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "c6896be767250870f52f19358ea8cc1c5cc7cdb856d5aafafbe16f14e2e704c8"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/AUTHORITATIVE_SAFETY_BOUNDARIES.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/AUTHORITATIVE_SAFETY_BOUNDARIES.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "e7e431afc93f876c2744c46d3eb2b46df33822c31e07af71cc1108dcde9133a3",
+        "label": "docs/implementation/safety-intelligence-foundation/AUTONOMOUS_SAFETY_ACTION_BOUNDARY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "e7e431afc93f876c2744c46d3eb2b46df33822c31e07af71cc1108dcde9133a3"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/AUTONOMOUS_SAFETY_ACTION_BOUNDARY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/AUTONOMOUS_SAFETY_ACTION_BOUNDARY.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "f184ffa9da19390a0340306007088a93013bb72d5897882b920493abedbc5934",
+        "label": "docs/implementation/safety-intelligence-foundation/BENCHMARK_DATASETS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "f184ffa9da19390a0340306007088a93013bb72d5897882b920493abedbc5934"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/BENCHMARK_DATASETS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/BENCHMARK_DATASETS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "bcc8855f1f2ceefcf7084d2d9d0f7ccb7d58ca667b0a7872b1c04669f7f4123c",
+        "label": "docs/implementation/safety-intelligence-foundation/COMPLIANCE_INSURANCE_BOUNDARY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "bcc8855f1f2ceefcf7084d2d9d0f7ccb7d58ca667b0a7872b1c04669f7f4123c"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/COMPLIANCE_INSURANCE_BOUNDARY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/COMPLIANCE_INSURANCE_BOUNDARY.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "20080ffbe7e8983240d49e79657a45977a42d428cdf6ef8cde1ed30252fe12fc",
+        "label": "docs/implementation/safety-intelligence-foundation/CURRENT_SAFETY_FUNCTIONALITY_AUDIT.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "20080ffbe7e8983240d49e79657a45977a42d428cdf6ef8cde1ed30252fe12fc"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/CURRENT_SAFETY_FUNCTIONALITY_AUDIT.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/CURRENT_SAFETY_FUNCTIONALITY_AUDIT.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "d7d9fe9a5ca95b2cadb835845977c77c5d43e11fcd6631f0589518ef5a50f624",
+        "label": "docs/implementation/safety-intelligence-foundation/DASHBOARD_INTEGRATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "d7d9fe9a5ca95b2cadb835845977c77c5d43e11fcd6631f0589518ef5a50f624"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/DASHBOARD_INTEGRATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/DASHBOARD_INTEGRATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "696fca4e7ce15ccec563d27b9bffba7cac193eb2435e0fc4428e9c2266d65225",
+        "label": "docs/implementation/safety-intelligence-foundation/DATA_LIFECYCLE_REVIEW.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "696fca4e7ce15ccec563d27b9bffba7cac193eb2435e0fc4428e9c2266d65225"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/DATA_LIFECYCLE_REVIEW.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/DATA_LIFECYCLE_REVIEW.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "1b6d393d9f2fce6b6e16937b8649f5b760b23b4c8cb419234d45541ff324428b",
+        "label": "docs/implementation/safety-intelligence-foundation/DEFERRED_WORK.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "1b6d393d9f2fce6b6e16937b8649f5b760b23b4c8cb419234d45541ff324428b"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/DEFERRED_WORK.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/DEFERRED_WORK.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "d348b2ed62d8a9b2ab72fb6bdd491ef26ff1cbbfe780fff803ba722289e4f5dc",
+        "label": "docs/implementation/safety-intelligence-foundation/DETERMINISTIC_EXPLANATIONS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "d348b2ed62d8a9b2ab72fb6bdd491ef26ff1cbbfe780fff803ba722289e4f5dc"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/DETERMINISTIC_EXPLANATIONS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/DETERMINISTIC_EXPLANATIONS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "af07c4d9e736a0b6c52e57bf44ac5a57f3b6acddd8c20879cf6d2b6f8244eda2",
+        "label": "docs/implementation/safety-intelligence-foundation/DRIVER_SAFETY_ADVISORY_AGGREGATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "af07c4d9e736a0b6c52e57bf44ac5a57f3b6acddd8c20879cf6d2b6f8244eda2"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/DRIVER_SAFETY_ADVISORY_AGGREGATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/DRIVER_SAFETY_ADVISORY_AGGREGATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "032262c38def224f52c8b42689b2a91425b84493b4a4ec6a761d9a0380aea813",
+        "label": "docs/implementation/safety-intelligence-foundation/EMPLOYMENT_DRIVER_IMPACT_BOUNDARY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "032262c38def224f52c8b42689b2a91425b84493b4a4ec6a761d9a0380aea813"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/EMPLOYMENT_DRIVER_IMPACT_BOUNDARY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/EMPLOYMENT_DRIVER_IMPACT_BOUNDARY.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "1c152e2c0f60485873388d97594a146484d64296aecd0358a3885b24e5d50ebc",
+        "label": "docs/implementation/safety-intelligence-foundation/EXISTING_SERVICE_REUSE_DECISION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "1c152e2c0f60485873388d97594a146484d64296aecd0358a3885b24e5d50ebc"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/EXISTING_SERVICE_REUSE_DECISION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/EXISTING_SERVICE_REUSE_DECISION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "34c732b8bf3eea7489ba91a08c00d7c54fafc889fc76a60faedf0ac2a915c461",
+        "label": "docs/implementation/safety-intelligence-foundation/generated/safety_alert_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_alert_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/generated/safety_alert_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "343bef70f59b65dc86da1794014b1fab804e58fa6f05a184ff6b1490ef09cc53",
+        "label": "docs/implementation/safety-intelligence-foundation/generated/safety_benchmark_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_benchmark_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/generated/safety_benchmark_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "e98c5351433f02401c2c59d795b99130949ec261d9d5a61c250ffb1bae012474",
+        "label": "docs/implementation/safety-intelligence-foundation/generated/safety_context_contract.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_context_contract.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/generated/safety_context_contract.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "0e7670df95a05ec5b415ca7dae9fbdd4b96559e03d2c703b496ff539301abba5",
+        "label": "docs/implementation/safety-intelligence-foundation/generated/safety_driver_advisory_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_driver_advisory_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/generated/safety_driver_advisory_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "589593a37e23afbf34881388db17982fc1a5c320183799fce2b6da0a5160beb0",
+        "label": "docs/implementation/safety-intelligence-foundation/generated/safety_evidence_report.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_evidence_report.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/generated/safety_evidence_report.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "ef624fc58d5bb2c9b3eb563363b939780c319c6cf77047a3daa42f32761cb55b",
+        "label": "docs/implementation/safety-intelligence-foundation/generated/safety_exception_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_exception_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/generated/safety_exception_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "5492c025573f1d48c388b1e3ca8e432534cba4ed879910f70010454669841272",
+        "label": "docs/implementation/safety-intelligence-foundation/generated/safety_hazard_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_hazard_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/generated/safety_hazard_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "22c9d8326bc91327e99a689c7a5e33bd128da579358bb96590cc26874f6fdffd",
+        "label": "docs/implementation/safety-intelligence-foundation/generated/SAFETY_INTELLIGENCE_SUMMARY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/SAFETY_INTELLIGENCE_SUMMARY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/generated/SAFETY_INTELLIGENCE_SUMMARY.md",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "d5bb046a63a5a5fd5c3d3843823dee9eb00214595d72c8111f090aacae9e74fb",
+        "label": "docs/implementation/safety-intelligence-foundation/generated/safety_reason_code_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_reason_code_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/generated/safety_reason_code_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "30d4c3f327ed21f03df4de5c42a6a3aaa5f1c4b564404ed6e1e4e94aeef9fa23",
+        "label": "docs/implementation/safety-intelligence-foundation/generated/safety_route_portfolio.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_route_portfolio.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/generated/safety_route_portfolio.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "36c79fa47945b67ba9c6502f34db3bdee6acea2dfed874f3887fb1ae15c68fe2",
+        "label": "docs/implementation/safety-intelligence-foundation/generated/safety_severity_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_severity_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/generated/safety_severity_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "d035952ae1ee144f0224923e6723c844c88b754a5fbe7f2dfbec02769aa062e5",
+        "label": "docs/implementation/safety-intelligence-foundation/generated/safety_shared_intelligence_catalog.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_shared_intelligence_catalog.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/generated/safety_shared_intelligence_catalog.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "505f385d2ae963001da96d38994190b8f1a8a7fe472b5ee8f63451986e581054",
+        "label": "docs/implementation/safety-intelligence-foundation/generated/safety_summary_report.json",
+        "lifecycleState": null,
+        "metadata": {
+          "generatedArtifact": true
+        },
+        "nodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_summary_report.json",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/generated/safety_summary_report.json",
+        "testOnly": true,
+        "type": "Generated Artifact",
+        "version": null
+      },
+      {
+        "hash": "3db45bf158064e54492fdf707b3fe9295340a2ecdbc79654ee789aea8f8ebb11",
+        "label": "docs/implementation/safety-intelligence-foundation/GENERATED_ARTIFACTS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "3db45bf158064e54492fdf707b3fe9295340a2ecdbc79654ee789aea8f8ebb11"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/GENERATED_ARTIFACTS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/GENERATED_ARTIFACTS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "af4571073c98a28a12c2b33ad2dcc19820520909718dd1da81a878647d3df9e6",
+        "label": "docs/implementation/safety-intelligence-foundation/IMPLEMENTATION_REPORT.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "af4571073c98a28a12c2b33ad2dcc19820520909718dd1da81a878647d3df9e6"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/IMPLEMENTATION_REPORT.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/IMPLEMENTATION_REPORT.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "10525099800a32e335d4c103628e58569950aabf6f5c96071b09bdc56388f223",
+        "label": "docs/implementation/safety-intelligence-foundation/KNOWLEDGE_GRAPH_INTEGRATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "10525099800a32e335d4c103628e58569950aabf6f5c96071b09bdc56388f223"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/KNOWLEDGE_GRAPH_INTEGRATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/KNOWLEDGE_GRAPH_INTEGRATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "b1065ab9c6ec135e6000a1997be6e7b371d060070fb276aff50b88457ce0e63a",
+        "label": "docs/implementation/safety-intelligence-foundation/LOW_CLEARANCE_SAFETY_AWARENESS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "b1065ab9c6ec135e6000a1997be6e7b371d060070fb276aff50b88457ce0e63a"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/LOW_CLEARANCE_SAFETY_AWARENESS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/LOW_CLEARANCE_SAFETY_AWARENESS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "c5740e0c0580b5741e7ed3b44f5b51ac06e34cc07eca61bacea95295b7f023a6",
+        "label": "docs/implementation/safety-intelligence-foundation/MONITORING_HARDWARE_BOUNDARY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "c5740e0c0580b5741e7ed3b44f5b51ac06e34cc07eca61bacea95295b7f023a6"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/MONITORING_HARDWARE_BOUNDARY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/MONITORING_HARDWARE_BOUNDARY.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "05d5e199913476cc825ab657540082d61cad12eadefc6e7b8fdf578eeca482ee",
+        "label": "docs/implementation/safety-intelligence-foundation/OPERATIONS_SAFETY_EXCEPTION_INTEGRATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "05d5e199913476cc825ab657540082d61cad12eadefc6e7b8fdf578eeca482ee"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/OPERATIONS_SAFETY_EXCEPTION_INTEGRATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/OPERATIONS_SAFETY_EXCEPTION_INTEGRATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "eaab9dbad3a7ff5843f6ebb412073fb7e73f3280fd4b6135ffeae55f99634b04",
+        "label": "docs/implementation/safety-intelligence-foundation/ORGANIZATION_SAFETY_CONTEXT.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "eaab9dbad3a7ff5843f6ebb412073fb7e73f3280fd4b6135ffeae55f99634b04"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/ORGANIZATION_SAFETY_CONTEXT.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/ORGANIZATION_SAFETY_CONTEXT.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "3b603547727c914eca8208149087092f987832451ac3b960f4b1d738e3b08882",
+        "label": "docs/implementation/safety-intelligence-foundation/OWNER_DECISIONS_REQUIRED.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "3b603547727c914eca8208149087092f987832451ac3b960f4b1d738e3b08882"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/OWNER_DECISIONS_REQUIRED.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/OWNER_DECISIONS_REQUIRED.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "8d12d0eda4d22d9bedd6de89800d3e721bf6e766b0c37e7a6ab190fffc8d7ab0",
+        "label": "docs/implementation/safety-intelligence-foundation/PLATFORM_INTEGRATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "8d12d0eda4d22d9bedd6de89800d3e721bf6e766b0c37e7a6ab190fffc8d7ab0"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/PLATFORM_INTEGRATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/PLATFORM_INTEGRATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "6996a15d7fbc746ce24af192b7e443a29d43dfad679341493ff17e93fa170222",
+        "label": "docs/implementation/safety-intelligence-foundation/PREDICTIVE_SAFETY_BOUNDARY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "6996a15d7fbc746ce24af192b7e443a29d43dfad679341493ff17e93fa170222"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/PREDICTIVE_SAFETY_BOUNDARY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/PREDICTIVE_SAFETY_BOUNDARY.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "88426148fbf74f56c8dff31d70638ebe89de803f2f58ee7f095c4695ab81c6d3",
+        "label": "docs/implementation/safety-intelligence-foundation/README.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "88426148fbf74f56c8dff31d70638ebe89de803f2f58ee7f095c4695ab81c6d3"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/README.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/README.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "8f5287b422ff212212de23363bc651883afa6d1b3092a41ca1751db051e050d5",
+        "label": "docs/implementation/safety-intelligence-foundation/REGRESSION_BOUNDARIES.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "8f5287b422ff212212de23363bc651883afa6d1b3092a41ca1751db051e050d5"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/REGRESSION_BOUNDARIES.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/REGRESSION_BOUNDARIES.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "a155a6b29442b0eefc5e71429ecec2ee51c3c43b649def1c07fc04a9e7279224",
+        "label": "docs/implementation/safety-intelligence-foundation/RESIDENTIAL_RESTRICTION_AWARENESS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "a155a6b29442b0eefc5e71429ecec2ee51c3c43b649def1c07fc04a9e7279224"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/RESIDENTIAL_RESTRICTION_AWARENESS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/RESIDENTIAL_RESTRICTION_AWARENESS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "3c89175ad45eadbcc51a809b431c58d7748c67dad8e83cafb347d2f5ce6604c4",
+        "label": "docs/implementation/safety-intelligence-foundation/ROAD_CLOSURE_AWARENESS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "3c89175ad45eadbcc51a809b431c58d7748c67dad8e83cafb347d2f5ce6604c4"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/ROAD_CLOSURE_AWARENESS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/ROAD_CLOSURE_AWARENESS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "ce7b2f41bc8ffd09c8878396301c9675faec2575574671361560bfcaae66904f",
+        "label": "docs/implementation/safety-intelligence-foundation/ROLLBACK_PLAN.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "ce7b2f41bc8ffd09c8878396301c9675faec2575574671361560bfcaae66904f"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/ROLLBACK_PLAN.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/ROLLBACK_PLAN.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "c6f966e88073dc1670a7088c413453fa40b0289f1a4e9b35474814f6a35befc5",
+        "label": "docs/implementation/safety-intelligence-foundation/ROUTE_SAFETY_PORTFOLIO.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "c6f966e88073dc1670a7088c413453fa40b0289f1a4e9b35474814f6a35befc5"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/ROUTE_SAFETY_PORTFOLIO.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/ROUTE_SAFETY_PORTFOLIO.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "677b358e3efb0c4abadbecb78c21c6c6c24c60c21330f740ddb9e1b7eb491ab8",
+        "label": "docs/implementation/safety-intelligence-foundation/SAFETY_ALERT_MODEL.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "677b358e3efb0c4abadbecb78c21c6c6c24c60c21330f740ddb9e1b7eb491ab8"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/SAFETY_ALERT_MODEL.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/SAFETY_ALERT_MODEL.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "4ec586a4096f3bcabc3f3e7f2eb5bf3abef3c6b84634d460a74c28b34df195a4",
+        "label": "docs/implementation/safety-intelligence-foundation/SAFETY_AUTHORITY_TRACE.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "4ec586a4096f3bcabc3f3e7f2eb5bf3abef3c6b84634d460a74c28b34df195a4"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/SAFETY_AUTHORITY_TRACE.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/SAFETY_AUTHORITY_TRACE.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "508186faeee3813288270586e74e7e3c1bff325e4e84c9b74bfb6ff601edb9fa",
+        "label": "docs/implementation/safety-intelligence-foundation/SAFETY_EVIDENCE_FRESHNESS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "508186faeee3813288270586e74e7e3c1bff325e4e84c9b74bfb6ff601edb9fa"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/SAFETY_EVIDENCE_FRESHNESS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/SAFETY_EVIDENCE_FRESHNESS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "b72fe1fe125b5741ccd9eabc59914889d71f67b86ed0e791253ec7af447df78f",
+        "label": "docs/implementation/safety-intelligence-foundation/SAFETY_EXCEPTION_MODEL.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "b72fe1fe125b5741ccd9eabc59914889d71f67b86ed0e791253ec7af447df78f"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/SAFETY_EXCEPTION_MODEL.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/SAFETY_EXCEPTION_MODEL.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "9c76f222df3d933f37cba0421873d490938ec49c6e7c3aa94e8f221514bcc37f",
+        "label": "docs/implementation/safety-intelligence-foundation/SAFETY_INTELLIGENCE_ARCHITECTURE.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "9c76f222df3d933f37cba0421873d490938ec49c6e7c3aa94e8f221514bcc37f"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/SAFETY_INTELLIGENCE_ARCHITECTURE.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/SAFETY_INTELLIGENCE_ARCHITECTURE.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "088dd9d8b6a351d04c63f189124032a9bd3237c0b00da5c3d21445cf008339ef",
+        "label": "docs/implementation/safety-intelligence-foundation/SAFETY_PRIORITY_MODEL.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "088dd9d8b6a351d04c63f189124032a9bd3237c0b00da5c3d21445cf008339ef"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/SAFETY_PRIORITY_MODEL.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/SAFETY_PRIORITY_MODEL.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "f4ee347e8a3947ccfb6ff3ca0385dc1826c0a6b80a8e47d8316e4f59bd12957f",
+        "label": "docs/implementation/safety-intelligence-foundation/SAFETY_SEVERITY_MODEL.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "f4ee347e8a3947ccfb6ff3ca0385dc1826c0a6b80a8e47d8316e4f59bd12957f"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/SAFETY_SEVERITY_MODEL.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/SAFETY_SEVERITY_MODEL.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "127dd13a47bd52cce329cd14d9f2e3bba5bdc2e91385821f235f94475f2dafdb",
+        "label": "docs/implementation/safety-intelligence-foundation/SAFETY_SUMMARY_MODEL.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "127dd13a47bd52cce329cd14d9f2e3bba5bdc2e91385821f235f94475f2dafdb"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/SAFETY_SUMMARY_MODEL.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/SAFETY_SUMMARY_MODEL.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "2058ad6eabb60bdc19be36498d5d95511bf8e16ac0cce4cabc901b96cff2bc2e",
+        "label": "docs/implementation/safety-intelligence-foundation/SECURITY_AND_TENANT_REVIEW.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "2058ad6eabb60bdc19be36498d5d95511bf8e16ac0cce4cabc901b96cff2bc2e"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/SECURITY_AND_TENANT_REVIEW.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/SECURITY_AND_TENANT_REVIEW.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "d32c94bb96635180d0623ca81a3dd6c19ed749d810fa5f1ec14d4b2e9e33a602",
+        "label": "docs/implementation/safety-intelligence-foundation/SHARED_SAFETY_INTELLIGENCE_INTEGRATION.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "d32c94bb96635180d0623ca81a3dd6c19ed749d810fa5f1ec14d4b2e9e33a602"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/SHARED_SAFETY_INTELLIGENCE_INTEGRATION.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/SHARED_SAFETY_INTELLIGENCE_INTEGRATION.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "21bbedab4c39b535fbcfe4b9070c852fe4210b24421492fa5af47df73102e665",
+        "label": "docs/implementation/safety-intelligence-foundation/SPEED_WARNING_BOUNDARY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "21bbedab4c39b535fbcfe4b9070c852fe4210b24421492fa5af47df73102e665"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/SPEED_WARNING_BOUNDARY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/SPEED_WARNING_BOUNDARY.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "5835b2bb74a45a4a166257769ed107b720bc0ef9f813da170c3ac4f46333144c",
+        "label": "docs/implementation/safety-intelligence-foundation/TEST_PLAN.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "5835b2bb74a45a4a166257769ed107b720bc0ef9f813da170c3ac4f46333144c"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/TEST_PLAN.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/TEST_PLAN.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "2ad3d72b9d903557241647fc00abe4f2136994dd1d608ac3a38827b6175164b6",
+        "label": "docs/implementation/safety-intelligence-foundation/TEST_RESULTS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "2ad3d72b9d903557241647fc00abe4f2136994dd1d608ac3a38827b6175164b6"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/TEST_RESULTS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/TEST_RESULTS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "b7acbc4c4165348abb56da53bcc5913c5c48fa2aef042e9b9fe433f585295e3f",
+        "label": "docs/implementation/safety-intelligence-foundation/TRUCK_RESTRICTION_AWARENESS.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "b7acbc4c4165348abb56da53bcc5913c5c48fa2aef042e9b9fe433f585295e3f"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/TRUCK_RESTRICTION_AWARENESS.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/TRUCK_RESTRICTION_AWARENESS.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "9ac4faa9673d50bef6d3be379e75324bda6433ac937a2ed8b3dae0ed463d187e",
+        "label": "docs/implementation/safety-intelligence-foundation/UNAPPROVED_IDEAS_FOR_OWNER_REVIEW.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "9ac4faa9673d50bef6d3be379e75324bda6433ac937a2ed8b3dae0ed463d187e"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/UNAPPROVED_IDEAS_FOR_OWNER_REVIEW.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/UNAPPROVED_IDEAS_FOR_OWNER_REVIEW.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "640699e35dc070bb0bf2d40d0e37a41e7bb5dd61129d370c8c8d31bfadadbbc1",
+        "label": "docs/implementation/safety-intelligence-foundation/VEHICLE_ROUTE_SAFETY_COMPATIBILITY.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "640699e35dc070bb0bf2d40d0e37a41e7bb5dd61129d370c8c8d31bfadadbbc1"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/VEHICLE_ROUTE_SAFETY_COMPATIBILITY.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/VEHICLE_ROUTE_SAFETY_COMPATIBILITY.md",
+        "testOnly": true,
+        "type": "Documentation Page",
+        "version": null
+      },
+      {
+        "hash": "42b6ef6a40eab60220345089ad6d00f031d48dbaa7cba0fc1b1b1e3d84f2ee94",
+        "label": "docs/implementation/safety-intelligence-foundation/WAREHOUSE_SAFETY_IMPACT.md",
+        "lifecycleState": null,
+        "metadata": {
+          "fileContentHash": "42b6ef6a40eab60220345089ad6d00f031d48dbaa7cba0fc1b1b1e3d84f2ee94"
+        },
+        "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/WAREHOUSE_SAFETY_IMPACT.md",
+        "productionApplicable": false,
+        "source": "docs/implementation/safety-intelligence-foundation/WAREHOUSE_SAFETY_IMPACT.md",
         "testOnly": true,
         "type": "Documentation Page",
         "version": null

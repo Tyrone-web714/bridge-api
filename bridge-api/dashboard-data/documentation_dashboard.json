@@ -17,7 +17,7 @@
       "dashboard-data/documentation_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "0864412a059a133d320002ed49e11de4c08beae3eb5cb4b6ccdb5d15da4c242e",
+    "generationHash": "995620967e43a7bc42d0c73280daa34d89715c2f6877ca5a136296336b447281",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -68,6 +68,7 @@
         "docs/implementation/private-r2-shutdown-readiness": 9,
         "docs/implementation/production-rollout-planning": 21,
         "docs/implementation/route-intelligence-foundation": 47,
+        "docs/implementation/safety-intelligence-foundation": 59,
         "docs/implementation/scoring-engine": 59,
         "docs/implementation/shared-safety-foundation": 18,
         "docs/implementation/shared-safety-moderation-ui": 14,
@@ -75,11 +76,11 @@
         "docs/implementation/warehouse-intelligence-foundation": 51,
         "docs/implementation/web-origin-private-media-hardening": 16
       },
-      "generatedDocs": 234
+      "generatedDocs": 247
     },
     "statusIndicators": [],
     "summary": {
-      "documentationFiles": 1226
+      "documentationFiles": 1285
     },
     "testOnly": true,
     "unknownValues": [],

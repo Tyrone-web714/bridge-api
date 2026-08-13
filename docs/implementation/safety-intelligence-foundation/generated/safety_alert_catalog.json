@@ -1,0 +1,5734 @@
+{
+  "alertStatuses": [
+    "OPEN",
+    "ACKNOWLEDGED",
+    "UNDER_REVIEW",
+    "RESOLVED",
+    "DISMISSED_AS_DUPLICATE",
+    "INVALIDATED_BY_NEW_EVIDENCE",
+    "UNKNOWN"
+  ],
+  "alerts": [
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "d9958e73a2d3a3a47f0c411d33e380938afad2f84ac63674b741ee3d4d4e0b12",
+      "alertId": "safety.alert.safety.exception.route.blocked.route_safety_blocker_active",
+      "automatedActionTaken": false,
+      "evidenceReferences": [
+        "route.blocked"
+      ],
+      "exceptionId": "safety.exception.route.blocked.route_safety_blocker_active",
+      "humanReviewRequired": true,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "CRITICAL"
+        },
+        "priority": "P0"
+      },
+      "relatedDriverRef": null,
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [],
+      "requiredReviewAction": "HOLD_FOR_HUMAN_REVIEW",
+      "resolutionState": "OPEN",
+      "severity": "CRITICAL",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "structuredFacts": {
+        "exceptionType": "ROUTE_SAFETY_BLOCKER_ACTIVE",
+        "reasonCodes": [
+          "ROUTE_BLOCKED"
+        ]
+      },
+      "testOnly": true
+    },
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "495b4a712a11393d21e06acff6554c6b71626e911501dbb869fbcdae8749f8a8",
+      "alertId": "safety.alert.safety.exception.route.low.clearance.low_clearance_hazard_active",
+      "automatedActionTaken": false,
+      "evidenceReferences": [
+        "route.low.clearance"
+      ],
+      "exceptionId": "safety.exception.route.low.clearance.low_clearance_hazard_active",
+      "humanReviewRequired": true,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "CRITICAL"
+        },
+        "priority": "P0"
+      },
+      "relatedDriverRef": null,
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [],
+      "requiredReviewAction": "REVIEW_LOW_CLEARANCE_HAZARD",
+      "resolutionState": "OPEN",
+      "severity": "CRITICAL",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "structuredFacts": {
+        "exceptionType": "LOW_CLEARANCE_HAZARD_ACTIVE",
+        "reasonCodes": [
+          "LOW_CLEARANCE"
+        ]
+      },
+      "testOnly": true
+    },
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "87db6a9bea2331df5602fe4fc17cfc277177c83472720aa87296c031fb31661d",
+      "alertId": "safety.alert.safety.exception.route.low.review.low_clearance_hazard_active",
+      "automatedActionTaken": false,
+      "evidenceReferences": [
+        "route.low.review"
+      ],
+      "exceptionId": "safety.exception.route.low.review.low_clearance_hazard_active",
+      "humanReviewRequired": true,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": true,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "CRITICAL"
+        },
+        "priority": "P0"
+      },
+      "relatedDriverRef": null,
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [],
+      "requiredReviewAction": "REVIEW_LOW_CLEARANCE_HAZARD",
+      "resolutionState": "OPEN",
+      "severity": "CRITICAL",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "structuredFacts": {
+        "exceptionType": "LOW_CLEARANCE_HAZARD_ACTIVE",
+        "reasonCodes": [
+          "LOW_CLEARANCE_REVIEW"
+        ]
+      },
+      "testOnly": true
+    },
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "ea7de4f098602e6b668e4520a7f611a7259cb1c400b2638f3474e665be28be37",
+      "alertId": "safety.alert.safety.exception.route.truck.prohibited.truck_restriction_active",
+      "automatedActionTaken": false,
+      "evidenceReferences": [
+        "route.truck.prohibited"
+      ],
+      "exceptionId": "safety.exception.route.truck.prohibited.truck_restriction_active",
+      "humanReviewRequired": true,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "CRITICAL"
+        },
+        "priority": "P0"
+      },
+      "relatedDriverRef": null,
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [],
+      "requiredReviewAction": "REVIEW_TRUCK_RESTRICTION",
+      "resolutionState": "OPEN",
+      "severity": "CRITICAL",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "structuredFacts": {
+        "exceptionType": "TRUCK_RESTRICTION_ACTIVE",
+        "reasonCodes": [
+          "TRUCK_PROHIBITED"
+        ]
+      },
+      "testOnly": true
+    },
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "3f70b865870856280bbc14512556390e7061b40794e7c45b5468b015921cbfbe",
+      "alertId": "safety.alert.safety.exception.route.no.through.no_through_truck_restriction_active",
+      "automatedActionTaken": false,
+      "evidenceReferences": [
+        "route.no.through"
+      ],
+      "exceptionId": "safety.exception.route.no.through.no_through_truck_restriction_active",
+      "humanReviewRequired": true,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "CRITICAL"
+        },
+        "priority": "P0"
+      },
+      "relatedDriverRef": null,
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [],
+      "requiredReviewAction": "HOLD_FOR_HUMAN_REVIEW",
+      "resolutionState": "OPEN",
+      "severity": "CRITICAL",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "structuredFacts": {
+        "exceptionType": "NO_THROUGH_TRUCK_RESTRICTION_ACTIVE",
+        "reasonCodes": [
+          "NO_THROUGH_TRUCK"
+        ]
+      },
+      "testOnly": true
+    },
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "fa724d91502ed9302cb016331754929fd7807a06b4f662beeef676c77dcb2af2",
+      "alertId": "safety.alert.safety.exception.route.closed.road_closure_active",
+      "automatedActionTaken": false,
+      "evidenceReferences": [
+        "route.closed"
+      ],
+      "exceptionId": "safety.exception.route.closed.road_closure_active",
+      "humanReviewRequired": true,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "CRITICAL"
+        },
+        "priority": "P0"
+      },
+      "relatedDriverRef": null,
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [],
+      "requiredReviewAction": "REVIEW_ROAD_CLOSURE",
+      "resolutionState": "OPEN",
+      "severity": "CRITICAL",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "structuredFacts": {
+        "exceptionType": "ROAD_CLOSURE_ACTIVE",
+        "reasonCodes": [
+          "ROAD_CLOSURE"
+        ]
+      },
+      "testOnly": true
+    },
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "58bda66af4f0ca607c2d8c5543ff10795f8781b8b62e31694373392b092a3876",
+      "alertId": "safety.alert.safety.exception.route.residential.block.residential_restriction_active",
+      "automatedActionTaken": false,
+      "evidenceReferences": [
+        "route.residential.block"
+      ],
+      "exceptionId": "safety.exception.route.residential.block.residential_restriction_active",
+      "humanReviewRequired": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P3"
+      },
+      "relatedDriverRef": null,
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [],
+      "requiredReviewAction": "REVIEW_ROUTE_SAFETY",
+      "resolutionState": "OPEN",
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "structuredFacts": {
+        "exceptionType": "RESIDENTIAL_RESTRICTION_ACTIVE",
+        "reasonCodes": [
+          "RESIDENTIAL_RESTRICTION"
+        ]
+      },
+      "testOnly": true
+    },
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "d59fdffb49b1b2d52ec8b180e6bbe01df59183802c2abe63c909e7d48ba58611",
+      "alertId": "safety.alert.safety.exception.route.residential.advisory.residential_restriction_active",
+      "automatedActionTaken": false,
+      "evidenceReferences": [
+        "route.residential.advisory"
+      ],
+      "exceptionId": "safety.exception.route.residential.advisory.residential_restriction_active",
+      "humanReviewRequired": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P3"
+      },
+      "relatedDriverRef": null,
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [],
+      "requiredReviewAction": "REVIEW_ROUTE_SAFETY",
+      "resolutionState": "OPEN",
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "structuredFacts": {
+        "exceptionType": "RESIDENTIAL_RESTRICTION_ACTIVE",
+        "reasonCodes": [
+          "RESIDENTIAL_ADVISORY"
+        ]
+      },
+      "testOnly": true
+    },
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "98643fcbf83683bd72081cb43c1e548e738b9b8ca5d3051065fd01c614710957",
+      "alertId": "safety.alert.safety.exception.fleet.incompatible.route_vehicle_incompatible",
+      "automatedActionTaken": false,
+      "evidenceReferences": [
+        "fleet.incompatible"
+      ],
+      "exceptionId": "safety.exception.fleet.incompatible.route_vehicle_incompatible",
+      "humanReviewRequired": true,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "HIGH"
+        },
+        "priority": "P1"
+      },
+      "relatedDriverRef": null,
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [
+        "vehicle-001"
+      ],
+      "requiredReviewAction": "REVIEW_ROUTE_VEHICLE_COMPATIBILITY",
+      "resolutionState": "OPEN",
+      "severity": "HIGH",
+      "sourceDomains": [
+        "FLEET"
+      ],
+      "structuredFacts": {
+        "exceptionType": "ROUTE_VEHICLE_INCOMPATIBLE",
+        "reasonCodes": [
+          "ROUTE_VEHICLE_INCOMPATIBLE"
+        ]
+      },
+      "testOnly": true
+    },
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "d09f48c89a77762626cd16b0ffadb91a6dadc83cf6426e7df8d21bd25bf6c313",
+      "alertId": "safety.alert.safety.exception.fleet.review.human_review_required",
+      "automatedActionTaken": false,
+      "evidenceReferences": [
+        "fleet.review"
+      ],
+      "exceptionId": "safety.exception.fleet.review.human_review_required",
+      "humanReviewRequired": true,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": true,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P2"
+      },
+      "relatedDriverRef": null,
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [
+        "vehicle-001"
+      ],
+      "requiredReviewAction": "HOLD_FOR_HUMAN_REVIEW",
+      "resolutionState": "OPEN",
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "FLEET"
+      ],
+      "structuredFacts": {
+        "exceptionType": "HUMAN_REVIEW_REQUIRED",
+        "reasonCodes": [
+          "ROUTE_VEHICLE_REVIEW_REQUIRED"
+        ]
+      },
+      "testOnly": true
+    },
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "f5eb07c688ccebf81ff9f2619a8cdb39b6ad042107ebd56b13911c56d4ef0a60",
+      "alertId": "safety.alert.safety.exception.driver.low.bridge.driver_safety_advisory_active",
+      "automatedActionTaken": false,
+      "evidenceReferences": [
+        "driver.low.bridge"
+      ],
+      "exceptionId": "safety.exception.driver.low.bridge.driver_safety_advisory_active",
+      "humanReviewRequired": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P3"
+      },
+      "relatedDriverRef": "driver-001",
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [],
+      "requiredReviewAction": "REVIEW_DRIVER_SAFETY_ADVISORY",
+      "resolutionState": "OPEN",
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "DRIVER"
+      ],
+      "structuredFacts": {
+        "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+        "reasonCodes": [
+          "DRIVER_LOW_BRIDGE_ADVISORY"
+        ]
+      },
+      "testOnly": true
+    },
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "5c31acf13325464a575b2f008ceda5bf2285e558557fb97c21efeed67c2d1707",
+      "alertId": "safety.alert.safety.exception.driver.restricted.driver_safety_advisory_active",
+      "automatedActionTaken": false,
+      "evidenceReferences": [
+        "driver.restricted"
+      ],
+      "exceptionId": "safety.exception.driver.restricted.driver_safety_advisory_active",
+      "humanReviewRequired": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P3"
+      },
+      "relatedDriverRef": "driver-001",
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [],
+      "requiredReviewAction": "REVIEW_DRIVER_SAFETY_ADVISORY",
+      "resolutionState": "OPEN",
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "DRIVER"
+      ],
+      "structuredFacts": {
+        "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+        "reasonCodes": [
+          "RESTRICTED_ROAD_ADVISORY"
+        ]
+      },
+      "testOnly": true
+    },
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "23770fbf0a9140719b47c8193a9711f549c4a77975a5bd138e021d81c0728a4a",
+      "alertId": "safety.alert.safety.exception.driver.no.through.driver_safety_advisory_active",
+      "automatedActionTaken": false,
+      "evidenceReferences": [
+        "driver.no.through"
+      ],
+      "exceptionId": "safety.exception.driver.no.through.driver_safety_advisory_active",
+      "humanReviewRequired": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P3"
+      },
+      "relatedDriverRef": "driver-001",
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [],
+      "requiredReviewAction": "REVIEW_DRIVER_SAFETY_ADVISORY",
+      "resolutionState": "OPEN",
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "DRIVER"
+      ],
+      "structuredFacts": {
+        "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+        "reasonCodes": [
+          "NO_THROUGH_TRUCK_ADVISORY"
+        ]
+      },
+      "testOnly": true
+    },
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "0e1905c9f1114e31e3146c7c14155a64b728bd9b2858be3e8103818bba32568a",
+      "alertId": "safety.alert.safety.exception.driver.speed.advisory.driver_safety_advisory_active",
+      "automatedActionTaken": false,
+      "evidenceReferences": [
+        "driver.speed.advisory"
+      ],
+      "exceptionId": "safety.exception.driver.speed.advisory.driver_safety_advisory_active",
+      "humanReviewRequired": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P3"
+      },
+      "relatedDriverRef": "driver-001",
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [],
+      "requiredReviewAction": "REVIEW_DRIVER_SAFETY_ADVISORY",
+      "resolutionState": "OPEN",
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "DRIVER"
+      ],
+      "structuredFacts": {
+        "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+        "reasonCodes": [
+          "SPEED_ADVISORY"
+        ]
+      },
+      "testOnly": true
+    },
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "0d3a9c15ee3a8c29512056b0efdf526aeaa17183e4b403863929de9717eb703e",
+      "alertId": "safety.alert.safety.exception.driver.speed.warning.driver_speed_warning_active",
+      "automatedActionTaken": false,
+      "evidenceReferences": [
+        "driver.speed.warning"
+      ],
+      "exceptionId": "safety.exception.driver.speed.warning.driver_speed_warning_active",
+      "humanReviewRequired": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P3"
+      },
+      "relatedDriverRef": "driver-001",
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [],
+      "requiredReviewAction": "REVIEW_SPEED_WARNING",
+      "resolutionState": "OPEN",
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "DRIVER"
+      ],
+      "structuredFacts": {
+        "exceptionType": "DRIVER_SPEED_WARNING_ACTIVE",
+        "reasonCodes": [
+          "SPEED_WARNING"
+        ]
+      },
+      "testOnly": true
+    },
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "f1c3f1007b6ae2a34e3f74a61b5b12ceef56810390ba459cba41a18713a78a2c",
+      "alertId": "safety.alert.safety.exception.driver.speed.stale.safety_evidence_stale",
+      "automatedActionTaken": false,
+      "evidenceReferences": [
+        "driver.speed.stale"
+      ],
+      "exceptionId": "safety.exception.driver.speed.stale.safety_evidence_stale",
+      "humanReviewRequired": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "STALE",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "LOW"
+        },
+        "priority": "P4"
+      },
+      "relatedDriverRef": "driver-001",
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [],
+      "requiredReviewAction": "REVIEW_ROUTE_SAFETY",
+      "resolutionState": "OPEN",
+      "severity": "LOW",
+      "sourceDomains": [
+        "DRIVER"
+      ],
+      "structuredFacts": {
+        "exceptionType": "SAFETY_EVIDENCE_STALE",
+        "reasonCodes": [
+          "SPEED_EVIDENCE_STALE"
+        ]
+      },
+      "testOnly": true
+    },
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "2921a88e5d3466d546f8acf4862e18ac33444b62170dd137a566713aa5d04b19",
+      "alertId": "safety.alert.safety.exception.3d6ddfd5f6236e1d28a90a6e8d186719a84d5987d260c7b006e4d5902baf55e9.safety_evidence_incomplete",
+      "automatedActionTaken": false,
+      "evidenceReferences": [],
+      "exceptionId": "safety.exception.3d6ddfd5f6236e1d28a90a6e8d186719a84d5987d260c7b006e4d5902baf55e9.safety_evidence_incomplete",
+      "humanReviewRequired": true,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "UNKNOWN",
+          "humanReviewRequired": true,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "LOW"
+        },
+        "priority": "P4"
+      },
+      "relatedDriverRef": null,
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [],
+      "requiredReviewAction": "REVIEW_MISSING_EVIDENCE",
+      "resolutionState": "OPEN",
+      "severity": "LOW",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "structuredFacts": {
+        "exceptionType": "SAFETY_EVIDENCE_INCOMPLETE",
+        "reasonCodes": [
+          "MISSING_SAFETY_EVIDENCE"
+        ]
+      },
+      "testOnly": true
+    },
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "87eded312f14c635f7e27165ba5eabe9fea683680634e81724d3ecdd98ce2136",
+      "alertId": "safety.alert.safety.exception.route.conflict.safety_evidence_conflict",
+      "automatedActionTaken": false,
+      "evidenceReferences": [
+        "route.conflict"
+      ],
+      "exceptionId": "safety.exception.route.conflict.safety_evidence_conflict",
+      "humanReviewRequired": true,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": true,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": true,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P2"
+      },
+      "relatedDriverRef": null,
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [],
+      "requiredReviewAction": "REVIEW_CONFLICTING_EVIDENCE",
+      "resolutionState": "OPEN",
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "structuredFacts": {
+        "exceptionType": "SAFETY_EVIDENCE_CONFLICT",
+        "reasonCodes": [
+          "CONFLICTING_SAFETY_EVIDENCE"
+        ]
+      },
+      "testOnly": true
+    },
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "674d03fcf19c18f97ea257bd7055e258b29b0efb3b177ca1c59133e88177c83b",
+      "alertId": "safety.alert.safety.exception.warehouse.safety.blocker.human_review_required",
+      "automatedActionTaken": false,
+      "evidenceReferences": [
+        "warehouse.safety.blocker"
+      ],
+      "exceptionId": "safety.exception.warehouse.safety.blocker.human_review_required",
+      "humanReviewRequired": true,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": true,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P2"
+      },
+      "relatedDriverRef": null,
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [],
+      "requiredReviewAction": "HOLD_FOR_HUMAN_REVIEW",
+      "resolutionState": "OPEN",
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "WAREHOUSE"
+      ],
+      "structuredFacts": {
+        "exceptionType": "HUMAN_REVIEW_REQUIRED",
+        "reasonCodes": [
+          "WAREHOUSE_SAFETY_BLOCKER"
+        ]
+      },
+      "testOnly": true
+    },
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "406c2cf98971af3d486d9640de82c5d1cf819274cc9b1d75386fc09aafd34ca0",
+      "alertId": "safety.alert.safety.exception.operations.safety.human_review_required",
+      "automatedActionTaken": false,
+      "evidenceReferences": [
+        "operations.safety"
+      ],
+      "exceptionId": "safety.exception.operations.safety.human_review_required",
+      "humanReviewRequired": true,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": true,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P2"
+      },
+      "relatedDriverRef": null,
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [],
+      "requiredReviewAction": "HOLD_FOR_HUMAN_REVIEW",
+      "resolutionState": "OPEN",
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "OPERATIONS"
+      ],
+      "structuredFacts": {
+        "exceptionType": "HUMAN_REVIEW_REQUIRED",
+        "reasonCodes": [
+          "OPERATIONS_SAFETY_EXCEPTION"
+        ]
+      },
+      "testOnly": true
+    },
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "4210355a06c20a9948b5408f0c15622c50f53b84a6adfe4b074a7509fc037e88",
+      "alertId": "safety.alert.safety.exception.shared.review.shared_safety_review_required",
+      "automatedActionTaken": false,
+      "evidenceReferences": [
+        "shared.review"
+      ],
+      "exceptionId": "safety.exception.shared.review.shared_safety_review_required",
+      "humanReviewRequired": true,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": true,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P2"
+      },
+      "relatedDriverRef": null,
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [],
+      "requiredReviewAction": "REVIEW_SHARED_SAFETY_RECORD",
+      "resolutionState": "OPEN",
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "SHARED_SAFETY"
+      ],
+      "structuredFacts": {
+        "exceptionType": "SHARED_SAFETY_REVIEW_REQUIRED",
+        "reasonCodes": [
+          "SHARED_SAFETY_REVIEW"
+        ]
+      },
+      "testOnly": true
+    },
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "28b4c29471f3550053c789e93c7445f057123991e57ddb19052fb49192cb44c3",
+      "alertId": "safety.alert.safety.exception.route.low.low_clearance_hazard_active",
+      "automatedActionTaken": false,
+      "evidenceReferences": [
+        "route.low"
+      ],
+      "exceptionId": "safety.exception.route.low.low_clearance_hazard_active",
+      "humanReviewRequired": true,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "CRITICAL"
+        },
+        "priority": "P0"
+      },
+      "relatedDriverRef": null,
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [],
+      "requiredReviewAction": "REVIEW_LOW_CLEARANCE_HAZARD",
+      "resolutionState": "OPEN",
+      "severity": "CRITICAL",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "structuredFacts": {
+        "exceptionType": "LOW_CLEARANCE_HAZARD_ACTIVE",
+        "reasonCodes": [
+          "LOW_CLEARANCE"
+        ]
+      },
+      "testOnly": true
+    },
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "ba59b9d4e48df99614c9e9943205544738e59679ebcc296604ad550ee48d1581",
+      "alertId": "safety.alert.safety.exception.driver.speed.driver_speed_warning_active",
+      "automatedActionTaken": false,
+      "evidenceReferences": [
+        "driver.speed"
+      ],
+      "exceptionId": "safety.exception.driver.speed.driver_speed_warning_active",
+      "humanReviewRequired": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P3"
+      },
+      "relatedDriverRef": "driver-001",
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [],
+      "requiredReviewAction": "REVIEW_SPEED_WARNING",
+      "resolutionState": "OPEN",
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "DRIVER"
+      ],
+      "structuredFacts": {
+        "exceptionType": "DRIVER_SPEED_WARNING_ACTIVE",
+        "reasonCodes": [
+          "SPEED_WARNING"
+        ]
+      },
+      "testOnly": true
+    },
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "4fe278699e73ee3cd3495f5ab4d1ff070a4f416ff8cce6b5c8a900f57b84b8d1",
+      "alertId": "safety.alert.safety.exception.route.low.multiple_safety_exceptions",
+      "automatedActionTaken": false,
+      "evidenceReferences": [
+        "route.low"
+      ],
+      "exceptionId": "safety.exception.route.low.multiple_safety_exceptions",
+      "humanReviewRequired": false,
+      "limitations": [
+        "multiple known safety exceptions are simultaneously present"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P3"
+      },
+      "relatedDriverRef": null,
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [],
+      "requiredReviewAction": "REVIEW_ROUTE_SAFETY",
+      "resolutionState": "OPEN",
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "structuredFacts": {
+        "exceptionType": "MULTIPLE_SAFETY_EXCEPTIONS",
+        "reasonCodes": [
+          "LOW_CLEARANCE"
+        ]
+      },
+      "testOnly": true
+    },
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "84465c920e68d603602331c61a830613f2ebe86edd268dc9715c8000733c6ff4",
+      "alertId": "safety.alert.safety.exception.route.closed.high.road_closure_active",
+      "automatedActionTaken": false,
+      "evidenceReferences": [
+        "route.closed.high"
+      ],
+      "exceptionId": "safety.exception.route.closed.high.road_closure_active",
+      "humanReviewRequired": true,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "CRITICAL"
+        },
+        "priority": "P0"
+      },
+      "relatedDriverRef": null,
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [],
+      "requiredReviewAction": "REVIEW_ROAD_CLOSURE",
+      "resolutionState": "OPEN",
+      "severity": "CRITICAL",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "structuredFacts": {
+        "exceptionType": "ROAD_CLOSURE_ACTIVE",
+        "reasonCodes": [
+          "ROAD_CLOSURE"
+        ]
+      },
+      "testOnly": true
+    },
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "1319d50ef499a47d989a3cf7d24b4b28e998b5678f662d72cd22e4b5ac2935eb",
+      "alertId": "safety.alert.safety.exception.driver.advisory.low.driver_safety_advisory_active",
+      "automatedActionTaken": false,
+      "evidenceReferences": [
+        "driver.advisory.low"
+      ],
+      "exceptionId": "safety.exception.driver.advisory.low.driver_safety_advisory_active",
+      "humanReviewRequired": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P3"
+      },
+      "relatedDriverRef": "driver-001",
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [],
+      "requiredReviewAction": "REVIEW_DRIVER_SAFETY_ADVISORY",
+      "resolutionState": "OPEN",
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "DRIVER"
+      ],
+      "structuredFacts": {
+        "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+        "reasonCodes": [
+          "SPEED_ADVISORY"
+        ]
+      },
+      "testOnly": true
+    },
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "7aa7ce55ff4fd82490a5767b25e3f090e080dc7ba2809923f5fb6d251c56b0ff",
+      "alertId": "safety.alert.safety.exception.route.closed.high.multiple_safety_exceptions",
+      "automatedActionTaken": false,
+      "evidenceReferences": [
+        "route.closed.high"
+      ],
+      "exceptionId": "safety.exception.route.closed.high.multiple_safety_exceptions",
+      "humanReviewRequired": false,
+      "limitations": [
+        "multiple known safety exceptions are simultaneously present"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P3"
+      },
+      "relatedDriverRef": null,
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [],
+      "requiredReviewAction": "REVIEW_ROUTE_SAFETY",
+      "resolutionState": "OPEN",
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "structuredFacts": {
+        "exceptionType": "MULTIPLE_SAFETY_EXCEPTIONS",
+        "reasonCodes": [
+          "ROAD_CLOSURE"
+        ]
+      },
+      "testOnly": true
+    },
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "069918bed2fa3aedf64265eb9d25be4a0458098d496476cac59cc2c5c54093e8",
+      "alertId": "safety.alert.safety.exception.route.other.org.human_review_required",
+      "automatedActionTaken": false,
+      "evidenceReferences": [
+        "route.other.org"
+      ],
+      "exceptionId": "safety.exception.route.other.org.human_review_required",
+      "humanReviewRequired": true,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": null,
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": true,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P2"
+      },
+      "relatedDriverRef": null,
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [],
+      "requiredReviewAction": "HOLD_FOR_HUMAN_REVIEW",
+      "resolutionState": "OPEN",
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "structuredFacts": {
+        "exceptionType": "HUMAN_REVIEW_REQUIRED",
+        "reasonCodes": [
+          "HUMAN_REVIEW"
+        ]
+      },
+      "testOnly": true
+    },
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "3fb9d673f61782a2a1c6c66bd52451ef5217896b140bc3329a1c6aa0f07a92fb",
+      "alertId": "safety.alert.safety.exception.route.other.org.route_safety_blocker_active",
+      "automatedActionTaken": false,
+      "evidenceReferences": [
+        "route.other.org"
+      ],
+      "exceptionId": "safety.exception.route.other.org.route_safety_blocker_active",
+      "humanReviewRequired": true,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": null,
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "CRITICAL"
+        },
+        "priority": "P0"
+      },
+      "relatedDriverRef": null,
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [],
+      "requiredReviewAction": "HOLD_FOR_HUMAN_REVIEW",
+      "resolutionState": "OPEN",
+      "severity": "CRITICAL",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "structuredFacts": {
+        "exceptionType": "ROUTE_SAFETY_BLOCKER_ACTIVE",
+        "reasonCodes": [
+          "ROUTE_BLOCKED"
+        ]
+      },
+      "testOnly": true
+    },
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "fb7a58033ba530fd7504bb4879f9fb8e37d641e8482fbbe198637330f1eaacfe",
+      "alertId": "safety.alert.safety.exception.supervisor.review.human_review_required",
+      "automatedActionTaken": false,
+      "evidenceReferences": [
+        "supervisor.review"
+      ],
+      "exceptionId": "safety.exception.supervisor.review.human_review_required",
+      "humanReviewRequired": true,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": true,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P2"
+      },
+      "relatedDriverRef": null,
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [],
+      "requiredReviewAction": "HOLD_FOR_HUMAN_REVIEW",
+      "resolutionState": "OPEN",
+      "severity": "MODERATE",
+      "sourceDomains": [
+        "SUPERVISOR"
+      ],
+      "structuredFacts": {
+        "exceptionType": "HUMAN_REVIEW_REQUIRED",
+        "reasonCodes": [
+          "HUMAN_REVIEW"
+        ]
+      },
+      "testOnly": true
+    },
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "1dc9a4e9a2a0d556051010085d582a63443a89d1fa1fb3f54158dac44a9eacb5",
+      "alertId": "safety.alert.safety.exception.route.ack.low_clearance_hazard_active",
+      "automatedActionTaken": false,
+      "evidenceReferences": [
+        "route.ack"
+      ],
+      "exceptionId": "safety.exception.route.ack.low_clearance_hazard_active",
+      "humanReviewRequired": true,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "CRITICAL"
+        },
+        "priority": "P0"
+      },
+      "relatedDriverRef": null,
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [],
+      "requiredReviewAction": "REVIEW_LOW_CLEARANCE_HAZARD",
+      "resolutionState": "OPEN",
+      "severity": "CRITICAL",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "structuredFacts": {
+        "exceptionType": "LOW_CLEARANCE_HAZARD_ACTIVE",
+        "reasonCodes": [
+          "LOW_CLEARANCE"
+        ]
+      },
+      "testOnly": true
+    },
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "a9a6217c06659cfee44f5d020a9b2e8e478e37d04dbed1f7cca8efccb0791e0b",
+      "alertId": "safety.alert.safety.exception.route.resolve.truck_restriction_active",
+      "automatedActionTaken": false,
+      "evidenceReferences": [
+        "route.resolve"
+      ],
+      "exceptionId": "safety.exception.route.resolve.truck_restriction_active",
+      "humanReviewRequired": true,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "CRITICAL"
+        },
+        "priority": "P0"
+      },
+      "relatedDriverRef": null,
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [],
+      "requiredReviewAction": "REVIEW_TRUCK_RESTRICTION",
+      "resolutionState": "OPEN",
+      "severity": "CRITICAL",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "structuredFacts": {
+        "exceptionType": "TRUCK_RESTRICTION_ACTIVE",
+        "reasonCodes": [
+          "TRUCK_PROHIBITED"
+        ]
+      },
+      "testOnly": true
+    },
+    {
+      "acknowledgementState": "OPEN",
+      "alertHash": "c406d5f5b0ba892aa908c2881df7b763b5de24b09b38a6613d6a548357dc6e13",
+      "alertId": "safety.alert.safety.exception.route.invalidate.safety_evidence_stale",
+      "automatedActionTaken": false,
+      "evidenceReferences": [
+        "route.invalidate"
+      ],
+      "exceptionId": "safety.exception.route.invalidate.safety_evidence_stale",
+      "humanReviewRequired": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "STALE",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "LOW"
+        },
+        "priority": "P4"
+      },
+      "relatedDriverRef": null,
+      "relatedRoutes": [
+        "route-001"
+      ],
+      "relatedVehicles": [],
+      "requiredReviewAction": "REVIEW_ROUTE_SAFETY",
+      "resolutionState": "OPEN",
+      "severity": "LOW",
+      "sourceDomains": [
+        "ROUTE"
+      ],
+      "structuredFacts": {
+        "exceptionType": "SAFETY_EVIDENCE_STALE",
+        "reasonCodes": [
+          "SPEED_EVIDENCE_STALE"
+        ]
+      },
+      "testOnly": true
+    }
+  ],
+  "generatedArtifact": true,
+  "lifecycles": [
+    {
+      "acknowledgedAlert": null,
+      "invalidatedAlert": null,
+      "resolvedAlert": null
+    },
+    {
+      "acknowledgedAlert": {
+        "acknowledgementState": "ACKNOWLEDGED",
+        "alertHash": "559ab42c0f7aa438b70aee5f83b1c8c7c2f64d50aef2cbb21afa1fbfcc36ed58",
+        "alertId": "safety.alert.safety.exception.route.blocked.route_safety_blocker_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.blocked"
+        ],
+        "exceptionId": "safety.exception.route.blocked.route_safety_blocker_active",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_ACKNOWLEDGED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "priority": "P0"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "HOLD_FOR_HUMAN_REVIEW",
+        "resolutionState": "OPEN",
+        "severity": "CRITICAL",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "ROUTE_SAFETY_BLOCKER_ACTIVE",
+          "reasonCodes": [
+            "ROUTE_BLOCKED"
+          ]
+        },
+        "testOnly": true
+      },
+      "invalidatedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "e19171286cca166ebf7417aa2777e8cce8c761b3c2bc3fb1c0ed66d9e783f8d5",
+        "alertId": "safety.alert.safety.exception.route.blocked.route_safety_blocker_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.blocked"
+        ],
+        "exceptionId": "safety.exception.route.blocked.route_safety_blocker_active",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_INVALIDATED_BY_NEW_EVIDENCE",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "newEvidenceRef": "new.synthetic.safety.evidence",
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "priority": "P0"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "HOLD_FOR_HUMAN_REVIEW",
+        "resolutionState": "INVALIDATED_BY_NEW_EVIDENCE",
+        "severity": "CRITICAL",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "ROUTE_SAFETY_BLOCKER_ACTIVE",
+          "reasonCodes": [
+            "ROUTE_BLOCKED"
+          ]
+        },
+        "testOnly": true
+      },
+      "resolvedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "f90cf657335b4574ad5560b14ecc0113140ea199a3fb44b0252c2a3376ecac4f",
+        "alertId": "safety.alert.safety.exception.route.blocked.route_safety_blocker_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.blocked"
+        ],
+        "exceptionId": "safety.exception.route.blocked.route_safety_blocker_active",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_RESOLVED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "priority": "P0"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "HOLD_FOR_HUMAN_REVIEW",
+        "resolutionState": "RESOLVED",
+        "severity": "CRITICAL",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "ROUTE_SAFETY_BLOCKER_ACTIVE",
+          "reasonCodes": [
+            "ROUTE_BLOCKED"
+          ]
+        },
+        "testOnly": true
+      }
+    },
+    {
+      "acknowledgedAlert": {
+        "acknowledgementState": "ACKNOWLEDGED",
+        "alertHash": "b0cb654387e84f4783877a8b79908d89ad2262304a72e9fc532d29fca4287424",
+        "alertId": "safety.alert.safety.exception.route.low.clearance.low_clearance_hazard_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.low.clearance"
+        ],
+        "exceptionId": "safety.exception.route.low.clearance.low_clearance_hazard_active",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_ACKNOWLEDGED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "priority": "P0"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_LOW_CLEARANCE_HAZARD",
+        "resolutionState": "OPEN",
+        "severity": "CRITICAL",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "LOW_CLEARANCE_HAZARD_ACTIVE",
+          "reasonCodes": [
+            "LOW_CLEARANCE"
+          ]
+        },
+        "testOnly": true
+      },
+      "invalidatedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "c045a720557ac1e2f6bcfae8d0878aa234b240dd560614a05c2c1f44119f9bc4",
+        "alertId": "safety.alert.safety.exception.route.low.clearance.low_clearance_hazard_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.low.clearance"
+        ],
+        "exceptionId": "safety.exception.route.low.clearance.low_clearance_hazard_active",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_INVALIDATED_BY_NEW_EVIDENCE",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "newEvidenceRef": "new.synthetic.safety.evidence",
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "priority": "P0"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_LOW_CLEARANCE_HAZARD",
+        "resolutionState": "INVALIDATED_BY_NEW_EVIDENCE",
+        "severity": "CRITICAL",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "LOW_CLEARANCE_HAZARD_ACTIVE",
+          "reasonCodes": [
+            "LOW_CLEARANCE"
+          ]
+        },
+        "testOnly": true
+      },
+      "resolvedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "d72784c9ce6183524a66da144414951c78bb34ad4d9cf64d4fcbba8cb69177f3",
+        "alertId": "safety.alert.safety.exception.route.low.clearance.low_clearance_hazard_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.low.clearance"
+        ],
+        "exceptionId": "safety.exception.route.low.clearance.low_clearance_hazard_active",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_RESOLVED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "priority": "P0"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_LOW_CLEARANCE_HAZARD",
+        "resolutionState": "RESOLVED",
+        "severity": "CRITICAL",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "LOW_CLEARANCE_HAZARD_ACTIVE",
+          "reasonCodes": [
+            "LOW_CLEARANCE"
+          ]
+        },
+        "testOnly": true
+      }
+    },
+    {
+      "acknowledgedAlert": {
+        "acknowledgementState": "ACKNOWLEDGED",
+        "alertHash": "39891e5d237151ec578a5e3a664a3d80af2fc103dd548694574be278f6524754",
+        "alertId": "safety.alert.safety.exception.route.low.review.low_clearance_hazard_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.low.review"
+        ],
+        "exceptionId": "safety.exception.route.low.review.low_clearance_hazard_active",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_ACKNOWLEDGED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "priority": "P0"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_LOW_CLEARANCE_HAZARD",
+        "resolutionState": "OPEN",
+        "severity": "CRITICAL",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "LOW_CLEARANCE_HAZARD_ACTIVE",
+          "reasonCodes": [
+            "LOW_CLEARANCE_REVIEW"
+          ]
+        },
+        "testOnly": true
+      },
+      "invalidatedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "0c97d697ed78b752bb99019898f886253327aa52650ee1accd1a34db4d618203",
+        "alertId": "safety.alert.safety.exception.route.low.review.low_clearance_hazard_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.low.review"
+        ],
+        "exceptionId": "safety.exception.route.low.review.low_clearance_hazard_active",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_INVALIDATED_BY_NEW_EVIDENCE",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "newEvidenceRef": "new.synthetic.safety.evidence",
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "priority": "P0"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_LOW_CLEARANCE_HAZARD",
+        "resolutionState": "INVALIDATED_BY_NEW_EVIDENCE",
+        "severity": "CRITICAL",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "LOW_CLEARANCE_HAZARD_ACTIVE",
+          "reasonCodes": [
+            "LOW_CLEARANCE_REVIEW"
+          ]
+        },
+        "testOnly": true
+      },
+      "resolvedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "dcfcfb3fbea9a46de875a9106ba852764b29cb6ed2468a365f59148576fc7fa1",
+        "alertId": "safety.alert.safety.exception.route.low.review.low_clearance_hazard_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.low.review"
+        ],
+        "exceptionId": "safety.exception.route.low.review.low_clearance_hazard_active",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_RESOLVED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "priority": "P0"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_LOW_CLEARANCE_HAZARD",
+        "resolutionState": "RESOLVED",
+        "severity": "CRITICAL",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "LOW_CLEARANCE_HAZARD_ACTIVE",
+          "reasonCodes": [
+            "LOW_CLEARANCE_REVIEW"
+          ]
+        },
+        "testOnly": true
+      }
+    },
+    {
+      "acknowledgedAlert": {
+        "acknowledgementState": "ACKNOWLEDGED",
+        "alertHash": "ca3fdb93359e0812c521cd31cb6f558b2308cfc73e0e599b0595c6c83bd3e04b",
+        "alertId": "safety.alert.safety.exception.route.truck.prohibited.truck_restriction_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.truck.prohibited"
+        ],
+        "exceptionId": "safety.exception.route.truck.prohibited.truck_restriction_active",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_ACKNOWLEDGED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "priority": "P0"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_TRUCK_RESTRICTION",
+        "resolutionState": "OPEN",
+        "severity": "CRITICAL",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "TRUCK_RESTRICTION_ACTIVE",
+          "reasonCodes": [
+            "TRUCK_PROHIBITED"
+          ]
+        },
+        "testOnly": true
+      },
+      "invalidatedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "5d5c1a100f971670ba91b6596b667fa88a112dd8ca678eb278a2df57f44cf311",
+        "alertId": "safety.alert.safety.exception.route.truck.prohibited.truck_restriction_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.truck.prohibited"
+        ],
+        "exceptionId": "safety.exception.route.truck.prohibited.truck_restriction_active",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_INVALIDATED_BY_NEW_EVIDENCE",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "newEvidenceRef": "new.synthetic.safety.evidence",
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "priority": "P0"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_TRUCK_RESTRICTION",
+        "resolutionState": "INVALIDATED_BY_NEW_EVIDENCE",
+        "severity": "CRITICAL",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "TRUCK_RESTRICTION_ACTIVE",
+          "reasonCodes": [
+            "TRUCK_PROHIBITED"
+          ]
+        },
+        "testOnly": true
+      },
+      "resolvedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "c6f0066994ea1dd2860ff3aa17e5dbede18050a6815dea54dc7180b1fa48ae9f",
+        "alertId": "safety.alert.safety.exception.route.truck.prohibited.truck_restriction_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.truck.prohibited"
+        ],
+        "exceptionId": "safety.exception.route.truck.prohibited.truck_restriction_active",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_RESOLVED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "priority": "P0"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_TRUCK_RESTRICTION",
+        "resolutionState": "RESOLVED",
+        "severity": "CRITICAL",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "TRUCK_RESTRICTION_ACTIVE",
+          "reasonCodes": [
+            "TRUCK_PROHIBITED"
+          ]
+        },
+        "testOnly": true
+      }
+    },
+    {
+      "acknowledgedAlert": {
+        "acknowledgementState": "ACKNOWLEDGED",
+        "alertHash": "2392e01979d16cfb398a1425f42a1e8072d76fb4ed6a6cc6512ca9598f8744fc",
+        "alertId": "safety.alert.safety.exception.route.no.through.no_through_truck_restriction_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.no.through"
+        ],
+        "exceptionId": "safety.exception.route.no.through.no_through_truck_restriction_active",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_ACKNOWLEDGED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "priority": "P0"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "HOLD_FOR_HUMAN_REVIEW",
+        "resolutionState": "OPEN",
+        "severity": "CRITICAL",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "NO_THROUGH_TRUCK_RESTRICTION_ACTIVE",
+          "reasonCodes": [
+            "NO_THROUGH_TRUCK"
+          ]
+        },
+        "testOnly": true
+      },
+      "invalidatedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "e95a6db0df351dc124442807460118f6bb5e030903c18b7ca92f335f7254ce43",
+        "alertId": "safety.alert.safety.exception.route.no.through.no_through_truck_restriction_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.no.through"
+        ],
+        "exceptionId": "safety.exception.route.no.through.no_through_truck_restriction_active",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_INVALIDATED_BY_NEW_EVIDENCE",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "newEvidenceRef": "new.synthetic.safety.evidence",
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "priority": "P0"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "HOLD_FOR_HUMAN_REVIEW",
+        "resolutionState": "INVALIDATED_BY_NEW_EVIDENCE",
+        "severity": "CRITICAL",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "NO_THROUGH_TRUCK_RESTRICTION_ACTIVE",
+          "reasonCodes": [
+            "NO_THROUGH_TRUCK"
+          ]
+        },
+        "testOnly": true
+      },
+      "resolvedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "9c36802493e82e5c78c6cfc9df97ce165cecb5b510a322804b2fc51a568ea4ff",
+        "alertId": "safety.alert.safety.exception.route.no.through.no_through_truck_restriction_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.no.through"
+        ],
+        "exceptionId": "safety.exception.route.no.through.no_through_truck_restriction_active",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_RESOLVED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "priority": "P0"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "HOLD_FOR_HUMAN_REVIEW",
+        "resolutionState": "RESOLVED",
+        "severity": "CRITICAL",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "NO_THROUGH_TRUCK_RESTRICTION_ACTIVE",
+          "reasonCodes": [
+            "NO_THROUGH_TRUCK"
+          ]
+        },
+        "testOnly": true
+      }
+    },
+    {
+      "acknowledgedAlert": null,
+      "invalidatedAlert": null,
+      "resolvedAlert": null
+    },
+    {
+      "acknowledgedAlert": {
+        "acknowledgementState": "ACKNOWLEDGED",
+        "alertHash": "52ed10d61ed0e3a1ef60bee0e11523f902ee704df4b3e47bb53c48a74e5209a9",
+        "alertId": "safety.alert.safety.exception.route.closed.road_closure_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.closed"
+        ],
+        "exceptionId": "safety.exception.route.closed.road_closure_active",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_ACKNOWLEDGED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "priority": "P0"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_ROAD_CLOSURE",
+        "resolutionState": "OPEN",
+        "severity": "CRITICAL",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "ROAD_CLOSURE_ACTIVE",
+          "reasonCodes": [
+            "ROAD_CLOSURE"
+          ]
+        },
+        "testOnly": true
+      },
+      "invalidatedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "2a137000d46f8f011ee6968218017e76a57cd2ffb00ba26188c902528b88178e",
+        "alertId": "safety.alert.safety.exception.route.closed.road_closure_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.closed"
+        ],
+        "exceptionId": "safety.exception.route.closed.road_closure_active",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_INVALIDATED_BY_NEW_EVIDENCE",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "newEvidenceRef": "new.synthetic.safety.evidence",
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "priority": "P0"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_ROAD_CLOSURE",
+        "resolutionState": "INVALIDATED_BY_NEW_EVIDENCE",
+        "severity": "CRITICAL",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "ROAD_CLOSURE_ACTIVE",
+          "reasonCodes": [
+            "ROAD_CLOSURE"
+          ]
+        },
+        "testOnly": true
+      },
+      "resolvedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "42dbacf44706a31c689de000e22b9f1335e15dc1b82e09cc5170dc42f2d139f5",
+        "alertId": "safety.alert.safety.exception.route.closed.road_closure_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.closed"
+        ],
+        "exceptionId": "safety.exception.route.closed.road_closure_active",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_RESOLVED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "priority": "P0"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_ROAD_CLOSURE",
+        "resolutionState": "RESOLVED",
+        "severity": "CRITICAL",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "ROAD_CLOSURE_ACTIVE",
+          "reasonCodes": [
+            "ROAD_CLOSURE"
+          ]
+        },
+        "testOnly": true
+      }
+    },
+    {
+      "acknowledgedAlert": {
+        "acknowledgementState": "ACKNOWLEDGED",
+        "alertHash": "75aad00cb92d16bb1f06b4c327be6d9a210c500bf0667638b7b8e19023e25164",
+        "alertId": "safety.alert.safety.exception.route.residential.block.residential_restriction_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.residential.block"
+        ],
+        "exceptionId": "safety.exception.route.residential.block.residential_restriction_active",
+        "humanReviewRequired": false,
+        "lifecycleReasonCode": "ALERT_ACKNOWLEDGED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P3"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_ROUTE_SAFETY",
+        "resolutionState": "OPEN",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "RESIDENTIAL_RESTRICTION_ACTIVE",
+          "reasonCodes": [
+            "RESIDENTIAL_RESTRICTION"
+          ]
+        },
+        "testOnly": true
+      },
+      "invalidatedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "425e67a1624c7444df33e0cdea6de37fe100132889d7fcbe94bffd6c53a7501e",
+        "alertId": "safety.alert.safety.exception.route.residential.block.residential_restriction_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.residential.block"
+        ],
+        "exceptionId": "safety.exception.route.residential.block.residential_restriction_active",
+        "humanReviewRequired": false,
+        "lifecycleReasonCode": "ALERT_INVALIDATED_BY_NEW_EVIDENCE",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "newEvidenceRef": "new.synthetic.safety.evidence",
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P3"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_ROUTE_SAFETY",
+        "resolutionState": "INVALIDATED_BY_NEW_EVIDENCE",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "RESIDENTIAL_RESTRICTION_ACTIVE",
+          "reasonCodes": [
+            "RESIDENTIAL_RESTRICTION"
+          ]
+        },
+        "testOnly": true
+      },
+      "resolvedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "dd46a987d390f1906199d26c854b3c734367b1ed09783df9249b2e155e89aa59",
+        "alertId": "safety.alert.safety.exception.route.residential.block.residential_restriction_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.residential.block"
+        ],
+        "exceptionId": "safety.exception.route.residential.block.residential_restriction_active",
+        "humanReviewRequired": false,
+        "lifecycleReasonCode": "ALERT_RESOLVED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P3"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_ROUTE_SAFETY",
+        "resolutionState": "RESOLVED",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "RESIDENTIAL_RESTRICTION_ACTIVE",
+          "reasonCodes": [
+            "RESIDENTIAL_RESTRICTION"
+          ]
+        },
+        "testOnly": true
+      }
+    },
+    {
+      "acknowledgedAlert": {
+        "acknowledgementState": "ACKNOWLEDGED",
+        "alertHash": "046ea924dcdaf0cd8831cd38af3f53a6244e6fa349f937a8a949fa45294c50ee",
+        "alertId": "safety.alert.safety.exception.route.residential.advisory.residential_restriction_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.residential.advisory"
+        ],
+        "exceptionId": "safety.exception.route.residential.advisory.residential_restriction_active",
+        "humanReviewRequired": false,
+        "lifecycleReasonCode": "ALERT_ACKNOWLEDGED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P3"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_ROUTE_SAFETY",
+        "resolutionState": "OPEN",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "RESIDENTIAL_RESTRICTION_ACTIVE",
+          "reasonCodes": [
+            "RESIDENTIAL_ADVISORY"
+          ]
+        },
+        "testOnly": true
+      },
+      "invalidatedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "fd8f9d3fd34b2cd0520d682dc38632b5cb6d944b785bdda7650dc416af895a9b",
+        "alertId": "safety.alert.safety.exception.route.residential.advisory.residential_restriction_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.residential.advisory"
+        ],
+        "exceptionId": "safety.exception.route.residential.advisory.residential_restriction_active",
+        "humanReviewRequired": false,
+        "lifecycleReasonCode": "ALERT_INVALIDATED_BY_NEW_EVIDENCE",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "newEvidenceRef": "new.synthetic.safety.evidence",
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P3"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_ROUTE_SAFETY",
+        "resolutionState": "INVALIDATED_BY_NEW_EVIDENCE",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "RESIDENTIAL_RESTRICTION_ACTIVE",
+          "reasonCodes": [
+            "RESIDENTIAL_ADVISORY"
+          ]
+        },
+        "testOnly": true
+      },
+      "resolvedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "1c63776a894f2577120f3f1b9dc89fddf059bbf14dd050869729d5cdcdf37eb7",
+        "alertId": "safety.alert.safety.exception.route.residential.advisory.residential_restriction_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.residential.advisory"
+        ],
+        "exceptionId": "safety.exception.route.residential.advisory.residential_restriction_active",
+        "humanReviewRequired": false,
+        "lifecycleReasonCode": "ALERT_RESOLVED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P3"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_ROUTE_SAFETY",
+        "resolutionState": "RESOLVED",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "RESIDENTIAL_RESTRICTION_ACTIVE",
+          "reasonCodes": [
+            "RESIDENTIAL_ADVISORY"
+          ]
+        },
+        "testOnly": true
+      }
+    },
+    {
+      "acknowledgedAlert": {
+        "acknowledgementState": "ACKNOWLEDGED",
+        "alertHash": "4145f62eded0ef888a9d9768aff673e2c33c021f6fd139620e899871d851f80e",
+        "alertId": "safety.alert.safety.exception.fleet.incompatible.route_vehicle_incompatible",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "fleet.incompatible"
+        ],
+        "exceptionId": "safety.exception.fleet.incompatible.route_vehicle_incompatible",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_ACKNOWLEDGED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "HIGH"
+          },
+          "priority": "P1"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [
+          "vehicle-001"
+        ],
+        "requiredReviewAction": "REVIEW_ROUTE_VEHICLE_COMPATIBILITY",
+        "resolutionState": "OPEN",
+        "severity": "HIGH",
+        "sourceDomains": [
+          "FLEET"
+        ],
+        "structuredFacts": {
+          "exceptionType": "ROUTE_VEHICLE_INCOMPATIBLE",
+          "reasonCodes": [
+            "ROUTE_VEHICLE_INCOMPATIBLE"
+          ]
+        },
+        "testOnly": true
+      },
+      "invalidatedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "037a6466d703cfcc1d4ca45ec4dd727e5372dd829a2e68e689dc7b587edf045b",
+        "alertId": "safety.alert.safety.exception.fleet.incompatible.route_vehicle_incompatible",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "fleet.incompatible"
+        ],
+        "exceptionId": "safety.exception.fleet.incompatible.route_vehicle_incompatible",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_INVALIDATED_BY_NEW_EVIDENCE",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "newEvidenceRef": "new.synthetic.safety.evidence",
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "HIGH"
+          },
+          "priority": "P1"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [
+          "vehicle-001"
+        ],
+        "requiredReviewAction": "REVIEW_ROUTE_VEHICLE_COMPATIBILITY",
+        "resolutionState": "INVALIDATED_BY_NEW_EVIDENCE",
+        "severity": "HIGH",
+        "sourceDomains": [
+          "FLEET"
+        ],
+        "structuredFacts": {
+          "exceptionType": "ROUTE_VEHICLE_INCOMPATIBLE",
+          "reasonCodes": [
+            "ROUTE_VEHICLE_INCOMPATIBLE"
+          ]
+        },
+        "testOnly": true
+      },
+      "resolvedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "6f7c75439153db8a2cd2abe121b501682c7d67227881375f994a234a3adfce44",
+        "alertId": "safety.alert.safety.exception.fleet.incompatible.route_vehicle_incompatible",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "fleet.incompatible"
+        ],
+        "exceptionId": "safety.exception.fleet.incompatible.route_vehicle_incompatible",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_RESOLVED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "HIGH"
+          },
+          "priority": "P1"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [
+          "vehicle-001"
+        ],
+        "requiredReviewAction": "REVIEW_ROUTE_VEHICLE_COMPATIBILITY",
+        "resolutionState": "RESOLVED",
+        "severity": "HIGH",
+        "sourceDomains": [
+          "FLEET"
+        ],
+        "structuredFacts": {
+          "exceptionType": "ROUTE_VEHICLE_INCOMPATIBLE",
+          "reasonCodes": [
+            "ROUTE_VEHICLE_INCOMPATIBLE"
+          ]
+        },
+        "testOnly": true
+      }
+    },
+    {
+      "acknowledgedAlert": {
+        "acknowledgementState": "ACKNOWLEDGED",
+        "alertHash": "07b7536f8eb8c7e90d95cc7c2999cc9d9d178b6c8b85d0a23b421be2e0bed026",
+        "alertId": "safety.alert.safety.exception.fleet.review.human_review_required",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "fleet.review"
+        ],
+        "exceptionId": "safety.exception.fleet.review.human_review_required",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_ACKNOWLEDGED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P2"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [
+          "vehicle-001"
+        ],
+        "requiredReviewAction": "HOLD_FOR_HUMAN_REVIEW",
+        "resolutionState": "OPEN",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "FLEET"
+        ],
+        "structuredFacts": {
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "reasonCodes": [
+            "ROUTE_VEHICLE_REVIEW_REQUIRED"
+          ]
+        },
+        "testOnly": true
+      },
+      "invalidatedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "aac874b651ca069197f0501db01c614bf2a6c08708791c47296bd93ee01d7556",
+        "alertId": "safety.alert.safety.exception.fleet.review.human_review_required",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "fleet.review"
+        ],
+        "exceptionId": "safety.exception.fleet.review.human_review_required",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_INVALIDATED_BY_NEW_EVIDENCE",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "newEvidenceRef": "new.synthetic.safety.evidence",
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P2"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [
+          "vehicle-001"
+        ],
+        "requiredReviewAction": "HOLD_FOR_HUMAN_REVIEW",
+        "resolutionState": "INVALIDATED_BY_NEW_EVIDENCE",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "FLEET"
+        ],
+        "structuredFacts": {
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "reasonCodes": [
+            "ROUTE_VEHICLE_REVIEW_REQUIRED"
+          ]
+        },
+        "testOnly": true
+      },
+      "resolvedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "6f82346ba23f76baa922f5b712939ba695da229e3a39f395253910f3cbb0bd46",
+        "alertId": "safety.alert.safety.exception.fleet.review.human_review_required",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "fleet.review"
+        ],
+        "exceptionId": "safety.exception.fleet.review.human_review_required",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_RESOLVED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P2"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [
+          "vehicle-001"
+        ],
+        "requiredReviewAction": "HOLD_FOR_HUMAN_REVIEW",
+        "resolutionState": "RESOLVED",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "FLEET"
+        ],
+        "structuredFacts": {
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "reasonCodes": [
+            "ROUTE_VEHICLE_REVIEW_REQUIRED"
+          ]
+        },
+        "testOnly": true
+      }
+    },
+    {
+      "acknowledgedAlert": {
+        "acknowledgementState": "ACKNOWLEDGED",
+        "alertHash": "86968c5f7c5996c29bf2b691057a86614c7a6122c5fb2a102b35fa544ca50b93",
+        "alertId": "safety.alert.safety.exception.driver.low.bridge.driver_safety_advisory_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "driver.low.bridge"
+        ],
+        "exceptionId": "safety.exception.driver.low.bridge.driver_safety_advisory_active",
+        "humanReviewRequired": false,
+        "lifecycleReasonCode": "ALERT_ACKNOWLEDGED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P3"
+        },
+        "relatedDriverRef": "driver-001",
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_DRIVER_SAFETY_ADVISORY",
+        "resolutionState": "OPEN",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "DRIVER"
+        ],
+        "structuredFacts": {
+          "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+          "reasonCodes": [
+            "DRIVER_LOW_BRIDGE_ADVISORY"
+          ]
+        },
+        "testOnly": true
+      },
+      "invalidatedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "cc8d7262657e79a576e3575b81df70f48f15456502f83c534dea335fdf32f987",
+        "alertId": "safety.alert.safety.exception.driver.low.bridge.driver_safety_advisory_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "driver.low.bridge"
+        ],
+        "exceptionId": "safety.exception.driver.low.bridge.driver_safety_advisory_active",
+        "humanReviewRequired": false,
+        "lifecycleReasonCode": "ALERT_INVALIDATED_BY_NEW_EVIDENCE",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "newEvidenceRef": "new.synthetic.safety.evidence",
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P3"
+        },
+        "relatedDriverRef": "driver-001",
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_DRIVER_SAFETY_ADVISORY",
+        "resolutionState": "INVALIDATED_BY_NEW_EVIDENCE",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "DRIVER"
+        ],
+        "structuredFacts": {
+          "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+          "reasonCodes": [
+            "DRIVER_LOW_BRIDGE_ADVISORY"
+          ]
+        },
+        "testOnly": true
+      },
+      "resolvedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "0309da9bd40d0742f92d4408f4c949647958f78bfdbd50428c90413de43af336",
+        "alertId": "safety.alert.safety.exception.driver.low.bridge.driver_safety_advisory_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "driver.low.bridge"
+        ],
+        "exceptionId": "safety.exception.driver.low.bridge.driver_safety_advisory_active",
+        "humanReviewRequired": false,
+        "lifecycleReasonCode": "ALERT_RESOLVED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P3"
+        },
+        "relatedDriverRef": "driver-001",
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_DRIVER_SAFETY_ADVISORY",
+        "resolutionState": "RESOLVED",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "DRIVER"
+        ],
+        "structuredFacts": {
+          "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+          "reasonCodes": [
+            "DRIVER_LOW_BRIDGE_ADVISORY"
+          ]
+        },
+        "testOnly": true
+      }
+    },
+    {
+      "acknowledgedAlert": {
+        "acknowledgementState": "ACKNOWLEDGED",
+        "alertHash": "e597e494b75321d3b21016b668438f42261dfa83177b50de7cdbe96f26a6de0b",
+        "alertId": "safety.alert.safety.exception.driver.restricted.driver_safety_advisory_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "driver.restricted"
+        ],
+        "exceptionId": "safety.exception.driver.restricted.driver_safety_advisory_active",
+        "humanReviewRequired": false,
+        "lifecycleReasonCode": "ALERT_ACKNOWLEDGED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P3"
+        },
+        "relatedDriverRef": "driver-001",
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_DRIVER_SAFETY_ADVISORY",
+        "resolutionState": "OPEN",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "DRIVER"
+        ],
+        "structuredFacts": {
+          "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+          "reasonCodes": [
+            "RESTRICTED_ROAD_ADVISORY"
+          ]
+        },
+        "testOnly": true
+      },
+      "invalidatedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "a2c221deca2e489f4167a457d07205decdff8a23d26469a8db28a5f483f31cd1",
+        "alertId": "safety.alert.safety.exception.driver.restricted.driver_safety_advisory_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "driver.restricted"
+        ],
+        "exceptionId": "safety.exception.driver.restricted.driver_safety_advisory_active",
+        "humanReviewRequired": false,
+        "lifecycleReasonCode": "ALERT_INVALIDATED_BY_NEW_EVIDENCE",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "newEvidenceRef": "new.synthetic.safety.evidence",
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P3"
+        },
+        "relatedDriverRef": "driver-001",
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_DRIVER_SAFETY_ADVISORY",
+        "resolutionState": "INVALIDATED_BY_NEW_EVIDENCE",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "DRIVER"
+        ],
+        "structuredFacts": {
+          "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+          "reasonCodes": [
+            "RESTRICTED_ROAD_ADVISORY"
+          ]
+        },
+        "testOnly": true
+      },
+      "resolvedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "5aaaa724cc21aa3c4e7b8ffab8278f3a306f32acb2a9da1f0307f15020d0a5eb",
+        "alertId": "safety.alert.safety.exception.driver.restricted.driver_safety_advisory_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "driver.restricted"
+        ],
+        "exceptionId": "safety.exception.driver.restricted.driver_safety_advisory_active",
+        "humanReviewRequired": false,
+        "lifecycleReasonCode": "ALERT_RESOLVED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P3"
+        },
+        "relatedDriverRef": "driver-001",
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_DRIVER_SAFETY_ADVISORY",
+        "resolutionState": "RESOLVED",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "DRIVER"
+        ],
+        "structuredFacts": {
+          "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+          "reasonCodes": [
+            "RESTRICTED_ROAD_ADVISORY"
+          ]
+        },
+        "testOnly": true
+      }
+    },
+    {
+      "acknowledgedAlert": {
+        "acknowledgementState": "ACKNOWLEDGED",
+        "alertHash": "4fe1df1125c0c65688b5d88db80e440d837686b8e566114845b859faea4f491a",
+        "alertId": "safety.alert.safety.exception.driver.no.through.driver_safety_advisory_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "driver.no.through"
+        ],
+        "exceptionId": "safety.exception.driver.no.through.driver_safety_advisory_active",
+        "humanReviewRequired": false,
+        "lifecycleReasonCode": "ALERT_ACKNOWLEDGED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P3"
+        },
+        "relatedDriverRef": "driver-001",
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_DRIVER_SAFETY_ADVISORY",
+        "resolutionState": "OPEN",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "DRIVER"
+        ],
+        "structuredFacts": {
+          "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+          "reasonCodes": [
+            "NO_THROUGH_TRUCK_ADVISORY"
+          ]
+        },
+        "testOnly": true
+      },
+      "invalidatedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "2c7916b7514cf7fc5e3156d589ffd228df5af02a01ec343bd0a53a90f13c5054",
+        "alertId": "safety.alert.safety.exception.driver.no.through.driver_safety_advisory_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "driver.no.through"
+        ],
+        "exceptionId": "safety.exception.driver.no.through.driver_safety_advisory_active",
+        "humanReviewRequired": false,
+        "lifecycleReasonCode": "ALERT_INVALIDATED_BY_NEW_EVIDENCE",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "newEvidenceRef": "new.synthetic.safety.evidence",
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P3"
+        },
+        "relatedDriverRef": "driver-001",
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_DRIVER_SAFETY_ADVISORY",
+        "resolutionState": "INVALIDATED_BY_NEW_EVIDENCE",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "DRIVER"
+        ],
+        "structuredFacts": {
+          "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+          "reasonCodes": [
+            "NO_THROUGH_TRUCK_ADVISORY"
+          ]
+        },
+        "testOnly": true
+      },
+      "resolvedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "8cd83d831806dfd2e69d7dc6a8d734fe3ea7bacefd762f30d34a236e4b8cf752",
+        "alertId": "safety.alert.safety.exception.driver.no.through.driver_safety_advisory_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "driver.no.through"
+        ],
+        "exceptionId": "safety.exception.driver.no.through.driver_safety_advisory_active",
+        "humanReviewRequired": false,
+        "lifecycleReasonCode": "ALERT_RESOLVED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P3"
+        },
+        "relatedDriverRef": "driver-001",
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_DRIVER_SAFETY_ADVISORY",
+        "resolutionState": "RESOLVED",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "DRIVER"
+        ],
+        "structuredFacts": {
+          "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+          "reasonCodes": [
+            "NO_THROUGH_TRUCK_ADVISORY"
+          ]
+        },
+        "testOnly": true
+      }
+    },
+    {
+      "acknowledgedAlert": {
+        "acknowledgementState": "ACKNOWLEDGED",
+        "alertHash": "1a9763683f0ee3cd0a8476c3b82406315d30d5204c8e739cbb7e7ad778364ea5",
+        "alertId": "safety.alert.safety.exception.driver.speed.advisory.driver_safety_advisory_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "driver.speed.advisory"
+        ],
+        "exceptionId": "safety.exception.driver.speed.advisory.driver_safety_advisory_active",
+        "humanReviewRequired": false,
+        "lifecycleReasonCode": "ALERT_ACKNOWLEDGED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P3"
+        },
+        "relatedDriverRef": "driver-001",
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_DRIVER_SAFETY_ADVISORY",
+        "resolutionState": "OPEN",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "DRIVER"
+        ],
+        "structuredFacts": {
+          "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+          "reasonCodes": [
+            "SPEED_ADVISORY"
+          ]
+        },
+        "testOnly": true
+      },
+      "invalidatedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "3aa2917ff1c4edcf8ad3cea9f19a8367b203235691ac55d49f64ae8f6d968120",
+        "alertId": "safety.alert.safety.exception.driver.speed.advisory.driver_safety_advisory_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "driver.speed.advisory"
+        ],
+        "exceptionId": "safety.exception.driver.speed.advisory.driver_safety_advisory_active",
+        "humanReviewRequired": false,
+        "lifecycleReasonCode": "ALERT_INVALIDATED_BY_NEW_EVIDENCE",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "newEvidenceRef": "new.synthetic.safety.evidence",
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P3"
+        },
+        "relatedDriverRef": "driver-001",
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_DRIVER_SAFETY_ADVISORY",
+        "resolutionState": "INVALIDATED_BY_NEW_EVIDENCE",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "DRIVER"
+        ],
+        "structuredFacts": {
+          "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+          "reasonCodes": [
+            "SPEED_ADVISORY"
+          ]
+        },
+        "testOnly": true
+      },
+      "resolvedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "d21cf3aa2c2f1aaaed9be94ee57000c3f886b4eaf76290e3dcc684e5cfdb6df7",
+        "alertId": "safety.alert.safety.exception.driver.speed.advisory.driver_safety_advisory_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "driver.speed.advisory"
+        ],
+        "exceptionId": "safety.exception.driver.speed.advisory.driver_safety_advisory_active",
+        "humanReviewRequired": false,
+        "lifecycleReasonCode": "ALERT_RESOLVED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P3"
+        },
+        "relatedDriverRef": "driver-001",
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_DRIVER_SAFETY_ADVISORY",
+        "resolutionState": "RESOLVED",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "DRIVER"
+        ],
+        "structuredFacts": {
+          "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+          "reasonCodes": [
+            "SPEED_ADVISORY"
+          ]
+        },
+        "testOnly": true
+      }
+    },
+    {
+      "acknowledgedAlert": {
+        "acknowledgementState": "ACKNOWLEDGED",
+        "alertHash": "a335efb4b99b7419d81bec502ebae785f396588eeb2a397d2e63a1fb2498bdbf",
+        "alertId": "safety.alert.safety.exception.driver.speed.warning.driver_speed_warning_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "driver.speed.warning"
+        ],
+        "exceptionId": "safety.exception.driver.speed.warning.driver_speed_warning_active",
+        "humanReviewRequired": false,
+        "lifecycleReasonCode": "ALERT_ACKNOWLEDGED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P3"
+        },
+        "relatedDriverRef": "driver-001",
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_SPEED_WARNING",
+        "resolutionState": "OPEN",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "DRIVER"
+        ],
+        "structuredFacts": {
+          "exceptionType": "DRIVER_SPEED_WARNING_ACTIVE",
+          "reasonCodes": [
+            "SPEED_WARNING"
+          ]
+        },
+        "testOnly": true
+      },
+      "invalidatedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "699d112c3d01c1a96c53963d25e205b290a371544883cac2f1a270481c144d6e",
+        "alertId": "safety.alert.safety.exception.driver.speed.warning.driver_speed_warning_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "driver.speed.warning"
+        ],
+        "exceptionId": "safety.exception.driver.speed.warning.driver_speed_warning_active",
+        "humanReviewRequired": false,
+        "lifecycleReasonCode": "ALERT_INVALIDATED_BY_NEW_EVIDENCE",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "newEvidenceRef": "new.synthetic.safety.evidence",
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P3"
+        },
+        "relatedDriverRef": "driver-001",
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_SPEED_WARNING",
+        "resolutionState": "INVALIDATED_BY_NEW_EVIDENCE",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "DRIVER"
+        ],
+        "structuredFacts": {
+          "exceptionType": "DRIVER_SPEED_WARNING_ACTIVE",
+          "reasonCodes": [
+            "SPEED_WARNING"
+          ]
+        },
+        "testOnly": true
+      },
+      "resolvedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "ef7b69f034bf93d4168f430d6d4a90df0af7eda023e8fc805ec2c1f5c703023b",
+        "alertId": "safety.alert.safety.exception.driver.speed.warning.driver_speed_warning_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "driver.speed.warning"
+        ],
+        "exceptionId": "safety.exception.driver.speed.warning.driver_speed_warning_active",
+        "humanReviewRequired": false,
+        "lifecycleReasonCode": "ALERT_RESOLVED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P3"
+        },
+        "relatedDriverRef": "driver-001",
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_SPEED_WARNING",
+        "resolutionState": "RESOLVED",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "DRIVER"
+        ],
+        "structuredFacts": {
+          "exceptionType": "DRIVER_SPEED_WARNING_ACTIVE",
+          "reasonCodes": [
+            "SPEED_WARNING"
+          ]
+        },
+        "testOnly": true
+      }
+    },
+    {
+      "acknowledgedAlert": {
+        "acknowledgementState": "ACKNOWLEDGED",
+        "alertHash": "8e5e7c596426d0eb49acf3e6d4a0fb818a6d45ac4edb65f87c1a7726bc140e71",
+        "alertId": "safety.alert.safety.exception.driver.speed.stale.safety_evidence_stale",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "driver.speed.stale"
+        ],
+        "exceptionId": "safety.exception.driver.speed.stale.safety_evidence_stale",
+        "humanReviewRequired": false,
+        "lifecycleReasonCode": "ALERT_ACKNOWLEDGED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "STALE",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "LOW"
+          },
+          "priority": "P4"
+        },
+        "relatedDriverRef": "driver-001",
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_ROUTE_SAFETY",
+        "resolutionState": "OPEN",
+        "severity": "LOW",
+        "sourceDomains": [
+          "DRIVER"
+        ],
+        "structuredFacts": {
+          "exceptionType": "SAFETY_EVIDENCE_STALE",
+          "reasonCodes": [
+            "SPEED_EVIDENCE_STALE"
+          ]
+        },
+        "testOnly": true
+      },
+      "invalidatedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "4e5e024c5c429411f19b041d27856148f68e7b34b700c564d046ee656e0ae253",
+        "alertId": "safety.alert.safety.exception.driver.speed.stale.safety_evidence_stale",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "driver.speed.stale"
+        ],
+        "exceptionId": "safety.exception.driver.speed.stale.safety_evidence_stale",
+        "humanReviewRequired": false,
+        "lifecycleReasonCode": "ALERT_INVALIDATED_BY_NEW_EVIDENCE",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "newEvidenceRef": "new.synthetic.safety.evidence",
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "STALE",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "LOW"
+          },
+          "priority": "P4"
+        },
+        "relatedDriverRef": "driver-001",
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_ROUTE_SAFETY",
+        "resolutionState": "INVALIDATED_BY_NEW_EVIDENCE",
+        "severity": "LOW",
+        "sourceDomains": [
+          "DRIVER"
+        ],
+        "structuredFacts": {
+          "exceptionType": "SAFETY_EVIDENCE_STALE",
+          "reasonCodes": [
+            "SPEED_EVIDENCE_STALE"
+          ]
+        },
+        "testOnly": true
+      },
+      "resolvedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "d02c314bfd1a4bf621ea2aa8ec88dfb59c00fc3160cbfe38bb2ed0499e001a3c",
+        "alertId": "safety.alert.safety.exception.driver.speed.stale.safety_evidence_stale",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "driver.speed.stale"
+        ],
+        "exceptionId": "safety.exception.driver.speed.stale.safety_evidence_stale",
+        "humanReviewRequired": false,
+        "lifecycleReasonCode": "ALERT_RESOLVED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "STALE",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "LOW"
+          },
+          "priority": "P4"
+        },
+        "relatedDriverRef": "driver-001",
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_ROUTE_SAFETY",
+        "resolutionState": "RESOLVED",
+        "severity": "LOW",
+        "sourceDomains": [
+          "DRIVER"
+        ],
+        "structuredFacts": {
+          "exceptionType": "SAFETY_EVIDENCE_STALE",
+          "reasonCodes": [
+            "SPEED_EVIDENCE_STALE"
+          ]
+        },
+        "testOnly": true
+      }
+    },
+    {
+      "acknowledgedAlert": {
+        "acknowledgementState": "ACKNOWLEDGED",
+        "alertHash": "15f5c249c370ea523a9ac1c9fa2667456db5547b6d05d15c0ac15a01c1b71688",
+        "alertId": "safety.alert.safety.exception.3d6ddfd5f6236e1d28a90a6e8d186719a84d5987d260c7b006e4d5902baf55e9.safety_evidence_incomplete",
+        "automatedActionTaken": false,
+        "evidenceReferences": [],
+        "exceptionId": "safety.exception.3d6ddfd5f6236e1d28a90a6e8d186719a84d5987d260c7b006e4d5902baf55e9.safety_evidence_incomplete",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_ACKNOWLEDGED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "UNKNOWN",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "LOW"
+          },
+          "priority": "P4"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_MISSING_EVIDENCE",
+        "resolutionState": "OPEN",
+        "severity": "LOW",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "SAFETY_EVIDENCE_INCOMPLETE",
+          "reasonCodes": [
+            "MISSING_SAFETY_EVIDENCE"
+          ]
+        },
+        "testOnly": true
+      },
+      "invalidatedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "c060b7ec5716c7a04ebdac0971dec9441e2f2d70dd9b8b797cf89dde09c7556b",
+        "alertId": "safety.alert.safety.exception.3d6ddfd5f6236e1d28a90a6e8d186719a84d5987d260c7b006e4d5902baf55e9.safety_evidence_incomplete",
+        "automatedActionTaken": false,
+        "evidenceReferences": [],
+        "exceptionId": "safety.exception.3d6ddfd5f6236e1d28a90a6e8d186719a84d5987d260c7b006e4d5902baf55e9.safety_evidence_incomplete",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_INVALIDATED_BY_NEW_EVIDENCE",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "newEvidenceRef": "new.synthetic.safety.evidence",
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "UNKNOWN",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "LOW"
+          },
+          "priority": "P4"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_MISSING_EVIDENCE",
+        "resolutionState": "INVALIDATED_BY_NEW_EVIDENCE",
+        "severity": "LOW",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "SAFETY_EVIDENCE_INCOMPLETE",
+          "reasonCodes": [
+            "MISSING_SAFETY_EVIDENCE"
+          ]
+        },
+        "testOnly": true
+      },
+      "resolvedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "16d0dfb788652b53f0547181c391941dd171626ff2613facd119c2033199388b",
+        "alertId": "safety.alert.safety.exception.3d6ddfd5f6236e1d28a90a6e8d186719a84d5987d260c7b006e4d5902baf55e9.safety_evidence_incomplete",
+        "automatedActionTaken": false,
+        "evidenceReferences": [],
+        "exceptionId": "safety.exception.3d6ddfd5f6236e1d28a90a6e8d186719a84d5987d260c7b006e4d5902baf55e9.safety_evidence_incomplete",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_RESOLVED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "UNKNOWN",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "LOW"
+          },
+          "priority": "P4"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_MISSING_EVIDENCE",
+        "resolutionState": "RESOLVED",
+        "severity": "LOW",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "SAFETY_EVIDENCE_INCOMPLETE",
+          "reasonCodes": [
+            "MISSING_SAFETY_EVIDENCE"
+          ]
+        },
+        "testOnly": true
+      }
+    },
+    {
+      "acknowledgedAlert": {
+        "acknowledgementState": "ACKNOWLEDGED",
+        "alertHash": "cd5d14f45ca4aaa9ddbb250374382a6282a198a568af7c75d458b2374c678261",
+        "alertId": "safety.alert.safety.exception.route.conflict.safety_evidence_conflict",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.conflict"
+        ],
+        "exceptionId": "safety.exception.route.conflict.safety_evidence_conflict",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_ACKNOWLEDGED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": true,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P2"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_CONFLICTING_EVIDENCE",
+        "resolutionState": "OPEN",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "SAFETY_EVIDENCE_CONFLICT",
+          "reasonCodes": [
+            "CONFLICTING_SAFETY_EVIDENCE"
+          ]
+        },
+        "testOnly": true
+      },
+      "invalidatedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "17da4e96bbf4e09b6d33dc904646d130af03518a6f5a87465c3d25a1d3a4d569",
+        "alertId": "safety.alert.safety.exception.route.conflict.safety_evidence_conflict",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.conflict"
+        ],
+        "exceptionId": "safety.exception.route.conflict.safety_evidence_conflict",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_INVALIDATED_BY_NEW_EVIDENCE",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "newEvidenceRef": "new.synthetic.safety.evidence",
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": true,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P2"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_CONFLICTING_EVIDENCE",
+        "resolutionState": "INVALIDATED_BY_NEW_EVIDENCE",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "SAFETY_EVIDENCE_CONFLICT",
+          "reasonCodes": [
+            "CONFLICTING_SAFETY_EVIDENCE"
+          ]
+        },
+        "testOnly": true
+      },
+      "resolvedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "f7d58ff13603489a25811ec97fcff47eb72afa464f51e0c84497cbaf40e5d7db",
+        "alertId": "safety.alert.safety.exception.route.conflict.safety_evidence_conflict",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.conflict"
+        ],
+        "exceptionId": "safety.exception.route.conflict.safety_evidence_conflict",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_RESOLVED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": true,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P2"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_CONFLICTING_EVIDENCE",
+        "resolutionState": "RESOLVED",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "SAFETY_EVIDENCE_CONFLICT",
+          "reasonCodes": [
+            "CONFLICTING_SAFETY_EVIDENCE"
+          ]
+        },
+        "testOnly": true
+      }
+    },
+    {
+      "acknowledgedAlert": {
+        "acknowledgementState": "ACKNOWLEDGED",
+        "alertHash": "5d7f41530b2c5ebac60dc996682a39b4656111e9e941f7dfb3073d85a0e32c48",
+        "alertId": "safety.alert.safety.exception.warehouse.safety.blocker.human_review_required",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "warehouse.safety.blocker"
+        ],
+        "exceptionId": "safety.exception.warehouse.safety.blocker.human_review_required",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_ACKNOWLEDGED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P2"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "HOLD_FOR_HUMAN_REVIEW",
+        "resolutionState": "OPEN",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "WAREHOUSE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "reasonCodes": [
+            "WAREHOUSE_SAFETY_BLOCKER"
+          ]
+        },
+        "testOnly": true
+      },
+      "invalidatedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "64b0e1dfc3edd1f67f7e5f43618d3b48d56fc076353e4e44877eeca2d98a31de",
+        "alertId": "safety.alert.safety.exception.warehouse.safety.blocker.human_review_required",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "warehouse.safety.blocker"
+        ],
+        "exceptionId": "safety.exception.warehouse.safety.blocker.human_review_required",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_INVALIDATED_BY_NEW_EVIDENCE",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "newEvidenceRef": "new.synthetic.safety.evidence",
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P2"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "HOLD_FOR_HUMAN_REVIEW",
+        "resolutionState": "INVALIDATED_BY_NEW_EVIDENCE",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "WAREHOUSE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "reasonCodes": [
+            "WAREHOUSE_SAFETY_BLOCKER"
+          ]
+        },
+        "testOnly": true
+      },
+      "resolvedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "2e1adae23964f901ffdef023a86a56ac5ce3a83c11e1e74daec4b6a7722329e3",
+        "alertId": "safety.alert.safety.exception.warehouse.safety.blocker.human_review_required",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "warehouse.safety.blocker"
+        ],
+        "exceptionId": "safety.exception.warehouse.safety.blocker.human_review_required",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_RESOLVED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P2"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "HOLD_FOR_HUMAN_REVIEW",
+        "resolutionState": "RESOLVED",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "WAREHOUSE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "reasonCodes": [
+            "WAREHOUSE_SAFETY_BLOCKER"
+          ]
+        },
+        "testOnly": true
+      }
+    },
+    {
+      "acknowledgedAlert": null,
+      "invalidatedAlert": null,
+      "resolvedAlert": null
+    },
+    {
+      "acknowledgedAlert": {
+        "acknowledgementState": "ACKNOWLEDGED",
+        "alertHash": "0d527e233293e70f318c51131bb0afdfdd666efd82697ed43988bf3a0d23f49c",
+        "alertId": "safety.alert.safety.exception.operations.safety.human_review_required",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "operations.safety"
+        ],
+        "exceptionId": "safety.exception.operations.safety.human_review_required",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_ACKNOWLEDGED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P2"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "HOLD_FOR_HUMAN_REVIEW",
+        "resolutionState": "OPEN",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "OPERATIONS"
+        ],
+        "structuredFacts": {
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "reasonCodes": [
+            "OPERATIONS_SAFETY_EXCEPTION"
+          ]
+        },
+        "testOnly": true
+      },
+      "invalidatedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "4a108b8e272b5e75ad85a7c0cfb257cba3ae7db02145cd5f5e95a789cfe71081",
+        "alertId": "safety.alert.safety.exception.operations.safety.human_review_required",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "operations.safety"
+        ],
+        "exceptionId": "safety.exception.operations.safety.human_review_required",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_INVALIDATED_BY_NEW_EVIDENCE",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "newEvidenceRef": "new.synthetic.safety.evidence",
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P2"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "HOLD_FOR_HUMAN_REVIEW",
+        "resolutionState": "INVALIDATED_BY_NEW_EVIDENCE",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "OPERATIONS"
+        ],
+        "structuredFacts": {
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "reasonCodes": [
+            "OPERATIONS_SAFETY_EXCEPTION"
+          ]
+        },
+        "testOnly": true
+      },
+      "resolvedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "cd9072079ceb42f76f7c1c2c56e7dded023fce894454dcf7043d3a2c2c41edaa",
+        "alertId": "safety.alert.safety.exception.operations.safety.human_review_required",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "operations.safety"
+        ],
+        "exceptionId": "safety.exception.operations.safety.human_review_required",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_RESOLVED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P2"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "HOLD_FOR_HUMAN_REVIEW",
+        "resolutionState": "RESOLVED",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "OPERATIONS"
+        ],
+        "structuredFacts": {
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "reasonCodes": [
+            "OPERATIONS_SAFETY_EXCEPTION"
+          ]
+        },
+        "testOnly": true
+      }
+    },
+    {
+      "acknowledgedAlert": null,
+      "invalidatedAlert": null,
+      "resolvedAlert": null
+    },
+    {
+      "acknowledgedAlert": null,
+      "invalidatedAlert": null,
+      "resolvedAlert": null
+    },
+    {
+      "acknowledgedAlert": {
+        "acknowledgementState": "ACKNOWLEDGED",
+        "alertHash": "f589aca8752a0ae49f75d26817163402af4ed1ce268ebf115a33896a67efbac6",
+        "alertId": "safety.alert.safety.exception.shared.review.shared_safety_review_required",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "shared.review"
+        ],
+        "exceptionId": "safety.exception.shared.review.shared_safety_review_required",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_ACKNOWLEDGED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P2"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_SHARED_SAFETY_RECORD",
+        "resolutionState": "OPEN",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "SHARED_SAFETY"
+        ],
+        "structuredFacts": {
+          "exceptionType": "SHARED_SAFETY_REVIEW_REQUIRED",
+          "reasonCodes": [
+            "SHARED_SAFETY_REVIEW"
+          ]
+        },
+        "testOnly": true
+      },
+      "invalidatedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "cd881660d25af5f7d5ff5d07ad6eb037cf830d815bf7b2f194e97bca4cb9b6d2",
+        "alertId": "safety.alert.safety.exception.shared.review.shared_safety_review_required",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "shared.review"
+        ],
+        "exceptionId": "safety.exception.shared.review.shared_safety_review_required",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_INVALIDATED_BY_NEW_EVIDENCE",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "newEvidenceRef": "new.synthetic.safety.evidence",
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P2"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_SHARED_SAFETY_RECORD",
+        "resolutionState": "INVALIDATED_BY_NEW_EVIDENCE",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "SHARED_SAFETY"
+        ],
+        "structuredFacts": {
+          "exceptionType": "SHARED_SAFETY_REVIEW_REQUIRED",
+          "reasonCodes": [
+            "SHARED_SAFETY_REVIEW"
+          ]
+        },
+        "testOnly": true
+      },
+      "resolvedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "1abf42836678a2fd49ba48a63048d166820ad1a521eb40754570530d557943e6",
+        "alertId": "safety.alert.safety.exception.shared.review.shared_safety_review_required",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "shared.review"
+        ],
+        "exceptionId": "safety.exception.shared.review.shared_safety_review_required",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_RESOLVED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P2"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_SHARED_SAFETY_RECORD",
+        "resolutionState": "RESOLVED",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "SHARED_SAFETY"
+        ],
+        "structuredFacts": {
+          "exceptionType": "SHARED_SAFETY_REVIEW_REQUIRED",
+          "reasonCodes": [
+            "SHARED_SAFETY_REVIEW"
+          ]
+        },
+        "testOnly": true
+      }
+    },
+    {
+      "acknowledgedAlert": {
+        "acknowledgementState": "ACKNOWLEDGED",
+        "alertHash": "9169fb05feb9d7d4783775e51b4b4f05b8ac654f040e121910c0e527a0934247",
+        "alertId": "safety.alert.safety.exception.route.low.low_clearance_hazard_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.low"
+        ],
+        "exceptionId": "safety.exception.route.low.low_clearance_hazard_active",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_ACKNOWLEDGED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "priority": "P0"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_LOW_CLEARANCE_HAZARD",
+        "resolutionState": "OPEN",
+        "severity": "CRITICAL",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "LOW_CLEARANCE_HAZARD_ACTIVE",
+          "reasonCodes": [
+            "LOW_CLEARANCE"
+          ]
+        },
+        "testOnly": true
+      },
+      "invalidatedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "a5259df4ce57f72565bb10b1e315db84b2019436d28109fc973ea6bff4a7f5d1",
+        "alertId": "safety.alert.safety.exception.route.low.low_clearance_hazard_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.low"
+        ],
+        "exceptionId": "safety.exception.route.low.low_clearance_hazard_active",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_INVALIDATED_BY_NEW_EVIDENCE",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "newEvidenceRef": "new.synthetic.safety.evidence",
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "priority": "P0"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_LOW_CLEARANCE_HAZARD",
+        "resolutionState": "INVALIDATED_BY_NEW_EVIDENCE",
+        "severity": "CRITICAL",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "LOW_CLEARANCE_HAZARD_ACTIVE",
+          "reasonCodes": [
+            "LOW_CLEARANCE"
+          ]
+        },
+        "testOnly": true
+      },
+      "resolvedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "54543e7259fed6332fd0aa020a8984b211e30a2f30eba63fd45f7dd03aebd18b",
+        "alertId": "safety.alert.safety.exception.route.low.low_clearance_hazard_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.low"
+        ],
+        "exceptionId": "safety.exception.route.low.low_clearance_hazard_active",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_RESOLVED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "priority": "P0"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_LOW_CLEARANCE_HAZARD",
+        "resolutionState": "RESOLVED",
+        "severity": "CRITICAL",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "LOW_CLEARANCE_HAZARD_ACTIVE",
+          "reasonCodes": [
+            "LOW_CLEARANCE"
+          ]
+        },
+        "testOnly": true
+      }
+    },
+    {
+      "acknowledgedAlert": {
+        "acknowledgementState": "ACKNOWLEDGED",
+        "alertHash": "f1b812c44152e472c7e1574e08a847e91e04b6fc24427b07f970422756f5a206",
+        "alertId": "safety.alert.safety.exception.route.closed.high.road_closure_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.closed.high"
+        ],
+        "exceptionId": "safety.exception.route.closed.high.road_closure_active",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_ACKNOWLEDGED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "priority": "P0"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_ROAD_CLOSURE",
+        "resolutionState": "OPEN",
+        "severity": "CRITICAL",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "ROAD_CLOSURE_ACTIVE",
+          "reasonCodes": [
+            "ROAD_CLOSURE"
+          ]
+        },
+        "testOnly": true
+      },
+      "invalidatedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "d7fdf7ba0f84cf3550eae436551eef5893694cf5001f20de90e6e43fc374812b",
+        "alertId": "safety.alert.safety.exception.route.closed.high.road_closure_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.closed.high"
+        ],
+        "exceptionId": "safety.exception.route.closed.high.road_closure_active",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_INVALIDATED_BY_NEW_EVIDENCE",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "newEvidenceRef": "new.synthetic.safety.evidence",
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "priority": "P0"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_ROAD_CLOSURE",
+        "resolutionState": "INVALIDATED_BY_NEW_EVIDENCE",
+        "severity": "CRITICAL",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "ROAD_CLOSURE_ACTIVE",
+          "reasonCodes": [
+            "ROAD_CLOSURE"
+          ]
+        },
+        "testOnly": true
+      },
+      "resolvedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "a39e955abd925ac6884b333871180d7f2dafe1d5413cc47bcb71a05fa775d3e1",
+        "alertId": "safety.alert.safety.exception.route.closed.high.road_closure_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.closed.high"
+        ],
+        "exceptionId": "safety.exception.route.closed.high.road_closure_active",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_RESOLVED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "priority": "P0"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_ROAD_CLOSURE",
+        "resolutionState": "RESOLVED",
+        "severity": "CRITICAL",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "ROAD_CLOSURE_ACTIVE",
+          "reasonCodes": [
+            "ROAD_CLOSURE"
+          ]
+        },
+        "testOnly": true
+      }
+    },
+    {
+      "acknowledgedAlert": {
+        "acknowledgementState": "ACKNOWLEDGED",
+        "alertHash": "a77f3e2ab1b35534d5c062f5045d5a32d0bf63c80994ceb1828793d269c9296f",
+        "alertId": "safety.alert.safety.exception.route.other.org.human_review_required",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.other.org"
+        ],
+        "exceptionId": "safety.exception.route.other.org.human_review_required",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_ACKNOWLEDGED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": null,
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P2"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "HOLD_FOR_HUMAN_REVIEW",
+        "resolutionState": "OPEN",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "reasonCodes": [
+            "HUMAN_REVIEW"
+          ]
+        },
+        "testOnly": true
+      },
+      "invalidatedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "1e2c58a1757d4b40c7b9915f05dec6fda09da7809d493a276f5330ff97d0b3e9",
+        "alertId": "safety.alert.safety.exception.route.other.org.human_review_required",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.other.org"
+        ],
+        "exceptionId": "safety.exception.route.other.org.human_review_required",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_INVALIDATED_BY_NEW_EVIDENCE",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "newEvidenceRef": "new.synthetic.safety.evidence",
+        "organizationId": null,
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P2"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "HOLD_FOR_HUMAN_REVIEW",
+        "resolutionState": "INVALIDATED_BY_NEW_EVIDENCE",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "reasonCodes": [
+            "HUMAN_REVIEW"
+          ]
+        },
+        "testOnly": true
+      },
+      "resolvedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "a75016bf733e999096cf0ba2a58f66d2aa3b01da8c66cfcb9a8e54d7ee95739a",
+        "alertId": "safety.alert.safety.exception.route.other.org.human_review_required",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.other.org"
+        ],
+        "exceptionId": "safety.exception.route.other.org.human_review_required",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_RESOLVED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": null,
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P2"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "HOLD_FOR_HUMAN_REVIEW",
+        "resolutionState": "RESOLVED",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "reasonCodes": [
+            "HUMAN_REVIEW"
+          ]
+        },
+        "testOnly": true
+      }
+    },
+    {
+      "acknowledgedAlert": {
+        "acknowledgementState": "ACKNOWLEDGED",
+        "alertHash": "deaeada5de0cc93cfd9d5aed05fcf6a2f7fb65b8a952586fcba3ae1e5aa468b2",
+        "alertId": "safety.alert.safety.exception.supervisor.review.human_review_required",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "supervisor.review"
+        ],
+        "exceptionId": "safety.exception.supervisor.review.human_review_required",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_ACKNOWLEDGED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P2"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "HOLD_FOR_HUMAN_REVIEW",
+        "resolutionState": "OPEN",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "SUPERVISOR"
+        ],
+        "structuredFacts": {
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "reasonCodes": [
+            "HUMAN_REVIEW"
+          ]
+        },
+        "testOnly": true
+      },
+      "invalidatedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "af56559587e0b6f9e4f81472915b940f7d8e74d5a89f75c6ec2d22c5301f8e85",
+        "alertId": "safety.alert.safety.exception.supervisor.review.human_review_required",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "supervisor.review"
+        ],
+        "exceptionId": "safety.exception.supervisor.review.human_review_required",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_INVALIDATED_BY_NEW_EVIDENCE",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "newEvidenceRef": "new.synthetic.safety.evidence",
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P2"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "HOLD_FOR_HUMAN_REVIEW",
+        "resolutionState": "INVALIDATED_BY_NEW_EVIDENCE",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "SUPERVISOR"
+        ],
+        "structuredFacts": {
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "reasonCodes": [
+            "HUMAN_REVIEW"
+          ]
+        },
+        "testOnly": true
+      },
+      "resolvedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "269c32cfaee744e068ac03efd57c1cdde25e60bb8fe80f0f281c40753a0cd1d5",
+        "alertId": "safety.alert.safety.exception.supervisor.review.human_review_required",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "supervisor.review"
+        ],
+        "exceptionId": "safety.exception.supervisor.review.human_review_required",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_RESOLVED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": true,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "MODERATE"
+          },
+          "priority": "P2"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "HOLD_FOR_HUMAN_REVIEW",
+        "resolutionState": "RESOLVED",
+        "severity": "MODERATE",
+        "sourceDomains": [
+          "SUPERVISOR"
+        ],
+        "structuredFacts": {
+          "exceptionType": "HUMAN_REVIEW_REQUIRED",
+          "reasonCodes": [
+            "HUMAN_REVIEW"
+          ]
+        },
+        "testOnly": true
+      }
+    },
+    {
+      "acknowledgedAlert": {
+        "acknowledgementState": "ACKNOWLEDGED",
+        "alertHash": "56af14dd1fc0f11113f742f5a305deb14eac8ca7a771fcda26f00925b70b87f4",
+        "alertId": "safety.alert.safety.exception.route.ack.low_clearance_hazard_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.ack"
+        ],
+        "exceptionId": "safety.exception.route.ack.low_clearance_hazard_active",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_ACKNOWLEDGED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "priority": "P0"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_LOW_CLEARANCE_HAZARD",
+        "resolutionState": "OPEN",
+        "severity": "CRITICAL",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "LOW_CLEARANCE_HAZARD_ACTIVE",
+          "reasonCodes": [
+            "LOW_CLEARANCE"
+          ]
+        },
+        "testOnly": true
+      },
+      "invalidatedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "dc2a8355170b6527b74f3f02132ea950469d4da26ba977c638a87bb7199811a9",
+        "alertId": "safety.alert.safety.exception.route.ack.low_clearance_hazard_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.ack"
+        ],
+        "exceptionId": "safety.exception.route.ack.low_clearance_hazard_active",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_INVALIDATED_BY_NEW_EVIDENCE",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "newEvidenceRef": "new.synthetic.safety.evidence",
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "priority": "P0"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_LOW_CLEARANCE_HAZARD",
+        "resolutionState": "INVALIDATED_BY_NEW_EVIDENCE",
+        "severity": "CRITICAL",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "LOW_CLEARANCE_HAZARD_ACTIVE",
+          "reasonCodes": [
+            "LOW_CLEARANCE"
+          ]
+        },
+        "testOnly": true
+      },
+      "resolvedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "1e5cb9589aba2df896f3980c235e15168ca0953ae07ee53bcfc6937af6b59783",
+        "alertId": "safety.alert.safety.exception.route.ack.low_clearance_hazard_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.ack"
+        ],
+        "exceptionId": "safety.exception.route.ack.low_clearance_hazard_active",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_RESOLVED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "priority": "P0"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_LOW_CLEARANCE_HAZARD",
+        "resolutionState": "RESOLVED",
+        "severity": "CRITICAL",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "LOW_CLEARANCE_HAZARD_ACTIVE",
+          "reasonCodes": [
+            "LOW_CLEARANCE"
+          ]
+        },
+        "testOnly": true
+      }
+    },
+    {
+      "acknowledgedAlert": {
+        "acknowledgementState": "ACKNOWLEDGED",
+        "alertHash": "cf1d3b0ebf32b0a8ea5693ec627005dc85f46ffce8b80e6a3acc73119df82b52",
+        "alertId": "safety.alert.safety.exception.route.resolve.truck_restriction_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.resolve"
+        ],
+        "exceptionId": "safety.exception.route.resolve.truck_restriction_active",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_ACKNOWLEDGED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "priority": "P0"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_TRUCK_RESTRICTION",
+        "resolutionState": "OPEN",
+        "severity": "CRITICAL",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "TRUCK_RESTRICTION_ACTIVE",
+          "reasonCodes": [
+            "TRUCK_PROHIBITED"
+          ]
+        },
+        "testOnly": true
+      },
+      "invalidatedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "233146a6b9e7f0592c7d52ebe366615cdc659ccf19f49fdbf9cc978252125a07",
+        "alertId": "safety.alert.safety.exception.route.resolve.truck_restriction_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.resolve"
+        ],
+        "exceptionId": "safety.exception.route.resolve.truck_restriction_active",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_INVALIDATED_BY_NEW_EVIDENCE",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "newEvidenceRef": "new.synthetic.safety.evidence",
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "priority": "P0"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_TRUCK_RESTRICTION",
+        "resolutionState": "INVALIDATED_BY_NEW_EVIDENCE",
+        "severity": "CRITICAL",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "TRUCK_RESTRICTION_ACTIVE",
+          "reasonCodes": [
+            "TRUCK_PROHIBITED"
+          ]
+        },
+        "testOnly": true
+      },
+      "resolvedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "e620c8882365d5ada10403fad9dc7bc8b549f6a4d651f76068b00c1402e08f08",
+        "alertId": "safety.alert.safety.exception.route.resolve.truck_restriction_active",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.resolve"
+        ],
+        "exceptionId": "safety.exception.route.resolve.truck_restriction_active",
+        "humanReviewRequired": true,
+        "lifecycleReasonCode": "ALERT_RESOLVED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "FRESH",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "CRITICAL"
+          },
+          "priority": "P0"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_TRUCK_RESTRICTION",
+        "resolutionState": "RESOLVED",
+        "severity": "CRITICAL",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "TRUCK_RESTRICTION_ACTIVE",
+          "reasonCodes": [
+            "TRUCK_PROHIBITED"
+          ]
+        },
+        "testOnly": true
+      }
+    },
+    {
+      "acknowledgedAlert": {
+        "acknowledgementState": "ACKNOWLEDGED",
+        "alertHash": "fce6a63bb1f10b661e74bf1678b50a563b6edf87dfee90d498d04515feeca940",
+        "alertId": "safety.alert.safety.exception.route.invalidate.safety_evidence_stale",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.invalidate"
+        ],
+        "exceptionId": "safety.exception.route.invalidate.safety_evidence_stale",
+        "humanReviewRequired": false,
+        "lifecycleReasonCode": "ALERT_ACKNOWLEDGED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "STALE",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "LOW"
+          },
+          "priority": "P4"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_ROUTE_SAFETY",
+        "resolutionState": "OPEN",
+        "severity": "LOW",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "SAFETY_EVIDENCE_STALE",
+          "reasonCodes": [
+            "SPEED_EVIDENCE_STALE"
+          ]
+        },
+        "testOnly": true
+      },
+      "invalidatedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "c646315ea1555932331fe48b96b9ac5daf9a58a3d2e09f6fd909da9abd7deac0",
+        "alertId": "safety.alert.safety.exception.route.invalidate.safety_evidence_stale",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.invalidate"
+        ],
+        "exceptionId": "safety.exception.route.invalidate.safety_evidence_stale",
+        "humanReviewRequired": false,
+        "lifecycleReasonCode": "ALERT_INVALIDATED_BY_NEW_EVIDENCE",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "newEvidenceRef": "new.synthetic.safety.evidence",
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "STALE",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "LOW"
+          },
+          "priority": "P4"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_ROUTE_SAFETY",
+        "resolutionState": "INVALIDATED_BY_NEW_EVIDENCE",
+        "severity": "LOW",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "SAFETY_EVIDENCE_STALE",
+          "reasonCodes": [
+            "SPEED_EVIDENCE_STALE"
+          ]
+        },
+        "testOnly": true
+      },
+      "resolvedAlert": {
+        "acknowledgementState": "OPEN",
+        "alertHash": "b189f84b3e9005f04d94a1621d4e7e2a989d7ab0edc736c9c4ebea9e19366d73",
+        "alertId": "safety.alert.safety.exception.route.invalidate.safety_evidence_stale",
+        "automatedActionTaken": false,
+        "evidenceReferences": [
+          "route.invalidate"
+        ],
+        "exceptionId": "safety.exception.route.invalidate.safety_evidence_stale",
+        "humanReviewRequired": false,
+        "lifecycleReasonCode": "ALERT_RESOLVED",
+        "limitations": [
+          "repository-only synthetic aggregation",
+          "lower domains remain authoritative"
+        ],
+        "organizationId": "org-001",
+        "priority": {
+          "calculationTrace": {
+            "conflict": false,
+            "customerValueUsed": false,
+            "employeeRankingUsed": false,
+            "freshness": "STALE",
+            "humanReviewRequired": false,
+            "insuranceValueUsed": false,
+            "productivityUsed": false,
+            "severity": "LOW"
+          },
+          "priority": "P4"
+        },
+        "relatedDriverRef": null,
+        "relatedRoutes": [
+          "route-001"
+        ],
+        "relatedVehicles": [],
+        "requiredReviewAction": "REVIEW_ROUTE_SAFETY",
+        "resolutionState": "RESOLVED",
+        "severity": "LOW",
+        "sourceDomains": [
+          "ROUTE"
+        ],
+        "structuredFacts": {
+          "exceptionType": "SAFETY_EVIDENCE_STALE",
+          "reasonCodes": [
+            "SPEED_EVIDENCE_STALE"
+          ]
+        },
+        "testOnly": true
+      }
+    },
+    {
+      "acknowledgedAlert": null,
+      "invalidatedAlert": null,
+      "resolvedAlert": null
+    }
+  ],
+  "nextSteps": [
+    "REVIEW_ROUTE_SAFETY",
+    "REVIEW_LOW_CLEARANCE_HAZARD",
+    "REVIEW_TRUCK_RESTRICTION",
+    "REVIEW_ROAD_CLOSURE",
+    "REVIEW_ROUTE_VEHICLE_COMPATIBILITY",
+    "REVIEW_DRIVER_SAFETY_ADVISORY",
+    "REVIEW_SPEED_WARNING",
+    "REVIEW_SHARED_SAFETY_RECORD",
+    "REVIEW_CONFLICTING_EVIDENCE",
+    "REVIEW_MISSING_EVIDENCE",
+    "HOLD_FOR_HUMAN_REVIEW",
+    "NO_ACTION_REQUIRED",
+    "UNABLE_TO_DETERMINE"
+  ]
+}

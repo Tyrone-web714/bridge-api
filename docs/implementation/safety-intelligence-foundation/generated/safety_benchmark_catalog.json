@@ -1,0 +1,2019 @@
+{
+  "benchmarks": [
+    {
+      "caseId": "no_known_safety_exception",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "NO_EXCEPTION",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "organizationId": "org-001",
+            "reasonCode": "NO_KNOWN_SAFETY_EXCEPTION",
+            "routeId": "route-001",
+            "safetyCondition": "NO_KNOWN_SAFETY_EXCEPTION",
+            "safetyRelevant": false,
+            "sourceDomain": "ROUTE",
+            "sourceRecordId": "route.safe",
+            "sourceStatus": "ELIGIBLE",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "safety_blocked_route",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "ROUTE_SAFETY_BLOCKER_ACTIVE",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "organizationId": "org-001",
+            "reasonCode": "ROUTE_BLOCKED",
+            "routeId": "route-001",
+            "safetyCondition": "ROUTE_SAFETY_BLOCKER_ACTIVE",
+            "safetyRelevant": true,
+            "sourceDomain": "ROUTE",
+            "sourceRecordId": "route.blocked",
+            "sourceStatus": "BLOCKED",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "low_clearance_blocker",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "LOW_CLEARANCE_HAZARD_ACTIVE",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "organizationId": "org-001",
+            "reasonCode": "LOW_CLEARANCE",
+            "routeId": "route-001",
+            "safetyCondition": "LOW_CLEARANCE_HAZARD_ACTIVE",
+            "safetyRelevant": true,
+            "sourceDomain": "ROUTE",
+            "sourceRecordId": "route.low.clearance",
+            "sourceStatus": "UNSAFE",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "low_clearance_review",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "LOW_CLEARANCE_HAZARD_ACTIVE",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "humanReviewRequired": true,
+            "organizationId": "org-001",
+            "reasonCode": "LOW_CLEARANCE_REVIEW",
+            "routeId": "route-001",
+            "safetyCondition": "LOW_CLEARANCE_HAZARD_ACTIVE",
+            "safetyRelevant": true,
+            "sourceDomain": "ROUTE",
+            "sourceRecordId": "route.low.review",
+            "sourceStatus": "REVIEW_REQUIRED",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "truck_prohibition",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "TRUCK_RESTRICTION_ACTIVE",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "organizationId": "org-001",
+            "reasonCode": "TRUCK_PROHIBITED",
+            "routeId": "route-001",
+            "safetyCondition": "TRUCK_RESTRICTION_ACTIVE",
+            "safetyRelevant": true,
+            "sourceDomain": "ROUTE",
+            "sourceRecordId": "route.truck.prohibited",
+            "sourceStatus": "UNSAFE",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "no_through_truck_restriction",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "NO_THROUGH_TRUCK_RESTRICTION_ACTIVE",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "organizationId": "org-001",
+            "reasonCode": "NO_THROUGH_TRUCK",
+            "routeId": "route-001",
+            "safetyCondition": "NO_THROUGH_TRUCK_RESTRICTION_ACTIVE",
+            "safetyRelevant": true,
+            "sourceDomain": "ROUTE",
+            "sourceRecordId": "route.no.through",
+            "sourceStatus": "UNSAFE",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "local_delivery_exception",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "NO_EXCEPTION",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "organizationId": "org-001",
+            "reasonCode": "LOCAL_DELIVERY_EXCEPTION",
+            "routeId": "route-001",
+            "safetyCondition": null,
+            "safetyRelevant": false,
+            "sourceDomain": "ROUTE",
+            "sourceRecordId": "route.local.delivery",
+            "sourceStatus": "ELIGIBLE",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "road_closure",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "ROAD_CLOSURE_ACTIVE",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "organizationId": "org-001",
+            "reasonCode": "ROAD_CLOSURE",
+            "routeId": "route-001",
+            "safetyCondition": "ROAD_CLOSURE_ACTIVE",
+            "safetyRelevant": true,
+            "sourceDomain": "ROUTE",
+            "sourceRecordId": "route.closed",
+            "sourceStatus": "UNSAFE",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "residential_restriction",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "RESIDENTIAL_RESTRICTION_ACTIVE",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "organizationId": "org-001",
+            "reasonCode": "RESIDENTIAL_RESTRICTION",
+            "routeId": "route-001",
+            "safetyCondition": "RESIDENTIAL_RESTRICTION_ACTIVE",
+            "safetyRelevant": true,
+            "sourceDomain": "ROUTE",
+            "sourceRecordId": "route.residential.block",
+            "sourceStatus": "UNSAFE",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "residential_advisory",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "RESIDENTIAL_RESTRICTION_ACTIVE",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "organizationId": "org-001",
+            "reasonCode": "RESIDENTIAL_ADVISORY",
+            "routeId": "route-001",
+            "safetyCondition": "RESIDENTIAL_RESTRICTION_ACTIVE",
+            "safetyRelevant": true,
+            "sourceDomain": "ROUTE",
+            "sourceRecordId": "route.residential.advisory",
+            "sourceStatus": "REVIEW_REQUIRED",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "route_vehicle_incompatible",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "ROUTE_VEHICLE_INCOMPATIBLE",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "organizationId": "org-001",
+            "reasonCode": "ROUTE_VEHICLE_INCOMPATIBLE",
+            "routeId": "route-001",
+            "safetyCondition": "ROUTE_VEHICLE_INCOMPATIBLE",
+            "safetyRelevant": true,
+            "sourceDomain": "FLEET",
+            "sourceRecordId": "fleet.incompatible",
+            "sourceStatus": "BLOCKED",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true,
+            "vehicleId": "vehicle-001"
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "route_vehicle_review_required",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "HUMAN_REVIEW_REQUIRED",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "humanReviewRequired": true,
+            "organizationId": "org-001",
+            "reasonCode": "ROUTE_VEHICLE_REVIEW_REQUIRED",
+            "routeId": "route-001",
+            "safetyCondition": null,
+            "safetyRelevant": false,
+            "sourceDomain": "FLEET",
+            "sourceRecordId": "fleet.review",
+            "sourceStatus": "REVIEW_REQUIRED",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true,
+            "vehicleId": "vehicle-001"
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "driver_low_bridge_advisory",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "driverId": "driver-001",
+            "organizationId": "org-001",
+            "reasonCode": "DRIVER_LOW_BRIDGE_ADVISORY",
+            "routeId": "route-001",
+            "safetyCondition": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+            "safetyRelevant": true,
+            "sourceDomain": "DRIVER",
+            "sourceRecordId": "driver.low.bridge",
+            "sourceStatus": "WARNING",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "restricted_road_advisory",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "driverId": "driver-001",
+            "organizationId": "org-001",
+            "reasonCode": "RESTRICTED_ROAD_ADVISORY",
+            "routeId": "route-001",
+            "safetyCondition": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+            "safetyRelevant": true,
+            "sourceDomain": "DRIVER",
+            "sourceRecordId": "driver.restricted",
+            "sourceStatus": "WARNING",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "no_through_truck_advisory",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "driverId": "driver-001",
+            "organizationId": "org-001",
+            "reasonCode": "NO_THROUGH_TRUCK_ADVISORY",
+            "routeId": "route-001",
+            "safetyCondition": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+            "safetyRelevant": true,
+            "sourceDomain": "DRIVER",
+            "sourceRecordId": "driver.no.through",
+            "sourceStatus": "WARNING",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "speed_advisory",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "driverId": "driver-001",
+            "organizationId": "org-001",
+            "reasonCode": "SPEED_ADVISORY",
+            "routeId": "route-001",
+            "safetyCondition": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+            "safetyRelevant": true,
+            "sourceDomain": "DRIVER",
+            "sourceRecordId": "driver.speed.advisory",
+            "sourceStatus": "ADVISORY",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "speed_warning",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "DRIVER_SPEED_WARNING_ACTIVE",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "driverId": "driver-001",
+            "organizationId": "org-001",
+            "reasonCode": "SPEED_WARNING",
+            "routeId": "route-001",
+            "safetyCondition": "DRIVER_SPEED_WARNING_ACTIVE",
+            "safetyRelevant": true,
+            "sourceDomain": "DRIVER",
+            "sourceRecordId": "driver.speed.warning",
+            "sourceStatus": "WARNING",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "stale_speed_evidence",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "SAFETY_EVIDENCE_STALE",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "driverId": "driver-001",
+            "evidenceStale": true,
+            "organizationId": "org-001",
+            "reasonCode": "SPEED_EVIDENCE_STALE",
+            "routeId": "route-001",
+            "safetyRelevant": true,
+            "sourceDomain": "DRIVER",
+            "sourceRecordId": "driver.speed.stale",
+            "sourceStatus": "INSUFFICIENT_EVIDENCE",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "missing_safety_evidence",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "SAFETY_EVIDENCE_INCOMPLETE",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "evidenceUnknown": true,
+            "organizationId": "org-001",
+            "reasonCode": "MISSING_SAFETY_EVIDENCE",
+            "routeId": "route-001",
+            "safetyRelevant": true,
+            "sourceDomain": "ROUTE",
+            "sourceRecordId": null,
+            "sourceStatus": "INSUFFICIENT_EVIDENCE",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "conflicting_safety_evidence",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "SAFETY_EVIDENCE_CONFLICT",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "evidenceConflict": true,
+            "organizationId": "org-001",
+            "reasonCode": "CONFLICTING_SAFETY_EVIDENCE",
+            "routeId": "route-001",
+            "safetyRelevant": true,
+            "sourceDomain": "ROUTE",
+            "sourceRecordId": "route.conflict",
+            "sourceStatus": "REVIEW_REQUIRED",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "warehouse_safety_blocker",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "HUMAN_REVIEW_REQUIRED",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "humanReviewRequired": true,
+            "organizationId": "org-001",
+            "reasonCode": "WAREHOUSE_SAFETY_BLOCKER",
+            "routeId": "route-001",
+            "safetyCondition": "WAREHOUSE_SAFETY_BLOCKER",
+            "safetyRelevant": true,
+            "sourceDomain": "WAREHOUSE",
+            "sourceRecordId": "warehouse.safety.blocker",
+            "sourceStatus": "BLOCKED",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "ordinary_warehouse_issue",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "NO_EXCEPTION",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "ordinaryWarehouseIssue": true,
+            "organizationId": "org-001",
+            "routeId": "route-001",
+            "safetyRelevant": false,
+            "sourceDomain": "WAREHOUSE",
+            "sourceRecordId": "warehouse.delay",
+            "sourceStatus": "DELAYED",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "operations_safety_exception",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "HUMAN_REVIEW_REQUIRED",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "humanReviewRequired": true,
+            "organizationId": "org-001",
+            "reasonCode": "OPERATIONS_SAFETY_EXCEPTION",
+            "routeId": "route-001",
+            "safetyCondition": "OPERATIONS_SAFETY_EXCEPTION",
+            "safetyRelevant": true,
+            "sourceDomain": "OPERATIONS",
+            "sourceRecordId": "operations.safety",
+            "sourceStatus": "OPEN",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "ordinary_operations_exception",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "NO_EXCEPTION",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "ordinaryOperationalIssue": true,
+            "organizationId": "org-001",
+            "routeId": "route-001",
+            "safetyRelevant": false,
+            "sourceDomain": "OPERATIONS",
+            "sourceRecordId": "operations.delay",
+            "sourceStatus": "OPEN",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "shared_safety_record_accepted",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "NO_EXCEPTION",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "organizationId": "org-001",
+            "reasonCode": "SHARED_SAFETY_ACCEPTED",
+            "routeId": "route-001",
+            "safetyRelevant": true,
+            "sharedSafetyRecordId": "shared-low-bridge-001",
+            "sourceDomain": "SHARED_SAFETY",
+            "sourceRecordId": "shared.accepted",
+            "sourceStatus": "ACCEPTED",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "shared_safety_record_review",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "SHARED_SAFETY_REVIEW_REQUIRED",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "organizationId": "org-001",
+            "reasonCode": "SHARED_SAFETY_REVIEW",
+            "routeId": "route-001",
+            "safetyRelevant": true,
+            "sharedSafetyRecordId": "shared-review-001",
+            "sourceDomain": "SHARED_SAFETY",
+            "sourceRecordId": "shared.review",
+            "sourceStatus": "PENDING_REVIEW",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "multiple_simultaneous_safety_exceptions",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "MULTIPLE_SAFETY_EXCEPTIONS",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "organizationId": "org-001",
+            "reasonCode": "LOW_CLEARANCE",
+            "routeId": "route-001",
+            "safetyCondition": "LOW_CLEARANCE_HAZARD_ACTIVE",
+            "safetyRelevant": true,
+            "sourceDomain": "ROUTE",
+            "sourceRecordId": "route.low",
+            "sourceStatus": "NORMAL",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          },
+          {
+            "driverId": "driver-001",
+            "organizationId": "org-001",
+            "reasonCode": "SPEED_WARNING",
+            "routeId": "route-001",
+            "safetyCondition": "DRIVER_SPEED_WARNING_ACTIVE",
+            "safetyRelevant": true,
+            "sourceDomain": "DRIVER",
+            "sourceRecordId": "driver.speed",
+            "sourceStatus": "NORMAL",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "critical_blocker_outranks_informational_advisory",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "ROAD_CLOSURE_ACTIVE",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "organizationId": "org-001",
+            "reasonCode": "ROAD_CLOSURE",
+            "routeId": "route-001",
+            "safetyCondition": "ROAD_CLOSURE_ACTIVE",
+            "safetyRelevant": true,
+            "sourceDomain": "ROUTE",
+            "sourceRecordId": "route.closed.high",
+            "sourceStatus": "NORMAL",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          },
+          {
+            "driverId": "driver-001",
+            "organizationId": "org-001",
+            "reasonCode": "SPEED_ADVISORY",
+            "routeId": "route-001",
+            "safetyCondition": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+            "safetyRelevant": true,
+            "sourceDomain": "DRIVER",
+            "sourceRecordId": "driver.advisory.low",
+            "sourceStatus": "NORMAL",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "cross_organization_safety_aggregation_rejected",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "HUMAN_REVIEW_REQUIRED",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "organizationId": "org-002",
+            "routeId": "route-001",
+            "safetyCondition": "ROUTE_SAFETY_BLOCKER_ACTIVE",
+            "safetyRelevant": true,
+            "sourceDomain": "ROUTE",
+            "sourceRecordId": "route.other.org",
+            "sourceStatus": "NORMAL",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "human_review",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "HUMAN_REVIEW_REQUIRED",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "humanReviewRequired": true,
+            "organizationId": "org-001",
+            "routeId": "route-001",
+            "safetyRelevant": false,
+            "sourceDomain": "SUPERVISOR",
+            "sourceRecordId": "supervisor.review",
+            "sourceStatus": "OPEN",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "acknowledgement",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "LOW_CLEARANCE_HAZARD_ACTIVE",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "organizationId": "org-001",
+            "reasonCode": "LOW_CLEARANCE",
+            "routeId": "route-001",
+            "safetyCondition": "LOW_CLEARANCE_HAZARD_ACTIVE",
+            "safetyRelevant": true,
+            "sourceDomain": "ROUTE",
+            "sourceRecordId": "route.ack",
+            "sourceStatus": "NORMAL",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "resolution",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "TRUCK_RESTRICTION_ACTIVE",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "organizationId": "org-001",
+            "reasonCode": "TRUCK_PROHIBITED",
+            "routeId": "route-001",
+            "safetyCondition": "TRUCK_RESTRICTION_ACTIVE",
+            "safetyRelevant": true,
+            "sourceDomain": "ROUTE",
+            "sourceRecordId": "route.resolve",
+            "sourceStatus": "NORMAL",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "invalidation_by_new_evidence",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "SAFETY_EVIDENCE_STALE",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "evidenceStale": true,
+            "organizationId": "org-001",
+            "routeId": "route-001",
+            "safetyRelevant": true,
+            "sourceDomain": "ROUTE",
+            "sourceRecordId": "route.invalidate",
+            "sourceStatus": "NORMAL",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          }
+        ]
+      },
+      "syntheticOnly": true
+    },
+    {
+      "caseId": "no_exception_case",
+      "deterministic": true,
+      "employmentImpactExpected": false,
+      "expectedException": "NO_EXCEPTION",
+      "productionMutationExpected": false,
+      "providerCallExpected": false,
+      "request": {
+        "safetyContext": {
+          "driverScope": [
+            "driver-001",
+            "driver-002"
+          ],
+          "operationsScope": [
+            "operations.context.org-001.morning"
+          ],
+          "organizationId": "org-001",
+          "reportingWindow": {
+            "end": "2026-08-12T12:00:00.000Z",
+            "start": "2026-08-12T08:00:00.000Z"
+          },
+          "routeScope": [
+            "route-001",
+            "route-002",
+            "route-003"
+          ],
+          "safetyContextId": "safety.context.org-001.morning",
+          "sharedSafetyReferences": [
+            "shared-low-bridge-001"
+          ],
+          "supervisorScope": [
+            "supervisor-001"
+          ],
+          "vehicleScope": [
+            "vehicle-001",
+            "vehicle-002"
+          ],
+          "warehouseScope": [
+            "depot-001"
+          ]
+        },
+        "safetyEvidence": [
+          {
+            "organizationId": "org-001",
+            "routeId": "route-001",
+            "safetyRelevant": false,
+            "sourceDomain": "ROUTE",
+            "sourceRecordId": "route.ok",
+            "sourceStatus": "ELIGIBLE",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          },
+          {
+            "driverId": "driver-002",
+            "organizationId": "org-001",
+            "routeId": "route-001",
+            "safetyRelevant": false,
+            "sourceDomain": "DRIVER",
+            "sourceRecordId": "driver.ok",
+            "sourceStatus": "NORMAL",
+            "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+            "testOnly": true
+          }
+        ]
+      },
+      "syntheticOnly": true
+    }
+  ],
+  "generatedArtifact": true
+}

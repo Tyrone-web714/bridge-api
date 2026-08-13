@@ -1102,7 +1102,7 @@
       "packageId": "SAFETY_INTELLIGENCE",
       "title": "Safety Intelligence",
       "category": "CORE_OPERATIONAL_INTELLIGENCE",
-      "status": "APPROVED",
+      "status": "IMPLEMENTED_UNCOMMITTED",
       "objective": "Provide deterministic organization-level safety awareness by aggregating and preserving existing TSR safety evidence without overriding authoritative Route, Driver, Supervisor, Warehouse, Fleet, Customer, or Operations Intelligence determinations.",
       "approvedScope": [
         "low-clearance hazards",
@@ -1166,21 +1166,37 @@
         "OPERATIONS_INTELLIGENCE"
       ],
       "acceptanceCriteria": [
-        "Safety Intelligence is approved as the single current package but remains not started",
+        "Safety Intelligence is implemented locally as the single current package and remains uncommitted, unpushed, undeployed, unmigrated, and not production-certified",
         "scope is limited to deterministic organization-level safety awareness that aggregates and preserves existing TSR safety evidence",
         "authoritative Route, Driver, Supervisor, Warehouse, Fleet, Customer, and Operations Intelligence determinations are not overridden",
         "driver safety scoring, employee safety ranking, negligence or misconduct determination, autonomous safety action, crash/fatigue/behavior prediction, monitoring hardware, computer vision, biometrics, OSHA/DOT/insurance product expansion, provider/model activation, deployment, migrations, and production APIs remain prohibited",
         "model-selection and production-orchestration gates remain incomplete"
       ],
       "requiredTests": [
+        "npm.cmd run safety-intelligence:generate",
+        "npm.cmd run safety-intelligence:validate",
+        "npm.cmd run safety-intelligence:check",
+        "npm.cmd run safety-intelligence:benchmarks",
+        "npm.cmd run test:safety-intelligence",
         "npm.cmd run test:shared-safety",
         "npm.cmd run test:route-intelligence",
         "npm.cmd run test:driver-intelligence",
+        "npm.cmd run test:supervisor-operational-intelligence",
+        "npm.cmd run test:supervisor-intelligence",
+        "npm.cmd run test:warehouse-intelligence",
+        "npm.cmd run test:fleet-intelligence",
+        "npm.cmd run test:customer-intelligence",
         "npm.cmd run test:operations-intelligence",
+        "npm.cmd run test:knowledge-graph",
+        "npm.cmd run test:dashboard-data",
+        "npm.cmd run test:framework-validation",
+        "npm.cmd run test:intelligence-orchestration",
+        "npm.cmd run test:intelligence-lifecycle",
         "npm.cmd run test:security",
-        "npm.cmd run test:ai-roadmap"
+        "npm.cmd run test:ai-roadmap",
+        "npm.cmd test"
       ],
-      "documentationPath": null,
+      "documentationPath": "docs/implementation/safety-intelligence-foundation",
       "implementationCommit": null,
       "localCommitVerified": false,
       "remoteCommitVerified": false,
@@ -1189,11 +1205,11 @@
       "deploymentVerified": false,
       "migrationRequired": false,
       "migrationExecuted": false,
-      "productionImpact": "NONE",
+      "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
       "ownerApprovalRequired": true,
       "scopeChangeApprovalRequired": true,
       "nextApprovedPackage": null,
-      "notes": "Safety Intelligence is approved as the next Milestone 1 current package but is not implemented, committed, pushed, deployed, migrated, production-certified, provider-enabled, or model-enabled. This roadmap approval is not authorization for driver scoring, employee ranking, negligence or misconduct conclusions, autonomous safety action, predictive crash/fatigue/behavior modeling, monitoring hardware, computer vision, biometrics, OSHA/DOT/insurance platform expansion, production APIs, deployment, migrations, or new AI infrastructure.",
+      "notes": "Safety Intelligence is implemented locally as repository-only work and remains uncommitted, unpushed, undeployed, unmigrated, not production-certified, not provider-enabled, and not model-enabled. It adds deterministic aggregation/preservation of existing TSR safety evidence, generated documentation/artifacts, and validation scripts. It does not authorize driver scoring, employee ranking, negligence or misconduct conclusions, autonomous safety action, predictive crash/fatigue/behavior modeling, monitoring hardware, computer vision, biometrics, OSHA/DOT/insurance platform expansion, production APIs, deployment, migrations, production writes, object mutations, Cloudflare/R2 changes, or new AI infrastructure.",
       "isCurrentPackage": true
     },
     {

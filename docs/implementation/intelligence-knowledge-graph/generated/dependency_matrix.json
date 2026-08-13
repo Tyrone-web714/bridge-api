@@ -332,6 +332,11 @@
     },
     {
       "dependencies": [],
+      "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/safetyIntelligence.js",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
       "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/scoringEngine.js",
       "reverseDependencies": []
     },
@@ -6120,6 +6125,301 @@
     {
       "dependencies": [],
       "nodeId": "Documentation Page:docs/implementation/route-intelligence-foundation/WEIGHT_RULES.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/ALERT_LIFECYCLE.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/AUTHORITATIVE_SAFETY_BOUNDARIES.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/AUTONOMOUS_SAFETY_ACTION_BOUNDARY.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/BENCHMARK_DATASETS.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/COMPLIANCE_INSURANCE_BOUNDARY.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/CURRENT_SAFETY_FUNCTIONALITY_AUDIT.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/DASHBOARD_INTEGRATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/DATA_LIFECYCLE_REVIEW.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/DEFERRED_WORK.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/DETERMINISTIC_EXPLANATIONS.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/DRIVER_SAFETY_ADVISORY_AGGREGATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/EMPLOYMENT_DRIVER_IMPACT_BOUNDARY.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/EXISTING_SERVICE_REUSE_DECISION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_alert_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_benchmark_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_context_contract.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_driver_advisory_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_evidence_report.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_exception_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_hazard_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/SAFETY_INTELLIGENCE_SUMMARY.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_reason_code_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_route_portfolio.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_severity_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_shared_intelligence_catalog.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_summary_report.json",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/GENERATED_ARTIFACTS.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/IMPLEMENTATION_REPORT.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/KNOWLEDGE_GRAPH_INTEGRATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/LOW_CLEARANCE_SAFETY_AWARENESS.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/MONITORING_HARDWARE_BOUNDARY.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/OPERATIONS_SAFETY_EXCEPTION_INTEGRATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/ORGANIZATION_SAFETY_CONTEXT.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/OWNER_DECISIONS_REQUIRED.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/PLATFORM_INTEGRATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/PREDICTIVE_SAFETY_BOUNDARY.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/README.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/REGRESSION_BOUNDARIES.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/RESIDENTIAL_RESTRICTION_AWARENESS.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/ROAD_CLOSURE_AWARENESS.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/ROLLBACK_PLAN.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/ROUTE_SAFETY_PORTFOLIO.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/SAFETY_ALERT_MODEL.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/SAFETY_AUTHORITY_TRACE.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/SAFETY_EVIDENCE_FRESHNESS.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/SAFETY_EXCEPTION_MODEL.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/SAFETY_INTELLIGENCE_ARCHITECTURE.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/SAFETY_PRIORITY_MODEL.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/SAFETY_SEVERITY_MODEL.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/SAFETY_SUMMARY_MODEL.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/SECURITY_AND_TENANT_REVIEW.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/SHARED_SAFETY_INTELLIGENCE_INTEGRATION.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/SPEED_WARNING_BOUNDARY.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/TEST_PLAN.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/TEST_RESULTS.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/TRUCK_RESTRICTION_AWARENESS.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/UNAPPROVED_IDEAS_FOR_OWNER_REVIEW.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/VEHICLE_ROUTE_SAFETY_COMPATIBILITY.md",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Documentation Page:docs/implementation/safety-intelligence-foundation/WAREHOUSE_SAFETY_IMPACT.md",
       "reverseDependencies": []
     },
     {

@@ -20,7 +20,7 @@
       "dashboard-data/capability_coverage_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "4f9bf8cce1e099820420a82118178e48363be974837b2df5bdc4ecac930abd53",
+    "generationHash": "2a936fa6a2b79873644ef503927aa0cbacecd1d7deb2a34fe4a499fcc647faf5",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -74,6 +74,7 @@
         "docs/implementation/private-r2-shutdown-readiness": 9,
         "docs/implementation/production-rollout-planning": 21,
         "docs/implementation/route-intelligence-foundation": 47,
+        "docs/implementation/safety-intelligence-foundation": 59,
         "docs/implementation/scoring-engine": 59,
         "docs/implementation/shared-safety-foundation": 18,
         "docs/implementation/shared-safety-moderation-ui": 14,
@@ -81,7 +82,7 @@
         "docs/implementation/warehouse-intelligence-foundation": 51,
         "docs/implementation/web-origin-private-media-hardening": 16
       },
-      "testScripts": 49
+      "testScripts": 50
     },
     "statusIndicators": [],
     "summary": {

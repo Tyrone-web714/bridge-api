@@ -3,7 +3,7 @@
 
 - Roadmap ID: TSR_AI_DEVELOPMENT_ROADMAP
 - Current package: SAFETY_INTELLIGENCE - Safety Intelligence
-- Current status: APPROVED
+- Current status: IMPLEMENTED_UNCOMMITTED
 - Next approved package: null
 - Route Intelligence pushed: true
 - Driver Intelligence pushed: true
@@ -20,5 +20,5 @@
 
 | Status | Count |
 | --- | ---: |
-| APPROVED | 1 |
+| IMPLEMENTED_UNCOMMITTED | 1 |
 | PUSHED | 20 |

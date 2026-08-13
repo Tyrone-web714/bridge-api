@@ -573,6 +573,17 @@
       "testOnly": true
     },
     {
+      "edgeId": "edge:f986f3d81efafa459225",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "245dc84a88e52220ac3cb24ec1aba3ee11486e9eec976882ee8dc2b6efb20f51",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "IMPLEMENTS",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Service:intelligence-execution-platform",
+      "targetNodeId": "Repository Module:bridge-api/services/intelligenceExecution/safetyIntelligence.js",
+      "testOnly": true
+    },
+    {
       "edgeId": "edge:4d8099430fea0f50cac0",
       "relationshipConfidence": "DETERMINISTIC",
       "relationshipHash": "003a30132d56200917adccf5c03be7667bb5a87bb24b7529e52886a76efe6414",
@@ -9358,6 +9369,149 @@
       "relationshipType": "GENERATED_FROM",
       "relationshipVersion": "0.1.0",
       "sourceNodeId": "Generated Artifact:docs/implementation/route-intelligence-foundation/generated/vehicle_profile_contract.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:6172c7f0e714e2b430cd",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "bc65eee67851fa4142526b62956b9e3b9adac6f220b82d6ea28822916ad2efba",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_alert_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:70c0f004f8f3d934276c",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "52b66dae1f7c7275c32740b59cafb752740ee35c6a29e7a73b43b11ea43cfa96",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_benchmark_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:106a5f89b05a5d1873a7",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "02bd500327d8951f1784476e59e3ec085f00638fdac1392da1070fd2ff312499",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_context_contract.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:8df75fb4d0992deb2a66",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "9777b3fa336abe8803699333b15d08535fa6bebf6a3013f12d4008599b8fb5d2",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_driver_advisory_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:10f76710fad2578f6d25",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "20ea89a66c80055ca9046c5d6d7eee06ea7fbb8ce6364b55580ddf3b8297874b",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_evidence_report.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:d83f1236bc076c9bad83",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "aa4010854d9b482d8f85785f2e09651f7244877190cb3acb88eb83e200492e07",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_exception_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:b93bb7145fbd15d1e8ab",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "ed7f27afc117007bae969cfa2b9faa29585bfdf2c6970d9747f03095910360e7",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_hazard_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:71cbdf41376488f1f692",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "061647a477b57bb96f3b82c9f5ab594bec760d7e48c30d32d175aae81134a13d",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/SAFETY_INTELLIGENCE_SUMMARY.md",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:3401169427c5dc7e4370",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "d681a3ea0315491a0e4d7967e6ec9d7adc58ac3b9907dae4abb2fb633d28101c",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_reason_code_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:b7dc08cfe51c3459dad5",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "5add90f846961f0be3bb7d256c370c4ccb8a041dd429f265e2c0cba2869c3a8a",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_route_portfolio.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:c0cadc3aefe1b1c11777",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "977e851c42dd015a73ecdadcaca6992ffe11b5b9ab2c02b6b3a18e72fb1cb199",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_severity_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:e56758ba1beb97a40a06",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "0b6041ba4489fedab29a7ea11531bed891f7871ae0918a358e64fbe146dd902a",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_shared_intelligence_catalog.json",
+      "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:2276213e5d2d4589fa25",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "fce7492c16ed6d8efbbfe9e2745b41f8978e936aaa70e0a511d560626ba3b2ad",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "GENERATED_FROM",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Generated Artifact:docs/implementation/safety-intelligence-foundation/generated/safety_summary_report.json",
       "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
       "testOnly": true
     },

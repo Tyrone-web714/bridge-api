@@ -6,7 +6,7 @@ Title: Safety Intelligence
 
 Category: CORE_OPERATIONAL_INTELLIGENCE
 
-Status: APPROVED
+Status: IMPLEMENTED_UNCOMMITTED
 
 ## Objective
 
@@ -78,7 +78,7 @@ Provide deterministic organization-level safety awareness by aggregating and pre
 
 ## Acceptance Criteria
 
-- Safety Intelligence is approved as the single current package but remains not started.
+- Safety Intelligence is implemented locally as the single current package and remains uncommitted, unpushed, undeployed, unmigrated, and not production-certified.
 - Scope is limited to deterministic organization-level safety awareness that aggregates and preserves existing TSR safety evidence.
 - Authoritative Route, Driver, Supervisor, Warehouse, Fleet, Customer, and Operations Intelligence determinations are not overridden.
 - Driver safety scoring, employee safety ranking, negligence or misconduct determination, autonomous safety action, crash/fatigue/behavior prediction, monitoring hardware, computer vision, biometrics, OSHA/DOT/insurance product expansion, provider/model activation, deployment, migrations, and production APIs remain prohibited.
@@ -87,15 +87,31 @@ Provide deterministic organization-level safety awareness by aggregating and pre
 ## Required Tests
 
 - `npm.cmd run test:shared-safety`
+- `npm.cmd run safety-intelligence:generate`
+- `npm.cmd run safety-intelligence:validate`
+- `npm.cmd run safety-intelligence:check`
+- `npm.cmd run safety-intelligence:benchmarks`
+- `npm.cmd run test:safety-intelligence`
 - `npm.cmd run test:route-intelligence`
 - `npm.cmd run test:driver-intelligence`
+- `npm.cmd run test:supervisor-operational-intelligence`
+- `npm.cmd run test:supervisor-intelligence`
+- `npm.cmd run test:warehouse-intelligence`
+- `npm.cmd run test:fleet-intelligence`
+- `npm.cmd run test:customer-intelligence`
 - `npm.cmd run test:operations-intelligence`
+- `npm.cmd run test:knowledge-graph`
+- `npm.cmd run test:dashboard-data`
+- `npm.cmd run test:framework-validation`
+- `npm.cmd run test:intelligence-orchestration`
+- `npm.cmd run test:intelligence-lifecycle`
 - `npm.cmd run test:security`
 - `npm.cmd run test:ai-roadmap`
+- `npm.cmd test`
 
 ## Source-Control Expectation
 
-Safety Intelligence is approved as the single current package but remains not started. Do not implement, stage, commit, push, deploy, run migrations, activate providers, select models, modify production systems, fabricate an AI-IEP package number, or expand safety scope without a separate owner-approved implementation package.
+Safety Intelligence is implemented locally as the single current package. Keep the working tree unstaged until review. Do not stage, commit, push, deploy, run migrations, activate providers, select models, modify production systems, fabricate an AI-IEP package number, begin any ninth intelligence domain, or expand safety scope without separate owner approval.
 
 ## Completion Report
 
@@ -107,10 +123,10 @@ Build Safety Intelligence foundation
 
 ## Next Approved Package
 
-No subsequent business-domain package is approved by this record. Safety Intelligence is the current approved package and remains not started.
+No subsequent business-domain package is approved by this record. Safety Intelligence is the current implemented-local package and remains uncommitted, unpushed, undeployed, unmigrated, and not production-certified.
 
 ## Owner Decision Points
 
-- Approve a separate controlled implementation package before beginning Safety Intelligence.
+- Review and approve source-control preservation before staging, committing, or pushing Safety Intelligence.
 - Approve any future production runtime API, deployment, migration, provider expansion, model selection, production validation, autonomous safety action, predictive safety model, safety scoring, monitoring hardware, computer vision, biometric monitoring, OSHA/DOT/insurance product scope, or new AI infrastructure separately.
 - Keep model-selection and production-orchestration gates incomplete until Safety Intelligence is implemented, reviewed, committed, validated, pushed, and roadmap-reconciled.

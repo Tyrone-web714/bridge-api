@@ -17,7 +17,7 @@
       "dashboard-data/artifact_dashboard.json"
     ],
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "generationHash": "faf97eac93b69d34bb3516c5c467020f9954fc5e6ae92813d5c162f4d0433182",
+    "generationHash": "ff6369ff9ac6b7d98949414792e6e738fd0471f14ffee15e83d1e697bb6abedb",
     "productionApplicable": false,
     "records": [],
     "relatedDashboards": [
@@ -47,6 +47,7 @@
         "docs/implementation/intelligence-lifecycle-framework/generated": 7,
         "docs/implementation/operations-intelligence-foundation/generated": 11,
         "docs/implementation/route-intelligence-foundation/generated": 13,
+        "docs/implementation/safety-intelligence-foundation/generated": 13,
         "docs/implementation/scoring-engine/generated": 16,
         "docs/implementation/supervisor-intelligence-foundation/generated": 12,
         "docs/implementation/warehouse-intelligence-foundation/generated": 13
@@ -55,7 +56,7 @@
     },
     "statusIndicators": [],
     "summary": {
-      "generatedArtifacts": 234
+      "generatedArtifacts": 247
     },
     "testOnly": true,
     "unknownValues": [],

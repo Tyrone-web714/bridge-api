@@ -249,7 +249,7 @@ function validateRoadmap(roadmap, current, options = {}) {
   if (currentRoadmap && currentRoadmap.title !== current.title) failures.push({ rule: 'CURRENT_PACKAGE_JSON_ROADMAP_MISMATCH', packageId: current.packageId });
   if (currentRoadmap && currentRoadmap.status !== current.status) failures.push({ rule: 'CURRENT_PACKAGE_STATUS_MISMATCH', packageId: current.packageId });
   if (current.packageId !== 'SAFETY_INTELLIGENCE') failures.push({ rule: 'CURRENT_PACKAGE_NOT_SAFETY_INTELLIGENCE', packageId: current.packageId });
-  if (current.status !== 'APPROVED') failures.push({ rule: 'CURRENT_SAFETY_STATUS_INVALID', status: current.status });
+  if (current.status !== 'IMPLEMENTED_UNCOMMITTED') failures.push({ rule: 'CURRENT_SAFETY_STATUS_INVALID', status: current.status });
   const currentMarkdown = read('CURRENT_AI_WORK_PACKAGE.md');
   if (!currentMarkdown.includes(`Package ID: ${current.packageId}`) || !currentMarkdown.includes(`Status: ${current.status}`)) failures.push({ rule: 'CURRENT_PACKAGE_MARKDOWN_JSON_MISMATCH' });
   for (const pkg of packages.filter((record) => record.category === 'CORE_OPERATIONAL_INTELLIGENCE')) {
@@ -342,15 +342,20 @@ function validateRoadmap(roadmap, current, options = {}) {
   }
   const safety = packages.find((pkg) => pkg.packageId === 'SAFETY_INTELLIGENCE');
   if (!safety) failures.push({ rule: 'SAFETY_PACKAGE_MISSING' });
-  if (safety && safety.status !== 'APPROVED') failures.push({ rule: 'SAFETY_APPROVED_STATUS_INVALID', status: safety.status });
+  if (safety && safety.status !== 'IMPLEMENTED_UNCOMMITTED') failures.push({ rule: 'SAFETY_IMPLEMENTED_STATUS_INVALID', status: safety.status });
   if (safety && safety.packageId !== 'SAFETY_INTELLIGENCE') failures.push({ rule: 'SAFETY_PACKAGE_NUMBER_FABRICATED', packageId: safety.packageId });
   for (const pkg of packages) {
     if (pkg.title === 'Safety Intelligence' && pkg.packageId !== 'SAFETY_INTELLIGENCE') failures.push({ rule: 'SAFETY_PACKAGE_NUMBER_FABRICATED', packageId: pkg.packageId });
   }
   if (safety && safety.objective !== SAFETY_OBJECTIVE) failures.push({ rule: 'SAFETY_OBJECTIVE_INVALID', objective: safety.objective });
   if (safety && JSON.stringify(safety.approvedScope) !== JSON.stringify(SAFETY_APPROVED_SCOPE)) failures.push({ rule: 'SAFETY_APPROVED_SCOPE_INVALID', approvedScope: safety.approvedScope });
-  if (safety && (safety.implementationCommit || safety.localCommitVerified || safety.remoteCommitVerified || safety.pushed || safety.deployed || safety.deploymentVerified || safety.migrationExecuted || safety.documentationPath)) failures.push({ rule: 'SAFETY_IMPLEMENTED_WITHOUT_EVIDENCE' });
-  if (safety && safety.productionImpact !== 'NONE') failures.push({ rule: 'SAFETY_FALSE_PRODUCTION_STATE', productionImpact: safety.productionImpact });
+  if (safety && (safety.implementationCommit || safety.localCommitVerified || safety.remoteCommitVerified || safety.pushed)) failures.push({ rule: 'SAFETY_FALSE_SOURCE_CONTROL_STATE' });
+  if (safety && (safety.deployed || safety.deploymentVerified || safety.migrationExecuted || safety.productionImpact !== 'REPOSITORY_ONLY_FOUNDATION')) failures.push({ rule: 'SAFETY_FALSE_PRODUCTION_STATE', productionImpact: safety.productionImpact });
+  if (safety && safety.documentationPath !== 'docs/implementation/safety-intelligence-foundation') failures.push({ rule: 'SAFETY_DOCUMENTATION_PATH_INVALID', documentationPath: safety.documentationPath });
+  if (!fs.existsSync(path.join(paths.backendRoot, 'services', 'intelligenceExecution', 'safetyIntelligence.js'))) failures.push({ rule: 'SAFETY_IMPLEMENTATION_EVIDENCE_MISSING' });
+  if (!fs.existsSync(path.join(paths.backendRoot, 'scripts', 'check-safety-intelligence.cjs'))) failures.push({ rule: 'SAFETY_IMPLEMENTATION_EVIDENCE_MISSING' });
+  if (!fs.existsSync(path.join(paths.backendRoot, 'scripts', 'generate-safety-intelligence-artifacts.cjs'))) failures.push({ rule: 'SAFETY_IMPLEMENTATION_EVIDENCE_MISSING' });
+  if (!fs.existsSync(path.join(paths.repoRoot, 'docs', 'implementation', 'safety-intelligence-foundation', 'README.md'))) failures.push({ rule: 'SAFETY_IMPLEMENTATION_EVIDENCE_MISSING' });
   const safetyScope = `${(safety?.approvedScope || []).join(' ')} ${(safety?.prohibitedScope || []).join(' ')}`.toLowerCase();
   for (const phrase of SAFETY_PROHIBITED_PHRASES) {
     if (!safetyScope.includes(phrase.toLowerCase())) failures.push({ rule: 'SAFETY_PROHIBITED_SCOPE_INCOMPLETE', phrase });
@@ -504,9 +509,19 @@ function main() {
   }, 'CUSTOMER_SALES_OR_CRM_SCOPE_UNAPPROVED');
   assertValidationFails((roadmap) => {
     const safety = roadmap.packages.find((pkg) => pkg.packageId === 'SAFETY_INTELLIGENCE');
+    safety.status = 'APPROVED';
+  }, 'SAFETY_IMPLEMENTED_STATUS_INVALID');
+  assertValidationFails((roadmap) => {
+    const safety = roadmap.packages.find((pkg) => pkg.packageId === 'SAFETY_INTELLIGENCE');
     safety.implementationCommit = '1234567';
     safety.localCommitVerified = true;
-  }, 'SAFETY_IMPLEMENTED_WITHOUT_EVIDENCE');
+  }, 'SAFETY_FALSE_SOURCE_CONTROL_STATE');
+  assertValidationFails((roadmap) => {
+    const safety = roadmap.packages.find((pkg) => pkg.packageId === 'SAFETY_INTELLIGENCE');
+    safety.deployed = true;
+    safety.deploymentVerified = true;
+    safety.productionImpact = 'DEPLOYMENT_VERIFIED';
+  }, 'SAFETY_FALSE_PRODUCTION_STATE');
   assertValidationFails((roadmap, current) => {
     const safety = roadmap.packages.find((pkg) => pkg.packageId === 'SAFETY_INTELLIGENCE');
     safety.packageId = 'AI-IEP-005B.8';

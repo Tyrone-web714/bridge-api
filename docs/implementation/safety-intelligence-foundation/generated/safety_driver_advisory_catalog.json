@@ -1,0 +1,887 @@
+{
+  "driverAdvisories": [
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceDomain",
+            "present": true
+          },
+          {
+            "field": "sourceRecordId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "sourceStatus",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": 1,
+        "status": "KNOWN_SYNTHETIC_EVIDENCE"
+      },
+      "driverId": "driver-001",
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "customerId": null,
+        "driverId": "driver-001",
+        "evidenceCompleteness": {
+          "items": [
+            {
+              "field": "sourceDomain",
+              "present": true
+            },
+            {
+              "field": "sourceRecordId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "sourceStatus",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "evidenceConfidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "evidenceConflict": false,
+        "evidenceFreshness": "FRESH",
+        "evidenceStale": false,
+        "evidenceUnknown": false,
+        "humanReviewRequired": false,
+        "lowerDomainConclusion": "WARNING",
+        "lowerDomainOverrideAttempted": false,
+        "ordinaryOperationalIssue": false,
+        "ordinaryWarehouseIssue": false,
+        "organizationId": "org-001",
+        "organizationIsolationPreserved": true,
+        "privateOperationalDataShared": false,
+        "reasonCode": "DRIVER_LOW_BRIDGE_ADVISORY",
+        "routeId": "route-001",
+        "safetyCondition": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+        "safetyRelevant": true,
+        "severity": "UNKNOWN",
+        "sharedSafetyRecordId": null,
+        "sourceDomain": "DRIVER",
+        "sourceHash": "c981d9cc4bdb44b0ae1919ecf75956803268b714a28aa188f8fcc3e30824392c",
+        "sourceRecordId": "driver.low.bridge",
+        "sourceStatus": "WARNING",
+        "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+        "sourceVersion": "synthetic.v1",
+        "supervisorId": null,
+        "testOnly": true,
+        "vehicleId": null,
+        "warehouseId": null
+      },
+      "exceptionHash": "b1609ba65e1591f6845b58eb27d7a22ed3f10938d25b2d99baee11e0f3012203",
+      "exceptionId": "safety.exception.driver.low.bridge.driver_safety_advisory_active",
+      "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+      "freshness": "FRESH",
+      "humanReviewRequired": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P3"
+      },
+      "reasonCodes": [
+        "DRIVER_LOW_BRIDGE_ADVISORY"
+      ],
+      "routeId": "route-001",
+      "severity": "MODERATE",
+      "sharedSafetyRecordId": null,
+      "sourceDomain": "DRIVER",
+      "sourceRecordIds": [
+        "driver.low.bridge"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-12T00:00:00.000Z"
+      ],
+      "vehicleId": null
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceDomain",
+            "present": true
+          },
+          {
+            "field": "sourceRecordId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "sourceStatus",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": 1,
+        "status": "KNOWN_SYNTHETIC_EVIDENCE"
+      },
+      "driverId": "driver-001",
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "customerId": null,
+        "driverId": "driver-001",
+        "evidenceCompleteness": {
+          "items": [
+            {
+              "field": "sourceDomain",
+              "present": true
+            },
+            {
+              "field": "sourceRecordId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "sourceStatus",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "evidenceConfidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "evidenceConflict": false,
+        "evidenceFreshness": "FRESH",
+        "evidenceStale": false,
+        "evidenceUnknown": false,
+        "humanReviewRequired": false,
+        "lowerDomainConclusion": "WARNING",
+        "lowerDomainOverrideAttempted": false,
+        "ordinaryOperationalIssue": false,
+        "ordinaryWarehouseIssue": false,
+        "organizationId": "org-001",
+        "organizationIsolationPreserved": true,
+        "privateOperationalDataShared": false,
+        "reasonCode": "RESTRICTED_ROAD_ADVISORY",
+        "routeId": "route-001",
+        "safetyCondition": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+        "safetyRelevant": true,
+        "severity": "UNKNOWN",
+        "sharedSafetyRecordId": null,
+        "sourceDomain": "DRIVER",
+        "sourceHash": "35915cdfb8848e654ef9816568d0c36ef80dccbf03a80c37b622ef62b5130c34",
+        "sourceRecordId": "driver.restricted",
+        "sourceStatus": "WARNING",
+        "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+        "sourceVersion": "synthetic.v1",
+        "supervisorId": null,
+        "testOnly": true,
+        "vehicleId": null,
+        "warehouseId": null
+      },
+      "exceptionHash": "7dfacaf68ebcee9873b295f5a18dfe921c07d49bac3b3d774773f5fb3d4275aa",
+      "exceptionId": "safety.exception.driver.restricted.driver_safety_advisory_active",
+      "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+      "freshness": "FRESH",
+      "humanReviewRequired": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P3"
+      },
+      "reasonCodes": [
+        "RESTRICTED_ROAD_ADVISORY"
+      ],
+      "routeId": "route-001",
+      "severity": "MODERATE",
+      "sharedSafetyRecordId": null,
+      "sourceDomain": "DRIVER",
+      "sourceRecordIds": [
+        "driver.restricted"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-12T00:00:00.000Z"
+      ],
+      "vehicleId": null
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceDomain",
+            "present": true
+          },
+          {
+            "field": "sourceRecordId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "sourceStatus",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": 1,
+        "status": "KNOWN_SYNTHETIC_EVIDENCE"
+      },
+      "driverId": "driver-001",
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "customerId": null,
+        "driverId": "driver-001",
+        "evidenceCompleteness": {
+          "items": [
+            {
+              "field": "sourceDomain",
+              "present": true
+            },
+            {
+              "field": "sourceRecordId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "sourceStatus",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "evidenceConfidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "evidenceConflict": false,
+        "evidenceFreshness": "FRESH",
+        "evidenceStale": false,
+        "evidenceUnknown": false,
+        "humanReviewRequired": false,
+        "lowerDomainConclusion": "WARNING",
+        "lowerDomainOverrideAttempted": false,
+        "ordinaryOperationalIssue": false,
+        "ordinaryWarehouseIssue": false,
+        "organizationId": "org-001",
+        "organizationIsolationPreserved": true,
+        "privateOperationalDataShared": false,
+        "reasonCode": "NO_THROUGH_TRUCK_ADVISORY",
+        "routeId": "route-001",
+        "safetyCondition": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+        "safetyRelevant": true,
+        "severity": "UNKNOWN",
+        "sharedSafetyRecordId": null,
+        "sourceDomain": "DRIVER",
+        "sourceHash": "d9c38eba776fa9ca8fb9e54ab8ee6b16cbbe14e073d5052eafe5cad17833c701",
+        "sourceRecordId": "driver.no.through",
+        "sourceStatus": "WARNING",
+        "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+        "sourceVersion": "synthetic.v1",
+        "supervisorId": null,
+        "testOnly": true,
+        "vehicleId": null,
+        "warehouseId": null
+      },
+      "exceptionHash": "1891630ce5abab20fda544dc7880290751fb0eb737e68154b867f03b6076504e",
+      "exceptionId": "safety.exception.driver.no.through.driver_safety_advisory_active",
+      "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+      "freshness": "FRESH",
+      "humanReviewRequired": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P3"
+      },
+      "reasonCodes": [
+        "NO_THROUGH_TRUCK_ADVISORY"
+      ],
+      "routeId": "route-001",
+      "severity": "MODERATE",
+      "sharedSafetyRecordId": null,
+      "sourceDomain": "DRIVER",
+      "sourceRecordIds": [
+        "driver.no.through"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-12T00:00:00.000Z"
+      ],
+      "vehicleId": null
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceDomain",
+            "present": true
+          },
+          {
+            "field": "sourceRecordId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "sourceStatus",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": 1,
+        "status": "KNOWN_SYNTHETIC_EVIDENCE"
+      },
+      "driverId": "driver-001",
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "customerId": null,
+        "driverId": "driver-001",
+        "evidenceCompleteness": {
+          "items": [
+            {
+              "field": "sourceDomain",
+              "present": true
+            },
+            {
+              "field": "sourceRecordId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "sourceStatus",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "evidenceConfidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "evidenceConflict": false,
+        "evidenceFreshness": "FRESH",
+        "evidenceStale": false,
+        "evidenceUnknown": false,
+        "humanReviewRequired": false,
+        "lowerDomainConclusion": "ADVISORY",
+        "lowerDomainOverrideAttempted": false,
+        "ordinaryOperationalIssue": false,
+        "ordinaryWarehouseIssue": false,
+        "organizationId": "org-001",
+        "organizationIsolationPreserved": true,
+        "privateOperationalDataShared": false,
+        "reasonCode": "SPEED_ADVISORY",
+        "routeId": "route-001",
+        "safetyCondition": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+        "safetyRelevant": true,
+        "severity": "UNKNOWN",
+        "sharedSafetyRecordId": null,
+        "sourceDomain": "DRIVER",
+        "sourceHash": "55db7e1e5148399333946d0afe84a13f8723785e8341cfe211c6736172c58721",
+        "sourceRecordId": "driver.speed.advisory",
+        "sourceStatus": "ADVISORY",
+        "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+        "sourceVersion": "synthetic.v1",
+        "supervisorId": null,
+        "testOnly": true,
+        "vehicleId": null,
+        "warehouseId": null
+      },
+      "exceptionHash": "4640c487072d78b01a493961522367f1e02eca945faccf49af6d484d4c2912e7",
+      "exceptionId": "safety.exception.driver.speed.advisory.driver_safety_advisory_active",
+      "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+      "freshness": "FRESH",
+      "humanReviewRequired": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P3"
+      },
+      "reasonCodes": [
+        "SPEED_ADVISORY"
+      ],
+      "routeId": "route-001",
+      "severity": "MODERATE",
+      "sharedSafetyRecordId": null,
+      "sourceDomain": "DRIVER",
+      "sourceRecordIds": [
+        "driver.speed.advisory"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-12T00:00:00.000Z"
+      ],
+      "vehicleId": null
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceDomain",
+            "present": true
+          },
+          {
+            "field": "sourceRecordId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "sourceStatus",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": 1,
+        "status": "KNOWN_SYNTHETIC_EVIDENCE"
+      },
+      "driverId": "driver-001",
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "customerId": null,
+        "driverId": "driver-001",
+        "evidenceCompleteness": {
+          "items": [
+            {
+              "field": "sourceDomain",
+              "present": true
+            },
+            {
+              "field": "sourceRecordId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "sourceStatus",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "evidenceConfidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "evidenceConflict": false,
+        "evidenceFreshness": "FRESH",
+        "evidenceStale": false,
+        "evidenceUnknown": false,
+        "humanReviewRequired": false,
+        "lowerDomainConclusion": "WARNING",
+        "lowerDomainOverrideAttempted": false,
+        "ordinaryOperationalIssue": false,
+        "ordinaryWarehouseIssue": false,
+        "organizationId": "org-001",
+        "organizationIsolationPreserved": true,
+        "privateOperationalDataShared": false,
+        "reasonCode": "SPEED_WARNING",
+        "routeId": "route-001",
+        "safetyCondition": "DRIVER_SPEED_WARNING_ACTIVE",
+        "safetyRelevant": true,
+        "severity": "UNKNOWN",
+        "sharedSafetyRecordId": null,
+        "sourceDomain": "DRIVER",
+        "sourceHash": "bcd47e6bc5a433d2bcad4489b5a0a63da4df253b1b3a7689d762a3e95700122c",
+        "sourceRecordId": "driver.speed.warning",
+        "sourceStatus": "WARNING",
+        "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+        "sourceVersion": "synthetic.v1",
+        "supervisorId": null,
+        "testOnly": true,
+        "vehicleId": null,
+        "warehouseId": null
+      },
+      "exceptionHash": "b0e174b09529f8f8f3df0b549cb7c9bfe770c19d79ca7ecc6758a04b387d8454",
+      "exceptionId": "safety.exception.driver.speed.warning.driver_speed_warning_active",
+      "exceptionType": "DRIVER_SPEED_WARNING_ACTIVE",
+      "freshness": "FRESH",
+      "humanReviewRequired": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P3"
+      },
+      "reasonCodes": [
+        "SPEED_WARNING"
+      ],
+      "routeId": "route-001",
+      "severity": "MODERATE",
+      "sharedSafetyRecordId": null,
+      "sourceDomain": "DRIVER",
+      "sourceRecordIds": [
+        "driver.speed.warning"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-12T00:00:00.000Z"
+      ],
+      "vehicleId": null
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceDomain",
+            "present": true
+          },
+          {
+            "field": "sourceRecordId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "sourceStatus",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": 1,
+        "status": "KNOWN_SYNTHETIC_EVIDENCE"
+      },
+      "driverId": "driver-001",
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "customerId": null,
+        "driverId": "driver-001",
+        "evidenceCompleteness": {
+          "items": [
+            {
+              "field": "sourceDomain",
+              "present": true
+            },
+            {
+              "field": "sourceRecordId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "sourceStatus",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "evidenceConfidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "evidenceConflict": false,
+        "evidenceFreshness": "FRESH",
+        "evidenceStale": false,
+        "evidenceUnknown": false,
+        "humanReviewRequired": false,
+        "lowerDomainConclusion": "NORMAL",
+        "lowerDomainOverrideAttempted": false,
+        "ordinaryOperationalIssue": false,
+        "ordinaryWarehouseIssue": false,
+        "organizationId": "org-001",
+        "organizationIsolationPreserved": true,
+        "privateOperationalDataShared": false,
+        "reasonCode": "SPEED_WARNING",
+        "routeId": "route-001",
+        "safetyCondition": "DRIVER_SPEED_WARNING_ACTIVE",
+        "safetyRelevant": true,
+        "severity": "UNKNOWN",
+        "sharedSafetyRecordId": null,
+        "sourceDomain": "DRIVER",
+        "sourceHash": "1f44da85ac07fa9ea53e6c3a54f48ce68d7385af2ac60ff3d066622b45e8a80d",
+        "sourceRecordId": "driver.speed",
+        "sourceStatus": "NORMAL",
+        "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+        "sourceVersion": "synthetic.v1",
+        "supervisorId": null,
+        "testOnly": true,
+        "vehicleId": null,
+        "warehouseId": null
+      },
+      "exceptionHash": "0e682d681b5e4698dc415ee84d43875c73b072475b7a3db1d8141fe6d10925e4",
+      "exceptionId": "safety.exception.driver.speed.driver_speed_warning_active",
+      "exceptionType": "DRIVER_SPEED_WARNING_ACTIVE",
+      "freshness": "FRESH",
+      "humanReviewRequired": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P3"
+      },
+      "reasonCodes": [
+        "SPEED_WARNING"
+      ],
+      "routeId": "route-001",
+      "severity": "MODERATE",
+      "sharedSafetyRecordId": null,
+      "sourceDomain": "DRIVER",
+      "sourceRecordIds": [
+        "driver.speed"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-12T00:00:00.000Z"
+      ],
+      "vehicleId": null
+    },
+    {
+      "completeness": {
+        "items": [
+          {
+            "field": "sourceDomain",
+            "present": true
+          },
+          {
+            "field": "sourceRecordId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "sourceStatus",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "confidence": {
+        "score": 1,
+        "status": "KNOWN_SYNTHETIC_EVIDENCE"
+      },
+      "driverId": "driver-001",
+      "employmentImpactProhibited": true,
+      "evidence": {
+        "customerId": null,
+        "driverId": "driver-001",
+        "evidenceCompleteness": {
+          "items": [
+            {
+              "field": "sourceDomain",
+              "present": true
+            },
+            {
+              "field": "sourceRecordId",
+              "present": true
+            },
+            {
+              "field": "organizationId",
+              "present": true
+            },
+            {
+              "field": "sourceStatus",
+              "present": true
+            }
+          ],
+          "score": 1,
+          "status": "COMPLETE"
+        },
+        "evidenceConfidence": {
+          "score": 1,
+          "status": "KNOWN_SYNTHETIC_EVIDENCE"
+        },
+        "evidenceConflict": false,
+        "evidenceFreshness": "FRESH",
+        "evidenceStale": false,
+        "evidenceUnknown": false,
+        "humanReviewRequired": false,
+        "lowerDomainConclusion": "NORMAL",
+        "lowerDomainOverrideAttempted": false,
+        "ordinaryOperationalIssue": false,
+        "ordinaryWarehouseIssue": false,
+        "organizationId": "org-001",
+        "organizationIsolationPreserved": true,
+        "privateOperationalDataShared": false,
+        "reasonCode": "SPEED_ADVISORY",
+        "routeId": "route-001",
+        "safetyCondition": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+        "safetyRelevant": true,
+        "severity": "UNKNOWN",
+        "sharedSafetyRecordId": null,
+        "sourceDomain": "DRIVER",
+        "sourceHash": "195bf6d9233c574a26b293395e7c8e5a9339bab52f84a0fd12d8b707eeca9fba",
+        "sourceRecordId": "driver.advisory.low",
+        "sourceStatus": "NORMAL",
+        "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+        "sourceVersion": "synthetic.v1",
+        "supervisorId": null,
+        "testOnly": true,
+        "vehicleId": null,
+        "warehouseId": null
+      },
+      "exceptionHash": "3d9cb6003edc9cae911a2d360997b848cb43a3a6bbd941b198a26123e64d5c59",
+      "exceptionId": "safety.exception.driver.advisory.low.driver_safety_advisory_active",
+      "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+      "freshness": "FRESH",
+      "humanReviewRequired": false,
+      "limitations": [
+        "repository-only synthetic aggregation",
+        "lower domains remain authoritative"
+      ],
+      "organizationId": "org-001",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P3"
+      },
+      "reasonCodes": [
+        "SPEED_ADVISORY"
+      ],
+      "routeId": "route-001",
+      "severity": "MODERATE",
+      "sharedSafetyRecordId": null,
+      "sourceDomain": "DRIVER",
+      "sourceRecordIds": [
+        "driver.advisory.low"
+      ],
+      "testOnly": true,
+      "timestamps": [
+        "2026-08-12T00:00:00.000Z"
+      ],
+      "vehicleId": null
+    }
+  ],
+  "generatedArtifact": true
+}

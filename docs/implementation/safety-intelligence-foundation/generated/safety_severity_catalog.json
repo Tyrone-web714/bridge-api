@@ -1,0 +1,607 @@
+{
+  "exceptions": [
+    {
+      "exceptionId": "safety.exception.route.blocked.route_safety_blocker_active",
+      "exceptionType": "ROUTE_SAFETY_BLOCKER_ACTIVE",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "CRITICAL"
+        },
+        "priority": "P0"
+      },
+      "severity": "CRITICAL"
+    },
+    {
+      "exceptionId": "safety.exception.route.low.clearance.low_clearance_hazard_active",
+      "exceptionType": "LOW_CLEARANCE_HAZARD_ACTIVE",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "CRITICAL"
+        },
+        "priority": "P0"
+      },
+      "severity": "CRITICAL"
+    },
+    {
+      "exceptionId": "safety.exception.route.low.review.low_clearance_hazard_active",
+      "exceptionType": "LOW_CLEARANCE_HAZARD_ACTIVE",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": true,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "CRITICAL"
+        },
+        "priority": "P0"
+      },
+      "severity": "CRITICAL"
+    },
+    {
+      "exceptionId": "safety.exception.route.truck.prohibited.truck_restriction_active",
+      "exceptionType": "TRUCK_RESTRICTION_ACTIVE",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "CRITICAL"
+        },
+        "priority": "P0"
+      },
+      "severity": "CRITICAL"
+    },
+    {
+      "exceptionId": "safety.exception.route.no.through.no_through_truck_restriction_active",
+      "exceptionType": "NO_THROUGH_TRUCK_RESTRICTION_ACTIVE",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "CRITICAL"
+        },
+        "priority": "P0"
+      },
+      "severity": "CRITICAL"
+    },
+    {
+      "exceptionId": "safety.exception.route.closed.road_closure_active",
+      "exceptionType": "ROAD_CLOSURE_ACTIVE",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "CRITICAL"
+        },
+        "priority": "P0"
+      },
+      "severity": "CRITICAL"
+    },
+    {
+      "exceptionId": "safety.exception.route.residential.block.residential_restriction_active",
+      "exceptionType": "RESIDENTIAL_RESTRICTION_ACTIVE",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P3"
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "safety.exception.route.residential.advisory.residential_restriction_active",
+      "exceptionType": "RESIDENTIAL_RESTRICTION_ACTIVE",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P3"
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "safety.exception.fleet.incompatible.route_vehicle_incompatible",
+      "exceptionType": "ROUTE_VEHICLE_INCOMPATIBLE",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "HIGH"
+        },
+        "priority": "P1"
+      },
+      "severity": "HIGH"
+    },
+    {
+      "exceptionId": "safety.exception.fleet.review.human_review_required",
+      "exceptionType": "HUMAN_REVIEW_REQUIRED",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": true,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P2"
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "safety.exception.driver.low.bridge.driver_safety_advisory_active",
+      "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P3"
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "safety.exception.driver.restricted.driver_safety_advisory_active",
+      "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P3"
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "safety.exception.driver.no.through.driver_safety_advisory_active",
+      "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P3"
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "safety.exception.driver.speed.advisory.driver_safety_advisory_active",
+      "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P3"
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "safety.exception.driver.speed.warning.driver_speed_warning_active",
+      "exceptionType": "DRIVER_SPEED_WARNING_ACTIVE",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P3"
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "safety.exception.driver.speed.stale.safety_evidence_stale",
+      "exceptionType": "SAFETY_EVIDENCE_STALE",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "STALE",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "LOW"
+        },
+        "priority": "P4"
+      },
+      "severity": "LOW"
+    },
+    {
+      "exceptionId": "safety.exception.3d6ddfd5f6236e1d28a90a6e8d186719a84d5987d260c7b006e4d5902baf55e9.safety_evidence_incomplete",
+      "exceptionType": "SAFETY_EVIDENCE_INCOMPLETE",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "UNKNOWN",
+          "humanReviewRequired": true,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "LOW"
+        },
+        "priority": "P4"
+      },
+      "severity": "LOW"
+    },
+    {
+      "exceptionId": "safety.exception.route.conflict.safety_evidence_conflict",
+      "exceptionType": "SAFETY_EVIDENCE_CONFLICT",
+      "priority": {
+        "calculationTrace": {
+          "conflict": true,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": true,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P2"
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "safety.exception.warehouse.safety.blocker.human_review_required",
+      "exceptionType": "HUMAN_REVIEW_REQUIRED",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": true,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P2"
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "safety.exception.operations.safety.human_review_required",
+      "exceptionType": "HUMAN_REVIEW_REQUIRED",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": true,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P2"
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "safety.exception.shared.review.shared_safety_review_required",
+      "exceptionType": "SHARED_SAFETY_REVIEW_REQUIRED",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": true,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P2"
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "safety.exception.route.low.low_clearance_hazard_active",
+      "exceptionType": "LOW_CLEARANCE_HAZARD_ACTIVE",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "CRITICAL"
+        },
+        "priority": "P0"
+      },
+      "severity": "CRITICAL"
+    },
+    {
+      "exceptionId": "safety.exception.driver.speed.driver_speed_warning_active",
+      "exceptionType": "DRIVER_SPEED_WARNING_ACTIVE",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P3"
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "safety.exception.route.low.multiple_safety_exceptions",
+      "exceptionType": "MULTIPLE_SAFETY_EXCEPTIONS",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P3"
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "safety.exception.route.closed.high.road_closure_active",
+      "exceptionType": "ROAD_CLOSURE_ACTIVE",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "CRITICAL"
+        },
+        "priority": "P0"
+      },
+      "severity": "CRITICAL"
+    },
+    {
+      "exceptionId": "safety.exception.driver.advisory.low.driver_safety_advisory_active",
+      "exceptionType": "DRIVER_SAFETY_ADVISORY_ACTIVE",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P3"
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "safety.exception.route.closed.high.multiple_safety_exceptions",
+      "exceptionType": "MULTIPLE_SAFETY_EXCEPTIONS",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P3"
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "safety.exception.route.other.org.human_review_required",
+      "exceptionType": "HUMAN_REVIEW_REQUIRED",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": true,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P2"
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "safety.exception.route.other.org.route_safety_blocker_active",
+      "exceptionType": "ROUTE_SAFETY_BLOCKER_ACTIVE",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "CRITICAL"
+        },
+        "priority": "P0"
+      },
+      "severity": "CRITICAL"
+    },
+    {
+      "exceptionId": "safety.exception.supervisor.review.human_review_required",
+      "exceptionType": "HUMAN_REVIEW_REQUIRED",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": true,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "MODERATE"
+        },
+        "priority": "P2"
+      },
+      "severity": "MODERATE"
+    },
+    {
+      "exceptionId": "safety.exception.route.ack.low_clearance_hazard_active",
+      "exceptionType": "LOW_CLEARANCE_HAZARD_ACTIVE",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "CRITICAL"
+        },
+        "priority": "P0"
+      },
+      "severity": "CRITICAL"
+    },
+    {
+      "exceptionId": "safety.exception.route.resolve.truck_restriction_active",
+      "exceptionType": "TRUCK_RESTRICTION_ACTIVE",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "FRESH",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "CRITICAL"
+        },
+        "priority": "P0"
+      },
+      "severity": "CRITICAL"
+    },
+    {
+      "exceptionId": "safety.exception.route.invalidate.safety_evidence_stale",
+      "exceptionType": "SAFETY_EVIDENCE_STALE",
+      "priority": {
+        "calculationTrace": {
+          "conflict": false,
+          "customerValueUsed": false,
+          "employeeRankingUsed": false,
+          "freshness": "STALE",
+          "humanReviewRequired": false,
+          "insuranceValueUsed": false,
+          "productivityUsed": false,
+          "severity": "LOW"
+        },
+        "priority": "P4"
+      },
+      "severity": "LOW"
+    }
+  ],
+  "generatedArtifact": true,
+  "severities": [
+    "INFORMATIONAL",
+    "LOW",
+    "MODERATE",
+    "HIGH",
+    "CRITICAL",
+    "UNKNOWN"
+  ]
+}

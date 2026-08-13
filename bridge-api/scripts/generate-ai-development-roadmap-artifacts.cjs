@@ -136,8 +136,8 @@ function generate(options = {}) {
       customerImplementationStarted: Boolean(customer?.implementationCommit),
       operationsIntelligenceRemoteContained: Boolean(operations?.pushed && operations?.remoteCommitVerified),
       operationsImplementationStarted: Boolean(operations?.implementationCommit),
-      safetyIntelligenceApproved: current.packageId === 'SAFETY_INTELLIGENCE' && current.status === 'APPROVED',
-      safetyImplementationStarted: Boolean(safety?.implementationCommit),
+      safetyIntelligenceImplementedUncommitted: current.packageId === 'SAFETY_INTELLIGENCE' && current.status === 'IMPLEMENTED_UNCOMMITTED',
+      safetyImplementationStarted: Boolean(safety?.documentationPath),
       unapprovedMilestoneOneDomainsAllowed: false,
       deterministicTruckSafetyControlsAuthoritative: true
     }),

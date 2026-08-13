@@ -1,0 +1,121 @@
+{
+  "generatedArtifact": true,
+  "sharedSafety": [
+    {
+      "customerId": null,
+      "driverId": null,
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "sourceDomain",
+            "present": true
+          },
+          {
+            "field": "sourceRecordId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "sourceStatus",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "evidenceConfidence": {
+        "score": 1,
+        "status": "KNOWN_SYNTHETIC_EVIDENCE"
+      },
+      "evidenceConflict": false,
+      "evidenceFreshness": "FRESH",
+      "evidenceStale": false,
+      "evidenceUnknown": false,
+      "humanReviewRequired": false,
+      "lowerDomainConclusion": "ACCEPTED",
+      "lowerDomainOverrideAttempted": false,
+      "ordinaryOperationalIssue": false,
+      "ordinaryWarehouseIssue": false,
+      "organizationId": "org-001",
+      "organizationIsolationPreserved": true,
+      "privateOperationalDataShared": false,
+      "reasonCode": "SHARED_SAFETY_ACCEPTED",
+      "routeId": "route-001",
+      "safetyCondition": null,
+      "safetyRelevant": true,
+      "severity": "UNKNOWN",
+      "sharedSafetyRecordId": "shared-low-bridge-001",
+      "sourceDomain": "SHARED_SAFETY",
+      "sourceHash": "4bed3964a4382a3f7ab9938e9de47551526310a53be31692d8a43782f97c8a2e",
+      "sourceRecordId": "shared.accepted",
+      "sourceStatus": "ACCEPTED",
+      "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+      "sourceVersion": "synthetic.v1",
+      "supervisorId": null,
+      "testOnly": true,
+      "vehicleId": null,
+      "warehouseId": null
+    },
+    {
+      "customerId": null,
+      "driverId": null,
+      "evidenceCompleteness": {
+        "items": [
+          {
+            "field": "sourceDomain",
+            "present": true
+          },
+          {
+            "field": "sourceRecordId",
+            "present": true
+          },
+          {
+            "field": "organizationId",
+            "present": true
+          },
+          {
+            "field": "sourceStatus",
+            "present": true
+          }
+        ],
+        "score": 1,
+        "status": "COMPLETE"
+      },
+      "evidenceConfidence": {
+        "score": 1,
+        "status": "KNOWN_SYNTHETIC_EVIDENCE"
+      },
+      "evidenceConflict": false,
+      "evidenceFreshness": "FRESH",
+      "evidenceStale": false,
+      "evidenceUnknown": false,
+      "humanReviewRequired": false,
+      "lowerDomainConclusion": "PENDING_REVIEW",
+      "lowerDomainOverrideAttempted": false,
+      "ordinaryOperationalIssue": false,
+      "ordinaryWarehouseIssue": false,
+      "organizationId": "org-001",
+      "organizationIsolationPreserved": true,
+      "privateOperationalDataShared": false,
+      "reasonCode": "SHARED_SAFETY_REVIEW",
+      "routeId": "route-001",
+      "safetyCondition": null,
+      "safetyRelevant": true,
+      "severity": "UNKNOWN",
+      "sharedSafetyRecordId": "shared-review-001",
+      "sourceDomain": "SHARED_SAFETY",
+      "sourceHash": "bcbd64592f78643d2366d97c41590e8abca940c380ced303c178ae10353de260",
+      "sourceRecordId": "shared.review",
+      "sourceStatus": "PENDING_REVIEW",
+      "sourceTimestamp": "2026-08-12T00:00:00.000Z",
+      "sourceVersion": "synthetic.v1",
+      "supervisorId": null,
+      "testOnly": true,
+      "vehicleId": null,
+      "warehouseId": null
+    }
+  ]
+}
