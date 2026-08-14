@@ -15,6 +15,8 @@
           "Script:bridge-api/scripts/check-execution-evaluation-engine.cjs",
           "Script:bridge-api/scripts/check-fleet-intelligence-scoring-foundation.cjs",
           "Script:bridge-api/scripts/check-knowledge-graph.cjs",
+          "Script:bridge-api/scripts/check-ms001-capability-classification.cjs",
+          "Script:bridge-api/scripts/check-ms002-benchmark-acceptance.cjs",
           "Script:bridge-api/scripts/check-scoring-engine.cjs",
           "Script:bridge-api/scripts/generate-benchmark-dataset-artifacts.cjs",
           "Script:bridge-api/scripts/generate-capability-registry-artifacts.cjs",
@@ -23,6 +25,8 @@
           "Script:bridge-api/scripts/generate-execution-decision-artifacts.cjs",
           "Script:bridge-api/scripts/generate-execution-evaluation-artifacts.cjs",
           "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+          "Script:bridge-api/scripts/generate-ms001-capability-classification-artifacts.cjs",
+          "Script:bridge-api/scripts/generate-ms002-benchmark-acceptance-artifacts.cjs",
           "Script:bridge-api/scripts/generate-scoring-engine-artifacts.cjs",
           "Script:bridge-api/scripts/update-benchmark-dataset-hashes.cjs",
           "Script:bridge-api/scripts/validate-fleet-intelligence-scoring-runtime.cjs"
@@ -37,6 +41,8 @@
           "Script:bridge-api/scripts/check-execution-evaluation-engine.cjs",
           "Script:bridge-api/scripts/check-fleet-intelligence-scoring-foundation.cjs",
           "Script:bridge-api/scripts/check-knowledge-graph.cjs",
+          "Script:bridge-api/scripts/check-ms001-capability-classification.cjs",
+          "Script:bridge-api/scripts/check-ms002-benchmark-acceptance.cjs",
           "Script:bridge-api/scripts/check-scoring-engine.cjs",
           "Script:bridge-api/scripts/generate-benchmark-dataset-artifacts.cjs",
           "Script:bridge-api/scripts/generate-capability-registry-artifacts.cjs",
@@ -45,6 +51,8 @@
           "Script:bridge-api/scripts/generate-execution-decision-artifacts.cjs",
           "Script:bridge-api/scripts/generate-execution-evaluation-artifacts.cjs",
           "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+          "Script:bridge-api/scripts/generate-ms001-capability-classification-artifacts.cjs",
+          "Script:bridge-api/scripts/generate-ms002-benchmark-acceptance-artifacts.cjs",
           "Script:bridge-api/scripts/generate-scoring-engine-artifacts.cjs",
           "Script:bridge-api/scripts/update-benchmark-dataset-hashes.cjs",
           "Script:bridge-api/scripts/validate-fleet-intelligence-scoring-runtime.cjs",
@@ -5723,6 +5731,32 @@
         "blockedImpacts": [],
         "directImpacts": [],
         "indirectImpacts": [],
+        "nodeId": "Script:bridge-api/scripts/check-ms001-capability-classification.cjs",
+        "potentialImpacts": [
+          "Package:bridge-api"
+        ],
+        "unknownImpacts": []
+      },
+      "nodeId": "Script:bridge-api/scripts/check-ms001-capability-classification.cjs"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Script:bridge-api/scripts/check-ms002-benchmark-acceptance.cjs",
+        "potentialImpacts": [
+          "Package:bridge-api"
+        ],
+        "unknownImpacts": []
+      },
+      "nodeId": "Script:bridge-api/scripts/check-ms002-benchmark-acceptance.cjs"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
         "nodeId": "Script:bridge-api/scripts/check-scoring-engine.cjs",
         "potentialImpacts": [
           "Package:bridge-api"
@@ -6056,6 +6090,32 @@
         "unknownImpacts": []
       },
       "nodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Script:bridge-api/scripts/generate-ms001-capability-classification-artifacts.cjs",
+        "potentialImpacts": [
+          "Package:bridge-api"
+        ],
+        "unknownImpacts": []
+      },
+      "nodeId": "Script:bridge-api/scripts/generate-ms001-capability-classification-artifacts.cjs"
+    },
+    {
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Script:bridge-api/scripts/generate-ms002-benchmark-acceptance-artifacts.cjs",
+        "potentialImpacts": [
+          "Package:bridge-api"
+        ],
+        "unknownImpacts": []
+      },
+      "nodeId": "Script:bridge-api/scripts/generate-ms002-benchmark-acceptance-artifacts.cjs"
     },
     {
       "impact": {

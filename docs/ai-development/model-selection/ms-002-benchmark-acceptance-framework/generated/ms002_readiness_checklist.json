@@ -1,0 +1,21 @@
+{
+  "gateStatuses": [
+    "NOT_STARTED",
+    "REPOSITORY_DEFINED",
+    "OWNER_APPROVAL_REQUIRED"
+  ],
+  "hostedBenchmarkingAuthorized": false,
+  "modelSelectionAuthorized": false,
+  "packageId": "MS-002",
+  "productionActivationAuthorized": false,
+  "providerSelectionAuthorized": false,
+  "repositoryOnlyFrameworkDefined": true,
+  "requiredOwnerApprovalsBeforeNextPhase": [
+    "live benchmark execution",
+    "benchmark dataset approval",
+    "numeric threshold approval",
+    "provider/model candidate list approval",
+    "pricing research approval if needed",
+    "production orchestration approval"
+  ]
+}

@@ -1,11 +1,11 @@
 {
   "localAheadBy": 0,
   "localBranch": "legacy-public-url-final-cleanup",
-  "localHead": "be99623e6964ed4af00d46ebeabc1b0c89f7d122",
+  "localHead": "9de484e2bf87cee2ae61e25e1997d7427d289e90",
   "milestoneOneComplete": true,
   "pushedStatusRequiresRemoteContainment": true,
   "remoteBranch": "origin/legacy-public-url-final-cleanup",
-  "remoteHead": "be99623e6964ed4af00d46ebeabc1b0c89f7d122",
+  "remoteHead": "9de484e2bf87cee2ae61e25e1997d7427d289e90",
   "remoteVerificationPerformed": true,
   "safetyIntelligencePushed": true,
   "safetyIntelligenceRemoteContained": true

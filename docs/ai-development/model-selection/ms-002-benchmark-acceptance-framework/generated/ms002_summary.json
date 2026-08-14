@@ -1,0 +1,13 @@
+{
+  "benchmarkCandidateCount": 13,
+  "benchmarkExcludedD0Count": 36,
+  "d1CandidateCount": 4,
+  "d2CandidateCount": 9,
+  "d3CandidateCount": 0,
+  "liveBenchmarkExecutedCount": 0,
+  "modelSelectedCount": 0,
+  "ownerReviewRequiredCount": 0,
+  "productionActivationCount": 0,
+  "providerSelectedCount": 0,
+  "sourceCapabilityCount": 49
+}

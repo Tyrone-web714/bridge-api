@@ -808,6 +808,30 @@
         "testOnly": true
       },
       {
+        "edgeId": "edge:9c71f4c1bd2eaee30f29",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "ed9295dc045fa097ce9e8b631a7c16cdb4c45bb9ec71ea86534f07dcde9ad16e",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "TESTS",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Package:bridge-api",
+        "targetNodeId": "Script:bridge-api/scripts/check-ms001-capability-classification.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:30ddc8d1a9227d236889",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "964a15ebb3b952e95b4461d8cf545a9c3b6723f5893f31afa663a91bb52754d2",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "TESTS",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Package:bridge-api",
+        "targetNodeId": "Script:bridge-api/scripts/check-ms002-benchmark-acceptance.cjs",
+        "testOnly": true
+      },
+      {
         "edgeId": "edge:d6ceccd19cddf9d61523",
         "metadata": {},
         "relationshipConfidence": "DETERMINISTIC",
@@ -901,6 +925,30 @@
         "relationshipVersion": "0.1.0",
         "sourceNodeId": "Package:bridge-api",
         "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:de6e2045844cee5973b5",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "bab287cc412cdd8018d287d3fadf8772a34c82ca9039266d185a31cb439c4970",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "TESTS",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Package:bridge-api",
+        "targetNodeId": "Script:bridge-api/scripts/generate-ms001-capability-classification-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:b06107b518bf2d15fc5d",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "d8b2e50db0c0393b4a3cd84a447e0ef02d9d30282e894f5e5c425fcf75e3879c",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "TESTS",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Package:bridge-api",
+        "targetNodeId": "Script:bridge-api/scripts/generate-ms002-benchmark-acceptance-artifacts.cjs",
         "testOnly": true
       },
       {
@@ -11046,10 +11094,10 @@
     ],
     "engineVersion": "intelligence.knowledge.graph.engine.v1",
     "generatedFrom": "repository",
-    "graphHash": "b9f7c7e7fca27530935f0720059fcd63c7480abbfba9770d57cbe479cac55ba5",
+    "graphHash": "4e5ec172ef569a9c88a78cf2c793e48a8bf1f595dbdb345896936ad0d025868f",
     "nodes": [
       {
-        "hash": "77e314a0c3f5d281fc50f475cffc3dd2cb6dab937c681f35dddb5b6ad07837d6",
+        "hash": "ab589a45b74f17c03d9d518579eba8246a4dd83af58882579042ed4be903ee21",
         "label": "bridge-api",
         "lifecycleState": null,
         "metadata": {},
@@ -11867,6 +11915,30 @@
         "version": null
       },
       {
+        "hash": "efb2cb18e5b26b92d876c0884f96c751c53d852d545edc38681932b7d678958c",
+        "label": "bridge-api/scripts/check-ms001-capability-classification.cjs",
+        "lifecycleState": null,
+        "metadata": {},
+        "nodeId": "Script:bridge-api/scripts/check-ms001-capability-classification.cjs",
+        "productionApplicable": false,
+        "source": "bridge-api/scripts/check-ms001-capability-classification.cjs",
+        "testOnly": true,
+        "type": "Script",
+        "version": null
+      },
+      {
+        "hash": "7c18bcec1f03c1b795b0eab7543a52eb2389178d383351836618bca5197697cb",
+        "label": "bridge-api/scripts/check-ms002-benchmark-acceptance.cjs",
+        "lifecycleState": null,
+        "metadata": {},
+        "nodeId": "Script:bridge-api/scripts/check-ms002-benchmark-acceptance.cjs",
+        "productionApplicable": false,
+        "source": "bridge-api/scripts/check-ms002-benchmark-acceptance.cjs",
+        "testOnly": true,
+        "type": "Script",
+        "version": null
+      },
+      {
         "hash": "c6be8c4f889056b5de8fbe5beb4d283b54215317819e8c163b02f68f0ebabdee",
         "label": "bridge-api/scripts/check-scoring-engine.cjs",
         "lifecycleState": null,
@@ -11958,6 +12030,30 @@
         "nodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
         "productionApplicable": false,
         "source": "bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+        "testOnly": true,
+        "type": "Script",
+        "version": null
+      },
+      {
+        "hash": "a14bc2660083fac31b84503afce5d6a7fa2618c0de458170620a3b02e0b86294",
+        "label": "bridge-api/scripts/generate-ms001-capability-classification-artifacts.cjs",
+        "lifecycleState": null,
+        "metadata": {},
+        "nodeId": "Script:bridge-api/scripts/generate-ms001-capability-classification-artifacts.cjs",
+        "productionApplicable": false,
+        "source": "bridge-api/scripts/generate-ms001-capability-classification-artifacts.cjs",
+        "testOnly": true,
+        "type": "Script",
+        "version": null
+      },
+      {
+        "hash": "33e541151c65d360a65ebd423ccb239706302e9e1344d9b4dfb28bf6f0eb3507",
+        "label": "bridge-api/scripts/generate-ms002-benchmark-acceptance-artifacts.cjs",
+        "lifecycleState": null,
+        "metadata": {},
+        "nodeId": "Script:bridge-api/scripts/generate-ms002-benchmark-acceptance-artifacts.cjs",
+        "productionApplicable": false,
+        "source": "bridge-api/scripts/generate-ms002-benchmark-acceptance-artifacts.cjs",
         "testOnly": true,
         "type": "Script",
         "version": null

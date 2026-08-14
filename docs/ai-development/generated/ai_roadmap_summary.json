@@ -19,7 +19,7 @@
     "DEFERRED",
     "CANCELLED"
   ],
-  "packageCount": 22,
+  "packageCount": 23,
   "packages": [
     {
       "category": "AI_PLATFORM_FOUNDATION",
@@ -304,16 +304,30 @@
     {
       "category": "MODEL_SELECTION_AND_BENCHMARKING",
       "deployed": false,
-      "implementationCommit": null,
-      "localCommitVerified": false,
+      "implementationCommit": "9de484e2bf87cee2ae61e25e1997d7427d289e90",
+      "localCommitVerified": true,
       "nextApprovedPackage": null,
       "ownerApprovalRequired": true,
       "packageId": "MS-001",
       "productionImpact": "NONE",
+      "pushed": true,
+      "remoteCommitVerified": true,
+      "status": "PUSHED",
+      "title": "TSR AI Capability & Execution Classification"
+    },
+    {
+      "category": "MODEL_SELECTION_AND_BENCHMARKING",
+      "deployed": false,
+      "implementationCommit": null,
+      "localCommitVerified": false,
+      "nextApprovedPackage": null,
+      "ownerApprovalRequired": true,
+      "packageId": "MS-002",
+      "productionImpact": "NONE",
       "pushed": false,
       "remoteCommitVerified": false,
       "status": "IMPLEMENTED_UNCOMMITTED",
-      "title": "TSR AI Capability & Execution Classification"
+      "title": "Benchmark & Acceptance Framework"
     },
     {
       "category": "DEVELOPMENT_WORKFLOW",

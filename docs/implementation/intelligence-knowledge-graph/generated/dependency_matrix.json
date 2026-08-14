@@ -407,6 +407,16 @@
     },
     {
       "dependencies": [],
+      "nodeId": "Script:bridge-api/scripts/check-ms001-capability-classification.cjs",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Script:bridge-api/scripts/check-ms002-benchmark-acceptance.cjs",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
       "nodeId": "Script:bridge-api/scripts/check-scoring-engine.cjs",
       "reverseDependencies": []
     },
@@ -443,6 +453,16 @@
     {
       "dependencies": [],
       "nodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Script:bridge-api/scripts/generate-ms001-capability-classification-artifacts.cjs",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Script:bridge-api/scripts/generate-ms002-benchmark-acceptance-artifacts.cjs",
       "reverseDependencies": []
     },
     {

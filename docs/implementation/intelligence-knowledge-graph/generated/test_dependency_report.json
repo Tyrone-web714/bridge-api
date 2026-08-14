@@ -162,6 +162,44 @@
         "blockedImpacts": [],
         "directImpacts": [],
         "indirectImpacts": [],
+        "nodeId": "Script:bridge-api/scripts/check-ms001-capability-classification.cjs",
+        "potentialImpacts": [
+          "Package:bridge-api"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Script:bridge-api/scripts/check-ms001-capability-classification.cjs",
+      "reverseDependencies": [],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Script:bridge-api/scripts/check-ms002-benchmark-acceptance.cjs",
+        "potentialImpacts": [
+          "Package:bridge-api"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Script:bridge-api/scripts/check-ms002-benchmark-acceptance.cjs",
+      "reverseDependencies": [],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
         "nodeId": "Script:bridge-api/scripts/check-scoring-engine.cjs",
         "potentialImpacts": [
           "Package:bridge-api"
@@ -538,6 +576,44 @@
       },
       "indirectDependencies": [],
       "nodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "reverseDependencies": [],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Script:bridge-api/scripts/generate-ms001-capability-classification-artifacts.cjs",
+        "potentialImpacts": [
+          "Package:bridge-api"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Script:bridge-api/scripts/generate-ms001-capability-classification-artifacts.cjs",
+      "reverseDependencies": [],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Script:bridge-api/scripts/generate-ms002-benchmark-acceptance-artifacts.cjs",
+        "potentialImpacts": [
+          "Package:bridge-api"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Script:bridge-api/scripts/generate-ms002-benchmark-acceptance-artifacts.cjs",
       "reverseDependencies": [],
       "testsToRerun": []
     },

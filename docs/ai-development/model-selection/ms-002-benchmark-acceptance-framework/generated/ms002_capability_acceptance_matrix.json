@@ -1,0 +1,2456 @@
+[
+  {
+    "acceptanceDecisionState": "OWNER_APPROVAL_REQUIRED_AFTER_EVIDENCE",
+    "aggregateScoringPolicy": {
+      "aggregateScoreMayOverrideMandatoryGate": false,
+      "hardGatesBeforeAggregateScore": true,
+      "safetyFailureCanBeAveragedOut": false,
+      "selectionRule": "cost_constrained_sufficiency_not_highest_score_wins"
+    },
+    "allowedStrategiesForFutureEvaluation": [
+      "deterministic_rules",
+      "conventional_algorithms",
+      "statistical_or_mathematical_methods",
+      "optimization_engines",
+      "conventional_machine_learning",
+      "local_models",
+      "low_cost_hosted_models",
+      "balanced_hosted_models",
+      "premium_hosted_models",
+      "human_review"
+    ],
+    "authoritativeInputs": [
+      "bridge-api/routes/ai.js",
+      "docs/implementation/customer-intelligence-foundation/DETERMINISTIC_EXPLANATIONS.md"
+    ],
+    "benchmarkDatasetReference": {
+      "providerOutputMayBecomeGroundTruth": false,
+      "requiredCaseTypes": [
+        "known-answer cases",
+        "edge cases",
+        "missing evidence",
+        "conflicting evidence",
+        "stale evidence",
+        "malformed evidence",
+        "tenant mismatch",
+        "normal/no-exception cases",
+        "difficult but valid cases"
+      ],
+      "safetyCriticalCasesRequired": false,
+      "source": "future owner-approved synthetic/offline benchmark dataset",
+      "versionHashRequiredForFutureRuns": true
+    },
+    "benchmarkPlanStatus": "REPOSITORY_DEFINED",
+    "benchmarkRequirement": "REQUIRED_D2",
+    "capabilityFamily": "explanation_or_presentation",
+    "capabilityId": "customer.account_guidance.presentation",
+    "capabilityName": "Account guidance presentation",
+    "costMeasurement": {
+      "aggregateCostEstimateRequired": true,
+      "currentProviderPricingInserted": false,
+      "operationalVolumeEstimateRequired": true,
+      "perCapabilityExecutionCostRequired": true,
+      "retryAndFailureOverheadIncluded": true,
+      "unitCostRequiredForFutureRun": true
+    },
+    "costPolicy": "Choose the least expensive adequate future strategy only after evidence satisfies quality, safety, reliability, latency, governance, and fallback requirements.",
+    "d1MustNotDefaultToGenerativeAi": false,
+    "deterministicAuthorityBoundary": "Customer facts, spend, invoices, and service patterns remain D0; AI may only present supplied context.",
+    "domain": "Customer Intelligence",
+    "executionClass": "D2",
+    "expectedOutputContract": {
+      "outputType": "grounded_summary_or_explanation",
+      "prohibitedProperties": [
+        "fabricated_evidence",
+        "deterministic_override",
+        "unsupported_recommendation"
+      ],
+      "requiredProperties": [
+        "summary_or_explanation",
+        "source_evidence_references",
+        "limitations_or_unknowns",
+        "tenant_context"
+      ]
+    },
+    "failureConditions": [
+      "timeout",
+      "request failure",
+      "malformed output",
+      "schema failure",
+      "grounding failure",
+      "refusal failure where response is required",
+      "unsafe certainty from insufficient evidence",
+      "fallback unavailable"
+    ],
+    "futureAiRoles": [
+      "SUMMARIZATION",
+      "EXPLANATION"
+    ],
+    "hardDisqualificationConditions": [
+      "fabricating customer/account facts",
+      "cross-Organization leakage",
+      "presenting unknown evidence as known",
+      "converting insufficient evidence into certainty",
+      "fabricating source evidence",
+      "malformed required output contract",
+      "provider or model selection asserted by benchmark evidence"
+    ],
+    "intendedFunction": "Evaluate future advisory presentation quality for Account guidance presentation while preserving supplied TSR evidence and deterministic authority.",
+    "latencyMeasurement": {
+      "metricDefined": true,
+      "productionSloClaimed": false,
+      "thresholdStatus": "OWNER_OR_EMPIRICAL_THRESHOLD_REQUIRED"
+    },
+    "liveBenchmarkStatus": "NOT_STARTED",
+    "minimumAcceptanceEvidence": [
+      "input dataset lineage and fixture version recorded",
+      "expected output contract documented",
+      "deterministic authority boundary preserved",
+      "quality observations captured without selecting a winner",
+      "latency observations captured without production SLO claims",
+      "cost observations captured without pricing approval",
+      "failure mode and fallback behavior recorded",
+      "tenant isolation and privacy controls verified",
+      "human review requirement recorded when applicable"
+    ],
+    "modelBenchmarkRequired": true,
+    "modelSelectionStatus": "NOT_STARTED",
+    "productionActivationStatus": "NOT_STARTED",
+    "providerSelectionStatus": "NOT_STARTED",
+    "qualityDimensions": [
+      "factual_consistency",
+      "grounding_to_supplied_evidence",
+      "instruction_adherence",
+      "structured_output_validity",
+      "completeness",
+      "relevance",
+      "concision",
+      "deterministic_authority_preservation",
+      "uncertainty_or_refusal_behavior",
+      "explanation_usefulness",
+      "hallucination_or_error_rate_defined_metric_threshold_deferred"
+    ],
+    "rejectionConditions": [
+      "model output overrides deterministic safety or legal controls",
+      "provider or model is selected before owner approval",
+      "hosted benchmark is executed before owner approval",
+      "production orchestration or runtime activation is claimed",
+      "benchmark data uses production data without separate approval",
+      "cost is used to waive safety, compliance, privacy, tenant isolation, or minimum quality gates"
+    ],
+    "reliabilityRequirements": [
+      "request failures counted",
+      "timeouts counted",
+      "malformed outputs counted",
+      "schema failures counted",
+      "retries counted",
+      "non-deterministic instability measured where relevant",
+      "refusal failures counted where response is required",
+      "grounding failures counted",
+      "unavailable service behavior recorded"
+    ],
+    "reproducibilityRequirements": [
+      "capability ID",
+      "candidate execution method",
+      "provider where applicable",
+      "model where applicable",
+      "model/version identifier where applicable",
+      "benchmark dataset version/hash",
+      "prompt/template version where applicable",
+      "execution configuration",
+      "timestamp",
+      "run ID",
+      "response/output",
+      "latency",
+      "usage",
+      "retry count",
+      "pass/fail gates",
+      "scoring breakdown",
+      "cost calculation",
+      "disqualification reason",
+      "final eligibility status"
+    ],
+    "safetyGate": "Deterministic tenant, authorization, privacy, policy, and evidence controls must remain authoritative.",
+    "safetyRelevant": false,
+    "thresholdPolicy": "No numeric pass/fail threshold is approved by MS-002; thresholds must be owner-approved before live benchmarking or selection.",
+    "thresholdState": {
+      "metricDefined": true,
+      "ownerOrEmpiricalThresholdRequired": true,
+      "passByDefaultAllowed": false
+    },
+    "usageMeasurement": {
+      "failedRequestCountRequired": true,
+      "inputUsageRequired": true,
+      "outputUsageRequired": true,
+      "requestCountRequired": true,
+      "retryCountRequired": true
+    }
+  },
+  {
+    "acceptanceDecisionState": "OWNER_APPROVAL_REQUIRED_AFTER_EVIDENCE",
+    "aggregateScoringPolicy": {
+      "aggregateScoreMayOverrideMandatoryGate": false,
+      "hardGatesBeforeAggregateScore": true,
+      "safetyFailureCanBeAveragedOut": false,
+      "selectionRule": "cost_constrained_sufficiency_not_highest_score_wins"
+    },
+    "allowedStrategiesForFutureEvaluation": [
+      "deterministic_rules",
+      "conventional_algorithms",
+      "statistical_or_mathematical_methods",
+      "optimization_engines",
+      "conventional_machine_learning",
+      "local_models",
+      "low_cost_hosted_models",
+      "balanced_hosted_models",
+      "premium_hosted_models",
+      "human_review"
+    ],
+    "authoritativeInputs": [
+      "bridge-api/routes/ai.js",
+      "bridge-api/scripts/check-driver-copilot-auth.cjs"
+    ],
+    "benchmarkDatasetReference": {
+      "providerOutputMayBecomeGroundTruth": false,
+      "requiredCaseTypes": [
+        "known-answer cases",
+        "edge cases",
+        "missing evidence",
+        "conflicting evidence",
+        "stale evidence",
+        "malformed evidence",
+        "tenant mismatch",
+        "normal/no-exception cases",
+        "difficult but valid cases"
+      ],
+      "safetyCriticalCasesRequired": true,
+      "source": "future owner-approved synthetic/offline benchmark dataset",
+      "versionHashRequiredForFutureRuns": true
+    },
+    "benchmarkPlanStatus": "REPOSITORY_DEFINED",
+    "benchmarkRequirement": "REQUIRED_D2",
+    "capabilityFamily": "conversational_response",
+    "capabilityId": "driver.copilot.contextual_response",
+    "capabilityName": "Driver copilot contextual response",
+    "costMeasurement": {
+      "aggregateCostEstimateRequired": true,
+      "currentProviderPricingInserted": false,
+      "operationalVolumeEstimateRequired": true,
+      "perCapabilityExecutionCostRequired": true,
+      "retryAndFailureOverheadIncluded": true,
+      "unitCostRequiredForFutureRun": true
+    },
+    "costPolicy": "Choose the least expensive adequate future strategy only after evidence satisfies quality, safety, reliability, latency, governance, and fallback requirements.",
+    "d1MustNotDefaultToGenerativeAi": false,
+    "deterministicAuthorityBoundary": "Backend route, hazard, delivery, and authorization facts remain authoritative; AI may answer only from supplied context.",
+    "domain": "Driver Intelligence",
+    "executionClass": "D2",
+    "expectedOutputContract": {
+      "outputType": "grounded_advisory_response",
+      "prohibitedProperties": [
+        "fabricated_operational_fact",
+        "deterministic_override",
+        "cross_organization_content"
+      ],
+      "requiredProperties": [
+        "answer",
+        "source_evidence_references",
+        "uncertainty_or_refusal_when_needed",
+        "tenant_context"
+      ]
+    },
+    "failureConditions": [
+      "timeout",
+      "request failure",
+      "malformed output",
+      "schema failure",
+      "grounding failure",
+      "refusal failure where response is required",
+      "unsafe certainty from insufficient evidence",
+      "fallback unavailable"
+    ],
+    "futureAiRoles": [
+      "CONVERSATION",
+      "EXPLANATION",
+      "SUMMARIZATION"
+    ],
+    "hardDisqualificationConditions": [
+      "contradicting authoritative route restriction",
+      "inventing safe clearance",
+      "suppressing known safety blocker",
+      "changing vehicle/route compatibility facts",
+      "changing warehouse readiness facts",
+      "fabricating driver operational evidence",
+      "cross-Organization leakage",
+      "presenting unknown evidence as known",
+      "converting insufficient evidence into certainty",
+      "fabricating source evidence",
+      "malformed required output contract",
+      "provider or model selection asserted by benchmark evidence"
+    ],
+    "intendedFunction": "Evaluate future advisory presentation quality for Driver copilot contextual response while preserving supplied TSR evidence and deterministic authority.",
+    "latencyMeasurement": {
+      "metricDefined": true,
+      "productionSloClaimed": false,
+      "thresholdStatus": "OWNER_OR_EMPIRICAL_THRESHOLD_REQUIRED"
+    },
+    "liveBenchmarkStatus": "NOT_STARTED",
+    "minimumAcceptanceEvidence": [
+      "input dataset lineage and fixture version recorded",
+      "expected output contract documented",
+      "deterministic authority boundary preserved",
+      "quality observations captured without selecting a winner",
+      "latency observations captured without production SLO claims",
+      "cost observations captured without pricing approval",
+      "failure mode and fallback behavior recorded",
+      "tenant isolation and privacy controls verified",
+      "human review requirement recorded when applicable"
+    ],
+    "modelBenchmarkRequired": true,
+    "modelSelectionStatus": "NOT_STARTED",
+    "productionActivationStatus": "NOT_STARTED",
+    "providerSelectionStatus": "NOT_STARTED",
+    "qualityDimensions": [
+      "factual_consistency",
+      "grounding_to_supplied_evidence",
+      "instruction_adherence",
+      "structured_output_validity",
+      "completeness",
+      "relevance",
+      "concision",
+      "deterministic_authority_preservation",
+      "uncertainty_or_refusal_behavior",
+      "explanation_usefulness",
+      "conversation_context_control",
+      "hallucination_or_error_rate_defined_metric_threshold_deferred"
+    ],
+    "rejectionConditions": [
+      "model output overrides deterministic safety or legal controls",
+      "provider or model is selected before owner approval",
+      "hosted benchmark is executed before owner approval",
+      "production orchestration or runtime activation is claimed",
+      "benchmark data uses production data without separate approval",
+      "cost is used to waive safety, compliance, privacy, tenant isolation, or minimum quality gates"
+    ],
+    "reliabilityRequirements": [
+      "request failures counted",
+      "timeouts counted",
+      "malformed outputs counted",
+      "schema failures counted",
+      "retries counted",
+      "non-deterministic instability measured where relevant",
+      "refusal failures counted where response is required",
+      "grounding failures counted",
+      "unavailable service behavior recorded"
+    ],
+    "reproducibilityRequirements": [
+      "capability ID",
+      "candidate execution method",
+      "provider where applicable",
+      "model where applicable",
+      "model/version identifier where applicable",
+      "benchmark dataset version/hash",
+      "prompt/template version where applicable",
+      "execution configuration",
+      "timestamp",
+      "run ID",
+      "response/output",
+      "latency",
+      "usage",
+      "retry count",
+      "pass/fail gates",
+      "scoring breakdown",
+      "cost calculation",
+      "disqualification reason",
+      "final eligibility status"
+    ],
+    "safetyGate": "Deterministic safety, legal, physical, tenant, authorization, and policy controls must remain authoritative and non-overridable.",
+    "safetyRelevant": true,
+    "thresholdPolicy": "No numeric pass/fail threshold is approved by MS-002; thresholds must be owner-approved before live benchmarking or selection.",
+    "thresholdState": {
+      "metricDefined": true,
+      "ownerOrEmpiricalThresholdRequired": true,
+      "passByDefaultAllowed": false
+    },
+    "usageMeasurement": {
+      "failedRequestCountRequired": true,
+      "inputUsageRequired": true,
+      "outputUsageRequired": true,
+      "requestCountRequired": true,
+      "retryCountRequired": true
+    }
+  },
+  {
+    "acceptanceDecisionState": "OWNER_APPROVAL_REQUIRED_AFTER_EVIDENCE",
+    "aggregateScoringPolicy": {
+      "aggregateScoreMayOverrideMandatoryGate": false,
+      "hardGatesBeforeAggregateScore": true,
+      "safetyFailureCanBeAveragedOut": false,
+      "selectionRule": "cost_constrained_sufficiency_not_highest_score_wins"
+    },
+    "allowedStrategiesForFutureEvaluation": [
+      "deterministic_rules",
+      "conventional_algorithms",
+      "statistical_or_mathematical_methods",
+      "optimization_engines",
+      "conventional_machine_learning",
+      "local_models",
+      "low_cost_hosted_models",
+      "balanced_hosted_models",
+      "premium_hosted_models",
+      "human_review"
+    ],
+    "authoritativeInputs": [
+      "bridge-api/routes/ai.js",
+      "docs/implementation/operations-intelligence-foundation/generated/operations_summary_report.json"
+    ],
+    "benchmarkDatasetReference": {
+      "providerOutputMayBecomeGroundTruth": false,
+      "requiredCaseTypes": [
+        "known-answer cases",
+        "edge cases",
+        "missing evidence",
+        "conflicting evidence",
+        "stale evidence",
+        "malformed evidence",
+        "tenant mismatch",
+        "normal/no-exception cases",
+        "difficult but valid cases"
+      ],
+      "safetyCriticalCasesRequired": true,
+      "source": "future owner-approved synthetic/offline benchmark dataset",
+      "versionHashRequiredForFutureRuns": true
+    },
+    "benchmarkPlanStatus": "REPOSITORY_DEFINED",
+    "benchmarkRequirement": "REQUIRED_D2",
+    "capabilityFamily": "operational_synthesis",
+    "capabilityId": "operations.executive_dashboard_synthesis",
+    "capabilityName": "Executive dashboard synthesis",
+    "costMeasurement": {
+      "aggregateCostEstimateRequired": true,
+      "currentProviderPricingInserted": false,
+      "operationalVolumeEstimateRequired": true,
+      "perCapabilityExecutionCostRequired": true,
+      "retryAndFailureOverheadIncluded": true,
+      "unitCostRequiredForFutureRun": true
+    },
+    "costPolicy": "Choose the least expensive adequate future strategy only after evidence satisfies quality, safety, reliability, latency, governance, and fallback requirements.",
+    "d1MustNotDefaultToGenerativeAi": false,
+    "deterministicAuthorityBoundary": "D0 domain records remain authoritative; AI may synthesize and present priorities only.",
+    "domain": "Operations Intelligence",
+    "executionClass": "D2",
+    "expectedOutputContract": {
+      "outputType": "grounded_summary_or_explanation",
+      "prohibitedProperties": [
+        "fabricated_evidence",
+        "deterministic_override",
+        "unsupported_recommendation"
+      ],
+      "requiredProperties": [
+        "summary_or_explanation",
+        "source_evidence_references",
+        "limitations_or_unknowns",
+        "tenant_context"
+      ]
+    },
+    "failureConditions": [
+      "timeout",
+      "request failure",
+      "malformed output",
+      "schema failure",
+      "grounding failure",
+      "refusal failure where response is required",
+      "unsafe certainty from insufficient evidence",
+      "fallback unavailable"
+    ],
+    "futureAiRoles": [
+      "SUMMARIZATION",
+      "REASONING"
+    ],
+    "hardDisqualificationConditions": [
+      "contradicting authoritative route restriction",
+      "inventing safe clearance",
+      "suppressing known safety blocker",
+      "changing vehicle/route compatibility facts",
+      "changing warehouse readiness facts",
+      "fabricating driver operational evidence",
+      "cross-Organization leakage",
+      "presenting unknown evidence as known",
+      "converting insufficient evidence into certainty",
+      "fabricating source evidence",
+      "malformed required output contract",
+      "provider or model selection asserted by benchmark evidence"
+    ],
+    "intendedFunction": "Evaluate future advisory presentation quality for Executive dashboard synthesis while preserving supplied TSR evidence and deterministic authority.",
+    "latencyMeasurement": {
+      "metricDefined": true,
+      "productionSloClaimed": false,
+      "thresholdStatus": "OWNER_OR_EMPIRICAL_THRESHOLD_REQUIRED"
+    },
+    "liveBenchmarkStatus": "NOT_STARTED",
+    "minimumAcceptanceEvidence": [
+      "input dataset lineage and fixture version recorded",
+      "expected output contract documented",
+      "deterministic authority boundary preserved",
+      "quality observations captured without selecting a winner",
+      "latency observations captured without production SLO claims",
+      "cost observations captured without pricing approval",
+      "failure mode and fallback behavior recorded",
+      "tenant isolation and privacy controls verified",
+      "human review requirement recorded when applicable"
+    ],
+    "modelBenchmarkRequired": true,
+    "modelSelectionStatus": "NOT_STARTED",
+    "productionActivationStatus": "NOT_STARTED",
+    "providerSelectionStatus": "NOT_STARTED",
+    "qualityDimensions": [
+      "factual_consistency",
+      "grounding_to_supplied_evidence",
+      "instruction_adherence",
+      "structured_output_validity",
+      "completeness",
+      "relevance",
+      "concision",
+      "deterministic_authority_preservation",
+      "uncertainty_or_refusal_behavior",
+      "reasoning_trace_grounded_in_supplied_facts",
+      "hallucination_or_error_rate_defined_metric_threshold_deferred"
+    ],
+    "rejectionConditions": [
+      "model output overrides deterministic safety or legal controls",
+      "provider or model is selected before owner approval",
+      "hosted benchmark is executed before owner approval",
+      "production orchestration or runtime activation is claimed",
+      "benchmark data uses production data without separate approval",
+      "cost is used to waive safety, compliance, privacy, tenant isolation, or minimum quality gates"
+    ],
+    "reliabilityRequirements": [
+      "request failures counted",
+      "timeouts counted",
+      "malformed outputs counted",
+      "schema failures counted",
+      "retries counted",
+      "non-deterministic instability measured where relevant",
+      "refusal failures counted where response is required",
+      "grounding failures counted",
+      "unavailable service behavior recorded"
+    ],
+    "reproducibilityRequirements": [
+      "capability ID",
+      "candidate execution method",
+      "provider where applicable",
+      "model where applicable",
+      "model/version identifier where applicable",
+      "benchmark dataset version/hash",
+      "prompt/template version where applicable",
+      "execution configuration",
+      "timestamp",
+      "run ID",
+      "response/output",
+      "latency",
+      "usage",
+      "retry count",
+      "pass/fail gates",
+      "scoring breakdown",
+      "cost calculation",
+      "disqualification reason",
+      "final eligibility status"
+    ],
+    "safetyGate": "Deterministic safety, legal, physical, tenant, authorization, and policy controls must remain authoritative and non-overridable.",
+    "safetyRelevant": true,
+    "thresholdPolicy": "No numeric pass/fail threshold is approved by MS-002; thresholds must be owner-approved before live benchmarking or selection.",
+    "thresholdState": {
+      "metricDefined": true,
+      "ownerOrEmpiricalThresholdRequired": true,
+      "passByDefaultAllowed": false
+    },
+    "usageMeasurement": {
+      "failedRequestCountRequired": true,
+      "inputUsageRequired": true,
+      "outputUsageRequired": true,
+      "requestCountRequired": true,
+      "retryCountRequired": true
+    }
+  },
+  {
+    "acceptanceDecisionState": "OWNER_APPROVAL_REQUIRED_AFTER_EVIDENCE",
+    "aggregateScoringPolicy": {
+      "aggregateScoreMayOverrideMandatoryGate": false,
+      "hardGatesBeforeAggregateScore": true,
+      "safetyFailureCanBeAveragedOut": false,
+      "selectionRule": "cost_constrained_sufficiency_not_highest_score_wins"
+    },
+    "allowedStrategiesForFutureEvaluation": [
+      "deterministic_rules",
+      "conventional_algorithms",
+      "statistical_or_mathematical_methods",
+      "optimization_engines",
+      "conventional_machine_learning",
+      "local_models",
+      "low_cost_hosted_models",
+      "balanced_hosted_models",
+      "premium_hosted_models",
+      "human_review"
+    ],
+    "authoritativeInputs": [
+      "bridge-api/services/intelligenceExecution/legacyAiAdapter.js",
+      "bridge-api/services/intelligenceExecution/providerAdapters.js",
+      "bridge-api/routes/ai.js"
+    ],
+    "benchmarkDatasetReference": {
+      "providerOutputMayBecomeGroundTruth": false,
+      "requiredCaseTypes": [
+        "known-answer cases",
+        "edge cases",
+        "missing evidence",
+        "conflicting evidence",
+        "stale evidence",
+        "malformed evidence",
+        "tenant mismatch",
+        "normal/no-exception cases",
+        "difficult but valid cases"
+      ],
+      "safetyCriticalCasesRequired": false,
+      "source": "future owner-approved synthetic/offline benchmark dataset",
+      "versionHashRequiredForFutureRuns": true
+    },
+    "benchmarkPlanStatus": "REPOSITORY_DEFINED",
+    "benchmarkRequirement": "REQUIRED_D2",
+    "capabilityFamily": "conversational_response",
+    "capabilityId": "platform.legacy_structured_ai_response",
+    "capabilityName": "Legacy structured AI response compatibility",
+    "costMeasurement": {
+      "aggregateCostEstimateRequired": true,
+      "currentProviderPricingInserted": false,
+      "operationalVolumeEstimateRequired": true,
+      "perCapabilityExecutionCostRequired": true,
+      "retryAndFailureOverheadIncluded": true,
+      "unitCostRequiredForFutureRun": true
+    },
+    "costPolicy": "Choose the least expensive adequate future strategy only after evidence satisfies quality, safety, reliability, latency, governance, and fallback requirements.",
+    "d1MustNotDefaultToGenerativeAi": false,
+    "deterministicAuthorityBoundary": "Not safety-authoritative.",
+    "domain": "Operations Intelligence",
+    "executionClass": "D2",
+    "expectedOutputContract": {
+      "outputType": "grounded_advisory_response",
+      "prohibitedProperties": [
+        "fabricated_operational_fact",
+        "deterministic_override",
+        "cross_organization_content"
+      ],
+      "requiredProperties": [
+        "answer",
+        "source_evidence_references",
+        "uncertainty_or_refusal_when_needed",
+        "tenant_context"
+      ]
+    },
+    "failureConditions": [
+      "timeout",
+      "request failure",
+      "malformed output",
+      "schema failure",
+      "grounding failure",
+      "refusal failure where response is required",
+      "unsafe certainty from insufficient evidence",
+      "fallback unavailable"
+    ],
+    "futureAiRoles": [
+      "SUMMARIZATION",
+      "EXPLANATION",
+      "CONVERSATION",
+      "EXTRACTION",
+      "REASONING"
+    ],
+    "hardDisqualificationConditions": [
+      "cross-Organization leakage",
+      "presenting unknown evidence as known",
+      "converting insufficient evidence into certainty",
+      "fabricating source evidence",
+      "malformed required output contract",
+      "provider or model selection asserted by benchmark evidence"
+    ],
+    "intendedFunction": "Evaluate future advisory presentation quality for Legacy structured AI response compatibility while preserving supplied TSR evidence and deterministic authority.",
+    "latencyMeasurement": {
+      "metricDefined": true,
+      "productionSloClaimed": false,
+      "thresholdStatus": "OWNER_OR_EMPIRICAL_THRESHOLD_REQUIRED"
+    },
+    "liveBenchmarkStatus": "NOT_STARTED",
+    "minimumAcceptanceEvidence": [
+      "input dataset lineage and fixture version recorded",
+      "expected output contract documented",
+      "deterministic authority boundary preserved",
+      "quality observations captured without selecting a winner",
+      "latency observations captured without production SLO claims",
+      "cost observations captured without pricing approval",
+      "failure mode and fallback behavior recorded",
+      "tenant isolation and privacy controls verified",
+      "human review requirement recorded when applicable"
+    ],
+    "modelBenchmarkRequired": true,
+    "modelSelectionStatus": "NOT_STARTED",
+    "productionActivationStatus": "NOT_STARTED",
+    "providerSelectionStatus": "NOT_STARTED",
+    "qualityDimensions": [
+      "factual_consistency",
+      "grounding_to_supplied_evidence",
+      "instruction_adherence",
+      "structured_output_validity",
+      "completeness",
+      "relevance",
+      "concision",
+      "deterministic_authority_preservation",
+      "uncertainty_or_refusal_behavior",
+      "explanation_usefulness",
+      "conversation_context_control",
+      "reasoning_trace_grounded_in_supplied_facts",
+      "schema_field_accuracy",
+      "hallucination_or_error_rate_defined_metric_threshold_deferred"
+    ],
+    "rejectionConditions": [
+      "model output overrides deterministic safety or legal controls",
+      "provider or model is selected before owner approval",
+      "hosted benchmark is executed before owner approval",
+      "production orchestration or runtime activation is claimed",
+      "benchmark data uses production data without separate approval",
+      "cost is used to waive safety, compliance, privacy, tenant isolation, or minimum quality gates"
+    ],
+    "reliabilityRequirements": [
+      "request failures counted",
+      "timeouts counted",
+      "malformed outputs counted",
+      "schema failures counted",
+      "retries counted",
+      "non-deterministic instability measured where relevant",
+      "refusal failures counted where response is required",
+      "grounding failures counted",
+      "unavailable service behavior recorded"
+    ],
+    "reproducibilityRequirements": [
+      "capability ID",
+      "candidate execution method",
+      "provider where applicable",
+      "model where applicable",
+      "model/version identifier where applicable",
+      "benchmark dataset version/hash",
+      "prompt/template version where applicable",
+      "execution configuration",
+      "timestamp",
+      "run ID",
+      "response/output",
+      "latency",
+      "usage",
+      "retry count",
+      "pass/fail gates",
+      "scoring breakdown",
+      "cost calculation",
+      "disqualification reason",
+      "final eligibility status"
+    ],
+    "safetyGate": "Deterministic tenant, authorization, privacy, policy, and evidence controls must remain authoritative.",
+    "safetyRelevant": false,
+    "thresholdPolicy": "No numeric pass/fail threshold is approved by MS-002; thresholds must be owner-approved before live benchmarking or selection.",
+    "thresholdState": {
+      "metricDefined": true,
+      "ownerOrEmpiricalThresholdRequired": true,
+      "passByDefaultAllowed": false
+    },
+    "usageMeasurement": {
+      "failedRequestCountRequired": true,
+      "inputUsageRequired": true,
+      "outputUsageRequired": true,
+      "requestCountRequired": true,
+      "retryCountRequired": true
+    }
+  },
+  {
+    "acceptanceDecisionState": "OWNER_APPROVAL_REQUIRED_AFTER_EVIDENCE",
+    "aggregateScoringPolicy": {
+      "aggregateScoreMayOverrideMandatoryGate": false,
+      "hardGatesBeforeAggregateScore": true,
+      "safetyFailureCanBeAveragedOut": false,
+      "selectionRule": "cost_constrained_sufficiency_not_highest_score_wins"
+    },
+    "allowedStrategiesForFutureEvaluation": [
+      "deterministic_rules",
+      "statistical_or_mathematical_methods",
+      "conventional_algorithms",
+      "conventional_machine_learning",
+      "local_models",
+      "low_cost_hosted_models",
+      "human_review"
+    ],
+    "authoritativeInputs": [
+      "bridge-api/services/predictionEngine.js",
+      "bridge-api/routes/ai.js"
+    ],
+    "benchmarkDatasetReference": {
+      "providerOutputMayBecomeGroundTruth": false,
+      "requiredCaseTypes": [
+        "known-answer cases",
+        "edge cases",
+        "missing evidence",
+        "conflicting evidence",
+        "stale evidence",
+        "malformed evidence",
+        "tenant mismatch",
+        "normal/no-exception cases",
+        "difficult but valid cases"
+      ],
+      "safetyCriticalCasesRequired": false,
+      "source": "future owner-approved synthetic/offline benchmark dataset",
+      "versionHashRequiredForFutureRuns": true
+    },
+    "benchmarkPlanStatus": "REPOSITORY_DEFINED",
+    "benchmarkRequirement": "REQUIRED_D1",
+    "capabilityFamily": "prediction_or_lightweight_computation",
+    "capabilityId": "prediction.account_reorder_forecast",
+    "capabilityName": "Account reorder forecast",
+    "costMeasurement": {
+      "aggregateCostEstimateRequired": true,
+      "currentProviderPricingInserted": false,
+      "operationalVolumeEstimateRequired": true,
+      "perCapabilityExecutionCostRequired": true,
+      "retryAndFailureOverheadIncluded": true,
+      "unitCostRequiredForFutureRun": true
+    },
+    "costPolicy": "Choose the least expensive adequate future strategy only after evidence satisfies quality, safety, reliability, latency, governance, and fallback requirements.",
+    "d1MustNotDefaultToGenerativeAi": true,
+    "deterministicAuthorityBoundary": "Not safety-authoritative.",
+    "domain": "Customer Intelligence",
+    "executionClass": "D1",
+    "expectedOutputContract": {
+      "outputType": "prediction_or_classification_record",
+      "prohibitedProperties": [
+        "unsupported_causation",
+        "fabricated_evidence",
+        "provider_selected",
+        "model_selected"
+      ],
+      "requiredProperties": [
+        "prediction_value_or_label",
+        "confidence_or_uncertainty",
+        "evidence_lineage",
+        "missing_data_flags",
+        "tenant_context"
+      ]
+    },
+    "failureConditions": [
+      "timeout",
+      "request failure",
+      "malformed output",
+      "schema failure",
+      "grounding failure",
+      "refusal failure where response is required",
+      "unsafe certainty from insufficient evidence",
+      "fallback unavailable"
+    ],
+    "futureAiRoles": [
+      "PREDICTION"
+    ],
+    "hardDisqualificationConditions": [
+      "fabricating customer/account facts",
+      "cross-Organization leakage",
+      "presenting unknown evidence as known",
+      "converting insufficient evidence into certainty",
+      "fabricating source evidence",
+      "malformed required output contract",
+      "provider or model selection asserted by benchmark evidence"
+    ],
+    "intendedFunction": "Evaluate future lightweight computational approaches for Account reorder forecast without defaulting to generative AI.",
+    "latencyMeasurement": {
+      "metricDefined": true,
+      "productionSloClaimed": false,
+      "thresholdStatus": "OWNER_OR_EMPIRICAL_THRESHOLD_REQUIRED"
+    },
+    "liveBenchmarkStatus": "NOT_STARTED",
+    "minimumAcceptanceEvidence": [
+      "input dataset lineage and fixture version recorded",
+      "expected output contract documented",
+      "deterministic authority boundary preserved",
+      "quality observations captured without selecting a winner",
+      "latency observations captured without production SLO claims",
+      "cost observations captured without pricing approval",
+      "failure mode and fallback behavior recorded",
+      "tenant isolation and privacy controls verified",
+      "human review requirement recorded when applicable"
+    ],
+    "modelBenchmarkRequired": true,
+    "modelSelectionStatus": "NOT_STARTED",
+    "productionActivationStatus": "NOT_STARTED",
+    "providerSelectionStatus": "NOT_STARTED",
+    "qualityDimensions": [
+      "prediction_error_defined_metric_threshold_deferred",
+      "calibration_defined_metric_threshold_deferred",
+      "precision_recall_defined_metric_threshold_deferred_where_classification_applies",
+      "false_positive_false_negative_consequence_recording",
+      "stability_across_repeated_runs",
+      "missing_data_behavior",
+      "stale_data_behavior",
+      "tenant_isolation",
+      "reproducibility"
+    ],
+    "rejectionConditions": [
+      "model output overrides deterministic safety or legal controls",
+      "provider or model is selected before owner approval",
+      "hosted benchmark is executed before owner approval",
+      "production orchestration or runtime activation is claimed",
+      "benchmark data uses production data without separate approval",
+      "cost is used to waive safety, compliance, privacy, tenant isolation, or minimum quality gates"
+    ],
+    "reliabilityRequirements": [
+      "request failures counted",
+      "timeouts counted",
+      "malformed outputs counted",
+      "schema failures counted",
+      "retries counted",
+      "non-deterministic instability measured where relevant",
+      "refusal failures counted where response is required",
+      "grounding failures counted",
+      "unavailable service behavior recorded"
+    ],
+    "reproducibilityRequirements": [
+      "capability ID",
+      "candidate execution method",
+      "provider where applicable",
+      "model where applicable",
+      "model/version identifier where applicable",
+      "benchmark dataset version/hash",
+      "prompt/template version where applicable",
+      "execution configuration",
+      "timestamp",
+      "run ID",
+      "response/output",
+      "latency",
+      "usage",
+      "retry count",
+      "pass/fail gates",
+      "scoring breakdown",
+      "cost calculation",
+      "disqualification reason",
+      "final eligibility status"
+    ],
+    "safetyGate": "Deterministic tenant, authorization, privacy, policy, and evidence controls must remain authoritative.",
+    "safetyRelevant": false,
+    "thresholdPolicy": "No numeric pass/fail threshold is approved by MS-002; thresholds must be owner-approved before live benchmarking or selection.",
+    "thresholdState": {
+      "metricDefined": true,
+      "ownerOrEmpiricalThresholdRequired": true,
+      "passByDefaultAllowed": false
+    },
+    "usageMeasurement": {
+      "failedRequestCountRequired": true,
+      "inputUsageRequired": true,
+      "outputUsageRequired": true,
+      "requestCountRequired": true,
+      "retryCountRequired": true
+    }
+  },
+  {
+    "acceptanceDecisionState": "OWNER_APPROVAL_REQUIRED_AFTER_EVIDENCE",
+    "aggregateScoringPolicy": {
+      "aggregateScoreMayOverrideMandatoryGate": false,
+      "hardGatesBeforeAggregateScore": true,
+      "safetyFailureCanBeAveragedOut": false,
+      "selectionRule": "cost_constrained_sufficiency_not_highest_score_wins"
+    },
+    "allowedStrategiesForFutureEvaluation": [
+      "deterministic_rules",
+      "statistical_or_mathematical_methods",
+      "conventional_algorithms",
+      "conventional_machine_learning",
+      "local_models",
+      "low_cost_hosted_models",
+      "human_review"
+    ],
+    "authoritativeInputs": [
+      "bridge-api/services/predictionEngine.js",
+      "bridge-api/routes/ai.js"
+    ],
+    "benchmarkDatasetReference": {
+      "providerOutputMayBecomeGroundTruth": false,
+      "requiredCaseTypes": [
+        "known-answer cases",
+        "edge cases",
+        "missing evidence",
+        "conflicting evidence",
+        "stale evidence",
+        "malformed evidence",
+        "tenant mismatch",
+        "normal/no-exception cases",
+        "difficult but valid cases"
+      ],
+      "safetyCriticalCasesRequired": false,
+      "source": "future owner-approved synthetic/offline benchmark dataset",
+      "versionHashRequiredForFutureRuns": true
+    },
+    "benchmarkPlanStatus": "REPOSITORY_DEFINED",
+    "benchmarkRequirement": "REQUIRED_D1",
+    "capabilityFamily": "prediction_or_lightweight_computation",
+    "capabilityId": "prediction.delivery_failure_risk",
+    "capabilityName": "Delivery failure risk forecast",
+    "costMeasurement": {
+      "aggregateCostEstimateRequired": true,
+      "currentProviderPricingInserted": false,
+      "operationalVolumeEstimateRequired": true,
+      "perCapabilityExecutionCostRequired": true,
+      "retryAndFailureOverheadIncluded": true,
+      "unitCostRequiredForFutureRun": true
+    },
+    "costPolicy": "Choose the least expensive adequate future strategy only after evidence satisfies quality, safety, reliability, latency, governance, and fallback requirements.",
+    "d1MustNotDefaultToGenerativeAi": true,
+    "deterministicAuthorityBoundary": "Backend failure-rate calculations remain facts; AI may explain only after lightweight predictive benchmark.",
+    "domain": "Operations Intelligence",
+    "executionClass": "D1",
+    "expectedOutputContract": {
+      "outputType": "prediction_or_classification_record",
+      "prohibitedProperties": [
+        "unsupported_causation",
+        "fabricated_evidence",
+        "provider_selected",
+        "model_selected"
+      ],
+      "requiredProperties": [
+        "prediction_value_or_label",
+        "confidence_or_uncertainty",
+        "evidence_lineage",
+        "missing_data_flags",
+        "tenant_context"
+      ]
+    },
+    "failureConditions": [
+      "timeout",
+      "request failure",
+      "malformed output",
+      "schema failure",
+      "grounding failure",
+      "refusal failure where response is required",
+      "unsafe certainty from insufficient evidence",
+      "fallback unavailable"
+    ],
+    "futureAiRoles": [
+      "PREDICTION",
+      "CLASSIFICATION"
+    ],
+    "hardDisqualificationConditions": [
+      "cross-Organization leakage",
+      "presenting unknown evidence as known",
+      "converting insufficient evidence into certainty",
+      "fabricating source evidence",
+      "malformed required output contract",
+      "provider or model selection asserted by benchmark evidence"
+    ],
+    "intendedFunction": "Evaluate future lightweight computational approaches for Delivery failure risk forecast without defaulting to generative AI.",
+    "latencyMeasurement": {
+      "metricDefined": true,
+      "productionSloClaimed": false,
+      "thresholdStatus": "OWNER_OR_EMPIRICAL_THRESHOLD_REQUIRED"
+    },
+    "liveBenchmarkStatus": "NOT_STARTED",
+    "minimumAcceptanceEvidence": [
+      "input dataset lineage and fixture version recorded",
+      "expected output contract documented",
+      "deterministic authority boundary preserved",
+      "quality observations captured without selecting a winner",
+      "latency observations captured without production SLO claims",
+      "cost observations captured without pricing approval",
+      "failure mode and fallback behavior recorded",
+      "tenant isolation and privacy controls verified",
+      "human review requirement recorded when applicable"
+    ],
+    "modelBenchmarkRequired": true,
+    "modelSelectionStatus": "NOT_STARTED",
+    "productionActivationStatus": "NOT_STARTED",
+    "providerSelectionStatus": "NOT_STARTED",
+    "qualityDimensions": [
+      "prediction_error_defined_metric_threshold_deferred",
+      "calibration_defined_metric_threshold_deferred",
+      "precision_recall_defined_metric_threshold_deferred_where_classification_applies",
+      "false_positive_false_negative_consequence_recording",
+      "stability_across_repeated_runs",
+      "missing_data_behavior",
+      "stale_data_behavior",
+      "tenant_isolation",
+      "reproducibility"
+    ],
+    "rejectionConditions": [
+      "model output overrides deterministic safety or legal controls",
+      "provider or model is selected before owner approval",
+      "hosted benchmark is executed before owner approval",
+      "production orchestration or runtime activation is claimed",
+      "benchmark data uses production data without separate approval",
+      "cost is used to waive safety, compliance, privacy, tenant isolation, or minimum quality gates"
+    ],
+    "reliabilityRequirements": [
+      "request failures counted",
+      "timeouts counted",
+      "malformed outputs counted",
+      "schema failures counted",
+      "retries counted",
+      "non-deterministic instability measured where relevant",
+      "refusal failures counted where response is required",
+      "grounding failures counted",
+      "unavailable service behavior recorded"
+    ],
+    "reproducibilityRequirements": [
+      "capability ID",
+      "candidate execution method",
+      "provider where applicable",
+      "model where applicable",
+      "model/version identifier where applicable",
+      "benchmark dataset version/hash",
+      "prompt/template version where applicable",
+      "execution configuration",
+      "timestamp",
+      "run ID",
+      "response/output",
+      "latency",
+      "usage",
+      "retry count",
+      "pass/fail gates",
+      "scoring breakdown",
+      "cost calculation",
+      "disqualification reason",
+      "final eligibility status"
+    ],
+    "safetyGate": "Deterministic tenant, authorization, privacy, policy, and evidence controls must remain authoritative.",
+    "safetyRelevant": false,
+    "thresholdPolicy": "No numeric pass/fail threshold is approved by MS-002; thresholds must be owner-approved before live benchmarking or selection.",
+    "thresholdState": {
+      "metricDefined": true,
+      "ownerOrEmpiricalThresholdRequired": true,
+      "passByDefaultAllowed": false
+    },
+    "usageMeasurement": {
+      "failedRequestCountRequired": true,
+      "inputUsageRequired": true,
+      "outputUsageRequired": true,
+      "requestCountRequired": true,
+      "retryCountRequired": true
+    }
+  },
+  {
+    "acceptanceDecisionState": "OWNER_APPROVAL_REQUIRED_AFTER_EVIDENCE",
+    "aggregateScoringPolicy": {
+      "aggregateScoreMayOverrideMandatoryGate": false,
+      "hardGatesBeforeAggregateScore": true,
+      "safetyFailureCanBeAveragedOut": false,
+      "selectionRule": "cost_constrained_sufficiency_not_highest_score_wins"
+    },
+    "allowedStrategiesForFutureEvaluation": [
+      "deterministic_rules",
+      "statistical_or_mathematical_methods",
+      "conventional_algorithms",
+      "conventional_machine_learning",
+      "local_models",
+      "low_cost_hosted_models",
+      "human_review"
+    ],
+    "authoritativeInputs": [
+      "bridge-api/services/predictionEngine.js",
+      "bridge-api/routes/ai.js"
+    ],
+    "benchmarkDatasetReference": {
+      "providerOutputMayBecomeGroundTruth": false,
+      "requiredCaseTypes": [
+        "known-answer cases",
+        "edge cases",
+        "missing evidence",
+        "conflicting evidence",
+        "stale evidence",
+        "malformed evidence",
+        "tenant mismatch",
+        "normal/no-exception cases",
+        "difficult but valid cases"
+      ],
+      "safetyCriticalCasesRequired": false,
+      "source": "future owner-approved synthetic/offline benchmark dataset",
+      "versionHashRequiredForFutureRuns": true
+    },
+    "benchmarkPlanStatus": "REPOSITORY_DEFINED",
+    "benchmarkRequirement": "REQUIRED_D1",
+    "capabilityFamily": "prediction_or_lightweight_computation",
+    "capabilityId": "prediction.product_demand_forecast",
+    "capabilityName": "Product demand forecast",
+    "costMeasurement": {
+      "aggregateCostEstimateRequired": true,
+      "currentProviderPricingInserted": false,
+      "operationalVolumeEstimateRequired": true,
+      "perCapabilityExecutionCostRequired": true,
+      "retryAndFailureOverheadIncluded": true,
+      "unitCostRequiredForFutureRun": true
+    },
+    "costPolicy": "Choose the least expensive adequate future strategy only after evidence satisfies quality, safety, reliability, latency, governance, and fallback requirements.",
+    "d1MustNotDefaultToGenerativeAi": true,
+    "deterministicAuthorityBoundary": "Not safety-authoritative.",
+    "domain": "Customer Intelligence",
+    "executionClass": "D1",
+    "expectedOutputContract": {
+      "outputType": "prediction_or_classification_record",
+      "prohibitedProperties": [
+        "unsupported_causation",
+        "fabricated_evidence",
+        "provider_selected",
+        "model_selected"
+      ],
+      "requiredProperties": [
+        "prediction_value_or_label",
+        "confidence_or_uncertainty",
+        "evidence_lineage",
+        "missing_data_flags",
+        "tenant_context"
+      ]
+    },
+    "failureConditions": [
+      "timeout",
+      "request failure",
+      "malformed output",
+      "schema failure",
+      "grounding failure",
+      "refusal failure where response is required",
+      "unsafe certainty from insufficient evidence",
+      "fallback unavailable"
+    ],
+    "futureAiRoles": [
+      "PREDICTION",
+      "RANKING"
+    ],
+    "hardDisqualificationConditions": [
+      "fabricating customer/account facts",
+      "cross-Organization leakage",
+      "presenting unknown evidence as known",
+      "converting insufficient evidence into certainty",
+      "fabricating source evidence",
+      "malformed required output contract",
+      "provider or model selection asserted by benchmark evidence"
+    ],
+    "intendedFunction": "Evaluate future lightweight computational approaches for Product demand forecast without defaulting to generative AI.",
+    "latencyMeasurement": {
+      "metricDefined": true,
+      "productionSloClaimed": false,
+      "thresholdStatus": "OWNER_OR_EMPIRICAL_THRESHOLD_REQUIRED"
+    },
+    "liveBenchmarkStatus": "NOT_STARTED",
+    "minimumAcceptanceEvidence": [
+      "input dataset lineage and fixture version recorded",
+      "expected output contract documented",
+      "deterministic authority boundary preserved",
+      "quality observations captured without selecting a winner",
+      "latency observations captured without production SLO claims",
+      "cost observations captured without pricing approval",
+      "failure mode and fallback behavior recorded",
+      "tenant isolation and privacy controls verified",
+      "human review requirement recorded when applicable"
+    ],
+    "modelBenchmarkRequired": true,
+    "modelSelectionStatus": "NOT_STARTED",
+    "productionActivationStatus": "NOT_STARTED",
+    "providerSelectionStatus": "NOT_STARTED",
+    "qualityDimensions": [
+      "prediction_error_defined_metric_threshold_deferred",
+      "calibration_defined_metric_threshold_deferred",
+      "precision_recall_defined_metric_threshold_deferred_where_classification_applies",
+      "false_positive_false_negative_consequence_recording",
+      "stability_across_repeated_runs",
+      "missing_data_behavior",
+      "stale_data_behavior",
+      "tenant_isolation",
+      "reproducibility"
+    ],
+    "rejectionConditions": [
+      "model output overrides deterministic safety or legal controls",
+      "provider or model is selected before owner approval",
+      "hosted benchmark is executed before owner approval",
+      "production orchestration or runtime activation is claimed",
+      "benchmark data uses production data without separate approval",
+      "cost is used to waive safety, compliance, privacy, tenant isolation, or minimum quality gates"
+    ],
+    "reliabilityRequirements": [
+      "request failures counted",
+      "timeouts counted",
+      "malformed outputs counted",
+      "schema failures counted",
+      "retries counted",
+      "non-deterministic instability measured where relevant",
+      "refusal failures counted where response is required",
+      "grounding failures counted",
+      "unavailable service behavior recorded"
+    ],
+    "reproducibilityRequirements": [
+      "capability ID",
+      "candidate execution method",
+      "provider where applicable",
+      "model where applicable",
+      "model/version identifier where applicable",
+      "benchmark dataset version/hash",
+      "prompt/template version where applicable",
+      "execution configuration",
+      "timestamp",
+      "run ID",
+      "response/output",
+      "latency",
+      "usage",
+      "retry count",
+      "pass/fail gates",
+      "scoring breakdown",
+      "cost calculation",
+      "disqualification reason",
+      "final eligibility status"
+    ],
+    "safetyGate": "Deterministic tenant, authorization, privacy, policy, and evidence controls must remain authoritative.",
+    "safetyRelevant": false,
+    "thresholdPolicy": "No numeric pass/fail threshold is approved by MS-002; thresholds must be owner-approved before live benchmarking or selection.",
+    "thresholdState": {
+      "metricDefined": true,
+      "ownerOrEmpiricalThresholdRequired": true,
+      "passByDefaultAllowed": false
+    },
+    "usageMeasurement": {
+      "failedRequestCountRequired": true,
+      "inputUsageRequired": true,
+      "outputUsageRequired": true,
+      "requestCountRequired": true,
+      "retryCountRequired": true
+    }
+  },
+  {
+    "acceptanceDecisionState": "OWNER_APPROVAL_REQUIRED_AFTER_EVIDENCE",
+    "aggregateScoringPolicy": {
+      "aggregateScoreMayOverrideMandatoryGate": false,
+      "hardGatesBeforeAggregateScore": true,
+      "safetyFailureCanBeAveragedOut": false,
+      "selectionRule": "cost_constrained_sufficiency_not_highest_score_wins"
+    },
+    "allowedStrategiesForFutureEvaluation": [
+      "deterministic_rules",
+      "statistical_or_mathematical_methods",
+      "conventional_algorithms",
+      "conventional_machine_learning",
+      "local_models",
+      "low_cost_hosted_models",
+      "human_review"
+    ],
+    "authoritativeInputs": [
+      "bridge-api/services/predictionEngine.js",
+      "bridge-api/scripts/check-prediction-engine.cjs"
+    ],
+    "benchmarkDatasetReference": {
+      "providerOutputMayBecomeGroundTruth": false,
+      "requiredCaseTypes": [
+        "known-answer cases",
+        "edge cases",
+        "missing evidence",
+        "conflicting evidence",
+        "stale evidence",
+        "malformed evidence",
+        "tenant mismatch",
+        "normal/no-exception cases",
+        "difficult but valid cases"
+      ],
+      "safetyCriticalCasesRequired": false,
+      "source": "future owner-approved synthetic/offline benchmark dataset",
+      "versionHashRequiredForFutureRuns": true
+    },
+    "benchmarkPlanStatus": "REPOSITORY_DEFINED",
+    "benchmarkRequirement": "REQUIRED_D1",
+    "capabilityFamily": "prediction_or_lightweight_computation",
+    "capabilityId": "prediction.route_completion_forecast",
+    "capabilityName": "Route completion forecast",
+    "costMeasurement": {
+      "aggregateCostEstimateRequired": true,
+      "currentProviderPricingInserted": false,
+      "operationalVolumeEstimateRequired": true,
+      "perCapabilityExecutionCostRequired": true,
+      "retryAndFailureOverheadIncluded": true,
+      "unitCostRequiredForFutureRun": true
+    },
+    "costPolicy": "Choose the least expensive adequate future strategy only after evidence satisfies quality, safety, reliability, latency, governance, and fallback requirements.",
+    "d1MustNotDefaultToGenerativeAi": true,
+    "deterministicAuthorityBoundary": "Not safety-authoritative.",
+    "domain": "Operations Intelligence",
+    "executionClass": "D1",
+    "expectedOutputContract": {
+      "outputType": "prediction_or_classification_record",
+      "prohibitedProperties": [
+        "unsupported_causation",
+        "fabricated_evidence",
+        "provider_selected",
+        "model_selected"
+      ],
+      "requiredProperties": [
+        "prediction_value_or_label",
+        "confidence_or_uncertainty",
+        "evidence_lineage",
+        "missing_data_flags",
+        "tenant_context"
+      ]
+    },
+    "failureConditions": [
+      "timeout",
+      "request failure",
+      "malformed output",
+      "schema failure",
+      "grounding failure",
+      "refusal failure where response is required",
+      "unsafe certainty from insufficient evidence",
+      "fallback unavailable"
+    ],
+    "futureAiRoles": [
+      "PREDICTION"
+    ],
+    "hardDisqualificationConditions": [
+      "cross-Organization leakage",
+      "presenting unknown evidence as known",
+      "converting insufficient evidence into certainty",
+      "fabricating source evidence",
+      "malformed required output contract",
+      "provider or model selection asserted by benchmark evidence"
+    ],
+    "intendedFunction": "Evaluate future lightweight computational approaches for Route completion forecast without defaulting to generative AI.",
+    "latencyMeasurement": {
+      "metricDefined": true,
+      "productionSloClaimed": false,
+      "thresholdStatus": "OWNER_OR_EMPIRICAL_THRESHOLD_REQUIRED"
+    },
+    "liveBenchmarkStatus": "NOT_STARTED",
+    "minimumAcceptanceEvidence": [
+      "input dataset lineage and fixture version recorded",
+      "expected output contract documented",
+      "deterministic authority boundary preserved",
+      "quality observations captured without selecting a winner",
+      "latency observations captured without production SLO claims",
+      "cost observations captured without pricing approval",
+      "failure mode and fallback behavior recorded",
+      "tenant isolation and privacy controls verified",
+      "human review requirement recorded when applicable"
+    ],
+    "modelBenchmarkRequired": true,
+    "modelSelectionStatus": "NOT_STARTED",
+    "productionActivationStatus": "NOT_STARTED",
+    "providerSelectionStatus": "NOT_STARTED",
+    "qualityDimensions": [
+      "prediction_error_defined_metric_threshold_deferred",
+      "calibration_defined_metric_threshold_deferred",
+      "precision_recall_defined_metric_threshold_deferred_where_classification_applies",
+      "false_positive_false_negative_consequence_recording",
+      "stability_across_repeated_runs",
+      "missing_data_behavior",
+      "stale_data_behavior",
+      "tenant_isolation",
+      "reproducibility"
+    ],
+    "rejectionConditions": [
+      "model output overrides deterministic safety or legal controls",
+      "provider or model is selected before owner approval",
+      "hosted benchmark is executed before owner approval",
+      "production orchestration or runtime activation is claimed",
+      "benchmark data uses production data without separate approval",
+      "cost is used to waive safety, compliance, privacy, tenant isolation, or minimum quality gates"
+    ],
+    "reliabilityRequirements": [
+      "request failures counted",
+      "timeouts counted",
+      "malformed outputs counted",
+      "schema failures counted",
+      "retries counted",
+      "non-deterministic instability measured where relevant",
+      "refusal failures counted where response is required",
+      "grounding failures counted",
+      "unavailable service behavior recorded"
+    ],
+    "reproducibilityRequirements": [
+      "capability ID",
+      "candidate execution method",
+      "provider where applicable",
+      "model where applicable",
+      "model/version identifier where applicable",
+      "benchmark dataset version/hash",
+      "prompt/template version where applicable",
+      "execution configuration",
+      "timestamp",
+      "run ID",
+      "response/output",
+      "latency",
+      "usage",
+      "retry count",
+      "pass/fail gates",
+      "scoring breakdown",
+      "cost calculation",
+      "disqualification reason",
+      "final eligibility status"
+    ],
+    "safetyGate": "Deterministic tenant, authorization, privacy, policy, and evidence controls must remain authoritative.",
+    "safetyRelevant": false,
+    "thresholdPolicy": "No numeric pass/fail threshold is approved by MS-002; thresholds must be owner-approved before live benchmarking or selection.",
+    "thresholdState": {
+      "metricDefined": true,
+      "ownerOrEmpiricalThresholdRequired": true,
+      "passByDefaultAllowed": false
+    },
+    "usageMeasurement": {
+      "failedRequestCountRequired": true,
+      "inputUsageRequired": true,
+      "outputUsageRequired": true,
+      "requestCountRequired": true,
+      "retryCountRequired": true
+    }
+  },
+  {
+    "acceptanceDecisionState": "OWNER_APPROVAL_REQUIRED_AFTER_EVIDENCE",
+    "aggregateScoringPolicy": {
+      "aggregateScoreMayOverrideMandatoryGate": false,
+      "hardGatesBeforeAggregateScore": true,
+      "safetyFailureCanBeAveragedOut": false,
+      "selectionRule": "cost_constrained_sufficiency_not_highest_score_wins"
+    },
+    "allowedStrategiesForFutureEvaluation": [
+      "deterministic_rules",
+      "conventional_algorithms",
+      "statistical_or_mathematical_methods",
+      "optimization_engines",
+      "conventional_machine_learning",
+      "local_models",
+      "low_cost_hosted_models",
+      "balanced_hosted_models",
+      "premium_hosted_models",
+      "human_review"
+    ],
+    "authoritativeInputs": [
+      "docs/implementation/enterprise-intelligence-capability-registry/generated/capability_registry.json",
+      "bridge-api/routes/ai.js"
+    ],
+    "benchmarkDatasetReference": {
+      "providerOutputMayBecomeGroundTruth": false,
+      "requiredCaseTypes": [
+        "known-answer cases",
+        "edge cases",
+        "missing evidence",
+        "conflicting evidence",
+        "stale evidence",
+        "malformed evidence",
+        "tenant mismatch",
+        "normal/no-exception cases",
+        "difficult but valid cases"
+      ],
+      "safetyCriticalCasesRequired": true,
+      "source": "future owner-approved synthetic/offline benchmark dataset",
+      "versionHashRequiredForFutureRuns": true
+    },
+    "benchmarkPlanStatus": "REPOSITORY_DEFINED",
+    "benchmarkRequirement": "REQUIRED_D2",
+    "capabilityFamily": "explanation_or_presentation",
+    "capabilityId": "route.risk_explanation.presentation",
+    "capabilityName": "Route risk explanation presentation",
+    "costMeasurement": {
+      "aggregateCostEstimateRequired": true,
+      "currentProviderPricingInserted": false,
+      "operationalVolumeEstimateRequired": true,
+      "perCapabilityExecutionCostRequired": true,
+      "retryAndFailureOverheadIncluded": true,
+      "unitCostRequiredForFutureRun": true
+    },
+    "costPolicy": "Choose the least expensive adequate future strategy only after evidence satisfies quality, safety, reliability, latency, governance, and fallback requirements.",
+    "d1MustNotDefaultToGenerativeAi": false,
+    "deterministicAuthorityBoundary": "Deterministic route safety decision remains D0; AI may only explain supplied route facts.",
+    "domain": "Route Intelligence",
+    "executionClass": "D2",
+    "expectedOutputContract": {
+      "outputType": "grounded_summary_or_explanation",
+      "prohibitedProperties": [
+        "fabricated_evidence",
+        "deterministic_override",
+        "unsupported_recommendation"
+      ],
+      "requiredProperties": [
+        "summary_or_explanation",
+        "source_evidence_references",
+        "limitations_or_unknowns",
+        "tenant_context"
+      ]
+    },
+    "failureConditions": [
+      "timeout",
+      "request failure",
+      "malformed output",
+      "schema failure",
+      "grounding failure",
+      "refusal failure where response is required",
+      "unsafe certainty from insufficient evidence",
+      "fallback unavailable"
+    ],
+    "futureAiRoles": [
+      "EXPLANATION",
+      "SUMMARIZATION"
+    ],
+    "hardDisqualificationConditions": [
+      "contradicting authoritative route restriction",
+      "inventing safe clearance",
+      "suppressing known safety blocker",
+      "changing vehicle/route compatibility facts",
+      "changing warehouse readiness facts",
+      "fabricating driver operational evidence",
+      "cross-Organization leakage",
+      "presenting unknown evidence as known",
+      "converting insufficient evidence into certainty",
+      "fabricating source evidence",
+      "malformed required output contract",
+      "provider or model selection asserted by benchmark evidence"
+    ],
+    "intendedFunction": "Evaluate future advisory presentation quality for Route risk explanation presentation while preserving supplied TSR evidence and deterministic authority.",
+    "latencyMeasurement": {
+      "metricDefined": true,
+      "productionSloClaimed": false,
+      "thresholdStatus": "OWNER_OR_EMPIRICAL_THRESHOLD_REQUIRED"
+    },
+    "liveBenchmarkStatus": "NOT_STARTED",
+    "minimumAcceptanceEvidence": [
+      "input dataset lineage and fixture version recorded",
+      "expected output contract documented",
+      "deterministic authority boundary preserved",
+      "quality observations captured without selecting a winner",
+      "latency observations captured without production SLO claims",
+      "cost observations captured without pricing approval",
+      "failure mode and fallback behavior recorded",
+      "tenant isolation and privacy controls verified",
+      "human review requirement recorded when applicable"
+    ],
+    "modelBenchmarkRequired": true,
+    "modelSelectionStatus": "NOT_STARTED",
+    "productionActivationStatus": "NOT_STARTED",
+    "providerSelectionStatus": "NOT_STARTED",
+    "qualityDimensions": [
+      "factual_consistency",
+      "grounding_to_supplied_evidence",
+      "instruction_adherence",
+      "structured_output_validity",
+      "completeness",
+      "relevance",
+      "concision",
+      "deterministic_authority_preservation",
+      "uncertainty_or_refusal_behavior",
+      "explanation_usefulness",
+      "hallucination_or_error_rate_defined_metric_threshold_deferred"
+    ],
+    "rejectionConditions": [
+      "model output overrides deterministic safety or legal controls",
+      "provider or model is selected before owner approval",
+      "hosted benchmark is executed before owner approval",
+      "production orchestration or runtime activation is claimed",
+      "benchmark data uses production data without separate approval",
+      "cost is used to waive safety, compliance, privacy, tenant isolation, or minimum quality gates"
+    ],
+    "reliabilityRequirements": [
+      "request failures counted",
+      "timeouts counted",
+      "malformed outputs counted",
+      "schema failures counted",
+      "retries counted",
+      "non-deterministic instability measured where relevant",
+      "refusal failures counted where response is required",
+      "grounding failures counted",
+      "unavailable service behavior recorded"
+    ],
+    "reproducibilityRequirements": [
+      "capability ID",
+      "candidate execution method",
+      "provider where applicable",
+      "model where applicable",
+      "model/version identifier where applicable",
+      "benchmark dataset version/hash",
+      "prompt/template version where applicable",
+      "execution configuration",
+      "timestamp",
+      "run ID",
+      "response/output",
+      "latency",
+      "usage",
+      "retry count",
+      "pass/fail gates",
+      "scoring breakdown",
+      "cost calculation",
+      "disqualification reason",
+      "final eligibility status"
+    ],
+    "safetyGate": "Deterministic safety, legal, physical, tenant, authorization, and policy controls must remain authoritative and non-overridable.",
+    "safetyRelevant": true,
+    "thresholdPolicy": "No numeric pass/fail threshold is approved by MS-002; thresholds must be owner-approved before live benchmarking or selection.",
+    "thresholdState": {
+      "metricDefined": true,
+      "ownerOrEmpiricalThresholdRequired": true,
+      "passByDefaultAllowed": false
+    },
+    "usageMeasurement": {
+      "failedRequestCountRequired": true,
+      "inputUsageRequired": true,
+      "outputUsageRequired": true,
+      "requestCountRequired": true,
+      "retryCountRequired": true
+    }
+  },
+  {
+    "acceptanceDecisionState": "OWNER_APPROVAL_REQUIRED_AFTER_EVIDENCE",
+    "aggregateScoringPolicy": {
+      "aggregateScoreMayOverrideMandatoryGate": false,
+      "hardGatesBeforeAggregateScore": true,
+      "safetyFailureCanBeAveragedOut": false,
+      "selectionRule": "cost_constrained_sufficiency_not_highest_score_wins"
+    },
+    "allowedStrategiesForFutureEvaluation": [
+      "deterministic_rules",
+      "conventional_algorithms",
+      "statistical_or_mathematical_methods",
+      "optimization_engines",
+      "conventional_machine_learning",
+      "local_models",
+      "low_cost_hosted_models",
+      "balanced_hosted_models",
+      "premium_hosted_models",
+      "human_review"
+    ],
+    "authoritativeInputs": [
+      "docs/implementation/safety-intelligence-foundation/generated/SAFETY_INTELLIGENCE_SUMMARY.md",
+      "bridge-api/routes/ai.js"
+    ],
+    "benchmarkDatasetReference": {
+      "providerOutputMayBecomeGroundTruth": false,
+      "requiredCaseTypes": [
+        "known-answer cases",
+        "edge cases",
+        "missing evidence",
+        "conflicting evidence",
+        "stale evidence",
+        "malformed evidence",
+        "tenant mismatch",
+        "normal/no-exception cases",
+        "difficult but valid cases"
+      ],
+      "safetyCriticalCasesRequired": true,
+      "source": "future owner-approved synthetic/offline benchmark dataset",
+      "versionHashRequiredForFutureRuns": true
+    },
+    "benchmarkPlanStatus": "REPOSITORY_DEFINED",
+    "benchmarkRequirement": "REQUIRED_D2",
+    "capabilityFamily": "explanation_or_presentation",
+    "capabilityId": "safety.narrative_summary.presentation",
+    "capabilityName": "Safety narrative summary presentation",
+    "costMeasurement": {
+      "aggregateCostEstimateRequired": true,
+      "currentProviderPricingInserted": false,
+      "operationalVolumeEstimateRequired": true,
+      "perCapabilityExecutionCostRequired": true,
+      "retryAndFailureOverheadIncluded": true,
+      "unitCostRequiredForFutureRun": true
+    },
+    "costPolicy": "Choose the least expensive adequate future strategy only after evidence satisfies quality, safety, reliability, latency, governance, and fallback requirements.",
+    "d1MustNotDefaultToGenerativeAi": false,
+    "deterministicAuthorityBoundary": "D0 safety blockers and authority traces remain authoritative; AI may only summarize supplied evidence.",
+    "domain": "Safety Intelligence",
+    "executionClass": "D2",
+    "expectedOutputContract": {
+      "outputType": "grounded_summary_or_explanation",
+      "prohibitedProperties": [
+        "fabricated_evidence",
+        "deterministic_override",
+        "unsupported_recommendation"
+      ],
+      "requiredProperties": [
+        "summary_or_explanation",
+        "source_evidence_references",
+        "limitations_or_unknowns",
+        "tenant_context"
+      ]
+    },
+    "failureConditions": [
+      "timeout",
+      "request failure",
+      "malformed output",
+      "schema failure",
+      "grounding failure",
+      "refusal failure where response is required",
+      "unsafe certainty from insufficient evidence",
+      "fallback unavailable"
+    ],
+    "futureAiRoles": [
+      "SUMMARIZATION",
+      "EXPLANATION"
+    ],
+    "hardDisqualificationConditions": [
+      "contradicting authoritative route restriction",
+      "inventing safe clearance",
+      "suppressing known safety blocker",
+      "changing vehicle/route compatibility facts",
+      "changing warehouse readiness facts",
+      "fabricating driver operational evidence",
+      "cross-Organization leakage",
+      "presenting unknown evidence as known",
+      "converting insufficient evidence into certainty",
+      "fabricating source evidence",
+      "malformed required output contract",
+      "provider or model selection asserted by benchmark evidence"
+    ],
+    "intendedFunction": "Evaluate future advisory presentation quality for Safety narrative summary presentation while preserving supplied TSR evidence and deterministic authority.",
+    "latencyMeasurement": {
+      "metricDefined": true,
+      "productionSloClaimed": false,
+      "thresholdStatus": "OWNER_OR_EMPIRICAL_THRESHOLD_REQUIRED"
+    },
+    "liveBenchmarkStatus": "NOT_STARTED",
+    "minimumAcceptanceEvidence": [
+      "input dataset lineage and fixture version recorded",
+      "expected output contract documented",
+      "deterministic authority boundary preserved",
+      "quality observations captured without selecting a winner",
+      "latency observations captured without production SLO claims",
+      "cost observations captured without pricing approval",
+      "failure mode and fallback behavior recorded",
+      "tenant isolation and privacy controls verified",
+      "human review requirement recorded when applicable"
+    ],
+    "modelBenchmarkRequired": true,
+    "modelSelectionStatus": "NOT_STARTED",
+    "productionActivationStatus": "NOT_STARTED",
+    "providerSelectionStatus": "NOT_STARTED",
+    "qualityDimensions": [
+      "factual_consistency",
+      "grounding_to_supplied_evidence",
+      "instruction_adherence",
+      "structured_output_validity",
+      "completeness",
+      "relevance",
+      "concision",
+      "deterministic_authority_preservation",
+      "uncertainty_or_refusal_behavior",
+      "explanation_usefulness",
+      "hallucination_or_error_rate_defined_metric_threshold_deferred"
+    ],
+    "rejectionConditions": [
+      "model output overrides deterministic safety or legal controls",
+      "provider or model is selected before owner approval",
+      "hosted benchmark is executed before owner approval",
+      "production orchestration or runtime activation is claimed",
+      "benchmark data uses production data without separate approval",
+      "cost is used to waive safety, compliance, privacy, tenant isolation, or minimum quality gates"
+    ],
+    "reliabilityRequirements": [
+      "request failures counted",
+      "timeouts counted",
+      "malformed outputs counted",
+      "schema failures counted",
+      "retries counted",
+      "non-deterministic instability measured where relevant",
+      "refusal failures counted where response is required",
+      "grounding failures counted",
+      "unavailable service behavior recorded"
+    ],
+    "reproducibilityRequirements": [
+      "capability ID",
+      "candidate execution method",
+      "provider where applicable",
+      "model where applicable",
+      "model/version identifier where applicable",
+      "benchmark dataset version/hash",
+      "prompt/template version where applicable",
+      "execution configuration",
+      "timestamp",
+      "run ID",
+      "response/output",
+      "latency",
+      "usage",
+      "retry count",
+      "pass/fail gates",
+      "scoring breakdown",
+      "cost calculation",
+      "disqualification reason",
+      "final eligibility status"
+    ],
+    "safetyGate": "Deterministic safety, legal, physical, tenant, authorization, and policy controls must remain authoritative and non-overridable.",
+    "safetyRelevant": true,
+    "thresholdPolicy": "No numeric pass/fail threshold is approved by MS-002; thresholds must be owner-approved before live benchmarking or selection.",
+    "thresholdState": {
+      "metricDefined": true,
+      "ownerOrEmpiricalThresholdRequired": true,
+      "passByDefaultAllowed": false
+    },
+    "usageMeasurement": {
+      "failedRequestCountRequired": true,
+      "inputUsageRequired": true,
+      "outputUsageRequired": true,
+      "requestCountRequired": true,
+      "retryCountRequired": true
+    }
+  },
+  {
+    "acceptanceDecisionState": "OWNER_APPROVAL_REQUIRED_AFTER_EVIDENCE",
+    "aggregateScoringPolicy": {
+      "aggregateScoreMayOverrideMandatoryGate": false,
+      "hardGatesBeforeAggregateScore": true,
+      "safetyFailureCanBeAveragedOut": false,
+      "selectionRule": "cost_constrained_sufficiency_not_highest_score_wins"
+    },
+    "allowedStrategiesForFutureEvaluation": [
+      "deterministic_rules",
+      "conventional_algorithms",
+      "statistical_or_mathematical_methods",
+      "optimization_engines",
+      "conventional_machine_learning",
+      "local_models",
+      "low_cost_hosted_models",
+      "balanced_hosted_models",
+      "premium_hosted_models",
+      "human_review"
+    ],
+    "authoritativeInputs": [
+      "bridge-api/services/intelligenceExecution/supervisorAiAdapter.js",
+      "bridge-api/services/supervisorIntelligence.js"
+    ],
+    "benchmarkDatasetReference": {
+      "providerOutputMayBecomeGroundTruth": false,
+      "requiredCaseTypes": [
+        "known-answer cases",
+        "edge cases",
+        "missing evidence",
+        "conflicting evidence",
+        "stale evidence",
+        "malformed evidence",
+        "tenant mismatch",
+        "normal/no-exception cases",
+        "difficult but valid cases"
+      ],
+      "safetyCriticalCasesRequired": true,
+      "source": "future owner-approved synthetic/offline benchmark dataset",
+      "versionHashRequiredForFutureRuns": true
+    },
+    "benchmarkPlanStatus": "REPOSITORY_DEFINED",
+    "benchmarkRequirement": "REQUIRED_D2",
+    "capabilityFamily": "explanation_or_presentation",
+    "capabilityId": "supervisor.daily_operations_report.narrative",
+    "capabilityName": "Supervisor daily operations report narrative",
+    "costMeasurement": {
+      "aggregateCostEstimateRequired": true,
+      "currentProviderPricingInserted": false,
+      "operationalVolumeEstimateRequired": true,
+      "perCapabilityExecutionCostRequired": true,
+      "retryAndFailureOverheadIncluded": true,
+      "unitCostRequiredForFutureRun": true
+    },
+    "costPolicy": "Choose the least expensive adequate future strategy only after evidence satisfies quality, safety, reliability, latency, governance, and fallback requirements.",
+    "d1MustNotDefaultToGenerativeAi": false,
+    "deterministicAuthorityBoundary": "Deterministic supervisor context remains source of truth; hosted narrative is advisory only.",
+    "domain": "Supervisor Intelligence",
+    "executionClass": "D2",
+    "expectedOutputContract": {
+      "outputType": "grounded_summary_or_explanation",
+      "prohibitedProperties": [
+        "fabricated_evidence",
+        "deterministic_override",
+        "unsupported_recommendation"
+      ],
+      "requiredProperties": [
+        "summary_or_explanation",
+        "source_evidence_references",
+        "limitations_or_unknowns",
+        "tenant_context"
+      ]
+    },
+    "failureConditions": [
+      "timeout",
+      "request failure",
+      "malformed output",
+      "schema failure",
+      "grounding failure",
+      "refusal failure where response is required",
+      "unsafe certainty from insufficient evidence",
+      "fallback unavailable"
+    ],
+    "futureAiRoles": [
+      "SUMMARIZATION",
+      "EXPLANATION"
+    ],
+    "hardDisqualificationConditions": [
+      "contradicting authoritative route restriction",
+      "inventing safe clearance",
+      "suppressing known safety blocker",
+      "changing vehicle/route compatibility facts",
+      "changing warehouse readiness facts",
+      "fabricating driver operational evidence",
+      "cross-Organization leakage",
+      "presenting unknown evidence as known",
+      "converting insufficient evidence into certainty",
+      "fabricating source evidence",
+      "malformed required output contract",
+      "provider or model selection asserted by benchmark evidence"
+    ],
+    "intendedFunction": "Evaluate future advisory presentation quality for Supervisor daily operations report narrative while preserving supplied TSR evidence and deterministic authority.",
+    "latencyMeasurement": {
+      "metricDefined": true,
+      "productionSloClaimed": false,
+      "thresholdStatus": "OWNER_OR_EMPIRICAL_THRESHOLD_REQUIRED"
+    },
+    "liveBenchmarkStatus": "NOT_STARTED",
+    "minimumAcceptanceEvidence": [
+      "input dataset lineage and fixture version recorded",
+      "expected output contract documented",
+      "deterministic authority boundary preserved",
+      "quality observations captured without selecting a winner",
+      "latency observations captured without production SLO claims",
+      "cost observations captured without pricing approval",
+      "failure mode and fallback behavior recorded",
+      "tenant isolation and privacy controls verified",
+      "human review requirement recorded when applicable"
+    ],
+    "modelBenchmarkRequired": true,
+    "modelSelectionStatus": "NOT_STARTED",
+    "productionActivationStatus": "NOT_STARTED",
+    "providerSelectionStatus": "NOT_STARTED",
+    "qualityDimensions": [
+      "factual_consistency",
+      "grounding_to_supplied_evidence",
+      "instruction_adherence",
+      "structured_output_validity",
+      "completeness",
+      "relevance",
+      "concision",
+      "deterministic_authority_preservation",
+      "uncertainty_or_refusal_behavior",
+      "explanation_usefulness",
+      "hallucination_or_error_rate_defined_metric_threshold_deferred"
+    ],
+    "rejectionConditions": [
+      "model output overrides deterministic safety or legal controls",
+      "provider or model is selected before owner approval",
+      "hosted benchmark is executed before owner approval",
+      "production orchestration or runtime activation is claimed",
+      "benchmark data uses production data without separate approval",
+      "cost is used to waive safety, compliance, privacy, tenant isolation, or minimum quality gates"
+    ],
+    "reliabilityRequirements": [
+      "request failures counted",
+      "timeouts counted",
+      "malformed outputs counted",
+      "schema failures counted",
+      "retries counted",
+      "non-deterministic instability measured where relevant",
+      "refusal failures counted where response is required",
+      "grounding failures counted",
+      "unavailable service behavior recorded"
+    ],
+    "reproducibilityRequirements": [
+      "capability ID",
+      "candidate execution method",
+      "provider where applicable",
+      "model where applicable",
+      "model/version identifier where applicable",
+      "benchmark dataset version/hash",
+      "prompt/template version where applicable",
+      "execution configuration",
+      "timestamp",
+      "run ID",
+      "response/output",
+      "latency",
+      "usage",
+      "retry count",
+      "pass/fail gates",
+      "scoring breakdown",
+      "cost calculation",
+      "disqualification reason",
+      "final eligibility status"
+    ],
+    "safetyGate": "Deterministic safety, legal, physical, tenant, authorization, and policy controls must remain authoritative and non-overridable.",
+    "safetyRelevant": true,
+    "thresholdPolicy": "No numeric pass/fail threshold is approved by MS-002; thresholds must be owner-approved before live benchmarking or selection.",
+    "thresholdState": {
+      "metricDefined": true,
+      "ownerOrEmpiricalThresholdRequired": true,
+      "passByDefaultAllowed": false
+    },
+    "usageMeasurement": {
+      "failedRequestCountRequired": true,
+      "inputUsageRequired": true,
+      "outputUsageRequired": true,
+      "requestCountRequired": true,
+      "retryCountRequired": true
+    }
+  },
+  {
+    "acceptanceDecisionState": "OWNER_APPROVAL_REQUIRED_AFTER_EVIDENCE",
+    "aggregateScoringPolicy": {
+      "aggregateScoreMayOverrideMandatoryGate": false,
+      "hardGatesBeforeAggregateScore": true,
+      "safetyFailureCanBeAveragedOut": false,
+      "selectionRule": "cost_constrained_sufficiency_not_highest_score_wins"
+    },
+    "allowedStrategiesForFutureEvaluation": [
+      "deterministic_rules",
+      "conventional_algorithms",
+      "statistical_or_mathematical_methods",
+      "optimization_engines",
+      "conventional_machine_learning",
+      "local_models",
+      "low_cost_hosted_models",
+      "balanced_hosted_models",
+      "premium_hosted_models",
+      "human_review"
+    ],
+    "authoritativeInputs": [
+      "bridge-api/routes/ai.js",
+      "docs/implementation/intelligence-execution-platform-legacy-ai-migration/CURRENT_LEGACY_AI_AUDIT.md"
+    ],
+    "benchmarkDatasetReference": {
+      "providerOutputMayBecomeGroundTruth": false,
+      "requiredCaseTypes": [
+        "known-answer cases",
+        "edge cases",
+        "missing evidence",
+        "conflicting evidence",
+        "stale evidence",
+        "malformed evidence",
+        "tenant mismatch",
+        "normal/no-exception cases",
+        "difficult but valid cases"
+      ],
+      "safetyCriticalCasesRequired": true,
+      "source": "future owner-approved synthetic/offline benchmark dataset",
+      "versionHashRequiredForFutureRuns": true
+    },
+    "benchmarkPlanStatus": "REPOSITORY_DEFINED",
+    "benchmarkRequirement": "REQUIRED_D2",
+    "capabilityFamily": "conversational_response",
+    "capabilityId": "supervisor.freeform_question_answer",
+    "capabilityName": "Supervisor operational question answer",
+    "costMeasurement": {
+      "aggregateCostEstimateRequired": true,
+      "currentProviderPricingInserted": false,
+      "operationalVolumeEstimateRequired": true,
+      "perCapabilityExecutionCostRequired": true,
+      "retryAndFailureOverheadIncluded": true,
+      "unitCostRequiredForFutureRun": true
+    },
+    "costPolicy": "Choose the least expensive adequate future strategy only after evidence satisfies quality, safety, reliability, latency, governance, and fallback requirements.",
+    "d1MustNotDefaultToGenerativeAi": false,
+    "deterministicAuthorityBoundary": "Deterministic safety, legal, physical, route, tenant, and authorization controls remain authoritative.",
+    "domain": "Supervisor Intelligence",
+    "executionClass": "D2",
+    "expectedOutputContract": {
+      "outputType": "grounded_advisory_response",
+      "prohibitedProperties": [
+        "fabricated_operational_fact",
+        "deterministic_override",
+        "cross_organization_content"
+      ],
+      "requiredProperties": [
+        "answer",
+        "source_evidence_references",
+        "uncertainty_or_refusal_when_needed",
+        "tenant_context"
+      ]
+    },
+    "failureConditions": [
+      "timeout",
+      "request failure",
+      "malformed output",
+      "schema failure",
+      "grounding failure",
+      "refusal failure where response is required",
+      "unsafe certainty from insufficient evidence",
+      "fallback unavailable"
+    ],
+    "futureAiRoles": [
+      "CONVERSATION",
+      "REASONING",
+      "SUMMARIZATION"
+    ],
+    "hardDisqualificationConditions": [
+      "contradicting authoritative route restriction",
+      "inventing safe clearance",
+      "suppressing known safety blocker",
+      "changing vehicle/route compatibility facts",
+      "changing warehouse readiness facts",
+      "fabricating driver operational evidence",
+      "cross-Organization leakage",
+      "presenting unknown evidence as known",
+      "converting insufficient evidence into certainty",
+      "fabricating source evidence",
+      "malformed required output contract",
+      "provider or model selection asserted by benchmark evidence"
+    ],
+    "intendedFunction": "Evaluate future advisory presentation quality for Supervisor operational question answer while preserving supplied TSR evidence and deterministic authority.",
+    "latencyMeasurement": {
+      "metricDefined": true,
+      "productionSloClaimed": false,
+      "thresholdStatus": "OWNER_OR_EMPIRICAL_THRESHOLD_REQUIRED"
+    },
+    "liveBenchmarkStatus": "NOT_STARTED",
+    "minimumAcceptanceEvidence": [
+      "input dataset lineage and fixture version recorded",
+      "expected output contract documented",
+      "deterministic authority boundary preserved",
+      "quality observations captured without selecting a winner",
+      "latency observations captured without production SLO claims",
+      "cost observations captured without pricing approval",
+      "failure mode and fallback behavior recorded",
+      "tenant isolation and privacy controls verified",
+      "human review requirement recorded when applicable"
+    ],
+    "modelBenchmarkRequired": true,
+    "modelSelectionStatus": "NOT_STARTED",
+    "productionActivationStatus": "NOT_STARTED",
+    "providerSelectionStatus": "NOT_STARTED",
+    "qualityDimensions": [
+      "factual_consistency",
+      "grounding_to_supplied_evidence",
+      "instruction_adherence",
+      "structured_output_validity",
+      "completeness",
+      "relevance",
+      "concision",
+      "deterministic_authority_preservation",
+      "uncertainty_or_refusal_behavior",
+      "conversation_context_control",
+      "reasoning_trace_grounded_in_supplied_facts",
+      "hallucination_or_error_rate_defined_metric_threshold_deferred"
+    ],
+    "rejectionConditions": [
+      "model output overrides deterministic safety or legal controls",
+      "provider or model is selected before owner approval",
+      "hosted benchmark is executed before owner approval",
+      "production orchestration or runtime activation is claimed",
+      "benchmark data uses production data without separate approval",
+      "cost is used to waive safety, compliance, privacy, tenant isolation, or minimum quality gates"
+    ],
+    "reliabilityRequirements": [
+      "request failures counted",
+      "timeouts counted",
+      "malformed outputs counted",
+      "schema failures counted",
+      "retries counted",
+      "non-deterministic instability measured where relevant",
+      "refusal failures counted where response is required",
+      "grounding failures counted",
+      "unavailable service behavior recorded"
+    ],
+    "reproducibilityRequirements": [
+      "capability ID",
+      "candidate execution method",
+      "provider where applicable",
+      "model where applicable",
+      "model/version identifier where applicable",
+      "benchmark dataset version/hash",
+      "prompt/template version where applicable",
+      "execution configuration",
+      "timestamp",
+      "run ID",
+      "response/output",
+      "latency",
+      "usage",
+      "retry count",
+      "pass/fail gates",
+      "scoring breakdown",
+      "cost calculation",
+      "disqualification reason",
+      "final eligibility status"
+    ],
+    "safetyGate": "Deterministic safety, legal, physical, tenant, authorization, and policy controls must remain authoritative and non-overridable.",
+    "safetyRelevant": true,
+    "thresholdPolicy": "No numeric pass/fail threshold is approved by MS-002; thresholds must be owner-approved before live benchmarking or selection.",
+    "thresholdState": {
+      "metricDefined": true,
+      "ownerOrEmpiricalThresholdRequired": true,
+      "passByDefaultAllowed": false
+    },
+    "usageMeasurement": {
+      "failedRequestCountRequired": true,
+      "inputUsageRequired": true,
+      "outputUsageRequired": true,
+      "requestCountRequired": true,
+      "retryCountRequired": true
+    }
+  },
+  {
+    "acceptanceDecisionState": "OWNER_APPROVAL_REQUIRED_AFTER_EVIDENCE",
+    "aggregateScoringPolicy": {
+      "aggregateScoreMayOverrideMandatoryGate": false,
+      "hardGatesBeforeAggregateScore": true,
+      "safetyFailureCanBeAveragedOut": false,
+      "selectionRule": "cost_constrained_sufficiency_not_highest_score_wins"
+    },
+    "allowedStrategiesForFutureEvaluation": [
+      "deterministic_rules",
+      "conventional_algorithms",
+      "statistical_or_mathematical_methods",
+      "optimization_engines",
+      "conventional_machine_learning",
+      "local_models",
+      "low_cost_hosted_models",
+      "balanced_hosted_models",
+      "premium_hosted_models",
+      "human_review"
+    ],
+    "authoritativeInputs": [
+      "docs/implementation/warehouse-intelligence-foundation/DETERMINISTIC_EXPLANATIONS.md",
+      "docs/implementation/warehouse-intelligence-foundation/generated/WAREHOUSE_INTELLIGENCE_SUMMARY.md"
+    ],
+    "benchmarkDatasetReference": {
+      "providerOutputMayBecomeGroundTruth": false,
+      "requiredCaseTypes": [
+        "known-answer cases",
+        "edge cases",
+        "missing evidence",
+        "conflicting evidence",
+        "stale evidence",
+        "malformed evidence",
+        "tenant mismatch",
+        "normal/no-exception cases",
+        "difficult but valid cases"
+      ],
+      "safetyCriticalCasesRequired": false,
+      "source": "future owner-approved synthetic/offline benchmark dataset",
+      "versionHashRequiredForFutureRuns": true
+    },
+    "benchmarkPlanStatus": "REPOSITORY_DEFINED",
+    "benchmarkRequirement": "REQUIRED_D2",
+    "capabilityFamily": "explanation_or_presentation",
+    "capabilityId": "warehouse.exception_summary.presentation",
+    "capabilityName": "Warehouse exception summary presentation",
+    "costMeasurement": {
+      "aggregateCostEstimateRequired": true,
+      "currentProviderPricingInserted": false,
+      "operationalVolumeEstimateRequired": true,
+      "perCapabilityExecutionCostRequired": true,
+      "retryAndFailureOverheadIncluded": true,
+      "unitCostRequiredForFutureRun": true
+    },
+    "costPolicy": "Choose the least expensive adequate future strategy only after evidence satisfies quality, safety, reliability, latency, governance, and fallback requirements.",
+    "d1MustNotDefaultToGenerativeAi": false,
+    "deterministicAuthorityBoundary": "D0 warehouse readiness and discrepancy records remain authoritative; AI would only summarize supplied evidence.",
+    "domain": "Warehouse Intelligence",
+    "executionClass": "D2",
+    "expectedOutputContract": {
+      "outputType": "grounded_summary_or_explanation",
+      "prohibitedProperties": [
+        "fabricated_evidence",
+        "deterministic_override",
+        "unsupported_recommendation"
+      ],
+      "requiredProperties": [
+        "summary_or_explanation",
+        "source_evidence_references",
+        "limitations_or_unknowns",
+        "tenant_context"
+      ]
+    },
+    "failureConditions": [
+      "timeout",
+      "request failure",
+      "malformed output",
+      "schema failure",
+      "grounding failure",
+      "refusal failure where response is required",
+      "unsafe certainty from insufficient evidence",
+      "fallback unavailable"
+    ],
+    "futureAiRoles": [
+      "SUMMARIZATION",
+      "EXPLANATION"
+    ],
+    "hardDisqualificationConditions": [
+      "cross-Organization leakage",
+      "presenting unknown evidence as known",
+      "converting insufficient evidence into certainty",
+      "fabricating source evidence",
+      "malformed required output contract",
+      "provider or model selection asserted by benchmark evidence"
+    ],
+    "intendedFunction": "Evaluate future advisory presentation quality for Warehouse exception summary presentation while preserving supplied TSR evidence and deterministic authority.",
+    "latencyMeasurement": {
+      "metricDefined": true,
+      "productionSloClaimed": false,
+      "thresholdStatus": "OWNER_OR_EMPIRICAL_THRESHOLD_REQUIRED"
+    },
+    "liveBenchmarkStatus": "NOT_STARTED",
+    "minimumAcceptanceEvidence": [
+      "input dataset lineage and fixture version recorded",
+      "expected output contract documented",
+      "deterministic authority boundary preserved",
+      "quality observations captured without selecting a winner",
+      "latency observations captured without production SLO claims",
+      "cost observations captured without pricing approval",
+      "failure mode and fallback behavior recorded",
+      "tenant isolation and privacy controls verified",
+      "human review requirement recorded when applicable"
+    ],
+    "modelBenchmarkRequired": true,
+    "modelSelectionStatus": "NOT_STARTED",
+    "productionActivationStatus": "NOT_STARTED",
+    "providerSelectionStatus": "NOT_STARTED",
+    "qualityDimensions": [
+      "factual_consistency",
+      "grounding_to_supplied_evidence",
+      "instruction_adherence",
+      "structured_output_validity",
+      "completeness",
+      "relevance",
+      "concision",
+      "deterministic_authority_preservation",
+      "uncertainty_or_refusal_behavior",
+      "explanation_usefulness",
+      "hallucination_or_error_rate_defined_metric_threshold_deferred"
+    ],
+    "rejectionConditions": [
+      "model output overrides deterministic safety or legal controls",
+      "provider or model is selected before owner approval",
+      "hosted benchmark is executed before owner approval",
+      "production orchestration or runtime activation is claimed",
+      "benchmark data uses production data without separate approval",
+      "cost is used to waive safety, compliance, privacy, tenant isolation, or minimum quality gates"
+    ],
+    "reliabilityRequirements": [
+      "request failures counted",
+      "timeouts counted",
+      "malformed outputs counted",
+      "schema failures counted",
+      "retries counted",
+      "non-deterministic instability measured where relevant",
+      "refusal failures counted where response is required",
+      "grounding failures counted",
+      "unavailable service behavior recorded"
+    ],
+    "reproducibilityRequirements": [
+      "capability ID",
+      "candidate execution method",
+      "provider where applicable",
+      "model where applicable",
+      "model/version identifier where applicable",
+      "benchmark dataset version/hash",
+      "prompt/template version where applicable",
+      "execution configuration",
+      "timestamp",
+      "run ID",
+      "response/output",
+      "latency",
+      "usage",
+      "retry count",
+      "pass/fail gates",
+      "scoring breakdown",
+      "cost calculation",
+      "disqualification reason",
+      "final eligibility status"
+    ],
+    "safetyGate": "Deterministic tenant, authorization, privacy, policy, and evidence controls must remain authoritative.",
+    "safetyRelevant": false,
+    "thresholdPolicy": "No numeric pass/fail threshold is approved by MS-002; thresholds must be owner-approved before live benchmarking or selection.",
+    "thresholdState": {
+      "metricDefined": true,
+      "ownerOrEmpiricalThresholdRequired": true,
+      "passByDefaultAllowed": false
+    },
+    "usageMeasurement": {
+      "failedRequestCountRequired": true,
+      "inputUsageRequired": true,
+      "outputUsageRequired": true,
+      "requestCountRequired": true,
+      "retryCountRequired": true
+    }
+  }
+]

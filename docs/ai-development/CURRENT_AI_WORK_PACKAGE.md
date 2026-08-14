@@ -1,8 +1,8 @@
 # Current AI Work Package
 
-Package ID: MS-001
+Package ID: MS-002
 
-Title: TSR AI Capability & Execution Classification
+Title: Benchmark & Acceptance Framework
 
 Category: MODEL_SELECTION_AND_BENCHMARKING
 
@@ -10,7 +10,7 @@ Status: IMPLEMENTED_UNCOMMITTED
 
 ## Objective
 
-Classify existing TSR intelligence capabilities by execution class so the Model Selection Gate can later benchmark only capabilities that actually require computational or hosted AI execution, without selecting providers, selecting models, activating hosted AI, deploying, migrating, or changing production systems.
+Define the repository-only benchmark and acceptance framework for the Model Selection Gate by consuming the MS-001 benchmark-candidate set, documenting future evidence requirements, gates, metrics, rejection conditions, and owner-decision checkpoints without selecting providers, selecting models, executing hosted benchmarks, activating hosted AI, deploying, migrating, or changing production systems.
 
 ## Milestone 1 Completion State
 
@@ -25,23 +25,19 @@ Milestone 1 is complete from the repository/source-control perspective for exact
 - Operations Intelligence.
 - Safety Intelligence.
 
-All eight domains are committed, validated, and pushed as repository-only foundations. They are not deployed, not migrated, not production-certified, not provider-enabled, and not model-enabled by this roadmap state. MS-001 does not add a ninth intelligence domain.
+All eight domains are committed, validated, and pushed as repository-only foundations. They are not deployed, not migrated, not production-certified, not provider-enabled, and not model-enabled by this roadmap state. MS-002 does not add a ninth intelligence domain.
 
 ## Approved Scope
 
-- Repository-only AI capability inventory.
-- Execution class classification.
-- D0 deterministic no-AI exclusion register.
-- D1 lightweight computational intelligence register.
-- D2 standard AI/generative candidate register.
-- D3 advanced reasoning candidate register.
-- Hybrid deterministic/AI boundary documentation.
-- Safety authority documentation.
-- Existing AI provider usage audit.
-- Predictive capability classification.
-- Voice pipeline decomposition.
-- Future benchmark requirement classification.
-- Cost sensitivity classification.
+- Repository-only benchmark and acceptance framework.
+- MS-001 benchmark-candidate intake.
+- D0 benchmark exclusion preservation.
+- Future benchmark evidence requirements.
+- Evaluation metric families.
+- Safety and governance gates.
+- Cost and latency policy.
+- Acceptance and rejection conditions.
+- Owner-decision checkpoints.
 - Deterministic generated evidence.
 - Validation and controlled negative tests.
 
@@ -50,8 +46,10 @@ All eight domains are committed, validated, and pushed as repository-only founda
 - Ninth intelligence domain.
 - Provider selection.
 - Model selection.
+- Provider ranking.
 - Model ranking.
 - Commercial model benchmarking.
+- Hosted benchmark execution.
 - Pricing research.
 - Premium tier approval.
 - Hosted AI activation.
@@ -70,30 +68,26 @@ All eight domains are committed, validated, and pushed as repository-only founda
 
 ## Dependencies
 
-- AI-IEP-005B.1.
-- AI-IEP-005B.2.
-- SUPERVISOR_INTELLIGENCE.
-- WAREHOUSE_INTELLIGENCE.
-- FLEET_INTELLIGENCE.
-- CUSTOMER_INTELLIGENCE.
-- OPERATIONS_INTELLIGENCE.
-- SAFETY_INTELLIGENCE.
+- MS-001.
 
 ## Acceptance Criteria
 
-- Exactly eight Milestone 1 intelligence domains remain the source domains for classification.
-- Every existing TSR intelligence capability identified by repository evidence has exactly one primary execution class.
-- D0 deterministic capabilities are excluded from model benchmarking.
-- D1/D2/D3 candidates identify future benchmark requirements without selecting a provider or model.
-- Existing provider/model execution paths are audited but not expanded.
-- Predictive capabilities are identified separately from generative AI.
-- Voice-related decomposition states that no approved backend voice intelligence pipeline exists.
-- Safety authority remains deterministic and cannot be overridden by model output or cost.
-- No production orchestration, deployment, migration, production write, provider activation, model selection, commercial benchmark, or ninth domain is introduced.
+- MS-002 consumes the exact MS-001 model-benchmark-required candidate set.
+- D0 deterministic capabilities remain excluded from model benchmarking.
+- Future benchmark acceptance evidence requirements are documented for every candidate.
+- Safety, legal, tenant, privacy, authorization, fallback, and auditability gates remain blocking.
+- Cost is treated as a first-class optimization criterion only after blocking gates and minimum quality requirements.
+- No numeric pass/fail threshold is approved by MS-002.
+- No provider, model, provider ranking, model ranking, hosted benchmark result, pricing approval, premium tier, or production recommendation is selected.
+- Model Selection and Production Orchestration gates remain deferred, incomplete, inactive, and owner-approval gated.
+- No production orchestration, deployment, migration, production write, provider activation, model selection, commercial benchmark execution, or ninth domain is introduced.
 
 ## Required Tests
 
-- `npm.cmd run ms001:generate`
+- `npm.cmd run ms002:generate`
+- `npm.cmd run ms002:validate`
+- `npm.cmd run ms002:check`
+- `npm.cmd run test:ms002`
 - `npm.cmd run ms001:validate`
 - `npm.cmd run ms001:check`
 - `npm.cmd run test:ms001`
@@ -101,39 +95,37 @@ All eight domains are committed, validated, and pushed as repository-only founda
 - `npm.cmd run ai-roadmap:validate`
 - `npm.cmd run ai-roadmap:check`
 - `npm.cmd run test:ai-roadmap`
-- `npm.cmd run test:intelligence-execution`
-- `npm.cmd run test:ai`
+- `npm.cmd run test:benchmark-datasets`
+- `npm.cmd run test:evaluation-engine`
+- `npm.cmd run test:scoring-engine`
+- `npm.cmd run test:cost-governance`
+- `npm.cmd run test:execution-decisions`
+- `npm.cmd run test:decision-governance`
+- `npm.cmd run test:knowledge-graph`
+- `npm.cmd run test:framework-validation`
 - `npm.cmd run test:ai-architecture`
-- `npm.cmd run test:route-intelligence`
-- `npm.cmd run test:driver-intelligence`
-- `npm.cmd run test:supervisor-operational-intelligence`
-- `npm.cmd run test:supervisor-intelligence`
-- `npm.cmd run test:warehouse-intelligence`
-- `npm.cmd run test:fleet-intelligence`
-- `npm.cmd run test:customer-intelligence`
-- `npm.cmd run test:operations-intelligence`
-- `npm.cmd run test:safety-intelligence`
 - `npm.cmd run test:security`
-- `npm.cmd run test:api-tenant`
 
 ## Source-Control Expectation
 
-MS-001 is repository-local, unstaged, and uncommitted until validation passes and a separate controlled commit step is performed. Do not stage, commit, push, deploy, run migrations, activate providers, select models, modify production systems, or begin any ninth intelligence domain in this package.
+MS-002 is repository-local, unstaged, and uncommitted until validation passes and a separate controlled commit step is performed. Do not stage, commit, push, deploy, run migrations, activate providers, select models, execute hosted benchmarks, modify production systems, or begin any ninth intelligence domain in this package.
 
 ## Completion Report
 
-Use `docs/ai-development/CODEX_COMPLETION_REPORT_TEMPLATE.md` sections A through AN plus MS-001 capability-classification counts and validation evidence.
+Use `docs/ai-development/CODEX_COMPLETION_REPORT_TEMPLATE.md` sections A through AN plus MS-002 benchmark-candidate counts, generated framework evidence, and validation evidence.
 
 ## Recommended Commit Message
 
-Classify TSR AI capabilities for model selection gate
+Define MS-002 benchmark acceptance framework
 
 ## Next Approved Package
 
-No next implementation package is approved by this record. The likely next model-selection package is owner review of MS-001 followed, if approved, by MS-002 Benchmark & Acceptance Framework.
+No next implementation package is approved by this record. A later owner-approved package is required before any hosted benchmark execution, provider comparison, model comparison, pricing research, premium-tier consideration, production orchestration, deployment, migration, or production change.
 
 ## Owner Decision Points
 
-- Review and approve the MS-001 classification before any MS-002 benchmark and acceptance framework package.
-- Approve any future provider comparison, model ranking, premium-tier analysis, pricing research, or hosted AI activation separately.
-- Keep production orchestration deferred, incomplete, and inactive until model-selection evidence, governance controls, and owner approval exist.
+- Review and approve whether to execute live hosted benchmarks for the MS-001 candidate set.
+- Approve benchmark datasets and whether any production data may be used.
+- Approve numeric acceptance thresholds before live benchmarking or selection.
+- Approve any provider list, model list, pricing research, premium-tier consideration, or hosted AI activation separately.
+- Keep production orchestration deferred, incomplete, and inactive until benchmark evidence, governance controls, and owner approval exist.

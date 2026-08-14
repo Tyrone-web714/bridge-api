@@ -3,7 +3,7 @@
   "generatedFrom": "bridge-api/intelligence-knowledge-graph",
   "nodes": [
     {
-      "hash": "77e314a0c3f5d281fc50f475cffc3dd2cb6dab937c681f35dddb5b6ad07837d6",
+      "hash": "ab589a45b74f17c03d9d518579eba8246a4dd83af58882579042ed4be903ee21",
       "label": "bridge-api",
       "lifecycleState": null,
       "nodeId": "Package:bridge-api",
@@ -751,6 +751,28 @@
       "version": null
     },
     {
+      "hash": "efb2cb18e5b26b92d876c0884f96c751c53d852d545edc38681932b7d678958c",
+      "label": "bridge-api/scripts/check-ms001-capability-classification.cjs",
+      "lifecycleState": null,
+      "nodeId": "Script:bridge-api/scripts/check-ms001-capability-classification.cjs",
+      "productionApplicable": false,
+      "source": "bridge-api/scripts/check-ms001-capability-classification.cjs",
+      "testOnly": true,
+      "type": "Script",
+      "version": null
+    },
+    {
+      "hash": "7c18bcec1f03c1b795b0eab7543a52eb2389178d383351836618bca5197697cb",
+      "label": "bridge-api/scripts/check-ms002-benchmark-acceptance.cjs",
+      "lifecycleState": null,
+      "nodeId": "Script:bridge-api/scripts/check-ms002-benchmark-acceptance.cjs",
+      "productionApplicable": false,
+      "source": "bridge-api/scripts/check-ms002-benchmark-acceptance.cjs",
+      "testOnly": true,
+      "type": "Script",
+      "version": null
+    },
+    {
       "hash": "c6be8c4f889056b5de8fbe5beb4d283b54215317819e8c163b02f68f0ebabdee",
       "label": "bridge-api/scripts/check-scoring-engine.cjs",
       "lifecycleState": null,
@@ -834,6 +856,28 @@
       "nodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
       "productionApplicable": false,
       "source": "bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true,
+      "type": "Script",
+      "version": null
+    },
+    {
+      "hash": "a14bc2660083fac31b84503afce5d6a7fa2618c0de458170620a3b02e0b86294",
+      "label": "bridge-api/scripts/generate-ms001-capability-classification-artifacts.cjs",
+      "lifecycleState": null,
+      "nodeId": "Script:bridge-api/scripts/generate-ms001-capability-classification-artifacts.cjs",
+      "productionApplicable": false,
+      "source": "bridge-api/scripts/generate-ms001-capability-classification-artifacts.cjs",
+      "testOnly": true,
+      "type": "Script",
+      "version": null
+    },
+    {
+      "hash": "33e541151c65d360a65ebd423ccb239706302e9e1344d9b4dfb28bf6f0eb3507",
+      "label": "bridge-api/scripts/generate-ms002-benchmark-acceptance-artifacts.cjs",
+      "lifecycleState": null,
+      "nodeId": "Script:bridge-api/scripts/generate-ms002-benchmark-acceptance-artifacts.cjs",
+      "productionApplicable": false,
+      "source": "bridge-api/scripts/generate-ms002-benchmark-acceptance-artifacts.cjs",
       "testOnly": true,
       "type": "Script",
       "version": null

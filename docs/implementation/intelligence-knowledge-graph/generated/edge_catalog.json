@@ -738,6 +738,28 @@
       "testOnly": true
     },
     {
+      "edgeId": "edge:9c71f4c1bd2eaee30f29",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "ed9295dc045fa097ce9e8b631a7c16cdb4c45bb9ec71ea86534f07dcde9ad16e",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "TESTS",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Package:bridge-api",
+      "targetNodeId": "Script:bridge-api/scripts/check-ms001-capability-classification.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:30ddc8d1a9227d236889",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "964a15ebb3b952e95b4461d8cf545a9c3b6723f5893f31afa663a91bb52754d2",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "TESTS",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Package:bridge-api",
+      "targetNodeId": "Script:bridge-api/scripts/check-ms002-benchmark-acceptance.cjs",
+      "testOnly": true
+    },
+    {
       "edgeId": "edge:d6ceccd19cddf9d61523",
       "relationshipConfidence": "DETERMINISTIC",
       "relationshipHash": "837f96e566aeffd74674f6209c4b69bdf8edebb29edcb1dfdb8acd5923a24f35",
@@ -823,6 +845,28 @@
       "relationshipVersion": "0.1.0",
       "sourceNodeId": "Package:bridge-api",
       "targetNodeId": "Script:bridge-api/scripts/generate-knowledge-graph-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:de6e2045844cee5973b5",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "bab287cc412cdd8018d287d3fadf8772a34c82ca9039266d185a31cb439c4970",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "TESTS",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Package:bridge-api",
+      "targetNodeId": "Script:bridge-api/scripts/generate-ms001-capability-classification-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:b06107b518bf2d15fc5d",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "d8b2e50db0c0393b4a3cd84a447e0ef02d9d30282e894f5e5c425fcf75e3879c",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "TESTS",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Package:bridge-api",
+      "targetNodeId": "Script:bridge-api/scripts/generate-ms002-benchmark-acceptance-artifacts.cjs",
       "testOnly": true
     },
     {
