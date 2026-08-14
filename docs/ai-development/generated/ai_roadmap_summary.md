@@ -2,8 +2,8 @@
 # TSR AI Roadmap Summary
 
 - Roadmap ID: TSR_AI_DEVELOPMENT_ROADMAP
-- Current package: NONE - No active Milestone 1 intelligence-domain implementation package
-- Current status: DEFERRED
+- Current package: MS-001 - TSR AI Capability & Execution Classification
+- Current status: IMPLEMENTED_UNCOMMITTED
 - Next approved package: null
 - Milestone 1 complete: true
 - Route Intelligence pushed: true
@@ -16,9 +16,11 @@
 | AI_PLATFORM_FOUNDATION | 12 |
 | CORE_OPERATIONAL_INTELLIGENCE | 8 |
 | DEVELOPMENT_WORKFLOW | 1 |
+| MODEL_SELECTION_AND_BENCHMARKING | 1 |
 
 ## Status Counts
 
 | Status | Count |
 | --- | ---: |
+| IMPLEMENTED_UNCOMMITTED | 1 |
 | PUSHED | 21 |

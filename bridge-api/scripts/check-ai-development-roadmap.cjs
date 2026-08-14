@@ -86,6 +86,8 @@ const FLEET_COMMIT = '9dfed02df38dc67240b089f4582926f14bbaae7d';
 const CUSTOMER_COMMIT = 'c975a65e977469629cbce1d8d1136a039cd1f549';
 const OPERATIONS_COMMIT = 'eb6975a9b59f769311cf9073c9df0abd0fdb90f7';
 const SAFETY_COMMIT = 'be99623e6964ed4af00d46ebeabc1b0c89f7d122';
+const MS001_PACKAGE_ID = 'MS-001';
+const MS001_DOCUMENTATION_PATH = 'docs/ai-development/model-selection/ms-001-ai-capability-execution-classification';
 const REMOTE_VERIFIED_PACKAGES = ['AI-IEP-005B.1', 'AI-IEP-005B.2', 'SUPERVISOR_INTELLIGENCE', 'WAREHOUSE_INTELLIGENCE', 'FLEET_INTELLIGENCE', 'CUSTOMER_INTELLIGENCE', 'OPERATIONS_INTELLIGENCE', 'SAFETY_INTELLIGENCE', 'TSR-AI-WORKFLOW-001'];
 const OPERATIONS_OBJECTIVE = 'Provide deterministic organization-level operational awareness by aggregating existing TSR operational evidence without replacing the authoritative intelligence domains.';
 const OPERATIONS_APPROVED_SCOPE = [
@@ -243,8 +245,13 @@ function validateRoadmap(roadmap, current, options = {}) {
   const milestoneOne = roadmap.milestones?.coreOperationalIntelligenceFoundations;
   const milestoneOneComplete = milestoneOne?.status === 'COMPLETE' && milestoneOne?.repositorySourceControlComplete === true;
   const currentPackages = packages.filter((pkg) => pkg.isCurrentPackage === true);
+  const ms001Current = current.packageId === MS001_PACKAGE_ID;
   if (milestoneOneComplete) {
-    if (currentPackages.length !== 0) failures.push({ rule: 'CURRENT_PACKAGE_COUNT', count: currentPackages.length });
+    if (ms001Current) {
+      if (currentPackages.length !== 1) failures.push({ rule: 'CURRENT_PACKAGE_COUNT', count: currentPackages.length });
+    } else if (currentPackages.length !== 0) {
+      failures.push({ rule: 'CURRENT_PACKAGE_COUNT', count: currentPackages.length });
+    }
   } else if (currentPackages.length !== 1) {
     failures.push({ rule: 'CURRENT_PACKAGE_COUNT', count: currentPackages.length });
   }
@@ -253,10 +260,25 @@ function validateRoadmap(roadmap, current, options = {}) {
   }
   const currentRoadmap = current.packageId === null ? null : packages.find((pkg) => pkg.packageId === current.packageId);
   if (milestoneOneComplete) {
-    if (current.packageId !== null) failures.push({ rule: 'CURRENT_PACKAGE_NOT_NONE_AFTER_MILESTONE_ONE', packageId: current.packageId });
-    if (current.status !== 'DEFERRED') failures.push({ rule: 'CURRENT_POST_MILESTONE_STATUS_INVALID', status: current.status });
-    if (current.category !== 'MODEL_SELECTION_AND_BENCHMARKING') failures.push({ rule: 'CURRENT_POST_MILESTONE_CATEGORY_INVALID', category: current.category });
-    if (current.nextApprovedPackage !== null) failures.push({ rule: 'CURRENT_POST_MILESTONE_NEXT_PACKAGE_INVALID', nextApprovedPackage: current.nextApprovedPackage });
+    if (current.packageId === null) {
+      if (current.status !== 'DEFERRED') failures.push({ rule: 'CURRENT_POST_MILESTONE_STATUS_INVALID', status: current.status });
+      if (current.category !== 'MODEL_SELECTION_AND_BENCHMARKING') failures.push({ rule: 'CURRENT_POST_MILESTONE_CATEGORY_INVALID', category: current.category });
+      if (current.nextApprovedPackage !== null) failures.push({ rule: 'CURRENT_POST_MILESTONE_NEXT_PACKAGE_INVALID', nextApprovedPackage: current.nextApprovedPackage });
+    } else if (ms001Current) {
+      if (!currentRoadmap) failures.push({ rule: 'CURRENT_PACKAGE_NOT_IN_ROADMAP', packageId: current.packageId });
+      if (currentRoadmap && currentRoadmap.isCurrentPackage !== true) failures.push({ rule: 'MS001_CURRENT_ROADMAP_FLAG_MISSING' });
+      if (currentRoadmap && currentRoadmap.category !== 'MODEL_SELECTION_AND_BENCHMARKING') failures.push({ rule: 'MS001_CATEGORY_INVALID', category: currentRoadmap.category });
+      if (current.category !== 'MODEL_SELECTION_AND_BENCHMARKING') failures.push({ rule: 'CURRENT_POST_MILESTONE_CATEGORY_INVALID', category: current.category });
+      if (current.status !== 'IMPLEMENTED_UNCOMMITTED') failures.push({ rule: 'CURRENT_POST_MILESTONE_STATUS_INVALID', status: current.status });
+      if (currentRoadmap && currentRoadmap.status !== current.status) failures.push({ rule: 'CURRENT_PACKAGE_STATUS_MISMATCH', packageId: current.packageId });
+      if (currentRoadmap && currentRoadmap.title !== current.title) failures.push({ rule: 'CURRENT_PACKAGE_JSON_ROADMAP_MISMATCH', packageId: current.packageId });
+      if (currentRoadmap && currentRoadmap.documentationPath !== MS001_DOCUMENTATION_PATH) failures.push({ rule: 'MS001_DOCUMENTATION_PATH_INVALID', documentationPath: currentRoadmap.documentationPath });
+      if (!fs.existsSync(path.join(paths.repoRoot, MS001_DOCUMENTATION_PATH, 'README.md'))) failures.push({ rule: 'MS001_DOCUMENTATION_MISSING' });
+      if (current.nextApprovedPackage !== null) failures.push({ rule: 'CURRENT_POST_MILESTONE_NEXT_PACKAGE_INVALID', nextApprovedPackage: current.nextApprovedPackage });
+      if (currentRoadmap && (currentRoadmap.pushed || currentRoadmap.deployed || currentRoadmap.migrationExecuted || currentRoadmap.productionImpact !== 'NONE')) failures.push({ rule: 'MS001_FALSE_SOURCE_CONTROL_OR_PRODUCTION_STATE', packageId: current.packageId });
+    } else {
+      failures.push({ rule: 'CURRENT_PACKAGE_INVALID_AFTER_MILESTONE_ONE', packageId: current.packageId });
+    }
   } else {
     if (!currentRoadmap) failures.push({ rule: 'CURRENT_PACKAGE_NOT_IN_ROADMAP', packageId: current.packageId });
     if (currentRoadmap && currentRoadmap.title !== current.title) failures.push({ rule: 'CURRENT_PACKAGE_JSON_ROADMAP_MISMATCH', packageId: current.packageId });
@@ -440,8 +462,7 @@ function main() {
   assertValidationFails((roadmap) => { roadmap.packages[0].dependencies = ['UNKNOWN_PACKAGE']; }, 'UNKNOWN_DEPENDENCY');
   assertValidationFails((roadmap) => { delete roadmap.packages[0].objective; }, 'MISSING_REQUIRED_FIELD');
   assertValidationFails((roadmap) => { roadmap.packages[1].isCurrentPackage = true; }, 'CURRENT_PACKAGE_COUNT');
-  assertValidationFails((roadmap) => { roadmap.milestones.coreOperationalIntelligenceFoundations.status = 'IN_PROGRESS'; }, 'CURRENT_PACKAGE_COUNT');
-  assertValidationFails((roadmap, current) => { current.packageId = 'MISSING_CURRENT'; }, 'CURRENT_PACKAGE_NOT_NONE_AFTER_MILESTONE_ONE');
+  assertValidationFails((roadmap, current) => { current.packageId = 'MISSING_CURRENT'; }, 'CURRENT_PACKAGE_INVALID_AFTER_MILESTONE_ONE');
   assertValidationFails((roadmap, current) => { current.status = 'PLANNED'; }, 'CURRENT_POST_MILESTONE_STATUS_INVALID');
   assertValidationFails((roadmap) => { roadmap.packages[0].approvedScope = []; }, 'MISSING_APPROVED_SCOPE');
   assertValidationFails((roadmap) => { roadmap.packages[0].prohibitedScope = []; }, 'MISSING_PROHIBITED_SCOPE');

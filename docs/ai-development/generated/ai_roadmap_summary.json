@@ -19,7 +19,7 @@
     "DEFERRED",
     "CANCELLED"
   ],
-  "packageCount": 21,
+  "packageCount": 22,
   "packages": [
     {
       "category": "AI_PLATFORM_FOUNDATION",
@@ -300,6 +300,20 @@
       "remoteCommitVerified": true,
       "status": "PUSHED",
       "title": "Safety Intelligence"
+    },
+    {
+      "category": "MODEL_SELECTION_AND_BENCHMARKING",
+      "deployed": false,
+      "implementationCommit": null,
+      "localCommitVerified": false,
+      "nextApprovedPackage": null,
+      "ownerApprovalRequired": true,
+      "packageId": "MS-001",
+      "productionImpact": "NONE",
+      "pushed": false,
+      "remoteCommitVerified": false,
+      "status": "IMPLEMENTED_UNCOMMITTED",
+      "title": "TSR AI Capability & Execution Classification"
     },
     {
       "category": "DEVELOPMENT_WORKFLOW",

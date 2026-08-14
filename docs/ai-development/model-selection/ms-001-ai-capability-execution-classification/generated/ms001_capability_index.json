@@ -1,0 +1,509 @@
+[
+  {
+    "capabilityId": "bi_kpi.formula_calculation",
+    "domain": "Operations Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": false
+  },
+  {
+    "capabilityId": "customer.account_guidance.presentation",
+    "domain": "Customer Intelligence",
+    "executionClass": "D2",
+    "futureAiRoles": [
+      "SUMMARIZATION",
+      "EXPLANATION"
+    ],
+    "modelBenchmarkRequired": true,
+    "safetyRelevant": false
+  },
+  {
+    "capabilityId": "customer.account_identity_context",
+    "domain": "Customer Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": false
+  },
+  {
+    "capabilityId": "customer.delivery_product_invoice_history",
+    "domain": "Customer Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": false
+  },
+  {
+    "capabilityId": "customer.operational_exception_detection",
+    "domain": "Customer Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": false
+  },
+  {
+    "capabilityId": "customer.service_pattern_evidence",
+    "domain": "Customer Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": false
+  },
+  {
+    "capabilityId": "driver.copilot.contextual_response",
+    "domain": "Driver Intelligence",
+    "executionClass": "D2",
+    "futureAiRoles": [
+      "CONVERSATION",
+      "EXPLANATION",
+      "SUMMARIZATION"
+    ],
+    "modelBenchmarkRequired": true,
+    "safetyRelevant": true
+  },
+  {
+    "capabilityId": "driver.profile_state_contract",
+    "domain": "Driver Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": false
+  },
+  {
+    "capabilityId": "driver.route_adherence_deviation",
+    "domain": "Driver Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": true
+  },
+  {
+    "capabilityId": "driver.speed_compliance",
+    "domain": "Driver Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": true
+  },
+  {
+    "capabilityId": "driver.stop_progress",
+    "domain": "Driver Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": false
+  },
+  {
+    "capabilityId": "fleet_scoring.score_calculation",
+    "domain": "Fleet Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": true
+  },
+  {
+    "capabilityId": "fleet.issue_anomaly_candidate",
+    "domain": "Fleet Intelligence",
+    "executionClass": "D1",
+    "futureAiRoles": [
+      "ANOMALY_DETECTION",
+      "CLASSIFICATION"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": true
+  },
+  {
+    "capabilityId": "fleet.maintenance_status_awareness",
+    "domain": "Fleet Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": true
+  },
+  {
+    "capabilityId": "fleet.route_vehicle_compatibility",
+    "domain": "Fleet Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": true
+  },
+  {
+    "capabilityId": "fleet.vehicle_availability",
+    "domain": "Fleet Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": false
+  },
+  {
+    "capabilityId": "fleet.vehicle_readiness",
+    "domain": "Fleet Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": true
+  },
+  {
+    "capabilityId": "operations.cross_domain_correlation",
+    "domain": "Operations Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": true
+  },
+  {
+    "capabilityId": "operations.cross_domain_snapshot",
+    "domain": "Operations Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": true
+  },
+  {
+    "capabilityId": "operations.exception_severity_priority",
+    "domain": "Operations Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": true
+  },
+  {
+    "capabilityId": "operations.executive_dashboard_synthesis",
+    "domain": "Operations Intelligence",
+    "executionClass": "D2",
+    "futureAiRoles": [
+      "SUMMARIZATION",
+      "REASONING"
+    ],
+    "modelBenchmarkRequired": true,
+    "safetyRelevant": true
+  },
+  {
+    "capabilityId": "operations.logistics_signal_findings",
+    "domain": "Operations Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": true
+  },
+  {
+    "capabilityId": "platform.legacy_structured_ai_response",
+    "domain": "Operations Intelligence",
+    "executionClass": "D2",
+    "futureAiRoles": [
+      "SUMMARIZATION",
+      "EXPLANATION",
+      "CONVERSATION",
+      "EXTRACTION",
+      "REASONING"
+    ],
+    "modelBenchmarkRequired": true,
+    "safetyRelevant": false
+  },
+  {
+    "capabilityId": "platform.text_cleanup",
+    "domain": "Operations Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": false
+  },
+  {
+    "capabilityId": "prediction.account_reorder_forecast",
+    "domain": "Customer Intelligence",
+    "executionClass": "D1",
+    "futureAiRoles": [
+      "PREDICTION"
+    ],
+    "modelBenchmarkRequired": true,
+    "safetyRelevant": false
+  },
+  {
+    "capabilityId": "prediction.delivery_failure_risk",
+    "domain": "Operations Intelligence",
+    "executionClass": "D1",
+    "futureAiRoles": [
+      "PREDICTION",
+      "CLASSIFICATION"
+    ],
+    "modelBenchmarkRequired": true,
+    "safetyRelevant": false
+  },
+  {
+    "capabilityId": "prediction.product_demand_forecast",
+    "domain": "Customer Intelligence",
+    "executionClass": "D1",
+    "futureAiRoles": [
+      "PREDICTION",
+      "RANKING"
+    ],
+    "modelBenchmarkRequired": true,
+    "safetyRelevant": false
+  },
+  {
+    "capabilityId": "prediction.route_completion_forecast",
+    "domain": "Operations Intelligence",
+    "executionClass": "D1",
+    "futureAiRoles": [
+      "PREDICTION"
+    ],
+    "modelBenchmarkRequired": true,
+    "safetyRelevant": false
+  },
+  {
+    "capabilityId": "route.alternative_comparison",
+    "domain": "Route Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": true
+  },
+  {
+    "capabilityId": "route.clearance_eligibility",
+    "domain": "Route Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": true
+  },
+  {
+    "capabilityId": "route.hazard_and_closure_assessment",
+    "domain": "Route Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": true
+  },
+  {
+    "capabilityId": "route.risk_explanation.presentation",
+    "domain": "Route Intelligence",
+    "executionClass": "D2",
+    "futureAiRoles": [
+      "EXPLANATION",
+      "SUMMARIZATION"
+    ],
+    "modelBenchmarkRequired": true,
+    "safetyRelevant": true
+  },
+  {
+    "capabilityId": "route.truck_restriction_compliance",
+    "domain": "Route Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": true
+  },
+  {
+    "capabilityId": "safety.authority_trace_summary",
+    "domain": "Safety Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": true
+  },
+  {
+    "capabilityId": "safety.driver_advisory_aggregation",
+    "domain": "Safety Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": true
+  },
+  {
+    "capabilityId": "safety.hazard_restriction_shared_safety",
+    "domain": "Safety Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": true
+  },
+  {
+    "capabilityId": "safety.narrative_summary.presentation",
+    "domain": "Safety Intelligence",
+    "executionClass": "D2",
+    "futureAiRoles": [
+      "SUMMARIZATION",
+      "EXPLANATION"
+    ],
+    "modelBenchmarkRequired": true,
+    "safetyRelevant": true
+  },
+  {
+    "capabilityId": "safety.route_safety_portfolio",
+    "domain": "Safety Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": true
+  },
+  {
+    "capabilityId": "shared_safety.moderation_workflow",
+    "domain": "Safety Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": true
+  },
+  {
+    "capabilityId": "supervisor.alert_priority",
+    "domain": "Supervisor Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": true
+  },
+  {
+    "capabilityId": "supervisor.daily_operations_report.narrative",
+    "domain": "Supervisor Intelligence",
+    "executionClass": "D2",
+    "futureAiRoles": [
+      "SUMMARIZATION",
+      "EXPLANATION"
+    ],
+    "modelBenchmarkRequired": true,
+    "safetyRelevant": true
+  },
+  {
+    "capabilityId": "supervisor.exception_detection",
+    "domain": "Supervisor Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": true
+  },
+  {
+    "capabilityId": "supervisor.freeform_question_answer",
+    "domain": "Supervisor Intelligence",
+    "executionClass": "D2",
+    "futureAiRoles": [
+      "CONVERSATION",
+      "REASONING",
+      "SUMMARIZATION"
+    ],
+    "modelBenchmarkRequired": true,
+    "safetyRelevant": true
+  },
+  {
+    "capabilityId": "supervisor.route_portfolio_snapshot",
+    "domain": "Supervisor Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": true
+  },
+  {
+    "capabilityId": "warehouse.departure_readiness",
+    "domain": "Warehouse Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": true
+  },
+  {
+    "capabilityId": "warehouse.exception_summary.presentation",
+    "domain": "Warehouse Intelligence",
+    "executionClass": "D2",
+    "futureAiRoles": [
+      "SUMMARIZATION",
+      "EXPLANATION"
+    ],
+    "modelBenchmarkRequired": true,
+    "safetyRelevant": false
+  },
+  {
+    "capabilityId": "warehouse.load_assignment_verification",
+    "domain": "Warehouse Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": false
+  },
+  {
+    "capabilityId": "warehouse.load_completeness",
+    "domain": "Warehouse Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": false
+  },
+  {
+    "capabilityId": "warehouse.route_load_context",
+    "domain": "Warehouse Intelligence",
+    "executionClass": "D0",
+    "futureAiRoles": [
+      "NONE"
+    ],
+    "modelBenchmarkRequired": false,
+    "safetyRelevant": false
+  }
+]

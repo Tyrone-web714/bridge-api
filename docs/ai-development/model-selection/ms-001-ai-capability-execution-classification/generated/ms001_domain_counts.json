@@ -1,0 +1,34 @@
+[
+  {
+    "capabilityCount": 5,
+    "domain": "Route Intelligence"
+  },
+  {
+    "capabilityCount": 5,
+    "domain": "Driver Intelligence"
+  },
+  {
+    "capabilityCount": 5,
+    "domain": "Supervisor Intelligence"
+  },
+  {
+    "capabilityCount": 5,
+    "domain": "Warehouse Intelligence"
+  },
+  {
+    "capabilityCount": 6,
+    "domain": "Fleet Intelligence"
+  },
+  {
+    "capabilityCount": 7,
+    "domain": "Customer Intelligence"
+  },
+  {
+    "capabilityCount": 10,
+    "domain": "Operations Intelligence"
+  },
+  {
+    "capabilityCount": 6,
+    "domain": "Safety Intelligence"
+  }
+]

@@ -1,0 +1,15 @@
+[
+  "customer.account_guidance.presentation",
+  "driver.copilot.contextual_response",
+  "operations.executive_dashboard_synthesis",
+  "platform.legacy_structured_ai_response",
+  "prediction.account_reorder_forecast",
+  "prediction.delivery_failure_risk",
+  "prediction.product_demand_forecast",
+  "prediction.route_completion_forecast",
+  "route.risk_explanation.presentation",
+  "safety.narrative_summary.presentation",
+  "supervisor.daily_operations_report.narrative",
+  "supervisor.freeform_question_answer",
+  "warehouse.exception_summary.presentation"
+]

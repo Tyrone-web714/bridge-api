@@ -28,4 +28,6 @@ Milestone 1 Core Operational Intelligence Foundations are complete from the repo
 
 Cost effectiveness is a first-class constraint. The future review must use the least expensive strategy or model that satisfies quality, safety, reliability, latency, governance, and evidence requirements. A hosted AI model must not be assigned merely because AI is available. Cost never overrides truck safety, legal compliance, privacy, tenant isolation, policy controls, reliability, or minimum quality thresholds.
 
-This gate is `DEFERRED`, incomplete, inactive, and owner-approval gated. This package does not compare providers, rank models, select a model, activate hosted AI, approve a premium tier, or authorize production orchestration.
+`MS-001 - TSR AI Capability & Execution Classification` is the current repository-local analysis package for this gate. MS-001 classifies existing capabilities into D0/D1/D2/D3 execution classes, identifies deterministic no-AI exclusions, documents hybrid boundaries, audits existing provider usage, separates predictive capabilities from generative AI, decomposes the voice pipeline, and records future benchmark requirements. It does not select providers, select models, rank models, benchmark commercial models, perform pricing research, activate hosted AI, approve a premium tier, or authorize production orchestration.
+
+This gate is `DEFERRED`, incomplete, inactive, and owner-approval gated. MS-001 does not change that gate state.

@@ -1,6 +1,6 @@
 {
   "currentIntelligenceDomainPackageActive": false,
-  "currentPackageNoneAfterMilestoneOne": true,
+  "currentPackageNoneAfterMilestoneOne": false,
   "customerImplementationStarted": true,
   "customerIntelligenceRemoteContained": true,
   "deterministicTruckSafetyControlsAuthoritative": true,

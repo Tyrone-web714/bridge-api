@@ -1,0 +1,37 @@
+[
+  {
+    "capabilityId": "customer.account_guidance.presentation",
+    "currentImplementationType": "legacy /api/ai prompt surface plus deterministic summaries",
+    "provider": "legacy.ai.structured_response when used through /api/ai"
+  },
+  {
+    "capabilityId": "driver.copilot.contextual_response",
+    "currentImplementationType": "legacy /api/ai hosted structured response surface",
+    "provider": "legacy.ai.structured_response"
+  },
+  {
+    "capabilityId": "operations.executive_dashboard_synthesis",
+    "currentImplementationType": "legacy /api/ai unified dashboard prompt surface",
+    "provider": "legacy.ai.structured_response when used through /api/ai"
+  },
+  {
+    "capabilityId": "platform.legacy_structured_ai_response",
+    "currentImplementationType": "implemented hosted compatibility adapter through IEP",
+    "provider": "OpenAI through providerAdapters for legacy.ai.structured_response"
+  },
+  {
+    "capabilityId": "route.risk_explanation.presentation",
+    "currentImplementationType": "disabled/future registry placeholder plus legacy route-risk prompt",
+    "provider": "legacy.ai.structured_response path when invoked through /api/ai"
+  },
+  {
+    "capabilityId": "supervisor.daily_operations_report.narrative",
+    "currentImplementationType": "implemented hosted advisory narrative through IEP",
+    "provider": "OpenAI through providerAdapters for supervisor.daily_operations_report"
+  },
+  {
+    "capabilityId": "supervisor.freeform_question_answer",
+    "currentImplementationType": "legacy /api/ai structured response surface",
+    "provider": "legacy.ai.structured_response"
+  }
+]

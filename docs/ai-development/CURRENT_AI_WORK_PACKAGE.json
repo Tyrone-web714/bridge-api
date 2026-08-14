@@ -1,25 +1,36 @@
 {
-  "packageId": null,
-  "title": "No active Milestone 1 intelligence-domain implementation package",
+  "packageId": "MS-001",
+  "title": "TSR AI Capability & Execution Classification",
   "category": "MODEL_SELECTION_AND_BENCHMARKING",
-  "status": "DEFERRED",
-  "objective": "Record that Milestone 1 Core Operational Intelligence Foundations are complete from the repository/source-control perspective and await an owner-approved Model Selection Gate review without starting model selection, provider selection, hosted AI activation, production orchestration, deployment, migration, or any ninth intelligence domain.",
+  "status": "IMPLEMENTED_UNCOMMITTED",
+  "objective": "Classify existing TSR intelligence capabilities by execution class so the Model Selection Gate can later benchmark only capabilities that actually require computational or hosted AI execution, without selecting providers, selecting models, activating hosted AI, deploying, migrating, or changing production systems.",
   "approvedScope": [
-    "roadmap reconciliation",
-    "source-control state reconciliation",
-    "Milestone 1 completion status",
-    "Model Selection Gate prerequisite status",
-    "cost-effectiveness principle preservation",
-    "production-orchestration deferral"
+    "repository-only AI capability inventory",
+    "execution class classification",
+    "D0 deterministic no-AI exclusion register",
+    "D1 lightweight computational intelligence register",
+    "D2 standard AI/generative candidate register",
+    "D3 advanced reasoning candidate register",
+    "hybrid deterministic/AI boundary documentation",
+    "safety authority documentation",
+    "existing AI provider usage audit",
+    "predictive capability classification",
+    "voice pipeline decomposition",
+    "future benchmark requirement classification",
+    "cost sensitivity classification",
+    "deterministic generated evidence",
+    "validation and controlled negative tests"
   ],
   "prohibitedScope": [
-    "new intelligence-domain implementation",
     "ninth intelligence domain",
+    "provider selection",
     "model selection",
     "model ranking",
-    "provider selection",
-    "provider activation",
+    "commercial model benchmarking",
+    "pricing research",
+    "premium tier approval",
     "hosted AI activation",
+    "provider activation",
     "production orchestration",
     "production APIs",
     "deployment",
@@ -29,7 +40,8 @@
     "object-storage mutations",
     "Cloudflare/R2 changes",
     "credential changes",
-    "runtime functionality changes"
+    "runtime behavior changes",
+    "new product capability implementation"
   ],
   "dependencies": [
     "AI-IEP-005B.1",
@@ -42,16 +54,28 @@
     "SAFETY_INTELLIGENCE"
   ],
   "acceptanceCriteria": [
-    "Current intelligence-domain implementation package is NONE",
-    "Route, Driver, Supervisor, Warehouse, Fleet, Customer, Operations, and Safety Intelligence are all committed, validated, and pushed as repository-only Milestone 1 foundations",
-    "Model Selection Gate prerequisites are recorded as satisfied, but the gate remains deferred, incomplete, inactive, and owner-approval gated",
-    "No provider, model, premium tier, hosted AI execution, ranking, benchmark recommendation, production orchestration, deployment, migration, production write, object mutation, Cloudflare/R2 change, credential change, runtime functionality change, or ninth intelligence domain is authorized"
+    "Exactly eight Milestone 1 intelligence domains remain the source domains for classification",
+    "Every existing TSR intelligence capability identified by repository evidence has exactly one primary execution class",
+    "D0 deterministic capabilities are excluded from model benchmarking",
+    "D1/D2/D3 candidates identify future benchmark requirements without selecting a provider or model",
+    "Existing provider/model execution paths are audited but not expanded",
+    "Predictive capabilities are identified separately from generative AI",
+    "Voice-related decomposition states that no approved backend voice intelligence pipeline exists",
+    "Safety authority remains deterministic and cannot be overridden by model output or cost",
+    "No production orchestration, deployment, migration, production write, provider activation, model selection, commercial benchmark, or ninth domain is introduced"
   ],
   "requiredTests": [
+    "npm.cmd run ms001:generate",
+    "npm.cmd run ms001:validate",
+    "npm.cmd run ms001:check",
+    "npm.cmd run test:ms001",
     "npm.cmd run ai-roadmap:generate",
     "npm.cmd run ai-roadmap:validate",
     "npm.cmd run ai-roadmap:check",
     "npm.cmd run test:ai-roadmap",
+    "npm.cmd run test:intelligence-execution",
+    "npm.cmd run test:ai",
+    "npm.cmd run test:ai-architecture",
     "npm.cmd run test:route-intelligence",
     "npm.cmd run test:driver-intelligence",
     "npm.cmd run test:supervisor-operational-intelligence",
@@ -61,16 +85,16 @@
     "npm.cmd run test:customer-intelligence",
     "npm.cmd run test:operations-intelligence",
     "npm.cmd run test:safety-intelligence",
-    "npm.cmd run test:shared-safety",
-    "npm.cmd run test:security"
+    "npm.cmd run test:security",
+    "npm.cmd run test:api-tenant"
   ],
-  "sourceControlExpectation": "Milestone 1 Core Operational Intelligence Foundations are complete from the repository/source-control perspective through Safety Intelligence commit be99623e6964ed4af00d46ebeabc1b0c89f7d122, which is contained by origin/legacy-public-url-final-cleanup. Do not stage, commit, push, deploy, run migrations, activate providers, select models, modify production systems, fabricate an AI-IEP package number, or begin any ninth intelligence domain without separate owner approval.",
-  "expectedCompletionReportFormat": "Use docs/ai-development/CODEX_COMPLETION_REPORT_TEMPLATE.md sections A through AN for the controlled roadmap reconciliation completion report.",
-  "recommendedCommitMessage": "Complete TSR Intelligence Milestone 1 roadmap",
+  "sourceControlExpectation": "MS-001 is repository-local, unstaged, and uncommitted until validation passes and a separate controlled commit step is performed. Do not stage, commit, push, deploy, run migrations, activate providers, select models, modify production systems, or begin any ninth intelligence domain in this package.",
+  "expectedCompletionReportFormat": "Use docs/ai-development/CODEX_COMPLETION_REPORT_TEMPLATE.md sections A through AN plus MS-001 capability-classification counts and validation evidence.",
+  "recommendedCommitMessage": "Classify TSR AI capabilities for model selection gate",
   "nextApprovedPackage": null,
   "ownerDecisionPoints": [
-    "approve any future Model Selection Gate review before provider comparison, model ranking, premium-tier analysis, or hosted AI activation",
-    "approve any future production orchestration, production runtime API, deployment, migration, production validation, provider expansion, model selection, production write, object mutation, credential change, Cloudflare/R2 change, or new AI infrastructure separately",
+    "review and approve the MS-001 classification before any MS-002 benchmark and acceptance framework package",
+    "approve any future provider comparison, model ranking, premium-tier analysis, pricing research, or hosted AI activation separately",
     "keep production orchestration deferred, incomplete, and inactive until model-selection evidence, governance controls, and owner approval exist"
   ]
 }
