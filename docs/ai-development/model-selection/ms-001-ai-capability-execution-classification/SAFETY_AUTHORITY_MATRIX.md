@@ -6,7 +6,7 @@
 | driver.route_adherence_deviation | D0 | false | false | Deterministic safety, legal, physical, route, tenant, and authorization controls remain authoritative. |
 | driver.speed_compliance | D0 | false | false | Deterministic safety, legal, physical, route, tenant, and authorization controls remain authoritative. |
 | fleet_scoring.score_calculation | D0 | false | false | Deterministic safety, legal, physical, route, tenant, and authorization controls remain authoritative. |
-| fleet.issue_anomaly_candidate | D1 | false | false | Deterministic safety, legal, physical, route, tenant, and authorization controls remain authoritative. |
+| fleet.issue_anomaly_candidate | D0 | false | false | Deterministic safety, legal, physical, route, tenant, and authorization controls remain authoritative. |
 | fleet.maintenance_status_awareness | D0 | false | false | Deterministic safety, legal, physical, route, tenant, and authorization controls remain authoritative. |
 | fleet.route_vehicle_compatibility | D0 | false | false | Deterministic safety, legal, physical, route, tenant, and authorization controls remain authoritative. |
 | fleet.vehicle_readiness | D0 | false | false | Deterministic safety, legal, physical, route, tenant, and authorization controls remain authoritative. |

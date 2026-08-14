@@ -14,7 +14,7 @@
 | driver.speed_compliance | EXTREME | D0 eliminates unnecessary inference cost. |
 | driver.stop_progress | EXTREME | D0 eliminates unnecessary inference cost. |
 | fleet_scoring.score_calculation | EXTREME | D0 eliminates unnecessary inference cost. |
-| fleet.issue_anomaly_candidate | MEDIUM | Future benchmarking must find the cheapest adequate execution strategy. |
+| fleet.issue_anomaly_candidate | EXTREME | D0 eliminates unnecessary inference cost. |
 | fleet.maintenance_status_awareness | EXTREME | D0 eliminates unnecessary inference cost. |
 | fleet.route_vehicle_compatibility | EXTREME | D0 eliminates unnecessary inference cost. |
 | fleet.vehicle_availability | EXTREME | D0 eliminates unnecessary inference cost. |

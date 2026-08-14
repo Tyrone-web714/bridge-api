@@ -4,7 +4,6 @@
 | --- | --- | --- | --- | --- | --- | --- |
 | customer.account_guidance.presentation | Customer Intelligence | Account guidance presentation | D2 | REQUIRED_D2 | false | true |
 | driver.copilot.contextual_response | Driver Intelligence | Driver copilot contextual response | D2 | REQUIRED_D2 | true | true |
-| fleet.issue_anomaly_candidate | Fleet Intelligence | Vehicle issue anomaly candidate | D1 | REQUIRES_OWNER_REVIEW | true | false |
 | operations.executive_dashboard_synthesis | Operations Intelligence | Executive dashboard synthesis | D2 | REQUIRED_D2 | true | true |
 | platform.legacy_structured_ai_response | Operations Intelligence | Legacy structured AI response compatibility | D2 | REQUIRED_D2 | false | false |
 | prediction.account_reorder_forecast | Customer Intelligence | Account reorder forecast | D1 | REQUIRED_D1 | false | false |

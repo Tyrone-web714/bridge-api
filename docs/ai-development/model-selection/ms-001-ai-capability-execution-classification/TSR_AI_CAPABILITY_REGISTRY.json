@@ -821,19 +821,19 @@
     },
     {
       "authoritativeDecisionOwner": "deterministic TSR records and services",
-      "authoritativeSourceService": "docs/implementation/fleet-intelligence-foundation/PREDICTIVE_MAINTENANCE_BOUNDARY.md",
-      "benchmarkRequirement": "REQUIRES_OWNER_REVIEW",
-      "capabilityDescription": "Vehicle issue anomaly candidate",
+      "authoritativeSourceService": "bridge-api/services/intelligenceExecution/fleetIntelligence.js",
+      "benchmarkRequirement": "NOT_REQUIRED_D0",
+      "capabilityDescription": "Vehicle issue/exception detection",
       "capabilityId": "fleet.issue_anomaly_candidate",
-      "capabilityName": "Vehicle issue anomaly candidate",
+      "capabilityName": "Vehicle issue/exception detection",
       "classificationConfidence": "HIGH",
-      "classificationRationale": "Repository has issue evidence but prohibits predictive maintenance; anomaly classification would require owner review before any benchmark.",
+      "classificationRationale": "The approved capability is deterministic issue/exception detection based on existing authoritative Fleet Intelligence evidence. No probabilistic or model-based anomaly detection is authorized. Statistical anomaly detection may only be reconsidered later if real production evidence demonstrates deterministic rules are insufficient and the owner separately approves that expansion.",
       "costCharacteristics": {
-        "expectedCostSensitivity": "MEDIUM",
-        "rationale": "Future benchmarking must find the cheapest adequate execution strategy."
+        "expectedCostSensitivity": "EXTREME",
+        "rationale": "D0 eliminates unnecessary inference cost."
       },
       "costMayOverrideSafety": false,
-      "currentImplementationType": "deterministic issue awareness only; predictive maintenance prohibited without approval",
+      "currentImplementationType": "deterministic issue/exception detection based on existing authoritative Fleet Intelligence evidence",
       "currentProductionStatus": "not production-certified by MS-001",
       "dataCharacteristics": {
         "customerRelated": false,
@@ -849,13 +849,12 @@
       "deploymentClaimed": false,
       "deterministicLogicPresent": true,
       "domain": "Fleet Intelligence",
-      "executionClass": "D1",
+      "executionClass": "D0",
       "existingFallbackBehavior": "deterministic result or human review; no model fallback required",
       "existingModelProviderDependency": null,
       "fabricatedBenchmarkThreshold": null,
       "futureAiRoles": [
-        "ANOMALY_DETECTION",
-        "CLASSIFICATION"
+        "NONE"
       ],
       "hybridBoundary": null,
       "legalPhysicalConstraintRelevant": false,
@@ -871,6 +870,7 @@
       "providerRanking": null,
       "providerSelected": null,
       "repositoryEvidence": [
+        "bridge-api/services/intelligenceExecution/fleetIntelligence.js",
         "docs/implementation/fleet-intelligence-foundation/PREDICTIVE_MAINTENANCE_BOUNDARY.md",
         "docs/implementation/fleet-intelligence-foundation/generated/fleet_issue_catalog.json"
       ],
@@ -3353,15 +3353,15 @@
   ],
   "counts": {
     "currentProviderDependentCapabilityCount": 7,
-    "d0Count": 35,
-    "d1Count": 5,
+    "d0Count": 36,
+    "d1Count": 4,
     "d2Count": 9,
     "d3Count": 0,
     "dormantProviderModelPathCount": 3,
     "hybridCapabilityCount": 8,
     "modelBenchmarkExcludedCount": 36,
     "modelBenchmarkRequiredCount": 13,
-    "ownerReviewRequiredCount": 1,
+    "ownerReviewRequiredCount": 0,
     "predictionRelatedCapabilityCount": 4,
     "safetyRelevantCapabilityCount": 30,
     "sourceDomainCount": 8,
@@ -3378,7 +3378,7 @@
   "generatedArtifact": true,
   "generatedFrom": "bridge-api/scripts/generate-ms001-capability-classification-artifacts.cjs",
   "packageId": "MS-001",
-  "registryHash": "4736b530a51ebfe73310132863ed181e3e26dbbd9934f9749b998d246d73def1",
+  "registryHash": "1ef858b353238e719f6cb94c4837de4e9df9991badfb9650ee839503b8f07a81",
   "scope": {
     "deploymentPerformed": false,
     "exactlyEightSourceIntelligenceDomains": [

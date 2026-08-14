@@ -14,7 +14,7 @@
 | driver.speed_compliance | Driver Intelligence | Speed compliance warning | D0 | NOT_REQUIRED_D0 | true | false |
 | driver.stop_progress | Driver Intelligence | Stop progress awareness | D0 | NOT_REQUIRED_D0 | false | false |
 | fleet_scoring.score_calculation | Fleet Intelligence | Fleet intelligence score calculation | D0 | NOT_REQUIRED_D0 | true | false |
-| fleet.issue_anomaly_candidate | Fleet Intelligence | Vehicle issue anomaly candidate | D1 | REQUIRES_OWNER_REVIEW | true | false |
+| fleet.issue_anomaly_candidate | Fleet Intelligence | Vehicle issue/exception detection | D0 | NOT_REQUIRED_D0 | true | false |
 | fleet.maintenance_status_awareness | Fleet Intelligence | Maintenance status awareness | D0 | NOT_REQUIRED_D0 | true | false |
 | fleet.route_vehicle_compatibility | Fleet Intelligence | Route vehicle compatibility | D0 | NOT_REQUIRED_D0 | true | false |
 | fleet.vehicle_availability | Fleet Intelligence | Vehicle availability | D0 | NOT_REQUIRED_D0 | false | false |

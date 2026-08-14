@@ -125,10 +125,9 @@
   {
     "capabilityId": "fleet.issue_anomaly_candidate",
     "domain": "Fleet Intelligence",
-    "executionClass": "D1",
+    "executionClass": "D0",
     "futureAiRoles": [
-      "ANOMALY_DETECTION",
-      "CLASSIFICATION"
+      "NONE"
     ],
     "modelBenchmarkRequired": false,
     "safetyRelevant": true

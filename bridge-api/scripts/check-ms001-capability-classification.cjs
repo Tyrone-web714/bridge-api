@@ -36,6 +36,7 @@ const REQUIRED_DOCS = Object.freeze([
   'generated/ms001_provider_usage_audit.json',
   'generated/ms001_registry_hash.json'
 ]);
+const FLEET_ISSUE_CAPABILITY_ID = 'fleet.issue_anomaly_candidate';
 
 function fail(message) {
   throw new Error(message);
@@ -102,8 +103,23 @@ function validateRegistry(registry) {
     assert.strictEqual(capability.migrationClaimed, false);
     assert.strictEqual(capability.premiumModelDesignated, false);
     assert.strictEqual(capability.costMayOverrideSafety, false);
+    assert.strictEqual(capability.statisticalAnomalyDetectionEnabled, undefined, `${capability.capabilityId} must not enable statistical anomaly detection`);
+    assert.strictEqual(capability.predictiveAnomalyFieldAdded, undefined, `${capability.capabilityId} must not add predictive anomaly fields`);
+    assert.strictEqual(capability.machineLearningModelAssigned, undefined, `${capability.capabilityId} must not assign machine-learning models`);
+    assert.strictEqual(capability.ms002Started, undefined, `${capability.capabilityId} must not start MS-002`);
     if (capability.safetyRelevant && !capability.safetyAuthority) fail(`Missing safety authority for ${capability.capabilityId}`);
   }
+
+  const fleetIssue = registry.capabilities.find((capability) => capability.capabilityId === FLEET_ISSUE_CAPABILITY_ID);
+  if (!fleetIssue) fail(`${FLEET_ISSUE_CAPABILITY_ID} missing`);
+  assert.strictEqual(fleetIssue.executionClass, 'D0');
+  assert.deepStrictEqual(fleetIssue.futureAiRoles, ['NONE']);
+  assert.strictEqual(fleetIssue.benchmarkRequirement, 'NOT_REQUIRED_D0');
+  assert.strictEqual(fleetIssue.modelBenchmarkRequired, false);
+  assert.strictEqual(fleetIssue.existingModelProviderDependency, null);
+  assert.strictEqual(fleetIssue.modelOutputMayInfluence, false);
+  assert.ok(fleetIssue.currentImplementationType.includes('deterministic issue/exception detection'), `${FLEET_ISSUE_CAPABILITY_ID} must remain deterministic issue/exception detection`);
+  assert.ok(!fleetIssue.classificationRationale.toLowerCase().includes('authorized statistical anomaly'), `${FLEET_ISSUE_CAPABILITY_ID} must not authorize statistical anomaly detection`);
 
   assert.strictEqual(ids.size, registry.counts.totalCapabilityCount);
   assert.strictEqual(registry.counts.sourceDomainCount, 8);
@@ -113,6 +129,7 @@ function validateRegistry(registry) {
   assert.strictEqual(registry.counts.d3Count, registry.capabilities.filter((c) => c.executionClass === 'D3').length);
   assert.strictEqual(registry.counts.modelBenchmarkRequiredCount, registry.capabilities.filter((c) => c.modelBenchmarkRequired).length);
   assert.strictEqual(registry.counts.modelBenchmarkExcludedCount, registry.capabilities.filter((c) => !c.modelBenchmarkRequired).length);
+  assert.strictEqual(registry.counts.ownerReviewRequiredCount, 0);
   assert.strictEqual(registry.counts.voiceRelatedCapabilityCount, 0);
   assert(registry.counts.d0Count > registry.counts.modelBenchmarkRequiredCount, 'D0 exclusion must materially reduce benchmark scope');
   assert(registry.unapprovedIdeasForOwnerReview.some((idea) => idea.idea.includes('voice')), 'Voice pipeline owner-review idea must be captured');
@@ -163,6 +180,27 @@ function runNegativeTests() {
   expectInvalid('unapproved prediction', (r) => { r.capabilities[0].unsupportedPredictionAdded = true; });
   expectInvalid('unapproved voice', (r) => { r.capabilities[0].unapprovedVoiceCapabilityAdded = true; });
   expectInvalid('missing evidence', (r) => { r.capabilities[0].repositoryEvidence = ['docs/does-not-exist.md']; });
+  expectInvalid('fleet issue D1 owner-review regression', (r) => {
+    const fleetIssue = r.capabilities.find((c) => c.capabilityId === FLEET_ISSUE_CAPABILITY_ID);
+    fleetIssue.executionClass = 'D1';
+    fleetIssue.futureAiRoles = ['ANOMALY_DETECTION'];
+    fleetIssue.benchmarkRequirement = 'REQUIRES_OWNER_REVIEW';
+  });
+  expectInvalid('fleet issue statistical anomaly enabled', (r) => {
+    r.capabilities.find((c) => c.capabilityId === FLEET_ISSUE_CAPABILITY_ID).statisticalAnomalyDetectionEnabled = true;
+  });
+  expectInvalid('fleet issue predictive anomaly field', (r) => {
+    r.capabilities.find((c) => c.capabilityId === FLEET_ISSUE_CAPABILITY_ID).predictiveAnomalyFieldAdded = true;
+  });
+  expectInvalid('fleet issue machine-learning model assigned', (r) => {
+    r.capabilities.find((c) => c.capabilityId === FLEET_ISSUE_CAPABILITY_ID).machineLearningModelAssigned = 'example-model';
+  });
+  expectInvalid('fleet issue benchmark enabled', (r) => {
+    r.capabilities.find((c) => c.capabilityId === FLEET_ISSUE_CAPABILITY_ID).modelBenchmarkRequired = true;
+  });
+  expectInvalid('MS-002 started prematurely', (r) => {
+    r.capabilities.find((c) => c.capabilityId === FLEET_ISSUE_CAPABILITY_ID).ms002Started = true;
+  });
 }
 
 const registry = buildRegistry();
