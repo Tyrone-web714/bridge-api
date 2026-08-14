@@ -1,97 +1,85 @@
 # Current AI Work Package
 
-Package ID: SAFETY_INTELLIGENCE
+Package ID: NONE
 
-Title: Safety Intelligence
+Title: No active Milestone 1 intelligence-domain implementation package
 
-Category: CORE_OPERATIONAL_INTELLIGENCE
+Category: MODEL_SELECTION_AND_BENCHMARKING
 
-Status: IMPLEMENTED_UNCOMMITTED
+Status: DEFERRED
 
 ## Objective
 
-Provide deterministic organization-level safety awareness by aggregating and preserving existing TSR safety evidence without overriding authoritative Route, Driver, Supervisor, Warehouse, Fleet, Customer, or Operations Intelligence determinations.
+Record that Milestone 1 Core Operational Intelligence Foundations are complete from the repository/source-control perspective and await an owner-approved Model Selection Gate review without starting model selection, provider selection, hosted AI activation, production orchestration, deployment, migration, or any ninth intelligence domain.
+
+## Milestone 1 Completion State
+
+Milestone 1 is complete from the repository/source-control perspective for exactly eight core operational intelligence domains:
+
+- Route Intelligence.
+- Driver Intelligence.
+- Supervisor Intelligence.
+- Warehouse Intelligence.
+- Fleet Intelligence.
+- Customer Intelligence.
+- Operations Intelligence.
+- Safety Intelligence.
+
+All eight domains are committed, validated, and pushed as repository-only foundations. They are not deployed, not migrated, not production-certified, not provider-enabled, and not model-enabled by this roadmap state.
 
 ## Approved Scope
 
-- Low-clearance hazards.
-- Route safety blockers.
-- Truck restrictions.
-- No-through-truck restrictions.
-- Road closures.
-- Residential restriction evidence.
-- Driver safety advisories.
-- Speed warnings.
-- Route safety exceptions.
-- Warehouse blockers with safety implications.
-- Route/vehicle incompatibility.
-- Safety-related Operations exceptions.
-- Existing Shared Safety Intelligence.
-- Evidence completeness.
-- Evidence confidence.
-- Evidence freshness.
-- Human review.
+- Roadmap reconciliation.
+- Source-control state reconciliation.
+- Milestone 1 completion status.
+- Model Selection Gate prerequisite status.
+- Cost-effectiveness principle preservation.
+- Production-orchestration deferral.
 
 ## Prohibited Scope
 
-- Driver safety scoring.
-- Employee safety ranking.
-- Employee risk scoring.
-- Negligence determination.
-- Misconduct determination.
-- Discipline recommendation.
-- Termination recommendation.
-- Compensation decision.
-- Insurance eligibility.
-- Legal-liability determination.
-- Autonomous route shutdown.
-- Autonomous driver lockout.
-- Autonomous vehicle lockout.
-- Autonomous dispatch.
-- Autonomous workforce action.
-- Crash prediction.
-- Accident prediction.
-- Fatigue prediction.
-- Driver-behavior prediction.
-- Injury prediction.
-- Insurance-risk prediction.
-- Criminal-risk prediction.
-- New telematics hardware.
-- New ELD functionality.
-- Camera/computer-vision monitoring.
-- Biometric monitoring.
-- Generalized OSHA platform scope.
-- Generalized DOT-compliance platform scope.
-- Insurance platform scope.
+- New intelligence-domain implementation.
+- Ninth intelligence domain.
 - Model selection.
+- Model ranking.
+- Provider selection.
 - Provider activation.
 - Hosted AI activation.
 - Production orchestration.
 - Production APIs.
 - Deployment.
 - Migrations.
-- New AI infrastructure.
+- Production writes.
+- Database mutations.
+- Object-storage mutations.
+- Cloudflare/R2 changes.
+- Credential changes.
+- Runtime functionality changes.
 
 ## Dependencies
 
+- AI-IEP-005B.1.
+- AI-IEP-005B.2.
+- SUPERVISOR_INTELLIGENCE.
+- WAREHOUSE_INTELLIGENCE.
+- FLEET_INTELLIGENCE.
+- CUSTOMER_INTELLIGENCE.
 - OPERATIONS_INTELLIGENCE.
+- SAFETY_INTELLIGENCE.
 
 ## Acceptance Criteria
 
-- Safety Intelligence is implemented locally as the single current package and remains uncommitted, unpushed, undeployed, unmigrated, and not production-certified.
-- Scope is limited to deterministic organization-level safety awareness that aggregates and preserves existing TSR safety evidence.
-- Authoritative Route, Driver, Supervisor, Warehouse, Fleet, Customer, and Operations Intelligence determinations are not overridden.
-- Driver safety scoring, employee safety ranking, negligence or misconduct determination, autonomous safety action, crash/fatigue/behavior prediction, monitoring hardware, computer vision, biometrics, OSHA/DOT/insurance product expansion, provider/model activation, deployment, migrations, and production APIs remain prohibited.
-- Model-selection and production-orchestration gates remain incomplete.
+- Current intelligence-domain implementation package is NONE.
+- Route, Driver, Supervisor, Warehouse, Fleet, Customer, Operations, and Safety Intelligence are all committed, validated, and pushed as repository-only Milestone 1 foundations.
+- Model Selection Gate prerequisites are recorded as satisfied, but the gate remains deferred, incomplete, inactive, and owner-approval gated.
+- No provider, model, premium tier, hosted AI execution, ranking, benchmark recommendation, production orchestration, deployment, migration, production write, object mutation, Cloudflare/R2 change, credential change, runtime functionality change, or ninth intelligence domain is authorized.
 
 ## Required Tests
 
-- `npm.cmd run test:shared-safety`
-- `npm.cmd run safety-intelligence:generate`
-- `npm.cmd run safety-intelligence:validate`
-- `npm.cmd run safety-intelligence:check`
-- `npm.cmd run safety-intelligence:benchmarks`
-- `npm.cmd run test:safety-intelligence`
+- `npm.cmd run ai-roadmap:generate`
+- `npm.cmd run ai-roadmap:validate`
+- `npm.cmd run ai-roadmap:check`
+- `npm.cmd run test:ai-roadmap`
 - `npm.cmd run test:route-intelligence`
 - `npm.cmd run test:driver-intelligence`
 - `npm.cmd run test:supervisor-operational-intelligence`
@@ -100,33 +88,28 @@ Provide deterministic organization-level safety awareness by aggregating and pre
 - `npm.cmd run test:fleet-intelligence`
 - `npm.cmd run test:customer-intelligence`
 - `npm.cmd run test:operations-intelligence`
-- `npm.cmd run test:knowledge-graph`
-- `npm.cmd run test:dashboard-data`
-- `npm.cmd run test:framework-validation`
-- `npm.cmd run test:intelligence-orchestration`
-- `npm.cmd run test:intelligence-lifecycle`
+- `npm.cmd run test:safety-intelligence`
+- `npm.cmd run test:shared-safety`
 - `npm.cmd run test:security`
-- `npm.cmd run test:ai-roadmap`
-- `npm.cmd test`
 
 ## Source-Control Expectation
 
-Safety Intelligence is implemented locally as the single current package. Keep the working tree unstaged until review. Do not stage, commit, push, deploy, run migrations, activate providers, select models, modify production systems, fabricate an AI-IEP package number, begin any ninth intelligence domain, or expand safety scope without separate owner approval.
+Milestone 1 Core Operational Intelligence Foundations are complete from the repository/source-control perspective through Safety Intelligence commit `be99623e6964ed4af00d46ebeabc1b0c89f7d122`, which is contained by `origin/legacy-public-url-final-cleanup`. Do not stage, commit, push, deploy, run migrations, activate providers, select models, modify production systems, fabricate an AI-IEP package number, or begin any ninth intelligence domain without separate owner approval.
 
 ## Completion Report
 
-Use docs/ai-development/CODEX_COMPLETION_REPORT_TEMPLATE.md sections A through AN for the controlled Safety Intelligence completion report when implementation is separately approved.
+Use `docs/ai-development/CODEX_COMPLETION_REPORT_TEMPLATE.md` sections A through AN for the controlled roadmap reconciliation completion report.
 
 ## Recommended Commit Message
 
-Build Safety Intelligence foundation
+Complete TSR Intelligence Milestone 1 roadmap
 
 ## Next Approved Package
 
-No subsequent business-domain package is approved by this record. Safety Intelligence is the current implemented-local package and remains uncommitted, unpushed, undeployed, unmigrated, and not production-certified.
+No active intelligence-domain implementation package is approved by this record. The next phase is owner-approved Model Selection Gate review only.
 
 ## Owner Decision Points
 
-- Review and approve source-control preservation before staging, committing, or pushing Safety Intelligence.
-- Approve any future production runtime API, deployment, migration, provider expansion, model selection, production validation, autonomous safety action, predictive safety model, safety scoring, monitoring hardware, computer vision, biometric monitoring, OSHA/DOT/insurance product scope, or new AI infrastructure separately.
-- Keep model-selection and production-orchestration gates incomplete until Safety Intelligence is implemented, reviewed, committed, validated, pushed, and roadmap-reconciled.
+- Approve any future Model Selection Gate review before provider comparison, model ranking, premium-tier analysis, or hosted AI activation.
+- Approve any future production orchestration, production runtime API, deployment, migration, production validation, provider expansion, model selection, production write, object mutation, credential change, Cloudflare/R2 change, or new AI infrastructure separately.
+- Keep production orchestration deferred, incomplete, and inactive until model-selection evidence, governance controls, and owner approval exist.

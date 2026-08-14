@@ -101,19 +101,33 @@
     {
       "category": "CORE_OPERATIONAL_INTELLIGENCE",
       "deployed": false,
-      "implementationCommit": null,
-      "localCommitVerified": false,
+      "implementationCommit": "be99623e6964ed4af00d46ebeabc1b0c89f7d122",
+      "localCommitVerified": true,
       "nextApprovedPackage": null,
       "ownerApprovalRequired": true,
       "packageId": "SAFETY_INTELLIGENCE",
       "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
-      "pushed": false,
-      "remoteCommitVerified": false,
-      "status": "IMPLEMENTED_UNCOMMITTED",
+      "pushed": true,
+      "remoteCommitVerified": true,
+      "status": "PUSHED",
       "title": "Safety Intelligence"
     }
   ],
+  "coreOperationalIntelligenceDomainCount": 8,
+  "coreOperationalIntelligenceDomains": [
+    "AI-IEP-005B.1",
+    "AI-IEP-005B.2",
+    "SUPERVISOR_INTELLIGENCE",
+    "WAREHOUSE_INTELLIGENCE",
+    "FLEET_INTELLIGENCE",
+    "CUSTOMER_INTELLIGENCE",
+    "OPERATIONS_INTELLIGENCE",
+    "SAFETY_INTELLIGENCE"
+  ],
+  "coreOperationalIntelligenceFoundationsComplete": true,
   "modelSelectionGateSatisfied": false,
+  "modelSelectionPrerequisitesSatisfied": true,
+  "modelSelectionReadyForOwnerReview": true,
   "nextApprovedPackage": null,
   "productionOrchestrationGateSatisfied": false
 }

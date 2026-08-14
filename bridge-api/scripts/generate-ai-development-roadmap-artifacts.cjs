@@ -62,9 +62,10 @@ function markdownSummary(roadmap, current) {
     '# TSR AI Roadmap Summary',
     '',
     `- Roadmap ID: ${roadmap.roadmapId}`,
-    `- Current package: ${current.packageId} - ${current.title}`,
+    `- Current package: ${current.packageId || 'NONE'} - ${current.title}`,
     `- Current status: ${current.status}`,
     `- Next approved package: ${current.nextApprovedPackage}`,
+    `- Milestone 1 complete: ${Boolean(roadmap.milestones?.coreOperationalIntelligenceFoundations?.repositorySourceControlComplete)}`,
     `- Route Intelligence pushed: ${Boolean(roadmap.packages.find((pkg) => pkg.packageId === 'AI-IEP-005B.1')?.pushed)}`,
     `- Driver Intelligence pushed: ${Boolean(roadmap.packages.find((pkg) => pkg.packageId === 'AI-IEP-005B.2')?.pushed)}`,
     '',
@@ -98,6 +99,9 @@ function generate(options = {}) {
   const customer = packages.find((pkg) => pkg.packageId === 'CUSTOMER_INTELLIGENCE');
   const operations = packages.find((pkg) => pkg.packageId === 'OPERATIONS_INTELLIGENCE');
   const safety = packages.find((pkg) => pkg.packageId === 'SAFETY_INTELLIGENCE');
+  const milestoneOne = roadmap.milestones?.coreOperationalIntelligenceFoundations;
+  const modelSelection = roadmap.gates.modelSelection;
+  const productionOrchestration = roadmap.gates.productionOrchestration;
   const outputs = {
     'ai_roadmap_summary.json': json({
       roadmapId: roadmap.roadmapId,
@@ -110,7 +114,12 @@ function generate(options = {}) {
     'current_work_package.json': json(current),
     'milestone_progress.json': json({
       coreOperationalIntelligence: core.map(packageSummary),
+      coreOperationalIntelligenceFoundationsComplete: Boolean(milestoneOne?.repositorySourceControlComplete),
+      coreOperationalIntelligenceDomainCount: milestoneOne?.domainCount || core.length,
+      coreOperationalIntelligenceDomains: milestoneOne?.domains || core.map((pkg) => pkg.packageId),
       modelSelectionGateSatisfied: false,
+      modelSelectionPrerequisitesSatisfied: Boolean(modelSelection?.prerequisitesSatisfied),
+      modelSelectionReadyForOwnerReview: Boolean(modelSelection?.readyForOwnerReview),
       productionOrchestrationGateSatisfied: false,
       nextApprovedPackage: current.nextApprovedPackage
     }),
@@ -121,7 +130,10 @@ function generate(options = {}) {
       remoteHead: roadmap.sourceControl.remoteHead,
       localHead: roadmap.sourceControl.localHead,
       localAheadBy: roadmap.sourceControl.localAheadBy,
-      pushedStatusRequiresRemoteContainment: true
+      pushedStatusRequiresRemoteContainment: true,
+      safetyIntelligencePushed: Boolean(safety?.pushed),
+      safetyIntelligenceRemoteContained: Boolean(safety?.pushed && safety?.remoteCommitVerified),
+      milestoneOneComplete: Boolean(milestoneOne?.repositorySourceControlComplete)
     }),
     'scope_control_status.json': json({
       policyPath: 'docs/ai-development/SCOPE_CONTROL_POLICY.md',
@@ -136,23 +148,33 @@ function generate(options = {}) {
       customerImplementationStarted: Boolean(customer?.implementationCommit),
       operationsIntelligenceRemoteContained: Boolean(operations?.pushed && operations?.remoteCommitVerified),
       operationsImplementationStarted: Boolean(operations?.implementationCommit),
-      safetyIntelligenceImplementedUncommitted: current.packageId === 'SAFETY_INTELLIGENCE' && current.status === 'IMPLEMENTED_UNCOMMITTED',
-      safetyImplementationStarted: Boolean(safety?.documentationPath),
+      safetyIntelligencePushed: Boolean(safety?.pushed && safety?.remoteCommitVerified),
+      safetyImplementationStarted: Boolean(safety?.implementationCommit),
+      currentIntelligenceDomainPackageActive: false,
+      currentPackageNoneAfterMilestoneOne: current.packageId === null,
+      milestoneOneComplete: Boolean(milestoneOne?.repositorySourceControlComplete),
       unapprovedMilestoneOneDomainsAllowed: false,
       deterministicTruckSafetyControlsAuthoritative: true
     }),
     'model_selection_gate_status.json': json({
       gatePath: 'docs/ai-development/AI_MODEL_SELECTION_GATE.md',
-      status: 'DEFERRED',
-      complete: false,
-      requiredCoreDomains: roadmap.gates.modelSelection.requiredCoreDomains
+      status: modelSelection.status,
+      complete: modelSelection.complete,
+      active: modelSelection.active,
+      prerequisitesSatisfied: modelSelection.prerequisitesSatisfied,
+      readyForOwnerReview: modelSelection.readyForOwnerReview,
+      ownerApprovalRequired: modelSelection.ownerApprovalRequired,
+      requiredCoreDomains: modelSelection.requiredCoreDomains,
+      costEffectivenessPrinciple: modelSelection.costEffectivenessPrinciple,
+      notStarted: modelSelection.notStarted
     }),
     'production_orchestration_gate_status.json': json({
       gatePath: 'docs/ai-development/PRODUCTION_ORCHESTRATION_GATE.md',
-      status: 'DEFERRED',
-      complete: false,
+      status: productionOrchestration.status,
+      complete: productionOrchestration.complete,
+      active: productionOrchestration.active,
       authorizedByThisPackage: false,
-      requirements: roadmap.gates.productionOrchestration.requirements
+      requirements: productionOrchestration.requirements
     })
   };
   const changed = Object.entries(outputs).filter(([name, content]) => writeIfChanged(name, content, options)).map(([name]) => name);

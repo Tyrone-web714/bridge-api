@@ -28,11 +28,12 @@ The machine-readable source of truth is `TSR_AI_MASTER_ROADMAP.json`. This Markd
 
 - Local branch: `legacy-public-url-final-cleanup`
 - Remote branch: `origin/legacy-public-url-final-cleanup`
-- Local HEAD after Operations Intelligence preservation: `eb6975a9b59f769311cf9073c9df0abd0fdb90f7`
-- Remote HEAD after Operations Intelligence preservation: `eb6975a9b59f769311cf9073c9df0abd0fdb90f7`
+- Local HEAD after Safety Intelligence preservation: `be99623e6964ed4af00d46ebeabc1b0c89f7d122`
+- Remote HEAD after Safety Intelligence preservation: `be99623e6964ed4af00d46ebeabc1b0c89f7d122`
 - Customer Intelligence is committed, validated, and pushed as repository-only work.
 - Operations Intelligence is committed, validated, and pushed as repository-only work.
-- Route Intelligence, Driver Intelligence, Supervisor Intelligence, Warehouse Intelligence, Fleet Intelligence, Customer Intelligence, Operations Intelligence, and TSR-AI-WORKFLOW-001 are committed, validated, and pushed.
+- Safety Intelligence is committed, validated, and pushed as repository-only work.
+- Route Intelligence, Driver Intelligence, Supervisor Intelligence, Warehouse Intelligence, Fleet Intelligence, Customer Intelligence, Operations Intelligence, Safety Intelligence, and TSR-AI-WORKFLOW-001 are committed, validated, and pushed.
 
 ## Roadmap
 
@@ -49,7 +50,9 @@ AI-IEP-004A.1 through AI-IEP-005A.2 are pushed to the remote branch through `e38
 - `FLEET_INTELLIGENCE`: `PUSHED`, commit `9dfed02df38dc67240b089f4582926f14bbaae7d`, required validation passed, not deployed, not migrated, and not production-certified. Scope is limited to fleet operational state, vehicle assignment awareness, vehicle availability/readiness, route/vehicle compatibility evidence, fleet utilization awareness, vehicle exception detection, unresolved vehicle-operational issues, maintenance-status awareness where existing data already supports it, route-impact awareness caused by vehicle state, structured fleet alerts, supervisor fleet visibility, deterministic explanations, evidence completeness/confidence, human-review flags, and integration with Route, Driver, Supervisor, and Warehouse Intelligence.
 - `CUSTOMER_INTELLIGENCE`: `PUSHED`, commit `c975a65e977469629cbce1d8d1136a039cd1f549`, required validation passed, not deployed, not migrated, and not production-certified. Scope is limited to customer/account context, delivery-account history awareness, product purchase history awareness, invoice/spend history awareness, delivery pattern awareness, deduction/exception awareness where existing data supports it, stop/account service-pattern awareness, customer-specific route/stop operational context, structured customer operational exceptions, deterministic summaries/explanations, evidence completeness/confidence, human-review flags, generated artifacts, and integration references with Route, Driver, Supervisor, Warehouse, and Fleet Intelligence where relevant.
 - `OPERATIONS_INTELLIGENCE`: `PUSHED`, commit `eb6975a9b59f769311cf9073c9df0abd0fdb90f7`, required validation passed, not deployed, not migrated, and not production-certified. Repository-only work adds deterministic organization operational context, cross-domain operational snapshots, route/driver/supervisor/warehouse/fleet/customer aggregation, cross-domain correlation without causation, operations exceptions, severity, priority, structured alerts, alert lifecycle, summaries, explanations, evidence freshness/completeness/confidence, authority traceability, generated artifacts, and validation scripts.
-- `SAFETY_INTELLIGENCE`: `IMPLEMENTED_UNCOMMITTED` as the single current package. Repository-only work adds deterministic organization-level safety context, route safety portfolio aggregation, low-clearance/truck restriction/road closure/residential restriction awareness, driver advisory and speed warning aggregation, route/vehicle safety compatibility awareness, warehouse and operations safety-impact references, Shared Safety integration, safety exceptions, severity, priority, structured alerts, alert lifecycle, summaries, explanations, freshness/completeness/confidence, authority traceability, generated artifacts, and validation scripts. It is not committed, not pushed, not deployed, not migrated, not production-certified, not provider-enabled, and not model-enabled.
+- `SAFETY_INTELLIGENCE`: `PUSHED`, commit `be99623e6964ed4af00d46ebeabc1b0c89f7d122`, required validation passed, not deployed, not migrated, and not production-certified. Repository-only work adds deterministic organization-level safety context, route safety portfolio aggregation, low-clearance/truck restriction/road closure/residential restriction awareness, driver advisory and speed warning aggregation, route/vehicle safety compatibility awareness, warehouse and operations safety-impact references, Shared Safety integration, safety exceptions, severity, priority, structured alerts, alert lifecycle, summaries, explanations, freshness/completeness/confidence, authority traceability, generated artifacts, and validation scripts.
+
+Milestone 1 Core Operational Intelligence Foundations are complete from the repository/source-control perspective across exactly eight domains: Route, Driver, Supervisor, Warehouse, Fleet, Customer, Operations, and Safety Intelligence. No active intelligence-domain implementation package remains after Safety Intelligence preservation.
 
 Warehouse Intelligence explicitly excludes employee scoring, warehouse employee ranking, productivity ratings, discipline or termination recommendations, compensation decisions, autonomous workforce decisions, new AI infrastructure, model selection, provider activation, production APIs, deployment, migrations, speculative warehouse automation, robotics, autonomous inventory purchasing, new hardware integrations, and unrelated warehouse-management-system expansion.
 
@@ -67,4 +70,6 @@ No Maintenance, Inventory, Financial, or Enterprise Intelligence package is part
 
 - `TSR-AI-WORKFLOW-001`: `PUSHED`, commit `983457ba6a6adceafbbc4423373e197cbd90fcf7`, required validation passed, not deployed, and not migrated.
 
-Model selection and production orchestration remain gated and deferred.
+Model Selection Gate prerequisites are satisfied from the repository/source-control perspective, but the gate remains `DEFERRED`, incomplete, inactive, and owner-approval gated. No provider, model, premium tier, hosted AI execution, model ranking, or benchmark recommendation is selected by this roadmap state.
+
+Production orchestration remains `DEFERRED`, incomplete, inactive, and owner-approval gated. No production orchestration, production API activation, deployment, migration, production write, object mutation, credential change, Cloudflare/R2 change, or runtime functionality change is authorized by this roadmap state.

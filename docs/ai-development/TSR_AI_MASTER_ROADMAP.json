@@ -26,8 +26,8 @@
     "backendPath": "C:\\dev\\bridge-api\\bridge-api",
     "localBranch": "legacy-public-url-final-cleanup",
     "remoteBranch": "origin/legacy-public-url-final-cleanup",
-    "localHead": "eb6975a9b59f769311cf9073c9df0abd0fdb90f7",
-    "remoteHead": "eb6975a9b59f769311cf9073c9df0abd0fdb90f7",
+    "localHead": "be99623e6964ed4af00d46ebeabc1b0c89f7d122",
+    "remoteHead": "be99623e6964ed4af00d46ebeabc1b0c89f7d122",
     "localAheadBy": 0,
     "remoteVerificationPerformed": true,
     "pushPerformedByThisPackage": false
@@ -36,6 +36,10 @@
     "modelSelection": {
       "status": "DEFERRED",
       "complete": false,
+      "active": false,
+      "prerequisitesSatisfied": true,
+      "readyForOwnerReview": true,
+      "ownerApprovalRequired": true,
       "requiredCoreDomains": [
         "Route Intelligence",
         "Driver Intelligence",
@@ -45,6 +49,14 @@
         "Customer Intelligence",
         "Operations Intelligence",
         "Safety Intelligence"
+      ],
+      "costEffectivenessPrinciple": "Use the least expensive strategy or model that satisfies quality, safety, reliability, latency, governance, and evidence requirements. Cost never overrides truck safety, legal compliance, privacy, tenant isolation, policy controls, reliability, or minimum quality thresholds.",
+      "notStarted": [
+        "provider selection",
+        "model selection",
+        "model ranking",
+        "hosted AI activation",
+        "production orchestration"
       ]
     },
     "productionOrchestration": {
@@ -74,6 +86,30 @@
         "owner approval"
       ],
       "active": false
+    }
+  },
+  "milestones": {
+    "coreOperationalIntelligenceFoundations": {
+      "milestoneId": "MILESTONE_1_CORE_OPERATIONAL_INTELLIGENCE_FOUNDATIONS",
+      "status": "COMPLETE",
+      "repositorySourceControlComplete": true,
+      "domainCount": 8,
+      "domains": [
+        "AI-IEP-005B.1",
+        "AI-IEP-005B.2",
+        "SUPERVISOR_INTELLIGENCE",
+        "WAREHOUSE_INTELLIGENCE",
+        "FLEET_INTELLIGENCE",
+        "CUSTOMER_INTELLIGENCE",
+        "OPERATIONS_INTELLIGENCE",
+        "SAFETY_INTELLIGENCE"
+      ],
+      "allDomainsRemoteContained": true,
+      "deployed": false,
+      "migrationExecuted": false,
+      "productionCertified": false,
+      "nextPhase": "MODEL_SELECTION_GATE_REVIEW",
+      "nextPhaseOwnerApprovalRequired": true
     }
   },
   "packages": [
@@ -1102,7 +1138,7 @@
       "packageId": "SAFETY_INTELLIGENCE",
       "title": "Safety Intelligence",
       "category": "CORE_OPERATIONAL_INTELLIGENCE",
-      "status": "IMPLEMENTED_UNCOMMITTED",
+      "status": "PUSHED",
       "objective": "Provide deterministic organization-level safety awareness by aggregating and preserving existing TSR safety evidence without overriding authoritative Route, Driver, Supervisor, Warehouse, Fleet, Customer, or Operations Intelligence determinations.",
       "approvedScope": [
         "low-clearance hazards",
@@ -1166,11 +1202,13 @@
         "OPERATIONS_INTELLIGENCE"
       ],
       "acceptanceCriteria": [
-        "Safety Intelligence is implemented locally as the single current package and remains uncommitted, unpushed, undeployed, unmigrated, and not production-certified",
+        "Safety Intelligence foundation is committed, validated, and pushed as repository-only work",
+        "Safety Intelligence is not deployed, not migrated, and not production-certified",
         "scope is limited to deterministic organization-level safety awareness that aggregates and preserves existing TSR safety evidence",
         "authoritative Route, Driver, Supervisor, Warehouse, Fleet, Customer, and Operations Intelligence determinations are not overridden",
         "driver safety scoring, employee safety ranking, negligence or misconduct determination, autonomous safety action, crash/fatigue/behavior prediction, monitoring hardware, computer vision, biometrics, OSHA/DOT/insurance product expansion, provider/model activation, deployment, migrations, and production APIs remain prohibited",
-        "model-selection and production-orchestration gates remain incomplete"
+        "Milestone 1 Core Operational Intelligence Foundations are complete from the repository/source-control perspective",
+        "model-selection and production-orchestration gates remain incomplete and inactive"
       ],
       "requiredTests": [
         "npm.cmd run safety-intelligence:generate",
@@ -1197,10 +1235,10 @@
         "npm.cmd test"
       ],
       "documentationPath": "docs/implementation/safety-intelligence-foundation",
-      "implementationCommit": null,
-      "localCommitVerified": false,
-      "remoteCommitVerified": false,
-      "pushed": false,
+      "implementationCommit": "be99623e6964ed4af00d46ebeabc1b0c89f7d122",
+      "localCommitVerified": true,
+      "remoteCommitVerified": true,
+      "pushed": true,
       "deployed": false,
       "deploymentVerified": false,
       "migrationRequired": false,
@@ -1209,8 +1247,8 @@
       "ownerApprovalRequired": true,
       "scopeChangeApprovalRequired": true,
       "nextApprovedPackage": null,
-      "notes": "Safety Intelligence is implemented locally as repository-only work and remains uncommitted, unpushed, undeployed, unmigrated, not production-certified, not provider-enabled, and not model-enabled. It adds deterministic aggregation/preservation of existing TSR safety evidence, generated documentation/artifacts, and validation scripts. It does not authorize driver scoring, employee ranking, negligence or misconduct conclusions, autonomous safety action, predictive crash/fatigue/behavior modeling, monitoring hardware, computer vision, biometrics, OSHA/DOT/insurance platform expansion, production APIs, deployment, migrations, production writes, object mutations, Cloudflare/R2 changes, or new AI infrastructure.",
-      "isCurrentPackage": true
+      "notes": "Safety Intelligence foundation commit be99623e6964ed4af00d46ebeabc1b0c89f7d122 is committed locally, fetched remote refs and direct remote-head verification confirm origin/legacy-public-url-final-cleanup contains it, and required validation passed. Not deployed, not migrated, and not production-certified. No production API, provider/model activation, production orchestration, database write, object mutation, autonomous safety action, predictive crash/fatigue/behavior modeling, workforce scoring, monitoring hardware, computer vision, biometric monitoring, OSHA/DOT/insurance expansion, new AI infrastructure, or ninth intelligence domain exists.",
+      "isCurrentPackage": false
     },
     {
       "packageId": "TSR-AI-WORKFLOW-001",

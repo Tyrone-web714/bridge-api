@@ -2,9 +2,10 @@
 # TSR AI Roadmap Summary
 
 - Roadmap ID: TSR_AI_DEVELOPMENT_ROADMAP
-- Current package: SAFETY_INTELLIGENCE - Safety Intelligence
-- Current status: IMPLEMENTED_UNCOMMITTED
+- Current package: NONE - No active Milestone 1 intelligence-domain implementation package
+- Current status: DEFERRED
 - Next approved package: null
+- Milestone 1 complete: true
 - Route Intelligence pushed: true
 - Driver Intelligence pushed: true
 
@@ -20,5 +21,4 @@
 
 | Status | Count |
 | --- | ---: |
-| IMPLEMENTED_UNCOMMITTED | 1 |
-| PUSHED | 20 |
+| PUSHED | 21 |

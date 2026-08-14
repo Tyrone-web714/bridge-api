@@ -1,6 +1,18 @@
 {
+  "active": false,
   "complete": false,
+  "costEffectivenessPrinciple": "Use the least expensive strategy or model that satisfies quality, safety, reliability, latency, governance, and evidence requirements. Cost never overrides truck safety, legal compliance, privacy, tenant isolation, policy controls, reliability, or minimum quality thresholds.",
   "gatePath": "docs/ai-development/AI_MODEL_SELECTION_GATE.md",
+  "notStarted": [
+    "provider selection",
+    "model selection",
+    "model ranking",
+    "hosted AI activation",
+    "production orchestration"
+  ],
+  "ownerApprovalRequired": true,
+  "prerequisitesSatisfied": true,
+  "readyForOwnerReview": true,
   "requiredCoreDomains": [
     "Route Intelligence",
     "Driver Intelligence",

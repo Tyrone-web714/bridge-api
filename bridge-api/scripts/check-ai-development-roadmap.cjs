@@ -85,7 +85,8 @@ const WAREHOUSE_COMMIT = '4a2b2dc7e4a5c2d8bd9a4a0c9f0e407cdc8fd1bb';
 const FLEET_COMMIT = '9dfed02df38dc67240b089f4582926f14bbaae7d';
 const CUSTOMER_COMMIT = 'c975a65e977469629cbce1d8d1136a039cd1f549';
 const OPERATIONS_COMMIT = 'eb6975a9b59f769311cf9073c9df0abd0fdb90f7';
-const REMOTE_VERIFIED_PACKAGES = ['AI-IEP-005B.1', 'AI-IEP-005B.2', 'SUPERVISOR_INTELLIGENCE', 'WAREHOUSE_INTELLIGENCE', 'FLEET_INTELLIGENCE', 'CUSTOMER_INTELLIGENCE', 'OPERATIONS_INTELLIGENCE', 'TSR-AI-WORKFLOW-001'];
+const SAFETY_COMMIT = 'be99623e6964ed4af00d46ebeabc1b0c89f7d122';
+const REMOTE_VERIFIED_PACKAGES = ['AI-IEP-005B.1', 'AI-IEP-005B.2', 'SUPERVISOR_INTELLIGENCE', 'WAREHOUSE_INTELLIGENCE', 'FLEET_INTELLIGENCE', 'CUSTOMER_INTELLIGENCE', 'OPERATIONS_INTELLIGENCE', 'SAFETY_INTELLIGENCE', 'TSR-AI-WORKFLOW-001'];
 const OPERATIONS_OBJECTIVE = 'Provide deterministic organization-level operational awareness by aggregating existing TSR operational evidence without replacing the authoritative intelligence domains.';
 const OPERATIONS_APPROVED_SCOPE = [
   'operational context',
@@ -239,24 +240,55 @@ function validateRoadmap(roadmap, current, options = {}) {
     if (pkg.status === 'VALIDATED' && (!Array.isArray(pkg.requiredTests) || !pkg.requiredTests.length)) failures.push({ rule: 'VALIDATED_WITHOUT_TEST_EVIDENCE', packageId: pkg.packageId });
     if (pkg.migrationExecuted === true && pkg.migrationRequired !== true) failures.push({ rule: 'FALSE_MIGRATION_STATE', packageId: pkg.packageId });
   }
+  const milestoneOne = roadmap.milestones?.coreOperationalIntelligenceFoundations;
+  const milestoneOneComplete = milestoneOne?.status === 'COMPLETE' && milestoneOne?.repositorySourceControlComplete === true;
   const currentPackages = packages.filter((pkg) => pkg.isCurrentPackage === true);
-  if (currentPackages.length !== 1) failures.push({ rule: 'CURRENT_PACKAGE_COUNT', count: currentPackages.length });
+  if (milestoneOneComplete) {
+    if (currentPackages.length !== 0) failures.push({ rule: 'CURRENT_PACKAGE_COUNT', count: currentPackages.length });
+  } else if (currentPackages.length !== 1) {
+    failures.push({ rule: 'CURRENT_PACKAGE_COUNT', count: currentPackages.length });
+  }
   for (const field of CURRENT_REQUIRED) {
     if (!Object.prototype.hasOwnProperty.call(current, field)) failures.push({ rule: 'CURRENT_PACKAGE_MISSING_FIELD', field });
   }
-  const currentRoadmap = packages.find((pkg) => pkg.packageId === current.packageId);
-  if (!currentRoadmap) failures.push({ rule: 'CURRENT_PACKAGE_NOT_IN_ROADMAP', packageId: current.packageId });
-  if (currentRoadmap && currentRoadmap.title !== current.title) failures.push({ rule: 'CURRENT_PACKAGE_JSON_ROADMAP_MISMATCH', packageId: current.packageId });
-  if (currentRoadmap && currentRoadmap.status !== current.status) failures.push({ rule: 'CURRENT_PACKAGE_STATUS_MISMATCH', packageId: current.packageId });
-  if (current.packageId !== 'SAFETY_INTELLIGENCE') failures.push({ rule: 'CURRENT_PACKAGE_NOT_SAFETY_INTELLIGENCE', packageId: current.packageId });
-  if (current.status !== 'IMPLEMENTED_UNCOMMITTED') failures.push({ rule: 'CURRENT_SAFETY_STATUS_INVALID', status: current.status });
+  const currentRoadmap = current.packageId === null ? null : packages.find((pkg) => pkg.packageId === current.packageId);
+  if (milestoneOneComplete) {
+    if (current.packageId !== null) failures.push({ rule: 'CURRENT_PACKAGE_NOT_NONE_AFTER_MILESTONE_ONE', packageId: current.packageId });
+    if (current.status !== 'DEFERRED') failures.push({ rule: 'CURRENT_POST_MILESTONE_STATUS_INVALID', status: current.status });
+    if (current.category !== 'MODEL_SELECTION_AND_BENCHMARKING') failures.push({ rule: 'CURRENT_POST_MILESTONE_CATEGORY_INVALID', category: current.category });
+    if (current.nextApprovedPackage !== null) failures.push({ rule: 'CURRENT_POST_MILESTONE_NEXT_PACKAGE_INVALID', nextApprovedPackage: current.nextApprovedPackage });
+  } else {
+    if (!currentRoadmap) failures.push({ rule: 'CURRENT_PACKAGE_NOT_IN_ROADMAP', packageId: current.packageId });
+    if (currentRoadmap && currentRoadmap.title !== current.title) failures.push({ rule: 'CURRENT_PACKAGE_JSON_ROADMAP_MISMATCH', packageId: current.packageId });
+    if (currentRoadmap && currentRoadmap.status !== current.status) failures.push({ rule: 'CURRENT_PACKAGE_STATUS_MISMATCH', packageId: current.packageId });
+  }
   const currentMarkdown = read('CURRENT_AI_WORK_PACKAGE.md');
-  if (!currentMarkdown.includes(`Package ID: ${current.packageId}`) || !currentMarkdown.includes(`Status: ${current.status}`)) failures.push({ rule: 'CURRENT_PACKAGE_MARKDOWN_JSON_MISMATCH' });
-  for (const pkg of packages.filter((record) => record.category === 'CORE_OPERATIONAL_INTELLIGENCE')) {
+  const currentPackageLabel = current.packageId === null ? 'NONE' : current.packageId;
+  if (!currentMarkdown.includes(`Package ID: ${currentPackageLabel}`) || !currentMarkdown.includes(`Status: ${current.status}`)) failures.push({ rule: 'CURRENT_PACKAGE_MARKDOWN_JSON_MISMATCH' });
+  const milestoneOnePackages = packages.filter((record) => record.category === 'CORE_OPERATIONAL_INTELLIGENCE');
+  for (const pkg of milestoneOnePackages) {
     if (!ALLOWED_MILESTONE_ONE.has(pkg.packageId)) failures.push({ rule: 'UNAPPROVED_MILESTONE_ONE_DOMAIN', packageId: pkg.packageId });
   }
+  if (milestoneOnePackages.length !== ALLOWED_MILESTONE_ONE.size) failures.push({ rule: 'MILESTONE_ONE_DOMAIN_COUNT_INVALID', count: milestoneOnePackages.length });
+  if (milestoneOneComplete) {
+    if (milestoneOne.domainCount !== ALLOWED_MILESTONE_ONE.size) failures.push({ rule: 'MILESTONE_ONE_DOMAIN_COUNT_INVALID', count: milestoneOne.domainCount });
+    if (JSON.stringify(milestoneOne.domains || []) !== JSON.stringify([...ALLOWED_MILESTONE_ONE])) failures.push({ rule: 'MILESTONE_ONE_DOMAIN_LIST_INVALID', domains: milestoneOne.domains });
+    if (milestoneOne.allDomainsRemoteContained !== true) failures.push({ rule: 'MILESTONE_ONE_REMOTE_CONTAINMENT_MISSING' });
+    if (milestoneOne.deployed !== false || milestoneOne.migrationExecuted !== false || milestoneOne.productionCertified !== false) failures.push({ rule: 'MILESTONE_ONE_FALSE_PRODUCTION_STATE' });
+    for (const pkg of milestoneOnePackages) {
+      if (pkg.status !== 'PUSHED' || pkg.pushed !== true || pkg.remoteCommitVerified !== true || pkg.deployed !== false || pkg.migrationExecuted !== false || pkg.productionImpact !== 'REPOSITORY_ONLY_FOUNDATION') failures.push({ rule: 'MILESTONE_ONE_DOMAIN_NOT_PUSHED_REPOSITORY_ONLY', packageId: pkg.packageId });
+    }
+  }
   if (!read('AI_MODEL_SELECTION_GATE.md').includes('Route Intelligence') || !read('AI_MODEL_SELECTION_GATE.md').includes('Premium hosted models')) failures.push({ rule: 'MODEL_SELECTION_GATE_MISSING' });
-  if (roadmap.gates?.modelSelection?.complete !== false || roadmap.gates?.modelSelection?.status !== 'DEFERRED') failures.push({ rule: 'MODEL_SELECTION_GATE_FALSE_COMPLETE' });
+  if (roadmap.gates?.modelSelection?.complete !== false || roadmap.gates?.modelSelection?.status !== 'DEFERRED' || roadmap.gates?.modelSelection?.active !== false) failures.push({ rule: 'MODEL_SELECTION_GATE_FALSE_COMPLETE' });
+  if (roadmap.gates?.modelSelection?.prerequisitesSatisfied !== true || roadmap.gates?.modelSelection?.readyForOwnerReview !== true || roadmap.gates?.modelSelection?.ownerApprovalRequired !== true) failures.push({ rule: 'MODEL_SELECTION_GATE_PREREQUISITES_INVALID' });
+  const modelSelectionGateText = read('AI_MODEL_SELECTION_GATE.md').toLowerCase();
+  const modelSelectionCostPrinciple = String(roadmap.gates?.modelSelection?.costEffectivenessPrinciple || '').toLowerCase();
+  if (!modelSelectionGateText.includes('least expensive strategy or model') || !modelSelectionGateText.includes('cost never overrides truck safety') || !modelSelectionCostPrinciple.includes('least expensive strategy or model') || !modelSelectionCostPrinciple.includes('cost never overrides truck safety')) failures.push({ rule: 'MODEL_SELECTION_COST_PRINCIPLE_MISSING' });
+  const modelSelectionText = `${JSON.stringify(roadmap.gates?.modelSelection || {})} ${JSON.stringify(current)}`.toLowerCase();
+  for (const phrase of ['selectedModel', 'selectedProvider', 'modelRanking', 'premium approved', 'premium tier approved', 'hosted ai activation approved']) {
+    if (modelSelectionText.includes(phrase.toLowerCase())) failures.push({ rule: 'MODEL_SELECTION_DECISION_PREMATURE', phrase });
+  }
   if (!read('PRODUCTION_ORCHESTRATION_GATE.md').includes('shadow-mode validation') || !read('PRODUCTION_ORCHESTRATION_GATE.md').includes('owner approval')) failures.push({ rule: 'PRODUCTION_ORCHESTRATION_GATE_MISSING' });
   if (roadmap.gates?.productionOrchestration?.complete !== false || roadmap.gates?.productionOrchestration?.status !== 'DEFERRED' || roadmap.gates?.productionOrchestration?.active !== false) failures.push({ rule: 'PRODUCTION_ORCHESTRATION_FALSE_ACTIVE' });
   const supervisor = packages.find((pkg) => pkg.packageId === 'SUPERVISOR_INTELLIGENCE');
@@ -342,14 +374,15 @@ function validateRoadmap(roadmap, current, options = {}) {
   }
   const safety = packages.find((pkg) => pkg.packageId === 'SAFETY_INTELLIGENCE');
   if (!safety) failures.push({ rule: 'SAFETY_PACKAGE_MISSING' });
-  if (safety && safety.status !== 'IMPLEMENTED_UNCOMMITTED') failures.push({ rule: 'SAFETY_IMPLEMENTED_STATUS_INVALID', status: safety.status });
+  if (safety && safety.status !== 'PUSHED') failures.push({ rule: 'SAFETY_PUSHED_STATUS_INVALID', status: safety.status });
   if (safety && safety.packageId !== 'SAFETY_INTELLIGENCE') failures.push({ rule: 'SAFETY_PACKAGE_NUMBER_FABRICATED', packageId: safety.packageId });
   for (const pkg of packages) {
     if (pkg.title === 'Safety Intelligence' && pkg.packageId !== 'SAFETY_INTELLIGENCE') failures.push({ rule: 'SAFETY_PACKAGE_NUMBER_FABRICATED', packageId: pkg.packageId });
   }
   if (safety && safety.objective !== SAFETY_OBJECTIVE) failures.push({ rule: 'SAFETY_OBJECTIVE_INVALID', objective: safety.objective });
   if (safety && JSON.stringify(safety.approvedScope) !== JSON.stringify(SAFETY_APPROVED_SCOPE)) failures.push({ rule: 'SAFETY_APPROVED_SCOPE_INVALID', approvedScope: safety.approvedScope });
-  if (safety && (safety.implementationCommit || safety.localCommitVerified || safety.remoteCommitVerified || safety.pushed)) failures.push({ rule: 'SAFETY_FALSE_SOURCE_CONTROL_STATE' });
+  if (safety && safety.implementationCommit !== SAFETY_COMMIT) failures.push({ rule: 'SAFETY_COMMIT_MISMATCH', implementationCommit: safety.implementationCommit });
+  if (safety && (safety.localCommitVerified !== true || safety.remoteCommitVerified !== true || safety.pushed !== true)) failures.push({ rule: 'SAFETY_PUSH_EVIDENCE_MISSING' });
   if (safety && (safety.deployed || safety.deploymentVerified || safety.migrationExecuted || safety.productionImpact !== 'REPOSITORY_ONLY_FOUNDATION')) failures.push({ rule: 'SAFETY_FALSE_PRODUCTION_STATE', productionImpact: safety.productionImpact });
   if (safety && safety.documentationPath !== 'docs/implementation/safety-intelligence-foundation') failures.push({ rule: 'SAFETY_DOCUMENTATION_PATH_INVALID', documentationPath: safety.documentationPath });
   if (!fs.existsSync(path.join(paths.backendRoot, 'services', 'intelligenceExecution', 'safetyIntelligence.js'))) failures.push({ rule: 'SAFETY_IMPLEMENTATION_EVIDENCE_MISSING' });
@@ -407,9 +440,9 @@ function main() {
   assertValidationFails((roadmap) => { roadmap.packages[0].dependencies = ['UNKNOWN_PACKAGE']; }, 'UNKNOWN_DEPENDENCY');
   assertValidationFails((roadmap) => { delete roadmap.packages[0].objective; }, 'MISSING_REQUIRED_FIELD');
   assertValidationFails((roadmap) => { roadmap.packages[1].isCurrentPackage = true; }, 'CURRENT_PACKAGE_COUNT');
-  assertValidationFails((roadmap) => { roadmap.packages = roadmap.packages.filter((pkg) => !pkg.isCurrentPackage); }, 'CURRENT_PACKAGE_COUNT');
-  assertValidationFails((roadmap, current) => { current.packageId = 'MISSING_CURRENT'; }, 'CURRENT_PACKAGE_NOT_IN_ROADMAP');
-  assertValidationFails((roadmap, current) => { current.status = 'PLANNED'; }, 'CURRENT_PACKAGE_STATUS_MISMATCH');
+  assertValidationFails((roadmap) => { roadmap.milestones.coreOperationalIntelligenceFoundations.status = 'IN_PROGRESS'; }, 'CURRENT_PACKAGE_COUNT');
+  assertValidationFails((roadmap, current) => { current.packageId = 'MISSING_CURRENT'; }, 'CURRENT_PACKAGE_NOT_NONE_AFTER_MILESTONE_ONE');
+  assertValidationFails((roadmap, current) => { current.status = 'PLANNED'; }, 'CURRENT_POST_MILESTONE_STATUS_INVALID');
   assertValidationFails((roadmap) => { roadmap.packages[0].approvedScope = []; }, 'MISSING_APPROVED_SCOPE');
   assertValidationFails((roadmap) => { roadmap.packages[0].prohibitedScope = []; }, 'MISSING_PROHIBITED_SCOPE');
   assertValidationFails((roadmap) => { roadmap.packages[0].acceptanceCriteria = []; }, 'MISSING_ACCEPTANCE_CRITERIA');
@@ -510,12 +543,11 @@ function main() {
   assertValidationFails((roadmap) => {
     const safety = roadmap.packages.find((pkg) => pkg.packageId === 'SAFETY_INTELLIGENCE');
     safety.status = 'APPROVED';
-  }, 'SAFETY_IMPLEMENTED_STATUS_INVALID');
+  }, 'SAFETY_PUSHED_STATUS_INVALID');
   assertValidationFails((roadmap) => {
     const safety = roadmap.packages.find((pkg) => pkg.packageId === 'SAFETY_INTELLIGENCE');
     safety.implementationCommit = '1234567';
-    safety.localCommitVerified = true;
-  }, 'SAFETY_FALSE_SOURCE_CONTROL_STATE');
+  }, 'SAFETY_COMMIT_MISMATCH');
   assertValidationFails((roadmap) => {
     const safety = roadmap.packages.find((pkg) => pkg.packageId === 'SAFETY_INTELLIGENCE');
     safety.deployed = true;
@@ -527,7 +559,12 @@ function main() {
     safety.packageId = 'AI-IEP-005B.8';
     current.packageId = 'AI-IEP-005B.8';
   }, 'SAFETY_PACKAGE_NUMBER_FABRICATED');
-  assertValidationFails((roadmap) => { roadmap.gates.modelSelection.complete = true; roadmap.gates.modelSelection.status = 'APPROVED'; }, 'MODEL_SELECTION_GATE_FALSE_COMPLETE');
+  assertValidationFails((roadmap) => { roadmap.gates.modelSelection.complete = true; roadmap.gates.modelSelection.status = 'APPROVED'; roadmap.gates.modelSelection.active = true; }, 'MODEL_SELECTION_GATE_FALSE_COMPLETE');
+  assertValidationFails((roadmap) => { roadmap.gates.modelSelection.prerequisitesSatisfied = false; }, 'MODEL_SELECTION_GATE_PREREQUISITES_INVALID');
+  assertValidationFails((roadmap) => { roadmap.gates.modelSelection.costEffectivenessPrinciple = 'Cost is the only objective.'; }, 'MODEL_SELECTION_COST_PRINCIPLE_MISSING');
+  assertValidationFails((roadmap) => { roadmap.gates.modelSelection.selectedModel = 'premium-model'; }, 'MODEL_SELECTION_DECISION_PREMATURE');
+  assertValidationFails((roadmap) => { roadmap.gates.modelSelection.selectedProvider = 'provider'; }, 'MODEL_SELECTION_DECISION_PREMATURE');
+  assertValidationFails((roadmap) => { roadmap.gates.modelSelection.modelRanking = ['premium-model']; }, 'MODEL_SELECTION_DECISION_PREMATURE');
   assertValidationFails((roadmap) => { roadmap.gates.productionOrchestration.complete = true; roadmap.gates.productionOrchestration.status = 'IN_PROGRESS'; roadmap.gates.productionOrchestration.active = true; }, 'PRODUCTION_ORCHESTRATION_FALSE_ACTIVE');
   assertValidationFails((roadmap) => {
     const operations = roadmap.packages.find((pkg) => pkg.packageId === 'OPERATIONS_INTELLIGENCE');
