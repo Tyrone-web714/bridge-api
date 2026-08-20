@@ -19,7 +19,7 @@
     "DEFERRED",
     "CANCELLED"
   ],
-  "packageCount": 23,
+  "packageCount": 24,
   "packages": [
     {
       "category": "AI_PLATFORM_FOUNDATION",
@@ -318,15 +318,15 @@
     {
       "category": "MODEL_SELECTION_AND_BENCHMARKING",
       "deployed": false,
-      "implementationCommit": null,
-      "localCommitVerified": false,
+      "implementationCommit": "9c68894de9609c8f884a11c31be0e45eb44b058a",
+      "localCommitVerified": true,
       "nextApprovedPackage": null,
       "ownerApprovalRequired": true,
       "packageId": "MS-002",
       "productionImpact": "NONE",
-      "pushed": false,
-      "remoteCommitVerified": false,
-      "status": "IMPLEMENTED_UNCOMMITTED",
+      "pushed": true,
+      "remoteCommitVerified": true,
+      "status": "PUSHED",
       "title": "Benchmark & Acceptance Framework"
     },
     {
@@ -342,6 +342,20 @@
       "remoteCommitVerified": true,
       "status": "PUSHED",
       "title": "TSR AI Development Roadmap and Architect-Builder Handoff Protocol"
+    },
+    {
+      "category": "MODEL_SELECTION_AND_BENCHMARKING",
+      "deployed": false,
+      "implementationCommit": null,
+      "localCommitVerified": false,
+      "nextApprovedPackage": null,
+      "ownerApprovalRequired": true,
+      "packageId": "MS-003",
+      "productionImpact": "NONE",
+      "pushed": false,
+      "remoteCommitVerified": false,
+      "status": "IMPLEMENTED_UNCOMMITTED",
+      "title": "Candidate Model & Method Selection"
     }
   ],
   "roadmapId": "TSR_AI_DEVELOPMENT_ROADMAP"

@@ -1,0 +1,134 @@
+[
+  {
+    "cachedInputPriceUsdPer1M": 0.005,
+    "dateVerified": "2026-08-20",
+    "inputPriceUsdPer1M": 0.05,
+    "model": "GPT-5 nano",
+    "officialModelId": "gpt-5-nano",
+    "outputPriceUsdPer1M": 0.4,
+    "pricingBasis": "USD per 1M text tokens",
+    "pricingSource": "https://developers.openai.com/api/docs/models/gpt-5-nano",
+    "provider": "OpenAI"
+  },
+  {
+    "cachedInputPriceUsdPer1M": 0.025,
+    "dateVerified": "2026-08-20",
+    "inputPriceUsdPer1M": 0.25,
+    "model": "GPT-5 mini",
+    "officialModelId": "gpt-5-mini",
+    "outputPriceUsdPer1M": 2,
+    "pricingBasis": "USD per 1M text tokens",
+    "pricingSource": "https://developers.openai.com/api/docs/models/gpt-5-mini",
+    "provider": "OpenAI"
+  },
+  {
+    "cachedInputPriceUsdPer1M": 0.125,
+    "dateVerified": "2026-08-20",
+    "inputPriceUsdPer1M": 1.25,
+    "model": "GPT-5",
+    "officialModelId": "gpt-5",
+    "outputPriceUsdPer1M": 10,
+    "pricingBasis": "USD per 1M text tokens",
+    "pricingSource": "https://developers.openai.com/api/docs/models/gpt-5",
+    "provider": "OpenAI"
+  },
+  {
+    "cachedInputPriceUsdPer1M": null,
+    "dateVerified": "2026-08-20",
+    "inputPriceUsdPer1M": 1,
+    "model": "Claude Haiku 4.5",
+    "officialModelId": "claude-haiku-4-5",
+    "outputPriceUsdPer1M": 5,
+    "pricingBasis": "USD per 1M tokens",
+    "pricingSource": "https://platform.claude.com/docs/en/about-claude/models/overview",
+    "provider": "Anthropic"
+  },
+  {
+    "cachedInputPriceUsdPer1M": null,
+    "dateVerified": "2026-08-20",
+    "inputPriceUsdPer1M": 3,
+    "model": "Claude Sonnet 4.6",
+    "officialModelId": "claude-sonnet-4-6",
+    "outputPriceUsdPer1M": 15,
+    "pricingBasis": "USD per 1M tokens",
+    "pricingSource": "https://platform.claude.com/docs/en/about-claude/models/overview",
+    "provider": "Anthropic"
+  },
+  {
+    "cachedInputPriceUsdPer1M": 0.03,
+    "dateVerified": "2026-08-20",
+    "inputPriceUsdPer1M": 0.3,
+    "model": "Gemini 3.5 Flash-Lite",
+    "officialModelId": "gemini-3.5-flash-lite",
+    "outputPriceUsdPer1M": 2.5,
+    "pricingBasis": "USD per 1M text/image/video tokens on paid tier",
+    "pricingSource": "https://ai.google.dev/gemini-api/docs/pricing",
+    "provider": "Google"
+  },
+  {
+    "cachedInputPriceUsdPer1M": 0.15,
+    "dateVerified": "2026-08-20",
+    "inputPriceUsdPer1M": 1.5,
+    "model": "Gemini 3.5 Flash",
+    "officialModelId": "gemini-3.5-flash",
+    "outputPriceUsdPer1M": 9,
+    "pricingBasis": "USD per 1M tokens on paid tier",
+    "pricingSource": "https://ai.google.dev/gemini-api/docs/pricing",
+    "provider": "Google"
+  },
+  {
+    "cachedInputPriceUsdPer1M": 0.015,
+    "dateVerified": "2026-08-20",
+    "inputPriceUsdPer1M": 0.15,
+    "model": "Mistral Small 4",
+    "officialModelId": "mistral-small-latest",
+    "outputPriceUsdPer1M": 0.6,
+    "pricingBasis": "USD per 1M API tokens",
+    "pricingSource": "https://mistral.ai/pricing/api/",
+    "provider": "Mistral"
+  },
+  {
+    "cachedInputPriceUsdPer1M": 0.02,
+    "dateVerified": "2026-08-20",
+    "inputPriceUsdPer1M": 0.2,
+    "model": "GPT-5.6 Luna",
+    "officialModelId": "gpt-5.6-luna",
+    "outputPriceUsdPer1M": 1.2,
+    "pricingBasis": "USD per 1M text tokens",
+    "pricingSource": "https://developers.openai.com/api/docs/models/gpt-5.6-luna",
+    "provider": "OpenAI"
+  },
+  {
+    "cachedInputPriceUsdPer1M": null,
+    "dateVerified": "2026-08-20",
+    "inputPriceUsdPer1M": 2,
+    "model": "GPT-5.6 Terra",
+    "officialModelId": "gpt-5.6-terra",
+    "outputPriceUsdPer1M": 12,
+    "pricingBasis": "USD per 1M text tokens",
+    "pricingSource": "https://developers.openai.com/api/docs/models",
+    "provider": "OpenAI"
+  },
+  {
+    "cachedInputPriceUsdPer1M": null,
+    "dateVerified": "2026-08-20",
+    "inputPriceUsdPer1M": null,
+    "model": "Qwen3-32B",
+    "officialModelId": "Qwen/Qwen3-32B",
+    "outputPriceUsdPer1M": null,
+    "pricingBasis": "No API list price; TCO must include hardware and operations.",
+    "pricingSource": "SELF_HOSTED_NO_API_LIST_PRICE",
+    "provider": "Qwen"
+  },
+  {
+    "cachedInputPriceUsdPer1M": null,
+    "dateVerified": "2026-08-20",
+    "inputPriceUsdPer1M": null,
+    "model": "Llama 4 Scout",
+    "officialModelId": "Llama-4-Scout-17B-16E",
+    "outputPriceUsdPer1M": null,
+    "pricingBasis": "No API list price; TCO must include hardware and operations.",
+    "pricingSource": "SELF_HOSTED_NO_API_LIST_PRICE",
+    "provider": "Meta"
+  }
+]

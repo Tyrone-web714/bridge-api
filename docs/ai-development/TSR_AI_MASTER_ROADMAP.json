@@ -1,6 +1,12 @@
 {
-  "roadmapId": "TSR_AI_DEVELOPMENT_ROADMAP",
-  "title": "Truck-Safe Routing AI Development Roadmap",
+  "controlledCategories": [
+    "AI_PLATFORM_FOUNDATION",
+    "CORE_OPERATIONAL_INTELLIGENCE",
+    "MODEL_SELECTION_AND_BENCHMARKING",
+    "PRODUCTION_ORCHESTRATION",
+    "PRODUCTION_OPTIMIZATION",
+    "DEVELOPMENT_WORKFLOW"
+  ],
   "controlledStatuses": [
     "PLANNED",
     "APPROVED",
@@ -13,41 +19,30 @@
     "DEFERRED",
     "CANCELLED"
   ],
-  "controlledCategories": [
-    "AI_PLATFORM_FOUNDATION",
-    "CORE_OPERATIONAL_INTELLIGENCE",
-    "MODEL_SELECTION_AND_BENCHMARKING",
-    "PRODUCTION_ORCHESTRATION",
-    "PRODUCTION_OPTIMIZATION",
-    "DEVELOPMENT_WORKFLOW"
-  ],
-  "sourceControl": {
-    "repositoryRoot": "C:\\dev\\bridge-api",
-    "backendPath": "C:\\dev\\bridge-api\\bridge-api",
-    "localBranch": "legacy-public-url-final-cleanup",
-    "remoteBranch": "origin/legacy-public-url-final-cleanup",
-    "localHead": "9de484e2bf87cee2ae61e25e1997d7427d289e90",
-    "remoteHead": "9de484e2bf87cee2ae61e25e1997d7427d289e90",
-    "localAheadBy": 0,
-    "remoteVerificationPerformed": true,
-    "pushPerformedByThisPackage": false
-  },
   "gates": {
     "modelSelection": {
-      "status": "DEFERRED",
-      "complete": false,
       "active": false,
-      "prerequisitesSatisfied": true,
-      "readyForOwnerReview": true,
-      "ownerApprovalRequired": true,
-      "currentAnalysisPackage": "MS-002",
+      "benchmarkAcceptanceFrameworkPackageStatus": "PUSHED",
+      "candidateSelectionPackageStatus": "IMPLEMENTED_UNCOMMITTED",
       "classificationPackageStatus": "PUSHED",
-      "benchmarkAcceptanceFrameworkPackageStatus": "IMPLEMENTED_UNCOMMITTED",
-      "providerSelectionPerformed": false,
-      "modelSelectionPerformed": false,
       "commercialBenchmarkingPerformed": false,
-      "pricingResearchPerformed": false,
+      "complete": false,
+      "costEffectivenessPrinciple": "Use the least expensive strategy or model that satisfies quality, safety, reliability, latency, governance, and evidence requirements. Cost never overrides truck safety, legal compliance, privacy, tenant isolation, policy controls, reliability, or minimum quality thresholds.",
+      "currentAnalysisPackage": "MS-003",
       "hostedAiActivationPerformed": false,
+      "modelSelectionPerformed": false,
+      "notStarted": [
+        "provider selection",
+        "model selection",
+        "model ranking",
+        "hosted AI activation",
+        "production orchestration"
+      ],
+      "ownerApprovalRequired": true,
+      "prerequisitesSatisfied": true,
+      "pricingResearchPerformed": true,
+      "providerSelectionPerformed": false,
+      "readyForOwnerReview": true,
       "requiredCoreDomains": [
         "Route Intelligence",
         "Driver Intelligence",
@@ -58,17 +53,10 @@
         "Operations Intelligence",
         "Safety Intelligence"
       ],
-      "costEffectivenessPrinciple": "Use the least expensive strategy or model that satisfies quality, safety, reliability, latency, governance, and evidence requirements. Cost never overrides truck safety, legal compliance, privacy, tenant isolation, policy controls, reliability, or minimum quality thresholds.",
-      "notStarted": [
-        "provider selection",
-        "model selection",
-        "model ranking",
-        "hosted AI activation",
-        "production orchestration"
-      ]
+      "status": "DEFERRED"
     },
     "productionOrchestration": {
-      "status": "DEFERRED",
+      "active": false,
       "complete": false,
       "requirements": [
         "approved intelligence capability",
@@ -93,14 +81,13 @@
         "canary authorization",
         "owner approval"
       ],
-      "active": false
+      "status": "DEFERRED"
     }
   },
   "milestones": {
     "coreOperationalIntelligenceFoundations": {
-      "milestoneId": "MILESTONE_1_CORE_OPERATIONAL_INTELLIGENCE_FOUNDATIONS",
-      "status": "COMPLETE",
-      "repositorySourceControlComplete": true,
+      "allDomainsRemoteContained": true,
+      "deployed": false,
       "domainCount": 8,
       "domains": [
         "AI-IEP-005B.1",
@@ -112,548 +99,548 @@
         "OPERATIONS_INTELLIGENCE",
         "SAFETY_INTELLIGENCE"
       ],
-      "allDomainsRemoteContained": true,
-      "deployed": false,
       "migrationExecuted": false,
-      "productionCertified": false,
+      "milestoneId": "MILESTONE_1_CORE_OPERATIONAL_INTELLIGENCE_FOUNDATIONS",
       "nextPhase": "MODEL_SELECTION_GATE_REVIEW",
-      "nextPhaseOwnerApprovalRequired": true
+      "nextPhaseOwnerApprovalRequired": true,
+      "productionCertified": false,
+      "repositorySourceControlComplete": true,
+      "status": "COMPLETE"
     }
   },
   "packages": [
     {
-      "packageId": "AI-IEP-004A.1",
-      "title": "Enterprise Capability Registry",
-      "category": "AI_PLATFORM_FOUNDATION",
-      "status": "PUSHED",
-      "objective": "Create the enterprise intelligence capability registry source of truth.",
+      "acceptanceCriteria": [
+        "registry validates",
+        "generated artifacts are deterministic"
+      ],
       "approvedScope": [
         "registry metadata",
         "validation",
         "generated artifacts"
       ],
+      "category": "AI_PLATFORM_FOUNDATION",
+      "dependencies": [],
+      "deployed": false,
+      "deploymentVerified": false,
+      "documentationPath": "docs/implementation/enterprise-intelligence-capability-registry",
+      "implementationCommit": "UNKNOWN",
+      "localCommitVerified": true,
+      "migrationExecuted": false,
+      "migrationRequired": false,
+      "nextApprovedPackage": null,
+      "notes": "Commit predates retained per-package commit evidence; remote branch contains this foundation through e383a32.",
+      "objective": "Create the enterprise intelligence capability registry source of truth.",
+      "ownerApprovalRequired": false,
+      "packageId": "AI-IEP-004A.1",
+      "productionImpact": "NONE",
       "prohibitedScope": [
         "production deployment",
         "provider selection",
         "runtime orchestration"
       ],
-      "dependencies": [],
-      "acceptanceCriteria": [
-        "registry validates",
-        "generated artifacts are deterministic"
-      ],
+      "pushed": true,
+      "remoteCommitVerified": true,
       "requiredTests": [
         "npm.cmd run test:capability-registry"
       ],
-      "documentationPath": "docs/implementation/enterprise-intelligence-capability-registry",
-      "implementationCommit": "UNKNOWN",
-      "localCommitVerified": true,
-      "remoteCommitVerified": true,
-      "pushed": true,
-      "deployed": false,
-      "deploymentVerified": false,
-      "migrationRequired": false,
-      "migrationExecuted": false,
-      "productionImpact": "NONE",
-      "ownerApprovalRequired": false,
       "scopeChangeApprovalRequired": true,
-      "nextApprovedPackage": null,
-      "notes": "Commit predates retained per-package commit evidence; remote branch contains this foundation through e383a32."
+      "status": "PUSHED",
+      "title": "Enterprise Capability Registry"
     },
     {
-      "packageId": "AI-IEP-004A.2",
-      "title": "Benchmark Dataset Framework",
-      "category": "AI_PLATFORM_FOUNDATION",
-      "status": "PUSHED",
-      "objective": "Create repository-native benchmark dataset records.",
+      "acceptanceCriteria": [
+        "dataset contracts validate",
+        "coverage artifacts generate deterministically"
+      ],
       "approvedScope": [
         "synthetic datasets",
         "coverage reports",
         "validation"
       ],
+      "category": "AI_PLATFORM_FOUNDATION",
+      "dependencies": [
+        "AI-IEP-004A.1"
+      ],
+      "deployed": false,
+      "deploymentVerified": false,
+      "documentationPath": "docs/implementation/benchmark-dataset-framework",
+      "implementationCommit": "UNKNOWN",
+      "localCommitVerified": true,
+      "migrationExecuted": false,
+      "migrationRequired": false,
+      "nextApprovedPackage": null,
+      "notes": "Remote branch contains this foundation through e383a32.",
+      "objective": "Create repository-native benchmark dataset records.",
+      "ownerApprovalRequired": false,
+      "packageId": "AI-IEP-004A.2",
+      "productionImpact": "NONE",
       "prohibitedScope": [
         "live benchmark execution",
         "provider ranking",
         "production recommendation"
       ],
-      "dependencies": [
-        "AI-IEP-004A.1"
-      ],
-      "acceptanceCriteria": [
-        "dataset contracts validate",
-        "coverage artifacts generate deterministically"
-      ],
+      "pushed": true,
+      "remoteCommitVerified": true,
       "requiredTests": [
         "npm.cmd run test:benchmark-datasets"
       ],
-      "documentationPath": "docs/implementation/benchmark-dataset-framework",
-      "implementationCommit": "UNKNOWN",
-      "localCommitVerified": true,
-      "remoteCommitVerified": true,
-      "pushed": true,
-      "deployed": false,
-      "deploymentVerified": false,
-      "migrationRequired": false,
-      "migrationExecuted": false,
-      "productionImpact": "NONE",
-      "ownerApprovalRequired": false,
       "scopeChangeApprovalRequired": true,
-      "nextApprovedPackage": null,
-      "notes": "Remote branch contains this foundation through e383a32."
+      "status": "PUSHED",
+      "title": "Benchmark Dataset Framework"
     },
     {
-      "packageId": "AI-IEP-004A.3",
-      "title": "Execution Strategy Evaluation Engine",
-      "category": "AI_PLATFORM_FOUNDATION",
-      "status": "PUSHED",
-      "objective": "Create repository-native offline/mock execution strategy evaluation.",
+      "acceptanceCriteria": [
+        "mock evaluation validates",
+        "artifacts are deterministic"
+      ],
       "approvedScope": [
         "offline/mock fixtures",
         "observations",
         "replay artifacts"
       ],
+      "category": "AI_PLATFORM_FOUNDATION",
+      "dependencies": [
+        "AI-IEP-004A.2"
+      ],
+      "deployed": false,
+      "deploymentVerified": false,
+      "documentationPath": "docs/implementation/execution-evaluation-engine",
+      "implementationCommit": "UNKNOWN",
+      "localCommitVerified": true,
+      "migrationExecuted": false,
+      "migrationRequired": false,
+      "nextApprovedPackage": null,
+      "notes": "Remote branch contains this foundation through e383a32.",
+      "objective": "Create repository-native offline/mock execution strategy evaluation.",
+      "ownerApprovalRequired": false,
+      "packageId": "AI-IEP-004A.3",
+      "productionImpact": "NONE",
       "prohibitedScope": [
         "live model execution",
         "production strategy selection"
       ],
-      "dependencies": [
-        "AI-IEP-004A.2"
-      ],
-      "acceptanceCriteria": [
-        "mock evaluation validates",
-        "artifacts are deterministic"
-      ],
+      "pushed": true,
+      "remoteCommitVerified": true,
       "requiredTests": [
         "npm.cmd run test:evaluation-engine"
       ],
-      "documentationPath": "docs/implementation/execution-evaluation-engine",
-      "implementationCommit": "UNKNOWN",
-      "localCommitVerified": true,
-      "remoteCommitVerified": true,
-      "pushed": true,
-      "deployed": false,
-      "deploymentVerified": false,
-      "migrationRequired": false,
-      "migrationExecuted": false,
-      "productionImpact": "NONE",
-      "ownerApprovalRequired": false,
       "scopeChangeApprovalRequired": true,
-      "nextApprovedPackage": null,
-      "notes": "Remote branch contains this foundation through e383a32."
+      "status": "PUSHED",
+      "title": "Execution Strategy Evaluation Engine"
     },
     {
-      "packageId": "AI-IEP-004A.4",
-      "title": "Scoring Engine",
-      "category": "AI_PLATFORM_FOUNDATION",
-      "status": "PUSHED",
-      "objective": "Create repository-native scoring profiles and synthetic score artifacts.",
+      "acceptanceCriteria": [
+        "score records validate",
+        "sensitivity artifacts generate deterministically"
+      ],
       "approvedScope": [
         "test-only profiles",
         "dimension mappings",
         "confidence/completeness records"
       ],
+      "category": "AI_PLATFORM_FOUNDATION",
+      "dependencies": [
+        "AI-IEP-004A.3"
+      ],
+      "deployed": false,
+      "deploymentVerified": false,
+      "documentationPath": "docs/implementation/scoring-engine",
+      "implementationCommit": "UNKNOWN",
+      "localCommitVerified": true,
+      "migrationExecuted": false,
+      "migrationRequired": false,
+      "nextApprovedPackage": null,
+      "notes": "Remote branch contains this foundation through e383a32.",
+      "objective": "Create repository-native scoring profiles and synthetic score artifacts.",
+      "ownerApprovalRequired": false,
+      "packageId": "AI-IEP-004A.4",
+      "productionImpact": "NONE",
       "prohibitedScope": [
         "provider ranking",
         "employment scoring",
         "production recommendation"
       ],
-      "dependencies": [
-        "AI-IEP-004A.3"
-      ],
-      "acceptanceCriteria": [
-        "score records validate",
-        "sensitivity artifacts generate deterministically"
-      ],
+      "pushed": true,
+      "remoteCommitVerified": true,
       "requiredTests": [
         "npm.cmd run test:scoring-engine"
       ],
-      "documentationPath": "docs/implementation/scoring-engine",
-      "implementationCommit": "UNKNOWN",
-      "localCommitVerified": true,
-      "remoteCommitVerified": true,
-      "pushed": true,
-      "deployed": false,
-      "deploymentVerified": false,
-      "migrationRequired": false,
-      "migrationExecuted": false,
-      "productionImpact": "NONE",
-      "ownerApprovalRequired": false,
       "scopeChangeApprovalRequired": true,
-      "nextApprovedPackage": null,
-      "notes": "Remote branch contains this foundation through e383a32."
+      "status": "PUSHED",
+      "title": "Scoring Engine"
     },
     {
-      "packageId": "AI-IEP-004A.5",
-      "title": "Cost Governance",
-      "category": "AI_PLATFORM_FOUNDATION",
-      "status": "PUSHED",
-      "objective": "Create repository-native cost model and budget simulation records.",
+      "acceptanceCriteria": [
+        "cost records validate",
+        "budget simulations are deterministic"
+      ],
       "approvedScope": [
         "synthetic pricing",
         "budget simulations",
         "cost records"
       ],
+      "category": "AI_PLATFORM_FOUNDATION",
+      "dependencies": [
+        "AI-IEP-004A.4"
+      ],
+      "deployed": false,
+      "deploymentVerified": false,
+      "documentationPath": "docs/implementation/cost-governance",
+      "implementationCommit": "UNKNOWN",
+      "localCommitVerified": true,
+      "migrationExecuted": false,
+      "migrationRequired": false,
+      "nextApprovedPackage": null,
+      "notes": "Remote branch contains this foundation through e383a32.",
+      "objective": "Create repository-native cost model and budget simulation records.",
+      "ownerApprovalRequired": false,
+      "packageId": "AI-IEP-004A.5",
+      "productionImpact": "NONE",
       "prohibitedScope": [
         "procurement recommendation",
         "production budget enforcement"
       ],
-      "dependencies": [
-        "AI-IEP-004A.4"
-      ],
-      "acceptanceCriteria": [
-        "cost records validate",
-        "budget simulations are deterministic"
-      ],
+      "pushed": true,
+      "remoteCommitVerified": true,
       "requiredTests": [
         "npm.cmd run test:cost-governance"
       ],
-      "documentationPath": "docs/implementation/cost-governance",
-      "implementationCommit": "UNKNOWN",
-      "localCommitVerified": true,
-      "remoteCommitVerified": true,
-      "pushed": true,
-      "deployed": false,
-      "deploymentVerified": false,
-      "migrationRequired": false,
-      "migrationExecuted": false,
-      "productionImpact": "NONE",
-      "ownerApprovalRequired": false,
       "scopeChangeApprovalRequired": true,
-      "nextApprovedPackage": null,
-      "notes": "Remote branch contains this foundation through e383a32."
+      "status": "PUSHED",
+      "title": "Cost Governance"
     },
     {
-      "packageId": "AI-IEP-004A.6",
-      "title": "Execution Decision Engine",
-      "category": "AI_PLATFORM_FOUNDATION",
-      "status": "PUSHED",
-      "objective": "Create repository-native advisory decision profiles and fallback planning.",
+      "acceptanceCriteria": [
+        "decision records validate",
+        "fallback artifacts are deterministic"
+      ],
       "approvedScope": [
         "policy profiles",
         "candidate enumeration",
         "counterfactuals",
         "fallback metadata"
       ],
+      "category": "AI_PLATFORM_FOUNDATION",
+      "dependencies": [
+        "AI-IEP-004A.5"
+      ],
+      "deployed": false,
+      "deploymentVerified": false,
+      "documentationPath": "docs/implementation/execution-decision-engine",
+      "implementationCommit": "UNKNOWN",
+      "localCommitVerified": true,
+      "migrationExecuted": false,
+      "migrationRequired": false,
+      "nextApprovedPackage": null,
+      "notes": "Remote branch contains this foundation through e383a32.",
+      "objective": "Create repository-native advisory decision profiles and fallback planning.",
+      "ownerApprovalRequired": false,
+      "packageId": "AI-IEP-004A.6",
+      "productionImpact": "NONE",
       "prohibitedScope": [
         "production routing",
         "autonomous execution",
         "procurement decision"
       ],
-      "dependencies": [
-        "AI-IEP-004A.5"
-      ],
-      "acceptanceCriteria": [
-        "decision records validate",
-        "fallback artifacts are deterministic"
-      ],
+      "pushed": true,
+      "remoteCommitVerified": true,
       "requiredTests": [
         "npm.cmd run test:execution-decisions"
       ],
-      "documentationPath": "docs/implementation/execution-decision-engine",
-      "implementationCommit": "UNKNOWN",
-      "localCommitVerified": true,
-      "remoteCommitVerified": true,
-      "pushed": true,
-      "deployed": false,
-      "deploymentVerified": false,
-      "migrationRequired": false,
-      "migrationExecuted": false,
-      "productionImpact": "NONE",
-      "ownerApprovalRequired": false,
       "scopeChangeApprovalRequired": true,
-      "nextApprovedPackage": null,
-      "notes": "Remote branch contains this foundation through e383a32."
+      "status": "PUSHED",
+      "title": "Execution Decision Engine"
     },
     {
-      "packageId": "AI-IEP-004A.7",
-      "title": "Decision History and Governance",
-      "category": "AI_PLATFORM_FOUNDATION",
-      "status": "PUSHED",
-      "objective": "Create repository-native decision history and governance event records.",
+      "acceptanceCriteria": [
+        "governance records validate",
+        "replay artifacts are deterministic"
+      ],
       "approvedScope": [
         "immutable snapshots",
         "governance events",
         "review/approval metadata"
       ],
+      "category": "AI_PLATFORM_FOUNDATION",
+      "dependencies": [
+        "AI-IEP-004A.6"
+      ],
+      "deployed": false,
+      "deploymentVerified": false,
+      "documentationPath": "docs/implementation/decision-governance",
+      "implementationCommit": "UNKNOWN",
+      "localCommitVerified": true,
+      "migrationExecuted": false,
+      "migrationRequired": false,
+      "nextApprovedPackage": null,
+      "notes": "Remote branch contains this foundation through e383a32.",
+      "objective": "Create repository-native decision history and governance event records.",
+      "ownerApprovalRequired": false,
+      "packageId": "AI-IEP-004A.7",
+      "productionImpact": "NONE",
       "prohibitedScope": [
         "production audit database",
         "runtime enforcement"
       ],
-      "dependencies": [
-        "AI-IEP-004A.6"
-      ],
-      "acceptanceCriteria": [
-        "governance records validate",
-        "replay artifacts are deterministic"
-      ],
+      "pushed": true,
+      "remoteCommitVerified": true,
       "requiredTests": [
         "npm.cmd run test:decision-governance"
       ],
-      "documentationPath": "docs/implementation/decision-governance",
-      "implementationCommit": "UNKNOWN",
-      "localCommitVerified": true,
-      "remoteCommitVerified": true,
-      "pushed": true,
-      "deployed": false,
-      "deploymentVerified": false,
-      "migrationRequired": false,
-      "migrationExecuted": false,
-      "productionImpact": "NONE",
-      "ownerApprovalRequired": false,
       "scopeChangeApprovalRequired": true,
-      "nextApprovedPackage": null,
-      "notes": "Remote branch contains this foundation through e383a32."
+      "status": "PUSHED",
+      "title": "Decision History and Governance"
     },
     {
-      "packageId": "AI-IEP-004A.8",
-      "title": "Intelligence Knowledge Graph",
-      "category": "AI_PLATFORM_FOUNDATION",
-      "status": "PUSHED",
-      "objective": "Create repository-native intelligence knowledge graph records.",
+      "acceptanceCriteria": [
+        "graph validates",
+        "cycle and impact reports generate deterministically"
+      ],
       "approvedScope": [
         "typed nodes",
         "typed edges",
         "dependency and impact analysis"
       ],
+      "category": "AI_PLATFORM_FOUNDATION",
+      "dependencies": [
+        "AI-IEP-004A.7"
+      ],
+      "deployed": false,
+      "deploymentVerified": false,
+      "documentationPath": "docs/implementation/intelligence-knowledge-graph",
+      "implementationCommit": "UNKNOWN",
+      "localCommitVerified": true,
+      "migrationExecuted": false,
+      "migrationRequired": false,
+      "nextApprovedPackage": null,
+      "notes": "Remote branch contains this foundation through e383a32.",
+      "objective": "Create repository-native intelligence knowledge graph records.",
+      "ownerApprovalRequired": false,
+      "packageId": "AI-IEP-004A.8",
+      "productionImpact": "NONE",
       "prohibitedScope": [
         "runtime graph service",
         "production decision routing"
       ],
-      "dependencies": [
-        "AI-IEP-004A.7"
-      ],
-      "acceptanceCriteria": [
-        "graph validates",
-        "cycle and impact reports generate deterministically"
-      ],
+      "pushed": true,
+      "remoteCommitVerified": true,
       "requiredTests": [
         "npm.cmd run test:knowledge-graph"
       ],
-      "documentationPath": "docs/implementation/intelligence-knowledge-graph",
-      "implementationCommit": "UNKNOWN",
-      "localCommitVerified": true,
-      "remoteCommitVerified": true,
-      "pushed": true,
-      "deployed": false,
-      "deploymentVerified": false,
-      "migrationRequired": false,
-      "migrationExecuted": false,
-      "productionImpact": "NONE",
-      "ownerApprovalRequired": false,
       "scopeChangeApprovalRequired": true,
-      "nextApprovedPackage": null,
-      "notes": "Remote branch contains this foundation through e383a32."
+      "status": "PUSHED",
+      "title": "Intelligence Knowledge Graph"
     },
     {
-      "packageId": "AI-IEP-004A.9",
-      "title": "Dashboard Data Generation",
-      "category": "AI_PLATFORM_FOUNDATION",
-      "status": "PUSHED",
-      "objective": "Create repository-only deterministic dashboard datasets.",
+      "acceptanceCriteria": [
+        "dashboard datasets validate",
+        "artifacts are deterministic"
+      ],
       "approvedScope": [
         "dashboard datasets",
         "catalogs",
         "hash reports"
       ],
+      "category": "AI_PLATFORM_FOUNDATION",
+      "dependencies": [
+        "AI-IEP-004A.8"
+      ],
+      "deployed": false,
+      "deploymentVerified": false,
+      "documentationPath": "bridge-api/dashboard-data",
+      "implementationCommit": "UNKNOWN",
+      "localCommitVerified": true,
+      "migrationExecuted": false,
+      "migrationRequired": false,
+      "nextApprovedPackage": null,
+      "notes": "Remote branch contains this foundation through e383a32.",
+      "objective": "Create repository-only deterministic dashboard datasets.",
+      "ownerApprovalRequired": false,
+      "packageId": "AI-IEP-004A.9",
+      "productionImpact": "NONE",
       "prohibitedScope": [
         "production dashboard runtime changes",
         "new UI feature"
       ],
-      "dependencies": [
-        "AI-IEP-004A.8"
-      ],
-      "acceptanceCriteria": [
-        "dashboard datasets validate",
-        "artifacts are deterministic"
-      ],
+      "pushed": true,
+      "remoteCommitVerified": true,
       "requiredTests": [
         "npm.cmd run test:dashboard-data"
       ],
-      "documentationPath": "bridge-api/dashboard-data",
-      "implementationCommit": "UNKNOWN",
-      "localCommitVerified": true,
-      "remoteCommitVerified": true,
-      "pushed": true,
-      "deployed": false,
-      "deploymentVerified": false,
-      "migrationRequired": false,
-      "migrationExecuted": false,
-      "productionImpact": "NONE",
-      "ownerApprovalRequired": false,
       "scopeChangeApprovalRequired": true,
-      "nextApprovedPackage": null,
-      "notes": "Remote branch contains this foundation through e383a32."
+      "status": "PUSHED",
+      "title": "Dashboard Data Generation"
     },
     {
-      "packageId": "AI-IEP-004A.10",
-      "title": "Framework Validation and Integration",
-      "category": "AI_PLATFORM_FOUNDATION",
-      "status": "PUSHED",
-      "objective": "Create repository-only framework validation and enterprise integration reports.",
+      "acceptanceCriteria": [
+        "framework reports validate",
+        "cross-reference artifacts are deterministic"
+      ],
       "approvedScope": [
         "subsystem inventory",
         "integration matrix",
         "quality scorecards"
       ],
+      "category": "AI_PLATFORM_FOUNDATION",
+      "dependencies": [
+        "AI-IEP-004A.9"
+      ],
+      "deployed": false,
+      "deploymentVerified": false,
+      "documentationPath": "docs/implementation/framework-validation",
+      "implementationCommit": "4d44ac3",
+      "localCommitVerified": true,
+      "migrationExecuted": false,
+      "migrationRequired": false,
+      "nextApprovedPackage": null,
+      "notes": "Commit `4d44ac3` is reachable from remote head e383a32.",
+      "objective": "Create repository-only framework validation and enterprise integration reports.",
+      "ownerApprovalRequired": false,
+      "packageId": "AI-IEP-004A.10",
+      "productionImpact": "NONE",
       "prohibitedScope": [
         "production readiness approval",
         "deployment authorization"
       ],
-      "dependencies": [
-        "AI-IEP-004A.9"
-      ],
-      "acceptanceCriteria": [
-        "framework reports validate",
-        "cross-reference artifacts are deterministic"
-      ],
+      "pushed": true,
+      "remoteCommitVerified": true,
       "requiredTests": [
         "npm.cmd run test:framework-validation"
       ],
-      "documentationPath": "docs/implementation/framework-validation",
-      "implementationCommit": "4d44ac3",
-      "localCommitVerified": true,
-      "remoteCommitVerified": true,
-      "pushed": true,
-      "deployed": false,
-      "deploymentVerified": false,
-      "migrationRequired": false,
-      "migrationExecuted": false,
-      "productionImpact": "NONE",
-      "ownerApprovalRequired": false,
       "scopeChangeApprovalRequired": true,
-      "nextApprovedPackage": null,
-      "notes": "Commit `4d44ac3` is reachable from remote head e383a32."
+      "status": "PUSHED",
+      "title": "Framework Validation and Integration"
     },
     {
-      "packageId": "AI-IEP-005A.1",
-      "title": "Intelligence Capability Orchestration",
-      "category": "AI_PLATFORM_FOUNDATION",
-      "status": "PUSHED",
-      "objective": "Create repository-only enterprise intelligence capability orchestration metadata.",
+      "acceptanceCriteria": [
+        "orchestration metadata validates",
+        "artifacts are deterministic"
+      ],
       "approvedScope": [
         "metadata-only domain capabilities",
         "execution contracts",
         "plan templates"
       ],
+      "category": "AI_PLATFORM_FOUNDATION",
+      "dependencies": [
+        "AI-IEP-004A.10"
+      ],
+      "deployed": false,
+      "deploymentVerified": false,
+      "documentationPath": "docs/implementation/intelligence-capability-orchestration",
+      "implementationCommit": "fbe07f9",
+      "localCommitVerified": true,
+      "migrationExecuted": false,
+      "migrationRequired": false,
+      "nextApprovedPackage": null,
+      "notes": "Commit `fbe07f9` is reachable from remote head e383a32.",
+      "objective": "Create repository-only enterprise intelligence capability orchestration metadata.",
+      "ownerApprovalRequired": false,
+      "packageId": "AI-IEP-005A.1",
+      "productionImpact": "NONE",
       "prohibitedScope": [
         "runtime orchestration",
         "provider routing",
         "production execution"
       ],
-      "dependencies": [
-        "AI-IEP-004A.10"
-      ],
-      "acceptanceCriteria": [
-        "orchestration metadata validates",
-        "artifacts are deterministic"
-      ],
+      "pushed": true,
+      "remoteCommitVerified": true,
       "requiredTests": [
         "npm.cmd run test:intelligence-orchestration"
       ],
-      "documentationPath": "docs/implementation/intelligence-capability-orchestration",
-      "implementationCommit": "fbe07f9",
-      "localCommitVerified": true,
-      "remoteCommitVerified": true,
-      "pushed": true,
-      "deployed": false,
-      "deploymentVerified": false,
-      "migrationRequired": false,
-      "migrationExecuted": false,
-      "productionImpact": "NONE",
-      "ownerApprovalRequired": false,
       "scopeChangeApprovalRequired": true,
-      "nextApprovedPackage": null,
-      "notes": "Commit `fbe07f9` is reachable from remote head e383a32."
+      "status": "PUSHED",
+      "title": "Intelligence Capability Orchestration"
     },
     {
-      "packageId": "AI-IEP-005A.2",
-      "title": "Intelligence Lifecycle Framework",
-      "category": "AI_PLATFORM_FOUNDATION",
-      "status": "PUSHED",
-      "objective": "Create repository-only enterprise intelligence lifecycle framework metadata.",
+      "acceptanceCriteria": [
+        "lifecycle metadata validates",
+        "artifacts are deterministic"
+      ],
       "approvedScope": [
         "lifecycle records",
         "maturity/readiness metadata",
         "learning-policy metadata"
       ],
+      "category": "AI_PLATFORM_FOUNDATION",
+      "dependencies": [
+        "AI-IEP-005A.1"
+      ],
+      "deployed": false,
+      "deploymentVerified": false,
+      "documentationPath": "docs/implementation/intelligence-lifecycle-framework",
+      "implementationCommit": "e383a326bb41513e3aa77c05660bdb74042e7f0d",
+      "localCommitVerified": true,
+      "migrationExecuted": false,
+      "migrationRequired": false,
+      "nextApprovedPackage": null,
+      "notes": "Remote branch currently points at this commit.",
+      "objective": "Create repository-only enterprise intelligence lifecycle framework metadata.",
+      "ownerApprovalRequired": false,
+      "packageId": "AI-IEP-005A.2",
+      "productionImpact": "NONE",
       "prohibitedScope": [
         "production lifecycle enforcement",
         "model deployment approval"
       ],
-      "dependencies": [
-        "AI-IEP-005A.1"
-      ],
-      "acceptanceCriteria": [
-        "lifecycle metadata validates",
-        "artifacts are deterministic"
-      ],
+      "pushed": true,
+      "remoteCommitVerified": true,
       "requiredTests": [
         "npm.cmd run test:intelligence-lifecycle"
       ],
-      "documentationPath": "docs/implementation/intelligence-lifecycle-framework",
-      "implementationCommit": "e383a326bb41513e3aa77c05660bdb74042e7f0d",
-      "localCommitVerified": true,
-      "remoteCommitVerified": true,
-      "pushed": true,
-      "deployed": false,
-      "deploymentVerified": false,
-      "migrationRequired": false,
-      "migrationExecuted": false,
-      "productionImpact": "NONE",
-      "ownerApprovalRequired": false,
       "scopeChangeApprovalRequired": true,
-      "nextApprovedPackage": null,
-      "notes": "Remote branch currently points at this commit."
+      "status": "PUSHED",
+      "title": "Intelligence Lifecycle Framework"
     },
     {
-      "packageId": "AI-IEP-005B.1",
-      "title": "Route Intelligence Foundation",
-      "category": "CORE_OPERATIONAL_INTELLIGENCE",
-      "status": "PUSHED",
-      "objective": "Create repository-only deterministic route intelligence foundation.",
+      "acceptanceCriteria": [
+        "route intelligence tests pass",
+        "full npm test passed for the committed tree"
+      ],
       "approvedScope": [
         "vehicle/route/hazard/restriction contracts",
         "deterministic truck-safety rules",
         "synthetic route benchmarks"
       ],
+      "category": "CORE_OPERATIONAL_INTELLIGENCE",
+      "dependencies": [
+        "AI-IEP-005A.2"
+      ],
+      "deployed": false,
+      "deploymentVerified": false,
+      "documentationPath": "docs/implementation/route-intelligence-foundation",
+      "implementationCommit": "63a8491d1b7bb65f3fbaae7254ef0579cd57f532",
+      "localCommitVerified": true,
+      "migrationExecuted": false,
+      "migrationRequired": false,
+      "nextApprovedPackage": "AI-IEP-005B.2",
+      "notes": "Commit exists locally, required validation passed against the committed tree, and fetched remote refs verify origin/legacy-public-url-final-cleanup contains this commit. Not deployed, not migrated, and not production-certified.",
+      "objective": "Create repository-only deterministic route intelligence foundation.",
+      "ownerApprovalRequired": true,
+      "packageId": "AI-IEP-005B.1",
+      "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
       "prohibitedScope": [
         "production routing endpoint changes",
         "provider calls",
         "deployment",
         "production safety certification"
       ],
-      "dependencies": [
-        "AI-IEP-005A.2"
-      ],
-      "acceptanceCriteria": [
-        "route intelligence tests pass",
-        "full npm test passed for the committed tree"
-      ],
+      "pushed": true,
+      "remoteCommitVerified": true,
       "requiredTests": [
         "npm.cmd run test:route-intelligence",
         "npm.cmd test"
       ],
-      "documentationPath": "docs/implementation/route-intelligence-foundation",
-      "implementationCommit": "63a8491d1b7bb65f3fbaae7254ef0579cd57f532",
-      "localCommitVerified": true,
-      "remoteCommitVerified": true,
-      "pushed": true,
-      "deployed": false,
-      "deploymentVerified": false,
-      "migrationRequired": false,
-      "migrationExecuted": false,
-      "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
-      "ownerApprovalRequired": true,
       "scopeChangeApprovalRequired": true,
-      "nextApprovedPackage": "AI-IEP-005B.2",
-      "notes": "Commit exists locally, required validation passed against the committed tree, and fetched remote refs verify origin/legacy-public-url-final-cleanup contains this commit. Not deployed, not migrated, and not production-certified."
+      "status": "PUSHED",
+      "title": "Route Intelligence Foundation"
     },
     {
-      "packageId": "AI-IEP-005B.2",
-      "title": "Driver Intelligence Foundation",
-      "category": "CORE_OPERATIONAL_INTELLIGENCE",
-      "status": "PUSHED",
-      "objective": "Create repository-only deterministic driver intelligence foundation.",
+      "acceptanceCriteria": [
+        "driver intelligence tests pass",
+        "full npm test passed for the committed tree"
+      ],
       "approvedScope": [
         "driver profile/state/event contracts",
         "route adherence/deviation",
@@ -662,6 +649,23 @@
         "hazard approach and acknowledgement",
         "synthetic driver benchmarks"
       ],
+      "category": "CORE_OPERATIONAL_INTELLIGENCE",
+      "dependencies": [
+        "AI-IEP-005B.1"
+      ],
+      "deployed": false,
+      "deploymentVerified": false,
+      "documentationPath": "docs/implementation/driver-intelligence-foundation",
+      "implementationCommit": "43f8def86334e5cbe0b638b23f237797417e5383",
+      "localCommitVerified": true,
+      "migrationExecuted": false,
+      "migrationRequired": false,
+      "nextApprovedPackage": "SUPERVISOR_INTELLIGENCE",
+      "notes": "Commit exists locally, required validation passed against the committed tree, and fetched remote refs verify origin/legacy-public-url-final-cleanup contains this commit. Not deployed, not migrated, and not production-certified.",
+      "objective": "Create repository-only deterministic driver intelligence foundation.",
+      "ownerApprovalRequired": true,
+      "packageId": "AI-IEP-005B.2",
+      "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
       "prohibitedScope": [
         "production APIs",
         "hosted AI",
@@ -671,38 +675,25 @@
         "deployment",
         "migration"
       ],
-      "dependencies": [
-        "AI-IEP-005B.1"
-      ],
-      "acceptanceCriteria": [
-        "driver intelligence tests pass",
-        "full npm test passed for the committed tree"
-      ],
+      "pushed": true,
+      "remoteCommitVerified": true,
       "requiredTests": [
         "npm.cmd run test:driver-intelligence",
         "npm.cmd test"
       ],
-      "documentationPath": "docs/implementation/driver-intelligence-foundation",
-      "implementationCommit": "43f8def86334e5cbe0b638b23f237797417e5383",
-      "localCommitVerified": true,
-      "remoteCommitVerified": true,
-      "pushed": true,
-      "deployed": false,
-      "deploymentVerified": false,
-      "migrationRequired": false,
-      "migrationExecuted": false,
-      "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
-      "ownerApprovalRequired": true,
       "scopeChangeApprovalRequired": true,
-      "nextApprovedPackage": "SUPERVISOR_INTELLIGENCE",
-      "notes": "Commit exists locally, required validation passed against the committed tree, and fetched remote refs verify origin/legacy-public-url-final-cleanup contains this commit. Not deployed, not migrated, and not production-certified."
+      "status": "PUSHED",
+      "title": "Driver Intelligence Foundation"
     },
     {
-      "packageId": "SUPERVISOR_INTELLIGENCE",
-      "title": "Supervisor Intelligence",
-      "category": "CORE_OPERATIONAL_INTELLIGENCE",
-      "status": "PUSHED",
-      "objective": "Build the repository-only Supervisor Intelligence Foundation for deterministic supervisor operational decision support.",
+      "acceptanceCriteria": [
+        "supervisor context validation is deterministic and rejects caller provider/model/tenant overrides",
+        "route portfolio, progress, exception, alert, lifecycle, summary, and explanation contracts validate",
+        "Route Intelligence and Driver Intelligence integration references validate",
+        "existing daily supervisor report compatibility remains intact",
+        "generated Supervisor Intelligence artifacts are deterministic",
+        "no production API, deployment, migration, provider expansion, employee scoring, or workforce-impact action is added"
+      ],
       "approvedScope": [
         "trusted supervisor context validation",
         "route portfolio visibility",
@@ -714,6 +705,25 @@
         "deterministic synthetic benchmarks and generated evidence artifacts",
         "existing daily supervisor report compatibility"
       ],
+      "category": "CORE_OPERATIONAL_INTELLIGENCE",
+      "dependencies": [
+        "AI-IEP-005B.1",
+        "AI-IEP-005B.2",
+        "TSR-AI-WORKFLOW-001"
+      ],
+      "deployed": false,
+      "deploymentVerified": false,
+      "documentationPath": "docs/implementation/supervisor-intelligence-foundation",
+      "implementationCommit": "e0a9502c9d6134c66c6a9e46926956282fa5d7ff",
+      "localCommitVerified": true,
+      "migrationExecuted": false,
+      "migrationRequired": false,
+      "nextApprovedPackage": "WAREHOUSE_INTELLIGENCE",
+      "notes": "Supervisor Intelligence Foundation commit e0a9502c9d6134c66c6a9e46926956282fa5d7ff is committed locally, fetched remote refs verify origin/legacy-public-url-final-cleanup contains it, and required validation passed. Not deployed, not migrated, and not production-certified.",
+      "objective": "Build the repository-only Supervisor Intelligence Foundation for deterministic supervisor operational decision support.",
+      "ownerApprovalRequired": true,
+      "packageId": "SUPERVISOR_INTELLIGENCE",
+      "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
       "prohibitedScope": [
         "package-number fabrication",
         "employee ranking",
@@ -733,19 +743,8 @@
         "object storage mutations",
         "Cloudflare configuration changes"
       ],
-      "dependencies": [
-        "AI-IEP-005B.1",
-        "AI-IEP-005B.2",
-        "TSR-AI-WORKFLOW-001"
-      ],
-      "acceptanceCriteria": [
-        "supervisor context validation is deterministic and rejects caller provider/model/tenant overrides",
-        "route portfolio, progress, exception, alert, lifecycle, summary, and explanation contracts validate",
-        "Route Intelligence and Driver Intelligence integration references validate",
-        "existing daily supervisor report compatibility remains intact",
-        "generated Supervisor Intelligence artifacts are deterministic",
-        "no production API, deployment, migration, provider expansion, employee scoring, or workforce-impact action is added"
-      ],
+      "pushed": true,
+      "remoteCommitVerified": true,
       "requiredTests": [
         "npm.cmd run test:supervisor-operational-intelligence",
         "npm.cmd run test:route-intelligence",
@@ -754,27 +753,17 @@
         "npm.cmd run test:security",
         "npm.cmd test"
       ],
-      "documentationPath": "docs/implementation/supervisor-intelligence-foundation",
-      "implementationCommit": "e0a9502c9d6134c66c6a9e46926956282fa5d7ff",
-      "localCommitVerified": true,
-      "remoteCommitVerified": true,
-      "pushed": true,
-      "deployed": false,
-      "deploymentVerified": false,
-      "migrationRequired": false,
-      "migrationExecuted": false,
-      "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
-      "ownerApprovalRequired": true,
       "scopeChangeApprovalRequired": true,
-      "nextApprovedPackage": "WAREHOUSE_INTELLIGENCE",
-      "notes": "Supervisor Intelligence Foundation commit e0a9502c9d6134c66c6a9e46926956282fa5d7ff is committed locally, fetched remote refs verify origin/legacy-public-url-final-cleanup contains it, and required validation passed. Not deployed, not migrated, and not production-certified."
+      "status": "PUSHED",
+      "title": "Supervisor Intelligence"
     },
     {
-      "packageId": "WAREHOUSE_INTELLIGENCE",
-      "title": "Warehouse Intelligence",
-      "category": "CORE_OPERATIONAL_INTELLIGENCE",
-      "status": "PUSHED",
-      "objective": "Prepare the approved repository-only Warehouse Intelligence package for deterministic warehouse operational awareness and route departure readiness analysis.",
+      "acceptanceCriteria": [
+        "Warehouse Intelligence foundation is committed, validated, and pushed as repository-only work",
+        "scope is limited to route/load/staging/readiness exceptions and deterministic explanations",
+        "employment-impact, model-selection, provider, production API, deployment, migration, hardware, robotics, speculative automation, and autonomous purchasing scope remains prohibited",
+        "model-selection and production-orchestration gates remain incomplete"
+      ],
       "approvedScope": [
         "route loading awareness",
         "route staging awareness",
@@ -791,6 +780,26 @@
         "human-review flags",
         "integration with route and operational data already supported by TSR"
       ],
+      "category": "CORE_OPERATIONAL_INTELLIGENCE",
+      "dependencies": [
+        "AI-IEP-005B.1",
+        "AI-IEP-005B.2",
+        "SUPERVISOR_INTELLIGENCE",
+        "TSR-AI-WORKFLOW-001"
+      ],
+      "deployed": false,
+      "deploymentVerified": false,
+      "documentationPath": "docs/implementation/warehouse-intelligence-foundation",
+      "implementationCommit": "4a2b2dc7e4a5c2d8bd9a4a0c9f0e407cdc8fd1bb",
+      "localCommitVerified": true,
+      "migrationExecuted": false,
+      "migrationRequired": false,
+      "nextApprovedPackage": "FLEET_INTELLIGENCE",
+      "notes": "Warehouse Intelligence foundation commit 4a2b2dc7e4a5c2d8bd9a4a0c9f0e407cdc8fd1bb is committed locally, fetched remote refs verify origin/legacy-public-url-final-cleanup contains it, and required validation passed. Not deployed, not migrated, and not production-certified. No production API, provider activation, model selection, database write, object mutation, employee scoring, workforce-impact recommendation, autonomous purchasing, robotics, or Fleet Intelligence implementation exists.",
+      "objective": "Prepare the approved repository-only Warehouse Intelligence package for deterministic warehouse operational awareness and route departure readiness analysis.",
+      "ownerApprovalRequired": true,
+      "packageId": "WAREHOUSE_INTELLIGENCE",
+      "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
       "prohibitedScope": [
         "employee scoring",
         "warehouse employee ranking",
@@ -811,18 +820,8 @@
         "new hardware integrations",
         "unrelated warehouse-management-system expansion"
       ],
-      "dependencies": [
-        "AI-IEP-005B.1",
-        "AI-IEP-005B.2",
-        "SUPERVISOR_INTELLIGENCE",
-        "TSR-AI-WORKFLOW-001"
-      ],
-      "acceptanceCriteria": [
-        "Warehouse Intelligence foundation is committed, validated, and pushed as repository-only work",
-        "scope is limited to route/load/staging/readiness exceptions and deterministic explanations",
-        "employment-impact, model-selection, provider, production API, deployment, migration, hardware, robotics, speculative automation, and autonomous purchasing scope remains prohibited",
-        "model-selection and production-orchestration gates remain incomplete"
-      ],
+      "pushed": true,
+      "remoteCommitVerified": true,
       "requiredTests": [
         "npm.cmd run warehouse-intelligence:validate",
         "npm.cmd run warehouse-intelligence:check",
@@ -831,27 +830,18 @@
         "npm.cmd run test:ai-roadmap",
         "npm.cmd test"
       ],
-      "documentationPath": "docs/implementation/warehouse-intelligence-foundation",
-      "implementationCommit": "4a2b2dc7e4a5c2d8bd9a4a0c9f0e407cdc8fd1bb",
-      "localCommitVerified": true,
-      "remoteCommitVerified": true,
-      "pushed": true,
-      "deployed": false,
-      "deploymentVerified": false,
-      "migrationRequired": false,
-      "migrationExecuted": false,
-      "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
-      "ownerApprovalRequired": true,
       "scopeChangeApprovalRequired": true,
-      "nextApprovedPackage": "FLEET_INTELLIGENCE",
-      "notes": "Warehouse Intelligence foundation commit 4a2b2dc7e4a5c2d8bd9a4a0c9f0e407cdc8fd1bb is committed locally, fetched remote refs verify origin/legacy-public-url-final-cleanup contains it, and required validation passed. Not deployed, not migrated, and not production-certified. No production API, provider activation, model selection, database write, object mutation, employee scoring, workforce-impact recommendation, autonomous purchasing, robotics, or Fleet Intelligence implementation exists."
+      "status": "PUSHED",
+      "title": "Warehouse Intelligence"
     },
     {
-      "packageId": "FLEET_INTELLIGENCE",
-      "title": "Fleet Intelligence",
-      "category": "CORE_OPERATIONAL_INTELLIGENCE",
-      "status": "PUSHED",
-      "objective": "Prepare the approved repository-only Fleet Intelligence package for deterministic fleet/vehicle operational awareness and route/vehicle readiness analysis.",
+      "acceptanceCriteria": [
+        "Fleet Intelligence foundation is committed, validated, and pushed as repository-only work",
+        "scope is limited to fleet/vehicle operational state and route/vehicle readiness evidence",
+        "generated Fleet Intelligence artifacts are deterministic and validate against prohibited-scope mutation checks",
+        "predictive maintenance models, autonomous dispatch, autonomous purchasing, hardware, ELD, IoT, product expansion, production APIs, provider activation, deployment, migration, and Customer Intelligence implementation remain prohibited unless separately approved",
+        "model-selection and production-orchestration gates remain incomplete"
+      ],
       "approvedScope": [
         "fleet operational state",
         "vehicle assignment awareness",
@@ -870,6 +860,27 @@
         "human-review flags",
         "integration with Route, Driver, Supervisor, and Warehouse Intelligence"
       ],
+      "category": "CORE_OPERATIONAL_INTELLIGENCE",
+      "dependencies": [
+        "AI-IEP-005B.1",
+        "AI-IEP-005B.2",
+        "SUPERVISOR_INTELLIGENCE",
+        "WAREHOUSE_INTELLIGENCE",
+        "TSR-AI-WORKFLOW-001"
+      ],
+      "deployed": false,
+      "deploymentVerified": false,
+      "documentationPath": "docs/implementation/fleet-intelligence-foundation",
+      "implementationCommit": "9dfed02df38dc67240b089f4582926f14bbaae7d",
+      "localCommitVerified": true,
+      "migrationExecuted": false,
+      "migrationRequired": false,
+      "nextApprovedPackage": "CUSTOMER_INTELLIGENCE",
+      "notes": "Fleet Intelligence foundation commit 9dfed02df38dc67240b089f4582926f14bbaae7d is committed locally, fetched remote refs verify origin/legacy-public-url-final-cleanup contains it, and required validation passed. Not deployed, not migrated, and not production-certified. No production API, provider activation, model selection, database write, object mutation, driver scoring, workforce-impact recommendation, predictive maintenance model, autonomous dispatch, autonomous repair approval, autonomous purchasing, telematics/ELD/IoT integration, fleet-management product expansion, or Customer Intelligence implementation exists.",
+      "objective": "Prepare the approved repository-only Fleet Intelligence package for deterministic fleet/vehicle operational awareness and route/vehicle readiness analysis.",
+      "ownerApprovalRequired": true,
+      "packageId": "FLEET_INTELLIGENCE",
+      "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
       "prohibitedScope": [
         "driver scoring",
         "employee ranking",
@@ -893,20 +904,8 @@
         "migrations",
         "new AI infrastructure"
       ],
-      "dependencies": [
-        "AI-IEP-005B.1",
-        "AI-IEP-005B.2",
-        "SUPERVISOR_INTELLIGENCE",
-        "WAREHOUSE_INTELLIGENCE",
-        "TSR-AI-WORKFLOW-001"
-      ],
-      "acceptanceCriteria": [
-        "Fleet Intelligence foundation is committed, validated, and pushed as repository-only work",
-        "scope is limited to fleet/vehicle operational state and route/vehicle readiness evidence",
-        "generated Fleet Intelligence artifacts are deterministic and validate against prohibited-scope mutation checks",
-        "predictive maintenance models, autonomous dispatch, autonomous purchasing, hardware, ELD, IoT, product expansion, production APIs, provider activation, deployment, migration, and Customer Intelligence implementation remain prohibited unless separately approved",
-        "model-selection and production-orchestration gates remain incomplete"
-      ],
+      "pushed": true,
+      "remoteCommitVerified": true,
       "requiredTests": [
         "npm.cmd run fleet-intelligence:validate",
         "npm.cmd run fleet-intelligence:check",
@@ -915,27 +914,20 @@
         "npm.cmd run test:ai-roadmap",
         "npm.cmd test"
       ],
-      "documentationPath": "docs/implementation/fleet-intelligence-foundation",
-      "implementationCommit": "9dfed02df38dc67240b089f4582926f14bbaae7d",
-      "localCommitVerified": true,
-      "remoteCommitVerified": true,
-      "pushed": true,
-      "deployed": false,
-      "deploymentVerified": false,
-      "migrationRequired": false,
-      "migrationExecuted": false,
-      "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
-      "ownerApprovalRequired": true,
       "scopeChangeApprovalRequired": true,
-      "nextApprovedPackage": "CUSTOMER_INTELLIGENCE",
-      "notes": "Fleet Intelligence foundation commit 9dfed02df38dc67240b089f4582926f14bbaae7d is committed locally, fetched remote refs verify origin/legacy-public-url-final-cleanup contains it, and required validation passed. Not deployed, not migrated, and not production-certified. No production API, provider activation, model selection, database write, object mutation, driver scoring, workforce-impact recommendation, predictive maintenance model, autonomous dispatch, autonomous repair approval, autonomous purchasing, telematics/ELD/IoT integration, fleet-management product expansion, or Customer Intelligence implementation exists."
+      "status": "PUSHED",
+      "title": "Fleet Intelligence"
     },
     {
-      "packageId": "CUSTOMER_INTELLIGENCE",
-      "title": "Customer Intelligence",
-      "category": "CORE_OPERATIONAL_INTELLIGENCE",
-      "status": "PUSHED",
-      "objective": "Record the locally implemented repository-only Customer Intelligence package for deterministic customer/account operational awareness and customer-specific route/stop context.",
+      "acceptanceCriteria": [
+        "Customer Intelligence foundation is committed, validated, and pushed as repository-only work",
+        "Customer Intelligence is not deployed, not migrated, and not production-certified",
+        "scope remains limited to customer/account operational context, delivery/account/product/invoice history awareness, service-pattern evidence, customer-specific route/stop context, operational exceptions, deterministic explanations, evidence completeness/confidence, and human-review flags",
+        "credit scoring, protected-class inference, autonomous pricing/discounting/contract/customer/sales decisions, marketing automation, CRM/payment/accounting platform expansion, model selection, provider activation, production APIs, deployment, migrations, and new AI infrastructure remain prohibited",
+        "Operations Intelligence is the next approved current package and remains unimplemented",
+        "Safety Intelligence remains planned and has not begun",
+        "model-selection and production-orchestration gates remain incomplete"
+      ],
       "approvedScope": [
         "customer/account operational context",
         "delivery-account history awareness",
@@ -951,6 +943,29 @@
         "human-review flags",
         "integration with Route, Driver, Supervisor, Warehouse, and Fleet Intelligence where relevant"
       ],
+      "category": "CORE_OPERATIONAL_INTELLIGENCE",
+      "dependencies": [
+        "AI-IEP-005B.1",
+        "AI-IEP-005B.2",
+        "SUPERVISOR_INTELLIGENCE",
+        "WAREHOUSE_INTELLIGENCE",
+        "FLEET_INTELLIGENCE",
+        "TSR-AI-WORKFLOW-001"
+      ],
+      "deployed": false,
+      "deploymentVerified": false,
+      "documentationPath": "docs/implementation/customer-intelligence-foundation",
+      "implementationCommit": "c975a65e977469629cbce1d8d1136a039cd1f549",
+      "isCurrentPackage": false,
+      "localCommitVerified": true,
+      "migrationExecuted": false,
+      "migrationRequired": false,
+      "nextApprovedPackage": "OPERATIONS_INTELLIGENCE",
+      "notes": "Customer Intelligence foundation commit c975a65e977469629cbce1d8d1136a039cd1f549 is committed locally, fetched remote refs verify origin/legacy-public-url-final-cleanup contains it, and required validation passed. Not deployed, not migrated, and not production-certified. No production API, provider activation, model selection, database write, object mutation, credit decision, pricing automation, sales automation, CRM/payment/accounting expansion, Operations Intelligence implementation, or Safety Intelligence implementation exists.",
+      "objective": "Record the locally implemented repository-only Customer Intelligence package for deterministic customer/account operational awareness and customer-specific route/stop context.",
+      "ownerApprovalRequired": true,
+      "packageId": "CUSTOMER_INTELLIGENCE",
+      "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
       "prohibitedScope": [
         "customer credit scoring",
         "automated lending/credit decisions",
@@ -978,23 +993,8 @@
         "migrations",
         "new AI infrastructure"
       ],
-      "dependencies": [
-        "AI-IEP-005B.1",
-        "AI-IEP-005B.2",
-        "SUPERVISOR_INTELLIGENCE",
-        "WAREHOUSE_INTELLIGENCE",
-        "FLEET_INTELLIGENCE",
-        "TSR-AI-WORKFLOW-001"
-      ],
-      "acceptanceCriteria": [
-        "Customer Intelligence foundation is committed, validated, and pushed as repository-only work",
-        "Customer Intelligence is not deployed, not migrated, and not production-certified",
-        "scope remains limited to customer/account operational context, delivery/account/product/invoice history awareness, service-pattern evidence, customer-specific route/stop context, operational exceptions, deterministic explanations, evidence completeness/confidence, and human-review flags",
-        "credit scoring, protected-class inference, autonomous pricing/discounting/contract/customer/sales decisions, marketing automation, CRM/payment/accounting platform expansion, model selection, provider activation, production APIs, deployment, migrations, and new AI infrastructure remain prohibited",
-        "Operations Intelligence is the next approved current package and remains unimplemented",
-        "Safety Intelligence remains planned and has not begun",
-        "model-selection and production-orchestration gates remain incomplete"
-      ],
+      "pushed": true,
+      "remoteCommitVerified": true,
       "requiredTests": [
         "npm.cmd run customer-intelligence:generate",
         "npm.cmd run customer-intelligence:validate",
@@ -1020,28 +1020,21 @@
         "npm.cmd run test:security",
         "npm.cmd test"
       ],
-      "documentationPath": "docs/implementation/customer-intelligence-foundation",
-      "implementationCommit": "c975a65e977469629cbce1d8d1136a039cd1f549",
-      "localCommitVerified": true,
-      "remoteCommitVerified": true,
-      "pushed": true,
-      "deployed": false,
-      "deploymentVerified": false,
-      "migrationRequired": false,
-      "migrationExecuted": false,
-      "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
-      "ownerApprovalRequired": true,
       "scopeChangeApprovalRequired": true,
-      "nextApprovedPackage": "OPERATIONS_INTELLIGENCE",
-      "notes": "Customer Intelligence foundation commit c975a65e977469629cbce1d8d1136a039cd1f549 is committed locally, fetched remote refs verify origin/legacy-public-url-final-cleanup contains it, and required validation passed. Not deployed, not migrated, and not production-certified. No production API, provider activation, model selection, database write, object mutation, credit decision, pricing automation, sales automation, CRM/payment/accounting expansion, Operations Intelligence implementation, or Safety Intelligence implementation exists.",
-      "isCurrentPackage": false
+      "status": "PUSHED",
+      "title": "Customer Intelligence"
     },
     {
-      "packageId": "OPERATIONS_INTELLIGENCE",
-      "title": "Operations Intelligence",
-      "category": "CORE_OPERATIONAL_INTELLIGENCE",
-      "status": "PUSHED",
-      "objective": "Provide deterministic organization-level operational awareness by aggregating existing TSR operational evidence without replacing the authoritative intelligence domains.",
+      "acceptanceCriteria": [
+        "Operations Intelligence foundation is committed, validated, and pushed as repository-only work",
+        "Operations Intelligence is not deployed, not migrated, and not production-certified",
+        "existing operations/logistics functionality audit is documented before implementation conclusions",
+        "scope remains limited to deterministic organization-level aggregation of existing TSR operational evidence with lower domains remaining authoritative",
+        "cross-domain snapshot, correlation, operations exceptions, severity, priority, structured alerts, alert lifecycle, summary, explanations, evidence freshness, confidence, completeness, and authority traceability exist",
+        "employee scoring, ranking, productivity scoring, autonomous decisions, predictive operational models, ERP/TMS/WMS/CRM/fleet-management product scope, hardware integrations, provider/model activation, production orchestration, production APIs, deployment, migrations, new AI infrastructure, and Safety Intelligence implementation remain prohibited",
+        "Safety Intelligence is the next approved current package and remains not started",
+        "model-selection and production-orchestration gates remain incomplete"
+      ],
       "approvedScope": [
         "operational context",
         "cross-domain operational awareness",
@@ -1050,6 +1043,30 @@
         "evidence completeness/confidence",
         "human review"
       ],
+      "category": "CORE_OPERATIONAL_INTELLIGENCE",
+      "dependencies": [
+        "AI-IEP-005B.1",
+        "AI-IEP-005B.2",
+        "SUPERVISOR_INTELLIGENCE",
+        "WAREHOUSE_INTELLIGENCE",
+        "FLEET_INTELLIGENCE",
+        "CUSTOMER_INTELLIGENCE",
+        "TSR-AI-WORKFLOW-001"
+      ],
+      "deployed": false,
+      "deploymentVerified": false,
+      "documentationPath": "docs/implementation/operations-intelligence-foundation",
+      "implementationCommit": "eb6975a9b59f769311cf9073c9df0abd0fdb90f7",
+      "isCurrentPackage": false,
+      "localCommitVerified": true,
+      "migrationExecuted": false,
+      "migrationRequired": false,
+      "nextApprovedPackage": "SAFETY_INTELLIGENCE",
+      "notes": "Operations Intelligence foundation commit eb6975a9b59f769311cf9073c9df0abd0fdb90f7 is committed locally, fetched remote refs and direct remote-head verification confirm origin/legacy-public-url-final-cleanup contains it, and required validation passed. Not deployed, not migrated, and not production-certified. No production API, provider/model activation, production orchestration, database write, object mutation, autonomous action, predictive model, workforce scoring, ERP/TMS/WMS/CRM/fleet-management expansion, or Safety Intelligence implementation exists.",
+      "objective": "Provide deterministic organization-level operational awareness by aggregating existing TSR operational evidence without replacing the authoritative intelligence domains.",
+      "ownerApprovalRequired": true,
+      "packageId": "OPERATIONS_INTELLIGENCE",
+      "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
       "prohibitedScope": [
         "employee scoring",
         "driver ranking",
@@ -1081,25 +1098,8 @@
         "migrations",
         "new AI infrastructure"
       ],
-      "dependencies": [
-        "AI-IEP-005B.1",
-        "AI-IEP-005B.2",
-        "SUPERVISOR_INTELLIGENCE",
-        "WAREHOUSE_INTELLIGENCE",
-        "FLEET_INTELLIGENCE",
-        "CUSTOMER_INTELLIGENCE",
-        "TSR-AI-WORKFLOW-001"
-      ],
-      "acceptanceCriteria": [
-        "Operations Intelligence foundation is committed, validated, and pushed as repository-only work",
-        "Operations Intelligence is not deployed, not migrated, and not production-certified",
-        "existing operations/logistics functionality audit is documented before implementation conclusions",
-        "scope remains limited to deterministic organization-level aggregation of existing TSR operational evidence with lower domains remaining authoritative",
-        "cross-domain snapshot, correlation, operations exceptions, severity, priority, structured alerts, alert lifecycle, summary, explanations, evidence freshness, confidence, completeness, and authority traceability exist",
-        "employee scoring, ranking, productivity scoring, autonomous decisions, predictive operational models, ERP/TMS/WMS/CRM/fleet-management product scope, hardware integrations, provider/model activation, production orchestration, production APIs, deployment, migrations, new AI infrastructure, and Safety Intelligence implementation remain prohibited",
-        "Safety Intelligence is the next approved current package and remains not started",
-        "model-selection and production-orchestration gates remain incomplete"
-      ],
+      "pushed": true,
+      "remoteCommitVerified": true,
       "requiredTests": [
         "npm.cmd run operations-intelligence:generate",
         "npm.cmd run operations-intelligence:validate",
@@ -1126,28 +1126,20 @@
         "npm.cmd run test:security",
         "npm.cmd test"
       ],
-      "documentationPath": "docs/implementation/operations-intelligence-foundation",
-      "implementationCommit": "eb6975a9b59f769311cf9073c9df0abd0fdb90f7",
-      "localCommitVerified": true,
-      "remoteCommitVerified": true,
-      "pushed": true,
-      "deployed": false,
-      "deploymentVerified": false,
-      "migrationRequired": false,
-      "migrationExecuted": false,
-      "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
-      "ownerApprovalRequired": true,
       "scopeChangeApprovalRequired": true,
-      "nextApprovedPackage": "SAFETY_INTELLIGENCE",
-      "notes": "Operations Intelligence foundation commit eb6975a9b59f769311cf9073c9df0abd0fdb90f7 is committed locally, fetched remote refs and direct remote-head verification confirm origin/legacy-public-url-final-cleanup contains it, and required validation passed. Not deployed, not migrated, and not production-certified. No production API, provider/model activation, production orchestration, database write, object mutation, autonomous action, predictive model, workforce scoring, ERP/TMS/WMS/CRM/fleet-management expansion, or Safety Intelligence implementation exists.",
-      "isCurrentPackage": false
+      "status": "PUSHED",
+      "title": "Operations Intelligence"
     },
     {
-      "packageId": "SAFETY_INTELLIGENCE",
-      "title": "Safety Intelligence",
-      "category": "CORE_OPERATIONAL_INTELLIGENCE",
-      "status": "PUSHED",
-      "objective": "Provide deterministic organization-level safety awareness by aggregating and preserving existing TSR safety evidence without overriding authoritative Route, Driver, Supervisor, Warehouse, Fleet, Customer, or Operations Intelligence determinations.",
+      "acceptanceCriteria": [
+        "Safety Intelligence foundation is committed, validated, and pushed as repository-only work",
+        "Safety Intelligence is not deployed, not migrated, and not production-certified",
+        "scope is limited to deterministic organization-level safety awareness that aggregates and preserves existing TSR safety evidence",
+        "authoritative Route, Driver, Supervisor, Warehouse, Fleet, Customer, and Operations Intelligence determinations are not overridden",
+        "driver safety scoring, employee safety ranking, negligence or misconduct determination, autonomous safety action, crash/fatigue/behavior prediction, monitoring hardware, computer vision, biometrics, OSHA/DOT/insurance product expansion, provider/model activation, deployment, migrations, and production APIs remain prohibited",
+        "Milestone 1 Core Operational Intelligence Foundations are complete from the repository/source-control perspective",
+        "model-selection and production-orchestration gates remain incomplete and inactive"
+      ],
       "approvedScope": [
         "low-clearance hazards",
         "route safety blockers",
@@ -1167,6 +1159,24 @@
         "evidence freshness",
         "human review"
       ],
+      "category": "CORE_OPERATIONAL_INTELLIGENCE",
+      "dependencies": [
+        "OPERATIONS_INTELLIGENCE"
+      ],
+      "deployed": false,
+      "deploymentVerified": false,
+      "documentationPath": "docs/implementation/safety-intelligence-foundation",
+      "implementationCommit": "be99623e6964ed4af00d46ebeabc1b0c89f7d122",
+      "isCurrentPackage": false,
+      "localCommitVerified": true,
+      "migrationExecuted": false,
+      "migrationRequired": false,
+      "nextApprovedPackage": null,
+      "notes": "Safety Intelligence foundation commit be99623e6964ed4af00d46ebeabc1b0c89f7d122 is committed locally, fetched remote refs and direct remote-head verification confirm origin/legacy-public-url-final-cleanup contains it, and required validation passed. Not deployed, not migrated, and not production-certified. No production API, provider/model activation, production orchestration, database write, object mutation, autonomous safety action, predictive crash/fatigue/behavior modeling, workforce scoring, monitoring hardware, computer vision, biometric monitoring, OSHA/DOT/insurance expansion, new AI infrastructure, or ninth intelligence domain exists.",
+      "objective": "Provide deterministic organization-level safety awareness by aggregating and preserving existing TSR safety evidence without overriding authoritative Route, Driver, Supervisor, Warehouse, Fleet, Customer, or Operations Intelligence determinations.",
+      "ownerApprovalRequired": true,
+      "packageId": "SAFETY_INTELLIGENCE",
+      "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
       "prohibitedScope": [
         "driver safety scoring",
         "employee safety ranking",
@@ -1206,18 +1216,8 @@
         "migrations",
         "new AI infrastructure"
       ],
-      "dependencies": [
-        "OPERATIONS_INTELLIGENCE"
-      ],
-      "acceptanceCriteria": [
-        "Safety Intelligence foundation is committed, validated, and pushed as repository-only work",
-        "Safety Intelligence is not deployed, not migrated, and not production-certified",
-        "scope is limited to deterministic organization-level safety awareness that aggregates and preserves existing TSR safety evidence",
-        "authoritative Route, Driver, Supervisor, Warehouse, Fleet, Customer, and Operations Intelligence determinations are not overridden",
-        "driver safety scoring, employee safety ranking, negligence or misconduct determination, autonomous safety action, crash/fatigue/behavior prediction, monitoring hardware, computer vision, biometrics, OSHA/DOT/insurance product expansion, provider/model activation, deployment, migrations, and production APIs remain prohibited",
-        "Milestone 1 Core Operational Intelligence Foundations are complete from the repository/source-control perspective",
-        "model-selection and production-orchestration gates remain incomplete and inactive"
-      ],
+      "pushed": true,
+      "remoteCommitVerified": true,
       "requiredTests": [
         "npm.cmd run safety-intelligence:generate",
         "npm.cmd run safety-intelligence:validate",
@@ -1242,28 +1242,22 @@
         "npm.cmd run test:ai-roadmap",
         "npm.cmd test"
       ],
-      "documentationPath": "docs/implementation/safety-intelligence-foundation",
-      "implementationCommit": "be99623e6964ed4af00d46ebeabc1b0c89f7d122",
-      "localCommitVerified": true,
-      "remoteCommitVerified": true,
-      "pushed": true,
-      "deployed": false,
-      "deploymentVerified": false,
-      "migrationRequired": false,
-      "migrationExecuted": false,
-      "productionImpact": "REPOSITORY_ONLY_FOUNDATION",
-      "ownerApprovalRequired": true,
       "scopeChangeApprovalRequired": true,
-      "nextApprovedPackage": null,
-      "notes": "Safety Intelligence foundation commit be99623e6964ed4af00d46ebeabc1b0c89f7d122 is committed locally, fetched remote refs and direct remote-head verification confirm origin/legacy-public-url-final-cleanup contains it, and required validation passed. Not deployed, not migrated, and not production-certified. No production API, provider/model activation, production orchestration, database write, object mutation, autonomous safety action, predictive crash/fatigue/behavior modeling, workforce scoring, monitoring hardware, computer vision, biometric monitoring, OSHA/DOT/insurance expansion, new AI infrastructure, or ninth intelligence domain exists.",
-      "isCurrentPackage": false
+      "status": "PUSHED",
+      "title": "Safety Intelligence"
     },
     {
-      "packageId": "MS-001",
-      "title": "TSR AI Capability & Execution Classification",
-      "category": "MODEL_SELECTION_AND_BENCHMARKING",
-      "status": "PUSHED",
-      "objective": "Classify existing TSR intelligence capabilities by execution class so the Model Selection Gate can later benchmark only capabilities that actually require computational or hosted AI execution, without selecting providers, selecting models, activating hosted AI, deploying, migrating, or changing production systems.",
+      "acceptanceCriteria": [
+        "Exactly eight Milestone 1 intelligence domains remain the source domains for classification",
+        "Every existing TSR intelligence capability identified by repository evidence has exactly one primary execution class",
+        "D0 deterministic capabilities are excluded from model benchmarking",
+        "D1/D2/D3 candidates identify future benchmark requirements without selecting a provider or model",
+        "Existing provider/model execution paths are audited but not expanded",
+        "Predictive capabilities are identified separately from generative AI",
+        "Voice-related decomposition states that no approved backend voice intelligence pipeline exists",
+        "Safety authority remains deterministic and cannot be overridden by model output or cost",
+        "No production orchestration, deployment, migration, production write, provider activation, model selection, commercial benchmark, or ninth domain is introduced"
+      ],
       "approvedScope": [
         "repository-only AI capability inventory",
         "execution class classification",
@@ -1281,6 +1275,31 @@
         "deterministic generated evidence",
         "validation and controlled negative tests"
       ],
+      "category": "MODEL_SELECTION_AND_BENCHMARKING",
+      "dependencies": [
+        "AI-IEP-005B.1",
+        "AI-IEP-005B.2",
+        "SUPERVISOR_INTELLIGENCE",
+        "WAREHOUSE_INTELLIGENCE",
+        "FLEET_INTELLIGENCE",
+        "CUSTOMER_INTELLIGENCE",
+        "OPERATIONS_INTELLIGENCE",
+        "SAFETY_INTELLIGENCE"
+      ],
+      "deployed": false,
+      "deploymentVerified": false,
+      "documentationPath": "docs/ai-development/model-selection/ms-001-ai-capability-execution-classification",
+      "implementationCommit": "9de484e2bf87cee2ae61e25e1997d7427d289e90",
+      "isCurrentPackage": false,
+      "localCommitVerified": true,
+      "migrationExecuted": false,
+      "migrationRequired": false,
+      "nextApprovedPackage": null,
+      "notes": "MS-001 classification package commit 9de484e2bf87cee2ae61e25e1997d7427d289e90 is committed locally, fetched remote refs and direct remote-head verification confirm origin/legacy-public-url-final-cleanup contains it, and required validation passed. The remaining fleet.issue_anomaly_candidate decision is resolved as D0 deterministic/no-AI, all 49 classifications are resolved, and MS-001 is closed. It does not select providers, select models, rank models, benchmark commercial models, perform pricing research, activate hosted AI, deploy, run migrations, change production systems, or create a ninth intelligence domain.",
+      "objective": "Classify existing TSR intelligence capabilities by execution class so the Model Selection Gate can later benchmark only capabilities that actually require computational or hosted AI execution, without selecting providers, selecting models, activating hosted AI, deploying, migrating, or changing production systems.",
+      "ownerApprovalRequired": true,
+      "packageId": "MS-001",
+      "productionImpact": "NONE",
       "prohibitedScope": [
         "ninth intelligence domain",
         "provider selection",
@@ -1303,27 +1322,8 @@
         "runtime behavior changes",
         "new product capability implementation"
       ],
-      "dependencies": [
-        "AI-IEP-005B.1",
-        "AI-IEP-005B.2",
-        "SUPERVISOR_INTELLIGENCE",
-        "WAREHOUSE_INTELLIGENCE",
-        "FLEET_INTELLIGENCE",
-        "CUSTOMER_INTELLIGENCE",
-        "OPERATIONS_INTELLIGENCE",
-        "SAFETY_INTELLIGENCE"
-      ],
-      "acceptanceCriteria": [
-        "Exactly eight Milestone 1 intelligence domains remain the source domains for classification",
-        "Every existing TSR intelligence capability identified by repository evidence has exactly one primary execution class",
-        "D0 deterministic capabilities are excluded from model benchmarking",
-        "D1/D2/D3 candidates identify future benchmark requirements without selecting a provider or model",
-        "Existing provider/model execution paths are audited but not expanded",
-        "Predictive capabilities are identified separately from generative AI",
-        "Voice-related decomposition states that no approved backend voice intelligence pipeline exists",
-        "Safety authority remains deterministic and cannot be overridden by model output or cost",
-        "No production orchestration, deployment, migration, production write, provider activation, model selection, commercial benchmark, or ninth domain is introduced"
-      ],
+      "pushed": true,
+      "remoteCommitVerified": true,
       "requiredTests": [
         "npm.cmd run ms001:generate",
         "npm.cmd run ms001:validate",
@@ -1348,28 +1348,22 @@
         "npm.cmd run test:security",
         "npm.cmd run test:api-tenant"
       ],
-      "documentationPath": "docs/ai-development/model-selection/ms-001-ai-capability-execution-classification",
-      "implementationCommit": "9de484e2bf87cee2ae61e25e1997d7427d289e90",
-      "localCommitVerified": true,
-      "remoteCommitVerified": true,
-      "pushed": true,
-      "deployed": false,
-      "deploymentVerified": false,
-      "migrationRequired": false,
-      "migrationExecuted": false,
-      "productionImpact": "NONE",
-      "ownerApprovalRequired": true,
       "scopeChangeApprovalRequired": true,
-      "nextApprovedPackage": null,
-      "notes": "MS-001 classification package commit 9de484e2bf87cee2ae61e25e1997d7427d289e90 is committed locally, fetched remote refs and direct remote-head verification confirm origin/legacy-public-url-final-cleanup contains it, and required validation passed. The remaining fleet.issue_anomaly_candidate decision is resolved as D0 deterministic/no-AI, all 49 classifications are resolved, and MS-001 is closed. It does not select providers, select models, rank models, benchmark commercial models, perform pricing research, activate hosted AI, deploy, run migrations, change production systems, or create a ninth intelligence domain.",
-      "isCurrentPackage": false
+      "status": "PUSHED",
+      "title": "TSR AI Capability & Execution Classification"
     },
     {
-      "packageId": "MS-002",
-      "title": "Benchmark & Acceptance Framework",
-      "category": "MODEL_SELECTION_AND_BENCHMARKING",
-      "status": "IMPLEMENTED_UNCOMMITTED",
-      "objective": "Define the repository-only benchmark and acceptance framework for the Model Selection Gate by consuming the MS-001 benchmark-candidate set, documenting future evidence requirements, gates, metrics, rejection conditions, and owner-decision checkpoints without selecting providers, selecting models, executing hosted benchmarks, activating hosted AI, deploying, migrating, or changing production systems.",
+      "acceptanceCriteria": [
+        "MS-002 consumes the exact MS-001 model-benchmark-required candidate set",
+        "D0 deterministic capabilities remain excluded from model benchmarking",
+        "Future benchmark acceptance evidence requirements are documented for every candidate",
+        "Safety, legal, tenant, privacy, authorization, fallback, and auditability gates remain blocking",
+        "Cost is treated as a first-class optimization criterion only after blocking gates and minimum quality requirements",
+        "No numeric pass/fail threshold is approved by MS-002",
+        "No provider, model, provider ranking, model ranking, hosted benchmark result, pricing approval, premium tier, or production recommendation is selected",
+        "Model Selection and Production Orchestration gates remain deferred, incomplete, inactive, and owner-approval gated",
+        "No production orchestration, deployment, migration, production write, provider activation, model selection, commercial benchmark execution, or ninth domain is introduced"
+      ],
       "approvedScope": [
         "repository-only benchmark and acceptance framework",
         "MS-001 benchmark-candidate intake",
@@ -1383,6 +1377,24 @@
         "deterministic generated evidence",
         "validation and controlled negative tests"
       ],
+      "category": "MODEL_SELECTION_AND_BENCHMARKING",
+      "dependencies": [
+        "MS-001"
+      ],
+      "deployed": false,
+      "deploymentVerified": false,
+      "documentationPath": "docs/ai-development/model-selection/ms-002-benchmark-acceptance-framework",
+      "implementationCommit": "9c68894de9609c8f884a11c31be0e45eb44b058a",
+      "isCurrentPackage": false,
+      "localCommitVerified": true,
+      "migrationExecuted": false,
+      "migrationRequired": false,
+      "nextApprovedPackage": null,
+      "notes": "MS-002 Benchmark & Acceptance Framework is committed, validated, remote-preserved, and closed. It did not select providers, select models, execute hosted benchmarks, perform pricing research, activate hosted AI, deploy, run migrations, change production systems, or create a ninth intelligence domain.",
+      "objective": "Define the repository-only benchmark and acceptance framework for the Model Selection Gate by consuming the MS-001 benchmark-candidate set, documenting future evidence requirements, gates, metrics, rejection conditions, and owner-decision checkpoints without selecting providers, selecting models, executing hosted benchmarks, activating hosted AI, deploying, migrating, or changing production systems.",
+      "ownerApprovalRequired": true,
+      "packageId": "MS-002",
+      "productionImpact": "NONE",
       "prohibitedScope": [
         "ninth intelligence domain",
         "provider selection",
@@ -1407,20 +1419,8 @@
         "runtime behavior changes",
         "new product capability implementation"
       ],
-      "dependencies": [
-        "MS-001"
-      ],
-      "acceptanceCriteria": [
-        "MS-002 consumes the exact MS-001 model-benchmark-required candidate set",
-        "D0 deterministic capabilities remain excluded from model benchmarking",
-        "Future benchmark acceptance evidence requirements are documented for every candidate",
-        "Safety, legal, tenant, privacy, authorization, fallback, and auditability gates remain blocking",
-        "Cost is treated as a first-class optimization criterion only after blocking gates and minimum quality requirements",
-        "No numeric pass/fail threshold is approved by MS-002",
-        "No provider, model, provider ranking, model ranking, hosted benchmark result, pricing approval, premium tier, or production recommendation is selected",
-        "Model Selection and Production Orchestration gates remain deferred, incomplete, inactive, and owner-approval gated",
-        "No production orchestration, deployment, migration, production write, provider activation, model selection, commercial benchmark execution, or ninth domain is introduced"
-      ],
+      "pushed": true,
+      "remoteCommitVerified": true,
       "requiredTests": [
         "npm.cmd run ms002:generate",
         "npm.cmd run ms002:validate",
@@ -1444,28 +1444,17 @@
         "npm.cmd run test:ai-architecture",
         "npm.cmd run test:security"
       ],
-      "documentationPath": "docs/ai-development/model-selection/ms-002-benchmark-acceptance-framework",
-      "implementationCommit": null,
-      "localCommitVerified": false,
-      "remoteCommitVerified": false,
-      "pushed": false,
-      "deployed": false,
-      "deploymentVerified": false,
-      "migrationRequired": false,
-      "migrationExecuted": false,
-      "productionImpact": "NONE",
-      "ownerApprovalRequired": true,
       "scopeChangeApprovalRequired": true,
-      "nextApprovedPackage": null,
-      "notes": "MS-002 is a repository-only analysis/design package for the Model Selection Gate. It defines future benchmark evidence requirements, acceptance/rejection conditions, evaluation metric families, safety/governance gates, and owner-decision checkpoints for the MS-001 benchmark-candidate set. It does not select providers, select models, rank models, execute hosted benchmarks, perform pricing research, activate hosted AI, deploy, run migrations, change production systems, or create a ninth intelligence domain.",
-      "isCurrentPackage": true
+      "status": "PUSHED",
+      "title": "Benchmark & Acceptance Framework"
     },
     {
-      "packageId": "TSR-AI-WORKFLOW-001",
-      "title": "TSR AI Development Roadmap and Architect-Builder Handoff Protocol",
-      "category": "DEVELOPMENT_WORKFLOW",
-      "status": "PUSHED",
-      "objective": "Create repository-based roadmap, current-work-package, scope-control, handoff, gate, source-control, validation, and generated-summary infrastructure.",
+      "acceptanceCriteria": [
+        "roadmap validates",
+        "generated summaries are deterministic",
+        "existing route and driver tests pass",
+        "full npm test passes"
+      ],
       "approvedScope": [
         "roadmap documentation",
         "machine-readable roadmap records",
@@ -1475,6 +1464,23 @@
         "validation scripts",
         "generated summaries"
       ],
+      "category": "DEVELOPMENT_WORKFLOW",
+      "dependencies": [
+        "AI-IEP-005B.2"
+      ],
+      "deployed": false,
+      "deploymentVerified": false,
+      "documentationPath": "docs/ai-development",
+      "implementationCommit": "983457ba6a6adceafbbc4423373e197cbd90fcf7",
+      "localCommitVerified": true,
+      "migrationExecuted": false,
+      "migrationRequired": false,
+      "nextApprovedPackage": "SUPERVISOR_INTELLIGENCE",
+      "notes": "Workflow package commit exists locally, required validation passed against the committed tree, and fetched remote refs verify origin/legacy-public-url-final-cleanup contains this commit. Not deployed, not migrated, and not production-certified.",
+      "objective": "Create repository-based roadmap, current-work-package, scope-control, handoff, gate, source-control, validation, and generated-summary infrastructure.",
+      "ownerApprovalRequired": true,
+      "packageId": "TSR-AI-WORKFLOW-001",
+      "productionImpact": "NONE",
       "prohibitedScope": [
         "Supervisor Intelligence implementation",
         "product features",
@@ -1484,15 +1490,8 @@
         "migration",
         "push"
       ],
-      "dependencies": [
-        "AI-IEP-005B.2"
-      ],
-      "acceptanceCriteria": [
-        "roadmap validates",
-        "generated summaries are deterministic",
-        "existing route and driver tests pass",
-        "full npm test passes"
-      ],
+      "pushed": true,
+      "remoteCommitVerified": true,
       "requiredTests": [
         "npm.cmd run test:ai-roadmap",
         "npm.cmd run test:route-intelligence",
@@ -1500,20 +1499,128 @@
         "npm.cmd run test:security",
         "npm.cmd test"
       ],
-      "documentationPath": "docs/ai-development",
-      "implementationCommit": "983457ba6a6adceafbbc4423373e197cbd90fcf7",
-      "localCommitVerified": true,
-      "remoteCommitVerified": true,
-      "pushed": true,
+      "scopeChangeApprovalRequired": true,
+      "status": "PUSHED",
+      "title": "TSR AI Development Roadmap and Architect-Builder Handoff Protocol"
+    },
+    {
+      "acceptanceCriteria": [
+        "Exactly 13 benchmark-required capabilities are included",
+        "D0 deterministic capabilities remain excluded from model/provider research for execution purposes",
+        "D1 capabilities use low-complexity statistical/local methods before any hosted generative model",
+        "D2 capabilities have deliberately bounded candidate model sets",
+        "Current official documentation and pricing sources are recorded",
+        "Pricing and workload cost estimates are separated",
+        "Screened-out candidates and unverified current information are recorded",
+        "No final provider, model, winner, production route, hosted benchmark result, deployment, migration, production write, or ninth domain is introduced"
+      ],
+      "approvedScope": [
+        "repository-only candidate model and method selection",
+        "current official model/provider documentation research",
+        "current pricing research",
+        "D1 non-LLM candidate method selection",
+        "D2 bounded hosted model shortlist",
+        "screened-out candidate register",
+        "source register",
+        "normalized cost estimates",
+        "MS-004 benchmark size and budget forecast",
+        "provider adapter compatibility assessment",
+        "privacy/security provider facts",
+        "validation and controlled negative tests"
+      ],
+      "category": "MODEL_SELECTION_AND_BENCHMARKING",
+      "dependencies": [
+        "MS-001",
+        "MS-002"
+      ],
       "deployed": false,
       "deploymentVerified": false,
-      "migrationRequired": false,
+      "documentationPath": "docs/ai-development/model-selection/ms-003-candidate-model-method-selection",
+      "expectedCompletionReportFormat": "Use the MS-003 work-package report sections A through AZ with candidate counts, pricing/source evidence, generated artifact paths, validation evidence, and scope-drift audit.",
+      "implementationCommit": null,
+      "isCurrentPackage": true,
+      "localCommitVerified": false,
       "migrationExecuted": false,
-      "productionImpact": "NONE",
+      "migrationRequired": false,
+      "nextApprovedPackage": null,
+      "notes": "MS-003 is a repository-only research/implementation package that names benchmark candidates but does not select final providers/models or execute hosted benchmarks.",
+      "objective": "Identify the bounded benchmark candidate method/model set for the 13 MS-001 benchmark-required TSR capabilities by using MS-002 acceptance contracts, current official model/provider documentation, current pricing, and cheapest-sufficient discipline without executing hosted benchmarks or selecting final providers/models.",
       "ownerApprovalRequired": true,
+      "ownerDecisionPoints": [
+        "review and approve MS-003 candidate set preservation",
+        "approve any MS-004 hosted benchmark execution separately",
+        "approve benchmark credentials/provider access separately if MS-004 proceeds",
+        "keep production orchestration deferred, incomplete, and inactive until benchmark winners and governance controls are separately approved"
+      ],
+      "packageId": "MS-003",
+      "productionImpact": "NONE",
+      "prohibitedScope": [
+        "ninth intelligence domain",
+        "final provider selection",
+        "final model selection",
+        "winning model assignment",
+        "production provider assignment",
+        "primary/fallback model routing",
+        "hosted benchmark execution",
+        "live model API calls",
+        "provider activation",
+        "hosted AI activation",
+        "production orchestration",
+        "production APIs",
+        "deployment",
+        "migrations",
+        "production writes",
+        "database mutations",
+        "object-storage mutations",
+        "Cloudflare/R2 changes",
+        "credential changes",
+        "runtime behavior changes",
+        "provider adapter implementation"
+      ],
+      "pushed": false,
+      "recommendedCommitMessage": "Select MS-003 benchmark candidates",
+      "remoteCommitVerified": false,
+      "requiredTests": [
+        "npm.cmd run ms003:generate",
+        "npm.cmd run ms003:validate",
+        "npm.cmd run ms003:check",
+        "npm.cmd run test:ms003",
+        "npm.cmd run ms002:validate",
+        "npm.cmd run ms002:check",
+        "npm.cmd run ms001:validate",
+        "npm.cmd run ms001:check",
+        "npm.cmd run ai-roadmap:generate",
+        "npm.cmd run ai-roadmap:validate",
+        "npm.cmd run ai-roadmap:check",
+        "npm.cmd run test:ai-roadmap",
+        "npm.cmd run test:benchmark-datasets",
+        "npm.cmd run test:evaluation-engine",
+        "npm.cmd run test:scoring-engine",
+        "npm.cmd run test:cost-governance",
+        "npm.cmd run test:execution-decisions",
+        "npm.cmd run test:decision-governance",
+        "npm.cmd run test:knowledge-graph",
+        "npm.cmd run test:framework-validation",
+        "npm.cmd run test:ai-architecture",
+        "npm.cmd run test:security"
+      ],
       "scopeChangeApprovalRequired": true,
-      "nextApprovedPackage": "SUPERVISOR_INTELLIGENCE",
-      "notes": "Workflow package commit exists locally, required validation passed against the committed tree, and fetched remote refs verify origin/legacy-public-url-final-cleanup contains this commit. Not deployed, not migrated, and not production-certified."
+      "sourceControlExpectation": "MS-003 remains repository-local, unstaged, and uncommitted until validation passes and a separate controlled review/commit step is performed. Do not stage, commit, push, deploy, run migrations, activate providers, select models, execute hosted benchmarks, modify production systems, or begin any ninth intelligence domain in this package.",
+      "status": "IMPLEMENTED_UNCOMMITTED",
+      "title": "Candidate Model & Method Selection"
     }
-  ]
+  ],
+  "roadmapId": "TSR_AI_DEVELOPMENT_ROADMAP",
+  "sourceControl": {
+    "backendPath": "C:\\dev\\bridge-api\\bridge-api",
+    "localAheadBy": 0,
+    "localBranch": "legacy-public-url-final-cleanup",
+    "localHead": "9c68894de9609c8f884a11c31be0e45eb44b058a",
+    "pushPerformedByThisPackage": false,
+    "remoteBranch": "origin/legacy-public-url-final-cleanup",
+    "remoteHead": "9c68894de9609c8f884a11c31be0e45eb44b058a",
+    "remoteVerificationPerformed": true,
+    "repositoryRoot": "C:\\dev\\bridge-api"
+  },
+  "title": "Truck-Safe Routing AI Development Roadmap"
 }

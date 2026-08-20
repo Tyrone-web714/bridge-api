@@ -1,8 +1,8 @@
 # Current AI Work Package
 
-Package ID: MS-002
+Package ID: MS-003
 
-Title: Benchmark & Acceptance Framework
+Title: Candidate Model & Method Selection
 
 Category: MODEL_SELECTION_AND_BENCHMARKING
 
@@ -10,87 +10,73 @@ Status: IMPLEMENTED_UNCOMMITTED
 
 ## Objective
 
-Define the repository-only benchmark and acceptance framework for the Model Selection Gate by consuming the MS-001 benchmark-candidate set, documenting future evidence requirements, gates, metrics, rejection conditions, and owner-decision checkpoints without selecting providers, selecting models, executing hosted benchmarks, activating hosted AI, deploying, migrating, or changing production systems.
-
-## Milestone 1 Completion State
-
-Milestone 1 is complete from the repository/source-control perspective for exactly eight core operational intelligence domains:
-
-- Route Intelligence.
-- Driver Intelligence.
-- Supervisor Intelligence.
-- Warehouse Intelligence.
-- Fleet Intelligence.
-- Customer Intelligence.
-- Operations Intelligence.
-- Safety Intelligence.
-
-All eight domains are committed, validated, and pushed as repository-only foundations. They are not deployed, not migrated, not production-certified, not provider-enabled, and not model-enabled by this roadmap state. MS-002 does not add a ninth intelligence domain.
+Identify the bounded benchmark candidate method/model set for the 13 MS-001 benchmark-required TSR capabilities by using MS-002 acceptance contracts, current official model/provider documentation, current pricing, and cheapest-sufficient discipline without executing hosted benchmarks or selecting final providers/models.
 
 ## Approved Scope
 
-- Repository-only benchmark and acceptance framework.
-- MS-001 benchmark-candidate intake.
-- D0 benchmark exclusion preservation.
-- Future benchmark evidence requirements.
-- Evaluation metric families.
-- Safety and governance gates.
-- Cost and latency policy.
-- Acceptance and rejection conditions.
-- Owner-decision checkpoints.
-- Deterministic generated evidence.
-- Validation and controlled negative tests.
+- repository-only candidate model and method selection
+- current official model/provider documentation research
+- current pricing research
+- D1 non-LLM candidate method selection
+- D2 bounded hosted model shortlist
+- screened-out candidate register
+- source register
+- normalized cost estimates
+- MS-004 benchmark size and budget forecast
+- provider adapter compatibility assessment
+- privacy/security provider facts
+- validation and controlled negative tests
 
 ## Prohibited Scope
 
-- Ninth intelligence domain.
-- Provider selection.
-- Model selection.
-- Provider ranking.
-- Model ranking.
-- Commercial model benchmarking.
-- Hosted benchmark execution.
-- Pricing research.
-- Premium tier approval.
-- Hosted AI activation.
-- Provider activation.
-- Production orchestration.
-- Production APIs.
-- Deployment.
-- Migrations.
-- Production writes.
-- Database mutations.
-- Object-storage mutations.
-- Cloudflare/R2 changes.
-- Credential changes.
-- Runtime behavior changes.
-- New product capability implementation.
+- ninth intelligence domain
+- final provider selection
+- final model selection
+- winning model assignment
+- production provider assignment
+- primary/fallback model routing
+- hosted benchmark execution
+- live model API calls
+- provider activation
+- hosted AI activation
+- production orchestration
+- production APIs
+- deployment
+- migrations
+- production writes
+- database mutations
+- object-storage mutations
+- Cloudflare/R2 changes
+- credential changes
+- runtime behavior changes
+- provider adapter implementation
 
 ## Dependencies
 
-- MS-001.
+- MS-001
+- MS-002
 
 ## Acceptance Criteria
 
-- MS-002 consumes the exact MS-001 model-benchmark-required candidate set.
-- D0 deterministic capabilities remain excluded from model benchmarking.
-- Future benchmark acceptance evidence requirements are documented for every candidate.
-- Safety, legal, tenant, privacy, authorization, fallback, and auditability gates remain blocking.
-- Cost is treated as a first-class optimization criterion only after blocking gates and minimum quality requirements.
-- No numeric pass/fail threshold is approved by MS-002.
-- No provider, model, provider ranking, model ranking, hosted benchmark result, pricing approval, premium tier, or production recommendation is selected.
-- Model Selection and Production Orchestration gates remain deferred, incomplete, inactive, and owner-approval gated.
-- No production orchestration, deployment, migration, production write, provider activation, model selection, commercial benchmark execution, or ninth domain is introduced.
+- Exactly 13 benchmark-required capabilities are included
+- D0 deterministic capabilities remain excluded from model/provider research for execution purposes
+- D1 capabilities use low-complexity statistical/local methods before any hosted generative model
+- D2 capabilities have deliberately bounded candidate model sets
+- Current official documentation and pricing sources are recorded
+- Pricing and workload cost estimates are separated
+- Screened-out candidates and unverified current information are recorded
+- No final provider, model, winner, production route, hosted benchmark result, deployment, migration, production write, or ninth domain is introduced
 
 ## Required Tests
 
-- `npm.cmd run ms002:generate`
+- `npm.cmd run ms003:generate`
+- `npm.cmd run ms003:validate`
+- `npm.cmd run ms003:check`
+- `npm.cmd run test:ms003`
 - `npm.cmd run ms002:validate`
 - `npm.cmd run ms002:check`
-- `npm.cmd run test:ms002`
 - `npm.cmd run ms001:validate`
 - `npm.cmd run ms001:check`
-- `npm.cmd run test:ms001`
 - `npm.cmd run ai-roadmap:generate`
 - `npm.cmd run ai-roadmap:validate`
 - `npm.cmd run ai-roadmap:check`
@@ -108,24 +94,19 @@ All eight domains are committed, validated, and pushed as repository-only founda
 
 ## Source-Control Expectation
 
-MS-002 is repository-local, unstaged, and uncommitted until validation passes and a separate controlled commit step is performed. Do not stage, commit, push, deploy, run migrations, activate providers, select models, execute hosted benchmarks, modify production systems, or begin any ninth intelligence domain in this package.
-
-## Completion Report
-
-Use `docs/ai-development/CODEX_COMPLETION_REPORT_TEMPLATE.md` sections A through AN plus MS-002 benchmark-candidate counts, generated framework evidence, and validation evidence.
+MS-003 remains repository-local, unstaged, and uncommitted until validation passes and a separate controlled review/commit step is performed. Do not stage, commit, push, deploy, run migrations, activate providers, select models, execute hosted benchmarks, modify production systems, or begin any ninth intelligence domain in this package.
 
 ## Recommended Commit Message
 
-Define MS-002 benchmark acceptance framework
+Select MS-003 benchmark candidates
 
 ## Next Approved Package
 
-No next implementation package is approved by this record. A later owner-approved package is required before any hosted benchmark execution, provider comparison, model comparison, pricing research, premium-tier consideration, production orchestration, deployment, migration, or production change.
+No next implementation package is approved by this record. MS-004 benchmark execution requires a separate owner-approved package.
 
 ## Owner Decision Points
 
-- Review and approve whether to execute live hosted benchmarks for the MS-001 candidate set.
-- Approve benchmark datasets and whether any production data may be used.
-- Approve numeric acceptance thresholds before live benchmarking or selection.
-- Approve any provider list, model list, pricing research, premium-tier consideration, or hosted AI activation separately.
-- Keep production orchestration deferred, incomplete, and inactive until benchmark evidence, governance controls, and owner approval exist.
+- review and approve MS-003 candidate set preservation
+- approve any MS-004 hosted benchmark execution separately
+- approve benchmark credentials/provider access separately if MS-004 proceeds
+- keep production orchestration deferred, incomplete, and inactive until benchmark winners and governance controls are separately approved

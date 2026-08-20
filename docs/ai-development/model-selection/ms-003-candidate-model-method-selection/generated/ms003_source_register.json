@@ -1,0 +1,331 @@
+[
+  {
+    "apiConstraints": [
+      "text input/output",
+      "image input only",
+      "reasoning token support"
+    ],
+    "apiDocumentationSource": "https://developers.openai.com/api/docs/models/gpt-5-nano",
+    "batchPrice": "Batch API supported; explicit discount not assumed in MS-003.",
+    "cachedInputPriceUsdPer1M": 0.005,
+    "contextWindowTokens": 400000,
+    "currentSupportedStatus": "CURRENT_SUPPORTED",
+    "dateVerified": "2026-08-20",
+    "documentationSource": "https://developers.openai.com/api/docs/models/gpt-5-nano",
+    "inputPriceUsdPer1M": 0.05,
+    "keyCapabilityClaims": [
+      "fastest and most cost-efficient GPT-5 version",
+      "summarization and classification fit",
+      "structured outputs supported"
+    ],
+    "maxOutputTokens": 128000,
+    "model": "GPT-5 nano",
+    "officialModelId": "gpt-5-nano",
+    "outputPriceUsdPer1M": 0.4,
+    "pricingBasis": "USD per 1M text tokens",
+    "pricingSource": "https://developers.openai.com/api/docs/models/gpt-5-nano",
+    "provider": "OpenAI",
+    "sourceId": "openai-gpt-5-nano-docs"
+  },
+  {
+    "apiConstraints": [
+      "text input/output",
+      "image input only",
+      "reasoning token support"
+    ],
+    "apiDocumentationSource": "https://developers.openai.com/api/docs/models/gpt-5-mini",
+    "batchPrice": "Batch API supported; explicit discount not assumed in MS-003.",
+    "cachedInputPriceUsdPer1M": 0.025,
+    "contextWindowTokens": 400000,
+    "currentSupportedStatus": "CURRENT_SUPPORTED",
+    "dateVerified": "2026-08-20",
+    "documentationSource": "https://developers.openai.com/api/docs/models/gpt-5-mini",
+    "inputPriceUsdPer1M": 0.25,
+    "keyCapabilityClaims": [
+      "cost-efficient GPT-5 version",
+      "well-defined task fit",
+      "function calling and structured outputs supported"
+    ],
+    "maxOutputTokens": 128000,
+    "model": "GPT-5 mini",
+    "officialModelId": "gpt-5-mini",
+    "outputPriceUsdPer1M": 2,
+    "pricingBasis": "USD per 1M text tokens",
+    "pricingSource": "https://developers.openai.com/api/docs/models/gpt-5-mini",
+    "provider": "OpenAI",
+    "sourceId": "openai-gpt-5-mini-docs"
+  },
+  {
+    "apiConstraints": [
+      "text input/output",
+      "image input only",
+      "reasoning token support"
+    ],
+    "apiDocumentationSource": "https://developers.openai.com/api/docs/models/gpt-5",
+    "batchPrice": "Batch API supported; explicit discount not assumed in MS-003.",
+    "cachedInputPriceUsdPer1M": 0.125,
+    "contextWindowTokens": 400000,
+    "currentSupportedStatus": "CURRENT_SUPPORTED_PREVIOUS_MODEL",
+    "dateVerified": "2026-08-20",
+    "documentationSource": "https://developers.openai.com/api/docs/models/gpt-5",
+    "inputPriceUsdPer1M": 1.25,
+    "keyCapabilityClaims": [
+      "reasoning and coding across domains",
+      "function calling and structured outputs supported",
+      "upper-bound comparison candidate"
+    ],
+    "maxOutputTokens": 128000,
+    "model": "GPT-5",
+    "officialModelId": "gpt-5",
+    "outputPriceUsdPer1M": 10,
+    "pricingBasis": "USD per 1M text tokens",
+    "pricingSource": "https://developers.openai.com/api/docs/models/gpt-5",
+    "provider": "OpenAI",
+    "sourceId": "openai-gpt-5-docs"
+  },
+  {
+    "apiConstraints": [
+      "text and image input",
+      "text output",
+      "structured output schema restrictions apply"
+    ],
+    "apiDocumentationSource": "https://platform.claude.com/docs/en/build-with-claude/structured-outputs",
+    "batchPrice": "Not used by MS-003.",
+    "cachedInputPriceUsdPer1M": null,
+    "contextWindowTokens": 200000,
+    "currentSupportedStatus": "CURRENT_SUPPORTED",
+    "dateVerified": "2026-08-20",
+    "documentationSource": "https://platform.claude.com/docs/en/about-claude/models/overview",
+    "inputPriceUsdPer1M": 1,
+    "keyCapabilityClaims": [
+      "fastest current Claude model",
+      "near-frontier intelligence",
+      "structured outputs generally available"
+    ],
+    "maxOutputTokens": 64000,
+    "model": "Claude Haiku 4.5",
+    "officialModelId": "claude-haiku-4-5",
+    "outputPriceUsdPer1M": 5,
+    "pricingBasis": "USD per 1M tokens",
+    "pricingSource": "https://platform.claude.com/docs/en/about-claude/models/overview",
+    "provider": "Anthropic",
+    "sourceId": "anthropic-claude-haiku-4-5-docs"
+  },
+  {
+    "apiConstraints": [
+      "text and image input",
+      "text output",
+      "structured output schema restrictions apply"
+    ],
+    "apiDocumentationSource": "https://platform.claude.com/docs/en/build-with-claude/structured-outputs",
+    "batchPrice": "Not used by MS-003.",
+    "cachedInputPriceUsdPer1M": null,
+    "contextWindowTokens": 1000000,
+    "currentSupportedStatus": "CURRENT_SUPPORTED",
+    "dateVerified": "2026-08-20",
+    "documentationSource": "https://platform.claude.com/docs/en/about-claude/models/overview",
+    "inputPriceUsdPer1M": 3,
+    "keyCapabilityClaims": [
+      "best combination of speed and intelligence in current Claude comparison",
+      "1M token context",
+      "structured outputs generally available"
+    ],
+    "maxOutputTokens": 64000,
+    "model": "Claude Sonnet 4.6",
+    "officialModelId": "claude-sonnet-4-6",
+    "outputPriceUsdPer1M": 15,
+    "pricingBasis": "USD per 1M tokens",
+    "pricingSource": "https://platform.claude.com/docs/en/about-claude/models/overview",
+    "provider": "Anthropic",
+    "sourceId": "anthropic-claude-sonnet-4-6-docs"
+  },
+  {
+    "apiConstraints": [
+      "paid tier data not used to improve products",
+      "schema subset applies"
+    ],
+    "apiDocumentationSource": "https://ai.google.dev/gemini-api/docs/structured-output",
+    "batchPrice": "Batch pricing listed as $0.15 input / $1.25 output per 1M tokens; MS-003 does not assume batch execution.",
+    "cachedInputPriceUsdPer1M": 0.03,
+    "contextWindowTokens": null,
+    "currentSupportedStatus": "CURRENT_SUPPORTED",
+    "dateVerified": "2026-08-20",
+    "documentationSource": "https://ai.google.dev/gemini-api/docs/models",
+    "inputPriceUsdPer1M": 0.3,
+    "keyCapabilityClaims": [
+      "fastest and most cost-effective Gemini 3.5 model",
+      "high-throughput fit",
+      "structured outputs support JSON Schema subset"
+    ],
+    "maxOutputTokens": null,
+    "model": "Gemini 3.5 Flash-Lite",
+    "officialModelId": "gemini-3.5-flash-lite",
+    "outputPriceUsdPer1M": 2.5,
+    "pricingBasis": "USD per 1M text/image/video tokens on paid tier",
+    "pricingSource": "https://ai.google.dev/gemini-api/docs/pricing",
+    "provider": "Google",
+    "sourceId": "google-gemini-3-5-flash-lite-docs"
+  },
+  {
+    "apiConstraints": [
+      "thinking levels affect cost/latency",
+      "paid tier data not used to improve products"
+    ],
+    "apiDocumentationSource": "https://ai.google.dev/gemini-api/docs/structured-output",
+    "batchPrice": "Batch listed at $0.75 input / $4.50 output per 1M tokens for standard text mode.",
+    "cachedInputPriceUsdPer1M": 0.15,
+    "contextWindowTokens": 1000000,
+    "currentSupportedStatus": "CURRENT_SUPPORTED",
+    "dateVerified": "2026-08-20",
+    "documentationSource": "https://ai.google.dev/gemini-api/docs/whats-new-gemini-3.5",
+    "inputPriceUsdPer1M": 1.5,
+    "keyCapabilityClaims": [
+      "GA stable scaled production model",
+      "1M token context",
+      "structured outputs and function calling support"
+    ],
+    "maxOutputTokens": 65000,
+    "model": "Gemini 3.5 Flash",
+    "officialModelId": "gemini-3.5-flash",
+    "outputPriceUsdPer1M": 9,
+    "pricingBasis": "USD per 1M tokens on paid tier",
+    "pricingSource": "https://ai.google.dev/gemini-api/docs/pricing",
+    "provider": "Google",
+    "sourceId": "google-gemini-3-5-flash-docs"
+  },
+  {
+    "apiConstraints": [
+      "model alias may resolve to latest compatible version",
+      "open-weight deployment has separate operational burden"
+    ],
+    "apiDocumentationSource": "https://docs.mistral.ai/models/model-selection-guide",
+    "batchPrice": "Mistral pricing page states batch processing is 50 percent discounted.",
+    "cachedInputPriceUsdPer1M": 0.015,
+    "contextWindowTokens": 256000,
+    "currentSupportedStatus": "CURRENT_SUPPORTED",
+    "dateVerified": "2026-08-20",
+    "documentationSource": "https://docs.mistral.ai/models/model-cards/mistral-small-4-0-26-03",
+    "inputPriceUsdPer1M": 0.15,
+    "keyCapabilityClaims": [
+      "multimodal lightweight model",
+      "structured outputs listed in model docs",
+      "Apache 2.0 weights available for Mistral Small 4 family"
+    ],
+    "maxOutputTokens": null,
+    "model": "Mistral Small 4",
+    "officialModelId": "mistral-small-latest",
+    "outputPriceUsdPer1M": 0.6,
+    "pricingBasis": "USD per 1M API tokens",
+    "pricingSource": "https://mistral.ai/pricing/api/",
+    "provider": "Mistral",
+    "sourceId": "mistral-small-latest-docs"
+  },
+  {
+    "apiConstraints": [
+      "prompts with more than 272K input tokens use long-context pricing multipliers",
+      "cache writes billed at 1.25x uncached input token rate"
+    ],
+    "apiDocumentationSource": "https://developers.openai.com/api/docs/models/gpt-5.6-luna",
+    "batchPrice": "Batch endpoint supported; MS-003 does not assume batch execution.",
+    "cachedInputPriceUsdPer1M": 0.02,
+    "contextWindowTokens": 1050000,
+    "currentSupportedStatus": "CURRENT_SUPPORTED_REFERENCE_ONLY",
+    "dateVerified": "2026-08-20",
+    "documentationSource": "https://developers.openai.com/api/docs/models/gpt-5.6-luna",
+    "inputPriceUsdPer1M": 0.2,
+    "keyCapabilityClaims": [
+      "cost-sensitive GPT-5.6 model",
+      "1.05M context window",
+      "structured outputs supported"
+    ],
+    "maxOutputTokens": 128000,
+    "model": "GPT-5.6 Luna",
+    "officialModelId": "gpt-5.6-luna",
+    "outputPriceUsdPer1M": 1.2,
+    "pricingBasis": "USD per 1M text tokens",
+    "pricingSource": "https://developers.openai.com/api/docs/models/gpt-5.6-luna",
+    "provider": "OpenAI",
+    "sourceId": "openai-gpt-5-6-luna-docs"
+  },
+  {
+    "apiConstraints": [
+      "higher cost than current low-cost OpenAI candidates",
+      "not needed for bounded MS-003 candidate pool before MS-004"
+    ],
+    "apiDocumentationSource": "https://developers.openai.com/api/docs/models",
+    "batchPrice": "Batch endpoint availability depends on account/model access; MS-003 does not assume batch execution.",
+    "cachedInputPriceUsdPer1M": null,
+    "contextWindowTokens": 1050000,
+    "currentSupportedStatus": "CURRENT_SUPPORTED_REFERENCE_ONLY",
+    "dateVerified": "2026-08-20",
+    "documentationSource": "https://developers.openai.com/api/docs/models",
+    "inputPriceUsdPer1M": 2,
+    "keyCapabilityClaims": [
+      "balanced GPT-5.6 model",
+      "1.05M context window",
+      "function/tool support listed in model catalog"
+    ],
+    "maxOutputTokens": 128000,
+    "model": "GPT-5.6 Terra",
+    "officialModelId": "gpt-5.6-terra",
+    "outputPriceUsdPer1M": 12,
+    "pricingBasis": "USD per 1M text tokens",
+    "pricingSource": "https://developers.openai.com/api/docs/models",
+    "provider": "OpenAI",
+    "sourceId": "openai-gpt-5-6-terra-docs"
+  },
+  {
+    "apiConstraints": [
+      "self-hosted cost depends on hardware/serving stack",
+      "no TSR runtime integration exists"
+    ],
+    "apiDocumentationSource": "https://qwenlm.github.io/blog/qwen3/",
+    "batchPrice": null,
+    "cachedInputPriceUsdPer1M": null,
+    "contextWindowTokens": 128000,
+    "currentSupportedStatus": "OPEN_WEIGHT_REFERENCE",
+    "dateVerified": "2026-08-20",
+    "documentationSource": "https://huggingface.co/Qwen/Qwen3-32B",
+    "inputPriceUsdPer1M": null,
+    "keyCapabilityClaims": [
+      "Apache 2.0 license",
+      "32B dense model",
+      "128K context according to Qwen release notes"
+    ],
+    "maxOutputTokens": null,
+    "model": "Qwen3-32B",
+    "officialModelId": "Qwen/Qwen3-32B",
+    "outputPriceUsdPer1M": null,
+    "pricingBasis": "No API list price; TCO must include hardware and operations.",
+    "pricingSource": "SELF_HOSTED_NO_API_LIST_PRICE",
+    "provider": "Qwen",
+    "sourceId": "qwen3-32b-model-card"
+  },
+  {
+    "apiConstraints": [
+      "custom Llama 4 Community License",
+      "self-hosted cost depends on GPU availability and serving stack"
+    ],
+    "apiDocumentationSource": "https://ai.meta.com/llama/get-started/",
+    "batchPrice": null,
+    "cachedInputPriceUsdPer1M": null,
+    "contextWindowTokens": 10000000,
+    "currentSupportedStatus": "OPEN_WEIGHT_REFERENCE",
+    "dateVerified": "2026-08-20",
+    "documentationSource": "https://github.com/meta-llama/llama-models/blob/main/models/llama4/MODEL_CARD.md",
+    "inputPriceUsdPer1M": null,
+    "keyCapabilityClaims": [
+      "17B activated MoE",
+      "10M context model card claim",
+      "single H100 efficiency with quantization according to Meta documentation"
+    ],
+    "maxOutputTokens": null,
+    "model": "Llama 4 Scout",
+    "officialModelId": "Llama-4-Scout-17B-16E",
+    "outputPriceUsdPer1M": null,
+    "pricingBasis": "No API list price; TCO must include hardware and operations.",
+    "pricingSource": "SELF_HOSTED_NO_API_LIST_PRICE",
+    "provider": "Meta",
+    "sourceId": "meta-llama-4-scout-model-card"
+  }
+]

@@ -1,0 +1,44 @@
+# MS-003 Candidate Matrix
+
+| Capability ID | Class | Type | Provider | Model/Method | Tier | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+| customer.account_guidance.presentation | D2 | HOSTED_MODEL | Anthropic | claude-haiku-4-5 | LOW_COST | SHORTLISTED |
+| customer.account_guidance.presentation | D2 | HOSTED_MODEL | OpenAI | gpt-5-nano | LOW_COST | SHORTLISTED |
+| customer.account_guidance.presentation | D2 | HOSTED_MODEL | Mistral | mistral-small-latest | LOW_COST | SHORTLISTED |
+| driver.copilot.contextual_response | D2 | HOSTED_MODEL | Anthropic | claude-haiku-4-5 | LOW_MID | SHORTLISTED |
+| driver.copilot.contextual_response | D2 | HOSTED_MODEL | OpenAI | gpt-5 | PREMIUM_UPPER_BOUND | SHORTLISTED |
+| driver.copilot.contextual_response | D2 | HOSTED_MODEL | OpenAI | gpt-5-mini | LOW_MID | SHORTLISTED |
+| driver.copilot.contextual_response | D2 | HOSTED_MODEL | OpenAI | gpt-5-nano | LOW_COST | SHORTLISTED |
+| operations.executive_dashboard_synthesis | D2 | HOSTED_MODEL | Anthropic | claude-haiku-4-5 | LOW_COST | SHORTLISTED |
+| operations.executive_dashboard_synthesis | D2 | HOSTED_MODEL | Google | gemini-3.5-flash | MID | SHORTLISTED |
+| operations.executive_dashboard_synthesis | D2 | HOSTED_MODEL | OpenAI | gpt-5-mini | LOW_COST | SHORTLISTED |
+| platform.legacy_structured_ai_response | D2 | HOSTED_MODEL | Google | gemini-3.5-flash-lite | LOW_COST | SHORTLISTED |
+| platform.legacy_structured_ai_response | D2 | HOSTED_MODEL | OpenAI | gpt-5-mini | LOW_COST | SHORTLISTED |
+| platform.legacy_structured_ai_response | D2 | HOSTED_MODEL | OpenAI | gpt-5-nano | LOW_COST | SHORTLISTED |
+| prediction.account_reorder_forecast | D1 | D1_METHOD | REPOSITORY_OR_LOCAL_COMPUTE | existing_deterministic_statistical_baseline | NON_HOSTED_D1 | SHORTLISTED |
+| prediction.account_reorder_forecast | D1 | D1_METHOD | REPOSITORY_OR_LOCAL_COMPUTE | tree_based_gradient_boosting | NON_HOSTED_D1 | SHORTLISTED |
+| prediction.account_reorder_forecast | D1 | D1_METHOD | REPOSITORY_OR_LOCAL_COMPUTE | regularized_linear_regression | NON_HOSTED_D1 | SHORTLISTED |
+| prediction.delivery_failure_risk | D1 | D1_METHOD | REPOSITORY_OR_LOCAL_COMPUTE | existing_deterministic_statistical_baseline | NON_HOSTED_D1 | SHORTLISTED |
+| prediction.delivery_failure_risk | D1 | D1_METHOD | REPOSITORY_OR_LOCAL_COMPUTE | tree_based_gradient_boosting | NON_HOSTED_D1 | SHORTLISTED |
+| prediction.delivery_failure_risk | D1 | D1_METHOD | REPOSITORY_OR_LOCAL_COMPUTE | regularized_logistic_classification | NON_HOSTED_D1 | SHORTLISTED |
+| prediction.product_demand_forecast | D1 | D1_METHOD | REPOSITORY_OR_LOCAL_COMPUTE | existing_deterministic_statistical_baseline | NON_HOSTED_D1 | SHORTLISTED |
+| prediction.product_demand_forecast | D1 | D1_METHOD | REPOSITORY_OR_LOCAL_COMPUTE | tree_based_gradient_boosting | NON_HOSTED_D1 | SHORTLISTED |
+| prediction.product_demand_forecast | D1 | D1_METHOD | REPOSITORY_OR_LOCAL_COMPUTE | regularized_linear_regression | NON_HOSTED_D1 | SHORTLISTED |
+| prediction.route_completion_forecast | D1 | D1_METHOD | REPOSITORY_OR_LOCAL_COMPUTE | existing_deterministic_statistical_baseline | NON_HOSTED_D1 | SHORTLISTED |
+| prediction.route_completion_forecast | D1 | D1_METHOD | REPOSITORY_OR_LOCAL_COMPUTE | tree_based_gradient_boosting | NON_HOSTED_D1 | SHORTLISTED |
+| prediction.route_completion_forecast | D1 | D1_METHOD | REPOSITORY_OR_LOCAL_COMPUTE | regularized_linear_regression | NON_HOSTED_D1 | SHORTLISTED |
+| route.risk_explanation.presentation | D2 | HOSTED_MODEL | Anthropic | claude-haiku-4-5 | LOW_COST | SHORTLISTED |
+| route.risk_explanation.presentation | D2 | HOSTED_MODEL | OpenAI | gpt-5 | PREMIUM_UPPER_BOUND | SHORTLISTED |
+| route.risk_explanation.presentation | D2 | HOSTED_MODEL | OpenAI | gpt-5-nano | LOW_COST | SHORTLISTED |
+| safety.narrative_summary.presentation | D2 | HOSTED_MODEL | Anthropic | claude-sonnet-4-6 | MID_UPPER | SHORTLISTED |
+| safety.narrative_summary.presentation | D2 | HOSTED_MODEL | OpenAI | gpt-5 | PREMIUM_UPPER_BOUND | SHORTLISTED |
+| safety.narrative_summary.presentation | D2 | HOSTED_MODEL | OpenAI | gpt-5-mini | LOW_COST | SHORTLISTED |
+| supervisor.daily_operations_report.narrative | D2 | HOSTED_MODEL | Google | gemini-3.5-flash-lite | LOW_COST | SHORTLISTED |
+| supervisor.daily_operations_report.narrative | D2 | HOSTED_MODEL | OpenAI | gpt-5-nano | LOW_COST | SHORTLISTED |
+| supervisor.daily_operations_report.narrative | D2 | HOSTED_MODEL | Mistral | mistral-small-latest | LOW_COST | SHORTLISTED |
+| supervisor.freeform_question_answer | D2 | HOSTED_MODEL | Anthropic | claude-haiku-4-5 | LOW_COST | SHORTLISTED |
+| supervisor.freeform_question_answer | D2 | HOSTED_MODEL | Google | gemini-3.5-flash | MID | SHORTLISTED |
+| supervisor.freeform_question_answer | D2 | HOSTED_MODEL | OpenAI | gpt-5-mini | LOW_COST | SHORTLISTED |
+| warehouse.exception_summary.presentation | D2 | HOSTED_MODEL | Google | gemini-3.5-flash-lite | LOW_COST | SHORTLISTED |
+| warehouse.exception_summary.presentation | D2 | HOSTED_MODEL | OpenAI | gpt-5-nano | LOW_COST | SHORTLISTED |
+| warehouse.exception_summary.presentation | D2 | HOSTED_MODEL | Mistral | mistral-small-latest | LOW_COST | SHORTLISTED |

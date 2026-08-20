@@ -1,0 +1,17 @@
+{
+  "candidates": 40,
+  "capabilities": 13,
+  "datasetCasesPerCapability": 12,
+  "projectedBenchmarkCalls": 1440,
+  "projectedBenchmarkCostRangeUsd": {
+    "assumptions": "12 benchmark cases per capability-candidate pair, 3 repetitions, token scenarios embedded per candidate, no retries or batch discounts included.",
+    "expectedEstimateUsd": 4.9221,
+    "highEstimateUsd": 7.8754,
+    "lowEstimateUsd": 3.4455
+  },
+  "projectedTokenVolumeEstimate": {
+    "inputTokens": 3618000,
+    "outputTokens": 639000
+  },
+  "repetitionsPerCandidateCase": 3
+}

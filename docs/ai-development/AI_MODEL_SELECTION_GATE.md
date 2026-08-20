@@ -1,35 +1,45 @@
 # AI Model Selection Gate
 
-Model selection begins only after these eight core operational domains are substantially implemented and validated:
+The Model Selection Gate remains `DEFERRED`, incomplete, inactive, and owner-approval gated.
 
-1. Route Intelligence
-2. Driver Intelligence
-3. Supervisor Intelligence
-4. Warehouse Intelligence
-5. Fleet Intelligence
-6. Customer Intelligence
-7. Operations Intelligence
-8. Safety Intelligence
+## Current State
 
-Each capability must be evaluated in this order:
+- Current analysis package: `MS-003`
+- MS-001 is `PUSHED` and closed.
+- MS-002 is `PUSHED` and closed.
+- MS-003 is `IMPLEMENTED_UNCOMMITTED` and is the current candidate model/method selection package.
+- Provider selection is not complete.
+- Model selection is not complete.
+- Hosted benchmarking has not been executed.
+- Production orchestration is deferred and inactive.
 
-1. Deterministic rules
-2. Conventional algorithms
-3. Statistical or mathematical methods
-4. Optimization engines
-5. Conventional machine learning
-6. Local models
-7. Low-cost hosted models
-8. Balanced hosted models
-9. Premium hosted models
-10. Human review where required
+## Cost Principle
 
-Milestone 1 Core Operational Intelligence Foundations are complete from the repository/source-control perspective for these eight domains. This satisfies the prerequisite domain-completion condition for owner review, but it does not start model selection.
+Use the least expensive strategy or model that satisfies quality, safety, reliability, latency, governance, and evidence requirements. Cost never overrides truck safety, legal compliance, privacy, tenant isolation, policy controls, reliability, or minimum quality thresholds.
 
-Cost effectiveness is a first-class constraint. The future review must use the least expensive strategy or model that satisfies quality, safety, reliability, latency, governance, and evidence requirements. A hosted AI model must not be assigned merely because AI is available. Cost never overrides truck safety, legal compliance, privacy, tenant isolation, policy controls, reliability, or minimum quality thresholds.
+## Required Core Domains
 
-`MS-001 - TSR AI Capability & Execution Classification` is remote-preserved and closed for the remaining classification decision. MS-001 classifies existing capabilities into D0/D1/D2/D3 execution classes, identifies deterministic no-AI exclusions, documents hybrid boundaries, audits existing provider usage, separates predictive capabilities from generative AI, decomposes the voice pipeline, and records future benchmark requirements.
+- Route Intelligence
+- Driver Intelligence
+- Supervisor Intelligence
+- Warehouse Intelligence
+- Fleet Intelligence
+- Customer Intelligence
+- Operations Intelligence
+- Safety Intelligence
 
-`MS-002 - Benchmark & Acceptance Framework` is the current repository-only analysis/design package for this gate. MS-002 defines how future owner-approved benchmark evidence must be scoped, evaluated, accepted, or rejected. It does not select providers, select models, rank models, execute hosted benchmarks, perform pricing research, activate hosted AI, approve a premium tier, or authorize production orchestration.
+## Permitted Model Selection Strategy Classes
 
-This gate is `DEFERRED`, incomplete, inactive, and owner-approval gated. MS-002 does not change that gate state.
+- Deterministic/no-model execution where D0 satisfies the capability.
+- Lightweight statistical or specialized methods for D1 where sufficient.
+- Low-cost hosted models for D2 before higher tiers.
+- Balanced hosted models only when lower-cost candidates plausibly fail.
+- Premium hosted models only when capability-specific safety, grounding, complexity, or upper-bound evidence justifies benchmark inclusion.
+
+## MS-003 Boundary
+
+MS-003 may name benchmark candidates, record current official pricing, document source evidence, and forecast benchmark cost. MS-003 may not select a final provider, select a final model, rank winners, execute hosted benchmarks, activate hosted AI, deploy, run migrations, change production systems, or create a ninth intelligence domain.
+
+## Next Gate
+
+MS-004 benchmark execution may begin only under a separately approved package with explicit authorization for any hosted model/API calls and benchmark spending.

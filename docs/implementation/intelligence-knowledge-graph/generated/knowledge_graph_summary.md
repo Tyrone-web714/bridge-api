@@ -5,7 +5,7 @@ The Intelligence Knowledge Graph is repository-only, deterministic, offline, pro
 
 - Schema version: intelligence.knowledge.graph.v1
 - Engine version: intelligence.knowledge.graph.engine.v1
-- Graph hash: 4e5ec172ef569a9c88a78cf2c793e48a8bf1f595dbdb345896936ad0d025868f
+- Graph hash: b8537f6bf1219816bd427bf1bfca74acad52ac61981eb17ed18722f40fe91785
 - Nodes: 1345
 - Edges: 924
 - Cycles: 0

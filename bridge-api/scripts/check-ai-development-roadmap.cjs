@@ -91,7 +91,10 @@ const MS001_DOCUMENTATION_PATH = 'docs/ai-development/model-selection/ms-001-ai-
 const MS001_COMMIT = '9de484e2bf87cee2ae61e25e1997d7427d289e90';
 const MS002_PACKAGE_ID = 'MS-002';
 const MS002_DOCUMENTATION_PATH = 'docs/ai-development/model-selection/ms-002-benchmark-acceptance-framework';
-const REMOTE_VERIFIED_PACKAGES = ['AI-IEP-005B.1', 'AI-IEP-005B.2', 'SUPERVISOR_INTELLIGENCE', 'WAREHOUSE_INTELLIGENCE', 'FLEET_INTELLIGENCE', 'CUSTOMER_INTELLIGENCE', 'OPERATIONS_INTELLIGENCE', 'SAFETY_INTELLIGENCE', 'MS-001', 'TSR-AI-WORKFLOW-001'];
+const MS002_COMMIT = '9c68894de9609c8f884a11c31be0e45eb44b058a';
+const MS003_PACKAGE_ID = 'MS-003';
+const MS003_DOCUMENTATION_PATH = 'docs/ai-development/model-selection/ms-003-candidate-model-method-selection';
+const REMOTE_VERIFIED_PACKAGES = ['AI-IEP-005B.1', 'AI-IEP-005B.2', 'SUPERVISOR_INTELLIGENCE', 'WAREHOUSE_INTELLIGENCE', 'FLEET_INTELLIGENCE', 'CUSTOMER_INTELLIGENCE', 'OPERATIONS_INTELLIGENCE', 'SAFETY_INTELLIGENCE', 'MS-001', 'MS-002', 'TSR-AI-WORKFLOW-001'];
 const OPERATIONS_OBJECTIVE = 'Provide deterministic organization-level operational awareness by aggregating existing TSR operational evidence without replacing the authoritative intelligence domains.';
 const OPERATIONS_APPROVED_SCOPE = [
   'operational context',
@@ -250,8 +253,9 @@ function validateRoadmap(roadmap, current, options = {}) {
   const currentPackages = packages.filter((pkg) => pkg.isCurrentPackage === true);
   const ms001Current = current.packageId === MS001_PACKAGE_ID;
   const ms002Current = current.packageId === MS002_PACKAGE_ID;
+  const ms003Current = current.packageId === MS003_PACKAGE_ID;
   if (milestoneOneComplete) {
-    if (ms001Current || ms002Current) {
+    if (ms001Current || ms002Current || ms003Current) {
       if (currentPackages.length !== 1) failures.push({ rule: 'CURRENT_PACKAGE_COUNT', count: currentPackages.length });
     } else if (currentPackages.length !== 0) {
       failures.push({ rule: 'CURRENT_PACKAGE_COUNT', count: currentPackages.length });
@@ -296,6 +300,24 @@ function validateRoadmap(roadmap, current, options = {}) {
       if (current.nextApprovedPackage !== null) failures.push({ rule: 'CURRENT_POST_MILESTONE_NEXT_PACKAGE_INVALID', nextApprovedPackage: current.nextApprovedPackage });
       if (currentRoadmap && (currentRoadmap.pushed || currentRoadmap.deployed || currentRoadmap.migrationExecuted || currentRoadmap.productionImpact !== 'NONE')) failures.push({ rule: 'MS002_FALSE_SOURCE_CONTROL_OR_PRODUCTION_STATE', packageId: current.packageId });
       if (!ms001 || ms001.status !== 'PUSHED' || ms001.implementationCommit !== MS001_COMMIT || ms001.pushed !== true || ms001.remoteCommitVerified !== true || ms001.isCurrentPackage === true) failures.push({ rule: 'MS001_NOT_CLOSED_BEFORE_MS002' });
+    } else if (ms003Current) {
+      const ms001 = packages.find((pkg) => pkg.packageId === MS001_PACKAGE_ID);
+      const ms002 = packages.find((pkg) => pkg.packageId === MS002_PACKAGE_ID);
+      if (!currentRoadmap) failures.push({ rule: 'CURRENT_PACKAGE_NOT_IN_ROADMAP', packageId: current.packageId });
+      if (currentRoadmap && currentRoadmap.isCurrentPackage !== true) failures.push({ rule: 'MS003_CURRENT_ROADMAP_FLAG_MISSING' });
+      if (currentRoadmap && currentRoadmap.category !== 'MODEL_SELECTION_AND_BENCHMARKING') failures.push({ rule: 'MS003_CATEGORY_INVALID', category: currentRoadmap.category });
+      if (current.category !== 'MODEL_SELECTION_AND_BENCHMARKING') failures.push({ rule: 'CURRENT_POST_MILESTONE_CATEGORY_INVALID', category: current.category });
+      if (current.status !== 'IMPLEMENTED_UNCOMMITTED') failures.push({ rule: 'CURRENT_POST_MILESTONE_STATUS_INVALID', status: current.status });
+      if (currentRoadmap && currentRoadmap.status !== current.status) failures.push({ rule: 'CURRENT_PACKAGE_STATUS_MISMATCH', packageId: current.packageId });
+      if (currentRoadmap && currentRoadmap.title !== current.title) failures.push({ rule: 'CURRENT_PACKAGE_JSON_ROADMAP_MISMATCH', packageId: current.packageId });
+      if (currentRoadmap && currentRoadmap.documentationPath !== MS003_DOCUMENTATION_PATH) failures.push({ rule: 'MS003_DOCUMENTATION_PATH_INVALID', documentationPath: currentRoadmap.documentationPath });
+      if (!fs.existsSync(path.join(paths.repoRoot, MS003_DOCUMENTATION_PATH, 'README.md'))) failures.push({ rule: 'MS003_DOCUMENTATION_MISSING' });
+      if (!fs.existsSync(path.join(paths.backendRoot, 'scripts', 'check-ms003-candidate-selection.cjs'))) failures.push({ rule: 'MS003_VALIDATION_SCRIPT_MISSING' });
+      if (!fs.existsSync(path.join(paths.backendRoot, 'scripts', 'generate-ms003-candidate-selection-artifacts.cjs'))) failures.push({ rule: 'MS003_GENERATOR_SCRIPT_MISSING' });
+      if (current.nextApprovedPackage !== null) failures.push({ rule: 'CURRENT_POST_MILESTONE_NEXT_PACKAGE_INVALID', nextApprovedPackage: current.nextApprovedPackage });
+      if (currentRoadmap && (currentRoadmap.pushed || currentRoadmap.deployed || currentRoadmap.migrationExecuted || currentRoadmap.productionImpact !== 'NONE')) failures.push({ rule: 'MS003_FALSE_SOURCE_CONTROL_OR_PRODUCTION_STATE', packageId: current.packageId });
+      if (!ms001 || ms001.status !== 'PUSHED' || ms001.implementationCommit !== MS001_COMMIT || ms001.pushed !== true || ms001.remoteCommitVerified !== true || ms001.isCurrentPackage === true) failures.push({ rule: 'MS001_NOT_CLOSED_BEFORE_MS003' });
+      if (!ms002 || ms002.status !== 'PUSHED' || ms002.implementationCommit !== MS002_COMMIT || ms002.pushed !== true || ms002.remoteCommitVerified !== true || ms002.isCurrentPackage === true) failures.push({ rule: 'MS002_NOT_CLOSED_BEFORE_MS003' });
     } else {
       failures.push({ rule: 'CURRENT_PACKAGE_INVALID_AFTER_MILESTONE_ONE', packageId: current.packageId });
     }
