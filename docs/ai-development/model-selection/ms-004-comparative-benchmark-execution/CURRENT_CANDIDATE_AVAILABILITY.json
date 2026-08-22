@@ -1,0 +1,138 @@
+{
+  "budgetCeilingUsd": 10,
+  "dryRunResult": "READY_FOR_EXECUTION",
+  "packageId": "MS-004",
+  "projectedBenchmarkCostRangeUsd": {
+    "assumptions": "4 frozen D2 cases per hosted candidate, low=1 repetition, expected=2 repetitions, high=3 repetitions, no retries or batch discounts included. D1 local pipeline validation has zero hosted-provider cost.",
+    "expectedEstimateUsd": 1.0938,
+    "highEstimateUsd": 1.6407,
+    "lowEstimateUsd": 0.5469
+  },
+  "providerAccess": [
+    {
+      "accessStatus": "CREDENTIAL_PRESENT_NOT_LIVE_VALIDATED",
+      "blocker": null,
+      "configured": true,
+      "configuredVariableCount": 1,
+      "provider": "Anthropic",
+      "requiredEnvironmentVariables": [
+        "ANTHROPIC_API_KEY"
+      ],
+      "secretValuesLogged": false
+    },
+    {
+      "accessStatus": "CREDENTIAL_PRESENT_NOT_LIVE_VALIDATED",
+      "blocker": null,
+      "configured": true,
+      "configuredVariableCount": 1,
+      "provider": "Google",
+      "requiredEnvironmentVariables": [
+        "GEMINI_API_KEY"
+      ],
+      "secretValuesLogged": false
+    },
+    {
+      "accessStatus": "CREDENTIAL_PRESENT_NOT_LIVE_VALIDATED",
+      "blocker": null,
+      "configured": true,
+      "configuredVariableCount": 1,
+      "provider": "Mistral",
+      "requiredEnvironmentVariables": [
+        "MISTRAL_API_KEY"
+      ],
+      "secretValuesLogged": false
+    },
+    {
+      "accessStatus": "CREDENTIAL_PRESENT_NOT_LIVE_VALIDATED",
+      "blocker": null,
+      "configured": true,
+      "configuredVariableCount": 1,
+      "provider": "OpenAI",
+      "requiredEnvironmentVariables": [
+        "OPENAI_API_KEY"
+      ],
+      "secretValuesLogged": false
+    }
+  ],
+  "providerAdapterStatus": [
+    {
+      "adapterAvailable": true,
+      "adapterScope": "BENCHMARK_ONLY",
+      "configured": true,
+      "productionRoutingEnabled": false,
+      "provider": "Anthropic",
+      "status": "BENCHMARK_ADAPTER_READY",
+      "supportedCapabilities": [
+        "customer.account_guidance.presentation",
+        "driver.copilot.contextual_response",
+        "operations.executive_dashboard_synthesis",
+        "route.risk_explanation.presentation",
+        "safety.narrative_summary.presentation",
+        "supervisor.freeform_question_answer"
+      ],
+      "supportedModelIds": [
+        "claude-haiku-4-5",
+        "claude-sonnet-4-6"
+      ]
+    },
+    {
+      "adapterAvailable": true,
+      "adapterScope": "BENCHMARK_ONLY",
+      "configured": true,
+      "productionRoutingEnabled": false,
+      "provider": "Google",
+      "status": "BENCHMARK_ADAPTER_READY",
+      "supportedCapabilities": [
+        "operations.executive_dashboard_synthesis",
+        "platform.legacy_structured_ai_response",
+        "supervisor.daily_operations_report.narrative",
+        "supervisor.freeform_question_answer",
+        "warehouse.exception_summary.presentation"
+      ],
+      "supportedModelIds": [
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite"
+      ]
+    },
+    {
+      "adapterAvailable": true,
+      "adapterScope": "BENCHMARK_ONLY",
+      "configured": true,
+      "productionRoutingEnabled": false,
+      "provider": "Mistral",
+      "status": "BENCHMARK_ADAPTER_READY",
+      "supportedCapabilities": [
+        "customer.account_guidance.presentation",
+        "supervisor.daily_operations_report.narrative",
+        "warehouse.exception_summary.presentation"
+      ],
+      "supportedModelIds": [
+        "mistral-small-latest"
+      ]
+    },
+    {
+      "adapterAvailable": true,
+      "adapterScope": "BENCHMARK_ONLY",
+      "configured": true,
+      "productionRoutingEnabled": false,
+      "provider": "OpenAI",
+      "status": "BENCHMARK_ADAPTER_READY",
+      "supportedCapabilities": [
+        "customer.account_guidance.presentation",
+        "driver.copilot.contextual_response",
+        "operations.executive_dashboard_synthesis",
+        "platform.legacy_structured_ai_response",
+        "route.risk_explanation.presentation",
+        "safety.narrative_summary.presentation",
+        "supervisor.daily_operations_report.narrative",
+        "supervisor.freeform_question_answer",
+        "warehouse.exception_summary.presentation"
+      ],
+      "supportedModelIds": [
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano"
+      ]
+    }
+  ]
+}

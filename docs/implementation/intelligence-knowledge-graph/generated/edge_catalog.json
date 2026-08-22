@@ -760,6 +760,17 @@
       "testOnly": true
     },
     {
+      "edgeId": "edge:a51a06ee4872cb192548",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "3c77d05991edacb0ccec0805d77190e472d2545591bcd1d9a2617b2847c6eba5",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "TESTS",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Package:bridge-api",
+      "targetNodeId": "Script:bridge-api/scripts/check-ms004-benchmark-results.cjs",
+      "testOnly": true
+    },
+    {
       "edgeId": "edge:d6ceccd19cddf9d61523",
       "relationshipConfidence": "DETERMINISTIC",
       "relationshipHash": "837f96e566aeffd74674f6209c4b69bdf8edebb29edcb1dfdb8acd5923a24f35",
@@ -870,6 +881,17 @@
       "testOnly": true
     },
     {
+      "edgeId": "edge:237cf464ba52b60395e8",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "a5aae40a20357fa6f77e16a17f86259a8bcb2873448b75775b719dae5bf75d87",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "TESTS",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Package:bridge-api",
+      "targetNodeId": "Script:bridge-api/scripts/generate-ms004-benchmark-artifacts.cjs",
+      "testOnly": true
+    },
+    {
       "edgeId": "edge:cbbc481e74e7c5ee3de0",
       "relationshipConfidence": "DETERMINISTIC",
       "relationshipHash": "f43805b27d42dc6a3e85e23b076e9e0dc8d8fee20534f4f5f56db419ad669b49",
@@ -878,6 +900,17 @@
       "relationshipVersion": "0.1.0",
       "sourceNodeId": "Package:bridge-api",
       "targetNodeId": "Script:bridge-api/scripts/generate-scoring-engine-artifacts.cjs",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:b63828d8c70fe0e520fb",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "1fe3cca14986c00d4cc78ff4bcab3f5a18ae7d8911ee37d8b14c6f0ab6c072d5",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "TESTS",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Package:bridge-api",
+      "targetNodeId": "Script:bridge-api/scripts/run-ms004-benchmarks.cjs",
       "testOnly": true
     },
     {

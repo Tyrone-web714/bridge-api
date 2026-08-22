@@ -1,0 +1,8 @@
+# Current Candidate Availability
+
+| Provider | Access Status | Adapter Status | Blocked |
+| --- | --- | --- | --- |
+| Anthropic | CREDENTIAL_PRESENT_NOT_LIVE_VALIDATED | BENCHMARK_ADAPTER_READY | false |
+| Google | CREDENTIAL_PRESENT_NOT_LIVE_VALIDATED | BENCHMARK_ADAPTER_READY | false |
+| Mistral | CREDENTIAL_PRESENT_NOT_LIVE_VALIDATED | BENCHMARK_ADAPTER_READY | false |
+| OpenAI | CREDENTIAL_PRESENT_NOT_LIVE_VALIDATED | BENCHMARK_ADAPTER_READY | false |

@@ -4,13 +4,15 @@ The Model Selection Gate remains `DEFERRED`, incomplete, inactive, and owner-app
 
 ## Current State
 
-- Current analysis package: `MS-003`
+- Current analysis package: `MS-004`
 - MS-001 is `PUSHED` and closed.
 - MS-002 is `PUSHED` and closed.
-- MS-003 is `IMPLEMENTED_UNCOMMITTED` and is the current candidate model/method selection package.
+- MS-003 is `PUSHED` and closed.
+- MS-004 status: `BLOCKED`
+- Dry-run result: `READY_FOR_EXECUTION`
+- Live hosted benchmark calls executed: `48`
 - Provider selection is not complete.
 - Model selection is not complete.
-- Hosted benchmarking has not been executed.
 - Production orchestration is deferred and inactive.
 
 ## Cost Principle
@@ -28,6 +30,10 @@ Use the least expensive strategy or model that satisfies quality, safety, reliab
 - Operations Intelligence
 - Safety Intelligence
 
+## MS-004 Boundary
+
+MS-004 may collect benchmark evidence and propose candidate winners when execution evidence exists. MS-004 may not activate providers/models in production, deploy, run migrations, change production systems, or mark the Model Selection Gate complete before owner approval.
+
 ## Permitted Model Selection Strategy Classes
 
 - Deterministic/no-model execution where D0 satisfies the capability.
@@ -36,10 +42,9 @@ Use the least expensive strategy or model that satisfies quality, safety, reliab
 - Balanced hosted models only when lower-cost candidates plausibly fail.
 - Premium hosted models only when capability-specific safety, grounding, complexity, or upper-bound evidence justifies benchmark inclusion.
 
-## MS-003 Boundary
+## Current Blockers
 
-MS-003 may name benchmark candidates, record current official pricing, document source evidence, and forecast benchmark cost. MS-003 may not select a final provider, select a final model, rank winners, execute hosted benchmarks, activate hosted AI, deploy, run migrations, change production systems, or create a ninth intelligence domain.
-
-## Next Gate
-
-MS-004 benchmark execution may begin only under a separately approved package with explicit authorization for any hosted model/API calls and benchmark spending.
+- 0 capabilities lack frozen dataset evidence.
+- 4 D1 capabilities require representative historical data before final method selection.
+- 0 providers lack repository-local benchmark credentials.
+- 0 provider adapters are unavailable or unconfigured for live benchmark execution.

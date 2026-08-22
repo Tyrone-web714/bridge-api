@@ -4,7 +4,7 @@
   "statistics": {
     "cycleCount": 0,
     "disconnectedCount": 631,
-    "edgeCount": 924,
+    "edgeCount": 927,
     "edgeTypes": {
       "ALLOWS": 30,
       "BELONGS_TO": 3,
@@ -24,11 +24,11 @@
       "REPLAYS": 4,
       "REQUIRES": 1,
       "SCORES": 6,
-      "TESTS": 23,
+      "TESTS": 26,
       "USES": 95
     },
-    "graphHash": "b8537f6bf1219816bd427bf1bfca74acad52ac61981eb17ed18722f40fe91785",
-    "nodeCount": 1345,
+    "graphHash": "13c3ef2b8752c2a304fdc02a64a7e49bbba6e95219db2c6c8de5376d6f328ea0",
+    "nodeCount": 1348,
     "nodeTypes": {
       "Architecture Decision": 13,
       "Attestation": 4,
@@ -60,7 +60,7 @@
       "Repository Module": 37,
       "Score Profile": 3,
       "Score Run": 3,
-      "Script": 23,
+      "Script": 26,
       "Service": 1,
       "Unknown": 6,
       "Version": 3

@@ -417,6 +417,11 @@
     },
     {
       "dependencies": [],
+      "nodeId": "Script:bridge-api/scripts/check-ms004-benchmark-results.cjs",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
       "nodeId": "Script:bridge-api/scripts/check-scoring-engine.cjs",
       "reverseDependencies": []
     },
@@ -467,7 +472,17 @@
     },
     {
       "dependencies": [],
+      "nodeId": "Script:bridge-api/scripts/generate-ms004-benchmark-artifacts.cjs",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
       "nodeId": "Script:bridge-api/scripts/generate-scoring-engine-artifacts.cjs",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Script:bridge-api/scripts/run-ms004-benchmarks.cjs",
       "reverseDependencies": []
     },
     {

@@ -832,6 +832,18 @@
         "testOnly": true
       },
       {
+        "edgeId": "edge:a51a06ee4872cb192548",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "3c77d05991edacb0ccec0805d77190e472d2545591bcd1d9a2617b2847c6eba5",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "TESTS",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Package:bridge-api",
+        "targetNodeId": "Script:bridge-api/scripts/check-ms004-benchmark-results.cjs",
+        "testOnly": true
+      },
+      {
         "edgeId": "edge:d6ceccd19cddf9d61523",
         "metadata": {},
         "relationshipConfidence": "DETERMINISTIC",
@@ -952,6 +964,18 @@
         "testOnly": true
       },
       {
+        "edgeId": "edge:237cf464ba52b60395e8",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "a5aae40a20357fa6f77e16a17f86259a8bcb2873448b75775b719dae5bf75d87",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "TESTS",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Package:bridge-api",
+        "targetNodeId": "Script:bridge-api/scripts/generate-ms004-benchmark-artifacts.cjs",
+        "testOnly": true
+      },
+      {
         "edgeId": "edge:cbbc481e74e7c5ee3de0",
         "metadata": {},
         "relationshipConfidence": "DETERMINISTIC",
@@ -961,6 +985,18 @@
         "relationshipVersion": "0.1.0",
         "sourceNodeId": "Package:bridge-api",
         "targetNodeId": "Script:bridge-api/scripts/generate-scoring-engine-artifacts.cjs",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:b63828d8c70fe0e520fb",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "1fe3cca14986c00d4cc78ff4bcab3f5a18ae7d8911ee37d8b14c6f0ab6c072d5",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "TESTS",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Package:bridge-api",
+        "targetNodeId": "Script:bridge-api/scripts/run-ms004-benchmarks.cjs",
         "testOnly": true
       },
       {
@@ -11094,10 +11130,10 @@
     ],
     "engineVersion": "intelligence.knowledge.graph.engine.v1",
     "generatedFrom": "repository",
-    "graphHash": "b8537f6bf1219816bd427bf1bfca74acad52ac61981eb17ed18722f40fe91785",
+    "graphHash": "13c3ef2b8752c2a304fdc02a64a7e49bbba6e95219db2c6c8de5376d6f328ea0",
     "nodes": [
       {
-        "hash": "1ed91b82a5d81988ddd9fbfa9a1838aad7121c5e8856934d4e5bda8cff085186",
+        "hash": "4c495a78e6d6cfbece0a20a336a04b914f92409aec68a47214b19d744e484a0a",
         "label": "bridge-api",
         "lifecycleState": null,
         "metadata": {},
@@ -11711,7 +11747,7 @@
         "version": null
       },
       {
-        "hash": "cec1590d7ba571e65b04de72a524630d3c1ea9616d29fe167ba3d0c3eb74b1e6",
+        "hash": "94ec8a964b045d72a8db3338c982f35601b3bf9fe241317d896005142efc0dc6",
         "label": "bridge-api/services/intelligenceExecution/providerAdapters.js",
         "lifecycleState": null,
         "metadata": {},
@@ -11939,6 +11975,18 @@
         "version": null
       },
       {
+        "hash": "df1c273eae0e406e1c73a433fc9cd9bfa78f803c1941fd0a612436fded1f0b37",
+        "label": "bridge-api/scripts/check-ms004-benchmark-results.cjs",
+        "lifecycleState": null,
+        "metadata": {},
+        "nodeId": "Script:bridge-api/scripts/check-ms004-benchmark-results.cjs",
+        "productionApplicable": false,
+        "source": "bridge-api/scripts/check-ms004-benchmark-results.cjs",
+        "testOnly": true,
+        "type": "Script",
+        "version": null
+      },
+      {
         "hash": "c6be8c4f889056b5de8fbe5beb4d283b54215317819e8c163b02f68f0ebabdee",
         "label": "bridge-api/scripts/check-scoring-engine.cjs",
         "lifecycleState": null,
@@ -12059,6 +12107,18 @@
         "version": null
       },
       {
+        "hash": "1ebdf5c70ff0c1bcbd7ba4293a88d782fc4dcae1f7c33749bbd72417ec59bfc0",
+        "label": "bridge-api/scripts/generate-ms004-benchmark-artifacts.cjs",
+        "lifecycleState": null,
+        "metadata": {},
+        "nodeId": "Script:bridge-api/scripts/generate-ms004-benchmark-artifacts.cjs",
+        "productionApplicable": false,
+        "source": "bridge-api/scripts/generate-ms004-benchmark-artifacts.cjs",
+        "testOnly": true,
+        "type": "Script",
+        "version": null
+      },
+      {
         "hash": "8b1f22cad2629fe8d45acaee2cee8c0d0a0841691b949a037d8f9fef7dda1f9a",
         "label": "bridge-api/scripts/generate-scoring-engine-artifacts.cjs",
         "lifecycleState": null,
@@ -12066,6 +12126,18 @@
         "nodeId": "Script:bridge-api/scripts/generate-scoring-engine-artifacts.cjs",
         "productionApplicable": false,
         "source": "bridge-api/scripts/generate-scoring-engine-artifacts.cjs",
+        "testOnly": true,
+        "type": "Script",
+        "version": null
+      },
+      {
+        "hash": "0f7d4217b1cbd85cead06827272542d73340ccefe9174d44b82eaeff47c59dbc",
+        "label": "bridge-api/scripts/run-ms004-benchmarks.cjs",
+        "lifecycleState": null,
+        "metadata": {},
+        "nodeId": "Script:bridge-api/scripts/run-ms004-benchmarks.cjs",
+        "productionApplicable": false,
+        "source": "bridge-api/scripts/run-ms004-benchmarks.cjs",
         "testOnly": true,
         "type": "Script",
         "version": null

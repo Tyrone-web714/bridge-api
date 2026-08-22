@@ -200,6 +200,25 @@
         "blockedImpacts": [],
         "directImpacts": [],
         "indirectImpacts": [],
+        "nodeId": "Script:bridge-api/scripts/check-ms004-benchmark-results.cjs",
+        "potentialImpacts": [
+          "Package:bridge-api"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Script:bridge-api/scripts/check-ms004-benchmark-results.cjs",
+      "reverseDependencies": [],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
         "nodeId": "Script:bridge-api/scripts/check-scoring-engine.cjs",
         "potentialImpacts": [
           "Package:bridge-api"
@@ -625,6 +644,25 @@
         "blockedImpacts": [],
         "directImpacts": [],
         "indirectImpacts": [],
+        "nodeId": "Script:bridge-api/scripts/generate-ms004-benchmark-artifacts.cjs",
+        "potentialImpacts": [
+          "Package:bridge-api"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Script:bridge-api/scripts/generate-ms004-benchmark-artifacts.cjs",
+      "reverseDependencies": [],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
         "nodeId": "Script:bridge-api/scripts/generate-scoring-engine-artifacts.cjs",
         "potentialImpacts": [
           "Package:bridge-api"
@@ -633,6 +671,25 @@
       },
       "indirectDependencies": [],
       "nodeId": "Script:bridge-api/scripts/generate-scoring-engine-artifacts.cjs",
+      "reverseDependencies": [],
+      "testsToRerun": []
+    },
+    {
+      "directDependencies": [],
+      "documentationToReview": [],
+      "generatedArtifactsToRefresh": [],
+      "impact": {
+        "blockedImpacts": [],
+        "directImpacts": [],
+        "indirectImpacts": [],
+        "nodeId": "Script:bridge-api/scripts/run-ms004-benchmarks.cjs",
+        "potentialImpacts": [
+          "Package:bridge-api"
+        ],
+        "unknownImpacts": []
+      },
+      "indirectDependencies": [],
+      "nodeId": "Script:bridge-api/scripts/run-ms004-benchmarks.cjs",
       "reverseDependencies": [],
       "testsToRerun": []
     },
