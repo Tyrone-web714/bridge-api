@@ -4,6 +4,7 @@ const path = require('path');
 const crypto = require('crypto');
 const { buildFramework: buildAcceptanceFramework } = require('./generate-ms002-benchmark-acceptance-artifacts.cjs');
 const { buildCandidateSelection } = require('./generate-ms003-candidate-selection-artifacts.cjs');
+const { buildMs004CandidateExpansion } = require('./ms004-candidate-expansion.cjs');
 const benchmarkDatasets = require('../services/intelligenceExecution/benchmarkDatasetFramework');
 
 const backendRoot = path.resolve(__dirname, '..');
@@ -393,6 +394,98 @@ function candidateLiveSummary(candidateId, records) {
   });
 }
 
+function classifyExpansionProviderFailure(record, selectedByCapability) {
+  const code = record.error?.code || record.error?.type || null;
+  const message = String(record.error?.message || '');
+  const quotaFailure = code === 'RESOURCE_EXHAUSTED' || /quota|rate-limit|rate limit/i.test(message);
+  const selected = selectedByCapability.get(record.capabilityId);
+  const materialToSelection = !selected || selected.selectionStatus !== 'FINAL_MODEL_SELECTION_READY';
+  let classification = materialToSelection ? 'MATERIAL_RETRY_REQUIRED' : 'NON_MATERIAL_PROVIDER_FAILURE';
+  if (quotaFailure && materialToSelection) classification = 'QUOTA_OR_ACCOUNT_BLOCKER';
+  return stable({
+    capabilityId: record.capabilityId,
+    candidateId: record.candidateId,
+    provider: record.provider,
+    model: record.model,
+    status: record.status,
+    providerErrorCode: code,
+    providerErrorCategory: quotaFailure ? 'QUOTA_OR_RATE_LIMIT' : 'PROVIDER_ERROR',
+    modelAccessStatus: 'MODEL_ACCESS_CONFIRMED_BY_OTHER_COMPLETED_GEMINI_3_7_FLASH_EVIDENCE',
+    quotaStatus: quotaFailure ? 'FREE_TIER_REQUEST_QUOTA_EXHAUSTED_DURING_EXPANSION' : 'NO_QUOTA_SIGNAL',
+    retryability: record.error?.retryable === true ? 'RETRYABLE_PROVIDER_CONDITION' : 'NOT_RETRYABLE_FROM_EVIDENCE',
+    systematic: record.capabilityId === 'route.risk_explanation.presentation' ? true : false,
+    materialToFinalSelection: materialToSelection,
+    classification,
+    retryCount: record.retryCount || 0
+  });
+}
+
+function buildExpansionFailureReconciliation(activeResults, matrix) {
+  const expansionCandidateIds = new Set(buildMs004CandidateExpansion().candidates.map((candidate) => candidate.candidateId));
+  const selectedByCapability = new Map(matrix.map((item) => [item.capabilityId, item]));
+  const failures = activeResults
+    .filter((record) => expansionCandidateIds.has(record.candidateId) && record.status === 'FAILED')
+    .map((record) => classifyExpansionProviderFailure(record, selectedByCapability));
+  const classificationCounts = failures.reduce((acc, failure) => {
+    acc[failure.classification] = (acc[failure.classification] || 0) + 1;
+    return acc;
+  }, {
+    NON_MATERIAL_PROVIDER_FAILURE: 0,
+    MATERIAL_RETRY_REQUIRED: 0,
+    QUOTA_OR_ACCOUNT_BLOCKER: 0,
+    MODEL_OR_ENDPOINT_UNAVAILABLE: 0,
+    CONFIGURATION_OR_ADAPTER_DEFECT: 0,
+    NON_RETRYABLE_PROVIDER_FAILURE: 0
+  });
+  const groupedFailures = Object.values(failures.reduce((acc, failure) => {
+    const key = [failure.capabilityId, failure.candidateId, failure.provider, failure.model, failure.providerErrorCode, failure.classification].join('|');
+    if (!acc[key]) {
+      acc[key] = {
+        capabilityId: failure.capabilityId,
+        candidateId: failure.candidateId,
+        provider: failure.provider,
+        model: failure.model,
+        providerErrorCode: failure.providerErrorCode,
+        providerErrorCategory: failure.providerErrorCategory,
+        quotaStatus: failure.quotaStatus,
+        retryability: failure.retryability,
+        systematic: failure.systematic,
+        materialToFinalSelection: failure.materialToFinalSelection,
+        classification: failure.classification,
+        count: 0
+      };
+    }
+    acc[key].count += 1;
+    return acc;
+  }, {})).sort((a, b) => a.capabilityId.localeCompare(b.capabilityId) || a.candidateId.localeCompare(b.candidateId));
+  return stable({
+    failures,
+    groupedFailures,
+    classificationCounts,
+    exactExpansionFailureCount: failures.length
+  });
+}
+
+function buildFurtherBenchmarkingDecisions(matrix) {
+  const unresolvedCapabilities = [
+    'driver.copilot.contextual_response',
+    'route.risk_explanation.presentation',
+    'safety.narrative_summary.presentation'
+  ];
+  return stable(unresolvedCapabilities.map((capabilityId) => {
+    const selection = matrix.find((item) => item.capabilityId === capabilityId);
+    return {
+      capabilityId,
+      decision: selection?.selectionStatus === 'FINAL_MODEL_SELECTION_READY'
+        ? 'NO_MORE_BENCHMARKING_REQUIRED'
+        : 'NO_CANDIDATE_PASSED_AFTER_JUSTIFIED_EXPANSION',
+      reason: selection?.selectionStatus === 'FINAL_MODEL_SELECTION_READY'
+        ? 'Persisted LIVE_HOSTED evidence contains a hard-gate-passing cheapest-sufficient candidate for this capability.'
+        : 'No candidate currently satisfies the MS-002 hard gates for this capability.'
+    };
+  }));
+}
+
 function buildFinalD2SelectionEvidence(capabilities, liveRun) {
   if (!liveRun?.results) return null;
   const d2Capabilities = capabilities.filter((capability) => capability.executionClass === 'D2');
@@ -442,6 +535,8 @@ function buildFinalD2SelectionEvidence(capabilities, liveRun) {
     return acc;
   }, { openai: 0, anthropic: 0, google: 0, mistral: 0 });
   const currentMaterialFailures = matrix.filter((item) => item.selectionStatus !== 'FINAL_MODEL_SELECTION_READY');
+  const expansionFailureReconciliation = buildExpansionFailureReconciliation(activeResults, matrix);
+  const furtherBenchmarkingDecisions = buildFurtherBenchmarkingDecisions(matrix);
   return stable({
     sourceLiveRunId: liveRun.runId,
     sourceLiveRunHash: liveRun.runHash,
@@ -453,6 +548,10 @@ function buildFinalD2SelectionEvidence(capabilities, liveRun) {
     failedLiveHostedCalls: liveRun.summary?.failedCalls || 0,
     matrix,
     providerDistribution,
+    expansionFailureReconciliation,
+    furtherBenchmarkingDecisions,
+    d1Status: 'D1_PIPELINE_VALIDATED_SELECTION_PENDING_REPRESENTATIVE_DATA',
+    productionRoutingStatus: 'NOT_ACTIVATED',
     d2ModelSelectionComplete: currentMaterialFailures.length === 0,
     allNineD2CapabilitiesFinalModelSelectionReady: currentMaterialFailures.length === 0,
     unresolvedCapabilities: currentMaterialFailures.map((item) => ({
@@ -471,9 +570,12 @@ function buildFinalD2SelectionEvidence(capabilities, liveRun) {
 function buildBenchmarkEvidence() {
   const ms002 = buildAcceptanceFramework();
   const ms003 = buildCandidateSelection();
+  const ms004Expansion = buildMs004CandidateExpansion();
+  const allCandidates = stable([...ms003.candidates, ...ms004Expansion.candidates].sort((a, b) => a.candidateId.localeCompare(b.candidateId)));
+  const hostedCandidates = allCandidates.filter((candidate) => candidate.candidateType === 'HOSTED_MODEL');
   const repositoryDatasets = benchmarkDatasets.listDatasets();
   const adapterCatalog = readAdapterCatalog();
-  const providers = [...new Set(ms003.candidates.filter((candidate) => candidate.candidateType === 'HOSTED_MODEL').map((candidate) => candidate.provider))]
+  const providers = [...new Set(hostedCandidates.map((candidate) => candidate.provider))]
     .sort()
     .map(providerAccess);
   const adapters = providers.map((item) => adapterStatus(item.provider, adapterCatalog));
@@ -483,7 +585,7 @@ function buildBenchmarkEvidence() {
   const capabilityById = new Map(capabilities.map((capability) => [capability.capabilityId, capability]));
   const frozenDatasets = buildFrozenBenchmarkDatasets(capabilities);
   const datasetByCapability = Object.fromEntries(capabilities.map((capability) => [capability.capabilityId, datasetEvidence(capability.capabilityId, frozenDatasets, repositoryDatasets)]));
-  const records = ms003.candidates.map((candidate) => {
+  const records = allCandidates.map((candidate) => {
     const capability = capabilityById.get(candidate.capabilityId);
     return candidateExecutionRecord(candidate, capability, datasetByCapability[candidate.capabilityId], providers, adapters);
   });
@@ -511,7 +613,7 @@ function buildBenchmarkEvidence() {
   const d1PipelineRecords = records.filter((record) => record.localBenchmarkExecuted === true);
   const hostedBenchmarkCalls = records.filter((record) => record.hostedBenchmarkExecuted === true).length;
   const localPipelineEvaluations = d1PipelineRecords.reduce((total, record) => total + Number(record.usage?.localEvaluations || 0), 0);
-  const projectedBenchmarkCostRangeUsd = projectedExecutionCostRange(ms003.candidates);
+  const projectedBenchmarkCostRangeUsd = projectedExecutionCostRange(allCandidates);
   const adapterSupportBlockers = adapters.filter((adapter) => adapter.adapterAvailable !== true || adapter.productionRoutingEnabled === true);
   const dryRunResult = providerAccessBlockers.length
     ? 'BLOCKED_PROVIDER_ACCESS'
@@ -523,13 +625,17 @@ function buildBenchmarkEvidence() {
     d2Capabilities: ms002.counts.d2CandidateCount,
     d3Capabilities: ms002.counts.d3CandidateCount,
     d1CandidateMethods: ms003.summary.totalShortlistedD1Methods,
-    d2ModelCapabilityPairs: ms003.summary.totalShortlistedD2ModelCapabilityPairs,
-    uniqueHostedModels: ms003.summary.uniqueHostedModelsShortlisted,
+    d2ModelCapabilityPairs: hostedCandidates.length,
+    ms003D2ModelCapabilityPairs: ms003.summary.totalShortlistedD2ModelCapabilityPairs,
+    ms004ExpansionModelCapabilityPairs: ms004Expansion.summary.newModelCapabilityPairs,
+    uniqueHostedModels: [...new Set(hostedCandidates.map((candidate) => candidate.officialModelId))].length,
     uniqueProviders: ms003.summary.uniqueProviders,
     openSelfHostedShortlisted: ms003.summary.uniqueOpenSelfHostedModelsShortlisted,
     originalProjectedMS004Calls: ms003.summary.projectedMS004BenchmarkCalls,
-    projectedMS004Calls: (ms003.summary.totalShortlistedD1Methods * D1_PIPELINE_CASE_COUNT * D1_PIPELINE_REPETITIONS) + (ms003.summary.totalShortlistedD2ModelCapabilityPairs * D2_BENCHMARK_CASE_COUNT * D2_HOSTED_REPETITIONS),
-    revisedProjectedBenchmarkCalls: (ms003.summary.totalShortlistedD1Methods * D1_PIPELINE_CASE_COUNT * D1_PIPELINE_REPETITIONS) + (ms003.summary.totalShortlistedD2ModelCapabilityPairs * D2_BENCHMARK_CASE_COUNT * D2_HOSTED_REPETITIONS),
+    projectedMS004Calls: (ms003.summary.totalShortlistedD1Methods * D1_PIPELINE_CASE_COUNT * D1_PIPELINE_REPETITIONS) + (hostedCandidates.length * D2_BENCHMARK_CASE_COUNT * D2_HOSTED_REPETITIONS),
+    revisedProjectedBenchmarkCalls: (ms003.summary.totalShortlistedD1Methods * D1_PIPELINE_CASE_COUNT * D1_PIPELINE_REPETITIONS) + (hostedCandidates.length * D2_BENCHMARK_CASE_COUNT * D2_HOSTED_REPETITIONS),
+    ms004ExpansionExpectedHostedCalls: ms004Expansion.summary.expectedAdditionalHostedCalls,
+    ms004ExpansionEstimatedAdditionalCostUsd: ms004Expansion.summary.estimatedAdditionalCostUsd,
     projectedBenchmarkCostRangeUsd,
     candidatesAttempted: records.length,
     candidatesCompleted: d1PipelineRecords.length,
@@ -641,6 +747,7 @@ function buildBenchmarkEvidence() {
     summary,
     providerAccess: providers,
     providerAdapterStatus: adapters,
+    candidateExpansionPlan: ms004Expansion,
     frozenBenchmarkDatasets: Object.values(frozenDatasets),
     datasetEvidenceByCapability: datasetByCapability,
     liveRunEvidenceSummary: liveRunEvidence ? {
@@ -1065,6 +1172,61 @@ function renderDocs(evidence) {
     candidate.qualityScore ?? 'NONE'
   ])) || [];
   const distributionRows = Object.entries(finalSelection?.providerDistribution || { openai: 0, anthropic: 0, google: 0, mistral: 0 }).map(([provider, count]) => [provider, count]);
+  const expansionFailureRows = finalSelection?.expansionFailureReconciliation?.groupedFailures.map((failure) => [
+    failure.capabilityId,
+    failure.candidateId,
+    failure.provider,
+    failure.model,
+    failure.providerErrorCode || 'NONE',
+    failure.providerErrorCategory,
+    failure.quotaStatus,
+    failure.retryability,
+    failure.systematic,
+    failure.materialToFinalSelection,
+    failure.classification,
+    failure.count
+  ]) || [];
+  const expansionFailureCountRows = Object.entries(finalSelection?.expansionFailureReconciliation?.classificationCounts || {}).map(([category, count]) => [category, count]);
+  const furtherBenchmarkingRows = finalSelection?.furtherBenchmarkingDecisions.map((item) => [
+    item.capabilityId,
+    item.decision,
+    item.reason
+  ]) || [];
+  const selectedCostRows = finalSelection?.matrix
+    .filter((item) => item.selectionStatus === 'FINAL_MODEL_SELECTION_READY')
+    .map((item) => [
+      item.selectedProvider,
+      item.selectedModel,
+      item.capabilityId,
+      item.averageMeasuredCostUsd ?? 'NONE',
+      item.averageLatencyMs ?? 'NONE'
+    ]) || [];
+  const expansion = evidence.candidateExpansionPlan;
+  const expansionRows = expansion.candidates.map((candidate) => [
+    candidate.capabilityId,
+    candidate.candidateId,
+    candidate.provider,
+    candidate.officialModelId,
+    candidate.expansionClassification,
+    candidate.estimatedCostScenario.estimatedCostPerInvocationUsd,
+    Number((candidate.estimatedCostScenario.estimatedCostPerInvocationUsd * D2_BENCHMARK_CASE_COUNT * D2_HOSTED_REPETITIONS).toFixed(6)),
+    candidate.inclusionReason,
+    candidate.cheaperExistingCandidateInsufficientReason
+  ]);
+  const expansionSourceRows = expansion.sourceRegister.map((source) => [
+    source.provider,
+    source.officialModelId,
+    source.currentSupportedStatus,
+    source.inputPriceUsdPer1M,
+    source.cachedInputPriceUsdPer1M ?? 'NONE',
+    source.outputPriceUsdPer1M,
+    source.dateVerified,
+    source.documentationSource
+  ]);
+  const expansionCommands = expansion.candidates.map((candidate) => [
+    candidate.capabilityId,
+    `npm.cmd run ms004:resume -- --capability=${candidate.capabilityId} --candidate=${candidate.candidateId}`
+  ]);
   return {
     'README.md': [
       '# MS-004 - Comparative Benchmark Execution',
@@ -1092,12 +1254,36 @@ function renderDocs(evidence) {
     'USAGE_RESULTS.md': ['# Usage Results', '', evidence.usageResults.note].join('\n'),
     'MEASURED_BENCHMARK_COSTS.md': ['# Measured Benchmark Costs', '', table(['Metric','Value'], Object.entries(evidence.costResults).map(([key, value]) => [key, typeof value === 'object' ? JSON.stringify(value) : value]))].join('\n'),
     'PREMIUM_MODEL_VALUE_ANALYSIS.md': ['# Premium Model Value Analysis', '', `Premium required: ${evidence.summary.premiumRequiredCount}`, `Premium not required: ${evidence.summary.premiumNotRequiredCount}`, `Premium inconclusive: ${evidence.summary.premiumInconclusiveCount}`, '', 'Premium value remains inconclusive because no hosted benchmark calls executed.'].join('\n'),
-    'CHEAPEST_SUFFICIENT_RESULTS.md': ['# Cheapest-Sufficient Results', '', 'No cheapest-sufficient winner can be selected without executed benchmark evidence.'].join('\n'),
+    'CHEAPEST_SUFFICIENT_RESULTS.md': ['# Cheapest-Sufficient Results', '', finalSelection?.d2ModelSelectionComplete === true ? 'All nine D2 capabilities have a final benchmark selection. Each selected candidate is either a preserved owner-approved prior selection or the cheapest hard-gate-passing candidate available in the corrected LIVE_HOSTED evidence.' : 'No complete D2 cheapest-sufficient result is available yet.', '', table(['Capability','Provider','Model','Avg Cost USD','Avg Latency Ms'], selectedCostRows)].join('\n'),
     'PROPOSED_EXECUTION_MODEL_MATRIX.md': ['# Proposed Execution Model Matrix', '', table(['Capability','Class','Benchmark Status','Winner','Reason'], matrixRows)].join('\n'),
     'NO_CANDIDATE_PASSED.md': ['# No Candidate Passed', '', evidence.noCandidatePassed.length ? table(['Capability','Status','Reason'], evidence.noCandidatePassed.map((item) => [item.capabilityId, item.winnerStatus, item.reason])) : 'No candidate was marked failed or rejected by benchmark evidence in this repository-only run. D1 remains representative-data gated and D2 remains hosted-execution gated.'].join('\n'),
     'HUMAN_REVIEW_REQUIRED.md': ['# Human Review Required', '', table(['Capability','Reason'], [...evidence.representativeDataRequired, ...evidence.insufficientComparativeEvidence].map((item) => [item.capabilityId, item.reason]))].join('\n'),
-    'CROSS_CAPABILITY_CONSOLIDATION_ANALYSIS.md': ['# Cross-Capability Consolidation Analysis', '', 'No consolidation recommendation can be made before executable benchmark evidence exists.'].join('\n'),
+    'CROSS_CAPABILITY_CONSOLIDATION_ANALYSIS.md': ['# Cross-Capability Consolidation Analysis', '', finalSelection?.d2ModelSelectionComplete === true ? 'Provider consolidation is not recommended as an override. The final D2 distribution uses Google for five capabilities and Mistral for four capabilities; replacing cheaper sufficient winners solely to reduce provider count would violate the cheapest-sufficient policy.' : 'No consolidation recommendation can be made before complete executable benchmark evidence exists.'].join('\n'),
     'BENCHMARK_SPEND_REPORT.md': ['# Benchmark Spend Report', '', `Budget ceiling: $${evidence.summary.benchmarkBudgetCeilingUsd}`, `Measured total benchmark cost: $${evidence.summary.measuredTotalBenchmarkCostUsd}`, `Projected high estimate from MS-003: $${evidence.summary.projectedBenchmarkCostRangeUsd.highEstimateUsd}`].join('\n'),
+    'NARROW_CANDIDATE_EXPANSION_PLAN.md': [
+      '# Narrow Candidate Expansion Plan',
+      '',
+      'This MS-004-only plan adds candidates only for the three unresolved D2 capabilities. It does not reopen the six locked selections, does not select a winner, and does not activate production routing.',
+      '',
+      `New model-capability pairs: \`${expansion.summary.newModelCapabilityPairs}\``,
+      `Expected additional hosted calls: \`${expansion.summary.expectedAdditionalHostedCalls}\``,
+      `Estimated additional cost: \`$${expansion.summary.estimatedAdditionalCostUsd}\``,
+      `Remaining budget after expected run: \`$${expansion.summary.remainingBudgetAfterExpectedRunUsd}\``,
+      '',
+      '## Candidates',
+      '',
+      table(['Capability','Candidate','Provider','Model','Classification','Per Call USD','Expected 8-Call USD','Reason','Cheaper Existing Insufficient'], expansionRows),
+      '',
+      '## Official Sources',
+      '',
+      table(['Provider','Model ID','Status','Input $/1M','Cached Input $/1M','Output $/1M','Verified','Source'], expansionSourceRows),
+      '',
+      '## External Commands',
+      '',
+      table(['Capability','PowerShell Command'], expansionCommands),
+      '',
+      'Status remains `CANDIDATE_FOR_BENCHMARK` until external LIVE_HOSTED evidence passes MS-002 hard gates.'
+    ].join('\n'),
     'FINAL_D2_MODEL_SELECTION.md': [
       '# Final D2 Model Selection',
       '',
@@ -1125,6 +1311,18 @@ function renderDocs(evidence) {
       '',
       table(['Category','Count'], Object.entries(finalSelection?.remainingFailureReconciliation || {}).map(([key, value]) => [key, value])),
       '',
+      '## Expansion Provider Failure Classification',
+      '',
+      table(['Capability','Candidate','Provider','Model','Error Code','Category','Quota Status','Retryability','Systematic','Material','Classification','Count'], expansionFailureRows),
+      '',
+      '## Expansion Failure Counts',
+      '',
+      table(['Classification','Count'], expansionFailureCountRows),
+      '',
+      '## Further Benchmarking Decisions',
+      '',
+      table(['Capability','Decision','Reason'], furtherBenchmarkingRows),
+      '',
       'D1 remains `D1_PIPELINE_VALIDATED_SELECTION_PENDING_REPRESENTATIVE_DATA`. No production routing, provider activation, deployment, migration, secret change, or production orchestration is performed by MS-004.'
     ].join('\n'),
     'MS004_COMPLETION_REPORT.md': [
@@ -1137,7 +1335,9 @@ function renderDocs(evidence) {
       `Capabilities with no passing candidate: ${evidence.summary.capabilitiesWithNoPassingCandidate}`,
       `Production activation: ${evidence.summary.productionActivation}`,
       '',
-      'MS-004 blocker resolution froze benchmark evidence datasets for all 13 capabilities. D2 synthetic known-answer fixtures are benchmark-ready, D1 synthetic fixtures are pipeline-validation-only and still require representative historical data for final method selection, and live hosted execution remains blocked by missing/unconfigured provider access and adapter support. No benchmark result was fabricated and no production change occurred.'
+      finalSelection?.d2ModelSelectionComplete === true
+        ? 'MS-004 now records final D2 model selections for all nine D2 capabilities from persisted LIVE_HOSTED evidence. D1 synthetic fixtures remain pipeline-validation-only and still require representative historical data for final method selection. No benchmark result was fabricated and no production change occurred.'
+        : 'MS-004 blocker resolution froze benchmark evidence datasets for all 13 capabilities. D2 synthetic known-answer fixtures are benchmark-ready, D1 synthetic fixtures are pipeline-validation-only and still require representative historical data for final method selection, and live hosted execution remains incomplete. No benchmark result was fabricated and no production change occurred.'
     ].join('\n')
   };
 }
@@ -1194,7 +1394,9 @@ function generate(options = {}) {
     [path.join(docsRoot, 'CAPABILITY_BENCHMARK_RESULTS.json')]: json(evidence.capabilityResults),
     [path.join(docsRoot, 'PROPOSED_EXECUTION_MODEL_MATRIX.json')]: json(evidence.proposedExecutionModelMatrix),
     [path.join(docsRoot, 'FINAL_D2_MODEL_SELECTION.json')]: json(evidence.finalD2Selection || {}),
+    [path.join(docsRoot, 'NARROW_CANDIDATE_EXPANSION_PLAN.json')]: json(evidence.candidateExpansionPlan),
     [path.join(generatedRoot, 'ms004_benchmark_evidence.json')]: json(evidence),
+    [path.join(generatedRoot, 'ms004_candidate_expansion_plan.json')]: json(evidence.candidateExpansionPlan),
     [path.join(generatedRoot, 'ms004_summary.json')]: json(evidence.summary),
     [path.join(generatedRoot, 'ms004_hash.json')]: json({
       evidenceHash: evidence.evidenceHash,

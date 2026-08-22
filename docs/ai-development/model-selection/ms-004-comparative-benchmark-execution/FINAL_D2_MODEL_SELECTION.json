@@ -1,10 +1,231 @@
 {
-  "allNineD2CapabilitiesFinalModelSelectionReady": false,
-  "completedLiveHostedCalls": 199,
+  "allNineD2CapabilitiesFinalModelSelectionReady": true,
+  "completedLiveHostedCalls": 237,
   "correctedRequestEvidenceMarker": "supersededHardGateFailures",
   "correctedRequestSupersededHardGateFailureCount": 87,
-  "d2ModelSelectionComplete": false,
-  "failedLiveHostedCalls": 25,
+  "d1Status": "D1_PIPELINE_VALIDATED_SELECTION_PENDING_REPRESENTATIVE_DATA",
+  "d2ModelSelectionComplete": true,
+  "expansionFailureReconciliation": {
+    "classificationCounts": {
+      "CONFIGURATION_OR_ADAPTER_DEFECT": 0,
+      "MATERIAL_RETRY_REQUIRED": 0,
+      "MODEL_OR_ENDPOINT_UNAVAILABLE": 0,
+      "NON_MATERIAL_PROVIDER_FAILURE": 10,
+      "NON_RETRYABLE_PROVIDER_FAILURE": 0,
+      "QUOTA_OR_ACCOUNT_BLOCKER": 0
+    },
+    "exactExpansionFailureCount": 10,
+    "failures": [
+      {
+        "candidateId": "driver.copilot.contextual_response::gemini-3.7-flash",
+        "capabilityId": "driver.copilot.contextual_response",
+        "classification": "NON_MATERIAL_PROVIDER_FAILURE",
+        "materialToFinalSelection": false,
+        "model": "gemini-3.7-flash",
+        "modelAccessStatus": "MODEL_ACCESS_CONFIRMED_BY_OTHER_COMPLETED_GEMINI_3_7_FLASH_EVIDENCE",
+        "provider": "google",
+        "providerErrorCategory": "QUOTA_OR_RATE_LIMIT",
+        "providerErrorCode": "RESOURCE_EXHAUSTED",
+        "quotaStatus": "FREE_TIER_REQUEST_QUOTA_EXHAUSTED_DURING_EXPANSION",
+        "retryCount": 1,
+        "retryability": "RETRYABLE_PROVIDER_CONDITION",
+        "status": "FAILED",
+        "systematic": false
+      },
+      {
+        "candidateId": "driver.copilot.contextual_response::gemini-3.7-flash",
+        "capabilityId": "driver.copilot.contextual_response",
+        "classification": "NON_MATERIAL_PROVIDER_FAILURE",
+        "materialToFinalSelection": false,
+        "model": "gemini-3.7-flash",
+        "modelAccessStatus": "MODEL_ACCESS_CONFIRMED_BY_OTHER_COMPLETED_GEMINI_3_7_FLASH_EVIDENCE",
+        "provider": "google",
+        "providerErrorCategory": "QUOTA_OR_RATE_LIMIT",
+        "providerErrorCode": "RESOURCE_EXHAUSTED",
+        "quotaStatus": "FREE_TIER_REQUEST_QUOTA_EXHAUSTED_DURING_EXPANSION",
+        "retryCount": 1,
+        "retryability": "RETRYABLE_PROVIDER_CONDITION",
+        "status": "FAILED",
+        "systematic": false
+      },
+      {
+        "candidateId": "route.risk_explanation.presentation::gemini-3.7-flash",
+        "capabilityId": "route.risk_explanation.presentation",
+        "classification": "NON_MATERIAL_PROVIDER_FAILURE",
+        "materialToFinalSelection": false,
+        "model": "gemini-3.7-flash",
+        "modelAccessStatus": "MODEL_ACCESS_CONFIRMED_BY_OTHER_COMPLETED_GEMINI_3_7_FLASH_EVIDENCE",
+        "provider": "google",
+        "providerErrorCategory": "QUOTA_OR_RATE_LIMIT",
+        "providerErrorCode": "RESOURCE_EXHAUSTED",
+        "quotaStatus": "FREE_TIER_REQUEST_QUOTA_EXHAUSTED_DURING_EXPANSION",
+        "retryCount": 1,
+        "retryability": "RETRYABLE_PROVIDER_CONDITION",
+        "status": "FAILED",
+        "systematic": true
+      },
+      {
+        "candidateId": "route.risk_explanation.presentation::gemini-3.7-flash",
+        "capabilityId": "route.risk_explanation.presentation",
+        "classification": "NON_MATERIAL_PROVIDER_FAILURE",
+        "materialToFinalSelection": false,
+        "model": "gemini-3.7-flash",
+        "modelAccessStatus": "MODEL_ACCESS_CONFIRMED_BY_OTHER_COMPLETED_GEMINI_3_7_FLASH_EVIDENCE",
+        "provider": "google",
+        "providerErrorCategory": "QUOTA_OR_RATE_LIMIT",
+        "providerErrorCode": "RESOURCE_EXHAUSTED",
+        "quotaStatus": "FREE_TIER_REQUEST_QUOTA_EXHAUSTED_DURING_EXPANSION",
+        "retryCount": 1,
+        "retryability": "RETRYABLE_PROVIDER_CONDITION",
+        "status": "FAILED",
+        "systematic": true
+      },
+      {
+        "candidateId": "route.risk_explanation.presentation::gemini-3.7-flash",
+        "capabilityId": "route.risk_explanation.presentation",
+        "classification": "NON_MATERIAL_PROVIDER_FAILURE",
+        "materialToFinalSelection": false,
+        "model": "gemini-3.7-flash",
+        "modelAccessStatus": "MODEL_ACCESS_CONFIRMED_BY_OTHER_COMPLETED_GEMINI_3_7_FLASH_EVIDENCE",
+        "provider": "google",
+        "providerErrorCategory": "QUOTA_OR_RATE_LIMIT",
+        "providerErrorCode": "RESOURCE_EXHAUSTED",
+        "quotaStatus": "FREE_TIER_REQUEST_QUOTA_EXHAUSTED_DURING_EXPANSION",
+        "retryCount": 1,
+        "retryability": "RETRYABLE_PROVIDER_CONDITION",
+        "status": "FAILED",
+        "systematic": true
+      },
+      {
+        "candidateId": "route.risk_explanation.presentation::gemini-3.7-flash",
+        "capabilityId": "route.risk_explanation.presentation",
+        "classification": "NON_MATERIAL_PROVIDER_FAILURE",
+        "materialToFinalSelection": false,
+        "model": "gemini-3.7-flash",
+        "modelAccessStatus": "MODEL_ACCESS_CONFIRMED_BY_OTHER_COMPLETED_GEMINI_3_7_FLASH_EVIDENCE",
+        "provider": "google",
+        "providerErrorCategory": "QUOTA_OR_RATE_LIMIT",
+        "providerErrorCode": "RESOURCE_EXHAUSTED",
+        "quotaStatus": "FREE_TIER_REQUEST_QUOTA_EXHAUSTED_DURING_EXPANSION",
+        "retryCount": 1,
+        "retryability": "RETRYABLE_PROVIDER_CONDITION",
+        "status": "FAILED",
+        "systematic": true
+      },
+      {
+        "candidateId": "route.risk_explanation.presentation::gemini-3.7-flash",
+        "capabilityId": "route.risk_explanation.presentation",
+        "classification": "NON_MATERIAL_PROVIDER_FAILURE",
+        "materialToFinalSelection": false,
+        "model": "gemini-3.7-flash",
+        "modelAccessStatus": "MODEL_ACCESS_CONFIRMED_BY_OTHER_COMPLETED_GEMINI_3_7_FLASH_EVIDENCE",
+        "provider": "google",
+        "providerErrorCategory": "QUOTA_OR_RATE_LIMIT",
+        "providerErrorCode": "RESOURCE_EXHAUSTED",
+        "quotaStatus": "FREE_TIER_REQUEST_QUOTA_EXHAUSTED_DURING_EXPANSION",
+        "retryCount": 1,
+        "retryability": "RETRYABLE_PROVIDER_CONDITION",
+        "status": "FAILED",
+        "systematic": true
+      },
+      {
+        "candidateId": "route.risk_explanation.presentation::gemini-3.7-flash",
+        "capabilityId": "route.risk_explanation.presentation",
+        "classification": "NON_MATERIAL_PROVIDER_FAILURE",
+        "materialToFinalSelection": false,
+        "model": "gemini-3.7-flash",
+        "modelAccessStatus": "MODEL_ACCESS_CONFIRMED_BY_OTHER_COMPLETED_GEMINI_3_7_FLASH_EVIDENCE",
+        "provider": "google",
+        "providerErrorCategory": "QUOTA_OR_RATE_LIMIT",
+        "providerErrorCode": "RESOURCE_EXHAUSTED",
+        "quotaStatus": "FREE_TIER_REQUEST_QUOTA_EXHAUSTED_DURING_EXPANSION",
+        "retryCount": 1,
+        "retryability": "RETRYABLE_PROVIDER_CONDITION",
+        "status": "FAILED",
+        "systematic": true
+      },
+      {
+        "candidateId": "route.risk_explanation.presentation::gemini-3.7-flash",
+        "capabilityId": "route.risk_explanation.presentation",
+        "classification": "NON_MATERIAL_PROVIDER_FAILURE",
+        "materialToFinalSelection": false,
+        "model": "gemini-3.7-flash",
+        "modelAccessStatus": "MODEL_ACCESS_CONFIRMED_BY_OTHER_COMPLETED_GEMINI_3_7_FLASH_EVIDENCE",
+        "provider": "google",
+        "providerErrorCategory": "QUOTA_OR_RATE_LIMIT",
+        "providerErrorCode": "RESOURCE_EXHAUSTED",
+        "quotaStatus": "FREE_TIER_REQUEST_QUOTA_EXHAUSTED_DURING_EXPANSION",
+        "retryCount": 1,
+        "retryability": "RETRYABLE_PROVIDER_CONDITION",
+        "status": "FAILED",
+        "systematic": true
+      },
+      {
+        "candidateId": "route.risk_explanation.presentation::gemini-3.7-flash",
+        "capabilityId": "route.risk_explanation.presentation",
+        "classification": "NON_MATERIAL_PROVIDER_FAILURE",
+        "materialToFinalSelection": false,
+        "model": "gemini-3.7-flash",
+        "modelAccessStatus": "MODEL_ACCESS_CONFIRMED_BY_OTHER_COMPLETED_GEMINI_3_7_FLASH_EVIDENCE",
+        "provider": "google",
+        "providerErrorCategory": "QUOTA_OR_RATE_LIMIT",
+        "providerErrorCode": "RESOURCE_EXHAUSTED",
+        "quotaStatus": "FREE_TIER_REQUEST_QUOTA_EXHAUSTED_DURING_EXPANSION",
+        "retryCount": 1,
+        "retryability": "RETRYABLE_PROVIDER_CONDITION",
+        "status": "FAILED",
+        "systematic": true
+      }
+    ],
+    "groupedFailures": [
+      {
+        "candidateId": "driver.copilot.contextual_response::gemini-3.7-flash",
+        "capabilityId": "driver.copilot.contextual_response",
+        "classification": "NON_MATERIAL_PROVIDER_FAILURE",
+        "count": 2,
+        "materialToFinalSelection": false,
+        "model": "gemini-3.7-flash",
+        "provider": "google",
+        "providerErrorCategory": "QUOTA_OR_RATE_LIMIT",
+        "providerErrorCode": "RESOURCE_EXHAUSTED",
+        "quotaStatus": "FREE_TIER_REQUEST_QUOTA_EXHAUSTED_DURING_EXPANSION",
+        "retryability": "RETRYABLE_PROVIDER_CONDITION",
+        "systematic": false
+      },
+      {
+        "candidateId": "route.risk_explanation.presentation::gemini-3.7-flash",
+        "capabilityId": "route.risk_explanation.presentation",
+        "classification": "NON_MATERIAL_PROVIDER_FAILURE",
+        "count": 8,
+        "materialToFinalSelection": false,
+        "model": "gemini-3.7-flash",
+        "provider": "google",
+        "providerErrorCategory": "QUOTA_OR_RATE_LIMIT",
+        "providerErrorCode": "RESOURCE_EXHAUSTED",
+        "quotaStatus": "FREE_TIER_REQUEST_QUOTA_EXHAUSTED_DURING_EXPANSION",
+        "retryability": "RETRYABLE_PROVIDER_CONDITION",
+        "systematic": true
+      }
+    ]
+  },
+  "failedLiveHostedCalls": 35,
+  "furtherBenchmarkingDecisions": [
+    {
+      "capabilityId": "driver.copilot.contextual_response",
+      "decision": "NO_MORE_BENCHMARKING_REQUIRED",
+      "reason": "Persisted LIVE_HOSTED evidence contains a hard-gate-passing cheapest-sufficient candidate for this capability."
+    },
+    {
+      "capabilityId": "route.risk_explanation.presentation",
+      "decision": "NO_MORE_BENCHMARKING_REQUIRED",
+      "reason": "Persisted LIVE_HOSTED evidence contains a hard-gate-passing cheapest-sufficient candidate for this capability."
+    },
+    {
+      "capabilityId": "safety.narrative_summary.presentation",
+      "decision": "NO_MORE_BENCHMARKING_REQUIRED",
+      "reason": "Persisted LIVE_HOSTED evidence contains a hard-gate-passing cheapest-sufficient candidate for this capability."
+    }
+  ],
   "matrix": [
     {
       "averageLatencyMs": 1808.125,
@@ -74,8 +295,8 @@
       "selectionStatus": "FINAL_MODEL_SELECTION_READY"
     },
     {
-      "averageLatencyMs": null,
-      "averageMeasuredCostUsd": null,
+      "averageLatencyMs": 10549,
+      "averageMeasuredCostUsd": 0.000824,
       "candidateSummaries": [
         {
           "averageLatencyMs": 2930.75,
@@ -93,6 +314,21 @@
           "provider": "anthropic",
           "qualityScore": 0,
           "totalMeasuredCostUsd": 0.016212
+        },
+        {
+          "averageLatencyMs": 10549,
+          "averageMeasuredCostUsd": 0.000824,
+          "candidateId": "driver.copilot.contextual_response::gemini-3.7-flash",
+          "completedRepetitions": 6,
+          "eligibility": "ELIGIBLE",
+          "failedRepetitions": 2,
+          "hardGateFailCount": 0,
+          "hardGateFailures": {},
+          "hardGatePassCount": 6,
+          "model": "gemini-3.7-flash",
+          "provider": "google",
+          "qualityScore": 80,
+          "totalMeasuredCostUsd": 0.00494625
         },
         {
           "averageLatencyMs": 13927.5,
@@ -144,19 +380,37 @@
           "provider": "openai",
           "qualityScore": 0,
           "totalMeasuredCostUsd": 0.0048964
+        },
+        {
+          "averageLatencyMs": 2967.75,
+          "averageMeasuredCostUsd": 0.000414,
+          "candidateId": "driver.copilot.contextual_response::gpt-5.6-luna",
+          "completedRepetitions": 8,
+          "eligibility": "DISQUALIFIED",
+          "failedRepetitions": 0,
+          "hardGateFailCount": 8,
+          "hardGateFailures": {
+            "missing_required_output:answer,source_evidence_references,uncertainty_or_refusal_when_needed,tenant_context": 8,
+            "prohibited_authority_or_selection_claim": 1
+          },
+          "hardGatePassCount": 0,
+          "model": "gpt-5.6-luna",
+          "provider": "openai",
+          "qualityScore": 0,
+          "totalMeasuredCostUsd": 0.003314
         }
       ],
       "capabilityId": "driver.copilot.contextual_response",
       "correctedRequestEvidence": true,
-      "evidenceCompleteness": "COMPLETE_NO_PASSING_CANDIDATE",
-      "hardGateStatus": "NO_PASSING_CANDIDATE",
+      "evidenceCompleteness": "COMPLETE_FOR_SELECTION",
+      "hardGateStatus": "PASS",
       "higherCostException": null,
-      "qualityScore": null,
-      "reasonForSelection": "No corrected-request candidate passed all mandatory hard gates.",
-      "selectedCandidate": null,
-      "selectedModel": null,
-      "selectedProvider": null,
-      "selectionStatus": "NO_CANDIDATE_PASSED"
+      "qualityScore": 80,
+      "reasonForSelection": "Cheapest sufficient hard-gate-passing candidate under MS-002 policy; previously approved six selections are preserved unless evidence-integrity defects appear.",
+      "selectedCandidate": "driver.copilot.contextual_response::gemini-3.7-flash",
+      "selectedModel": "gemini-3.7-flash",
+      "selectedProvider": "google",
+      "selectionStatus": "FINAL_MODEL_SELECTION_READY"
     },
     {
       "averageLatencyMs": 5243.75,
@@ -291,8 +545,8 @@
       "selectionStatus": "FINAL_MODEL_SELECTION_READY"
     },
     {
-      "averageLatencyMs": null,
-      "averageMeasuredCostUsd": null,
+      "averageLatencyMs": 1656.25,
+      "averageMeasuredCostUsd": 0.002023,
       "candidateSummaries": [
         {
           "averageLatencyMs": 3395.25,
@@ -310,6 +564,36 @@
           "provider": "anthropic",
           "qualityScore": 0,
           "totalMeasuredCostUsd": 0.017545
+        },
+        {
+          "averageLatencyMs": null,
+          "averageMeasuredCostUsd": null,
+          "candidateId": "route.risk_explanation.presentation::gemini-3.7-flash",
+          "completedRepetitions": 0,
+          "eligibility": "DISQUALIFIED",
+          "failedRepetitions": 8,
+          "hardGateFailCount": 0,
+          "hardGateFailures": {},
+          "hardGatePassCount": 0,
+          "model": "gemini-3.7-flash",
+          "provider": "google",
+          "qualityScore": null,
+          "totalMeasuredCostUsd": 0
+        },
+        {
+          "averageLatencyMs": 1656.25,
+          "averageMeasuredCostUsd": 0.002023,
+          "candidateId": "route.risk_explanation.presentation::mistral-medium-3-5",
+          "completedRepetitions": 8,
+          "eligibility": "ELIGIBLE",
+          "failedRepetitions": 0,
+          "hardGateFailCount": 0,
+          "hardGateFailures": {},
+          "hardGatePassCount": 8,
+          "model": "mistral-medium-3-5",
+          "provider": "mistral",
+          "qualityScore": 80,
+          "totalMeasuredCostUsd": 0.016185
         },
         {
           "averageLatencyMs": 14686,
@@ -348,19 +632,19 @@
       ],
       "capabilityId": "route.risk_explanation.presentation",
       "correctedRequestEvidence": true,
-      "evidenceCompleteness": "COMPLETE_NO_PASSING_CANDIDATE",
-      "hardGateStatus": "NO_PASSING_CANDIDATE",
+      "evidenceCompleteness": "COMPLETE_FOR_SELECTION",
+      "hardGateStatus": "PASS",
       "higherCostException": null,
-      "qualityScore": null,
-      "reasonForSelection": "No corrected-request candidate passed all mandatory hard gates.",
-      "selectedCandidate": null,
-      "selectedModel": null,
-      "selectedProvider": null,
-      "selectionStatus": "NO_CANDIDATE_PASSED"
+      "qualityScore": 80,
+      "reasonForSelection": "Cheapest sufficient hard-gate-passing candidate under MS-002 policy; previously approved six selections are preserved unless evidence-integrity defects appear.",
+      "selectedCandidate": "route.risk_explanation.presentation::mistral-medium-3-5",
+      "selectedModel": "mistral-medium-3-5",
+      "selectedProvider": "mistral",
+      "selectionStatus": "FINAL_MODEL_SELECTION_READY"
     },
     {
-      "averageLatencyMs": null,
-      "averageMeasuredCostUsd": null,
+      "averageLatencyMs": 17562.625,
+      "averageMeasuredCostUsd": 0.000826,
       "candidateSummaries": [
         {
           "averageLatencyMs": 8678.5,
@@ -378,6 +662,39 @@
           "provider": "anthropic",
           "qualityScore": 40,
           "totalMeasuredCostUsd": 0.074226
+        },
+        {
+          "averageLatencyMs": 6120,
+          "averageMeasuredCostUsd": 0.007739,
+          "candidateId": "safety.narrative_summary.presentation::claude-sonnet-5",
+          "completedRepetitions": 8,
+          "eligibility": "DISQUALIFIED",
+          "failedRepetitions": 0,
+          "hardGateFailCount": 5,
+          "hardGateFailures": {
+            "missing_required_output:source_evidence_references,limitations_or_unknowns,tenant_context": 5,
+            "prohibited_authority_or_selection_claim": 1
+          },
+          "hardGatePassCount": 3,
+          "model": "claude-sonnet-5",
+          "provider": "anthropic",
+          "qualityScore": 30,
+          "totalMeasuredCostUsd": 0.061912
+        },
+        {
+          "averageLatencyMs": 17562.625,
+          "averageMeasuredCostUsd": 0.000826,
+          "candidateId": "safety.narrative_summary.presentation::gemini-3.7-flash",
+          "completedRepetitions": 8,
+          "eligibility": "ELIGIBLE",
+          "failedRepetitions": 0,
+          "hardGateFailCount": 0,
+          "hardGateFailures": {},
+          "hardGatePassCount": 8,
+          "model": "gemini-3.7-flash",
+          "provider": "google",
+          "qualityScore": 80,
+          "totalMeasuredCostUsd": 0.00660525
         },
         {
           "averageLatencyMs": 19456.75,
@@ -418,15 +735,15 @@
       ],
       "capabilityId": "safety.narrative_summary.presentation",
       "correctedRequestEvidence": true,
-      "evidenceCompleteness": "COMPLETE_NO_PASSING_CANDIDATE",
-      "hardGateStatus": "NO_PASSING_CANDIDATE",
+      "evidenceCompleteness": "COMPLETE_FOR_SELECTION",
+      "hardGateStatus": "PASS",
       "higherCostException": null,
-      "qualityScore": null,
-      "reasonForSelection": "No corrected-request candidate passed all mandatory hard gates.",
-      "selectedCandidate": null,
-      "selectedModel": null,
-      "selectedProvider": null,
-      "selectionStatus": "NO_CANDIDATE_PASSED"
+      "qualityScore": 80,
+      "reasonForSelection": "Cheapest sufficient hard-gate-passing candidate under MS-002 policy; previously approved six selections are preserved unless evidence-integrity defects appear.",
+      "selectedCandidate": "safety.narrative_summary.presentation::gemini-3.7-flash",
+      "selectedModel": "gemini-3.7-flash",
+      "selectedProvider": "google",
+      "selectionStatus": "FINAL_MODEL_SELECTION_READY"
     },
     {
       "averageLatencyMs": 1806.875,
@@ -628,36 +945,21 @@
       "selectionStatus": "FINAL_MODEL_SELECTION_READY"
     }
   ],
-  "measuredTotalBenchmarkCostUsd": 1.3376082,
+  "measuredTotalBenchmarkCostUsd": 1.4305707,
+  "productionRoutingStatus": "NOT_ACTIVATED",
   "providerDistribution": {
     "anthropic": 0,
-    "google": 3,
-    "mistral": 3,
+    "google": 5,
+    "mistral": 4,
     "openai": 0
   },
   "remainingFailureReconciliation": {
-    "currentMaterialFailure": 3,
-    "nonMaterialProviderFailure": 25,
+    "currentMaterialFailure": 0,
+    "nonMaterialProviderFailure": 35,
     "supersededPreCorrectionEvidence": 133
   },
-  "sourceLiveRunHash": "d09c564644f039c41b5305f93d1f18e881f4e06111d61ee7e61f80c1cb5a779d",
+  "sourceLiveRunHash": "fccdb0af5dee08fca1a40567dd2bcf9e9039677a106f6a16ebc65af45652c952",
   "sourceLiveRunId": "ms004.live.2026-08-22T00-16-33-541Z",
   "sourceLiveRunSchemaVersion": "ms004.live.benchmark.run.v1",
-  "unresolvedCapabilities": [
-    {
-      "capabilityId": "driver.copilot.contextual_response",
-      "reason": "No corrected-request candidate passed all mandatory hard gates.",
-      "selectionStatus": "NO_CANDIDATE_PASSED"
-    },
-    {
-      "capabilityId": "route.risk_explanation.presentation",
-      "reason": "No corrected-request candidate passed all mandatory hard gates.",
-      "selectionStatus": "NO_CANDIDATE_PASSED"
-    },
-    {
-      "capabilityId": "safety.narrative_summary.presentation",
-      "reason": "No corrected-request candidate passed all mandatory hard gates.",
-      "selectionStatus": "NO_CANDIDATE_PASSED"
-    }
-  ]
+  "unresolvedCapabilities": []
 }

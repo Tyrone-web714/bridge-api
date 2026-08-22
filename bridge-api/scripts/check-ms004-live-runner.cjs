@@ -60,7 +60,7 @@ async function main() {
   const prepare = validatePrepare(plan, env());
   assert.strictEqual(prepare.ready, true, `prepare should be ready with mocked process env credentials: ${prepare.failures.join(', ')}`);
   assert.strictEqual(prepare.d2DatasetCount, 9, 'D2 frozen dataset count');
-  assert.strictEqual(prepare.hostedCandidateCount, 28, 'hosted candidate mapping count');
+  assert.strictEqual(prepare.hostedCandidateCount, 34, 'hosted candidate mapping count');
   assert.ok(prepare.highProjectedCostUsd <= BENCHMARK_BUDGET_CEILING_USD, 'budget forecast ceiling');
   assert.strictEqual(prepare.hostedCallsExecuted, false, 'prepare must not execute hosted calls');
   assert.strictEqual(plan.dryRunEvidence.summary.d0Excluded, 36, 'D0 excluded');
@@ -87,8 +87,8 @@ async function main() {
     })
   });
   assert.strictEqual(run.runType, 'LIVE_HOSTED', 'live run type');
-  assert.strictEqual(run.summary.attemptedCalls, 224, 'expected D2 hosted attempts');
-  assert.strictEqual(run.summary.completedCalls, 224, 'mock live completions');
+  assert.strictEqual(run.summary.attemptedCalls, 272, 'expected D2 hosted attempts');
+  assert.strictEqual(run.summary.completedCalls, 272, 'mock live completions');
   assert.strictEqual(run.results.every((result) => result.runEvidenceType === 'LIVE_HOSTED'), true, 'LIVE_HOSTED tagging');
   assert.strictEqual(run.results.every((result) => result.localBenchmarkExecuted === false), true, 'no local output promoted to hosted');
   assert.strictEqual(run.results.every((result) => result.productionActivation === false && result.providerSelected === false && result.modelSelected === false), true, 'production boundary');
@@ -172,6 +172,12 @@ async function main() {
 
   const resumeItems = plannedBenchmarkItems(plan, { provider: 'google', capability: 'supervisor.freeform_question_answer' });
   assert.ok(resumeItems.length >= 4, 'resume fixture has enough planned items');
+  const expansionItems = plannedBenchmarkItems(plan, {
+    capability: 'driver.copilot.contextual_response',
+    candidate: 'driver.copilot.contextual_response::gemini-3.7-flash'
+  });
+  assert.strictEqual(expansionItems.length, 8, 'candidate filter targets exactly one expanded candidate across all cases/repetitions');
+  assert.ok(expansionItems.every((item) => item.candidate.candidateId === 'driver.copilot.contextual_response::gemini-3.7-flash'), 'candidate filter preserves exact candidate identity');
   const completedItem = resumeItems[0];
   const nonRetryableItem = resumeItems[1];
   const retryableItem = resumeItems[2];

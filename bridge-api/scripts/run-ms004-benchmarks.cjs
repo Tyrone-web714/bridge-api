@@ -5,6 +5,7 @@ const crypto = require('crypto');
 const { buildFramework } = require('./generate-ms002-benchmark-acceptance-artifacts.cjs');
 const { buildCandidateSelection } = require('./generate-ms003-candidate-selection-artifacts.cjs');
 const { buildBenchmarkEvidence, paths: ms004Paths } = require('./generate-ms004-benchmark-artifacts.cjs');
+const { buildMs004CandidateExpansion } = require('./ms004-candidate-expansion.cjs');
 const {
   buildBenchmarkRequest,
   executeBenchmarkProviderRequest,
@@ -89,6 +90,7 @@ function costForUsage(candidate, usage) {
 function loadLivePlan(env = process.env) {
   const ms002 = buildFramework();
   const ms003 = buildCandidateSelection();
+  const ms004Expansion = buildMs004CandidateExpansion();
   const dryRunEvidence = buildBenchmarkEvidence();
   const adapterCatalog = getBenchmarkAdapterCatalog(env);
   const capabilities = new Map(ms002.benchmarkCandidates.map((capability) => [capability.capabilityId, capability]));
@@ -96,12 +98,13 @@ function loadLivePlan(env = process.env) {
   const d2CapabilityIds = new Set(d2Capabilities.map((capability) => capability.capabilityId));
   const datasets = dryRunEvidence.frozenBenchmarkDatasets.filter((dataset) => dataset.executionClass === 'D2' && dataset.status === 'BENCHMARK_DATASET_READY');
   const datasetByCapability = new Map(datasets.map((dataset) => [dataset.capabilityId, dataset]));
-  const candidates = ms003.candidates
+  const candidates = [...ms003.candidates, ...ms004Expansion.candidates]
     .filter((candidate) => candidate.candidateType === 'HOSTED_MODEL' && d2CapabilityIds.has(candidate.capabilityId))
     .sort((a, b) => a.candidateId.localeCompare(b.candidateId));
   return {
     ms002,
     ms003,
+    ms004Expansion,
     dryRunEvidence,
     adapterCatalog,
     capabilities,
@@ -117,6 +120,7 @@ function parseFilters(argv = process.argv.slice(2)) {
   for (const arg of argv) {
     if (arg.startsWith('--provider=')) filters.provider = providerKey(arg.slice('--provider='.length));
     if (arg.startsWith('--capability=')) filters.capability = arg.slice('--capability='.length);
+    if (arg.startsWith('--candidate=')) filters.candidate = arg.slice('--candidate='.length);
     if (arg === '--rerun-hard-gate-failures') filters.rerunHardGateFailures = true;
   }
   return filters;
@@ -125,6 +129,7 @@ function parseFilters(argv = process.argv.slice(2)) {
 function candidateMatchesFilters(candidate, filters = {}) {
   if (filters.provider && providerKey(candidate.provider) !== filters.provider) return false;
   if (filters.capability && candidate.capabilityId !== filters.capability) return false;
+  if (filters.candidate && candidate.candidateId !== filters.candidate) return false;
   return true;
 }
 
@@ -258,7 +263,7 @@ function validatePrepare(plan, env = process.env) {
   }));
   if (plan.d2Capabilities.length !== 9) failures.push('D2_CAPABILITY_COUNT');
   if (plan.datasets.length !== 9) failures.push('D2_DATASET_READY_COUNT');
-  if (plan.candidates.length !== 28) failures.push('MS003_HOSTED_CANDIDATE_COUNT');
+  if (plan.candidates.length !== 34) failures.push('MS004_HOSTED_CANDIDATE_COUNT');
   if (plan.dryRunEvidence.summary.projectedBenchmarkCostRangeUsd.highEstimateUsd > BENCHMARK_BUDGET_CEILING_USD) failures.push('BUDGET_FORECAST_EXCEEDS_10_USD');
   if (getHostedAdapterCatalog().some((adapter) => adapter.supportedCapabilities.includes('customer.account_guidance.presentation'))) failures.push('PRODUCTION_PROVIDER_ROUTING_MODIFIED');
   for (const adapter of plan.adapterCatalog) {

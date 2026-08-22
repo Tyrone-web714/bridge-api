@@ -12,6 +12,7 @@ const {
   normalizeBenchmarkResponse
 } = require('../services/intelligenceExecution/providerAdapters');
 const { buildCandidateSelection } = require('./generate-ms003-candidate-selection-artifacts.cjs');
+const { buildMs004CandidateExpansion } = require('./ms004-candidate-expansion.cjs');
 const { buildFramework } = require('./generate-ms002-benchmark-acceptance-artifacts.cjs');
 
 const REQUIRED_ENV = Object.freeze({
@@ -36,9 +37,10 @@ function providerKey(provider) {
 
 async function main() {
   const ms003 = buildCandidateSelection();
+  const ms004Expansion = buildMs004CandidateExpansion();
   const ms002 = buildFramework();
   const capabilities = new Map(ms002.benchmarkCandidates.map((capability) => [capability.capabilityId, capability]));
-  const hostedCandidates = ms003.candidates.filter((candidate) => candidate.candidateType === 'HOSTED_MODEL');
+  const hostedCandidates = [...ms003.candidates, ...ms004Expansion.candidates].filter((candidate) => candidate.candidateType === 'HOSTED_MODEL');
   const missingCatalog = getBenchmarkAdapterCatalog({});
   const readyCatalog = getBenchmarkAdapterCatalog(readyEnv());
 
@@ -128,6 +130,7 @@ async function main() {
   assert.strictEqual(anthropicRequest.model, 'claude-haiku-4-5', 'MS-003 Anthropic candidate identity is preserved');
   assert.strictEqual(anthropicRequest.providerModelId, 'claude-haiku-4-5-20251001', 'Anthropic Haiku alias maps to current API invocation id');
   assert.strictEqual(getBenchmarkProviderModelId('anthropic', 'claude-sonnet-4-6'), 'claude-sonnet-4-6', 'Anthropic Sonnet 4.6 invocation id');
+  assert.strictEqual(getBenchmarkProviderModelId('anthropic', 'claude-sonnet-5'), 'claude-sonnet-5', 'Anthropic Sonnet 5 invocation id');
 
   let capturedAnthropicRequest = null;
   const anthropicNormalized = await executeBenchmarkProviderRequest(anthropicRequest, {

@@ -78,7 +78,8 @@
       ],
       "supportedModelIds": [
         "claude-haiku-4-5",
-        "claude-sonnet-4-6"
+        "claude-sonnet-4-6",
+        "claude-sonnet-5"
       ]
     },
     {
@@ -89,15 +90,19 @@
       "provider": "Google",
       "status": "BENCHMARK_ADAPTER_READY",
       "supportedCapabilities": [
+        "driver.copilot.contextual_response",
         "operations.executive_dashboard_synthesis",
         "platform.legacy_structured_ai_response",
+        "route.risk_explanation.presentation",
+        "safety.narrative_summary.presentation",
         "supervisor.daily_operations_report.narrative",
         "supervisor.freeform_question_answer",
         "warehouse.exception_summary.presentation"
       ],
       "supportedModelIds": [
         "gemini-3.5-flash",
-        "gemini-3.5-flash-lite"
+        "gemini-3.5-flash-lite",
+        "gemini-3.7-flash"
       ]
     },
     {
@@ -109,11 +114,13 @@
       "status": "BENCHMARK_ADAPTER_READY",
       "supportedCapabilities": [
         "customer.account_guidance.presentation",
+        "route.risk_explanation.presentation",
         "supervisor.daily_operations_report.narrative",
         "warehouse.exception_summary.presentation"
       ],
       "supportedModelIds": [
-        "mistral-small-latest"
+        "mistral-small-latest",
+        "mistral-medium-3-5"
       ]
     },
     {
@@ -137,7 +144,8 @@
       "supportedModelIds": [
         "gpt-5",
         "gpt-5-mini",
-        "gpt-5-nano"
+        "gpt-5-nano",
+        "gpt-5.6-luna"
       ]
     }
   ],

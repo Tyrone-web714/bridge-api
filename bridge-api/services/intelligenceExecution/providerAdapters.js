@@ -10,14 +10,15 @@ const OPENAI_LEGACY_MODEL_MAPPING_VERSION = 'openai.legacy-model-mapping.v1';
 const BENCHMARK_MAPPING_VERSION = 'ms004.benchmark-provider-adapters.v1';
 const ANTHROPIC_BENCHMARK_MODEL_INVOCATION_IDS = Object.freeze({
   'claude-haiku-4-5': 'claude-haiku-4-5-20251001',
-  'claude-sonnet-4-6': 'claude-sonnet-4-6'
+  'claude-sonnet-4-6': 'claude-sonnet-4-6',
+  'claude-sonnet-5': 'claude-sonnet-5'
 });
 const MS004_BENCHMARK_PROVIDERS = Object.freeze({
   openai: Object.freeze({
     provider: 'openai',
     displayName: 'OpenAI',
     credentialEnvironmentVariable: 'OPENAI_API_KEY',
-    supportedModelIds: Object.freeze(['gpt-5', 'gpt-5-mini', 'gpt-5-nano']),
+    supportedModelIds: Object.freeze(['gpt-5', 'gpt-5-mini', 'gpt-5-nano', 'gpt-5.6-luna']),
     supportedCapabilities: Object.freeze([
       'customer.account_guidance.presentation',
       'driver.copilot.contextual_response',
@@ -34,7 +35,7 @@ const MS004_BENCHMARK_PROVIDERS = Object.freeze({
     provider: 'anthropic',
     displayName: 'Anthropic',
     credentialEnvironmentVariable: 'ANTHROPIC_API_KEY',
-    supportedModelIds: Object.freeze(['claude-haiku-4-5', 'claude-sonnet-4-6']),
+    supportedModelIds: Object.freeze(['claude-haiku-4-5', 'claude-sonnet-4-6', 'claude-sonnet-5']),
     supportedCapabilities: Object.freeze([
       'customer.account_guidance.presentation',
       'driver.copilot.contextual_response',
@@ -48,10 +49,13 @@ const MS004_BENCHMARK_PROVIDERS = Object.freeze({
     provider: 'google',
     displayName: 'Google Gemini',
     credentialEnvironmentVariable: 'GEMINI_API_KEY',
-    supportedModelIds: Object.freeze(['gemini-3.5-flash', 'gemini-3.5-flash-lite']),
+    supportedModelIds: Object.freeze(['gemini-3.5-flash', 'gemini-3.5-flash-lite', 'gemini-3.7-flash']),
     supportedCapabilities: Object.freeze([
+      'driver.copilot.contextual_response',
       'operations.executive_dashboard_synthesis',
       'platform.legacy_structured_ai_response',
+      'route.risk_explanation.presentation',
+      'safety.narrative_summary.presentation',
       'supervisor.daily_operations_report.narrative',
       'supervisor.freeform_question_answer',
       'warehouse.exception_summary.presentation'
@@ -61,9 +65,10 @@ const MS004_BENCHMARK_PROVIDERS = Object.freeze({
     provider: 'mistral',
     displayName: 'Mistral',
     credentialEnvironmentVariable: 'MISTRAL_API_KEY',
-    supportedModelIds: Object.freeze(['mistral-small-latest']),
+    supportedModelIds: Object.freeze(['mistral-small-latest', 'mistral-medium-3-5']),
     supportedCapabilities: Object.freeze([
       'customer.account_guidance.presentation',
+      'route.risk_explanation.presentation',
       'supervisor.daily_operations_report.narrative',
       'warehouse.exception_summary.presentation'
     ])

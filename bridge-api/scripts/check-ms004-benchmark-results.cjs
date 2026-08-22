@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const { buildBenchmarkEvidence, generate, paths } = require('./generate-ms004-benchmark-artifacts.cjs');
 const { buildCandidateSelection } = require('./generate-ms003-candidate-selection-artifacts.cjs');
+const { buildMs004CandidateExpansion, UNRESOLVED_CAPABILITIES } = require('./ms004-candidate-expansion.cjs');
 
 function clone(value) {
   return JSON.parse(JSON.stringify(value));
@@ -17,19 +18,23 @@ function readGeneratedEvidence() {
 function validateEvidence(evidence) {
   const failures = [];
   const ms003 = buildCandidateSelection();
+  const ms004Expansion = buildMs004CandidateExpansion();
   const allowedCapabilities = new Set(Object.keys(ms003.candidatesByCapability));
-  const allowedCandidates = new Set(ms003.candidates.map((candidate) => candidate.candidateId));
+  const allowedCandidates = new Set([...ms003.candidates, ...ms004Expansion.candidates].map((candidate) => candidate.candidateId));
+  const expansionCandidateIds = new Set(ms004Expansion.candidates.map((candidate) => candidate.candidateId));
   const d0Count = 36;
 
   if (evidence.packageId !== 'MS-004') failures.push('PACKAGE_ID');
   if (evidence.summary.benchmarkCapabilities !== 13) failures.push('BENCHMARK_CAPABILITY_COUNT');
   if (evidence.summary.d0Excluded !== d0Count) failures.push('D0_EXCLUSION_COUNT');
   if (evidence.summary.d1Capabilities !== 4 || evidence.summary.d2Capabilities !== 9 || evidence.summary.d3Capabilities !== 0) failures.push('EXECUTION_CLASS_COUNTS');
-  if (evidence.summary.d1CandidateMethods !== 12 || evidence.summary.d2ModelCapabilityPairs !== 28) failures.push('CANDIDATE_COUNTS');
-  if (evidence.summary.uniqueHostedModels !== 8) failures.push('HOSTED_MODEL_COUNT');
+  if (evidence.summary.d1CandidateMethods !== 12 || evidence.summary.d2ModelCapabilityPairs !== 34) failures.push('CANDIDATE_COUNTS');
+  if (evidence.summary.ms003D2ModelCapabilityPairs !== 28 || evidence.summary.ms004ExpansionModelCapabilityPairs !== 6) failures.push('EXPANSION_CANDIDATE_COUNTS');
+  if (evidence.summary.uniqueHostedModels !== 12) failures.push('HOSTED_MODEL_COUNT');
   if (evidence.summary.openSelfHostedShortlisted !== 0) failures.push('SELF_HOSTED_COUNT');
   if (evidence.summary.originalProjectedMS004Calls !== 1440) failures.push('ORIGINAL_PROJECTED_CALLS');
-  if (evidence.summary.projectedMS004Calls !== 272 || evidence.summary.revisedProjectedBenchmarkCalls !== 272) failures.push('REVISED_PROJECTED_CALLS');
+  if (evidence.summary.projectedMS004Calls !== 320 || evidence.summary.revisedProjectedBenchmarkCalls !== 320) failures.push('REVISED_PROJECTED_CALLS');
+  if (evidence.summary.ms004ExpansionExpectedHostedCalls !== 48) failures.push('EXPANSION_HOSTED_CALLS');
   if (evidence.summary.benchmarkBudgetCeilingUsd !== 10) failures.push('BUDGET_CEILING');
   if (evidence.summary.measuredTotalBenchmarkCostUsd > evidence.summary.benchmarkBudgetCeilingUsd) failures.push('BUDGET_EXCEEDED');
   if (evidence.summary.projectedBenchmarkCostRangeUsd.highEstimateUsd > evidence.summary.benchmarkBudgetCeilingUsd) failures.push('PROJECTED_BUDGET_EXCEEDED');
@@ -54,6 +59,42 @@ function validateEvidence(evidence) {
   if (evidence.dryRun.noD0Included !== true) failures.push('D0_INCLUDED');
   if (evidence.dryRun.budgetCeilingUsd !== 10) failures.push('DRY_RUN_BUDGET');
   if (!Array.isArray(evidence.frozenBenchmarkDatasets) || evidence.frozenBenchmarkDatasets.length !== 13) failures.push('FROZEN_DATASET_COUNT');
+  if (!evidence.candidateExpansionPlan || evidence.candidateExpansionPlan.summary.newModelCapabilityPairs !== 6) failures.push('EXPANSION_PLAN_MISSING');
+  if (evidence.candidateExpansionPlan?.scope?.modelSelectionPerformed !== false || evidence.candidateExpansionPlan?.scope?.productionRoutingEnabled !== false) failures.push('EXPANSION_SCOPE_BOUNDARY');
+  for (const candidate of evidence.candidateExpansionPlan?.candidates || []) {
+    if (!UNRESOLVED_CAPABILITIES.includes(candidate.capabilityId)) failures.push(`EXPANSION_OUT_OF_SCOPE:${candidate.capabilityId}`);
+    if (candidate.candidateStatus !== 'CANDIDATE_FOR_BENCHMARK') failures.push(`EXPANSION_SELECTION_STATUS:${candidate.candidateId}`);
+    if (candidate.providerSelected || candidate.modelSelected || candidate.finalWinner || candidate.productionAssignment) failures.push(`EXPANSION_SELECTION_PERFORMED:${candidate.candidateId}`);
+    if (!expansionCandidateIds.has(candidate.candidateId)) failures.push(`UNKNOWN_EXPANSION_CANDIDATE:${candidate.candidateId}`);
+  }
+  if (evidence.finalD2Selection) {
+    const final = evidence.finalD2Selection;
+    const expectedWinners = {
+      'customer.account_guidance.presentation': 'customer.account_guidance.presentation::mistral-small-latest',
+      'driver.copilot.contextual_response': 'driver.copilot.contextual_response::gemini-3.7-flash',
+      'operations.executive_dashboard_synthesis': 'operations.executive_dashboard_synthesis::gemini-3.5-flash',
+      'platform.legacy_structured_ai_response': 'platform.legacy_structured_ai_response::gemini-3.5-flash-lite',
+      'route.risk_explanation.presentation': 'route.risk_explanation.presentation::mistral-medium-3-5',
+      'safety.narrative_summary.presentation': 'safety.narrative_summary.presentation::gemini-3.7-flash',
+      'supervisor.daily_operations_report.narrative': 'supervisor.daily_operations_report.narrative::mistral-small-latest',
+      'supervisor.freeform_question_answer': 'supervisor.freeform_question_answer::gemini-3.5-flash',
+      'warehouse.exception_summary.presentation': 'warehouse.exception_summary.presentation::mistral-small-latest'
+    };
+    if (final.d2ModelSelectionComplete !== true || final.allNineD2CapabilitiesFinalModelSelectionReady !== true) failures.push('FINAL_D2_NOT_COMPLETE');
+    if (final.d1Status !== 'D1_PIPELINE_VALIDATED_SELECTION_PENDING_REPRESENTATIVE_DATA') failures.push('D1_BOUNDARY_CHANGED');
+    if (final.productionRoutingStatus !== 'NOT_ACTIVATED') failures.push('PRODUCTION_ROUTING_ACTIVATED');
+    if (!Array.isArray(final.matrix) || final.matrix.length !== 9) failures.push('FINAL_D2_MATRIX_COUNT');
+    for (const [capabilityId, candidateId] of Object.entries(expectedWinners)) {
+      const row = final.matrix?.find((item) => item.capabilityId === capabilityId);
+      if (!row || row.selectionStatus !== 'FINAL_MODEL_SELECTION_READY' || row.selectedCandidate !== candidateId) failures.push(`FINAL_D2_WINNER:${capabilityId}`);
+    }
+    if (final.providerDistribution?.google !== 5 || final.providerDistribution?.mistral !== 4 || final.providerDistribution?.openai !== 0 || final.providerDistribution?.anthropic !== 0) failures.push('FINAL_PROVIDER_DISTRIBUTION');
+    const expansionFailures = final.expansionFailureReconciliation;
+    if (expansionFailures?.exactExpansionFailureCount !== 10) failures.push('EXPANSION_FAILURE_COUNT');
+    if (expansionFailures?.classificationCounts?.NON_MATERIAL_PROVIDER_FAILURE !== 10) failures.push('EXPANSION_FAILURE_CLASSIFICATION');
+    if (expansionFailures?.classificationCounts?.MATERIAL_RETRY_REQUIRED !== 0) failures.push('MATERIAL_RETRY_REMAINS');
+    if (!Array.isArray(final.furtherBenchmarkingDecisions) || final.furtherBenchmarkingDecisions.some((item) => item.decision !== 'NO_MORE_BENCHMARKING_REQUIRED')) failures.push('MORE_BENCHMARKING_REQUIRED');
+  }
 
   const capabilityIds = new Set(evidence.capabilityResults.map((item) => item.capabilityId));
   if (capabilityIds.size !== 13) failures.push('CAPABILITY_RESULT_COUNT');
