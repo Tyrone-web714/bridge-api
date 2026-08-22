@@ -1,10 +1,28 @@
 {
   "allNineD2CapabilitiesFinalModelSelectionReady": true,
-  "completedLiveHostedCalls": 237,
+  "completedLiveHostedCalls": 257,
   "correctedRequestEvidenceMarker": "supersededHardGateFailures",
   "correctedRequestSupersededHardGateFailureCount": 87,
   "d1Status": "D1_PIPELINE_VALIDATED_SELECTION_PENDING_REPRESENTATIVE_DATA",
   "d2ModelSelectionComplete": true,
+  "driverReopenEvidence": {
+    "averageLatencyMs": 1398.15,
+    "averageMeasuredCostUsd": 0,
+    "candidateId": "driver.copilot.contextual_response::mistral-small-2603",
+    "completedRepetitions": 20,
+    "correctiveRetriesUsed": 0,
+    "datasetId": "driver.copilot.contextual_response.runtime_reliability_reopen.v2",
+    "evidenceFile": "driver-mistral-runtime-evidence-v2.json",
+    "failedRepetitions": 0,
+    "hardGateFailCount": 0,
+    "hardGatePassCount": 20,
+    "model": "mistral-small-2603",
+    "provider": "mistral",
+    "qualityScore": 100,
+    "runtimeReliabilityStatus": "DRIVER_RUNTIME_RELIABILITY_PASS",
+    "scenarioCoverage": 10,
+    "totalMeasuredCostUsd": 0
+  },
   "expansionFailureReconciliation": {
     "classificationCounts": {
       "CONFIGURATION_OR_ADAPTER_DEFECT": 0,
@@ -295,8 +313,8 @@
       "selectionStatus": "FINAL_MODEL_SELECTION_READY"
     },
     {
-      "averageLatencyMs": 10549,
-      "averageMeasuredCostUsd": 0.000824,
+      "averageLatencyMs": 1398.15,
+      "averageMeasuredCostUsd": 0,
       "candidateSummaries": [
         {
           "averageLatencyMs": 2930.75,
@@ -329,6 +347,26 @@
           "provider": "google",
           "qualityScore": 80,
           "totalMeasuredCostUsd": 0.00494625
+        },
+        {
+          "averageLatencyMs": 1398.15,
+          "averageMeasuredCostUsd": 0,
+          "candidateId": "driver.copilot.contextual_response::mistral-small-2603",
+          "completedRepetitions": 20,
+          "correctiveRetriesUsed": 0,
+          "datasetId": "driver.copilot.contextual_response.runtime_reliability_reopen.v2",
+          "eligibility": "ELIGIBLE",
+          "evidenceFile": "driver-mistral-runtime-evidence-v2.json",
+          "failedRepetitions": 0,
+          "hardGateFailCount": 0,
+          "hardGateFailures": {},
+          "hardGatePassCount": 20,
+          "model": "mistral-small-2603",
+          "provider": "mistral",
+          "qualityScore": 100,
+          "runtimeReliabilityStatus": "DRIVER_RUNTIME_RELIABILITY_PASS",
+          "scenarioCoverage": 10,
+          "totalMeasuredCostUsd": 0
         },
         {
           "averageLatencyMs": 13927.5,
@@ -405,11 +443,11 @@
       "evidenceCompleteness": "COMPLETE_FOR_SELECTION",
       "hardGateStatus": "PASS",
       "higherCostException": null,
-      "qualityScore": 80,
-      "reasonForSelection": "Cheapest sufficient hard-gate-passing candidate under MS-002 policy; previously approved six selections are preserved unless evidence-integrity defects appear.",
-      "selectedCandidate": "driver.copilot.contextual_response::gemini-3.7-flash",
-      "selectedModel": "gemini-3.7-flash",
-      "selectedProvider": "google",
+      "qualityScore": 100,
+      "reasonForSelection": "Driver reopen closed by dataset-v2 evidence: Mistral Small 2603 passed 20/20 legitimate generative Driver runtime records with zero provider failures, zero runtime failures, and zero corrective retries. Deterministic authority requests remain mandatory pre-model policy tests.",
+      "selectedCandidate": "driver.copilot.contextual_response::mistral-small-2603",
+      "selectedModel": "mistral-small-2603",
+      "selectedProvider": "mistral",
       "selectionStatus": "FINAL_MODEL_SELECTION_READY"
     },
     {
@@ -949,8 +987,8 @@
   "productionRoutingStatus": "NOT_ACTIVATED",
   "providerDistribution": {
     "anthropic": 0,
-    "google": 5,
-    "mistral": 4,
+    "google": 4,
+    "mistral": 5,
     "openai": 0
   },
   "remainingFailureReconciliation": {

@@ -1,38 +1,33 @@
 # Current AI Work Package
 
-Package ID: D2-SELECTED-MODEL-NONPRODUCTION-INTEGRATION
+Package ID: MS-004
 
-Title: D2 Selected-Model Non-Production Integration
+Title: Comparative Benchmark Execution
 
 Category: MODEL_SELECTION_AND_BENCHMARKING
 
-Status: IMPLEMENTED_UNCOMMITTED
+Status: BLOCKED
 
 ## Objective
 
-Make the nine MS-004-selected D2 model assignments executable through TSR controlled non-production architecture while preserving deterministic authority, tenant isolation, runtime hard gates, cost governance, and fail-closed behavior.
+Execute comparative benchmark evidence for the MS-003 candidate population using MS-002 hard gates and cheapest-sufficient selection, while preserving the production boundary, freezing repository benchmark fixtures, and recording provider/representative-data blockers instead of fabricating results.
 
 ## Approved Scope
 
-- selected D2 model registry
-- non-production selected-D2 execution mode
-- deterministic capability-to-model routing
-- Google and Mistral provider adapter reuse through non-production boundary
-- structured input and output contracts
-- runtime hard gates
-- tenant isolation and RBAC checks
-- fail-closed fallback behavior
-- cost and usage observability
-- offline deterministic validation harness
-- roadmap and implementation documentation
+- MS-004 dry-run and benchmark execution evidence
+- credential presence audit without secret disclosure
+- benchmark dataset readiness and frozen fixture audit
+- candidate execution manifest
+- blocked provider/candidate accounting
+- measured spend accounting
+- proposed model matrix when evidence exists
+- validation and controlled negative tests
 
 ## Prohibited Scope
 
-- model reselection
-- benchmark rerun
-- provider consolidation
-- D1 activation
 - ninth intelligence domain
+- candidate expansion without owner approval
+- simulated hosted output presented as real
 - production provider routing
 - production model assignment
 - production orchestration
@@ -47,50 +42,59 @@ Make the nine MS-004-selected D2 model assignments executable through TSR contro
 - provider activation
 - production traffic
 - customer traffic
-- hosted calls executed by Codex
 
 ## Dependencies
 
 - MS-001
 - MS-002
 - MS-003
-- MS-004
 
 ## Acceptance Criteria
 
-- Exactly nine D2 selected capabilities are represented
-- MS-004 selected provider/model assignments are locked and unchanged
-- Selected-D2 execution requires explicit NON_PRODUCTION_SELECTED_D2 mode
-- Unknown, D0, D1, OpenAI, Anthropic, and tenth-capability routing attempts fail closed
-- Runtime hard gates validate tenant, schema, evidence grounding, authority boundary, safety boundary, and prohibited output conditions
-- Provider failures return controlled degraded/unavailable responses without unselected fallback
-- No hosted calls are executed by Codex
-- No production activation, deployment, migration, credential change, or production write occurs
+- Exactly 13 benchmark-required capabilities are represented
+- D0 capabilities remain excluded
+- MS-003 candidate population is preserved
+- Provider credentials and adapter availability are audited without logging secrets
+- Benchmark-ready D2 fixture datasets and D1 representative-data requirements are audited
+- No hosted benchmark result is fabricated
+- Measured spend remains at or below the authorized budget ceiling
+- No production activation, deployment, migration, or production write occurs
 
 ## Required Tests
 
-- `node --check services/intelligenceExecution/selectedD2ModelRegistry.js`
-- `node --check services/intelligenceExecution/selectedD2NonProductionExecution.js`
-- `node --check scripts/check-d2-selected-model-nonproduction.cjs`
-- `node --check scripts/run-d2-selected-nonproduction-smoke.cjs`
-- `npm.cmd run d2-selected:validate`
-- `npm.cmd run d2-selected:check`
-- `npm.cmd run test:d2-selected-nonproduction`
+- `npm.cmd run ms004:prepare`
+- `npm.cmd run ms004:generate`
 - `npm.cmd run ms004:validate`
 - `npm.cmd run ms004:check`
 - `npm.cmd run test:ms004`
+- `npm.cmd run ms003:validate`
+- `npm.cmd run ms003:check`
+- `npm.cmd run ms002:validate`
+- `npm.cmd run ms002:check`
+- `npm.cmd run ms001:validate`
+- `npm.cmd run ms001:check`
+- `npm.cmd run ai-roadmap:generate`
+- `npm.cmd run ai-roadmap:validate`
+- `npm.cmd run ai-roadmap:check`
 - `npm.cmd run test:ai-roadmap`
+- `npm.cmd run test:benchmark-datasets`
+- `npm.cmd run test:evaluation-engine`
+- `npm.cmd run test:scoring-engine`
+- `npm.cmd run test:cost-governance`
+- `npm.cmd run test:execution-decisions`
+- `npm.cmd run test:decision-governance`
+- `npm.cmd run test:knowledge-graph`
+- `npm.cmd run test:framework-validation`
 - `npm.cmd run test:ai-architecture`
 - `npm.cmd run test:security`
-- `npm.cmd run test:api-tenant`
 
 ## Source-Control Expectation
 
-D2 selected-model non-production integration remains repository-local, unstaged, uncommitted, and unpushed until a separate controlled review/commit package is approved. Do not deploy, run migrations, activate production orchestration, execute hosted calls from Codex, or begin D1 production selection.
+MS-004 benchmark evidence remains repository-local, unstaged, and uncommitted until a separate controlled review/commit package is approved. Do not push, deploy, run migrations, activate production orchestration, or begin another model-selection architecture package.
 
 ## Recommended Commit Message
 
-Integrate selected D2 models for non-production execution
+Record MS-004 benchmark execution evidence
 
 ## Next Approved Package
 
@@ -98,7 +102,7 @@ No next implementation package is approved by this record.
 
 ## Owner Decision Points
 
-- approve any external non-production live smoke test separately
-- provide representative historical data before D1 final method selection
-- keep production orchestration deferred until a separate owner-approved package
-- review production activation boundary before any provider/model production routing
+- provide representative historical data for D1 performance selection
+- provide provider credentials if live hosted benchmarking should continue
+- review any NO_CANDIDATE_PASSED state before candidate expansion
+- keep production orchestration deferred until benchmark evidence and owner approval exist

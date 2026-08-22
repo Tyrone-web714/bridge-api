@@ -22,17 +22,19 @@
   "gates": {
     "modelSelection": {
       "active": false,
+      "allNineD2CapabilitiesFinalModelSelectionReady": true,
       "benchmarkAcceptanceFrameworkPackageStatus": "PUSHED",
-      "benchmarkExecutionPackageStatus": "PUSHED",
+      "benchmarkExecutionPackageStatus": "BLOCKED",
       "candidateSelectionPackageStatus": "PUSHED",
       "classificationPackageStatus": "PUSHED",
-      "commercialBenchmarkingPerformed": true,
+      "commercialBenchmarkingPerformed": false,
       "complete": false,
       "costEffectivenessPrinciple": "Use the least expensive strategy or model that satisfies quality, safety, reliability, latency, governance, and evidence requirements. Cost never overrides truck safety, legal compliance, privacy, tenant isolation, policy controls, reliability, or minimum quality thresholds.",
-      "currentAnalysisPackage": "D2-SELECTED-MODEL-NONPRODUCTION-INTEGRATION",
+      "currentAnalysisPackage": "MS-004",
+      "d2ModelSelectionComplete": true,
       "hostedAiActivationPerformed": false,
-      "hostedBenchmarkExecutionPerformed": true,
-      "modelSelectionPerformed": true,
+      "hostedBenchmarkExecutionPerformed": false,
+      "modelSelectionPerformed": false,
       "notStarted": [
         "D1 final method selection pending representative data",
         "production orchestration",
@@ -42,7 +44,9 @@
       "ownerApprovalRequired": true,
       "prerequisitesSatisfied": true,
       "pricingResearchPerformed": true,
-      "providerSelectionPerformed": true,
+      "productionModelRoutingActivated": false,
+      "productionOrchestrationActivated": false,
+      "providerSelectionPerformed": false,
       "readyForOwnerReview": true,
       "requiredCoreDomains": [
         "Route Intelligence",
@@ -54,11 +58,7 @@
         "Operations Intelligence",
         "Safety Intelligence"
       ],
-      "status": "DEFERRED",
-      "d2ModelSelectionComplete": true,
-      "allNineD2CapabilitiesFinalModelSelectionReady": true,
-      "productionModelRoutingActivated": false,
-      "productionOrchestrationActivated": false
+      "status": "DEFERRED"
     },
     "productionOrchestration": {
       "active": false,
@@ -1645,13 +1645,13 @@
       "deploymentVerified": false,
       "documentationPath": "docs/ai-development/model-selection/ms-004-comparative-benchmark-execution",
       "expectedCompletionReportFormat": "Use the MS-004 work-package report sections A through AZ with dry-run result, blocker accounting, call/spend totals, proposed matrix path, validation evidence, and production-boundary status.",
-      "implementationCommit": "7f4ef7538a894b9ae3fd3c654c22fcbc5e558904",
-      "isCurrentPackage": false,
-      "localCommitVerified": true,
+      "implementationCommit": null,
+      "isCurrentPackage": true,
+      "localCommitVerified": false,
       "migrationExecuted": false,
       "migrationRequired": false,
       "nextApprovedPackage": null,
-      "notes": "MS-004 is complete and pushed at 7f4ef7538a894b9ae3fd3c654c22fcbc5e558904. It records final D2 model selections for all nine D2 capabilities from live benchmark evidence. D1 remains pending representative historical data.",
+      "notes": "MS-004 dry-run evidence is READY_FOR_EXECUTION; local D1 pipeline evaluations are 48, hosted benchmark calls remain 0, D2 benchmark fixtures are frozen, and D1 performance selection still requires representative historical data.",
       "objective": "Execute comparative benchmark evidence for the MS-003 candidate population using MS-002 hard gates and cheapest-sufficient selection, while preserving the production boundary, freezing repository benchmark fixtures, and recording provider/representative-data blockers instead of fabricating results.",
       "ownerApprovalRequired": true,
       "ownerDecisionPoints": [
@@ -1681,9 +1681,9 @@
         "production traffic",
         "customer traffic"
       ],
-      "pushed": true,
+      "pushed": false,
       "recommendedCommitMessage": "Record MS-004 benchmark execution evidence",
-      "remoteCommitVerified": true,
+      "remoteCommitVerified": false,
       "requiredTests": [
         "npm.cmd run ms004:prepare",
         "npm.cmd run ms004:generate",
@@ -1713,7 +1713,7 @@
       ],
       "scopeChangeApprovalRequired": true,
       "sourceControlExpectation": "MS-004 benchmark evidence remains repository-local, unstaged, and uncommitted until a separate controlled review/commit package is approved. Do not push, deploy, run migrations, activate production orchestration, or begin another model-selection architecture package.",
-      "status": "PUSHED",
+      "status": "BLOCKED",
       "title": "Comparative Benchmark Execution"
     },
     {
@@ -1752,7 +1752,7 @@
       "documentationPath": "docs/implementation/d2-selected-model-nonproduction-integration",
       "expectedCompletionReportFormat": "Use the D2 selected-model non-production integration report sections A through AH with registry assignments, routing, gates, validation evidence, production-boundary status, and next controlled action.",
       "implementationCommit": null,
-      "isCurrentPackage": true,
+      "isCurrentPackage": false,
       "localCommitVerified": false,
       "migrationExecuted": false,
       "migrationRequired": false,
@@ -1820,10 +1820,10 @@
     "backendPath": "C:\\dev\\bridge-api\\bridge-api",
     "localAheadBy": 0,
     "localBranch": "legacy-public-url-final-cleanup",
-    "localHead": "7f4ef7538a894b9ae3fd3c654c22fcbc5e558904",
+    "localHead": "8ef625be90aadc11647f33296ca20ab965207097",
     "pushPerformedByThisPackage": false,
     "remoteBranch": "origin/legacy-public-url-final-cleanup",
-    "remoteHead": "7f4ef7538a894b9ae3fd3c654c22fcbc5e558904",
+    "remoteHead": "8ef625be90aadc11647f33296ca20ab965207097",
     "remoteVerificationPerformed": true,
     "repositoryRoot": "C:\\dev\\bridge-api"
   },

@@ -3,7 +3,7 @@
 Source live run: `ms004.live.2026-08-22T00-16-33-541Z`
 Source live run hash: `fccdb0af5dee08fca1a40567dd2bcf9e9039677a106f6a16ebc65af45652c952`
 Corrected-request marker: `supersededHardGateFailures`
-Completed LIVE_HOSTED calls: `237`
+Completed LIVE_HOSTED calls: `257`
 Failed calls: `35`
 Measured spend: `$1.4305707`
 D2_MODEL_SELECTION_COMPLETE: `true`
@@ -13,7 +13,7 @@ D2_MODEL_SELECTION_COMPLETE: `true`
 | Capability | Provider | Model | Status | Hard Gate | Avg Latency Ms | Avg Cost USD | Quality | Reason | Higher Cost Exception | Evidence |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | customer.account_guidance.presentation | mistral | mistral-small-latest | FINAL_MODEL_SELECTION_READY | PARTIAL_PASS_PRESERVED_PRIOR_SELECTION | 1808.125 | 0.000178 | 70 | Cheapest sufficient hard-gate-passing candidate under MS-002 policy; previously approved six selections are preserved unless evidence-integrity defects appear. | NONE | COMPLETE_FOR_SELECTION |
-| driver.copilot.contextual_response | google | gemini-3.7-flash | FINAL_MODEL_SELECTION_READY | PASS | 10549 | 0.000824 | 80 | Cheapest sufficient hard-gate-passing candidate under MS-002 policy; previously approved six selections are preserved unless evidence-integrity defects appear. | NONE | COMPLETE_FOR_SELECTION |
+| driver.copilot.contextual_response | mistral | mistral-small-2603 | FINAL_MODEL_SELECTION_READY | PASS | 1398.15 | 0 | 100 | Driver reopen closed by dataset-v2 evidence: Mistral Small 2603 passed 20/20 legitimate generative Driver runtime records with zero provider failures, zero runtime failures, and zero corrective retries. Deterministic authority requests remain mandatory pre-model policy tests. | NONE | COMPLETE_FOR_SELECTION |
 | operations.executive_dashboard_synthesis | google | gemini-3.5-flash | FINAL_MODEL_SELECTION_READY | PASS | 5243.75 | 0.002157 | 80 | Cheapest sufficient hard-gate-passing candidate under MS-002 policy; previously approved six selections are preserved unless evidence-integrity defects appear. | NONE | COMPLETE_FOR_SELECTION |
 | platform.legacy_structured_ai_response | google | gemini-3.5-flash-lite | FINAL_MODEL_SELECTION_READY | PASS | 833.125 | 0.000448 | 80 | Cheapest sufficient hard-gate-passing candidate under MS-002 policy; previously approved six selections are preserved unless evidence-integrity defects appear. | NONE | COMPLETE_FOR_SELECTION |
 | route.risk_explanation.presentation | mistral | mistral-medium-3-5 | FINAL_MODEL_SELECTION_READY | PASS | 1656.25 | 0.002023 | 80 | Cheapest sufficient hard-gate-passing candidate under MS-002 policy; previously approved six selections are preserved unless evidence-integrity defects appear. | NONE | COMPLETE_FOR_SELECTION |
@@ -31,6 +31,7 @@ D2_MODEL_SELECTION_COMPLETE: `true`
 | customer.account_guidance.presentation | customer.account_guidance.presentation::gpt-5-nano | openai | gpt-5-nano | 8 | 0 | 0 | 8 | DISQUALIFIED | 11431.375 | 0.000977 | 0 |
 | driver.copilot.contextual_response | driver.copilot.contextual_response::claude-haiku-4-5 | anthropic | claude-haiku-4-5 | 8 | 0 | 0 | 8 | DISQUALIFIED | 2930.75 | 0.002027 | 0 |
 | driver.copilot.contextual_response | driver.copilot.contextual_response::gemini-3.7-flash | google | gemini-3.7-flash | 6 | 2 | 6 | 0 | ELIGIBLE | 10549 | 0.000824 | 80 |
+| driver.copilot.contextual_response | driver.copilot.contextual_response::mistral-small-2603 | mistral | mistral-small-2603 | 20 | 0 | 20 | 0 | ELIGIBLE | 1398.15 | 0 | 100 |
 | driver.copilot.contextual_response | driver.copilot.contextual_response::gpt-5 | openai | gpt-5 | 8 | 0 | 0 | 8 | DISQUALIFIED | 13927.5 | 0.015416 | 0 |
 | driver.copilot.contextual_response | driver.copilot.contextual_response::gpt-5-mini | openai | gpt-5-mini | 8 | 0 | 0 | 8 | DISQUALIFIED | 12248.875 | 0.002274 | 0 |
 | driver.copilot.contextual_response | driver.copilot.contextual_response::gpt-5-nano | openai | gpt-5-nano | 8 | 0 | 0 | 8 | DISQUALIFIED | 8049.375 | 0.000612 | 0 |
@@ -66,8 +67,8 @@ D2_MODEL_SELECTION_COMPLETE: `true`
 | Provider | Assigned Capabilities |
 | --- | --- |
 | anthropic | 0 |
-| google | 5 |
-| mistral | 4 |
+| google | 4 |
+| mistral | 5 |
 | openai | 0 |
 
 ## Remaining Failure Reconciliation

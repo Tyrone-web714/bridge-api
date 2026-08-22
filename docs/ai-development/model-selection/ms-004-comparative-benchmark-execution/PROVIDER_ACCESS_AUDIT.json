@@ -88,6 +88,7 @@
         "warehouse.exception_summary.presentation"
       ],
       "supportedModelIds": [
+        "gemini-2.5-flash",
         "gemini-3.5-flash",
         "gemini-3.5-flash-lite",
         "gemini-3.7-flash"
@@ -102,12 +103,14 @@
       "status": "BENCHMARK_ADAPTER_READY",
       "supportedCapabilities": [
         "customer.account_guidance.presentation",
+        "driver.copilot.contextual_response",
         "route.risk_explanation.presentation",
         "supervisor.daily_operations_report.narrative",
         "warehouse.exception_summary.presentation"
       ],
       "supportedModelIds": [
         "mistral-small-latest",
+        "mistral-small-2603",
         "mistral-medium-3-5"
       ]
     },

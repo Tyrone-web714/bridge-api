@@ -12,7 +12,7 @@
       "deferredWorkDocs": 22
     },
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "hash": "91532d8f7534b486b095905dfba24c1cd01e0b3bc44a2adc69b557601876d7d6",
+    "hash": "89a1f9f12f6343eed7251899ed77c7eb72e50280fd754c49a14542d59de70fff",
     "integrityPercentages": {
       "crossReferences": 100,
       "integration": 100
@@ -28,13 +28,13 @@
       "executionDecisions": 4,
       "generatedArtifacts": 283,
       "governanceEvents": 48,
-      "graphEdges": 929,
-      "graphNodes": 1350,
+      "graphEdges": 930,
+      "graphNodes": 1351,
       "historyRecords": 4,
       "pricingCatalogs": 1,
       "scoreRuns": 3,
       "templates": 0,
-      "tests": 57,
+      "tests": 58,
       "validationRules": 9
     },
     "unknownCounts": {

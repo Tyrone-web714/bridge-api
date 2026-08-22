@@ -376,6 +376,18 @@
         "testOnly": true
       },
       {
+        "edgeId": "edge:e76bd87dfb785a3ae4b3",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "78dfec0ecc6e5f45c839446b9e2df64ab9e312fb37dd8e2c795e900ddf01310c",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "IMPLEMENTS",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Service:intelligence-execution-platform",
+        "targetNodeId": "Repository Module:bridge-api/services/intelligenceExecution/driverCopilotPolicyInterceptor.js",
+        "testOnly": true
+      },
+      {
         "edgeId": "edge:994f5ba7d5808c64ac52",
         "metadata": {},
         "relationshipConfidence": "DETERMINISTIC",
@@ -11154,10 +11166,10 @@
     ],
     "engineVersion": "intelligence.knowledge.graph.engine.v1",
     "generatedFrom": "repository",
-    "graphHash": "14c16e2aaad2f6439a650f026556830031e4a6f677fd6f159bd5470dfaeb465c",
+    "graphHash": "fffde19b40cc36e2f2fb6cba4e705eca3a2614a4cd2ab41627b7cbed54b2be52",
     "nodes": [
       {
-        "hash": "6b6928b9203f14bea258a268452999d40292a618eec8218d6c3dcb7406ddfc2c",
+        "hash": "14258aa7cd09d7d79e45a1e8d5f29ec8193ea44e3f01b75f3eab913f5e99d389",
         "label": "bridge-api",
         "lifecycleState": null,
         "metadata": {},
@@ -11543,6 +11555,18 @@
         "version": null
       },
       {
+        "hash": "58b3d3dd895b446eaaacb971bfe8611005ab8b3fd5cc8cc072d31cd4e130136c",
+        "label": "bridge-api/services/intelligenceExecution/driverCopilotPolicyInterceptor.js",
+        "lifecycleState": null,
+        "metadata": {},
+        "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/driverCopilotPolicyInterceptor.js",
+        "productionApplicable": false,
+        "source": "bridge-api/services/intelligenceExecution/driverCopilotPolicyInterceptor.js",
+        "testOnly": true,
+        "type": "Repository Module",
+        "version": null
+      },
+      {
         "hash": "04e2c42176cbd2aa04f5521f4659c10705946a3d07cb09eee9295237f4721348",
         "label": "bridge-api/services/intelligenceExecution/driverIntelligence.js",
         "lifecycleState": null,
@@ -11771,7 +11795,7 @@
         "version": null
       },
       {
-        "hash": "3247994a2097183509e6af5144c74af5a401a6f2d894970c0fc7fa05178b89ea",
+        "hash": "8f4c68a49745a462e403e563e469d9b1a15ab604f82d8e73a614e3f0c2a66998",
         "label": "bridge-api/services/intelligenceExecution/providerAdapters.js",
         "lifecycleState": null,
         "metadata": {},
@@ -11819,7 +11843,7 @@
         "version": null
       },
       {
-        "hash": "a02cebfa3d2a0d5090cbb79515db212ce909c621ffc3f1b5c6e4ead1894fbc16",
+        "hash": "bb175177dfebc2ef3e9ebaf31490b2fd242ee044ccfaabb9244487c2db4850a3",
         "label": "bridge-api/services/intelligenceExecution/selectedD2ModelRegistry.js",
         "lifecycleState": null,
         "metadata": {},
@@ -11831,7 +11855,7 @@
         "version": null
       },
       {
-        "hash": "7fe14f334931246d8a1a1a6a220e41d82bad2930f39d9487f22bcdd583bb8006",
+        "hash": "57f2a73c8b14d5da946304c313dfbbc6ec8433ae4601112d9c9c403d52b9fade",
         "label": "bridge-api/services/intelligenceExecution/selectedD2NonProductionExecution.js",
         "lifecycleState": null,
         "metadata": {},
@@ -12023,7 +12047,7 @@
         "version": null
       },
       {
-        "hash": "32836e9e299b5b9385bb78afdc82b074b0f985177b3fb3b36c61133b44e94d00",
+        "hash": "c601e2473aa98758ffc28d53dc23b2bced03bce2144674c00c6f958e9431fd89",
         "label": "bridge-api/scripts/check-ms004-benchmark-results.cjs",
         "lifecycleState": null,
         "metadata": {},
@@ -12155,7 +12179,7 @@
         "version": null
       },
       {
-        "hash": "2c0ac09a10382b635e7a91af362c3029f2b64ba5f133be53d52245a26613bf27",
+        "hash": "e19d213d3433fd342e180a8962d74caef284640f148cd1bde2441c1a759c23af",
         "label": "bridge-api/scripts/generate-ms004-benchmark-artifacts.cjs",
         "lifecycleState": null,
         "metadata": {},

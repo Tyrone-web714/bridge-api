@@ -227,6 +227,11 @@
     },
     {
       "dependencies": [],
+      "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/driverCopilotPolicyInterceptor.js",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
       "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/driverIntelligence.js",
       "reverseDependencies": []
     },

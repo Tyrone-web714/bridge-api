@@ -46,8 +46,8 @@ const SELECTED_D2_MODELS = Object.freeze([
   Object.freeze({
     capabilityId: 'driver.copilot.contextual_response',
     executionClass: 'D2',
-    provider: 'google',
-    modelId: 'gemini-3.7-flash',
+    provider: 'mistral',
+    modelId: 'mistral-small-2603',
     selectionSource: SELECTED_D2_SELECTION_SOURCE,
     selectionCommit: SELECTED_D2_SELECTION_COMMIT,
     selectionStatus: 'FINAL_MODEL_SELECTION_READY',
@@ -188,14 +188,15 @@ function assertSelectedProviderModel(capabilityId, provider, modelId) {
 function validateSelectedD2Registry(registry = SELECTED_D2_MODELS) {
   const errors = [];
   const ids = new Set();
-  const expectedDistribution = { google: 5, mistral: 4, openai: 0, anthropic: 0 };
+  const expectedDistribution = { google: 4, mistral: 5, openai: 0, anthropic: 0 };
   const distribution = { google: 0, mistral: 0, openai: 0, anthropic: 0 };
   for (const item of registry) {
     if (ids.has(item.capabilityId)) errors.push({ rule: 'DUPLICATE_CAPABILITY', capabilityId: item.capabilityId });
     ids.add(item.capabilityId);
     if (item.executionClass !== 'D2') errors.push({ rule: 'NON_D2_SELECTION', capabilityId: item.capabilityId });
     if (item.selectionSource !== SELECTED_D2_SELECTION_SOURCE || item.selectionCommit !== SELECTED_D2_SELECTION_COMMIT) errors.push({ rule: 'INVALID_SELECTION_SOURCE', capabilityId: item.capabilityId });
-    if (item.selectionStatus !== 'FINAL_MODEL_SELECTION_READY') errors.push({ rule: 'INVALID_SELECTION_STATUS', capabilityId: item.capabilityId });
+    const expectedStatus = 'FINAL_MODEL_SELECTION_READY';
+    if (item.selectionStatus !== expectedStatus) errors.push({ rule: 'INVALID_SELECTION_STATUS', capabilityId: item.capabilityId, expected: expectedStatus, actual: item.selectionStatus });
     if (item.productionEnabled !== false || item.nonProductionEnabled !== true) errors.push({ rule: 'INVALID_ACTIVATION_BOUNDARY', capabilityId: item.capabilityId });
     if (item.provider === 'openai' || item.provider === 'anthropic') errors.push({ rule: 'UNSELECTED_PROVIDER_ENABLED', capabilityId: item.capabilityId, provider: item.provider });
     if (!item.outputContract?.requiredProperties?.length) errors.push({ rule: 'MISSING_OUTPUT_CONTRACT', capabilityId: item.capabilityId });

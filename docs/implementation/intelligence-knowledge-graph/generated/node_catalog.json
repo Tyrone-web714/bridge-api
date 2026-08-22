@@ -3,7 +3,7 @@
   "generatedFrom": "bridge-api/intelligence-knowledge-graph",
   "nodes": [
     {
-      "hash": "6b6928b9203f14bea258a268452999d40292a618eec8218d6c3dcb7406ddfc2c",
+      "hash": "14258aa7cd09d7d79e45a1e8d5f29ec8193ea44e3f01b75f3eab913f5e99d389",
       "label": "bridge-api",
       "lifecycleState": null,
       "nodeId": "Package:bridge-api",
@@ -355,6 +355,17 @@
       "version": null
     },
     {
+      "hash": "58b3d3dd895b446eaaacb971bfe8611005ab8b3fd5cc8cc072d31cd4e130136c",
+      "label": "bridge-api/services/intelligenceExecution/driverCopilotPolicyInterceptor.js",
+      "lifecycleState": null,
+      "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/driverCopilotPolicyInterceptor.js",
+      "productionApplicable": false,
+      "source": "bridge-api/services/intelligenceExecution/driverCopilotPolicyInterceptor.js",
+      "testOnly": true,
+      "type": "Repository Module",
+      "version": null
+    },
+    {
       "hash": "04e2c42176cbd2aa04f5521f4659c10705946a3d07cb09eee9295237f4721348",
       "label": "bridge-api/services/intelligenceExecution/driverIntelligence.js",
       "lifecycleState": null,
@@ -564,7 +575,7 @@
       "version": null
     },
     {
-      "hash": "3247994a2097183509e6af5144c74af5a401a6f2d894970c0fc7fa05178b89ea",
+      "hash": "8f4c68a49745a462e403e563e469d9b1a15ab604f82d8e73a614e3f0c2a66998",
       "label": "bridge-api/services/intelligenceExecution/providerAdapters.js",
       "lifecycleState": null,
       "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/providerAdapters.js",
@@ -608,7 +619,7 @@
       "version": null
     },
     {
-      "hash": "a02cebfa3d2a0d5090cbb79515db212ce909c621ffc3f1b5c6e4ead1894fbc16",
+      "hash": "bb175177dfebc2ef3e9ebaf31490b2fd242ee044ccfaabb9244487c2db4850a3",
       "label": "bridge-api/services/intelligenceExecution/selectedD2ModelRegistry.js",
       "lifecycleState": null,
       "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/selectedD2ModelRegistry.js",
@@ -619,7 +630,7 @@
       "version": null
     },
     {
-      "hash": "7fe14f334931246d8a1a1a6a220e41d82bad2930f39d9487f22bcdd583bb8006",
+      "hash": "57f2a73c8b14d5da946304c313dfbbc6ec8433ae4601112d9c9c403d52b9fade",
       "label": "bridge-api/services/intelligenceExecution/selectedD2NonProductionExecution.js",
       "lifecycleState": null,
       "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/selectedD2NonProductionExecution.js",
@@ -795,7 +806,7 @@
       "version": null
     },
     {
-      "hash": "32836e9e299b5b9385bb78afdc82b074b0f985177b3fb3b36c61133b44e94d00",
+      "hash": "c601e2473aa98758ffc28d53dc23b2bced03bce2144674c00c6f958e9431fd89",
       "label": "bridge-api/scripts/check-ms004-benchmark-results.cjs",
       "lifecycleState": null,
       "nodeId": "Script:bridge-api/scripts/check-ms004-benchmark-results.cjs",
@@ -916,7 +927,7 @@
       "version": null
     },
     {
-      "hash": "2c0ac09a10382b635e7a91af362c3029f2b64ba5f133be53d52245a26613bf27",
+      "hash": "e19d213d3433fd342e180a8962d74caef284640f148cd1bde2441c1a759c23af",
       "label": "bridge-api/scripts/generate-ms004-benchmark-artifacts.cjs",
       "lifecycleState": null,
       "nodeId": "Script:bridge-api/scripts/generate-ms004-benchmark-artifacts.cjs",

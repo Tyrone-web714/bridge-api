@@ -4,14 +4,15 @@ The Model Selection Gate remains `DEFERRED`, incomplete, inactive, and owner-app
 
 ## Current State
 
-- Current analysis package: `D2-SELECTED-MODEL-NONPRODUCTION-INTEGRATION`
+- Current analysis package: `MS-004`
 - MS-001 is `PUSHED` and closed.
 - MS-002 is `PUSHED` and closed.
 - MS-003 is `PUSHED` and closed.
-- MS-004 is `PUSHED` and closed at `7f4ef7538a894b9ae3fd3c654c22fcbc5e558904`.
-- D2 model selection is complete for all nine D2 capabilities.
-- Current integration status: `IMPLEMENTED_UNCOMMITTED`
-- Production model routing is not active.
+- MS-004 status: `BLOCKED`
+- Dry-run result: `READY_FOR_EXECUTION`
+- Live hosted benchmark calls executed: `48`
+- Provider selection is not complete.
+- Model selection is not complete.
 - Production orchestration is deferred and inactive.
 
 ## Cost Principle
@@ -31,11 +32,7 @@ Use the least expensive strategy or model that satisfies quality, safety, reliab
 
 ## MS-004 Boundary
 
-MS-004 collected benchmark evidence and recorded final D2 selections. It did not activate providers/models in production, deploy, run migrations, change production systems, or mark the Model Selection Gate complete.
-
-## D2 Non-Production Integration Boundary
-
-The current package may integrate the nine selected D2 assignments into an explicit non-production service-level execution path. It may not reopen model selection, rerun benchmarks, activate production routing, deploy, run migrations, change credentials, or execute hosted calls from Codex.
+MS-004 may collect benchmark evidence and propose candidate winners when execution evidence exists. MS-004 may not activate providers/models in production, deploy, run migrations, change production systems, or mark the Model Selection Gate complete before owner approval.
 
 ## Permitted Model Selection Strategy Classes
 

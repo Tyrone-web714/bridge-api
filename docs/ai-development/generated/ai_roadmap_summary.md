@@ -2,8 +2,8 @@
 # TSR AI Roadmap Summary
 
 - Roadmap ID: TSR_AI_DEVELOPMENT_ROADMAP
-- Current package: D2-SELECTED-MODEL-NONPRODUCTION-INTEGRATION - D2 Selected-Model Non-Production Integration
-- Current status: IMPLEMENTED_UNCOMMITTED
+- Current package: MS-004 - Comparative Benchmark Execution
+- Current status: BLOCKED
 - Next approved package: null
 - Milestone 1 complete: true
 - Route Intelligence pushed: true
@@ -22,5 +22,6 @@
 
 | Status | Count |
 | --- | ---: |
+| BLOCKED | 1 |
 | IMPLEMENTED_UNCOMMITTED | 1 |
-| PUSHED | 25 |
+| PUSHED | 24 |

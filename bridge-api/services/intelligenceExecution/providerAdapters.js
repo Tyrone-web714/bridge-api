@@ -49,7 +49,7 @@ const MS004_BENCHMARK_PROVIDERS = Object.freeze({
     provider: 'google',
     displayName: 'Google Gemini',
     credentialEnvironmentVariable: 'GEMINI_API_KEY',
-    supportedModelIds: Object.freeze(['gemini-3.5-flash', 'gemini-3.5-flash-lite', 'gemini-3.7-flash']),
+    supportedModelIds: Object.freeze(['gemini-2.5-flash', 'gemini-3.5-flash', 'gemini-3.5-flash-lite', 'gemini-3.7-flash']),
     supportedCapabilities: Object.freeze([
       'driver.copilot.contextual_response',
       'operations.executive_dashboard_synthesis',
@@ -65,9 +65,10 @@ const MS004_BENCHMARK_PROVIDERS = Object.freeze({
     provider: 'mistral',
     displayName: 'Mistral',
     credentialEnvironmentVariable: 'MISTRAL_API_KEY',
-    supportedModelIds: Object.freeze(['mistral-small-latest', 'mistral-medium-3-5']),
+    supportedModelIds: Object.freeze(['mistral-small-latest', 'mistral-small-2603', 'mistral-medium-3-5']),
     supportedCapabilities: Object.freeze([
       'customer.account_guidance.presentation',
+      'driver.copilot.contextual_response',
       'route.risk_explanation.presentation',
       'supervisor.daily_operations_report.narrative',
       'warehouse.exception_summary.presentation'

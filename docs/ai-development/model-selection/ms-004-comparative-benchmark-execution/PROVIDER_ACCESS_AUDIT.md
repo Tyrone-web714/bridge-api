@@ -6,5 +6,5 @@ Credential presence is audited without logging secret values. No provider was ac
 | --- | --- | --- | --- | --- | --- |
 | Anthropic | CREDENTIAL_PRESENT_NOT_LIVE_VALIDATED | BENCHMARK_ADAPTER_READY | true | true | 6 |
 | Google | CREDENTIAL_PRESENT_NOT_LIVE_VALIDATED | BENCHMARK_ADAPTER_READY | true | true | 8 |
-| Mistral | CREDENTIAL_PRESENT_NOT_LIVE_VALIDATED | BENCHMARK_ADAPTER_READY | true | true | 4 |
+| Mistral | CREDENTIAL_PRESENT_NOT_LIVE_VALIDATED | BENCHMARK_ADAPTER_READY | true | true | 5 |
 | OpenAI | CREDENTIAL_PRESENT_NOT_LIVE_VALIDATED | BENCHMARK_ADAPTER_READY | true | true | 9 |

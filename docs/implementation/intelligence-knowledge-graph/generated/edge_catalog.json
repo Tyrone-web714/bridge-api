@@ -342,6 +342,17 @@
       "testOnly": true
     },
     {
+      "edgeId": "edge:e76bd87dfb785a3ae4b3",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "78dfec0ecc6e5f45c839446b9e2df64ab9e312fb37dd8e2c795e900ddf01310c",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "IMPLEMENTS",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Service:intelligence-execution-platform",
+      "targetNodeId": "Repository Module:bridge-api/services/intelligenceExecution/driverCopilotPolicyInterceptor.js",
+      "testOnly": true
+    },
+    {
       "edgeId": "edge:994f5ba7d5808c64ac52",
       "relationshipConfidence": "DETERMINISTIC",
       "relationshipHash": "2661d855a18d7e833bd4dc96fe62c7f4034987153ef3696343844a5bf418ecb1",

@@ -73,7 +73,7 @@ function validateEvidence(evidence) {
     const final = evidence.finalD2Selection;
     const expectedWinners = {
       'customer.account_guidance.presentation': 'customer.account_guidance.presentation::mistral-small-latest',
-      'driver.copilot.contextual_response': 'driver.copilot.contextual_response::gemini-3.7-flash',
+      'driver.copilot.contextual_response': 'driver.copilot.contextual_response::mistral-small-2603',
       'operations.executive_dashboard_synthesis': 'operations.executive_dashboard_synthesis::gemini-3.5-flash',
       'platform.legacy_structured_ai_response': 'platform.legacy_structured_ai_response::gemini-3.5-flash-lite',
       'route.risk_explanation.presentation': 'route.risk_explanation.presentation::mistral-medium-3-5',
@@ -85,7 +85,8 @@ function validateEvidence(evidence) {
     if (final.d2ModelSelectionComplete !== true || final.allNineD2CapabilitiesFinalModelSelectionReady !== true) failures.push('FINAL_D2_NOT_COMPLETE');
     if (evidence.summary.d2ModelSelectionComplete !== true || evidence.summary.finalD2CapabilitiesReady !== 9) failures.push('FINAL_D2_SUMMARY_NOT_COMPLETE');
     if (evidence.summary.liveHostedBenchmarkExecuted !== true || evidence.summary.measuredLiveBenchmarkCostUsd !== final.measuredTotalBenchmarkCostUsd) failures.push('FINAL_D2_LIVE_SUMMARY_MISMATCH');
-    if (final.completedLiveHostedCalls !== 237 || final.failedLiveHostedCalls !== 35 || final.measuredTotalBenchmarkCostUsd !== 1.4305707) failures.push('FINAL_D2_LIVE_TOTALS');
+    if (final.completedLiveHostedCalls !== 257 || final.failedLiveHostedCalls !== 35 || final.measuredTotalBenchmarkCostUsd !== 1.4305707) failures.push('FINAL_D2_LIVE_TOTALS');
+    if (final.driverReopenEvidence?.runtimeReliabilityStatus !== 'DRIVER_RUNTIME_RELIABILITY_PASS' || final.driverReopenEvidence?.completedRepetitions !== 20 || final.driverReopenEvidence?.hardGatePassCount !== 20 || final.driverReopenEvidence?.correctiveRetriesUsed !== 0) failures.push('DRIVER_V2_REOPEN_EVIDENCE');
     if (final.d1Status !== 'D1_PIPELINE_VALIDATED_SELECTION_PENDING_REPRESENTATIVE_DATA') failures.push('D1_BOUNDARY_CHANGED');
     if (final.productionRoutingStatus !== 'NOT_ACTIVATED') failures.push('PRODUCTION_ROUTING_ACTIVATED');
     if (!Array.isArray(final.matrix) || final.matrix.length !== 9) failures.push('FINAL_D2_MATRIX_COUNT');
@@ -93,7 +94,7 @@ function validateEvidence(evidence) {
       const row = final.matrix?.find((item) => item.capabilityId === capabilityId);
       if (!row || row.selectionStatus !== 'FINAL_MODEL_SELECTION_READY' || row.selectedCandidate !== candidateId) failures.push(`FINAL_D2_WINNER:${capabilityId}`);
     }
-    if (final.providerDistribution?.google !== 5 || final.providerDistribution?.mistral !== 4 || final.providerDistribution?.openai !== 0 || final.providerDistribution?.anthropic !== 0) failures.push('FINAL_PROVIDER_DISTRIBUTION');
+    if (final.providerDistribution?.google !== 4 || final.providerDistribution?.mistral !== 5 || final.providerDistribution?.openai !== 0 || final.providerDistribution?.anthropic !== 0) failures.push('FINAL_PROVIDER_DISTRIBUTION');
     const expansionFailures = final.expansionFailureReconciliation;
     if (expansionFailures?.exactExpansionFailureCount !== 10) failures.push('EXPANSION_FAILURE_COUNT');
     if (expansionFailures?.classificationCounts?.NON_MATERIAL_PROVIDER_FAILURE !== 10) failures.push('EXPANSION_FAILURE_CLASSIFICATION');

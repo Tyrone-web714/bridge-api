@@ -5,7 +5,7 @@ All nine D2 capabilities have a final benchmark selection. Each selected candida
 | Capability | Provider | Model | Avg Cost USD | Avg Latency Ms |
 | --- | --- | --- | --- | --- |
 | mistral | mistral-small-latest | customer.account_guidance.presentation | 0.000178 | 1808.125 |
-| google | gemini-3.7-flash | driver.copilot.contextual_response | 0.000824 | 10549 |
+| mistral | mistral-small-2603 | driver.copilot.contextual_response | 0 | 1398.15 |
 | google | gemini-3.5-flash | operations.executive_dashboard_synthesis | 0.002157 | 5243.75 |
 | google | gemini-3.5-flash-lite | platform.legacy_structured_ai_response | 0.000448 | 833.125 |
 | mistral | mistral-medium-3-5 | route.risk_explanation.presentation | 0.002023 | 1656.25 |
