@@ -9,6 +9,8 @@ const { getExecutor, listRegisteredStrategies } = require('./strategyRegistry');
 const { validateOutput } = require('./outputValidator');
 const telemetry = require('./telemetry');
 const { getHostedAdapterCatalog } = require('./providerAdapters');
+const selectedD2 = require('./selectedD2NonProductionExecution');
+const selectedD2Registry = require('./selectedD2ModelRegistry');
 
 async function recordLifecycleEvent(req, eventType, statusCode, metadata = {}) {
   if (!req) return;
@@ -142,5 +144,7 @@ module.exports = {
   listCapabilities,
   listExecutionProfiles: () => Object.values(PROFILE_DEFINITIONS),
   listRegisteredStrategies,
+  selectedD2,
+  selectedD2Registry,
   telemetrySnapshot: telemetry.snapshot
 };

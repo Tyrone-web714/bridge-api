@@ -595,6 +595,28 @@
       "testOnly": true
     },
     {
+      "edgeId": "edge:8b32f53058b8c7836e0f",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "812953db962709cbb3832716d1cd8f075a13ab9fd370ec249d4d1958270af1e7",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "IMPLEMENTS",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Service:intelligence-execution-platform",
+      "targetNodeId": "Repository Module:bridge-api/services/intelligenceExecution/selectedD2ModelRegistry.js",
+      "testOnly": true
+    },
+    {
+      "edgeId": "edge:b0edc99b57eb4219e5d3",
+      "relationshipConfidence": "DETERMINISTIC",
+      "relationshipHash": "18c161ad63e76b90a7079bf50827ebb72e072635b42fcdcdcf3701c1efa29504",
+      "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+      "relationshipType": "IMPLEMENTS",
+      "relationshipVersion": "0.1.0",
+      "sourceNodeId": "Service:intelligence-execution-platform",
+      "targetNodeId": "Repository Module:bridge-api/services/intelligenceExecution/selectedD2NonProductionExecution.js",
+      "testOnly": true
+    },
+    {
       "edgeId": "edge:43edbd70459ccb7dcaf3",
       "relationshipConfidence": "DETERMINISTIC",
       "relationshipHash": "2aa7505c61ddde56784e68f18f7331c9ca9e89562d742ca3d0d06cc90efe147a",

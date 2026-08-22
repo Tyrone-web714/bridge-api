@@ -652,6 +652,30 @@
         "testOnly": true
       },
       {
+        "edgeId": "edge:8b32f53058b8c7836e0f",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "812953db962709cbb3832716d1cd8f075a13ab9fd370ec249d4d1958270af1e7",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "IMPLEMENTS",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Service:intelligence-execution-platform",
+        "targetNodeId": "Repository Module:bridge-api/services/intelligenceExecution/selectedD2ModelRegistry.js",
+        "testOnly": true
+      },
+      {
+        "edgeId": "edge:b0edc99b57eb4219e5d3",
+        "metadata": {},
+        "relationshipConfidence": "DETERMINISTIC",
+        "relationshipHash": "18c161ad63e76b90a7079bf50827ebb72e072635b42fcdcdcf3701c1efa29504",
+        "relationshipSource": "intelligence.knowledge.graph.engine.v1",
+        "relationshipType": "IMPLEMENTS",
+        "relationshipVersion": "0.1.0",
+        "sourceNodeId": "Service:intelligence-execution-platform",
+        "targetNodeId": "Repository Module:bridge-api/services/intelligenceExecution/selectedD2NonProductionExecution.js",
+        "testOnly": true
+      },
+      {
         "edgeId": "edge:43edbd70459ccb7dcaf3",
         "metadata": {},
         "relationshipConfidence": "DETERMINISTIC",
@@ -11130,10 +11154,10 @@
     ],
     "engineVersion": "intelligence.knowledge.graph.engine.v1",
     "generatedFrom": "repository",
-    "graphHash": "b191e4e08559c78400a047ffd44ffeb915df71cc6d50f0a95de1c7bf3aea1055",
+    "graphHash": "14c16e2aaad2f6439a650f026556830031e4a6f677fd6f159bd5470dfaeb465c",
     "nodes": [
       {
-        "hash": "4c495a78e6d6cfbece0a20a336a04b914f92409aec68a47214b19d744e484a0a",
+        "hash": "6b6928b9203f14bea258a268452999d40292a618eec8218d6c3dcb7406ddfc2c",
         "label": "bridge-api",
         "lifecycleState": null,
         "metadata": {},
@@ -11603,7 +11627,7 @@
         "version": null
       },
       {
-        "hash": "7748c26e00ab475373bddbf11205375660e5303c5751a327d999779fa5674761",
+        "hash": "71b307323413e0e419d99cf61225ddb131d9ae2fffb8621b4c4945af8816f159",
         "label": "bridge-api/services/intelligenceExecution/index.js",
         "lifecycleState": null,
         "metadata": {},
@@ -11795,6 +11819,30 @@
         "version": null
       },
       {
+        "hash": "a02cebfa3d2a0d5090cbb79515db212ce909c621ffc3f1b5c6e4ead1894fbc16",
+        "label": "bridge-api/services/intelligenceExecution/selectedD2ModelRegistry.js",
+        "lifecycleState": null,
+        "metadata": {},
+        "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/selectedD2ModelRegistry.js",
+        "productionApplicable": false,
+        "source": "bridge-api/services/intelligenceExecution/selectedD2ModelRegistry.js",
+        "testOnly": true,
+        "type": "Repository Module",
+        "version": null
+      },
+      {
+        "hash": "7fe14f334931246d8a1a1a6a220e41d82bad2930f39d9487f22bcdd583bb8006",
+        "label": "bridge-api/services/intelligenceExecution/selectedD2NonProductionExecution.js",
+        "lifecycleState": null,
+        "metadata": {},
+        "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/selectedD2NonProductionExecution.js",
+        "productionApplicable": false,
+        "source": "bridge-api/services/intelligenceExecution/selectedD2NonProductionExecution.js",
+        "testOnly": true,
+        "type": "Repository Module",
+        "version": null
+      },
+      {
         "hash": "30ffac0e418f554c74073ab9aa15de413518795bf98d7456e36af797d8a2bc7a",
         "label": "bridge-api/services/intelligenceExecution/strategyRegistry.js",
         "lifecycleState": null,
@@ -11975,7 +12023,7 @@
         "version": null
       },
       {
-        "hash": "b3a97f69b6a8004ac21d7d2a39f069b4162c0f9d6330068cad34e89f8b7909d3",
+        "hash": "32836e9e299b5b9385bb78afdc82b074b0f985177b3fb3b36c61133b44e94d00",
         "label": "bridge-api/scripts/check-ms004-benchmark-results.cjs",
         "lifecycleState": null,
         "metadata": {},

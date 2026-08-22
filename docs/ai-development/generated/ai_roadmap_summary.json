@@ -19,7 +19,7 @@
     "DEFERRED",
     "CANCELLED"
   ],
-  "packageCount": 25,
+  "packageCount": 26,
   "packages": [
     {
       "category": "AI_PLATFORM_FOUNDATION",
@@ -360,16 +360,30 @@
     {
       "category": "MODEL_SELECTION_AND_BENCHMARKING",
       "deployed": false,
-      "implementationCommit": null,
-      "localCommitVerified": false,
+      "implementationCommit": "7f4ef7538a894b9ae3fd3c654c22fcbc5e558904",
+      "localCommitVerified": true,
       "nextApprovedPackage": null,
       "ownerApprovalRequired": true,
       "packageId": "MS-004",
       "productionImpact": "NONE",
+      "pushed": true,
+      "remoteCommitVerified": true,
+      "status": "PUSHED",
+      "title": "Comparative Benchmark Execution"
+    },
+    {
+      "category": "MODEL_SELECTION_AND_BENCHMARKING",
+      "deployed": false,
+      "implementationCommit": null,
+      "localCommitVerified": false,
+      "nextApprovedPackage": null,
+      "ownerApprovalRequired": true,
+      "packageId": "D2-SELECTED-MODEL-NONPRODUCTION-INTEGRATION",
+      "productionImpact": "NONE",
       "pushed": false,
       "remoteCommitVerified": false,
-      "status": "BLOCKED",
-      "title": "Comparative Benchmark Execution"
+      "status": "IMPLEMENTED_UNCOMMITTED",
+      "title": "D2 Selected-Model Non-Production Integration"
     }
   ],
   "roadmapId": "TSR_AI_DEVELOPMENT_ROADMAP"

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "tsr.selected.d2.nonproduction.harness.v1",
+  "executionMode": "NON_PRODUCTION_SELECTED_D2",
+  "capabilityCount": 9,
+  "productionRoutingEnabled": false,
+  "hostedCallsExecutedByCodex": false,
+  "optionalExternalSmokeCommand": "npm.cmd run d2-selected:smoke:external -- --non-production --owner-executed",
+  "validationScript": "npm.cmd run test:d2-selected-nonproduction",
+  "externalSmokeScript": "bridge-api/scripts/run-d2-selected-nonproduction-smoke.cjs"
+}

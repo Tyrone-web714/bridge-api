@@ -12,7 +12,7 @@
       "deferredWorkDocs": 22
     },
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "hash": "17e5dc1b382fbcc6b3979f450b89468d66811bb59b0e20ae2d5c0928d2449cff",
+    "hash": "91532d8f7534b486b095905dfba24c1cd01e0b3bc44a2adc69b557601876d7d6",
     "integrityPercentages": {
       "crossReferences": 100,
       "integration": 100
@@ -23,18 +23,18 @@
       "budgetProfiles": 2,
       "capabilities": 6,
       "dashboardDatasets": 30,
-      "documentationPages": 1285,
+      "documentationPages": 1304,
       "evaluations": 3,
       "executionDecisions": 4,
-      "generatedArtifacts": 281,
+      "generatedArtifacts": 283,
       "governanceEvents": 48,
-      "graphEdges": 927,
-      "graphNodes": 1348,
+      "graphEdges": 929,
+      "graphNodes": 1350,
       "historyRecords": 4,
       "pricingCatalogs": 1,
       "scoreRuns": 3,
       "templates": 0,
-      "tests": 56,
+      "tests": 57,
       "validationRules": 9
     },
     "unknownCounts": {

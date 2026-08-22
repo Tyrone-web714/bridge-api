@@ -342,6 +342,16 @@
     },
     {
       "dependencies": [],
+      "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/selectedD2ModelRegistry.js",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
+      "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/selectedD2NonProductionExecution.js",
+      "reverseDependencies": []
+    },
+    {
+      "dependencies": [],
       "nodeId": "Repository Module:bridge-api/services/intelligenceExecution/strategyRegistry.js",
       "reverseDependencies": []
     },

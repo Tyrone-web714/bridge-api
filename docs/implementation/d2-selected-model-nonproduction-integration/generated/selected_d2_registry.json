@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "tsr.selected.d2.model.registry.v1",
+  "selectionSource": "MS-004",
+  "selectionCommit": "7f4ef7538a894b9ae3fd3c654c22fcbc5e558904",
+  "executionMode": "NON_PRODUCTION_SELECTED_D2",
+  "productionRoutingEnabled": false,
+  "providerDistribution": {
+    "google": 5,
+    "mistral": 4,
+    "openai": 0,
+    "anthropic": 0
+  },
+  "capabilities": [
+    { "capabilityId": "customer.account_guidance.presentation", "executionClass": "D2", "provider": "mistral", "modelId": "mistral-small-latest", "selectionStatus": "FINAL_MODEL_SELECTION_READY", "productionEnabled": false, "nonProductionEnabled": true },
+    { "capabilityId": "driver.copilot.contextual_response", "executionClass": "D2", "provider": "google", "modelId": "gemini-3.7-flash", "selectionStatus": "FINAL_MODEL_SELECTION_READY", "productionEnabled": false, "nonProductionEnabled": true },
+    { "capabilityId": "operations.executive_dashboard_synthesis", "executionClass": "D2", "provider": "google", "modelId": "gemini-3.5-flash", "selectionStatus": "FINAL_MODEL_SELECTION_READY", "productionEnabled": false, "nonProductionEnabled": true },
+    { "capabilityId": "platform.legacy_structured_ai_response", "executionClass": "D2", "provider": "google", "modelId": "gemini-3.5-flash-lite", "selectionStatus": "FINAL_MODEL_SELECTION_READY", "productionEnabled": false, "nonProductionEnabled": true },
+    { "capabilityId": "route.risk_explanation.presentation", "executionClass": "D2", "provider": "mistral", "modelId": "mistral-medium-3-5", "selectionStatus": "FINAL_MODEL_SELECTION_READY", "productionEnabled": false, "nonProductionEnabled": true },
+    { "capabilityId": "safety.narrative_summary.presentation", "executionClass": "D2", "provider": "google", "modelId": "gemini-3.7-flash", "selectionStatus": "FINAL_MODEL_SELECTION_READY", "productionEnabled": false, "nonProductionEnabled": true },
+    { "capabilityId": "supervisor.daily_operations_report.narrative", "executionClass": "D2", "provider": "mistral", "modelId": "mistral-small-latest", "selectionStatus": "FINAL_MODEL_SELECTION_READY", "productionEnabled": false, "nonProductionEnabled": true },
+    { "capabilityId": "supervisor.freeform_question_answer", "executionClass": "D2", "provider": "google", "modelId": "gemini-3.5-flash", "selectionStatus": "FINAL_MODEL_SELECTION_READY", "productionEnabled": false, "nonProductionEnabled": true },
+    { "capabilityId": "warehouse.exception_summary.presentation", "executionClass": "D2", "provider": "mistral", "modelId": "mistral-small-latest", "selectionStatus": "FINAL_MODEL_SELECTION_READY", "productionEnabled": false, "nonProductionEnabled": true }
+  ]
+}

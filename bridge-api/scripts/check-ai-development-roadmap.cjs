@@ -97,6 +97,9 @@ const MS003_DOCUMENTATION_PATH = 'docs/ai-development/model-selection/ms-003-can
 const MS003_COMMIT = '8ef625be90aadc11647f33296ca20ab965207097';
 const MS004_PACKAGE_ID = 'MS-004';
 const MS004_DOCUMENTATION_PATH = 'docs/ai-development/model-selection/ms-004-comparative-benchmark-execution';
+const D2_SELECTED_PACKAGE_ID = 'D2-SELECTED-MODEL-NONPRODUCTION-INTEGRATION';
+const D2_SELECTED_DOCUMENTATION_PATH = 'docs/implementation/d2-selected-model-nonproduction-integration';
+const D2_SELECTED_SELECTION_COMMIT = '7f4ef7538a894b9ae3fd3c654c22fcbc5e558904';
 const REMOTE_VERIFIED_PACKAGES = ['AI-IEP-005B.1', 'AI-IEP-005B.2', 'SUPERVISOR_INTELLIGENCE', 'WAREHOUSE_INTELLIGENCE', 'FLEET_INTELLIGENCE', 'CUSTOMER_INTELLIGENCE', 'OPERATIONS_INTELLIGENCE', 'SAFETY_INTELLIGENCE', 'MS-001', 'MS-002', 'TSR-AI-WORKFLOW-001'];
 const OPERATIONS_OBJECTIVE = 'Provide deterministic organization-level operational awareness by aggregating existing TSR operational evidence without replacing the authoritative intelligence domains.';
 const OPERATIONS_APPROVED_SCOPE = [
@@ -258,8 +261,9 @@ function validateRoadmap(roadmap, current, options = {}) {
   const ms002Current = current.packageId === MS002_PACKAGE_ID;
   const ms003Current = current.packageId === MS003_PACKAGE_ID;
   const ms004Current = current.packageId === MS004_PACKAGE_ID;
+  const d2SelectedCurrent = current.packageId === D2_SELECTED_PACKAGE_ID;
   if (milestoneOneComplete) {
-    if (ms001Current || ms002Current || ms003Current || ms004Current) {
+    if (ms001Current || ms002Current || ms003Current || ms004Current || d2SelectedCurrent) {
       if (currentPackages.length !== 1) failures.push({ rule: 'CURRENT_PACKAGE_COUNT', count: currentPackages.length });
     } else if (currentPackages.length !== 0) {
       failures.push({ rule: 'CURRENT_PACKAGE_COUNT', count: currentPackages.length });
@@ -342,6 +346,27 @@ function validateRoadmap(roadmap, current, options = {}) {
       if (!ms001 || ms001.status !== 'PUSHED' || ms001.implementationCommit !== MS001_COMMIT || ms001.pushed !== true || ms001.remoteCommitVerified !== true || ms001.isCurrentPackage === true) failures.push({ rule: 'MS001_NOT_CLOSED_BEFORE_MS004' });
       if (!ms002 || ms002.status !== 'PUSHED' || ms002.implementationCommit !== MS002_COMMIT || ms002.pushed !== true || ms002.remoteCommitVerified !== true || ms002.isCurrentPackage === true) failures.push({ rule: 'MS002_NOT_CLOSED_BEFORE_MS004' });
       if (!ms003 || ms003.status !== 'PUSHED' || ms003.implementationCommit !== MS003_COMMIT || ms003.pushed !== true || ms003.remoteCommitVerified !== true || ms003.isCurrentPackage === true) failures.push({ rule: 'MS003_NOT_CLOSED_BEFORE_MS004' });
+    } else if (d2SelectedCurrent) {
+      const ms001 = packages.find((pkg) => pkg.packageId === MS001_PACKAGE_ID);
+      const ms002 = packages.find((pkg) => pkg.packageId === MS002_PACKAGE_ID);
+      const ms003 = packages.find((pkg) => pkg.packageId === MS003_PACKAGE_ID);
+      const ms004 = packages.find((pkg) => pkg.packageId === MS004_PACKAGE_ID);
+      if (!currentRoadmap) failures.push({ rule: 'CURRENT_PACKAGE_NOT_IN_ROADMAP', packageId: current.packageId });
+      if (currentRoadmap && currentRoadmap.isCurrentPackage !== true) failures.push({ rule: 'D2_SELECTED_CURRENT_ROADMAP_FLAG_MISSING' });
+      if (currentRoadmap && currentRoadmap.category !== 'MODEL_SELECTION_AND_BENCHMARKING') failures.push({ rule: 'D2_SELECTED_CATEGORY_INVALID', category: currentRoadmap.category });
+      if (current.category !== 'MODEL_SELECTION_AND_BENCHMARKING') failures.push({ rule: 'CURRENT_POST_MILESTONE_CATEGORY_INVALID', category: current.category });
+      if (current.status !== 'IMPLEMENTED_UNCOMMITTED') failures.push({ rule: 'CURRENT_POST_MILESTONE_STATUS_INVALID', status: current.status });
+      if (currentRoadmap && currentRoadmap.status !== current.status) failures.push({ rule: 'CURRENT_PACKAGE_STATUS_MISMATCH', packageId: current.packageId });
+      if (currentRoadmap && currentRoadmap.title !== current.title) failures.push({ rule: 'CURRENT_PACKAGE_JSON_ROADMAP_MISMATCH', packageId: current.packageId });
+      if (currentRoadmap && currentRoadmap.documentationPath !== D2_SELECTED_DOCUMENTATION_PATH) failures.push({ rule: 'D2_SELECTED_DOCUMENTATION_PATH_INVALID', documentationPath: currentRoadmap.documentationPath });
+      if (!fs.existsSync(path.join(paths.repoRoot, D2_SELECTED_DOCUMENTATION_PATH, 'README.md'))) failures.push({ rule: 'D2_SELECTED_DOCUMENTATION_MISSING' });
+      if (!fs.existsSync(path.join(paths.backendRoot, 'scripts', 'check-d2-selected-model-nonproduction.cjs'))) failures.push({ rule: 'D2_SELECTED_VALIDATION_SCRIPT_MISSING' });
+      if (current.nextApprovedPackage !== null) failures.push({ rule: 'CURRENT_POST_MILESTONE_NEXT_PACKAGE_INVALID', nextApprovedPackage: current.nextApprovedPackage });
+      if (currentRoadmap && (currentRoadmap.pushed || currentRoadmap.deployed || currentRoadmap.migrationExecuted || currentRoadmap.productionImpact !== 'NONE')) failures.push({ rule: 'D2_SELECTED_FALSE_SOURCE_CONTROL_OR_PRODUCTION_STATE', packageId: current.packageId });
+      if (!ms001 || ms001.status !== 'PUSHED' || ms001.implementationCommit !== MS001_COMMIT || ms001.pushed !== true || ms001.remoteCommitVerified !== true || ms001.isCurrentPackage === true) failures.push({ rule: 'MS001_NOT_CLOSED_BEFORE_D2_SELECTED' });
+      if (!ms002 || ms002.status !== 'PUSHED' || ms002.implementationCommit !== MS002_COMMIT || ms002.pushed !== true || ms002.remoteCommitVerified !== true || ms002.isCurrentPackage === true) failures.push({ rule: 'MS002_NOT_CLOSED_BEFORE_D2_SELECTED' });
+      if (!ms003 || ms003.status !== 'PUSHED' || ms003.implementationCommit !== MS003_COMMIT || ms003.pushed !== true || ms003.remoteCommitVerified !== true || ms003.isCurrentPackage === true) failures.push({ rule: 'MS003_NOT_CLOSED_BEFORE_D2_SELECTED' });
+      if (!ms004 || ms004.status !== 'PUSHED' || ms004.implementationCommit !== D2_SELECTED_SELECTION_COMMIT || ms004.pushed !== true || ms004.remoteCommitVerified !== true || ms004.isCurrentPackage === true) failures.push({ rule: 'MS004_NOT_CLOSED_BEFORE_D2_SELECTED' });
     } else {
       failures.push({ rule: 'CURRENT_PACKAGE_INVALID_AFTER_MILESTONE_ONE', packageId: current.packageId });
     }

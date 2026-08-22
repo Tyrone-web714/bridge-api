@@ -67,7 +67,9 @@ function validateEvidence(evidence) {
     if (candidate.providerSelected || candidate.modelSelected || candidate.finalWinner || candidate.productionAssignment) failures.push(`EXPANSION_SELECTION_PERFORMED:${candidate.candidateId}`);
     if (!expansionCandidateIds.has(candidate.candidateId)) failures.push(`UNKNOWN_EXPANSION_CANDIDATE:${candidate.candidateId}`);
   }
-  if (evidence.finalD2Selection) {
+  if (!evidence.finalD2Selection) {
+    failures.push('FINAL_D2_SELECTION_MISSING');
+  } else {
     const final = evidence.finalD2Selection;
     const expectedWinners = {
       'customer.account_guidance.presentation': 'customer.account_guidance.presentation::mistral-small-latest',
@@ -81,6 +83,9 @@ function validateEvidence(evidence) {
       'warehouse.exception_summary.presentation': 'warehouse.exception_summary.presentation::mistral-small-latest'
     };
     if (final.d2ModelSelectionComplete !== true || final.allNineD2CapabilitiesFinalModelSelectionReady !== true) failures.push('FINAL_D2_NOT_COMPLETE');
+    if (evidence.summary.d2ModelSelectionComplete !== true || evidence.summary.finalD2CapabilitiesReady !== 9) failures.push('FINAL_D2_SUMMARY_NOT_COMPLETE');
+    if (evidence.summary.liveHostedBenchmarkExecuted !== true || evidence.summary.measuredLiveBenchmarkCostUsd !== final.measuredTotalBenchmarkCostUsd) failures.push('FINAL_D2_LIVE_SUMMARY_MISMATCH');
+    if (final.completedLiveHostedCalls !== 237 || final.failedLiveHostedCalls !== 35 || final.measuredTotalBenchmarkCostUsd !== 1.4305707) failures.push('FINAL_D2_LIVE_TOTALS');
     if (final.d1Status !== 'D1_PIPELINE_VALIDATED_SELECTION_PENDING_REPRESENTATIVE_DATA') failures.push('D1_BOUNDARY_CHANGED');
     if (final.productionRoutingStatus !== 'NOT_ACTIVATED') failures.push('PRODUCTION_ROUTING_ACTIVATED');
     if (!Array.isArray(final.matrix) || final.matrix.length !== 9) failures.push('FINAL_D2_MATRIX_COUNT');
@@ -196,8 +201,11 @@ function main() {
   expectInvalid('migration', (e) => { e.scope.migrationPerformed = true; });
   expectInvalid('production-certified result', (e) => { e.proposedExecutionModelMatrix[0].benchmarkStatus = 'PRODUCTION_CERTIFIED'; });
   expectInvalid('stale generated artifact', (e) => { e.summary.benchmarkCapabilities = 12; });
+  expectInvalid('missing final D2 selection evidence', (e) => { delete e.finalD2Selection; });
+  expectInvalid('legacy dry-run summary misread as final D2 incomplete', (e) => { e.summary.d2ModelSelectionComplete = false; });
+  expectInvalid('live D2 benchmark cost mismatch', (e) => { e.summary.measuredLiveBenchmarkCostUsd = 0; });
 
-  console.log(`[ms004] validated benchmark evidence: capabilities=${generated.summary.benchmarkCapabilities}, localPipelineEvaluations=${generated.summary.localPipelineEvaluations}, hostedCalls=${generated.summary.hostedBenchmarkCalls}, cost=${generated.summary.measuredTotalBenchmarkCostUsd}, blockers=${JSON.stringify(generated.summary.blockerSummary)}`);
+  console.log(`[ms004] validated benchmark evidence: capabilities=${generated.summary.benchmarkCapabilities}, localPipelineEvaluations=${generated.summary.localPipelineEvaluations}, dryRunHostedCalls=${generated.summary.hostedBenchmarkCalls}, dryRunCost=${generated.summary.measuredTotalBenchmarkCostUsd}, finalD2LiveHostedCalls=${generated.finalD2Selection.completedLiveHostedCalls}, finalD2FailedCalls=${generated.finalD2Selection.failedLiveHostedCalls}, finalD2MeasuredCost=${generated.finalD2Selection.measuredTotalBenchmarkCostUsd}, finalD2Complete=${generated.finalD2Selection.d2ModelSelectionComplete}, finalD2Ready=${generated.finalD2Selection.allNineD2CapabilitiesFinalModelSelectionReady}, blockers=${JSON.stringify(generated.summary.blockerSummary)}`);
 }
 
 if (require.main === module) main();
