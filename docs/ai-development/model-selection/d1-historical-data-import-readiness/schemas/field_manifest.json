@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "d1-historical-field-manifest-v0.1",
+  "capabilities": [
+    {
+      "capabilityId": "prediction.route_completion_forecast",
+      "fields": [
+        { "name": "organization_id", "requirement": "REQUIRED", "leakageClass": "AVAILABLE_BEFORE_PREDICTION" },
+        { "name": "route_id", "requirement": "REQUIRED", "leakageClass": "AVAILABLE_BEFORE_PREDICTION" },
+        { "name": "route_date", "requirement": "REQUIRED", "leakageClass": "AVAILABLE_BEFORE_PREDICTION" },
+        { "name": "depot_or_start_location", "requirement": "REQUIRED", "leakageClass": "AVAILABLE_BEFORE_PREDICTION" },
+        { "name": "planned_start_at", "requirement": "REQUIRED", "leakageClass": "AVAILABLE_BEFORE_PREDICTION" },
+        { "name": "actual_completion_at", "requirement": "REQUIRED_FOR_TARGET", "leakageClass": "TARGET_ONLY" },
+        { "name": "route_status", "requirement": "REQUIRED", "leakageClass": "TARGET_ONLY" },
+        { "name": "source_system", "requirement": "REQUIRED", "leakageClass": "CONTEXT_ONLY" },
+        { "name": "source_record_id", "requirement": "REQUIRED", "leakageClass": "CONTEXT_ONLY" },
+        { "name": "timezone", "requirement": "REQUIRED", "leakageClass": "CONTEXT_ONLY" }
+      ]
+    },
+    {
+      "capabilityId": "prediction.delivery_failure_risk",
+      "fields": [
+        { "name": "organization_id", "requirement": "REQUIRED", "leakageClass": "AVAILABLE_BEFORE_PREDICTION" },
+        { "name": "route_id", "requirement": "REQUIRED", "leakageClass": "AVAILABLE_BEFORE_PREDICTION" },
+        { "name": "stop_id", "requirement": "REQUIRED", "leakageClass": "AVAILABLE_BEFORE_PREDICTION" },
+        { "name": "account_id_or_account_number", "requirement": "REQUIRED", "leakageClass": "AVAILABLE_BEFORE_PREDICTION" },
+        { "name": "route_date", "requirement": "REQUIRED", "leakageClass": "AVAILABLE_BEFORE_PREDICTION" },
+        { "name": "stop_sequence", "requirement": "REQUIRED", "leakageClass": "AVAILABLE_BEFORE_PREDICTION" },
+        { "name": "planned_arrival_at", "requirement": "REQUIRED", "leakageClass": "AVAILABLE_BEFORE_PREDICTION" },
+        { "name": "delivery_status", "requirement": "REQUIRED", "leakageClass": "TARGET_ONLY" },
+        { "name": "non_delivery_reason", "requirement": "REQUIRED_WHEN_NOT_DELIVERED", "leakageClass": "TARGET_ONLY" },
+        { "name": "source_system", "requirement": "REQUIRED", "leakageClass": "CONTEXT_ONLY" },
+        { "name": "source_record_id", "requirement": "REQUIRED", "leakageClass": "CONTEXT_ONLY" },
+        { "name": "timezone", "requirement": "REQUIRED", "leakageClass": "CONTEXT_ONLY" }
+      ]
+    }
+  ]
+}

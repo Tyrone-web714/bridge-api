@@ -1,0 +1,1 @@
+organization_id,source_system,source_record_id,route_id,stop_id,route_date,stop_sequence,account_id,account_number,planned_arrival_at,planned_departure_at,actual_arrival_at,service_start_at,service_end_at,timezone

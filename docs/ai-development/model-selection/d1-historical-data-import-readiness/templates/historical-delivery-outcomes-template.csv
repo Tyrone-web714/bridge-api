@@ -1,0 +1,1 @@
+organization_id,source_system,source_record_id,route_id,stop_id,route_date,delivery_status,delivered_indicator,partial_delivery_indicator,non_delivery_reason,rescheduled_indicator,cancelled_indicator,exception_code,source_outcome_code,timezone

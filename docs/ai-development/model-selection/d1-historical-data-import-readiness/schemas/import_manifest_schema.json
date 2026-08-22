@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "d1-historical-import-manifest-schema-v0.1",
+  "requiredFields": [
+    "importBatchId",
+    "organizationId",
+    "sourceSystem",
+    "exportDate",
+    "dateRange",
+    "schemaVersion",
+    "mappingVersion",
+    "files",
+    "checksums",
+    "recordCounts",
+    "timezone",
+    "operatorOrInitiator",
+    "dryRun",
+    "validationStatus"
+  ],
+  "prohibitedFields": [
+    "credentials",
+    "apiKeys",
+    "passwords",
+    "tokens"
+  ],
+  "idempotencyKey": [
+    "organizationId",
+    "sourceSystem",
+    "sourceRecordId"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "d1-delivery-outcome-taxonomy-v0.1",
+  "canonicalOutcomes": [
+    "DELIVERED",
+    "PARTIALLY_DELIVERED",
+    "CUSTOMER_UNAVAILABLE",
+    "CUSTOMER_REFUSED",
+    "INVENTORY_SHORTFALL",
+    "TIME_WINDOW_FAILURE",
+    "ROUTE_OPERATION_FAILURE",
+    "VEHICLE_FAILURE",
+    "NO_PAYMENT",
+    "CANCELLED",
+    "RESCHEDULED",
+    "UNKNOWN"
+  ],
+  "existingTsrReasonMappings": {
+    "business_closed": "CUSTOMER_UNAVAILABLE",
+    "customer_refused": "CUSTOMER_REFUSED",
+    "missed_time_window": "TIME_WINDOW_FAILURE",
+    "no_payment": "NO_PAYMENT"
+  },
+  "unknownHandling": "QUARANTINE_OR_REVIEW_BEFORE_REPRESENTATIVE_FREEZE"
+}

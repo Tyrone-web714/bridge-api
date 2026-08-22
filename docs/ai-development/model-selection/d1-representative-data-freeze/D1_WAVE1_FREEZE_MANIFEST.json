@@ -1,0 +1,91 @@
+{
+  "packageId": "D1_WAVE1_REPRESENTATIVE_HISTORICAL_DATASET_FREEZE",
+  "createdAt": "2026-08-22",
+  "repository": "C:\\dev\\bridge-api",
+  "backend": "C:\\dev\\bridge-api\\bridge-api",
+  "branch": "legacy-public-url-final-cleanup",
+  "sourceCommit": "e3b70b10f8da5bfdace4356078f7e18aa82f46bf",
+  "scope": {
+    "hostedAiCalls": false,
+    "predictiveTraining": false,
+    "d1MethodSelection": false,
+    "d2Changed": false,
+    "productionRoutingActivated": false,
+    "deployment": false,
+    "migration": false,
+    "productionDataMutation": false,
+    "rawSensitiveDataCommitted": false
+  },
+  "wave1Capabilities": [
+    {
+      "capabilityId": "prediction.route_completion_forecast",
+      "targetReadiness": "TARGET_NOT_READY",
+      "readinessStatus": "SOURCE_DATA_NOT_AVAILABLE",
+      "methodSelectionUnlocked": false,
+      "frozenDataset": null,
+      "candidateSourceProfile": {
+        "source": "bridge-api/data/route-manifest-2026-06-20-827826.csv",
+        "classification": "UNKNOWN_PROVENANCE",
+        "recordCount": 5,
+        "dateRange": {
+          "earliest": "2026-06-20",
+          "latest": "2026-06-20",
+          "days": 1,
+          "weeks": 0.14,
+          "months": 0.03
+        },
+        "organizationScope": "MISSING_ORGANIZATION_ID",
+        "distinctRoutes": 1,
+        "distinctStops": 5,
+        "distinctAccounts": 5,
+        "targetAvailability": "MISSING_ACTUAL_COMPLETION_TARGET",
+        "includedRows": 0,
+        "excludedRows": 5,
+        "sourceSha256": "13C5C47C047241B3CF94D78A69EB765ED1005FD54225965C4E926C374583C182"
+      },
+      "splitCounts": {
+        "train": 0,
+        "validation": 0,
+        "test": 0
+      }
+    },
+    {
+      "capabilityId": "prediction.delivery_failure_risk",
+      "targetReadiness": "TARGET_NOT_READY",
+      "readinessStatus": "SOURCE_DATA_NOT_AVAILABLE",
+      "methodSelectionUnlocked": false,
+      "frozenDataset": null,
+      "candidateSourceProfile": {
+        "source": "bridge-api/data/route-manifest-2026-06-20-827826.csv",
+        "classification": "UNKNOWN_PROVENANCE",
+        "recordCount": 5,
+        "dateRange": {
+          "earliest": "2026-06-20",
+          "latest": "2026-06-20",
+          "days": 1,
+          "weeks": 0.14,
+          "months": 0.03
+        },
+        "organizationScope": "MISSING_ORGANIZATION_ID",
+        "distinctRoutes": 1,
+        "distinctStops": 5,
+        "distinctAccounts": 5,
+        "targetAvailability": "MISSING_DELIVERY_OUTCOME_TARGET",
+        "positiveFailureCount": 0,
+        "negativeFailureCount": 0,
+        "unknownOrUnusableCount": 5,
+        "failureRate": null,
+        "includedRows": 0,
+        "excludedRows": 5,
+        "sourceSha256": "13C5C47C047241B3CF94D78A69EB765ED1005FD54225965C4E926C374583C182"
+      },
+      "splitCounts": {
+        "train": 0,
+        "validation": 0,
+        "test": 0
+      }
+    }
+  ],
+  "frozenDatasets": [],
+  "requiredNextAction": "OWNER_APPROVED_TENANT_SCOPED_HISTORICAL_ROUTE_STOP_OUTCOME_EXPORT_OR_IMPORT"
+}

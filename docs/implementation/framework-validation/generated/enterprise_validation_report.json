@@ -28,9 +28,9 @@
       "overall.platform": "6112b9a801fc0a0643e280d439cb9c3207c073fad98db7aacd5bfd88aa82e245",
       "owner.decisions": "014cf120c324f195970220042334d36ebf9cd4743413c5d969c5b5b12cfadc50",
       "platform.readiness": "d27938567f17955ab487ab987314c65a7aecf469f815bffdfedcb8ec468df171",
-      "repository.health": "78d1ef0984f088b887c6e35a262856004b512fa28e51dfe9004b9595ae22fe54",
+      "repository.health": "23b81c3c7c9d607e71f0b2acd092b8d5b5067554c8b846db5815db6516978387",
       "scoring.overview": "f5d57337ee9291152f066526d5b6d4e940ee27ae37bad63c5e7cceb673bfc4d0",
-      "technical.debt": "fad1d8f8ede3a1057dada6688b40582d4ee7605ac303c802319bdd488c45b0d3",
+      "technical.debt": "9f094ff7e87961b00b7844291da78d3928881e942b18d458334188a97ddacfa9",
       "test.coverage": "1cd037ebcccccda38e4c2c0c2e40f684e3a41fb0a35481cf459527fcfb98d5c6",
       "validation.overview": "13c6be5e7b64e6e8d787007c82434f3f29853f89dd02d7be79a913508ef40ae0"
     },

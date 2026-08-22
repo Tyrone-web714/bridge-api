@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "d1-historical-import-validation-rules-v0.1",
+  "rules": [
+    { "id": "REQUIRED_FIELD_MISSING", "severity": "reject" },
+    { "id": "ORGANIZATION_ID_MISSING", "severity": "quarantine" },
+    { "id": "ORGANIZATION_ID_AMBIGUOUS", "severity": "quarantine" },
+    { "id": "CROSS_TENANT_RELATIONSHIP", "severity": "reject" },
+    { "id": "DUPLICATE_SOURCE_RECORD", "severity": "quarantine" },
+    { "id": "CONFLICTING_SOURCE_RECORD", "severity": "quarantine" },
+    { "id": "INVALID_TIMESTAMP", "severity": "reject" },
+    { "id": "NEGATIVE_DURATION", "severity": "quarantine" },
+    { "id": "FUTURE_TIMESTAMP_UNAPPROVED", "severity": "quarantine" },
+    { "id": "UNKNOWN_OUTCOME_CODE", "severity": "quarantine" },
+    { "id": "MISSING_TARGET_SOURCE", "severity": "reject_for_representative_freeze" },
+    { "id": "POST_OUTCOME_FEATURE", "severity": "reject_feature" },
+    { "id": "UNKNOWN_PROVENANCE", "severity": "quarantine" },
+    { "id": "DEMO_TEST_SYNTHETIC", "severity": "exclude_from_representative_freeze" }
+  ]
+}

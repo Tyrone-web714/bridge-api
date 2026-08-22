@@ -1,0 +1,19 @@
+{
+  "importBatchId": "",
+  "organizationId": "",
+  "sourceSystem": "",
+  "exportDate": "",
+  "dateRange": {
+    "start": "",
+    "end": ""
+  },
+  "schemaVersion": "d1-historical-import-manifest-schema-v0.1",
+  "mappingVersion": "",
+  "files": [],
+  "checksums": {},
+  "recordCounts": {},
+  "timezone": "",
+  "operatorOrInitiator": "",
+  "dryRun": true,
+  "validationStatus": "NOT_RUN"
+}
