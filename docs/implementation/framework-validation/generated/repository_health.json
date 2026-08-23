@@ -12,7 +12,7 @@
       "deferredWorkDocs": 22
     },
     "generatedAt": "2026-07-25T00:00:00.000Z",
-    "hash": "89a1f9f12f6343eed7251899ed77c7eb72e50280fd754c49a14542d59de70fff",
+    "hash": "b4d2b2f6eb83b3ee1d56272c99c043b6e4fa182b36d413e2d37e50de1d39c961",
     "integrityPercentages": {
       "crossReferences": 100,
       "integration": 100
@@ -34,7 +34,7 @@
       "pricingCatalogs": 1,
       "scoreRuns": 3,
       "templates": 0,
-      "tests": 58,
+      "tests": 61,
       "validationRules": 9
     },
     "unknownCounts": {

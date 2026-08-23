@@ -3,7 +3,7 @@
   "generatedFrom": "bridge-api/intelligence-knowledge-graph",
   "nodes": [
     {
-      "hash": "14258aa7cd09d7d79e45a1e8d5f29ec8193ea44e3f01b75f3eab913f5e99d389",
+      "hash": "b8f66c4452e9d8c5f327c14d3bf8e166655017e71741a158f10c26f219007377",
       "label": "bridge-api",
       "lifecycleState": null,
       "nodeId": "Package:bridge-api",

@@ -15,6 +15,35 @@ function assert(condition, message) {
   if (!condition) throw new Error(`[pilot-integration] ${message}`);
 }
 
+function isLocalDisposableDatabaseUrl(value) {
+  try {
+    const parsed = new URL(value);
+    const hostname = parsed.hostname;
+    const port = Number.parseInt(parsed.port, 10);
+    const databaseName = parsed.pathname.replace(/^\/+/, '');
+    return ['127.0.0.1', 'localhost'].includes(hostname)
+      && Number.isInteger(port)
+      && port >= 55440
+      && port <= 55449
+      && /^pilot[_-]?integration|.*validation|.*disposable|.*test/i.test(databaseName);
+  } catch {
+    return false;
+  }
+}
+
+function validatePilotIntegrationIsolation(env = process.env) {
+  const errors = [];
+  if (env.NODE_ENV === 'production') errors.push('NODE_ENV must not be production');
+  if (env.PILOT_INTEGRATION_TEST !== 'true') errors.push('PILOT_INTEGRATION_TEST=true is required');
+  if (env.ALLOW_MUTATING_TEST_DATA !== 'true') errors.push('ALLOW_MUTATING_TEST_DATA=true is required');
+  if (!env.DATABASE_URL) {
+    errors.push('DATABASE_URL is required');
+  } else if (!isLocalDisposableDatabaseUrl(env.DATABASE_URL)) {
+    errors.push('DATABASE_URL must target disposable local PostgreSQL on port 55440-55449 with a test/validation database name');
+  }
+  return { safe: errors.length === 0, errors };
+}
+
 function context(organizationId, role, actorId) {
   return {
     authenticated: true,
@@ -164,8 +193,8 @@ async function completeStop(stopId, driverNumber, completionStatus, itemOverride
 }
 
 async function main() {
-  assert(process.env.DATABASE_URL, 'DATABASE_URL is required');
-  assert(/127\.0\.0\.1:5544\d/.test(process.env.DATABASE_URL), 'runtime validation must use isolated local PostgreSQL on a 5544x validation port');
+  const isolation = validatePilotIntegrationIsolation(process.env);
+  assert(isolation.safe, `unsafe target: ${isolation.errors.join('; ')}`);
 
   const runId = `pilot-${Date.now()}`;
   const orgA = 'demo-fleet-a';
@@ -481,11 +510,18 @@ async function main() {
   }, null, 2));
 }
 
-main()
-  .catch((error) => {
-    console.error(error.stack || error.message || error);
-    process.exitCode = 1;
-  })
-  .finally(async () => {
-    await postgres.closePool();
-  });
+if (require.main === module) {
+  main()
+    .catch((error) => {
+      console.error(error.stack || error.message || error);
+      process.exitCode = 1;
+    })
+    .finally(async () => {
+      await postgres.closePool();
+    });
+}
+
+module.exports = {
+  isLocalDisposableDatabaseUrl,
+  validatePilotIntegrationIsolation
+};

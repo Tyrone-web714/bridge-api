@@ -4,6 +4,20 @@ const { spawnSync } = require('child_process');
 
 const root = path.resolve(__dirname, '..');
 const repoRoot = path.resolve(root, '..');
+const APPROVED_MIGRATION_SEQUENCE = Object.freeze([
+  '001_audit_events.sql',
+  '002_driver_sessions.sql',
+  '003_multi_tenant_foundation.sql',
+  '004_authentication_rbac_foundation.sql',
+  '005_shared_safety_foundation.sql',
+  '006_bi_kpi_foundation.sql',
+  '007_logistics_intelligence_foundation.sql',
+  '008_fleet_intelligence_scoring_foundation.sql',
+  '009_data_lifecycle_foundation.sql',
+  '010_enterprise_identity_foundation.sql',
+  '011_driver_copilot_permission_repair.sql',
+  '012_intelligence_execution_foundation.sql'
+]);
 
 function assert(condition, message) {
   if (!condition) {
@@ -29,21 +43,43 @@ function listMigrationFiles() {
     .sort();
 }
 
+function validateMigrationFileSequence(actual, expected = APPROVED_MIGRATION_SEQUENCE) {
+  const errors = [];
+  const seen = new Set();
+  for (const name of actual) {
+    if (seen.has(name)) errors.push(`duplicate migration detected: ${name}`);
+    seen.add(name);
+  }
+
+  const actualNumbers = actual.map((name) => Number.parseInt(name.slice(0, 3), 10));
+  for (let index = 0; index < actualNumbers.length; index += 1) {
+    const current = actualNumbers[index];
+    if (!Number.isInteger(current)) errors.push(`invalid migration number: ${actual[index]}`);
+    if (index > 0 && current <= actualNumbers[index - 1]) {
+      errors.push(`migration sequence is out of order near ${actual[index]}`);
+    }
+    if (index > 0 && current !== actualNumbers[index - 1] + 1) {
+      errors.push(`migration numbering gap before ${actual[index]}`);
+    }
+  }
+
+  for (const name of expected) {
+    if (!seen.has(name)) errors.push(`missing approved migration: ${name}`);
+  }
+  const approved = new Set(expected);
+  for (const name of actual) {
+    if (!approved.has(name)) errors.push(`unapproved migration file: ${name}`);
+  }
+  if (JSON.stringify(actual) !== JSON.stringify(expected)) {
+    errors.push(`migration files must match approved sequence ${expected[0]} through ${expected[expected.length - 1]}`);
+  }
+  return { valid: errors.length === 0, errors };
+}
+
 function validateMigrations() {
-  const expected = [
-    '001_audit_events.sql',
-    '002_driver_sessions.sql',
-    '003_multi_tenant_foundation.sql',
-    '004_authentication_rbac_foundation.sql',
-    '005_shared_safety_foundation.sql',
-    '006_bi_kpi_foundation.sql',
-    '007_logistics_intelligence_foundation.sql',
-    '008_fleet_intelligence_scoring_foundation.sql',
-    '009_data_lifecycle_foundation.sql',
-    '010_enterprise_identity_foundation.sql'
-  ];
   const actual = listMigrationFiles();
-  assert(JSON.stringify(actual) === JSON.stringify(expected), 'migration files 001-010 must exist in strict order');
+  const sequence = validateMigrationFileSequence(actual);
+  assert(sequence.valid, sequence.errors.join('; '));
 
   const migrationRunner = read('scripts/run-migrations.cjs');
   assert(migrationRunner.includes('schema_migrations'), 'migration runner must record schema_migrations');
@@ -73,6 +109,16 @@ function validateMigrations() {
   assert(m010.includes('CREATE TABLE IF NOT EXISTS federated_identities'), 'migration 010 must create federated identity mapping');
   assert(m010.includes('CREATE TABLE IF NOT EXISTS sso_authentication_transactions'), 'migration 010 must create SSO transactions');
   assert(m010.includes('ON DELETE RESTRICT'), 'migration 010 must avoid destructive identity cascades into Organization-owned history');
+
+  const m011 = read('migrations/011_driver_copilot_permission_repair.sql');
+  assert(m011.includes("'DRIVER', 'ai.driver_copilot.use'"), 'migration 011 must repair Driver Copilot role permissions');
+
+  const m012 = read('migrations/012_intelligence_execution_foundation.sql');
+  assert(m012.includes('CREATE TABLE IF NOT EXISTS intelligence_requests'), 'migration 012 must create Intelligence Execution requests');
+  assert(m012.includes('CREATE TABLE IF NOT EXISTS intelligence_execution_attempts'), 'migration 012 must create Intelligence Execution attempts');
+  assert(m012.includes('CREATE TABLE IF NOT EXISTS intelligence_usage_records'), 'migration 012 must create Intelligence Execution usage records');
+  assert(m012.includes('CREATE TABLE IF NOT EXISTS intelligence_policy_versions'), 'migration 012 must create Intelligence Execution policy versions');
+  assert(m012.includes('CREATE TABLE IF NOT EXISTS intelligence_prompt_versions'), 'migration 012 must create Intelligence Execution prompt versions');
 }
 
 function validateDeployment() {
@@ -188,9 +234,17 @@ function main() {
   console.log('[production-rollout] non-destructive rollout planning checks passed');
 }
 
-try {
-  main();
-} catch (error) {
-  console.error(error.message);
-  process.exit(1);
+if (require.main === module) {
+  try {
+    main();
+  } catch (error) {
+    console.error(error.message);
+    process.exit(1);
+  }
 }
+
+module.exports = {
+  APPROVED_MIGRATION_SEQUENCE,
+  listMigrationFiles,
+  validateMigrationFileSequence
+};

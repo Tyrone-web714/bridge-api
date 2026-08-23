@@ -11166,10 +11166,10 @@
     ],
     "engineVersion": "intelligence.knowledge.graph.engine.v1",
     "generatedFrom": "repository",
-    "graphHash": "fffde19b40cc36e2f2fb6cba4e705eca3a2614a4cd2ab41627b7cbed54b2be52",
+    "graphHash": "655cbd97775036d47db489c4cb4349c06080ecd07e76d40553255ce12eef4aa6",
     "nodes": [
       {
-        "hash": "14258aa7cd09d7d79e45a1e8d5f29ec8193ea44e3f01b75f3eab913f5e99d389",
+        "hash": "b8f66c4452e9d8c5f327c14d3bf8e166655017e71741a158f10c26f219007377",
         "label": "bridge-api",
         "lifecycleState": null,
         "metadata": {},
