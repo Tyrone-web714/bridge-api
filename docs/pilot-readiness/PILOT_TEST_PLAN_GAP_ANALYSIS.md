@@ -12,6 +12,8 @@ Repository validation available:
 - Production rollout static validation.
 - Production configuration verification.
 - Private media and driver route notes/photo checks.
+- Disposable backend pilot integration validation passed in Wave 2 against a local
+  PostgreSQL/PostGIS database.
 
 Tests required before pilot:
 
@@ -28,11 +30,12 @@ Tests required before pilot:
 
 Validation not appropriate for this audit package:
 
-- Runtime pilot integration scripts that seed or mutate local database records.
+- Runtime pilot integration scripts that seed or mutate local database records except
+  when separately approved for a disposable local validation database.
 - Hosted D1 or D2 benchmark execution.
 - Production smoke tests.
 - Deployment tests.
-- Migration execution.
+- Migration execution outside disposable non-production validation.
 
 Acceptance:
 

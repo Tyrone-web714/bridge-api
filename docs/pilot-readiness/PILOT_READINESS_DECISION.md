@@ -13,6 +13,13 @@ Engineering gaps:
 - Pilot data onboarding has not been rehearsed with real Organization data.
 - A current pilot mobile build artifact has not been verified.
 
+Engineering progress:
+
+- Disposable backend pilot integration passed in Wave 2 against a local PostgreSQL/PostGIS
+  database.
+- Migrations `001` through `012` applied successfully in the disposable environment.
+- Tenant-scoped route/stop/service-level data flow passed for synthetic Organizations.
+
 External gaps:
 
 - Pilot Organization, devices, routes, dates, and support ownership are not frozen.
@@ -21,5 +28,7 @@ External gaps:
 
 Recommended next action:
 
-Proceed with Wave 0 only. Do not begin live pilot execution until every P0 gate in
+Proceed to a separately approved mobile APK/device and field-verification preparation
+wave while continuing owner-dependent pilot environment, data, backup, maps, support, and
+scope closure. Do not begin live pilot execution until every P0 gate in
 PILOT_GO_NO_GO_GATES.md is complete and a new owner-approved pilot launch decision is recorded.
